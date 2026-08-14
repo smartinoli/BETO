@@ -89,27 +89,46 @@ const horaTxt = iso => {
 };
 const SIMU = /srl|e-?soccer|esports|ebasketball|simulated|cyber/i;
 
-/* Whitelist del censo: familias que existen en AMBAS casas y en la vitrina LAT.
-   Devuelve {fam, lado:'ou'|'ah'|'ml'} o null. */
+/* Whitelist ampliada (censo 14-08-2026). Devuelve
+   {fam, lado:'ou'|'ah'|'ml'|'yn', eq?:1|2, castigada?:true} o null.
+   'yn' = mercados Sí/No · 'eq' = familia por equipo/jugador (1=local, 2=visita).
+   'castigada' = juez borroso (córners/tarjetas/nicho): usa umbralCastigado.
+   Las familias que solo cotiza una casa NO se listan: sin juez jamás disparan. */
 function familiaDe(sid, nombre, h) {
   const n = (nombre || '').toLowerCase();
-  if (/team 1|team 2|participant 1|participant 2|player|corner|card|booking|odd even|correct|exact|will there/.test(n)) return null;
+  if (/player|scorer|assist|shot|offside|throw/.test(n)) return null;
+  let m;
   if (sid === '10') {
     if (/^asian handicap$/.test(n)) return { fam: 'AH tiempo completo', lado: 'ah' };
     if (/^asian handicap first half$/.test(n)) return { fam: 'AH 1er tiempo', lado: 'ah' };
     if (/^over under full time$/.test(n)) return { fam: 'Goles Más/Menos', lado: 'ou' };
+    if (/^over under first half$/.test(n)) return { fam: 'Goles 1er tiempo', lado: 'ou' };
+    if ((m = n.match(/^over under team ([12])(?: (first|second) half)?$/)))
+      return { fam: 'Goles' + (m[2] ? (m[2] === 'first' ? ' 1T' : ' 2T') : ''), lado: 'ou', eq: +m[1] };
+    if (/^draw no bet$/.test(n)) return { fam: 'Empate no válido', lado: 'ml' };
+    if (/^draw no bet first half$/.test(n)) return { fam: 'Empate no válido 1T', lado: 'ml' };
+    if (/^both teams to score$/.test(n)) return { fam: 'Ambos marcan', lado: 'yn' };
+    if (/^both teams to score first half$/.test(n)) return { fam: 'Ambos marcan 1T', lado: 'yn' };
+    if (/^corners - over under full time$/.test(n)) return { fam: 'Córners Más/Menos', lado: 'ou', castigada: true };
+    if (/^corners - over under first half$/.test(n)) return { fam: 'Córners 1T', lado: 'ou', castigada: true };
+    if (/^corners - handicap$/.test(n)) return { fam: 'Córners hándicap', lado: 'ah', castigada: true };
+    if (/^bookings - handicap$/.test(n)) return { fam: 'Tarjetas hándicap', lado: 'ah', castigada: true };
     return null;
   }
   if (sid === '11') {
     if (/^over under \(incl\. overtime\)$/.test(n)) return { fam: 'Total del partido', lado: 'ou' };
-    if (/^over under first half$/.test(n)) return { fam: 'Total 1ª mitad', lado: 'ou' };
-    if (/^over under first quarter$/.test(n)) return { fam: 'Total 1er cuarto', lado: 'ou' };
+    if ((m = n.match(/^over under (first|second) half$/)))
+      return { fam: 'Total ' + (m[1] === 'first' ? '1ª' : '2ª') + ' mitad', lado: 'ou' };
+    if ((m = n.match(/^over under (first|second|third|fourth) quarter$/)))
+      return { fam: 'Total ' + { first: '1er', second: '2º', third: '3er', fourth: '4º' }[m[1]] + ' cuarto', lado: 'ou' };
     return null;
   }
   if (sid === '12') {
     if (/^game handicap$/.test(n)) return { fam: 'Hándicap de juegos', lado: 'ah' };
     if (/^winner$/.test(n)) return { fam: 'Ganador', lado: 'ml' };
     if (/^first set winner$/.test(n)) return { fam: 'Ganador 1er set', lado: 'ml' };
+    if ((m = n.match(/^participant ([12]) to win a set$/)))
+      return { fam: 'Gana un set', lado: 'yn', eq: +m[1] };
     return null;
   }
   if (sid === '13') {
@@ -118,6 +137,9 @@ function familiaDe(sid, nombre, h) {
     if (/^over under first to fifth inning$/.test(n)) return { fam: 'Total primeras 5', lado: 'ou' };
     if (/^over under first inning$/.test(n)) return { fam: 'Total 1ª entrada', lado: 'ou' };
     if (/^winner \(incl\. extra innings\)$/.test(n)) return { fam: 'Ganador', lado: 'ml' };
+    if ((m = n.match(/^over under team ([12]) \(incl\. extra innings\)$/)))
+      return { fam: 'Carreras', lado: 'ou', eq: +m[1] };
+    if (/^will there be an extra inning$/.test(n)) return { fam: 'Entrada extra', lado: 'yn', castigada: true };
     return null;
   }
   return null;
@@ -273,48 +295,82 @@ async function ciclo() {
 /* ---------- señales de un partido ---------- */
 async function procesar(info, bet, cb) {
   const porFam = new Map();   /* familia -> mejor señal (una por familia) */
+  /* pase 1: mercados whitelisted, con su marca de línea central */
+  const cand = [];
   for (const mid of Object.keys(bet.markets || {})) {
     const meta = await metaDe(mid);
     if (!meta || meta.len !== 2) continue;
     const fam = familiaDe(info.sid, meta.n, meta.h);
     if (!fam) continue;
     if (CFG.sinCuartos && meta.h != null && Math.abs(meta.h * 2) % 1 !== 0) continue;
+    let central = null;   /* true/false si el feed marca mainLine; null = no dice */
+    for (const o of Object.values(bet.markets[mid].outcomes || {})) {
+      const p0 = (o.players || {})['0'];
+      if (p0?.mainLine === true) { central = true; break; }
+      if (p0?.mainLine === false) central = false;
+    }
+    cand.push({ mid, meta, fam, central });
+  }
+  /* pase 2: qué líneas de cada familia se miran.
+     Con lineasVecinas: la central y sus dos adyacentes (±1 paso).
+     Sin marca de central en el grupo: se miran todas (una-por-familia poda). */
+  const porGrupo = new Map();
+  for (const c of cand) {
+    const k = c.meta.n + '|' + (c.fam.eq || '');
+    if (!porGrupo.has(k)) porGrupo.set(k, []);
+    porGrupo.get(k).push(c);
+  }
+  const elegidos = [];
+  for (const grupo of porGrupo.values()) {
+    if (!CFG.soloLineaCentral || grupo.length === 1 || grupo[0].meta.h == null) {
+      elegidos.push(...grupo); continue;
+    }
+    grupo.sort((a, b) => a.meta.h - b.meta.h);
+    const ic = grupo.findIndex(c => c.central === true);
+    if (ic < 0) { elegidos.push(...grupo.filter(c => c.central !== false)); continue; }
+    const paso = CFG.lineasVecinas ? 1 : 0;
+    elegidos.push(...grupo.slice(Math.max(0, ic - paso), Math.min(grupo.length, ic + paso + 1)));
+  }
+  /* pase 3: valor contra el juez */
+  for (const { mid, meta, fam } of elegidos) {
     const oB = bet.markets[mid].outcomes || {}, oC = (cb.markets || {})[mid]?.outcomes || {};
     const oids = Object.keys(oB);
     if (oids.length !== 2) continue;
-    const pB = {}, pC = {}; let ok = true, central = true;
+    const pB = {}, pC = {}; let ok = true;
     for (const oid of oids) {
       const b0 = (oB[oid].players || {})['0'], c0 = ((oC[oid] || {}).players || {})['0'];
       if (!b0?.active || !(b0.price > 1) || !c0?.active || !(c0.price > 1)) { ok = false; break; }
       pB[oid] = b0.price; pC[oid] = c0.price;
-      if (b0.mainLine === false) central = false;
     }
     if (!ok) continue;
-    if (CFG.soloLineaCentral && !central) continue;
     const [jA, jB] = desvigar(pC[oids[0]], pC[oids[1]]);
     const justos = { [oids[0]]: jA, [oids[1]]: jB };
+    const umbral = Math.max(CFG.ventajaMinima[info.sid],
+      fam.castigada ? (CFG.umbralCastigado ?? 0.05) : 0);
+    const famLabel = fam.fam + (fam.eq ? ' · ' + (fam.eq === 1 ? info.p1 : info.p2) : '');
     for (const oid of oids) {
       const cuota = pB[oid] * (1 - CFG.margenLocal);
       if (cuota > CFG.cuotaMaxima) continue;
       const vent = cuota / justos[oid] - 1;
       candidatas++;
-      if (vent < CFG.ventajaMinima[info.sid]) continue;
+      if (vent < umbral) continue;
       const crudo = meta.outs[oid] || oid;
       let lado;
       if (fam.lado === 'ou') lado = (/over/i.test(crudo) ? 'Más de ' : 'Menos de ') + meta.h;
       else if (fam.lado === 'ah') {
         const hs = /^1$|home/i.test(crudo) ? meta.h : -meta.h;
         lado = (/^1$|home/i.test(crudo) ? info.p1 : info.p2) + ' ' + (hs > 0 ? '+' : '') + (hs === 0 ? '0.0' : hs);
-      } else lado = /^1$|home/i.test(crudo) ? info.p1 : info.p2;
+      } else if (fam.lado === 'yn') lado = /yes/i.test(crudo) ? 'Sí' : 'No';
+      else lado = /^1$|home/i.test(crudo) ? info.p1 : info.p2;
       const s = {
         sig: info.fixtureId + '|' + mid + '|' + oid, fix: info.fixtureId,
         partido: info.p1 + ' vs ' + info.p2, liga: info.liga, sid: info.sid,
-        inicio: info.startTime, familia: fam.fam, lado, cuota: +cuota.toFixed(3),
+        inicio: info.startTime, familia: famLabel, lado, cuota: +cuota.toFixed(3),
         justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
         link: linkDe(info), sospechosa: vent > CFG.umbralSospechosa,
       };
-      const mejor = porFam.get(fam.fam);
-      if (!mejor || s.vent > mejor.vent) porFam.set(fam.fam, s);
+      const mejor = porFam.get(famLabel);
+      if (!mejor || s.vent > mejor.vent) porFam.set(famLabel, s);
     }
   }
   /* memoria: nueva / ventana / actualización */

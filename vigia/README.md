@@ -39,11 +39,17 @@ Local: `DRY=1 ODDSPAPI_KEY=... node vigia/vigia.mjs`
   2.000 para repos privados, pero justo: si Actions avisa consumo alto, cambiar
   los cron a `*/20`.
 
-## Familias vigiladas (lista blanca del censo 14-08-2026)
+## Familias vigiladas (lista blanca del censo 14-08-2026, ampliada)
 
-- ⚽ Fútbol: AH tiempo completo y 1er tiempo (solo líneas .0/.5), Goles Más/Menos FT
-- 🏀 Básquet: Total del partido, Total 1ª mitad, Total 1er cuarto
-- 🎾 Tenis: Hándicap de juegos, Ganador, Ganador 1er set
-- ⚾ Béisbol: Run line, Total de carreras, Total primeras 5, Total 1ª entrada, Ganador
+- ⚽ Fútbol: AH FT y 1T (líneas .0/.5) · Goles Más/Menos FT y 1T · Goles por
+  equipo (FT/1T/2T) · Empate no válido FT y 1T · Ambos marcan FT y 1T ·
+  *castigadas al 5%:* córners (total FT/1T y hándicap) y tarjetas hándicap
+- 🏀 Básquet: Total del partido · Totales por mitad · Totales por cuarto
+  (hándicap fuera: sin cruce con Cloudbet en el censo — revisar con NBA)
+- 🎾 Tenis: Hándicap de juegos · Ganador · Ganador 1er set · Gana un set (sí/no)
+- ⚾ Béisbol: Run line · Total de carreras · Total F5 · Total 1ª entrada ·
+  Ganador · Carreras por equipo · *castigada:* entrada extra sí/no
+- Líneas: la central marcada por el feed **± 1 vecina** (`lineasVecinas`);
+  una sola alerta por familia y partido (gana la de mayor ventaja).
 
-Los simulados (SRL/eSoccer/eBasketball) quedan fuera siempre.
+Los simulados (SRL/eSoccer/eBasketball) y el par/impar quedan fuera siempre.
