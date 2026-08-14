@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CAZADOR v7 · fechas en hora local de Chile (adiós desfase UTC) · fechas visibles en filtros</title>
+<title>CAZADOR v8 · escudo XSS · CLV · Kelly fraccional · auto-foto · avisos · red robusta</title>
 <style>
 :root{
   --fondo:#0E2A22; --panel:#143A2E; --panel2:#1A483A; --lin:#2A5A45;
@@ -97,9 +97,9 @@ la ventana se abre — y la columna «deriva» te la muestra en vivo.</div>
 </div>
 
 <div class="tabs">
-  <div class="tab act" data-dep="basquet" onclick="setDep('basquet')">🏀 Básquet</div>
-  <div class="tab" data-dep="futbol" onclick="setDep('futbol')">⚽ Fútbol</div>
-  <div class="tab" data-dep="beisbol" onclick="setDep('beisbol')">⚾ Béisbol</div>
+  <div class="tab act" data-dep="basquet">🏀 Básquet</div>
+  <div class="tab" data-dep="futbol">⚽ Fútbol</div>
+  <div class="tab" data-dep="beisbol">⚾ Béisbol</div>
 </div>
 
 <div class="caja">
@@ -112,6 +112,17 @@ la ventana se abre — y la columna «deriva» te la muestra en vivo.</div>
         <option value="3">3 días</option></select></div>
     <div class="campo"><label for="mfijo">Monto ($)</label>
       <input type="number" id="mfijo" value="15000" step="1000" style="width:110px"></div>
+    <div class="campo"><label for="mmode">Modo monto</label>
+      <select id="mmode">
+        <option value="fijo" selected>Fijo</option>
+        <option value="k4">¼ Kelly (banca)</option>
+        <option value="k2">½ Kelly (banca)</option>
+      </select></div>
+    <div class="campo"><label for="devig">Justo (devig)</label>
+      <select id="devig">
+        <option value="mult" selected>Multiplicativo</option>
+        <option value="pow">Potencia (anti favorito-longshot)</option>
+      </select></div>
     <div class="campo"><label>Ventaja mín. <span id="vmin-v"></span>%</label>
       <input type="range" id="vmin" min="5" max="60" step="5"></div>
     <div class="campo"><label>Cuota máx. <span id="cmax-v"></span></label>
@@ -123,6 +134,17 @@ la ventana se abre — y la columna «deriva» te la muestra en vivo.</div>
     <button id="btn-buscar">Tomar foto · analizar</button>
     <button class="sec" id="btn-cont" style="display:none">Continuar</button>
     <button class="sec" id="btn-limpiar">Limpiar deporte</button>
+    <div class="campo"><label for="auto">Auto-foto</label>
+      <select id="auto">
+        <option value="0" selected>Apagada</option>
+        <option value="10">Cada 10 min</option>
+        <option value="15">Cada 15 min</option>
+        <option value="30">Cada 30 min</option>
+      </select></div>
+    <label style="display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;
+      font-size:12px;color:var(--dim);cursor:pointer">
+      <input type="checkbox" id="beep"> aviso sonoro al abrirse una ventana</label>
+    <span id="auto-info" class="chip" style="display:none"></span>
   </div>
   <div class="fotos" id="fotos"></div>
   <div class="estado" id="e1"></div>
@@ -181,9 +203,14 @@ la ventana se abre — y la columna «deriva» te la muestra en vivo.</div>
   </table></div>
   <div id="calib" style="margin-top:14px"></div>
   <div class="campo" style="margin-top:14px">
-    <label for="datos">Respaldo · copia esto a una nota tuya cada semana</label>
+    <label for="datos">Respaldo · o descarga el archivo con el botón de abajo</label>
     <textarea id="datos" spellcheck="false"></textarea></div>
-  <button class="sec" id="btn-cargar" style="margin-top:8px">Cargar respaldo (fusiona)</button>
+  <div class="fila" style="margin-top:8px">
+    <button class="sec" id="btn-desc">Descargar respaldo (.json)</button>
+    <button class="sec" id="btn-arch">Cargar desde archivo</button>
+    <button class="sec" id="btn-cargar">Cargar del texto (fusiona)</button>
+    <input type="file" id="archivo" accept=".json,application/json" style="display:none">
+  </div>
 </div>
 
 <script>
@@ -254,6 +281,10 @@ let APOSTADAS=cargar('apostadas',{});   /* id de línea -> true: no vuelve a la 
 
 /* ============ HELPERS ============ */
 const plata=n=>'$'+Math.round(n).toLocaleString('es-CL');
+/* Todo texto que venga del feed (equipos, mercados) pasa por aquí antes
+   de entrar al HTML: un nombre con < o " no puede romper ni inyectar nada. */
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,
+  c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 /* Fecha en hora LOCAL del usuario (Chile), nunca UTC: un partido de hoy
    21:00 es 01:00 UTC de mañana y el sistema lo archivaba en el día equivocado. */
 const dd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
@@ -269,21 +300,53 @@ const horaCorta=ts=>new Date(ts).toLocaleTimeString('es-CL',{hour:'2-digit',minu
 function msg(t,c){const e=$('e1');e.className='estado on '+(c||'info');e.innerHTML=t;}
 
 let ULTIMO=0;
+/* Red robusta: timeout de 12 s (un request colgado ya no congela el barrido),
+   y reintentos con espera creciente (1s→2s→4s) ante 429, 5xx o corte de red,
+   respetando Retry-After si el servidor lo manda. */
 async function pedir(ruta){
-  const espera=Math.max(0,ULTIMO+450-Date.now());
-  if(espera)await new Promise(r=>setTimeout(r,espera));
-  ULTIMO=Date.now();
   const k=$('key').value.trim();
   const sep=ruta.indexOf('?')>-1?'&':'?';
   const u=API+'/'+ruta+sep+'apiKey='+encodeURIComponent(k);
-  let r=await fetch(u);
-  if(r.status===429){await new Promise(z=>setTimeout(z,900));ULTIMO=Date.now();r=await fetch(u);}
-  if(!r.ok){let d='';try{d=(await r.text()).slice(0,160);}catch(e){}
-    throw new Error(r.status+' '+d);}
-  REQ++;$('k-req').textContent=REQ;
-  return r.json();}
+  let intento=0;
+  while(true){
+    const espera=Math.max(0,ULTIMO+450-Date.now());
+    if(espera)await new Promise(r=>setTimeout(r,espera));
+    ULTIMO=Date.now();
+    const ctl=new AbortController();
+    const tmr=setTimeout(function(){ctl.abort();},12000);
+    let r=null,errRed=null;
+    try{r=await fetch(u,{signal:ctl.signal});}catch(e){errRed=e;}
+    clearTimeout(tmr);
+    if((errRed||r.status===429||r.status>=500)&&intento<3){
+      let ms=1000*Math.pow(2,intento);
+      const ra=r&&r.headers.get('Retry-After');
+      if(ra&&!isNaN(+ra))ms=Math.max(ms,+ra*1000);
+      intento++;
+      await new Promise(z=>setTimeout(z,ms));
+      continue;}
+    if(errRed)throw new Error(errRed.name==='AbortError'
+      ?'timeout: 12 s sin respuesta':'red: '+errRed.message);
+    if(!r.ok){let d='';try{d=(await r.text()).slice(0,160);}catch(e){}
+      throw new Error(r.status+' '+d);}
+    REQ++;$('k-req').textContent=REQ;
+    return r.json();}}
 
-function desvigar(pA,pB){const S=1/pA+1/pB;return {a:S*pA,b:S*pB};}
+/* Devig con dos métodos. Multiplicativo: reparte el margen proporcional.
+   Potencia: busca k tal que qA^k+qB^k=1 — carga más margen al longshot,
+   corrige el sesgo favorito-longshot (señales en cuota alta menos infladas).
+   El método se elige en Ajustes y aplica desde la SIGUIENTE foto. */
+let DEVIG='mult';
+function desvigar(pA,pB){
+  if(DEVIG==='pow'){
+    const qa=1/pA,qb=1/pB;
+    if(qa+qb>1){
+      let lo=1,hi=3;
+      for(let i=0;i<40;i++){
+        const k=(lo+hi)/2;
+        if(Math.pow(qa,k)+Math.pow(qb,k)>1)lo=k;else hi=k;}
+      const k=(lo+hi)/2;
+      return {a:1/Math.pow(qa,k),b:1/Math.pow(qb,k)};}}
+  const S=1/pA+1/pB;return {a:S*pA,b:S*pB};}
 /* meta.outcomes es una LISTA [{outcomeId,outcomeName}]: se busca por id.
    (Indexarla directo devolvía basura y volteaba las etiquetas Más/Menos.) */
 function crudoDe(meta,oid){
@@ -348,9 +411,11 @@ function famRotas(candidatos,precioDe){
   Object.keys(fam).forEach(function(k){
     const L=fam[k];if(L.length<2)return;
     L.sort((a,b)=>a.h-b.h);
+    /* la comparación va en PROBABILIDAD (1/cuota), no en cuota: 0.015 de
+       cuota en 1.50 es un salto de probabilidad 4× mayor que en 3.00 */
     for(let i=1;i<L.length;i++){
-      const salto=L[i].p-L[i-1].p;
-      const viola=L[0].sube?(salto<-0.015):(salto>0.015);
+      const salto=1/L[i].p-1/L[i-1].p;
+      const viola=L[0].sube?(salto>0.004):(salto<-0.004);
       if(viola){L.forEach(x=>malos.add(String(x.mid)));break;}}});
   return malos;}
 function precioRef(mks,meta,mid,esOU){
@@ -365,8 +430,10 @@ function precioRef(mks,meta,mid,esOU){
     if(!esOU&&/^1$|home/i.test(crudo))r=p0.price;});
   return r;}
 let ESC_DESC=0;   /* familias descartadas por escalera rota (por barrido) */
+let CLV_TOCADO=false;   /* algún cierre provisional se actualizó en el barrido */
 function analizar(dep,f,nombre,inicio){
   const E=EST_DEP[dep];
+  const porId=new Map(E.lineas.map(x=>[x.id,x]));   /* lookup O(1), no filter O(n) */
   const bo=f.bookmakerOdds||{};
   const bet=bo['betano'], cb=bo['cloudbet'];
   if(!bet||!cb)return;
@@ -438,8 +505,18 @@ function analizar(dep,f,nombre,inicio){
       else window.__ladoOrd=(window.__ladoOrd||0)+1;
       const vent=pB[oid]/justos[oid]-1;
       const id=f.fixtureId+'|'+mid+'|'+oid;
-      if(APOSTADAS[id])return;   /* ya está en el registro: no reaparece */
-      const prev=E.lineas.filter(x=>x.id===id)[0];
+      if(APOSTADAS[id]){
+        /* CLV: la línea está apostada — no vuelve a la tabla, pero cada foto
+           pre-partido actualiza su "cierre provisional"; la última foto antes
+           del inicio ≈ línea de cierre. Si consistentemente cierras mejor que
+           tu precio, la ventaja es real aunque la varianza diga otra cosa. */
+        if(new Date(inicio).getTime()>Date.now()){
+          REGISTRO.forEach(function(r){
+            if(r.lineId===id&&r.estado==='pendiente'){
+              r.cuotaCierre=pB[oid];r.justoCierre=+justos[oid].toFixed(3);
+              r.cierreTs=Date.now();CLV_TOCADO=true;}});}
+        return;}
+      const prev=porId.get(id);
       const reg={id:id,fix:f.fixtureId,mid:mid,mk:meta.marketName,
         partido:nombre,inicio:inicio,hora:hhmm(inicio),
         familia:info.fam,lado:lado,link:lB[oid]||linkEv,
@@ -457,8 +534,17 @@ function analizar(dep,f,nombre,inicio){
       } else E.lineas.push(reg);});});}
 
 /* ============ BARRIDO (foto) ============ */
+let EJECUTANDO=false, PINT_ULT=0;
+/* durante el barrido se repinta como mucho 1 vez por segundo: repintar 300
+   filas tras CADA partido era trabajo de DOM al cuadrado */
+function pintarSuave(){if(Date.now()-PINT_ULT>1000){PINT_ULT=Date.now();pintar();}}
 async function correr(reanudar){
+  if(EJECUTANDO)return;
+  EJECUTANDO=true;
   const dep=DEP, E=EST_DEP[dep], C=DEPS[dep];
+  DEVIG=$('devig').value;
+  CLV_TOCADO=false;
+  const ventAntes=VENT_VIS;
   $('btn-buscar').disabled=true;$('btn-cont').disabled=true;
   if(!reanudar){E.vistos={};guardar(dep+'_vistos',E.vistos);}
   ESC_DESC=0;
@@ -480,7 +566,7 @@ async function correr(reanudar){
       const t=new Date(f.startTime).getTime();
       return t>ahora+antic*60000 && t<hasta;});
     msg(todos.length+' programados · '+enRango.length+' con cuotas en tu ventana. Analizando...');
-    let saltados=0,vivos=0;
+    let saltados=0,vivos=0,fallos=0;
     for(let i=0;i<enRango.length;i++){
       const f=enRango[i];
       if(E.vistos[f.fixtureId]){saltados++;continue;}
@@ -489,9 +575,14 @@ async function correr(reanudar){
       let od=null;
       try{od=await pedir('odds?fixtureId='+f.fixtureId+'&oddsFormat=decimal');}
       catch(err){
-        E.vistos[f.fixtureId]=true;
-        if(/403|RESTRICTED|live/i.test(err.message)){vivos++;continue;}
-        throw err;}
+        if(/403|RESTRICTED|live/i.test(err.message)){
+          E.vistos[f.fixtureId]=true;vivos++;continue;}
+        /* error transitorio: NO se marca visto (Continuar lo reintenta),
+           se salta y sigue; solo 4 fallos seguidos detienen el barrido */
+        fallos++;
+        if(fallos>=4)throw new Error(err.message+' — 4 fallos seguidos, barrido detenido');
+        continue;}
+      fallos=0;
       E.vistos[f.fixtureId]=true;
       const fx=Array.isArray(od)?od[0]:(od.data?od.data[0]:od);
       if(fx&&fx.bookmakerOdds){
@@ -499,7 +590,7 @@ async function correr(reanudar){
           ?f.participant1Name+' vs '+f.participant2Name:'Partido '+f.fixtureId;
         analizar(dep,fx,nombre,f.startTime);}
       guardar(dep+'_lineas',E.lineas);guardar(dep+'_vistos',E.vistos);
-      pintar();
+      pintarSuave();
       await new Promise(r=>setTimeout(r,0));}
     /* registrar la foto */
     repararLinks();
@@ -507,7 +598,9 @@ async function correr(reanudar){
     E.fotos=E.fotos.slice(0,5);
     guardar(dep+'_fotos',E.fotos);
     guardar(dep+'_lineas',E.lineas);guardar(dep+'_vistos',E.vistos);
+    if(CLV_TOCADO){guardar('registro',REGISTRO);pintarReg();}
     pintar();
+    if(VENT_VIS>ventAntes)beep();   /* se abrió al menos una ventana nueva */
     const conLink=E.lineas.filter(x=>x.link).length;
     const conTs=E.lineas.filter(x=>x.srcTs).length;
     const ln=window.__ladoNom||0, lo=window.__ladoOrd||0;
@@ -520,9 +613,11 @@ async function correr(reanudar){
       +'.','ok');
   }catch(err){
     guardar(dep+'_lineas',E.lineas);guardar(dep+'_vistos',E.vistos);
-    msg('Error: '+err.message+' — lo analizado quedó guardado; Continuar retoma.','err');}
+    msg('Error: '+esc(err.message)+' — lo analizado quedó guardado; Continuar retoma.','err');}
   $('btn-buscar').disabled=false;$('btn-cont').disabled=false;
-  $('btn-cont').style.display='';}
+  $('btn-cont').style.display='';
+  EJECUTANDO=false;
+  cuenta();   /* refresca "API libres" tras cada barrido */}
 
 /* ============ DERIVA ============ */
 function trayecto(x){
@@ -539,15 +634,20 @@ function trayecto(x){
 function derivaDe(x){
   if(x.justoAnt===null||x.fotoAnt===null)return {txt:'<span class="dim">'
     +((x.hist&&x.hist.length)?'seguimiento retomado':'primera foto')+'</span>'+trayecto(x),score:0,ventana:false};
-  const dj=x.justo-x.justoAnt, dc=x.cuota-(x.cuotaAnt||x.cuota);
-  const jMov=Math.abs(dj)>0.015, cMov=Math.abs(dc)>0.005;
+  /* El movimiento del JUSTO se mide en probabilidad (1/cuota): 0.015 de
+     cuota en 1.50 es 4× más probabilidad que en 3.00. El movimiento de
+     BETANO se queda en cuota: ahí la pregunta es "¿tocó el precio o no?",
+     y cualquier tick del book (mín. 0.01) supera el umbral de 0.005. */
+  const dpj=1/x.justo-1/x.justoAnt;
+  const dc=x.cuota-(x.cuotaAnt||x.cuota);
+  const jMov=Math.abs(dpj)>0.004, cMov=Math.abs(dc)>0.005;
   const hh=horaCorta(x.fotoAnt);
   if(!jMov&&!cMov)return {txt:'<span class="dim">quieto desde '+hh+'</span>'+trayecto(x),score:0,ventana:false};
   let partes=[];
   if(jMov)partes.push('justo '+x.justoAnt.toFixed(2)+'→'+x.justo.toFixed(2));
   if(cMov)partes.push('Betano '+x.cuotaAnt.toFixed(2)+'→'+x.cuota.toFixed(2));
   /* VENTANA: el justo BAJÓ (el evento se hizo más probable) y Betano no siguió */
-  const ventana=dj<-0.015&&!cMov;
+  const ventana=dpj>0.004&&!cMov;
   const dv=x.vent-(x.ventAnt??x.vent);
   const cls=ventana?'g':(dv>0.005?'g':(dv<-0.005?'p':'dim'));
   return {txt:'<span class="'+cls+'">'+(ventana?'▼ VENTANA · ':'')+partes.join(' · ')
@@ -555,10 +655,30 @@ function derivaDe(x){
     score:ventana?2:(Math.abs(dv)>0.005?1:0),ventana:ventana};}
 
 /* ============ TABLA ============ */
+let VENT_VIS=0;   /* ventanas visibles (para el título de la pestaña y el beep) */
+/* Un partido que ya empezó muestra una cuota pre-partido muerta: fuera.
+   (No afecta al registro ni al CLV: eso vive aparte, en REGISTRO.) */
+function purgarEmpezados(){
+  Object.keys(EST_DEP).forEach(function(d){
+    const E=EST_DEP[d];
+    const antes=E.lineas.length;
+    E.lineas=E.lineas.filter(x=>!x.inicio||new Date(x.inicio).getTime()>Date.now());
+    if(E.lineas.length!==antes)guardar(d+'_lineas',E.lineas);});}
+/* Monto por señal: fijo, o Kelly fraccional sobre la banca.
+   Kelly completo = ventaja/(cuota−1); se usa ¼ o ½ y tope de 5% de banca. */
+function montoDe(x){
+  const MFIJO=+$('mfijo').value||15000;
+  const modo=$('mmode').value;
+  if(modo==='fijo'||!(x.cuota>1))return MFIJO;
+  const B=+$('banca').value||0;
+  if(!B)return MFIJO;
+  const f=Math.max(0,x.vent)/(x.cuota-1);
+  const frac=modo==='k2'?0.5:0.25;
+  return Math.max(0,Math.min(B*0.05,Math.round(B*f*frac/1000)*1000));}
 function pintar(){
+  purgarEmpezados();
   const E=EST_DEP[DEP], C=DEPS[DEP];
   const VMIN=+$('vmin').value/1000, CMAX=+$('cmax').value/100;
-  const MFIJO=+$('mfijo').value||15000;
   const filtro=$('filtro').value, orden=$('orden').value;
 
   $('t-dep').textContent=C.nombre;$('t-dep2').textContent=C.nombre;
@@ -575,6 +695,8 @@ function pintar(){
   $('k-lin').textContent=E.lineas.length;
   $('k-sen').textContent=senN;
   $('k-vent').textContent=ventN;
+  VENT_VIS=ventN;
+  document.title=(ventN?'▼'+ventN+' · ':'')+'CAZADOR';
 
   /* Línea CENTRAL por mercado: la que tiene los dos lados más parejos en
      Betano — es la única que lat.betano.com muestra; las alternativas del
@@ -589,8 +711,11 @@ function pintar(){
   conD.forEach(function(x){
     if(!x.mid||!x.mk)return;
     const k=x.fix+'|'+x.mk, g=gap[x.fix+'|'+x.mid];
-    if(!g||g.length<2)return;
-    const d=Math.abs(g[0]-g[1]);
+    if(!g||!g.length)return;
+    /* si un lado del mercado se quitó a mano, se estima con el que queda:
+       distancia a la cuota pareja (~1.91) — antes ese mercado caía al
+       fallback y una alternativa podía disfrazarse de central */
+    const d=g.length>=2?Math.abs(g[0]-g[1]):Math.abs(g[0]-1.91)*2;
     if(!(k in central)||d<central[k].d)central[k]={mid:x.mid,d:d};});
   conD.forEach(function(x){
     x.__central=!x.mid||!x.mk||!central[x.fix+'|'+x.mk]
@@ -625,11 +750,13 @@ function pintar(){
     const esSen=sen(x);
     const cls=esSen?'sen':(x.__d.ventana?'ventana':(x.vent<0?'neg':''));
     return '<tr class="'+cls+'">'
-      +'<td>'+x.hora+'</td>'
-      +'<td class="par">'+x.partido+'</td>'
-      +'<td><span class="chip">'+x.familia.split(' · ')[1]+'</span></td>'
-      +'<td><b>'+x.lado+'</b>'
-        +(x.mk?'<br><span style="font-size:10px" class="dim">'+x.mk
+      /* hora calculada AL PINTAR: la guardada se congelaba y un partido de
+         hoy seguía diciendo MAÑ si no tomabas foto nueva */
+      +'<td>'+hhmm(x.inicio)+'</td>'
+      +'<td class="par">'+esc(x.partido)+'</td>'
+      +'<td><span class="chip">'+esc(x.familia.split(' · ')[1])+'</span></td>'
+      +'<td><b>'+esc(x.lado)+'</b>'
+        +(x.mk?'<br><span style="font-size:10px" class="dim">'+esc(x.mk)
           +(x.__central?'':' · <span style="color:var(--ambar)">alternativa</span>')+'</span>':'')+'</td>'
       +'<td class="der">'+x.cuota.toFixed(2)
         +(x.srcTs?(function(){
@@ -641,11 +768,11 @@ function pintar(){
       +'<td class="'+(x.vent>=VMIN?'g':(x.vent<0?'p':''))+'">'
         +(x.vent>=0?'+':'')+(x.vent*100).toFixed(1)+'%</td>'
       +'<td style="font-size:11.5px">'+x.__d.txt+'</td>'
-      +'<td>'+(esSen?plata(MFIJO):'—')+'</td>'
-      +'<td><a class="ir" href="'+(fixLink(x.link)||C.url)+'" target="_blank" rel="noopener">Ir</a></td>'
+      +'<td>'+(esSen?plata(montoDe(x)):'—')+'</td>'
+      +'<td><a class="ir" href="'+esc(fixLink(x.link)||C.url)+'" target="_blank" rel="noopener">Ir</a></td>'
       +'<td style="white-space:nowrap">'
-        +(esSen?'<button class="mini g" onclick="apostar(\''+x.id+'\')">✓</button>':'')
-        +'<button class="mini p" onclick="quitar(\''+x.id+'\')">✕</button></td>'
+        +(esSen?'<button class="mini g" data-act="apostar" data-id="'+esc(x.id)+'">✓</button>':'')
+        +'<button class="mini p" data-act="quitar" data-id="'+esc(x.id)+'">✕</button></td>'
       +'</tr>';}).join('');}
 
 function quitar(id){
@@ -658,15 +785,13 @@ function apostar(id){
   const dup=REGISTRO.filter(r=>r.partido===x.partido&&r.lado===x.lado&&r.estado==='pendiente')[0];
   if(dup&&!confirm('Ya tienes "'+x.lado+'" de este partido pendiente en el registro. ¿Agregar otra igual?'))return;
   APOSTADAS[id]=true;guardar('apostadas',APOSTADAS);
-  const MFIJO0=+$('mfijo').value||15000;
   REGISTRO.push({id:Date.now()+'r',partido:x.partido,inicio:x.inicio,
     lado:x.lado,mk:x.mk||null,familia:x.familia,link:x.link||null,lineId:x.id,
     linea:JSON.parse(JSON.stringify(x)),   /* la línea entera, historial incluido */
-    cuota:x.cuota,justo:x.justo,vent:x.vent,monto:MFIJO0,estado:'pendiente'});
+    cuota:x.cuota,justo:x.justo,vent:x.vent,monto:montoDe(x),estado:'pendiente'});
   E.lineas=E.lineas.filter(y=>y.id!==id);
   guardar(DEP+'_lineas',E.lineas);guardar('registro',REGISTRO);
   pintar();pintarReg();}
-window.quitar=quitar;window.apostar=apostar;
 
 /* ============ REGISTRO + CALIBRACIÓN ============ */
 const EST={G:'ganada',E:'devuelta',P:'perdida',MG:'media G',MP:'media P'};
@@ -702,7 +827,14 @@ function borrarReg(id){
       guardar(dep+'_lineas',EST_DEP[dep].lineas);}}
   REGISTRO=REGISTRO.filter(x=>x.id!==id);guardar('registro',REGISTRO);
   pintarReg();pintar();}
-window.marcar=marcar;window.borrarReg=borrarReg;
+/* un solo listener por tabla en vez de onclick incrustado en cada fila */
+function manejarClick(ev){
+  const b=ev.target.closest('[data-act]');if(!b)return;
+  const act=b.dataset.act, id=b.dataset.id;
+  if(act==='apostar')apostar(id);
+  else if(act==='quitar')quitar(id);
+  else if(act==='marcar')marcar(id,b.dataset.est);
+  else if(act==='borrar')borrarReg(id);}
 
 function pintarReg(){
   REGISTRO.sort((a,b)=>new Date(b.inicio||0)-new Date(a.inicio||0));
@@ -714,25 +846,48 @@ function pintarReg(){
   $('reg').innerHTML=REGISTRO.map(function(r){
     const res=resDe(r);
     const bot=r.estado==='pendiente'
-      ?['G','MG','E','MP','P'].map(e=>'<button class="mini" onclick="marcar(\''+r.id+'\',\''+e+'\')">'+e+'</button>').join('')
-      :(EST[r.estado]||r.estado)+' <button class="mini" onclick="marcar(\''+r.id+'\',\'pendiente\')">↺</button>';
-    return '<tr><td class="par">'+r.partido+'<br><span style="font-size:10px" class="dim">'
+      ?['G','MG','E','MP','P'].map(e=>'<button class="mini" data-act="marcar" data-id="'+esc(r.id)+'" data-est="'+e+'">'+e+'</button>').join('')
+      :(EST[r.estado]||r.estado)+' <button class="mini" data-act="marcar" data-id="'+esc(r.id)+'" data-est="pendiente">↺</button>';
+    /* CLV: cuota tomada vs justo de cierre (última foto pre-partido).
+       Positivo sostenido = le ganas al cierre = la ventaja es real. */
+    const clv=r.justoCierre?(r.cuota/r.justoCierre-1):null;
+    return '<tr><td class="par">'+esc(r.partido)+'<br><span style="font-size:10px" class="dim">'
       +hhmm(r.inicio)+'</span>'
       +(r.link?' <a class="ir" style="padding:3px 8px;font-size:10px" href="'
-        +fixLink(r.link)+'" target="_blank" rel="noopener">Ir</a>':'')+'</td>'
-      +'<td><b>'+r.lado+'</b>'
-        +(r.mk?'<br><span style="font-size:10px" class="dim">'+r.mk+'</span>':'')+'</td>'
-      +'<td><span class="chip">'+r.familia+'</span></td>'
+        +esc(fixLink(r.link))+'" target="_blank" rel="noopener">Ir</a>':'')+'</td>'
+      +'<td><b>'+esc(r.lado)+'</b>'
+        +(r.mk?'<br><span style="font-size:10px" class="dim">'+esc(r.mk)+'</span>':'')+'</td>'
+      +'<td><span class="chip">'+esc(r.familia)+'</span></td>'
       +'<td class="der">'+r.cuota.toFixed(2)+'</td>'
-      +'<td>'+r.justo.toFixed(2)+'</td>'
+      +'<td>'+r.justo.toFixed(2)
+        +(clv!==null?'<br><span style="font-size:10px" class="'+(clv>0?'g':(clv<0?'p':'dim'))+'">cierre '
+          +r.justoCierre.toFixed(2)+' · CLV '+(clv>=0?'+':'')+(clv*100).toFixed(1)+'%</span>':'')+'</td>'
       +'<td>+'+(r.vent*100).toFixed(1)+'%</td>'
       +'<td>'+plata(r.monto)+'</td>'
       +'<td style="white-space:nowrap">'+bot
-        +' <button class="mini p" onclick="borrarReg(\''+r.id+'\')">✕</button></td>'
+        +' <button class="mini p" data-act="borrar" data-id="'+esc(r.id)+'">✕</button></td>'
       +'<td class="'+(res>0?'g':(res<0?'p':''))+'">'
         +(res===null?'—':(res>=0?'+':'')+plata(res))+'</td></tr>';}).join('');
   pintarCalib();}
 
+/* Mini-curva del $ acumulado, apuesta a apuesta (orden por inicio) */
+function curvaBanca(){
+  const res=REGISTRO.filter(r=>resDe(r)!==null)
+    .slice().sort((a,b)=>new Date(a.inicio||0)-new Date(b.inicio||0));
+  if(res.length<2)return '';
+  let acc=0;const pts=[0].concat(res.map(r=>acc+=resDe(r)));
+  const W=280,H=46;
+  const min=Math.min.apply(null,pts),max=Math.max.apply(null,pts),rng=(max-min)||1;
+  const xy=pts.map(function(v,i){
+    const x=(i/(pts.length-1))*(W-4)+2;
+    const y=2+(H-4)*(1-(v-min)/rng);
+    return x.toFixed(1)+','+y.toFixed(1);}).join(' ');
+  const fin=pts[pts.length-1];
+  return '<div class="dim" style="font-size:11px;margin-top:10px">CURVA · $ acumulado ('
+    +res.length+' resueltas) · '+(fin>=0?'+':'')+plata(fin)+'</div>'
+    +'<svg width="'+W+'" height="'+H+'" style="display:block;margin-top:4px">'
+    +'<polyline points="'+xy+'" fill="none" stroke="'
+    +(fin>=0?'var(--verde)':'var(--rojo)')+'" stroke-width="1.5"/></svg>';}
 function pintarCalib(){
   const fam={};
   REGISTRO.forEach(function(r){
@@ -747,17 +902,35 @@ function pintarCalib(){
     const F=fam[k];
     const prom=F.monto?F.ev/F.monto:null, real=F.monto?F.real/F.monto:null;
     const fiable=F.n>=30;
-    return '<tr'+(fiable?'':' style="opacity:.6"')+'><td>'+k+'</td>'
+    return '<tr'+(fiable?'':' style="opacity:.6"')+'><td>'+esc(k)+'</td>'
       +'<td>'+F.n+(F.pend?' <span class="dim" style="font-size:10px">+'+F.pend+' pend.</span>':'')+'</td>'
       +'<td>'+(prom!=null?'+'+(prom*100).toFixed(1)+'%':'—')+'</td>'
       +'<td class="'+(real>0?'g':(real<0?'p':''))+'">'
       +(real!=null?((real>=0?'+':'')+(real*100).toFixed(1)+'%'):'—')+'</td>'
       +'<td>'+(F.n?plata(F.real):'—')+'</td>'
       +'<td style="font-size:11px" class="dim">'+(fiable?'medible':'aún ruido ('+F.n+'/30)')+'</td></tr>';}).join('');
+  /* TOTAL de todas las familias */
+  const T={n:0,pend:0,monto:0,ev:0,real:0};
+  ks.forEach(function(k){const F=fam[k];
+    T.n+=F.n;T.pend+=F.pend;T.monto+=F.monto;T.ev+=F.ev;T.real+=F.real;});
+  const tProm=T.monto?T.ev/T.monto:null, tReal=T.monto?T.real/T.monto:null;
+  const total='<tr style="border-top:2px solid var(--lin);font-weight:700"><td>TOTAL</td>'
+    +'<td>'+T.n+(T.pend?' <span class="dim" style="font-size:10px">+'+T.pend+' pend.</span>':'')+'</td>'
+    +'<td>'+(tProm!=null?'+'+(tProm*100).toFixed(1)+'%':'—')+'</td>'
+    +'<td class="'+(tReal>0?'g':(tReal<0?'p':''))+'">'
+    +(tReal!=null?((tReal>=0?'+':'')+(tReal*100).toFixed(1)+'%'):'—')+'</td>'
+    +'<td class="'+(T.real>0?'g':(T.real<0?'p':''))+'">'+(T.n?plata(T.real):'—')+'</td><td></td></tr>';
+  /* CLV medio: el veredicto rápido — no necesita 30 apuestas resueltas */
+  const conClv=REGISTRO.filter(r=>r.justoCierre);
+  const clvM=conClv.length
+    ?conClv.reduce((a,r)=>a+(r.cuota/r.justoCierre-1),0)/conClv.length:null;
   $('calib').innerHTML='<div class="dim" style="font-size:11px;margin-bottom:6px">'
-    +'CALIBRACIÓN POR FAMILIA · prometido vs realizado · fiable desde 30</div>'
+    +'CALIBRACIÓN POR FAMILIA · prometido vs realizado · fiable desde 30'
+    +(clvM!==null?' · <span class="'+(clvM>0?'g':'p')+'">CLV medio '
+      +(clvM>=0?'+':'')+(clvM*100).toFixed(1)+'% ('+conClv.length+' con cierre)</span>':'')+'</div>'
     +'<div class="scroll"><table><thead><tr><th>Familia</th><th>N</th><th>Prometido</th>'
-    +'<th>Realizado</th><th>$ neto</th><th></th></tr></thead><tbody>'+filas+'</tbody></table></div>';}
+    +'<th>Realizado</th><th>$ neto</th><th></th></tr></thead><tbody>'+filas+total+'</tbody></table></div>'
+    +curvaBanca();}
 
 /* ============ PESTAÑAS ============ */
 function setDep(d){
@@ -770,9 +943,9 @@ function setDep(d){
   $('cmax-v').textContent=(+$('cmax').value/100).toFixed(2).replace('.',',');
   $('btn-cont').style.display=Object.keys(EST_DEP[d].vistos).length?'':'none';
   pintar();}
-window.setDep=setDep;
 
 /* ============ CUENTA ============ */
+let LIBRES=null;   /* requests libres del mes; frena la auto-foto si escasean */
 async function cuenta(){
   try{
     const d=await pedir('account');
@@ -780,17 +953,64 @@ async function cuenta(){
     const sub=subs.filter(x=>x.is_active)[0]||subs[0];
     if(!sub||!sub.request_limit)return;
     const libre=sub.request_limit-(sub.request_count||0);
+    LIBRES=libre;
     $('k-mes').textContent=libre.toLocaleString('es-CL');
     $('k-mes').className='v '+(libre<500?'p':'g');
   }catch(e){}}
+
+/* ============ AVISOS + AUTO-FOTO ============ */
+let AC=null;
+function beep(){
+  if(!$('beep').checked)return;
+  try{
+    AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+    const o=AC.createOscillator(),g=AC.createGain();
+    o.frequency.value=880;o.connect(g);g.connect(AC.destination);
+    g.gain.setValueAtTime(0.15,AC.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,AC.currentTime+0.4);
+    o.start();o.stop(AC.currentTime+0.4);}catch(e){}}
+let AUTO_TMR=null;
+function programarAuto(){
+  if(AUTO_TMR){clearTimeout(AUTO_TMR);AUTO_TMR=null;}
+  const min=+$('auto').value, info=$('auto-info');
+  if(!min){info.style.display='none';return;}
+  info.style.display='';
+  info.textContent='auto: próxima foto ~'+horaCorta(Date.now()+min*60000);
+  AUTO_TMR=setTimeout(async function(){
+    if(EJECUTANDO){programarAuto();return;}
+    /* presupuesto: con menos de 300 requests libres, la auto-foto se apaga
+       sola en vez de comerse lo que queda del mes */
+    if(LIBRES!==null&&LIBRES<300){
+      $('auto').value='0';guardar('auto','0');programarAuto();
+      msg('Auto-foto apagada: quedan '+LIBRES+' requests del mes.','err');return;}
+    await correr(false);
+    programarAuto();},min*60000);}
 
 /* ============ ARRANQUE ============ */
 window.addEventListener('DOMContentLoaded',function(){
   $('key').value=cargar('key','')||KEY_DEF;
   $('banca').value=cargar('banca',1800000);
   $('mfijo').value=cargar('mfijo',15000);
+  $('mmode').value=cargar('mmode','fijo');
+  $('devig').value=cargar('devig','mult');DEVIG=$('devig').value;
+  $('auto').value=cargar('auto','0');
+  $('beep').checked=!!cargar('beep',false);
   ['key','banca','mfijo','dias','antic'].forEach(function(id){
     $(id).addEventListener('input',function(){guardar(id,this.value);});});
+  ['banca','mfijo'].forEach(id=>$(id).addEventListener('input',pintar));   /* recalcula montos Kelly */
+  $('mmode').addEventListener('change',function(){guardar('mmode',this.value);pintar();});
+  $('devig').addEventListener('change',function(){
+    guardar('devig',this.value);DEVIG=this.value;
+    msg('Devig cambiado a '+(this.value==='pow'?'potencia':'multiplicativo')
+      +': aplica desde la próxima foto.','info');});
+  $('auto').addEventListener('change',function(){guardar('auto',this.value);programarAuto();});
+  $('beep').addEventListener('change',function(){
+    guardar('beep',this.checked);
+    if(this.checked)beep();});   /* el clic es gesto: desbloquea el audio y sirve de prueba */
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click',function(){setDep(t.dataset.dep);});});
+  $('tabla').addEventListener('click',manejarClick);
+  $('reg').addEventListener('click',manejarClick);
   $('vmin').addEventListener('input',function(){
     guardar(DEP+'_vmin',this.value);
     $('vmin-v').textContent=(+this.value/10).toFixed(1).replace('.',',');pintar();});
@@ -818,17 +1038,42 @@ window.addEventListener('DOMContentLoaded',function(){
       const E=EST_DEP[DEP];E.lineas=[];E.vistos={};E.fotos=[];
       guardar(DEP+'_lineas',[]);guardar(DEP+'_vistos',{});guardar(DEP+'_fotos',[]);
       pintar();}};
+  /* respaldo: acepta el formato viejo (lista pelada del registro) y el
+     nuevo ({registro, apostadas}); fusiona sin duplicar por id */
+  function fusionar(d){
+    const arr=Array.isArray(d)?d:(d&&Array.isArray(d.registro)?d.registro:null);
+    if(!arr){alert('Respaldo inválido.');return;}
+    if(d&&d.apostadas&&typeof d.apostadas==='object'){
+      Object.keys(d.apostadas).forEach(function(k){APOSTADAS[k]=true;});
+      guardar('apostadas',APOSTADAS);}
+    const ids=new Set(REGISTRO.map(r=>String(r.id)));let n=0;
+    arr.forEach(function(r){if(r&&r.id&&!ids.has(String(r.id))){REGISTRO.push(r);ids.add(String(r.id));n++;}});
+    guardar('registro',REGISTRO);pintarReg();
+    alert('Fusionado: '+n+' agregada(s). Total: '+REGISTRO.length+'.');}
   $('btn-cargar').onclick=function(){
     let d=null;
     try{d=JSON.parse($('datos').value);}catch(e){alert('Respaldo inválido.');return;}
-    if(!Array.isArray(d)){alert('Respaldo inválido.');return;}
-    const ids=new Set(REGISTRO.map(r=>String(r.id)));let n=0;
-    d.forEach(function(r){if(r&&r.id&&!ids.has(String(r.id))){REGISTRO.push(r);ids.add(String(r.id));n++;}});
-    guardar('registro',REGISTRO);pintarReg();
-    alert('Fusionado: '+n+' agregada(s). Total: '+REGISTRO.length+'.');};
+    fusionar(d);};
+  $('btn-desc').onclick=function(){
+    const data={v:1,fecha:new Date().toISOString(),registro:REGISTRO,apostadas:APOSTADAS};
+    const b=new Blob([JSON.stringify(data)],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(b);
+    a.download='cazador-respaldo-'+dd(new Date())+'.json';
+    a.click();URL.revokeObjectURL(a.href);};
+  $('btn-arch').onclick=function(){$('archivo').click();};
+  $('archivo').addEventListener('change',function(){
+    const f=this.files[0];if(!f)return;
+    const rd=new FileReader();
+    rd.onload=function(){
+      let d=null;
+      try{d=JSON.parse(rd.result);}catch(e){alert('Respaldo inválido.');return;}
+      fusionar(d);};
+    rd.readAsText(f);this.value='';});
   repararLinks();
   setDep(cargar('dep','basquet'));
-  pintarReg();cuenta();});
+  pintarReg();cuenta();
+  programarAuto();});
 </script>
 </body>
 </html>
