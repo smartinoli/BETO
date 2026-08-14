@@ -32,7 +32,9 @@ try { EST = { ...EST, ...JSON.parse(fs.readFileSync(ESTADO_PATH, 'utf8')) } } ca
 const horaScl = +new Intl.DateTimeFormat('en-GB', { timeZone: 'America/Santiago', hour: 'numeric', hour12: false }).format(new Date());
 const { inicio, fin } = CFG.horarioSantiago;
 const activo = fin > 24 ? (horaScl >= inicio || horaScl < fin - 24) : (horaScl >= inicio && horaScl < fin);
-if (!activo) { console.log(`Fuera de horario (Santiago ${horaScl}h) — ciclo omitido.`); process.exit(0); }
+/* código 3 = fuera de horario: el turno del workflow lo usa para cortar
+   el resto de los ciclos en vez de dormir en vano hasta el otro día */
+if (!activo) { console.log(`Fuera de horario (Santiago ${horaScl}h) — ciclo omitido.`); process.exit(3); }
 
 /* ---------- API con pacing, timeout y reintentos ---------- */
 let REQ = 0, ULTIMO = 0;

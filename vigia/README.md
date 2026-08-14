@@ -30,6 +30,18 @@ corre igual y las señales quedan en el log (modo seco).
 
 Local: `DRY=1 ODDSPAPI_KEY=... node vigia/vigia.mjs`
 
+## Cadencia real (por qué "turnos" y no un ciclo por cron)
+
+GitHub Actions ejecuta los `schedule` con criterio *best effort*: bajo carga
+**salta ventanas** (medido acá: dispararon 3 de 8 ventanas de 15 min). Para que
+la cadencia no dependa de esa lotería, cada ejecución es un **turno de 3 ciclos
+separados por 12 minutos**, y el cron dispara cada 30 min. Aunque el scheduler
+falle un par de veces, los ciclos siguen cayendo cada ~12 min.
+
+Si el script devuelve código 3 (fuera del horario de Santiago), el turno se
+corta ahí en vez de dormir en vano. `concurrency: vigia` impide que dos turnos
+se pisen; un turno que llegue mientras otro corre queda encolado.
+
 ## Presupuesto
 
 - ~15–35 requests de OddsPapi por ciclo tras el arranque (tope duro configurable);
