@@ -5,8 +5,10 @@ on:
     # UTC. Chile (America/Santiago) es UTC-4 en invierno austral / UTC-3 en verano.
     # Cada 15 min entre ~09:00 y ~01:00 hora chilena. El script además
     # verifica el horario en hora de Santiago y se apaga solo fuera de rango.
-    - cron: '*/15 12-23 * * *'
-    - cron: '*/15 0-5 * * *'
+    # minutos desplazados: los :00/:15/:30/:45 son los más congestionados
+    # de GitHub y esos crons a veces se saltan
+    - cron: '7,22,37,52 12-23 * * *'
+    - cron: '7,22,37,52 0-5 * * *'
   workflow_dispatch: {}
   push:
     paths:
