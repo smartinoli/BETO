@@ -39,12 +39,43 @@ Los links del Vigía llevan escondido el identificador interno de Betano para es
 cuota; este marcador lo lee y le hace clic por ti.</p>
 
 <div class="caja">
-  <h2>1 · Instalar (una sola vez)</h2>
+  <h2>1 · Instalar en el computador</h2>
   <p class="nota" style="margin:0 0 14px">Arrastra este botón a la barra de marcadores de tu navegador.
   No le hagas clic aquí: arrástralo.</p>
   <a class="arrastrar" id="bm" href="#">⬇ Llenar boleta</a>
   <p class="nota" style="margin-top:14px">Si no ves la barra de marcadores:
   <code>Ctrl/Cmd + Shift + B</code>.</p>
+</div>
+
+<div class="caja" id="iphone">
+  <h2>1b · Instalar en iPhone</h2>
+  <p class="nota" style="margin:0 0 16px">En el teléfono no hay barra de marcadores, pero un
+  favorito de Safari hace lo mismo. Son tres minutos, una sola vez.</p>
+
+  <div class="paso"><b>Antes</b><span>Telegram abre los links en su navegador interno, donde
+    esto no funciona. Ve a <b>Telegram → Ajustes → Datos y almacenamiento</b> y desactiva
+    <b>«Navegador integrado»</b> (o en Ajustes → Apariencia, según versión). Así los links
+    del Vigía abrirán en Safari.</span></div>
+
+  <div class="paso"><b>Paso 1</b><span>Toca el botón de abajo para copiar el código del
+    marcador.</span></div>
+  <button class="arrastrar" id="copiar" style="border:0;font-family:var(--disp)">📋 Copiar código</button>
+  <div id="copiado" class="nota" style="margin-top:8px;color:var(--verde);display:none">
+    Copiado. Ahora pégalo en el favorito (paso 4).</div>
+
+  <div class="paso" style="margin-top:14px"><b>Paso 2</b><span>En <b>Safari</b>, abre cualquier
+    página y toca <b>Compartir → Añadir a favoritos</b>. Ponle de nombre <b>boleta</b> y
+    guarda.</span></div>
+  <div class="paso"><b>Paso 3</b><span>Toca el ícono de <b>libro</b> (Favoritos) →
+    <b>Editar</b> → toca el favorito <b>boleta</b>.</span></div>
+  <div class="paso"><b>Paso 4</b><span>Borra la dirección que tiene y <b>pega</b> el código
+    copiado. Guarda.</span></div>
+  <div class="paso"><b>Usarlo</b><span>Abre la señal desde Telegram (ya en Safari), toca la
+    barra de direcciones, escribe <b>boleta</b> y toca el favorito que aparece bajo la
+    barra.</span></div>
+
+  <p class="aviso">Si al escribir «boleta» no aparece el favorito, revisa que lo guardaste en
+  <b>Favoritos</b> y no en una carpeta de Lecturas.</p>
 </div>
 
 <div class="caja">
@@ -210,11 +241,32 @@ function LLENAR_BOLETA(){
     }
   }, 500);
 }
-document.getElementById('bm').setAttribute('href',
-  'javascript:' + encodeURIComponent('(' + LLENAR_BOLETA.toString() + ')()'));
+var CODIGO = 'javascript:' + encodeURIComponent('(' + LLENAR_BOLETA.toString() + ')()');
+document.getElementById('bm').setAttribute('href', CODIGO);
 document.getElementById('bm').addEventListener('click', function(ev){
   ev.preventDefault();
   alert('No le hagas clic aquí: ARRÁSTRALO a la barra de marcadores del navegador. '
     + 'Después lo usas estando en la página del partido en Betano.');
+});
+document.getElementById('copiar').addEventListener('click', function(){
+  var ok = function(){
+    document.getElementById('copiado').style.display = 'block';
+    document.getElementById('copiar').textContent = '✓ Código copiado';
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(CODIGO).then(ok, manual);
+  } else manual();
+  function manual(){
+    /* respaldo: lo deja en un cuadro para copiar a mano */
+    var ta = document.createElement('textarea');
+    ta.value = CODIGO;
+    ta.style.cssText = 'width:100%;height:120px;margin-top:10px;font-size:11px;'
+      + 'background:#1A483A;color:#E8EDE9;border:1px solid #2A5A45;border-radius:6px;padding:8px';
+    document.getElementById('copiar').after(ta);
+    ta.select();
+    document.getElementById('copiado').textContent =
+      'Selecciona todo el texto del cuadro y cópialo.';
+    document.getElementById('copiado').style.display = 'block';
+  }
 });
 </script>
