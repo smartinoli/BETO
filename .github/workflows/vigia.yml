@@ -3,6 +3,7 @@ name: Vigía
 on:
   schedule:
     # UTC. Chile (America/Santiago) es UTC-4 en invierno austral / UTC-3 en verano.
+    # marcapasos: editado a mano para registrar el cron.
     # Cada 15 min entre ~09:00 y ~01:00 hora chilena. El script además
     # verifica el horario en hora de Santiago y se apaga solo fuera de rango.
     # minutos desplazados: los :00/:15/:30/:45 son los más congestionados
@@ -33,8 +34,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
- # marcapasos: editado a mano para registrar el cron
 
       - name: Ciclo del Vigía
         env:
