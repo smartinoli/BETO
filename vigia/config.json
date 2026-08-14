@@ -15,7 +15,7 @@
   "umbralCastigado": 0.05,
   "devig": "mult",
   "horarioSantiago": { "inicio": 9, "fin": 25 },
-  "maxRequestsPorCiclo": 45,
+  "maxRequestsPorCiclo": 100,
   "maxAlertasPorCiclo": 8,
   "avisarVentana": true,
   "avisarMuerte": true,
