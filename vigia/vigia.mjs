@@ -455,16 +455,22 @@ async function cmdEstado() {
 }
 async function ejecutar(texto) {
   const c = texto.toLowerCase().replace(/^\//, '').split(/[\s@]/)[0];
+  /* horizonte opcional en el propio mensaje: "/barrer 48" = próximas 48 h.
+     Sin número manda config.horizonteHoras. Tope de 72 h (el feed no da más). */
+  const num = (texto.match(/\d+/) || [])[0];
+  const horas = num ? Math.min(72, Math.max(1, +num)) : null;
   if (['barrer', 'barrido', 'todo', 'buscar'].includes(c)) {
-    await telegram('🔎 Barriendo <b>todo</b> lo disponible… (~2 min)');
-    const r = await barrer({ completo: true });
-    await reportar(r, '📋 Barrido completo');
+    const h = horas ?? CFG.horizonteHoras;
+    await telegram(`🔎 Barriendo <b>todo</b> lo disponible en las próximas <b>${h} h</b>… (~2 min)`);
+    const r = await barrer({ completo: true, horasMax: h });
+    await reportar(r, `📋 Barrido completo · ${h} h`);
     return true;
   }
   if (['rapido', 'rápido', 'ya', 'pronto'].includes(c)) {
-    await telegram('⚡ Barriendo lo que empieza dentro de 6 h…');
-    const r = await barrer({ completo: true, horasMax: 6 });
-    await reportar(r, '📋 Barrido rápido (6 h)');
+    const h = horas ?? 6;
+    await telegram(`⚡ Barriendo lo que empieza dentro de <b>${h} h</b>…`);
+    const r = await barrer({ completo: true, horasMax: h });
+    await reportar(r, `📋 Barrido rápido · ${h} h`);
     return true;
   }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
@@ -472,10 +478,13 @@ async function ejecutar(texto) {
     await telegram([
       '<b>Vigía · comandos</b>',
       '',
-      '/barrer — barrido completo de todo lo disponible (~110 requests, ~2 min)',
+      `/barrer — todo lo disponible en las próximas ${CFG.horizonteHoras} h (~110 requests, ~2 min)`,
+      '/barrer 48 — igual, pero con el horizonte que le pongas (máx. 72 h)',
       '/rapido — solo lo que empieza dentro de 6 h (~30 requests)',
       '/estado — cuota de API y último barrido (gratis)',
       '/ayuda — esta lista',
+      '',
+      `<i>Criterios activos: cuota ≤ ${CFG.cuotaMaxima} · ventaja mín. fútbol ${(CFG.ventajaMinima['10'] * 100).toFixed(1)}% · básquet ${(CFG.ventajaMinima['11'] * 100).toFixed(1)}% · tenis ${(CFG.ventajaMinima['12'] * 100).toFixed(1)}% · béisbol ${(CFG.ventajaMinima['13'] * 100).toFixed(1)}% · desde ${CFG.anticipacionMin} min antes del inicio</i>`,
     ].join('\n'));
     return true;
   }
