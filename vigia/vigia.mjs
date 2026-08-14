@@ -25,7 +25,7 @@ const DRY = !!process.env.DRY || !TG_TOKEN || !TG_CHAT;
 if (!KEY) { console.error('Falta ODDSPAPI_KEY'); process.exit(1); }
 
 /* ---------- estado persistente (se commitea tras cada ciclo) ---------- */
-let EST = { torneos: {}, fixtures: {}, cobertura: {}, mercados: {}, senales: {}, stats: {} };
+let EST = { torneos: {}, fixtures: {}, cobertura: {}, barridas: {}, mercados: {}, senales: {}, stats: {} };
 try { EST = { ...EST, ...JSON.parse(fs.readFileSync(ESTADO_PATH, 'utf8')) } } catch {}
 
 /* ---------- horario activo (hora de Santiago) ---------- */
@@ -253,35 +253,54 @@ async function ciclo() {
     }
   }
 
-  /* memoria de cobertura: ligas donde betano nunca aparece se prueban 1 vez/día */
-  const ligas = [...porLiga.entries()]
-    .filter(([tid]) => {
-      const c = EST.cobertura[tid];
-      if (!c) return true;
-      if (c.ok) return true;
-      return Date.now() - c.ts > 20 * 3600e3;   /* sin cobertura: reintento diario */
-    })
+  /* ligas con alguna señal viva: se barren SIEMPRE (siguen deriva y muerte) */
+  const fixVivos = new Set(Object.values(EST.senales).map(s => s.fix));
+
+  /* Polling escalonado: cada liga tiene su ritmo según cuán pronto juega.
+     Inminente (≤2 h) o con señal viva: cada ciclo. Hoy (≤8 h): cada ~30 min.
+     Lejana: cada ~90 min. Esto libera presupuesto para cubrir TODO. */
+  function leToca(tid, L) {
+    const c = EST.cobertura[tid];
+    if (c && !c.ok && Date.now() - c.ts < 20 * 3600e3) return false;   /* sin betano: 1 vez/día */
+    if (L.fixtures.some(f => fixVivos.has(f.fixtureId))) return true;
+    const falta = L.pronto - Date.now();
+    const desde = Date.now() - (EST.barridas[tid] || 0);
+    if (falta <= 2 * 3600e3) return true;
+    if (falta <= 8 * 3600e3) return desde >= 30 * 60e3;
+    return desde >= 90 * 60e3;
+  }
+  const ligas = [...porLiga.entries()].filter(([tid, L]) => leToca(tid, L))
     .sort((a, b) => a[1].pronto - b[1].pronto);
+  console.log(`Ligas apostables: ${porLiga.size} · les toca este ciclo: ${ligas.length}`);
 
-  console.log(`Ligas con partidos apostables: ${porLiga.size} · a barrer: ${ligas.length}`);
-
-  /* lotes de 5 ligas del MISMO deporte, ordenados por partido más próximo */
-  const lotes = [];
+  /* lotes de 5 ligas del mismo deporte, y ROTACIÓN entre deportes:
+     una tanda de cada deporte por turno — fútbol ya no acapara el tope */
   const porSid = {};
   for (const [tid, L] of ligas) (porSid[L.sid] ||= []).push(tid);
-  for (const sid of Object.keys(porSid))
-    for (let i = 0; i < porSid[sid].length; i += 5) lotes.push({ sid, tids: porSid[sid].slice(i, i + 5) });
+  const colas = Object.entries(porSid).map(([sid, tids]) => {
+    const lotes = [];
+    for (let i = 0; i < tids.length; i += 5) lotes.push({ sid, tids: tids.slice(i, i + 5) });
+    return lotes;
+  });
+  const lotes = [];
+  while (colas.some(c => c.length)) for (const c of colas) if (c.length) lotes.push(c.shift());
 
   const fixIdx = new Map();
   for (const [, L] of porLiga) for (const f of L.fixtures) fixIdx.set(f.fixtureId, f);
 
+  const porDeporte = {};
+  let tope = false;
   for (const lote of lotes) {
-    if (REQ >= CFG.maxRequestsPorCiclo) { console.log('Tope de requests del ciclo alcanzado.'); break; }
+    if (REQ >= CFG.maxRequestsPorCiclo) { tope = true; break; }
     const bet = await oddsBatch(lote.tids, 'betano');
     const cbt = bet.length ? await oddsBatch(lote.tids, 'cloudbet') : [];
     const cbIdx = new Map(cbt.map(f => [f.fixtureId, (f.bookmakerOdds || {}).cloudbet]));
     const conBet = new Set(bet.map(f => f.tournamentId));
-    for (const tid of lote.tids) EST.cobertura[tid] = { ok: !!(conBet.has(tid) || (EST.cobertura[tid] || {}).ok), ts: Date.now() };
+    for (const tid of lote.tids) {
+      EST.cobertura[tid] = { ok: !!(conBet.has(tid) || (EST.cobertura[tid] || {}).ok), ts: Date.now() };
+      EST.barridas[tid] = Date.now();
+    }
+    porDeporte[CFG.deportes[lote.sid] || lote.sid] = (porDeporte[CFG.deportes[lote.sid] || lote.sid] || 0) + lote.tids.length;
     for (const f of bet) {
       const info = fixIdx.get(f.fixtureId);
       const b = (f.bookmakerOdds || {}).betano, c = cbIdx.get(f.fixtureId);
@@ -290,6 +309,9 @@ async function ciclo() {
       await procesar(info, b, c);
     }
   }
+  console.log('Ligas barridas por deporte:', JSON.stringify(porDeporte),
+    tope ? '· tope de requests alcanzado (lo pendiente sigue el próximo ciclo)' : '· todo cubierto');
+  EST.stats = { ...EST.stats, porDeporte, tope };
 }
 
 /* ---------- señales de un partido ---------- */
@@ -443,7 +465,7 @@ try {
   for (const s of ventanas) await telegram(msjSenal(s, 'ventana'));
   if (muertas.length) await telegram('✕ Ajustadas por Betano (ya no valen): ' +
     muertas.map(s => `${escHtml(s.partido)} · ${escHtml(s.lado)}`).join(' — '));
-  EST.stats = { ultimo: new Date().toISOString(), requests: REQ, candidatas, vivas: Object.keys(EST.senales).length, nuevas: nuevas.length, ventanas: ventanas.length };
+  EST.stats = { ...EST.stats, ultimo: new Date().toISOString(), requests: REQ, candidatas, vivas: Object.keys(EST.senales).length, nuevas: nuevas.length, ventanas: ventanas.length };
   fs.writeFileSync(ESTADO_PATH, JSON.stringify(EST));
   console.log(`Ciclo OK · ${REQ} requests · ${candidatas} líneas evaluadas · ${nuevas.length} nuevas · ${ventanas.length} ventanas · ${Object.keys(EST.senales).length} vivas`);
 } catch (err) {
