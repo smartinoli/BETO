@@ -4,7 +4,7 @@
   "kellyDivisor": 4,
   "topePctBanca": 0.05,
   "montoMinimo": 5000,
-  "cuotaMaxima": 2.60,
+  "cuotaMaxima": 2.00,
   "anticipacionMin": 15,
   "horizonteHoras": 30,
   "margenLocal": 0.0,
