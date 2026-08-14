@@ -113,7 +113,8 @@ const linkDe = (f, sel) => {
     ? `https://lat.betano.com/cuotas-de-partido/${slug(f.p1)}-${slug(f.p2)}/${f.bookmakerFixtureId}/`
     : 'https://lat.betano.com/';
   if (!sel) return base;
-  const h = [sel.oid || '', sel.mid || '', sel.lado || '', sel.cuota || ''].map(encodeURIComponent).join('~');
+  const h = [sel.oid || '', sel.mid || '', sel.lado || '', sel.cuota || '', sel.fam || '']
+    .map(encodeURIComponent).join('~');
   return base + '#vg=' + h;
 };
 const horaTxt = iso => {
@@ -324,7 +325,7 @@ function procesarSync(info, bet, cb, metas, salida) {
         inicio: info.startTime, familia: famLabel, lado, cuota: +cuota.toFixed(3),
         justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
         bOid: idB[oid], bMid: bmid,
-        link: linkDe(info, { oid: idB[oid], mid: bmid, lado, cuota: pB[oid].toFixed(2) }),
+        link: linkDe(info, { oid: idB[oid], mid: bmid, lado, cuota: pB[oid].toFixed(2), fam: fam.fam }),
         sospechosa: vent > CFG.umbralSospechosa,
       };
       const mejor = porFam.get(famLabel);

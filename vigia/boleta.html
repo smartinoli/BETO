@@ -65,8 +65,9 @@ cuota; este marcador lo lee y le hace clic por ti.</p>
   <ol>
     <li><b>Por identificador de Betano</b> — el link trae el <code>bookmakerOutcomeId</code>
       del feed; si ese id aparece en la página, el clic es exacto y no hay ambigüedad.</li>
-    <li><b>Por estructura</b> — si el id no está en el HTML, busca la cuota exacta del mensaje
-      junto al número de línea y la dirección (Más/Menos, hándicap), como respaldo.</li>
+    <li><b>Por botón de selección</b> — si el id no está en el HTML, recorre los botones
+      <code>selection-horizontal-button</code> de la página comparando su rótulo
+      (<code>.s-name</code>), su cuota y el mercado que los contiene con los datos de la señal.</li>
     <li>Reintenta ~12 segundos mientras la página termina de cargar sus mercados, y despliega
       los bloques cerrados que puedan contener la línea.</li>
   </ol>
@@ -90,6 +91,7 @@ function LLENAR_BOLETA(){
   if (!m) { aviso('Este link no trae datos de selección. Ábrelo desde el mensaje del Vigía.', '#EFB93F'); return; }
   var p = decodeURIComponent(m[1]).split('~');
   var oid = p[0] || '', lado = decodeURIComponent(p[2] || ''), cuota = (p[3] || '').replace(',', '.');
+  var familia = decodeURIComponent(p[4] || '');
   var norm = function(t){ return (t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
     .replace(/[−–]/g,'-').replace(/\s+/g,' ').trim(); };
   var nlado = norm(lado);
@@ -119,21 +121,43 @@ function LLENAR_BOLETA(){
   function esCuota(e){
     return e.children.length === 0 && /^\d{1,2}[.,]\d{2}$/.test((e.textContent||'').trim());
   }
-  function porTexto(){
-    var hojas = [].slice.call(document.querySelectorAll('span,div,button,b,strong')).filter(esCuota);
-    var mejor = null, mejorPuntos = 0;
-    hojas.forEach(function(e){
-      var val = (e.textContent||'').trim().replace(',', '.');
-      var puntos = 0;
-      if (cuota && Math.abs(parseFloat(val) - parseFloat(cuota)) < 0.005) puntos += 3;
-      var ctx = '', p = e.parentElement, k;
-      for (k = 0; k < 4 && p; k++) { ctx += ' ' + norm(p.textContent||''); p = p.parentElement; }
-      if (linea && ctx.indexOf(linea) > -1) puntos += 3;
-      if (dir && new RegExp('(^|\\s)' + (dir === 'mas' ? '(mas|over)' : '(menos|under)')).test(ctx)) puntos += 2;
-      equipo.forEach(function(w){ if (ctx.indexOf(w) > -1) puntos += 1; });
-      if (puntos > mejorPuntos) { mejorPuntos = puntos; mejor = e; }
+  /* Botones de selección de Betano: clase selection-horizontal-button, con el
+     rótulo en .s-name y la cuota en un nodo hoja del mismo botón. */
+  function botonesSeleccion(){
+    var sel = '.selection-horizontal-button,[class*="selection-"][class*="button"],'
+            + '[data-qa*="selection" i],[class*="selection-vertical" i]';
+    var l = [].slice.call(document.querySelectorAll(sel));
+    return l.filter(function(b){ return b.offsetParent !== null; });
+  }
+  function datosDe(b){
+    var n = b.querySelector('.s-name');
+    var nombre = norm(n ? n.textContent : '');
+    var precio = null;
+    [].slice.call(b.querySelectorAll('span,div,b,strong')).forEach(function(e){
+      if (esCuota(e)) precio = (e.textContent||'').trim().replace(',', '.');
     });
-    return mejorPuntos >= 4 ? clickeable(mejor) : null;
+    if (!nombre) nombre = norm((b.textContent||'').replace(/\d{1,2}[.,]\d{2}\s*$/, ''));
+    /* título del mercado: el bloque que contiene al botón */
+    var ctx = '', p = b.parentElement, k;
+    for (k = 0; k < 6 && p; k++) { ctx = norm(p.textContent||''); if (ctx.length > 60) break; p = p.parentElement; }
+    return { nombre: nombre, precio: precio, ctx: ctx };
+  }
+  function porSeleccion(){
+    var mejor = null, mejorPuntos = 0;
+    var famToks = norm(familia).split(/[^a-z0-9]+/).filter(function(w){ return w.length > 3; });
+    botonesSeleccion().forEach(function(b){
+      var d = datosDe(b), puntos = 0;
+      if (cuota && d.precio && Math.abs(parseFloat(d.precio) - parseFloat(cuota)) < 0.005) puntos += 3;
+      if (d.nombre && d.nombre === nlado) puntos += 5;                       /* rótulo idéntico */
+      else {
+        if (linea && d.nombre.indexOf(linea) > -1) puntos += 3;
+        if (dir && new RegExp('(^|\\s)' + (dir === 'mas' ? '(mas|over)' : '(menos|under)')).test(d.nombre)) puntos += 2;
+        equipo.forEach(function(w){ if (d.nombre.indexOf(w) > -1) puntos += 1; });
+      }
+      famToks.forEach(function(w){ if (d.ctx.indexOf(w) > -1) puntos += 1; });   /* mercado correcto */
+      if (puntos > mejorPuntos) { mejorPuntos = puntos; mejor = b; }
+    });
+    return mejorPuntos >= 5 ? clickeable(mejor) : null;
   }
   function abrirBloques(){
     [].slice.call(document.querySelectorAll('button,[role="button"]')).forEach(function(b){
@@ -147,7 +171,7 @@ function LLENAR_BOLETA(){
     if (intentos === 3) abrirBloques();
     var el = porId();
     var exacto = !!el;
-    if (!el) el = porTexto();
+    if (!el) el = porSeleccion();
     if (el) {
       clearInterval(iv);
       try {
