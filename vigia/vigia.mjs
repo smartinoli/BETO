@@ -61,12 +61,13 @@ async function api(ruta, params = {}, cooldown = 1100) {
 /* ---------- Telegram ---------- */
 const escHtml = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 async function telegram(html) {
-  if (DRY) { console.log('\n[TELEGRAM]\n' + html.replace(/<[^>]+>/g, '')); return; }
+  if (DRY) { console.log('\n[TELEGRAM]\n' + html.replace(/<[^>]+>/g, '')); return true; }
   const r = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ chat_id: TG_CHAT, text: html, parse_mode: 'HTML', disable_web_page_preview: true }),
   });
-  if (!r.ok) console.error('Telegram falló:', await r.text().catch(() => r.status));
+  if (!r.ok) { console.error('Telegram falló:', await r.text().catch(() => r.status)); return false; }
+  return true;
 }
 
 /* ---------- helpers de dominio ---------- */
@@ -369,7 +370,17 @@ try {
   let enviadas = 0;
   for (const s of nuevas.sort((a, b) => b.vent - a.vent)) {
     if (enviadas >= CFG.maxAlertasPorCiclo) break;
-    await telegram(msjSenal(s, 'nueva')); s.avisada = true; enviadas++;
+    /* solo se marca avisada si Telegram la recibió: si falla, queda
+       pendiente y se reintenta en el próximo ciclo */
+    if (await telegram(msjSenal(s, 'nueva'))) { s.avisada = true; enviadas++; }
+    else break;
+  }
+  /* señales vivas que quedaron sin avisar por un fallo anterior de Telegram */
+  for (const s of Object.values(EST.senales)) {
+    if (s.avisada || nuevas.includes(s)) continue;
+    if (enviadas >= CFG.maxAlertasPorCiclo) break;
+    if (await telegram(msjSenal(s, 'nueva'))) { s.avisada = true; enviadas++; }
+    else break;
   }
   const resto = nuevas.length - Math.min(nuevas.length, CFG.maxAlertasPorCiclo);
   if (resto > 0) await telegram(`…y ${resto} señal(es) más bajo el tope por ciclo (suben la próxima si siguen vivas).`);
