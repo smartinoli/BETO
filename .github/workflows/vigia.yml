@@ -34,6 +34,8 @@ jobs:
         with:
           node-version: 20
 
+ # marcapasos: editado a mano para registrar el cron
+
       - name: Ciclo del Vigía
         env:
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
