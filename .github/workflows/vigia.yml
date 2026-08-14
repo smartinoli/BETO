@@ -8,6 +8,11 @@ on:
     - cron: '*/15 12-23 * * *'
     - cron: '*/15 0-5 * * *'
   workflow_dispatch: {}
+  push:
+    paths:
+      - 'vigia/vigia.mjs'
+      - 'vigia/config.json'
+      - '.github/workflows/vigia.yml'
 
 permissions:
   contents: write
