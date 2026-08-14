@@ -1,24 +1,25 @@
 name: Vigía
 
+# El Vigía ya no manda alertas solo: ESCUCHA tu chat de Telegram y barre
+# cuando tú se lo pides (/barrer, /rapido, /estado).
+#
+# Cada ejecución mantiene al bot escuchando ~28 minutos sin gastar un solo
+# request de OddsPapi. El cron levanta un escucha nuevo cada 30 minutos, así
+# que casi siempre hay uno vivo. Si mandas un comando cuando no lo hay, el
+# mensaje NO se pierde: Telegram lo guarda y el siguiente escucha lo atiende.
+
 on:
   schedule:
-    # UTC. Chile (America/Santiago) es UTC-4 en invierno austral / UTC-3 en verano.
-    # marcapasos: editado a mano para registrar el cron.
-    # Cubre ~09:00 a ~01:00 hora chilena; el script además verifica el horario
-    # en hora de Santiago y se apaga solo fuera de rango (así el cambio de
-    # horario de verano no obliga a tocar nada acá).
-    #
-    # GitHub SALTA ventanas de cron cuando hay carga (en pruebas dispararon 3
-    # de 8). Por eso cada ejecución es un TURNO de varios ciclos: aunque el
-    # scheduler falle, la cadencia real se mantiene.
-    - cron: '7,37 12-23 * * *'
-    - cron: '7,37 0-5 * * *'
-  workflow_dispatch: {}
-  push:
-    paths:
-      - 'vigia/vigia.mjs'
-      - 'vigia/config.json'
-      - '.github/workflows/vigia.yml'
+    # UTC. Chile es UTC-4 (invierno) / UTC-3 (verano) → cubre ~08:00-02:00 local.
+    - cron: '5,35 11-23 * * *'
+    - cron: '5,35 0-6 * * *'
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer ahora'
+        type: choice
+        default: escucha
+        options: [escucha, barrer, rapido]
 
 permissions:
   contents: write
@@ -30,7 +31,7 @@ concurrency:
 jobs:
   vigia:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
 
@@ -38,30 +39,22 @@ jobs:
         with:
           node-version: 22
 
-      - name: Turno del Vigía
+      - name: Vigía
         env:
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          CICLOS: 3
-          ESPERA: 720
+          MODO: ${{ inputs.accion || 'escucha' }}
+          SEGUNDOS_ESCUCHA: 1680
+        run: node vigia/vigia.mjs
+
+      - name: Guardar estado
+        if: always()
         run: |
           git config user.name "vigia-bot"
           git config user.email "vigia@users.noreply.github.com"
-          for i in $(seq 1 "$CICLOS"); do
-            echo "::group::Ciclo $i de $CICLOS"
-            set +e
-            node vigia/vigia.mjs
-            rc=$?
-            set -e
-            echo "::endgroup::"
-            # el estado se guarda aunque el ciclo falle: la memoria no se pierde
-            git add vigia/estado.json
-            if ! git diff --cached --quiet; then
-              git commit -q -m "vigia: estado $(date -u +%H:%M)"
-              git pull -q --rebase origin "$GITHUB_REF_NAME" || true
-              git push -q origin "HEAD:$GITHUB_REF_NAME" || echo "push del estado falló, sigue el turno"
-            fi
-            if [ "$rc" -eq 3 ]; then echo "Fuera de horario: turno terminado."; break; fi
-            if [ "$i" -lt "$CICLOS" ]; then sleep "$ESPERA"; fi
-          done
+          git add vigia/estado.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "vigia: estado $(date -u +%H:%M)"
+          git pull -q --rebase origin "$GITHUB_REF_NAME" || true
+          git push -q origin "HEAD:$GITHUB_REF_NAME" || echo "push del estado falló"

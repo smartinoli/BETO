@@ -1,15 +1,18 @@
 #!/usr/bin/env node
 /* ============================================================
-   VIGÍA — barrido total Betano vs Cloudbet (OddsPapi v4)
-   Corre en GitHub Actions cada 15 min. Manda señales a Telegram.
-   Sin dependencias: Node 20+ (fetch nativo).
+   VIGÍA — barrido Betano vs Cloudbet (OddsPapi v4), bajo demanda.
 
-   Flujo de un ciclo:
-   1. torneos activos por deporte (cache diario en estado.json)
-   2. fixtures con nombres/hora/liga (cache 1 h)
-   3. odds batch por lotes de 5 ligas × 2 casas (betano, cloudbet)
-   4. señales = whitelist de familias del censo + criterios config
-   5. Telegram: nueva señal / ventana ▼ / muerta — con memoria
+   Modo normal: el bot ESCUCHA tu chat de Telegram y no gasta ni un
+   request de OddsPapi hasta que tú pides algo.
+
+   Comandos del chat:
+     /barrer   barrido COMPLETO sin límites (~110 requests) y te manda
+               todo lo que pasa tus criterios, ordenado por ventaja
+     /rapido   solo lo que empieza dentro de 6 h (~30 requests)
+     /estado   señales vivas + cuota de API restante (gratis)
+     /ayuda    esta lista
+
+   Sin dependencias: Node 20+ (fetch nativo).
    ============================================================ */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -21,22 +24,16 @@ const ESTADO_PATH = path.join(DIR, 'estado.json');
 const KEY = process.env.ODDSPAPI_KEY;
 const TG_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID;
+const MODO = process.env.MODO || 'escucha';            /* escucha | barrer | rapido */
+const SEGUNDOS_ESCUCHA = +(process.env.SEGUNDOS_ESCUCHA || 780);
 const DRY = !!process.env.DRY || !TG_TOKEN || !TG_CHAT;
 if (!KEY) { console.error('Falta ODDSPAPI_KEY'); process.exit(1); }
 
-/* ---------- estado persistente (se commitea tras cada ciclo) ---------- */
-let EST = { torneos: {}, fixtures: {}, cobertura: {}, barridas: {}, mercados: {}, senales: {}, stats: {} };
+let EST = { torneos: {}, fixtures: {}, cobertura: {}, mercados: {}, senales: {}, stats: {}, tgOffset: 0 };
 try { EST = { ...EST, ...JSON.parse(fs.readFileSync(ESTADO_PATH, 'utf8')) } } catch {}
+const guardarEstado = () => fs.writeFileSync(ESTADO_PATH, JSON.stringify(EST));
 
-/* ---------- horario activo (hora de Santiago) ---------- */
-const horaScl = +new Intl.DateTimeFormat('en-GB', { timeZone: 'America/Santiago', hour: 'numeric', hour12: false }).format(new Date());
-const { inicio, fin } = CFG.horarioSantiago;
-const activo = fin > 24 ? (horaScl >= inicio || horaScl < fin - 24) : (horaScl >= inicio && horaScl < fin);
-/* código 3 = fuera de horario: el turno del workflow lo usa para cortar
-   el resto de los ciclos en vez de dormir en vano hasta el otro día */
-if (!activo) { console.log(`Fuera de horario (Santiago ${horaScl}h) — ciclo omitido.`); process.exit(3); }
-
-/* ---------- API con pacing, timeout y reintentos ---------- */
+/* ---------- API OddsPapi: pacing, timeout y reintentos ---------- */
 let REQ = 0, ULTIMO = 0;
 const espera = ms => new Promise(r => setTimeout(r, ms));
 async function api(ruta, params = {}, cooldown = 1100) {
@@ -48,7 +45,7 @@ async function api(ruta, params = {}, cooldown = 1100) {
     ULTIMO = Date.now();
     let r = null, errRed = null;
     try {
-      r = await fetch(u, { signal: AbortSignal.timeout(20000), headers: { 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) vigia/1.0' } });
+      r = await fetch(u, { signal: AbortSignal.timeout(20000), headers: { 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) vigia/2.0' } });
     } catch (e) { errRed = e; }
     if ((errRed || r.status === 429 || r.status >= 500) && intento < 3) { await espera(1000 * 2 ** intento); continue; }
     if (errRed) throw new Error('red: ' + errRed.message);
@@ -63,13 +60,45 @@ async function api(ruta, params = {}, cooldown = 1100) {
 /* ---------- Telegram ---------- */
 const escHtml = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 async function telegram(html) {
-  if (DRY) { console.log('\n[TELEGRAM]\n' + html.replace(/<[^>]+>/g, '')); return true; }
-  const r = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: TG_CHAT, text: html, parse_mode: 'HTML', disable_web_page_preview: true }),
-  });
-  if (!r.ok) { console.error('Telegram falló:', await r.text().catch(() => r.status)); return false; }
+  if (DRY) { console.log('\n[TELEGRAM]\n' + html.replace(/<[^>]+>/g, '') + '\n'); return true; }
+  for (const trozo of partir(html)) {
+    const r = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TG_CHAT, text: trozo, parse_mode: 'HTML', disable_web_page_preview: true }),
+    });
+    if (!r.ok) { console.error('Telegram falló:', await r.text().catch(() => r.status)); return false; }
+    await espera(400);   /* límite de Telegram: ~1 mensaje/seg por chat */
+  }
   return true;
+}
+/* Telegram corta en 4096 caracteres: se parte por líneas dobles */
+function partir(html, max = 3500) {
+  if (html.length <= max) return [html];
+  const bloques = html.split('\n\n'), out = []; let acc = '';
+  for (const b of bloques) {
+    if ((acc + '\n\n' + b).length > max && acc) { out.push(acc); acc = b; }
+    else acc = acc ? acc + '\n\n' + b : b;
+  }
+  if (acc) out.push(acc);
+  return out;
+}
+async function tgUpdates() {
+  if (DRY) return [];
+  const u = `https://api.telegram.org/bot${TG_TOKEN}/getUpdates?timeout=25&offset=${EST.tgOffset || 0}`;
+  try {
+    const r = await fetch(u, { signal: AbortSignal.timeout(35000) });
+    const d = await r.json();
+    if (!d.ok) return [];
+    const msgs = [];
+    for (const up of d.result || []) {
+      EST.tgOffset = up.update_id + 1;
+      const m = up.message || up.edited_message;
+      if (!m || String(m.chat?.id) !== String(TG_CHAT)) continue;   /* solo tu chat */
+      if (m.text) msgs.push(m.text.trim());
+    }
+    if (d.result?.length) guardarEstado();
+    return msgs;
+  } catch { return []; }
 }
 
 /* ---------- helpers de dominio ---------- */
@@ -77,7 +106,7 @@ const hoyKey = new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/Santiago' }
 const plata = n => '$' + Math.round(n).toLocaleString('es-CL');
 const slug = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-const linkDe = (f) => f.bookmakerFixtureId
+const linkDe = f => f.bookmakerFixtureId
   ? `https://lat.betano.com/cuotas-de-partido/${slug(f.p1)}-${slug(f.p2)}/${f.bookmakerFixtureId}/`
   : 'https://lat.betano.com/';
 const horaTxt = iso => {
@@ -91,12 +120,9 @@ const horaTxt = iso => {
 };
 const SIMU = /srl|e-?soccer|esports|ebasketball|simulated|cyber/i;
 
-/* Whitelist ampliada (censo 14-08-2026). Devuelve
-   {fam, lado:'ou'|'ah'|'ml'|'yn', eq?:1|2, castigada?:true} o null.
-   'yn' = mercados Sí/No · 'eq' = familia por equipo/jugador (1=local, 2=visita).
-   'castigada' = juez borroso (córners/tarjetas/nicho): usa umbralCastigado.
-   Las familias que solo cotiza una casa NO se listan: sin juez jamás disparan. */
-function familiaDe(sid, nombre, h) {
+/* Whitelist del censo (14-08-2026). {fam, lado:'ou'|'ah'|'ml'|'yn', eq?, castigada?}
+   Las familias que solo cotiza una casa no se listan: sin juez no hay señal. */
+function familiaDe(sid, nombre) {
   const n = (nombre || '').toLowerCase();
   if (/player|scorer|assist|shot|offside|throw/.test(n)) return null;
   let m;
@@ -129,8 +155,7 @@ function familiaDe(sid, nombre, h) {
     if (/^game handicap$/.test(n)) return { fam: 'Hándicap de juegos', lado: 'ah' };
     if (/^winner$/.test(n)) return { fam: 'Ganador', lado: 'ml' };
     if (/^first set winner$/.test(n)) return { fam: 'Ganador 1er set', lado: 'ml' };
-    if ((m = n.match(/^participant ([12]) to win a set$/)))
-      return { fam: 'Gana un set', lado: 'yn', eq: +m[1] };
+    if ((m = n.match(/^participant ([12]) to win a set$/))) return { fam: 'Gana un set', lado: 'yn', eq: +m[1] };
     return null;
   }
   if (sid === '13') {
@@ -139,8 +164,7 @@ function familiaDe(sid, nombre, h) {
     if (/^over under first to fifth inning$/.test(n)) return { fam: 'Total primeras 5', lado: 'ou' };
     if (/^over under first inning$/.test(n)) return { fam: 'Total 1ª entrada', lado: 'ou' };
     if (/^winner \(incl\. extra innings\)$/.test(n)) return { fam: 'Ganador', lado: 'ml' };
-    if ((m = n.match(/^over under team ([12]) \(incl\. extra innings\)$/)))
-      return { fam: 'Carreras', lado: 'ou', eq: +m[1] };
+    if ((m = n.match(/^over under team ([12]) \(incl\. extra innings\)$/))) return { fam: 'Carreras', lado: 'ou', eq: +m[1] };
     if (/^will there be an extra inning$/.test(n)) return { fam: 'Entrada extra', lado: 'yn', castigada: true };
     return null;
   }
@@ -160,14 +184,30 @@ function desvigar(pA, pB) {
   const S = 1 / pA + 1 / pB;
   return [S * pA, S * pB];
 }
-
 function montoDe(cuota, vent) {
   const f = Math.max(0, vent) / (cuota - 1) / CFG.kellyDivisor;
   const m = Math.min(CFG.banca * CFG.topePctBanca, CFG.banca * f);
   return Math.max(CFG.montoMinimo, Math.round(m / 1000) * 1000);
 }
 
-/* ---------- 1 · torneos activos (cache diario) ---------- */
+/* ---------- catálogo de mercados (cacheado en el estado) ---------- */
+let CATALOGO = null;
+async function metaDe(mid) {
+  if (EST.mercados[mid]) return EST.mercados[mid];
+  if (!CATALOGO) {
+    CATALOGO = {};
+    (await api('markets')).forEach(m => { CATALOGO[m.marketId] = m; });
+  }
+  const m = CATALOGO[mid] || CATALOGO[+mid];
+  if (!m) return null;
+  EST.mercados[mid] = {
+    n: m.marketName, h: m.handicap ?? null, len: m.marketLength,
+    outs: Array.isArray(m.outcomes) ? Object.fromEntries(m.outcomes.map(o => [String(o.outcomeId), o.outcomeName])) : {},
+  };
+  return EST.mercados[mid];
+}
+
+/* ---------- datos base ---------- */
 async function torneosDe(sid) {
   const c = EST.torneos[sid];
   if (c && c.fecha === hoyKey) return c.lista;
@@ -179,11 +219,9 @@ async function torneosDe(sid) {
   EST.torneos[sid] = { fecha: hoyKey, lista };
   return lista;
 }
-
-/* ---------- 2 · fixtures en ventana (cache 1 h) ---------- */
-async function fixturesDe(sid) {
+async function fixturesDe(sid, frescoMin = 60) {
   const c = EST.fixtures[sid];
-  if (c && Date.now() - c.ts < 3600e3) return c.lista;
+  if (c && Date.now() - c.ts < frescoMin * 60e3) return c.lista;
   const d = new Date();
   const f1 = new Date(d.getTime() - 864e5).toISOString().slice(0, 10);
   const f2 = new Date(d.getTime() + 3 * 864e5).toISOString().slice(0, 10);
@@ -198,8 +236,6 @@ async function fixturesDe(sid) {
   EST.fixtures[sid] = { ts: Date.now(), lista };
   return lista;
 }
-
-/* ---------- 3 · odds batch por lotes de ligas ---------- */
 async function oddsBatch(tids, casa) {
   try {
     const d = await api('odds-by-tournaments', { tournamentIds: tids.join(','), bookmaker: casa, oddsFormat: 'decimal' }, 1100);
@@ -210,124 +246,17 @@ async function oddsBatch(tids, casa) {
   }
 }
 
-/* ---------- catálogo de mercados: solo los ids que aparecen ---------- */
-let CATALOGO = null;
-async function metaDe(mid) {
-  if (EST.mercados[mid]) return EST.mercados[mid];
-  if (!CATALOGO) {
-    console.log('Bajando catálogo de mercados (1 request)...');
-    CATALOGO = {};
-    (await api('markets')).forEach(m => { CATALOGO[m.marketId] = m; });
-  }
-  const m = CATALOGO[mid] || CATALOGO[+mid];
-  if (!m) return null;
-  EST.mercados[mid] = {
-    n: m.marketName, h: m.handicap ?? null, len: m.marketLength,
-    outs: Array.isArray(m.outcomes) ? Object.fromEntries(m.outcomes.map(o => [String(o.outcomeId), o.outcomeName])) : {},
-  };
-  return EST.mercados[mid];
-}
-
-/* ---------- ciclo principal ---------- */
-const ahora = Date.now();
-const antic = CFG.anticipacionMin * 60e3;
-const horizonte = CFG.horizonteHoras * 3600e3;
-const nuevas = [], ventanas = [], muertas = [];
-let candidatas = 0;
-
-async function ciclo() {
-  /* fixtures apostables por deporte, y las ligas que los contienen */
-  const porLiga = new Map();   /* tid -> {sid, fixtures:[...], pronto:ts mínimo} */
-  for (const sid of Object.keys(CFG.deportes)) {
-    const [tor, fx] = [await torneosDe(sid), await fixturesDe(sid)];
-    const nombres = new Map(tor.map(t => [t.id, t.n + ' (' + (t.cat || '') + ')']));
-    for (const f of fx) {
-      const t = new Date(f.startTime).getTime();
-      if (t < ahora + antic || t > ahora + horizonte) continue;
-      if (SIMU.test(f.liga + ' ' + f.p1 + ' ' + f.p2)) continue;
-      if (!nombres.has(f.tournamentId)) continue;   /* liga simulada o inactiva */
-      f.liga = f.liga || nombres.get(f.tournamentId);
-      f.sid = sid;
-      if (!porLiga.has(f.tournamentId)) porLiga.set(f.tournamentId, { sid, fixtures: [], pronto: Infinity });
-      const L = porLiga.get(f.tournamentId);
-      L.fixtures.push(f);
-      L.pronto = Math.min(L.pronto, t);
-    }
-  }
-
-  /* ligas con alguna señal viva: se barren SIEMPRE (siguen deriva y muerte) */
-  const fixVivos = new Set(Object.values(EST.senales).map(s => s.fix));
-
-  /* Polling escalonado: cada liga tiene su ritmo según cuán pronto juega.
-     Inminente (≤2 h) o con señal viva: cada ciclo. Hoy (≤8 h): cada ~30 min.
-     Lejana: cada ~90 min. Esto libera presupuesto para cubrir TODO. */
-  function leToca(tid, L) {
-    const c = EST.cobertura[tid];
-    if (c && !c.ok && Date.now() - c.ts < 20 * 3600e3) return false;   /* sin betano: 1 vez/día */
-    if (L.fixtures.some(f => fixVivos.has(f.fixtureId))) return true;
-    const falta = L.pronto - Date.now();
-    const desde = Date.now() - (EST.barridas[tid] || 0);
-    if (falta <= 2 * 3600e3) return true;
-    if (falta <= 8 * 3600e3) return desde >= 30 * 60e3;
-    return desde >= 90 * 60e3;
-  }
-  const ligas = [...porLiga.entries()].filter(([tid, L]) => leToca(tid, L))
-    .sort((a, b) => a[1].pronto - b[1].pronto);
-  console.log(`Ligas apostables: ${porLiga.size} · les toca este ciclo: ${ligas.length}`);
-
-  /* lotes de 5 ligas del mismo deporte, y ROTACIÓN entre deportes:
-     una tanda de cada deporte por turno — fútbol ya no acapara el tope */
-  const porSid = {};
-  for (const [tid, L] of ligas) (porSid[L.sid] ||= []).push(tid);
-  const colas = Object.entries(porSid).map(([sid, tids]) => {
-    const lotes = [];
-    for (let i = 0; i < tids.length; i += 5) lotes.push({ sid, tids: tids.slice(i, i + 5) });
-    return lotes;
-  });
-  const lotes = [];
-  while (colas.some(c => c.length)) for (const c of colas) if (c.length) lotes.push(c.shift());
-
-  const fixIdx = new Map();
-  for (const [, L] of porLiga) for (const f of L.fixtures) fixIdx.set(f.fixtureId, f);
-
-  const porDeporte = {};
-  let tope = false;
-  for (const lote of lotes) {
-    if (REQ >= CFG.maxRequestsPorCiclo) { tope = true; break; }
-    const bet = await oddsBatch(lote.tids, 'betano');
-    const cbt = bet.length ? await oddsBatch(lote.tids, 'cloudbet') : [];
-    const cbIdx = new Map(cbt.map(f => [f.fixtureId, (f.bookmakerOdds || {}).cloudbet]));
-    const conBet = new Set(bet.map(f => f.tournamentId));
-    for (const tid of lote.tids) {
-      EST.cobertura[tid] = { ok: !!(conBet.has(tid) || (EST.cobertura[tid] || {}).ok), ts: Date.now() };
-      EST.barridas[tid] = Date.now();
-    }
-    porDeporte[CFG.deportes[lote.sid] || lote.sid] = (porDeporte[CFG.deportes[lote.sid] || lote.sid] || 0) + lote.tids.length;
-    for (const f of bet) {
-      const info = fixIdx.get(f.fixtureId);
-      const b = (f.bookmakerOdds || {}).betano, c = cbIdx.get(f.fixtureId);
-      if (!info || !b || !c) continue;
-      info.bookmakerFixtureId = b.bookmakerFixtureId || null;
-      await procesar(info, b, c);
-    }
-  }
-  console.log('Ligas barridas por deporte:', JSON.stringify(porDeporte),
-    tope ? '· tope de requests alcanzado (lo pendiente sigue el próximo ciclo)' : '· todo cubierto');
-  EST.stats = { ...EST.stats, porDeporte, tope };
-}
-
 /* ---------- señales de un partido ---------- */
-async function procesar(info, bet, cb) {
-  const porFam = new Map();   /* familia -> mejor señal (una por familia) */
-  /* pase 1: mercados whitelisted, con su marca de línea central */
+function procesarSync(info, bet, cb, metas, salida) {
+  const porFam = new Map();
   const cand = [];
   for (const mid of Object.keys(bet.markets || {})) {
-    const meta = await metaDe(mid);
+    const meta = metas[mid];
     if (!meta || meta.len !== 2) continue;
-    const fam = familiaDe(info.sid, meta.n, meta.h);
+    const fam = familiaDe(info.sid, meta.n);
     if (!fam) continue;
     if (CFG.sinCuartos && meta.h != null && Math.abs(meta.h * 2) % 1 !== 0) continue;
-    let central = null;   /* true/false si el feed marca mainLine; null = no dice */
+    let central = null;
     for (const o of Object.values(bet.markets[mid].outcomes || {})) {
       const p0 = (o.players || {})['0'];
       if (p0?.mainLine === true) { central = true; break; }
@@ -335,9 +264,7 @@ async function procesar(info, bet, cb) {
     }
     cand.push({ mid, meta, fam, central });
   }
-  /* pase 2: qué líneas de cada familia se miran.
-     Con lineasVecinas: la central y sus dos adyacentes (±1 paso).
-     Sin marca de central en el grupo: se miran todas (una-por-familia poda). */
+  /* qué líneas se miran: la central del feed ± vecinas */
   const porGrupo = new Map();
   for (const c of cand) {
     const k = c.meta.n + '|' + (c.fam.eq || '');
@@ -346,16 +273,13 @@ async function procesar(info, bet, cb) {
   }
   const elegidos = [];
   for (const grupo of porGrupo.values()) {
-    if (!CFG.soloLineaCentral || grupo.length === 1 || grupo[0].meta.h == null) {
-      elegidos.push(...grupo); continue;
-    }
+    if (!CFG.soloLineaCentral || grupo.length === 1 || grupo[0].meta.h == null) { elegidos.push(...grupo); continue; }
     grupo.sort((a, b) => a.meta.h - b.meta.h);
     const ic = grupo.findIndex(c => c.central === true);
     if (ic < 0) { elegidos.push(...grupo.filter(c => c.central !== false)); continue; }
     const paso = CFG.lineasVecinas ? 1 : 0;
     elegidos.push(...grupo.slice(Math.max(0, ic - paso), Math.min(grupo.length, ic + paso + 1)));
   }
-  /* pase 3: valor contra el juez */
   for (const { mid, meta, fam } of elegidos) {
     const oB = bet.markets[mid].outcomes || {}, oC = (cb.markets || {})[mid]?.outcomes || {};
     const oids = Object.keys(oB);
@@ -369,14 +293,13 @@ async function procesar(info, bet, cb) {
     if (!ok) continue;
     const [jA, jB] = desvigar(pC[oids[0]], pC[oids[1]]);
     const justos = { [oids[0]]: jA, [oids[1]]: jB };
-    const umbral = Math.max(CFG.ventajaMinima[info.sid],
-      fam.castigada ? (CFG.umbralCastigado ?? 0.05) : 0);
+    const umbral = Math.max(CFG.ventajaMinima[info.sid], fam.castigada ? (CFG.umbralCastigado ?? 0.05) : 0);
     const famLabel = fam.fam + (fam.eq ? ' · ' + (fam.eq === 1 ? info.p1 : info.p2) : '');
     for (const oid of oids) {
       const cuota = pB[oid] * (1 - CFG.margenLocal);
       if (cuota > CFG.cuotaMaxima) continue;
       const vent = cuota / justos[oid] - 1;
-      candidatas++;
+      salida.candidatas++;
       if (vent < umbral) continue;
       const crudo = meta.outs[oid] || oid;
       let lado;
@@ -397,81 +320,193 @@ async function procesar(info, bet, cb) {
       if (!mejor || s.vent > mejor.vent) porFam.set(famLabel, s);
     }
   }
-  /* memoria: nueva / ventana / actualización */
-  for (const s of porFam.values()) {
-    const prev = EST.senales[s.sig];
-    if (!prev) { EST.senales[s.sig] = { ...s, ts: Date.now(), avisada: false }; nuevas.push(EST.senales[s.sig]); }
-    else {
-      const probSubio = 1 / s.justo - 1 / prev.justo > 0.004;
-      const cuotaQuieta = Math.abs(s.cuota - prev.cuota) < 0.005;
-      if (CFG.avisarVentana && probSubio && cuotaQuieta && !prev.ventanaAvisada) {
-        prev.ventanaAvisada = true; ventanas.push({ ...s, justoAnt: prev.justo });
-      }
-      Object.assign(prev, s, { ts: Date.now() });
-    }
-  }
+  for (const s of porFam.values()) salida.senales.push(s);
 }
 
-/* ---------- avisos de muerte + poda ---------- */
-function podar() {
-  for (const [sig, s] of Object.entries(EST.senales)) {
-    const empezo = new Date(s.inicio).getTime() < Date.now();
-    const vieja = Date.now() - s.ts > 40 * 60e3;   /* 2 ciclos sin verse */
-    if (empezo || (vieja && !empezo)) {
-      if (CFG.avisarMuerte && s.avisada && !empezo && vieja) muertas.push(s);
-      if (empezo || vieja) delete EST.senales[sig];
+/* ---------- BARRIDO ---------- */
+async function barrer({ completo = true, horasMax = null } = {}) {
+  const t0 = Date.now();
+  const salida = { senales: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {} };
+  const antic = CFG.anticipacionMin * 60e3;
+  const horizonte = (horasMax ?? CFG.horizonteHoras) * 3600e3;
+
+  const porLiga = new Map();
+  for (const sid of Object.keys(CFG.deportes)) {
+    const tor = await torneosDe(sid);
+    const fx = await fixturesDe(sid);
+    const nombres = new Map(tor.map(t => [t.id, t.n + (t.cat ? ' (' + t.cat + ')' : '')]));
+    for (const f of fx) {
+      const t = new Date(f.startTime).getTime();
+      if (t < Date.now() + antic || t > Date.now() + horizonte) continue;
+      if (SIMU.test(f.liga + ' ' + f.p1 + ' ' + f.p2)) continue;
+      if (!nombres.has(f.tournamentId)) continue;
+      f.liga = f.liga || nombres.get(f.tournamentId);
+      f.sid = sid;
+      if (!porLiga.has(f.tournamentId)) porLiga.set(f.tournamentId, { sid, fixtures: [] });
+      porLiga.get(f.tournamentId).fixtures.push(f);
+      salida.partidos++;
     }
   }
+  /* ligas sin cobertura de Betano: se reintentan una vez al día */
+  const ligas = [...porLiga.entries()].filter(([tid]) => {
+    const c = EST.cobertura[tid];
+    return !(c && !c.ok && Date.now() - c.ts < 20 * 3600e3);
+  });
+  salida.ligas = ligas.length;
+
+  const porSid = {};
+  for (const [tid, L] of ligas) (porSid[L.sid] ||= []).push(tid);
+  const colas = Object.entries(porSid).map(([sid, tids]) => {
+    const lotes = [];
+    for (let i = 0; i < tids.length; i += 5) lotes.push({ sid, tids: tids.slice(i, i + 5) });
+    return lotes;
+  });
+  const lotes = [];
+  while (colas.some(c => c.length)) for (const c of colas) if (c.length) lotes.push(c.shift());
+
+  const fixIdx = new Map();
+  for (const [, L] of porLiga) for (const f of L.fixtures) fixIdx.set(f.fixtureId, f);
+
+  const tope = completo ? Infinity : CFG.maxRequestsPorCiclo;
+  for (const lote of lotes) {
+    if (REQ >= tope) { salida.tope = true; break; }
+    const bet = await oddsBatch(lote.tids, 'betano');
+    const cbt = bet.length ? await oddsBatch(lote.tids, 'cloudbet') : [];
+    const cbIdx = new Map(cbt.map(f => [f.fixtureId, (f.bookmakerOdds || {}).cloudbet]));
+    const conBet = new Set(bet.map(f => f.tournamentId));
+    for (const tid of lote.tids) EST.cobertura[tid] = { ok: !!(conBet.has(tid) || (EST.cobertura[tid] || {}).ok), ts: Date.now() };
+    const dep = CFG.deportes[lote.sid] || lote.sid;
+    salida.porDeporte[dep] = (salida.porDeporte[dep] || 0) + lote.tids.length;
+    /* metadatos de todos los mercados vistos en el lote (1 request la 1ª vez) */
+    const metas = {};
+    for (const f of bet) {
+      const b = (f.bookmakerOdds || {}).betano;
+      for (const mid of Object.keys(b?.markets || {})) if (!(mid in metas)) metas[mid] = await metaDe(mid);
+    }
+    for (const f of bet) {
+      const info = fixIdx.get(f.fixtureId);
+      const b = (f.bookmakerOdds || {}).betano, c = cbIdx.get(f.fixtureId);
+      if (!info || !b || !c) continue;
+      info.bookmakerFixtureId = b.bookmakerFixtureId || null;
+      procesarSync(info, b, c, metas, salida);
+    }
+  }
+  salida.segundos = Math.round((Date.now() - t0) / 1000);
+  salida.requests = REQ;
+  /* memoria: útil para el próximo barrido (marca lo ya visto) */
+  const antes = new Set(Object.keys(EST.senales));
+  EST.senales = {};
+  for (const s of salida.senales) EST.senales[s.sig] = { ...s, ts: Date.now(), conocida: antes.has(s.sig) };
+  EST.stats = { ultimo: new Date().toISOString(), requests: REQ, ...salida.porDeporte };
+  guardarEstado();
+  return salida;
 }
 
-/* ---------- formato de mensajes ---------- */
+/* ---------- reporte ---------- */
 const EMO = { 10: '⚽', 11: '🏀', 12: '🎾', 13: '⚾' };
-function msjSenal(s, tipo) {
-  const cab = tipo === 'ventana'
-    ? '▼ <b>VENTANA</b> — el justo bajó y Betano no siguió'
-    : '🎯 <b>SEÑAL</b>' + (s.sospechosa ? ' ⚠️ <i>ventaja muy alta: verifica en pantalla</i>' : '');
+function bloqueSenal(s, i) {
   return [
-    cab,
-    `${EMO[s.sid] || ''} <b>${escHtml(s.partido)}</b>`,
+    `<b>${i}. ${EMO[s.sid] || ''} ${escHtml(s.partido)}</b>${s.sospechosa ? ' ⚠️' : ''}`,
     `${escHtml(s.liga)} · ${horaTxt(s.inicio)}`,
     `<b>${escHtml(s.lado)}</b> · ${escHtml(s.familia)}`,
-    `Cuota <b>${s.cuota.toFixed(2)}</b> · justo ${s.justo.toFixed(2)}` +
-      (tipo === 'ventana' ? ` (antes ${s.justoAnt.toFixed(2)})` : '') +
-      ` · ventaja <b>+${(s.vent * 100).toFixed(1)}%</b>`,
-    `Monto sugerido: <b>${plata(montoDe(s.cuota, s.vent))}</b>`,
+    `${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${plata(montoDe(s.cuota, s.vent))}`,
     `<a href="${escHtml(s.link)}">Abrir en Betano</a>`,
   ].join('\n');
+}
+async function reportar(r, titulo) {
+  const orden = r.senales.slice().sort((a, b) => b.vent - a.vent);
+  const cab = [
+    `<b>${titulo}</b>`,
+    `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
+    `${r.requests} requests · ${r.segundos}s`,
+    Object.entries(r.porDeporte).map(([d, n]) => `${d} ${n}`).join(' · '),
+    r.tope ? '⚠️ tope de requests alcanzado' : '',
+    '',
+    orden.length ? `<b>${orden.length} señal(es):</b>` : 'Sin señales que pasen tus criterios ahora.',
+  ].filter(Boolean).join('\n');
+  await telegram(cab);
+  if (!orden.length) return;
+  const trozos = [];
+  orden.forEach((s, i) => trozos.push(bloqueSenal(s, i + 1)));
+  await telegram(trozos.join('\n\n'));
+}
+
+/* ---------- comandos ---------- */
+async function cmdEstado() {
+  let cuota = 'no disponible';
+  try {
+    const d = await api('account');   /* gratis: no descuenta */
+    const sub = (d.subscriptions || []).filter(x => x.is_active)[0];
+    if (sub?.request_limit) {
+      const libre = sub.request_limit - (sub.request_count || 0);
+      cuota = `${libre.toLocaleString('es-CL')} de ${sub.request_limit.toLocaleString('es-CL')} libres`;
+    }
+  } catch {}
+  const vivas = Object.values(EST.senales);
+  const ult = EST.stats.ultimo ? horaTxt(EST.stats.ultimo) : 'nunca';
+  await telegram([
+    '<b>Estado del Vigía</b>',
+    `Cuota API: ${cuota}`,
+    `Último barrido: ${ult} (${EST.stats.requests || 0} requests)`,
+    `Señales del último barrido: ${vivas.length}`,
+    '',
+    'Comandos: /barrer · /rapido · /estado · /ayuda',
+  ].join('\n'));
+}
+async function ejecutar(texto) {
+  const c = texto.toLowerCase().replace(/^\//, '').split(/[\s@]/)[0];
+  if (['barrer', 'barrido', 'todo', 'buscar'].includes(c)) {
+    await telegram('🔎 Barriendo <b>todo</b> lo disponible… (~2 min)');
+    const r = await barrer({ completo: true });
+    await reportar(r, '📋 Barrido completo');
+    return true;
+  }
+  if (['rapido', 'rápido', 'ya', 'pronto'].includes(c)) {
+    await telegram('⚡ Barriendo lo que empieza dentro de 6 h…');
+    const r = await barrer({ completo: true, horasMax: 6 });
+    await reportar(r, '📋 Barrido rápido (6 h)');
+    return true;
+  }
+  if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
+  if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
+    await telegram([
+      '<b>Vigía · comandos</b>',
+      '',
+      '/barrer — barrido completo de todo lo disponible (~110 requests, ~2 min)',
+      '/rapido — solo lo que empieza dentro de 6 h (~30 requests)',
+      '/estado — cuota de API y último barrido (gratis)',
+      '/ayuda — esta lista',
+    ].join('\n'));
+    return true;
+  }
+  return false;
 }
 
 /* ---------- main ---------- */
 try {
-  await ciclo();
-  podar();
-  let enviadas = 0;
-  for (const s of nuevas.sort((a, b) => b.vent - a.vent)) {
-    if (enviadas >= CFG.maxAlertasPorCiclo) break;
-    /* solo se marca avisada si Telegram la recibió: si falla, queda
-       pendiente y se reintenta en el próximo ciclo */
-    if (await telegram(msjSenal(s, 'nueva'))) { s.avisada = true; enviadas++; }
-    else break;
+  if (MODO === 'barrer' || MODO === 'rapido') {
+    const r = await barrer({ completo: true, horasMax: MODO === 'rapido' ? 6 : null });
+    await reportar(r, MODO === 'rapido' ? '📋 Barrido rápido (6 h)' : '📋 Barrido completo');
+  } else {
+    /* ESCUCHA: no gasta requests de OddsPapi hasta que pidas algo */
+    const hasta = Date.now() + SEGUNDOS_ESCUCHA * 1000;
+    console.log(`Escuchando comandos hasta ${new Date(hasta).toISOString()}`);
+    let atendidos = 0;
+    while (Date.now() < hasta) {
+      const msgs = await tgUpdates();
+      for (const m of msgs) {
+        console.log('Comando recibido:', m);
+        try { if (await ejecutar(m)) atendidos++; }
+        catch (e) { await telegram('❌ Error: ' + escHtml(e.message)); }
+      }
+      if (!msgs.length) await espera(2000);
+    }
+    console.log(`Escucha terminada · ${atendidos} comando(s) atendidos · ${REQ} requests`);
   }
-  /* señales vivas que quedaron sin avisar por un fallo anterior de Telegram */
-  for (const s of Object.values(EST.senales)) {
-    if (s.avisada || nuevas.includes(s)) continue;
-    if (enviadas >= CFG.maxAlertasPorCiclo) break;
-    if (await telegram(msjSenal(s, 'nueva'))) { s.avisada = true; enviadas++; }
-    else break;
-  }
-  const resto = nuevas.length - Math.min(nuevas.length, CFG.maxAlertasPorCiclo);
-  if (resto > 0) await telegram(`…y ${resto} señal(es) más bajo el tope por ciclo (suben la próxima si siguen vivas).`);
-  for (const s of ventanas) await telegram(msjSenal(s, 'ventana'));
-  if (muertas.length) await telegram('✕ Ajustadas por Betano (ya no valen): ' +
-    muertas.map(s => `${escHtml(s.partido)} · ${escHtml(s.lado)}`).join(' — '));
-  EST.stats = { ...EST.stats, ultimo: new Date().toISOString(), requests: REQ, candidatas, vivas: Object.keys(EST.senales).length, nuevas: nuevas.length, ventanas: ventanas.length };
-  fs.writeFileSync(ESTADO_PATH, JSON.stringify(EST));
-  console.log(`Ciclo OK · ${REQ} requests · ${candidatas} líneas evaluadas · ${nuevas.length} nuevas · ${ventanas.length} ventanas · ${Object.keys(EST.senales).length} vivas`);
+  guardarEstado();
 } catch (err) {
-  fs.writeFileSync(ESTADO_PATH, JSON.stringify(EST));   /* lo avanzado no se pierde */
-  console.error('Ciclo con error tras ' + REQ + ' requests:', err.message);
+  guardarEstado();
+  console.error('Error:', err.message);
+  try { await telegram('❌ El Vigía falló: ' + escHtml(err.message)); } catch {}
   process.exit(1);
 }

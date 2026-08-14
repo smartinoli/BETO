@@ -1,5 +1,20 @@
 # Vigía
 
+> **Modo actual: bajo demanda.** El bot no manda alertas solo: escucha tu chat
+> de Telegram y barre cuando se lo pides.
+>
+> | Comando | Qué hace | Costo |
+> |---|---|---|
+> | `/barrer` | barrido completo de todo lo disponible | ~110 requests, ~2 min |
+> | `/rapido` | solo lo que empieza dentro de 6 h | ~30 requests |
+> | `/estado` | cuota de API y último barrido | gratis |
+> | `/ayuda` | lista de comandos | gratis |
+>
+> Escuchar no gasta requests de OddsPapi. El cron levanta un escucha cada 30
+> min que vive ~28 min; si mandas un comando cuando no hay ninguno vivo, el
+> mensaje espera en Telegram y se atiende al despertar el siguiente.
+
+
 Barrido continuo de Betano vs el justo de Cloudbet (des-vigado) sobre OddsPapi v4.
 Corre en GitHub Actions cada 15 minutos dentro del horario configurado y manda a
 Telegram cada señal nueva, cada ventana ▼ (el justo bajó y Betano no siguió) y las
