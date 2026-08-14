@@ -1,0 +1,27 @@
+{
+  "comentario": "Configuración del Vigía. Edita y commitea: el próximo ciclo la toma.",
+  "banca": 1800000,
+  "kellyDivisor": 4,
+  "topePctBanca": 0.05,
+  "montoMinimo": 5000,
+  "cuotaMaxima": 2.60,
+  "anticipacionMin": 15,
+  "horizonteHoras": 30,
+  "margenLocal": 0.0,
+  "umbralSospechosa": 0.15,
+  "soloLineaCentral": true,
+  "sinCuartos": true,
+  "devig": "mult",
+  "horarioSantiago": { "inicio": 9, "fin": 25 },
+  "maxRequestsPorCiclo": 45,
+  "maxAlertasPorCiclo": 8,
+  "avisarVentana": true,
+  "avisarMuerte": true,
+  "ventajaMinima": {
+    "10": 0.025,
+    "11": 0.015,
+    "12": 0.025,
+    "13": 0.020
+  },
+  "deportes": { "10": "Fútbol", "11": "Básquet", "12": "Tenis", "13": "Béisbol" }
+}

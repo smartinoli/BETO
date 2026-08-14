@@ -1,0 +1,46 @@
+name: Vigía
+
+on:
+  schedule:
+    # UTC. Chile (America/Santiago) es UTC-4 en invierno austral / UTC-3 en verano.
+    # Cada 15 min entre ~09:00 y ~01:00 hora chilena. El script además
+    # verifica el horario en hora de Santiago y se apaga solo fuera de rango.
+    - cron: '*/15 12-23 * * *'
+    - cron: '*/15 0-5 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vigia
+  cancel-in-progress: false
+
+jobs:
+  vigia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Ciclo del Vigía
+        env:
+          ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node vigia/vigia.mjs
+
+      - name: Guardar estado (memoria entre ciclos)
+        if: always()
+        run: |
+          git config user.name "vigia-bot"
+          git config user.email "vigia@users.noreply.github.com"
+          git add vigia/estado.json
+          git diff --cached --quiet && exit 0
+          git commit -m "vigia: estado $(date -u +%H:%M)"
+          git pull --rebase origin ${GITHUB_REF_NAME} || true
+          git push origin HEAD:${GITHUB_REF_NAME}
