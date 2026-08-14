@@ -1,0 +1,178 @@
+<title>Llenar Boleta</title>
+<style>
+  :root{
+    --fondo:#0E2A22; --panel:#143A2E; --panel2:#1A483A; --lin:#2A5A45;
+    --tiza:#E8EDE9; --dim:#8FAA9C; --ambar:#EFB93F; --verde:#4ADE9B; --rojo:#F2705C;
+    --mono:"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --disp:"Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fondo);color:var(--tiza);font-family:var(--mono);
+    font-size:14px;line-height:1.55;padding:28px 20px 60px}
+  .lienzo{max-width:760px;margin:0 auto}
+  h1{font-family:var(--disp);font-size:24px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ambar);margin:0 0 6px}
+  .sub{color:var(--dim);font-size:13px;max-width:62ch;margin-bottom:22px}
+  h2{font-family:var(--disp);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ambar);margin:0 0 10px}
+  .caja{background:var(--panel);border:1px solid var(--lin);border-radius:10px;
+    padding:20px;margin-bottom:16px}
+  .arrastrar{display:inline-block;background:var(--ambar);color:#12352B;text-decoration:none;
+    font-family:var(--disp);font-weight:700;font-size:16px;letter-spacing:.08em;
+    text-transform:uppercase;padding:14px 26px;border-radius:8px;cursor:grab;
+    box-shadow:0 4px 14px rgba(239,185,63,.25)}
+  .arrastrar:active{cursor:grabbing}
+  ol{margin:0;padding-left:22px}
+  li{margin:9px 0;max-width:64ch}
+  code{background:var(--panel2);border:1px solid var(--lin);border-radius:4px;
+    padding:1px 6px;font-size:12px}
+  .nota{color:var(--dim);font-size:12.5px;max-width:66ch}
+  .paso{display:flex;gap:12px;margin:12px 0;align-items:baseline}
+  .paso b{font-family:var(--disp);color:var(--ambar);font-size:12px;letter-spacing:.06em;white-space:nowrap}
+  .aviso{border-left:3px solid var(--ambar);padding-left:14px;margin-top:14px;color:var(--dim);font-size:12.5px}
+</style>
+
+<div class="lienzo">
+<h1>Llenar boleta</h1>
+<p class="sub">Un marcador que abre la selección exacta de la señal en tu Betano.
+Los links del Vigía llevan escondido el identificador interno de Betano para esa
+cuota; este marcador lo lee y le hace clic por ti.</p>
+
+<div class="caja">
+  <h2>1 · Instalar (una sola vez)</h2>
+  <p class="nota" style="margin:0 0 14px">Arrastra este botón a la barra de marcadores de tu navegador.
+  No le hagas clic aquí: arrástralo.</p>
+  <a class="arrastrar" id="bm" href="#">⬇ Llenar boleta</a>
+  <p class="nota" style="margin-top:14px">Si no ves la barra de marcadores:
+  <code>Ctrl/Cmd + Shift + B</code>.</p>
+</div>
+
+<div class="caja">
+  <h2>2 · Usar</h2>
+  <div class="paso"><b>Paso 1</b><span>En el mensaje del Vigía, toca <b>Abrir en Betano</b>.</span></div>
+  <div class="paso"><b>Paso 2</b><span>Cuando cargue la página del partido, haz clic en el marcador
+    <b>Llenar boleta</b>.</span></div>
+  <div class="paso"><b>Paso 3</b><span>Busca la selección, la marca y te avisa arriba a la derecha:
+    verde si la encontró por identificador (exacta), ámbar si la ubicó por el texto de la línea
+    (revisa la boleta), rojo si no la encontró.</span></div>
+  <p class="aviso">Siempre revisa la boleta antes de confirmar: el monto y la confirmación
+  final los pones tú. Si la cuota que ves difiere de la del mensaje, Betano ya movió el precio
+  y la ventaja pudo desaparecer.</p>
+</div>
+
+<div class="caja">
+  <h2>Cómo busca la selección</h2>
+  <ol>
+    <li><b>Por identificador de Betano</b> — el link trae el <code>bookmakerOutcomeId</code>
+      del feed; si ese id aparece en la página, el clic es exacto y no hay ambigüedad.</li>
+    <li><b>Por estructura</b> — si el id no está en el HTML, busca la cuota exacta del mensaje
+      junto al número de línea y la dirección (Más/Menos, hándicap), como respaldo.</li>
+    <li>Reintenta ~12 segundos mientras la página termina de cargar sus mercados, y despliega
+      los bloques cerrados que puedan contener la línea.</li>
+  </ol>
+</div>
+</div>
+
+<script>
+/* El marcador: se ejecuta en la página de Betano. Lee el hash #vg=oid~mid~lado~cuota */
+function LLENAR_BOLETA(){
+  var h = location.hash || '';
+  var m = h.match(/vg=([^&]+)/);
+  function aviso(txt, color){
+    var d = document.createElement('div');
+    d.textContent = txt;
+    d.style.cssText = 'position:fixed;top:14px;right:14px;z-index:2147483647;max-width:340px;'
+      + 'padding:12px 16px;border-radius:8px;font:600 13px/1.4 system-ui,sans-serif;'
+      + 'color:#12352B;background:' + color + ';box-shadow:0 6px 24px rgba(0,0,0,.35)';
+    document.body.appendChild(d);
+    setTimeout(function(){ d.remove(); }, 9000);
+  }
+  if (!m) { aviso('Este link no trae datos de selección. Ábrelo desde el mensaje del Vigía.', '#EFB93F'); return; }
+  var p = decodeURIComponent(m[1]).split('~');
+  var oid = p[0] || '', lado = decodeURIComponent(p[2] || ''), cuota = (p[3] || '').replace(',', '.');
+  var norm = function(t){ return (t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/[−–]/g,'-').replace(/\s+/g,' ').trim(); };
+  var nlado = norm(lado);
+  var nums = nlado.match(/[+-]?\d+(?:[.,]\d+)?/g);
+  var linea = nums ? nums[nums.length-1].replace(',','.') : null;
+  var dir = /(^|\s)(mas|over)(\s|\d|$)/.test(nlado) ? 'mas'
+          : (/(^|\s)(menos|under)(\s|\d|$)/.test(nlado) ? 'menos' : null);
+  var equipo = nlado.replace(/[+-]?\d+(?:[.,]\d+)?/g,' ').replace(/\b(mas|menos|over|under|de)\b/g,' ')
+    .split(/[^a-z0-9]+/).filter(function(w){ return w.length > 2; });
+
+  function clickeable(e){
+    return e.closest('button,[role="button"],a,[data-qa*="selection" i],[class*="selection" i],[class*="odd" i]') || e;
+  }
+  function porId(){
+    if (!oid) return null;
+    var todos = document.querySelectorAll('*'), i, j, el, at;
+    for (i = 0; i < todos.length; i++) {
+      el = todos[i];
+      if (!el.attributes || el.children.length > 3) continue;
+      for (j = 0; j < el.attributes.length; j++) {
+        at = el.attributes[j];
+        if (at.value && at.value.indexOf(oid) > -1) return clickeable(el);
+      }
+    }
+    return null;
+  }
+  function esCuota(e){
+    return e.children.length === 0 && /^\d{1,2}[.,]\d{2}$/.test((e.textContent||'').trim());
+  }
+  function porTexto(){
+    var hojas = [].slice.call(document.querySelectorAll('span,div,button,b,strong')).filter(esCuota);
+    var mejor = null, mejorPuntos = 0;
+    hojas.forEach(function(e){
+      var val = (e.textContent||'').trim().replace(',', '.');
+      var puntos = 0;
+      if (cuota && Math.abs(parseFloat(val) - parseFloat(cuota)) < 0.005) puntos += 3;
+      var ctx = '', p = e.parentElement, k;
+      for (k = 0; k < 4 && p; k++) { ctx += ' ' + norm(p.textContent||''); p = p.parentElement; }
+      if (linea && ctx.indexOf(linea) > -1) puntos += 3;
+      if (dir && new RegExp('(^|\\s)' + (dir === 'mas' ? '(mas|over)' : '(menos|under)')).test(ctx)) puntos += 2;
+      equipo.forEach(function(w){ if (ctx.indexOf(w) > -1) puntos += 1; });
+      if (puntos > mejorPuntos) { mejorPuntos = puntos; mejor = e; }
+    });
+    return mejorPuntos >= 4 ? clickeable(mejor) : null;
+  }
+  function abrirBloques(){
+    [].slice.call(document.querySelectorAll('button,[role="button"]')).forEach(function(b){
+      var t = norm(b.textContent);
+      if (/mostrar (todo|mas)|ver todo|todos los mercados/.test(t) && b.offsetParent) { try { b.click(); } catch(e){} }
+    });
+  }
+  var intentos = 0;
+  var iv = setInterval(function(){
+    intentos++;
+    if (intentos === 3) abrirBloques();
+    var el = porId();
+    var exacto = !!el;
+    if (!el) el = porTexto();
+    if (el) {
+      clearInterval(iv);
+      try {
+        el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        el.style.outline = '3px solid #EFB93F';
+        el.click();
+        aviso(exacto ? '✓ Selección marcada por identificador. Revisa la boleta, pon el monto y confirma.'
+                     : '⚠ Marcada por texto (' + lado + ' @' + cuota + '). VERIFICA la boleta antes de confirmar.',
+              exacto ? '#4ADE9B' : '#EFB93F');
+      } catch (e) {
+        aviso('La encontré pero no pude marcarla: ' + lado + ' @' + cuota, '#EFB93F');
+      }
+      return;
+    }
+    if (intentos >= 24) {
+      clearInterval(iv);
+      aviso('No encontré "' + lado + ' @' + cuota + '" en esta página. Márcala a mano.', '#F2705C');
+    }
+  }, 500);
+}
+document.getElementById('bm').setAttribute('href',
+  'javascript:' + encodeURIComponent('(' + LLENAR_BOLETA.toString() + ')()'));
+document.getElementById('bm').addEventListener('click', function(ev){
+  ev.preventDefault();
+  alert('No le hagas clic aquí: ARRÁSTRALO a la barra de marcadores del navegador. '
+    + 'Después lo usas estando en la página del partido en Betano.');
+});
+</script>

@@ -106,9 +106,16 @@ const hoyKey = new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/Santiago' }
 const plata = n => '$' + Math.round(n).toLocaleString('es-CL');
 const slug = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-const linkDe = f => f.bookmakerFixtureId
-  ? `https://lat.betano.com/cuotas-de-partido/${slug(f.p1)}-${slug(f.p2)}/${f.bookmakerFixtureId}/`
-  : 'https://lat.betano.com/';
+/* El link lleva un hash propio (#vg=...) que Betano ignora pero el marcador
+   "Llenar boleta" lee para ubicar y clickear la selección exacta. */
+const linkDe = (f, sel) => {
+  const base = f.bookmakerFixtureId
+    ? `https://lat.betano.com/cuotas-de-partido/${slug(f.p1)}-${slug(f.p2)}/${f.bookmakerFixtureId}/`
+    : 'https://lat.betano.com/';
+  if (!sel) return base;
+  const h = [sel.oid || '', sel.mid || '', sel.lado || '', sel.cuota || ''].map(encodeURIComponent).join('~');
+  return base + '#vg=' + h;
+};
 const horaTxt = iso => {
   const t = new Date(iso);
   const dia = new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/Santiago' }).format(t);
@@ -284,13 +291,15 @@ function procesarSync(info, bet, cb, metas, salida) {
     const oB = bet.markets[mid].outcomes || {}, oC = (cb.markets || {})[mid]?.outcomes || {};
     const oids = Object.keys(oB);
     if (oids.length !== 2) continue;
-    const pB = {}, pC = {}; let ok = true;
+    const pB = {}, pC = {}, idB = {}; let ok = true;
     for (const oid of oids) {
       const b0 = (oB[oid].players || {})['0'], c0 = ((oC[oid] || {}).players || {})['0'];
       if (!b0?.active || !(b0.price > 1) || !c0?.active || !(c0.price > 1)) { ok = false; break; }
       pB[oid] = b0.price; pC[oid] = c0.price;
+      idB[oid] = b0.bookmakerOutcomeId || null;   /* id nativo de Betano */
     }
     if (!ok) continue;
+    const bmid = bet.markets[mid].bookmakerMarketId || null;
     const [jA, jB] = desvigar(pC[oids[0]], pC[oids[1]]);
     const justos = { [oids[0]]: jA, [oids[1]]: jB };
     const umbral = Math.max(CFG.ventajaMinima[info.sid], fam.castigada ? (CFG.umbralCastigado ?? 0.05) : 0);
@@ -314,7 +323,9 @@ function procesarSync(info, bet, cb, metas, salida) {
         partido: info.p1 + ' vs ' + info.p2, liga: info.liga, sid: info.sid,
         inicio: info.startTime, familia: famLabel, lado, cuota: +cuota.toFixed(3),
         justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
-        link: linkDe(info), sospechosa: vent > CFG.umbralSospechosa,
+        bOid: idB[oid], bMid: bmid,
+        link: linkDe(info, { oid: idB[oid], mid: bmid, lado, cuota: pB[oid].toFixed(2) }),
+        sospechosa: vent > CFG.umbralSospechosa,
       };
       const mejor = porFam.get(famLabel);
       if (!mejor || s.vent > mejor.vent) porFam.set(famLabel, s);
