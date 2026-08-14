@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAZADOR v7 · fechas en hora local de Chile (adiós desfase UTC) · fechas visibles en filtros</title>
+<style>
+:root{
+  --fondo:#0E2A22; --panel:#143A2E; --panel2:#1A483A; --lin:#2A5A45;
+  --tiza:#E8EDE9; --dim:#8FAA9C; --ambar:#EFB93F; --verde:#4ADE9B;
+  --rojo:#F2705C; --azul:#8FC4E0;
+  --mono:"SF Mono",Menlo,Consolas,monospace;
+  --disp:"Avenir Next","Helvetica Neue",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--tiza);
+  font-family:var(--mono);font-size:14px;line-height:1.5;padding:18px}
+h1{font-family:var(--disp);font-size:20px;letter-spacing:.12em;text-transform:uppercase;
+  margin:0 0 4px;color:var(--ambar)}
+.sub{color:var(--dim);font-size:12.5px;margin-bottom:14px}
+.caja{background:var(--panel);border:1px solid var(--lin);border-radius:10px;
+  padding:16px;margin-bottom:14px}
+.tit{font-family:var(--disp);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ambar);margin-bottom:12px}
+.fila{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.campo{display:flex;flex-direction:column;gap:5px}
+label{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+input,select{background:var(--panel2);border:1px solid var(--lin);color:var(--tiza);
+  font-family:var(--mono);font-size:14px;padding:9px 11px;border-radius:6px}
+input[type=range]{padding:0;width:120px}
+button{font-family:var(--disp);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:700;padding:11px 18px;border-radius:6px;border:0;cursor:pointer;
+  background:var(--ambar);color:#12352B}
+button:disabled{opacity:.45;cursor:default}
+button.sec{background:transparent;color:var(--ambar);border:1px solid var(--ambar)}
+.mini{font-size:11px;padding:5px 9px;background:transparent;color:var(--dim);
+  border:1px solid var(--lin);letter-spacing:.05em}
+.mini.g{color:var(--verde);border-color:var(--verde)}
+.mini.p{color:var(--rojo);border-color:var(--rojo)}
+.kpi{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:14px}
+.kpi .c{background:var(--panel);border:1px solid var(--lin);border-radius:8px;
+  padding:10px 16px;min-width:100px}
+.kpi .l{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.kpi .v{font-size:19px;font-weight:600;margin-top:2px}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tab{font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;padding:11px 20px;border-radius:8px;cursor:pointer;
+  background:var(--panel);border:1px solid var(--lin);color:var(--dim)}
+.tab.act{background:var(--ambar);color:#12352B;border-color:var(--ambar)}
+.estado{font-size:12.5px;padding:11px 13px;border-radius:6px;margin-top:12px;display:none}
+.estado.on{display:block}
+.estado.ok{background:#17493A;border:1px solid var(--verde)}
+.estado.err{background:#4A2A22;border:1px solid var(--rojo)}
+.estado.info{background:var(--panel2);border:1px solid var(--lin)}
+.scroll{overflow-x:auto;border:1px solid var(--lin);border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--panel2);text-align:left;padding:8px 10px;font-size:10px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+td{padding:8px 10px;border-top:1px solid var(--lin);vertical-align:middle}
+tr.vac td{color:var(--dim);text-align:center;padding:22px}
+.der{text-align:right}
+.g{color:var(--verde)} .p{color:var(--rojo)} .am{color:var(--ambar)} .dim{color:var(--dim)}
+.par{font-family:var(--disp);font-weight:600;font-size:13px}
+.chip{display:inline-block;font-size:10px;padding:2px 7px;border-radius:4px;
+  background:var(--panel2);border:1px solid var(--lin);color:var(--dim)}
+.sen{background:#17493A}
+.ventana{background:#3D3517}
+.neg{opacity:.45}
+a.ir{display:inline-block;background:var(--ambar);color:#12352B;text-decoration:none;
+  font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.08em;
+  padding:5px 11px;border-radius:5px}
+textarea{width:100%;min-height:60px;background:var(--panel2);border:1px solid var(--lin);
+  color:var(--dim);font-family:var(--mono);font-size:11px;padding:9px;border-radius:6px}
+.fotos{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.foto{font-size:11px;padding:4px 10px;border-radius:5px;background:var(--panel2);
+  border:1px solid var(--lin);color:var(--dim)}
+.foto.act{border-color:var(--ambar);color:var(--ambar)}
+</style>
+</head>
+<body>
+
+<h1>Cazador de rezagos</h1>
+<div class="sub">Tres vetas · fotos comparadas: cuando el justo se mueve y Betano se queda quieto,
+la ventana se abre — y la columna «deriva» te la muestra en vivo.</div>
+
+<div class="kpi">
+  <div class="c"><div class="l">Banca</div>
+    <input type="number" id="banca" value="1800000" step="50000"
+      style="width:125px;background:transparent;border:0;border-bottom:1px solid var(--ambar);
+      font-size:18px;font-weight:600;text-align:right;padding:0 2px;color:var(--tiza);font-family:var(--mono)"></div>
+  <div class="c"><div class="l">Partidos</div><div class="v" id="k-part">0</div></div>
+  <div class="c"><div class="l">Líneas</div><div class="v" id="k-lin">0</div></div>
+  <div class="c"><div class="l">Señales</div><div class="v am" id="k-sen">0</div></div>
+  <div class="c"><div class="l">Ventanas ▼</div><div class="v g" id="k-vent">0</div></div>
+  <div class="c"><div class="l">Requests</div><div class="v" id="k-req">0</div></div>
+  <div class="c"><div class="l">API libres</div><div class="v" id="k-mes">—</div></div>
+</div>
+
+<div class="tabs">
+  <div class="tab act" data-dep="basquet" onclick="setDep('basquet')">🏀 Básquet</div>
+  <div class="tab" data-dep="futbol" onclick="setDep('futbol')">⚽ Fútbol</div>
+  <div class="tab" data-dep="beisbol" onclick="setDep('beisbol')">⚾ Béisbol</div>
+</div>
+
+<div class="caja">
+  <div class="tit">1 · Ajustes <span id="t-dep" class="chip"></span></div>
+  <div class="fila">
+    <div class="campo"><label for="key">API key</label>
+      <input type="text" id="key" style="min-width:280px" placeholder="pega tu key"></div>
+    <div class="campo"><label for="dias">Ventana</label>
+      <select id="dias"><option value="1">Solo hoy</option><option value="2" selected>Hoy + mañana</option>
+        <option value="3">3 días</option></select></div>
+    <div class="campo"><label for="mfijo">Monto ($)</label>
+      <input type="number" id="mfijo" value="15000" step="1000" style="width:110px"></div>
+    <div class="campo"><label>Ventaja mín. <span id="vmin-v"></span>%</label>
+      <input type="range" id="vmin" min="5" max="60" step="5"></div>
+    <div class="campo"><label>Cuota máx. <span id="cmax-v"></span></label>
+      <input type="range" id="cmax" min="150" max="260" step="5"></div>
+    <div class="campo"><label for="antic">Anticipación <span id="antic-v">15</span> min</label>
+      <input type="range" id="antic" min="0" max="120" step="15" value="15"></div>
+  </div>
+  <div class="fila" style="margin-top:14px">
+    <button id="btn-buscar">Tomar foto · analizar</button>
+    <button class="sec" id="btn-cont" style="display:none">Continuar</button>
+    <button class="sec" id="btn-limpiar">Limpiar deporte</button>
+  </div>
+  <div class="fotos" id="fotos"></div>
+  <div class="estado" id="e1"></div>
+</div>
+
+<div class="caja">
+  <div class="tit">2 · Análisis <span id="t-dep2" class="chip"></span></div>
+  <div class="fila" style="margin-bottom:10px;align-items:center">
+    <div class="campo"><label for="filtro">Mostrar</label>
+      <select id="filtro">
+        <option value="todo">Todas las líneas</option>
+        <option value="sen" selected>Señales + ventanas</option>
+      </select></div>
+    <div class="campo"><label for="fdia">Día</label>
+      <select id="fdia">
+        <option value="todo">Todos</option>
+        <option value="hoy">Solo HOY</option>
+        <option value="man">Solo MAÑANA</option>
+      </select></div>
+    <div class="campo"><label for="fhoras">Empieza en</label>
+      <select id="fhoras">
+        <option value="0">Cualquier hora</option>
+        <option value="2">Próximas 2 h</option>
+        <option value="4">Próximas 4 h</option>
+        <option value="8">Próximas 8 h</option>
+      </select></div>
+    <div class="campo"><label>Cuota ≤ <span id="fcuo-v">2,10</span></label>
+      <input type="range" id="fcuo" min="150" max="300" step="5" value="210"></div>
+    <div class="campo"><label for="fcentral">Líneas</label>
+      <select id="fcentral">
+        <option value="central" selected>Solo la central (la de tu Betano)</option>
+        <option value="todas">Todas las alternativas del feed</option>
+      </select></div>
+    <div class="campo"><label for="orden">Ordenar</label>
+      <select id="orden">
+        <option value="vent">Por ventaja</option>
+        <option value="deriva">Por deriva</option>
+        <option value="hora">Por hora</option>
+      </select></div>
+  </div>
+  <div style="color:var(--dim);font-size:11.5px;margin-bottom:10px" id="resumen"></div>
+  <div class="scroll"><table>
+  <thead><tr><th>Hora</th><th>Partido</th><th>Familia</th><th>Lado</th>
+  <th class="der">Betano</th><th>Justo</th><th>Vent.</th>
+  <th>Deriva vs foto anterior</th><th>Monto</th><th>Ir</th><th></th></tr></thead>
+  <tbody id="tabla"><tr class="vac"><td colspan="11">Toma la primera foto.</td></tr></tbody>
+  </table></div>
+</div>
+
+<div class="caja">
+  <div class="tit">3 · Registro · todos los deportes</div>
+  <div class="scroll"><table>
+  <thead><tr><th>Partido</th><th>Apuesta</th><th>Familia</th><th class="der">Cuota</th>
+  <th>Justo</th><th>Vent.</th><th>Monto</th><th>Estado</th><th>Resultado</th></tr></thead>
+  <tbody id="reg"><tr class="vac"><td colspan="9">Sin apuestas.</td></tr></tbody>
+  </table></div>
+  <div id="calib" style="margin-top:14px"></div>
+  <div class="campo" style="margin-top:14px">
+    <label for="datos">Respaldo · copia esto a una nota tuya cada semana</label>
+    <textarea id="datos" spellcheck="false"></textarea></div>
+  <button class="sec" id="btn-cargar" style="margin-top:8px">Cargar respaldo (fusiona)</button>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const API='https://api.oddspapi.io/v4';
+const KEY_DEF='b1ea7af0-9b07-401d-bfad-7d4cb7684ef3';
+
+/* ============ CONFIGURACIÓN POR DEPORTE ============ */
+const DEPS={
+  basquet:{sportId:'11',nombre:'Básquet',vminDef:15,cmaxDef:210,
+    url:'https://lat.betano.com/sport/basquetbol/'},
+  futbol:{sportId:'10',nombre:'Fútbol',vminDef:25,cmaxDef:210,
+    url:'https://lat.betano.com/sport/futbol/'},
+  beisbol:{sportId:'13',nombre:'Béisbol',vminDef:20,cmaxDef:210,
+    url:'https://lat.betano.com/sport/beisbol/'}
+};
+let DEP='basquet';
+
+/* Detectores de familia: por estructura del nombre, no texto exacto. */
+function familiaDe(dep,nombreMk,h){
+  const n=(nombreMk||'').toLowerCase();
+  if(/team|player|home|away|corner|card|booking/.test(n))return null;
+  if(dep==='basquet'){
+    if(!/over|under|total/.test(n))return null;
+    if(/(1st|first|primer)\s*(quarter|cuarto)|q1\b/.test(n))return {fam:'Básquet · Total 1C',lado:'ou'};
+    if(/(1st|first|primer)\s*(half|tiempo|mitad)|h1\b/.test(n))return {fam:'Básquet · Total 1T',lado:'ou'};
+    return null;}
+  if(dep==='futbol'){
+    if(!/handicap/.test(n))return null;
+    if(/corner|card|booking/.test(n))return null;
+    const es1T=/(1st|first|primer)\s*(half|tiempo|mitad)|h1\b/.test(n);
+    /* solo hándicaps de favorito: 0, -0.5, -1 (o el espejo +0.5/+1 del rival) */
+    if(h===null||h===undefined)return null;
+    const ha=Math.abs(h);
+    if(ha!==0&&ha!==0.5&&ha!==1)return null;
+    return {fam:'Fútbol · AH '+(es1T?'1T':'FT'),lado:'ah'};}
+  if(dep==='beisbol'){
+    /* todo el abanico de entradas: totales Y hándicaps (run lines),
+       tanto del juego completo como de tramos (1ª entrada, primeras 5). */
+    const seg=/(1st|first|primera)s?\s*(5|five|cinco)|f5\b/.test(n)?' 1-5'
+      :(/(1st|first|primera)\s*(inning|entrada)/.test(n)?' 1ª entr.':'');
+    if(/handicap|run\s*line|runline|spread/.test(n))
+      return {fam:'Béisbol · Hándicap'+seg,lado:'ah'};
+    if(/over|under|total/.test(n))
+      return {fam:'Béisbol · Total'+seg,lado:'ou'};
+    return null;}
+  return null;}
+
+/* ============ ESTADO ============ */
+let REQ=0, MK={}, REGISTRO=[];
+/* Por deporte: lineas[], vistos{}, fotos[] (últimas 5 con ts) */
+const EST_DEP={};
+function cargar(k,def){try{const v=localStorage.getItem('cz_'+k);return v?JSON.parse(v):def;}catch(e){return def;}}
+function guardar(k,v){try{localStorage.setItem('cz_'+k,JSON.stringify(v));}catch(e){}}
+Object.keys(DEPS).forEach(function(d){
+  EST_DEP[d]={lineas:cargar(d+'_lineas',[]),vistos:cargar(d+'_vistos',{}),
+              fotos:cargar(d+'_fotos',[])};});
+/* Purga única (v4): las líneas guardadas antes del arreglo de etiquetas
+   tenían Más/Menos volteados. Se limpian y la próxima foto reconstruye
+   con nombres correctos. El registro NO se toca. */
+if(!cargar('fixlados',false)){
+  Object.keys(DEPS).forEach(function(d){
+    EST_DEP[d].lineas=[];EST_DEP[d].vistos={};EST_DEP[d].fotos=[];
+    guardar(d+'_lineas',[]);guardar(d+'_vistos',{});guardar(d+'_fotos',[]);});
+  guardar('fixlados',true);}
+REGISTRO=cargar('registro',[]);
+let APOSTADAS=cargar('apostadas',{});   /* id de línea -> true: no vuelve a la tabla */
+
+/* ============ HELPERS ============ */
+const plata=n=>'$'+Math.round(n).toLocaleString('es-CL');
+/* Fecha en hora LOCAL del usuario (Chile), nunca UTC: un partido de hoy
+   21:00 es 01:00 UTC de mañana y el sistema lo archivaba en el día equivocado. */
+const dd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const ddCorta=d=>String(d.getDate()).padStart(2,'0')+'-'+String(d.getMonth()+1).padStart(2,'0');
+function hhmm(iso){
+  if(!iso)return '';
+  const t=new Date(iso),a=new Date();
+  const h=t.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
+  if(dd(t)===dd(a))return 'HOY '+h;
+  if(dd(t)===dd(new Date(a.getTime()+864e5)))return 'MAÑ '+h;
+  return String(t.getDate()).padStart(2,'0')+'-'+String(t.getMonth()+1).padStart(2,'0')+' '+h;}
+const horaCorta=ts=>new Date(ts).toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
+function msg(t,c){const e=$('e1');e.className='estado on '+(c||'info');e.innerHTML=t;}
+
+let ULTIMO=0;
+async function pedir(ruta){
+  const espera=Math.max(0,ULTIMO+450-Date.now());
+  if(espera)await new Promise(r=>setTimeout(r,espera));
+  ULTIMO=Date.now();
+  const k=$('key').value.trim();
+  const sep=ruta.indexOf('?')>-1?'&':'?';
+  const u=API+'/'+ruta+sep+'apiKey='+encodeURIComponent(k);
+  let r=await fetch(u);
+  if(r.status===429){await new Promise(z=>setTimeout(z,900));ULTIMO=Date.now();r=await fetch(u);}
+  if(!r.ok){let d='';try{d=(await r.text()).slice(0,160);}catch(e){}
+    throw new Error(r.status+' '+d);}
+  REQ++;$('k-req').textContent=REQ;
+  return r.json();}
+
+function desvigar(pA,pB){const S=1/pA+1/pB;return {a:S*pA,b:S*pB};}
+/* meta.outcomes es una LISTA [{outcomeId,outcomeName}]: se busca por id.
+   (Indexarla directo devolvía basura y volteaba las etiquetas Más/Menos.) */
+function crudoDe(meta,oid){
+  const o=meta&&meta.outcomes;
+  if(Array.isArray(o)){
+    const x=o.filter(z=>String(z.outcomeId)===String(oid))[0];
+    return x?String(x.outcomeName):'';}
+  if(o&&typeof o==='object')return String(o[oid]||'');
+  return '';}
+/* Busca en el objeto cualquier campo que parezca "hora de actualización"
+   del dato en la fuente (lastUpdate, updatedAt, timestamp...). Devuelve
+   epoch ms o null. Sirve para medir el rezago real de OddsPapi. */
+function buscaTs(){
+  for(let a=0;a<arguments.length;a++){
+    const o=arguments[a];
+    if(!o||typeof o!=='object')continue;
+    const ks=Object.keys(o);
+    for(let i=0;i<ks.length;i++){
+      if(!/changed|update|last|stamp|time$/i.test(ks[i])||/start/i.test(ks[i]))continue;
+      const v=o[ks[i]];
+      let t=null;
+      if(typeof v==='number')t=v<1e11?v*1000:v;      /* epoch s o ms */
+      else if(typeof v==='string'&&!isNaN(Date.parse(v)))t=Date.parse(v);
+      if(t&&t>1.5e12&&t<Date.now()+864e5)return t;}}
+  return null;}
+window.__tsVisto=null;   /* diagnóstico: se llena si el feed trae la hora */
+/* Reparación de líneas guardadas sin link: si cualquier línea del mismo
+   partido tiene link (capturado en cualquier foto), se comparte a todas. */
+function repararLinks(){
+  Object.keys(EST_DEP).forEach(function(d){
+    const E=EST_DEP[d];
+    const porFix={};
+    E.lineas.forEach(function(x){if(x.link&&!porFix[x.fix])porFix[x.fix]=x.link;});
+    let n=0;
+    E.lineas.forEach(function(x){
+      if(!x.link&&porFix[x.fix]){x.link=porFix[x.fix];n++;}});
+    if(n)guardar(d+'_lineas',E.lineas);});}
+/* El feed trae el path del evento en la casa; se reescribe al dominio chileno. */
+function fixLink(u){
+  if(!u)return null;
+  u=String(u).trim();
+  if(/^https?:\/\//i.test(u))
+    return u.replace(/https?:\/\/[a-z]{2}\.betano\.[a-z.]+\//i,'https://lat.betano.com/')
+            .replace(/https?:\/\/(?:www\.)?betano\.[a-z.]+\//i,'https://lat.betano.com/');
+  return 'https://lat.betano.com'+(u[0]==='/'?'':'/')+u;   /* path con o sin barra */}
+
+/* ============ ANÁLISIS ============ */
+/* Guardián de escalera: dentro de una familia (mismo mercado, líneas
+   distintas), las cuotas DEBEN ser monótonas: Más de 80.5 paga menos que
+   Más de 82.5, siempre. Una inversión = mapeo corrupto aguas arriba de
+   OddsPapi → la familia completa se descarta ANTES de calcular ventaja.
+   Se verifica en Betano Y en Cloudbet (un juez corrupto es peor). */
+function famRotas(candidatos,precioDe){
+  const fam={};
+  candidatos.forEach(function(c){
+    const p=precioDe(c);
+    if(p===null)return;
+    const k=c.meta.marketName;
+    if(!fam[k])fam[k]=[];
+    fam[k].push({h:c.h,p:p,mid:c.mid,sube:c.info.lado==='ou'});});
+  const malos=new Set();
+  Object.keys(fam).forEach(function(k){
+    const L=fam[k];if(L.length<2)return;
+    L.sort((a,b)=>a.h-b.h);
+    for(let i=1;i<L.length;i++){
+      const salto=L[i].p-L[i-1].p;
+      const viola=L[0].sube?(salto<-0.015):(salto>0.015);
+      if(viola){L.forEach(x=>malos.add(String(x.mid)));break;}}});
+  return malos;}
+function precioRef(mks,meta,mid,esOU){
+  /* precio del lado de referencia (Over en totales, lado 1 en hándicap) */
+  const m=mks[mid];if(!m)return null;
+  const outs=m.outcomes||{};let r=null;
+  Object.keys(outs).forEach(function(oid){
+    const p0=(outs[oid].players||{})['0'];
+    if(!p0||!p0.active||!(p0.price>1))return;
+    const crudo=crudoDe(meta,oid);
+    if(esOU&&/over/i.test(crudo))r=p0.price;
+    if(!esOU&&/^1$|home/i.test(crudo))r=p0.price;});
+  return r;}
+let ESC_DESC=0;   /* familias descartadas por escalera rota (por barrido) */
+function analizar(dep,f,nombre,inicio){
+  const E=EST_DEP[dep];
+  const bo=f.bookmakerOdds||{};
+  const bet=bo['betano'], cb=bo['cloudbet'];
+  if(!bet||!cb)return;
+  const linkEv=bet.fixturePath||f.fixturePath||null;
+  /* pre-pase: candidatos con línea, para el guardián */
+  const cand=[];
+  Object.keys(bet.markets||{}).forEach(function(mid){
+    const meta=MK[mid]||MK[+mid];
+    if(!meta||meta.marketLength!==2)return;
+    const info=familiaDe(dep,meta.marketName,meta.handicap);
+    if(!info)return;
+    if(meta.handicap===null||meta.handicap===undefined)return;
+    cand.push({mid:mid,meta:meta,info:info,h:meta.handicap});});
+  const badBet=famRotas(cand,function(c){
+    return precioRef(bet.markets||{},c.meta,c.mid,c.info.lado==='ou');});
+  const badCb=famRotas(cand,function(c){
+    return precioRef(cb.markets||{},c.meta,c.mid,c.info.lado==='ou');});
+  Object.keys(bet.markets||{}).forEach(function(mid){
+    const meta=MK[mid]||MK[+mid];
+    if(!meta||meta.marketLength!==2)return;
+    const info=familiaDe(dep,meta.marketName,meta.handicap);
+    if(!info)return;
+    if(badBet.has(String(mid))||badCb.has(String(mid))){ESC_DESC++;return;}
+    const h=meta.handicap;
+
+    const oB=bet.markets[mid].outcomes||{};
+    const kB=Object.keys(oB); if(kB.length!==2)return;
+    const pB={}, lB={}; let okB=true;
+    let tsB=null;
+    kB.forEach(function(oid){
+      const p0=(oB[oid].players||{})['0'];
+      if(!p0||!p0.active||!(p0.price>1)){okB=false;return;}
+      pB[oid]=p0.price;
+      lB[oid]=p0.betslip||null;   /* link por selección: el que funcionaba */
+      if(!tsB)tsB=buscaTs(p0,oB[oid]);});
+    /* SOLO nivel precio: el updatedAt del partido es metadata y engaña */
+    if(tsB)window.__tsVisto=tsB;
+    if(!okB)return;
+
+    const cbm=(cb.markets||{})[mid]; if(!cbm)return;
+    const oC=cbm.outcomes||{};
+    const pC={}; let okC=true;
+    kB.forEach(function(oid){
+      const p0=(oC[oid]||{}).players?(oC[oid].players||{})['0']:null;
+      if(!p0||!p0.active||!(p0.price>1)){okC=false;return;}
+      pC[oid]=p0.price;});
+    if(!okC)return;
+
+    const j=desvigar(pC[kB[0]],pC[kB[1]]);
+    const justos={}; justos[kB[0]]=j.a; justos[kB[1]]=j.b;
+    const eq=(nombre||'').split(' vs ');
+
+    kB.forEach(function(oid){
+      const crudo=crudoDe(meta,oid);
+      let lado, porNombre;
+      if(info.lado==='ou'){
+        /* nombre real primero; si el catálogo no lo trae, cae al orden */
+        porNombre=/over|under/i.test(crudo);
+        const esOver=/over/i.test(crudo)?true
+          :(/under/i.test(crudo)?false:(oid===kB[0]));
+        lado=(esOver?'Más de ':'Menos de ')+h;}
+      else{
+        porNombre=/^1$|^2$|home|away/i.test(crudo);
+        const es1=/^1$|home/i.test(crudo)||(!porNombre&&oid===kB[0]);
+        const hs=es1?h:-h;
+        lado=(es1?(eq[0]||'Local'):(eq[1]||'Visita'))+' '
+          +(hs>0?'+':'')+(hs===0?'0.0':hs);}
+      if(porNombre)window.__ladoNom=(window.__ladoNom||0)+1;
+      else window.__ladoOrd=(window.__ladoOrd||0)+1;
+      const vent=pB[oid]/justos[oid]-1;
+      const id=f.fixtureId+'|'+mid+'|'+oid;
+      if(APOSTADAS[id])return;   /* ya está en el registro: no reaparece */
+      const prev=E.lineas.filter(x=>x.id===id)[0];
+      const reg={id:id,fix:f.fixtureId,mid:mid,mk:meta.marketName,
+        partido:nombre,inicio:inicio,hora:hhmm(inicio),
+        familia:info.fam,lado:lado,link:lB[oid]||linkEv,
+        cuota:pB[oid],justo:+justos[oid].toFixed(3),vent:+vent.toFixed(4),
+        cuotaAnt:prev?prev.cuota:null,justoAnt:prev?prev.justo:null,
+        ventAnt:prev?prev.vent:null,fotoAnt:prev?prev.foto:null,
+        srcTs:tsB||null,foto:Date.now()};
+      if(prev){
+        /* historial real: si algo cambió, el punto anterior se archiva */
+        if(Math.abs(prev.cuota-reg.cuota)>0.001||Math.abs(prev.justo-reg.justo)>0.001){
+          prev.hist=(prev.hist||[]);
+          prev.hist.push({ts:prev.foto,cuota:prev.cuota,justo:prev.justo,vent:prev.vent});
+          if(prev.hist.length>12)prev.hist=prev.hist.slice(-12);}
+        Object.assign(prev,reg);   /* hist sobrevive: assign no lo toca */
+      } else E.lineas.push(reg);});});}
+
+/* ============ BARRIDO (foto) ============ */
+async function correr(reanudar){
+  const dep=DEP, E=EST_DEP[dep], C=DEPS[dep];
+  $('btn-buscar').disabled=true;$('btn-cont').disabled=true;
+  if(!reanudar){E.vistos={};guardar(dep+'_vistos',E.vistos);}
+  ESC_DESC=0;
+  window.__ladoNom=0;window.__ladoOrd=0;
+  try{
+    if(!Object.keys(MK).length){
+      msg('Catálogo de mercados (1 request)...');
+      (await pedir('markets')).forEach(m=>{MK[m.marketId]=m;});}
+    msg('Partidos de '+C.nombre+'...');
+    const dias=+$('dias').value, antic=+$('antic').value;
+    const f1=dd(new Date(Date.now()-864e5));   /* un día atrás: cubre el desfase UTC */
+    const f2=dd(new Date(Date.now()+(dias+1)*864e5));
+    const d=await pedir('fixtures?sportId='+C.sportId+'&from='+f1+'&to='+f2);
+    const todos=(Array.isArray(d)?d:(d.data||[]));
+    const ahora=Date.now();
+    const hoy0=new Date();hoy0.setHours(0,0,0,0);
+    const hasta=hoy0.getTime()+dias*864e5;   /* fin del último día calendario elegido */
+    const enRango=todos.filter(f=>f.hasOdds).filter(function(f){
+      const t=new Date(f.startTime).getTime();
+      return t>ahora+antic*60000 && t<hasta;});
+    msg(todos.length+' programados · '+enRango.length+' con cuotas en tu ventana. Analizando...');
+    let saltados=0,vivos=0;
+    for(let i=0;i<enRango.length;i++){
+      const f=enRango[i];
+      if(E.vistos[f.fixtureId]){saltados++;continue;}
+      msg('Partido '+(i+1)+' de '+enRango.length
+        +(saltados?' · '+saltados+' reusados':'')+'...');
+      let od=null;
+      try{od=await pedir('odds?fixtureId='+f.fixtureId+'&oddsFormat=decimal');}
+      catch(err){
+        E.vistos[f.fixtureId]=true;
+        if(/403|RESTRICTED|live/i.test(err.message)){vivos++;continue;}
+        throw err;}
+      E.vistos[f.fixtureId]=true;
+      const fx=Array.isArray(od)?od[0]:(od.data?od.data[0]:od);
+      if(fx&&fx.bookmakerOdds){
+        const nombre=(f.participant1Name&&f.participant2Name)
+          ?f.participant1Name+' vs '+f.participant2Name:'Partido '+f.fixtureId;
+        analizar(dep,fx,nombre,f.startTime);}
+      guardar(dep+'_lineas',E.lineas);guardar(dep+'_vistos',E.vistos);
+      pintar();
+      await new Promise(r=>setTimeout(r,0));}
+    /* registrar la foto */
+    repararLinks();
+    E.fotos.unshift({ts:Date.now(),n:E.lineas.length});
+    E.fotos=E.fotos.slice(0,5);
+    guardar(dep+'_fotos',E.fotos);
+    guardar(dep+'_lineas',E.lineas);guardar(dep+'_vistos',E.vistos);
+    pintar();
+    const conLink=E.lineas.filter(x=>x.link).length;
+    const conTs=E.lineas.filter(x=>x.srcTs).length;
+    const ln=window.__ladoNom||0, lo=window.__ladoOrd||0;
+    msg('Foto de las '+horaCorta(Date.now())+' lista · '+enRango.length+' partidos'
+      +(vivos?' · '+vivos+' en vivo omitidos':'')
+      +' · links: '+conLink+'/'+E.lineas.length
+      +' · hora de fuente: '+(conTs?conTs+'/'+E.lineas.length+' (rezago medible)':'NO la entrega')
+      +' · lados por NOMBRE: '+ln+(lo?' · <b>por orden (menos fiable): '+lo+'</b>':' (todos verificados)')
+      +(conLink===0&&E.lineas.length?' (el feed no trae link para este deporte: «Ir» va a la portada)':'')
+      +'.','ok');
+  }catch(err){
+    guardar(dep+'_lineas',E.lineas);guardar(dep+'_vistos',E.vistos);
+    msg('Error: '+err.message+' — lo analizado quedó guardado; Continuar retoma.','err');}
+  $('btn-buscar').disabled=false;$('btn-cont').disabled=false;
+  $('btn-cont').style.display='';}
+
+/* ============ DERIVA ============ */
+function trayecto(x){
+  const pts=(x.hist||[]).concat([{cuota:x.cuota,vent:x.vent}]);
+  if(pts.length<2)return '';
+  /* compacta repetidos consecutivos */
+  const cs=[];pts.forEach(function(p){
+    if(!cs.length||Math.abs(cs[cs.length-1]-p.cuota)>0.001)cs.push(p.cuota);});
+  if(cs.length<2)return '';
+  const mejora=cs[cs.length-1]>cs[0];
+  return '<br><span style="font-size:10.5px" class="'+(mejora?'g':'p')+'">'
+    +cs.map(c=>c.toFixed(2)).join('→')
+    +' <span class="dim">('+((x.hist||[]).length+1)+' fotos)</span></span>';}
+function derivaDe(x){
+  if(x.justoAnt===null||x.fotoAnt===null)return {txt:'<span class="dim">'
+    +((x.hist&&x.hist.length)?'seguimiento retomado':'primera foto')+'</span>'+trayecto(x),score:0,ventana:false};
+  const dj=x.justo-x.justoAnt, dc=x.cuota-(x.cuotaAnt||x.cuota);
+  const jMov=Math.abs(dj)>0.015, cMov=Math.abs(dc)>0.005;
+  const hh=horaCorta(x.fotoAnt);
+  if(!jMov&&!cMov)return {txt:'<span class="dim">quieto desde '+hh+'</span>'+trayecto(x),score:0,ventana:false};
+  let partes=[];
+  if(jMov)partes.push('justo '+x.justoAnt.toFixed(2)+'→'+x.justo.toFixed(2));
+  if(cMov)partes.push('Betano '+x.cuotaAnt.toFixed(2)+'→'+x.cuota.toFixed(2));
+  /* VENTANA: el justo BAJÓ (el evento se hizo más probable) y Betano no siguió */
+  const ventana=dj<-0.015&&!cMov;
+  const dv=x.vent-(x.ventAnt??x.vent);
+  const cls=ventana?'g':(dv>0.005?'g':(dv<-0.005?'p':'dim'));
+  return {txt:'<span class="'+cls+'">'+(ventana?'▼ VENTANA · ':'')+partes.join(' · ')
+    +' <span class="dim">('+hh+')</span></span>'+trayecto(x),
+    score:ventana?2:(Math.abs(dv)>0.005?1:0),ventana:ventana};}
+
+/* ============ TABLA ============ */
+function pintar(){
+  const E=EST_DEP[DEP], C=DEPS[DEP];
+  const VMIN=+$('vmin').value/1000, CMAX=+$('cmax').value/100;
+  const MFIJO=+$('mfijo').value||15000;
+  const filtro=$('filtro').value, orden=$('orden').value;
+
+  $('t-dep').textContent=C.nombre;$('t-dep2').textContent=C.nombre;
+  $('fotos').innerHTML=E.fotos.map(function(f,i){
+    return '<span class="foto'+(i===0?' act':'')+'">'+horaCorta(f.ts)+' · '+f.n+' líneas</span>';}).join('');
+
+  const conD=E.lineas.map(function(x){x.__d=derivaDe(x);return x;});
+  const CFIL=+$('fcuo').value/100;
+  const CTOPE=Math.min(CMAX,CFIL);
+  const sen=x=>x.vent>=VMIN&&x.cuota<=CTOPE;
+  const senN=conD.filter(sen).length;
+  const ventN=conD.filter(x=>x.__d.ventana).length;
+  $('k-part').textContent=new Set(E.lineas.map(x=>x.fix)).size;
+  $('k-lin').textContent=E.lineas.length;
+  $('k-sen').textContent=senN;
+  $('k-vent').textContent=ventN;
+
+  /* Línea CENTRAL por mercado: la que tiene los dos lados más parejos en
+     Betano — es la única que lat.betano.com muestra; las alternativas del
+     feed no existen en la vitrina chilena. */
+  const gap={};   /* fix|mid -> |cuotaA-cuotaB| */
+  conD.forEach(function(x){
+    if(!x.mid)return;
+    const k=x.fix+'|'+x.mid;
+    if(!gap[k])gap[k]=[];
+    gap[k].push(x.cuota);});
+  const central={};  /* fix|mk -> mid ganador */
+  conD.forEach(function(x){
+    if(!x.mid||!x.mk)return;
+    const k=x.fix+'|'+x.mk, g=gap[x.fix+'|'+x.mid];
+    if(!g||g.length<2)return;
+    const d=Math.abs(g[0]-g[1]);
+    if(!(k in central)||d<central[k].d)central[k]={mid:x.mid,d:d};});
+  conD.forEach(function(x){
+    x.__central=!x.mid||!x.mk||!central[x.fix+'|'+x.mk]
+      ||String(central[x.fix+'|'+x.mk].mid)===String(x.mid);});
+
+  let L=conD.slice();
+  if($('fcentral').value==='central')L=L.filter(x=>x.__central);
+  if(filtro==='sen')L=L.filter(x=>sen(x)||x.__d.ventana);
+  /* filtros del usuario */
+  const hoyK=dd(new Date()), manK=dd(new Date(Date.now()+864e5));
+  const fdia=$('fdia').value;
+  if(fdia==='hoy')L=L.filter(x=>dd(new Date(x.inicio))===hoyK);
+  if(fdia==='man')L=L.filter(x=>dd(new Date(x.inicio))===manK);
+  const fh=+$('fhoras').value;
+  if(fh>0)L=L.filter(x=>{
+    const t=new Date(x.inicio).getTime()-Date.now();
+    return t>0&&t<=fh*3600000;});
+  L=L.filter(x=>x.cuota<=CFIL);
+  L.sort(orden==='hora'?function(a,b){return new Date(a.inicio)-new Date(b.inicio);}
+    :orden==='deriva'?function(a,b){return b.__d.score-a.__d.score||b.vent-a.vent;}
+    :function(a,b){return b.vent-a.vent;});
+
+  const media=E.lineas.length?E.lineas.reduce((a,x)=>a+x.vent,0)/E.lineas.length:0;
+  $('resumen').textContent='Mostrando '+L.length+' de '+E.lineas.length
+    +' líneas · ventaja media del mercado '+(media*100).toFixed(1)
+    +'% · señales ≥'+(VMIN*100).toFixed(1)+'% (cuota ≤'+CTOPE.toFixed(2)+'): '+senN
+    +' · ventanas: '+ventN;
+
+  if(!L.length){$('tabla').innerHTML='<tr class="vac"><td colspan="11">'
+    +(E.lineas.length?'Nada pasa el filtro — mira «Todas las líneas».':'Toma la primera foto.')+'</td></tr>';return;}
+  $('tabla').innerHTML=L.slice(0,300).map(function(x){
+    const esSen=sen(x);
+    const cls=esSen?'sen':(x.__d.ventana?'ventana':(x.vent<0?'neg':''));
+    return '<tr class="'+cls+'">'
+      +'<td>'+x.hora+'</td>'
+      +'<td class="par">'+x.partido+'</td>'
+      +'<td><span class="chip">'+x.familia.split(' · ')[1]+'</span></td>'
+      +'<td><b>'+x.lado+'</b>'
+        +(x.mk?'<br><span style="font-size:10px" class="dim">'+x.mk
+          +(x.__central?'':' · <span style="color:var(--ambar)">alternativa</span>')+'</span>':'')+'</td>'
+      +'<td class="der">'+x.cuota.toFixed(2)
+        +(x.srcTs?(function(){
+          const m=Math.round((Date.now()-x.srcTs)/60000);
+          const c=m<=5?'g':(m<=20?'am':'p');
+          return '<br><span style="font-size:10px" class="'+c+'">fuente hace '+(m<60?m+' min':Math.round(m/60)+' h')+'</span>';})():'')
+        +'</td>'
+      +'<td>'+x.justo.toFixed(2)+'</td>'
+      +'<td class="'+(x.vent>=VMIN?'g':(x.vent<0?'p':''))+'">'
+        +(x.vent>=0?'+':'')+(x.vent*100).toFixed(1)+'%</td>'
+      +'<td style="font-size:11.5px">'+x.__d.txt+'</td>'
+      +'<td>'+(esSen?plata(MFIJO):'—')+'</td>'
+      +'<td><a class="ir" href="'+(fixLink(x.link)||C.url)+'" target="_blank" rel="noopener">Ir</a></td>'
+      +'<td style="white-space:nowrap">'
+        +(esSen?'<button class="mini g" onclick="apostar(\''+x.id+'\')">✓</button>':'')
+        +'<button class="mini p" onclick="quitar(\''+x.id+'\')">✕</button></td>'
+      +'</tr>';}).join('');}
+
+function quitar(id){
+  const E=EST_DEP[DEP];
+  E.lineas=E.lineas.filter(x=>x.id!==id);
+  guardar(DEP+'_lineas',E.lineas);pintar();}
+function apostar(id){
+  const E=EST_DEP[DEP];
+  const x=E.lineas.filter(y=>y.id===id)[0];if(!x)return;
+  const dup=REGISTRO.filter(r=>r.partido===x.partido&&r.lado===x.lado&&r.estado==='pendiente')[0];
+  if(dup&&!confirm('Ya tienes "'+x.lado+'" de este partido pendiente en el registro. ¿Agregar otra igual?'))return;
+  APOSTADAS[id]=true;guardar('apostadas',APOSTADAS);
+  const MFIJO0=+$('mfijo').value||15000;
+  REGISTRO.push({id:Date.now()+'r',partido:x.partido,inicio:x.inicio,
+    lado:x.lado,mk:x.mk||null,familia:x.familia,link:x.link||null,lineId:x.id,
+    linea:JSON.parse(JSON.stringify(x)),   /* la línea entera, historial incluido */
+    cuota:x.cuota,justo:x.justo,vent:x.vent,monto:MFIJO0,estado:'pendiente'});
+  E.lineas=E.lineas.filter(y=>y.id!==id);
+  guardar(DEP+'_lineas',E.lineas);guardar('registro',REGISTRO);
+  pintar();pintarReg();}
+window.quitar=quitar;window.apostar=apostar;
+
+/* ============ REGISTRO + CALIBRACIÓN ============ */
+const EST={G:'ganada',E:'devuelta',P:'perdida',MG:'media G',MP:'media P'};
+function resDe(r){
+  if(r.estado==='pendiente')return null;
+  if(r.estado==='G')return r.monto*(r.cuota-1);
+  if(r.estado==='MG')return r.monto*(r.cuota-1)/2;
+  if(r.estado==='E')return 0;
+  if(r.estado==='MP')return -r.monto/2;
+  if(r.estado==='P')return -r.monto;
+  return null;}
+function marcar(id,e){
+  const r=REGISTRO.filter(x=>x.id===id)[0];if(!r)return;
+  r.estado=e;guardar('registro',REGISTRO);pintarReg();}
+function borrarReg(id){
+  const r=REGISTRO.filter(x=>x.id===id)[0];if(!r)return;
+  if(!confirm('¿Devolver esta apuesta a la tabla de análisis?'))return;
+  /* liberar la marca para que las fotos vuelvan a verla */
+  if(r.lineId){
+    delete APOSTADAS[r.lineId];guardar('apostadas',APOSTADAS);
+    /* devolverla de inmediato a la tabla de su deporte */
+    const dep=/^Básquet/.test(r.familia)?'basquet':(/^Fútbol/.test(r.familia)?'futbol':(/^Béisbol/.test(r.familia)?'beisbol':null));
+    if(dep&&!EST_DEP[dep].lineas.some(x=>x.id===r.lineId)){
+      /* vuelve la línea COMPLETA, con su historial de fotos intacto */
+      const back=r.linea?JSON.parse(JSON.stringify(r.linea))
+        :{id:r.lineId,fix:String(r.lineId).split('|')[0],
+          partido:r.partido,inicio:r.inicio,hora:hhmm(r.inicio),
+          familia:r.familia,lado:r.lado,link:r.link||null,
+          cuota:r.cuota,justo:r.justo,vent:r.vent,
+          cuotaAnt:null,justoAnt:null,ventAnt:null,fotoAnt:null,foto:Date.now()};
+      delete back.__d;
+      EST_DEP[dep].lineas.push(back);
+      guardar(dep+'_lineas',EST_DEP[dep].lineas);}}
+  REGISTRO=REGISTRO.filter(x=>x.id!==id);guardar('registro',REGISTRO);
+  pintarReg();pintar();}
+window.marcar=marcar;window.borrarReg=borrarReg;
+
+function pintarReg(){
+  REGISTRO.sort((a,b)=>new Date(b.inicio||0)-new Date(a.inicio||0));
+  $('datos').value=REGISTRO.length?JSON.stringify(REGISTRO):'';
+  guardar('registro',REGISTRO);
+  if(!REGISTRO.length){
+    $('reg').innerHTML='<tr class="vac"><td colspan="9">Sin apuestas.</td></tr>';
+    $('calib').innerHTML='';return;}
+  $('reg').innerHTML=REGISTRO.map(function(r){
+    const res=resDe(r);
+    const bot=r.estado==='pendiente'
+      ?['G','MG','E','MP','P'].map(e=>'<button class="mini" onclick="marcar(\''+r.id+'\',\''+e+'\')">'+e+'</button>').join('')
+      :(EST[r.estado]||r.estado)+' <button class="mini" onclick="marcar(\''+r.id+'\',\'pendiente\')">↺</button>';
+    return '<tr><td class="par">'+r.partido+'<br><span style="font-size:10px" class="dim">'
+      +hhmm(r.inicio)+'</span>'
+      +(r.link?' <a class="ir" style="padding:3px 8px;font-size:10px" href="'
+        +fixLink(r.link)+'" target="_blank" rel="noopener">Ir</a>':'')+'</td>'
+      +'<td><b>'+r.lado+'</b>'
+        +(r.mk?'<br><span style="font-size:10px" class="dim">'+r.mk+'</span>':'')+'</td>'
+      +'<td><span class="chip">'+r.familia+'</span></td>'
+      +'<td class="der">'+r.cuota.toFixed(2)+'</td>'
+      +'<td>'+r.justo.toFixed(2)+'</td>'
+      +'<td>+'+(r.vent*100).toFixed(1)+'%</td>'
+      +'<td>'+plata(r.monto)+'</td>'
+      +'<td style="white-space:nowrap">'+bot
+        +' <button class="mini p" onclick="borrarReg(\''+r.id+'\')">✕</button></td>'
+      +'<td class="'+(res>0?'g':(res<0?'p':''))+'">'
+        +(res===null?'—':(res>=0?'+':'')+plata(res))+'</td></tr>';}).join('');
+  pintarCalib();}
+
+function pintarCalib(){
+  const fam={};
+  REGISTRO.forEach(function(r){
+    const k=r.familia||'?';
+    if(!fam[k])fam[k]={n:0,pend:0,monto:0,ev:0,real:0};
+    const F=fam[k], res=resDe(r);
+    if(res===null){F.pend++;return;}
+    F.n++;F.monto+=r.monto;F.ev+=r.monto*r.vent;F.real+=res;});
+  const ks=Object.keys(fam).sort();
+  if(!ks.length){$('calib').innerHTML='';return;}
+  const filas=ks.map(function(k){
+    const F=fam[k];
+    const prom=F.monto?F.ev/F.monto:null, real=F.monto?F.real/F.monto:null;
+    const fiable=F.n>=30;
+    return '<tr'+(fiable?'':' style="opacity:.6"')+'><td>'+k+'</td>'
+      +'<td>'+F.n+(F.pend?' <span class="dim" style="font-size:10px">+'+F.pend+' pend.</span>':'')+'</td>'
+      +'<td>'+(prom!=null?'+'+(prom*100).toFixed(1)+'%':'—')+'</td>'
+      +'<td class="'+(real>0?'g':(real<0?'p':''))+'">'
+      +(real!=null?((real>=0?'+':'')+(real*100).toFixed(1)+'%'):'—')+'</td>'
+      +'<td>'+(F.n?plata(F.real):'—')+'</td>'
+      +'<td style="font-size:11px" class="dim">'+(fiable?'medible':'aún ruido ('+F.n+'/30)')+'</td></tr>';}).join('');
+  $('calib').innerHTML='<div class="dim" style="font-size:11px;margin-bottom:6px">'
+    +'CALIBRACIÓN POR FAMILIA · prometido vs realizado · fiable desde 30</div>'
+    +'<div class="scroll"><table><thead><tr><th>Familia</th><th>N</th><th>Prometido</th>'
+    +'<th>Realizado</th><th>$ neto</th><th></th></tr></thead><tbody>'+filas+'</tbody></table></div>';}
+
+/* ============ PESTAÑAS ============ */
+function setDep(d){
+  DEP=d;guardar('dep',d);
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('act',t.dataset.dep===d));
+  const C=DEPS[d];
+  $('vmin').value=cargar(d+'_vmin',C.vminDef);
+  $('cmax').value=cargar(d+'_cmax',C.cmaxDef);
+  $('vmin-v').textContent=(+$('vmin').value/10).toFixed(1).replace('.',',');
+  $('cmax-v').textContent=(+$('cmax').value/100).toFixed(2).replace('.',',');
+  $('btn-cont').style.display=Object.keys(EST_DEP[d].vistos).length?'':'none';
+  pintar();}
+window.setDep=setDep;
+
+/* ============ CUENTA ============ */
+async function cuenta(){
+  try{
+    const d=await pedir('account');
+    const subs=(d&&d.subscriptions)||[];
+    const sub=subs.filter(x=>x.is_active)[0]||subs[0];
+    if(!sub||!sub.request_limit)return;
+    const libre=sub.request_limit-(sub.request_count||0);
+    $('k-mes').textContent=libre.toLocaleString('es-CL');
+    $('k-mes').className='v '+(libre<500?'p':'g');
+  }catch(e){}}
+
+/* ============ ARRANQUE ============ */
+window.addEventListener('DOMContentLoaded',function(){
+  $('key').value=cargar('key','')||KEY_DEF;
+  $('banca').value=cargar('banca',1800000);
+  $('mfijo').value=cargar('mfijo',15000);
+  ['key','banca','mfijo','dias','antic'].forEach(function(id){
+    $(id).addEventListener('input',function(){guardar(id,this.value);});});
+  $('vmin').addEventListener('input',function(){
+    guardar(DEP+'_vmin',this.value);
+    $('vmin-v').textContent=(+this.value/10).toFixed(1).replace('.',',');pintar();});
+  $('cmax').addEventListener('input',function(){
+    guardar(DEP+'_cmax',this.value);
+    $('cmax-v').textContent=(+this.value/100).toFixed(2).replace('.',',');pintar();});
+  $('antic').addEventListener('input',function(){$('antic-v').textContent=this.value;});
+  ['filtro','orden','fdia','fhoras','fcentral'].forEach(id=>$(id).addEventListener('change',pintar));
+  /* fechas reales en las opciones de día */
+  (function(){
+    const hoy=new Date(), man=new Date(Date.now()+864e5), d3=new Date(Date.now()+2*864e5);
+    const sd=$('dias');
+    sd.options[0].text='Solo hoy ('+ddCorta(hoy)+')';
+    sd.options[1].text='Hoy + mañana (hasta '+ddCorta(man)+')';
+    sd.options[2].text='3 días (hasta '+ddCorta(d3)+')';
+    const sf=$('fdia');
+    sf.options[1].text='Solo HOY ('+ddCorta(hoy)+')';
+    sf.options[2].text='Solo MAÑANA ('+ddCorta(man)+')';})();
+  $('fcuo').addEventListener('input',function(){
+    $('fcuo-v').textContent=(+this.value/100).toFixed(2).replace('.',',');pintar();});
+  $('btn-buscar').onclick=()=>correr(false);
+  $('btn-cont').onclick=()=>correr(true);
+  $('btn-limpiar').onclick=function(){
+    if(confirm('¿Limpiar líneas y fotos de '+DEPS[DEP].nombre+'? (el registro no se toca)')){
+      const E=EST_DEP[DEP];E.lineas=[];E.vistos={};E.fotos=[];
+      guardar(DEP+'_lineas',[]);guardar(DEP+'_vistos',{});guardar(DEP+'_fotos',[]);
+      pintar();}};
+  $('btn-cargar').onclick=function(){
+    let d=null;
+    try{d=JSON.parse($('datos').value);}catch(e){alert('Respaldo inválido.');return;}
+    if(!Array.isArray(d)){alert('Respaldo inválido.');return;}
+    const ids=new Set(REGISTRO.map(r=>String(r.id)));let n=0;
+    d.forEach(function(r){if(r&&r.id&&!ids.has(String(r.id))){REGISTRO.push(r);ids.add(String(r.id));n++;}});
+    guardar('registro',REGISTRO);pintarReg();
+    alert('Fusionado: '+n+' agregada(s). Total: '+REGISTRO.length+'.');};
+  repararLinks();
+  setDep(cargar('dep','basquet'));
+  pintarReg();cuenta();});
+</script>
+</body>
+</html>
