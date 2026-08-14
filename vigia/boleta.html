@@ -53,8 +53,9 @@ cuota; este marcador lo lee y le hace clic por ti.</p>
   <div class="paso"><b>Paso 2</b><span>Cuando cargue la página del partido, haz clic en el marcador
     <b>Llenar boleta</b>.</span></div>
   <div class="paso"><b>Paso 3</b><span>Busca la selección, la marca y te avisa arriba a la derecha:
-    verde si la encontró por identificador (exacta), ámbar si la ubicó por el texto de la línea
-    (revisa la boleta), rojo si no la encontró.</span></div>
+    <b>verde</b> = marcada por identificador · <b>ámbar</b> = marcada por rótulo, o la cuota se
+    movió · <b>azul</b> = ya estaba en tu boleta (no la toca, para no sacarla) ·
+    <b>rojo</b> = no la encontró.</span></div>
   <p class="aviso">Siempre revisa la boleta antes de confirmar: el monto y la confirmación
   final los pones tú. Si la cuota que ves difiere de la del mensaje, Betano ya movió el precio
   y la ventaja pudo desaparecer.</p>
@@ -63,8 +64,10 @@ cuota; este marcador lo lee y le hace clic por ti.</p>
 <div class="caja">
   <h2>Cómo busca la selección</h2>
   <ol>
-    <li><b>Por identificador de Betano</b> — el link trae el <code>bookmakerOutcomeId</code>
-      del feed; si ese id aparece en la página, el clic es exacto y no hay ambigüedad.</li>
+    <li><b>Por identificador</b> — cada selección de Betano lleva
+      <code>data-selnid</code>, el mismo id que el feed entrega como
+      <code>bookmakerOutcomeId</code>. El link del Vigía lo trae, así que el clic va
+      directo a esa cuota, sin ambigüedad.</li>
     <li><b>Por botón de selección</b> — si el id no está en el HTML, recorre los botones
       <code>selection-horizontal-button</code> de la página comparando su rótulo
       (<code>.s-name</code>), su cuota y el mercado que los contiene con los datos de la señal.</li>
@@ -103,17 +106,19 @@ function LLENAR_BOLETA(){
     .split(/[^a-z0-9]+/).filter(function(w){ return w.length > 2; });
 
   function clickeable(e){
-    return e.closest('button,[role="button"],a,[data-qa*="selection" i],[class*="selection" i],[class*="odd" i]') || e;
+    return e.closest('[data-qa="event-selection"],[data-selnid],button,[role="button"],a') || e;
   }
+  /* Betano marca cada selección con data-selnid = el mismo id que el feed
+     entrega como bookmakerOutcomeId. Con eso el clic es exacto. */
   function porId(){
     if (!oid) return null;
-    var todos = document.querySelectorAll('*'), i, j, el, at;
+    var el = document.querySelector('[data-selnid="' + oid + '"]');
+    if (el) return clickeable(el);
+    var todos = document.querySelectorAll('[data-qa="event-selection"],[data-selnid]'), i, j, at;
     for (i = 0; i < todos.length; i++) {
-      el = todos[i];
-      if (!el.attributes || el.children.length > 3) continue;
-      for (j = 0; j < el.attributes.length; j++) {
-        at = el.attributes[j];
-        if (at.value && at.value.indexOf(oid) > -1) return clickeable(el);
+      for (j = 0; j < todos[i].attributes.length; j++) {
+        at = todos[i].attributes[j];
+        if (at.value && at.value.indexOf(oid) > -1) return clickeable(todos[i]);
       }
     }
     return null;
@@ -124,8 +129,8 @@ function LLENAR_BOLETA(){
   /* Botones de selección de Betano: clase selection-horizontal-button, con el
      rótulo en .s-name y la cuota en un nodo hoja del mismo botón. */
   function botonesSeleccion(){
-    var sel = '.selection-horizontal-button,[class*="selection-"][class*="button"],'
-            + '[data-qa*="selection" i],[class*="selection-vertical" i]';
+    var sel = '[data-qa="event-selection"],[data-selnid],.selection-horizontal-button,'
+            + '[class*="selection-"][class*="button"]';
     var l = [].slice.call(document.querySelectorAll(sel));
     return l.filter(function(b){ return b.offsetParent !== null; });
   }
@@ -136,6 +141,10 @@ function LLENAR_BOLETA(){
     [].slice.call(b.querySelectorAll('span,div,b,strong')).forEach(function(e){
       if (esCuota(e)) precio = (e.textContent||'').trim().replace(',', '.');
     });
+    /* aria-label trae rótulo y cuota juntos: "Bet on X with odds 3.35." */
+    var aria = b.getAttribute('aria-label') || '';
+    if (!precio) { var ma = aria.match(/(\d{1,2}[.,]\d{2})/); if (ma) precio = ma[1].replace(',', '.'); }
+    if (!nombre && aria) nombre = norm(aria.replace(/^bet on\s+/i, '').replace(/\s+with odds.*$/i, ''));
     if (!nombre) nombre = norm((b.textContent||'').replace(/\d{1,2}[.,]\d{2}\s*$/, ''));
     /* título del mercado: el bloque que contiene al botón */
     var ctx = '', p = b.parentElement, k;
@@ -177,10 +186,19 @@ function LLENAR_BOLETA(){
       try {
         el.scrollIntoView({ block: 'center', behavior: 'smooth' });
         el.style.outline = '3px solid #EFB93F';
+        /* si ya está en la boleta, un clic la SACARÍA: mejor avisar */
+        var ya = el.getAttribute('aria-selected') === 'true';
+        var precioDom = (el.getAttribute('aria-label') || '').match(/(\d{1,2}[.,]\d{2})/);
+        var movida = precioDom && cuota && Math.abs(parseFloat(precioDom[1].replace(',', '.')) - parseFloat(cuota)) > 0.005
+          ? ' · ojo: Betano ahora paga ' + precioDom[1] + ' (la señal decía ' + cuota + ')' : '';
+        if (ya) {
+          aviso('Esta selección YA estaba en tu boleta' + movida + '. No la toqué para no sacarla.', '#8FC4E0');
+          return;
+        }
         el.click();
-        aviso(exacto ? '✓ Selección marcada por identificador. Revisa la boleta, pon el monto y confirma.'
-                     : '⚠ Marcada por texto (' + lado + ' @' + cuota + '). VERIFICA la boleta antes de confirmar.',
-              exacto ? '#4ADE9B' : '#EFB93F');
+        aviso((exacto ? '✓ Marcada por identificador' : '⚠ Marcada por rótulo (' + lado + ' @' + cuota + '), verifícala')
+          + movida + '. Pon el monto y confirma tú.',
+          exacto && !movida ? '#4ADE9B' : '#EFB93F');
       } catch (e) {
         aviso('La encontré pero no pude marcarla: ' + lado + ' @' + cuota, '#EFB93F');
       }
