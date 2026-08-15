@@ -3,110 +3,272 @@
   :root{
     --fondo:#0E2A22; --panel:#143A2E; --panel2:#1A483A; --lin:#2A5A45;
     --tiza:#E8EDE9; --dim:#8FAA9C; --ambar:#EFB93F; --verde:#4ADE9B; --rojo:#F2705C;
+    --azul:#8FC4E0;
     --mono:"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     --disp:"Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fondo);color:var(--tiza);font-family:var(--mono);
-    font-size:14px;line-height:1.6;padding:28px 20px 60px}
-  .lienzo{max-width:820px;margin:0 auto}
-  h1{font-family:var(--disp);font-size:24px;letter-spacing:.12em;text-transform:uppercase;
+    font-size:14px;line-height:1.65;padding:28px 18px 70px}
+  .lienzo{max-width:860px;margin:0 auto}
+  h1{font-family:var(--disp);font-size:25px;letter-spacing:.12em;text-transform:uppercase;
     color:var(--ambar);margin:0 0 6px}
-  .sub{color:var(--dim);font-size:13px;max-width:66ch;margin-bottom:22px}
-  h2{font-family:var(--disp);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ambar);margin:0 0 12px}
+  .sub{color:var(--dim);font-size:13px;max-width:68ch;margin-bottom:20px}
+  h2{font-family:var(--disp);font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ambar);margin:0 0 4px;display:flex;align-items:baseline;gap:10px}
+  h2 .n{background:var(--ambar);color:#12352B;border-radius:6px;padding:2px 9px;font-size:13px}
+  h2 .t{color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:0;
+    text-transform:none;margin-left:auto}
   .caja{background:var(--panel);border:1px solid var(--lin);border-radius:10px;
     padding:20px;margin-bottom:16px}
-  .paso{display:flex;gap:12px;margin:12px 0;align-items:baseline}
-  .paso b{font-family:var(--disp);color:var(--ambar);font-size:12px;letter-spacing:.06em;
-    white-space:nowrap;min-width:52px}
+  .paso{display:flex;gap:12px;margin:11px 0;align-items:baseline}
+  .paso b{font-family:var(--disp);color:var(--ambar);font-size:11.5px;letter-spacing:.05em;
+    white-space:nowrap;min-width:34px;text-align:right}
+  .paso span{flex:1;min-width:0}
   code{background:var(--panel2);border:1px solid var(--lin);border-radius:4px;
-    padding:1px 6px;font-size:12px;word-break:break-all}
+    padding:1px 6px;font-size:12px;word-break:break-word}
+  kbd{background:var(--panel2);border:1px solid var(--lin);border-bottom-width:2px;
+    border-radius:4px;padding:1px 7px;font-size:11.5px;font-family:var(--disp);font-weight:700}
   pre{background:var(--panel2);border:1px solid var(--lin);border-radius:8px;padding:14px;
-    overflow-x:auto;font-size:11.5px;margin:10px 0}
-  .nota{color:var(--dim);font-size:12.5px;max-width:70ch}
-  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
-  th{background:var(--panel2);text-align:left;padding:7px 9px;font-family:var(--disp);
+    overflow-x:auto;font-size:11px;line-height:1.5;margin:10px 0;max-height:340px}
+  .nota{color:var(--dim);font-size:12.5px;max-width:72ch}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+  th{background:var(--panel2);text-align:left;padding:8px 10px;font-family:var(--disp);
     font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
-  td{padding:7px 9px;border-top:1px solid var(--lin);vertical-align:top}
-  .flujo{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0 18px;
-    font-size:12px;color:var(--dim)}
+  td{padding:8px 10px;border-top:1px solid var(--lin);vertical-align:top}
+  .flujo{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:4px 0 20px;font-size:12px}
+  .flujo em{color:var(--dim);font-style:normal}
   .flujo span{background:var(--panel2);border:1px solid var(--lin);border-radius:6px;
-    padding:6px 11px;color:var(--tiza)}
-  .aviso{border-left:3px solid var(--ambar);padding-left:14px;color:var(--dim);font-size:12.5px}
+    padding:6px 11px}
+  .aviso{border-left:3px solid var(--ambar);padding-left:14px;color:var(--dim);
+    font-size:12.5px;margin:14px 0 0}
+  .ok{border-left-color:var(--verde)}
+  .peligro{border-left-color:var(--rojo)}
   button{font-family:var(--disp);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
-    font-weight:700;background:var(--ambar);color:#12352B;border:0;padding:9px 16px;
+    font-weight:700;background:var(--ambar);color:#12352B;border:0;padding:10px 16px;
     border-radius:6px;cursor:pointer}
+  button.sec{background:transparent;color:var(--ambar);border:1px solid var(--ambar)}
+  input{background:var(--panel2);border:1px solid var(--lin);color:var(--tiza);
+    font-family:var(--mono);font-size:13px;padding:9px 11px;border-radius:6px;width:100%}
+  label{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--dim);margin:12px 0 5px}
+  .salida{background:var(--panel2);border:1px solid var(--verde);border-radius:8px;
+    padding:12px;margin-top:12px;font-size:11.5px;word-break:break-all;color:var(--verde)}
+  .campo-form{background:var(--panel2);border:1px solid var(--lin);border-radius:8px;
+    padding:12px 14px;margin:10px 0}
+  .campo-form b{color:var(--ambar);font-family:var(--disp);font-size:12px;letter-spacing:.05em}
+  details{margin-top:10px}
+  summary{cursor:pointer;color:var(--azul);font-size:12.5px}
+  .g{color:var(--verde)} .p{color:var(--rojo)} .am{color:var(--ambar)} .dim{color:var(--dim)}
 </style>
 
 <div class="lienzo">
 <h1>Puente Telegram</h1>
 <p class="sub">Para que el Vigía corra <b>solo cuando tú escribes</b>: sin horarios, sin
-sesiones esperando, sin nada encendido de fondo. Telegram avisa a un puente, y el puente
-despierta al Vigía. Se configura una vez y es gratis.</p>
+sesiones esperando, sin nada encendido de fondo. Se configura una vez, en unos 15 minutos,
+y es gratis para siempre.</p>
 
 <div class="flujo">
-  <span>Escribes /barrer</span> → <span>Telegram avisa al puente</span> →
-  <span>El puente despierta al Vigía</span> → <span>Te llega el resultado</span>
+  <span>Escribes <b>/barrer</b></span><em>→</em>
+  <span>Telegram avisa al puente</span><em>→</em>
+  <span>El puente despierta al Vigía</span><em>→</em>
+  <span>Te llega el resultado</span>
 </div>
 
 <div class="caja">
-  <h2>1 · Token de GitHub (2 min)</h2>
-  <div class="paso"><b>1.1</b><span>Entra a <code>github.com/settings/personal-access-tokens/new</code></span></div>
-  <div class="paso"><b>1.2</b><span>Nombre: <b>vigia-puente</b> · Expiración: la que quieras
-    (si expira, el bot deja de responder y hay que renovarlo)</span></div>
-  <div class="paso"><b>1.3</b><span>En <b>Repository access</b> elige <b>Only select
-    repositories</b> → <b>BETO</b></span></div>
-  <div class="paso"><b>1.4</b><span>En <b>Permissions → Repository permissions</b>, busca
-    <b>Contents</b> y ponlo en <b>Read and write</b></span></div>
-  <div class="paso"><b>1.5</b><span>Genera el token y <b>cópialo</b> (solo se muestra una vez)</span></div>
-  <p class="aviso">Ese token puede escribir en tu repo: no lo pegues en ningún chat, solo en
-  el puente.</p>
+  <h2><span class="n">0</span> Ten esto a mano</h2>
+  <p class="nota">Antes de empezar, junta estos dos datos. Son los mismos que ya pusiste como
+  secretos en GitHub, así que si los tienes guardados, perfecto; si no, aquí va cómo
+  recuperarlos.</p>
+  <div class="campo-form">
+    <b>Token del bot</b> — se ve así: <code>8123456789:AAE...</code><br>
+    <span class="nota">¿Perdido? En Telegram escríbele a <b>@BotFather</b> →
+    <code>/mybots</code> → tu bot → <b>API Token</b>.</span>
+  </div>
+  <div class="campo-form">
+    <b>Tu chat id</b> — un número como <code>5123456789</code><br>
+    <span class="nota">¿Perdido? En Telegram escríbele a <b>@userinfobot</b> y te lo dice.</span>
+  </div>
+  <p class="aviso peligro">Estos dos datos y el token de GitHub del paso 1 son llaves: van solo
+  en Cloudflare. No los pegues en chats ni los guardes en el repositorio.</p>
 </div>
 
 <div class="caja">
-  <h2>2 · Crear el puente en Cloudflare (5 min)</h2>
-  <div class="paso"><b>2.1</b><span>Crea una cuenta gratis en <code>dash.cloudflare.com</code>
-    (no necesitas dominio ni tarjeta)</span></div>
-  <div class="paso"><b>2.2</b><span>Menú <b>Workers &amp; Pages</b> → <b>Create</b> →
-    <b>Start with Hello World</b> → nómbralo <b>vigia</b> → <b>Deploy</b></span></div>
-  <div class="paso"><b>2.3</b><span>Entra al Worker → <b>Edit code</b>, borra todo lo que hay y
-    pega el código de abajo → <b>Deploy</b></span></div>
-  <div class="paso"><b>2.4</b><span>Anota la dirección que te queda, del tipo
-    <code>https://vigia.TUCUENTA.workers.dev</code></span></div>
+  <h2><span class="n">1</span> Token de GitHub <span class="t">≈ 3 min</span></h2>
+  <p class="nota">Es el permiso que necesita el puente para despertar al Vigía. Lo creas
+  limitado a un solo repositorio, así que no puede tocar nada más.</p>
+  <div class="paso"><b>1.1</b><span>Abre <code>github.com/settings/personal-access-tokens/new</code>
+    (estando con tu sesión iniciada). Es el generador de tokens <b>Fine-grained</b>.</span></div>
+  <div class="paso"><b>1.2</b><span>En <b>Token name</b> escribe: <code>vigia-puente</code></span></div>
+  <div class="paso"><b>1.3</b><span>En <b>Expiration</b> elige el plazo. Si eliges 90 días, en
+    90 días el bot dejará de responder y tendrás que crear otro token y actualizarlo en
+    Cloudflare. Si prefieres no acordarte, elige <b>No expiration</b>.</span></div>
+  <div class="paso"><b>1.4</b><span>En <b>Repository access</b> marca
+    <b>Only select repositories</b> y en el desplegable elige <b>BETO</b>.</span></div>
+  <div class="paso"><b>1.5</b><span>Baja a <b>Permissions</b> → <b>Repository permissions</b>.
+    Es una lista larga. Busca <b>Contents</b> y cambia su desplegable de
+    <i>No access</i> a <b>Read and write</b>.</span></div>
+  <div class="paso"><b>1.6</b><span>Baja del todo y aprieta <b>Generate token</b>. Si pide
+    confirmar, confirma.</span></div>
+  <div class="paso"><b>1.7</b><span>Te muestra el token una <b>única vez</b>: empieza con
+    <code>github_pat_...</code>. Cópialo y pégalo en algún lado seguro (notas del teléfono,
+    gestor de contraseñas). Si lo pierdes, se crea otro y listo.</span></div>
+  <p class="aviso">¿Por qué <b>Contents</b> y no <i>Actions</i>? Porque el evento que despierta
+  al Vigía (<code>repository_dispatch</code>) se autoriza con el permiso de contenidos. Con
+  <i>Actions</i> solo, GitHub responde 403 y el bot no arrancaría.</p>
+</div>
+
+<div class="caja">
+  <h2><span class="n">2</span> Crear el puente en Cloudflare <span class="t">≈ 5 min</span></h2>
+  <p class="nota">Cloudflare Workers es gratis hasta 100.000 llamadas al día — tú harás unas
+  pocas decenas. No pide tarjeta ni dominio.</p>
+  <div class="paso"><b>2.1</b><span>Entra a <code>dash.cloudflare.com/sign-up</code> y crea la
+    cuenta con tu correo. Verifica el correo que te llega.</span></div>
+  <div class="paso"><b>2.2</b><span>Ya dentro, en el menú de la izquierda busca
+    <b>Compute (Workers)</b> o <b>Workers &amp; Pages</b> y entra.</span></div>
+  <div class="paso"><b>2.3</b><span>Aprieta <b>Create application</b> (o directamente
+    <b>Create Worker</b>) → elige <b>Hello World</b> / <b>Start with Hello World!</b></span></div>
+  <div class="paso"><b>2.4</b><span>En el nombre escribe <code>vigia</code> (en minúsculas) y
+    aprieta <b>Deploy</b>. Espera a que diga que quedó desplegado.</span></div>
+  <div class="paso"><b>2.5</b><span>Verás la dirección de tu puente, del tipo
+    <code>https://vigia.<b>tucuenta</b>.workers.dev</code>. <b>Anótala</b>: la necesitas en el
+    paso 5.</span></div>
+  <div class="paso"><b>2.6</b><span>Aprieta <b>Edit code</b> (o <b>&lt;/&gt; Edit code</b>,
+    arriba a la derecha). Se abre un editor con código de ejemplo.</span></div>
+  <div class="paso"><b>2.7</b><span><b>Borra todo</b> lo que hay en el editor
+    (<kbd>Ctrl/Cmd</kbd>+<kbd>A</kbd> y luego <kbd>Suprimir</kbd>) y pega el código de abajo
+    en su lugar.</span></div>
+  <div class="paso"><b>2.8</b><span>Aprieta <b>Deploy</b> (arriba a la derecha) y confirma.
+    Va a quedar funcionando aunque todavía le falten las variables del paso 3.</span></div>
   <button id="copiar">📋 Copiar código del puente</button>
-  <span id="copiado" style="color:var(--verde);display:none;margin-left:10px">copiado</span>
+  <span id="copiado" class="g" style="display:none;margin-left:10px">✓ copiado</span>
   <pre id="codigo">cargando…</pre>
 </div>
 
 <div class="caja">
-  <h2>3 · Las cinco variables del puente (3 min)</h2>
-  <p class="nota">En el Worker: <b>Settings → Variables and Secrets → Add</b>. Crea estas cinco
-  (marca <b>Secret</b> en las tres primeras):</p>
+  <h2><span class="n">3</span> Las cinco variables <span class="t">≈ 4 min</span></h2>
+  <p class="nota">El código que pegaste no tiene tus llaves escritas dentro (así es más
+  seguro): las lee de estas variables.</p>
+  <div class="paso"><b>3.1</b><span>En tu Worker, ve a la pestaña <b>Settings</b> →
+    <b>Variables and Secrets</b> (en algunas versiones: <b>Settings → Variables</b>).</span></div>
+  <div class="paso"><b>3.2</b><span>Aprieta <b>+ Add</b> y crea una por una las cinco de la
+    tabla. Para las tres marcadas como <b>Secret</b>, elige el tipo <b>Secret</b> (queda
+    oculta); para las otras dos, <b>Text</b> sirve igual.</span></div>
+  <div class="paso"><b>3.3</b><span>Cuando estén las cinco, aprieta <b>Deploy</b> otra vez para
+    que el puente las tome.</span></div>
   <table>
-    <thead><tr><th>Nombre</th><th>Valor</th></tr></thead>
+    <thead><tr><th>Nombre exacto</th><th>Tipo</th><th>Qué va adentro</th></tr></thead>
     <tbody>
-      <tr><td><code>TG_TOKEN</code></td><td>el token de tu bot (el mismo del secreto de GitHub)</td></tr>
-      <tr><td><code>GH_TOKEN</code></td><td>el token del paso 1</td></tr>
-      <tr><td><code>TG_SECRET</code></td><td>una palabra larga que inventes, sin espacios
-        (ej. <code>beto-puente-2026-xyz</code>). Sirve para que nadie más pueda fingir ser Telegram</td></tr>
-      <tr><td><code>TG_CHAT</code></td><td>tu chat id (el mismo del secreto de GitHub)</td></tr>
-      <tr><td><code>GH_REPO</code></td><td><code>smartinoli/BETO</code></td></tr>
+      <tr><td><code>TG_TOKEN</code></td><td>Secret</td>
+        <td>El token de tu bot, completo con los dos puntos: <code>8123456789:AAE...</code></td></tr>
+      <tr><td><code>GH_TOKEN</code></td><td>Secret</td>
+        <td>El token de GitHub del paso 1 (<code>github_pat_...</code>)</td></tr>
+      <tr><td><code>TG_SECRET</code></td><td>Secret</td>
+        <td>Una palabra larga que inventes tú, sin espacios ni tildes. Ej:
+          <code>beto-puente-2026-x7k9</code>. Sirve para que nadie más pueda fingir ser
+          Telegram. <b>Anótala</b>: la necesitas en el paso 5.</td></tr>
+      <tr><td><code>TG_CHAT</code></td><td>Text</td>
+        <td>Tu chat id, solo el número: <code>5123456789</code></td></tr>
+      <tr><td><code>GH_REPO</code></td><td>Text</td>
+        <td>Exactamente: <code>smartinoli/BETO</code></td></tr>
     </tbody>
   </table>
-  <p class="nota" style="margin-top:10px">Guarda y vuelve a <b>Deploy</b> para que tome las variables.</p>
+  <p class="aviso">Los nombres deben ir <b>idénticos</b>, en mayúsculas y con guión bajo. Si uno
+  queda mal escrito, el puente no lo encuentra y responde con error.</p>
 </div>
 
 <div class="caja">
-  <h2>4 · Conectar Telegram al puente (1 min)</h2>
-  <p class="nota">Abre esta dirección en tu navegador, reemplazando las tres partes en
-  mayúsculas por lo tuyo:</p>
-  <pre>https://api.telegram.org/botTU_TOKEN_DE_BOT/setWebhook?url=https://vigia.TUCUENTA.workers.dev&amp;secret_token=TU_TG_SECRET</pre>
-  <p class="nota">Si responde <code>{"ok":true,...}</code>, quedó conectado. Manda
-  <b>/estado</b> al bot: debería contestarte "⏳ Recibido" en el acto y el resultado en menos
-  de un minuto.</p>
-  <p class="aviso" style="margin-top:12px">Para desconectarlo algún día:
-  <code>https://api.telegram.org/botTU_TOKEN/deleteWebhook</code></p>
+  <h2><span class="n">4</span> Probar el puente solo <span class="t">≈ 1 min</span></h2>
+  <p class="nota">Antes de conectar Telegram, comprueba que el puente está vivo: abre en el
+  navegador la dirección de tu Worker (la del paso 2.5).</p>
+  <div class="paso"><b class="g">Bien</b><span>Dice <b>Vigía: puente activo</b> → sigue al
+    paso 5.</span></div>
+  <div class="paso"><b class="p">Mal</b><span>Error 1101 o pantalla de error → el código quedó
+    mal pegado: vuelve al 2.7, borra todo y pega de nuevo.</span></div>
+</div>
+
+<div class="caja">
+  <h2><span class="n">5</span> Conectar Telegram <span class="t">≈ 2 min</span></h2>
+  <p class="nota">Aquí le dices a Telegram a qué dirección avisar. Llena los tres campos y la
+  página te arma la dirección exacta — así no hay riesgo de equivocarse escribiéndola.</p>
+  <p class="nota" style="margin-top:8px"><b class="g">Estos datos no salen de tu navegador:</b>
+  la página los usa solo para construir el texto, no los envía a ninguna parte.</p>
+
+  <label for="f-token">Token del bot</label>
+  <input id="f-token" placeholder="8123456789:AAE..." autocomplete="off" spellcheck="false">
+  <label for="f-worker">Dirección de tu Worker</label>
+  <input id="f-worker" placeholder="https://vigia.tucuenta.workers.dev" autocomplete="off" spellcheck="false">
+  <label for="f-secreto">La palabra secreta (TG_SECRET)</label>
+  <input id="f-secreto" placeholder="beto-puente-2026-x7k9" autocomplete="off" spellcheck="false">
+
+  <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+    <button id="armar">Armar la dirección</button>
+    <button class="sec" id="copiar-url" style="display:none">📋 Copiar</button>
+  </div>
+  <div id="salida" class="salida" style="display:none"></div>
+
+  <div class="paso" style="margin-top:16px"><b>5.1</b><span>Copia la dirección que aparece y
+    ábrela en una pestaña del navegador.</span></div>
+  <div class="paso"><b>5.2</b><span>Si responde <code>{"ok":true,"result":true,...}</code>,
+    quedó conectado.</span></div>
+  <div class="paso"><b>5.3</b><span>Si responde <code>"ok":false</code>, lee el mensaje: casi
+    siempre es el token mal copiado o la dirección del Worker con un espacio de más.</span></div>
+</div>
+
+<div class="caja">
+  <h2><span class="n">6</span> La prueba de fuego <span class="t">≈ 1 min</span></h2>
+  <div class="paso"><b>6.1</b><span>En Telegram, mándale <b>/estado</b> a tu bot.</span></div>
+  <div class="paso"><b>6.2</b><span>Debe contestarte <b>⏳ Recibido: /estado — trabajando…</b>
+    en el acto. Eso significa que el puente funciona.</span></div>
+  <div class="paso"><b>6.3</b><span>En menos de un minuto llega el mensaje del Vigía con la
+    cuota de API y el último barrido. Eso significa que GitHub también respondió.</span></div>
+  <div class="paso"><b>6.4</b><span>Si todo salió bien, prueba <b>/barrer</b>: el barrido
+    completo tarda unos 2 minutos.</span></div>
+  <p class="aviso ok">Desde aquí en adelante: el sistema no corre nunca solo. Duerme hasta que
+  tú escribes, a cualquier hora del día.</p>
+</div>
+
+<div class="caja">
+  <h2>Si algo no funciona</h2>
+  <details>
+    <summary><b>No contesta nada, ni el "⏳ Recibido"</b></summary>
+    <p class="nota" style="margin-top:8px">El aviso de Telegram no está llegando al puente.
+    Abre esta dirección (reemplaza tu token):<br>
+    <code>https://api.telegram.org/bot<b>TU_TOKEN</b>/getWebhookInfo</code></p>
+    <ul class="nota">
+      <li><code>"url":""</code> vacío → el paso 5 no se aplicó: repítelo.</li>
+      <li><code>"last_error_message"</code> con algo → ahí está la causa. Si dice
+        <i>Wrong response from the webhook: 401</i>, la palabra secreta del Worker
+        (<code>TG_SECRET</code>) no coincide con la que pusiste en la dirección del paso 5.</li>
+      <li>Todo bien pero igual nada → revisa que <code>TG_CHAT</code> sea exactamente tu chat
+        id: si no calza, el puente ignora los mensajes a propósito.</li>
+    </ul>
+  </details>
+  <details>
+    <summary><b>Dice "⏳ Recibido" pero nunca llega el resultado</b></summary>
+    <p class="nota" style="margin-top:8px">El puente funciona y GitHub aceptó el aviso, pero el
+    Vigía falló. Entra al repositorio → pestaña <b>Actions</b> → workflow <b>Vigía</b>, y mira
+    la última ejecución:</p>
+    <ul class="nota">
+      <li>No aparece ninguna ejecución nueva → el token de GitHub no tiene el permiso
+        <b>Contents: Read and write</b> (paso 1.5), o expiró.</li>
+      <li>Aparece en rojo → ábrela y lee el error del paso "Atender el comando". Mándame ese
+        texto y lo resolvemos.</li>
+    </ul>
+  </details>
+  <details>
+    <summary><b>Responde "❌ No pude despertar al Vigía (GitHub respondió 404)"</b></summary>
+    <p class="nota" style="margin-top:8px">Casi siempre es <code>GH_REPO</code> mal escrito
+    (debe ser <code>smartinoli/BETO</code>, respetando mayúsculas) o el token creado sin
+    acceso a ese repositorio (paso 1.4). Un 401 o 403 en cambio es token vencido o sin el
+    permiso de Contents.</p>
+  </details>
+  <details>
+    <summary><b>Quiero desconectarlo o cambiar de puente</b></summary>
+    <p class="nota" style="margin-top:8px">Para desconectar Telegram del puente:<br>
+    <code>https://api.telegram.org/bot<b>TU_TOKEN</b>/deleteWebhook</code><br>
+    Después de eso el bot deja de responder hasta que vuelvas a hacer el paso 5.</p>
+  </details>
 </div>
 
 <div class="caja">
@@ -114,10 +276,14 @@ despierta al Vigía. Se configura una vez y es gratis.</p>
   <table>
     <thead><tr><th></th><th>Antes</th><th>Con el puente</th></tr></thead>
     <tbody>
-      <tr><td>Cuándo corre</td><td>sesiones cada 30 min todo el día</td><td>solo cuando escribes</td></tr>
-      <tr><td>Demora en responder</td><td>de segundos a 40 min</td><td>segundos, siempre</td></tr>
+      <tr><td>Cuándo corre</td><td>sesiones cada 30 min, todo el día</td>
+        <td>solo cuando escribes</td></tr>
+      <tr><td>Cuánto tarda en responder</td><td>de segundos a 40 minutos</td>
+        <td>segundos, siempre</td></tr>
       <tr><td>Horario</td><td>limitado (9:00–01:00)</td><td>a cualquier hora</td></tr>
       <tr><td>Requests de OddsPapi</td><td>solo al barrer</td><td>solo al barrer (igual)</td></tr>
+      <tr><td>Piezas que mantener</td><td>el cron</td><td>el token de GitHub, si le pusiste
+        vencimiento</td></tr>
     </tbody>
   </table>
 </div>
@@ -165,14 +331,51 @@ const CODIGO = `export default {
     return new Response('ok');
   },
 };`;
+
 document.getElementById('codigo').textContent = CODIGO;
-document.getElementById('copiar').addEventListener('click', function(){
-  const ok = () => {
-    document.getElementById('copiado').style.display = 'inline';
-    this.textContent = '✓ Copiado';
+
+function copiar(texto, boton, aviso){
+  const listo = () => {
+    boton.textContent = '✓ Copiado';
+    if (aviso) aviso.style.display = 'inline';
   };
-  if (navigator.clipboard) navigator.clipboard.writeText(CODIGO).then(ok, ok);
-  else { const r = document.createRange(); r.selectNode(document.getElementById('codigo'));
-    getSelection().removeAllRanges(); getSelection().addRange(r); ok(); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(listo, listo);
+  } else listo();
+}
+document.getElementById('copiar').addEventListener('click', function(){
+  copiar(CODIGO, this, document.getElementById('copiado'));
+});
+
+document.getElementById('armar').addEventListener('click', function(){
+  const t = document.getElementById('f-token').value.trim();
+  const w = document.getElementById('f-worker').value.trim().replace(/\/+$/, '');
+  const s = document.getElementById('f-secreto').value.trim();
+  const salida = document.getElementById('salida');
+  salida.style.display = 'block';
+  if (!t || !w || !s) {
+    salida.style.borderColor = '#F2705C';
+    salida.style.color = '#F2705C';
+    salida.textContent = 'Faltan datos: llena los tres campos.';
+    document.getElementById('copiar-url').style.display = 'none';
+    return;
+  }
+  if (!/^\d+:/.test(t)) {
+    salida.style.borderColor = '#EFB93F';
+    salida.style.color = '#EFB93F';
+    salida.textContent = 'El token del bot debería empezar con números y dos puntos '
+      + '(ej. 8123456789:AAE...). Revísalo y arma de nuevo.';
+    document.getElementById('copiar-url').style.display = 'none';
+    return;
+  }
+  const url = 'https://api.telegram.org/bot' + t + '/setWebhook?url='
+    + encodeURIComponent(w) + '&secret_token=' + encodeURIComponent(s);
+  salida.style.borderColor = '#4ADE9B';
+  salida.style.color = '#4ADE9B';
+  salida.textContent = url;
+  const b = document.getElementById('copiar-url');
+  b.style.display = 'inline-block';
+  b.textContent = '📋 Copiar';
+  b.onclick = function(){ copiar(url, b); };
 });
 </script>
