@@ -68,6 +68,14 @@
 sesiones esperando, sin nada encendido de fondo. Se configura una vez, en unos 15 minutos,
 y es gratis para siempre.</p>
 
+<div class="caja" style="border-color:var(--ambar)">
+  <h2>¿Ya lo instalaste y el bot no contesta?</h2>
+  <p class="nota">Actualicé el código del puente: ahora <b>nunca se queda callado</b> — si algo
+  falta, te lo dice por el chat o al abrir su dirección en el navegador. Ve al paso 2.6, pega
+  el código nuevo (botón de copiar), aprieta <b>Deploy</b>, y luego abre la dirección de tu
+  Worker: el diagnóstico del paso 4 te dirá exactamente qué falta.</p>
+</div>
+
 <div class="flujo">
   <span>Escribes <b>/barrer</b></span><em>→</em>
   <span>Telegram avisa al puente</span><em>→</em>
@@ -179,12 +187,24 @@ y es gratis para siempre.</p>
 
 <div class="caja">
   <h2><span class="n">4</span> Probar el puente solo <span class="t">≈ 1 min</span></h2>
-  <p class="nota">Antes de conectar Telegram, comprueba que el puente está vivo: abre en el
-  navegador la dirección de tu Worker (la del paso 2.5).</p>
-  <div class="paso"><b class="g">Bien</b><span>Dice <b>Vigía: puente activo</b> → sigue al
-    paso 5.</span></div>
-  <div class="paso"><b class="p">Mal</b><span>Error 1101 o pantalla de error → el código quedó
-    mal pegado: vuelve al 2.7, borra todo y pega de nuevo.</span></div>
+  <p class="nota">Antes de conectar Telegram, comprueba el puente: abre en el navegador la
+  dirección de tu Worker (la del paso 2.5). Te responde con un diagnóstico:</p>
+  <pre>{
+  "puente": "activo · versión 2",
+  "TG_TOKEN": "ok",
+  "GH_TOKEN": "ok",
+  "TG_SECRET": "ok",
+  "TG_CHAT": "ok (termina en …789)",
+  "GH_REPO": "smartinoli/BETO",
+  "resumen": "✓ Todo configurado. Escríbele al bot para probar."
+}</pre>
+  <div class="paso"><b class="g">Bien</b><span>Si el resumen dice <b>✓ Todo configurado</b>,
+    sigue al paso 5.</span></div>
+  <div class="paso"><b class="am">Faltan</b><span>Si dice <b>⚠ Faltan variables: …</b>, vuelve
+    al paso 3 y agrega las que nombra. Recuerda apretar <b>Deploy</b> después.</span></div>
+  <div class="paso"><b class="p">Mal</b><span>Si dice <b>Hello World!</b>, el código no se pegó:
+    vuelve al 2.6, borra TODO el editor y pega de nuevo. Si sale error 1101, el código quedó
+    cortado a la mitad: pégalo completo.</span></div>
 </div>
 
 <div class="caja">
@@ -292,8 +312,28 @@ y es gratis para siempre.</p>
 <script>
 const CODIGO = `export default {
   async fetch(request, env) {
-    if (request.method !== 'POST') return new Response('Vigía: puente activo', { status: 200 });
+    const hay = v => (v && String(v).trim()) ? 'ok' : 'FALTA';
 
+    /* ---- diagnóstico: abrir la dirección en el navegador ---- */
+    if (request.method !== 'POST') {
+      const estado = {
+        puente: 'activo · versión 2',
+        TG_TOKEN: hay(env.TG_TOKEN),
+        GH_TOKEN: hay(env.GH_TOKEN),
+        TG_SECRET: hay(env.TG_SECRET),
+        TG_CHAT: env.TG_CHAT ? 'ok (termina en …' + String(env.TG_CHAT).slice(-3) + ')' : 'FALTA',
+        GH_REPO: env.GH_REPO || 'FALTA',
+      };
+      const faltan = Object.entries(estado).filter(([, v]) => String(v).includes('FALTA'));
+      estado.resumen = faltan.length
+        ? '⚠ Faltan variables: ' + faltan.map(([k]) => k).join(', ')
+        : '✓ Todo configurado. Escríbele al bot para probar.';
+      return new Response(JSON.stringify(estado, null, 2), {
+        status: 200, headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      });
+    }
+
+    /* ---- aviso de Telegram ---- */
     if (env.TG_SECRET &&
         request.headers.get('X-Telegram-Bot-Api-Secret-Token') !== env.TG_SECRET) {
       return new Response('no', { status: 401 });
@@ -304,13 +344,32 @@ const CODIGO = `export default {
     const msg = update.message || update.edited_message;
     const texto = (msg && msg.text || '').trim();
     const chat = msg && msg.chat && String(msg.chat.id);
+    if (!texto || !chat) return new Response('ok');
 
-    if (!texto || chat !== String(env.TG_CHAT)) return new Response('ok');
-
+    /* responde SIEMPRE a quien escribe: si algo está mal, lo dice en el chat
+       en vez de quedarse callado (el silencio era imposible de diagnosticar) */
     const decir = (t) => fetch(\`https://api.telegram.org/bot\${env.TG_TOKEN}/sendMessage\`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: chat, text: t, parse_mode: 'HTML' }),
     });
+
+    if (!env.TG_CHAT) {
+      await decir('⚠ Al puente le falta la variable <b>TG_CHAT</b>.\n\nTu chat id es: <code>'
+        + chat + '</code>\n\nPonlo en el Worker (Settings → Variables) y vuelve a Deploy.');
+      return new Response('ok');
+    }
+    if (chat !== String(env.TG_CHAT).trim()) {
+      await decir('⛔ Este chat no está autorizado.\n\nTu chat id: <code>' + chat
+        + '</code>\nEl configurado en el puente termina en <code>…'
+        + String(env.TG_CHAT).trim().slice(-3) + '</code>\n\nSi eres tú, corrige '
+        + '<b>TG_CHAT</b> en el Worker y vuelve a Deploy.');
+      return new Response('ok');
+    }
+    if (!env.GH_TOKEN || !env.GH_REPO) {
+      await decir('⚠ Al puente le falta <b>' + (!env.GH_TOKEN ? 'GH_TOKEN' : 'GH_REPO')
+        + '</b>. Agrégala en el Worker y vuelve a Deploy.');
+      return new Response('ok');
+    }
 
     const r = await fetch(\`https://api.github.com/repos/\${env.GH_REPO}/dispatches\`, {
       method: 'POST',
@@ -326,7 +385,12 @@ const CODIGO = `export default {
     if (r.status === 204) {
       await decir('⏳ Recibido: <b>' + texto.replace(/[<>&]/g, '') + '</b> — trabajando…');
     } else {
-      await decir('❌ No pude despertar al Vigía (GitHub respondió ' + r.status + ').');
+      const detalle = r.status === 404
+        ? 'Revisa GH_REPO (debe ser smartinoli/BETO) o que el token tenga acceso a ese repositorio.'
+        : (r.status === 401 || r.status === 403)
+          ? 'El token de GitHub venció o le falta el permiso Contents: Read and write.'
+          : '';
+      await decir('❌ No pude despertar al Vigía (GitHub respondió ' + r.status + ').\n' + detalle);
     }
     return new Response('ok');
   },
