@@ -505,7 +505,14 @@ async function ejecutar(texto) {
 
 /* ---------- main ---------- */
 try {
-  if (MODO === 'barrer' || MODO === 'rapido') {
+  if (MODO === 'comando') {
+    /* el puente (Cloudflare Worker) manda el texto tal cual lo escribiste */
+    const texto = (process.env.COMANDO || 'barrer').trim();
+    console.log('Comando:', texto);
+    if (!await ejecutar(texto))
+      await telegram('No conozco ese comando. Prueba <b>/barrer</b>, <b>/rapido</b>, '
+        + '<b>/estado</b> o <b>/ayuda</b>.');
+  } else if (MODO === 'barrer' || MODO === 'rapido') {
     const r = await barrer({ completo: true, horasMax: MODO === 'rapido' ? 6 : null });
     await reportar(r, MODO === 'rapido' ? '📋 Barrido rápido (6 h)' : '📋 Barrido completo');
   } else {

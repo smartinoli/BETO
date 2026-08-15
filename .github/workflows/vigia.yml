@@ -1,29 +1,23 @@
 name: Vigía
 
-# El Vigía ya no manda alertas solo: ESCUCHA tu chat de Telegram y barre
-# cuando tú se lo pides (/barrer, /rapido, /estado).
+# El Vigía corre SOLO cuando tú se lo pides por el chat.
 #
-# Cada ejecución mantiene al bot escuchando ~50 minutos sin gastar un solo
-# request de OddsPapi. El cron levanta uno cada 30 min: como la sesión dura
-# más que el intervalo, cuando llega el siguiente queda ENCOLADO (concurrency)
-# y arranca apenas termina el anterior — cadena continua, aunque GitHub salte
-# ventanas de cron (que las salta).
+# Telegram → Cloudflare Worker (vigia/worker.js) → repository_dispatch → este
+# workflow. Sin cron y sin sesiones de escucha: nada corre mientras no mandes
+# un mensaje.
 #
-# Si aun así mandas un comando sin escucha vivo, el mensaje NO se pierde:
-# Telegram lo guarda hasta 24 h y el siguiente escucha lo atiende.
+# También puedes dispararlo a mano desde la pestaña Actions (Run workflow).
 
 on:
-  schedule:
-    # UTC. Chile es UTC-4 (invierno) / UTC-3 (verano) → cubre ~08:00-02:00 local.
-    - cron: '5,35 11-23 * * *'
-    - cron: '5,35 0-6 * * *'
+  repository_dispatch:
+    types: [comando]
   workflow_dispatch:
     inputs:
       accion:
-        description: 'Qué hacer ahora'
+        description: 'Qué hacer'
         type: choice
-        default: escucha
-        options: [escucha, barrer, rapido]
+        default: barrer
+        options: [barrer, rapido, estado]
 
 permissions:
   contents: write
@@ -35,7 +29,7 @@ concurrency:
 jobs:
   vigia:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -43,13 +37,14 @@ jobs:
         with:
           node-version: 22
 
-      - name: Vigía
+      - name: Atender el comando
         env:
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          MODO: ${{ inputs.accion || 'escucha' }}
-          SEGUNDOS_ESCUCHA: 3000
+          MODO: comando
+          # del chat viene el texto tal cual; desde Actions, la acción elegida
+          COMANDO: ${{ github.event.client_payload.texto || inputs.accion || 'barrer' }}
         run: node vigia/vigia.mjs
 
       - name: Guardar estado
