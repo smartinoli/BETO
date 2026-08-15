@@ -289,6 +289,11 @@ function procesarSync(info, bet, cb, metas, salida) {
     const paso = CFG.lineasVecinas ? 1 : 0;
     const sel = grupo.slice(Math.max(0, ic - paso), Math.min(grupo.length, ic + paso + 1));
     E.lineasLejanas += grupo.length - sel.length;
+    if (grupo.length > sel.length && E.ej.lejanas.length < 7) {
+      const fuera = grupo.filter(g => !sel.includes(g)).map(g => g.meta.h);
+      E.ej.lejanas.push(`${grupo[0].meta.n}: central ${grupo[ic].meta.h}, se miran `
+        + `${sel.map(g => g.meta.h).join('/')} · fuera ${fuera.join(', ')}`);
+    }
     elegidos.push(...sel);
   }
   for (const { mid, meta, fam } of elegidos) {
@@ -303,7 +308,27 @@ function procesarSync(info, bet, cb, metas, salida) {
       pB[oid] = b0.price; pC[oid] = c0.price;
       idB[oid] = b0.bookmakerOutcomeId || null;   /* id nativo de Betano */
     }
-    if (!ok) { if (faltaJuez) E.sinJuez++; else E.inactivos++; continue; }
+    if (!ok) {
+      if (!faltaJuez) { E.inactivos++; continue; }
+      E.sinJuez++;
+      /* ¿es que Cloudbet no cotiza NADA de esa familia, o solo tiene otras
+         líneas? Distinguirlo dice si estamos perdiendo señales de verdad. */
+      const otras = [];
+      for (const omid of Object.keys(cb.markets || {})) {
+        const om = metas[omid];
+        if (om && om.n === meta.n && om.h != null && om.h !== meta.h) otras.push(om.h);
+      }
+      if (otras.length) {
+        E.juezOtraLinea++;
+        if (E.ej.sinJuez.length < 7) E.ej.sinJuez.push(
+          `${info.p1.slice(0, 16)} · ${meta.n} ${meta.h} → Cloudbet tiene ${otras.sort((a, b) => a - b).slice(0, 4).join(', ')}`);
+      } else {
+        E.juezNiFamilia++;
+        if (E.ej.sinJuez.length < 7) E.ej.sinJuez.push(
+          `${info.p1.slice(0, 16)} · ${meta.n} ${meta.h ?? ''} → Cloudbet no tiene esa familia`);
+      }
+      continue;
+    }
     const bmid = bet.markets[mid].bookmakerMarketId || null;
     const [jA, jB] = desvigar(pC[oids[0]], pC[oids[1]]);
     const justos = { [oids[0]]: jA, [oids[1]]: jB };
@@ -333,7 +358,14 @@ function procesarSync(info, bet, cb, metas, salida) {
         sospechosa: vent > CFG.umbralSospechosa,
       };
       const mejor = porFam.get(famLabel);
-      if (mejor) E.hermanas++;   /* otra línea de la misma familia con menos ventaja */
+      if (mejor) {
+        E.hermanas++;   /* otra línea de la misma familia con menos ventaja */
+        if (E.ej.hermanas.length < 6) {
+          const a = s.vent > mejor.vent ? s : mejor, b = s.vent > mejor.vent ? mejor : s;
+          E.ej.hermanas.push(`${info.p1.slice(0, 14)} · ${famLabel}: gana "${a.lado}" `
+            + `+${(a.vent * 100).toFixed(1)}% sobre "${b.lado}" +${(b.vent * 100).toFixed(1)}%`);
+        }
+      }
       if (!mejor || s.vent > mejor.vent) porFam.set(famLabel, s);
     }
   }
@@ -346,7 +378,11 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const salida = {
     senales: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {},
     embudo: { fueraWhitelist: 0, cuartos: 0, lineasLejanas: 0, sinJuez: 0, inactivos: 0,
-              cuotaAlta: 0, ventajaBaja: 0, sinVentaja: 0, hermanas: 0, sinCloudbet: 0 },
+              cuotaAlta: 0, ventajaBaja: 0, sinVentaja: 0, hermanas: 0, sinCloudbet: 0,
+              /* ejemplos reales para el comando /porque */
+              ej: { lejanas: [], sinJuez: [], cuotaAlta: [], hermanas: [] },
+              /* de los mercados sin juez: ¿Cloudbet tiene la familia con otra línea? */
+              juezOtraLinea: 0, juezNiFamilia: 0 },
   };
   const antic = CFG.anticipacionMin * 60e3;
   const horizonte = (horasMax ?? CFG.horizonteHoras) * 3600e3;
@@ -403,6 +439,11 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     for (const f of bet) {
       const b = (f.bookmakerOdds || {}).betano;
       for (const mid of Object.keys(b?.markets || {})) if (!(mid in metas)) metas[mid] = await metaDe(mid);
+    }
+    /* también los de Cloudbet: sin esto no se puede saber si un mercado "sin
+       juez" es que Cloudbet no lo cotiza o que lo cotiza en otra línea */
+    for (const c of cbIdx.values()) {
+      for (const mid of Object.keys(c?.markets || {})) if (!(mid in metas)) metas[mid] = await metaDe(mid);
     }
     for (const f of bet) {
       const info = fixIdx.get(f.fixtureId);
@@ -522,6 +563,36 @@ async function ejecutar(texto) {
     await reportar(r, `📋 Rápido · ${sids ? queDeportes : 'todo'} · ${h} h`);
     return true;
   }
+  if (['porque', 'porqué', 'detalle', 'embudo', 'diagnostico', 'diagnóstico'].includes(c)) {
+    const h = horas ?? 6;
+    await telegram(`🔬 Analizando qué queda fuera · <b>${queDeportes}</b> · ${h} h…`);
+    const r = await barrer({ completo: true, horasMax: h, sids });
+    const E = r.embudo;
+    const bloques = [
+      `<b>🔬 Qué quedó fuera</b>\n${r.ligas} ligas · ${r.partidos} partidos · `
+        + `${r.candidatas.toLocaleString('es-CL')} líneas · ${r.senales.length} señales`,
+    ];
+    if (E.sinJuez) bloques.push(
+      `<b>Sin juez de Cloudbet: ${E.sinJuez}</b>\n`
+      + `· ${E.juezOtraLinea} son mercados que Cloudbet <b>sí</b> tiene, pero en otra línea\n`
+      + `· ${E.juezNiFamilia} son familias que Cloudbet no cotiza\n`
+      + (E.ej.sinJuez.length ? '\n<i>' + E.ej.sinJuez.map(escHtml).join('\n') + '</i>' : ''));
+    if (E.lineasLejanas) bloques.push(
+      `<b>Líneas lejos de la central: ${E.lineasLejanas}</b>\n`
+      + (E.ej.lejanas.length ? '<i>' + E.ej.lejanas.map(escHtml).join('\n') + '</i>' : ''));
+    if (E.hermanas) bloques.push(
+      `<b>Hermanas descartadas: ${E.hermanas}</b> (queda la de mayor ventaja)\n`
+      + (E.ej.hermanas.length ? '<i>' + E.ej.hermanas.map(escHtml).join('\n') + '</i>' : ''));
+    if (E.cuotaAlta || E.ventajaBaja || E.sinVentaja) bloques.push(
+      `<b>Por tus criterios</b>\n· ${E.cuotaAlta} con cuota > ${CFG.cuotaMaxima}\n`
+      + `· ${E.ventajaBaja} con ventaja positiva pero bajo tu mínimo\n`
+      + `· ${E.sinVentaja} sin ventaja (Betano paga bajo el justo)`);
+    if (E.sinCloudbet || E.cuartos) bloques.push(
+      `<b>Otros</b>\n· ${E.sinCloudbet} partidos que Cloudbet no cubre\n`
+      + `· ${E.cuartos} líneas de cuarto (0.25/0.75)`);
+    await telegram(bloques.join('\n\n'));
+    return true;
+  }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
@@ -530,6 +601,7 @@ async function ejecutar(texto) {
       `<b>/barrer</b> — todo lo disponible en las próximas ${CFG.horizonteHoras} h (~110 requests, ~2 min)`,
       '<b>/rapido</b> — solo lo que empieza dentro de 6 h (~30 requests)',
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
+      '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
       '',
       'Se les puede agregar <b>deporte</b> y <b>horas</b>, en cualquier orden:',
       '· <code>/barrer futbol 6</code>',
