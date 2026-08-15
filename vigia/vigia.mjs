@@ -286,13 +286,19 @@ function procesarSync(info, bet, cb, metas, salida) {
     grupo.sort((a, b) => a.meta.h - b.meta.h);
     const ic = grupo.findIndex(c => c.central === true);
     if (ic < 0) { elegidos.push(...grupo.filter(c => c.central !== false)); continue; }
-    const paso = CFG.lineasVecinas ? 1 : 0;
+    /* cuántas líneas a cada lado de la central: 0 = solo la central,
+       1 = una vecina por lado, 99 = todas las que ofrezca el feed */
+    const paso = CFG.vecinas != null ? CFG.vecinas : (CFG.lineasVecinas ? 1 : 0);
     const sel = grupo.slice(Math.max(0, ic - paso), Math.min(grupo.length, ic + paso + 1));
-    E.lineasLejanas += grupo.length - sel.length;
-    if (grupo.length > sel.length && E.ej.lejanas.length < 7) {
-      const fuera = grupo.filter(g => !sel.includes(g)).map(g => g.meta.h);
+    const fuera = grupo.filter(g => !sel.includes(g));
+    E.lineasLejanas += fuera.length;
+    /* ¿cuántas de las descartadas SÍ tenían juez? Son las recuperables */
+    const conJuez = fuera.filter(g => (cb.markets || {})[g.mid]);
+    E.lejanasConJuez += conJuez.length;
+    if (fuera.length && E.ej.lejanas.length < 7) {
       E.ej.lejanas.push(`${grupo[0].meta.n}: central ${grupo[ic].meta.h}, se miran `
-        + `${sel.map(g => g.meta.h).join('/')} · fuera ${fuera.join(', ')}`);
+        + `${sel.map(g => g.meta.h).join('/')} · fuera ${fuera.map(g => g.meta.h).join(', ')}`
+        + (conJuez.length ? ` (${conJuez.map(g => g.meta.h).join(', ')} con juez)` : ' (ninguna con juez)'));
     }
     elegidos.push(...sel);
   }
@@ -382,7 +388,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
               /* ejemplos reales para el comando /porque */
               ej: { lejanas: [], sinJuez: [], cuotaAlta: [], hermanas: [] },
               /* de los mercados sin juez: ¿Cloudbet tiene la familia con otra línea? */
-              juezOtraLinea: 0, juezNiFamilia: 0 },
+              juezOtraLinea: 0, juezNiFamilia: 0, lejanasConJuez: 0 },
   };
   const antic = CFG.anticipacionMin * 60e3;
   const horizonte = (horasMax ?? CFG.horizonteHoras) * 3600e3;
@@ -579,7 +585,9 @@ async function ejecutar(texto) {
       + (E.ej.sinJuez.length ? '\n<i>' + E.ej.sinJuez.map(escHtml).join('\n') + '</i>' : ''));
     if (E.lineasLejanas) bloques.push(
       `<b>Líneas lejos de la central: ${E.lineasLejanas}</b>\n`
-      + (E.ej.lejanas.length ? '<i>' + E.ej.lejanas.map(escHtml).join('\n') + '</i>' : ''));
+      + `· <b>${E.lejanasConJuez} tienen juez en Cloudbet</b> → se recuperan subiendo "vecinas"\n`
+      + `· ${E.lineasLejanas - E.lejanasConJuez} no tienen juez igual\n`
+      + (E.ej.lejanas.length ? '\n<i>' + E.ej.lejanas.map(escHtml).join('\n') + '</i>' : ''));
     if (E.hermanas) bloques.push(
       `<b>Hermanas descartadas: ${E.hermanas}</b> (queda la de mayor ventaja)\n`
       + (E.ej.hermanas.length ? '<i>' + E.ej.hermanas.map(escHtml).join('\n') + '</i>' : ''));
