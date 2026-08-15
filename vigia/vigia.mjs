@@ -258,12 +258,13 @@ async function oddsBatch(tids, casa) {
 function procesarSync(info, bet, cb, metas, salida) {
   const porFam = new Map();
   const cand = [];
+  const E = salida.embudo;
   for (const mid of Object.keys(bet.markets || {})) {
     const meta = metas[mid];
     if (!meta || meta.len !== 2) continue;
     const fam = familiaDe(info.sid, meta.n);
-    if (!fam) continue;
-    if (CFG.sinCuartos && meta.h != null && Math.abs(meta.h * 2) % 1 !== 0) continue;
+    if (!fam) { E.fueraWhitelist++; continue; }
+    if (CFG.sinCuartos && meta.h != null && Math.abs(meta.h * 2) % 1 !== 0) { E.cuartos++; continue; }
     let central = null;
     for (const o of Object.values(bet.markets[mid].outcomes || {})) {
       const p0 = (o.players || {})['0'];
@@ -286,20 +287,23 @@ function procesarSync(info, bet, cb, metas, salida) {
     const ic = grupo.findIndex(c => c.central === true);
     if (ic < 0) { elegidos.push(...grupo.filter(c => c.central !== false)); continue; }
     const paso = CFG.lineasVecinas ? 1 : 0;
-    elegidos.push(...grupo.slice(Math.max(0, ic - paso), Math.min(grupo.length, ic + paso + 1)));
+    const sel = grupo.slice(Math.max(0, ic - paso), Math.min(grupo.length, ic + paso + 1));
+    E.lineasLejanas += grupo.length - sel.length;
+    elegidos.push(...sel);
   }
   for (const { mid, meta, fam } of elegidos) {
     const oB = bet.markets[mid].outcomes || {}, oC = (cb.markets || {})[mid]?.outcomes || {};
     const oids = Object.keys(oB);
     if (oids.length !== 2) continue;
-    const pB = {}, pC = {}, idB = {}; let ok = true;
+    const pB = {}, pC = {}, idB = {}; let ok = true, faltaJuez = false;
     for (const oid of oids) {
       const b0 = (oB[oid].players || {})['0'], c0 = ((oC[oid] || {}).players || {})['0'];
-      if (!b0?.active || !(b0.price > 1) || !c0?.active || !(c0.price > 1)) { ok = false; break; }
+      if (!b0?.active || !(b0.price > 1)) { ok = false; break; }
+      if (!c0?.active || !(c0.price > 1)) { ok = false; faltaJuez = true; break; }
       pB[oid] = b0.price; pC[oid] = c0.price;
       idB[oid] = b0.bookmakerOutcomeId || null;   /* id nativo de Betano */
     }
-    if (!ok) continue;
+    if (!ok) { if (faltaJuez) E.sinJuez++; else E.inactivos++; continue; }
     const bmid = bet.markets[mid].bookmakerMarketId || null;
     const [jA, jB] = desvigar(pC[oids[0]], pC[oids[1]]);
     const justos = { [oids[0]]: jA, [oids[1]]: jB };
@@ -307,10 +311,10 @@ function procesarSync(info, bet, cb, metas, salida) {
     const famLabel = fam.fam + (fam.eq ? ' · ' + (fam.eq === 1 ? info.p1 : info.p2) : '');
     for (const oid of oids) {
       const cuota = pB[oid] * (1 - CFG.margenLocal);
-      if (cuota > CFG.cuotaMaxima) continue;
-      const vent = cuota / justos[oid] - 1;
       salida.candidatas++;
-      if (vent < umbral) continue;
+      if (cuota > CFG.cuotaMaxima) { E.cuotaAlta++; continue; }
+      const vent = cuota / justos[oid] - 1;
+      if (vent < umbral) { if (vent > 0) E.ventajaBaja++; else E.sinVentaja++; continue; }
       const crudo = meta.outs[oid] || oid;
       let lado;
       if (fam.lado === 'ou') lado = (/over/i.test(crudo) ? 'Más de ' : 'Menos de ') + meta.h;
@@ -329,6 +333,7 @@ function procesarSync(info, bet, cb, metas, salida) {
         sospechosa: vent > CFG.umbralSospechosa,
       };
       const mejor = porFam.get(famLabel);
+      if (mejor) E.hermanas++;   /* otra línea de la misma familia con menos ventaja */
       if (!mejor || s.vent > mejor.vent) porFam.set(famLabel, s);
     }
   }
@@ -336,14 +341,18 @@ function procesarSync(info, bet, cb, metas, salida) {
 }
 
 /* ---------- BARRIDO ---------- */
-async function barrer({ completo = true, horasMax = null } = {}) {
+async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const t0 = Date.now();
-  const salida = { senales: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {} };
+  const salida = {
+    senales: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {},
+    embudo: { fueraWhitelist: 0, cuartos: 0, lineasLejanas: 0, sinJuez: 0, inactivos: 0,
+              cuotaAlta: 0, ventajaBaja: 0, sinVentaja: 0, hermanas: 0, sinCloudbet: 0 },
+  };
   const antic = CFG.anticipacionMin * 60e3;
   const horizonte = (horasMax ?? CFG.horizonteHoras) * 3600e3;
 
   const porLiga = new Map();
-  for (const sid of Object.keys(CFG.deportes)) {
+  for (const sid of (sids && sids.length ? sids : Object.keys(CFG.deportes))) {
     const tor = await torneosDe(sid);
     const fx = await fixturesDe(sid);
     const nombres = new Map(tor.map(t => [t.id, t.n + (t.cat ? ' (' + t.cat + ')' : '')]));
@@ -398,7 +407,8 @@ async function barrer({ completo = true, horasMax = null } = {}) {
     for (const f of bet) {
       const info = fixIdx.get(f.fixtureId);
       const b = (f.bookmakerOdds || {}).betano, c = cbIdx.get(f.fixtureId);
-      if (!info || !b || !c) continue;
+      if (!info || !b) continue;
+      if (!c) { salida.embudo.sinCloudbet++; continue; }   /* partido sin juez */
       info.bookmakerFixtureId = b.bookmakerFixtureId || null;
       procesarSync(info, b, c, metas, salida);
     }
@@ -427,6 +437,19 @@ function bloqueSenal(s, i) {
 }
 async function reportar(r, titulo) {
   const orden = r.senales.slice().sort((a, b) => b.vent - a.vent);
+  const E = r.embudo;
+  /* el embudo dice qué quedó fuera y por qué: sin esto, "no hay señales"
+     es indistinguible de "el filtro está demasiado apretado" */
+  const descartes = [
+    E.sinCloudbet && `${E.sinCloudbet} partidos sin Cloudbet (sin juez)`,
+    E.sinJuez && `${E.sinJuez} mercados que Cloudbet no cotiza`,
+    E.cuotaAlta && `${E.cuotaAlta} líneas con cuota > ${CFG.cuotaMaxima}`,
+    E.ventajaBaja && `${E.ventajaBaja} con ventaja bajo tu mínimo`,
+    E.sinVentaja && `${E.sinVentaja} sin ventaja (Betano paga bajo el justo)`,
+    E.lineasLejanas && `${E.lineasLejanas} líneas lejos de la central`,
+    E.cuartos && `${E.cuartos} de cuarto (0.25/0.75, no están en LAT)`,
+    E.hermanas && `${E.hermanas} hermanas de la misma familia (queda la mejor)`,
+  ].filter(Boolean);
   const cab = [
     `<b>${titulo}</b>`,
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
@@ -434,7 +457,8 @@ async function reportar(r, titulo) {
     Object.entries(r.porDeporte).map(([d, n]) => `${d} ${n}`).join(' · '),
     r.tope ? '⚠️ tope de requests alcanzado' : '',
     '',
-    orden.length ? `<b>${orden.length} señal(es):</b>` : 'Sin señales que pasen tus criterios ahora.',
+    orden.length ? `<b>${orden.length} señal(es):</b>` : '<b>Sin señales que pasen tus criterios.</b>',
+    descartes.length ? `\n<i>Quedó fuera: ${descartes.join(' · ')}</i>` : '',
   ].filter(Boolean).join('\n');
   await telegram(cab);
   if (!orden.length) return;
@@ -465,24 +489,37 @@ async function cmdEstado() {
     'Comandos: /barrer · /rapido · /estado · /ayuda',
   ].join('\n'));
 }
+/* Deportes por como los escribas: "/barrer futbol 6", "/rapido tenis nba"… */
+const ALIAS = {
+  '10': /f[uú]tbol|futbol|soccer|balomp/i,
+  '11': /b[aá]squet|basquet|basket|nba|wnba|euroliga/i,
+  '12': /tenis|tennis|atp|wta|itf/i,
+  '13': /b[eé]isbol|beisbol|baseball|mlb|npb/i,
+};
+function deportesDe(texto) {
+  const sids = Object.entries(ALIAS).filter(([, re]) => re.test(texto)).map(([sid]) => sid);
+  return sids.length ? sids : null;   /* null = todos */
+}
 async function ejecutar(texto) {
   const c = texto.toLowerCase().replace(/^\//, '').split(/[\s@]/)[0];
   /* horizonte opcional en el propio mensaje: "/barrer 48" = próximas 48 h.
      Sin número manda config.horizonteHoras. Tope de 72 h (el feed no da más). */
   const num = (texto.match(/\d+/) || [])[0];
   const horas = num ? Math.min(72, Math.max(1, +num)) : null;
+  const sids = deportesDe(texto);
+  const queDeportes = sids ? sids.map(s => CFG.deportes[s]).join(' + ') : 'todos los deportes';
   if (['barrer', 'barrido', 'todo', 'buscar'].includes(c)) {
     const h = horas ?? CFG.horizonteHoras;
-    await telegram(`🔎 Barriendo <b>todo</b> lo disponible en las próximas <b>${h} h</b>… (~2 min)`);
-    const r = await barrer({ completo: true, horasMax: h });
-    await reportar(r, `📋 Barrido completo · ${h} h`);
+    await telegram(`🔎 Barriendo <b>${queDeportes}</b> · próximas <b>${h} h</b>…`);
+    const r = await barrer({ completo: true, horasMax: h, sids });
+    await reportar(r, `📋 ${sids ? queDeportes : 'Barrido completo'} · ${h} h`);
     return true;
   }
   if (['rapido', 'rápido', 'ya', 'pronto'].includes(c)) {
     const h = horas ?? 6;
-    await telegram(`⚡ Barriendo lo que empieza dentro de <b>${h} h</b>…`);
-    const r = await barrer({ completo: true, horasMax: h });
-    await reportar(r, `📋 Barrido rápido · ${h} h`);
+    await telegram(`⚡ Barriendo <b>${queDeportes}</b> · dentro de <b>${h} h</b>…`);
+    const r = await barrer({ completo: true, horasMax: h, sids });
+    await reportar(r, `📋 Rápido · ${sids ? queDeportes : 'todo'} · ${h} h`);
     return true;
   }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
@@ -490,11 +527,18 @@ async function ejecutar(texto) {
     await telegram([
       '<b>Vigía · comandos</b>',
       '',
-      `/barrer — todo lo disponible en las próximas ${CFG.horizonteHoras} h (~110 requests, ~2 min)`,
-      '/barrer 48 — igual, pero con el horizonte que le pongas (máx. 72 h)',
-      '/rapido — solo lo que empieza dentro de 6 h (~30 requests)',
-      '/estado — cuota de API y último barrido (gratis)',
-      '/ayuda — esta lista',
+      `<b>/barrer</b> — todo lo disponible en las próximas ${CFG.horizonteHoras} h (~110 requests, ~2 min)`,
+      '<b>/rapido</b> — solo lo que empieza dentro de 6 h (~30 requests)',
+      '<b>/estado</b> — cuota de API y último barrido (gratis)',
+      '',
+      'Se les puede agregar <b>deporte</b> y <b>horas</b>, en cualquier orden:',
+      '· <code>/barrer futbol 6</code>',
+      '· <code>/rapido tenis</code>',
+      '· <code>/barrer nba 48</code>',
+      '· <code>/barrer futbol tenis 12</code>',
+      '',
+      'Entiende: fútbol · básquet (nba, euroliga) · tenis (atp, wta) · béisbol (mlb).',
+      'Sin deporte busca en los cuatro; sin número usa tu horizonte del config.',
       '',
       `<i>Criterios activos: cuota ≤ ${CFG.cuotaMaxima} · ventaja mín. fútbol ${(CFG.ventajaMinima['10'] * 100).toFixed(1)}% · básquet ${(CFG.ventajaMinima['11'] * 100).toFixed(1)}% · tenis ${(CFG.ventajaMinima['12'] * 100).toFixed(1)}% · béisbol ${(CFG.ventajaMinima['13'] * 100).toFixed(1)}% · desde ${CFG.anticipacionMin} min antes del inicio</i>`,
     ].join('\n'));
