@@ -11,7 +11,7 @@
   "umbralSospechosa": 0.15,
   "soloLineaCentral": true,
   "lineasVecinas": true,
-  "vecinas": 1,
+  "vecinas": 99,
   "sinCuartos": true,
   "umbralCastigado": 0.05,
   "devig": "mult",
