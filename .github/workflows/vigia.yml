@@ -3,10 +3,14 @@ name: Vigía
 # El Vigía ya no manda alertas solo: ESCUCHA tu chat de Telegram y barre
 # cuando tú se lo pides (/barrer, /rapido, /estado).
 #
-# Cada ejecución mantiene al bot escuchando ~28 minutos sin gastar un solo
-# request de OddsPapi. El cron levanta un escucha nuevo cada 30 minutos, así
-# que casi siempre hay uno vivo. Si mandas un comando cuando no lo hay, el
-# mensaje NO se pierde: Telegram lo guarda y el siguiente escucha lo atiende.
+# Cada ejecución mantiene al bot escuchando ~50 minutos sin gastar un solo
+# request de OddsPapi. El cron levanta uno cada 30 min: como la sesión dura
+# más que el intervalo, cuando llega el siguiente queda ENCOLADO (concurrency)
+# y arranca apenas termina el anterior — cadena continua, aunque GitHub salte
+# ventanas de cron (que las salta).
+#
+# Si aun así mandas un comando sin escucha vivo, el mensaje NO se pierde:
+# Telegram lo guarda hasta 24 h y el siguiente escucha lo atiende.
 
 on:
   schedule:
@@ -31,7 +35,7 @@ concurrency:
 jobs:
   vigia:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -45,7 +49,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MODO: ${{ inputs.accion || 'escucha' }}
-          SEGUNDOS_ESCUCHA: 1680
+          SEGUNDOS_ESCUCHA: 3000
         run: node vigia/vigia.mjs
 
       - name: Guardar estado

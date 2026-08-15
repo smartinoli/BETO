@@ -517,8 +517,11 @@ try {
       const msgs = await tgUpdates();
       for (const m of msgs) {
         console.log('Comando recibido:', m);
-        try { if (await ejecutar(m)) atendidos++; }
-        catch (e) { await telegram('❌ Error: ' + escHtml(e.message)); }
+        try {
+          if (await ejecutar(m)) atendidos++;
+          else await telegram('No conozco ese comando. Prueba <b>/barrer</b>, <b>/rapido</b>, '
+            + '<b>/estado</b> o <b>/ayuda</b>.');   /* siempre contesta: así sabes que estoy despierto */
+        } catch (e) { await telegram('❌ Error: ' + escHtml(e.message)); }
       }
       if (!msgs.length) await espera(2000);
     }
