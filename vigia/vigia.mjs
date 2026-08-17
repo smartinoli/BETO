@@ -9,6 +9,8 @@
      /barrer   barrido COMPLETO sin límites (~110 requests) y te manda
                todo lo que pasa tus criterios, ordenado por ventaja
      /rapido   solo lo que empieza dentro de 6 h (~30 requests)
+     /tablero  simulación: cómo habrían salido TODAS las señales de los
+               barridos, liquidadas solas con /settlements, por familia
      /estado   señales vivas + cuota de API restante (gratis)
      /ayuda    esta lista
 
@@ -37,6 +39,14 @@ if (!KEY) { console.error('Falta ODDSPAPI_KEY'); process.exit(1); }
 let EST = { torneos: {}, fixtures: {}, cobertura: {}, mercados: {}, senales: {}, stats: {}, tgOffset: 0 };
 try { EST = { ...EST, ...JSON.parse(fs.readFileSync(ESTADO_PATH, 'utf8')) } } catch {}
 const guardarEstado = () => fs.writeFileSync(ESTADO_PATH, JSON.stringify(EST));
+
+/* Tablero simulado: toda señal de un barrido queda anotada como apuesta
+   ficticia (al monto Kelly sugerido) la PRIMERA vez que aparece. /tablero
+   las liquida con /settlements y muestra qué familias ganan de verdad. */
+const REGISTRO_PATH = path.join(DIR, 'registro.json');
+let REG = {};
+try { REG = JSON.parse(fs.readFileSync(REGISTRO_PATH, 'utf8')) } catch {}
+const guardarRegistro = () => fs.writeFileSync(REGISTRO_PATH, JSON.stringify(REG));
 
 /* ---------- API OddsPapi: pacing, timeout y reintentos ---------- */
 let REQ = 0, ULTIMO = 0;
@@ -495,6 +505,22 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   for (const s of salida.senales) EST.senales[s.sig] = { ...s, ts: Date.now(), conocida: antes.has(s.sig) };
   EST.stats = { ultimo: new Date().toISOString(), requests: REQ, ...salida.porDeporte };
   guardarEstado();
+  /* al tablero: se anota la PRIMERA aparición (cuota y monto de ese momento,
+     como si la hubieras apostado ahí). Repeticiones en barridos posteriores
+     no duplican ni pisan la anotación original. */
+  salida.registradas = 0;
+  for (const s of salida.senales) {
+    if (REG[s.sig]) continue;
+    const [fix, mid, oid] = s.sig.split('|');
+    REG[s.sig] = {
+      fix, mid, oid, visto: new Date().toISOString(),
+      inicio: s.inicio, sid: s.sid, liga: s.liga, partido: s.partido,
+      familia: s.familia, lado: s.lado, cuota: s.cuota, justo: s.justo,
+      vent: s.vent, monto: montoDe(s.cuota, s.vent), estado: 'pendiente',
+    };
+    salida.registradas++;
+  }
+  if (salida.registradas) guardarRegistro();
   return salida;
 }
 
@@ -534,6 +560,7 @@ async function reportar(r, titulo) {
     r.tope ? '⚠️ tope de requests alcanzado' : '',
     '',
     orden.length ? `<b>${orden.length} señal(es):</b>` : '<b>Sin señales que pasen tus criterios.</b>',
+    r.registradas ? `<i>📒 ${r.registradas} nueva(s) anotadas en el tablero simulado (/tablero)</i>` : '',
     descartes.length ? `\n<i>Quedó fuera: ${descartes.join(' · ')}</i>` : '',
   ].filter(Boolean).join('\n');
   await telegram(cab);
@@ -541,6 +568,117 @@ async function reportar(r, titulo) {
   const trozos = [];
   orden.forEach((s, i) => trozos.push(bloqueSenal(s, i + 1)));
   await telegram(trozos.join('\n\n'));
+}
+
+/* ---------- tablero simulado: liquidación y balance ---------- */
+/* Resultados de /settlements → estados del registro. HALFWIN/HALFLOSS son
+   los medio-ganada/medio-perdida de las líneas asiáticas enteras. */
+const RESULTADO = { WIN: 'G', HALFWIN: 'MG', PUSH: 'E', CANCELLED: 'E', HALFLOSS: 'MP', LOSE: 'P' };
+const CERRADO = ['G', 'MG', 'E', 'MP', 'P'];
+function retornoDe(e) {
+  switch (e.estado) {
+    case 'G': return e.monto * e.cuota;
+    case 'MG': return e.monto + e.monto * (e.cuota - 1) / 2;
+    case 'E': return e.monto;
+    case 'MP': return e.monto / 2;
+    default: return 0;
+  }
+}
+/* Busca el resultado de un outcome en la respuesta de /settlements,
+   tolerando las dos formas del cuerpo (objeto o lista). */
+function resultadoEn(d, mid, oid) {
+  const cuerpo = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
+  const out = ((cuerpo || {}).markets || {})[mid]?.outcomes?.[oid];
+  if (!out) return null;
+  const raw = (out.players || {})['0']?.result ?? out.result ?? (out.players || {})['0']?.settlement;
+  return raw ? RESULTADO[String(raw).toUpperCase()] || null : null;
+}
+async function liquidar(maxFixtures = 60) {
+  /* solo partidos que empezaron hace 3+ h: antes no hay resultado que pedir */
+  const listas = Object.values(REG).filter(e =>
+    e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > 3 * 3600e3);
+  const porFix = new Map();
+  for (const e of listas) {
+    if (!porFix.has(e.fix)) porFix.set(e.fix, []);
+    porFix.get(e.fix).push(e);
+  }
+  let consultados = 0, liquidadas = 0, quedaron = 0;
+  const vieja = e => Date.now() - new Date(e.inicio).getTime() > 7 * 864e5;
+  for (const [fix, entradas] of porFix) {
+    if (consultados >= maxFixtures) { quedaron += entradas.length; continue; }
+    let d = null;
+    consultados++;
+    try { d = await api('settlements', { fixtureId: fix }, 2100); }
+    catch { d = null; }   /* sin settlement todavía (o no disponible) */
+    for (const e of entradas) {
+      const est = d && resultadoEn(d, e.mid, e.oid);
+      if (est) { e.estado = est; liquidadas++; }
+      else if (vieja(e)) e.estado = 'X';   /* 7 días sin resultado: se deja de pedir */
+    }
+  }
+  if (liquidadas || consultados) guardarRegistro();
+  return { consultados, liquidadas, quedaron };
+}
+function filaBalance(nombre, arr) {
+  const st = arr.reduce((a, e) => a + e.monto, 0);
+  const neto = arr.reduce((a, e) => a + retornoDe(e) - e.monto, 0);
+  const rec = { G: 0, P: 0, MG: 0, MP: 0, E: 0 };
+  for (const e of arr) rec[e.estado]++;
+  const recTxt = ['G', 'P', 'MG', 'MP', 'E'].filter(k => rec[k]).map(k => rec[k] + k).join(' ');
+  const signo = neto >= 0 ? '🟢 +' : '🔴 −';
+  return { neto, txt: `${escHtml(nombre)} — ${arr.length} ap · <b>${signo}${plata(Math.abs(neto))}</b> `
+    + `(ROI ${(neto / st * 100).toFixed(1)}%) · ${recTxt}` };
+}
+async function cmdTablero() {
+  const pendAntes = Object.values(REG).filter(e => e.estado === 'pendiente').length;
+  if (pendAntes) await telegram(`📒 Liquidando pendientes (${pendAntes})…`);
+  const liq = await liquidar();
+  const todas = Object.values(REG);
+  const cerradas = todas.filter(e => CERRADO.includes(e.estado));
+  const pend = todas.filter(e => e.estado === 'pendiente').length;
+  const sinDatos = todas.filter(e => e.estado === 'X').length;
+  if (!cerradas.length) {
+    await telegram([
+      '<b>📒 Tablero simulado</b>',
+      todas.length
+        ? `Aún nada liquidado. ${pend} apuesta(s) esperando resultado`
+          + (sinDatos ? ` · ${sinDatos} sin datos de la API` : '') + '.'
+        : 'Todavía no hay apuestas anotadas: se anotan solas con cada /barrer o /rapido.',
+      liq.consultados ? `<i>${liq.consultados} consultas de resultados usadas.</i>` : '',
+    ].filter(Boolean).join('\n'));
+    return;
+  }
+  const apostado = cerradas.reduce((a, e) => a + e.monto, 0);
+  const neto = cerradas.reduce((a, e) => a + retornoDe(e) - e.monto, 0);
+  const grupos = clave => {
+    const m = new Map();
+    for (const e of cerradas) {
+      const k = clave(e);
+      if (!m.has(k)) m.set(k, []);
+      m.get(k).push(e);
+    }
+    return [...m.entries()].map(([k, arr]) => filaBalance(k, arr)).sort((a, b) => b.neto - a.neto);
+  };
+  /* la familia se agrega sin el sufijo del equipo ("Goles · Arsenal" → "Goles") */
+  const porFamilia = grupos(e => (EMO[e.sid] || '') + ' ' + e.familia.split(' · ')[0]);
+  const porDeporte = grupos(e => CFG.deportes[e.sid] || e.sid);
+  const global = filaBalance('TOTAL', cerradas);
+  await telegram([
+    '<b>📒 Tablero simulado</b>',
+    '<i>Como si hubieras apostado cada señal al monto sugerido, con la cuota del momento en que apareció.</i>',
+    '',
+    global.txt.replace('TOTAL — ', `<b>TOTAL</b> · ${plata(apostado)} apostados — `),
+    '',
+    '<b>Por familia:</b>',
+    ...porFamilia.map(f => '· ' + f.txt),
+    '',
+    '<b>Por deporte:</b>',
+    ...porDeporte.map(f => '· ' + f.txt),
+    '',
+    `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
+      + (sinDatos ? ` · ${sinDatos} sin datos` : '')
+      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>',
+  ].join('\n'));
 }
 
 /* ---------- comandos ---------- */
@@ -556,13 +694,16 @@ async function cmdEstado() {
   } catch {}
   const vivas = Object.values(EST.senales);
   const ult = EST.stats.ultimo ? horaTxt(EST.stats.ultimo) : 'nunca';
+  const anotadas = Object.values(REG);
+  const pend = anotadas.filter(e => e.estado === 'pendiente').length;
   await telegram([
     '<b>Estado del Vigía</b>',
     `Cuota API: ${cuota}`,
     `Último barrido: ${ult} (${EST.stats.requests || 0} requests)`,
     `Señales del último barrido: ${vivas.length}`,
+    `Tablero simulado: ${anotadas.length} apuestas anotadas · ${pend} pendientes`,
     '',
-    'Comandos: /barrer · /rapido · /estado · /ayuda',
+    'Comandos: /barrer · /rapido · /tablero · /estado · /ayuda',
   ].join('\n'));
 }
 /* Deportes por como los escribas: "/barrer futbol 6", "/rapido tenis nba"… */
@@ -747,6 +888,7 @@ async function ejecutar(texto) {
     await cmdComparar(busca);
     return true;
   }
+  if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) { await cmdTablero(); return true; }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
@@ -754,6 +896,7 @@ async function ejecutar(texto) {
       '',
       `<b>/barrer</b> — todo lo disponible en las próximas ${CFG.horizonteHoras} h (~110 requests, ~2 min)`,
       '<b>/rapido</b> — solo lo que empieza dentro de 6 h (~30 requests)',
+      '<b>/tablero</b> — cómo habrían salido TODAS las señales de los barridos, por familia y deporte',
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
       '<b>/casas</b> — qué espejos de Betano existen y a qué dominio apuntan',
