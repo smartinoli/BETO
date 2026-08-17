@@ -547,6 +547,53 @@ function deportesDe(texto) {
   const sids = Object.entries(ALIAS).filter(([, re]) => re.test(texto)).map(([sid]) => sid);
   return sids.length ? sids : null;   /* null = todos */
 }
+/* ¿Qué espejos de Betano existen, cuáles cubre tu plan, y a qué dominio
+   apuntan de verdad? Lo mide en vez de suponerlo. */
+async function cmdCasas() {
+  const lista = await api('bookmakers');
+  const betanos = (Array.isArray(lista) ? lista : []).filter(b =>
+    /betano/i.test(b.slug || b.bookmakerSlug || '') || /betano/i.test(b.bookmakerName || ''));
+  let mias = [];
+  try {
+    const d = await api('account');
+    const sub = (d.subscriptions || []).filter(x => x.is_active)[0];
+    mias = Object.keys(sub?.bookmakers || {});
+  } catch {}
+  const filas = betanos.map(b => {
+    const slug = b.slug || b.bookmakerSlug;
+    const tengo = mias.includes(slug);
+    return `${tengo ? '✅' : '⬜'} <code>${escHtml(slug)}</code> — ${escHtml(b.bookmakerName || '')}`
+      + (b.cloneOf ? ` <i>(clon de ${escHtml(b.cloneOf)})</i>` : '');
+  });
+
+  /* prueba real: ¿a qué dominio apuntan los links de las casas que sí tengo? */
+  const dominios = [];
+  for (const slug of mias.filter(s => /betano/i.test(s))) {
+    let dom = 'sin datos';
+    try {
+      const tor = await torneosDe('10');
+      for (const t of tor.slice(0, 6)) {
+        const d = await oddsBatch([t.id], slug);
+        const f = d.find(x => (x.bookmakerOdds || {})[slug]?.fixturePath);
+        if (f) { dom = new URL(f.bookmakerOdds[slug].fixturePath).host; break; }
+      }
+    } catch (e) { dom = 'error: ' + e.message; }
+    dominios.push(`<code>${escHtml(slug)}</code> → <b>${escHtml(dom)}</b>`);
+  }
+
+  await telegram([
+    '<b>🏠 Espejos de Betano en OddsPapi</b>',
+    '',
+    ...filas,
+    '',
+    '<b>Tu plan cubre:</b> ' + (mias.length ? mias.map(escHtml).join(', ') : 'no pude leerlo'),
+    '',
+    '<b>Dominio real de los links:</b>',
+    ...dominios,
+    '',
+    '<i>✅ = incluida en tu plan · ⬜ = existe pero no la tienes contratada.</i>',
+  ].join('\n'));
+}
 async function ejecutar(texto) {
   const c = texto.toLowerCase().replace(/^\//, '').split(/[\s@]/)[0];
   /* horizonte opcional en el propio mensaje: "/barrer 48" = próximas 48 h.
@@ -601,6 +648,7 @@ async function ejecutar(texto) {
     await telegram(bloques.join('\n\n'));
     return true;
   }
+  if (['casas', 'betanos', 'bookmakers', 'espejos'].includes(c)) { await cmdCasas(); return true; }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
@@ -610,6 +658,7 @@ async function ejecutar(texto) {
       '<b>/rapido</b> — solo lo que empieza dentro de 6 h (~30 requests)',
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
+      '<b>/casas</b> — qué espejos de Betano existen y a qué dominio apuntan',
       '',
       'Se les puede agregar <b>deporte</b> y <b>horas</b>, en cualquier orden:',
       '· <code>/barrer futbol 6</code>',
