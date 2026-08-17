@@ -594,6 +594,67 @@ async function cmdCasas() {
     '<i>✅ = incluida en tu plan · ⬜ = existe pero no la tienes contratada.</i>',
   ].join('\n'));
 }
+/* Compara, para un partido concreto, lo que cotiza cada casa del plan.
+   Sirve para saber qué espejo de Betano calza con lo que ves en pantalla:
+   abres el partido en tu Betano y miras cuál columna coincide. */
+async function cmdComparar(busca) {
+  let elegido = null;
+  for (const sid of Object.keys(CFG.deportes)) {
+    const fx = await fixturesDe(sid);
+    const cands = fx
+      .filter(f => new Date(f.startTime).getTime() > Date.now() + 10 * 60e3)
+      .filter(f => !busca || (f.p1 + ' ' + f.p2 + ' ' + f.liga).toLowerCase().includes(busca));
+    cands.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+    if (cands.length && (!elegido || new Date(cands[0].startTime) < new Date(elegido.startTime))) {
+      elegido = cands[0];
+    }
+    if (busca && elegido) break;
+  }
+  if (!elegido) { await telegram('No encontré un partido próximo con ese texto.'); return; }
+
+  const d = await api('odds', { fixtureId: elegido.fixtureId, oddsFormat: 'decimal' });
+  const fx = Array.isArray(d) ? d[0] : (d.data ? d.data[0] : d);
+  const bo = fx?.bookmakerOdds || {};
+  const casas = Object.keys(bo);
+  if (!casas.length) { await telegram('Ese partido no trae cuotas todavía.'); return; }
+
+  /* mercados whitelisted que cotice al menos una casa */
+  const filas = [];
+  const vistos = new Set();
+  for (const casa of casas) {
+    for (const mid of Object.keys(bo[casa].markets || {})) {
+      if (vistos.has(mid)) continue;
+      const meta = await metaDe(mid);
+      if (!meta || meta.len !== 2) continue;
+      const fam = familiaDe(elegido.sid || '10', meta.n);
+      if (!fam) continue;
+      vistos.add(mid);
+      const precios = casas.map(c => {
+        const outs = (bo[c].markets || {})[mid]?.outcomes || {};
+        const ps = Object.keys(outs).map(oid => (outs[oid].players || {})['0']?.price)
+          .filter(p => p > 1).map(p => p.toFixed(2));
+        return ps.length ? ps.join('/') : '—';
+      });
+      if (precios.filter(p => p !== '—').length) {
+        filas.push(`<code>${escHtml((meta.n + ' ' + (meta.h ?? '')).slice(0, 30).padEnd(30))}</code> ${precios.join(' · ')}`);
+      }
+      if (filas.length >= 14) break;
+    }
+    if (filas.length >= 14) break;
+  }
+  await telegram([
+    `<b>⚖️ ${escHtml(elegido.p1)} vs ${escHtml(elegido.p2)}</b>`,
+    `${escHtml(elegido.liga)} · ${horaTxt(elegido.startTime)}`,
+    '',
+    '<b>Casas:</b> ' + casas.map(escHtml).join(' · '),
+    '',
+    ...filas,
+    '',
+    '<i>Cada columna es una casa, en ese orden. Abre este partido en tu Betano '
+      + 'y compara: la columna que coincida con lo que ves es tu espejo real.</i>',
+    elegido.bookmakerFixtureId ? '' : '',
+  ].filter(Boolean).join('\n'));
+}
 async function ejecutar(texto) {
   const c = texto.toLowerCase().replace(/^\//, '').split(/[\s@]/)[0];
   /* horizonte opcional en el propio mensaje: "/barrer 48" = próximas 48 h.
@@ -649,6 +710,12 @@ async function ejecutar(texto) {
     return true;
   }
   if (['casas', 'betanos', 'bookmakers', 'espejos'].includes(c)) { await cmdCasas(); return true; }
+  if (['comparar', 'compara', 'cuotas', 'ver'].includes(c)) {
+    const busca = texto.replace(/^\/?\S+\s*/, '').trim().toLowerCase();
+    await telegram('⚖️ Buscando' + (busca ? ' "' + escHtml(busca) + '"' : ' el próximo partido') + '…');
+    await cmdComparar(busca);
+    return true;
+  }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
@@ -659,6 +726,7 @@ async function ejecutar(texto) {
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
       '<b>/casas</b> — qué espejos de Betano existen y a qué dominio apuntan',
+      '<b>/comparar equipo</b> — cuotas de cada casa en un partido, para calzar con tu pantalla',
       '',
       'Se les puede agregar <b>deporte</b> y <b>horas</b>, en cualquier orden:',
       '· <code>/barrer futbol 6</code>',
