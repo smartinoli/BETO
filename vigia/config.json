@@ -1,5 +1,7 @@
 {
   "comentario": "Configuración del Vigía. Edita y commitea: el próximo ciclo la toma.",
+  "casa": "betano.pe",
+  "juez": "cloudbet",
   "banca": 1800000,
   "kellyDivisor": 4,
   "topePctBanca": 0.05,

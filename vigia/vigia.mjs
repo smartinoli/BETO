@@ -21,6 +21,11 @@ import { fileURLToPath } from 'node:url';
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const CFG = JSON.parse(fs.readFileSync(path.join(DIR, 'config.json'), 'utf8'));
 const ESTADO_PATH = path.join(DIR, 'estado.json');
+/* Qué espejo de Betano leer y quién hace de juez. El espejo importa: cada
+   uno tiene su propio catálogo de mercados y líneas, y solo el que calza con
+   tu vitrina sirve para apostar. Se cambia en config.json. */
+const CASA = CFG.casa || 'betano';
+const JUEZ = CFG.juez || 'cloudbet';
 const KEY = process.env.ODDSPAPI_KEY;
 const TG_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID;
@@ -250,6 +255,9 @@ async function oddsBatch(tids, casa) {
     return Array.isArray(d) ? d : d.data || [];
   } catch (e) {
     if (e.api && /FIXTURE_NOT_FOUND/.test(e.api.code || '')) return [];
+    if (e.api && /RESTRICTED/.test(e.api.code || ''))
+      throw new Error(`tu plan de OddsPapi no incluye "${casa}". Cámbiala en config.json `
+        + `(campo "casa") o contrátala. Mándame /casas para ver cuáles tienes.`);
     throw e;
   }
 }
@@ -433,9 +441,9 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const tope = completo ? Infinity : CFG.maxRequestsPorCiclo;
   for (const lote of lotes) {
     if (REQ >= tope) { salida.tope = true; break; }
-    const bet = await oddsBatch(lote.tids, 'betano');
-    const cbt = bet.length ? await oddsBatch(lote.tids, 'cloudbet') : [];
-    const cbIdx = new Map(cbt.map(f => [f.fixtureId, (f.bookmakerOdds || {}).cloudbet]));
+    const bet = await oddsBatch(lote.tids, CASA);
+    const cbt = bet.length ? await oddsBatch(lote.tids, JUEZ) : [];
+    const cbIdx = new Map(cbt.map(f => [f.fixtureId, (f.bookmakerOdds || {})[JUEZ]]));
     const conBet = new Set(bet.map(f => f.tournamentId));
     for (const tid of lote.tids) EST.cobertura[tid] = { ok: !!(conBet.has(tid) || (EST.cobertura[tid] || {}).ok), ts: Date.now() };
     const dep = CFG.deportes[lote.sid] || lote.sid;
@@ -443,7 +451,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     /* metadatos de todos los mercados vistos en el lote (1 request la 1ª vez) */
     const metas = {};
     for (const f of bet) {
-      const b = (f.bookmakerOdds || {}).betano;
+      const b = (f.bookmakerOdds || {})[CASA];
       for (const mid of Object.keys(b?.markets || {})) if (!(mid in metas)) metas[mid] = await metaDe(mid);
     }
     /* también los de Cloudbet: sin esto no se puede saber si un mercado "sin
@@ -453,7 +461,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     }
     for (const f of bet) {
       const info = fixIdx.get(f.fixtureId);
-      const b = (f.bookmakerOdds || {}).betano, c = cbIdx.get(f.fixtureId);
+      const b = (f.bookmakerOdds || {})[CASA], c = cbIdx.get(f.fixtureId);
       if (!info || !b) continue;
       if (!c) { salida.embudo.sinCloudbet++; continue; }   /* partido sin juez */
       info.bookmakerFixtureId = b.bookmakerFixtureId || null;
@@ -583,6 +591,7 @@ async function cmdCasas() {
 
   await telegram([
     '<b>🏠 Espejos de Betano en OddsPapi</b>',
+    `<i>El Vigía está leyendo: <b>${escHtml(CASA)}</b> (juez: ${escHtml(JUEZ)})</i>`,
     '',
     ...filas,
     '',
