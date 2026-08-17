@@ -439,10 +439,21 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   for (const [, L] of porLiga) for (const f of L.fixtures) fixIdx.set(f.fixtureId, f);
 
   const tope = completo ? Infinity : CFG.maxRequestsPorCiclo;
+  let lotesMal = 0, lotesBien = 0, ultimoError = null;
   for (const lote of lotes) {
     if (REQ >= tope) { salida.tope = true; break; }
-    const bet = await oddsBatch(lote.tids, CASA);
-    const cbt = bet.length ? await oddsBatch(lote.tids, JUEZ) : [];
+    /* un lote que falla NO tumba el barrido: se salta y se informa al final */
+    let bet, cbt;
+    try {
+      bet = await oddsBatch(lote.tids, CASA);
+      cbt = bet.length ? await oddsBatch(lote.tids, JUEZ) : [];
+    } catch (e) {
+      lotesMal++; ultimoError = e.message;
+      console.error('Lote falló:', lote.tids.join(','), '·', e.message);
+      if (lotesMal >= 8 && lotesBien === 0) break;   /* todos fallan: no insistir */
+      continue;
+    }
+    lotesBien++;
     const cbIdx = new Map(cbt.map(f => [f.fixtureId, (f.bookmakerOdds || {})[JUEZ]]));
     const conBet = new Set(bet.map(f => f.tournamentId));
     for (const tid of lote.tids) EST.cobertura[tid] = { ok: !!(conBet.has(tid) || (EST.cobertura[tid] || {}).ok), ts: Date.now() };
@@ -470,6 +481,14 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   }
   salida.segundos = Math.round((Date.now() - t0) / 1000);
   salida.requests = REQ;
+  if (lotesMal) {
+    salida.avisoLotes = lotesBien === 0
+      ? `❌ TODAS las consultas de cuotas fallaron: OddsPapi responde "${ultimoError}" para `
+        + `<b>${CASA}</b>. Parece problema del lado de ellos con esa casa — escríbeles a soporte, `
+        + `o vuelve al espejo anterior poniendo "casa": "betano" en vigia/config.json.`
+      : `⚠️ ${lotesMal} grupo(s) de ligas fallaron ("${ultimoError}") y se saltaron; `
+        + `${lotesBien} funcionaron.`;
+  }
   /* memoria: útil para el próximo barrido (marca lo ya visto) */
   const antes = new Set(Object.keys(EST.senales));
   EST.senales = {};
@@ -508,6 +527,7 @@ async function reportar(r, titulo) {
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
+    r.avisoLotes || '',
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
     `${r.requests} requests · ${r.segundos}s`,
     Object.entries(r.porDeporte).map(([d, n]) => `${d} ${n}`).join(' · '),
