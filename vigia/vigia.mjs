@@ -26,10 +26,6 @@ const ESTADO_PATH = path.join(DIR, 'estado.json');
    tu vitrina sirve para apostar. Se cambia en config.json. */
 const CASA = CFG.casa || 'betano';
 const JUEZ = CFG.juez || 'cloudbet';
-const CASA_RESPALDO = CFG.casaRespaldo || 'betano';
-/* Si el espejo elegido falla (plan sin acceso, error de la API), el barrido
-   NO se cae: sigue con el espejo de respaldo y lo avisa en el reporte. */
-let CASA_ACTIVA = CASA, AVISO_CASA = null;
 const KEY = process.env.ODDSPAPI_KEY;
 const TG_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TG_CHAT = process.env.TELEGRAM_CHAT_ID;
@@ -266,20 +262,6 @@ async function oddsBatch(tids, casa) {
   }
 }
 
-async function oddsCasa(tids) {
-  try { return await oddsBatch(tids, CASA_ACTIVA); }
-  catch (e) {
-    if (CASA_ACTIVA !== CASA_RESPALDO) {
-      AVISO_CASA = `⚠️ <b>${escHtml(CASA_ACTIVA)}</b> no respondió (${escHtml(e.message).slice(0, 80)}). `
-        + `Barrí con <b>${escHtml(CASA_RESPALDO)}</b>.`;
-      console.error('Espejo', CASA_ACTIVA, 'falló:', e.message, '→ uso', CASA_RESPALDO);
-      CASA_ACTIVA = CASA_RESPALDO;
-      return await oddsBatch(tids, CASA_ACTIVA);
-    }
-    throw e;
-  }
-}
-
 /* ---------- señales de un partido ---------- */
 function procesarSync(info, bet, cb, metas, salida) {
   const porFam = new Map();
@@ -459,7 +441,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const tope = completo ? Infinity : CFG.maxRequestsPorCiclo;
   for (const lote of lotes) {
     if (REQ >= tope) { salida.tope = true; break; }
-    const bet = await oddsCasa(lote.tids);
+    const bet = await oddsBatch(lote.tids, CASA);
     const cbt = bet.length ? await oddsBatch(lote.tids, JUEZ) : [];
     const cbIdx = new Map(cbt.map(f => [f.fixtureId, (f.bookmakerOdds || {})[JUEZ]]));
     const conBet = new Set(bet.map(f => f.tournamentId));
@@ -469,7 +451,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     /* metadatos de todos los mercados vistos en el lote (1 request la 1ª vez) */
     const metas = {};
     for (const f of bet) {
-      const b = (f.bookmakerOdds || {})[CASA_ACTIVA];
+      const b = (f.bookmakerOdds || {})[CASA];
       for (const mid of Object.keys(b?.markets || {})) if (!(mid in metas)) metas[mid] = await metaDe(mid);
     }
     /* también los de Cloudbet: sin esto no se puede saber si un mercado "sin
@@ -479,7 +461,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     }
     for (const f of bet) {
       const info = fixIdx.get(f.fixtureId);
-      const b = (f.bookmakerOdds || {})[CASA_ACTIVA], c = cbIdx.get(f.fixtureId);
+      const b = (f.bookmakerOdds || {})[CASA], c = cbIdx.get(f.fixtureId);
       if (!info || !b) continue;
       if (!c) { salida.embudo.sinCloudbet++; continue; }   /* partido sin juez */
       info.bookmakerFixtureId = b.bookmakerFixtureId || null;
@@ -525,7 +507,7 @@ async function reportar(r, titulo) {
   ].filter(Boolean);
   const cab = [
     `<b>${titulo}</b>`,
-    AVISO_CASA || `<i>espejo: ${escHtml(CASA_ACTIVA)}</i>`,
+    `<i>espejo: ${escHtml(CASA)}</i>`,
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
     `${r.requests} requests · ${r.segundos}s`,
     Object.entries(r.porDeporte).map(([d, n]) => `${d} ${n}`).join(' · '),
@@ -595,7 +577,7 @@ async function cmdCasas() {
 
   /* prueba real: ¿a qué dominio apuntan los links de las casas que sí tengo? */
   const dominios = [];
-  const aProbar = [...new Set([CASA, CASA_RESPALDO, ...mias.filter(s => /betano/i.test(s))])];
+  const aProbar = [...new Set([CASA, ...mias.filter(s => /betano/i.test(s))])];
   for (const slug of aProbar) {
     let dom = 'sin datos';
     try {
