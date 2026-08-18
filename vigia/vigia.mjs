@@ -686,15 +686,20 @@ async function cmdTablero() {
    objeto players trae la clave '0' (el mercado a secas) y una clave por
    jugador. Este comando muestrea partidos próximos y cuenta qué mercados de
    jugador llegan por casa — dice si están contratados y si tienen juez. */
+/* dónde vale la pena muestrear props: las casas solo los cotizan en ligas
+   grandes, y el próximo partido puede ser de una liga menor sin ninguno */
+const LIGA_GRANDE = { 10: /premier|laliga|bundesliga|serie a|ligue 1|champions/i,
+  11: /wnba|\bnba\b|euroleague|euroliga/i, 12: /atp|wta/i, 13: /\bmlb\b|npb|kbo/i };
 async function cmdProps(sids) {
   const objetivo = (sids && sids.length ? sids : ['11', '13']).filter(s => CFG.deportes[s]);
   const req0 = REQ;
   for (const sid of objetivo) {
-    const fx = (await fixturesDe(sid))
+    const todos = (await fixturesDe(sid))
       .filter(f => { const t = new Date(f.startTime).getTime(); return t > Date.now() && t < Date.now() + 48 * 3600e3; })
       .filter(f => !SIMU.test(f.liga + ' ' + f.p1 + ' ' + f.p2))
-      .sort((a, b) => new Date(a.startTime) - new Date(b.startTime))
-      .slice(0, 3);
+      .sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+    const grandes = todos.filter(f => (LIGA_GRANDE[sid] || /$^/).test(f.liga));
+    const fx = [...grandes, ...todos.filter(f => !grandes.includes(f))].slice(0, 3);
     if (!fx.length) {
       await telegram(`🎯 ${CFG.deportes[sid]}: sin partidos en las próximas 48 h para muestrear.`);
       continue;
