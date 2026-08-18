@@ -681,6 +681,72 @@ async function cmdTablero() {
   ].join('\n'));
 }
 
+/* ---------- censo de props: ¿qué líneas de jugador trae tu feed? ----------
+   Los props viajan DENTRO del request de odds normal: en cada outcome, el
+   objeto players trae la clave '0' (el mercado a secas) y una clave por
+   jugador. Este comando muestrea partidos próximos y cuenta qué mercados de
+   jugador llegan por casa — dice si están contratados y si tienen juez. */
+async function cmdProps(sids) {
+  const objetivo = (sids && sids.length ? sids : ['11', '13']).filter(s => CFG.deportes[s]);
+  const req0 = REQ;
+  for (const sid of objetivo) {
+    const fx = (await fixturesDe(sid))
+      .filter(f => { const t = new Date(f.startTime).getTime(); return t > Date.now() && t < Date.now() + 48 * 3600e3; })
+      .filter(f => !SIMU.test(f.liga + ' ' + f.p1 + ' ' + f.p2))
+      .sort((a, b) => new Date(a.startTime) - new Date(b.startTime))
+      .slice(0, 3);
+    if (!fx.length) {
+      await telegram(`🎯 ${CFG.deportes[sid]}: sin partidos en las próximas 48 h para muestrear.`);
+      continue;
+    }
+    const acc = new Map();   /* marketName → {b: Set(jugadores casa), c: Set(jugadores juez)} */
+    const muestras = [];
+    for (const f of fx) {
+      let d;
+      try { d = await api('odds', { fixtureId: f.fixtureId, oddsFormat: 'decimal' }, 600); }
+      catch (e) { console.error('props: odds falló', f.fixtureId, e.message); continue; }
+      const fxd = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
+      const bo = (fxd || {}).bookmakerOdds || {};
+      muestras.push(`${f.p1} vs ${f.p2}`);
+      for (const [casa, tag] of [[CASA, 'b'], [JUEZ, 'c']]) {
+        const mk = (bo[casa] || {}).markets || {};
+        for (const mid of Object.keys(mk)) {
+          const meta = await metaDe(mid);
+          if (!meta) continue;
+          for (const o of Object.values(mk[mid].outcomes || {})) {
+            const pls = Object.keys(o.players || {}).filter(p => p !== '0');
+            if (!pls.length) continue;
+            if (!acc.has(meta.n)) acc.set(meta.n, { b: new Set(), c: new Set() });
+            pls.forEach(p => acc.get(meta.n)[tag].add(p));
+          }
+        }
+      }
+    }
+    const filas = [...acc.entries()]
+      .sort((a, b) => b[1].b.size - a[1].b.size)
+      .slice(0, 20)
+      .map(([n, v]) => `· ${escHtml(n)} — <b>${v.b.size}</b> jug. en ${escHtml(CASA)}`
+        + (v.c.size ? ` · <b>${v.c.size}</b> con juez` : ' · <b>sin juez</b>'));
+    const conJuez = [...acc.values()].filter(v => v.b.size && v.c.size).length;
+    const diagnostico = !acc.size
+      ? `Tu feed no trae NINGÚN mercado de jugador en estos partidos. Lo más probable: `
+        + `"Props de jugadores" no está contratado (×1.5) para <b>${escHtml(CASA)}</b> en el panel de OddsPapi.`
+      : ![...acc.values()].some(v => v.c.size)
+        ? `${escHtml(CASA)} SÍ trae props, pero <b>${escHtml(JUEZ)}</b> no cotiza ninguno en tu feed: `
+          + `sin juez no se puede calcular el justo. Habría que contratar props para ${escHtml(JUEZ)} también (×1.5).`
+        : `<b>${conJuez} mercado(s) de jugador tienen las DOS casas</b> → ahí sí se podría comparar y buscar ventaja.`;
+    await telegram([
+      `<b>🎯 Líneas de jugador · ${CFG.deportes[sid]}</b>`,
+      `<i>Muestra: ${muestras.map(escHtml).join(' · ') || 'ninguna'}</i>`,
+      '',
+      ...(filas.length ? filas : []),
+      filas.length ? '' : null,
+      diagnostico,
+    ].filter(x => x !== null).join('\n'));
+  }
+  await telegram(`<i>${REQ - req0} requests usados en el censo.</i>`);
+}
+
 /* ---------- comandos ---------- */
 async function cmdEstado() {
   let cuota = 'no disponible';
@@ -888,6 +954,11 @@ async function ejecutar(texto) {
     await cmdComparar(busca);
     return true;
   }
+  if (['props', 'jugadores', 'players', 'prop'].includes(c)) {
+    await telegram(`🎯 Censando líneas de jugador · <b>${sids ? queDeportes : 'básquet + béisbol'}</b>…`);
+    await cmdProps(sids);
+    return true;
+  }
   if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) { await cmdTablero(); return true; }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
@@ -897,6 +968,7 @@ async function ejecutar(texto) {
       `<b>/barrer</b> — todo lo disponible en las próximas ${CFG.horizonteHoras} h (~110 requests, ~2 min)`,
       '<b>/rapido</b> — solo lo que empieza dentro de 6 h (~30 requests)',
       '<b>/tablero</b> — cómo habrían salido TODAS las señales de los barridos, por familia y deporte',
+      '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
       '<b>/casas</b> — qué espejos de Betano existen y a qué dominio apuntan',
