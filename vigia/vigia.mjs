@@ -635,6 +635,99 @@ function resultadoEn(d, mid, oid) {
   const raw = (out.players || {})['0']?.result ?? out.result ?? (out.players || {})['0']?.settlement;
   return raw ? RESULTADO[String(raw).toUpperCase()] || null : null;
 }
+/* ---- respaldo por marcador: /settlements no liquida varios mercados
+   secundarios (córners, BTTS 1T, totales 2T) y demora en ITF. Para las
+   familias cuyo resultado se deduce del marcador, /scores basta. ---- */
+const periodosDe = d => {
+  const c = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
+  return (c && c.scores && c.scores.periods) || null;
+};
+const COMPUTABLE = e => {
+  const f = e.familia.split(' · ')[0];
+  if (e.sid === '10') return /^(Goles|AH |AH$|Empate no válido|Ambos marcan)/.test(f);
+  if (e.sid === '12') return /^Ganador( 1er set)?$/.test(f);
+  if (e.sid === '13') return /^(Total de carreras|Total primeras 5|Run line|Ganador|Carreras)$/.test(f);
+  if (e.sid === '11') return f === 'Total del partido';
+  return false;
+};
+function liquidarPorMarcador(e, P) {
+  const num = o => o && Number.isFinite(o.participant1Score) && Number.isFinite(o.participant2Score);
+  const res = P.result, ft = num(P.fulltime) ? P.fulltime : P.result, p1 = P.p1;
+  const [na, nb] = e.partido.split(' vs ');
+  const lado1 = t => t === na ? 1 : t === nb ? 2 : 0;
+  const famBase = e.familia.split(' · ')[0];
+  const linea = parseFloat(String(e.lado).replace(/^(Más de|Menos de)\s*/, ''));
+  const ou = (tot, h, over) => tot === h ? 'E' : (tot > h) === over ? 'G' : 'P';
+  const ahDe = (s1, s2) => {
+    const m = String(e.lado).match(/^(.*)\s([+-]?\d+(?:\.\d+)?)$/);
+    if (!m) return null;
+    const eq = lado1(m[1].trim());
+    if (!eq) return null;
+    const margen = (eq === 1 ? s1 - s2 : s2 - s1) + parseFloat(m[2]);
+    return margen > 0 ? 'G' : margen < 0 ? 'P' : 'E';
+  };
+  if (e.sid === '10') {
+    const mitad1 = /1T$|1er tiempo/.test(famBase), mitad2 = /2T$/.test(famBase);
+    let sc = mitad1 ? p1
+      : mitad2 ? (num(ft) && num(p1)
+        ? { participant1Score: ft.participant1Score - p1.participant1Score,
+            participant2Score: ft.participant2Score - p1.participant2Score } : null)
+      : ft;
+    if (!num(sc)) return null;
+    const s1 = sc.participant1Score, s2 = sc.participant2Score;
+    if (/^Goles/.test(famBase)) {
+      if (!Number.isFinite(linea)) return null;
+      const eqNombre = e.familia.includes(' · ') ? e.familia.split(' · ').slice(1).join(' · ') : null;
+      const tot = !eqNombre ? s1 + s2 : lado1(eqNombre) === 1 ? s1 : lado1(eqNombre) === 2 ? s2 : null;
+      if (tot == null) return null;
+      return ou(tot, linea, e.lado.startsWith('Más'));
+    }
+    if (/^AH/.test(famBase)) return ahDe(s1, s2);
+    if (/^Empate no válido/.test(famBase)) {
+      const eq = lado1(e.lado.trim());
+      if (!eq) return null;
+      return s1 === s2 ? 'E' : (eq === 1) === (s1 > s2) ? 'G' : 'P';
+    }
+    if (/^Ambos marcan/.test(famBase)) return ((e.lado === 'Sí') === (s1 > 0 && s2 > 0)) ? 'G' : 'P';
+    return null;
+  }
+  if (e.sid === '12') {
+    const base = famBase === 'Ganador' ? res : famBase === 'Ganador 1er set' ? p1 : null;
+    if (!num(base) || base.participant1Score === base.participant2Score) return null;
+    const eq = lado1(e.lado.trim());
+    if (!eq) return null;
+    return (eq === 1) === (base.participant1Score > base.participant2Score) ? 'G' : 'P';
+  }
+  if (e.sid === '11' || e.sid === '13') {
+    if (famBase === 'Total primeras 5') {
+      const ps = ['p1', 'p2', 'p3', 'p4', 'p5'].map(k => P[k]);
+      if (!ps.every(num) || !Number.isFinite(linea)) return null;
+      const tot = ps.reduce((a, o) => a + o.participant1Score + o.participant2Score, 0);
+      return ou(tot, linea, e.lado.startsWith('Más'));
+    }
+    if (!num(res)) return null;
+    const s1 = res.participant1Score, s2 = res.participant2Score;
+    if (famBase === 'Total del partido' || famBase === 'Total de carreras') {
+      if (!Number.isFinite(linea)) return null;
+      return ou(s1 + s2, linea, e.lado.startsWith('Más'));
+    }
+    if (famBase === 'Carreras') {
+      const eqNombre = e.familia.split(' · ').slice(1).join(' · ');
+      const eq = lado1(eqNombre);
+      if (!eq || !Number.isFinite(linea)) return null;
+      return ou(eq === 1 ? s1 : s2, linea, e.lado.startsWith('Más'));
+    }
+    if (famBase === 'Run line') return ahDe(s1, s2);
+    if (famBase === 'Ganador') {
+      if (s1 === s2) return null;
+      const eq = lado1(e.lado.trim());
+      if (!eq) return null;
+      return (eq === 1) === (s1 > s2) ? 'G' : 'P';
+    }
+  }
+  return null;
+}
+
 async function liquidar(maxFixtures = 60) {
   /* espera desde el inicio del partido antes de pedir resultado, por deporte:
      fútbol dura ~2 h, béisbol puede irse largo. Si la API aún no publica,
@@ -647,7 +740,7 @@ async function liquidar(maxFixtures = 60) {
     if (!porFix.has(e.fix)) porFix.set(e.fix, []);
     porFix.get(e.fix).push(e);
   }
-  let consultados = 0, liquidadas = 0, quedaron = 0;
+  let consultados = 0, liquidadas = 0, quedaron = 0, porMarcador = 0;
   const vieja = e => Date.now() - new Date(e.inicio).getTime() > 7 * 864e5;
   for (const [fix, entradas] of porFix) {
     if (consultados >= maxFixtures) { quedaron += entradas.length; continue; }
@@ -658,11 +751,23 @@ async function liquidar(maxFixtures = 60) {
     for (const e of entradas) {
       const est = d && resultadoEn(d, e.mid, e.oid);
       if (est) { e.estado = est; liquidadas++; }
-      else if (vieja(e)) e.estado = 'X';   /* 7 días sin resultado: se deja de pedir */
     }
+    /* lo que settlements no trajo se intenta por marcador (/scores) */
+    const porScore = entradas.filter(e => e.estado === 'pendiente' && COMPUTABLE(e));
+    if (porScore.length) {
+      consultados++;
+      let P = null;
+      try { P = periodosDe(await api('scores', { fixtureId: fix }, 1100)); } catch {}
+      if (P) for (const e of porScore) {
+        const est = liquidarPorMarcador(e, P);
+        if (est) { e.estado = est; e.marcador = true; liquidadas++; porMarcador++; }
+      }
+    }
+    /* 7 días sin resultado por ninguna vía: se deja de pedir */
+    for (const e of entradas) if (e.estado === 'pendiente' && vieja(e)) e.estado = 'X';
   }
   if (liquidadas || consultados) guardarRegistro();
-  return { consultados, liquidadas, quedaron };
+  return { consultados, liquidadas, quedaron, porMarcador };
 }
 async function cmdTablero(sids) {
   const pendAntes = Object.values(REG).filter(e => e.estado === 'pendiente').length;
@@ -759,6 +864,7 @@ async function cmdTablero(sids) {
   if (bandasVent) lineas.push('', '<b>Por ventaja prometida (señales + sombras):</b>', ...bandasVent);
   lineas.push('',
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
+      + (liq.porMarcador ? ` · ${liq.porMarcador} liquidadas por marcador` : '')
       + (sinDatos ? ` · ${sinDatos} sin datos` : '')
       + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>');
   await telegram(lineas.join('\n'));
