@@ -1050,6 +1050,15 @@ async function cmdProps(sids) {
    /settlements y /scores para las pendientes más viejas (o un fixture dado).
    Sirve para ver por qué algo no liquida y qué forma tienen los marcadores. */
 async function cmdDepurar(texto) {
+  /* "/depurar deportes": catálogo completo de deportes de OddsPapi en el log */
+  if (/deportes|sports/i.test(texto)) {
+    const d = await api('sports');
+    const arr = Array.isArray(d) ? d : [];
+    console.log('=== CATÁLOGO deportes (' + arr.length + ') ===');
+    for (const s of arr) console.log(JSON.stringify(s));
+    await telegram(`🔬 Catálogo: ${arr.length} deportes — detalle en el log de Actions.`);
+    return;
+  }
   /* "/depurar props": imprime en el log UN mercado de jugador CRUDO por
      deporte (WNBA y MLB), de ambas casas, para conocer la estructura real
      (¿dónde vive la línea de cada jugador?) antes de construir encima. */
