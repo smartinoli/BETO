@@ -1059,6 +1059,43 @@ async function cmdDepurar(texto) {
     await telegram(`🔬 Catálogo: ${arr.length} deportes — detalle en el log de Actions.`);
     return;
   }
+  /* "/depurar mesa": sonda de tenis de mesa (sportId 25) recién agregado al
+     plan — torneos, volumen de fixtures, qué cotiza cada casa, y si /scores
+     acepta consulta masiva (define el costo de la cosecha de resultados). */
+  if (/mesa|table/i.test(texto)) {
+    const ts = await api('tournaments', { sportId: 25 });
+    const tor = Array.isArray(ts) ? ts : [];
+    console.log('=== TT torneos:', tor.length);
+    tor.slice(0, 15).forEach(t => console.log(` ${t.tournamentId} | ${t.tournamentName} | ${t.categoryName || ''} | próximos:${t.upcomingFixtures}`));
+    const d = new Date();
+    const f1 = new Date(d.getTime() - 864e5).toISOString().slice(0, 10);
+    const f2 = new Date(d.getTime() + 864e5).toISOString().slice(0, 10);
+    const fx = await api('fixtures', { sportId: 25, from: f1, to: f2 }, 2100);
+    const arr = (Array.isArray(fx) ? fx : fx.data || []);
+    console.log('=== TT fixtures (ayer→mañana):', arr.length, '· con odds:', arr.filter(f => f.hasOdds).length);
+    arr.slice(0, 5).forEach(f => console.log(` ${f.fixtureId} | ${f.startTime} | ${f.participant1Name} vs ${f.participant2Name} | ${f.tournamentName} | odds:${f.hasOdds}`));
+    const tid = tor.sort((a, b) => (b.upcomingFixtures || 0) - (a.upcomingFixtures || 0))[0]?.tournamentId;
+    if (tid) {
+      for (const casa of [CASA, JUEZ]) {
+        try {
+          const o = await oddsBatch([tid], casa);
+          const conM = o.filter(f => Object.keys(((f.bookmakerOdds || {})[casa] || {}).markets || {}).length);
+          const mids = conM.length ? Object.keys(conM[0].bookmakerOdds[casa].markets) : [];
+          console.log(`=== TT odds ${casa}: ${o.length} fixtures, ${conM.length} con mercados · mids ej: ${mids.slice(0, 6).join(',')}`);
+          for (const mid of mids.slice(0, 6)) { const m = await metaDe(mid); console.log(`   mid ${mid} = "${m?.n}" h=${m?.h}`); }
+        } catch (e) { console.log(`=== TT odds ${casa}: ERROR ${e.message}`); }
+      }
+      const viejo = arr.filter(f => new Date(f.startTime) < new Date(Date.now() - 3 * 3600e3))[0];
+      for (const params of [{ sportId: 25, date: f1 }, { tournamentId: tid }, viejo ? { fixtureId: viejo.fixtureId } : null].filter(Boolean)) {
+        try {
+          const s = await api('scores', params, 2100);
+          console.log('=== scores', JSON.stringify(params), '→', JSON.stringify(s).slice(0, 500));
+        } catch (e) { console.log('=== scores', JSON.stringify(params), '→ ERROR', e.message); }
+      }
+    }
+    await telegram(`🏓 Sonda tenis de mesa: ${tor.length} torneos · ${arr.length} fixtures en 3 días. Detalle en el log de Actions.`);
+    return;
+  }
   /* "/depurar props": imprime en el log UN mercado de jugador CRUDO por
      deporte (WNBA y MLB), de ambas casas, para conocer la estructura real
      (¿dónde vive la línea de cada jugador?) antes de construir encima. */
