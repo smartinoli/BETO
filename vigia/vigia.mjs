@@ -862,6 +862,24 @@ async function cmdTablero(sids) {
     + `· cuota ${media(sombras, e => e.cuota).toFixed(2)} · +${(media(sombras, e => e.vent) * 100).toFixed(1)}% s/justo `
     + `→ <b>${conSigno(netoDe(sombras))}</b>`);
   if (bandasVent) lineas.push('', '<b>Por ventaja prometida (señales + sombras):</b>', ...bandasVent);
+  /* EL PUNTO CIEGO: lo que no se logra liquidar no es azar — son los
+     mercados raros (córners, ITF, divisiones menores), justo donde menos
+     confiable es el juez. Se muestra siempre para que nunca sea invisible:
+     una familia que vive aquí es candidata a salir del sistema. */
+  const ciegas = (filtro ? todas.filter(e => filtro.has(e.sid)) : todas)
+    .filter(e => e.estado === 'X' || (e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > 24 * 3600e3));
+  if (ciegas.length) {
+    const porQue = {};
+    for (const e of ciegas) {
+      const k = e.familia.split(' · ')[0] + (e.sid !== '10' ? ` (${(CFG.deportes[e.sid] || '').toLowerCase().slice(0, 3)})` : '');
+      porQue[k] = (porQue[k] || 0) + 1;
+    }
+    lineas.push('',
+      `🕳 <b>Punto ciego</b> — sin resultado por ninguna vía: ${ciegas.length} ap · `
+      + plata(ciegas.reduce((a, e) => a + e.monto, 0)) + ' que el tablero NO está midiendo\n<i>'
+      + Object.entries(porQue).sort((a, b) => b[1] - a[1]).slice(0, 8)
+        .map(([k, n]) => `${escHtml(k)} ${n}`).join(' · ') + '</i>');
+  }
   lineas.push('',
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
       + (liq.porMarcador ? ` · ${liq.porMarcador} liquidadas por marcador` : '')
