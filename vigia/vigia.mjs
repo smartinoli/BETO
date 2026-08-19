@@ -421,6 +421,76 @@ function procesarSync(info, bet, cb, metas, salida) {
   for (const [k, sm] of porFamSombra) if (!porFam.has(k)) salida.sombras.push(sm);
 }
 
+/* ---------- espejo de PRUEBA: props de jugador (SOLO sombras) ----------
+   Viajan en los mismos requests del barrido (costo extra: cero). Nunca se
+   avisan: van al tablero como sombras "Prop:" para medir si hay veta.
+   · Básquet: "Over Under Player X" — dos lados por jugador, línea en h.
+   · Béisbol: mercados de hitos — SOLO el par complementario 0 vs 1+ por
+     jugador (≡ Más/Menos 0.5); 2+/3+… son acumulativos y no se pueden
+     deviguear como par. Top 5 por ventaja por partido, para no inflar. */
+function propsDe(sid, nombre) {
+  const n = (nombre || '').toLowerCase();
+  let m;
+  if (sid === '11' && (m = n.match(/^over under player (points|rebounds|assists|3 point fg|points \+ rebounds|points \+ assists|points \+ assists \+ rebounds) \(incl\. overtime\)$/)))
+    return { fam: 'Prop ' + m[1], tipo: 'ou' };
+  if (sid === '13' && (m = n.match(/^(hits|total bases|runs batted in|singles|doubles|home runs|player stolen bases) \(incl\. extra innings\)$/)))
+    return { fam: 'Prop ' + m[1], tipo: 'hitos' };
+  return null;
+}
+function procesarProps(info, bet, cb, metas, salida) {
+  if (CFG.propsPrueba === false) return;
+  const cand = [];
+  for (const mid of Object.keys(bet.markets || {})) {
+    const meta = metas[mid];
+    if (!meta) continue;
+    const pd = propsDe(info.sid, meta.n);
+    if (!pd) continue;
+    const mkB = bet.markets[mid], mkC = (cb.markets || {})[mid];
+    if (!mkC) continue;
+    let par;
+    if (pd.tipo === 'ou') {
+      par = Object.keys(mkB.outcomes || {});
+      if (par.length !== 2) continue;
+    } else {
+      const porNombre = Object.fromEntries(Object.entries(meta.outs || {}).map(([oid, nom]) => [nom, oid]));
+      par = [porNombre['0'], porNombre['1+']];
+      if (!par[0] || !par[1]) continue;
+    }
+    const jugadores = new Set([
+      ...Object.keys(mkB.outcomes?.[par[0]]?.players || {}),
+      ...Object.keys(mkB.outcomes?.[par[1]]?.players || {}),
+    ]);
+    jugadores.delete('0');
+    for (const pid of jugadores) {
+      const vivo = x => x && x.active && x.price > 1;
+      const b1 = mkB.outcomes?.[par[0]]?.players?.[pid], b2 = mkB.outcomes?.[par[1]]?.players?.[pid];
+      const c1 = mkC.outcomes?.[par[0]]?.players?.[pid], c2 = mkC.outcomes?.[par[1]]?.players?.[pid];
+      if (!vivo(b1) || !vivo(b2) || !vivo(c1) || !vivo(c2)) continue;
+      const [j1, j2] = desvigar(c1.price, c2.price);
+      const justos = { [par[0]]: j1, [par[1]]: j2 };
+      const nombreJ = b1.playerName || c1.playerName || ('#' + pid);
+      for (const oid of par) {
+        const cuota = mkB.outcomes[oid].players[pid].price;
+        const vent = cuota / justos[oid] - 1;
+        if (vent < (CFG.sombraVentajaMinima ?? 0.005) || cuota > (CFG.sombraCuotaMaxima ?? 3.5)) continue;
+        const crudo = (meta.outs || {})[oid] || '';
+        const lado = nombreJ + ' · ' + (pd.tipo === 'ou'
+          ? (/over/i.test(crudo) ? 'Más de ' : 'Menos de ') + (meta.h ?? '')
+          : (crudo === '0' ? '0 (ninguno)' : crudo));
+        cand.push({
+          sig: info.fixtureId + '|' + mid + '|' + oid + '|' + pid,
+          fix: info.fixtureId, pid,
+          partido: info.p1 + ' vs ' + info.p2, liga: info.liga, sid: info.sid,
+          inicio: info.startTime, familia: pd.fam, lado,
+          cuota: +cuota.toFixed(3), justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
+        });
+      }
+    }
+  }
+  cand.sort((a, b) => b.vent - a.vent);
+  salida.sombras.push(...cand.slice(0, 5));
+}
+
 /* ---------- BARRIDO ---------- */
 async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const t0 = Date.now();
@@ -512,6 +582,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       if (!c) { salida.embudo.sinCloudbet++; continue; }   /* partido sin juez */
       info.bookmakerFixtureId = b.bookmakerFixtureId || null;
       procesarSync(info, b, c, metas, salida);
+      procesarProps(info, b, c, metas, salida);
     }
   }
   salida.segundos = Math.round((Date.now() - t0) / 1000);
@@ -562,9 +633,9 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   }
   for (const sm of salida.sombras) {
     if (REG[sm.sig]) continue;
-    const [fix, mid, oid] = sm.sig.split('|');
+    const [fix, mid, oid, pid] = sm.sig.split('|');
     REG[sm.sig] = {
-      fix, mid, oid, visto: new Date().toISOString(),
+      fix, mid, oid, ...(pid ? { pid } : {}), visto: new Date().toISOString(),
       inicio: sm.inicio, sid: sm.sid, liga: sm.liga, partido: sm.partido,
       familia: sm.familia, lado: sm.lado, cuota: sm.cuota, justo: sm.justo,
       vent: sm.vent, monto: montoDe(sm.cuota, sm.vent), estado: 'pendiente',
@@ -642,11 +713,11 @@ function retornoDe(e) {
 }
 /* Busca el resultado de un outcome en la respuesta de /settlements,
    tolerando las dos formas del cuerpo (objeto o lista). */
-function resultadoEn(d, mid, oid) {
+function resultadoEn(d, mid, oid, pid = '0') {
   const cuerpo = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
   const out = ((cuerpo || {}).markets || {})[mid]?.outcomes?.[oid];
   if (!out) return null;
-  const raw = (out.players || {})['0']?.result ?? out.result ?? (out.players || {})['0']?.settlement;
+  const raw = (out.players || {})[pid]?.result ?? (pid === '0' ? out.result : undefined) ?? (out.players || {})[pid]?.settlement;
   return raw ? RESULTADO[String(raw).toUpperCase()] || null : null;
 }
 /* ---- respaldo por marcador: /settlements no liquida varios mercados
@@ -763,7 +834,7 @@ async function liquidar(maxFixtures = 60) {
     try { d = await api('settlements', { fixtureId: fix }, 2100); }
     catch { d = null; }   /* sin settlement todavía (o no disponible) */
     for (const e of entradas) {
-      const est = d && resultadoEn(d, e.mid, e.oid);
+      const est = d && resultadoEn(d, e.mid, e.oid, e.pid || '0');
       if (est) { e.estado = est; liquidadas++; }
     }
     /* lo que settlements no trajo se intenta por marcador (/scores) */

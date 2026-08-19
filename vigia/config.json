@@ -21,6 +21,7 @@
     "10": "^(AH|Empate no válido)"
   },
   "sombras": true,
+  "propsPrueba": true,
   "sombraVentajaMinima": 0.005,
   "sombraCuotaMaxima": 3.5,
   "horarioSantiago": {
