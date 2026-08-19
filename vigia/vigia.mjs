@@ -171,8 +171,8 @@ function familiaDe(sid, nombre) {
   }
   if (sid === '11') {
     if (/^over under \(incl\. overtime\)$/.test(n)) return { fam: 'Total del partido', lado: 'ou' };
-    if ((m = n.match(/^over under (first|second) half$/)))
-      return { fam: 'Total ' + (m[1] === 'first' ? '1ª' : '2ª') + ' mitad', lado: 'ou' };
+    /* la 2ª mitad NO existe en lat.betano.com (solo en el feed RO): fuera */
+    if (/^over under first half$/.test(n)) return { fam: 'Total 1ª mitad', lado: 'ou' };
     if ((m = n.match(/^over under (first|second|third|fourth) quarter$/)))
       return { fam: 'Total ' + { first: '1er', second: '2º', third: '3er', fourth: '4º' }[m[1]] + ' cuarto', lado: 'ou' };
     return null;
