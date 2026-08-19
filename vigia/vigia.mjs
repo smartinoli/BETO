@@ -662,6 +662,9 @@ async function cmdTablero() {
   /* la familia se agrega sin el sufijo del equipo ("Goles · Arsenal" → "Goles") */
   const porFamilia = grupos(e => (EMO[e.sid] || '') + ' ' + e.familia.split(' · ')[0]);
   const porDeporte = grupos(e => CFG.deportes[e.sid] || e.sid);
+  /* por rango de cuota: mide si la banda alta (sobre la vieja cuotaMaxima
+     2.1) aporta o sangra — el control de haberla subido */
+  const porCuota = grupos(e => e.cuota <= 1.7 ? 'Cuota ≤ 1.70' : e.cuota <= 2.1 ? 'Cuota 1.71–2.10' : 'Cuota 2.11+');
   const global = filaBalance('TOTAL', cerradas);
   await telegram([
     '<b>📒 Tablero simulado</b>',
@@ -674,6 +677,9 @@ async function cmdTablero() {
     '',
     '<b>Por deporte:</b>',
     ...porDeporte.map(f => '· ' + f.txt),
+    '',
+    '<b>Por cuota:</b>',
+    ...porCuota.map(f => '· ' + f.txt),
     '',
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
       + (sinDatos ? ` · ${sinDatos} sin datos` : '')

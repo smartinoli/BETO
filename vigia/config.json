@@ -6,7 +6,7 @@
   "kellyDivisor": 4,
   "topePctBanca": 0.05,
   "montoMinimo": 5000,
-  "cuotaMaxima": 2.1,
+  "cuotaMaxima": 3.0,
   "anticipacionMin": 15,
   "horizonteHoras": 24,
   "margenLocal": 0.0,
@@ -16,7 +16,7 @@
   "vecinas": 99,
   "sinCuartos": true,
   "umbralCastigado": 0.05,
-  "devig": "mult",
+  "devig": "pow",
   "horarioSantiago": {
     "inicio": 9,
     "fin": 25
