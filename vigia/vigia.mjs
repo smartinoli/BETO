@@ -508,8 +508,16 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
 
   const porLiga = new Map();
   for (const sid of (sids && sids.length ? sids : Object.keys(CFG.deportes))) {
-    const tor = await torneosDe(sid);
-    const fx = await fixturesDe(sid);
+    /* un deporte sin acceso (ej: se soltó del plan al editar el panel) NO
+       tumba el barrido: se salta y se avisa en el reporte */
+    let tor, fx;
+    try {
+      tor = await torneosDe(sid);
+      fx = await fixturesDe(sid);
+    } catch (e) {
+      (salida.deportesFuera ||= []).push(`${CFG.deportes[sid] || sid} (${e.message})`);
+      continue;
+    }
     const nombres = new Map(tor.map(t => [t.id, t.n + (t.cat ? ' (' + t.cat + ')' : '')]));
     for (const f of fx) {
       const t = new Date(f.startTime).getTime();
@@ -679,6 +687,7 @@ async function reportar(r, titulo) {
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
     r.fueraDeFoco != null ? `<i>🎯 Foco activo (AH 0.0/DNB · básquet 1C/1M · béisbol F5) · ${r.fueraDeFoco} señal(es) fuera del foco a la sombra</i>` : '',
+    r.deportesFuera?.length ? `⚠️ Sin acceso en tu plan OddsPapi: ${r.deportesFuera.map(escHtml).join(' · ')} — se saltaron. Revisa el panel si no fue a propósito.` : '',
     r.avisoLotes || '',
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
     `${r.requests} requests · ${r.segundos}s`,
