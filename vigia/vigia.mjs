@@ -595,14 +595,16 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       : `⚠️ ${lotesMal} grupo(s) de ligas fallaron ("${ultimoError}") y se saltaron; `
         + `${lotesBien} funcionaron.`;
   }
-  /* FOCO: solo las familias del foco se avisan; el resto de las señales
+  /* FOCO: solo lo que calza con el foco se avisa; el resto de las señales
      válidas baja a sombra (se registra y mide, pero no llega al chat).
-     Ultra-foco en la atención, visión periférica gratis en los datos. */
+     El regex se prueba contra "familia · lado", así puede distinguir
+     hasta la línea exacta (ej: AH 0.0 sí, AH -1 no). */
   if (CFG.foco && Object.keys(CFG.foco).length) {
     const visibles = [], ocultas = [];
     for (const s of salida.senales) {
       const re = CFG.foco[s.sid];
-      (re && new RegExp(re).test(s.familia.split(' · ')[0]) ? visibles : ocultas).push(s);
+      const cadena = s.familia.split(' · ')[0] + ' · ' + s.lado;
+      (re && new RegExp(re).test(cadena) ? visibles : ocultas).push(s);
     }
     salida.senales = visibles;
     salida.sombras.push(...ocultas);
@@ -676,7 +678,7 @@ async function reportar(r, titulo) {
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
-    r.fueraDeFoco != null ? `<i>🎯 Foco activo: solo AH/DNB fútbol a la vista · ${r.fueraDeFoco} señal(es) de otras familias a la sombra</i>` : '',
+    r.fueraDeFoco != null ? `<i>🎯 Foco activo (AH 0.0/DNB · básquet 1C/1M · béisbol F5) · ${r.fueraDeFoco} señal(es) fuera del foco a la sombra</i>` : '',
     r.avisoLotes || '',
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
     `${r.requests} requests · ${r.segundos}s`,
