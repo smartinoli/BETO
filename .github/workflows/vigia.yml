@@ -17,7 +17,7 @@ on:
         description: 'Qué hacer'
         type: choice
         default: barrer
-        options: [barrer, rapido, estado]
+        options: [barrer, rapido, tablero, estado]
 
 permissions:
   contents: write
