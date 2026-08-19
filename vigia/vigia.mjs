@@ -275,6 +275,7 @@ async function oddsBatch(tids, casa) {
 /* ---------- señales de un partido ---------- */
 function procesarSync(info, bet, cb, metas, salida) {
   const porFam = new Map();
+  const porFamSombra = new Map();
   const cand = [];
   const E = salida.embudo;
   for (const mid of Object.keys(bet.markets || {})) {
@@ -361,9 +362,7 @@ function procesarSync(info, bet, cb, metas, salida) {
     for (const oid of oids) {
       const cuota = pB[oid] * (1 - CFG.margenLocal);
       salida.candidatas++;
-      if (cuota > CFG.cuotaMaxima) { E.cuotaAlta++; continue; }
       const vent = cuota / justos[oid] - 1;
-      if (vent < umbral) { if (vent > 0) E.ventajaBaja++; else E.sinVentaja++; continue; }
       const crudo = meta.outs[oid] || oid;
       let lado;
       if (fam.lado === 'ou') lado = (/over/i.test(crudo) ? 'Más de ' : 'Menos de ') + meta.h;
@@ -372,6 +371,25 @@ function procesarSync(info, bet, cb, metas, salida) {
         lado = (/^1$|home/i.test(crudo) ? info.p1 : info.p2) + ' ' + (hs > 0 ? '+' : '') + (hs === 0 ? '0.0' : hs);
       } else if (fam.lado === 'yn') lado = /yes/i.test(crudo) ? 'Sí' : 'No';
       else lado = /^1$|home/i.test(crudo) ? info.p1 : info.p2;
+      if (cuota > CFG.cuotaMaxima || vent < umbral) {
+        if (cuota > CFG.cuotaMaxima) E.cuotaAlta++;
+        else if (vent > 0) E.ventajaBaja++;
+        else E.sinVentaja++;
+        /* SOMBRA: no pasa tus umbrales pero tiene ventaja positiva → va al
+           tablero fantasma para calibrar. Nunca se avisa por Telegram. */
+        if (CFG.sombras !== false && vent >= (CFG.sombraVentajaMinima ?? 0.005)
+            && cuota <= (CFG.sombraCuotaMaxima ?? 3.5)) {
+          const sm = {
+            sig: info.fixtureId + '|' + mid + '|' + oid, fix: info.fixtureId,
+            partido: info.p1 + ' vs ' + info.p2, liga: info.liga, sid: info.sid,
+            inicio: info.startTime, familia: famLabel, lado,
+            cuota: +cuota.toFixed(3), justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
+          };
+          const prev = porFamSombra.get(famLabel);
+          if (!prev || sm.vent > prev.vent) porFamSombra.set(famLabel, sm);
+        }
+        continue;
+      }
       const s = {
         sig: info.fixtureId + '|' + mid + '|' + oid, fix: info.fixtureId,
         partido: info.p1 + ' vs ' + info.p2, liga: info.liga, sid: info.sid,
@@ -394,13 +412,15 @@ function procesarSync(info, bet, cb, metas, salida) {
     }
   }
   for (const s of porFam.values()) salida.senales.push(s);
+  /* si la familia produjo señal real, su sombra sobra (el dato bueno ya está) */
+  for (const [k, sm] of porFamSombra) if (!porFam.has(k)) salida.sombras.push(sm);
 }
 
 /* ---------- BARRIDO ---------- */
 async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const t0 = Date.now();
   const salida = {
-    senales: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {},
+    senales: [], sombras: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {},
     embudo: { fueraWhitelist: 0, cuartos: 0, lineasLejanas: 0, sinJuez: 0, inactivos: 0,
               cuotaAlta: 0, ventajaBaja: 0, sinVentaja: 0, hermanas: 0, sinCloudbet: 0,
               /* ejemplos reales para el comando /porque */
@@ -509,8 +529,10 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
      como si la hubieras apostado ahí). Repeticiones en barridos posteriores
      no duplican ni pisan la anotación original. */
   salida.registradas = 0;
+  salida.registradasSombra = 0;
   for (const s of salida.senales) {
-    if (REG[s.sig]) continue;
+    const ex = REG[s.sig];
+    if (ex && !ex.sombra) continue;   /* una sombra que ahora es señal se asciende */
     const [fix, mid, oid] = s.sig.split('|');
     REG[s.sig] = {
       fix, mid, oid, visto: new Date().toISOString(),
@@ -520,7 +542,19 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     };
     salida.registradas++;
   }
-  if (salida.registradas) guardarRegistro();
+  for (const sm of salida.sombras) {
+    if (REG[sm.sig]) continue;
+    const [fix, mid, oid] = sm.sig.split('|');
+    REG[sm.sig] = {
+      fix, mid, oid, visto: new Date().toISOString(),
+      inicio: sm.inicio, sid: sm.sid, liga: sm.liga, partido: sm.partido,
+      familia: sm.familia, lado: sm.lado, cuota: sm.cuota, justo: sm.justo,
+      vent: sm.vent, monto: montoDe(sm.cuota, sm.vent), estado: 'pendiente',
+      sombra: true,
+    };
+    salida.registradasSombra++;
+  }
+  if (salida.registradas || salida.registradasSombra) guardarRegistro();
   return salida;
 }
 
@@ -560,7 +594,10 @@ async function reportar(r, titulo) {
     r.tope ? '⚠️ tope de requests alcanzado' : '',
     '',
     orden.length ? `<b>${orden.length} señal(es):</b>` : '<b>Sin señales que pasen tus criterios.</b>',
-    r.registradas ? `<i>📒 ${r.registradas} nueva(s) anotadas en el tablero simulado (/tablero)</i>` : '',
+    (r.registradas || r.registradasSombra)
+      ? `<i>📒 Al tablero: ${r.registradas || 0} señal(es)`
+        + (r.registradasSombra ? ` + ${r.registradasSombra} sombra(s) bajo tus umbrales, solo datos` : '') + '</i>'
+      : '',
     descartes.length ? `\n<i>Quedó fuera: ${descartes.join(' · ')}</i>` : '',
   ].filter(Boolean).join('\n');
   await telegram(cab);
@@ -628,11 +665,15 @@ async function cmdTablero(sids) {
      desglose por % de ventaja prometida: el dato para ajustar ventajaMinima */
   const filtro = sids && sids.length ? new Set(sids) : null;
   const cerradasTodas = todas.filter(e => CERRADO.includes(e.estado));
-  const cerradas = filtro ? cerradasTodas.filter(e => filtro.has(e.sid)) : cerradasTodas;
+  const enVista = filtro ? cerradasTodas.filter(e => filtro.has(e.sid)) : cerradasTodas;
+  /* las sombras (bajo umbral, nunca avisadas) no entran al balance principal:
+     son datos de calibración, no apuestas que habrías hecho */
+  const cerradas = enVista.filter(e => !e.sombra);
+  const sombras = enVista.filter(e => e.sombra);
   const pend = todas.filter(e => e.estado === 'pendiente').length;
   const sinDatos = todas.filter(e => e.estado === 'X').length;
   const titulo = '<b>📒 Tablero simulado' + (filtro ? ' · ' + [...filtro].map(s => CFG.deportes[s] || s).join(' + ') : '') + '</b>';
-  if (!cerradas.length) {
+  if (!cerradas.length && !sombras.length) {
     await telegram([
       titulo,
       filtro && cerradasTodas.length
@@ -675,36 +716,44 @@ async function cmdTablero(sids) {
     secciones.push('');
   }
   /* bandas en orden natural (no por neto): así se lee dónde empieza a sangrar */
-  const porBanda = (clave, orden) => orden
-    .map(k => [k, cerradas.filter(e => clave(e) === k)])
+  const porBanda = (base, clave, orden) => orden
+    .map(k => [k, base.filter(e => clave(e) === k)])
     .filter(([, arr]) => arr.length)
     .map(([k, arr]) => fila(k, arr));
   /* por rango de cuota: mide si la banda alta (sobre la vieja cuotaMaxima
      2.1) aporta o sangra — el control de haberla subido */
-  const bandas = porBanda(e => e.cuota <= 1.7 ? '≤ 1.70' : e.cuota <= 2.1 ? '1.71 – 2.10' : '2.11 +',
+  const bandas = porBanda(cerradas, e => e.cuota <= 1.7 ? '≤ 1.70' : e.cuota <= 2.1 ? '1.71 – 2.10' : '2.11 +',
     ['≤ 1.70', '1.71 – 2.10', '2.11 +']);
-  /* por ventaja prometida (solo vista por deporte): si la banda baja pierde
-     plata sostenidamente, el ventajaMinima de ese deporte está corto */
+  /* por ventaja prometida (solo vista por deporte), CON las sombras: ahí se ve
+     si el ventajaMinima del deporte está corto o largo */
   const bandasVent = filtro
-    ? porBanda(e => e.vent <= 0.02 ? '≤ 2%' : e.vent <= 0.03 ? '2.1 – 3%' : e.vent <= 0.05 ? '3.1 – 5%' : '5.1% +',
+    ? porBanda(cerradas.concat(sombras),
+      e => e.vent <= 0.02 ? '≤ 2%' : e.vent <= 0.03 ? '2.1 – 3%' : e.vent <= 0.05 ? '3.1 – 5%' : '5.1% +',
       ['≤ 2%', '2.1 – 3%', '3.1 – 5%', '5.1% +'])
     : null;
-  const roiTotal = (netoDe(cerradas) / apostado * 100).toFixed(1);
-  await telegram([
+  const lineas = [
     titulo,
     '<i>Como si hubieras apostado cada señal al monto sugerido, con la cuota del momento en que apareció.</i>',
     '',
-    `<b>TOTAL</b> · ${cerradas.length} ap · ${plata(apostado)} apostados · ${recTxt(cerradas)} → <b>${conSigno(netoDe(cerradas))}</b> (ROI ${roiTotal}%)`,
-    '',
-    ...secciones,
-    '<b>Por cuota:</b>',
-    ...bandas,
-    ...(bandasVent ? ['', '<b>Por ventaja prometida:</b>', ...bandasVent] : []),
-    '',
+  ];
+  if (cerradas.length) {
+    const roiTotal = (netoDe(cerradas) / apostado * 100).toFixed(1);
+    lineas.push(
+      `<b>TOTAL</b> · ${cerradas.length} ap · ${plata(apostado)} apostados · ${recTxt(cerradas)} → <b>${conSigno(netoDe(cerradas))}</b> (ROI ${roiTotal}%)`,
+      '', ...secciones, '<b>Por cuota:</b>', ...bandas);
+  } else {
+    lineas.push('Aún ninguna señal real liquidada (solo sombras).');
+  }
+  if (sombras.length) lineas.push('',
+    `👻 <b>Sombras</b> (bajo tus umbrales o cuota alta, nunca avisadas): ${sombras.length} ap `
+    + `· cuota ${media(sombras, e => e.cuota).toFixed(2)} · +${(media(sombras, e => e.vent) * 100).toFixed(1)}% s/justo `
+    + `→ <b>${conSigno(netoDe(sombras))}</b>`);
+  if (bandasVent) lineas.push('', '<b>Por ventaja prometida (señales + sombras):</b>', ...bandasVent);
+  lineas.push('',
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
       + (sinDatos ? ` · ${sinDatos} sin datos` : '')
-      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>',
-  ].join('\n'));
+      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>');
+  await telegram(lineas.join('\n'));
 }
 
 /* ---------- censo de props: ¿qué líneas de jugador trae tu feed? ----------

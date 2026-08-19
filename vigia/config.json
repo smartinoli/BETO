@@ -17,6 +17,9 @@
   "sinCuartos": true,
   "umbralCastigado": 0.05,
   "devig": "pow",
+  "sombras": true,
+  "sombraVentajaMinima": 0.005,
+  "sombraCuotaMaxima": 3.5,
   "horarioSantiago": {
     "inicio": 9,
     "fin": 25
