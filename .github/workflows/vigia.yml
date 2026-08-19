@@ -18,6 +18,10 @@ on:
         type: choice
         default: barrer
         options: [barrer, rapido, tablero, estado]
+      texto:
+        description: 'Comando libre (opcional, manda sobre la acción)'
+        type: string
+        required: false
 
 permissions:
   contents: write
@@ -44,7 +48,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MODO: comando
           # del chat viene el texto tal cual; desde Actions, la acción elegida
-          COMANDO: ${{ github.event.client_payload.texto || inputs.accion || 'barrer' }}
+          COMANDO: ${{ github.event.client_payload.texto || inputs.texto || inputs.accion || 'barrer' }}
         run: node vigia/vigia.mjs
 
       - name: Guardar estado

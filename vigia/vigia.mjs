@@ -835,6 +835,39 @@ async function cmdProps(sids) {
   await telegram(`<i>${REQ - req0} requests usados en el censo.</i>`);
 }
 
+/* Diagnóstico: imprime en el log de Actions la respuesta CRUDA de
+   /settlements y /scores para las pendientes más viejas (o un fixture dado).
+   Sirve para ver por qué algo no liquida y qué forma tienen los marcadores. */
+async function cmdDepurar(texto) {
+  const idsPedidos = (texto.match(/id\d+/g) || []);
+  let fixes = idsPedidos;
+  if (!fixes.length) {
+    const viejas = Object.values(REG)
+      .filter(e => e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > 4 * 3600e3)
+      .sort((a, b) => a.inicio < b.inicio ? -1 : 1);
+    fixes = [...new Set(viejas.map(e => e.fix))].slice(0, 3);
+  }
+  if (!fixes.length) { await telegram('🔬 No hay pendientes viejas que depurar.'); return; }
+  const resumen = [];
+  for (const fix of fixes) {
+    const mias = Object.values(REG).filter(e => e.fix === fix);
+    console.log(`\n===== FIXTURE ${fix} (${mias[0]?.partido || '?'}) =====`);
+    console.log('mis apuestas:', mias.map(e => `${e.mid}|${e.oid} ${e.familia}·${e.lado} [${e.estado}]`).join(' · '));
+    for (const ruta of ['settlements', 'scores']) {
+      try {
+        const d = await api(ruta, { fixtureId: fix }, 2100);
+        console.log(`--- ${ruta}:\n` + JSON.stringify(d).slice(0, 4000));
+        resumen.push(`${fix.slice(-8)} ${ruta}: ${JSON.stringify(d).slice(0, 60)}…`);
+      } catch (e) {
+        console.log(`--- ${ruta}: ERROR ${e.message}`);
+        resumen.push(`${fix.slice(-8)} ${ruta}: ❌ ${e.message}`);
+      }
+    }
+  }
+  await telegram('<b>🔬 Depuración lista</b> — detalle completo en el log de Actions.\n\n<code>'
+    + escHtml(resumen.join('\n').slice(0, 3000)) + '</code>');
+}
+
 /* ---------- comandos ---------- */
 async function cmdEstado() {
   let cuota = 'no disponible';
@@ -1048,6 +1081,7 @@ async function ejecutar(texto) {
     return true;
   }
   if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) { await cmdTablero(sids); return true; }
+  if (['depurar', 'debug'].includes(c)) { await cmdDepurar(texto); return true; }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
