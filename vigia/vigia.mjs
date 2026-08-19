@@ -963,6 +963,20 @@ async function cmdProps(sids) {
    /settlements y /scores para las pendientes más viejas (o un fixture dado).
    Sirve para ver por qué algo no liquida y qué forma tienen los marcadores. */
 async function cmdDepurar(texto) {
+  /* "/depurar casas [palabra]": lista el catálogo completo de bookmakers de
+     OddsPapi en el log, con las que calzan la palabra destacadas por chat */
+  if (/casas|bookmaker|pinnacle/i.test(texto)) {
+    const palabra = (texto.match(/casas\s+(\S+)/i) || [])[1] || 'pinnacle';
+    const lista = await api('bookmakers');
+    const arr = Array.isArray(lista) ? lista : [];
+    console.log('=== CATÁLOGO bookmakers (' + arr.length + ') ===');
+    for (const b of arr) console.log(`${b.slug || b.bookmakerSlug} | ${b.bookmakerName || ''} | cloneOf:${b.cloneOf || '-'}`);
+    const calzan = arr.filter(b => new RegExp(palabra, 'i').test((b.slug || b.bookmakerSlug || '') + ' ' + (b.bookmakerName || '')));
+    await telegram(`🔍 Catálogo OddsPapi: ${arr.length} casas. Calzan con "${escHtml(palabra)}": `
+      + (calzan.length ? calzan.map(b => '<code>' + escHtml(b.slug || b.bookmakerSlug) + '</code>').join(' · ') : 'NINGUNA')
+      + '\nLista completa en el log de Actions.');
+    return;
+  }
   const idsPedidos = (texto.match(/id\d+/g) || []);
   let fixes = idsPedidos;
   if (!fixes.length) {
