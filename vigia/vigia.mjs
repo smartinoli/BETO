@@ -150,14 +150,17 @@ function familiaDe(sid, nombre) {
   if (/player|scorer|assist|shot|offside|throw/.test(n)) return null;
   let m;
   if (sid === '10') {
-    if (/^asian handicap$/.test(n)) return { fam: 'AH tiempo completo', lado: 'ah' };
-    if (/^asian handicap first half$/.test(n)) return { fam: 'AH 1er tiempo', lado: 'ah' };
+    /* grupo: familias que son LA MISMA apuesta con otro nombre comparten
+       grupo y compiten entre sí — AH 0.0 ≡ Empate no válido (DNB). Queda
+       solo la de mejor ventaja, nunca las dos. */
+    if (/^asian handicap$/.test(n)) return { fam: 'AH tiempo completo', lado: 'ah', grupo: 'AH' };
+    if (/^asian handicap first half$/.test(n)) return { fam: 'AH 1er tiempo', lado: 'ah', grupo: 'AH1T' };
     if (/^over under full time$/.test(n)) return { fam: 'Goles Más/Menos', lado: 'ou' };
     if (/^over under first half$/.test(n)) return { fam: 'Goles 1er tiempo', lado: 'ou' };
     if ((m = n.match(/^over under team ([12])(?: (first|second) half)?$/)))
       return { fam: 'Goles' + (m[2] ? (m[2] === 'first' ? ' 1T' : ' 2T') : ''), lado: 'ou', eq: +m[1] };
-    if (/^draw no bet$/.test(n)) return { fam: 'Empate no válido', lado: 'ml' };
-    if (/^draw no bet first half$/.test(n)) return { fam: 'Empate no válido 1T', lado: 'ml' };
+    if (/^draw no bet$/.test(n)) return { fam: 'Empate no válido', lado: 'ml', grupo: 'AH' };
+    if (/^draw no bet first half$/.test(n)) return { fam: 'Empate no válido 1T', lado: 'ml', grupo: 'AH1T' };
     if (/^both teams to score$/.test(n)) return { fam: 'Ambos marcan', lado: 'yn' };
     if (/^both teams to score first half$/.test(n)) return { fam: 'Ambos marcan 1T', lado: 'yn' };
     if (/^corners - over under full time$/.test(n)) return { fam: 'Córners Más/Menos', lado: 'ou', castigada: true };
@@ -359,6 +362,8 @@ function procesarSync(info, bet, cb, metas, salida) {
     const justos = { [oids[0]]: jA, [oids[1]]: jB };
     const umbral = Math.max(CFG.ventajaMinima[info.sid], fam.castigada ? (CFG.umbralCastigado ?? 0.05) : 0);
     const famLabel = fam.fam + (fam.eq ? ' · ' + (fam.eq === 1 ? info.p1 : info.p2) : '');
+    /* la llave de "una por familia" usa el grupo: AH y DNB compiten juntas */
+    const famKey = (fam.grupo || fam.fam) + (fam.eq ? '·' + fam.eq : '');
     for (const oid of oids) {
       const cuota = pB[oid] * (1 - CFG.margenLocal);
       salida.candidatas++;
@@ -385,8 +390,8 @@ function procesarSync(info, bet, cb, metas, salida) {
             inicio: info.startTime, familia: famLabel, lado,
             cuota: +cuota.toFixed(3), justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
           };
-          const prev = porFamSombra.get(famLabel);
-          if (!prev || sm.vent > prev.vent) porFamSombra.set(famLabel, sm);
+          const prev = porFamSombra.get(famKey);
+          if (!prev || sm.vent > prev.vent) porFamSombra.set(famKey, sm);
         }
         continue;
       }
@@ -399,7 +404,7 @@ function procesarSync(info, bet, cb, metas, salida) {
         link: linkDe(info, { oid: idB[oid], mid: bmid, lado, cuota: pB[oid].toFixed(2), fam: fam.fam }),
         sospechosa: vent > CFG.umbralSospechosa,
       };
-      const mejor = porFam.get(famLabel);
+      const mejor = porFam.get(famKey);
       if (mejor) {
         E.hermanas++;   /* otra línea de la misma familia con menos ventaja */
         if (E.ej.hermanas.length < 6) {
@@ -408,7 +413,7 @@ function procesarSync(info, bet, cb, metas, salida) {
             + `+${(a.vent * 100).toFixed(1)}% sobre "${b.lado}" +${(b.vent * 100).toFixed(1)}%`);
         }
       }
-      if (!mejor || s.vent > mejor.vent) porFam.set(famLabel, s);
+      if (!mejor || s.vent > mejor.vent) porFam.set(famKey, s);
     }
   }
   for (const s of porFam.values()) salida.senales.push(s);
@@ -631,9 +636,12 @@ function resultadoEn(d, mid, oid) {
   return raw ? RESULTADO[String(raw).toUpperCase()] || null : null;
 }
 async function liquidar(maxFixtures = 60) {
-  /* solo partidos que empezaron hace 3+ h: antes no hay resultado que pedir */
+  /* espera desde el inicio del partido antes de pedir resultado, por deporte:
+     fútbol dura ~2 h, béisbol puede irse largo. Si la API aún no publica,
+     no pasa nada: se reintenta en el próximo /tablero. */
+  const ESPERA_H = { 10: 2, 11: 2.5, 12: 2.5, 13: 3.5 };
   const listas = Object.values(REG).filter(e =>
-    e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > 3 * 3600e3);
+    e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > (ESPERA_H[e.sid] || 3) * 3600e3);
   const porFix = new Map();
   for (const e of listas) {
     if (!porFix.has(e.fix)) porFix.set(e.fix, []);
