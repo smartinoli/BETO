@@ -619,16 +619,6 @@ async function liquidar(maxFixtures = 60) {
   if (liquidadas || consultados) guardarRegistro();
   return { consultados, liquidadas, quedaron };
 }
-function filaBalance(nombre, arr) {
-  const st = arr.reduce((a, e) => a + e.monto, 0);
-  const neto = arr.reduce((a, e) => a + retornoDe(e) - e.monto, 0);
-  const rec = { G: 0, P: 0, MG: 0, MP: 0, E: 0 };
-  for (const e of arr) rec[e.estado]++;
-  const recTxt = ['G', 'P', 'MG', 'MP', 'E'].filter(k => rec[k]).map(k => rec[k] + k).join(' ');
-  const signo = neto >= 0 ? '🟢 +' : '🔴 −';
-  return { neto, txt: `${escHtml(nombre)} — ${arr.length} ap · <b>${signo}${plata(Math.abs(neto))}</b> `
-    + `(ROI ${(neto / st * 100).toFixed(1)}%) · ${recTxt}` };
-}
 async function cmdTablero() {
   const pendAntes = Object.values(REG).filter(e => e.estado === 'pendiente').length;
   if (pendAntes) await telegram(`📒 Liquidando pendientes (${pendAntes})…`);
@@ -649,37 +639,48 @@ async function cmdTablero() {
     return;
   }
   const apostado = cerradas.reduce((a, e) => a + e.monto, 0);
-  const neto = cerradas.reduce((a, e) => a + retornoDe(e) - e.monto, 0);
-  const grupos = clave => {
+  const netoDe = arr => arr.reduce((a, e) => a + retornoDe(e) - e.monto, 0);
+  const media = (arr, f) => arr.reduce((a, e) => a + f(e), 0) / arr.length;
+  const recTxt = arr => {
+    const rec = { G: 0, P: 0, MG: 0, MP: 0, E: 0 };
+    for (const e of arr) rec[e.estado]++;
+    return ['G', 'P', 'MG', 'MP', 'E'].filter(k => rec[k]).map(k => rec[k] + k).join(' ');
+  };
+  const conSigno = n => (n >= 0 ? '🟢 +' : '🔴 −') + plata(Math.abs(n));
+  /* fila de un tipo de apuesta: n · cuota media · % sobre el justo · récord · neto */
+  const fila = (nombre, arr) => `· ${escHtml(nombre)} — ${arr.length} ap · cuota ${media(arr, e => e.cuota).toFixed(2)}`
+    + ` · +${(media(arr, e => e.vent) * 100).toFixed(1)}% s/justo · ${recTxt(arr)} → <b>${conSigno(netoDe(arr))}</b>`;
+  const agrupa = (arr, clave) => {
     const m = new Map();
-    for (const e of cerradas) {
+    for (const e of arr) {
       const k = clave(e);
       if (!m.has(k)) m.set(k, []);
       m.get(k).push(e);
     }
-    return [...m.entries()].map(([k, arr]) => filaBalance(k, arr)).sort((a, b) => b.neto - a.neto);
+    return [...m.entries()].sort((a, b) => netoDe(b[1]) - netoDe(a[1]));
   };
-  /* la familia se agrega sin el sufijo del equipo ("Goles · Arsenal" → "Goles") */
-  const porFamilia = grupos(e => (EMO[e.sid] || '') + ' ' + e.familia.split(' · ')[0]);
-  const porDeporte = grupos(e => CFG.deportes[e.sid] || e.sid);
+  /* ordenado por deporte, y dentro por tipo de apuesta (la familia se agrega
+     sin el sufijo del equipo: "Goles · Arsenal" → "Goles") */
+  const secciones = [];
+  for (const [sid, arr] of agrupa(cerradas, e => e.sid)) {
+    secciones.push(`${EMO[sid] || ''} <b>${escHtml(CFG.deportes[sid] || sid)}</b> — ${arr.length} ap → <b>${conSigno(netoDe(arr))}</b>`);
+    for (const [famBase, sub] of agrupa(arr, e => e.familia.split(' · ')[0])) secciones.push(fila(famBase, sub));
+    secciones.push('');
+  }
   /* por rango de cuota: mide si la banda alta (sobre la vieja cuotaMaxima
      2.1) aporta o sangra — el control de haberla subido */
-  const porCuota = grupos(e => e.cuota <= 1.7 ? 'Cuota ≤ 1.70' : e.cuota <= 2.1 ? 'Cuota 1.71–2.10' : 'Cuota 2.11+');
-  const global = filaBalance('TOTAL', cerradas);
+  const bandas = agrupa(cerradas, e => e.cuota <= 1.7 ? '≤ 1.70' : e.cuota <= 2.1 ? '1.71 – 2.10' : '2.11 +')
+    .map(([k, arr]) => fila(k, arr));
+  const roiTotal = (netoDe(cerradas) / apostado * 100).toFixed(1);
   await telegram([
     '<b>📒 Tablero simulado</b>',
     '<i>Como si hubieras apostado cada señal al monto sugerido, con la cuota del momento en que apareció.</i>',
     '',
-    global.txt.replace('TOTAL — ', `<b>TOTAL</b> · ${plata(apostado)} apostados — `),
+    `<b>TOTAL</b> · ${cerradas.length} ap · ${plata(apostado)} apostados · ${recTxt(cerradas)} → <b>${conSigno(netoDe(cerradas))}</b> (ROI ${roiTotal}%)`,
     '',
-    '<b>Por familia:</b>',
-    ...porFamilia.map(f => '· ' + f.txt),
-    '',
-    '<b>Por deporte:</b>',
-    ...porDeporte.map(f => '· ' + f.txt),
-    '',
+    ...secciones,
     '<b>Por cuota:</b>',
-    ...porCuota.map(f => '· ' + f.txt),
+    ...bandas,
     '',
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
       + (sinDatos ? ` · ${sinDatos} sin datos` : '')
