@@ -992,6 +992,43 @@ async function cmdDepurar(texto) {
     + escHtml(resumen.join('\n').slice(0, 3000)) + '</code>');
 }
 
+/* Liquidación manual: para el punto ciego (córners, ITF) donde ninguna API
+   publica el resultado pero tú lo viste. "/liquidar zakynthos G".
+   Resultados: G ganada · P perdida · E empate/push · MG media ganada · MP media perdida */
+async function cmdLiquidar(texto) {
+  const partes = texto.replace(/^\/?\S+\s*/, '').trim().split(/\s+/);
+  const resTxt = (partes[partes.length - 1] || '').toUpperCase();
+  const RES = { G: 'G', P: 'P', E: 'E', MG: 'MG', MP: 'MP', GANADA: 'G', PERDIDA: 'P', PUSH: 'E', EMPATE: 'E' };
+  const estado = RES[resTxt];
+  const claves = (estado ? partes.slice(0, -1) : partes).join(' ').toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '');
+  if (!claves) {
+    await telegram('Uso: <code>/liquidar palabras del partido G</code>\n'
+      + 'Resultados: G ganada · P perdida · E push · MG media ganada · MP media perdida\n'
+      + 'Sin resultado al final, solo muestra las que calzan.');
+    return;
+  }
+  const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const cand = Object.values(REG).filter(e =>
+    (e.estado === 'pendiente' || e.estado === 'X')
+    && claves.split(/\s+/).every(p => norm(e.partido + ' ' + e.familia + ' ' + e.lado + ' ' + e.liga).includes(p)));
+  if (!cand.length) { await telegram('No encontré pendientes que calcen con "' + escHtml(claves) + '".'); return; }
+  if (cand.length > 1 || !estado) {
+    await telegram('<b>' + cand.length + ' calzan:</b>\n\n' + cand.slice(0, 8).map(e =>
+      `${escHtml(e.partido)}\n${escHtml(e.familia)} · <b>${escHtml(e.lado)}</b> @${e.cuota} [${e.estado}]`).join('\n\n')
+      + (cand.length > 8 ? '\n\n…y más.' : '')
+      + '\n\n' + (estado ? 'Afina las palabras hasta que quede UNA.' : 'Agrega el resultado al final: G, P, E, MG o MP.'));
+    return;
+  }
+  const e = cand[0];
+  e.estado = estado;
+  e.manual = true;
+  guardarRegistro();
+  const neto = retornoDe(e) - e.monto;
+  await telegram(`✅ Liquidada a mano: <b>${escHtml(e.lado)}</b> (${escHtml(e.familia)})\n`
+    + `${escHtml(e.partido)}\n${estado} → ${neto >= 0 ? '+' : '−'}${plata(Math.abs(neto))}`);
+}
+
 /* ---------- comandos ---------- */
 async function cmdEstado() {
   let cuota = 'no disponible';
@@ -1206,6 +1243,7 @@ async function ejecutar(texto) {
   }
   if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) { await cmdTablero(sids); return true; }
   if (['depurar', 'debug'].includes(c)) { await cmdDepurar(texto); return true; }
+  if (['liquidar', 'liquida', 'resultado'].includes(c)) { await cmdLiquidar(texto); return true; }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
@@ -1215,6 +1253,7 @@ async function ejecutar(texto) {
       '<b>/rapido</b> — solo lo que empieza dentro de 6 h (~30 requests)',
       '<b>/tablero</b> — cómo habrían salido TODAS las señales de los barridos; con deporte (<code>/tablero futbol</code>) desglosa por % de ventaja, para calibrar tu mínimo',
       '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
+      '<b>/liquidar zakynthos G</b> — cierra a mano una del punto ciego que tú viste (G/P/E/MG/MP)',
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
       '<b>/casas</b> — qué espejos de Betano existen y a qué dominio apuntan',
