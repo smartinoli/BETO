@@ -619,21 +619,28 @@ async function liquidar(maxFixtures = 60) {
   if (liquidadas || consultados) guardarRegistro();
   return { consultados, liquidadas, quedaron };
 }
-async function cmdTablero() {
+async function cmdTablero(sids) {
   const pendAntes = Object.values(REG).filter(e => e.estado === 'pendiente').length;
   if (pendAntes) await telegram(`📒 Liquidando pendientes (${pendAntes})…`);
   const liq = await liquidar();
   const todas = Object.values(REG);
-  const cerradas = todas.filter(e => CERRADO.includes(e.estado));
+  /* con deporte ("/tablero futbol") se filtra la vista y se agrega el
+     desglose por % de ventaja prometida: el dato para ajustar ventajaMinima */
+  const filtro = sids && sids.length ? new Set(sids) : null;
+  const cerradasTodas = todas.filter(e => CERRADO.includes(e.estado));
+  const cerradas = filtro ? cerradasTodas.filter(e => filtro.has(e.sid)) : cerradasTodas;
   const pend = todas.filter(e => e.estado === 'pendiente').length;
   const sinDatos = todas.filter(e => e.estado === 'X').length;
+  const titulo = '<b>📒 Tablero simulado' + (filtro ? ' · ' + [...filtro].map(s => CFG.deportes[s] || s).join(' + ') : '') + '</b>';
   if (!cerradas.length) {
     await telegram([
-      '<b>📒 Tablero simulado</b>',
-      todas.length
-        ? `Aún nada liquidado. ${pend} apuesta(s) esperando resultado`
-          + (sinDatos ? ` · ${sinDatos} sin datos de la API` : '') + '.'
-        : 'Todavía no hay apuestas anotadas: se anotan solas con cada /barrer o /rapido.',
+      titulo,
+      filtro && cerradasTodas.length
+        ? 'Aún no hay apuestas liquidadas de ese deporte. /tablero a secas muestra todo.'
+        : todas.length
+          ? `Aún nada liquidado. ${pend} apuesta(s) esperando resultado`
+            + (sinDatos ? ` · ${sinDatos} sin datos de la API` : '') + '.'
+          : 'Todavía no hay apuestas anotadas: se anotan solas con cada /barrer o /rapido.',
       liq.consultados ? `<i>${liq.consultados} consultas de resultados usadas.</i>` : '',
     ].filter(Boolean).join('\n'));
     return;
@@ -667,13 +674,24 @@ async function cmdTablero() {
     for (const [famBase, sub] of agrupa(arr, e => e.familia.split(' · ')[0])) secciones.push(fila(famBase, sub));
     secciones.push('');
   }
+  /* bandas en orden natural (no por neto): así se lee dónde empieza a sangrar */
+  const porBanda = (clave, orden) => orden
+    .map(k => [k, cerradas.filter(e => clave(e) === k)])
+    .filter(([, arr]) => arr.length)
+    .map(([k, arr]) => fila(k, arr));
   /* por rango de cuota: mide si la banda alta (sobre la vieja cuotaMaxima
      2.1) aporta o sangra — el control de haberla subido */
-  const bandas = agrupa(cerradas, e => e.cuota <= 1.7 ? '≤ 1.70' : e.cuota <= 2.1 ? '1.71 – 2.10' : '2.11 +')
-    .map(([k, arr]) => fila(k, arr));
+  const bandas = porBanda(e => e.cuota <= 1.7 ? '≤ 1.70' : e.cuota <= 2.1 ? '1.71 – 2.10' : '2.11 +',
+    ['≤ 1.70', '1.71 – 2.10', '2.11 +']);
+  /* por ventaja prometida (solo vista por deporte): si la banda baja pierde
+     plata sostenidamente, el ventajaMinima de ese deporte está corto */
+  const bandasVent = filtro
+    ? porBanda(e => e.vent <= 0.02 ? '≤ 2%' : e.vent <= 0.03 ? '2.1 – 3%' : e.vent <= 0.05 ? '3.1 – 5%' : '5.1% +',
+      ['≤ 2%', '2.1 – 3%', '3.1 – 5%', '5.1% +'])
+    : null;
   const roiTotal = (netoDe(cerradas) / apostado * 100).toFixed(1);
   await telegram([
-    '<b>📒 Tablero simulado</b>',
+    titulo,
     '<i>Como si hubieras apostado cada señal al monto sugerido, con la cuota del momento en que apareció.</i>',
     '',
     `<b>TOTAL</b> · ${cerradas.length} ap · ${plata(apostado)} apostados · ${recTxt(cerradas)} → <b>${conSigno(netoDe(cerradas))}</b> (ROI ${roiTotal}%)`,
@@ -681,6 +699,7 @@ async function cmdTablero() {
     ...secciones,
     '<b>Por cuota:</b>',
     ...bandas,
+    ...(bandasVent ? ['', '<b>Por ventaja prometida:</b>', ...bandasVent] : []),
     '',
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
       + (sinDatos ? ` · ${sinDatos} sin datos` : '')
@@ -971,7 +990,7 @@ async function ejecutar(texto) {
     await cmdProps(sids);
     return true;
   }
-  if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) { await cmdTablero(); return true; }
+  if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) { await cmdTablero(sids); return true; }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
@@ -979,7 +998,7 @@ async function ejecutar(texto) {
       '',
       `<b>/barrer</b> — todo lo disponible en las próximas ${CFG.horizonteHoras} h (~110 requests, ~2 min)`,
       '<b>/rapido</b> — solo lo que empieza dentro de 6 h (~30 requests)',
-      '<b>/tablero</b> — cómo habrían salido TODAS las señales de los barridos, por familia y deporte',
+      '<b>/tablero</b> — cómo habrían salido TODAS las señales de los barridos; con deporte (<code>/tablero futbol</code>) desglosa por % de ventaja, para calibrar tu mínimo',
       '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
