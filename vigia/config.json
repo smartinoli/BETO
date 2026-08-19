@@ -15,7 +15,7 @@
   "lineasVecinas": true,
   "vecinas": 99,
   "sinCuartos": true,
-  "umbralCastigado": 0.05,
+  "umbralCastigado": 0.035,
   "devig": "pow",
   "sombras": true,
   "sombraVentajaMinima": 0.005,
