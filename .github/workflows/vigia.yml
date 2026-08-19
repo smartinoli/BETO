@@ -58,6 +58,7 @@ jobs:
           git config user.email "vigia@users.noreply.github.com"
           git add vigia/estado.json
           [ -f vigia/registro.json ] && git add vigia/registro.json || true
+          [ -f vigia/mesa.json ] && git add vigia/mesa.json || true
           git diff --cached --quiet && exit 0
           git commit -q -m "vigia: estado $(date -u +%H:%M)"
           git pull -q --rebase origin "$GITHUB_REF_NAME" || true

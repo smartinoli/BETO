@@ -1210,6 +1210,61 @@ async function cmdLiquidar(texto) {
     + `${escHtml(e.partido)}\n${estado} → ${neto >= 0 ? '+' : '−'}${plata(Math.abs(neto))}`);
 }
 
+/* ---------- COSECHA tenis de mesa: base de datos PROPIA ----------
+   Fase 1 del camino "justo propio": cada /cosechar recoge los resultados
+   (set por set) de las ligas industriales y los guarda en mesa.json.
+   Con 2-3 semanas de datos se monta un Elo por jugador — sin depender de
+   la opinión de ninguna casa. Costo: ~1 request por partido nuevo. */
+async function cmdCosechar() {
+  const MESA_PATH = path.join(DIR, 'mesa.json');
+  let DB = { partidos: {}, sin: {} };
+  try { DB = { ...DB, ...JSON.parse(fs.readFileSync(MESA_PATH, 'utf8')) } } catch {}
+  const LIGAS = CFG.mesaLigas || ['Czech Liga Pro', 'TT Elite Series'];
+  const d = new Date();
+  const f1 = new Date(d.getTime() - 2 * 864e5).toISOString().slice(0, 10);
+  const f2 = d.toISOString().slice(0, 10);
+  const fx = await api('fixtures', { sportId: 25, from: f1, to: f2 }, 2100);
+  const cand = (Array.isArray(fx) ? fx : fx.data || [])
+    .filter(f => LIGAS.some(l => (f.tournamentName || '').includes(l)))
+    .filter(f => new Date(f.startTime).getTime() < Date.now() - 40 * 60e3)
+    .filter(f => !DB.partidos[f.fixtureId] && (DB.sin[f.fixtureId] || 0) < 3);
+  const TOPE = 250;
+  let ok = 0, fallas = 0;
+  const req0 = REQ;
+  for (const f of cand.slice(0, TOPE)) {
+    let P = null;
+    try { P = periodosDe(await api('scores', { fixtureId: f.fixtureId }, 1100)); } catch {}
+    const res = P && P.result;
+    if (!res || !Number.isFinite(res.participant1Score)) {
+      DB.sin[f.fixtureId] = (DB.sin[f.fixtureId] || 0) + 1;
+      fallas++;
+      continue;
+    }
+    const sets = Object.entries(P).filter(([k]) => /^p\d+$/.test(k))
+      .sort((a, b) => +a[0].slice(1) - +b[0].slice(1))
+      .map(([, v]) => [v.participant1Score, v.participant2Score]);
+    DB.partidos[f.fixtureId] = {
+      t: f.startTime, liga: f.tournamentName,
+      p1: f.participant1Name, p2: f.participant2Name,
+      s1: res.participant1Score, s2: res.participant2Score, sets,
+    };
+    delete DB.sin[f.fixtureId];
+    ok++;
+  }
+  fs.writeFileSync(MESA_PATH, JSON.stringify(DB));
+  const total = Object.keys(DB.partidos).length;
+  const jugadores = new Set();
+  for (const p of Object.values(DB.partidos)) { jugadores.add(p.p1); jugadores.add(p.p2); }
+  await telegram([
+    '<b>🏓 Cosecha de tenis de mesa</b>',
+    `Nuevos: ${ok} partidos` + (fallas ? ` · ${fallas} aún sin resultado` : '')
+      + (cand.length > TOPE ? ` · quedaron ${cand.length - TOPE} para la próxima` : ''),
+    `Base propia: <b>${total} partidos</b> · <b>${jugadores.size} jugadores</b>`,
+    `Ligas: ${LIGAS.join(' · ')}`,
+    `<i>${REQ - req0} requests. Cosecha 1-2 veces al día y en 2-3 semanas hay masa para el Elo.</i>`,
+  ].join('\n'));
+}
+
 /* ---------- comandos ---------- */
 async function cmdEstado() {
   let cuota = 'no disponible';
@@ -1425,6 +1480,7 @@ async function ejecutar(texto) {
   if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) { await cmdTablero(sids); return true; }
   if (['depurar', 'debug'].includes(c)) { await cmdDepurar(texto); return true; }
   if (['liquidar', 'liquida', 'resultado'].includes(c)) { await cmdLiquidar(texto); return true; }
+  if (['cosechar', 'cosecha', 'mesa'].includes(c)) { await cmdCosechar(); return true; }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
@@ -1435,6 +1491,7 @@ async function ejecutar(texto) {
       '<b>/tablero</b> — cómo habrían salido TODAS las señales de los barridos; con deporte (<code>/tablero futbol</code>) desglosa por % de ventaja, para calibrar tu mínimo',
       '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
       '<b>/liquidar zakynthos G</b> — cierra a mano una del punto ciego que tú viste (G/P/E/MG/MP)',
+      '<b>/cosechar</b> — recoge resultados de tenis de mesa para la base propia del Elo (~200 req)',
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
       '<b>/casas</b> — qué espejos de Betano existen y a qué dominio apuntan',
