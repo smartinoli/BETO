@@ -17,6 +17,9 @@
   "sinCuartos": true,
   "umbralCastigado": 0.035,
   "devig": "pow",
+  "foco": {
+    "10": "^(AH|Empate no válido)"
+  },
   "sombras": true,
   "sombraVentajaMinima": 0.005,
   "sombraCuotaMaxima": 3.5,

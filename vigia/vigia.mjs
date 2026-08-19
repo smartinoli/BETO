@@ -524,6 +524,19 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       : `⚠️ ${lotesMal} grupo(s) de ligas fallaron ("${ultimoError}") y se saltaron; `
         + `${lotesBien} funcionaron.`;
   }
+  /* FOCO: solo las familias del foco se avisan; el resto de las señales
+     válidas baja a sombra (se registra y mide, pero no llega al chat).
+     Ultra-foco en la atención, visión periférica gratis en los datos. */
+  if (CFG.foco && Object.keys(CFG.foco).length) {
+    const visibles = [], ocultas = [];
+    for (const s of salida.senales) {
+      const re = CFG.foco[s.sid];
+      (re && new RegExp(re).test(s.familia.split(' · ')[0]) ? visibles : ocultas).push(s);
+    }
+    salida.senales = visibles;
+    salida.sombras.push(...ocultas);
+    salida.fueraDeFoco = ocultas.length;
+  }
   /* memoria: útil para el próximo barrido (marca lo ya visto) */
   const antes = new Set(Object.keys(EST.senales));
   EST.senales = {};
@@ -592,6 +605,7 @@ async function reportar(r, titulo) {
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
+    r.fueraDeFoco != null ? `<i>🎯 Foco activo: solo AH/DNB fútbol a la vista · ${r.fueraDeFoco} señal(es) de otras familias a la sombra</i>` : '',
     r.avisoLotes || '',
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
     `${r.requests} requests · ${r.segundos}s`,
@@ -963,6 +977,40 @@ async function cmdProps(sids) {
    /settlements y /scores para las pendientes más viejas (o un fixture dado).
    Sirve para ver por qué algo no liquida y qué forma tienen los marcadores. */
 async function cmdDepurar(texto) {
+  /* "/depurar props": imprime en el log UN mercado de jugador CRUDO por
+     deporte (WNBA y MLB), de ambas casas, para conocer la estructura real
+     (¿dónde vive la línea de cada jugador?) antes de construir encima. */
+  if (/props/i.test(texto)) {
+    for (const sid of ['11', '13']) {
+      const todos = (await fixturesDe(sid))
+        .filter(f => { const t = new Date(f.startTime).getTime(); return t > Date.now() && t < Date.now() + 48 * 3600e3; })
+        .sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+      const grandes = todos.filter(f => (LIGA_GRANDE[sid] || /$^/).test(f.liga));
+      const f = (grandes[0] || todos[0]);
+      if (!f) { console.log(`sid ${sid}: sin partidos`); continue; }
+      let d;
+      try { d = await api('odds', { fixtureId: f.fixtureId, oddsFormat: 'decimal' }, 600); }
+      catch (e) { console.log(`sid ${sid}: odds falló ${e.message}`); continue; }
+      const fxd = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
+      const bo = (fxd || {}).bookmakerOdds || {};
+      console.log(`\n===== PROPS ${CFG.deportes[sid]} · ${f.p1} vs ${f.p2} (${f.fixtureId}) =====`);
+      let impresos = 0;
+      for (const mid of Object.keys((bo[CASA] || {}).markets || {})) {
+        const mkB = bo[CASA].markets[mid], mkC = ((bo[JUEZ] || {}).markets || {})[mid];
+        const tieneJug = o => Object.keys(o?.players || {}).some(p => p !== '0');
+        const esProp = Object.values(mkB.outcomes || {}).some(tieneJug);
+        if (!esProp) continue;
+        const meta = await metaDe(mid);
+        console.log(`\n--- mid ${mid} · "${meta?.n}" · h=${meta?.h} · outs=${JSON.stringify(meta?.outs)}`);
+        console.log(`${CASA}: ` + JSON.stringify(mkB).slice(0, 2500));
+        console.log(`${JUEZ}: ` + (mkC ? JSON.stringify(mkC).slice(0, 2500) : 'NO TIENE ESTE MID'));
+        if (++impresos >= 3) break;
+      }
+      if (!impresos) console.log('sin mercados de jugador en este partido');
+    }
+    await telegram('🔬 Sonda de props lista — estructura cruda en el log de Actions.');
+    return;
+  }
   /* "/depurar casas [palabra]": lista el catálogo completo de bookmakers de
      OddsPapi en el log, con las que calzan la palabra destacadas por chat */
   if (/casas|bookmaker|pinnacle/i.test(texto)) {
