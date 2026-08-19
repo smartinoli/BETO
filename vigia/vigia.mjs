@@ -1059,6 +1059,29 @@ async function cmdDepurar(texto) {
     await telegram(`🔬 Catálogo: ${arr.length} deportes — detalle en el log de Actions.`);
     return;
   }
+  /* "/depurar plan": estado de la suscripción y qué deporte/casa quedó
+     restringido — para cuando un cambio en el panel rompe el acceso. */
+  if (/plan|cuenta|account/i.test(texto)) {
+    const filas = [];
+    try {
+      const d = await api('account');
+      console.log('=== account:', JSON.stringify(d).slice(0, 3000));
+      const sub = (d.subscriptions || []).filter(x => x.is_active)[0];
+      filas.push(sub
+        ? `Suscripción activa · ${((sub.request_limit || 0) - (sub.request_count || 0)).toLocaleString('es-CL')} requests libres · casas: ${Object.keys(sub.bookmakers || {}).join(', ')}`
+        : '⚠ SIN suscripción activa según /account');
+    } catch (e) { filas.push('❌ /account: ' + e.message); }
+    for (const sid of ['10', '11', '12', '13', '25']) {
+      try {
+        const t = await api('tournaments', { sportId: sid });
+        filas.push(`✅ ${CFG.deportes[sid] || 'Tenis de mesa'} (${sid}): ${(t || []).length} torneos`);
+      } catch (e) {
+        filas.push(`❌ ${CFG.deportes[sid] || 'Tenis de mesa'} (${sid}): ${e.message}`);
+      }
+    }
+    await telegram('<b>🔬 Diagnóstico del plan</b>\n' + filas.map(escHtml).join('\n'));
+    return;
+  }
   /* "/depurar mesa": sonda de tenis de mesa (sportId 25) recién agregado al
      plan — torneos, volumen de fixtures, qué cotiza cada casa, y si /scores
      acepta consulta masiva (define el costo de la cosecha de resultados). */
