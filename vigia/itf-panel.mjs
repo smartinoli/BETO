@@ -7,15 +7,22 @@
      itf-calendario.json            torneos con bolsa/superficie/fechas
      datos/itf/*.aceptacion.json    entry lists con rankings y retiros fechados
      datos/itf/*.json               cuadros de torneos terminados (cosecha)
+     datos/itf/vivo/*.json          cuadros de torneos EN JUEGO (modo vivo)
+     itf.json                       tablero de favoritos de vigía (cuotas)
 
-   Uso: node vigia/itf-panel.mjs   → escribe vigia/itf-panel.html
+   Uso: node vigia/itf-panel.mjs        → escribe vigia/itf-panel.html
+        node vigia/itf-panel.mjs vivo   → antes intenta refrescar los cuadros
+                                          de los torneos en juego (endpoints
+                                          abiertos; corta si el WAF desafía)
    ============================================================ */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { pareceElMismo } from './itf-cruce.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const DATOS = path.join(DIR, 'datos', 'itf');
+const VIVO = path.join(DATOS, 'vivo');
 const SALIDA = path.join(DIR, 'itf-panel.html');
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -31,6 +38,28 @@ const cuadrosDe = clave => leer(clave + '.json');
 const activos = torneos.filter(t => t.desde <= hoy && t.hasta >= hoy);
 const porVenir = torneos.filter(t => t.desde > hoy).sort((a, b) => a.desde.localeCompare(b.desde));
 const terminados = torneos.filter(t => t.hasta < hoy).sort((a, b) => b.hasta.localeCompare(a.hasta));
+
+/* ---------- modo vivo: refrescar cuadros de los torneos en juego ---------- */
+if (process.argv[2] === 'vivo') {
+  const { eventos, cuadro } = await import('./itf.mjs');
+  fs.mkdirSync(VIVO, { recursive: true });
+  let wafSeguidos = 0;
+  for (const t of activos) {
+    if (wafSeguidos >= 2) { console.log('  WAF en serie: sigo con lo que hay'); break; }
+    try {
+      const ev = await eventos(t.clave);
+      const cuadros = {};
+      for (const c of ev.cuadros.filter(c => c.tipo === 'S')) {
+        cuadros[c.evento] = await cuadro({ tournamentId: ev.tournamentId, tourType: ev.tourType, evento: c.evento, tipo: 'S' });
+      }
+      fs.writeFileSync(path.join(VIVO, t.clave + '.json'), JSON.stringify({ clave: t.clave, bajado: new Date().toISOString(), cuadros }));
+      console.log(`  ✓ vivo ${t.clave}`);
+      wafSeguidos = 0;
+    } catch (e) { console.log(`  ✗ vivo ${t.clave}: ${e.message.split(':')[0]}`); if (e.waf) wafSeguidos++; }
+  }
+}
+const vivoDe = clave => { try { return JSON.parse(fs.readFileSync(path.join(VIVO, clave + '.json'), 'utf8')) } catch { return null; } };
+const tablero = (() => { try { return JSON.parse(fs.readFileSync(path.join(DIR, 'itf.json'), 'utf8')) } catch { return null; } })();
 
 /* ---------- métricas de entry list ---------- */
 const MES = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
@@ -136,6 +165,100 @@ function filaVenir(t) {
   </tr>`;
 }
 
+/* ---------- por jugarse: cuadros en vivo ---------- */
+const RONDA_CORTA = { 1: 'R1', 2: 'R2', 3: 'QF', 4: 'SF', 5: 'F' };
+
+function trayectoriaHtml(nombre, cuadros) {
+  const pasos = [];
+  const orden = Object.entries(cuadros).sort(([a], [b]) => (a === 'Q' ? 0 : 1) - (b === 'Q' ? 0 : 1));
+  for (const [evento, c] of orden) {
+    for (const r of c.rondas) {
+      for (const p of r.partidos) {
+        if (p.estado !== 'jugado') continue;
+        const idx = p.lados.findIndex(l => pareceElMismo(nombre, l));
+        if (idx < 0) continue;
+        const yo = p.lados[idx], rival = p.lados[1 - idx];
+        const ronda = evento === 'Q' ? 'Q' + r.numero : (RONDA_CORTA[r.numero] || 'R' + r.numero);
+        const pares = yo.sets.map((s, i) => s + '-' + (rival.sets[i] ?? '?')).join(' ');
+        pasos.push(`<span class="${yo.ganador ? 'paso-g' : 'paso-p'}">${ronda}${yo.ganador ? '✓' : '✗'} ${esc(pares)}</span>`
+          + (/retired/i.test(p.nota || '') && !yo.ganador ? ' <span class="paso-ret">RET</span>' : ''));
+      }
+    }
+  }
+  return pasos.join(' · ');
+}
+
+function jugadorHtml(l, cuadros, listado) {
+  const e = listado.find(x => pareceElMismo(l.nombre, { nombre: x.nombre }));
+  const rank = e?.atp ? `ATP ${e.atp}` : (e?.wtn ? `WTN ${e.wtn}` : 'sin rank');
+  const marcas = [l.seed ? `[${l.seed}]` : null, l.entrada && l.entrada !== 'DA' ? l.entrada : null].filter(Boolean).join(' ');
+  const tray = trayectoriaHtml(l.nombre, cuadros);
+  return `<div class="jug"><span class="jug-n">${esc(l.nombre)}${marcas ? ' <b>' + esc(marcas) + '</b>' : ''}</span>
+    <span class="jug-r mono">${rank}</span>
+    <span class="jug-t">${tray || 'debuta'}</span></div>`;
+}
+
+function seccionPorJugarse() {
+  const bloques = [];
+  for (const t of activos) {
+    const v = vivoDe(t.clave);
+    if (!v) continue;
+    const a = aceptacionDe(t.clave);
+    const listado = a ? Object.values(a.secciones).flat() : [];
+    const filas = [];
+    for (const [evento, c] of Object.entries(v.cuadros)) {
+      for (const r of c.rondas) {
+        for (const p of r.partidos) {
+          if (p.estado !== 'pendiente' || !p.lados.every(l => l.nombre)) continue;
+          const ronda = evento === 'Q' ? 'Q·R' + r.numero : (RONDA_CORTA[r.numero] || 'R' + r.numero);
+          filas.push(`<tr><td class="mono">${ronda}</td>
+            <td class="celda-partido">${p.lados.map(l => jugadorHtml(l, v.cuadros, listado)).join('')}</td></tr>`);
+        }
+      }
+    }
+    if (!filas.length) continue;
+    bloques.push(`<h3 class="sub-torneo">${esc(t.nombre)} <span class="mono sub-fecha">cuadro al ${esc((v.bajado || '').slice(0, 16).replace('T', ' '))}</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed, entrada, ranking y cómo llega (qualis primero)</th></tr></thead>
+      <tbody>${filas.join('\n')}</tbody></table></div>`);
+  }
+  if (!bloques.length) return `<p class="nota">Sin cuadros en vivo aún: correr <span class="mono">node vigia/itf-panel.mjs vivo</span> (o esperar a que el WAF se enfríe).</p>`;
+  return bloques.join('\n');
+}
+
+/* ---------- tablero de cuotas (vigía · itf.json) ---------- */
+function seccionCuotas() {
+  if (!tablero?.partidos) return '';
+  const entradas = Object.values(tablero.partidos);
+  const conNombre = entradas.filter(e => e.p1);
+  const filas = conNombre
+    .sort((a, b) => (a.estado === 'pendiente' ? 0 : 1) - (b.estado === 'pendiente' ? 0 : 1) || (a.t || '').localeCompare(b.t || ''))
+    .map(e => {
+      const fav = e.fav === 1 ? e.p1 : e.p2;
+      const est = e.estado === 'F' ? '<span class="chip est-f">favorito ganó</span>'
+        : e.estado === 'D' ? '<span class="chip est-d">favorito cayó</span>'
+        : '<span class="chip">pendiente</span>';
+      const ctx = [e.ronda, e.entFav && e.entFav !== 'DA' ? 'fav ' + e.entFav : null, e.entRival && e.entRival !== 'DA' ? 'vs ' + e.entRival : null].filter(Boolean).join(' · ');
+      return `<tr>
+        <td>${esc(e.torneo || '?')}</td>
+        <td>${esc(e.p1)} vs ${esc(e.p2)}</td>
+        <td>${esc(fav || '?')}</td>
+        <td class="mono">${e.cB?.toFixed?.(2) ?? e.cB}</td>
+        <td class="mono">${e.cJ?.toFixed?.(2) ?? e.cJ}</td>
+        <td>${est}${e.marcador ? ' <span class="mono">' + esc(e.marcador) + '</span>' : ''}</td>
+        <td class="mono">${esc(ctx || '—')}</td>
+      </tr>`;
+    });
+  const sinNombre = entradas.length - conNombre.length;
+  return `<section>
+    <p class="eyebrow">Cuotas en seguimiento — tablero de favoritos de vigía (/itf)</p>
+    ${filas.length ? `<div class="tabla-envoltura"><table>
+      <thead><tr><th>Torneo</th><th>Partido</th><th>Favorito</th><th>Betano</th><th>bet365</th><th>Resultado</th><th>Contexto cuadro</th></tr></thead>
+      <tbody>${filas.join('\n')}</tbody></table></div>` : '<p class="nota">Aún sin partidos con nombres en el tablero.</p>'}
+    <p class="nota" style="margin-top:8px">${entradas.length} partidos seguidos; ${sinNombre} llegaron sin nombres desde OddsPapi (sin nombre no hay cruce con el cuadro). El contexto lo anota itf-cruce al liquidar.</p>
+  </section>`;
+}
+
 function filaCampeon(c) {
   return `<tr>
     <td class="mono">${rango(c.t)}</td>
@@ -223,6 +346,20 @@ td{padding:8px 14px;border-bottom:1px solid var(--linea);vertical-align:middle}
 tr:last-child td{border-bottom:0}
 .mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
 footer{color:var(--tinta2);font-size:12.5px;border-top:1px solid var(--linea);padding-top:14px}
+/* por jugarse */
+.sub-torneo{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:20px;margin:18px 0 8px}
+.sub-fecha{font-size:11.5px;color:var(--tinta2);font-weight:400;margin-left:8px}
+.tabla-partidos{min-width:560px}
+.celda-partido{display:flex;flex-direction:column;gap:6px;padding:10px 14px}
+.jug{display:grid;grid-template-columns:minmax(180px,240px) 90px 1fr;gap:12px;align-items:baseline}
+.jug-n b{color:var(--acento);font-weight:600}
+.jug-r{color:var(--tinta2)}
+.jug-t{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tinta2)}
+.paso-g{color:var(--acento)}
+.paso-p,.paso-ret{color:var(--alerta)}
+.chip.est-f{background:var(--acento-suave);color:var(--acento);border-color:transparent}
+.chip.est-d{background:var(--arcilla-bg);color:var(--alerta);border-color:transparent}
+@media (max-width:640px){ .jug{grid-template-columns:1fr;gap:2px} }
 </style>
 <div class="envoltura">
 <header class="cabecera">
@@ -248,6 +385,13 @@ footer{color:var(--tinta2);font-size:12.5px;border-top:1px solid var(--linea);pa
     ${activos.map(tarjetaActivo).join('\n')}
   </div>
 </section>
+
+<section>
+  <p class="eyebrow">Por jugarse — cuadros en vivo de los torneos en juego</p>
+  ${seccionPorJugarse()}
+</section>
+
+${seccionCuotas()}
 
 <section>
   <p class="eyebrow">Por venir — ${porVenir.length} torneos</p>
