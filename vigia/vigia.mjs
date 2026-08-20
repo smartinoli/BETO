@@ -1377,9 +1377,22 @@ async function cmdItf(horas = 6) {
     const jIdx = new Map(b365.map(f => [f.fixtureId, (f.bookmakerOdds || {})[JB]]));
     console.log(`itf lote ${lote.join(',')}: betano trae ${bet.length} fixtures, bet365 trae ${b365.length}`);
     for (const f of bet) {
-      const info = idx.get(f.fixtureId);
       const b = (f.bookmakerOdds || {})[CASA], j = jIdx.get(f.fixtureId);
-      if (!info || !b) continue;
+      if (!b) continue;
+      let info = idx.get(f.fixtureId);
+      if (!info) {
+        /* el índice /fixtures de OddsPapi viene incompleto en ITF: el partido
+           existe en el feed de cuotas — los nombres se rescatan del slug del
+           link de Betano y la hora queda estimada */
+        const partes = String(b.fixturePath || '').split('/').filter(Boolean);
+        const slugNom = partes.length >= 2 ? partes[partes.length - 2] : '';
+        if (!slugNom) continue;
+        info = {
+          participant1Name: slugNom.replace(/-/g, ' '), participant2Name: '',
+          startTime: new Date(Date.now() + 2 * 3600e3).toISOString(),
+          tournamentName: 'ITF (sin índice)', sinIndice: true,
+        };
+      }
       if (!j) { soloBet++; continue; }
       ambos++;
       for (const mid of Object.keys(b.markets || {})) {
@@ -1403,12 +1416,14 @@ async function cmdItf(horas = 6) {
           const vent = pB[oid] / justos[oid] - 1;
           if (vent <= 0.005 || pB[oid] > (CFG.sombraCuotaMaxima ?? 3.5)) continue;
           const crudo = meta.outs[oid] || oid;
-          const n1 = info.participant1Name || '?', n2 = info.participant2Name || '?';
+          const n1 = info.sinIndice ? 'Jugador 1' : (info.participant1Name || '?');
+          const n2 = info.sinIndice ? 'Jugador 2' : (info.participant2Name || '?');
           const lado = fam.lado === 'yn' ? (/yes/i.test(crudo) ? 'Sí' : 'No')
             : (/^1$|home/i.test(crudo) ? n1 : n2) + (fam.lado === 'ah' ? ' ' + (/^1$|home/i.test(crudo) ? meta.h : -meta.h) : '');
           filas.push({
             sig: f.fixtureId + '|' + mid + '|' + oid, fix: f.fixtureId,
-            partido: n1 + ' vs ' + n2, liga: info.tournamentName || 'ITF',
+            partido: info.sinIndice ? info.participant1Name : n1 + ' vs ' + n2,
+            liga: info.tournamentName || 'ITF',
             inicio: info.startTime, familia: fam.fam, lado,
             cuota: +pB[oid].toFixed(3), justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
           });
