@@ -1440,6 +1440,7 @@ async function cmdItf(horas = 6) {
   filas.sort((a, b) => b.vent - a.vent);
   /* Betano manda slug "e-e" en ITF (sin nombres): se rescatan del endpoint
      /fixture individual, solo para lo que se va a reportar (~1 req c/u) */
+  let corregidas = 0;
   const sinNombre = [...new Set(filas.slice(0, 14)
     .filter(s => /^e e$|^Jugador/.test(s.partido) || /^Jugador/.test(s.lado))
     .map(s => s.fix))].slice(0, 14);
@@ -1455,6 +1456,15 @@ async function cmdItf(horas = 6) {
         if (c.startTime) s.inicio = c.startTime;
         if (c.tournamentName) s.liga = c.tournamentName;
       }
+      /* y se corrigen las ya anotadas en el registro con nombre de relleno */
+      for (const e of Object.values(REG)) {
+        if (e.fix !== fixId || e.juez !== 'bet365') continue;
+        e.partido = n1 + ' vs ' + n2;
+        e.lado = e.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2).replace(/^e e /, n1 + ' ');
+        if (c.startTime) e.inicio = c.startTime;
+        if (c.tournamentName) e.liga = c.tournamentName;
+        corregidas++;
+      }
     } catch (e) { console.log('itf /fixture falló', fixId, e.message); }
   }
   let nuevas = 0;
@@ -1469,7 +1479,7 @@ async function cmdItf(horas = 6) {
     };
     nuevas++;
   }
-  if (nuevas) guardarRegistro();
+  if (nuevas || corregidas) guardarRegistro();
   const top = filas.slice(0, 12).map((s, i) =>
     `${i + 1}. <b>${escHtml(s.lado)}</b> @${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b>\n`
     + `   ${escHtml(s.partido)} · ${escHtml(s.familia)} · ${horaTxt(s.inicio)}`
