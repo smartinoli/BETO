@@ -1427,6 +1427,7 @@ async function cmdItf(horas = 6) {
             : (/^1$|home/i.test(crudo) ? n1 : n2) + (fam.lado === 'ah' ? ' ' + (/^1$|home/i.test(crudo) ? meta.h : -meta.h) : '');
           filas.push({
             sig: f.fixtureId + '|' + mid + '|' + oid, fix: f.fixtureId,
+            bFixId: b.bookmakerFixtureId || null,
             partido: info.sinIndice ? info.participant1Name : n1 + ' vs ' + n2,
             liga: info.tournamentName || 'ITF',
             inicio: info.startTime, familia: fam.fam, lado,
@@ -1437,6 +1438,25 @@ async function cmdItf(horas = 6) {
     }
   }
   filas.sort((a, b) => b.vent - a.vent);
+  /* Betano manda slug "e-e" en ITF (sin nombres): se rescatan del endpoint
+     /fixture individual, solo para lo que se va a reportar (~1 req c/u) */
+  const sinNombre = [...new Set(filas.slice(0, 14)
+    .filter(s => /^e e$|^Jugador/.test(s.partido) || /^Jugador/.test(s.lado))
+    .map(s => s.fix))].slice(0, 14);
+  for (const fixId of sinNombre) {
+    try {
+      const d = await api('fixture', { fixtureId: fixId }, 2100);
+      const c = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
+      const n1 = c?.participant1Name, n2 = c?.participant2Name;
+      if (!n1 || !n2) continue;
+      for (const s of filas.filter(x => x.fix === fixId)) {
+        s.partido = n1 + ' vs ' + n2;
+        s.lado = s.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2);
+        if (c.startTime) s.inicio = c.startTime;
+        if (c.tournamentName) s.liga = c.tournamentName;
+      }
+    } catch (e) { console.log('itf /fixture falló', fixId, e.message); }
+  }
   let nuevas = 0;
   for (const s of filas) {
     if (REG[s.sig]) continue;
@@ -1452,7 +1472,8 @@ async function cmdItf(horas = 6) {
   if (nuevas) guardarRegistro();
   const top = filas.slice(0, 12).map((s, i) =>
     `${i + 1}. <b>${escHtml(s.lado)}</b> @${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b>\n`
-    + `   ${escHtml(s.partido)} · ${escHtml(s.familia)} · ${horaTxt(s.inicio)}`);
+    + `   ${escHtml(s.partido)} · ${escHtml(s.familia)} · ${horaTxt(s.inicio)}`
+    + (s.bFixId ? `\n   <a href="https://lat.betano.com/cuotas-de-partido/e-e/${escHtml(s.bFixId)}/">Abrir en Betano</a>` : ''));
   await telegram([
     `<b>🎾 ITF · Betano vs bet365 · próximas ${horas} h</b>`,
     `${cand.length} partidos en ventana · ${ambos} cotizados por ambos · ${soloBet} sin bet365`,
