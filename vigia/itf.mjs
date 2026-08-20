@@ -47,14 +47,16 @@ export class ErrorWaf extends Error {
 
 /* Pacing: Incapsula tolera los endpoints abiertos a ritmo humano, pero una
    ráfaga seguida (medido: ~5 requests en 3 s) dispara el desafío. Un request
-   cada COOLDOWN ms, y ante desafío se espera largo y se reintenta. */
-const COOLDOWN = 1500;
+   cada COOLDOWN ms (± jitter para no parecer reloj), y ante desafío se
+   espera largo y se reintenta. Para barridos largos (cosecha) conviene
+   subirlo: ITF_COOLDOWN=4000. */
+const COOLDOWN = +(process.env.ITF_COOLDOWN || 1500);
 let ULTIMO = 0;
 async function apiItf(ruta, params = {}) {
   const u = new URL(BASE + ruta);
   Object.entries(params).forEach(([k, v]) => u.searchParams.set(k, v ?? ''));
   for (let intento = 0; ; intento++) {
-    const falta = ULTIMO + COOLDOWN - Date.now();
+    const falta = ULTIMO + COOLDOWN * (0.75 + Math.random() * 0.5) - Date.now();
     if (falta > 0) await espera(falta);
     ULTIMO = Date.now();
     let r = null, errRed = null;
