@@ -1323,6 +1323,117 @@ async function cmdCosechar() {
   ].join('\n'));
 }
 
+/* ---------- ITF: Betano vs bet365 (el estándar de ese circuito) ----------
+   Comparación bajo demanda, fuera del foco: partidos ITF de las próximas
+   N horas, devig de bet365 como justo, ventajas de Betano. Se anotan como
+   sombras (juez: bet365) para que el tablero las mida aparte. */
+async function cmdItf(horas = 6) {
+  const req0 = REQ;
+  let tor;
+  try { tor = await api('tournaments', { sportId: '12' }); }
+  catch (e) {
+    await telegram('❌ Tu plan no tiene acceso a tenis (sport 12): ' + escHtml(e.message)
+      + '\nMárcalo en el panel de OddsPapi junto a bet365 y reintenta.');
+    return;
+  }
+  let itf = tor.filter(t => /itf|m15|m25|w15|w25|w35|w50|w75|w100/i.test((t.categoryName || '') + ' ' + (t.tournamentName || '')));
+  if (!itf.length) itf = tor.filter(t =>
+    !/atp|wta|challenger|davis|united|billie|exhibition|utr|grand/i.test((t.categoryName || '') + ' ' + (t.tournamentName || '')));
+  const idsItf = new Set(itf.map(t => t.tournamentId));
+  const d = new Date();
+  const fx = await api('fixtures', {
+    sportId: '12',
+    from: d.toISOString().slice(0, 10),
+    to: new Date(d.getTime() + 864e5).toISOString().slice(0, 10),
+  }, 2100);
+  const cand = (Array.isArray(fx) ? fx : fx.data || [])
+    .filter(f => f.hasOdds && idsItf.has(f.tournamentId))
+    .filter(f => { const t = new Date(f.startTime).getTime(); return t > Date.now() + 15 * 60e3 && t < Date.now() + horas * 3600e3; });
+  if (!cand.length) {
+    await telegram(`🎾 ITF: no hay partidos con cuotas en las próximas ${horas} h (${itf.length} torneos ITF vistos).`);
+    return;
+  }
+  const tids = [...new Set(cand.map(f => f.tournamentId))];
+  const idx = new Map(cand.map(f => [f.fixtureId, f]));
+  const JB = 'bet365';
+  const filas = [];
+  let ambos = 0, soloBet = 0;
+  for (let i = 0; i < tids.length && i < 60; i += 5) {
+    const lote = tids.slice(i, i + 5);
+    let bet, b365;
+    try {
+      bet = await oddsBatch(lote, CASA);
+      b365 = bet.length ? await oddsBatch(lote, JB) : [];
+    } catch (e) { await telegram('❌ ' + escHtml(e.message)); return; }
+    const jIdx = new Map(b365.map(f => [f.fixtureId, (f.bookmakerOdds || {})[JB]]));
+    for (const f of bet) {
+      const info = idx.get(f.fixtureId);
+      const b = (f.bookmakerOdds || {})[CASA], j = jIdx.get(f.fixtureId);
+      if (!info || !b) continue;
+      if (!j) { soloBet++; continue; }
+      ambos++;
+      for (const mid of Object.keys(b.markets || {})) {
+        const meta = await metaDe(mid);
+        if (!meta || meta.len !== 2) continue;
+        const fam = familiaDe('12', meta.n);
+        if (!fam) continue;
+        const oB = b.markets[mid].outcomes || {}, oJ = (j.markets || {})[mid]?.outcomes || {};
+        const oids = Object.keys(oB);
+        if (oids.length !== 2) continue;
+        const pB = {}, pJ = {}; let ok = true;
+        for (const oid of oids) {
+          const b0 = (oB[oid].players || {})['0'], j0 = ((oJ[oid] || {}).players || {})['0'];
+          if (!b0?.active || !(b0.price > 1) || !j0?.active || !(j0.price > 1)) { ok = false; break; }
+          pB[oid] = b0.price; pJ[oid] = j0.price;
+        }
+        if (!ok) continue;
+        const [jA, jB2] = desvigar(pJ[oids[0]], pJ[oids[1]]);
+        const justos = { [oids[0]]: jA, [oids[1]]: jB2 };
+        for (const oid of oids) {
+          const vent = pB[oid] / justos[oid] - 1;
+          if (vent <= 0.005 || pB[oid] > (CFG.sombraCuotaMaxima ?? 3.5)) continue;
+          const crudo = meta.outs[oid] || oid;
+          const n1 = info.participant1Name || '?', n2 = info.participant2Name || '?';
+          const lado = fam.lado === 'yn' ? (/yes/i.test(crudo) ? 'Sí' : 'No')
+            : (/^1$|home/i.test(crudo) ? n1 : n2) + (fam.lado === 'ah' ? ' ' + (/^1$|home/i.test(crudo) ? meta.h : -meta.h) : '');
+          filas.push({
+            sig: f.fixtureId + '|' + mid + '|' + oid, fix: f.fixtureId,
+            partido: n1 + ' vs ' + n2, liga: info.tournamentName || 'ITF',
+            inicio: info.startTime, familia: fam.fam, lado,
+            cuota: +pB[oid].toFixed(3), justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
+          });
+        }
+      }
+    }
+  }
+  filas.sort((a, b) => b.vent - a.vent);
+  let nuevas = 0;
+  for (const s of filas) {
+    if (REG[s.sig]) continue;
+    REG[s.sig] = {
+      fix: s.fix, mid: s.sig.split('|')[1], oid: s.sig.split('|')[2],
+      visto: new Date().toISOString(), inicio: s.inicio, sid: '12',
+      liga: s.liga, partido: s.partido, familia: s.familia, lado: s.lado,
+      cuota: s.cuota, justo: s.justo, vent: s.vent,
+      monto: montoDe(s.cuota, s.vent), estado: 'pendiente', sombra: true, juez: 'bet365',
+    };
+    nuevas++;
+  }
+  if (nuevas) guardarRegistro();
+  const top = filas.slice(0, 12).map((s, i) =>
+    `${i + 1}. <b>${escHtml(s.lado)}</b> @${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b>\n`
+    + `   ${escHtml(s.partido)} · ${escHtml(s.familia)} · ${horaTxt(s.inicio)}`);
+  await telegram([
+    `<b>🎾 ITF · Betano vs bet365 · próximas ${horas} h</b>`,
+    `${cand.length} partidos en ventana · ${ambos} cotizados por ambos · ${soloBet} sin bet365`,
+    `${filas.length} lados con ventaja positiva · ${nuevas} anotados al tablero (sombra, juez bet365)`,
+    '',
+    ...(top.length ? top : ['Sin ventajas sobre el justo de bet365.']),
+    '',
+    `<i>${REQ - req0} requests. OJO: reglas de retiro pueden diferir entre casas — en ITF eso importa.</i>`,
+  ].join('\n'));
+}
+
 /* ---------- comandos ---------- */
 async function cmdEstado() {
   let cuota = 'no disponible';
@@ -1544,6 +1655,7 @@ async function ejecutar(texto) {
   if (['depurar', 'debug'].includes(c)) { await cmdDepurar(texto); return true; }
   if (['liquidar', 'liquida', 'resultado'].includes(c)) { await cmdLiquidar(texto); return true; }
   if (['cosechar', 'cosecha', 'mesa'].includes(c)) { await cmdCosechar(); return true; }
+  if (['itf'].includes(c)) { await cmdItf(horas ?? 6); return true; }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
