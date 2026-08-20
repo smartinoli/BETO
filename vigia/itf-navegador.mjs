@@ -30,10 +30,16 @@
      node vigia/itf-navegador.mjs aceptacion <claves…>
      node vigia/itf-navegador.mjs cosecha         aceptación de TODO torneo
                                                   del caché aún no terminado
+     node vigia/itf-navegador.mjs cuadros [N]     cuadros de los últimos N
+                                                  terminados (def 20) — misma
+                                                  salida que itf-cosecha, pero
+                                                  por navegador (útil si el WAF
+                                                  tiene marcada la IP)
    ============================================================ */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { normalizarEventos, normalizarCuadro } from './itf.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const DATOS = path.join(DIR, 'datos', 'itf');
@@ -175,6 +181,32 @@ try {
         const n = Object.fromEntries(Object.entries(a.secciones).map(([k, v]) => [k, v.length]));
         console.log(`  ✓ ${clave}  MDA:${n.MDA ?? 0} Q:${n.Q ?? 0} A:${n.A ?? 0} W:${n.W ?? 0}`);
       } catch (e) { console.log(`  ✗ ${clave}: ${e.message.split('\n')[0]}`); }
+    }
+  } else if (cmd === 'cuadros') {
+    fs.mkdirSync(DATOS, { recursive: true });
+    const n = +args[0] || 20;
+    const hoy = new Date().toISOString().slice(0, 10);
+    const cache = JSON.parse(fs.readFileSync(CACHE_CALENDARIO, 'utf8'));
+    const lista = cache.torneos.filter(t => t.hasta < hoy).sort((a, b) => b.hasta.localeCompare(a.hasta)).slice(0, n);
+    console.log(`Bajando cuadros de ${lista.length} torneos terminados…`);
+    const api = 'https://www.itftennis.com/tennis/api/TournamentApi/';
+    for (const t of lista) {
+      const destino = path.join(DATOS, t.clave + '.json');
+      if (fs.existsSync(destino)) { console.log(`  = ${t.clave} ya estaba`); continue; }
+      try {
+        await pausaHumana();
+        const ev = normalizarEventos(await fetchDesdePagina(page, `${api}GetEventFilters?tournamentKey=${t.clave}`), t.clave);
+        const out = { clave: ev.clave, tournamentId: ev.tournamentId, ...t, cuadros: {} };
+        for (const c of ev.cuadros.filter(c => c.tipo === 'S')) {
+          await pausaHumana();
+          out.cuadros[c.evento] = normalizarCuadro(await fetchDesdePagina(page,
+            `${api}GetDrawsheet?eventClassificationCode=${c.evento}&matchTypeCode=S&tourType=${ev.tourType}&tournamentId=${ev.tournamentId}&weekNumber=0`));
+        }
+        fs.writeFileSync(destino, JSON.stringify(out));
+        const nM = (out.cuadros.M?.rondas || []).reduce((s, r) => s + r.partidos.filter(p => p.estado === 'jugado').length, 0);
+        const nQ = (out.cuadros.Q?.rondas || []).reduce((s, r) => s + r.partidos.filter(p => p.estado === 'jugado').length, 0);
+        console.log(`  ✓ ${t.clave}  ${t.nombre || ''}  main:${nM} qualis:${nQ}`);
+      } catch (e) { console.log(`  ✗ ${t.clave}: ${e.message.split('\n')[0]}`); }
     }
   }
 } finally { await browser.close(); }

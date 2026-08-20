@@ -137,9 +137,7 @@ export async function calendarioConCache(opts = {}) {
 }
 
 /* ---------- Eventos de un torneo (endpoint abierto) ---------- */
-export async function eventos(claveOUrl) {
-  const clave = parseClave(claveOUrl);
-  const crudo = await apiItf('GetEventFilters', { tournamentKey: clave });
+export function normalizarEventos(crudo, clave) {
   const cuadros = [];
   for (const f of crudo.filters || []) {
     for (const sf of f.subFilter || []) {
@@ -147,6 +145,11 @@ export async function eventos(claveOUrl) {
     }
   }
   return { clave, tournamentId: crudo.tournamentId, tourType: crudo.tourType || 'N', circuito: crudo.circuitCode, cuadros };
+}
+
+export async function eventos(claveOUrl) {
+  const clave = parseClave(claveOUrl);
+  return normalizarEventos(await apiItf('GetEventFilters', { tournamentKey: clave }), clave);
 }
 
 /* ---------- Cuadro con resultados (endpoint abierto) ---------- */
@@ -169,11 +172,7 @@ function ladoDe(t) {
   };
 }
 
-export async function cuadro({ tournamentId, tourType = 'N', evento = 'M', tipo = 'S', semana = 0 }) {
-  const crudo = await apiItf('GetDrawsheet', {
-    eventClassificationCode: evento, matchTypeCode: tipo, tourType,
-    tournamentId, weekNumber: semana,
-  });
+export function normalizarCuadro(crudo) {
   const rondas = [];
   for (const g of crudo.koGroups || []) {
     for (const r of g.rounds || []) {
@@ -194,6 +193,13 @@ export async function cuadro({ tournamentId, tourType = 'N', evento = 'M', tipo 
     }
   }
   return { eventId: crudo.eventId, estructura: crudo.drawsheetStructure, rondas };
+}
+
+export async function cuadro({ tournamentId, tourType = 'N', evento = 'M', tipo = 'S', semana = 0 }) {
+  return normalizarCuadro(await apiItf('GetDrawsheet', {
+    eventClassificationCode: evento, matchTypeCode: tipo, tourType,
+    tournamentId, weekNumber: semana,
+  }));
 }
 
 /* Atajo: cuadro a partir de la clave/URL pública. */
