@@ -1362,6 +1362,8 @@ async function cmdItf(horas = 6) {
   }
   const tids = [...new Set(cand.map(f => f.tournamentId))];
   const idx = new Map(cand.map(f => [f.fixtureId, f]));
+  for (const f of cand.slice(0, 20))
+    console.log(`itf cand: ${f.fixtureId} | ${f.startTime} | ${f.participant1Name} vs ${f.participant2Name} | ${f.tournamentName}`);
   const JB = 'bet365';
   const filas = [];
   let ambos = 0, soloBet = 0;
@@ -1373,6 +1375,7 @@ async function cmdItf(horas = 6) {
       b365 = bet.length ? await oddsBatch(lote, JB) : [];
     } catch (e) { await telegram('❌ ' + escHtml(e.message)); return; }
     const jIdx = new Map(b365.map(f => [f.fixtureId, (f.bookmakerOdds || {})[JB]]));
+    console.log(`itf lote ${lote.join(',')}: betano trae ${bet.length} fixtures, bet365 trae ${b365.length}`);
     for (const f of bet) {
       const info = idx.get(f.fixtureId);
       const b = (f.bookmakerOdds || {})[CASA], j = jIdx.get(f.fixtureId);
