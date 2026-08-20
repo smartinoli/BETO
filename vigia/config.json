@@ -18,10 +18,10 @@
   "umbralCastigado": 0.035,
   "devig": "pow",
   "foco": {
-    "10": "^(AH .* 0\\.0$|Empate no válido)",
-    "11": "^Total (1er cuarto|1ª mitad) · ",
-    "13": "^Total primeras 5 · "
+    "10": "^(AH|Empate no válido)"
   },
+  "barridoDeportes": ["10"],
+  "cuotaMinima": 1.6,
   "sombras": true,
   "propsPrueba": true,
   "sombraVentajaMinima": 0.005,

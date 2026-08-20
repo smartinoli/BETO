@@ -376,8 +376,9 @@ function procesarSync(info, bet, cb, metas, salida) {
         lado = (/^1$|home/i.test(crudo) ? info.p1 : info.p2) + ' ' + (hs > 0 ? '+' : '') + (hs === 0 ? '0.0' : hs);
       } else if (fam.lado === 'yn') lado = /yes/i.test(crudo) ? 'Sí' : 'No';
       else lado = /^1$|home/i.test(crudo) ? info.p1 : info.p2;
-      if (cuota > CFG.cuotaMaxima || vent < umbral) {
+      if (cuota > CFG.cuotaMaxima || cuota < (CFG.cuotaMinima ?? 0) || vent < umbral) {
         if (cuota > CFG.cuotaMaxima) E.cuotaAlta++;
+        else if (cuota < (CFG.cuotaMinima ?? 0)) E.cuotaBaja++;
         else if (vent > 0) E.ventajaBaja++;
         else E.sinVentaja++;
         /* SOMBRA: no pasa tus umbrales pero tiene ventaja positiva → va al
@@ -497,7 +498,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const salida = {
     senales: [], sombras: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {},
     embudo: { fueraWhitelist: 0, cuartos: 0, lineasLejanas: 0, sinJuez: 0, inactivos: 0,
-              cuotaAlta: 0, ventajaBaja: 0, sinVentaja: 0, hermanas: 0, sinCloudbet: 0,
+              cuotaAlta: 0, cuotaBaja: 0, ventajaBaja: 0, sinVentaja: 0, hermanas: 0, sinCloudbet: 0,
               /* ejemplos reales para el comando /porque */
               ej: { lejanas: [], sinJuez: [], cuotaAlta: [], hermanas: [] },
               /* de los mercados sin juez: ¿Cloudbet tiene la familia con otra línea? */
@@ -507,7 +508,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const horizonte = (horasMax ?? CFG.horizonteHoras) * 3600e3;
 
   const porLiga = new Map();
-  for (const sid of (sids && sids.length ? sids : Object.keys(CFG.deportes))) {
+  for (const sid of (sids && sids.length ? sids : (CFG.barridoDeportes || Object.keys(CFG.deportes)))) {
     /* un deporte sin acceso (ej: se soltó del plan al editar el panel) NO
        tumba el barrido: se salta y se avisa en el reporte */
     let tor, fx;
@@ -677,6 +678,7 @@ async function reportar(r, titulo) {
     E.sinCloudbet && `${E.sinCloudbet} partidos sin Cloudbet (sin juez)`,
     E.sinJuez && `${E.sinJuez} mercados que Cloudbet no cotiza`,
     E.cuotaAlta && `${E.cuotaAlta} líneas con cuota > ${CFG.cuotaMaxima}`,
+    E.cuotaBaja && `${E.cuotaBaja} con cuota bajo ${CFG.cuotaMinima} (a sombra)`,
     E.ventajaBaja && `${E.ventajaBaja} con ventaja bajo tu mínimo`,
     E.sinVentaja && `${E.sinVentaja} sin ventaja (Betano paga bajo el justo)`,
     E.lineasLejanas && `${E.lineasLejanas} líneas lejos de la central`,
@@ -686,7 +688,7 @@ async function reportar(r, titulo) {
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
-    r.fueraDeFoco != null ? `<i>🎯 Foco activo (AH 0.0/DNB · básquet 1C/1M · béisbol F5) · ${r.fueraDeFoco} señal(es) fuera del foco a la sombra</i>` : '',
+    r.fueraDeFoco != null ? `<i>🎯 Foco: fútbol AH/DNB · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco a la sombra</i>` : '',
     r.deportesFuera?.length ? `⚠️ Sin acceso en tu plan OddsPapi: ${r.deportesFuera.map(escHtml).join(' · ')} — se saltaron. Revisa el panel si no fue a propósito.` : '',
     r.avisoLotes || '',
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
@@ -931,8 +933,9 @@ async function cmdTablero(sids) {
     .map(([k, arr]) => fila(k, arr));
   /* por rango de cuota: mide si la banda alta (sobre la vieja cuotaMaxima
      2.1) aporta o sangra — el control de haberla subido */
-  const bandas = porBanda(cerradas, e => e.cuota <= 1.7 ? '≤ 1.70' : e.cuota <= 2.1 ? '1.71 – 2.10' : '2.11 +',
-    ['≤ 1.70', '1.71 – 2.10', '2.11 +']);
+  const bandas = porBanda(cerradas,
+    e => e.cuota < 1.6 ? '< 1.60' : e.cuota <= 1.8 ? '1.60 – 1.80' : e.cuota <= 2.1 ? '1.81 – 2.10' : '2.11 +',
+    ['< 1.60', '1.60 – 1.80', '1.81 – 2.10', '2.11 +']);
   /* por ventaja prometida (solo vista por deporte), CON las sombras: ahí se ve
      si el ventajaMinima del deporte está corto o largo */
   const bandasVent = filtro
@@ -1509,7 +1512,12 @@ async function ejecutar(texto) {
     await cmdProps(sids);
     return true;
   }
-  if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) { await cmdTablero(sids); return true; }
+  if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) {
+    /* el sistema está enfocado en fútbol: /tablero a secas muestra esa vista
+       (con bandas de ventaja); "/tablero todo" da la global */
+    await cmdTablero(sids || (/todo|global/i.test(texto) ? null : ['10']));
+    return true;
+  }
   if (['depurar', 'debug'].includes(c)) { await cmdDepurar(texto); return true; }
   if (['liquidar', 'liquida', 'resultado'].includes(c)) { await cmdLiquidar(texto); return true; }
   if (['cosechar', 'cosecha', 'mesa'].includes(c)) { await cmdCosechar(); return true; }
@@ -1518,9 +1526,9 @@ async function ejecutar(texto) {
     await telegram([
       '<b>Vigía · comandos</b>',
       '',
-      `<b>/barrer</b> — todo lo disponible en las próximas ${CFG.horizonteHoras} h (~110 requests, ~2 min)`,
-      '<b>/rapido</b> — solo lo que empieza dentro de 6 h (~30 requests)',
-      '<b>/tablero</b> — cómo habrían salido TODAS las señales de los barridos; con deporte (<code>/tablero futbol</code>) desglosa por % de ventaja, para calibrar tu mínimo',
+      `<b>/barrer</b> — fútbol (el foco) en las próximas ${CFG.horizonteHoras} h; agrega deporte para barrer otro`,
+      '<b>/rapido</b> — el foco, dentro de 6 h',
+      '<b>/tablero</b> — el balance del foco fútbol con bandas de cuota y ventaja (<code>/tablero todo</code> = global)',
       '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
       '<b>/liquidar zakynthos G</b> — cierra a mano una del punto ciego que tú viste (G/P/E/MG/MP)',
       '<b>/cosechar</b> — recoge resultados de tenis de mesa para la base propia del Elo (~200 req)',
