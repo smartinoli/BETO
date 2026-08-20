@@ -36,7 +36,7 @@ const SEGUNDOS_ESCUCHA = +(process.env.SEGUNDOS_ESCUCHA || 780);
 const DRY = !!process.env.DRY || !TG_TOKEN || !TG_CHAT;
 if (!KEY) { console.error('Falta ODDSPAPI_KEY'); process.exit(1); }
 
-let EST = { torneos: {}, fixtures: {}, cobertura: {}, mercados: {}, senales: {}, stats: {}, tgOffset: 0 };
+let EST = { torneos: {}, fixtures: {}, cobertura: {}, mercados: {}, senales: {}, stats: {}, foto: {}, tgOffset: 0 };
 try { EST = { ...EST, ...JSON.parse(fs.readFileSync(ESTADO_PATH, 'utf8')) } } catch {}
 const guardarEstado = () => fs.writeFileSync(ESTADO_PATH, JSON.stringify(EST));
 
@@ -368,6 +368,20 @@ function procesarSync(info, bet, cb, metas, salida) {
       const cuota = pB[oid] * (1 - CFG.margenLocal);
       salida.candidatas++;
       const vent = cuota / justos[oid] - 1;
+      /* RADAR DE DERIVA: foto del par vs el barrido anterior. Si el juez
+         ACORTÓ su cuota (información fresca ya precificada por él) y Betano
+         sigue igual, esa señal lleva la información antes que Betano. */
+      let deriva = null;
+      if (fam.grupo) {
+        const kFoto = info.fixtureId + '|' + mid + '|' + oid;
+        const prev = EST.foto[kFoto];
+        if (prev && prev.c > 1 && prev.b > 1) {
+          const dc = pC[oid] / prev.c - 1, db = pB[oid] / prev.b - 1;
+          if (dc <= -0.025 && Math.abs(db) < 0.01)
+            deriva = { dc: +(dc * 100).toFixed(1), min: Math.round((Date.now() - prev.ts) / 60e3) };
+        }
+        (salida.foto ||= {})[kFoto] = { b: pB[oid], c: pC[oid], ts: Date.now() };
+      }
       const crudo = meta.outs[oid] || oid;
       let lado;
       if (fam.lado === 'ou') lado = (/over/i.test(crudo) ? 'Más de ' : 'Menos de ') + meta.h;
@@ -403,6 +417,7 @@ function procesarSync(info, bet, cb, metas, salida) {
         justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
         bOid: idB[oid], bMid: bmid,
         link: linkDe(info, { oid: idB[oid], mid: bmid, lado, cuota: pB[oid].toFixed(2), fam: fam.fam }),
+        deriva,
         sospechosa: vent > CFG.umbralSospechosa,
       };
       const mejor = porFam.get(famKey);
@@ -619,6 +634,10 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     salida.sombras.push(...ocultas);
     salida.fueraDeFoco = ocultas.length;
   }
+  /* foto de precios para el radar de deriva del próximo barrido */
+  const corteFoto = Date.now() - 24 * 3600e3;
+  for (const k of Object.keys(EST.foto)) if (EST.foto[k].ts < corteFoto) delete EST.foto[k];
+  Object.assign(EST.foto, salida.foto || {});
   /* memoria: útil para el próximo barrido (marca lo ya visto) */
   const antes = new Set(Object.keys(EST.senales));
   EST.senales = {};
@@ -662,12 +681,13 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
 const EMO = { 10: '⚽', 11: '🏀', 12: '🎾', 13: '⚾' };
 function bloqueSenal(s, i) {
   return [
-    `<b>${i}. ${EMO[s.sid] || ''} ${escHtml(s.partido)}</b>${s.sospechosa ? ' ⚠️' : ''}`,
+    `<b>${i}. ${EMO[s.sid] || ''} ${escHtml(s.partido)}</b>${s.deriva ? ' ⚡' : ''}${s.sospechosa ? ' ⚠️' : ''}`,
     `${escHtml(s.liga)} · ${horaTxt(s.inicio)}`,
     `<b>${escHtml(s.lado)}</b> · ${escHtml(s.familia)}`,
     `${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${plata(montoDe(s.cuota, s.vent))}`,
+    s.deriva ? `⚡ <b>El juez acortó ${Math.abs(s.deriva.dc)}% hace ${s.deriva.min} min y Betano no ha reaccionado</b> — información fresca` : '',
     `<a href="${escHtml(s.link)}">Abrir en Betano</a>`,
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 }
 async function reportar(r, titulo) {
   const orden = r.senales.slice().sort((a, b) => b.vent - a.vent);
@@ -697,6 +717,9 @@ async function reportar(r, titulo) {
     r.tope ? '⚠️ tope de requests alcanzado' : '',
     '',
     orden.length ? `<b>${orden.length} señal(es):</b>` : '<b>Sin señales que pasen tus criterios.</b>',
+    orden.filter(s => s.deriva).length
+      ? `⚡ <b>${orden.filter(s => s.deriva).length} con el juez recién movido</b> — la información aún no llega a Betano`
+      : '',
     (r.registradas || r.registradasSombra)
       ? `<i>📒 Al tablero: ${r.registradas || 0} señal(es)`
         + (r.registradasSombra ? ` + ${r.registradasSombra} sombra(s) bajo tus umbrales, solo datos` : '') + '</i>'
