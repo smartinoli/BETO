@@ -1480,10 +1480,20 @@ async function cmdItf(horas = 6) {
     nuevas++;
   }
   if (nuevas || corregidas) guardarRegistro();
-  const top = filas.slice(0, 12).map((s, i) =>
-    `${i + 1}. <b>${escHtml(s.lado)}</b> @${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b>\n`
-    + `   ${escHtml(s.partido)} · ${escHtml(s.familia)} · ${horaTxt(s.inicio)}`
-    + (s.bFixId ? `\n   <a href="https://lat.betano.com/cuotas-de-partido/e-e/${escHtml(s.bFixId)}/">Abrir en Betano</a>` : ''));
+  /* las mejores 15 por margen, mostradas agrupadas por torneo y horario */
+  const mostrar = filas.slice(0, 15);
+  mostrar.sort((a, b) => a.liga.localeCompare(b.liga)
+    || (a.inicio < b.inicio ? -1 : a.inicio > b.inicio ? 1 : 0) || b.vent - a.vent);
+  const top = [];
+  let ligaAct = null;
+  for (const s of mostrar) {
+    if (s.liga !== ligaAct) { ligaAct = s.liga; top.push(`🏆 <b>${escHtml(s.liga)}</b>`); }
+    const [pa, pb] = String(s.partido).split(' vs ');
+    const rival = s.lado.startsWith(pa) ? pb : pa;
+    top.push(`· ${horaTxt(s.inicio)} — <b>${escHtml(s.lado)}</b>${rival ? ' (vs ' + escHtml(rival) + ')' : ''}`
+      + ` @${s.cuota.toFixed(2)} (justo ${s.justo.toFixed(2)}) → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${escHtml(s.familia)}`
+      + (s.bFixId ? ` · <a href="https://lat.betano.com/cuotas-de-partido/e-e/${escHtml(s.bFixId)}/">Abrir</a>` : ''));
+  }
   await telegram([
     `<b>🎾 ITF · Betano vs bet365 · próximas ${horas} h</b>`,
     `${cand.length} partidos en ventana · ${ambos} cotizados por ambos · ${soloBet} sin bet365`,
