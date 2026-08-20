@@ -1346,11 +1346,18 @@ async function cmdItf(horas = 6) {
     from: d.toISOString().slice(0, 10),
     to: new Date(d.getTime() + 864e5).toISOString().slice(0, 10),
   }, 2100);
-  const cand = (Array.isArray(fx) ? fx : fx.data || [])
-    .filter(f => f.hasOdds && idsItf.has(f.tournamentId))
-    .filter(f => { const t = new Date(f.startTime).getTime(); return t > Date.now() + 15 * 60e3 && t < Date.now() + horas * 3600e3; });
+  /* OJO: la bandera hasOdds de /fixtures es poco confiable (lo vimos en tenis
+     de mesa) — NO se filtra por ella; el batch de cuotas dirá la verdad */
+  const todos = (Array.isArray(fx) ? fx : fx.data || []);
+  const cand = todos
+    .filter(f => idsItf.has(f.tournamentId))
+    .filter(f => { const t = new Date(f.startTime).getTime(); return t > Date.now() + 10 * 60e3 && t < Date.now() + horas * 3600e3; });
+  console.log(`itf: ${tor.length} torneos tenis, ${itf.length} ITF, ${todos.length} fixtures hoy/mañana, ${cand.length} en ventana ${horas}h`);
+  console.log('itf categorias ej:', [...new Set(tor.map(t => t.categoryName))].slice(0, 12).join(' | '));
   if (!cand.length) {
-    await telegram(`🎾 ITF: no hay partidos con cuotas en las próximas ${horas} h (${itf.length} torneos ITF vistos).`);
+    await telegram(`🎾 ITF: no encontré partidos ITF en las próximas ${horas} h `
+      + `(${itf.length} torneos ITF de ${tor.length} de tenis; ${todos.length} fixtures listados hoy). `
+      + `Si Betano SÍ muestra, el filtro de torneos puede estar errado — detalle en el log.`);
     return;
   }
   const tids = [...new Set(cand.map(f => f.tournamentId))];
