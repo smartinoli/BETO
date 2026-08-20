@@ -80,3 +80,27 @@ se pisen; un turno que llegue mientras otro corre queda encolado.
   una sola alerta por familia y partido (gana la de mayor ventaja).
 
 Los simulados (SRL/eSoccer/eBasketball) y el par/impar quedan fuera siempre.
+
+## Scraper ITF (`itf.mjs`)
+
+Scraper de itftennis.com para el World Tennis Tour (M15/M25/W15…), pensado
+para leer cuadros y qualis donde suele estar el valor: el primer día del
+main draw y la fase previa. Sin dependencias (Node 20+).
+
+```
+node vigia/itf.mjs calendario [MT|WT] [desde] [hasta]   torneos con prize money
+node vigia/itf.mjs torneo <clave|url>                   resumen de cuadros
+node vigia/itf.mjs cuadro <clave|url> [M|Q] [S|D]       cuadro con resultados
+node vigia/itf.mjs qualis <clave|url>                   atajo: qualifying singles
+```
+
+La clave sale de la URL pública (`m-itf-bel-2026-004`). Por partido entrega
+jugadores, seed, estado de entrada (Q/LL/WC/SE/DA), sets y ganador; no hay
+horarios (el order of play no está expuesto en la API abierta).
+
+Detalle técnico: el sitio va tras Incapsula, pero `GetDrawsheet` y
+`GetEventFilters` responden a un fetch pelado a ritmo humano (~1 request
+por 1.5 s; una ráfaga dispara el desafío y el módulo espera y reintenta).
+`GetCalendar` sí está bloqueado desde IPs de datacenter: `calendario`
+intenta directo y si no, cae a `itf-calendario.json` (caché commiteado,
+refrescable abriendo la URL del endpoint en un navegador normal).
