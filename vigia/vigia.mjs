@@ -134,6 +134,7 @@ const linkDe = (f, sel) => {
 };
 const horaTxt = iso => {
   const t = new Date(iso);
+  if (!iso || isNaN(t) || t.getFullYear() < 2020) return '¿hora?';
   const dia = new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/Santiago' }).format(t);
   const hh = new Intl.DateTimeFormat('es-CL', { timeZone: 'America/Santiago', hour: '2-digit', minute: '2-digit' }).format(t);
   if (dia === hoyKey) return 'HOY ' + hh;
@@ -1437,7 +1438,7 @@ async function cmdItf(horas = 6) {
   for (const f of cand.slice(0, 20))
     console.log(`itf cand: ${f.fixtureId} | ${f.startTime} | ${f.participant1Name} vs ${f.participant2Name} | ${f.tournamentName}`);
   const JB = 'bet365';
-  const filas = [];
+  let filas = [];
   let ambos = 0, soloBet = 0, logPath = 0, grabados = 0;
   for (let i = 0; i < tids.length && i < 60; i += 5) {
     const lote = tids.slice(i, i + 5);
@@ -1487,7 +1488,8 @@ async function cmdItf(horas = 6) {
         const [jA, jB2] = desvigar(pJ[oids[0]], pJ[oids[1]]);
         const justos = { [oids[0]]: jA, [oids[1]]: jB2 };
         /* tablero de favoritos: se anota TODO partido con mercado Ganador */
-        if (fam.fam === 'Ganador') {
+        if (fam.fam === 'Ganador' && !info.sinIndice
+            && new Date(info.startTime).getTime() > Date.now()) {
           const db = cargarItf();
           if (!db.partidos[f.fixtureId]) {
             const o1 = oids.find(o => /^1$|home/i.test(meta.outs[o] || o)) || oids[0];
@@ -1514,7 +1516,7 @@ async function cmdItf(horas = 6) {
             : (/^1$|home/i.test(crudo) ? n1 : n2) + (fam.lado === 'ah' ? ' ' + (/^1$|home/i.test(crudo) ? meta.h : -meta.h) : '');
           filas.push({
             sig: f.fixtureId + '|' + mid + '|' + oid, fix: f.fixtureId,
-            bFixId: b.bookmakerFixtureId || null,
+            bFixId: b.bookmakerFixtureId || null, tReal: !info.sinIndice,
             partido: info.sinIndice ? info.participant1Name : n1 + ' vs ' + n2,
             liga: info.tournamentName || 'ITF',
             inicio: info.startTime, familia: fam.fam, lado,
@@ -1537,10 +1539,13 @@ async function cmdItf(horas = 6) {
       const c = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
       const n1 = c?.participant1Name, n2 = c?.participant2Name;
       if (!n1 || !n2) continue;
+      console.log('itf /fixture', fixId, '→ startTime:', JSON.stringify(c.startTime), '·', n1, 'vs', n2);
+      /* hora válida solo si es cuerda (la API a veces manda basura/época) */
+      const tOk = c.startTime && !isNaN(new Date(c.startTime)) && new Date(c.startTime).getFullYear() >= 2020;
       for (const s of filas.filter(x => x.fix === fixId)) {
         s.partido = n1 + ' vs ' + n2;
         s.lado = s.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2);
-        if (c.startTime) s.inicio = c.startTime;
+        if (tOk) { s.inicio = c.startTime; s.tReal = true; }
         if (c.tournamentName) s.liga = c.tournamentName;
       }
       /* y se corrigen las ya anotadas en el registro con nombre de relleno */
@@ -1554,6 +1559,12 @@ async function cmdItf(horas = 6) {
       }
     } catch (e) { console.log('itf /fixture falló', fixId, e.message); }
   }
+  /* fuera los partidos YA COMENZADOS: sus cuotas prematch quedan congeladas
+     en el feed y las "ventajas" gigantes son líneas muertas, no valor. Solo
+     se reporta/anota lo verificado como futuro. */
+  const empezados = filas.filter(s => s.tReal && new Date(s.inicio).getTime() <= Date.now()).length;
+  const dudosos = filas.filter(s => !s.tReal).length;
+  filas = filas.filter(s => s.tReal && new Date(s.inicio).getTime() > Date.now());
   let nuevas = 0;
   for (const s of filas) {
     if (REG[s.sig]) continue;
@@ -1587,6 +1598,7 @@ async function cmdItf(horas = 6) {
     `Torneos revisados: ${tids.length} · ${ambos} partidos cotizados por ambos · ${soloBet} sin bet365`,
     `${filas.length} lados con ventaja positiva · ${nuevas} anotados al tablero (sombra, juez bet365)`,
     grabados ? `📈 ${grabados} partidos nuevos al tablero de favoritos (/itf resultados)` : '',
+    (empezados || dudosos) ? `<i>🚫 fuera: ${empezados} ya comenzados (línea congelada) · ${dudosos} sin hora verificable</i>` : '',
     '',
     ...(top.length ? top : ['Sin ventajas sobre el justo de bet365.']),
     '',
