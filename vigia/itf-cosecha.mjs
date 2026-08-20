@@ -73,7 +73,7 @@ async function cosechar(args) {
 }
 
 /* ---------- resumen ---------- */
-const cargar = () => fs.readdirSync(DATOS).filter(f => f.endsWith('.json'))
+const cargar = () => fs.readdirSync(DATOS).filter(f => f.endsWith('.json') && !f.endsWith('.aceptacion.json'))
   .map(f => JSON.parse(fs.readFileSync(path.join(DATOS, f), 'utf8')));
 
 const pct = (a, b) => b ? (100 * a / b).toFixed(1) + '%' : '—';
