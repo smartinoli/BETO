@@ -1353,14 +1353,17 @@ async function cmdItf(horas = 6) {
     .filter(f => idsItf.has(f.tournamentId))
     .filter(f => { const t = new Date(f.startTime).getTime(); return t > Date.now() + 10 * 60e3 && t < Date.now() + horas * 3600e3; });
   console.log(`itf: ${tor.length} torneos tenis, ${itf.length} ITF, ${todos.length} fixtures hoy/mañana, ${cand.length} en ventana ${horas}h`);
-  console.log('itf categorias ej:', [...new Set(tor.map(t => t.categoryName))].slice(0, 12).join(' | '));
-  if (!cand.length) {
-    await telegram(`🎾 ITF: no encontré partidos ITF en las próximas ${horas} h `
-      + `(${itf.length} torneos ITF de ${tor.length} de tenis; ${todos.length} fixtures listados hoy). `
-      + `Si Betano SÍ muestra, el filtro de torneos puede estar errado — detalle en el log.`);
+  /* los torneos a consultar salen del CATÁLOGO (upcomingFixtures), no del
+     índice de fixtures que viene incompleto en ITF */
+  const activos = itf.filter(t => (t.upcomingFixtures || 0) > 0)
+    .sort((a, b) => (b.upcomingFixtures || 0) - (a.upcomingFixtures || 0))
+    .slice(0, 50);
+  console.log(`itf torneos activos por catálogo: ${activos.length} · ej: ${activos.slice(0, 8).map(t => t.tournamentName + '(' + t.upcomingFixtures + ')').join(', ')}`);
+  if (!activos.length) {
+    await telegram(`🎾 ITF: el catálogo no muestra torneos ITF con partidos próximos.`);
     return;
   }
-  const tids = [...new Set(cand.map(f => f.tournamentId))];
+  const tids = [...new Set([...activos.map(t => t.tournamentId), ...cand.map(f => f.tournamentId)])];
   const idx = new Map(cand.map(f => [f.fixtureId, f]));
   for (const f of cand.slice(0, 20))
     console.log(`itf cand: ${f.fixtureId} | ${f.startTime} | ${f.participant1Name} vs ${f.participant2Name} | ${f.tournamentName}`);
