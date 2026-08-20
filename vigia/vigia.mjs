@@ -900,36 +900,98 @@ async function liquidar(maxFixtures = 60) {
   if (liquidadas || consultados) guardarRegistro();
   return { consultados, liquidadas, quedaron, porMarcador };
 }
+/* AH 0.0 ≡ Empate no válido (DNB): en el barrido ya compiten como una sola
+   familia (mismo grupo); el tablero también los muestra juntos */
+const famTablero = e => {
+  const f = e.familia.split(' · ')[0];
+  if (f === 'Empate no válido 1T') return 'AH 1er tiempo';
+  if (f === 'Empate no válido') return 'AH tiempo completo';
+  return f;
+};
+const netoDe = arr => arr.reduce((a, e) => a + retornoDe(e) - e.monto, 0);
+const media = (arr, f) => arr.reduce((a, e) => a + f(e), 0) / arr.length;
+const recTxt = arr => {
+  const rec = { G: 0, P: 0, MG: 0, MP: 0, E: 0 };
+  for (const e of arr) rec[e.estado]++;
+  return ['G', 'P', 'MG', 'MP', 'E'].filter(k => rec[k]).map(k => rec[k] + k).join(' ');
+};
+const conSigno = n => (n >= 0 ? '🟢 +' : '🔴 −') + plata(Math.abs(n));
+/* fila de un tipo de apuesta: n · cuota media · % sobre el justo · récord · neto */
+const fila = (nombre, arr) => `· ${escHtml(nombre)} — ${arr.length} ap · cuota ${media(arr, e => e.cuota).toFixed(2)}`
+  + ` · +${(media(arr, e => e.vent) * 100).toFixed(1)}% s/justo · ${recTxt(arr)} → <b>${conSigno(netoDe(arr))}</b>`;
+
+/* ---- vista FOCO (el /tablero a secas): SOLO lo que estamos jugando hoy.
+   Filtra por las familias del foco Y los criterios vigentes del config
+   (cuota mín/máx, ventaja mínima): las señales anotadas con criterios
+   viejos no ensucian la lectura — viven en /tablero todo. Sin bandas,
+   sin sombras, sin punto ciego: el balance de lo definido y ya. ---- */
+async function cmdTableroFoco(liq) {
+  const todas = Object.values(REG);
+  const reFoco = CFG.foco?.['10'] ? new RegExp(CFG.foco['10']) : /^AH/;
+  const delFoco = e => e.sid === '10' && !e.sombra
+    && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado);
+  const okHoy = e => e.cuota >= (CFG.cuotaMinima ?? 0) && e.cuota <= CFG.cuotaMaxima
+    && e.vent >= CFG.ventajaMinima['10'];
+  const cerradas = todas.filter(e => CERRADO.includes(e.estado) && delFoco(e) && okHoy(e));
+  const pend = todas.filter(e => e.estado === 'pendiente' && delFoco(e) && okHoy(e)).length;
+  const viejas = todas.filter(e => CERRADO.includes(e.estado) && delFoco(e) && !okHoy(e)).length;
+  const criterios = `cuota ${CFG.cuotaMinima ?? '—'}–${CFG.cuotaMaxima} · ventaja ≥ ${(CFG.ventajaMinima['10'] * 100).toFixed(1)}%`;
+  const lineas = [
+    '<b>📒 Tablero · 🎯 AH fútbol</b>',
+    `<i>${criterios} · DNB cuenta como AH 0.0</i>`,
+    '',
+  ];
+  if (!cerradas.length) {
+    lineas.push(pend ? `Aún nada liquidado con tus criterios actuales. ${pend} pendiente(s).`
+      : 'Aún no hay apuestas del foco: se anotan solas con cada /barrer o /rapido.');
+  } else {
+    const apostado = cerradas.reduce((a, e) => a + e.monto, 0);
+    lineas.push(`<b>TOTAL</b> · ${cerradas.length} ap · ${plata(apostado)} apostados · ${recTxt(cerradas)}`
+      + ` → <b>${conSigno(netoDe(cerradas))}</b> (ROI ${(netoDe(cerradas) / apostado * 100).toFixed(1)}%)`);
+    const porFam = new Map();
+    for (const e of cerradas) {
+      const k = famTablero(e);
+      if (!porFam.has(k)) porFam.set(k, []);
+      porFam.get(k).push(e);
+    }
+    for (const [fam, sub] of [...porFam.entries()].sort((a, b) => netoDe(b[1]) - netoDe(a[1])))
+      lineas.push(fila(fam, sub));
+  }
+  lineas.push('', `<i>${pend} pendiente(s)`
+    + (liq.porMarcador ? ` · ${liq.porMarcador} por marcador` : '')
+    + (liq.consultados ? ` · ${liq.consultados} requests` : '')
+    + (viejas ? ` · ${viejas} liquidada(s) viejas fuera de tus criterios actuales` : '')
+    + ' · <code>/tablero todo</code> = historial completo</i>');
+  await telegram(lineas.join('\n'));
+}
+
 async function cmdTablero(sids, { foco = false } = {}) {
   const pendAntes = Object.values(REG).filter(e =>
     e.estado === 'pendiente' && !(CFG.sombras === false && e.sombra)).length;
   if (pendAntes) await telegram(`📒 Liquidando pendientes (${pendAntes})…`);
   const liq = await liquidar();
+  if (foco) return cmdTableroFoco(liq);
   const todas = Object.values(REG);
   /* con deporte ("/tablero futbol") se filtra la vista y se agrega el
      desglose por % de ventaja prometida: el dato para ajustar ventajaMinima */
   const filtro = sids && sids.length ? new Set(sids) : null;
-  /* vista FOCO (el /tablero a secas): solo las familias del foco, solo
-     señales reales — la info en la que estamos, nada más */
-  const reFoco = foco && CFG.foco?.['10'] ? new RegExp(CFG.foco['10']) : null;
-  const delFoco = e => !reFoco || (!e.sombra && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado));
-  /* sombras congeladas (modo foco): fuera de todos los conteos */
+  /* sombras congeladas (modo foco): fuera de los conteos de pendientes */
   const activa = e => !(CFG.sombras === false && e.sombra);
-  const enAmbito = e => (!filtro || filtro.has(e.sid)) && delFoco(e) && activa(e);
+  const enAmbito = e => (!filtro || filtro.has(e.sid)) && activa(e);
   const cerradasTodas = todas.filter(e => CERRADO.includes(e.estado));
-  const enVista = cerradasTodas.filter(e => (!filtro || filtro.has(e.sid)) && delFoco(e));
+  const enVista = filtro ? cerradasTodas.filter(e => filtro.has(e.sid)) : cerradasTodas;
   /* las sombras (bajo umbral, nunca avisadas) no entran al balance principal:
      son datos de calibración, no apuestas que habrías hecho */
   const cerradas = enVista.filter(e => !e.sombra);
   const sombras = enVista.filter(e => e.sombra);
   const pend = todas.filter(e => e.estado === 'pendiente' && enAmbito(e)).length;
   const sinDatos = todas.filter(e => e.estado === 'X' && enAmbito(e)).length;
-  const titulo = '<b>📒 Tablero' + (reFoco ? ' · 🎯 foco fútbol AH/DNB'
-    : filtro ? ' · ' + [...filtro].map(s => CFG.deportes[s] || s).join(' + ') : ' · todo el historial') + '</b>';
+  const titulo = '<b>📒 Tablero' + (filtro
+    ? ' · ' + [...filtro].map(s => CFG.deportes[s] || s).join(' + ') : ' · todo el historial') + '</b>';
   if (!cerradas.length && !sombras.length) {
     await telegram([
       titulo,
-      (filtro || reFoco) && cerradasTodas.length
+      filtro && cerradasTodas.length
         ? 'Aún no hay apuestas liquidadas en esta vista. <code>/tablero todo</code> muestra el historial global.'
         : todas.length
           ? `Aún nada liquidado. ${pend} apuesta(s) esperando resultado`
@@ -940,17 +1002,6 @@ async function cmdTablero(sids, { foco = false } = {}) {
     return;
   }
   const apostado = cerradas.reduce((a, e) => a + e.monto, 0);
-  const netoDe = arr => arr.reduce((a, e) => a + retornoDe(e) - e.monto, 0);
-  const media = (arr, f) => arr.reduce((a, e) => a + f(e), 0) / arr.length;
-  const recTxt = arr => {
-    const rec = { G: 0, P: 0, MG: 0, MP: 0, E: 0 };
-    for (const e of arr) rec[e.estado]++;
-    return ['G', 'P', 'MG', 'MP', 'E'].filter(k => rec[k]).map(k => rec[k] + k).join(' ');
-  };
-  const conSigno = n => (n >= 0 ? '🟢 +' : '🔴 −') + plata(Math.abs(n));
-  /* fila de un tipo de apuesta: n · cuota media · % sobre el justo · récord · neto */
-  const fila = (nombre, arr) => `· ${escHtml(nombre)} — ${arr.length} ap · cuota ${media(arr, e => e.cuota).toFixed(2)}`
-    + ` · +${(media(arr, e => e.vent) * 100).toFixed(1)}% s/justo · ${recTxt(arr)} → <b>${conSigno(netoDe(arr))}</b>`;
   const agrupa = (arr, clave) => {
     const m = new Map();
     for (const e of arr) {
@@ -965,7 +1016,7 @@ async function cmdTablero(sids, { foco = false } = {}) {
   const secciones = [];
   for (const [sid, arr] of agrupa(cerradas, e => e.sid)) {
     secciones.push(`${EMO[sid] || ''} <b>${escHtml(CFG.deportes[sid] || sid)}</b> — ${arr.length} ap → <b>${conSigno(netoDe(arr))}</b>`);
-    for (const [famBase, sub] of agrupa(arr, e => e.familia.split(' · ')[0])) secciones.push(fila(famBase, sub));
+    for (const [famBase, sub] of agrupa(arr, famTablero)) secciones.push(fila(famBase, sub));
     secciones.push('');
   }
   /* bandas en orden natural (no por neto): así se lee dónde empieza a sangrar */
@@ -1028,9 +1079,8 @@ async function cmdTablero(sids, { foco = false } = {}) {
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
       + (liq.porMarcador ? ` · ${liq.porMarcador} liquidadas por marcador` : '')
       + (sinDatos ? ` · ${sinDatos} sin datos` : '')
-      + (!reFoco && congeladas ? ` · ${congeladas} sombras congeladas (modo foco: ya no se miden)` : '')
-      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>'
-      + (reFoco ? '\n<i><code>/tablero todo</code> = historial global (otras familias, deportes y sombras)</i>' : ''));
+      + (congeladas ? ` · ${congeladas} sombras congeladas (modo foco: ya no se miden)` : '')
+      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>');
   await telegram(lineas.join('\n'));
 }
 
@@ -1867,7 +1917,7 @@ async function ejecutar(texto) {
       '',
       `<b>/barrer</b> — fútbol (el foco) en las próximas ${CFG.horizonteHoras} h; agrega deporte para barrer otro`,
       '<b>/rapido</b> — el foco, dentro de 6 h',
-      '<b>/tablero</b> — el balance del foco (fútbol AH/DNB, solo señales reales) con bandas de cuota y ventaja (<code>/tablero todo</code> = historial global)',
+      '<b>/tablero</b> — el balance de lo que estamos jugando: AH fútbol con tus criterios actuales, DNB contado como AH 0.0 (<code>/tablero todo</code> = historial completo)',
       '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
       '<b>/liquidar zakynthos G</b> — cierra a mano una del punto ciego que tú viste (G/P/E/MG/MP)',
       '<b>/cosechar</b> — recoge resultados de tenis de mesa para la base propia del Elo (~200 req)',

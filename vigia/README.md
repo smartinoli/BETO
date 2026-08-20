@@ -10,9 +10,11 @@
 >   quedan congeladas en `registro.json` como historial.
 > - **Props apagados** (`"propsPrueba": false`): el espejo de líneas de
 >   jugador tampoco anota nada.
-> - **`/tablero` muestra solo el foco**: AH/DNB fútbol, señales reales, con
->   bandas de cuota y de ventaja. `/tablero todo` da el historial global
->   (otras familias, otros deportes, sombras liquidadas).
+> - **`/tablero` muestra solo lo que estamos jugando**: AH fútbol filtrado
+>   por los criterios vigentes del config (cuota y ventaja mínima), con DNB
+>   contado como AH 0.0 — total y desglose FT/1T, sin bandas ni rangos.
+>   `/tablero todo` da el historial completo (criterios viejos, otras
+>   familias, otros deportes, sombras liquidadas).
 > - `/itf` sigue disponible bajo demanda, pero ya no escribe sombras al
 >   registro: solo alimenta su propio tablero de favoritos (`itf.json`).
 >
