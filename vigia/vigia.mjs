@@ -1355,9 +1355,11 @@ async function cmdItf(horas = 6) {
   console.log(`itf: ${tor.length} torneos tenis, ${itf.length} ITF, ${todos.length} fixtures hoy/mañana, ${cand.length} en ventana ${horas}h`);
   /* los torneos a consultar salen del CATÁLOGO (upcomingFixtures), no del
      índice de fixtures que viene incompleto en ITF */
-  const activos = itf.filter(t => (t.upcomingFixtures || 0) > 0)
-    .sort((a, b) => (b.upcomingFixtures || 0) - (a.upcomingFixtures || 0))
-    .slice(0, 50);
+  /* el contador upcomingFixtures TAMBIÉN viene desactualizado: se incluye
+     todo torneo ITF con cualquier señal de vida (próximos O futuros) */
+  const activos = itf.filter(t => (t.upcomingFixtures || 0) + (t.futureFixtures || 0) > 0)
+    .sort((a, b) => ((b.upcomingFixtures || 0) + (b.futureFixtures || 0)) - ((a.upcomingFixtures || 0) + (a.futureFixtures || 0)))
+    .slice(0, 75);
   console.log(`itf torneos activos por catálogo: ${activos.length} · ej: ${activos.slice(0, 8).map(t => t.tournamentName + '(' + t.upcomingFixtures + ')').join(', ')}`);
   if (!activos.length) {
     await telegram(`🎾 ITF: el catálogo no muestra torneos ITF con partidos próximos.`);
@@ -1496,7 +1498,7 @@ async function cmdItf(horas = 6) {
   }
   await telegram([
     `<b>🎾 ITF · Betano vs bet365 · próximas ${horas} h</b>`,
-    `${cand.length} partidos en ventana · ${ambos} cotizados por ambos · ${soloBet} sin bet365`,
+    `Torneos revisados: ${tids.length} · ${ambos} partidos cotizados por ambos · ${soloBet} sin bet365`,
     `${filas.length} lados con ventaja positiva · ${nuevas} anotados al tablero (sombra, juez bet365)`,
     '',
     ...(top.length ? top : ['Sin ventajas sobre el justo de bet365.']),
