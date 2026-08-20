@@ -161,6 +161,24 @@ Retiros main por ronda:      ${Object.entries(acc.retirosPorRonda).map(([r, n]) 
 — Campeones —
 Con seed: ${acc.campeones.seed}/${acc.torneos} (top-4: ${acc.campeones.top4}) · sin seed: ${acc.campeones.sinSeed} · venidos de qualis/LL: ${acc.campeones.q}
 `);
+  resumenAceptacion();
+}
+
+/* Entry lists fotografiadas (solo existen para torneos en curso/futuros:
+   ITF las borra al terminar — ver itf-navegador.mjs). */
+function resumenAceptacion() {
+  const fs2 = fs.readdirSync(DATOS).filter(f => f.endsWith('.aceptacion.json'));
+  if (!fs2.length) return;
+  console.log(`— Entry lists fotografiadas (${fs2.length} torneos vivos/futuros) —`);
+  for (const f of fs2.sort()) {
+    const a = JSON.parse(fs.readFileSync(path.join(DATOS, f), 'utf8'));
+    const s = a.secciones, mda = s.MDA || [];
+    const rankeados = mda.map(e => e.atp).filter(Boolean);
+    const corte = rankeados.length ? Math.max(...rankeados) : null;
+    const mejor = rankeados.length ? Math.min(...rankeados) : null;
+    console.log(`  ${a.clave}  MDA:${mda.length} (ATP ${mejor ?? '—'}–${corte ?? '—'}, ${mda.length - rankeados.length} sin rank) · Q:${(s.Q || []).length} · alt:${(s.A || []).length} · retiros pre-torneo:${(s.W || []).length}`);
+  }
+  console.log();
 }
 
 const [cmd, ...args] = process.argv.slice(2);
