@@ -22,8 +22,8 @@
   },
   "barridoDeportes": ["10"],
   "cuotaMinima": 1.6,
-  "sombras": true,
-  "propsPrueba": true,
+  "sombras": false,
+  "propsPrueba": false,
   "sombraVentajaMinima": 0.005,
   "sombraCuotaMaxima": 3.5,
   "horarioSantiago": {
