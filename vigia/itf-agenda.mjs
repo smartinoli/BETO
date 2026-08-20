@@ -52,7 +52,9 @@ function rankDe(nombre, listado) {
 /* ---------- cómo llega: trayectoria dentro del torneo ---------- */
 function trayectoria(nombre, cuadros) {
   const pasos = [];
-  for (const [evento, c] of Object.entries(cuadros)) {
+  /* Qualis primero y luego main, en orden de ronda: así se lee la campaña. */
+  const ordenado = Object.entries(cuadros).sort(([a], [b]) => (a === 'Q' ? 0 : 1) - (b === 'Q' ? 0 : 1));
+  for (const [evento, c] of ordenado) {
     for (const r of c.rondas) {
       for (const p of r.partidos) {
         if (p.estado !== 'jugado') continue;
