@@ -30,12 +30,12 @@ const CACHE_CALENDARIO = path.join(DIR, 'itf-calendario.json');
 const ITF_PATH = path.join(DIR, 'itf.json');
 
 /* ---------- nombres ---------- */
-const normalizar = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z\s]/g, ' ').replace(/\s+/g, ' ').trim();
-const tokens = s => normalizar(s).split(' ').filter(t => t.length >= 3);
+export const normalizar = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z\s]/g, ' ').replace(/\s+/g, ' ').trim();
+export const tokens = s => normalizar(s).split(' ').filter(t => t.length >= 3);
 
 /* ¿"Semen Pankin" es el mismo que el lado cuyo nombre es "Semen Pankin"?
    Comparación por tokens compartidos: robusta a orden, iniciales y tildes. */
-function pareceElMismo(nombreApi, lado) {
+export function pareceElMismo(nombreApi, lado) {
   if (!lado?.nombre) return false;
   const a = tokens(nombreApi), b = new Set(tokens(lado.nombre));
   if (!a.length || !b.size) return false;
