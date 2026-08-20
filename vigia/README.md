@@ -1,12 +1,29 @@
 # Vigía
 
-> **Modo actual: bajo demanda.** El bot no manda alertas solo: escucha tu chat
-> de Telegram y barre cuando se lo pides.
+> **Modo actual: 100% FOCO en AH (fútbol), bajo demanda.** El bot no manda
+> alertas solo: escucha tu chat de Telegram y barre cuando se lo pides. Todo
+> el sistema mide UNA sola cosa: hándicap asiático (y su gemelo DNB) de
+> fútbol, cuota 1.6–3.0.
+>
+> - **Sombras apagadas** (`"sombras": false`): ya no se anotan ni liquidan
+>   apuestas fantasma — cero requests en calibración. Las sombras viejas
+>   quedan congeladas en `registro.json` como historial.
+> - **Props apagados** (`"propsPrueba": false`): el espejo de líneas de
+>   jugador tampoco anota nada.
+> - **`/tablero` muestra solo el foco**: AH/DNB fútbol, señales reales, con
+>   bandas de cuota y de ventaja. `/tablero todo` da el historial global
+>   (otras familias, otros deportes, sombras liquidadas).
+> - `/itf` sigue disponible bajo demanda, pero ya no escribe sombras al
+>   registro: solo alimenta su propio tablero de favoritos (`itf.json`).
+>
+> Para volver a medir más cosas: reencender `sombras`/`propsPrueba` en
+> `config.json` y commitear.
 >
 > | Comando | Qué hace | Costo |
 > |---|---|---|
-> | `/barrer` | barrido completo de todo lo disponible | ~110 requests, ~2 min |
+> | `/barrer` | barrido del foco (fútbol) | ~110 requests, ~2 min |
 > | `/rapido` | solo lo que empieza dentro de 6 h | ~30 requests |
+> | `/tablero` | balance del foco AH/DNB | requests solo al liquidar |
 > | `/estado` | cuota de API y último barrido | gratis |
 > | `/ayuda` | lista de comandos | gratis |
 >

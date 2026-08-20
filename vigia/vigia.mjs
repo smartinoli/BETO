@@ -5,12 +5,17 @@
    Modo normal: el bot ESCUCHA tu chat de Telegram y no gasta ni un
    request de OddsPapi hasta que tú pides algo.
 
+   MODO 100% FOCO (config: sombras=false, propsPrueba=false): solo se
+   registra, liquida y muestra el foco (fútbol AH/DNB). Las sombras
+   viejas quedan congeladas en registro.json — no se miden ni gastan
+   requests; reencender "sombras" en config.json las reactiva.
+
    Comandos del chat:
-     /barrer   barrido COMPLETO sin límites (~110 requests) y te manda
+     /barrer   barrido del foco sin límites (~110 requests) y te manda
                todo lo que pasa tus criterios, ordenado por ventaja
      /rapido   solo lo que empieza dentro de 6 h (~30 requests)
-     /tablero  simulación: cómo habrían salido TODAS las señales de los
-               barridos, liquidadas solas con /settlements, por familia
+     /tablero  el balance del foco, liquidado solo con /settlements y
+               /scores; "/tablero todo" = historial global
      /estado   señales vivas + cuota de API restante (gratis)
      /ayuda    esta lista
 
@@ -620,8 +625,9 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       : `⚠️ ${lotesMal} grupo(s) de ligas fallaron ("${ultimoError}") y se saltaron; `
         + `${lotesBien} funcionaron.`;
   }
-  /* FOCO: solo lo que calza con el foco se avisa; el resto de las señales
-     válidas baja a sombra (se registra y mide, pero no llega al chat).
+  /* FOCO: solo lo que calza con el foco se avisa. Con sombras encendidas el
+     resto baja a sombra (se registra y mide); con sombras apagadas (modo
+     100% foco) se descarta sin gastar registro ni liquidación.
      El regex se prueba contra "familia · lado", así puede distinguir
      hasta la línea exacta (ej: AH 0.0 sí, AH -1 no). */
   if (CFG.foco && Object.keys(CFG.foco).length) {
@@ -632,7 +638,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       (re && new RegExp(re).test(cadena) ? visibles : ocultas).push(s);
     }
     salida.senales = visibles;
-    salida.sombras.push(...ocultas);
+    if (CFG.sombras !== false) salida.sombras.push(...ocultas);
     salida.fueraDeFoco = ocultas.length;
   }
   /* foto de precios para el radar de deriva del próximo barrido */
@@ -699,7 +705,7 @@ async function reportar(r, titulo) {
     E.sinCloudbet && `${E.sinCloudbet} partidos sin Cloudbet (sin juez)`,
     E.sinJuez && `${E.sinJuez} mercados que Cloudbet no cotiza`,
     E.cuotaAlta && `${E.cuotaAlta} líneas con cuota > ${CFG.cuotaMaxima}`,
-    E.cuotaBaja && `${E.cuotaBaja} con cuota bajo ${CFG.cuotaMinima} (a sombra)`,
+    E.cuotaBaja && `${E.cuotaBaja} con cuota bajo ${CFG.cuotaMinima}` + (CFG.sombras !== false ? ' (a sombra)' : ''),
     E.ventajaBaja && `${E.ventajaBaja} con ventaja bajo tu mínimo`,
     E.sinVentaja && `${E.sinVentaja} sin ventaja (Betano paga bajo el justo)`,
     E.lineasLejanas && `${E.lineasLejanas} líneas lejos de la central`,
@@ -709,7 +715,7 @@ async function reportar(r, titulo) {
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
-    r.fueraDeFoco != null ? `<i>🎯 Foco: fútbol AH/DNB · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco a la sombra</i>` : '',
+    r.fueraDeFoco != null ? `<i>🎯 Foco: fútbol AH/DNB · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco ${CFG.sombras !== false ? 'a la sombra' : 'descartada(s)'}</i>` : '',
     r.deportesFuera?.length ? `⚠️ Sin acceso en tu plan OddsPapi: ${r.deportesFuera.map(escHtml).join(' · ')} — se saltaron. Revisa el panel si no fue a propósito.` : '',
     r.avisoLotes || '',
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
@@ -855,8 +861,11 @@ async function liquidar(maxFixtures = 60) {
      fútbol dura ~2 h, béisbol puede irse largo. Si la API aún no publica,
      no pasa nada: se reintenta en el próximo /tablero. */
   const ESPERA_H = { 10: 2, 11: 2.5, 12: 2.5, 13: 3.5 };
+  /* con sombras apagadas no se gasta ni un request en liquidarlas: quedan
+     congeladas como dato histórico (reversible: basta reencender sombras) */
   const listas = Object.values(REG).filter(e =>
-    e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > (ESPERA_H[e.sid] || 3) * 3600e3);
+    e.estado === 'pendiente' && !(CFG.sombras === false && e.sombra)
+    && Date.now() - new Date(e.inicio).getTime() > (ESPERA_H[e.sid] || 3) * 3600e3);
   const porFix = new Map();
   for (const e of listas) {
     if (!porFix.has(e.fix)) porFix.set(e.fix, []);
@@ -891,28 +900,37 @@ async function liquidar(maxFixtures = 60) {
   if (liquidadas || consultados) guardarRegistro();
   return { consultados, liquidadas, quedaron, porMarcador };
 }
-async function cmdTablero(sids) {
-  const pendAntes = Object.values(REG).filter(e => e.estado === 'pendiente').length;
+async function cmdTablero(sids, { foco = false } = {}) {
+  const pendAntes = Object.values(REG).filter(e =>
+    e.estado === 'pendiente' && !(CFG.sombras === false && e.sombra)).length;
   if (pendAntes) await telegram(`📒 Liquidando pendientes (${pendAntes})…`);
   const liq = await liquidar();
   const todas = Object.values(REG);
   /* con deporte ("/tablero futbol") se filtra la vista y se agrega el
      desglose por % de ventaja prometida: el dato para ajustar ventajaMinima */
   const filtro = sids && sids.length ? new Set(sids) : null;
+  /* vista FOCO (el /tablero a secas): solo las familias del foco, solo
+     señales reales — la info en la que estamos, nada más */
+  const reFoco = foco && CFG.foco?.['10'] ? new RegExp(CFG.foco['10']) : null;
+  const delFoco = e => !reFoco || (!e.sombra && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado));
+  /* sombras congeladas (modo foco): fuera de todos los conteos */
+  const activa = e => !(CFG.sombras === false && e.sombra);
+  const enAmbito = e => (!filtro || filtro.has(e.sid)) && delFoco(e) && activa(e);
   const cerradasTodas = todas.filter(e => CERRADO.includes(e.estado));
-  const enVista = filtro ? cerradasTodas.filter(e => filtro.has(e.sid)) : cerradasTodas;
+  const enVista = cerradasTodas.filter(e => (!filtro || filtro.has(e.sid)) && delFoco(e));
   /* las sombras (bajo umbral, nunca avisadas) no entran al balance principal:
      son datos de calibración, no apuestas que habrías hecho */
   const cerradas = enVista.filter(e => !e.sombra);
   const sombras = enVista.filter(e => e.sombra);
-  const pend = todas.filter(e => e.estado === 'pendiente').length;
-  const sinDatos = todas.filter(e => e.estado === 'X').length;
-  const titulo = '<b>📒 Tablero simulado' + (filtro ? ' · ' + [...filtro].map(s => CFG.deportes[s] || s).join(' + ') : '') + '</b>';
+  const pend = todas.filter(e => e.estado === 'pendiente' && enAmbito(e)).length;
+  const sinDatos = todas.filter(e => e.estado === 'X' && enAmbito(e)).length;
+  const titulo = '<b>📒 Tablero' + (reFoco ? ' · 🎯 foco fútbol AH/DNB'
+    : filtro ? ' · ' + [...filtro].map(s => CFG.deportes[s] || s).join(' + ') : ' · todo el historial') + '</b>';
   if (!cerradas.length && !sombras.length) {
     await telegram([
       titulo,
-      filtro && cerradasTodas.length
-        ? 'Aún no hay apuestas liquidadas de ese deporte. /tablero a secas muestra todo.'
+      (filtro || reFoco) && cerradasTodas.length
+        ? 'Aún no hay apuestas liquidadas en esta vista. <code>/tablero todo</code> muestra el historial global.'
         : todas.length
           ? `Aún nada liquidado. ${pend} apuesta(s) esperando resultado`
             + (sinDatos ? ` · ${sinDatos} sin datos de la API` : '') + '.'
@@ -960,8 +978,8 @@ async function cmdTablero(sids) {
   const bandas = porBanda(cerradas,
     e => e.cuota < 1.6 ? '< 1.60' : e.cuota <= 1.8 ? '1.60 – 1.80' : e.cuota <= 2.1 ? '1.81 – 2.10' : '2.11 +',
     ['< 1.60', '1.60 – 1.80', '1.81 – 2.10', '2.11 +']);
-  /* por ventaja prometida (solo vista por deporte), CON las sombras: ahí se ve
-     si el ventajaMinima del deporte está corto o largo */
+  /* por ventaja prometida (solo vista por deporte o foco), con las sombras
+     si las hay: ahí se ve si el ventajaMinima está corto o largo */
   const bandasVent = filtro
     ? porBanda(cerradas.concat(sombras),
       e => e.vent <= 0.02 ? '≤ 2%' : e.vent <= 0.03 ? '2.1 – 3%' : e.vent <= 0.05 ? '3.1 – 5%' : '5.1% +',
@@ -989,7 +1007,7 @@ async function cmdTablero(sids) {
      mercados raros (córners, ITF, divisiones menores), justo donde menos
      confiable es el juez. Se muestra siempre para que nunca sea invisible:
      una familia que vive aquí es candidata a salir del sistema. */
-  const ciegas = (filtro ? todas.filter(e => filtro.has(e.sid)) : todas)
+  const ciegas = todas.filter(enAmbito)
     .filter(e => e.estado === 'X' || (e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > 24 * 3600e3));
   if (ciegas.length) {
     const porQue = {};
@@ -1003,11 +1021,16 @@ async function cmdTablero(sids) {
       + Object.entries(porQue).sort((a, b) => b[1] - a[1]).slice(0, 8)
         .map(([k, n]) => `${escHtml(k)} ${n}`).join(' · ') + '</i>');
   }
+  /* recordatorio en la vista global de lo que quedó fuera del sistema */
+  const congeladas = CFG.sombras === false
+    ? todas.filter(e => e.sombra && e.estado === 'pendiente').length : 0;
   lineas.push('',
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
       + (liq.porMarcador ? ` · ${liq.porMarcador} liquidadas por marcador` : '')
       + (sinDatos ? ` · ${sinDatos} sin datos` : '')
-      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>');
+      + (!reFoco && congeladas ? ` · ${congeladas} sombras congeladas (modo foco: ya no se miden)` : '')
+      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>'
+      + (reFoco ? '\n<i><code>/tablero todo</code> = historial global (otras familias, deportes y sombras)</i>' : ''));
   await telegram(lineas.join('\n'));
 }
 
@@ -1565,8 +1588,10 @@ async function cmdItf(horas = 6) {
   const empezados = filas.filter(s => s.tReal && new Date(s.inicio).getTime() <= Date.now()).length;
   const dudosos = filas.filter(s => !s.tReal).length;
   filas = filas.filter(s => s.tReal && new Date(s.inicio).getTime() > Date.now());
+  /* con sombras apagadas (modo 100% foco) el /itf no escribe al registro:
+     solo alimenta su propio tablero de favoritos (itf.json) */
   let nuevas = 0;
-  for (const s of filas) {
+  if (CFG.sombras !== false) for (const s of filas) {
     if (REG[s.sig]) continue;
     REG[s.sig] = {
       fix: s.fix, mid: s.sig.split('|')[1], oid: s.sig.split('|')[2],
@@ -1596,7 +1621,8 @@ async function cmdItf(horas = 6) {
   await telegram([
     `<b>🎾 ITF · Betano vs bet365 · próximas ${horas} h</b>`,
     `Torneos revisados: ${tids.length} · ${ambos} partidos cotizados por ambos · ${soloBet} sin bet365`,
-    `${filas.length} lados con ventaja positiva · ${nuevas} anotados al tablero (sombra, juez bet365)`,
+    `${filas.length} lados con ventaja positiva`
+      + (CFG.sombras !== false ? ` · ${nuevas} anotados al tablero (sombra, juez bet365)` : ' · solo vista, nada al registro (sombras apagadas)'),
     grabados ? `📈 ${grabados} partidos nuevos al tablero de favoritos (/itf resultados)` : '',
     (empezados || dudosos) ? `<i>🚫 fuera: ${empezados} ya comenzados (línea congelada) · ${dudosos} sin hora verificable</i>` : '',
     '',
@@ -1819,9 +1845,11 @@ async function ejecutar(texto) {
     return true;
   }
   if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) {
-    /* el sistema está enfocado en fútbol: /tablero a secas muestra esa vista
-       (con bandas de ventaja); "/tablero todo" da la global */
-    await cmdTablero(sids || (/todo|global/i.test(texto) ? null : ['10']));
+    /* 100% foco: /tablero a secas muestra SOLO el foco (fútbol AH/DNB, señales
+       reales, bandas de cuota y ventaja). "/tablero futbol" = todo fútbol;
+       "/tablero todo" = historial global con sombras */
+    const global = /todo|global/i.test(texto);
+    await cmdTablero(global ? null : (sids || ['10']), { foco: !global && !sids });
     return true;
   }
   if (['depurar', 'debug'].includes(c)) { await cmdDepurar(texto); return true; }
@@ -1839,7 +1867,7 @@ async function ejecutar(texto) {
       '',
       `<b>/barrer</b> — fútbol (el foco) en las próximas ${CFG.horizonteHoras} h; agrega deporte para barrer otro`,
       '<b>/rapido</b> — el foco, dentro de 6 h',
-      '<b>/tablero</b> — el balance del foco fútbol con bandas de cuota y ventaja (<code>/tablero todo</code> = global)',
+      '<b>/tablero</b> — el balance del foco (fútbol AH/DNB, solo señales reales) con bandas de cuota y ventaja (<code>/tablero todo</code> = historial global)',
       '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
       '<b>/liquidar zakynthos G</b> — cierra a mano una del punto ciego que tú viste (G/P/E/MG/MP)',
       '<b>/cosechar</b> — recoge resultados de tenis de mesa para la base propia del Elo (~200 req)',
