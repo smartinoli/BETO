@@ -151,12 +151,19 @@ try {
   const page = await calentar(ctx, 'https://www.itftennis.com/en/tournament-calendar/mens-world-tennis-tour-calendar/');
 
   if (cmd === 'calendario') {
-    const [circuito = 'MT', desde0, hasta0] = args;
+    /* Ambos circuitos (MT hombres, WT mujeres) en un solo caché: el cruce
+       con las cuotas necesita resolver ciudades sin saber el género. */
+    const [circuitos0 = 'MT,WT', desde0, hasta0] = args;
     const hoy = new Date();
     const desde = desde0 || new Date(hoy.getTime() - 28 * 864e5).toISOString().slice(0, 10);
     const hasta = hasta0 || new Date(hoy.getTime() + 14 * 864e5).toISOString().slice(0, 10);
-    const torneos = await bajarCalendario(page, circuito, desde, hasta);
-    fs.writeFileSync(CACHE_CALENDARIO, JSON.stringify({ actualizado: new Date().toISOString(), nota: `${circuito} ${desde} a ${hasta} vía navegador`, torneos }, null, 1));
+    const torneos = [];
+    for (const circuito of circuitos0.toUpperCase().split(',')) {
+      await pausaHumana();
+      torneos.push(...await bajarCalendario(page, circuito, desde, hasta));
+      console.log(`  ${circuito}: acumulados ${torneos.length}`);
+    }
+    fs.writeFileSync(CACHE_CALENDARIO, JSON.stringify({ actualizado: new Date().toISOString(), nota: `${circuitos0} ${desde} a ${hasta} vía navegador`, torneos }, null, 1));
     console.log(`✓ ${torneos.length} torneos → vigia/itf-calendario.json`);
   } else if (cmd === 'aceptacion' || cmd === 'cosecha') {
     fs.mkdirSync(DATOS, { recursive: true });

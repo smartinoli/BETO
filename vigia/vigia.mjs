@@ -1387,6 +1387,16 @@ async function cmdItfResultados() {
     delete db.sin[fix];
     liq++;
   }
+  /* Segundo juez: el cuadro oficial de itftennis.com (itf-cruce). Liquida
+     los que /scores no trae (gratis en requests de OddsPapi) y anota ronda
+     y estado de entrada de cada lado: con eso el tablero separa "favorito
+     contra qualifier en R1" de "favorito contra seed en QF". */
+  try {
+    const { liquidarConItf } = await import('./itf-cruce.mjs');
+    const r = await liquidarConItf(db, { log: m => console.log(m) });
+    liq += r.liquidados;
+    console.log(`itf-cruce: ${r.liquidados} liquidados por cuadro, ${r.anotados} anotados`);
+  } catch (e) { console.log('itf-cruce no corrió:', e.message); }
   guardarItf();
   const cer = Object.values(db.partidos).filter(e => e.estado === 'F' || e.estado === 'D');
   const pendN = Object.values(db.partidos).filter(e => e.estado === 'pendiente').length;
@@ -1409,6 +1419,12 @@ async function cmdItfResultados() {
       + `(cuota implica ${(impl * 100).toFixed(0)}%)`
       + (triunfos.length ? ` · liso [${dosCero}/${triunfos.length}]` : ''));
   }
+  /* Corte por contexto del cuadro ITF (solo partidos que itf-cruce anotó). */
+  try {
+    const { resumenEntradas } = await import('./itf-cruce.mjs');
+    const extra = resumenEntradas(db);
+    if (extra.length) filas.push('', '<b>Por contexto del cuadro (entry vs resultado)</b>', ...extra.map(escHtml));
+  } catch {}
   await telegram([
     '<b>📈 Tablero ITF · ¿gana el favorito?</b>',
     `<i>Favorito según cuota de Betano al momento del barrido. "liso" = ganó sin ceder set.</i>`,
