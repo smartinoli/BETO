@@ -5,12 +5,17 @@
    Modo normal: el bot ESCUCHA tu chat de Telegram y no gasta ni un
    request de OddsPapi hasta que tú pides algo.
 
+   MODO 100% FOCO (config: sombras=false, propsPrueba=false): solo se
+   registra, liquida y muestra el foco (fútbol AH/DNB). Las sombras
+   viejas quedan congeladas en registro.json — no se miden ni gastan
+   requests; reencender "sombras" en config.json las reactiva.
+
    Comandos del chat:
-     /barrer   barrido COMPLETO sin límites (~110 requests) y te manda
+     /barrer   barrido del foco sin límites (~110 requests) y te manda
                todo lo que pasa tus criterios, ordenado por ventaja
      /rapido   solo lo que empieza dentro de 6 h (~30 requests)
-     /tablero  simulación: cómo habrían salido TODAS las señales de los
-               barridos, liquidadas solas con /settlements, por familia
+     /tablero  el balance del foco, liquidado solo con /settlements y
+               /scores; "/tablero todo" = historial global
      /estado   señales vivas + cuota de API restante (gratis)
      /ayuda    esta lista
 
@@ -36,7 +41,7 @@ const SEGUNDOS_ESCUCHA = +(process.env.SEGUNDOS_ESCUCHA || 780);
 const DRY = !!process.env.DRY || !TG_TOKEN || !TG_CHAT;
 if (!KEY) { console.error('Falta ODDSPAPI_KEY'); process.exit(1); }
 
-let EST = { torneos: {}, fixtures: {}, cobertura: {}, mercados: {}, senales: {}, stats: {}, tgOffset: 0 };
+let EST = { torneos: {}, fixtures: {}, cobertura: {}, mercados: {}, senales: {}, stats: {}, foto: {}, tgOffset: 0 };
 try { EST = { ...EST, ...JSON.parse(fs.readFileSync(ESTADO_PATH, 'utf8')) } } catch {}
 const guardarEstado = () => fs.writeFileSync(ESTADO_PATH, JSON.stringify(EST));
 
@@ -134,6 +139,7 @@ const linkDe = (f, sel) => {
 };
 const horaTxt = iso => {
   const t = new Date(iso);
+  if (!iso || isNaN(t) || t.getFullYear() < 2020) return '¿hora?';
   const dia = new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/Santiago' }).format(t);
   const hh = new Intl.DateTimeFormat('es-CL', { timeZone: 'America/Santiago', hour: '2-digit', minute: '2-digit' }).format(t);
   if (dia === hoyKey) return 'HOY ' + hh;
@@ -368,6 +374,20 @@ function procesarSync(info, bet, cb, metas, salida) {
       const cuota = pB[oid] * (1 - CFG.margenLocal);
       salida.candidatas++;
       const vent = cuota / justos[oid] - 1;
+      /* RADAR DE DERIVA: foto del par vs el barrido anterior. Si el juez
+         ACORTÓ su cuota (información fresca ya precificada por él) y Betano
+         sigue igual, esa señal lleva la información antes que Betano. */
+      let deriva = null;
+      if (fam.grupo) {
+        const kFoto = info.fixtureId + '|' + mid + '|' + oid;
+        const prev = EST.foto[kFoto];
+        if (prev && prev.c > 1 && prev.b > 1) {
+          const dc = pC[oid] / prev.c - 1, db = pB[oid] / prev.b - 1;
+          if (dc <= -0.025 && Math.abs(db) < 0.01)
+            deriva = { dc: +(dc * 100).toFixed(1), min: Math.round((Date.now() - prev.ts) / 60e3) };
+        }
+        (salida.foto ||= {})[kFoto] = { b: pB[oid], c: pC[oid], ts: Date.now() };
+      }
       const crudo = meta.outs[oid] || oid;
       let lado;
       if (fam.lado === 'ou') lado = (/over/i.test(crudo) ? 'Más de ' : 'Menos de ') + meta.h;
@@ -403,6 +423,7 @@ function procesarSync(info, bet, cb, metas, salida) {
         justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
         bOid: idB[oid], bMid: bmid,
         link: linkDe(info, { oid: idB[oid], mid: bmid, lado, cuota: pB[oid].toFixed(2), fam: fam.fam }),
+        deriva,
         sospechosa: vent > CFG.umbralSospechosa,
       };
       const mejor = porFam.get(famKey);
@@ -604,8 +625,9 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       : `⚠️ ${lotesMal} grupo(s) de ligas fallaron ("${ultimoError}") y se saltaron; `
         + `${lotesBien} funcionaron.`;
   }
-  /* FOCO: solo lo que calza con el foco se avisa; el resto de las señales
-     válidas baja a sombra (se registra y mide, pero no llega al chat).
+  /* FOCO: solo lo que calza con el foco se avisa. Con sombras encendidas el
+     resto baja a sombra (se registra y mide); con sombras apagadas (modo
+     100% foco) se descarta sin gastar registro ni liquidación.
      El regex se prueba contra "familia · lado", así puede distinguir
      hasta la línea exacta (ej: AH 0.0 sí, AH -1 no). */
   if (CFG.foco && Object.keys(CFG.foco).length) {
@@ -616,9 +638,13 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       (re && new RegExp(re).test(cadena) ? visibles : ocultas).push(s);
     }
     salida.senales = visibles;
-    salida.sombras.push(...ocultas);
+    if (CFG.sombras !== false) salida.sombras.push(...ocultas);
     salida.fueraDeFoco = ocultas.length;
   }
+  /* foto de precios para el radar de deriva del próximo barrido */
+  const corteFoto = Date.now() - 24 * 3600e3;
+  for (const k of Object.keys(EST.foto)) if (EST.foto[k].ts < corteFoto) delete EST.foto[k];
+  Object.assign(EST.foto, salida.foto || {});
   /* memoria: útil para el próximo barrido (marca lo ya visto) */
   const antes = new Set(Object.keys(EST.senales));
   EST.senales = {};
@@ -662,12 +688,13 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
 const EMO = { 10: '⚽', 11: '🏀', 12: '🎾', 13: '⚾' };
 function bloqueSenal(s, i) {
   return [
-    `<b>${i}. ${EMO[s.sid] || ''} ${escHtml(s.partido)}</b>${s.sospechosa ? ' ⚠️' : ''}`,
+    `<b>${i}. ${EMO[s.sid] || ''} ${escHtml(s.partido)}</b>${s.deriva ? ' ⚡' : ''}${s.sospechosa ? ' ⚠️' : ''}`,
     `${escHtml(s.liga)} · ${horaTxt(s.inicio)}`,
     `<b>${escHtml(s.lado)}</b> · ${escHtml(s.familia)}`,
     `${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${plata(montoDe(s.cuota, s.vent))}`,
+    s.deriva ? `⚡ <b>El juez acortó ${Math.abs(s.deriva.dc)}% hace ${s.deriva.min} min y Betano no ha reaccionado</b> — información fresca` : '',
     `<a href="${escHtml(s.link)}">Abrir en Betano</a>`,
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 }
 async function reportar(r, titulo) {
   const orden = r.senales.slice().sort((a, b) => b.vent - a.vent);
@@ -678,7 +705,7 @@ async function reportar(r, titulo) {
     E.sinCloudbet && `${E.sinCloudbet} partidos sin Cloudbet (sin juez)`,
     E.sinJuez && `${E.sinJuez} mercados que Cloudbet no cotiza`,
     E.cuotaAlta && `${E.cuotaAlta} líneas con cuota > ${CFG.cuotaMaxima}`,
-    E.cuotaBaja && `${E.cuotaBaja} con cuota bajo ${CFG.cuotaMinima} (a sombra)`,
+    E.cuotaBaja && `${E.cuotaBaja} con cuota bajo ${CFG.cuotaMinima}` + (CFG.sombras !== false ? ' (a sombra)' : ''),
     E.ventajaBaja && `${E.ventajaBaja} con ventaja bajo tu mínimo`,
     E.sinVentaja && `${E.sinVentaja} sin ventaja (Betano paga bajo el justo)`,
     E.lineasLejanas && `${E.lineasLejanas} líneas lejos de la central`,
@@ -688,7 +715,7 @@ async function reportar(r, titulo) {
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
-    r.fueraDeFoco != null ? `<i>🎯 Foco: fútbol AH/DNB · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco a la sombra</i>` : '',
+    r.fueraDeFoco != null ? `<i>🎯 Foco: fútbol AH/DNB · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco ${CFG.sombras !== false ? 'a la sombra' : 'descartada(s)'}</i>` : '',
     r.deportesFuera?.length ? `⚠️ Sin acceso en tu plan OddsPapi: ${r.deportesFuera.map(escHtml).join(' · ')} — se saltaron. Revisa el panel si no fue a propósito.` : '',
     r.avisoLotes || '',
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
@@ -697,6 +724,9 @@ async function reportar(r, titulo) {
     r.tope ? '⚠️ tope de requests alcanzado' : '',
     '',
     orden.length ? `<b>${orden.length} señal(es):</b>` : '<b>Sin señales que pasen tus criterios.</b>',
+    orden.filter(s => s.deriva).length
+      ? `⚡ <b>${orden.filter(s => s.deriva).length} con el juez recién movido</b> — la información aún no llega a Betano`
+      : '',
     (r.registradas || r.registradasSombra)
       ? `<i>📒 Al tablero: ${r.registradas || 0} señal(es)`
         + (r.registradasSombra ? ` + ${r.registradasSombra} sombra(s) bajo tus umbrales, solo datos` : '') + '</i>'
@@ -831,8 +861,11 @@ async function liquidar(maxFixtures = 60) {
      fútbol dura ~2 h, béisbol puede irse largo. Si la API aún no publica,
      no pasa nada: se reintenta en el próximo /tablero. */
   const ESPERA_H = { 10: 2, 11: 2.5, 12: 2.5, 13: 3.5 };
+  /* con sombras apagadas no se gasta ni un request en liquidarlas: quedan
+     congeladas como dato histórico (reversible: basta reencender sombras) */
   const listas = Object.values(REG).filter(e =>
-    e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > (ESPERA_H[e.sid] || 3) * 3600e3);
+    e.estado === 'pendiente' && !(CFG.sombras === false && e.sombra)
+    && Date.now() - new Date(e.inicio).getTime() > (ESPERA_H[e.sid] || 3) * 3600e3);
   const porFix = new Map();
   for (const e of listas) {
     if (!porFix.has(e.fix)) porFix.set(e.fix, []);
@@ -867,28 +900,37 @@ async function liquidar(maxFixtures = 60) {
   if (liquidadas || consultados) guardarRegistro();
   return { consultados, liquidadas, quedaron, porMarcador };
 }
-async function cmdTablero(sids) {
-  const pendAntes = Object.values(REG).filter(e => e.estado === 'pendiente').length;
+async function cmdTablero(sids, { foco = false } = {}) {
+  const pendAntes = Object.values(REG).filter(e =>
+    e.estado === 'pendiente' && !(CFG.sombras === false && e.sombra)).length;
   if (pendAntes) await telegram(`📒 Liquidando pendientes (${pendAntes})…`);
   const liq = await liquidar();
   const todas = Object.values(REG);
   /* con deporte ("/tablero futbol") se filtra la vista y se agrega el
      desglose por % de ventaja prometida: el dato para ajustar ventajaMinima */
   const filtro = sids && sids.length ? new Set(sids) : null;
+  /* vista FOCO (el /tablero a secas): solo las familias del foco, solo
+     señales reales — la info en la que estamos, nada más */
+  const reFoco = foco && CFG.foco?.['10'] ? new RegExp(CFG.foco['10']) : null;
+  const delFoco = e => !reFoco || (!e.sombra && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado));
+  /* sombras congeladas (modo foco): fuera de todos los conteos */
+  const activa = e => !(CFG.sombras === false && e.sombra);
+  const enAmbito = e => (!filtro || filtro.has(e.sid)) && delFoco(e) && activa(e);
   const cerradasTodas = todas.filter(e => CERRADO.includes(e.estado));
-  const enVista = filtro ? cerradasTodas.filter(e => filtro.has(e.sid)) : cerradasTodas;
+  const enVista = cerradasTodas.filter(e => (!filtro || filtro.has(e.sid)) && delFoco(e));
   /* las sombras (bajo umbral, nunca avisadas) no entran al balance principal:
      son datos de calibración, no apuestas que habrías hecho */
   const cerradas = enVista.filter(e => !e.sombra);
   const sombras = enVista.filter(e => e.sombra);
-  const pend = todas.filter(e => e.estado === 'pendiente').length;
-  const sinDatos = todas.filter(e => e.estado === 'X').length;
-  const titulo = '<b>📒 Tablero simulado' + (filtro ? ' · ' + [...filtro].map(s => CFG.deportes[s] || s).join(' + ') : '') + '</b>';
+  const pend = todas.filter(e => e.estado === 'pendiente' && enAmbito(e)).length;
+  const sinDatos = todas.filter(e => e.estado === 'X' && enAmbito(e)).length;
+  const titulo = '<b>📒 Tablero' + (reFoco ? ' · 🎯 foco fútbol AH/DNB'
+    : filtro ? ' · ' + [...filtro].map(s => CFG.deportes[s] || s).join(' + ') : ' · todo el historial') + '</b>';
   if (!cerradas.length && !sombras.length) {
     await telegram([
       titulo,
-      filtro && cerradasTodas.length
-        ? 'Aún no hay apuestas liquidadas de ese deporte. /tablero a secas muestra todo.'
+      (filtro || reFoco) && cerradasTodas.length
+        ? 'Aún no hay apuestas liquidadas en esta vista. <code>/tablero todo</code> muestra el historial global.'
         : todas.length
           ? `Aún nada liquidado. ${pend} apuesta(s) esperando resultado`
             + (sinDatos ? ` · ${sinDatos} sin datos de la API` : '') + '.'
@@ -936,8 +978,8 @@ async function cmdTablero(sids) {
   const bandas = porBanda(cerradas,
     e => e.cuota < 1.6 ? '< 1.60' : e.cuota <= 1.8 ? '1.60 – 1.80' : e.cuota <= 2.1 ? '1.81 – 2.10' : '2.11 +',
     ['< 1.60', '1.60 – 1.80', '1.81 – 2.10', '2.11 +']);
-  /* por ventaja prometida (solo vista por deporte), CON las sombras: ahí se ve
-     si el ventajaMinima del deporte está corto o largo */
+  /* por ventaja prometida (solo vista por deporte o foco), con las sombras
+     si las hay: ahí se ve si el ventajaMinima está corto o largo */
   const bandasVent = filtro
     ? porBanda(cerradas.concat(sombras),
       e => e.vent <= 0.02 ? '≤ 2%' : e.vent <= 0.03 ? '2.1 – 3%' : e.vent <= 0.05 ? '3.1 – 5%' : '5.1% +',
@@ -965,7 +1007,7 @@ async function cmdTablero(sids) {
      mercados raros (córners, ITF, divisiones menores), justo donde menos
      confiable es el juez. Se muestra siempre para que nunca sea invisible:
      una familia que vive aquí es candidata a salir del sistema. */
-  const ciegas = (filtro ? todas.filter(e => filtro.has(e.sid)) : todas)
+  const ciegas = todas.filter(enAmbito)
     .filter(e => e.estado === 'X' || (e.estado === 'pendiente' && Date.now() - new Date(e.inicio).getTime() > 24 * 3600e3));
   if (ciegas.length) {
     const porQue = {};
@@ -979,11 +1021,16 @@ async function cmdTablero(sids) {
       + Object.entries(porQue).sort((a, b) => b[1] - a[1]).slice(0, 8)
         .map(([k, n]) => `${escHtml(k)} ${n}`).join(' · ') + '</i>');
   }
+  /* recordatorio en la vista global de lo que quedó fuera del sistema */
+  const congeladas = CFG.sombras === false
+    ? todas.filter(e => e.sombra && e.estado === 'pendiente').length : 0;
   lineas.push('',
     `<i>${pend} pendiente(s)` + (liq.quedaron ? ` (${liq.quedaron} quedaron para el próximo /tablero)` : '')
       + (liq.porMarcador ? ` · ${liq.porMarcador} liquidadas por marcador` : '')
       + (sinDatos ? ` · ${sinDatos} sin datos` : '')
-      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>');
+      + (!reFoco && congeladas ? ` · ${congeladas} sombras congeladas (modo foco: ya no se miden)` : '')
+      + (liq.consultados ? ` · ${liq.consultados} requests en liquidar` : '') + '</i>'
+      + (reFoco ? '\n<i><code>/tablero todo</code> = historial global (otras familias, deportes y sombras)</i>' : ''));
   await telegram(lineas.join('\n'));
 }
 
@@ -1300,6 +1347,291 @@ async function cmdCosechar() {
   ].join('\n'));
 }
 
+/* ---------- ITF: Betano vs bet365 (el estándar de ese circuito) ----------
+   Comparación bajo demanda, fuera del foco: partidos ITF de las próximas
+   N horas, devig de bet365 como justo, ventajas de Betano. Se anotan como
+   sombras (juez: bet365) para que el tablero las mida aparte. */
+/* Tablero ITF de favoritos: cada /itf registra TODOS los partidos con la
+   cuota del favorito (Betano y bet365); /itf resultados los liquida por
+   marcador y muestra: ¿gana el favorito lo que su cuota promete, en qué
+   rangos, y por cuánto (2-0 vs 2-1)? */
+const ITF_PATH = path.join(DIR, 'itf.json');
+let ITFDB = null;
+function cargarItf() {
+  if (!ITFDB) {
+    ITFDB = { partidos: {}, sin: {} };
+    try { ITFDB = { ...ITFDB, ...JSON.parse(fs.readFileSync(ITF_PATH, 'utf8')) } } catch {}
+  }
+  return ITFDB;
+}
+const guardarItf = () => ITFDB && fs.writeFileSync(ITF_PATH, JSON.stringify(ITFDB));
+async function cmdItfResultados() {
+  const db = cargarItf();
+  const pend = Object.entries(db.partidos)
+    .filter(([fix, e]) => e.estado === 'pendiente'
+      && Date.now() - new Date(e.t || e.visto).getTime() > 4 * 3600e3
+      && (db.sin[fix] || 0) < 3);
+  let liq = 0;
+  const req0 = REQ;
+  for (const [fix, e] of pend.slice(0, 120)) {
+    let P = null;
+    try { P = periodosDe(await api('scores', { fixtureId: fix }, 1100)); } catch {}
+    const res = P && P.result;
+    if (!res || !Number.isFinite(res.participant1Score) || res.participant1Score === res.participant2Score) {
+      db.sin[fix] = (db.sin[fix] || 0) + 1;
+      continue;
+    }
+    const ganador = res.participant1Score > res.participant2Score ? 1 : 2;
+    e.estado = ganador === e.fav ? 'F' : 'D';
+    e.marcador = Math.max(res.participant1Score, res.participant2Score) + '-' + Math.min(res.participant1Score, res.participant2Score);
+    delete db.sin[fix];
+    liq++;
+  }
+  guardarItf();
+  const cer = Object.values(db.partidos).filter(e => e.estado === 'F' || e.estado === 'D');
+  const pendN = Object.values(db.partidos).filter(e => e.estado === 'pendiente').length;
+  if (!cer.length) {
+    await telegram(`📈 Tablero ITF: aún nada liquidado (${pendN} esperando resultado · ${liq} recién liquidados · ${REQ - req0} requests).`);
+    return;
+  }
+  const BANDAS = [['≤1.15', e => e.cB <= 1.15], ['1.16-1.30', e => e.cB > 1.15 && e.cB <= 1.3],
+    ['1.31-1.50', e => e.cB > 1.3 && e.cB <= 1.5], ['1.51-1.80', e => e.cB > 1.5 && e.cB <= 1.8],
+    ['1.81+', e => e.cB > 1.8]];
+  const filas = [];
+  for (const [nom, fil] of BANDAS) {
+    const a = cer.filter(fil);
+    if (!a.length) continue;
+    const gano = a.filter(e => e.estado === 'F').length;
+    const impl = a.reduce((x, e) => x + 1 / e.cB, 0) / a.length;
+    const triunfos = a.filter(e => e.estado === 'F');
+    const dosCero = triunfos.filter(e => e.marcador === '2-0' || e.marcador === '3-0').length;
+    filas.push(`<b>${nom}</b> · n${a.length} · favorito gana <b>${(gano / a.length * 100).toFixed(0)}%</b> `
+      + `(cuota implica ${(impl * 100).toFixed(0)}%)`
+      + (triunfos.length ? ` · liso [${dosCero}/${triunfos.length}]` : ''));
+  }
+  await telegram([
+    '<b>📈 Tablero ITF · ¿gana el favorito?</b>',
+    `<i>Favorito según cuota de Betano al momento del barrido. "liso" = ganó sin ceder set.</i>`,
+    '',
+    ...filas,
+    '',
+    `<i>${cer.length} liquidados · ${pendN} pendientes · ${liq} nuevos ahora · ${REQ - req0} requests.</i>`,
+  ].join('\n'));
+}
+async function cmdItf(horas = 6) {
+  const req0 = REQ;
+  let tor;
+  try { tor = await api('tournaments', { sportId: '12' }); }
+  catch (e) {
+    await telegram('❌ Tu plan no tiene acceso a tenis (sport 12): ' + escHtml(e.message)
+      + '\nMárcalo en el panel de OddsPapi junto a bet365 y reintenta.');
+    return;
+  }
+  let itf = tor.filter(t => /itf|m15|m25|w15|w25|w35|w50|w75|w100/i.test((t.categoryName || '') + ' ' + (t.tournamentName || '')));
+  if (!itf.length) itf = tor.filter(t =>
+    !/atp|wta|challenger|davis|united|billie|exhibition|utr|grand/i.test((t.categoryName || '') + ' ' + (t.tournamentName || '')));
+  const idsItf = new Set(itf.map(t => t.tournamentId));
+  const d = new Date();
+  const fx = await api('fixtures', {
+    sportId: '12',
+    from: d.toISOString().slice(0, 10),
+    to: new Date(d.getTime() + 864e5).toISOString().slice(0, 10),
+  }, 2100);
+  /* OJO: la bandera hasOdds de /fixtures es poco confiable (lo vimos en tenis
+     de mesa) — NO se filtra por ella; el batch de cuotas dirá la verdad */
+  const todos = (Array.isArray(fx) ? fx : fx.data || []);
+  const cand = todos
+    .filter(f => idsItf.has(f.tournamentId))
+    .filter(f => { const t = new Date(f.startTime).getTime(); return t > Date.now() + 10 * 60e3 && t < Date.now() + horas * 3600e3; });
+  console.log(`itf: ${tor.length} torneos tenis, ${itf.length} ITF, ${todos.length} fixtures hoy/mañana, ${cand.length} en ventana ${horas}h`);
+  /* los torneos a consultar salen del CATÁLOGO (upcomingFixtures), no del
+     índice de fixtures que viene incompleto en ITF */
+  /* el contador upcomingFixtures TAMBIÉN viene desactualizado: se incluye
+     todo torneo ITF con cualquier señal de vida (próximos O futuros) */
+  const activos = itf.filter(t => (t.upcomingFixtures || 0) + (t.futureFixtures || 0) > 0)
+    .sort((a, b) => ((b.upcomingFixtures || 0) + (b.futureFixtures || 0)) - ((a.upcomingFixtures || 0) + (a.futureFixtures || 0)))
+    .slice(0, 75);
+  console.log(`itf torneos activos por catálogo: ${activos.length} · ej: ${activos.slice(0, 8).map(t => t.tournamentName + '(' + t.upcomingFixtures + ')').join(', ')}`);
+  if (!activos.length) {
+    await telegram(`🎾 ITF: el catálogo no muestra torneos ITF con partidos próximos.`);
+    return;
+  }
+  const tids = [...new Set([...activos.map(t => t.tournamentId), ...cand.map(f => f.tournamentId)])];
+  const idx = new Map(cand.map(f => [f.fixtureId, f]));
+  for (const f of cand.slice(0, 20))
+    console.log(`itf cand: ${f.fixtureId} | ${f.startTime} | ${f.participant1Name} vs ${f.participant2Name} | ${f.tournamentName}`);
+  const JB = 'bet365';
+  let filas = [];
+  let ambos = 0, soloBet = 0, logPath = 0, grabados = 0;
+  for (let i = 0; i < tids.length && i < 60; i += 5) {
+    const lote = tids.slice(i, i + 5);
+    let bet, b365;
+    try {
+      bet = await oddsBatch(lote, CASA);
+      b365 = bet.length ? await oddsBatch(lote, JB) : [];
+    } catch (e) { await telegram('❌ ' + escHtml(e.message)); return; }
+    const jIdx = new Map(b365.map(f => [f.fixtureId, (f.bookmakerOdds || {})[JB]]));
+    console.log(`itf lote ${lote.join(',')}: betano trae ${bet.length} fixtures, bet365 trae ${b365.length}`);
+    for (const f of bet) {
+      const b = (f.bookmakerOdds || {})[CASA], j = jIdx.get(f.fixtureId);
+      if (!b) continue;
+      let info = idx.get(f.fixtureId);
+      if (!info) {
+        /* el índice /fixtures de OddsPapi viene incompleto en ITF: el partido
+           existe en el feed de cuotas — los nombres se rescatan del slug del
+           link de Betano y la hora queda estimada */
+        const crudoPath = String(b.fixturePath || '');
+        if (logPath++ < 3) console.log('itf fixturePath ej:', JSON.stringify(crudoPath));
+        const partes = crudoPath.split('/').filter(x => x && !/^https?:$/.test(x) && !/betano/.test(x));
+        const slugNom = partes.filter(x => /[a-z]-[a-z]/i.test(x)).pop() || partes[partes.length - 2] || '';
+        if (!slugNom) continue;
+        info = {
+          participant1Name: slugNom.replace(/-/g, ' '), participant2Name: '',
+          startTime: new Date(Date.now() + 2 * 3600e3).toISOString(),
+          tournamentName: 'ITF (sin índice)', sinIndice: true,
+        };
+      }
+      if (!j) { soloBet++; continue; }
+      ambos++;
+      for (const mid of Object.keys(b.markets || {})) {
+        const meta = await metaDe(mid);
+        if (!meta || meta.len !== 2) continue;
+        const fam = familiaDe('12', meta.n);
+        if (!fam) continue;
+        const oB = b.markets[mid].outcomes || {}, oJ = (j.markets || {})[mid]?.outcomes || {};
+        const oids = Object.keys(oB);
+        if (oids.length !== 2) continue;
+        const pB = {}, pJ = {}; let ok = true;
+        for (const oid of oids) {
+          const b0 = (oB[oid].players || {})['0'], j0 = ((oJ[oid] || {}).players || {})['0'];
+          if (!b0?.active || !(b0.price > 1) || !j0?.active || !(j0.price > 1)) { ok = false; break; }
+          pB[oid] = b0.price; pJ[oid] = j0.price;
+        }
+        if (!ok) continue;
+        const [jA, jB2] = desvigar(pJ[oids[0]], pJ[oids[1]]);
+        const justos = { [oids[0]]: jA, [oids[1]]: jB2 };
+        /* tablero de favoritos: se anota TODO partido con mercado Ganador */
+        if (fam.fam === 'Ganador' && !info.sinIndice
+            && new Date(info.startTime).getTime() > Date.now()) {
+          const db = cargarItf();
+          if (!db.partidos[f.fixtureId]) {
+            const o1 = oids.find(o => /^1$|home/i.test(meta.outs[o] || o)) || oids[0];
+            const o2 = oids.find(o => o !== o1) || oids[1];
+            const favLado = pB[o1] <= pB[o2] ? 1 : 2;
+            const favOid = favLado === 1 ? o1 : o2, dogOid = favLado === 1 ? o2 : o1;
+            db.partidos[f.fixtureId] = {
+              visto: new Date().toISOString(), t: info.sinIndice ? null : info.startTime,
+              torneo: info.tournamentName || 'ITF',
+              p1: info.sinIndice ? null : info.participant1Name, p2: info.sinIndice ? null : info.participant2Name,
+              fav: favLado, cB: +pB[favOid].toFixed(2), cJ: +pJ[favOid].toFixed(2),
+              dB: +pB[dogOid].toFixed(2), estado: 'pendiente',
+            };
+            grabados++;
+          }
+        }
+        for (const oid of oids) {
+          const vent = pB[oid] / justos[oid] - 1;
+          if (vent <= 0.005 || pB[oid] > (CFG.sombraCuotaMaxima ?? 3.5)) continue;
+          const crudo = meta.outs[oid] || oid;
+          const n1 = info.sinIndice ? 'Jugador 1' : (info.participant1Name || '?');
+          const n2 = info.sinIndice ? 'Jugador 2' : (info.participant2Name || '?');
+          const lado = fam.lado === 'yn' ? (/yes/i.test(crudo) ? 'Sí' : 'No')
+            : (/^1$|home/i.test(crudo) ? n1 : n2) + (fam.lado === 'ah' ? ' ' + (/^1$|home/i.test(crudo) ? meta.h : -meta.h) : '');
+          filas.push({
+            sig: f.fixtureId + '|' + mid + '|' + oid, fix: f.fixtureId,
+            bFixId: b.bookmakerFixtureId || null, tReal: !info.sinIndice,
+            partido: info.sinIndice ? info.participant1Name : n1 + ' vs ' + n2,
+            liga: info.tournamentName || 'ITF',
+            inicio: info.startTime, familia: fam.fam, lado,
+            cuota: +pB[oid].toFixed(3), justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
+          });
+        }
+      }
+    }
+  }
+  filas.sort((a, b) => b.vent - a.vent);
+  /* Betano manda slug "e-e" en ITF (sin nombres): se rescatan del endpoint
+     /fixture individual, solo para lo que se va a reportar (~1 req c/u) */
+  let corregidas = 0;
+  const sinNombre = [...new Set(filas.slice(0, 14)
+    .filter(s => /^e e$|^Jugador/.test(s.partido) || /^Jugador/.test(s.lado))
+    .map(s => s.fix))].slice(0, 14);
+  for (const fixId of sinNombre) {
+    try {
+      const d = await api('fixture', { fixtureId: fixId }, 2100);
+      const c = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
+      const n1 = c?.participant1Name, n2 = c?.participant2Name;
+      if (!n1 || !n2) continue;
+      console.log('itf /fixture', fixId, '→ startTime:', JSON.stringify(c.startTime), '·', n1, 'vs', n2);
+      /* hora válida solo si es cuerda (la API a veces manda basura/época) */
+      const tOk = c.startTime && !isNaN(new Date(c.startTime)) && new Date(c.startTime).getFullYear() >= 2020;
+      for (const s of filas.filter(x => x.fix === fixId)) {
+        s.partido = n1 + ' vs ' + n2;
+        s.lado = s.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2);
+        if (tOk) { s.inicio = c.startTime; s.tReal = true; }
+        if (c.tournamentName) s.liga = c.tournamentName;
+      }
+      /* y se corrigen las ya anotadas en el registro con nombre de relleno */
+      for (const e of Object.values(REG)) {
+        if (e.fix !== fixId || e.juez !== 'bet365') continue;
+        e.partido = n1 + ' vs ' + n2;
+        e.lado = e.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2).replace(/^e e /, n1 + ' ');
+        if (c.startTime) e.inicio = c.startTime;
+        if (c.tournamentName) e.liga = c.tournamentName;
+        corregidas++;
+      }
+    } catch (e) { console.log('itf /fixture falló', fixId, e.message); }
+  }
+  /* fuera los partidos YA COMENZADOS: sus cuotas prematch quedan congeladas
+     en el feed y las "ventajas" gigantes son líneas muertas, no valor. Solo
+     se reporta/anota lo verificado como futuro. */
+  const empezados = filas.filter(s => s.tReal && new Date(s.inicio).getTime() <= Date.now()).length;
+  const dudosos = filas.filter(s => !s.tReal).length;
+  filas = filas.filter(s => s.tReal && new Date(s.inicio).getTime() > Date.now());
+  /* con sombras apagadas (modo 100% foco) el /itf no escribe al registro:
+     solo alimenta su propio tablero de favoritos (itf.json) */
+  let nuevas = 0;
+  if (CFG.sombras !== false) for (const s of filas) {
+    if (REG[s.sig]) continue;
+    REG[s.sig] = {
+      fix: s.fix, mid: s.sig.split('|')[1], oid: s.sig.split('|')[2],
+      visto: new Date().toISOString(), inicio: s.inicio, sid: '12',
+      liga: s.liga, partido: s.partido, familia: s.familia, lado: s.lado,
+      cuota: s.cuota, justo: s.justo, vent: s.vent,
+      monto: montoDe(s.cuota, s.vent), estado: 'pendiente', sombra: true, juez: 'bet365',
+    };
+    nuevas++;
+  }
+  if (nuevas || corregidas) guardarRegistro();
+  if (grabados) guardarItf();
+  /* las mejores 15 por margen, mostradas agrupadas por torneo y horario */
+  const mostrar = filas.slice(0, 15);
+  mostrar.sort((a, b) => a.liga.localeCompare(b.liga)
+    || (a.inicio < b.inicio ? -1 : a.inicio > b.inicio ? 1 : 0) || b.vent - a.vent);
+  const top = [];
+  let ligaAct = null;
+  for (const s of mostrar) {
+    if (s.liga !== ligaAct) { ligaAct = s.liga; top.push(`🏆 <b>${escHtml(s.liga)}</b>`); }
+    const [pa, pb] = String(s.partido).split(' vs ');
+    const rival = s.lado.startsWith(pa) ? pb : pa;
+    top.push(`· ${horaTxt(s.inicio)} — <b>${escHtml(s.lado)}</b>${rival ? ' (vs ' + escHtml(rival) + ')' : ''}`
+      + ` @${s.cuota.toFixed(2)} (justo ${s.justo.toFixed(2)}) → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${escHtml(s.familia)}`
+      + (s.bFixId ? ` · <a href="https://lat.betano.com/cuotas-de-partido/e-e/${escHtml(s.bFixId)}/">Abrir</a>` : ''));
+  }
+  await telegram([
+    `<b>🎾 ITF · Betano vs bet365 · próximas ${horas} h</b>`,
+    `Torneos revisados: ${tids.length} · ${ambos} partidos cotizados por ambos · ${soloBet} sin bet365`,
+    `${filas.length} lados con ventaja positiva`
+      + (CFG.sombras !== false ? ` · ${nuevas} anotados al tablero (sombra, juez bet365)` : ' · solo vista, nada al registro (sombras apagadas)'),
+    grabados ? `📈 ${grabados} partidos nuevos al tablero de favoritos (/itf resultados)` : '',
+    (empezados || dudosos) ? `<i>🚫 fuera: ${empezados} ya comenzados (línea congelada) · ${dudosos} sin hora verificable</i>` : '',
+    '',
+    ...(top.length ? top : ['Sin ventajas sobre el justo de bet365.']),
+    '',
+    `<i>${REQ - req0} requests. OJO: reglas de retiro pueden diferir entre casas — en ITF eso importa.</i>`,
+  ].join('\n'));
+}
+
 /* ---------- comandos ---------- */
 async function cmdEstado() {
   let cuota = 'no disponible';
@@ -1513,14 +1845,21 @@ async function ejecutar(texto) {
     return true;
   }
   if (['tablero', 'resultados', 'balance', 'registro', 'historial'].includes(c)) {
-    /* el sistema está enfocado en fútbol: /tablero a secas muestra esa vista
-       (con bandas de ventaja); "/tablero todo" da la global */
-    await cmdTablero(sids || (/todo|global/i.test(texto) ? null : ['10']));
+    /* 100% foco: /tablero a secas muestra SOLO el foco (fútbol AH/DNB, señales
+       reales, bandas de cuota y ventaja). "/tablero futbol" = todo fútbol;
+       "/tablero todo" = historial global con sombras */
+    const global = /todo|global/i.test(texto);
+    await cmdTablero(global ? null : (sids || ['10']), { foco: !global && !sids });
     return true;
   }
   if (['depurar', 'debug'].includes(c)) { await cmdDepurar(texto); return true; }
   if (['liquidar', 'liquida', 'resultado'].includes(c)) { await cmdLiquidar(texto); return true; }
   if (['cosechar', 'cosecha', 'mesa'].includes(c)) { await cmdCosechar(); return true; }
+  if (['itf'].includes(c)) {
+    if (/resultado|tablero|favorito/i.test(texto)) await cmdItfResultados();
+    else await cmdItf(horas ?? 6);
+    return true;
+  }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
@@ -1528,7 +1867,7 @@ async function ejecutar(texto) {
       '',
       `<b>/barrer</b> — fútbol (el foco) en las próximas ${CFG.horizonteHoras} h; agrega deporte para barrer otro`,
       '<b>/rapido</b> — el foco, dentro de 6 h',
-      '<b>/tablero</b> — el balance del foco fútbol con bandas de cuota y ventaja (<code>/tablero todo</code> = global)',
+      '<b>/tablero</b> — el balance del foco (fútbol AH/DNB, solo señales reales) con bandas de cuota y ventaja (<code>/tablero todo</code> = historial global)',
       '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
       '<b>/liquidar zakynthos G</b> — cierra a mano una del punto ciego que tú viste (G/P/E/MG/MP)',
       '<b>/cosechar</b> — recoge resultados de tenis de mesa para la base propia del Elo (~200 req)',
