@@ -1369,7 +1369,7 @@ async function cmdItf(horas = 6) {
     console.log(`itf cand: ${f.fixtureId} | ${f.startTime} | ${f.participant1Name} vs ${f.participant2Name} | ${f.tournamentName}`);
   const JB = 'bet365';
   const filas = [];
-  let ambos = 0, soloBet = 0;
+  let ambos = 0, soloBet = 0, logPath = 0;
   for (let i = 0; i < tids.length && i < 60; i += 5) {
     const lote = tids.slice(i, i + 5);
     let bet, b365;
@@ -1387,8 +1387,10 @@ async function cmdItf(horas = 6) {
         /* el índice /fixtures de OddsPapi viene incompleto en ITF: el partido
            existe en el feed de cuotas — los nombres se rescatan del slug del
            link de Betano y la hora queda estimada */
-        const partes = String(b.fixturePath || '').split('/').filter(Boolean);
-        const slugNom = partes.length >= 2 ? partes[partes.length - 2] : '';
+        const crudoPath = String(b.fixturePath || '');
+        if (logPath++ < 3) console.log('itf fixturePath ej:', JSON.stringify(crudoPath));
+        const partes = crudoPath.split('/').filter(x => x && !/^https?:$/.test(x) && !/betano/.test(x));
+        const slugNom = partes.filter(x => /[a-z]-[a-z]/i.test(x)).pop() || partes[partes.length - 2] || '';
         if (!slugNom) continue;
         info = {
           participant1Name: slugNom.replace(/-/g, ' '), participant2Name: '',
