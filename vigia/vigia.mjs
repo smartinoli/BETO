@@ -1327,6 +1327,73 @@ async function cmdCosechar() {
    Comparación bajo demanda, fuera del foco: partidos ITF de las próximas
    N horas, devig de bet365 como justo, ventajas de Betano. Se anotan como
    sombras (juez: bet365) para que el tablero las mida aparte. */
+/* Tablero ITF de favoritos: cada /itf registra TODOS los partidos con la
+   cuota del favorito (Betano y bet365); /itf resultados los liquida por
+   marcador y muestra: ¿gana el favorito lo que su cuota promete, en qué
+   rangos, y por cuánto (2-0 vs 2-1)? */
+const ITF_PATH = path.join(DIR, 'itf.json');
+let ITFDB = null;
+function cargarItf() {
+  if (!ITFDB) {
+    ITFDB = { partidos: {}, sin: {} };
+    try { ITFDB = { ...ITFDB, ...JSON.parse(fs.readFileSync(ITF_PATH, 'utf8')) } } catch {}
+  }
+  return ITFDB;
+}
+const guardarItf = () => ITFDB && fs.writeFileSync(ITF_PATH, JSON.stringify(ITFDB));
+async function cmdItfResultados() {
+  const db = cargarItf();
+  const pend = Object.entries(db.partidos)
+    .filter(([fix, e]) => e.estado === 'pendiente'
+      && Date.now() - new Date(e.t || e.visto).getTime() > 4 * 3600e3
+      && (db.sin[fix] || 0) < 3);
+  let liq = 0;
+  const req0 = REQ;
+  for (const [fix, e] of pend.slice(0, 120)) {
+    let P = null;
+    try { P = periodosDe(await api('scores', { fixtureId: fix }, 1100)); } catch {}
+    const res = P && P.result;
+    if (!res || !Number.isFinite(res.participant1Score) || res.participant1Score === res.participant2Score) {
+      db.sin[fix] = (db.sin[fix] || 0) + 1;
+      continue;
+    }
+    const ganador = res.participant1Score > res.participant2Score ? 1 : 2;
+    e.estado = ganador === e.fav ? 'F' : 'D';
+    e.marcador = Math.max(res.participant1Score, res.participant2Score) + '-' + Math.min(res.participant1Score, res.participant2Score);
+    delete db.sin[fix];
+    liq++;
+  }
+  guardarItf();
+  const cer = Object.values(db.partidos).filter(e => e.estado === 'F' || e.estado === 'D');
+  const pendN = Object.values(db.partidos).filter(e => e.estado === 'pendiente').length;
+  if (!cer.length) {
+    await telegram(`📈 Tablero ITF: aún nada liquidado (${pendN} esperando resultado · ${liq} recién liquidados · ${REQ - req0} requests).`);
+    return;
+  }
+  const BANDAS = [['≤1.15', e => e.cB <= 1.15], ['1.16-1.30', e => e.cB > 1.15 && e.cB <= 1.3],
+    ['1.31-1.50', e => e.cB > 1.3 && e.cB <= 1.5], ['1.51-1.80', e => e.cB > 1.5 && e.cB <= 1.8],
+    ['1.81+', e => e.cB > 1.8]];
+  const filas = [];
+  for (const [nom, fil] of BANDAS) {
+    const a = cer.filter(fil);
+    if (!a.length) continue;
+    const gano = a.filter(e => e.estado === 'F').length;
+    const impl = a.reduce((x, e) => x + 1 / e.cB, 0) / a.length;
+    const triunfos = a.filter(e => e.estado === 'F');
+    const dosCero = triunfos.filter(e => e.marcador === '2-0' || e.marcador === '3-0').length;
+    filas.push(`<b>${nom}</b> · n${a.length} · favorito gana <b>${(gano / a.length * 100).toFixed(0)}%</b> `
+      + `(cuota implica ${(impl * 100).toFixed(0)}%)`
+      + (triunfos.length ? ` · liso [${dosCero}/${triunfos.length}]` : ''));
+  }
+  await telegram([
+    '<b>📈 Tablero ITF · ¿gana el favorito?</b>',
+    `<i>Favorito según cuota de Betano al momento del barrido. "liso" = ganó sin ceder set.</i>`,
+    '',
+    ...filas,
+    '',
+    `<i>${cer.length} liquidados · ${pendN} pendientes · ${liq} nuevos ahora · ${REQ - req0} requests.</i>`,
+  ].join('\n'));
+}
 async function cmdItf(horas = 6) {
   const req0 = REQ;
   let tor;
@@ -1371,7 +1438,7 @@ async function cmdItf(horas = 6) {
     console.log(`itf cand: ${f.fixtureId} | ${f.startTime} | ${f.participant1Name} vs ${f.participant2Name} | ${f.tournamentName}`);
   const JB = 'bet365';
   const filas = [];
-  let ambos = 0, soloBet = 0, logPath = 0;
+  let ambos = 0, soloBet = 0, logPath = 0, grabados = 0;
   for (let i = 0; i < tids.length && i < 60; i += 5) {
     const lote = tids.slice(i, i + 5);
     let bet, b365;
@@ -1419,6 +1486,24 @@ async function cmdItf(horas = 6) {
         if (!ok) continue;
         const [jA, jB2] = desvigar(pJ[oids[0]], pJ[oids[1]]);
         const justos = { [oids[0]]: jA, [oids[1]]: jB2 };
+        /* tablero de favoritos: se anota TODO partido con mercado Ganador */
+        if (fam.fam === 'Ganador') {
+          const db = cargarItf();
+          if (!db.partidos[f.fixtureId]) {
+            const o1 = oids.find(o => /^1$|home/i.test(meta.outs[o] || o)) || oids[0];
+            const o2 = oids.find(o => o !== o1) || oids[1];
+            const favLado = pB[o1] <= pB[o2] ? 1 : 2;
+            const favOid = favLado === 1 ? o1 : o2, dogOid = favLado === 1 ? o2 : o1;
+            db.partidos[f.fixtureId] = {
+              visto: new Date().toISOString(), t: info.sinIndice ? null : info.startTime,
+              torneo: info.tournamentName || 'ITF',
+              p1: info.sinIndice ? null : info.participant1Name, p2: info.sinIndice ? null : info.participant2Name,
+              fav: favLado, cB: +pB[favOid].toFixed(2), cJ: +pJ[favOid].toFixed(2),
+              dB: +pB[dogOid].toFixed(2), estado: 'pendiente',
+            };
+            grabados++;
+          }
+        }
         for (const oid of oids) {
           const vent = pB[oid] / justos[oid] - 1;
           if (vent <= 0.005 || pB[oid] > (CFG.sombraCuotaMaxima ?? 3.5)) continue;
@@ -1482,6 +1567,7 @@ async function cmdItf(horas = 6) {
     nuevas++;
   }
   if (nuevas || corregidas) guardarRegistro();
+  if (grabados) guardarItf();
   /* las mejores 15 por margen, mostradas agrupadas por torneo y horario */
   const mostrar = filas.slice(0, 15);
   mostrar.sort((a, b) => a.liga.localeCompare(b.liga)
@@ -1500,6 +1586,7 @@ async function cmdItf(horas = 6) {
     `<b>🎾 ITF · Betano vs bet365 · próximas ${horas} h</b>`,
     `Torneos revisados: ${tids.length} · ${ambos} partidos cotizados por ambos · ${soloBet} sin bet365`,
     `${filas.length} lados con ventaja positiva · ${nuevas} anotados al tablero (sombra, juez bet365)`,
+    grabados ? `📈 ${grabados} partidos nuevos al tablero de favoritos (/itf resultados)` : '',
     '',
     ...(top.length ? top : ['Sin ventajas sobre el justo de bet365.']),
     '',
@@ -1728,7 +1815,11 @@ async function ejecutar(texto) {
   if (['depurar', 'debug'].includes(c)) { await cmdDepurar(texto); return true; }
   if (['liquidar', 'liquida', 'resultado'].includes(c)) { await cmdLiquidar(texto); return true; }
   if (['cosechar', 'cosecha', 'mesa'].includes(c)) { await cmdCosechar(); return true; }
-  if (['itf'].includes(c)) { await cmdItf(horas ?? 6); return true; }
+  if (['itf'].includes(c)) {
+    if (/resultado|tablero|favorito/i.test(texto)) await cmdItfResultados();
+    else await cmdItf(horas ?? 6);
+    return true;
+  }
   if (['estado', 'status', 'cuota'].includes(c)) { await cmdEstado(); return true; }
   if (['ayuda', 'help', 'start', 'comandos'].includes(c)) {
     await telegram([
