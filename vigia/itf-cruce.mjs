@@ -37,9 +37,15 @@ export const tokens = s => normalizar(s).split(' ').filter(t => t.length >= 3);
    Comparación por tokens compartidos: robusta a orden, iniciales y tildes. */
 export function pareceElMismo(nombreApi, lado) {
   if (!lado?.nombre) return false;
-  const a = tokens(nombreApi), b = new Set(tokens(lado.nombre));
+  const a = tokens(nombreApi), bArr = tokens(lado.nombre), b = new Set(bArr);
   if (!a.length || !b.size) return false;
-  return a.filter(t => b.has(t)).length >= Math.min(2, a.length, b.size);
+  if (a.filter(t => b.has(t)).length < Math.min(2, a.length, b.size)) return false;
+  /* Hermanos en el mismo cuadro (Joaquin vs Federico Aguilar Cardozo):
+     si AMBOS nombres tienen un token propio que el otro no comparte,
+     son personas distintas aunque los apellidos calcen. */
+  const setA = new Set(a);
+  const soloA = a.filter(t => !b.has(t)), soloB = bArr.filter(t => !setA.has(t));
+  return !(soloA.length && soloB.length);
 }
 
 /* ---------- torneos por ciudad ---------- */
