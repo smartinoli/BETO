@@ -1530,6 +1530,7 @@ async function cmdItf(horas = 6) {
   let filas = [];
   let ambos = 0, soloBet = 0, logPath = 0, grabados = 0;
   const candTablero = new Map();   /* sin índice: a la espera de nombres vía /fixture */
+  let bFixAdd = 0;                 /* links de Betano completados en entradas viejas */
   for (let i = 0; i < tids.length && i < 60; i += 5) {
     const lote = tids.slice(i, i + 5);
     let bet, b365;
@@ -1583,6 +1584,9 @@ async function cmdItf(horas = 6) {
            grabarlo: así el tablero agarra todo lo que el feed trae. */
         if (fam.fam === 'Ganador') {
           const db = cargarItf();
+          /* a los ya grabados sin link se les completa el id de Betano */
+          const ya = db.partidos[f.fixtureId];
+          if (ya && !ya.bFix && b.bookmakerFixtureId) { ya.bFix = b.bookmakerFixtureId; bFixAdd++; }
           if (!db.partidos[f.fixtureId] && !candTablero.has(f.fixtureId)) {
             const o1 = oids.find(o => /^1$|home/i.test(meta.outs[o] || o)) || oids[0];
             const o2 = oids.find(o => o !== o1) || oids[1];
@@ -1594,6 +1598,7 @@ async function cmdItf(horas = 6) {
               p1: info.sinIndice ? null : info.participant1Name, p2: info.sinIndice ? null : info.participant2Name,
               fav: favLado, cB: +pB[favOid].toFixed(2), cJ: +pJ[favOid].toFixed(2),
               dB: +pB[dogOid].toFixed(2), estado: 'pendiente',
+              bFix: b.bookmakerFixtureId || null,   /* → lat.betano.com/cuotas-de-partido/e-e/<bFix>/ */
             };
             if (!info.sinIndice && new Date(info.startTime).getTime() > Date.now()) {
               db.partidos[f.fixtureId] = reg;
@@ -1702,7 +1707,7 @@ async function cmdItf(horas = 6) {
     nuevas++;
   }
   if (nuevas || corregidas) guardarRegistro();
-  if (grabados || tableroNombrados) guardarItf();
+  if (grabados || tableroNombrados || bFixAdd) guardarItf();
   /* Solo el resumen por Telegram: el detalle partido a partido vive en el
      panel (vigia/itf-panel.html), no en el chat. */
   await telegram([
