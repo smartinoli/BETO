@@ -35,11 +35,16 @@
                                                   salida que itf-cosecha, pero
                                                   por navegador (útil si el WAF
                                                   tiene marcada la IP)
+     node vigia/itf-navegador.mjs liquidar        liquida el tablero de vigía
+                                                  (itf.json) por cuadro oficial
+                                                  usando el navegador como
+                                                  transporte
    ============================================================ */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizarEventos, normalizarCuadro } from './itf.mjs';
+import { liquidarConItf, resumenEntradas } from './itf-cruce.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const DATOS = path.join(DIR, 'datos', 'itf');
@@ -215,5 +220,24 @@ try {
         console.log(`  ✓ ${t.clave}  ${t.nombre || ''}  main:${nM} qualis:${nQ}`);
       } catch (e) { console.log(`  ✗ ${t.clave}: ${e.message.split('\n')[0]}`); }
     }
+  } else if (cmd === 'liquidar') {
+    const ITF_PATH = path.join(DIR, 'itf.json');
+    const db = JSON.parse(fs.readFileSync(ITF_PATH, 'utf8'));
+    const api = 'https://www.itftennis.com/tennis/api/TournamentApi/';
+    const obtenerCuadros = async clave => {
+      await pausaHumana();
+      const ev = normalizarEventos(await fetchDesdePagina(page, `${api}GetEventFilters?tournamentKey=${clave}`), clave);
+      const out = {};
+      for (const c of ev.cuadros.filter(c => c.tipo === 'S')) {
+        await pausaHumana();
+        out[c.evento] = normalizarCuadro(await fetchDesdePagina(page,
+          `${api}GetDrawsheet?eventClassificationCode=${c.evento}&matchTypeCode=S&tourType=${ev.tourType}&tournamentId=${ev.tournamentId}&weekNumber=0`));
+      }
+      return out;
+    };
+    const r = await liquidarConItf(db, { maxTorneos: 30, log: console.log, obtenerCuadros });
+    fs.writeFileSync(ITF_PATH, JSON.stringify(db));
+    console.log(`✓ ${r.liquidados} liquidados por cuadro, ${r.anotados} anotados`);
+    for (const f of resumenEntradas(db)) console.log('  ' + f);
   }
 } finally { await browser.close(); }
