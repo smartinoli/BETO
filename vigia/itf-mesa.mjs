@@ -170,8 +170,10 @@ function cuotasDe(l0, l1) {
   return null;
 }
 
-/* ---------- armar las filas desde el order of play ---------- */
-const ahora = Date.now();
+/* ---------- armar las filas desde el order of play ----------
+   El ORDER OF PLAY manda y es el que está al día: marca "jugado" o
+   "In Progress" mientras el cuadro todavía dice pendiente. Solo entra
+   a la mesa lo que ITF marca como TO BE PLAYED. */
 const partidos = [];
 for (const t of activos) {
   const tz = TZ[t.pais] || null;
@@ -180,21 +182,20 @@ for (const t of activos) {
     const dia = leer(path.join(OOP, f));
     if (!dia || dia.fecha < hoyISO()) continue;
     const ctx = contextoTorneo(t.clave);
-    /* hora base por cancha: el "Starting at HH:MM" de su primer partido */
     const baseCancha = new Map();
     for (const p of dia.partidos) {
       const m = /(\d{1,2}):(\d{2})/.exec(p.horario || '');
       if (m && !baseCancha.has(p.cancha)) baseCancha.set(p.cancha, m[1].padStart(2, '0') + ':' + m[2]);
     }
     for (const p of dia.partidos) {
-      if (p.estado === 'jugado' || !p.lados.every(l => l?.nombre)) continue;
-      if (!/S$/.test(p.tipo || '')) continue;               /* singles: MS / WS */
+      if (p.estado !== 'pendiente') continue;                 /* jugado / en curso: fuera */
+      if (!/S$/.test(p.tipo || '')) continue;                 /* solo singles */
+      if (!p.lados.every(l => l?.nombre)) continue;
       const propia = /(\d{1,2}):(\d{2})/.exec(p.horario || '');
       const hhmm = propia ? propia[1].padStart(2, '0') + ':' + propia[2] : baseCancha.get(p.cancha) || null;
       const inicio = instante(dia.fecha, hhmm, tz);
-      /* estimación de orden en cancha para ordenar la tabla */
-      const ordenTs = (inicio ? inicio.getTime() : new Date(dia.fecha + 'T12:00:00Z').getTime()) + (propia ? 0 : (p.orden - 1) * 75 * 60e3);
-      if (inicio && inicio.getTime() < ahora - 4 * 3600e3) continue;   /* pasó hace rato y no está marcado jugado */
+      const ordenTs = (inicio ? inicio.getTime() : new Date(dia.fecha + 'T12:00:00Z').getTime())
+        + (propia ? 0 : (p.orden - 1) * 75 * 60e3);
       const lados = p.lados.map(l => {
         const delCuadro = (ctx.porMatch.get(p.matchId) || []).find(x => pareceElMismo(l.nombre, x));
         const en = ctx.listado.find(x => pareceElMismo(l.nombre, { nombre: x.nombre }));
@@ -206,13 +207,8 @@ for (const t of activos) {
           llega: ctx.cuadros ? trayectoria(l.nombre, ctx.cuadros) : '',
         };
       });
-      /* El día del grupo es el de CHILE: un 10:00 del sábado en Taipei es
-         viernes 22:00 acá, y debe leerse en el día que el usuario lo juega. */
-      const fechaCl = inicio
-        ? new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Santiago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(inicio)
-        : dia.fecha;
       partidos.push({
-        t, fecha: fechaCl, fechaItf: dia.fecha, hhmm, inicio, orden: ordenTs,
+        t, fecha: dia.fecha, hhmm, inicio, ordenTs,
         cancha: p.cancha, turno: p.orden, horarioTxt: p.horario,
         evento: p.evento, ronda: RONDA_CORTA[p.ronda] || p.ronda,
         lados, cuotas: cuotasDe(lados[0], lados[1]),
@@ -220,23 +216,24 @@ for (const t of activos) {
     }
   }
 }
-partidos.sort((a, b) => a.orden - b.orden);
+/* Orden por defecto: campeonato, luego hora. */
+partidos.sort((a, b) => a.t.nombre.localeCompare(b.t.nombre) || a.ordenTs - b.ordenTs);
 
-/* ---------- render ---------- */
-const dias = [...new Set(partidos.map(p => p.fecha))].sort();
-const fmtDia = f => new Intl.DateTimeFormat('es-CL', { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(f + 'T12:00:00Z'));
+/* ---------- render: UNA sola lista ---------- */
+const fmtDiaCorto = new Intl.DateTimeFormat('es-CL', { timeZone: 'America/Santiago', weekday: 'short', day: '2-digit', month: '2-digit' });
 const num = v => v == null ? '<span class="sin">·</span>' : (+v).toFixed(2);
 
-function filas(p, i) {
+function filas(p) {
+  const dia = p.inicio ? fmtDiaCorto.format(p.inicio).replace('.', '') : '—';
   const horaCl = p.inicio ? fmtClHora.format(p.inicio) : '—';
-  const local = p.hhmm ? (p.horarioTxt && /not before/i.test(p.horarioTxt) ? 'no antes ' : '') + p.hhmm : '—';
-  const turno = p.turno > 1 && !/\d/.test(p.horarioTxt || '') ? `${p.turno}º turno` : (p.turno > 1 ? `${p.turno}º` : '1º');
+  const local = p.hhmm ? (/not before/i.test(p.horarioTxt || '') ? 'no antes ' : '') + p.hhmm : '—';
+  const turno = /\d/.test(p.horarioTxt || '') ? `${p.turno}º` : `${p.turno}º turno`;
   const cq = p.cuotas;
-  const linea = (l, k) => `<tr class="${k ? 'b' : 'a'}${cq ? '' : ' sin-cuota'}">
-    ${k ? '' : `<td rowspan="2" class="c-hora"><b class="mono">${esc(horaCl)}</b><span class="loc mono">${esc(local)} local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">${esc(p.cancha || '—')}</span><span class="loc">${esc(turno)}</span></td>
+  const clave = `${p.t.nombre}|${p.ordenTs}`;
+  const linea = (l, k) => `<tr class="${k ? 'b' : 'a'}" data-torneo="${esc(p.t.nombre)}" data-ts="${p.ordenTs}" data-par="${esc(clave)}">
+    ${k ? '' : `<td rowspan="2" class="c-cuando"><b class="mono">${esc(dia)}</b><span class="loc mono">${esc(local)} loc · <b>${esc(horaCl)}</b> CL</span></td>
     <td rowspan="2" class="c-torneo">${esc(p.t.nombre)}<span class="loc">${esc(p.t.pais)} · ${esc(p.t.superficie || '')}</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">${p.evento === 'Q' ? 'Q·' : ''}${esc(p.ronda)}</span></td>`}
+    <td rowspan="2" class="c-ronda"><span class="mono">${p.evento === 'Q' ? 'Q·' : ''}${esc(p.ronda)}</span><span class="loc">${esc(p.cancha || '')} ${esc(turno)}</span></td>`}
     <td class="c-jug">${esc(l.nombre)}${l.marca ? ` <b>${esc(l.marca)}</b>` : ''}<span class="pais">${esc(l.pais)}</span></td>
     <td class="c-rank mono">${esc(l.rank || '')}</td>
     <td class="c-od mono">${num(cq?.lados[k].gana)}</td>
@@ -257,7 +254,7 @@ const html = `<title>Mesa ITF</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 :root{--papel:#F3F5F7;--carta:#FFF;--tinta:#1A2732;--tinta2:#5A6B7A;--linea:#D9E0E6;
-  --acento:#0F6B5C;--acento-suave:#E3EFEB;--alerta:#A33B2A;--ambar:#8A6116;--franja:#FAFBFC}
+  --acento:#0F6B5C;--acento-suave:#E3EFEB;--alerta:#A33B2A;--ambar:#8A6116;--franja:#F7F9FA}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--papel:#0F151B;--carta:#161F28;
   --tinta:#DAE4EC;--tinta2:#8FA1B0;--linea:#26313C;--acento:#3FB79E;--acento-suave:#15302B;
   --alerta:#E08A79;--ambar:#D9A94B;--franja:#131C24}}
@@ -265,74 +262,93 @@ const html = `<title>Mesa ITF</title>
   --linea:#26313C;--acento:#3FB79E;--acento-suave:#15302B;--alerta:#E08A79;--ambar:#D9A94B;--franja:#131C24}
 *{box-sizing:border-box}
 body{margin:0;background:var(--papel);color:var(--tinta);font:14px/1.45 "IBM Plex Sans",system-ui,sans-serif}
-.envoltura{max-width:1500px;margin:0 auto;padding:20px 14px 50px}
-.cabecera{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px}
-.cabecera h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:32px;margin:0;letter-spacing:.5px}
+.envoltura{max-width:1500px;margin:0 auto;padding:18px 14px 50px}
+.cabecera{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.cabecera h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:31px;margin:0;letter-spacing:.5px}
 .edad{font-size:13px;color:var(--tinta2)} .edad b{font-variant-numeric:tabular-nums}
 .edad.vieja b{color:var(--ambar)} .edad.rancia b{color:var(--alerta)}
-button.recargar{margin-left:auto;font:600 14px "IBM Plex Sans",sans-serif;color:var(--acento);
-  background:var(--acento-suave);border:1px solid transparent;border-radius:6px;padding:8px 16px;cursor:pointer}
-button.recargar:hover{border-color:var(--acento)}
-button.recargar:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
-.nota{font-size:12.5px;color:var(--tinta2);margin:0 0 14px}
-h2.dia{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:19px;letter-spacing:1px;
-  text-transform:uppercase;color:var(--acento);margin:22px 0 8px}
+.controles{margin-left:auto;display:flex;gap:8px;align-items:center}
+.orden{font-size:12.5px;color:var(--tinta2)}
+button{font:600 13px "IBM Plex Sans",sans-serif;color:var(--acento);background:var(--acento-suave);
+  border:1px solid transparent;border-radius:6px;padding:7px 13px;cursor:pointer}
+button:hover{border-color:var(--acento)} button:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+button.on{background:var(--acento);color:var(--carta)}
+.nota{font-size:12.5px;color:var(--tinta2);margin:0 0 12px}
 .tabla-env{overflow-x:auto;background:var(--carta);border:1px solid var(--linea);border-radius:6px}
-table{border-collapse:collapse;width:100%;min-width:1180px}
+table{border-collapse:collapse;width:100%;min-width:1150px}
 th{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;
-  text-transform:uppercase;color:var(--tinta2);text-align:left;padding:8px 10px;
+  text-transform:uppercase;color:var(--tinta2);text-align:left;padding:9px 10px;
   border-bottom:1px solid var(--linea);white-space:nowrap;background:var(--carta);position:sticky;top:0;z-index:1}
 th.n{text-align:right}
-td{padding:5px 10px;vertical-align:top;border-bottom:1px solid transparent}
+td{padding:5px 10px;vertical-align:top}
 tr.a td{padding-top:8px} tr.b td{padding-bottom:8px;border-bottom:1px solid var(--linea)}
 tr.a td[rowspan]{border-bottom:1px solid var(--linea)}
-tbody tr.a:nth-of-type(4n+1) td,tbody tr.b:nth-of-type(4n+2) td{background:var(--franja)}
-.c-hora b{font-size:15px;font-weight:600;display:block;font-variant-numeric:tabular-nums}
-.loc{display:block;font-size:11px;color:var(--tinta2);margin-top:1px}
-.c-cancha .mono{font-size:12px}
-.c-torneo{font-size:13px;min-width:150px}
+tr.par td{background:var(--franja)}
+.c-cuando b{font-size:14px;font-weight:600;display:block;font-variant-numeric:tabular-nums;text-transform:capitalize}
+.c-cuando .loc b{display:inline;font-size:12px;color:var(--tinta)}
+.loc{display:block;font-size:11px;color:var(--tinta2);margin-top:1px;font-weight:400}
+.c-torneo{font-size:13px;min-width:145px}
 .c-ronda .mono{font-size:12px;font-weight:600;color:var(--acento)}
-.c-jug{font-weight:500;min-width:190px} .c-jug b{color:var(--acento);font-weight:600}
+.c-jug{font-weight:500;min-width:185px} .c-jug b{color:var(--acento);font-weight:600}
 .c-jug .pais{color:var(--tinta2);font-size:11px;margin-left:5px;font-weight:400}
 .c-rank{font-size:12px;color:var(--tinta2);white-space:nowrap}
-.c-od{text-align:right;font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;width:64px}
+.c-od{text-align:right;font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;width:62px}
 .c-llega{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tinta2);line-height:1.6}
 .c-llega i{font-style:normal} .c-llega .g{color:var(--acento);font-weight:600}
 .c-llega .p{color:var(--alerta);font-weight:600} .c-llega .vs{color:var(--tinta);font-weight:600}
 .c-link{white-space:nowrap;font-size:12.5px}
 .c-link a{color:var(--acento);text-decoration:none} .c-link a:hover{text-decoration:underline}
 .sin{color:var(--tinta2);opacity:.45}
-tr.sin-cuota .c-jug{opacity:.88}
 .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 .vacio{color:var(--tinta2);padding:34px;text-align:center;background:var(--carta);
   border:1px solid var(--linea);border-radius:6px}
-footer{color:var(--tinta2);font-size:12px;border-top:1px solid var(--linea);padding-top:12px;margin-top:24px}
+footer{color:var(--tinta2);font-size:12px;border-top:1px solid var(--linea);padding-top:12px;margin-top:20px}
 a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 </style>
 <div class="envoltura">
 <div class="cabecera">
   <h1>Mesa ITF</h1>
   <span class="edad" id="edad" data-generado="${generado}">datos de hace <b>—</b></span>
-  <button class="recargar" onclick="location.reload(true)">↻ Recargar</button>
+  <div class="controles">
+    <span class="orden">Ordenar:</span>
+    <button id="b-torneo" class="on" onclick="ordenar('torneo')">Campeonato</button>
+    <button id="b-hora" onclick="ordenar('hora')">Hora</button>
+    <button onclick="location.reload(true)">↻ Recargar</button>
+  </div>
 </div>
-<p class="nota">Programación oficial ITF (order of play) de los ${activos.length} torneos en juego · hora de Chile y hora local · ${partidos.length} partidos por jugar, ${conCuota} con cuota de Betano. Las cuotas aparecen cuando Betano abre la línea; el partido está igual.</p>
-${dias.map(f => {
-  const delDia = partidos.filter(p => p.fecha === f);
-  if (!delDia.length) return '';
-  return `<h2 class="dia">${esc(fmtDia(f))}</h2>
-  <div class="tabla-env"><table>
-    <thead><tr><th>Hora CL</th><th>Cancha</th><th>Torneo</th><th>Ronda</th><th>Jugador</th><th>Ranking</th>
-      <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
-    <tbody>${delDia.map(filas).join('')}</tbody>
-  </table></div>`;
-}).join('') || '<p class="vacio">Sin programación publicada por ITF para hoy o mañana. Recarga más tarde o pide un refresco.</p>'}
-<footer>Generado ${generado.slice(0, 16).replace('T', ' ')} UTC · ITF manda: order of play y cuadros oficiales de itftennis.com · Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) · "Followed By" = turno estimado a partir del inicio de la cancha.</footer>
+<p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · ${partidos.length} partidos, ${conCuota} con cuota de Betano · hora local del torneo y hora de Chile.</p>
+${partidos.length ? `<div class="tabla-env"><table>
+  <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Jugador</th><th>Ranking</th>
+    <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
+  <tbody id="cuerpo">${partidos.map(filas).join('')}</tbody>
+</table></div>` : '<p class="vacio">Nada por jugar en la programación de ITF ahora mismo. Recarga más tarde.</p>'}
+<footer>Generado ${generado.slice(0, 16).replace('T', ' ')} UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
 </div>
 <script>
-(function(){var el=document.getElementById('edad');function p(){var m=Math.round((Date.now()-new Date(el.dataset.generado).getTime())/60000);
-el.innerHTML='datos de hace <b>'+(m<60?m+' min':(m/60).toFixed(1)+' h')+'</b>';
-el.className='edad'+(m>360?' rancia':m>120?' vieja':'');}p();setInterval(p,60000);})();
+(function(){
+  var el=document.getElementById('edad');
+  function p(){var m=Math.round((Date.now()-new Date(el.dataset.generado).getTime())/60000);
+    el.innerHTML='datos de hace <b>'+(m<60?m+' min':(m/60).toFixed(1)+' h')+'</b>';
+    el.className='edad'+(m>360?' rancia':m>120?' vieja':'');}
+  p();setInterval(p,60000);
+  var cuerpo=document.getElementById('cuerpo');
+  if(!cuerpo)return;
+  window.ordenar=function(modo){
+    var pares=[],vistos={};
+    Array.prototype.forEach.call(cuerpo.querySelectorAll('tr.a'),function(tr){
+      pares.push({a:tr,b:tr.nextElementSibling,torneo:tr.dataset.torneo,ts:+tr.dataset.ts});});
+    pares.sort(function(x,y){return modo==='hora'
+      ? x.ts-y.ts || x.torneo.localeCompare(y.torneo)
+      : x.torneo.localeCompare(y.torneo) || x.ts-y.ts;});
+    pares.forEach(function(par,i){
+      par.a.classList.toggle('par',i%2===1); par.b.classList.toggle('par',i%2===1);
+      cuerpo.appendChild(par.a); cuerpo.appendChild(par.b);});
+    document.getElementById('b-torneo').className=modo==='hora'?'':'on';
+    document.getElementById('b-hora').className=modo==='hora'?'on':'';
+  };
+  window.ordenar('torneo');
+})();
 </script>`;
 
 fs.writeFileSync(SALIDA, html);
-console.log(`✓ ${SALIDA} (${(html.length / 1024).toFixed(0)} KB) · ${partidos.length} partidos por jugar (${conCuota} con cuota) · ${dias.length} días · ${activos.length} torneos`);
+console.log(`✓ ${SALIDA} (${(html.length / 1024).toFixed(0)} KB) · ${partidos.length} por jugar (${conCuota} con cuota) · ${activos.length} torneos`);

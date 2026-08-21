@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 :root{--papel:#F3F5F7;--carta:#FFF;--tinta:#1A2732;--tinta2:#5A6B7A;--linea:#D9E0E6;
-  --acento:#0F6B5C;--acento-suave:#E3EFEB;--alerta:#A33B2A;--ambar:#8A6116;--franja:#FAFBFC}
+  --acento:#0F6B5C;--acento-suave:#E3EFEB;--alerta:#A33B2A;--ambar:#8A6116;--franja:#F7F9FA}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--papel:#0F151B;--carta:#161F28;
   --tinta:#DAE4EC;--tinta2:#8FA1B0;--linea:#26313C;--acento:#3FB79E;--acento-suave:#15302B;
   --alerta:#E08A79;--ambar:#D9A94B;--franja:#131C24}}
@@ -12,192 +12,75 @@
   --linea:#26313C;--acento:#3FB79E;--acento-suave:#15302B;--alerta:#E08A79;--ambar:#D9A94B;--franja:#131C24}
 *{box-sizing:border-box}
 body{margin:0;background:var(--papel);color:var(--tinta);font:14px/1.45 "IBM Plex Sans",system-ui,sans-serif}
-.envoltura{max-width:1500px;margin:0 auto;padding:20px 14px 50px}
-.cabecera{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px}
-.cabecera h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:32px;margin:0;letter-spacing:.5px}
+.envoltura{max-width:1500px;margin:0 auto;padding:18px 14px 50px}
+.cabecera{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.cabecera h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:31px;margin:0;letter-spacing:.5px}
 .edad{font-size:13px;color:var(--tinta2)} .edad b{font-variant-numeric:tabular-nums}
 .edad.vieja b{color:var(--ambar)} .edad.rancia b{color:var(--alerta)}
-button.recargar{margin-left:auto;font:600 14px "IBM Plex Sans",sans-serif;color:var(--acento);
-  background:var(--acento-suave);border:1px solid transparent;border-radius:6px;padding:8px 16px;cursor:pointer}
-button.recargar:hover{border-color:var(--acento)}
-button.recargar:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
-.nota{font-size:12.5px;color:var(--tinta2);margin:0 0 14px}
-h2.dia{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:19px;letter-spacing:1px;
-  text-transform:uppercase;color:var(--acento);margin:22px 0 8px}
+.controles{margin-left:auto;display:flex;gap:8px;align-items:center}
+.orden{font-size:12.5px;color:var(--tinta2)}
+button{font:600 13px "IBM Plex Sans",sans-serif;color:var(--acento);background:var(--acento-suave);
+  border:1px solid transparent;border-radius:6px;padding:7px 13px;cursor:pointer}
+button:hover{border-color:var(--acento)} button:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+button.on{background:var(--acento);color:var(--carta)}
+.nota{font-size:12.5px;color:var(--tinta2);margin:0 0 12px}
 .tabla-env{overflow-x:auto;background:var(--carta);border:1px solid var(--linea);border-radius:6px}
-table{border-collapse:collapse;width:100%;min-width:1180px}
+table{border-collapse:collapse;width:100%;min-width:1150px}
 th{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;
-  text-transform:uppercase;color:var(--tinta2);text-align:left;padding:8px 10px;
+  text-transform:uppercase;color:var(--tinta2);text-align:left;padding:9px 10px;
   border-bottom:1px solid var(--linea);white-space:nowrap;background:var(--carta);position:sticky;top:0;z-index:1}
 th.n{text-align:right}
-td{padding:5px 10px;vertical-align:top;border-bottom:1px solid transparent}
+td{padding:5px 10px;vertical-align:top}
 tr.a td{padding-top:8px} tr.b td{padding-bottom:8px;border-bottom:1px solid var(--linea)}
 tr.a td[rowspan]{border-bottom:1px solid var(--linea)}
-tbody tr.a:nth-of-type(4n+1) td,tbody tr.b:nth-of-type(4n+2) td{background:var(--franja)}
-.c-hora b{font-size:15px;font-weight:600;display:block;font-variant-numeric:tabular-nums}
-.loc{display:block;font-size:11px;color:var(--tinta2);margin-top:1px}
-.c-cancha .mono{font-size:12px}
-.c-torneo{font-size:13px;min-width:150px}
+tr.par td{background:var(--franja)}
+.c-cuando b{font-size:14px;font-weight:600;display:block;font-variant-numeric:tabular-nums;text-transform:capitalize}
+.c-cuando .loc b{display:inline;font-size:12px;color:var(--tinta)}
+.loc{display:block;font-size:11px;color:var(--tinta2);margin-top:1px;font-weight:400}
+.c-torneo{font-size:13px;min-width:145px}
 .c-ronda .mono{font-size:12px;font-weight:600;color:var(--acento)}
-.c-jug{font-weight:500;min-width:190px} .c-jug b{color:var(--acento);font-weight:600}
+.c-jug{font-weight:500;min-width:185px} .c-jug b{color:var(--acento);font-weight:600}
 .c-jug .pais{color:var(--tinta2);font-size:11px;margin-left:5px;font-weight:400}
 .c-rank{font-size:12px;color:var(--tinta2);white-space:nowrap}
-.c-od{text-align:right;font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;width:64px}
+.c-od{text-align:right;font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;width:62px}
 .c-llega{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tinta2);line-height:1.6}
 .c-llega i{font-style:normal} .c-llega .g{color:var(--acento);font-weight:600}
 .c-llega .p{color:var(--alerta);font-weight:600} .c-llega .vs{color:var(--tinta);font-weight:600}
 .c-link{white-space:nowrap;font-size:12.5px}
 .c-link a{color:var(--acento);text-decoration:none} .c-link a:hover{text-decoration:underline}
 .sin{color:var(--tinta2);opacity:.45}
-tr.sin-cuota .c-jug{opacity:.88}
 .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 .vacio{color:var(--tinta2);padding:34px;text-align:center;background:var(--carta);
   border:1px solid var(--linea);border-radius:6px}
-footer{color:var(--tinta2);font-size:12px;border-top:1px solid var(--linea);padding-top:12px;margin-top:24px}
+footer{color:var(--tinta2);font-size:12px;border-top:1px solid var(--linea);padding-top:12px;margin-top:20px}
 a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 </style>
 <div class="envoltura">
 <div class="cabecera">
   <h1>Mesa ITF</h1>
-  <span class="edad" id="edad" data-generado="2026-08-21T18:55:38.558Z">datos de hace <b>—</b></span>
-  <button class="recargar" onclick="location.reload(true)">↻ Recargar</button>
+  <span class="edad" id="edad" data-generado="2026-08-21T19:16:11.010Z">datos de hace <b>—</b></span>
+  <div class="controles">
+    <span class="orden">Ordenar:</span>
+    <button id="b-torneo" class="on" onclick="ordenar('torneo')">Campeonato</button>
+    <button id="b-hora" onclick="ordenar('hora')">Hora</button>
+    <button onclick="location.reload(true)">↻ Recargar</button>
+  </div>
 </div>
-<p class="nota">Programación oficial ITF (order of play) de los 14 torneos en juego · hora de Chile y hora local · 30 partidos por jugar, 5 con cuota de Betano. Las cuotas aparecen cuando Betano abre la línea; el partido está igual.</p>
-<h2 class="dia">viernes, 21 de agosto</h2>
-  <div class="tabla-env"><table>
-    <thead><tr><th>Hora CL</th><th>Cancha</th><th>Torneo</th><th>Ronda</th><th>Jugador</th><th>Ranking</th>
-      <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
-    <tbody><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">12:30</b><span class="loc mono">no antes 18:30 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">2º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Santander<span class="loc">Spain · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span></td>
-    <td class="c-jug">Sergi Fita Juan<span class="pais">ESP</span></td>
-    <td class="c-rank mono">ATP 1074</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 2-6 6-2 6-3 <i class="vs">vQ</i> · <i class="g">R2✓</i> 4-6 6-3 7-5 <i class="vs">v[4]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Alejandro Juan Mano <b>[8]</b><span class="pais">ESP</span></td>
-    <td class="c-rank mono">ATP 645</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-4 <i class="vs">vWC</i> · <i class="g">R2✓</i> 7-6(6) 4-6 7-5</td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">13:00</b><span class="loc mono">14:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 4</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M15 Asuncion<span class="loc">Paraguay · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Maxwell Exsted<span class="pais">USA</span></td>
-    <td class="c-rank mono">ATP 980</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-0 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-0 7-5 <i class="vs">v[7]</i> · <i class="g">QF✓</i> 6-2 6-3 <i class="vs">v[4]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Joaquin Aguilar Cardozo <b>[2]</b><span class="pais">URU</span></td>
-    <td class="c-rank mono">ATP 482</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-0 · <i class="g">R2✓</i> 6-1 6-4 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-1 6-1 <i class="vs">v[6]</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">22:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Show Court</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Taipei<span class="loc">Chinese Taipei · Hard</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Yu Hsiou Hsu <b>[1]</b><span class="pais">TPE</span></td>
-    <td class="c-rank mono">ATP 222</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-6(5) 6-3 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-2 7-6(5) <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-3 6-2 <i class="vs">vQ</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Masamichi Imamura <b>[5]</b><span class="pais">JPN</span></td>
-    <td class="c-rank mono">ATP 409</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-1 · <i class="g">R2✓</i> 6-1 6-0 <i class="vs">vQ</i> · <i class="g">QF✓</i> 3-6 6-0 10-2</td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">22:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Taipei<span class="loc">Chinese Taipei · Hard</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Shunsuke Mitsui<span class="pais">JPN</span></td>
-    <td class="c-rank mono">ATP 651</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">v[8]</i> · <i class="g">R2✓</i> 6-2 6-1 · <i class="g">QF✓</i> 7-6(4) 4-6 10-7 <i class="vs">v[3]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Matthew Dellavedova <b>[2]</b><span class="pais">AUS</span></td>
-    <td class="c-rank mono">ATP 309</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-6(1) 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-1 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-2 6-4</td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">22:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">C2 (Center Court) </span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M15 Maanshan<span class="loc">China, P.R. · Hard</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Yun Seong Chung<span class="pais">KOR</span></td>
-    <td class="c-rank mono">ATP 1059</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-4 <i class="vs">v[4]</i> · <i class="g">R2✓</i> 6-3 6-3 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-2 <i class="vs">vQ</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">M Rifqi Fitriadi <b>[2]</b><span class="pais">INA</span></td>
-    <td class="c-rank mono">ATP 549</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 5-7 6-0 · <i class="g">R2✓</i> 6-3 6-1 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-4 7-6(1) <i class="vs">v[8]</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">22:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 3</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M15 Maanshan<span class="loc">China, P.R. · Hard</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Petr Bar Biryukov <b>[1]</b><span class="pais">RUS</span></td>
-    <td class="c-rank mono">ATP 281</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-4 6(6)-7 6-4 <i class="vs">vQ</i> · <i class="g">QF✓</i> 7-6(3) 6-4 <i class="vs">v[7]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Kokoro Isomura <b>[3]</b><span class="pais">JPN</span></td>
-    <td class="c-rank mono">ATP 562</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 3-6 7-6(5) 6-1 · <i class="g">R2✓</i> 6-2 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-1 6-3 <i class="vs">v[5]</i></td>
-    
-  </tr></tbody>
-  </table></div><h2 class="dia">sábado, 22 de agosto</h2>
-  <div class="tabla-env"><table>
-    <thead><tr><th>Hora CL</th><th>Cancha</th><th>Torneo</th><th>Ronda</th><th>Jugador</th><th>Ranking</th>
-      <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
-    <tbody><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">03:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Center Court</span><span class="loc">1º</span></td>
+<p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · 27 partidos, 5 con cuota de Betano · hora local del torneo y hora de Chile.</p>
+<div class="tabla-env"><table>
+  <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Jugador</th><th>Ranking</th>
+    <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
+  <tbody id="cuerpo"><tr class="a" data-torneo="M15 Arad" data-ts="1787382000000" data-par="M15 Arad|1787382000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>03:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Arad<span class="loc">Romania · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Center Court 1º</span></td>
     <td class="c-jug">Robert Guna <b>[7]</b><span class="pais">ROU</span></td>
     <td class="c-rank mono">ATP 1028</td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-0 <i class="vs">vJR</i> · <i class="g">R2✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-1 6-3 <i class="vs">v[4]</i></td>
     <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
+  </tr><tr class="b" data-torneo="M15 Arad" data-ts="1787382000000" data-par="M15 Arad|1787382000000">
     
     <td class="c-jug">Iannis Miletich<span class="pais">ITA</span></td>
     <td class="c-rank mono">ATP 1136</td>
@@ -205,132 +88,17 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 7-6(6) 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 3-6 6-1 4-0 <i class="vs">v[2]</i> · <i class="g">QF✓</i> 7-6(2) 3-6 6-0 <i class="vs">v[6]</i></td>
     
-  </tr><tr class="a">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">R2</span></td>
-    <td class="c-jug">Daniele Rapagnetta<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 734</td>
-    <td class="c-od mono">1.91</td>
-    <td class="c-od mono">1.90</td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 3-6 7-5 <i class="vs">v[8]</i></td>
-    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91051197/" target="_blank" rel="noopener">Betano ↗</a></td>
-  </tr><tr class="b">
-    
-    <td class="c-jug">Manuel Mazza<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 756</td>
-    <td class="c-od mono">1.75</td>
-    <td class="c-od mono">1.78</td>
-    <td class="c-llega"><i class="g">R1✓</i> 3-6 6-4 6-3</td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 2</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">R2</span></td>
-    <td class="c-jug">Denis Constantin Spiridon <b>Q</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 1107</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">Q1✓</i> 6-4 6-3 · <i class="g">Q2✓</i> 6-3 6-1 <i class="vs">v[14]</i> · <i class="g">R1✓</i> 6-3 4-6 6-4</td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Laurent Lokoli <b>[3]</b><span class="pais">FRA</span></td>
-    <td class="c-rank mono">ATP 384</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-4 <i class="vs">vQ</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 3</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">R2</span></td>
-    <td class="c-jug">Samuele Seghetti <b>WC</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 1486</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-0 <i class="vs">v[5]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Lorenzo Rottoli<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 896</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-0 3-6 6-0 <i class="vs">vQ</i></td>
-    
-  </tr><tr class="a">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">VOLKSBANK C-Court</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span></td>
-    <td class="c-jug">Mika Petkovic <b>[4]</b><span class="pais">GER</span></td>
-    <td class="c-rank mono">ATP 428</td>
-    <td class="c-od mono">1.38</td>
-    <td class="c-od mono">1.45</td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 2-6 6-4 6-3 <i class="vs">vQ</i></td>
-    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91106986/" target="_blank" rel="noopener">Betano ↗</a></td>
-  </tr><tr class="b">
-    
-    <td class="c-jug">TIM Handel<span class="pais">GER</span></td>
-    <td class="c-rank mono">ATP 772</td>
-    <td class="c-od mono">2.75</td>
-    <td class="c-od mono">2.50</td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 7-6(8) · <i class="g">R2✓</i> 6-2 6-4 <i class="vs">v[7]</i></td>
-    
-  </tr><tr class="a">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">DISPLAY-MAX Court</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span></td>
-    <td class="c-jug">Nicola Senn <b>Q</b><span class="pais">SUI</span></td>
-    <td class="c-rank mono">ATP 1832</td>
-    <td class="c-od mono">2.37</td>
-    <td class="c-od mono">2.25</td>
-    <td class="c-llega"><i class="g">Q1✓</i> 6-3 7-6(3) <i class="vs">vWC</i> · <i class="g">Q2✓</i> 6-2 6-0 <i class="vs">v[13]</i> · <i class="g">R1✓</i> 6-3 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 4-2 <i class="vs">v[1]</i></td>
-    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91096643/" target="_blank" rel="noopener">Betano ↗</a></td>
-  </tr><tr class="b">
-    
-    <td class="c-jug">Tymur Bieldiugin <b>Q</b><span class="pais">UKR</span></td>
-    <td class="c-rank mono">ATP 1582</td>
-    <td class="c-od mono">1.50</td>
-    <td class="c-od mono">1.55</td>
-    <td class="c-llega"><i class="g">Q1✓</i> 6-0 6-2 · <i class="g">Q2✓</i> 6-3 6-1 <i class="vs">v[10]</i> · <i class="g">R1✓</i> 2-6 7-6(2) 6-3 · <i class="g">R2✓</i> 6-1 6(4)-7 6-2 <i class="vs">v[8]</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">C1 Pro-Ject </span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M15 Mistelbach<span class="loc">Austria · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Nikita Mashtakov <b>[3]</b><span class="pais">UKR</span></td>
-    <td class="c-rank mono">ATP 652</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 5-7 7-6(6) · <i class="g">R2✓</i> 7-6(5) 6-3 <i class="vs">vLL</i> · <i class="g">QF✓</i> 7-6(5) 4-6 6-0</td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Marcel Zielinski <b>[2]</b><span class="pais">POL</span></td>
-    <td class="c-rank mono">ATP 586</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 7-6(5) 6-2 · <i class="g">QF✓</i> 6-1 6(2)-7 6-2 <i class="vs">v[7]</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">03:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Center Court</span><span class="loc">2º turno</span></td>
+  </tr><tr class="a" data-torneo="M15 Arad" data-ts="1787386500000" data-par="M15 Arad|1787386500000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>03:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Arad<span class="loc">Romania · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Center Court 2º turno</span></td>
     <td class="c-jug">Matteo Sciahbasi<span class="pais">ITA</span></td>
     <td class="c-rank mono">ATP 1288</td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 5-7 7-6(2) 1-0 · <i class="g">R2✓</i> 6-2 6-4 <i class="vs">v[5]</i> · <i class="g">QF✓</i> 6-4 6-4</td>
     <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
+  </tr><tr class="b" data-torneo="M15 Arad" data-ts="1787386500000" data-par="M15 Arad|1787386500000">
     
     <td class="c-jug">Dragos Nicolae Madaras <b>[3]</b><span class="pais">SWE</span></td>
     <td class="c-rank mono">ATP 589</td>
@@ -338,18 +106,17 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-2 6-0 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-4 4-6 6-2 <i class="vs">vSE</i> · <i class="g">QF✓</i> 6-4 6-4 <i class="vs">v[8]</i></td>
     
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:15</b><span class="loc mono">10:15 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">1º</span></td>
+  </tr><tr class="a" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:15 loc · <b>04:15</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Bastad<span class="loc">Sweden · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
     <td class="c-jug">Leo Borg <b>[1]</b><span class="pais">SWE</span></td>
     <td class="c-rank mono">ATP 542</td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-3 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-0 6-3 · <i class="g">QF✓</i> 6-2 4-6 6-4</td>
     <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
+  </tr><tr class="b" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
     
     <td class="c-jug">John Hallquist Lithen <b>[4]</b><span class="pais">SWE</span></td>
     <td class="c-rank mono">ATP 761</td>
@@ -357,18 +124,17 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-0 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-3 6-0 · <i class="g">QF✓</i> 6-1 6-2 <i class="vs">v[8]</i></td>
     
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:15</b><span class="loc mono">10:15 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 5</span><span class="loc">1º</span></td>
+  </tr><tr class="a" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:15 loc · <b>04:15</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Bastad<span class="loc">Sweden · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 5 1º</span></td>
     <td class="c-jug">Jan Simonsson <b>WC</b><span class="pais">SWE</span></td>
     <td class="c-rank mono">ATP 1905</td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-3 5-7 6-2 <i class="vs">v[7]</i> · <i class="g">QF✓</i> 1-6 7-5 6-1</td>
     <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
+  </tr><tr class="b" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
     
     <td class="c-jug">Niklas Guttau<span class="pais">GER</span></td>
     <td class="c-rank mono">ATP 1211</td>
@@ -376,208 +142,17 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-2 · <i class="g">R2✓</i> 6-2 6-2 · <i class="g">QF✓</i> 3-6 6-2 6-1</td>
     
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:30</b><span class="loc mono">09:30 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Idanha-a-Nova<span class="loc">Portugal · Hard</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Rodrigo Fernandes<span class="pais">POR</span></td>
-    <td class="c-rank mono">ATP 1237</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-6(3) 1-6 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 7-5 7-5 <i class="vs">v[5]</i> · <i class="g">QF✓</i> 3-6 6-3 6-4 <i class="vs">v[1]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Pavel Lagutin <b>[3]</b><span class="pais">RUS</span></td>
-    <td class="c-rank mono">ATP 718</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-6(0) 7-6(3) · <i class="g">R2✓</i> 6-4 6-2 <i class="vs">vWC</i> · <i class="g">QF✓</i> 4-6 6-2 6-2</td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">05:00</b><span class="loc mono">11:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Center Court</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Slovenj Gradec<span class="loc">Slovenia · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Sebastian Dominko<span class="pais">SLO</span></td>
-    <td class="c-rank mono">ATP 1122</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 7-6(6) 6-1 <i class="vs">v[1]</i> · <i class="g">QF✓</i> 2-6 6-4 7-5 <i class="vs">v[5]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Sebastian Sorger <b>[3]</b><span class="pais">AUT</span></td>
-    <td class="c-rank mono">ATP 476</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-0 6-0 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-0 6-1 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-2 6-2</td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">05:00</b><span class="loc mono">11:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">1º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Slovenj Gradec<span class="loc">Slovenia · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Filip Jeff Planinsek <b>[6]</b><span class="pais">SLO</span></td>
-    <td class="c-rank mono">ATP 592</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 7-6(4) <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-0 6-0 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-0 6-2 <i class="vs">v[4]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Jonas GUNDACKER <b>Q</b><span class="pais">AUT</span></td>
-    <td class="c-rank mono">ATP 1876</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">Q2✓</i> 6-1 6-1 · <i class="g">Q3✓</i> 6-1 6-3 <i class="vs">v[9]</i> · <i class="g">R1✓</i> 7-6(2) 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 2-6 6-2 6-3 <i class="vs">v[2]</i> · <i class="g">QF✓</i> 6-1 6(7)-7 6-3 <i class="vs">vQ</i></td>
-    
-  </tr><tr class="a">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">2º turno</span></td>
-    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">R2</span></td>
-    <td class="c-jug">Lorenzo Comino <b>WC</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 1178</td>
-    <td class="c-od mono">4.75</td>
-    <td class="c-od mono">3.45</td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 4-0 <i class="vs">v[1]</i></td>
-    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91041098/" target="_blank" rel="noopener">Betano ↗</a></td>
-  </tr><tr class="b">
-    
-    <td class="c-jug">Pierluigi Basile<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 623</td>
-    <td class="c-od mono">1.14</td>
-    <td class="c-od mono">1.25</td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vWC</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 2</span><span class="loc">2º turno</span></td>
-    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">R2</span></td>
-    <td class="c-jug">Blu Baker<span class="pais">GBR</span></td>
-    <td class="c-rank mono">ATP 959</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-2 4-6 6-4 <i class="vs">vQ</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Andrea De Marchi<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 813</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-5 2-1 <i class="vs">v[2]</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 3</span><span class="loc">2º turno</span></td>
-    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">R2</span></td>
-    <td class="c-jug">Nico Hipfl<span class="pais">AUT</span></td>
-    <td class="c-rank mono">ATP 918</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-6(4) 6-2 <i class="vs">vQ</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Stefano Reitano <b>WC</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono"></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-6(7) <i class="vs">v[6]</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">VOLKSBANK C-Court</span><span class="loc">2º turno</span></td>
-    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span></td>
-    <td class="c-jug">Maximilian Marterer <b>WC</b><span class="pais">GER</span></td>
-    <td class="c-rank mono"></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 2-6 6-0 6-3 · <i class="g">R2✓</i> 7-6(3) 7-6(4) <i class="vs">v[6]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Daniel Masur <b>[2]</b><span class="pais">GER</span></td>
-    <td class="c-rank mono">ATP 377</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-3 · <i class="g">R2✓</i> 7-6(8) 6-3 <i class="vs">vWC</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">DISPLAY-MAX Court</span><span class="loc">2º turno</span></td>
-    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span></td>
-    <td class="c-jug">Jannik Maute <b>Q</b><span class="pais">GER</span></td>
-    <td class="c-rank mono">WTN 10.68</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">Q1✓</i> 6-2 6-0 <i class="vs">v[15]</i> · <i class="g">Q2✓</i> 6-2 6-4 <i class="vs">v[1]</i> · <i class="g">R1✓</i> 6-3 7-5 <i class="vs">vWC</i> · <i class="g">R2✓</i> 7-6(3) 6(5)-7 6-4 <i class="vs">v[5]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Arthur Nagel <b>[3]</b><span class="pais">FRA</span></td>
-    <td class="c-rank mono">ATP 399</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-1 6(6)-7 6-2</td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">06:00</b><span class="loc mono">no antes 11:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">2º</span></td>
-    <td rowspan="2" class="c-torneo">M25 Idanha-a-Nova<span class="loc">Portugal · Hard</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Goncalo Marques<span class="pais">POR</span></td>
-    <td class="c-rank mono">ATP 1025</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-6(7) 7-5 · <i class="g">R2✓</i> 6-3 6-4 <i class="vs">v[4]</i> · <i class="g">QF✓</i> 6-3 3-6 7-5 <i class="vs">v[8]</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Andrea Colombo<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 1048</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-2 7-6(5) <i class="vs">v[2]</i> · <i class="g">R2✓</i> 2-6 6-3 6-2 · <i class="g">QF✓</i> 7-5 6-2 <i class="vs">v[6]</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">06:00</b><span class="loc mono">no antes 12:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">C1 Pro-Ject </span><span class="loc">2º</span></td>
-    <td rowspan="2" class="c-torneo">M15 Mistelbach<span class="loc">Austria · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
-    <td class="c-jug">Gabriele Maria Noce <b>[6]</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 855</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-2 4-6 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-3 6-4 · <i class="g">QF✓</i> 6-2 6-4 <i class="vs">vQ</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Thilo Behrmann <b>JR</b><span class="pais">AUT</span></td>
-    <td class="c-rank mono">WTN 13.28</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-0 <i class="vs">v[5]</i> · <i class="g">R2✓</i> 6-1 6-2 · <i class="g">QF✓</i> 6-0 7-6(5) <i class="vs">vQ</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">06:00</b><span class="loc mono">12:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 9</span><span class="loc">1º</span></td>
+  </tr><tr class="a" data-torneo="M15 Lambermont" data-ts="1787392800000" data-par="M15 Lambermont|1787392800000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">12:00 loc · <b>06:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Lambermont<span class="loc">Belgium · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 9 1º</span></td>
     <td class="c-jug">Jack Loge <b>[1]</b><span class="pais">BEL</span></td>
     <td class="c-rank mono">ATP 410</td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vLL</i> · <i class="g">R2✓</i> 6-0 6-4 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6(3)-7 6-3 6-3 <i class="vs">v[8]</i></td>
     <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
+  </tr><tr class="b" data-torneo="M15 Lambermont" data-ts="1787392800000" data-par="M15 Lambermont|1787392800000">
     
     <td class="c-jug">Marlon Vankan <b>[3]</b><span class="pais">GER</span></td>
     <td class="c-rank mono">ATP 616</td>
@@ -585,56 +160,17 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-3 7-6(4) · <i class="g">R2✓</i> 6-2 7-6(3) <i class="vs">vQ</i> · <i class="g">QF✓</i> 1-6 7-6(6) 6-1 <i class="vs">v[5]</i></td>
     
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 1</span><span class="loc">3º turno</span></td>
-    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">R2</span></td>
-    <td class="c-jug">Kasra Rahmani<span class="pais">IRI</span></td>
-    <td class="c-rank mono">ATP 782</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 7-5 6-3 <i class="vs">vQ</i></td>
-    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
-    
-    <td class="c-jug">Alexander Weis <b>[7]</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 531</td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-od mono"><span class="sin">·</span></td>
-    <td class="c-llega"><i class="g">R1✓</i> 5-7 6-2 6-3</td>
-    
-  </tr><tr class="a">
-    <td rowspan="2" class="c-hora"><b class="mono">04:00</b><span class="loc mono">10:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 2</span><span class="loc">3º turno</span></td>
-    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">R2</span></td>
-    <td class="c-jug">Juan Cruz Martin Manzano <b>[4]</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 438</td>
-    <td class="c-od mono">1.62</td>
-    <td class="c-od mono">1.67</td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-1 <i class="vs">vQ</i></td>
-    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91044602/" target="_blank" rel="noopener">Betano ↗</a></td>
-  </tr><tr class="b">
-    
-    <td class="c-jug">Giovanni Oradini<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 636</td>
-    <td class="c-od mono">2.10</td>
-    <td class="c-od mono">2.02</td>
-    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-1 <i class="vs">vQ</i></td>
-    
-  </tr><tr class="a sin-cuota">
-    <td rowspan="2" class="c-hora"><b class="mono">10:00</b><span class="loc mono">no antes 16:00 local</span></td>
-    <td rowspan="2" class="c-cancha"><span class="mono">Court 9</span><span class="loc">3º</span></td>
+  </tr><tr class="a" data-torneo="M15 Lambermont" data-ts="1787407200000" data-par="M15 Lambermont|1787407200000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 16:00 loc · <b>10:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Lambermont<span class="loc">Belgium · Clay</span></td>
-    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 9 3º</span></td>
     <td class="c-jug">Martin VAN DER MEERSCHEN <b>[4]</b><span class="pais">BEL</span></td>
     <td class="c-rank mono">ATP 723</td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-2 2-6 6-2 · <i class="g">QF✓</i> 6-2 6-2</td>
     <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
-  </tr><tr class="b sin-cuota">
+  </tr><tr class="b" data-torneo="M15 Lambermont" data-ts="1787407200000" data-par="M15 Lambermont|1787407200000">
     
     <td class="c-jug">Romain Faucon <b>[2]</b><span class="pais">BEL</span></td>
     <td class="c-rank mono">ATP 588</td>
@@ -642,12 +178,410 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-0 6-4 <i class="vs">vSE</i> · <i class="g">R2✓</i> 7-5 6-4 · <i class="g">QF✓</i> 6(5)-7 6-2 6-4 <i class="vs">vQ</i></td>
     
+  </tr><tr class="a" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Maanshan<span class="loc">China, P.R. · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C2 (Center Court)  1º</span></td>
+    <td class="c-jug">Yun Seong Chung<span class="pais">KOR</span></td>
+    <td class="c-rank mono">ATP 1059</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-4 <i class="vs">v[4]</i> · <i class="g">R2✓</i> 6-3 6-3 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-2 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
+    
+    <td class="c-jug">M Rifqi Fitriadi <b>[2]</b><span class="pais">INA</span></td>
+    <td class="c-rank mono">ATP 549</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 5-7 6-0 · <i class="g">R2✓</i> 6-3 6-1 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-4 7-6(1) <i class="vs">v[8]</i></td>
+    
+  </tr><tr class="a" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Maanshan<span class="loc">China, P.R. · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 3 1º</span></td>
+    <td class="c-jug">Petr Bar Biryukov <b>[1]</b><span class="pais">RUS</span></td>
+    <td class="c-rank mono">ATP 281</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-4 6(6)-7 6-4 <i class="vs">vQ</i> · <i class="g">QF✓</i> 7-6(3) 6-4 <i class="vs">v[7]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
+    
+    <td class="c-jug">Kokoro Isomura <b>[3]</b><span class="pais">JPN</span></td>
+    <td class="c-rank mono">ATP 562</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 3-6 7-6(5) 6-1 · <i class="g">R2✓</i> 6-2 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-1 6-3 <i class="vs">v[5]</i></td>
+    
+  </tr><tr class="a" data-torneo="M15 Mistelbach" data-ts="1787385600000" data-par="M15 Mistelbach|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Mistelbach<span class="loc">Austria · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C1 Pro-Ject  1º</span></td>
+    <td class="c-jug">Nikita Mashtakov <b>[3]</b><span class="pais">UKR</span></td>
+    <td class="c-rank mono">ATP 652</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 5-7 7-6(6) · <i class="g">R2✓</i> 7-6(5) 6-3 <i class="vs">vLL</i> · <i class="g">QF✓</i> 7-6(5) 4-6 6-0</td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M15 Mistelbach" data-ts="1787385600000" data-par="M15 Mistelbach|1787385600000">
+    
+    <td class="c-jug">Marcel Zielinski <b>[2]</b><span class="pais">POL</span></td>
+    <td class="c-rank mono">ATP 586</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 7-6(5) 6-2 · <i class="g">QF✓</i> 6-1 6(2)-7 6-2 <i class="vs">v[7]</i></td>
+    
+  </tr><tr class="a" data-torneo="M15 Mistelbach" data-ts="1787392800000" data-par="M15 Mistelbach|1787392800000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 12:00 loc · <b>06:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Mistelbach<span class="loc">Austria · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C1 Pro-Ject  2º</span></td>
+    <td class="c-jug">Gabriele Maria Noce <b>[6]</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 855</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 4-6 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-3 6-4 · <i class="g">QF✓</i> 6-2 6-4 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M15 Mistelbach" data-ts="1787392800000" data-par="M15 Mistelbach|1787392800000">
+    
+    <td class="c-jug">Thilo Behrmann <b>JR</b><span class="pais">AUT</span></td>
+    <td class="c-rank mono">WTN 13.28</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-0 <i class="vs">v[5]</i> · <i class="g">R2✓</i> 6-1 6-2 · <i class="g">QF✓</i> 6-0 7-6(5) <i class="vs">vQ</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Idanha-a-Nova" data-ts="1787387400000" data-par="M25 Idanha-a-Nova|1787387400000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">09:30 loc · <b>04:30</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Idanha-a-Nova<span class="loc">Portugal · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug">Rodrigo Fernandes<span class="pais">POR</span></td>
+    <td class="c-rank mono">ATP 1237</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(3) 1-6 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 7-5 7-5 <i class="vs">v[5]</i> · <i class="g">QF✓</i> 3-6 6-3 6-4 <i class="vs">v[1]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Idanha-a-Nova" data-ts="1787387400000" data-par="M25 Idanha-a-Nova|1787387400000">
+    
+    <td class="c-jug">Pavel Lagutin <b>[3]</b><span class="pais">RUS</span></td>
+    <td class="c-rank mono">ATP 718</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(0) 7-6(3) · <i class="g">R2✓</i> 6-4 6-2 <i class="vs">vWC</i> · <i class="g">QF✓</i> 4-6 6-2 6-2</td>
+    
+  </tr><tr class="a" data-torneo="M25 Idanha-a-Nova" data-ts="1787392800000" data-par="M25 Idanha-a-Nova|1787392800000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 11:00 loc · <b>06:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Idanha-a-Nova<span class="loc">Portugal · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 2º</span></td>
+    <td class="c-jug">Goncalo Marques<span class="pais">POR</span></td>
+    <td class="c-rank mono">ATP 1025</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(7) 7-5 · <i class="g">R2✓</i> 6-3 6-4 <i class="vs">v[4]</i> · <i class="g">QF✓</i> 6-3 3-6 7-5 <i class="vs">v[8]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Idanha-a-Nova" data-ts="1787392800000" data-par="M25 Idanha-a-Nova|1787392800000">
+    
+    <td class="c-jug">Andrea Colombo<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1048</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 7-6(5) <i class="vs">v[2]</i> · <i class="g">R2✓</i> 2-6 6-3 6-2 · <i class="g">QF✓</i> 7-5 6-2 <i class="vs">v[6]</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug">Daniele Rapagnetta<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 734</td>
+    <td class="c-od mono">1.91</td>
+    <td class="c-od mono">1.90</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 3-6 7-5 <i class="vs">v[8]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91051197/" target="_blank" rel="noopener">Betano ↗</a></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    
+    <td class="c-jug">Manuel Mazza<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 756</td>
+    <td class="c-od mono">1.75</td>
+    <td class="c-od mono">1.78</td>
+    <td class="c-llega"><i class="g">R1✓</i> 3-6 6-4 6-3</td>
+    
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 2 1º</span></td>
+    <td class="c-jug">Denis Constantin Spiridon <b>Q</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1107</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">Q1✓</i> 6-4 6-3 · <i class="g">Q2✓</i> 6-3 6-1 <i class="vs">v[14]</i> · <i class="g">R1✓</i> 6-3 4-6 6-4</td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    
+    <td class="c-jug">Laurent Lokoli <b>[3]</b><span class="pais">FRA</span></td>
+    <td class="c-rank mono">ATP 384</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-4 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 3 1º</span></td>
+    <td class="c-jug">Samuele Seghetti <b>WC</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1486</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-0 <i class="vs">v[5]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    
+    <td class="c-jug">Lorenzo Rottoli<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 896</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-0 3-6 6-0 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 1 2º turno</span></td>
+    <td class="c-jug">Lorenzo Comino <b>WC</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1178</td>
+    <td class="c-od mono">4.75</td>
+    <td class="c-od mono">3.45</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 4-0 <i class="vs">v[1]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91041098/" target="_blank" rel="noopener">Betano ↗</a></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    
+    <td class="c-jug">Pierluigi Basile<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 623</td>
+    <td class="c-od mono">1.14</td>
+    <td class="c-od mono">1.25</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vWC</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 2 2º turno</span></td>
+    <td class="c-jug">Blu Baker<span class="pais">GBR</span></td>
+    <td class="c-rank mono">ATP 959</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 4-6 6-4 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    
+    <td class="c-jug">Andrea De Marchi<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 813</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-5 2-1 <i class="vs">v[2]</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 3 2º turno</span></td>
+    <td class="c-jug">Nico Hipfl<span class="pais">AUT</span></td>
+    <td class="c-rank mono">ATP 918</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(4) 6-2 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    
+    <td class="c-jug">Stefano Reitano <b>WC</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono"></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(7) <i class="vs">v[6]</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787394600000" data-par="M25 Lesa|1787394600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 2 3º turno</span></td>
+    <td class="c-jug">Juan Cruz Martin Manzano <b>[4]</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 438</td>
+    <td class="c-od mono">1.62</td>
+    <td class="c-od mono">1.67</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-1 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91044602/" target="_blank" rel="noopener">Betano ↗</a></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787394600000" data-par="M25 Lesa|1787394600000">
+    
+    <td class="c-jug">Giovanni Oradini<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 636</td>
+    <td class="c-od mono">2.10</td>
+    <td class="c-od mono">2.02</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-1 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">11:00 loc · <b>05:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Slovenj Gradec<span class="loc">Slovenia · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Center Court 1º</span></td>
+    <td class="c-jug">Sebastian Dominko<span class="pais">SLO</span></td>
+    <td class="c-rank mono">ATP 1122</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 7-6(6) 6-1 <i class="vs">v[1]</i> · <i class="g">QF✓</i> 2-6 6-4 7-5 <i class="vs">v[5]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
+    
+    <td class="c-jug">Sebastian Sorger <b>[3]</b><span class="pais">AUT</span></td>
+    <td class="c-rank mono">ATP 476</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-0 6-0 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-0 6-1 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-2 6-2</td>
+    
+  </tr><tr class="a" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">11:00 loc · <b>05:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Slovenj Gradec<span class="loc">Slovenia · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug">Filip Jeff Planinsek <b>[6]</b><span class="pais">SLO</span></td>
+    <td class="c-rank mono">ATP 592</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 7-6(4) <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-0 6-0 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-0 6-2 <i class="vs">v[4]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
+    
+    <td class="c-jug">Jonas GUNDACKER <b>Q</b><span class="pais">AUT</span></td>
+    <td class="c-rank mono">ATP 1876</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">Q2✓</i> 6-1 6-1 · <i class="g">Q3✓</i> 6-1 6-3 <i class="vs">v[9]</i> · <i class="g">R1✓</i> 7-6(2) 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 2-6 6-2 6-3 <i class="vs">v[2]</i> · <i class="g">QF✓</i> 6-1 6(7)-7 6-3 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Taipei<span class="loc">Chinese Taipei · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Show Court 1º</span></td>
+    <td class="c-jug">Yu Hsiou Hsu <b>[1]</b><span class="pais">TPE</span></td>
+    <td class="c-rank mono">ATP 222</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(5) 6-3 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-2 7-6(5) <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-3 6-2 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
+    
+    <td class="c-jug">Masamichi Imamura <b>[5]</b><span class="pais">JPN</span></td>
+    <td class="c-rank mono">ATP 409</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-1 · <i class="g">R2✓</i> 6-1 6-0 <i class="vs">vQ</i> · <i class="g">QF✓</i> 3-6 6-0 10-2</td>
+    
+  </tr><tr class="a" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Taipei<span class="loc">Chinese Taipei · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug">Shunsuke Mitsui<span class="pais">JPN</span></td>
+    <td class="c-rank mono">ATP 651</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">v[8]</i> · <i class="g">R2✓</i> 6-2 6-1 · <i class="g">QF✓</i> 7-6(4) 4-6 10-7 <i class="vs">v[3]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
+    
+    <td class="c-jug">Matthew Dellavedova <b>[2]</b><span class="pais">AUS</span></td>
+    <td class="c-rank mono">ATP 309</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(1) 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-1 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-2 6-4</td>
+    
+  </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">VOLKSBANK C-Court 1º</span></td>
+    <td class="c-jug">Mika Petkovic <b>[4]</b><span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 428</td>
+    <td class="c-od mono">1.38</td>
+    <td class="c-od mono">1.45</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 2-6 6-4 6-3 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91106986/" target="_blank" rel="noopener">Betano ↗</a></td>
+  </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
+    
+    <td class="c-jug">TIM Handel<span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 772</td>
+    <td class="c-od mono">2.75</td>
+    <td class="c-od mono">2.50</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 7-6(8) · <i class="g">R2✓</i> 6-2 6-4 <i class="vs">v[7]</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">DISPLAY-MAX Court 1º</span></td>
+    <td class="c-jug">Nicola Senn <b>Q</b><span class="pais">SUI</span></td>
+    <td class="c-rank mono">ATP 1832</td>
+    <td class="c-od mono">2.37</td>
+    <td class="c-od mono">2.25</td>
+    <td class="c-llega"><i class="g">Q1✓</i> 6-3 7-6(3) <i class="vs">vWC</i> · <i class="g">Q2✓</i> 6-2 6-0 <i class="vs">v[13]</i> · <i class="g">R1✓</i> 6-3 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 4-2 <i class="vs">v[1]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91096643/" target="_blank" rel="noopener">Betano ↗</a></td>
+  </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
+    
+    <td class="c-jug">Tymur Bieldiugin <b>Q</b><span class="pais">UKR</span></td>
+    <td class="c-rank mono">ATP 1582</td>
+    <td class="c-od mono">1.50</td>
+    <td class="c-od mono">1.55</td>
+    <td class="c-llega"><i class="g">Q1✓</i> 6-0 6-2 · <i class="g">Q2✓</i> 6-3 6-1 <i class="vs">v[10]</i> · <i class="g">R1✓</i> 2-6 7-6(2) 6-3 · <i class="g">R2✓</i> 6-1 6(4)-7 6-2 <i class="vs">v[8]</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">VOLKSBANK C-Court 2º turno</span></td>
+    <td class="c-jug">Maximilian Marterer<span class="pais">GER</span></td>
+    <td class="c-rank mono"></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 2-6 6-0 6-3</td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
+    
+    <td class="c-jug">Daniel Masur <b>[2]</b><span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 377</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-3 · <i class="g">R2✓</i> 7-6(8) 6-3 <i class="vs">vWC</i></td>
+    
+  </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">DISPLAY-MAX Court 2º turno</span></td>
+    <td class="c-jug">Jannik Maute <b>Q</b><span class="pais">GER</span></td>
+    <td class="c-rank mono">WTN 10.68</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">Q1✓</i> 6-2 6-0 <i class="vs">v[15]</i> · <i class="g">Q2✓</i> 6-2 6-4 <i class="vs">v[1]</i> · <i class="g">R1✓</i> 6-3 7-5 <i class="vs">vWC</i> · <i class="g">R2✓</i> 7-6(3) 6(5)-7 6-4 <i class="vs">v[5]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">sin cuota</span></td>
+  </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
+    
+    <td class="c-jug">Arthur Nagel <b>[3]</b><span class="pais">FRA</span></td>
+    <td class="c-rank mono">ATP 399</td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-1 6(6)-7 6-2</td>
+    
   </tr></tbody>
-  </table></div>
-<footer>Generado 2026-08-21 18:55 UTC · ITF manda: order of play y cuadros oficiales de itftennis.com · Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) · "Followed By" = turno estimado a partir del inicio de la cancha.</footer>
+</table></div>
+<footer>Generado 2026-08-21 19:16 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
 </div>
 <script>
-(function(){var el=document.getElementById('edad');function p(){var m=Math.round((Date.now()-new Date(el.dataset.generado).getTime())/60000);
-el.innerHTML='datos de hace <b>'+(m<60?m+' min':(m/60).toFixed(1)+' h')+'</b>';
-el.className='edad'+(m>360?' rancia':m>120?' vieja':'');}p();setInterval(p,60000);})();
+(function(){
+  var el=document.getElementById('edad');
+  function p(){var m=Math.round((Date.now()-new Date(el.dataset.generado).getTime())/60000);
+    el.innerHTML='datos de hace <b>'+(m<60?m+' min':(m/60).toFixed(1)+' h')+'</b>';
+    el.className='edad'+(m>360?' rancia':m>120?' vieja':'');}
+  p();setInterval(p,60000);
+  var cuerpo=document.getElementById('cuerpo');
+  if(!cuerpo)return;
+  window.ordenar=function(modo){
+    var pares=[],vistos={};
+    Array.prototype.forEach.call(cuerpo.querySelectorAll('tr.a'),function(tr){
+      pares.push({a:tr,b:tr.nextElementSibling,torneo:tr.dataset.torneo,ts:+tr.dataset.ts});});
+    pares.sort(function(x,y){return modo==='hora'
+      ? x.ts-y.ts || x.torneo.localeCompare(y.torneo)
+      : x.torneo.localeCompare(y.torneo) || x.ts-y.ts;});
+    pares.forEach(function(par,i){
+      par.a.classList.toggle('par',i%2===1); par.b.classList.toggle('par',i%2===1);
+      cuerpo.appendChild(par.a); cuerpo.appendChild(par.b);});
+    document.getElementById('b-torneo').className=modo==='hora'?'':'on';
+    document.getElementById('b-hora').className=modo==='hora'?'on':'';
+  };
+  window.ordenar('torneo');
+})();
 </script>
