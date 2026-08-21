@@ -1653,20 +1653,8 @@ async function cmdItf(horas = 6) {
   }
   if (nuevas || corregidas) guardarRegistro();
   if (grabados || tableroNombrados) guardarItf();
-  /* las mejores 15 por margen, mostradas agrupadas por torneo y horario */
-  const mostrar = filas.slice(0, 15);
-  mostrar.sort((a, b) => a.liga.localeCompare(b.liga)
-    || (a.inicio < b.inicio ? -1 : a.inicio > b.inicio ? 1 : 0) || b.vent - a.vent);
-  const top = [];
-  let ligaAct = null;
-  for (const s of mostrar) {
-    if (s.liga !== ligaAct) { ligaAct = s.liga; top.push(`🏆 <b>${escHtml(s.liga)}</b>`); }
-    const [pa, pb] = String(s.partido).split(' vs ');
-    const rival = s.lado.startsWith(pa) ? pb : pa;
-    top.push(`· ${horaTxt(s.inicio)} — <b>${escHtml(s.lado)}</b>${rival ? ' (vs ' + escHtml(rival) + ')' : ''}`
-      + ` @${s.cuota.toFixed(2)} (justo ${s.justo.toFixed(2)}) → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${escHtml(s.familia)}`
-      + (s.bFixId ? ` · <a href="https://lat.betano.com/cuotas-de-partido/e-e/${escHtml(s.bFixId)}/">Abrir</a>` : ''));
-  }
+  /* Solo el resumen por Telegram: el detalle partido a partido vive en el
+     panel (vigia/itf-panel.html), no en el chat. */
   await telegram([
     `<b>🎾 ITF · Betano vs bet365 · próximas ${horas} h</b>`,
     `Torneos revisados: ${tids.length} · ${ambos} partidos cotizados por ambos · ${soloBet} sin bet365`,
@@ -1676,10 +1664,7 @@ async function cmdItf(horas = 6) {
       + (tableroNuevos ? ` · ${tableroNuevos} rescatados vía /fixture` : '') : '',
     tableroNombrados ? `🩹 ${tableroNombrados} partidos viejos del tablero recuperaron nombres` : '',
     (empezados || dudosos) ? `<i>🚫 fuera: ${empezados} ya comenzados (línea congelada) · ${dudosos} sin hora verificable</i>` : '',
-    '',
-    ...(top.length ? top : ['Sin ventajas sobre el justo de bet365.']),
-    '',
-    `<i>${REQ - req0} requests. OJO: reglas de retiro pueden diferir entre casas — en ITF eso importa.</i>`,
+    `<i>${REQ - req0} requests.</i>`,
   ].join('\n'));
 }
 
