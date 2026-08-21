@@ -58,11 +58,14 @@ function torneosPorCiudad(ciudad) {
     normalizar(t.nombre).includes(c) || normalizar(t.sede || '').includes(c));
 }
 
-/* ---------- cuadros con caché por corrida ---------- */
+/* ---------- cuadros con caché por corrida ----------
+   El transporte por defecto es fetch pelado (endpoints abiertos); se puede
+   inyectar otro (p. ej. el navegador de itf-navegador cuando el WAF tiene
+   marcada la IP) vía el parámetro obtenerCuadros de liquidarConItf. */
 const memoria = new Map();
-async function cuadrosDe(clave) {
+async function cuadrosDe(clave, obtener = null) {
   if (memoria.has(clave)) return memoria.get(clave);
-  const prom = (async () => {
+  const prom = obtener ? obtener(clave) : (async () => {
     const ev = await eventos(clave);
     const out = {};
     for (const c of ev.cuadros.filter(c => c.tipo === 'S')) {
@@ -77,10 +80,10 @@ async function cuadrosDe(clave) {
 const RONDAS_CORTAS = { '1st Round': 'R1', '2nd Round': 'R2', '3rd Round': 'R3', 'Quarter-finals': 'QF', 'Semi-finals': 'SF', 'Final': 'F' };
 
 /* Busca el partido de p1 vs p2 en los cuadros de las claves dadas. */
-async function ubicarPartido(claves, p1, p2, log = () => {}) {
+async function ubicarPartido(claves, p1, p2, log = () => {}, obtener = null) {
   for (const clave of claves) {
     let cuadros;
-    try { cuadros = await cuadrosDe(clave); }
+    try { cuadros = await cuadrosDe(clave, obtener); }
     catch (e) { log(`itf-cruce: cuadros de ${clave} fallaron (${e.message.split(':')[0]})`); continue; }
     for (const [evento, c] of Object.entries(cuadros)) {
       for (const r of c.rondas) {
@@ -111,7 +114,7 @@ function marcadorSets(lados, idxGanador) {
 }
 
 /* ---------- liquidación + anotación sobre itf.json ---------- */
-export async function liquidarConItf(db, { maxTorneos = 12, log = () => {} } = {}) {
+export async function liquidarConItf(db, { maxTorneos = 12, log = () => {}, obtenerCuadros = null } = {}) {
   const pend = Object.entries(db.partidos).filter(([, e]) =>
     e.estado === 'pendiente' && e.p1 && e.p2
     && Date.now() - new Date(e.t || e.visto).getTime() > 4 * 3600e3);
@@ -128,7 +131,7 @@ export async function liquidarConItf(db, { maxTorneos = 12, log = () => {} } = {
     let huboWaf = false;
     const logW = m => { if (/Incapsula/.test(m)) huboWaf = true; log(m); };
     let u;
-    try { u = await ubicarPartido(claves, e.p1, e.p2, logW); } catch (err) { log('itf-cruce: ' + err.message); continue; }
+    try { u = await ubicarPartido(claves, e.p1, e.p2, logW, obtenerCuadros); } catch (err) { log('itf-cruce: ' + err.message); continue; }
     wafSeguidos = huboWaf && !u ? wafSeguidos + 1 : 0;
     if (!u) { log(`itf-cruce: no ubico ${e.p1} vs ${e.p2} en ${claves.join(',')}`); continue; }
     const { partido, idx1, ronda, clave } = u;
