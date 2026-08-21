@@ -1479,6 +1479,7 @@ async function cmdItf(horas = 6) {
   const JB = 'bet365';
   let filas = [];
   let ambos = 0, soloBet = 0, logPath = 0, grabados = 0;
+  const candTablero = new Map();   /* sin índice: a la espera de nombres vía /fixture */
   for (let i = 0; i < tids.length && i < 60; i += 5) {
     const lote = tids.slice(i, i + 5);
     let bet, b365;
@@ -1526,23 +1527,30 @@ async function cmdItf(horas = 6) {
         if (!ok) continue;
         const [jA, jB2] = desvigar(pJ[oids[0]], pJ[oids[1]]);
         const justos = { [oids[0]]: jA, [oids[1]]: jB2 };
-        /* tablero de favoritos: se anota TODO partido con mercado Ganador */
-        if (fam.fam === 'Ganador' && !info.sinIndice
-            && new Date(info.startTime).getTime() > Date.now()) {
+        /* tablero de favoritos: se anota TODO partido con mercado Ganador.
+           Con nombres del índice → directo. Sin índice → queda como candidato
+           y el rescate /fixture de más abajo le pone nombres y hora antes de
+           grabarlo: así el tablero agarra todo lo que el feed trae. */
+        if (fam.fam === 'Ganador') {
           const db = cargarItf();
-          if (!db.partidos[f.fixtureId]) {
+          if (!db.partidos[f.fixtureId] && !candTablero.has(f.fixtureId)) {
             const o1 = oids.find(o => /^1$|home/i.test(meta.outs[o] || o)) || oids[0];
             const o2 = oids.find(o => o !== o1) || oids[1];
             const favLado = pB[o1] <= pB[o2] ? 1 : 2;
             const favOid = favLado === 1 ? o1 : o2, dogOid = favLado === 1 ? o2 : o1;
-            db.partidos[f.fixtureId] = {
+            const reg = {
               visto: new Date().toISOString(), t: info.sinIndice ? null : info.startTime,
               torneo: info.tournamentName || 'ITF',
               p1: info.sinIndice ? null : info.participant1Name, p2: info.sinIndice ? null : info.participant2Name,
               fav: favLado, cB: +pB[favOid].toFixed(2), cJ: +pJ[favOid].toFixed(2),
               dB: +pB[dogOid].toFixed(2), estado: 'pendiente',
             };
-            grabados++;
+            if (!info.sinIndice && new Date(info.startTime).getTime() > Date.now()) {
+              db.partidos[f.fixtureId] = reg;
+              grabados++;
+            } else if (info.sinIndice) {
+              candTablero.set(f.fixtureId, reg);
+            }
           }
         }
         for (const oid of oids) {
@@ -1567,36 +1575,61 @@ async function cmdItf(horas = 6) {
   }
   filas.sort((a, b) => b.vent - a.vent);
   /* Betano manda slug "e-e" en ITF (sin nombres): se rescatan del endpoint
-     /fixture individual, solo para lo que se va a reportar (~1 req c/u) */
-  let corregidas = 0;
-  const sinNombre = [...new Set(filas.slice(0, 14)
-    .filter(s => /^e e$|^Jugador/.test(s.partido) || /^Jugador/.test(s.lado))
-    .map(s => s.fix))].slice(0, 14);
-  for (const fixId of sinNombre) {
-    try {
-      const d = await api('fixture', { fixtureId: fixId }, 2100);
-      const c = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
-      const n1 = c?.participant1Name, n2 = c?.participant2Name;
-      if (!n1 || !n2) continue;
-      console.log('itf /fixture', fixId, '→ startTime:', JSON.stringify(c.startTime), '·', n1, 'vs', n2);
-      /* hora válida solo si es cuerda (la API a veces manda basura/época) */
-      const tOk = c.startTime && !isNaN(new Date(c.startTime)) && new Date(c.startTime).getFullYear() >= 2020;
-      for (const s of filas.filter(x => x.fix === fixId)) {
-        s.partido = n1 + ' vs ' + n2;
-        s.lado = s.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2);
-        if (tOk) { s.inicio = c.startTime; s.tReal = true; }
-        if (c.tournamentName) s.liga = c.tournamentName;
-      }
-      /* y se corrigen las ya anotadas en el registro con nombre de relleno */
-      for (const e of Object.values(REG)) {
-        if (e.fix !== fixId || e.juez !== 'bet365') continue;
-        e.partido = n1 + ' vs ' + n2;
-        e.lado = e.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2).replace(/^e e /, n1 + ' ');
-        if (c.startTime) e.inicio = c.startTime;
-        if (c.tournamentName) e.liga = c.tournamentName;
-        corregidas++;
-      }
-    } catch (e) { console.log('itf /fixture falló', fixId, e.message); }
+     /fixture individual (~1 req c/u). El rescate cubre TODO lo que hay:
+     1) las filas que se van a reportar, 2) los candidatos al tablero que
+     vinieron sin índice, 3) los partidos viejos del tablero que quedaron
+     sin nombres. Tope de presupuesto para no reventar la cuota. */
+  let corregidas = 0, tableroNuevos = 0, tableroNombrados = 0;
+  {
+    const db = cargarItf();
+    const aRescatar = new Set(filas.slice(0, 14)
+      .filter(s => /^e e$|^Jugador/.test(s.partido) || /^Jugador/.test(s.lado))
+      .map(s => s.fix));
+    for (const fixId of candTablero.keys()) aRescatar.add(fixId);
+    for (const [fixId, e] of Object.entries(db.partidos))
+      if (!e.p1 && e.estado === 'pendiente') aRescatar.add(fixId);
+    const lista = [...aRescatar].slice(0, 80);
+    if (aRescatar.size > lista.length) console.log(`itf rescate: ${aRescatar.size} sin nombre, tope ${lista.length} esta corrida`);
+    for (const fixId of lista) {
+      try {
+        const d = await api('fixture', { fixtureId: fixId }, 2100);
+        const c = Array.isArray(d) ? d[0] : (d && d.data ? (Array.isArray(d.data) ? d.data[0] : d.data) : d);
+        const n1 = c?.participant1Name, n2 = c?.participant2Name;
+        if (!n1 || !n2) continue;
+        /* hora válida solo si es cuerda (la API a veces manda basura/época) */
+        const tOk = c.startTime && !isNaN(new Date(c.startTime)) && new Date(c.startTime).getFullYear() >= 2020;
+        for (const s of filas.filter(x => x.fix === fixId)) {
+          s.partido = n1 + ' vs ' + n2;
+          s.lado = s.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2);
+          if (tOk) { s.inicio = c.startTime; s.tReal = true; }
+          if (c.tournamentName) s.liga = c.tournamentName;
+        }
+        /* y se corrigen las ya anotadas en el registro con nombre de relleno */
+        for (const e of Object.values(REG)) {
+          if (e.fix !== fixId || e.juez !== 'bet365') continue;
+          e.partido = n1 + ' vs ' + n2;
+          e.lado = e.lado.replace(/^Jugador 1/, n1).replace(/^Jugador 2/, n2).replace(/^e e /, n1 + ' ');
+          if (c.startTime) e.inicio = c.startTime;
+          if (c.tournamentName) e.liga = c.tournamentName;
+          corregidas++;
+        }
+        /* candidato nuevo al tablero: se graba solo con hora futura real */
+        const cand = candTablero.get(fixId);
+        if (cand && !db.partidos[fixId] && tOk && new Date(c.startTime).getTime() > Date.now()) {
+          db.partidos[fixId] = { ...cand, t: c.startTime, p1: n1, p2: n2, torneo: c.tournamentName || cand.torneo };
+          grabados++; tableroNuevos++;
+        }
+        /* backfill de los viejos sin nombre */
+        const viejo = db.partidos[fixId];
+        if (viejo && !viejo.p1) {
+          viejo.p1 = n1; viejo.p2 = n2;
+          if (tOk) viejo.t = c.startTime;
+          if (c.tournamentName && !/sin índice/.test(c.tournamentName)) viejo.torneo = c.tournamentName;
+          tableroNombrados++;
+        }
+      } catch (e) { console.log('itf /fixture falló', fixId, e.message); }
+    }
+    if (tableroNuevos || tableroNombrados) console.log(`itf rescate: ${tableroNuevos} nuevos al tablero, ${tableroNombrados} viejos re-nombrados`);
   }
   /* fuera los partidos YA COMENZADOS: sus cuotas prematch quedan congeladas
      en el feed y las "ventajas" gigantes son líneas muertas, no valor. Solo
@@ -1619,7 +1652,7 @@ async function cmdItf(horas = 6) {
     nuevas++;
   }
   if (nuevas || corregidas) guardarRegistro();
-  if (grabados) guardarItf();
+  if (grabados || tableroNombrados) guardarItf();
   /* las mejores 15 por margen, mostradas agrupadas por torneo y horario */
   const mostrar = filas.slice(0, 15);
   mostrar.sort((a, b) => a.liga.localeCompare(b.liga)
@@ -1639,7 +1672,9 @@ async function cmdItf(horas = 6) {
     `Torneos revisados: ${tids.length} · ${ambos} partidos cotizados por ambos · ${soloBet} sin bet365`,
     `${filas.length} lados con ventaja positiva`
       + (CFG.sombras !== false ? ` · ${nuevas} anotados al tablero (sombra, juez bet365)` : ' · solo vista, nada al registro (sombras apagadas)'),
-    grabados ? `📈 ${grabados} partidos nuevos al tablero de favoritos (/itf resultados)` : '',
+    grabados ? `📈 ${grabados} partidos nuevos al tablero de favoritos (/itf resultados)`
+      + (tableroNuevos ? ` · ${tableroNuevos} rescatados vía /fixture` : '') : '',
+    tableroNombrados ? `🩹 ${tableroNombrados} partidos viejos del tablero recuperaron nombres` : '',
     (empezados || dudosos) ? `<i>🚫 fuera: ${empezados} ya comenzados (línea congelada) · ${dudosos} sin hora verificable</i>` : '',
     '',
     ...(top.length ? top : ['Sin ventajas sobre el justo de bet365.']),
