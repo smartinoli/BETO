@@ -202,6 +202,47 @@ export async function cuadro({ tournamentId, tourType = 'N', evento = 'M', tipo 
   }));
 }
 
+/* ---------- Order of Play (endpoint abierto) ----------
+   La programación real del día: cancha, orden en cancha y horario local.
+   Más valioso que el cuadro para decidir: dice CUÁNDO y DÓNDE se juega,
+   y trae matchId, que cruza sin ambigüedad con el cuadro. */
+export async function diasOop(claveOUrl) {
+  const clave = parseClave(claveOUrl);
+  const crudo = await apiItf('GetOrderOfPlayDays', { tournamentKey: clave });
+  return (Array.isArray(crudo) ? crudo : []).map(d => ({
+    id: d.orderOfPlayDayId,
+    fecha: (d.playDate || '').slice(0, 10),
+    fechaTxt: d.playDateString || '',
+  }));
+}
+
+export async function ordenDeJuego(dayId) {
+  const crudo = await apiItf('GetOrderOfPlay', { orderOfPlayDayId: dayId });
+  const out = [];
+  for (const cancha of (Array.isArray(crudo) ? crudo : [])) {
+    let orden = 0;
+    for (const m of cancha.matches || []) {
+      orden++;
+      out.push({
+        matchId: m.matchId,
+        cancha: cancha.courtName || '',
+        orden,                                   /* 1º, 2º… turno en esa cancha */
+        horario: m.schedule || '',               /* "Starting at 10:00" | "Followed By" | "Not Before 14:00" */
+        evento: m.eventClassificationCode || '', /* M main | Q quali */
+        eventoDesc: m.eventDesc || '',           /* Men's Singles… */
+        tipo: m.matchDescription || '',          /* MS | WS | MD… */
+        ronda: m.roundGroupDesc || '',
+        estado: m.playStatusCode === 'PC' ? 'jugado'
+          : m.playStatusCode === 'TP' ? 'pendiente'
+          : (m.playStatusDesc || 'desconocido'),
+        nota: m.resultStatusDesc || null,
+        lados: (m.teams || []).map(ladoDe),
+      });
+    }
+  }
+  return out;
+}
+
 /* Atajo: cuadro a partir de la clave/URL pública. */
 export async function cuadroDe(claveOUrl, evento = 'M', tipo = 'S') {
   const ev = await eventos(claveOUrl);

@@ -220,6 +220,69 @@ try {
         console.log(`  ✓ ${t.clave}  ${t.nombre || ''}  main:${nM} qualis:${nQ}`);
       } catch (e) { console.log(`  ✗ ${t.clave}: ${e.message.split('\n')[0]}`); }
     }
+  } else if (cmd === 'oop') {
+    /* Order of play + cuadro de cada torneo en juego, para la mesa. */
+    const OOP = path.join(DATOS, 'oop');
+    fs.mkdirSync(OOP, { recursive: true });
+    fs.mkdirSync(path.join(DATOS, 'vivo'), { recursive: true });
+    const hoy = new Date().toISOString().slice(0, 10);
+    const cache = JSON.parse(fs.readFileSync(CACHE_CALENDARIO, 'utf8'));
+    const activos = cache.torneos.filter(t => t.desde <= hoy && t.hasta >= hoy);
+    const api = 'https://www.itftennis.com/tennis/api/TournamentApi/';
+    console.log(`Order of play de ${activos.length} torneos en juego…`);
+    for (const t of activos) {
+      try {
+        await pausaHumana();
+        const dias = (await fetchDesdePagina(page, `${api}GetOrderOfPlayDays?tournamentKey=${t.clave}`))
+          .filter(d => (d.playDate || '').slice(0, 10) >= hoy);
+        for (const d of dias) {
+          await pausaHumana();
+          const crudo = await fetchDesdePagina(page, `${api}GetOrderOfPlay?orderOfPlayDayId=${d.orderOfPlayDayId}`);
+          const partidos = [];
+          for (const cancha of (Array.isArray(crudo) ? crudo : [])) {
+            let orden = 0;
+            for (const m of cancha.matches || []) {
+              orden++;
+              partidos.push({
+                matchId: m.matchId, cancha: cancha.courtName || '', orden,
+                horario: m.schedule || '', evento: m.eventClassificationCode || '',
+                eventoDesc: m.eventDesc || '', tipo: m.matchDescription || '',
+                ronda: m.roundGroupDesc || '',
+                estado: m.playStatusCode === 'PC' ? 'jugado' : m.playStatusCode === 'TP' ? 'pendiente' : (m.playStatusDesc || '?'),
+                nota: m.resultStatusDesc || null,
+                lados: (m.teams || []).map(eq => {
+                  const j = (eq.players || []).filter(Boolean).map(p => ({
+                    id: p.playerId, nombre: [p.givenName, p.familyName].filter(Boolean).join(' '), pais: p.nationality,
+                  }));
+                  return { jugadores: j, nombre: j.map(x => x.nombre).join(' / ') || null, seed: eq.seeding ?? null, entrada: eq.entryStatus || null, ganador: !!eq.isWinner, sets: [] };
+                }),
+              });
+            }
+          }
+          const fecha = (d.playDate || '').slice(0, 10);
+          fs.writeFileSync(path.join(OOP, `${t.clave}-${fecha}.json`),
+            JSON.stringify({ clave: t.clave, fecha, fechaTxt: d.playDateString || '', bajado: new Date().toISOString(), partidos }));
+          console.log(`  ✓ oop ${t.clave} ${fecha}: ${partidos.length} partidos`);
+        }
+      } catch (e) { console.log(`  ✗ oop ${t.clave}: ${e.message.split(' para ')[0]}`); }
+      /* cuadro fresco para seed/entrada/trayectoria */
+      const fv = path.join(DATOS, 'vivo', t.clave + '.json');
+      let edad = Infinity;
+      try { edad = Date.now() - new Date(JSON.parse(fs.readFileSync(fv, 'utf8')).bajado).getTime() } catch {}
+      if (edad < 4 * 3600e3) continue;
+      try {
+        await pausaHumana();
+        const ev = normalizarEventos(await fetchDesdePagina(page, `${api}GetEventFilters?tournamentKey=${t.clave}`), t.clave);
+        const cuadros = {};
+        for (const c of ev.cuadros.filter(c => c.tipo === 'S')) {
+          await pausaHumana();
+          cuadros[c.evento] = normalizarCuadro(await fetchDesdePagina(page,
+            `${api}GetDrawsheet?eventClassificationCode=${c.evento}&matchTypeCode=S&tourType=${ev.tourType}&tournamentId=${ev.tournamentId}&weekNumber=0`));
+        }
+        fs.writeFileSync(fv, JSON.stringify({ clave: t.clave, bajado: new Date().toISOString(), cuadros }));
+        console.log(`  ✓ cuadro ${t.clave}`);
+      } catch (e) { console.log(`  ✗ cuadro ${t.clave}: ${e.message.split(' para ')[0]}`); }
+    }
   } else if (cmd === 'liquidar') {
     const ITF_PATH = path.join(DIR, 'itf.json');
     const db = JSON.parse(fs.readFileSync(ITF_PATH, 'utf8'));
