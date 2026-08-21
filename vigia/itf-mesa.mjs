@@ -33,6 +33,8 @@ const hoyISO = () => new Date().toISOString().slice(0, 10);
 
 const cal = leer(path.join(DIR, 'itf-calendario.json')) || { torneos: [] };
 const tablero = leer(path.join(DIR, 'itf.json')) || { partidos: {} };
+const analisis = leer(path.join(DIR, 'itf-analisis.json')) || { veredictos: {}, destacados: [] };
+const saber = leer(path.join(DIR, 'itf-saber.json')) || {};
 
 /* Torneos en curso según el calendario (el que manda para saber qué mirar). */
 const activos = cal.torneos.filter(t => t.desde <= hoyISO() && t.hasta >= hoyISO());
@@ -208,6 +210,7 @@ for (const t of activos) {
         };
       });
       partidos.push({
+        matchId: p.matchId,
         t, fecha: dia.fecha, hhmm, inicio, ordenTs,
         cancha: p.cancha, turno: p.orden, horarioTxt: p.horario,
         evento: p.evento, ronda: RONDA_CORTA[p.ronda] || p.ronda,
@@ -219,6 +222,27 @@ for (const t of activos) {
 /* Orden por defecto: campeonato, luego hora. */
 partidos.sort((a, b) => a.t.nombre.localeCompare(b.t.nombre) || a.ordenTs - b.ordenTs);
 
+/* Dossier para el agente: los mismos partidos en JSON plano, sin HTML.
+   Es lo que se lee al analizar (junto con itf-saber.json). */
+fs.writeFileSync(path.join(DIR, 'itf-mesa-datos.json'), JSON.stringify({
+  generado: new Date().toISOString(),
+  partidos: partidos.map(p => ({
+    id: p.matchId,
+    torneo: p.t.nombre, pais: p.t.pais, categoria: p.t.categoria,
+    superficie: p.t.superficie, bolsa: p.t.bolsa,
+    cuando: p.inicio ? p.inicio.toISOString() : null,
+    local: p.hhmm, horarioTxt: p.horarioTxt, cancha: p.cancha, turno: p.turno,
+    ronda: p.ronda, evento: p.evento,
+    lados: p.lados.map((l, k) => ({
+      nombre: l.nombre, pais: l.pais, marca: l.marca, rank: l.rank,
+      llega: l.llega.replace(/<[^>]+>/g, ''),
+      gana: p.cuotas?.lados[k].gana ?? null,
+      set1: p.cuotas?.lados[k].set1 ?? null,
+    })),
+    betano: p.cuotas?.bFix ? 'https://lat.betano.com/cuotas-de-partido/e-e/' + p.cuotas.bFix + '/' : null,
+  })),
+}, null, 1));
+
 /* ---------- render: UNA sola lista ---------- */
 const fmtDiaCorto = new Intl.DateTimeFormat('es-CL', { timeZone: 'America/Santiago', weekday: 'short', day: '2-digit', month: '2-digit' });
 const num = v => v == null ? '<span class="sin">·</span>' : (+v).toFixed(2);
@@ -229,12 +253,15 @@ function filas(p) {
   const local = p.hhmm ? (/not before/i.test(p.horarioTxt || '') ? 'no antes ' : '') + p.hhmm : '—';
   const turno = /\d/.test(p.horarioTxt || '') ? `${p.turno}º` : `${p.turno}º turno`;
   const cq = p.cuotas;
+  const v = analisis.veredictos[String(p.matchId)] || null;
+  const top = analisis.destacados?.includes(p.matchId);
   const clave = `${p.t.nombre}|${p.ordenTs}`;
+  const marcaVer = l => v && v.favorito && pareceElMismo(v.favorito.replace(/\s*\[\d+\]|\s*\(Q\)|\s*\(JR\)|\s*\(WC\)/g, ''), { nombre: l.nombre });
   const linea = (l, k) => `<tr class="${k ? 'b' : 'a'}" data-torneo="${esc(p.t.nombre)}" data-ts="${p.ordenTs}" data-par="${esc(clave)}">
     ${k ? '' : `<td rowspan="2" class="c-cuando"><b class="mono">${esc(dia)}</b><span class="loc mono">${esc(local)} loc · <b>${esc(horaCl)}</b> CL</span></td>
     <td rowspan="2" class="c-torneo">${esc(p.t.nombre)}<span class="loc">${esc(p.t.pais)} · ${esc(p.t.superficie || '')}</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">${p.evento === 'Q' ? 'Q·' : ''}${esc(p.ronda)}</span><span class="loc">${esc(p.cancha || '')} ${esc(turno)}</span></td>`}
-    <td class="c-jug">${esc(l.nombre)}${l.marca ? ` <b>${esc(l.marca)}</b>` : ''}<span class="pais">${esc(l.pais)}</span></td>
+    <td class="c-jug${marcaVer(l) ? ' elegido' : ''}">${marcaVer(l) ? '<span class="tick" title="elegido por el análisis">▸</span>' : ''}${esc(l.nombre)}${l.marca ? ` <b>${esc(l.marca)}</b>` : ''}<span class="pais">${esc(l.pais)}</span></td>
     <td class="c-rank mono">${esc(l.rank || '')}</td>
     <td class="c-od mono">${num(cq?.lados[k].gana)}</td>
     <td class="c-od mono">${num(cq?.lados[k].set1)}</td>
@@ -243,7 +270,16 @@ function filas(p) {
       ? `<a href="https://lat.betano.com/cuotas-de-partido/e-e/${esc(cq.bFix)}/" target="_blank" rel="noopener">Betano ↗</a>`
       : '<span class="sin">sin cuota</span>'}</td>`}
   </tr>`;
-  return linea(p.lados[0], 0) + linea(p.lados[1], 1);
+  const filaAn = v ? `<tr class="analisis${top ? ' top' : ''}" data-par="${esc(clave)}">
+    <td colspan="9">
+      <span class="conf c-${esc(v.confianza)}">${esc(v.confianza)}</span>
+      ${v.mercado === 'pasar' ? '<b class="pasar">Pasar</b>' : `<b>${esc(v.favorito)}</b> <span class="mkt">${esc(v.mercado === '1er set' ? 'gana 1er set' : 'gana')}</span>`}
+      ${top ? '<span class="chip-top">mejor opción</span>' : ''}
+      <span class="razon">${esc(v.razon)}</span>
+      ${(v.banderas || []).map(b => `<span class="bandera">${esc(b)}</span>`).join('')}
+    </td>
+  </tr>` : '';
+  return linea(p.lados[0], 0) + linea(p.lados[1], 1) + filaAn;
 }
 
 const generado = new Date().toISOString();
@@ -303,6 +339,26 @@ tr.par td{background:var(--franja)}
 .vacio{color:var(--tinta2);padding:34px;text-align:center;background:var(--carta);
   border:1px solid var(--linea);border-radius:6px}
 footer{color:var(--tinta2);font-size:12px;border-top:1px solid var(--linea);padding-top:12px;margin-top:20px}
+tr.analisis{display:none} body.an tr.analisis{display:table-row}
+tr.analisis td{background:var(--acento-suave);font-size:12.5px;padding:7px 10px 9px;border-bottom:1px solid var(--linea)}
+tr.analisis.top td{box-shadow:inset 3px 0 0 var(--acento)}
+.conf{font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;
+  padding:2px 7px;border-radius:99px;margin-right:8px;border:1px solid var(--linea);color:var(--tinta2)}
+.conf.c-alta{background:var(--acento);color:var(--carta);border-color:transparent}
+.conf.c-media{color:var(--acento);border-color:var(--acento)}
+tr.analisis b{color:var(--tinta)} .pasar{color:var(--tinta2)!important;font-weight:600}
+.mkt{color:var(--tinta2);font-size:11.5px}
+.chip-top{background:var(--acento);color:var(--carta);font-size:10.5px;padding:2px 8px;border-radius:99px;margin-left:8px;font-weight:600}
+.razon{display:block;color:var(--tinta2);margin-top:3px;line-height:1.5}
+.bandera{display:inline-block;font-size:10.5px;color:var(--tinta2);border:1px solid var(--linea);
+  padding:1px 7px;border-radius:99px;margin:5px 5px 0 0;background:var(--carta)}
+.c-jug.elegido{color:var(--tinta)} .tick{color:var(--acento);font-weight:700;margin-right:3px}
+.resumen{background:var(--carta);border:1px solid var(--linea);border-left:3px solid var(--acento);
+  border-radius:6px;padding:16px 20px;margin-bottom:14px}
+.resumen h2{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:21px;margin:0 0 6px;letter-spacing:.5px}
+.resumen-nota{font-size:12.5px;color:var(--tinta2);margin:0}
+.mejores{margin:10px 0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:13.5px}
+.mejores .ctx{color:var(--tinta2);font-size:11.5px;margin-left:8px}
 a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 </style>
 <div class="envoltura">
@@ -313,10 +369,22 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <span class="orden">Ordenar:</span>
     <button id="b-torneo" class="on" onclick="ordenar('torneo')">Campeonato</button>
     <button id="b-hora" onclick="ordenar('hora')">Hora</button>
+    <button id="b-an" onclick="verAnalisis()">🧠 Analizar</button>
     <button onclick="location.reload(true)">↻ Recargar</button>
   </div>
 </div>
 <p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · ${partidos.length} partidos, ${conCuota} con cuota de Betano · hora local del torneo y hora de Chile.</p>
+<div id="resumen" class="resumen" hidden>
+  <h2>Lo que ve el análisis</h2>
+  <p class="resumen-nota">Sobre ${partidos.length} partidos por jugar, con las reglas medidas en ${saber.reglasMedidas?.length || 0} patrones de nuestros propios datos (${(saber.reglasMedidas || []).reduce((n, r) => n + (r.n || 0), 0).toLocaleString('es-CL')} partidos históricos). Análisis del ${analisis.generado ? analisis.generado.slice(0, 16).replace('T', ' ') + ' UTC' : '—'}.</p>
+  <ol class="mejores">${(analisis.destacados || []).map(id => {
+    const p = partidos.find(x => x.matchId === id); const v = analisis.veredictos[String(id)];
+    if (!p || !v) return '';
+    return `<li><b>${esc(v.favorito)}</b> <span class="mkt">${esc(v.mercado === '1er set' ? 'gana 1er set' : 'gana')}</span>
+      <span class="ctx">${esc(p.t.nombre)} · ${esc(p.ronda)}</span><span class="razon">${esc(v.razon)}</span></li>`;
+  }).join('')}</ol>
+  <p class="resumen-nota">${Object.values(analisis.veredictos).filter(v => v.mercado === 'pasar').length} partidos marcados para pasar (parejos o en la banda de cuota donde el favorito rinde menos de lo que promete).</p>
+</div>
 ${partidos.length ? `<div class="tabla-env"><table>
   <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Jugador</th><th>Ranking</th>
     <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
@@ -336,17 +404,26 @@ ${partidos.length ? `<div class="tabla-env"><table>
   window.ordenar=function(modo){
     var pares=[],vistos={};
     Array.prototype.forEach.call(cuerpo.querySelectorAll('tr.a'),function(tr){
-      pares.push({a:tr,b:tr.nextElementSibling,torneo:tr.dataset.torneo,ts:+tr.dataset.ts});});
+      var b=tr.nextElementSibling, an=b&&b.nextElementSibling;
+      if(an&&!an.classList.contains('analisis'))an=null;
+      pares.push({a:tr,b:b,an:an,torneo:tr.dataset.torneo,ts:+tr.dataset.ts});});
     pares.sort(function(x,y){return modo==='hora'
       ? x.ts-y.ts || x.torneo.localeCompare(y.torneo)
       : x.torneo.localeCompare(y.torneo) || x.ts-y.ts;});
     pares.forEach(function(par,i){
       par.a.classList.toggle('par',i%2===1); par.b.classList.toggle('par',i%2===1);
-      cuerpo.appendChild(par.a); cuerpo.appendChild(par.b);});
+      cuerpo.appendChild(par.a); cuerpo.appendChild(par.b);
+      if(par.an)cuerpo.appendChild(par.an);});
     document.getElementById('b-torneo').className=modo==='hora'?'':'on';
     document.getElementById('b-hora').className=modo==='hora'?'on':'';
   };
   window.ordenar('torneo');
+  window.verAnalisis=function(){
+    var on=document.body.classList.toggle('an');
+    document.getElementById('resumen').hidden=!on;
+    document.getElementById('b-an').className=on?'on':'';
+    document.getElementById('b-an').textContent=on?'🧠 Ocultar análisis':'🧠 Analizar';
+  };
 })();
 </script>`;
 

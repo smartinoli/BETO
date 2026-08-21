@@ -1,0 +1,104 @@
+{
+ "actualizado": "2026-08-21",
+ "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
+ "reglasMedidas": [
+  {
+   "regla": "En R1 del main draw, el qualifier gana solo el 33% contra jugadores de entrada directa",
+   "n": 94,
+   "fuente": "16 torneos cosechados, ago 2026",
+   "uso": "no pagar de más al qualifier 'caliente'; el mercado suele sobrevalorar su racha"
+  },
+  {
+   "regla": "Los lucky losers en R1 van 0 de 5",
+   "n": 5,
+   "fuente": "16 torneos",
+   "uso": "muestra chica pero consistente: el LL entra sin ritmo y viene de perder"
+  },
+  {
+   "regla": "El seed gana 72% contra no-seed en R1",
+   "n": 109,
+   "fuente": "16 torneos",
+   "uso": "referencia base para juzgar si una cuota de favorito es cara o barata"
+  },
+  {
+   "regla": "5.5% de los partidos de main draw terminan en retiro, concentrados en R1-R2 (19 de 22)",
+   "n": 433,
+   "fuente": "16 torneos",
+   "uso": "riesgo real en rondas tempranas; en QF/SF casi desaparece"
+  },
+  {
+   "regla": "11 de 14 campeones fueron cabezas de serie, 9 de ellos top-4",
+   "n": 14,
+   "fuente": "torneos terminados",
+   "uso": "el favorito de papel sí llega al final en ITF"
+  },
+  {
+   "regla": "Favoritos con cuota <=1.30 cumplen de más; entre 1.31 y 1.80 cumplen de menos",
+   "n": 21,
+   "fuente": "tablero de favoritos liquidado",
+   "uso": "evitar el tramo medio, que es donde el mercado sobreestima al favorito"
+  },
+  {
+   "regla": "Betano copia a bet365 en ITF: mediana de diferencia 1.6%, 75% dentro de +-3%",
+   "n": 136,
+   "fuente": "barridos ago 2026",
+   "uso": "solo las colas importan; si Betano paga >3% más que bet365, hay algo"
+  }
+ ],
+ "senalesDelCuadro": [
+  "Un jugador que llega con 4-5 partidos en la semana (qualifier profundo) acumula desgaste: mirar si el rival llegó con byes o partidos cortos",
+  "Ganarle a un seed en el camino vale más que ganarle a un WC local: la marca del rival (v[3], vQ, vWC) pesa en la lectura",
+  "Sets 6-0 y 6-1 seguidos indican forma real; varios tiebreaks seguidos indican fragilidad aunque el resultado sea victoria",
+  "Jornada doble (dos rondas el mismo día por lluvia) sube el desgaste y el riesgo de retiro en la segunda tanda",
+  "El ranking ATP engaña con jugadores que vuelven de lesión: ranking protegido o sin ranking pueden esconder nivel de top-100",
+  "Una victoria por retiro del rival (marcador tipo '6-4 4-0' o '7-6(7)' suelto) NO es evidencia de forma: leerla como partido no jugado",
+  "Un súper tiebreak (10-x) en el partido anterior indica que se llegó al límite: desgaste mayor que un 2-0"
+ ],
+ "jugadoresNotables": [
+  {
+   "nombre": "Hyeon Chung",
+   "nota": "ex #19 ATP, semifinalista Australian Open 2018, vuelve por ITF con ranking bajo (ATP 573). El ranking subestima su nivel real."
+  },
+  {
+   "nombre": "Valentini Grammatikopoulou",
+   "nota": "ex top-90 WTA volviendo por ITF; mismo patrón de ranking engañoso."
+  },
+  {
+   "nombre": "Leo Borg",
+   "nota": "hijo de Bjorn Borg, juega M15 en Suecia con apoyo local fuerte."
+  },
+  {
+   "nombre": "Maximilian Marterer",
+   "nota": "ex #45 ATP alemán; aparece SIN ranking en la entry list de M25 Ueberlingen (comeback). El mercado lo precificará como desconocido."
+  },
+  {
+   "nombre": "Daniel Masur",
+   "nota": "ex top-100 alemán, ATP 377; su ranking visible tampoco refleja su techo."
+  },
+  {
+   "nombre": "Thilo Behrmann",
+   "nota": "junior (JR) arrasando en M15 Mistelbach: 6-1 6-0 al [5]. Los juniors sin ranking ATP suelen estar mal precificados en ambos sentidos."
+  }
+ ],
+ "leccionesOperativas": [
+  "El order of play es la fuente al día: marca jugado/en curso mientras el cuadro todavía dice pendiente",
+  "Las cuotas de Betano en ITF aparecen tarde: muchas semifinales abren línea recién unas horas antes",
+  "Solo hay dos mercados en ITF por Betano: Ganador y Ganador 1er set",
+  "Las reglas de retiro difieren entre casas: en ITF eso importa más que en otros circuitos"
+ ],
+ "historial": [
+  {
+   "fecha": "2026-08-21",
+   "partidosAnalizados": 27,
+   "destacados": [
+    "Sorger vs Dominko",
+    "Planinsek vs Gundacker",
+    "Dellavedova vs Mitsui",
+    "Senn (valor 2.37)",
+    "Marterer (ranking engañoso)",
+    "Lithen vs Borg (contra favorito de papel)"
+   ],
+   "pendiente": "verificar resultados y anotar aciertos/fallos para calibrar las reglas"
+  }
+ ]
+}
