@@ -1,0 +1,265 @@
+<title>Mesa ITF</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --papel:#F3F5F7; --carta:#FFFFFF; --tinta:#1A2732; --tinta2:#5A6B7A;
+  --linea:#D9E0E6; --acento:#0F6B5C; --acento-suave:#E3EFEB; --alerta:#A33B2A; --ambar:#8A6116;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --papel:#0F151B; --carta:#161F28; --tinta:#DAE4EC; --tinta2:#8FA1B0;
+  --linea:#26313C; --acento:#3FB79E; --acento-suave:#15302B; --alerta:#E08A79; --ambar:#D9A94B;
+}}
+:root[data-theme="dark"]{
+  --papel:#0F151B; --carta:#161F28; --tinta:#DAE4EC; --tinta2:#8FA1B0;
+  --linea:#26313C; --acento:#3FB79E; --acento-suave:#15302B; --alerta:#E08A79; --ambar:#D9A94B;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font:14.5px/1.5 "IBM Plex Sans",system-ui,sans-serif}
+.envoltura{max-width:980px;margin:0 auto;padding:24px 16px 60px;display:flex;flex-direction:column;gap:14px}
+.cabecera{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.cabecera h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:34px;margin:0;letter-spacing:.5px}
+.edad{font-size:13px;color:var(--tinta2)}
+.edad b{font-variant-numeric:tabular-nums}
+.edad.vieja b{color:var(--ambar)} .edad.rancia b{color:var(--alerta)}
+button.recargar{margin-left:auto;font:600 14px "IBM Plex Sans",sans-serif;color:var(--acento);
+  background:var(--acento-suave);border:1px solid transparent;border-radius:6px;padding:8px 16px;cursor:pointer}
+button.recargar:hover{border-color:var(--acento)}
+button.recargar:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+.nota-cab{font-size:12.5px;color:var(--tinta2);margin:0}
+.partido{background:var(--carta);border:1px solid var(--linea);border-radius:6px;padding:10px 14px 12px}
+.partido header{display:flex;align-items:baseline;gap:12px;padding-bottom:6px;border-bottom:1px solid var(--linea)}
+.hora{font-weight:600;font-size:13px;white-space:nowrap}
+.torneo{font-size:13.5px;color:var(--tinta2)}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:11px;padding:1px 7px;border-radius:99px;
+  background:var(--acento-suave);color:var(--acento)}
+.abrir{margin-left:auto;color:var(--acento);font-size:13px;text-decoration:none;white-space:nowrap}
+.abrir:hover,.abrir:focus-visible{text-decoration:underline}
+.abrir.sin{color:var(--tinta2);opacity:.5}
+.cab-cuotas,.linea-jug{display:grid;grid-template-columns:minmax(150px,220px) 82px 64px 64px 1fr;
+  gap:10px;align-items:baseline}
+.cab-cuotas{padding:6px 0 0;font-size:10.5px;color:var(--tinta2);text-transform:uppercase;letter-spacing:.8px}
+.cab-cuotas .mono{text-align:right}
+.linea-jug{padding:4px 0}
+.nom{font-weight:500} .nom b{color:var(--acento);font-weight:600}
+.rk{font-size:12px;color:var(--tinta2)}
+.od{font-size:14px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.tray{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--tinta2)}
+.tray .g{color:var(--acento)} .tray .p{color:var(--alerta)} .tray .vs{color:var(--tinta);font-weight:600}
+.sin-ctx{opacity:.55;font-style:italic}
+.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.vacio{color:var(--tinta2);padding:30px;text-align:center}
+footer{color:var(--tinta2);font-size:12px;border-top:1px solid var(--linea);padding-top:12px}
+@media (max-width:640px){ .cab-cuotas,.linea-jug{grid-template-columns:1fr 58px 58px;grid-auto-flow:dense}
+  .rk{grid-column:1} .tray{grid-column:1 / -1} .cab-cuotas span:first-child,.cab-cuotas span:nth-child(2){display:none} }
+</style>
+<div class="envoltura">
+<div class="cabecera">
+  <h1>Mesa ITF</h1>
+  <span class="edad" id="edad" data-generado="2026-08-21T18:10:49.882Z">datos de hace <b>—</b></span>
+  <button class="recargar" onclick="location.reload(true)">↻ Recargar</button>
+</div>
+<p class="nota-cab">Solo partidos por jugar con cuota de Betano (Ganador y Ganador 1er set). Hora de Chile. La rutina regenera cada 6 h; "Recargar" trae la última versión publicada. El panel completo queda en Vigía ITF.</p>
+<article class="partido">
+    <header>
+      <span class="hora mono">jue, 03:30 a. m.</span>
+      <span class="torneo"><span class="chip">M25</span> Lesa (Italy) · <span class="mono">R2</span></span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91044602/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Juan Cruz Martin Manzano <b>[4]</b></span>
+      <span class="rk mono">ATP 438</span>
+      <span class="od mono">1.62</span>
+      <span class="od mono">1.67</span>
+      <span class="tray"><span class="g">R1✓ 6-2 6-1</span> <span class="vs">vQ</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Giovanni Oradini</span>
+      <span class="rk mono">ATP 636</span>
+      <span class="od mono">2.10</span>
+      <span class="od mono">2.02</span>
+      <span class="tray"><span class="g">R1✓ 6-3 6-1</span> <span class="vs">vQ</span></span>
+    </div>
+  </article>
+<article class="partido">
+    <header>
+      <span class="hora mono">vie, 04:30 a. m.</span>
+      <span class="torneo"><span class="chip">M25</span> Lesa (Italy) · <span class="mono">R2</span></span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91041098/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Lorenzo Comino <b>WC</b></span>
+      <span class="rk mono">ATP 1178</span>
+      <span class="od mono">4.75</span>
+      <span class="od mono">3.45</span>
+      <span class="tray"><span class="g">R1✓ 6-4 4-0</span> <span class="vs">v[1]</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Pierluigi Basile</span>
+      <span class="rk mono">ATP 623</span>
+      <span class="od mono">1.14</span>
+      <span class="od mono">1.25</span>
+      <span class="tray"><span class="g">R1✓ 6-1 6-3</span> <span class="vs">vWC</span></span>
+    </div>
+  </article>
+<article class="partido">
+    <header>
+      <span class="hora mono">vie, 04:30 a. m.</span>
+      <span class="torneo"><span class="chip">M15</span> Mistelbach (Austria) · <span class="mono">QF</span></span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91096627/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Alexander Wagner</span>
+      <span class="rk mono">ATP 1207</span>
+      <span class="od mono">3.30</span>
+      <span class="od mono">—</span>
+      <span class="tray"><span class="g">R1✓ 6-4 6-4</span> <span class="vs">v[8]</span> · <span class="g">R2✓ 7-5 7-6(7)</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Nikita Mashtakov <b>[3]</b></span>
+      <span class="rk mono">ATP 652</span>
+      <span class="od mono">1.27</span>
+      <span class="od mono">—</span>
+      <span class="tray"><span class="g">R1✓ 6-4 5-7 7-6(6)</span> · <span class="g">R2✓ 7-6(5) 6-3</span> <span class="vs">vLL</span></span>
+    </div>
+  </article>
+<article class="partido">
+    <header>
+      <span class="hora mono">vie, 06:00 a. m.</span>
+      <span class="torneo">Erwitte</span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91096654/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Sohyun Park</span>
+      <span class="rk mono"></span>
+      <span class="od mono">2.70</span>
+      <span class="od mono">—</span>
+      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Lola Giza</span>
+      <span class="rk mono"></span>
+      <span class="od mono">1.39</span>
+      <span class="od mono">—</span>
+      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
+    </div>
+  </article>
+<article class="partido">
+    <header>
+      <span class="hora mono">vie, 06:00 a. m.</span>
+      <span class="torneo"><span class="chip">M25</span> Ueberlingen (Germany) · <span class="mono">QF</span></span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91096643/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Nicola Senn <b>Q</b></span>
+      <span class="rk mono">ATP 1832</span>
+      <span class="od mono">2.37</span>
+      <span class="od mono">2.25</span>
+      <span class="tray"><span class="g">Q1✓ 6-3 7-6(3)</span> <span class="vs">vWC</span> · <span class="g">Q2✓ 6-2 6-0</span> <span class="vs">v[13]</span> · <span class="g">R1✓ 6-3 6-0</span> <span class="vs">vWC</span> · <span class="g">R2✓ 4-2</span> <span class="vs">v[1]</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Tymur Bieldiugin <b>Q</b></span>
+      <span class="rk mono">ATP 1582</span>
+      <span class="od mono">1.50</span>
+      <span class="od mono">1.55</span>
+      <span class="tray"><span class="g">Q1✓ 6-0 6-2</span> · <span class="g">Q2✓ 6-3 6-1</span> <span class="vs">v[10]</span> · <span class="g">R1✓ 2-6 7-6(2) 6-3</span> · <span class="g">R2✓ 6-1 6(4)-7 6-2</span> <span class="vs">v[8]</span></span>
+    </div>
+  </article>
+<article class="partido">
+    <header>
+      <span class="hora mono">vie, 06:00 a. m.</span>
+      <span class="torneo">Wanfercee-Baulet</span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91115633/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Romane Longueville</span>
+      <span class="rk mono"></span>
+      <span class="od mono">2.32</span>
+      <span class="od mono">—</span>
+      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Victoria Pohle</span>
+      <span class="rk mono"></span>
+      <span class="od mono">1.52</span>
+      <span class="od mono">—</span>
+      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
+    </div>
+  </article>
+<article class="partido">
+    <header>
+      <span class="hora mono">vie, 07:30 a. m.</span>
+      <span class="torneo"><span class="chip">M25</span> Lesa (Italy) · <span class="mono">R2</span></span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91051197/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Daniele Rapagnetta</span>
+      <span class="rk mono">ATP 734</span>
+      <span class="od mono">1.91</span>
+      <span class="od mono">1.90</span>
+      <span class="tray"><span class="g">R1✓ 6-4 3-6 7-5</span> <span class="vs">v[8]</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Manuel Mazza</span>
+      <span class="rk mono">ATP 756</span>
+      <span class="od mono">1.75</span>
+      <span class="od mono">1.78</span>
+      <span class="tray"><span class="g">R1✓ 3-6 6-4 6-3</span></span>
+    </div>
+  </article>
+<article class="partido">
+    <header>
+      <span class="hora mono">vie, 09:00 a. m.</span>
+      <span class="torneo"><span class="chip">M25</span> Ueberlingen (Germany) · <span class="mono">QF</span></span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91106986/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Mika Petkovic <b>[4]</b></span>
+      <span class="rk mono">ATP 428</span>
+      <span class="od mono">1.38</span>
+      <span class="od mono">1.45</span>
+      <span class="tray"><span class="g">R1✓ 6-3 6-2</span> <span class="vs">vQ</span> · <span class="g">R2✓ 2-6 6-4 6-3</span> <span class="vs">vQ</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Tim Handel</span>
+      <span class="rk mono">ATP 772</span>
+      <span class="od mono">2.75</span>
+      <span class="od mono">2.50</span>
+      <span class="tray"><span class="g">R1✓ 6-4 7-6(8)</span> · <span class="g">R2✓ 6-2 6-4</span> <span class="vs">v[7]</span></span>
+    </div>
+  </article>
+<article class="partido">
+    <header>
+      <span class="hora mono">vie, 12:00 p. m.</span>
+      <span class="torneo">Campos Do Jordao</span>
+      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91115637/" target="_blank" rel="noopener">Betano ↗</a>
+    </header>
+    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
+    <div class="linea-jug">
+      <span class="nom">Maayan Laron</span>
+      <span class="rk mono"></span>
+      <span class="od mono">3.70</span>
+      <span class="od mono">3.25</span>
+      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
+    </div><div class="linea-jug">
+      <span class="nom">Victoria Luiza Barros</span>
+      <span class="rk mono"></span>
+      <span class="od mono">1.22</span>
+      <span class="od mono">1.28</span>
+      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
+    </div>
+  </article>
+<footer>Generado 2026-08-21 18:10 UTC · fuentes: Betano vía OddsPapi (cuotas y hora) + cuadros oficiales itftennis.com (contexto) · 9 partidos listados.</footer>
+</div>
+<script>
+(function(){
+  var el = document.getElementById('edad');
+  function pinta(){
+    var min = Math.round((Date.now() - new Date(el.dataset.generado).getTime()) / 60000);
+    el.innerHTML = 'datos de hace <b>' + (min < 60 ? min + ' min' : (min / 60).toFixed(1) + ' h') + '</b>';
+    el.className = 'edad' + (min > 360 ? ' rancia' : min > 120 ? ' vieja' : '');
+  }
+  pinta(); setInterval(pinta, 60000);
+})();
+</script>
