@@ -73,6 +73,12 @@
    "n": 136,
    "fuente": "barridos ago 2026",
    "uso": "solo las colas importan; si Betano paga >3% más que bet365, hay algo"
+  },
+  {
+   "regla": "El WTN pierde valor en rondas avanzadas: con Δ<1.5 en QF o después, el mejor WTN ganó solo 40% (n=15). En R1-R2 con Δ<1.5 gana 59%.",
+   "n": 39,
+   "fuente": "backtest por ronda 2026-08-21",
+   "uso": "en semis y finales entre jugadores parejos, el nivel de base no decide: pesa más la forma del torneo"
   }
  ],
  "senalesDelCuadro": [
@@ -185,5 +191,13 @@
    "conclusion": "De 26 partidos comparables de la mesa, 11 quedaron en moneda al aire y solo Borg junta señal fuerte con cuota generosa."
   }
  ],
- "pendienteCritico": "Medir si el WTN aporta algo que la cuota no tenga ya: registrar cuota + veredicto + resultado en cada corrida hasta juntar muestra. Sin eso, no sabemos si esto da ventaja o solo replica al mercado."
+ "pendienteCritico": "Juntar (cuota + ΔWTN + resultado) del MISMO partido: hoy tenemos 0 pares. El libro itf-registro.json ya los acumula en cada corrida; con ~100 pares se podrá saber si nuestras señales superan el vig de 9%.",
+ "modeloDelMercado": {
+  "nota": "Ingeniería inversa de las cuotas de Betano en ITF (desvigadas). Preliminar: n=18.",
+  "forma": "logit(p) = -0.081 + 0.183·ΔWTN",
+  "R2": 0.626,
+  "lectura": "El ΔWTN explica ~63% de la varianza de sus probabilidades: el mercado usa una métrica de nivel muy parecida al WTN (o su propio Elo, que correlaciona). Su curva es más plana que la realidad observada: dice 66% donde nuestros datos dan 88% en Δ4+ — pero eso puede ser sesgo de ronda (las cuotas que tenemos son de rondas avanzadas, el 88% viene sobre todo de R1).",
+  "vig": "9.0% de margen medio en ITF — muy alto (en fútbol top es 4-6%). Es la barrera real: una señal debe superar ese 9% para dar ganancia.",
+  "loQueNoTenemos": "lesiones, dinero entrante, H2H, informes locales. Eso explica el 37% de varianza que el WTN no cubre."
+ }
 }

@@ -464,3 +464,54 @@ ${partidos.length ? `<div class="tabla-env"><table>
 
 fs.writeFileSync(SALIDA, html);
 console.log(`✓ ${SALIDA} (${(html.length / 1024).toFixed(0)} KB) · ${partidos.length} por jugar (${conCuota} con cuota) · ${activos.length} torneos`);
+
+/* ---------- libro de registro: la pieza que falta ----------
+   Para saber si nuestras señales le ganan al mercado (y no solo al azar)
+   hace falta juntar, del mismo partido: cuota vista + ΔWTN + resultado.
+   Cada corrida anota los partidos con cuota, y cuando el cuadro los da
+   por jugados escribe quién ganó. Sin este acumulado no hay forma de
+   medir rendimiento contra el precio. */
+const REG = path.join(DIR, 'itf-registro.json');
+const reg = leer(REG) || { nota: 'cuota + nivel + resultado por partido, para medir contra el mercado', partidos: {} };
+for (const p of partidos) {
+  if (!p.cuotas) continue;
+  const k = String(p.matchId);
+  if (reg.partidos[k]) continue;
+  reg.partidos[k] = {
+    visto: new Date().toISOString(),
+    torneo: p.t.nombre, categoria: p.t.categoria, superficie: p.t.superficie,
+    ronda: p.ronda, evento: p.evento, cuando: p.inicio ? p.inicio.toISOString() : null,
+    lados: p.lados.map((l, i) => ({
+      nombre: l.nombre, atp: l.atp, wtn: l.wtn, marca: l.marca,
+      gana: p.cuotas.lados[i].gana, set1: p.cuotas.lados[i].set1,
+    })),
+    veredicto: analisis.veredictos[k] ? {
+      favorito: analisis.veredictos[k].favorito,
+      confianza: analisis.veredictos[k].confianza,
+      mercado: analisis.veredictos[k].mercado,
+    } : null,
+    resultado: null,
+  };
+}
+/* cerrar los que ya se jugaron, mirando los cuadros */
+let cerrados = 0;
+for (const t of activos) {
+  const ctx = contextoTorneo(t.clave);
+  for (const [k, e] of Object.entries(reg.partidos)) {
+    if (e.resultado) continue;
+    const lados = ctx.porMatch.get(+k);
+    if (!lados) continue;
+    const gi = lados.findIndex(l => l.ganador);
+    if (gi < 0) continue;
+    const gan = lados[gi].nombre;
+    e.resultado = {
+      ganador: gan,
+      idxGanador: e.lados.findIndex(l => pareceElMismo(gan, { nombre: l.nombre })),
+      cerrado: new Date().toISOString(),
+    };
+    cerrados++;
+  }
+}
+fs.writeFileSync(REG, JSON.stringify(reg, null, 1));
+const conRes = Object.values(reg.partidos).filter(e => e.resultado).length;
+console.log(`  registro: ${Object.keys(reg.partidos).length} partidos con cuota anotados, ${conRes} con resultado (${cerrados} cerrados ahora)`);
