@@ -206,8 +206,13 @@ for (const t of activos) {
           llega: ctx.cuadros ? trayectoria(l.nombre, ctx.cuadros) : '',
         };
       });
+      /* El día del grupo es el de CHILE: un 10:00 del sábado en Taipei es
+         viernes 22:00 acá, y debe leerse en el día que el usuario lo juega. */
+      const fechaCl = inicio
+        ? new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Santiago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(inicio)
+        : dia.fecha;
       partidos.push({
-        t, fecha: dia.fecha, hhmm, inicio, orden: ordenTs,
+        t, fecha: fechaCl, fechaItf: dia.fecha, hhmm, inicio, orden: ordenTs,
         cancha: p.cancha, turno: p.orden, horarioTxt: p.horario,
         evento: p.evento, ronda: RONDA_CORTA[p.ronda] || p.ronda,
         lados, cuotas: cuotasDe(lados[0], lados[1]),

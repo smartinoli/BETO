@@ -221,23 +221,41 @@ try {
       } catch (e) { console.log(`  ✗ ${t.clave}: ${e.message.split('\n')[0]}`); }
     }
   } else if (cmd === 'oop') {
-    /* Order of play + cuadro de cada torneo en juego, para la mesa. */
+    /* Programación + cuadro de cada torneo en juego, para la mesa.
+       CLAVE (medido 2026-08-21): Incapsula bloquea el fetch a la API si la
+       página abierta no es la del propio torneo, pero NAVEGAR a la página
+       del torneo pasa siempre, y desde ahí los fetch al mismo torneo también.
+       Por eso: un goto por torneo y todo lo demás desde adentro. */
     const OOP = path.join(DATOS, 'oop');
     fs.mkdirSync(OOP, { recursive: true });
     fs.mkdirSync(path.join(DATOS, 'vivo'), { recursive: true });
     const hoy = new Date().toISOString().slice(0, 10);
     const cache = JSON.parse(fs.readFileSync(CACHE_CALENDARIO, 'utf8'));
-    const activos = cache.torneos.filter(t => t.desde <= hoy && t.hasta >= hoy);
+    const activos = cache.torneos.filter(t => t.desde <= hoy && t.hasta >= hoy && t.enlace);
     const api = 'https://www.itftennis.com/tennis/api/TournamentApi/';
-    console.log(`Order of play de ${activos.length} torneos en juego…`);
+    console.log(`Programación de ${activos.length} torneos en juego…`);
+    let ok = 0, mal = 0;
     for (const t of activos) {
+      const capt = new Map();
+      const oyente = async r => {
+        if (!/TournamentApi\/Get/i.test(r.url())) return;
+        try { capt.set(r.url(), await r.text()) } catch {}
+      };
+      page.on('response', oyente);
       try {
-        await pausaHumana();
-        const dias = (await fetchDesdePagina(page, `${api}GetOrderOfPlayDays?tournamentKey=${t.clave}`))
-          .filter(d => (d.playDate || '').slice(0, 10) >= hoy);
-        for (const d of dias) {
-          await pausaHumana();
-          const crudo = await fetchDesdePagina(page, `${api}GetOrderOfPlay?orderOfPlayDayId=${d.orderOfPlayDayId}`);
+        await page.goto(t.enlace + 'order-of-play/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.waitForTimeout(6000);
+        /* lo que la propia página cargó */
+        const parse = s => { try { return JSON.parse(s) } catch { return null } };
+        let dias = null;
+        for (const [u, cuerpo] of capt) if (/GetOrderOfPlayDays/i.test(u)) dias = parse(cuerpo);
+        if (!Array.isArray(dias)) throw new Error('sin días de order of play');
+        const futuros = dias.filter(d => (d.playDate || '').slice(0, 10) >= hoy);
+        for (const d of futuros) {
+          const url = `${api}GetOrderOfPlay?orderOfPlayDayId=${d.orderOfPlayDayId}`;
+          let crudo = null;
+          for (const [u, cuerpo] of capt) if (u.includes('orderOfPlayDayId=' + d.orderOfPlayDayId)) crudo = parse(cuerpo);
+          if (!crudo) { await pausaHumana(); crudo = await fetchDesdePagina(page, url); }
           const partidos = [];
           for (const cancha of (Array.isArray(crudo) ? crudo : [])) {
             let orden = 0;
@@ -251,8 +269,8 @@ try {
                 estado: m.playStatusCode === 'PC' ? 'jugado' : m.playStatusCode === 'TP' ? 'pendiente' : (m.playStatusDesc || '?'),
                 nota: m.resultStatusDesc || null,
                 lados: (m.teams || []).map(eq => {
-                  const j = (eq.players || []).filter(Boolean).map(p => ({
-                    id: p.playerId, nombre: [p.givenName, p.familyName].filter(Boolean).join(' '), pais: p.nationality,
+                  const j = (eq.players || []).filter(Boolean).map(x => ({
+                    id: x.playerId, nombre: [x.givenName, x.familyName].filter(Boolean).join(' '), pais: x.nationality,
                   }));
                   return { jugadores: j, nombre: j.map(x => x.nombre).join(' / ') || null, seed: eq.seeding ?? null, entrada: eq.entryStatus || null, ganador: !!eq.isWinner, sets: [] };
                 }),
@@ -264,13 +282,7 @@ try {
             JSON.stringify({ clave: t.clave, fecha, fechaTxt: d.playDateString || '', bajado: new Date().toISOString(), partidos }));
           console.log(`  ✓ oop ${t.clave} ${fecha}: ${partidos.length} partidos`);
         }
-      } catch (e) { console.log(`  ✗ oop ${t.clave}: ${e.message.split(' para ')[0]}`); }
-      /* cuadro fresco para seed/entrada/trayectoria */
-      const fv = path.join(DATOS, 'vivo', t.clave + '.json');
-      let edad = Infinity;
-      try { edad = Date.now() - new Date(JSON.parse(fs.readFileSync(fv, 'utf8')).bajado).getTime() } catch {}
-      if (edad < 4 * 3600e3) continue;
-      try {
+        /* cuadro (seed, entrada, trayectoria) desde la misma página del torneo */
         await pausaHumana();
         const ev = normalizarEventos(await fetchDesdePagina(page, `${api}GetEventFilters?tournamentKey=${t.clave}`), t.clave);
         const cuadros = {};
@@ -279,10 +291,14 @@ try {
           cuadros[c.evento] = normalizarCuadro(await fetchDesdePagina(page,
             `${api}GetDrawsheet?eventClassificationCode=${c.evento}&matchTypeCode=S&tourType=${ev.tourType}&tournamentId=${ev.tournamentId}&weekNumber=0`));
         }
-        fs.writeFileSync(fv, JSON.stringify({ clave: t.clave, bajado: new Date().toISOString(), cuadros }));
+        fs.writeFileSync(path.join(DATOS, 'vivo', t.clave + '.json'),
+          JSON.stringify({ clave: t.clave, bajado: new Date().toISOString(), cuadros }));
         console.log(`  ✓ cuadro ${t.clave}`);
-      } catch (e) { console.log(`  ✗ cuadro ${t.clave}: ${e.message.split(' para ')[0]}`); }
+        ok++;
+      } catch (e) { console.log(`  ✗ ${t.clave}: ${e.message.split(' para ')[0].split('\n')[0]}`); mal++; }
+      finally { page.off('response', oyente); }
     }
+    console.log(`Listo: ${ok} torneos completos, ${mal} fallidos.`);
   } else if (cmd === 'liquidar') {
     const ITF_PATH = path.join(DIR, 'itf.json');
     const db = JSON.parse(fs.readFileSync(ITF_PATH, 'utf8'));
