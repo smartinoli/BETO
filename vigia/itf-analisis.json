@@ -1,15 +1,16 @@
 {
- "generado": "2026-08-21T19:54:58+00:00",
+ "generado": "2026-08-21T20:06:15+00:00",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + vigia/itf-saber.json",
- "titular": "Medido sobre 309 partidos ya jugados: el WTN acierta 71% y el ATP 66% — mejor, pero sin diferencia concluyente. Se usa como input, no como veredicto; la forma sigue pesando.",
+ "titular": "La diferencia de WTN solo vale desde 1.5: bajo eso acierta 52-57% (azar) y sobre 4 acierta 88%. Con esa vara, 11 de los 26 partidos comparables son moneda al aire.",
+ "advertencia": "Acertar el ganador no es ganar: el mercado ya paga esos favoritos. Solo Borg junta señal fuerte y cuota generosa.",
  "veredictos": {
   "1183664355": {
    "favorito": "Leo Borg [1]",
    "confianza": "alta",
    "mercado": "gana",
-   "razon": "LA MAYOR DISCREPANCIA CON CUOTA: Borg tiene WTN 5.4 contra 8.5 de Lithen — un abismo de nivel real — y sin embargo paga 2.45 mientras Lithen es favorito a 1.47. El mercado premia la forma de la semana (Lithen cedió 8 games en 3 partidos) e ignora la diferencia de categoría. Corrige mi lectura anterior, que había elegido a Lithen mirando solo la forma.",
+   "razon": "LA OPORTUNIDAD DE LA MESA: Δ3.10 de WTN a favor de Borg (5.40 contra 8.50) — en esa banda el mejor WTN acierta 72% — y sin embargo paga 2.45 mientras Lithen es favorito a 1.47. El mercado premia la forma de la semana e ignora la brecha de nivel. Es el único partido con señal fuerte y cuota generosa a la vez.",
    "banderas": [
-    "WTN muy superior",
+    "Δ3.10 fuerte",
     "valor de cuota",
     "mercado invertido"
    ]
@@ -18,54 +19,9 @@
    "favorito": "Dragos Nicolae Madaras [3]",
    "confianza": "alta",
    "mercado": "gana",
-   "razon": "LA MAYOR DIFERENCIA DE NIVEL DE TODA LA MESA: Madaras marca WTN 3.59 contra 9.02 de Sciahbasi, más 700 puestos ATP de ventaja. Cuando abra la línea, cualquier cuota sobre 1.35 es tomable.",
+   "razon": "Δ5.43 (Madaras 3.59 contra 9.02): la diferencia más grande de la mesa, en la banda que acierta 88%. Más 700 puestos ATP. Falta que abra la línea.",
    "banderas": [
-    "WTN muy superior",
-    "gap de ranking",
-    "línea sin abrir"
-   ]
-  },
-  "1183664415": {
-   "favorito": "Maximilian Marterer",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "WTN 3.07, el mejor de todo Ueberlingen, contra 3.7 de Masur [2]. Confirma la alerta: figura sin ranking ATP porque vuelve de lesión, pero es el ex #45 del mundo y el nivel medido lo respalda. Si Betano lo pone underdog al abrir, es la mejor oportunidad de la semana.",
-   "banderas": [
-    "WTN muy superior",
-    "ranking engañoso",
-    "línea sin abrir"
-   ]
-  },
-  "1183661182": {
-   "favorito": "Shunsuke Mitsui",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "EL MERCADO TIENE RAZÓN Y YO ESTABA EQUIVOCADO: Mitsui tiene WTN 3.68 contra 4.32 de Dellavedova [2] — mejor nivel real pese a 342 puestos ATP menos. Su camino además fue mucho más duro (venció al [8] y al [3] local) mientras Dellavedova pasó por un WC, un qualifier y un no-seed. La cuota de 1.62 está bien puesta.",
-   "banderas": [
-    "WTN superior",
-    "camino más duro",
-    "corrige análisis previo"
-   ]
-  },
-  "1183661237": {
-   "favorito": "Yun Seong Chung",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "WTN 4.66 contra 6.21 de Fitriadi [2], pese a estar 500 puestos ATP por debajo. Además eliminó al [4] y su cuarto duró un set (retiro del rival): llega fresco. Si al abrir lo ponen underdog por el ranking, es valor claro.",
-   "banderas": [
-    "WTN superior",
-    "ranking engañoso",
-    "desgaste rival",
-    "línea sin abrir"
-   ]
-  },
-  "1183661236": {
-   "favorito": "Petr Bar Biryukov [1]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "WTN 3.68 contra 6.38 de Isomura y mejor ranking (281 vs 562): mejor por nivel medido y por puntos. Falta que abra la línea.",
-   "banderas": [
-    "WTN muy superior",
+    "Δ5.43 muy fuerte",
     "gap de ranking",
     "línea sin abrir"
    ]
@@ -74,9 +30,9 @@
    "favorito": "Laurent Lokoli [3]",
    "confianza": "alta",
    "mercado": "gana",
-   "razon": "WTN 3.41 contra 9.1 de Spiridon, más 700 puestos ATP. El qualifier no tiene nivel para esto, y la regla del circuito dice que gana solo 33%.",
+   "razon": "Δ5.69 (Lokoli 3.41 contra 9.10 del qualifier): banda del 88%, y la regla del circuito ya castiga al qualifier. Sin línea abierta.",
    "banderas": [
-    "WTN muy superior",
+    "Δ5.69 muy fuerte",
     "regla qualifier",
     "línea sin abrir"
    ]
@@ -85,105 +41,84 @@
    "favorito": "Filip Jeff Planinsek [6]",
    "confianza": "alta",
    "mercado": "gana",
-   "razon": "WTN 5.56 contra 10.93: Gundacker es qualifier con cinco partidos encima y mucho menos nivel. El problema es el precio, 1.14: sirve de ancla para una combinada, no como apuesta suelta.",
+   "razon": "Δ5.37 (Planinsek 5.56 contra 10.93): banda del 88%. Pero a 1.14 el precio ya lo descuenta todo: sirve de ancla en combinada, no como apuesta suelta.",
    "banderas": [
-    "WTN muy superior",
-    "regla qualifier",
+    "Δ5.37 muy fuerte",
     "cuota corta"
-   ]
-  },
-  "1183661181": {
-   "favorito": "Yu Hsiou Hsu [1]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "WTN 3.25 — el mejor del circuito esta semana — contra 4.49 de Imamura, y ATP 222 vs 409. A 1.47 el precio es corto, pero el respaldo es doble.",
-   "banderas": [
-    "WTN superior",
-    "gap de ranking"
-   ]
-  },
-  "1183662141": {
-   "favorito": "Nikita Mashtakov [3]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "WTN 4.83 contra 6.51 de Zielinski. Corrige mi lectura anterior: había elegido a Zielinski por su forma más limpia, pero el nivel medido dice lo contrario con claridad. Los tiebreaks sufridos de Mashtakov son ruido, no señal.",
-   "banderas": [
-    "WTN superior",
-    "corrige análisis previo",
-    "línea sin abrir"
-   ]
-  },
-  "1183664160": {
-   "favorito": "Juan Cruz Martin Manzano [4]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "WTN 4.13 contra 6.34 de Oradini y 200 puestos ATP de ventaja. A 1.62 hay margen real: ambas métricas coinciden y el precio no lo refleja del todo.",
-   "banderas": [
-    "WTN muy superior",
-    "gap de ranking",
-    "valor de cuota"
    ]
   },
   "1183664414": {
    "favorito": "Arthur Nagel [3]",
-   "confianza": "media",
+   "confianza": "alta",
    "mercado": "gana",
-   "razon": "WTN 5.71 contra 10.68 de Maute: mucho más nivel del que sugiere la racha del qualifier. Corrige mi 'pasar' anterior. A 1.32 está caro, pero es sólido.",
+   "razon": "Δ4.97 a favor de Nagel (5.71 contra 10.68 de Maute): la racha del qualifier no compensa esa brecha. A 1.32 está caro pero es de los más seguros.",
    "banderas": [
-    "WTN muy superior",
-    "corrige análisis previo",
+    "Δ4.97 muy fuerte",
+    "regla qualifier",
     "cuota corta"
    ]
   },
   "1183662140": {
    "favorito": "Gabriele Maria Noce [6]",
-   "confianza": "media",
+   "confianza": "alta",
    "mercado": "gana",
-   "razon": "Corrige mi apuesta por el junior: Noce marca WTN 8.56 contra 13.28 de Behrmann — no están parejos, Noce es bastante mejor. El 6-1 6-0 del junior al [5] impresiona pero no cambia el nivel de base.",
+   "razon": "Δ4.72 a favor de Noce (8.56 contra 13.28): el junior arrasó a rivales flojos, pero la brecha de nivel es de la banda que acierta 88%. Corrige mi apuesta anterior por Behrmann.",
    "banderas": [
-    "WTN superior",
+    "Δ4.72 muy fuerte",
     "corrige análisis previo",
     "línea sin abrir"
    ]
   },
   "1183664158": {
    "favorito": "Pierluigi Basile",
-   "confianza": "media",
+   "confianza": "alta",
    "mercado": "gana",
-   "razon": "WTN 5.01 contra 8.93 de Comino, que además avanzó por retiro. A 1.14 el precio no deja nada, pero el partido no tiene misterio.",
+   "razon": "Δ3.92 a favor de Basile (5.01 contra 8.93), y Comino avanzó por retiro. A 1.14 no queda margen, pero el resultado es de los más previsibles.",
    "banderas": [
-    "WTN muy superior",
+    "Δ3.92 fuerte",
     "cuota corta",
     "victoria por retiro del rival"
    ]
   },
   "1183664164": {
    "favorito": "Lorenzo Rottoli",
-   "confianza": "media",
+   "confianza": "alta",
    "mercado": "gana",
-   "razon": "WTN 6.67 contra 10.34 de Seghetti. Corrige mi 'pasar': el 6-2 6-0 del WC al [5] era una golondrina y el nivel medido lo desmiente. A 1.36 está justo.",
+   "razon": "Δ3.67 a favor de Rottoli (6.67 contra 10.34). El 6-2 6-0 del WC al [5] fue una golondrina. A 1.36 está bien puesto.",
    "banderas": [
-    "WTN muy superior",
+    "Δ3.67 fuerte",
     "corrige análisis previo"
    ]
   },
-  "1183661738": {
-   "favorito": "Robert Guna [7]",
+  "1183661236": {
+   "favorito": "Petr Bar Biryukov [1]",
+   "confianza": "alta",
+   "mercado": "gana",
+   "razon": "Δ2.70 a favor de Biryukov (3.68 contra 6.38) y además mejor ranking (281 vs 562): las dos métricas coinciden, banda del 72%. Sin línea todavía.",
+   "banderas": [
+    "Δ2.70 fuerte",
+    "gap de ranking",
+    "línea sin abrir"
+   ]
+  },
+  "1183664160": {
+   "favorito": "Juan Cruz Martin Manzano [4]",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "WTN 8.18 contra 8.66 y camino sin ceder un set. A 1.4 el precio recoge casi toda la ventaja, pero las dos señales apuntan al mismo lado.",
+   "razon": "Δ2.21 a favor de Martin Manzano (4.13 contra 6.34) más 200 puestos ATP. A 1.62 el precio deja algo de margen sobre una señal de banda 68%.",
    "banderas": [
-    "WTN superior",
-    "forma dominante"
+    "Δ2.21 moderada",
+    "gap de ranking",
+    "valor de cuota"
    ]
   },
   "1183664413": {
    "favorito": "Mika Petkovic [4]",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "WTN 4.57 contra 6.82 de Handel — más diferencia de la que sugiere el ranking. A 1.4 sigue en la banda donde nuestros datos dicen que el favorito rinde menos de lo prometido, pero el nivel lo respalda.",
+   "razon": "Δ2.25 a favor de Petkovic (4.57 contra 6.82). A 1.4 cae en la banda de cuota donde nuestros datos dicen que el favorito rinde menos de lo prometido: señal sí, precio no.",
    "banderas": [
-    "WTN muy superior",
+    "Δ2.25 moderada",
     "banda de cuota mala"
    ]
   },
@@ -191,48 +126,31 @@
    "favorito": "Tymur Bieldiugin Q",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Corrige mi error: había marcado valor en Senn a 2.37 por el desgaste, pero Bieldiugin tiene mejor WTN (10.33 contra 12.28) y por eso es favorito a 1.44. El desgaste no da vuelta una diferencia de nivel.",
+   "razon": "Δ1.95 a favor de Bieldiugin (10.33 contra 12.28), y por eso es favorito a 1.44. Corrige mi error de ayer: el desgaste de Bieldiugin no da vuelta la brecha de nivel, aunque en esta banda el acierto es 68%, no más.",
    "banderas": [
-    "WTN superior",
+    "Δ1.95 moderada",
     "corrige análisis previo"
    ]
   },
-  "1183664165": {
-   "favorito": "Andrea De Marchi",
+  "1183662141": {
+   "favorito": "Nikita Mashtakov [3]",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "WTN 7.87 contra 8.65 de Baker, consistente con el ranking (813 vs 959). A 1.36 es apretado para el margen que hay.",
+   "razon": "Δ1.68 a favor de Mashtakov (4.83 contra 6.51): señal moderada (68%), suficiente para inclinar pero no para confiarse. Sin línea abierta.",
    "banderas": [
-    "WTN superior",
-    "cuota corta"
+    "Δ1.68 moderada",
+    "línea sin abrir"
    ]
   },
-  "1183662341": {
-   "favorito": "Jack Loge [1]",
+  "1183661237": {
+   "favorito": "Yun Seong Chung",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "WTN 5.71 contra 6.18: Loge algo mejor en nivel y en ranking (410 vs 616). A 1.36 el precio pide más certeza de la que hay.",
+   "razon": "Δ1.55 a favor de Chung (4.66 contra 6.21) pese a 500 puestos ATP menos, más un cuarto que duró un set por retiro del rival. Justo en el borde de lo que es señal.",
    "banderas": [
-    "WTN levemente superior",
-    "cuota corta"
-   ]
-  },
-  "1183663252": {
-   "favorito": "Goncalo Marques",
-   "confianza": "media",
-   "mercado": "gana",
-   "razon": "Rankings ATP calcados (1025 vs 1048) y WTN 7.51 contra 7.68: ventaja mínima. A 1.62 solo si te convence el desempate por nivel.",
-   "banderas": [
-    "WTN levemente superior"
-   ]
-  },
-  "1183662342": {
-   "favorito": "Martin VAN DER MEERSCHEN [4]",
-   "confianza": "baja",
-   "mercado": "gana",
-   "razon": "WTN 6.76 contra 6.79 de Faucon [2], que tiene mejor ranking (588 vs 723). Nivel prácticamente igual, forma a favor de VDM. Solo vale si al abrir lo ponen underdog.",
-   "banderas": [
-    "WTN levemente superior",
+    "Δ1.55 moderada",
+    "ranking engañoso",
+    "desgaste rival",
     "línea sin abrir"
    ]
   },
@@ -240,37 +158,122 @@
    "favorito": "Niklas Guttau",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Guttau tiene mejor WTN (8.13 contra 10.38 del WC Simonsson), pero los dos están en un nivel bajo y errático. Sin línea y sin convicción.",
+   "razon": "Δ2.25 a favor de Guttau, pero los dos juegan en un nivel muy bajo (8.13 y 10.38) donde los resultados son erráticos. Sin línea y sin ganas.",
    "banderas": [
+    "Δ2.25 moderada",
     "nivel bajo",
     "línea sin abrir"
    ]
   },
-  "1183662679": {
-   "favorito": "—",
+  "1183661181": {
+   "favorito": "Yu Hsiou Hsu [1]",
    "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Bajo mi propio veredicto anterior: había puesto a Sorger como la mejor opción de la mesa por su 6-0 6-0, pero los WTN están empatados (4.96 de Sorger contra 4.88 de Dominko). Sorger arrasó a rivales flojos; Dominko eliminó al [1] y al [5]. Sin cuota y con señales cruzadas, no hay lado.",
+   "mercado": "gana",
+   "razon": "Δ1.24: por debajo del umbral de 1.5, o sea ruido según nuestros datos. Hsu tiene mejor ranking (222 vs 409) y ese es el único argumento real. A 1.47 no compensa.",
    "banderas": [
-    "señales cruzadas",
-    "corrige análisis previo"
+    "Δ1.24 ruido",
+    "gap de ranking",
+    "cuota corta"
    ]
   },
-  "1183663251": {
+  "1183661182": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "WTN 6.59 contra 6.41: empatados en nivel real, aunque Lagutin tiene mucho mejor ranking. Fernandes viene de eliminar al [1]. Demasiado parejo.",
+   "razon": "CORRIJO MI PROPIO DESTACADO: la ventaja de Mitsui en WTN es Δ0.64 — dentro del rango donde el WTN acierta 52-57%, es decir azar. Lo que sí queda en pie es que su camino fue más duro (venció al [8] y al [3] local) mientras Dellavedova pasó por WC y qualifier. Pero eso no basta para tomar lado a 1.62.",
    "banderas": [
-    "parejo"
+    "Δ0.64 ruido",
+    "corrige análisis previo",
+    "camino más duro"
+   ]
+  },
+  "1183664415": {
+   "favorito": "Maximilian Marterer",
+   "confianza": "baja",
+   "mercado": "gana",
+   "razon": "Δ0.63 entre Marterer (3.07) y Masur (3.70) es ruido: los dos son ex top-100 y el nivel medido los pone casi iguales. Lo que sigue en pie es la alerta de precio: Marterer figura SIN ranking ATP porque vuelve de lesión, así que si al abrir la línea lo ponen underdog por eso, ahí está el valor — no en la brecha de nivel.",
+   "banderas": [
+    "Δ0.63 ruido",
+    "ranking engañoso",
+    "línea sin abrir"
+   ]
+  },
+  "1183664165": {
+   "favorito": "Andrea De Marchi",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.78: ruido. De Marchi tiene algo mejor ranking (813 vs 959) y la cuota lo refleja. Nada que explotar.",
+   "banderas": [
+    "Δ0.78 ruido"
+   ]
+  },
+  "1183661738": {
+   "favorito": "Robert Guna [7]",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.48: ruido puro. Guna llega sin ceder un set, pero a 1.4 el precio ya paga esa forma y el nivel no lo respalda.",
+   "banderas": [
+    "Δ0.48 ruido",
+    "cuota corta"
+   ]
+  },
+  "1183662341": {
+   "favorito": "Jack Loge [1]",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.47: ruido. Loge es mejor por ranking (410 vs 616) pero a 1.36 se paga como si la diferencia fuera clara.",
+   "banderas": [
+    "Δ0.47 ruido",
+    "cuota corta"
    ]
   },
   "1183664162": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "WTN 5.58 contra 5.31 y rankings calcados: el partido más parejo de la mesa. Mazza paga menos (1.75 vs 1.91) justamente por eso. Nada que explotar.",
+   "razon": "Δ0.27 y rankings calcados: el partido más parejo de la mesa, y las cuotas (1.91 / 1.75) lo dicen igual.",
    "banderas": [
+    "Δ0.27 ruido",
+    "parejo"
+   ]
+  },
+  "1183663251": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.18: ruido. Lagutin tiene mucho mejor ranking, Fernandes viene de eliminar al [1]. Sin desempate creíble.",
+   "banderas": [
+    "Δ0.18 ruido",
+    "parejo"
+   ]
+  },
+  "1183663252": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.17 y rankings calcados (1025 vs 1048): moneda al aire. Retiro mi veredicto anterior a favor de Marques.",
+   "banderas": [
+    "Δ0.17 ruido",
+    "corrige análisis previo"
+   ]
+  },
+  "1183662679": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.08: el partido más parejo en nivel de toda la mesa. Sorger arrasó a rivales flojos, Dominko eliminó al [1] y al [5]. Nada que decidir.",
+   "banderas": [
+    "Δ0.08 ruido",
+    "parejo"
+   ]
+  },
+  "1183662342": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.03: empate técnico en nivel. Faucon [2] tiene mejor ranking, VDM mejor forma. Sin línea y sin lado.",
+   "banderas": [
+    "Δ0.03 ruido",
     "parejo"
    ]
   },
@@ -278,7 +281,7 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Hipfl marca WTN 6.99; de Reitano no hay ranking ni WTN (WC sin historia) y avanzó con un solo set jugado. Sin datos del rival no se puede juzgar.",
+   "razon": "Hipfl marca WTN 6.99; de Reitano no hay ranking ni WTN. Sin dato del rival no hay comparación posible.",
    "banderas": [
     "sin datos del rival"
    ]
@@ -287,10 +290,9 @@
  "destacados": [
   1183664355,
   1183661737,
-  1183664415,
-  1183661182,
-  1183661237,
+  1183664163,
+  1183662140,
+  1183661236,
   1183664160
- ],
- "advertencia": "Acertar el ganador no es ganar: el mercado ya paga esos favoritos. Todavía no tenemos muestra para saber si estas señales superan a la cuota."
+ ]
 }

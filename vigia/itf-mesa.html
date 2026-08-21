@@ -44,6 +44,11 @@ tr.par td{background:var(--franja)}
 .c-rank{font-size:12px;color:var(--tinta2);white-space:nowrap}
 .wtn{display:block;font-size:11.5px;color:var(--tinta2);margin-top:1px}
 .wtn.mejor{color:var(--acento);font-weight:600}
+.dw{font-size:10px;padding:0 5px;border-radius:99px;margin-left:3px;font-weight:600;vertical-align:1px}
+.dw.f4{background:var(--acento);color:var(--carta)}
+.dw.f3{background:var(--acento-suave);color:var(--acento)}
+.dw.f2{border:1px solid var(--linea);color:var(--tinta2)}
+.dw.f0{border:1px dashed var(--linea);color:var(--tinta2);opacity:.65;font-weight:400}
 .c-od{text-align:right;font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;width:62px}
 .c-llega{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tinta2);line-height:1.6}
 .c-llega i{font-style:normal} .c-llega .g{color:var(--acento);font-weight:600}
@@ -82,7 +87,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <div class="envoltura">
 <div class="cabecera">
   <h1>Mesa ITF</h1>
-  <span class="edad" id="edad" data-generado="2026-08-21T20:00:04.909Z">datos de hace <b>—</b></span>
+  <span class="edad" id="edad" data-generado="2026-08-21T20:06:38.537Z">datos de hace <b>—</b></span>
   <div class="controles">
     <span class="orden">Ordenar:</span>
     <button id="b-torneo" class="on" onclick="ordenar('torneo')">Campeonato</button>
@@ -94,17 +99,17 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · 27 partidos, <b>15 con cuota</b> de Betano y 12 que Betano todavía no cotiza (abre la línea horas antes) · hora local del torneo y hora de Chile.</p>
 <div id="resumen" class="resumen" hidden>
   <h2>Lo que ve el análisis</h2>
-  <p class="titular">Medido sobre 309 partidos ya jugados: el WTN acierta 71% y el ATP 66% — mejor, pero sin diferencia concluyente. Se usa como input, no como veredicto; la forma sigue pesando.</p>
-  <p class="advertencia">⚠ Acertar el ganador no es ganar: el mercado ya paga esos favoritos. Todavía no tenemos muestra para saber si estas señales superan a la cuota.</p>
-  <p class="resumen-nota">Sobre 27 partidos por jugar, con las reglas medidas en 11 patrones de nuestros propios datos (1.313 partidos históricos). Análisis del 2026-08-21 19:54 UTC.</p>
+  <p class="titular">La diferencia de WTN solo vale desde 1.5: bajo eso acierta 52-57% (azar) y sobre 4 acierta 88%. Con esa vara, 11 de los 26 partidos comparables son moneda al aire.</p>
+  <p class="advertencia">⚠ Acertar el ganador no es ganar: el mercado ya paga esos favoritos. Solo Borg junta señal fuerte y cuota generosa.</p>
+  <p class="resumen-nota">Sobre 27 partidos por jugar, con las reglas medidas en 12 patrones de nuestros propios datos (2.024 partidos históricos). Análisis del 2026-08-21 20:06 UTC.</p>
   <ol class="mejores"><li><b>Leo Borg [1]</b> <span class="mkt">gana</span>
-      <span class="ctx">M15 Bastad · Semi-final</span><span class="razon">LA MAYOR DISCREPANCIA CON CUOTA: Borg tiene WTN 5.4 contra 8.5 de Lithen — un abismo de nivel real — y sin embargo paga 2.45 mientras Lithen es favorito a 1.47. El mercado premia la forma de la semana (Lithen cedió 8 games en 3 partidos) e ignora la diferencia de categoría. Corrige mi lectura anterior, que había elegido a Lithen mirando solo la forma.</span></li><li><b>Dragos Nicolae Madaras [3]</b> <span class="mkt">gana</span>
-      <span class="ctx">M15 Arad · Semi-final</span><span class="razon">LA MAYOR DIFERENCIA DE NIVEL DE TODA LA MESA: Madaras marca WTN 3.59 contra 9.02 de Sciahbasi, más 700 puestos ATP de ventaja. Cuando abra la línea, cualquier cuota sobre 1.35 es tomable.</span></li><li><b>Maximilian Marterer</b> <span class="mkt">gana</span>
-      <span class="ctx">M25 Ueberlingen · Quarter-final</span><span class="razon">WTN 3.07, el mejor de todo Ueberlingen, contra 3.7 de Masur [2]. Confirma la alerta: figura sin ranking ATP porque vuelve de lesión, pero es el ex #45 del mundo y el nivel medido lo respalda. Si Betano lo pone underdog al abrir, es la mejor oportunidad de la semana.</span></li><li><b>Shunsuke Mitsui</b> <span class="mkt">gana</span>
-      <span class="ctx">M25 Taipei · Semi-final</span><span class="razon">EL MERCADO TIENE RAZÓN Y YO ESTABA EQUIVOCADO: Mitsui tiene WTN 3.68 contra 4.32 de Dellavedova [2] — mejor nivel real pese a 342 puestos ATP menos. Su camino además fue mucho más duro (venció al [8] y al [3] local) mientras Dellavedova pasó por un WC, un qualifier y un no-seed. La cuota de 1.62 está bien puesta.</span></li><li><b>Yun Seong Chung</b> <span class="mkt">gana</span>
-      <span class="ctx">M15 Maanshan · Semi-final</span><span class="razon">WTN 4.66 contra 6.21 de Fitriadi [2], pese a estar 500 puestos ATP por debajo. Además eliminó al [4] y su cuarto duró un set (retiro del rival): llega fresco. Si al abrir lo ponen underdog por el ranking, es valor claro.</span></li><li><b>Juan Cruz Martin Manzano [4]</b> <span class="mkt">gana</span>
-      <span class="ctx">M25 Lesa · R2</span><span class="razon">WTN 4.13 contra 6.34 de Oradini y 200 puestos ATP de ventaja. A 1.62 hay margen real: ambas métricas coinciden y el precio no lo refleja del todo.</span></li></ol>
-  <p class="resumen-nota">5 partidos marcados para pasar (parejos o en la banda de cuota donde el favorito rinde menos de lo que promete).</p>
+      <span class="ctx">M15 Bastad · Semi-final</span><span class="razon">LA OPORTUNIDAD DE LA MESA: Δ3.10 de WTN a favor de Borg (5.40 contra 8.50) — en esa banda el mejor WTN acierta 72% — y sin embargo paga 2.45 mientras Lithen es favorito a 1.47. El mercado premia la forma de la semana e ignora la brecha de nivel. Es el único partido con señal fuerte y cuota generosa a la vez.</span></li><li><b>Dragos Nicolae Madaras [3]</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Arad · Semi-final</span><span class="razon">Δ5.43 (Madaras 3.59 contra 9.02): la diferencia más grande de la mesa, en la banda que acierta 88%. Más 700 puestos ATP. Falta que abra la línea.</span></li><li><b>Laurent Lokoli [3]</b> <span class="mkt">gana</span>
+      <span class="ctx">M25 Lesa · R2</span><span class="razon">Δ5.69 (Lokoli 3.41 contra 9.10 del qualifier): banda del 88%, y la regla del circuito ya castiga al qualifier. Sin línea abierta.</span></li><li><b>Gabriele Maria Noce [6]</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Mistelbach · Semi-final</span><span class="razon">Δ4.72 a favor de Noce (8.56 contra 13.28): el junior arrasó a rivales flojos, pero la brecha de nivel es de la banda que acierta 88%. Corrige mi apuesta anterior por Behrmann.</span></li><li><b>Petr Bar Biryukov [1]</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Maanshan · Semi-final</span><span class="razon">Δ2.70 a favor de Biryukov (3.68 contra 6.38) y además mejor ranking (281 vs 562): las dos métricas coinciden, banda del 72%. Sin línea todavía.</span></li><li><b>Juan Cruz Martin Manzano [4]</b> <span class="mkt">gana</span>
+      <span class="ctx">M25 Lesa · R2</span><span class="razon">Δ2.21 a favor de Martin Manzano (4.13 contra 6.34) más 200 puestos ATP. A 1.62 el precio deja algo de margen sobre una señal de banda 68%.</span></li></ol>
+  <p class="resumen-nota">11 partidos marcados para pasar (parejos o en la banda de cuota donde el favorito rinde menos de lo que promete).</p>
 </div>
 <div class="tabla-env"><table>
   <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Jugador</th><th>ATP / WTN</th>
@@ -114,7 +119,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td rowspan="2" class="c-torneo">M15 Arad<span class="loc">Romania · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Center Court 1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Robert Guna <b>[7]</b><span class="pais">ROU</span></td>
-    <td class="c-rank mono">ATP 1028<span class="wtn mejor">WTN 8.18</span></td>
+    <td class="c-rank mono">ATP 1028<span class="wtn mejor">WTN 8.18 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.48</span></span></td>
     <td class="c-od mono">1.40</td>
     <td class="c-od mono">1.47</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-0 <i class="vs">vJR</i> · <i class="g">R2✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-1 6-3 <i class="vs">v[4]</i></td>
@@ -129,11 +134,11 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     
   </tr><tr class="analisis" data-par="M15 Arad|1787382000000">
     <td colspan="9">
-      <span class="conf c-media">media</span>
-      <b>Robert Guna [7]</b> <span class="mkt">gana</span>
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
       
-      <span class="razon">WTN 8.18 contra 8.66 y camino sin ceder un set. A 1.4 el precio recoge casi toda la ventaja, pero las dos señales apuntan al mismo lado.</span>
-      <span class="bandera">WTN superior</span><span class="bandera">forma dominante</span>
+      <span class="razon">Δ0.48: ruido puro. Guna llega sin ceder un set, pero a 1.4 el precio ya paga esa forma y el nivel no lo respalda.</span>
+      <span class="bandera">Δ0.48 ruido</span><span class="bandera">cuota corta</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Arad" data-ts="1787386500000" data-par="M15 Arad|1787386500000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>03:00</b> CL</span></td>
@@ -148,7 +153,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M15 Arad" data-ts="1787386500000" data-par="M15 Arad|1787386500000">
     
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Dragos Nicolae Madaras <b>[3]</b><span class="pais">SWE</span></td>
-    <td class="c-rank mono">ATP 589<span class="wtn mejor">WTN 3.59</span></td>
+    <td class="c-rank mono">ATP 589<span class="wtn mejor">WTN 3.59 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ5.43</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-2 6-0 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-4 4-6 6-2 <i class="vs">vSE</i> · <i class="g">QF✓</i> 6-4 6-4 <i class="vs">v[8]</i></td>
@@ -158,15 +163,15 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-alta">alta</span>
       <b>Dragos Nicolae Madaras [3]</b> <span class="mkt">gana</span>
       <span class="chip-top">mejor opción</span>
-      <span class="razon">LA MAYOR DIFERENCIA DE NIVEL DE TODA LA MESA: Madaras marca WTN 3.59 contra 9.02 de Sciahbasi, más 700 puestos ATP de ventaja. Cuando abra la línea, cualquier cuota sobre 1.35 es tomable.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">gap de ranking</span><span class="bandera">línea sin abrir</span>
+      <span class="razon">Δ5.43 (Madaras 3.59 contra 9.02): la diferencia más grande de la mesa, en la banda que acierta 88%. Más 700 puestos ATP. Falta que abra la línea.</span>
+      <span class="bandera">Δ5.43 muy fuerte</span><span class="bandera">gap de ranking</span><span class="bandera">línea sin abrir</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:15 loc · <b>04:15</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Bastad<span class="loc">Sweden · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Leo Borg <b>[1]</b><span class="pais">SWE</span></td>
-    <td class="c-rank mono">ATP 542<span class="wtn mejor">WTN 5.40</span></td>
+    <td class="c-rank mono">ATP 542<span class="wtn mejor">WTN 5.40 <span class="dw f3" title="diferencia fuerte: acierta 72%">Δ3.10</span></span></td>
     <td class="c-od mono">2.45</td>
     <td class="c-od mono">2.30</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-3 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-0 6-3 · <i class="g">QF✓</i> 6-2 4-6 6-4</td>
@@ -184,8 +189,8 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-alta">alta</span>
       <b>Leo Borg [1]</b> <span class="mkt">gana</span>
       <span class="chip-top">mejor opción</span>
-      <span class="razon">LA MAYOR DISCREPANCIA CON CUOTA: Borg tiene WTN 5.4 contra 8.5 de Lithen — un abismo de nivel real — y sin embargo paga 2.45 mientras Lithen es favorito a 1.47. El mercado premia la forma de la semana (Lithen cedió 8 games en 3 partidos) e ignora la diferencia de categoría. Corrige mi lectura anterior, que había elegido a Lithen mirando solo la forma.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">valor de cuota</span><span class="bandera">mercado invertido</span>
+      <span class="razon">LA OPORTUNIDAD DE LA MESA: Δ3.10 de WTN a favor de Borg (5.40 contra 8.50) — en esa banda el mejor WTN acierta 72% — y sin embargo paga 2.45 mientras Lithen es favorito a 1.47. El mercado premia la forma de la semana e ignora la brecha de nivel. Es el único partido con señal fuerte y cuota generosa a la vez.</span>
+      <span class="bandera">Δ3.10 fuerte</span><span class="bandera">valor de cuota</span><span class="bandera">mercado invertido</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:15 loc · <b>04:15</b> CL</span></td>
@@ -200,7 +205,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
     
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Niklas Guttau<span class="pais">GER</span></td>
-    <td class="c-rank mono">ATP 1211<span class="wtn mejor">WTN 8.13</span></td>
+    <td class="c-rank mono">ATP 1211<span class="wtn mejor">WTN 8.13 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ2.25</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-2 · <i class="g">R2✓</i> 6-2 6-2 · <i class="g">QF✓</i> 3-6 6-2 6-1</td>
@@ -210,15 +215,15 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-baja">baja</span>
       <b class="pasar">Pasar</b>
       
-      <span class="razon">Guttau tiene mejor WTN (8.13 contra 10.38 del WC Simonsson), pero los dos están en un nivel bajo y errático. Sin línea y sin convicción.</span>
-      <span class="bandera">nivel bajo</span><span class="bandera">línea sin abrir</span>
+      <span class="razon">Δ2.25 a favor de Guttau, pero los dos juegan en un nivel muy bajo (8.13 y 10.38) donde los resultados son erráticos. Sin línea y sin ganas.</span>
+      <span class="bandera">Δ2.25 moderada</span><span class="bandera">nivel bajo</span><span class="bandera">línea sin abrir</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Lambermont" data-ts="1787392800000" data-par="M15 Lambermont|1787392800000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">12:00 loc · <b>06:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Lambermont<span class="loc">Belgium · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 9 1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Jack Loge <b>[1]</b><span class="pais">BEL</span></td>
-    <td class="c-rank mono">ATP 410<span class="wtn mejor">WTN 5.71</span></td>
+    <td class="c-rank mono">ATP 410<span class="wtn mejor">WTN 5.71 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.47</span></span></td>
     <td class="c-od mono">1.36</td>
     <td class="c-od mono">1.44</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vLL</i> · <i class="g">R2✓</i> 6-0 6-4 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6(3)-7 6-3 6-3 <i class="vs">v[8]</i></td>
@@ -233,18 +238,18 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     
   </tr><tr class="analisis" data-par="M15 Lambermont|1787392800000">
     <td colspan="9">
-      <span class="conf c-media">media</span>
-      <b>Jack Loge [1]</b> <span class="mkt">gana</span>
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
       
-      <span class="razon">WTN 5.71 contra 6.18: Loge algo mejor en nivel y en ranking (410 vs 616). A 1.36 el precio pide más certeza de la que hay.</span>
-      <span class="bandera">WTN levemente superior</span><span class="bandera">cuota corta</span>
+      <span class="razon">Δ0.47: ruido. Loge es mejor por ranking (410 vs 616) pero a 1.36 se paga como si la diferencia fuera clara.</span>
+      <span class="bandera">Δ0.47 ruido</span><span class="bandera">cuota corta</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Lambermont" data-ts="1787407200000" data-par="M15 Lambermont|1787407200000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 16:00 loc · <b>10:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Lambermont<span class="loc">Belgium · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 9 3º</span></td>
-    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Martin VAN DER MEERSCHEN <b>[4]</b><span class="pais">BEL</span></td>
-    <td class="c-rank mono">ATP 723<span class="wtn mejor">WTN 6.76</span></td>
+    <td class="c-jug">Martin VAN DER MEERSCHEN <b>[4]</b><span class="pais">BEL</span></td>
+    <td class="c-rank mono">ATP 723<span class="wtn mejor">WTN 6.76 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.03</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-2 2-6 6-2 · <i class="g">QF✓</i> 6-2 6-2</td>
@@ -260,17 +265,17 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="analisis" data-par="M15 Lambermont|1787407200000">
     <td colspan="9">
       <span class="conf c-baja">baja</span>
-      <b>Martin VAN DER MEERSCHEN [4]</b> <span class="mkt">gana</span>
+      <b class="pasar">Pasar</b>
       
-      <span class="razon">WTN 6.76 contra 6.79 de Faucon [2], que tiene mejor ranking (588 vs 723). Nivel prácticamente igual, forma a favor de VDM. Solo vale si al abrir lo ponen underdog.</span>
-      <span class="bandera">WTN levemente superior</span><span class="bandera">línea sin abrir</span>
+      <span class="razon">Δ0.03: empate técnico en nivel. Faucon [2] tiene mejor ranking, VDM mejor forma. Sin línea y sin lado.</span>
+      <span class="bandera">Δ0.03 ruido</span><span class="bandera">parejo</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
     <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Maanshan<span class="loc">China, P.R. · Hard</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C2 (Center Court)  1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Yun Seong Chung<span class="pais">KOR</span></td>
-    <td class="c-rank mono">ATP 1059<span class="wtn mejor">WTN 4.66</span></td>
+    <td class="c-rank mono">ATP 1059<span class="wtn mejor">WTN 4.66 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ1.55</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-4 <i class="vs">v[4]</i> · <i class="g">R2✓</i> 6-3 6-3 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-2 <i class="vs">vQ</i></td>
@@ -283,20 +288,20 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 5-7 6-0 · <i class="g">R2✓</i> 6-3 6-1 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-4 7-6(1) <i class="vs">v[8]</i></td>
     
-  </tr><tr class="analisis top" data-par="M15 Maanshan|1787364000000">
+  </tr><tr class="analisis" data-par="M15 Maanshan|1787364000000">
     <td colspan="9">
-      <span class="conf c-alta">alta</span>
+      <span class="conf c-media">media</span>
       <b>Yun Seong Chung</b> <span class="mkt">gana</span>
-      <span class="chip-top">mejor opción</span>
-      <span class="razon">WTN 4.66 contra 6.21 de Fitriadi [2], pese a estar 500 puestos ATP por debajo. Además eliminó al [4] y su cuarto duró un set (retiro del rival): llega fresco. Si al abrir lo ponen underdog por el ranking, es valor claro.</span>
-      <span class="bandera">WTN superior</span><span class="bandera">ranking engañoso</span><span class="bandera">desgaste rival</span><span class="bandera">línea sin abrir</span>
+      
+      <span class="razon">Δ1.55 a favor de Chung (4.66 contra 6.21) pese a 500 puestos ATP menos, más un cuarto que duró un set por retiro del rival. Justo en el borde de lo que es señal.</span>
+      <span class="bandera">Δ1.55 moderada</span><span class="bandera">ranking engañoso</span><span class="bandera">desgaste rival</span><span class="bandera">línea sin abrir</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
     <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Maanshan<span class="loc">China, P.R. · Hard</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 3 1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Petr Bar Biryukov <b>[1]</b><span class="pais">RUS</span></td>
-    <td class="c-rank mono">ATP 281<span class="wtn mejor">WTN 3.68</span></td>
+    <td class="c-rank mono">ATP 281<span class="wtn mejor">WTN 3.68 <span class="dw f3" title="diferencia fuerte: acierta 72%">Δ2.70</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-4 6(6)-7 6-4 <i class="vs">vQ</i> · <i class="g">QF✓</i> 7-6(3) 6-4 <i class="vs">v[7]</i></td>
@@ -309,20 +314,20 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 3-6 7-6(5) 6-1 · <i class="g">R2✓</i> 6-2 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-1 6-3 <i class="vs">v[5]</i></td>
     
-  </tr><tr class="analisis" data-par="M15 Maanshan|1787364000000">
+  </tr><tr class="analisis top" data-par="M15 Maanshan|1787364000000">
     <td colspan="9">
       <span class="conf c-alta">alta</span>
       <b>Petr Bar Biryukov [1]</b> <span class="mkt">gana</span>
-      
-      <span class="razon">WTN 3.68 contra 6.38 de Isomura y mejor ranking (281 vs 562): mejor por nivel medido y por puntos. Falta que abra la línea.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">gap de ranking</span><span class="bandera">línea sin abrir</span>
+      <span class="chip-top">mejor opción</span>
+      <span class="razon">Δ2.70 a favor de Biryukov (3.68 contra 6.38) y además mejor ranking (281 vs 562): las dos métricas coinciden, banda del 72%. Sin línea todavía.</span>
+      <span class="bandera">Δ2.70 fuerte</span><span class="bandera">gap de ranking</span><span class="bandera">línea sin abrir</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Mistelbach" data-ts="1787385600000" data-par="M15 Mistelbach|1787385600000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Mistelbach<span class="loc">Austria · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C1 Pro-Ject  1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Nikita Mashtakov <b>[3]</b><span class="pais">UKR</span></td>
-    <td class="c-rank mono">ATP 652<span class="wtn mejor">WTN 4.83</span></td>
+    <td class="c-rank mono">ATP 652<span class="wtn mejor">WTN 4.83 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ1.68</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 5-7 7-6(6) · <i class="g">R2✓</i> 7-6(5) 6-3 <i class="vs">vLL</i> · <i class="g">QF✓</i> 7-6(5) 4-6 6-0</td>
@@ -337,18 +342,18 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     
   </tr><tr class="analisis" data-par="M15 Mistelbach|1787385600000">
     <td colspan="9">
-      <span class="conf c-alta">alta</span>
+      <span class="conf c-media">media</span>
       <b>Nikita Mashtakov [3]</b> <span class="mkt">gana</span>
       
-      <span class="razon">WTN 4.83 contra 6.51 de Zielinski. Corrige mi lectura anterior: había elegido a Zielinski por su forma más limpia, pero el nivel medido dice lo contrario con claridad. Los tiebreaks sufridos de Mashtakov son ruido, no señal.</span>
-      <span class="bandera">WTN superior</span><span class="bandera">corrige análisis previo</span><span class="bandera">línea sin abrir</span>
+      <span class="razon">Δ1.68 a favor de Mashtakov (4.83 contra 6.51): señal moderada (68%), suficiente para inclinar pero no para confiarse. Sin línea abierta.</span>
+      <span class="bandera">Δ1.68 moderada</span><span class="bandera">línea sin abrir</span>
     </td>
   </tr><tr class="a" data-torneo="M15 Mistelbach" data-ts="1787392800000" data-par="M15 Mistelbach|1787392800000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 12:00 loc · <b>06:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M15 Mistelbach<span class="loc">Austria · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C1 Pro-Ject  2º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Gabriele Maria Noce <b>[6]</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 855<span class="wtn mejor">WTN 8.56</span></td>
+    <td class="c-rank mono">ATP 855<span class="wtn mejor">WTN 8.56 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ4.72</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-2 4-6 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-3 6-4 · <i class="g">QF✓</i> 6-2 6-4 <i class="vs">vQ</i></td>
@@ -361,13 +366,13 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-1 6-0 <i class="vs">v[5]</i> · <i class="g">R2✓</i> 6-1 6-2 · <i class="g">QF✓</i> 6-0 7-6(5) <i class="vs">vQ</i></td>
     
-  </tr><tr class="analisis" data-par="M15 Mistelbach|1787392800000">
+  </tr><tr class="analisis top" data-par="M15 Mistelbach|1787392800000">
     <td colspan="9">
-      <span class="conf c-media">media</span>
+      <span class="conf c-alta">alta</span>
       <b>Gabriele Maria Noce [6]</b> <span class="mkt">gana</span>
-      
-      <span class="razon">Corrige mi apuesta por el junior: Noce marca WTN 8.56 contra 13.28 de Behrmann — no están parejos, Noce es bastante mejor. El 6-1 6-0 del junior al [5] impresiona pero no cambia el nivel de base.</span>
-      <span class="bandera">WTN superior</span><span class="bandera">corrige análisis previo</span><span class="bandera">línea sin abrir</span>
+      <span class="chip-top">mejor opción</span>
+      <span class="razon">Δ4.72 a favor de Noce (8.56 contra 13.28): el junior arrasó a rivales flojos, pero la brecha de nivel es de la banda que acierta 88%. Corrige mi apuesta anterior por Behrmann.</span>
+      <span class="bandera">Δ4.72 muy fuerte</span><span class="bandera">corrige análisis previo</span><span class="bandera">línea sin abrir</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Idanha-a-Nova" data-ts="1787387400000" data-par="M25 Idanha-a-Nova|1787387400000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">09:30 loc · <b>04:30</b> CL</span></td>
@@ -382,7 +387,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M25 Idanha-a-Nova" data-ts="1787387400000" data-par="M25 Idanha-a-Nova|1787387400000">
     
     <td class="c-jug">Pavel Lagutin <b>[3]</b><span class="pais">RUS</span></td>
-    <td class="c-rank mono">ATP 718<span class="wtn mejor">WTN 6.41</span></td>
+    <td class="c-rank mono">ATP 718<span class="wtn mejor">WTN 6.41 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.18</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 7-6(0) 7-6(3) · <i class="g">R2✓</i> 6-4 6-2 <i class="vs">vWC</i> · <i class="g">QF✓</i> 4-6 6-2 6-2</td>
@@ -392,15 +397,15 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-baja">baja</span>
       <b class="pasar">Pasar</b>
       
-      <span class="razon">WTN 6.59 contra 6.41: empatados en nivel real, aunque Lagutin tiene mucho mejor ranking. Fernandes viene de eliminar al [1]. Demasiado parejo.</span>
-      <span class="bandera">parejo</span>
+      <span class="razon">Δ0.18: ruido. Lagutin tiene mucho mejor ranking, Fernandes viene de eliminar al [1]. Sin desempate creíble.</span>
+      <span class="bandera">Δ0.18 ruido</span><span class="bandera">parejo</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Idanha-a-Nova" data-ts="1787392800000" data-par="M25 Idanha-a-Nova|1787392800000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 11:00 loc · <b>06:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M25 Idanha-a-Nova<span class="loc">Portugal · Hard</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 2º</span></td>
-    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Goncalo Marques<span class="pais">POR</span></td>
-    <td class="c-rank mono">ATP 1025<span class="wtn mejor">WTN 7.51</span></td>
+    <td class="c-jug">Goncalo Marques<span class="pais">POR</span></td>
+    <td class="c-rank mono">ATP 1025<span class="wtn mejor">WTN 7.51 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.17</span></span></td>
     <td class="c-od mono">1.62</td>
     <td class="c-od mono">1.67</td>
     <td class="c-llega"><i class="g">R1✓</i> 7-6(7) 7-5 · <i class="g">R2✓</i> 6-3 6-4 <i class="vs">v[4]</i> · <i class="g">QF✓</i> 6-3 3-6 7-5 <i class="vs">v[8]</i></td>
@@ -415,11 +420,11 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     
   </tr><tr class="analisis" data-par="M25 Idanha-a-Nova|1787392800000">
     <td colspan="9">
-      <span class="conf c-media">media</span>
-      <b>Goncalo Marques</b> <span class="mkt">gana</span>
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
       
-      <span class="razon">Rankings ATP calcados (1025 vs 1048) y WTN 7.51 contra 7.68: ventaja mínima. A 1.62 solo si te convence el desempate por nivel.</span>
-      <span class="bandera">WTN levemente superior</span>
+      <span class="razon">Δ0.17 y rankings calcados (1025 vs 1048): moneda al aire. Retiro mi veredicto anterior a favor de Marques.</span>
+      <span class="bandera">Δ0.17 ruido</span><span class="bandera">corrige análisis previo</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
@@ -434,7 +439,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
     
     <td class="c-jug">Manuel Mazza<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 756<span class="wtn mejor">WTN 5.31</span></td>
+    <td class="c-rank mono">ATP 756<span class="wtn mejor">WTN 5.31 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.27</span></span></td>
     <td class="c-od mono">1.75</td>
     <td class="c-od mono">1.78</td>
     <td class="c-llega"><i class="g">R1✓</i> 3-6 6-4 6-3</td>
@@ -444,8 +449,8 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-baja">baja</span>
       <b class="pasar">Pasar</b>
       
-      <span class="razon">WTN 5.58 contra 5.31 y rankings calcados: el partido más parejo de la mesa. Mazza paga menos (1.75 vs 1.91) justamente por eso. Nada que explotar.</span>
-      <span class="bandera">parejo</span>
+      <span class="razon">Δ0.27 y rankings calcados: el partido más parejo de la mesa, y las cuotas (1.91 / 1.75) lo dicen igual.</span>
+      <span class="bandera">Δ0.27 ruido</span><span class="bandera">parejo</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
@@ -460,18 +465,18 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
     
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Laurent Lokoli <b>[3]</b><span class="pais">FRA</span></td>
-    <td class="c-rank mono">ATP 384<span class="wtn mejor">WTN 3.41</span></td>
+    <td class="c-rank mono">ATP 384<span class="wtn mejor">WTN 3.41 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ5.69</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-1 6-4 <i class="vs">vQ</i></td>
     
-  </tr><tr class="analisis" data-par="M25 Lesa|1787385600000">
+  </tr><tr class="analisis top" data-par="M25 Lesa|1787385600000">
     <td colspan="9">
       <span class="conf c-alta">alta</span>
       <b>Laurent Lokoli [3]</b> <span class="mkt">gana</span>
-      
-      <span class="razon">WTN 3.41 contra 9.1 de Spiridon, más 700 puestos ATP. El qualifier no tiene nivel para esto, y la regla del circuito dice que gana solo 33%.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">regla qualifier</span><span class="bandera">línea sin abrir</span>
+      <span class="chip-top">mejor opción</span>
+      <span class="razon">Δ5.69 (Lokoli 3.41 contra 9.10 del qualifier): banda del 88%, y la regla del circuito ya castiga al qualifier. Sin línea abierta.</span>
+      <span class="bandera">Δ5.69 muy fuerte</span><span class="bandera">regla qualifier</span><span class="bandera">línea sin abrir</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
@@ -486,18 +491,18 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
     
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Lorenzo Rottoli<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 896<span class="wtn mejor">WTN 6.67</span></td>
+    <td class="c-rank mono">ATP 896<span class="wtn mejor">WTN 6.67 <span class="dw f3" title="diferencia fuerte: acierta 72%">Δ3.67</span></span></td>
     <td class="c-od mono">1.36</td>
     <td class="c-od mono">1.44</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-0 3-6 6-0 <i class="vs">vQ</i></td>
     
   </tr><tr class="analisis" data-par="M25 Lesa|1787385600000">
     <td colspan="9">
-      <span class="conf c-media">media</span>
+      <span class="conf c-alta">alta</span>
       <b>Lorenzo Rottoli</b> <span class="mkt">gana</span>
       
-      <span class="razon">WTN 6.67 contra 10.34 de Seghetti. Corrige mi 'pasar': el 6-2 6-0 del WC al [5] era una golondrina y el nivel medido lo desmiente. A 1.36 está justo.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">corrige análisis previo</span>
+      <span class="razon">Δ3.67 a favor de Rottoli (6.67 contra 10.34). El 6-2 6-0 del WC al [5] fue una golondrina. A 1.36 está bien puesto.</span>
+      <span class="bandera">Δ3.67 fuerte</span><span class="bandera">corrige análisis previo</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
@@ -512,18 +517,18 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
     
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Pierluigi Basile<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 623<span class="wtn mejor">WTN 5.01</span></td>
+    <td class="c-rank mono">ATP 623<span class="wtn mejor">WTN 5.01 <span class="dw f3" title="diferencia fuerte: acierta 72%">Δ3.92</span></span></td>
     <td class="c-od mono">1.14</td>
     <td class="c-od mono">1.25</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vWC</i></td>
     
   </tr><tr class="analisis" data-par="M25 Lesa|1787390100000">
     <td colspan="9">
-      <span class="conf c-media">media</span>
+      <span class="conf c-alta">alta</span>
       <b>Pierluigi Basile</b> <span class="mkt">gana</span>
       
-      <span class="razon">WTN 5.01 contra 8.93 de Comino, que además avanzó por retiro. A 1.14 el precio no deja nada, pero el partido no tiene misterio.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">cuota corta</span><span class="bandera">victoria por retiro del rival</span>
+      <span class="razon">Δ3.92 a favor de Basile (5.01 contra 8.93), y Comino avanzó por retiro. A 1.14 no queda margen, pero el resultado es de los más previsibles.</span>
+      <span class="bandera">Δ3.92 fuerte</span><span class="bandera">cuota corta</span><span class="bandera">victoria por retiro del rival</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
@@ -538,18 +543,18 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
     
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Andrea De Marchi<span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 813<span class="wtn mejor">WTN 7.87</span></td>
+    <td class="c-rank mono">ATP 813<span class="wtn mejor">WTN 7.87 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.78</span></span></td>
     <td class="c-od mono">1.36</td>
     <td class="c-od mono">1.44</td>
     <td class="c-llega"><i class="g">R1✓</i> 7-5 2-1 <i class="vs">v[2]</i></td>
     
   </tr><tr class="analisis" data-par="M25 Lesa|1787390100000">
     <td colspan="9">
-      <span class="conf c-media">media</span>
-      <b>Andrea De Marchi</b> <span class="mkt">gana</span>
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
       
-      <span class="razon">WTN 7.87 contra 8.65 de Baker, consistente con el ranking (813 vs 959). A 1.36 es apretado para el margen que hay.</span>
-      <span class="bandera">WTN superior</span><span class="bandera">cuota corta</span>
+      <span class="razon">Δ0.78: ruido. De Marchi tiene algo mejor ranking (813 vs 959) y la cuota lo refleja. Nada que explotar.</span>
+      <span class="bandera">Δ0.78 ruido</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
@@ -574,7 +579,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-baja">baja</span>
       <b class="pasar">Pasar</b>
       
-      <span class="razon">Hipfl marca WTN 6.99; de Reitano no hay ranking ni WTN (WC sin historia) y avanzó con un solo set jugado. Sin datos del rival no se puede juzgar.</span>
+      <span class="razon">Hipfl marca WTN 6.99; de Reitano no hay ranking ni WTN. Sin dato del rival no hay comparación posible.</span>
       <span class="bandera">sin datos del rival</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787394600000" data-par="M25 Lesa|1787394600000">
@@ -582,7 +587,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 2 3º turno</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Juan Cruz Martin Manzano <b>[4]</b><span class="pais">ITA</span></td>
-    <td class="c-rank mono">ATP 438<span class="wtn mejor">WTN 4.13</span></td>
+    <td class="c-rank mono">ATP 438<span class="wtn mejor">WTN 4.13 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ2.21</span></span></td>
     <td class="c-od mono">1.62</td>
     <td class="c-od mono">1.67</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-2 6-1 <i class="vs">vQ</i></td>
@@ -597,18 +602,18 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     
   </tr><tr class="analisis top" data-par="M25 Lesa|1787394600000">
     <td colspan="9">
-      <span class="conf c-alta">alta</span>
+      <span class="conf c-media">media</span>
       <b>Juan Cruz Martin Manzano [4]</b> <span class="mkt">gana</span>
       <span class="chip-top">mejor opción</span>
-      <span class="razon">WTN 4.13 contra 6.34 de Oradini y 200 puestos ATP de ventaja. A 1.62 hay margen real: ambas métricas coinciden y el precio no lo refleja del todo.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">gap de ranking</span><span class="bandera">valor de cuota</span>
+      <span class="razon">Δ2.21 a favor de Martin Manzano (4.13 contra 6.34) más 200 puestos ATP. A 1.62 el precio deja algo de margen sobre una señal de banda 68%.</span>
+      <span class="bandera">Δ2.21 moderada</span><span class="bandera">gap de ranking</span><span class="bandera">valor de cuota</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">11:00 loc · <b>05:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M25 Slovenj Gradec<span class="loc">Slovenia · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Center Court 1º</span></td>
     <td class="c-jug">Sebastian Dominko<span class="pais">SLO</span></td>
-    <td class="c-rank mono">ATP 1122<span class="wtn mejor">WTN 4.88</span></td>
+    <td class="c-rank mono">ATP 1122<span class="wtn mejor">WTN 4.88 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.08</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 7-6(6) 6-1 <i class="vs">v[1]</i> · <i class="g">QF✓</i> 2-6 6-4 7-5 <i class="vs">v[5]</i></td>
@@ -626,15 +631,15 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-baja">baja</span>
       <b class="pasar">Pasar</b>
       
-      <span class="razon">Bajo mi propio veredicto anterior: había puesto a Sorger como la mejor opción de la mesa por su 6-0 6-0, pero los WTN están empatados (4.96 de Sorger contra 4.88 de Dominko). Sorger arrasó a rivales flojos; Dominko eliminó al [1] y al [5]. Sin cuota y con señales cruzadas, no hay lado.</span>
-      <span class="bandera">señales cruzadas</span><span class="bandera">corrige análisis previo</span>
+      <span class="razon">Δ0.08: el partido más parejo en nivel de toda la mesa. Sorger arrasó a rivales flojos, Dominko eliminó al [1] y al [5]. Nada que decidir.</span>
+      <span class="bandera">Δ0.08 ruido</span><span class="bandera">parejo</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">11:00 loc · <b>05:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M25 Slovenj Gradec<span class="loc">Slovenia · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Filip Jeff Planinsek <b>[6]</b><span class="pais">SLO</span></td>
-    <td class="c-rank mono">ATP 592<span class="wtn mejor">WTN 5.56</span></td>
+    <td class="c-rank mono">ATP 592<span class="wtn mejor">WTN 5.56 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ5.37</span></span></td>
     <td class="c-od mono">1.14</td>
     <td class="c-od mono">1.22</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 7-6(4) <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-0 6-0 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-0 6-2 <i class="vs">v[4]</i></td>
@@ -652,15 +657,15 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-alta">alta</span>
       <b>Filip Jeff Planinsek [6]</b> <span class="mkt">gana</span>
       
-      <span class="razon">WTN 5.56 contra 10.93: Gundacker es qualifier con cinco partidos encima y mucho menos nivel. El problema es el precio, 1.14: sirve de ancla para una combinada, no como apuesta suelta.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">regla qualifier</span><span class="bandera">cuota corta</span>
+      <span class="razon">Δ5.37 (Planinsek 5.56 contra 10.93): banda del 88%. Pero a 1.14 el precio ya lo descuenta todo: sirve de ancla en combinada, no como apuesta suelta.</span>
+      <span class="bandera">Δ5.37 muy fuerte</span><span class="bandera">cuota corta</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
     <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M25 Taipei<span class="loc">Chinese Taipei · Hard</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Show Court 1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Yu Hsiou Hsu <b>[1]</b><span class="pais">TPE</span></td>
-    <td class="c-rank mono">ATP 222<span class="wtn mejor">WTN 3.25</span></td>
+    <td class="c-rank mono">ATP 222<span class="wtn mejor">WTN 3.25 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ1.24</span></span></td>
     <td class="c-od mono">1.47</td>
     <td class="c-od mono">1.53</td>
     <td class="c-llega"><i class="g">R1✓</i> 7-6(5) 6-3 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-2 7-6(5) <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-3 6-2 <i class="vs">vQ</i></td>
@@ -675,18 +680,18 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     
   </tr><tr class="analisis" data-par="M25 Taipei|1787364000000">
     <td colspan="9">
-      <span class="conf c-alta">alta</span>
+      <span class="conf c-baja">baja</span>
       <b>Yu Hsiou Hsu [1]</b> <span class="mkt">gana</span>
       
-      <span class="razon">WTN 3.25 — el mejor del circuito esta semana — contra 4.49 de Imamura, y ATP 222 vs 409. A 1.47 el precio es corto, pero el respaldo es doble.</span>
-      <span class="bandera">WTN superior</span><span class="bandera">gap de ranking</span>
+      <span class="razon">Δ1.24: por debajo del umbral de 1.5, o sea ruido según nuestros datos. Hsu tiene mejor ranking (222 vs 409) y ese es el único argumento real. A 1.47 no compensa.</span>
+      <span class="bandera">Δ1.24 ruido</span><span class="bandera">gap de ranking</span><span class="bandera">cuota corta</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
     <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M25 Taipei<span class="loc">Chinese Taipei · Hard</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
-    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Shunsuke Mitsui<span class="pais">JPN</span></td>
-    <td class="c-rank mono">ATP 651<span class="wtn mejor">WTN 3.68</span></td>
+    <td class="c-jug">Shunsuke Mitsui<span class="pais">JPN</span></td>
+    <td class="c-rank mono">ATP 651<span class="wtn mejor">WTN 3.68 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.64</span></span></td>
     <td class="c-od mono">1.62</td>
     <td class="c-od mono">1.67</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">v[8]</i> · <i class="g">R2✓</i> 6-2 6-1 · <i class="g">QF✓</i> 7-6(4) 4-6 10-7 <i class="vs">v[3]</i></td>
@@ -699,20 +704,20 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono">2.05</td>
     <td class="c-llega"><i class="g">R1✓</i> 7-6(1) 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-1 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-2 6-4</td>
     
-  </tr><tr class="analisis top" data-par="M25 Taipei|1787364000000">
+  </tr><tr class="analisis" data-par="M25 Taipei|1787364000000">
     <td colspan="9">
-      <span class="conf c-alta">alta</span>
-      <b>Shunsuke Mitsui</b> <span class="mkt">gana</span>
-      <span class="chip-top">mejor opción</span>
-      <span class="razon">EL MERCADO TIENE RAZÓN Y YO ESTABA EQUIVOCADO: Mitsui tiene WTN 3.68 contra 4.32 de Dellavedova [2] — mejor nivel real pese a 342 puestos ATP menos. Su camino además fue mucho más duro (venció al [8] y al [3] local) mientras Dellavedova pasó por un WC, un qualifier y un no-seed. La cuota de 1.62 está bien puesta.</span>
-      <span class="bandera">WTN superior</span><span class="bandera">camino más duro</span><span class="bandera">corrige análisis previo</span>
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">CORRIJO MI PROPIO DESTACADO: la ventaja de Mitsui en WTN es Δ0.64 — dentro del rango donde el WTN acierta 52-57%, es decir azar. Lo que sí queda en pie es que su camino fue más duro (venció al [8] y al [3] local) mientras Dellavedova pasó por WC y qualifier. Pero eso no basta para tomar lado a 1.62.</span>
+      <span class="bandera">Δ0.64 ruido</span><span class="bandera">corrige análisis previo</span><span class="bandera">camino más duro</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">VOLKSBANK C-Court 1º</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Mika Petkovic <b>[4]</b><span class="pais">GER</span></td>
-    <td class="c-rank mono">ATP 428<span class="wtn mejor">WTN 4.57</span></td>
+    <td class="c-rank mono">ATP 428<span class="wtn mejor">WTN 4.57 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ2.25</span></span></td>
     <td class="c-od mono">1.40</td>
     <td class="c-od mono">1.47</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 2-6 6-4 6-3 <i class="vs">vQ</i></td>
@@ -730,8 +735,8 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-media">media</span>
       <b>Mika Petkovic [4]</b> <span class="mkt">gana</span>
       
-      <span class="razon">WTN 4.57 contra 6.82 de Handel — más diferencia de la que sugiere el ranking. A 1.4 sigue en la banda donde nuestros datos dicen que el favorito rinde menos de lo prometido, pero el nivel lo respalda.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">banda de cuota mala</span>
+      <span class="razon">Δ2.25 a favor de Petkovic (4.57 contra 6.82). A 1.4 cae en la banda de cuota donde nuestros datos dicen que el favorito rinde menos de lo prometido: señal sí, precio no.</span>
+      <span class="bandera">Δ2.25 moderada</span><span class="bandera">banda de cuota mala</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
@@ -746,7 +751,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
     
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Tymur Bieldiugin <b>Q</b><span class="pais">UKR</span></td>
-    <td class="c-rank mono">ATP 1582<span class="wtn mejor">WTN 10.33</span></td>
+    <td class="c-rank mono">ATP 1582<span class="wtn mejor">WTN 10.33 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ1.95</span></span></td>
     <td class="c-od mono">1.44</td>
     <td class="c-od mono">1.50</td>
     <td class="c-llega"><i class="g">Q1✓</i> 6-0 6-2 · <i class="g">Q2✓</i> 6-3 6-1 <i class="vs">v[10]</i> · <i class="g">R1✓</i> 2-6 7-6(2) 6-3 · <i class="g">R2✓</i> 6-1 6(4)-7 6-2 <i class="vs">v[8]</i></td>
@@ -756,15 +761,15 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       <span class="conf c-media">media</span>
       <b>Tymur Bieldiugin Q</b> <span class="mkt">gana</span>
       
-      <span class="razon">Corrige mi error: había marcado valor en Senn a 2.37 por el desgaste, pero Bieldiugin tiene mejor WTN (10.33 contra 12.28) y por eso es favorito a 1.44. El desgaste no da vuelta una diferencia de nivel.</span>
-      <span class="bandera">WTN superior</span><span class="bandera">corrige análisis previo</span>
+      <span class="razon">Δ1.95 a favor de Bieldiugin (10.33 contra 12.28), y por eso es favorito a 1.44. Corrige mi error de ayer: el desgaste de Bieldiugin no da vuelta la brecha de nivel, aunque en esta banda el acierto es 68%, no más.</span>
+      <span class="bandera">Δ1.95 moderada</span><span class="bandera">corrige análisis previo</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
     <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">VOLKSBANK C-Court 2º turno</span></td>
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Maximilian Marterer<span class="pais">GER</span></td>
-    <td class="c-rank mono">ATP 581<span class="wtn mejor">WTN 3.07</span></td>
+    <td class="c-rank mono">ATP 581<span class="wtn mejor">WTN 3.07 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.63</span></span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 2-6 6-0 6-3</td>
@@ -777,13 +782,13 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">R1✓</i> 6-4 6-3 · <i class="g">R2✓</i> 7-6(8) 6-3 <i class="vs">vWC</i></td>
     
-  </tr><tr class="analisis top" data-par="M25 Ueberlingen|1787390100000">
+  </tr><tr class="analisis" data-par="M25 Ueberlingen|1787390100000">
     <td colspan="9">
-      <span class="conf c-alta">alta</span>
+      <span class="conf c-baja">baja</span>
       <b>Maximilian Marterer</b> <span class="mkt">gana</span>
-      <span class="chip-top">mejor opción</span>
-      <span class="razon">WTN 3.07, el mejor de todo Ueberlingen, contra 3.7 de Masur [2]. Confirma la alerta: figura sin ranking ATP porque vuelve de lesión, pero es el ex #45 del mundo y el nivel medido lo respalda. Si Betano lo pone underdog al abrir, es la mejor oportunidad de la semana.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">ranking engañoso</span><span class="bandera">línea sin abrir</span>
+      
+      <span class="razon">Δ0.63 entre Marterer (3.07) y Masur (3.70) es ruido: los dos son ex top-100 y el nivel medido los pone casi iguales. Lo que sigue en pie es la alerta de precio: Marterer figura SIN ranking ATP porque vuelve de lesión, así que si al abrir la línea lo ponen underdog por eso, ahí está el valor — no en la brecha de nivel.</span>
+      <span class="bandera">Δ0.63 ruido</span><span class="bandera">ranking engañoso</span><span class="bandera">línea sin abrir</span>
     </td>
   </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
     <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
@@ -798,22 +803,22 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
     
     <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Arthur Nagel <b>[3]</b><span class="pais">FRA</span></td>
-    <td class="c-rank mono">ATP 399<span class="wtn mejor">WTN 5.71</span></td>
+    <td class="c-rank mono">ATP 399<span class="wtn mejor">WTN 5.71 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ4.97</span></span></td>
     <td class="c-od mono">1.32</td>
     <td class="c-od mono">1.40</td>
     <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-1 6(6)-7 6-2</td>
     
   </tr><tr class="analisis" data-par="M25 Ueberlingen|1787390100000">
     <td colspan="9">
-      <span class="conf c-media">media</span>
+      <span class="conf c-alta">alta</span>
       <b>Arthur Nagel [3]</b> <span class="mkt">gana</span>
       
-      <span class="razon">WTN 5.71 contra 10.68 de Maute: mucho más nivel del que sugiere la racha del qualifier. Corrige mi 'pasar' anterior. A 1.32 está caro, pero es sólido.</span>
-      <span class="bandera">WTN muy superior</span><span class="bandera">corrige análisis previo</span><span class="bandera">cuota corta</span>
+      <span class="razon">Δ4.97 a favor de Nagel (5.71 contra 10.68 de Maute): la racha del qualifier no compensa esa brecha. A 1.32 está caro pero es de los más seguros.</span>
+      <span class="bandera">Δ4.97 muy fuerte</span><span class="bandera">regla qualifier</span><span class="bandera">cuota corta</span>
     </td>
   </tr></tbody>
 </table></div>
-<footer>Generado 2026-08-21 20:00 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
+<footer>Generado 2026-08-21 20:06 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
 </div>
 <script>
 (function(){

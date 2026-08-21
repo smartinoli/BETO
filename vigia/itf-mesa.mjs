@@ -275,12 +275,17 @@ function filas(p) {
   const marcaVer = l => v && v.favorito && pareceElMismo(v.favorito.replace(/\s*\[\d+\]|\s*\(Q\)|\s*\(JR\)|\s*\(WC\)/g, ''), { nombre: l.nombre });
   const w0 = p.lados[0].wtn, w1 = p.lados[1].wtn;
   const mejorWtn = (w0 && w1) ? (w0 < w1 ? 0 : 1) : -1;
+  /* La diferencia de WTN solo es señal desde ~1.5: medido sobre 711 partidos,
+     bajo ese umbral el acierto cae a 52-57% (azar). 4+ acierta 88%. */
+  const dw = (w0 && w1) ? Math.abs(w0 - w1) : null;
+  const fuerza = dw == null ? '' : dw >= 4 ? 'f4' : dw >= 2.5 ? 'f3' : dw >= 1.5 ? 'f2' : 'f0';
+  const dwTxt = dw == null ? '' : `<span class="dw ${fuerza}" title="${dw >= 4 ? 'diferencia muy fuerte: acierta 88%' : dw >= 2.5 ? 'diferencia fuerte: acierta 72%' : dw >= 1.5 ? 'diferencia moderada: acierta 68%' : 'diferencia sin valor predictivo: 52-57%, azar'}">Δ${dw.toFixed(2)}</span>`;
   const linea = (l, k) => `<tr class="${k ? 'b' : 'a'}" data-torneo="${esc(p.t.nombre)}" data-ts="${p.ordenTs}" data-par="${esc(clave)}">
     ${k ? '' : `<td rowspan="2" class="c-cuando"><b class="mono">${esc(dia)}</b><span class="loc mono">${esc(local)} loc · <b>${esc(horaCl)}</b> CL</span></td>
     <td rowspan="2" class="c-torneo">${esc(p.t.nombre)}<span class="loc">${esc(p.t.pais)} · ${esc(p.t.superficie || '')}</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">${p.evento === 'Q' ? 'Q·' : ''}${esc(p.ronda)}</span><span class="loc">${esc(p.cancha || '')} ${esc(turno)}</span></td>`}
     <td class="c-jug${marcaVer(l) ? ' elegido' : ''}">${marcaVer(l) ? '<span class="tick" title="elegido por el análisis">▸</span>' : ''}${esc(l.nombre)}${l.marca ? ` <b>${esc(l.marca)}</b>` : ''}<span class="pais">${esc(l.pais)}</span></td>
-    <td class="c-rank mono">${l.atp ? 'ATP ' + l.atp : '<span class="sin">sin ATP</span>'}<span class="wtn${mejorWtn === k ? ' mejor' : ''}">${l.wtn != null ? 'WTN ' + (+l.wtn).toFixed(2) : ''}</span></td>
+    <td class="c-rank mono">${l.atp ? 'ATP ' + l.atp : '<span class="sin">sin ATP</span>'}<span class="wtn${mejorWtn === k ? ' mejor' : ''}">${l.wtn != null ? 'WTN ' + (+l.wtn).toFixed(2) : ''}${mejorWtn === k ? ' ' + dwTxt : ''}</span></td>
     <td class="c-od mono">${num(cq?.lados[k].gana)}</td>
     <td class="c-od mono">${num(cq?.lados[k].set1)}</td>
     <td class="c-llega">${l.llega || '<span class="sin">debuta</span>'}</td>
@@ -349,6 +354,11 @@ tr.par td{background:var(--franja)}
 .c-rank{font-size:12px;color:var(--tinta2);white-space:nowrap}
 .wtn{display:block;font-size:11.5px;color:var(--tinta2);margin-top:1px}
 .wtn.mejor{color:var(--acento);font-weight:600}
+.dw{font-size:10px;padding:0 5px;border-radius:99px;margin-left:3px;font-weight:600;vertical-align:1px}
+.dw.f4{background:var(--acento);color:var(--carta)}
+.dw.f3{background:var(--acento-suave);color:var(--acento)}
+.dw.f2{border:1px solid var(--linea);color:var(--tinta2)}
+.dw.f0{border:1px dashed var(--linea);color:var(--tinta2);opacity:.65;font-weight:400}
 .c-od{text-align:right;font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;width:62px}
 .c-llega{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tinta2);line-height:1.6}
 .c-llega i{font-style:normal} .c-llega .g{color:var(--acento);font-weight:600}

@@ -9,6 +9,12 @@
    "uso": "usar el WTN como un input más, no como veredicto. Sirve sobre todo cuando el ATP falta (cubre 709 partidos contra 310 del ATP)"
   },
   {
+   "regla": "La diferencia de WTN solo es señal desde ~1.5. Por bandas: <0.25 acierta 52.6%, 0.25-0.5 56.0%, 0.5-1 57.1%, 1-1.5 56.9%, 1.5-2.5 67.7%, 2.5-4 71.7%, 4+ 88.2%.",
+   "n": 711,
+   "fuente": "backtest por bandas 2026-08-21 sobre partidos jugados de los torneos vivos, sin retiros",
+   "uso": "NUNCA tomar lado por WTN si la diferencia es menor a 1.5: ahí es azar. Entre 1.5 y 2.5 inclina; sobre 4 es casi decisivo"
+  },
+  {
    "regla": "Cuando WTN y ATP se contradicen, gana el de mejor WTN el 63.2%",
    "n": 57,
    "fuente": "mismo backtest",
@@ -79,7 +85,8 @@
   "Un súper tiebreak (10-x) en el partido anterior indica que se llegó al límite: desgaste mayor que un 2-0",
   "Cuando el mercado pone favorito al peor rankeado ATP, revisar el WTN antes de gritar 'valor': casi siempre el WTN explica la cuota",
   "La oportunidad real aparece cuando el WTN y la cuota se contradicen (no cuando se contradicen ATP y cuota)",
-  "Un jugador puede arrasar (6-0 6-0) contra rivales flojos y tener peor WTN que otro que sufrió contra seeds: mirar contra quién se logró la forma"
+  "Un jugador puede arrasar (6-0 6-0) contra rivales flojos y tener peor WTN que otro que sufrió contra seeds: mirar contra quién se logró la forma",
+  "Antes de citar una ventaja de WTN, calcular la diferencia: 3.8 contra 4.2 no dice nada, 3.6 contra 9.0 lo dice todo"
  ],
  "jugadoresNotables": [
   {
@@ -164,6 +171,18 @@
     "WTN vs forma en choque": "40.9% (n=22)"
    },
    "conclusion": "El WTN es un input mejor que el ATP pero no un veredicto. La forma sigue valiendo. Nada de esto prueba ventaja sobre el mercado."
+  },
+  {
+   "fecha": "2026-08-21",
+   "corrida": "backtest por bandas de ΔWTN",
+   "resultado": {
+    "<1.5": "52-57% (azar)",
+    "1.5-2.5": "67.7%",
+    "2.5-4": "71.7%",
+    "4+": "88.2% (n=289)"
+   },
+   "correccionPropia": "Mi destacado Mitsui vs Dellavedova tenía Δ0.64 — ruido. Y Marterer vs Masur Δ0.63: la alerta ahí es el precio (ranking ausente), no la brecha de nivel.",
+   "conclusion": "De 26 partidos comparables de la mesa, 11 quedaron en moneda al aire y solo Borg junta señal fuerte con cuota generosa."
   }
  ],
  "pendienteCritico": "Medir si el WTN aporta algo que la cuota no tenga ya: registrar cuota + veredicto + resultado en cada corrida hasta juntar muestra. Sin eso, no sabemos si esto da ventaja o solo replica al mercado."
