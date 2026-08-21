@@ -210,10 +210,13 @@ function cuotasDe(lados) {
     if (pareceElMismo(e.p1, lados[0]) && pareceElMismo(e.p2, lados[1])) mapa = [1, 2];
     else if (pareceElMismo(e.p1, lados[1]) && pareceElMismo(e.p2, lados[0])) mapa = [2, 1];
     if (!mapa) continue;
-    return lados.map((l, i) => {
-      const esFav = e.fav === mapa[i];
-      return { betano: esFav ? e.cB : e.dB, b365: esFav ? e.cJ : null, esFav };
-    });
+    return {
+      bFix: e.bFix || null,
+      porLado: lados.map((l, i) => {
+        const esFav = e.fav === mapa[i];
+        return { betano: esFav ? e.cB : e.dB, b365: esFav ? e.cJ : null, esFav };
+      }),
+    };
   }
   return null;
 }
@@ -250,8 +253,11 @@ function seccionPorJugarse() {
           if (p.estado !== 'pendiente' || !p.lados.every(l => l.nombre)) continue;
           const ronda = evento === 'Q' ? 'Q·R' + r.numero : (RONDA_CORTA[r.numero] || 'R' + r.numero);
           const cuotas = cuotasDe(p.lados);
-          filas.push(`<tr><td class="mono">${ronda}</td>
-            <td class="celda-partido">${p.lados.map((l, i) => jugadorHtml(l, v.cuadros, listado, cuotas?.[i])).join('')}</td></tr>`);
+          const abrir = cuotas?.bFix
+            ? `<a class="enlace-bet" href="https://lat.betano.com/cuotas-de-partido/e-e/${esc(cuotas.bFix)}/" target="_blank" rel="noopener">Betano ↗</a>`
+            : '';
+          filas.push(`<tr><td class="mono">${ronda}${abrir ? '<br>' + abrir : ''}</td>
+            <td class="celda-partido">${p.lados.map((l, i) => jugadorHtml(l, v.cuadros, listado, cuotas?.porLado?.[i])).join('')}</td></tr>`);
         }
       }
     }
@@ -280,7 +286,7 @@ function seccionCuotas() {
       const ctx = [e.ronda, e.entFav && e.entFav !== 'DA' ? 'fav ' + e.entFav : null, e.entRival && e.entRival !== 'DA' ? 'vs ' + e.entRival : null].filter(Boolean).join(' · ');
       return `<tr>
         <td>${esc(e.torneo || '?')}</td>
-        <td>${esc(e.p1)} vs ${esc(e.p2)}</td>
+        <td>${esc(e.p1)} vs ${esc(e.p2)}${e.bFix ? ` <a class="enlace-bet" href="https://lat.betano.com/cuotas-de-partido/e-e/${esc(e.bFix)}/" target="_blank" rel="noopener">↗</a>` : ''}</td>
         <td>${esc(fav || '?')}</td>
         <td class="mono">${e.cB?.toFixed?.(2) ?? e.cB}</td>
         <td class="mono">${e.cJ?.toFixed?.(2) ?? e.cJ}</td>
@@ -397,6 +403,8 @@ footer{color:var(--tinta2);font-size:12.5px;border-top:1px solid var(--linea);pa
 .jug-c.fav{color:var(--tinta);font-weight:500}
 .jug-c.sin{opacity:.45}
 .jug-t{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tinta2)}
+.enlace-bet{color:var(--acento);font-size:11.5px;text-decoration:none;white-space:nowrap}
+.enlace-bet:hover,.enlace-bet:focus-visible{text-decoration:underline}
 .paso-g{color:var(--acento)}
 .paso-vs{color:var(--tinta);font-weight:500}
 .paso-p,.paso-ret{color:var(--alerta)}
