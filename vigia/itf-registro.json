@@ -133,6 +133,155 @@
    },
    "resultado": null
   },
+  "1183662488": {
+   "visto": "2026-08-21T21:56:54.790Z",
+   "torneo": "M15 Kursumlijska Banja ",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T09:30:00.000Z",
+   "lados": [
+    {
+     "nombre": "Semen Pankin",
+     "atp": 424,
+     "wtn": 5.58,
+     "marca": "[1]",
+     "gana": 1.36,
+     "set1": 1.44
+    },
+    {
+     "nombre": "Dimitar Kisimov",
+     "atp": 1764,
+     "wtn": 13.04,
+     "marca": "JR",
+     "gana": 2.85,
+     "set1": 2.55
+    }
+   ],
+   "veredicto": null,
+   "resultado": null
+  },
+  "1183662489": {
+   "visto": "2026-08-21T21:56:54.790Z",
+   "torneo": "M15 Kursumlijska Banja ",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T08:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Anton Arzhankin",
+     "atp": 722,
+     "wtn": 6.44,
+     "marca": "[4]",
+     "gana": 1.83,
+     "set1": 1.83
+    },
+    {
+     "nombre": "Kristijan Juhas",
+     "atp": 951,
+     "wtn": 7.37,
+     "marca": "[7]",
+     "gana": 1.83,
+     "set1": 1.83
+    }
+   ],
+   "veredicto": null,
+   "resultado": null
+  },
+  "1183662575": {
+   "visto": "2026-08-21T21:56:54.790Z",
+   "torneo": "M15 Kursumlijska Banja ",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T08:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Rada Zolotareva",
+     "atp": null,
+     "wtn": null,
+     "marca": "",
+     "gana": 1.78,
+     "set1": 1.8
+    },
+    {
+     "nombre": "Lisa Zaar",
+     "atp": null,
+     "wtn": null,
+     "marca": "",
+     "gana": 1.88,
+     "set1": 1.88
+    }
+   ],
+   "veredicto": null,
+   "resultado": null
+  },
+  "1183662576": {
+   "visto": "2026-08-21T21:56:54.790Z",
+   "torneo": "M15 Kursumlijska Banja ",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T09:30:00.000Z",
+   "lados": [
+    {
+     "nombre": "Lidia Encheva",
+     "atp": null,
+     "wtn": null,
+     "marca": "",
+     "gana": 2.67,
+     "set1": 2.55
+    },
+    {
+     "nombre": "Luna Vujovic",
+     "atp": null,
+     "wtn": null,
+     "marca": "",
+     "gana": 1.4,
+     "set1": 1.44
+    }
+   ],
+   "veredicto": null,
+   "resultado": null
+  },
+  "1183662679": {
+   "visto": "2026-08-21T21:51:24.114Z",
+   "torneo": "M25 Slovenj Gradec",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T09:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Sebastian Dominko",
+     "atp": 1122,
+     "wtn": 4.88,
+     "marca": "",
+     "gana": 2.25,
+     "set1": 2.15
+    },
+    {
+     "nombre": "Sebastian Sorger",
+     "atp": 476,
+     "wtn": 4.96,
+     "marca": "[3]",
+     "gana": 1.55,
+     "set1": 1.6
+    }
+   ],
+   "veredicto": {
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar"
+   },
+   "resultado": null
+  },
   "1183662680": {
    "visto": "2026-08-21T20:11:54.667Z",
    "torneo": "M25 Slovenj Gradec",
@@ -163,6 +312,39 @@
     "favorito": "Filip Jeff Planinsek [6]",
     "confianza": "alta",
     "mercado": "gana"
+   },
+   "resultado": null
+  },
+  "1183663251": {
+   "visto": "2026-08-21T21:51:24.114Z",
+   "torneo": "M25 Idanha-a-Nova",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T08:30:00.000Z",
+   "lados": [
+    {
+     "nombre": "Rodrigo Fernandes",
+     "atp": 1237,
+     "wtn": 6.59,
+     "marca": "",
+     "gana": 3.4,
+     "set1": 2.9
+    },
+    {
+     "nombre": "Pavel Lagutin",
+     "atp": 718,
+     "wtn": 6.41,
+     "marca": "[3]",
+     "gana": 1.26,
+     "set1": 1.34
+    }
+   ],
+   "veredicto": {
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar"
    },
    "resultado": null
   },
@@ -394,6 +576,39 @@
     "favorito": "Leo Borg [1]",
     "confianza": "alta",
     "mercado": "gana"
+   },
+   "resultado": null
+  },
+  "1183664356": {
+   "visto": "2026-08-21T21:51:24.114Z",
+   "torneo": "M15 Bastad",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T08:15:00.000Z",
+   "lados": [
+    {
+     "nombre": "Jan Simonsson",
+     "atp": 1905,
+     "wtn": 10.38,
+     "marca": "WC",
+     "gana": 4.8,
+     "set1": 3.75
+    },
+    {
+     "nombre": "Niklas Guttau",
+     "atp": 1211,
+     "wtn": 8.13,
+     "marca": "",
+     "gana": 1.13,
+     "set1": 1.22
+    }
+   ],
+   "veredicto": {
+    "favorito": "Niklas Guttau",
+    "confianza": "baja",
+    "mercado": "pasar"
    },
    "resultado": null
   },

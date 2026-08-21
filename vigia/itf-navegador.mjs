@@ -153,7 +153,12 @@ if (!cmd) {
 
 const { browser, ctx } = await abrirNavegador();
 try {
-  const page = await calentar(ctx, 'https://www.itftennis.com/en/tournament-calendar/mens-world-tennis-tour-calendar/');
+  /* 'oop' navega directo a cada torneo: pasar antes por el calendario marca
+     la sesión y despues Incapsula bloquea las llamadas API de las páginas de
+     torneo (medido 2026-08-21). Los demás comandos sí necesitan esa página. */
+  const page = cmd === 'oop'
+    ? await ctx.newPage()
+    : await calentar(ctx, 'https://www.itftennis.com/en/tournament-calendar/mens-world-tennis-tour-calendar/');
 
   if (cmd === 'calendario') {
     /* Ambos circuitos (MT hombres, WT mujeres) en un solo caché: el cruce

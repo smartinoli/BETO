@@ -1,299 +1,361 @@
 {
- "generado": "2026-08-21T20:06:15+00:00",
- "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + vigia/itf-saber.json",
- "titular": "La diferencia de WTN solo vale desde 1.5. Y cuando choca con la forma, decide el tamaño de la brecha: bajo 2.5 manda la forma (42%), sobre 2.5 manda el nivel (63%).",
- "advertencia": "Acertar el ganador no es ganar: el mercado ya paga esos favoritos. Solo Borg junta señal fuerte y cuota generosa.",
+ "generado": "2026-08-21T21:57:53+00:00",
+ "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + reglas medidas de vigia/itf-saber.json",
+ "titular": "Valor esperado partido a partido: probabilidad estimada (ΔWTN y choque nivel-forma) contra la que implica cada cuota.",
+ "advertencia": "El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las reglas del choque salen de muestras chicas (n=27).",
  "veredictos": {
-  "1183664355": {
-   "favorito": "Leo Borg [1]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "EL CASO MEDIDO: Borg y Lithen son un CHOQUE — mejor WTN contra mejor forma. Nuestros datos dicen que ese choque es 50/50 en general, PERO cuando la brecha de nivel es grande (Δ2.5+, y acá es Δ3.10) el WTN se impone 63% (n=27, ±18). El mercado está pesando la forma de Lithen y paga 2.45 a Borg, que implica 40.8%. Incluso en el borde pesimista del intervalo (45%) el precio deja ganancia. Es la mejor relación señal/precio de la mesa — con la advertencia de que el mercado puede saber algo que nosotros no (lesión, físico).",
+  "1183661738": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.48 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
    "banderas": [
-    "Δ3.10 fuerte",
-    "choque nivel vs forma",
-    "valor de cuota",
-    "n=27 muestra chica"
+    "Δ0.48 ruido"
    ]
   },
   "1183661737": {
    "favorito": "Dragos Nicolae Madaras [3]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "Δ5.43 (Madaras 3.59 contra 9.02): la diferencia más grande de la mesa, en la banda que acierta 88%. Más 700 puestos ATP. Falta que abra la línea.",
-   "banderas": [
-    "Δ5.43 muy fuerte",
-    "gap de ranking",
-    "línea sin abrir"
-   ]
-  },
-  "1183664163": {
-   "favorito": "Laurent Lokoli [3]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "Δ5.69 (Lokoli 3.41 contra 9.10 del qualifier): banda del 88%, y la regla del circuito ya castiga al qualifier. Sin línea abierta.",
-   "banderas": [
-    "Δ5.69 muy fuerte",
-    "regla qualifier",
-    "línea sin abrir"
-   ]
-  },
-  "1183662680": {
-   "favorito": "Filip Jeff Planinsek [6]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "Δ5.37 (Planinsek 5.56 contra 10.93): banda del 88%. Pero a 1.14 el precio ya lo descuenta todo: sirve de ancla en combinada, no como apuesta suelta.",
-   "banderas": [
-    "Δ5.37 muy fuerte",
-    "cuota corta"
-   ]
-  },
-  "1183664414": {
-   "favorito": "Arthur Nagel [3]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "Δ4.97 a favor de Nagel (5.71 contra 10.68 de Maute): la racha del qualifier no compensa esa brecha. A 1.32 está caro pero es de los más seguros.",
-   "banderas": [
-    "Δ4.97 muy fuerte",
-    "regla qualifier",
-    "cuota corta"
-   ]
-  },
-  "1183662140": {
-   "favorito": "Gabriele Maria Noce [6]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "Δ4.72 a favor de Noce (8.56 contra 13.28): el junior arrasó a rivales flojos, pero la brecha de nivel es de la banda que acierta 88%. Corrige mi apuesta anterior por Behrmann.",
-   "banderas": [
-    "Δ4.72 muy fuerte",
-    "corrige análisis previo",
-    "línea sin abrir"
-   ]
-  },
-  "1183664158": {
-   "favorito": "Pierluigi Basile",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "Δ3.92 a favor de Basile (5.01 contra 8.93), y Comino avanzó por retiro. A 1.14 no queda margen, pero el resultado es de los más previsibles.",
-   "banderas": [
-    "Δ3.92 fuerte",
-    "cuota corta",
-    "victoria por retiro del rival"
-   ]
-  },
-  "1183664164": {
-   "favorito": "Lorenzo Rottoli",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "Δ3.67 a favor de Rottoli (6.67 contra 10.34). El 6-2 6-0 del WC al [5] fue una golondrina. A 1.36 está bien puesto.",
-   "banderas": [
-    "Δ3.67 fuerte",
-    "corrige análisis previo"
-   ]
-  },
-  "1183661236": {
-   "favorito": "Petr Bar Biryukov [1]",
-   "confianza": "alta",
-   "mercado": "gana",
-   "razon": "Δ2.70 a favor de Biryukov (3.68 contra 6.38) y además mejor ranking (281 vs 562): las dos métricas coinciden, banda del 72%. Sin línea todavía.",
-   "banderas": [
-    "Δ2.70 fuerte",
-    "gap de ranking",
-    "línea sin abrir"
-   ]
-  },
-  "1183664160": {
-   "favorito": "Juan Cruz Martin Manzano [4]",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ2.21 a favor de Martin Manzano (4.13 contra 6.34) más 200 puestos ATP. A 1.62 el precio deja algo de margen sobre una señal de banda 68%.",
+   "razon": "Δ5.43 de WTN a favor (3.59 contra 9.02). Nivel y forma coinciden: banda del 88%. Betano todavía no abre la línea.",
    "banderas": [
-    "Δ2.21 moderada",
-    "gap de ranking",
+    "Δ5.43 muy fuerte",
+    "línea sin abrir"
+   ]
+  },
+  "1183663305": {
+   "favorito": "Gonzalo Villanueva [1]",
+   "confianza": "baja",
+   "mercado": "gana",
+   "razon": "Δ0.16 de WTN a favor (3.45 contra 3.61). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.",
+   "banderas": [
+    "Δ0.16 moderada",
+    "choque nivel vs forma",
+    "línea sin abrir"
+   ]
+  },
+  "1183664355": {
+   "favorito": "Leo Borg [1]",
+   "confianza": "alta",
+   "mercado": "gana",
+   "razon": "Δ3.10 de WTN a favor (5.4 contra 8.5). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 2.42 el mercado implica 41.3% → valor +52%.",
+   "banderas": [
+    "Δ3.10 fuerte",
+    "choque nivel vs forma",
     "valor de cuota"
    ]
   },
-  "1183664413": {
-   "favorito": "Mika Petkovic [4]",
-   "confianza": "media",
-   "mercado": "gana",
-   "razon": "Δ2.25 a favor de Petkovic (4.57 contra 6.82). A 1.4 cae en la banda de cuota donde nuestros datos dicen que el favorito rinde menos de lo prometido: señal sí, precio no.",
-   "banderas": [
-    "Δ2.25 moderada",
-    "banda de cuota mala"
-   ]
-  },
-  "1183664412": {
-   "favorito": "Tymur Bieldiugin Q",
-   "confianza": "media",
-   "mercado": "gana",
-   "razon": "Δ1.95 a favor de Bieldiugin (10.33 contra 12.28), y por eso es favorito a 1.44. Corrige mi error de ayer: el desgaste de Bieldiugin no da vuelta la brecha de nivel, aunque en esta banda el acierto es 68%, no más.",
-   "banderas": [
-    "Δ1.95 moderada",
-    "corrige análisis previo"
-   ]
-  },
-  "1183662141": {
-   "favorito": "Nikita Mashtakov [3]",
-   "confianza": "media",
-   "mercado": "gana",
-   "razon": "Δ1.68 a favor de Mashtakov (4.83 contra 6.51): señal moderada (68%), suficiente para inclinar pero no para confiarse. Sin línea abierta.",
-   "banderas": [
-    "Δ1.68 moderada",
-    "línea sin abrir"
-   ]
-  },
-  "1183661237": {
-   "favorito": "Yun Seong Chung",
-   "confianza": "media",
-   "mercado": "gana",
-   "razon": "Δ1.55 a favor de Chung (4.66 contra 6.21) pese a 500 puestos ATP menos, más un cuarto que duró un set por retiro del rival. Justo en el borde de lo que es señal.",
-   "banderas": [
-    "Δ1.55 moderada",
-    "ranking engañoso",
-    "desgaste rival",
-    "línea sin abrir"
-   ]
-  },
   "1183664356": {
-   "favorito": "Niklas Guttau",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ2.25 a favor de Guttau, pero los dos juegan en un nivel muy bajo (8.13 y 10.38) donde los resultados son erráticos. Sin línea y sin ganas.",
-   "banderas": [
-    "Δ2.25 moderada",
-    "nivel bajo",
-    "línea sin abrir"
-   ]
-  },
-  "1183661181": {
-   "favorito": "Yu Hsiou Hsu [1]",
-   "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ1.24: por debajo del umbral de 1.5, o sea ruido según nuestros datos. Hsu tiene mejor ranking (222 vs 409) y ese es el único argumento real. A 1.47 no compensa.",
-   "banderas": [
-    "Δ1.24 ruido",
-    "gap de ranking",
-    "cuota corta"
-   ]
-  },
-  "1183661182": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "CORRIJO MI PROPIO DESTACADO: la ventaja de Mitsui en WTN es Δ0.64 — dentro del rango donde el WTN acierta 52-57%, es decir azar. Lo que sí queda en pie es que su camino fue más duro (venció al [8] y al [3] local) mientras Dellavedova pasó por WC y qualifier. Pero eso no basta para tomar lado a 1.62.",
+   "razon": "Δ2.25 de WTN a favor (8.13 contra 10.38). Nivel y forma coinciden: banda del 67%. A 1.13 implica 88.5%, sobre nuestra estimación: sin valor.",
    "banderas": [
-    "Δ0.64 ruido",
-    "corrige análisis previo",
-    "camino más duro"
+    "Δ2.25 moderada",
+    "sin valor"
    ]
   },
-  "1183664415": {
-   "favorito": "Maximilian Marterer",
+  "1183663195": {
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ0.63 entre Marterer (3.07) y Masur (3.70) es ruido: los dos son ex top-100 y el nivel medido los pone casi iguales. Lo que sigue en pie es la alerta de precio: Marterer figura SIN ranking ATP porque vuelve de lesión, así que si al abrir la línea lo ponen underdog por eso, ahí está el valor — no en la brecha de nivel.",
+   "mercado": "pasar",
+   "razon": "Falta el WTN de alguno: no se puede comparar nivel.",
    "banderas": [
-    "Δ0.63 ruido",
-    "ranking engañoso",
+    "sin datos de nivel"
+   ]
+  },
+  "1183663109": {
+   "favorito": "Daniel Michalski [1]",
+   "confianza": "media",
+   "mercado": "gana",
+   "razon": "Δ12.33 de WTN a favor (3.45 contra 15.78). Nivel y forma coinciden: banda del 88%. Betano todavía no abre la línea.",
+   "banderas": [
+    "Δ12.33 muy fuerte",
     "línea sin abrir"
    ]
   },
-  "1183664165": {
-   "favorito": "Andrea De Marchi",
+  "1183663110": {
+   "favorito": "Pawel Juszczak",
    "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.78: ruido. De Marchi tiene algo mejor ranking (813 vs 959) y la cuota lo refleja. Nada que explotar.",
+   "mercado": "gana",
+   "razon": "Δ2.10 de WTN a favor (6.98 contra 9.08). Nivel y forma coinciden: banda del 67%. Betano todavía no abre la línea.",
    "banderas": [
-    "Δ0.78 ruido"
+    "Δ2.10 moderada",
+    "línea sin abrir"
    ]
   },
-  "1183661738": {
-   "favorito": "Robert Guna [7]",
+  "1183662575": {
+   "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ0.48: ruido puro. Guna llega sin ceder un set, pero a 1.4 el precio ya paga esa forma y el nivel no lo respalda.",
+   "razon": "Falta el WTN de alguno: no se puede comparar nivel.",
    "banderas": [
-    "Δ0.48 ruido",
-    "cuota corta"
+    "sin datos de nivel"
+   ]
+  },
+  "1183662489": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.93 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
+   "banderas": [
+    "Δ0.93 ruido"
+   ]
+  },
+  "1183662576": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Falta el WTN de alguno: no se puede comparar nivel.",
+   "banderas": [
+    "sin datos de nivel"
+   ]
+  },
+  "1183662488": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ7.46 de WTN a favor (5.58 contra 13.04). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.36 implica 73.5%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ7.46 muy fuerte",
+    "choque nivel vs forma",
+    "sin valor"
    ]
   },
   "1183662341": {
-   "favorito": "Jack Loge [1]",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.47: ruido. Loge es mejor por ranking (410 vs 616) pero a 1.36 se paga como si la diferencia fuera clara.",
-   "banderas": [
-    "Δ0.47 ruido",
-    "cuota corta"
-   ]
-  },
-  "1183664162": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ0.27 y rankings calcados: el partido más parejo de la mesa, y las cuotas (1.91 / 1.75) lo dicen igual.",
+   "razon": "Δ0.47 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
    "banderas": [
-    "Δ0.27 ruido",
-    "parejo"
-   ]
-  },
-  "1183663251": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.18: ruido. Lagutin tiene mucho mejor ranking, Fernandes viene de eliminar al [1]. Sin desempate creíble.",
-   "banderas": [
-    "Δ0.18 ruido",
-    "parejo"
-   ]
-  },
-  "1183663252": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.17 y rankings calcados (1025 vs 1048): moneda al aire. Retiro mi veredicto anterior a favor de Marques.",
-   "banderas": [
-    "Δ0.17 ruido",
-    "corrige análisis previo"
-   ]
-  },
-  "1183662679": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.08: el partido más parejo en nivel de toda la mesa. Sorger arrasó a rivales flojos, Dominko eliminó al [1] y al [5]. Nada que decidir.",
-   "banderas": [
-    "Δ0.08 ruido",
-    "parejo"
+    "Δ0.47 ruido"
    ]
   },
   "1183662342": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ0.03: empate técnico en nivel. Faucon [2] tiene mejor ranking, VDM mejor forma. Sin línea y sin lado.",
+   "razon": "Δ0.03 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
    "banderas": [
-    "Δ0.03 ruido",
-    "parejo"
+    "Δ0.03 ruido"
+   ]
+  },
+  "1183661237": {
+   "favorito": "Yun Seong Chung",
+   "confianza": "baja",
+   "mercado": "gana",
+   "razon": "Δ1.55 de WTN a favor (4.66 contra 6.21). Nivel y forma coinciden: banda del 67%. Betano todavía no abre la línea.",
+   "banderas": [
+    "Δ1.55 moderada",
+    "línea sin abrir"
+   ]
+  },
+  "1183661236": {
+   "favorito": "Petr Bar Biryukov [1]",
+   "confianza": "media",
+   "mercado": "gana",
+   "razon": "Δ2.70 de WTN a favor (3.68 contra 6.38). Nivel y forma coinciden: banda del 71%. Betano todavía no abre la línea.",
+   "banderas": [
+    "Δ2.70 fuerte",
+    "línea sin abrir"
+   ]
+  },
+  "1183662141": {
+   "favorito": "Nikita Mashtakov [3]",
+   "confianza": "baja",
+   "mercado": "gana",
+   "razon": "Δ1.68 de WTN a favor (4.83 contra 6.51). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.",
+   "banderas": [
+    "Δ1.68 moderada",
+    "choque nivel vs forma",
+    "línea sin abrir"
+   ]
+  },
+  "1183662140": {
+   "favorito": "Gabriele Maria Noce [6]",
+   "confianza": "media",
+   "mercado": "gana",
+   "razon": "Δ4.72 de WTN a favor (8.56 contra 13.28). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. Betano todavía no abre la línea.",
+   "banderas": [
+    "Δ4.72 muy fuerte",
+    "choque nivel vs forma",
+    "línea sin abrir"
+   ]
+  },
+  "1183663251": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.18 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
+   "banderas": [
+    "Δ0.18 ruido"
+   ]
+  },
+  "1183663252": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.17 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
+   "banderas": [
+    "Δ0.17 ruido"
+   ]
+  },
+  "1183664162": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.27 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
+   "banderas": [
+    "Δ0.27 ruido"
+   ]
+  },
+  "1183664163": {
+   "favorito": "Laurent Lokoli [3]",
+   "confianza": "media",
+   "mercado": "gana",
+   "razon": "Δ5.69 de WTN a favor (3.41 contra 9.1). Nivel y forma coinciden: banda del 88%. Betano todavía no abre la línea.",
+   "banderas": [
+    "Δ5.69 muy fuerte",
+    "línea sin abrir"
+   ]
+  },
+  "1183664164": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ3.67 de WTN a favor (6.67 contra 10.34). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.36 implica 73.5%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ3.67 fuerte",
+    "choque nivel vs forma",
+    "sin valor"
+   ]
+  },
+  "1183664158": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ3.92 de WTN a favor (5.01 contra 8.93). Nivel y forma coinciden: banda del 71%. A 1.2 implica 83.3%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ3.92 fuerte",
+    "sin valor"
+   ]
+  },
+  "1183664165": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.78 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
+   "banderas": [
+    "Δ0.78 ruido"
    ]
   },
   "1183664159": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Hipfl marca WTN 6.99; de Reitano no hay ranking ni WTN. Sin dato del rival no hay comparación posible.",
+   "razon": "Falta el WTN de alguno: no se puede comparar nivel.",
    "banderas": [
-    "sin datos del rival"
+    "sin datos de nivel"
+   ]
+  },
+  "1183664160": {
+   "favorito": "Juan Cruz Martin Manzano [4]",
+   "confianza": "media",
+   "mercado": "gana",
+   "razon": "Δ2.21 de WTN a favor (4.13 contra 6.34). Nivel y forma coinciden: banda del 67%. A 1.62 implica 61.7% → apenas +10%: margen fino.",
+   "banderas": [
+    "Δ2.21 moderada",
+    "margen fino"
+   ]
+  },
+  "1183662679": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.08 de WTN a favor (4.88 contra 4.96). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 2.25 implica 44.4%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ0.08 moderada",
+    "choque nivel vs forma",
+    "sin valor"
+   ]
+  },
+  "1183662680": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ5.37 de WTN a favor (5.56 contra 10.93). Nivel y forma coinciden: banda del 88%. A 1.13 implica 88.5%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ5.37 muy fuerte",
+    "sin valor"
+   ]
+  },
+  "1183661181": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ1.24 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.",
+   "banderas": [
+    "Δ1.24 ruido"
+   ]
+  },
+  "1183661182": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.64 de WTN a favor (3.68 contra 4.32). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.7 implica 58.8%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ0.64 moderada",
+    "choque nivel vs forma",
+    "sin valor"
+   ]
+  },
+  "1183664413": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ2.25 de WTN a favor (4.57 contra 6.82). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.4 implica 71.4%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ2.25 moderada",
+    "choque nivel vs forma",
+    "sin valor"
+   ]
+  },
+  "1183664412": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ1.95 de WTN a favor (10.33 contra 12.28). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.44 implica 69.4%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ1.95 moderada",
+    "choque nivel vs forma",
+    "sin valor"
+   ]
+  },
+  "1183664415": {
+   "favorito": "Maximilian Marterer WC",
+   "confianza": "baja",
+   "mercado": "gana",
+   "razon": "Δ0.63 de WTN a favor (3.07 contra 3.7). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.",
+   "banderas": [
+    "Δ0.63 moderada",
+    "choque nivel vs forma",
+    "línea sin abrir"
+   ]
+  },
+  "1183664414": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ4.97 de WTN a favor (5.71 contra 10.68). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.32 implica 75.8%, sobre nuestra estimación: sin valor.",
+   "banderas": [
+    "Δ4.97 muy fuerte",
+    "choque nivel vs forma",
+    "sin valor"
    ]
   }
  },
  "destacados": [
   1183664355,
-  1183661737,
-  1183664163,
-  1183662140,
-  1183661236,
   1183664160
  ]
 }
