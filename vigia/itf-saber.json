@@ -3,10 +3,28 @@
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
-   "regla": "El WTN (World Tennis Number) predice mejor que el ranking ATP en ITF: mide nivel de juego partido a partido, no puntos acumulados. Menor es mejor.",
-   "n": 27,
-   "fuente": "mesa 2026-08-21: cambió 8 de 27 veredictos y explicó todas las cuotas que parecían 'invertidas'",
-   "uso": "comparar SIEMPRE el WTN de ambos antes que el ATP; cuando ATP y WTN se contradicen, el mercado suele seguir al WTN"
+   "regla": "El WTN predice algo mejor que el ranking ATP, pero la ventaja NO es concluyente: 71.1% ±5.1 vs 66.0% ±5.3 sobre el mismo subconjunto. Los intervalos se solapan.",
+   "n": 309,
+   "fuente": "backtest 2026-08-21 sobre partidos ya jugados de los 14 torneos vivos, sin retiros",
+   "uso": "usar el WTN como un input más, no como veredicto. Sirve sobre todo cuando el ATP falta (cubre 709 partidos contra 310 del ATP)"
+  },
+  {
+   "regla": "Cuando WTN y ATP se contradicen, gana el de mejor WTN el 63.2%",
+   "n": 57,
+   "fuente": "mismo backtest",
+   "uso": "tendencia real pero con muestra chica (±12.5): inclina la decisión, no la decide"
+  },
+  {
+   "regla": "La forma en el torneo (sets cedidos por partido) acierta 67.1% — igual que el ATP, no peor. Y cuando choca con el WTN, la forma acertó 13 de 22.",
+   "n": 79,
+   "fuente": "mismo backtest",
+   "uso": "NO descartar la forma frente al nivel: no hay evidencia de que el WTN la supere en el choque directo (muestra chica, ±20)"
+  },
+  {
+   "regla": "Cuando WTN y forma COINCIDEN, el acierto sube a 69.6% y es la señal más fiable que tenemos",
+   "n": 56,
+   "fuente": "mismo backtest",
+   "uso": "confianza alta solo cuando nivel y forma apuntan al mismo lado"
   },
   {
    "regla": "En R1 del main draw, el qualifier gana solo el 33% contra jugadores de entrada directa",
@@ -94,7 +112,8 @@
   "Las cuotas de Betano en ITF aparecen tarde: muchas semifinales abren línea recién unas horas antes",
   "Solo hay dos mercados en ITF por Betano: Ganador y Ganador 1er set",
   "Las reglas de retiro difieren entre casas: en ITF eso importa más que en otros circuitos",
-  "Al citar un WTN, tomarlo SIEMPRE de la entry list del propio torneo: el índice global de entry lists produce falsos positivos con homónimos y apellidos compartidos (me pasó con Madaras y Noce)"
+  "Al citar un WTN, tomarlo SIEMPRE de la entry list del propio torneo: el índice global de entry lists produce falsos positivos con homónimos y apellidos compartidos (me pasó con Madaras y Noce)",
+  "Ningún porcentaje de acierto sirve solo: un 71% de acierto en favoritos no gana plata si el mercado ya los paga a 1.40. Lo que hay que medir es el rendimiento CONTRA LA CUOTA, no contra el resultado."
  ],
  "historial": [
   {
@@ -109,7 +128,7 @@
     "Lithen vs Borg (contra favorito de papel)"
    ],
    "pendiente": "verificar resultados y anotar aciertos/fallos para calibrar las reglas",
-   "leccion": "Elegí a Lithen, Zielinski, Senn y Behrmann mirando solo la forma de la semana; el WTN mostró que en los cuatro casos el otro lado era mejor jugador. La forma sin nivel es ruido."
+   "leccion": "Elegí a Lithen, Zielinski, Senn y Behrmann mirando solo la forma. Al medirlo después (n=22) la forma NO resultó inferior al WTN en el choque directo: la corrección fue precipitada."
   },
   {
    "fecha": "2026-08-21",
@@ -133,6 +152,19 @@
    ],
    "pendiente": "verificar resultados del sábado 22 y anotar aciertos",
    "erroresPropios": "Cité WTN de un índice global mal cruzado: Madaras aparecía 7.92 cuando es 3.59 (la mayor diferencia de la mesa) y Noce 12.26 cuando es 8.56. Verificar contra el dossier antes de escribir el veredicto."
+  },
+  {
+   "fecha": "2026-08-21",
+   "corrida": "backtest WTN vs ATP vs forma",
+   "resultado": {
+    "WTN": "71.1% (n=308)",
+    "ATP": "66.0% (n=309)",
+    "forma": "67.1% (n=79)",
+    "WTN vs ATP en choque": "63.2% (n=57)",
+    "WTN vs forma en choque": "40.9% (n=22)"
+   },
+   "conclusion": "El WTN es un input mejor que el ATP pero no un veredicto. La forma sigue valiendo. Nada de esto prueba ventaja sobre el mercado."
   }
- ]
+ ],
+ "pendienteCritico": "Medir si el WTN aporta algo que la cuota no tenga ya: registrar cuota + veredicto + resultado en cada corrida hasta juntar muestra. Sin eso, no sabemos si esto da ventaja o solo replica al mercado."
 }

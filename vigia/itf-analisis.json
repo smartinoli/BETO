@@ -1,7 +1,7 @@
 {
  "generado": "2026-08-21T19:54:58+00:00",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + vigia/itf-saber.json",
- "titular": "El WTN (nivel real medido por ITF) manda sobre el ranking ATP: cambió nueve veredictos y explica todas las cuotas que parecían invertidas.",
+ "titular": "Medido sobre 309 partidos ya jugados: el WTN acierta 71% y el ATP 66% — mejor, pero sin diferencia concluyente. Se usa como input, no como veredicto; la forma sigue pesando.",
  "veredictos": {
   "1183664355": {
    "favorito": "Leo Borg [1]",
@@ -291,5 +291,6 @@
   1183661182,
   1183661237,
   1183664160
- ]
+ ],
+ "advertencia": "Acertar el ganador no es ganar: el mercado ya paga esos favoritos. Todavía no tenemos muestra para saber si estas señales superan a la cuota."
 }

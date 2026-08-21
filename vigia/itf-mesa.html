@@ -72,7 +72,8 @@ tr.analisis b{color:var(--tinta)} .pasar{color:var(--tinta2)!important;font-weig
 .resumen{background:var(--carta);border:1px solid var(--linea);border-left:3px solid var(--acento);
   border-radius:6px;padding:16px 20px;margin-bottom:14px}
 .resumen h2{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:21px;margin:0 0 6px;letter-spacing:.5px}
-.titular{font-size:14px;color:var(--tinta);margin:0 0 8px;font-weight:500}
+.titular{font-size:14px;color:var(--tinta);margin:0 0 6px;font-weight:500}
+.advertencia{font-size:12.5px;color:var(--ambar);margin:0 0 8px}
 .resumen-nota{font-size:12.5px;color:var(--tinta2);margin:0}
 .mejores{margin:10px 0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:13.5px}
 .mejores .ctx{color:var(--tinta2);font-size:11.5px;margin-left:8px}
@@ -81,7 +82,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <div class="envoltura">
 <div class="cabecera">
   <h1>Mesa ITF</h1>
-  <span class="edad" id="edad" data-generado="2026-08-21T19:54:58.372Z">datos de hace <b>—</b></span>
+  <span class="edad" id="edad" data-generado="2026-08-21T20:00:04.909Z">datos de hace <b>—</b></span>
   <div class="controles">
     <span class="orden">Ordenar:</span>
     <button id="b-torneo" class="on" onclick="ordenar('torneo')">Campeonato</button>
@@ -93,8 +94,9 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · 27 partidos, <b>15 con cuota</b> de Betano y 12 que Betano todavía no cotiza (abre la línea horas antes) · hora local del torneo y hora de Chile.</p>
 <div id="resumen" class="resumen" hidden>
   <h2>Lo que ve el análisis</h2>
-  <p class="titular">El WTN (nivel real medido por ITF) manda sobre el ranking ATP: cambió nueve veredictos y explica todas las cuotas que parecían invertidas.</p>
-  <p class="resumen-nota">Sobre 27 partidos por jugar, con las reglas medidas en 8 patrones de nuestros propios datos (839 partidos históricos). Análisis del 2026-08-21 19:54 UTC.</p>
+  <p class="titular">Medido sobre 309 partidos ya jugados: el WTN acierta 71% y el ATP 66% — mejor, pero sin diferencia concluyente. Se usa como input, no como veredicto; la forma sigue pesando.</p>
+  <p class="advertencia">⚠ Acertar el ganador no es ganar: el mercado ya paga esos favoritos. Todavía no tenemos muestra para saber si estas señales superan a la cuota.</p>
+  <p class="resumen-nota">Sobre 27 partidos por jugar, con las reglas medidas en 11 patrones de nuestros propios datos (1.313 partidos históricos). Análisis del 2026-08-21 19:54 UTC.</p>
   <ol class="mejores"><li><b>Leo Borg [1]</b> <span class="mkt">gana</span>
       <span class="ctx">M15 Bastad · Semi-final</span><span class="razon">LA MAYOR DISCREPANCIA CON CUOTA: Borg tiene WTN 5.4 contra 8.5 de Lithen — un abismo de nivel real — y sin embargo paga 2.45 mientras Lithen es favorito a 1.47. El mercado premia la forma de la semana (Lithen cedió 8 games en 3 partidos) e ignora la diferencia de categoría. Corrige mi lectura anterior, que había elegido a Lithen mirando solo la forma.</span></li><li><b>Dragos Nicolae Madaras [3]</b> <span class="mkt">gana</span>
       <span class="ctx">M15 Arad · Semi-final</span><span class="razon">LA MAYOR DIFERENCIA DE NIVEL DE TODA LA MESA: Madaras marca WTN 3.59 contra 9.02 de Sciahbasi, más 700 puestos ATP de ventaja. Cuando abra la línea, cualquier cuota sobre 1.35 es tomable.</span></li><li><b>Maximilian Marterer</b> <span class="mkt">gana</span>
@@ -811,7 +813,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     </td>
   </tr></tbody>
 </table></div>
-<footer>Generado 2026-08-21 19:54 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
+<footer>Generado 2026-08-21 20:00 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
 </div>
 <script>
 (function(){

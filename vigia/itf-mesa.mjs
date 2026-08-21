@@ -377,7 +377,8 @@ tr.analisis b{color:var(--tinta)} .pasar{color:var(--tinta2)!important;font-weig
 .resumen{background:var(--carta);border:1px solid var(--linea);border-left:3px solid var(--acento);
   border-radius:6px;padding:16px 20px;margin-bottom:14px}
 .resumen h2{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:21px;margin:0 0 6px;letter-spacing:.5px}
-.titular{font-size:14px;color:var(--tinta);margin:0 0 8px;font-weight:500}
+.titular{font-size:14px;color:var(--tinta);margin:0 0 6px;font-weight:500}
+.advertencia{font-size:12.5px;color:var(--ambar);margin:0 0 8px}
 .resumen-nota{font-size:12.5px;color:var(--tinta2);margin:0}
 .mejores{margin:10px 0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:13.5px}
 .mejores .ctx{color:var(--tinta2);font-size:11.5px;margin-left:8px}
@@ -399,6 +400,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <div id="resumen" class="resumen" hidden>
   <h2>Lo que ve el análisis</h2>
   ${analisis.titular ? `<p class="titular">${esc(analisis.titular)}</p>` : ''}
+  ${analisis.advertencia ? `<p class="advertencia">⚠ ${esc(analisis.advertencia)}</p>` : ''}
   <p class="resumen-nota">Sobre ${partidos.length} partidos por jugar, con las reglas medidas en ${saber.reglasMedidas?.length || 0} patrones de nuestros propios datos (${(saber.reglasMedidas || []).reduce((n, r) => n + (r.n || 0), 0).toLocaleString('es-CL')} partidos históricos). Análisis del ${analisis.generado ? analisis.generado.slice(0, 16).replace('T', ' ') + ' UTC' : '—'}.</p>
   <ol class="mejores">${(analisis.destacados || []).map(id => {
     const p = partidos.find(x => x.matchId === id); const v = analisis.veredictos[String(id)];
