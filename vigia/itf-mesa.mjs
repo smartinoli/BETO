@@ -166,6 +166,7 @@ function cuotasDe(l0, l1) {
     if (!orden) continue;
     return {
       bFix: e.bFix || null,
+      cuotasAl: e.cuotasAl || null,
       lados: orden.map(k => ({ gana: e.g?.['p' + k] ?? null, set1: e.s1?.['p' + k] ?? null })),
     };
   }
@@ -266,9 +267,10 @@ function filas(p) {
     <td class="c-od mono">${num(cq?.lados[k].gana)}</td>
     <td class="c-od mono">${num(cq?.lados[k].set1)}</td>
     <td class="c-llega">${l.llega || '<span class="sin">debuta</span>'}</td>
-    ${k ? '' : `<td rowspan="2" class="c-link">${cq?.bFix
-      ? `<a href="https://lat.betano.com/cuotas-de-partido/e-e/${esc(cq.bFix)}/" target="_blank" rel="noopener">Betano ↗</a>`
-      : '<span class="sin">sin cuota</span>'}</td>`}
+    ${k ? '' : `<td rowspan="2" class="c-link">${cq
+      ? (cq.bFix ? `<a href="https://lat.betano.com/cuotas-de-partido/e-e/${esc(cq.bFix)}/" target="_blank" rel="noopener">Betano ↗</a>` : '<span class="sin">sin link</span>')
+        + (cq.cuotasAl ? `<span class="loc">cuota ${esc(fmtClHora.format(new Date(cq.cuotasAl)))}</span>` : '')
+      : '<span class="sin">aún sin línea</span>'}</td>`}
   </tr>`;
   const filaAn = v ? `<tr class="analisis${top ? ' top' : ''}" data-par="${esc(clave)}">
     <td colspan="9">
@@ -373,7 +375,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <button onclick="location.reload(true)">↻ Recargar</button>
   </div>
 </div>
-<p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · ${partidos.length} partidos, ${conCuota} con cuota de Betano · hora local del torneo y hora de Chile.</p>
+<p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · ${partidos.length} partidos, <b>${conCuota} con cuota</b> de Betano y ${partidos.length - conCuota} que Betano todavía no cotiza (abre la línea horas antes) · hora local del torneo y hora de Chile.</p>
 <div id="resumen" class="resumen" hidden>
   <h2>Lo que ve el análisis</h2>
   <p class="resumen-nota">Sobre ${partidos.length} partidos por jugar, con las reglas medidas en ${saber.reglasMedidas?.length || 0} patrones de nuestros propios datos (${(saber.reglasMedidas || []).reduce((n, r) => n + (r.n || 0), 0).toLocaleString('es-CL')} partidos históricos). Análisis del ${analisis.generado ? analisis.generado.slice(0, 16).replace('T', ' ') + ' UTC' : '—'}.</p>
