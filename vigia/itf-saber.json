@@ -1,0 +1,216 @@
+{
+ "actualizado": "2026-08-21",
+ "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
+ "reglasMedidas": [
+  {
+   "regla": "El WTN predice algo mejor que el ranking ATP, pero la ventaja NO es concluyente: 71.1% ±5.1 vs 66.0% ±5.3 sobre el mismo subconjunto. Los intervalos se solapan.",
+   "n": 309,
+   "fuente": "backtest 2026-08-21 sobre partidos ya jugados de los 14 torneos vivos, sin retiros",
+   "uso": "usar el WTN como un input más, no como veredicto. Sirve sobre todo cuando el ATP falta (cubre 709 partidos contra 310 del ATP)"
+  },
+  {
+   "regla": "La diferencia de WTN solo es señal desde ~1.5. Por bandas: <0.25 acierta 52.6%, 0.25-0.5 56.0%, 0.5-1 57.1%, 1-1.5 56.9%, 1.5-2.5 67.7%, 2.5-4 71.7%, 4+ 88.2%.",
+   "n": 711,
+   "fuente": "backtest por bandas 2026-08-21 sobre partidos jugados de los torneos vivos, sin retiros",
+   "uso": "NUNCA tomar lado por WTN si la diferencia es menor a 1.5: ahí es azar. Entre 1.5 y 2.5 inclina; sobre 4 es casi decisivo"
+  },
+  {
+   "regla": "Cuando WTN y ATP se contradicen, gana el de mejor WTN el 63.2%",
+   "n": 57,
+   "fuente": "mismo backtest",
+   "uso": "tendencia real pero con muestra chica (±12.5): inclina la decisión, no la decide"
+  },
+  {
+   "regla": "La forma en el torneo (sets cedidos por partido) acierta 67.1% — igual que el ATP, no peor. Y cuando choca con el WTN, la forma acertó 13 de 22.",
+   "n": 79,
+   "fuente": "mismo backtest",
+   "uso": "NO descartar la forma frente al nivel: no hay evidencia de que el WTN la supere en el choque directo (muestra chica, ±20)"
+  },
+  {
+   "regla": "Cuando WTN y forma COINCIDEN, el acierto sube a 69.6% y es la señal más fiable que tenemos",
+   "n": 56,
+   "fuente": "mismo backtest",
+   "uso": "confianza alta solo cuando nivel y forma apuntan al mismo lado"
+  },
+  {
+   "regla": "En R1 del main draw, el qualifier gana solo el 33% contra jugadores de entrada directa",
+   "n": 94,
+   "fuente": "16 torneos cosechados, ago 2026",
+   "uso": "no pagar de más al qualifier 'caliente'; el mercado suele sobrevalorar su racha"
+  },
+  {
+   "regla": "Los lucky losers en R1 van 0 de 5",
+   "n": 5,
+   "fuente": "16 torneos",
+   "uso": "muestra chica pero consistente: el LL entra sin ritmo y viene de perder"
+  },
+  {
+   "regla": "El seed gana 72% contra no-seed en R1",
+   "n": 109,
+   "fuente": "16 torneos",
+   "uso": "referencia base para juzgar si una cuota de favorito es cara o barata"
+  },
+  {
+   "regla": "5.5% de los partidos de main draw terminan en retiro, concentrados en R1-R2 (19 de 22)",
+   "n": 433,
+   "fuente": "16 torneos",
+   "uso": "riesgo real en rondas tempranas; en QF/SF casi desaparece"
+  },
+  {
+   "regla": "11 de 14 campeones fueron cabezas de serie, 9 de ellos top-4",
+   "n": 14,
+   "fuente": "torneos terminados",
+   "uso": "el favorito de papel sí llega al final en ITF"
+  },
+  {
+   "regla": "Favoritos con cuota <=1.30 cumplen de más; entre 1.31 y 1.80 cumplen de menos",
+   "n": 21,
+   "fuente": "tablero de favoritos liquidado",
+   "uso": "evitar el tramo medio, que es donde el mercado sobreestima al favorito"
+  },
+  {
+   "regla": "Betano copia a bet365 en ITF: mediana de diferencia 1.6%, 75% dentro de +-3%",
+   "n": 136,
+   "fuente": "barridos ago 2026",
+   "uso": "solo las colas importan; si Betano paga >3% más que bet365, hay algo"
+  },
+  {
+   "regla": "El WTN NO pierde valor en rondas avanzadas cuando la brecha es real: con Δ>=1.5 acierta 75.0% en QF/SF/F (n=24) y 79.3% en R1-R2 (n=82). El 40% que vi antes era solo para Δ<1.5, donde de todos modos es ruido.",
+   "n": 106,
+   "fuente": "backtest por ronda 2026-08-21",
+   "uso": "no descartar el WTN por ser ronda avanzada: descartar por brecha chica"
+  },
+  {
+   "regla": "Cuando WTN y forma se contradicen, decide el TAMAÑO de la brecha: con Δ<2.5 gana la forma (WTN acierta 42.1%, n=19); con Δ>=2.5 gana el nivel (WTN acierta 63.0%, n=27).",
+   "n": 46,
+   "fuente": "backtest de choques 2026-08-21",
+   "uso": "la regla operativa más útil que tenemos: en un choque, mirar primero cuánto es el Δ"
+  }
+ ],
+ "senalesDelCuadro": [
+  "Un jugador que llega con 4-5 partidos en la semana (qualifier profundo) acumula desgaste: mirar si el rival llegó con byes o partidos cortos",
+  "Ganarle a un seed en el camino vale más que ganarle a un WC local: la marca del rival (v[3], vQ, vWC) pesa en la lectura",
+  "Sets 6-0 y 6-1 seguidos indican forma real; varios tiebreaks seguidos indican fragilidad aunque el resultado sea victoria",
+  "Jornada doble (dos rondas el mismo día por lluvia) sube el desgaste y el riesgo de retiro en la segunda tanda",
+  "El ranking ATP engaña con jugadores que vuelven de lesión: ranking protegido o sin ranking pueden esconder nivel de top-100",
+  "Una victoria por retiro del rival (marcador tipo '6-4 4-0' o '7-6(7)' suelto) NO es evidencia de forma: leerla como partido no jugado",
+  "Un súper tiebreak (10-x) en el partido anterior indica que se llegó al límite: desgaste mayor que un 2-0",
+  "Cuando el mercado pone favorito al peor rankeado ATP, revisar el WTN antes de gritar 'valor': casi siempre el WTN explica la cuota",
+  "La oportunidad real aparece cuando el WTN y la cuota se contradicen (no cuando se contradicen ATP y cuota)",
+  "Un jugador puede arrasar (6-0 6-0) contra rivales flojos y tener peor WTN que otro que sufrió contra seeds: mirar contra quién se logró la forma",
+  "Antes de citar una ventaja de WTN, calcular la diferencia: 3.8 contra 4.2 no dice nada, 3.6 contra 9.0 lo dice todo"
+ ],
+ "jugadoresNotables": [
+  {
+   "nombre": "Hyeon Chung",
+   "nota": "ex #19 ATP, semifinalista Australian Open 2018, vuelve por ITF con ranking bajo (ATP 573). El ranking subestima su nivel real."
+  },
+  {
+   "nombre": "Valentini Grammatikopoulou",
+   "nota": "ex top-90 WTA volviendo por ITF; mismo patrón de ranking engañoso."
+  },
+  {
+   "nombre": "Leo Borg",
+   "nota": "hijo de Bjorn Borg, juega M15 en Suecia con apoyo local fuerte."
+  },
+  {
+   "nombre": "Maximilian Marterer",
+   "nota": "ex #45 ATP alemán; aparece SIN ranking en la entry list de M25 Ueberlingen (comeback). El mercado lo precificará como desconocido."
+  },
+  {
+   "nombre": "Daniel Masur",
+   "nota": "ex top-100 alemán, ATP 377; su ranking visible tampoco refleja su techo."
+  },
+  {
+   "nombre": "Thilo Behrmann",
+   "nota": "junior (JR) arrasando en M15 Mistelbach: 6-1 6-0 al [5]. Los juniors sin ranking ATP suelen estar mal precificados en ambos sentidos."
+  }
+ ],
+ "leccionesOperativas": [
+  "El order of play es la fuente al día: marca jugado/en curso mientras el cuadro todavía dice pendiente",
+  "Las cuotas de Betano en ITF aparecen tarde: muchas semifinales abren línea recién unas horas antes",
+  "Solo hay dos mercados en ITF por Betano: Ganador y Ganador 1er set",
+  "Las reglas de retiro difieren entre casas: en ITF eso importa más que en otros circuitos",
+  "Al citar un WTN, tomarlo SIEMPRE de la entry list del propio torneo: el índice global de entry lists produce falsos positivos con homónimos y apellidos compartidos (me pasó con Madaras y Noce)",
+  "Ningún porcentaje de acierto sirve solo: un 71% de acierto en favoritos no gana plata si el mercado ya los paga a 1.40. Lo que hay que medir es el rendimiento CONTRA LA CUOTA, no contra el resultado."
+ ],
+ "historial": [
+  {
+   "fecha": "2026-08-21",
+   "partidosAnalizados": 27,
+   "destacados": [
+    "Sorger vs Dominko",
+    "Planinsek vs Gundacker",
+    "Dellavedova vs Mitsui",
+    "Senn (valor 2.37)",
+    "Marterer (ranking engañoso)",
+    "Lithen vs Borg (contra favorito de papel)"
+   ],
+   "pendiente": "verificar resultados y anotar aciertos/fallos para calibrar las reglas",
+   "leccion": "Elegí a Lithen, Zielinski, Senn y Behrmann mirando solo la forma. Al medirlo después (n=22) la forma NO resultó inferior al WTN en el choque directo: la corrección fue precipitada."
+  },
+  {
+   "fecha": "2026-08-21",
+   "corrida": "análisis con WTN",
+   "partidosAnalizados": 27,
+   "correcciones": [
+    "Mitsui sobre Dellavedova (el mercado tenía razón)",
+    "Borg sobre Lithen",
+    "Mashtakov sobre Zielinski",
+    "Bieldiugin sobre Senn",
+    "Nagel sobre pasar",
+    "Rottoli sobre pasar",
+    "Sorger baja de mejor opción a pasar",
+    "Behrmann baja a pasar"
+   ],
+   "destacados": [
+    "Borg [1] a 2.45 con WTN 5.40 vs 8.50 — mayor discrepancia",
+    "Marterer WTN 3.07 sin ranking ATP",
+    "Mitsui 1.62 correctamente favorito",
+    "Chung WTN 4.66 vs 6.55"
+   ],
+   "pendiente": "verificar resultados del sábado 22 y anotar aciertos",
+   "erroresPropios": "Cité WTN de un índice global mal cruzado: Madaras aparecía 7.92 cuando es 3.59 (la mayor diferencia de la mesa) y Noce 12.26 cuando es 8.56. Verificar contra el dossier antes de escribir el veredicto."
+  },
+  {
+   "fecha": "2026-08-21",
+   "corrida": "backtest WTN vs ATP vs forma",
+   "resultado": {
+    "WTN": "71.1% (n=308)",
+    "ATP": "66.0% (n=309)",
+    "forma": "67.1% (n=79)",
+    "WTN vs ATP en choque": "63.2% (n=57)",
+    "WTN vs forma en choque": "40.9% (n=22)"
+   },
+   "conclusion": "El WTN es un input mejor que el ATP pero no un veredicto. La forma sigue valiendo. Nada de esto prueba ventaja sobre el mercado."
+  },
+  {
+   "fecha": "2026-08-21",
+   "corrida": "backtest por bandas de ΔWTN",
+   "resultado": {
+    "<1.5": "52-57% (azar)",
+    "1.5-2.5": "67.7%",
+    "2.5-4": "71.7%",
+    "4+": "88.2% (n=289)"
+   },
+   "correccionPropia": "Mi destacado Mitsui vs Dellavedova tenía Δ0.64 — ruido. Y Marterer vs Masur Δ0.63: la alerta ahí es el precio (ranking ausente), no la brecha de nivel.",
+   "conclusion": "De 26 partidos comparables de la mesa, 11 quedaron en moneda al aire y solo Borg junta señal fuerte con cuota generosa."
+  },
+  {
+   "fecha": "2026-08-21",
+   "corrida": "choque WTN vs forma por tamaño de brecha",
+   "hallazgo": "El choque no es 'gana el nivel' ni 'gana la forma': depende del Δ. Bajo 2.5 la forma acierta 58%, sobre 2.5 el nivel acierta 63%.",
+   "aplicacion": "Borg vs Lithen (Δ3.10, choque) queda del lado del nivel: 63% contra una cuota que implica 40.8%.",
+   "cautela": "n=27 y ±18: el borde inferior (45%) todavía deja ganancia a 2.45, pero es muestra chica y el mercado puede tener información privada."
+  }
+ ],
+ "pendienteCritico": "Juntar (cuota + ΔWTN + resultado) del MISMO partido: hoy tenemos 0 pares. El libro itf-registro.json ya los acumula en cada corrida; con ~100 pares se podrá saber si nuestras señales superan el vig de 9%.",
+ "modeloDelMercado": {
+  "nota": "Ingeniería inversa de las cuotas de Betano en ITF (desvigadas). Preliminar: n=18.",
+  "forma": "logit(p) = -0.081 + 0.183·ΔWTN",
+  "R2": 0.626,
+  "lectura": "El ΔWTN explica ~63% de la varianza de sus probabilidades: el mercado usa una métrica de nivel muy parecida al WTN (o su propio Elo, que correlaciona). Su curva es más plana que la realidad observada: dice 66% donde nuestros datos dan 88% en Δ4+ — pero eso puede ser sesgo de ronda (las cuotas que tenemos son de rondas avanzadas, el 88% viene sobre todo de R1).",
+  "vig": "9.0% de margen medio en ITF — muy alto (en fútbol top es 4-6%). Es la barrera real: una señal debe superar ese 9% para dar ganancia.",
+  "loQueNoTenemos": "lesiones, dinero entrante, H2H, informes locales. Eso explica el 37% de varianza que el WTN no cubre."
+ }
+}

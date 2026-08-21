@@ -3,263 +3,1058 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-:root{
-  --papel:#F3F5F7; --carta:#FFFFFF; --tinta:#1A2732; --tinta2:#5A6B7A;
-  --linea:#D9E0E6; --acento:#0F6B5C; --acento-suave:#E3EFEB; --alerta:#A33B2A; --ambar:#8A6116;
-}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --papel:#0F151B; --carta:#161F28; --tinta:#DAE4EC; --tinta2:#8FA1B0;
-  --linea:#26313C; --acento:#3FB79E; --acento-suave:#15302B; --alerta:#E08A79; --ambar:#D9A94B;
-}}
-:root[data-theme="dark"]{
-  --papel:#0F151B; --carta:#161F28; --tinta:#DAE4EC; --tinta2:#8FA1B0;
-  --linea:#26313C; --acento:#3FB79E; --acento-suave:#15302B; --alerta:#E08A79; --ambar:#D9A94B;
-}
+:root{--papel:#F3F5F7;--carta:#FFF;--tinta:#1A2732;--tinta2:#5A6B7A;--linea:#D9E0E6;
+  --acento:#0F6B5C;--acento-suave:#E3EFEB;--alerta:#A33B2A;--ambar:#8A6116;--franja:#F7F9FA}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--papel:#0F151B;--carta:#161F28;
+  --tinta:#DAE4EC;--tinta2:#8FA1B0;--linea:#26313C;--acento:#3FB79E;--acento-suave:#15302B;
+  --alerta:#E08A79;--ambar:#D9A94B;--franja:#131C24}}
+:root[data-theme="dark"]{--papel:#0F151B;--carta:#161F28;--tinta:#DAE4EC;--tinta2:#8FA1B0;
+  --linea:#26313C;--acento:#3FB79E;--acento-suave:#15302B;--alerta:#E08A79;--ambar:#D9A94B;--franja:#131C24}
 *{box-sizing:border-box}
-body{margin:0;background:var(--papel);color:var(--tinta);font:14.5px/1.5 "IBM Plex Sans",system-ui,sans-serif}
-.envoltura{max-width:980px;margin:0 auto;padding:24px 16px 60px;display:flex;flex-direction:column;gap:14px}
-.cabecera{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.cabecera h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:34px;margin:0;letter-spacing:.5px}
-.edad{font-size:13px;color:var(--tinta2)}
-.edad b{font-variant-numeric:tabular-nums}
+body{margin:0;background:var(--papel);color:var(--tinta);font:14px/1.45 "IBM Plex Sans",system-ui,sans-serif}
+.envoltura{max-width:1500px;margin:0 auto;padding:18px 14px 50px}
+.cabecera{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.cabecera h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:31px;margin:0;letter-spacing:.5px}
+.edad{font-size:13px;color:var(--tinta2)} .edad b{font-variant-numeric:tabular-nums}
 .edad.vieja b{color:var(--ambar)} .edad.rancia b{color:var(--alerta)}
-button.recargar{margin-left:auto;font:600 14px "IBM Plex Sans",sans-serif;color:var(--acento);
-  background:var(--acento-suave);border:1px solid transparent;border-radius:6px;padding:8px 16px;cursor:pointer}
-button.recargar:hover{border-color:var(--acento)}
-button.recargar:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
-.nota-cab{font-size:12.5px;color:var(--tinta2);margin:0}
-.partido{background:var(--carta);border:1px solid var(--linea);border-radius:6px;padding:10px 14px 12px}
-.partido header{display:flex;align-items:baseline;gap:12px;padding-bottom:6px;border-bottom:1px solid var(--linea)}
-.hora{font-weight:600;font-size:13px;white-space:nowrap}
-.torneo{font-size:13.5px;color:var(--tinta2)}
-.chip{font-family:"IBM Plex Mono",monospace;font-size:11px;padding:1px 7px;border-radius:99px;
-  background:var(--acento-suave);color:var(--acento)}
-.abrir{margin-left:auto;color:var(--acento);font-size:13px;text-decoration:none;white-space:nowrap}
-.abrir:hover,.abrir:focus-visible{text-decoration:underline}
-.abrir.sin{color:var(--tinta2);opacity:.5}
-.cab-cuotas,.linea-jug{display:grid;grid-template-columns:minmax(150px,220px) 82px 64px 64px 1fr;
-  gap:10px;align-items:baseline}
-.cab-cuotas{padding:6px 0 0;font-size:10.5px;color:var(--tinta2);text-transform:uppercase;letter-spacing:.8px}
-.cab-cuotas .mono{text-align:right}
-.linea-jug{padding:4px 0}
-.nom{font-weight:500} .nom b{color:var(--acento);font-weight:600}
-.rk{font-size:12px;color:var(--tinta2)}
-.od{font-size:14px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
-.tray{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--tinta2)}
-.tray .g{color:var(--acento)} .tray .p{color:var(--alerta)} .tray .vs{color:var(--tinta);font-weight:600}
-.sin-ctx{opacity:.55;font-style:italic}
+.controles{margin-left:auto;display:flex;gap:8px;align-items:center}
+.orden{font-size:12.5px;color:var(--tinta2)}
+button{font:600 13px "IBM Plex Sans",sans-serif;color:var(--acento);background:var(--acento-suave);
+  border:1px solid transparent;border-radius:6px;padding:7px 13px;cursor:pointer}
+button:hover{border-color:var(--acento)} button:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+button.on{background:var(--acento);color:var(--carta)}
+.nota{font-size:12.5px;color:var(--tinta2);margin:0 0 12px}
+.tabla-env{overflow-x:auto;background:var(--carta);border:1px solid var(--linea);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:1150px}
+th{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;
+  text-transform:uppercase;color:var(--tinta2);text-align:left;padding:9px 10px;
+  border-bottom:1px solid var(--linea);white-space:nowrap;background:var(--carta);position:sticky;top:0;z-index:1}
+th.n{text-align:right}
+td{padding:5px 10px;vertical-align:top}
+tr.a td{padding-top:8px} tr.b td{padding-bottom:8px;border-bottom:1px solid var(--linea)}
+tr.a td[rowspan]{border-bottom:1px solid var(--linea)}
+tr.par td{background:var(--franja)}
+.c-cuando b{font-size:14px;font-weight:600;display:block;font-variant-numeric:tabular-nums;text-transform:capitalize}
+.c-cuando .loc b{display:inline;font-size:12px;color:var(--tinta)}
+.loc{display:block;font-size:11px;color:var(--tinta2);margin-top:1px;font-weight:400}
+.c-torneo{font-size:13px;min-width:145px}
+.c-ronda .mono{font-size:12px;font-weight:600;color:var(--acento)}
+.c-jug{font-weight:500;min-width:185px} .c-jug b{color:var(--acento);font-weight:600}
+.c-jug .pais{color:var(--tinta2);font-size:11px;margin-left:5px;font-weight:400}
+.c-rank{font-size:12px;color:var(--tinta2);white-space:nowrap}
+.wtn{display:block;font-size:11.5px;color:var(--tinta2);margin-top:1px}
+.wtn.mejor{color:var(--acento);font-weight:600}
+.dw{font-size:10px;padding:0 5px;border-radius:99px;margin-left:3px;font-weight:600;vertical-align:1px}
+.dw.f4{background:var(--acento);color:var(--carta)}
+.dw.f3{background:var(--acento-suave);color:var(--acento)}
+.dw.f2{border:1px solid var(--linea);color:var(--tinta2)}
+.dw.f0{border:1px dashed var(--linea);color:var(--tinta2);opacity:.65;font-weight:400}
+.c-od{text-align:right;font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;width:62px}
+.c-llega{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tinta2);line-height:1.6}
+.c-llega i{font-style:normal} .c-llega .g{color:var(--acento);font-weight:600}
+.c-llega .p{color:var(--alerta);font-weight:600} .c-llega .vs{color:var(--tinta);font-weight:600}
+.c-link{white-space:nowrap;font-size:12.5px}
+.c-link a{color:var(--acento);text-decoration:none} .c-link a:hover{text-decoration:underline}
+.sin{color:var(--tinta2);opacity:.45}
 .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
-.vacio{color:var(--tinta2);padding:30px;text-align:center}
-footer{color:var(--tinta2);font-size:12px;border-top:1px solid var(--linea);padding-top:12px}
-@media (max-width:640px){ .cab-cuotas,.linea-jug{grid-template-columns:1fr 58px 58px;grid-auto-flow:dense}
-  .rk{grid-column:1} .tray{grid-column:1 / -1} .cab-cuotas span:first-child,.cab-cuotas span:nth-child(2){display:none} }
+.vacio{color:var(--tinta2);padding:34px;text-align:center;background:var(--carta);
+  border:1px solid var(--linea);border-radius:6px}
+footer{color:var(--tinta2);font-size:12px;border-top:1px solid var(--linea);padding-top:12px;margin-top:20px}
+tr.analisis{display:none} body.an tr.analisis{display:table-row}
+tr.analisis td{background:var(--acento-suave);font-size:12.5px;padding:7px 10px 9px;border-bottom:1px solid var(--linea)}
+tr.analisis.top td{box-shadow:inset 3px 0 0 var(--acento)}
+.conf{font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;
+  padding:2px 7px;border-radius:99px;margin-right:8px;border:1px solid var(--linea);color:var(--tinta2)}
+.conf.c-alta{background:var(--acento);color:var(--carta);border-color:transparent}
+.conf.c-media{color:var(--acento);border-color:var(--acento)}
+tr.analisis b{color:var(--tinta)} .pasar{color:var(--tinta2)!important;font-weight:600}
+.mkt{color:var(--tinta2);font-size:11.5px}
+.chip-top{background:var(--acento);color:var(--carta);font-size:10.5px;padding:2px 8px;border-radius:99px;margin-left:8px;font-weight:600}
+.razon{display:block;color:var(--tinta2);margin-top:3px;line-height:1.5}
+.bandera{display:inline-block;font-size:10.5px;color:var(--tinta2);border:1px solid var(--linea);
+  padding:1px 7px;border-radius:99px;margin:5px 5px 0 0;background:var(--carta)}
+.c-jug.elegido{color:var(--tinta)} .tick{color:var(--acento);font-weight:700;margin-right:3px}
+.resumen{background:var(--carta);border:1px solid var(--linea);border-left:3px solid var(--acento);
+  border-radius:6px;padding:16px 20px;margin-bottom:14px}
+.resumen h2{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:21px;margin:0 0 6px;letter-spacing:.5px}
+.titular{font-size:14px;color:var(--tinta);margin:0 0 6px;font-weight:500}
+.advertencia{font-size:12.5px;color:var(--ambar);margin:0 0 8px}
+.resumen-nota{font-size:12.5px;color:var(--tinta2);margin:0}
+.mejores{margin:10px 0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:13.5px}
+.mejores .ctx{color:var(--tinta2);font-size:11.5px;margin-left:8px}
+a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 </style>
 <div class="envoltura">
 <div class="cabecera">
   <h1>Mesa ITF</h1>
-  <span class="edad" id="edad" data-generado="2026-08-21T18:19:24.894Z">datos de hace <b>—</b></span>
-  <button class="recargar" onclick="location.reload(true)">↻ Recargar</button>
+  <span class="edad" id="edad" data-generado="2026-08-21T21:57:53.523Z">datos de hace <b>—</b></span>
+  <div class="controles">
+    <span class="orden">Ordenar:</span>
+    <button id="b-torneo" class="on" onclick="ordenar('torneo')">Campeonato</button>
+    <button id="b-hora" onclick="ordenar('hora')">Hora</button>
+    <button id="b-an" onclick="verAnalisis()">🧠 Analizar</button>
+    <button onclick="location.reload(true)">↻ Recargar</button>
+  </div>
 </div>
-<p class="nota-cab">Solo partidos por jugar con cuota de Betano (Ganador y Ganador 1er set). Hora de Chile. La rutina regenera cada 6 h; "Recargar" trae la última versión publicada. El panel completo queda en Vigía ITF.</p>
-<article class="partido">
-    <header>
-      <span class="hora mono">jue, 03:30 a. m.</span>
-      <span class="torneo"><span class="chip">M25</span> Lesa (Italy) · <span class="mono">R2</span></span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91044602/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Juan Cruz Martin Manzano <b>[4]</b></span>
-      <span class="rk mono">ATP 438</span>
-      <span class="od mono">1.62</span>
-      <span class="od mono">1.67</span>
-      <span class="tray"><span class="g">R1✓ 6-2 6-1</span> <span class="vs">vQ</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Giovanni Oradini</span>
-      <span class="rk mono">ATP 636</span>
-      <span class="od mono">2.10</span>
-      <span class="od mono">2.02</span>
-      <span class="tray"><span class="g">R1✓ 6-3 6-1</span> <span class="vs">vQ</span></span>
-    </div>
-  </article>
-<article class="partido">
-    <header>
-      <span class="hora mono">vie, 04:30 a. m.</span>
-      <span class="torneo"><span class="chip">M25</span> Lesa (Italy) · <span class="mono">R2</span></span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91041098/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Lorenzo Comino <b>WC</b></span>
-      <span class="rk mono">ATP 1178</span>
-      <span class="od mono">4.75</span>
-      <span class="od mono">3.45</span>
-      <span class="tray"><span class="g">R1✓ 6-4 4-0</span> <span class="vs">v[1]</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Pierluigi Basile</span>
-      <span class="rk mono">ATP 623</span>
-      <span class="od mono">1.14</span>
-      <span class="od mono">1.25</span>
-      <span class="tray"><span class="g">R1✓ 6-1 6-3</span> <span class="vs">vWC</span></span>
-    </div>
-  </article>
-<article class="partido">
-    <header>
-      <span class="hora mono">vie, 04:30 a. m.</span>
-      <span class="torneo"><span class="chip">M15</span> Mistelbach (Austria) · <span class="mono">QF</span></span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91096627/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Alexander Wagner</span>
-      <span class="rk mono">ATP 1207</span>
-      <span class="od mono">3.30</span>
-      <span class="od mono">—</span>
-      <span class="tray"><span class="g">R1✓ 6-4 6-4</span> <span class="vs">v[8]</span> · <span class="g">R2✓ 7-5 7-6(7)</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Nikita Mashtakov <b>[3]</b></span>
-      <span class="rk mono">ATP 652</span>
-      <span class="od mono">1.27</span>
-      <span class="od mono">—</span>
-      <span class="tray"><span class="g">R1✓ 6-4 5-7 7-6(6)</span> · <span class="g">R2✓ 7-6(5) 6-3</span> <span class="vs">vLL</span></span>
-    </div>
-  </article>
-<article class="partido">
-    <header>
-      <span class="hora mono">vie, 06:00 a. m.</span>
-      <span class="torneo">Erwitte</span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91096654/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Sohyun Park</span>
-      <span class="rk mono"></span>
-      <span class="od mono">2.70</span>
-      <span class="od mono">—</span>
-      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Lola Giza</span>
-      <span class="rk mono"></span>
-      <span class="od mono">1.39</span>
-      <span class="od mono">—</span>
-      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
-    </div>
-  </article>
-<article class="partido">
-    <header>
-      <span class="hora mono">vie, 06:00 a. m.</span>
-      <span class="torneo"><span class="chip">M25</span> Ueberlingen (Germany) · <span class="mono">QF</span></span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91096643/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Nicola Senn <b>Q</b></span>
-      <span class="rk mono">ATP 1832</span>
-      <span class="od mono">2.37</span>
-      <span class="od mono">2.25</span>
-      <span class="tray"><span class="g">Q1✓ 6-3 7-6(3)</span> <span class="vs">vWC</span> · <span class="g">Q2✓ 6-2 6-0</span> <span class="vs">v[13]</span> · <span class="g">R1✓ 6-3 6-0</span> <span class="vs">vWC</span> · <span class="g">R2✓ 4-2</span> <span class="vs">v[1]</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Tymur Bieldiugin <b>Q</b></span>
-      <span class="rk mono">ATP 1582</span>
-      <span class="od mono">1.50</span>
-      <span class="od mono">1.55</span>
-      <span class="tray"><span class="g">Q1✓ 6-0 6-2</span> · <span class="g">Q2✓ 6-3 6-1</span> <span class="vs">v[10]</span> · <span class="g">R1✓ 2-6 7-6(2) 6-3</span> · <span class="g">R2✓ 6-1 6(4)-7 6-2</span> <span class="vs">v[8]</span></span>
-    </div>
-  </article>
-<article class="partido">
-    <header>
-      <span class="hora mono">vie, 06:00 a. m.</span>
-      <span class="torneo">Wanfercee-Baulet</span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91115633/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Romane Longueville</span>
-      <span class="rk mono"></span>
-      <span class="od mono">2.32</span>
-      <span class="od mono">—</span>
-      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Victoria Pohle</span>
-      <span class="rk mono"></span>
-      <span class="od mono">1.52</span>
-      <span class="od mono">—</span>
-      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
-    </div>
-  </article>
-<article class="partido">
-    <header>
-      <span class="hora mono">vie, 07:30 a. m.</span>
-      <span class="torneo"><span class="chip">M25</span> Lesa (Italy) · <span class="mono">R2</span></span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91051197/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Daniele Rapagnetta</span>
-      <span class="rk mono">ATP 734</span>
-      <span class="od mono">1.91</span>
-      <span class="od mono">1.90</span>
-      <span class="tray"><span class="g">R1✓ 6-4 3-6 7-5</span> <span class="vs">v[8]</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Manuel Mazza</span>
-      <span class="rk mono">ATP 756</span>
-      <span class="od mono">1.75</span>
-      <span class="od mono">1.78</span>
-      <span class="tray"><span class="g">R1✓ 3-6 6-4 6-3</span></span>
-    </div>
-  </article>
-<article class="partido">
-    <header>
-      <span class="hora mono">vie, 09:00 a. m.</span>
-      <span class="torneo"><span class="chip">M25</span> Ueberlingen (Germany) · <span class="mono">QF</span></span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91106986/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Mika Petkovic <b>[4]</b></span>
-      <span class="rk mono">ATP 428</span>
-      <span class="od mono">1.38</span>
-      <span class="od mono">1.45</span>
-      <span class="tray"><span class="g">R1✓ 6-3 6-2</span> <span class="vs">vQ</span> · <span class="g">R2✓ 2-6 6-4 6-3</span> <span class="vs">vQ</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Tim Handel</span>
-      <span class="rk mono">ATP 772</span>
-      <span class="od mono">2.75</span>
-      <span class="od mono">2.50</span>
-      <span class="tray"><span class="g">R1✓ 6-4 7-6(8)</span> · <span class="g">R2✓ 6-2 6-4</span> <span class="vs">v[7]</span></span>
-    </div>
-  </article>
-<article class="partido">
-    <header>
-      <span class="hora mono">vie, 12:00 p. m.</span>
-      <span class="torneo">Campos Do Jordao</span>
-      <a class="abrir" href="https://lat.betano.com/cuotas-de-partido/e-e/91115637/" target="_blank" rel="noopener">Betano ↗</a>
-    </header>
-    <div class="cab-cuotas"><span></span><span></span><span class="mono">Ganador</span><span class="mono">1er set</span><span></span></div>
-    <div class="linea-jug">
-      <span class="nom">Maayan Laron</span>
-      <span class="rk mono"></span>
-      <span class="od mono">3.70</span>
-      <span class="od mono">3.25</span>
-      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
-    </div><div class="linea-jug">
-      <span class="nom">Victoria Luiza Barros</span>
-      <span class="rk mono"></span>
-      <span class="od mono">1.22</span>
-      <span class="od mono">1.28</span>
-      <span class="tray"><span class="sin-ctx">sin cuadro (torneo no fotografiado)</span></span>
-    </div>
-  </article>
-<footer>Generado 2026-08-21 18:19 UTC · fuentes: Betano vía OddsPapi (cuotas y hora) + cuadros oficiales itftennis.com (contexto) · 9 partidos listados.</footer>
+<p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · 35 partidos, <b>22 con cuota</b> de Betano y 13 que Betano todavía no cotiza (abre la línea horas antes) · hora local del torneo y hora de Chile.</p>
+<div id="resumen" class="resumen" hidden>
+  <h2>Lo que ve el análisis</h2>
+  <p class="titular">Valor esperado partido a partido: probabilidad estimada (ΔWTN y choque nivel-forma) contra la que implica cada cuota.</p>
+  <p class="advertencia">⚠ El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las reglas del choque salen de muestras chicas (n=27).</p>
+  <p class="resumen-nota">Sobre 35 partidos por jugar, con las reglas medidas en 14 patrones de nuestros propios datos (2.176 partidos históricos). Análisis del 2026-08-21 21:57 UTC.</p>
+  <ol class="mejores"><li><b>Leo Borg [1]</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Bastad · Semi-final</span><span class="razon">Δ3.10 de WTN a favor (5.4 contra 8.5). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 2.42 el mercado implica 41.3% → valor +52%.</span></li><li><b>Juan Cruz Martin Manzano [4]</b> <span class="mkt">gana</span>
+      <span class="ctx">M25 Lesa · R2</span><span class="razon">Δ2.21 de WTN a favor (4.13 contra 6.34). Nivel y forma coinciden: banda del 67%. A 1.62 implica 61.7% → apenas +10%: margen fino.</span></li></ol>
+  <p class="resumen-nota">23 partidos marcados para pasar (parejos o en la banda de cuota donde el favorito rinde menos de lo que promete).</p>
+</div>
+<div class="tabla-env"><table>
+  <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Jugador</th><th>ATP / WTN</th>
+    <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
+  <tbody id="cuerpo"><tr class="a" data-torneo="M15 Arad" data-ts="1787382000000" data-par="M15 Arad|1787382000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>03:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Arad<span class="loc">Romania · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Center Court 1º</span></td>
+    <td class="c-jug">Robert Guna <b>[7]</b><span class="pais">ROU</span></td>
+    <td class="c-rank mono">ATP 1028<span class="wtn mejor">WTN 8.18 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.48</span></span></td>
+    <td class="c-od mono">1.40</td>
+    <td class="c-od mono">1.47</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-0 <i class="vs">vJR</i> · <i class="g">R2✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-1 6-3 <i class="vs">v[4]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151881/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M15 Arad" data-ts="1787382000000" data-par="M15 Arad|1787382000000">
+    
+    <td class="c-jug">Iannis Miletich<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1136<span class="wtn">WTN 8.66</span></td>
+    <td class="c-od mono">2.65</td>
+    <td class="c-od mono">2.42</td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(6) 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 3-6 6-1 4-0 <i class="vs">v[2]</i> · <i class="g">QF✓</i> 7-6(2) 3-6 6-0 <i class="vs">v[6]</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Arad|1787382000000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.48 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ0.48 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Arad" data-ts="1787386500000" data-par="M15 Arad|1787386500000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>03:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Arad<span class="loc">Romania · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Center Court 2º turno</span></td>
+    <td class="c-jug">Matteo Sciahbasi<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1288<span class="wtn">WTN 9.02</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 5-7 7-6(2) 1-0 · <i class="g">R2✓</i> 6-2 6-4 <i class="vs">v[5]</i> · <i class="g">QF✓</i> 6-4 6-4</td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Arad" data-ts="1787386500000" data-par="M15 Arad|1787386500000">
+    
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Dragos Nicolae Madaras <b>[3]</b><span class="pais">SWE</span></td>
+    <td class="c-rank mono">ATP 589<span class="wtn mejor">WTN 3.59 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ5.43</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-0 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-4 4-6 6-2 <i class="vs">vSE</i> · <i class="g">QF✓</i> 6-4 6-4 <i class="vs">v[8]</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Arad|1787386500000">
+    <td colspan="9">
+      <span class="conf c-media">media</span>
+      <b>Dragos Nicolae Madaras [3]</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ5.43 de WTN a favor (3.59 contra 9.02). Nivel y forma coinciden: banda del 88%. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ5.43 muy fuerte</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Asuncion" data-ts="1787425200000" data-par="M15 Asuncion|1787425200000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">16:00 loc · <b>15:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Asuncion<span class="loc">Paraguay · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">F</span><span class="loc">Court 5 1º</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Gonzalo Villanueva <b>[1]</b><span class="pais">ARG</span></td>
+    <td class="c-rank mono">ATP 315<span class="wtn mejor">WTN 3.45 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.16</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-0 · <i class="g">R2✓</i> 6-1 6-3 <i class="vs">vQ</i> · <i class="g">QF✓</i> 4-6 6-1 7-5 · <i class="g">SF✓</i> 6-1 6-0 <i class="vs">vWC</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Asuncion" data-ts="1787425200000" data-par="M15 Asuncion|1787425200000">
+    
+    <td class="c-jug">Joaquin Aguilar Cardozo <b>[2]</b><span class="pais">URU</span></td>
+    <td class="c-rank mono">ATP 482<span class="wtn">WTN 3.61</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-0 · <i class="g">R2✓</i> 6-1 6-4 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-1 6-1 <i class="vs">v[6]</i> · <i class="g">SF✓</i> 6-3 6-3</td>
+    
+  </tr><tr class="analisis" data-par="M15 Asuncion|1787425200000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b>Gonzalo Villanueva [1]</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ0.16 de WTN a favor (3.45 contra 3.61). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ0.16 moderada</span><span class="bandera">choque nivel vs forma</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:15 loc · <b>04:15</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Bastad<span class="loc">Sweden · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Leo Borg <b>[1]</b><span class="pais">SWE</span></td>
+    <td class="c-rank mono">ATP 542<span class="wtn mejor">WTN 5.40 <span class="dw f3" title="diferencia fuerte: acierta 72%">Δ3.10</span></span></td>
+    <td class="c-od mono">2.42</td>
+    <td class="c-od mono">2.27</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-3 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-0 6-3 · <i class="g">QF✓</i> 6-2 4-6 6-4</td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151889/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
+    
+    <td class="c-jug">John Hallquist Lithen <b>[4]</b><span class="pais">SWE</span></td>
+    <td class="c-rank mono">ATP 761<span class="wtn">WTN 8.50</span></td>
+    <td class="c-od mono">1.47</td>
+    <td class="c-od mono">1.55</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-0 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-3 6-0 · <i class="g">QF✓</i> 6-1 6-2 <i class="vs">v[8]</i></td>
+    
+  </tr><tr class="analisis top" data-par="M15 Bastad|1787386500000">
+    <td colspan="9">
+      <span class="conf c-alta">alta</span>
+      <b>Leo Borg [1]</b> <span class="mkt">gana</span>
+      <span class="chip-top">mejor opción</span>
+      <span class="razon">Δ3.10 de WTN a favor (5.4 contra 8.5). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 2.42 el mercado implica 41.3% → valor +52%.</span>
+      <span class="bandera">Δ3.10 fuerte</span><span class="bandera">choque nivel vs forma</span><span class="bandera">valor de cuota</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:15 loc · <b>04:15</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Bastad<span class="loc">Sweden · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 5 1º</span></td>
+    <td class="c-jug">Jan Simonsson <b>WC</b><span class="pais">SWE</span></td>
+    <td class="c-rank mono">ATP 1905<span class="wtn">WTN 10.38</span></td>
+    <td class="c-od mono">4.80</td>
+    <td class="c-od mono">3.75</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-3 5-7 6-2 <i class="vs">v[7]</i> · <i class="g">QF✓</i> 1-6 7-5 6-1</td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151886/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M15 Bastad" data-ts="1787386500000" data-par="M15 Bastad|1787386500000">
+    
+    <td class="c-jug">Niklas Guttau<span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 1211<span class="wtn mejor">WTN 8.13 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ2.25</span></span></td>
+    <td class="c-od mono">1.13</td>
+    <td class="c-od mono">1.22</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-2 · <i class="g">R2✓</i> 6-2 6-2 · <i class="g">QF✓</i> 3-6 6-2 6-1</td>
+    
+  </tr><tr class="analisis" data-par="M15 Bastad|1787386500000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ2.25 de WTN a favor (8.13 contra 10.38). Nivel y forma coinciden: banda del 67%. A 1.13 implica 88.5%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ2.25 moderada</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Krakow" data-ts="1787392800000" data-par="M15 Krakow|1787392800000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">12:00 loc · <b>06:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Krakow<span class="loc">Poland · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">F</span><span class="loc">Centre Court 1º</span></td>
+    <td class="c-jug">Dalila Jakupovic <b>[6]</b><span class="pais">SLO</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn"></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><span class="sin">debuta</span></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Krakow" data-ts="1787392800000" data-par="M15 Krakow|1787392800000">
+    
+    <td class="c-jug">Ariana Geerlings<span class="pais">ESP</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn"></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><span class="sin">debuta</span></td>
+    
+  </tr><tr class="analisis" data-par="M15 Krakow|1787392800000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Falta el WTN de alguno: no se puede comparar nivel.</span>
+      <span class="bandera">sin datos de nivel</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Krakow" data-ts="1787400000000" data-par="M15 Krakow|1787400000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 14:00 loc · <b>08:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Krakow<span class="loc">Poland · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Centre Court 2º</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Daniel Michalski <b>[1]</b><span class="pais">POL</span></td>
+    <td class="c-rank mono">ATP 305<span class="wtn mejor">WTN 3.45 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ12.33</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-1 6-4 · <i class="g">QF✓</i> 6-1 6-1 <i class="vs">v[8]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Krakow" data-ts="1787400000000" data-par="M15 Krakow|1787400000000">
+    
+    <td class="c-jug">Jan Sadzik <b>JR</b><span class="pais">POL</span></td>
+    <td class="c-rank mono">ATP 1984<span class="wtn">WTN 15.78</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6(6)-7 6-4 · <i class="g">R2✓</i> 6-3 3-6 7-6(3) <i class="vs">v[7]WC</i> · <i class="g">QF✓</i> 7-6(5) 2-6 6-3</td>
+    
+  </tr><tr class="analisis" data-par="M15 Krakow|1787400000000">
+    <td colspan="9">
+      <span class="conf c-media">media</span>
+      <b>Daniel Michalski [1]</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ12.33 de WTN a favor (3.45 contra 15.78). Nivel y forma coinciden: banda del 88%. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ12.33 muy fuerte</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Krakow" data-ts="1787400000000" data-par="M15 Krakow|1787400000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 14:00 loc · <b>08:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Krakow<span class="loc">Poland · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 7 2º</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Pawel Juszczak<span class="pais">POL</span></td>
+    <td class="c-rank mono">ATP 1505<span class="wtn mejor">WTN 6.98 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ2.10</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 7-5 <i class="vs">v[6]</i> · <i class="g">R2✓</i> 6-4 6-1 <i class="vs">vQ</i> · <i class="g">QF✓</i> 1-6 6-3 6-4 <i class="vs">v[4]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Krakow" data-ts="1787400000000" data-par="M15 Krakow|1787400000000">
+    
+    <td class="c-jug">Michael Agwi <b>[5]</b><span class="pais">IRL</span></td>
+    <td class="c-rank mono">ATP 795<span class="wtn">WTN 9.08</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 7-6(1) <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-3 2-0 · <i class="g">QF✓</i> 5-7 6-4 6-1 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Krakow|1787400000000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b>Pawel Juszczak</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ2.10 de WTN a favor (6.98 contra 9.08). Nivel y forma coinciden: banda del 67%. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ2.10 moderada</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Kursumlijska Banja " data-ts="1787385600000" data-par="M15 Kursumlijska Banja |1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Kursumlijska Banja <span class="loc">Serbia · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court Viktor Troicki 1º</span></td>
+    <td class="c-jug">Rada Zolotareva<span class="pais">RUS</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn"></span></td>
+    <td class="c-od mono">1.78</td>
+    <td class="c-od mono">1.80</td>
+    <td class="c-llega"><span class="sin">debuta</span></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151891/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M15 Kursumlijska Banja " data-ts="1787385600000" data-par="M15 Kursumlijska Banja |1787385600000">
+    
+    <td class="c-jug">Lisa Zaar<span class="pais">SWE</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn"></span></td>
+    <td class="c-od mono">1.88</td>
+    <td class="c-od mono">1.88</td>
+    <td class="c-llega"><span class="sin">debuta</span></td>
+    
+  </tr><tr class="analisis" data-par="M15 Kursumlijska Banja |1787385600000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Falta el WTN de alguno: no se puede comparar nivel.</span>
+      <span class="bandera">sin datos de nivel</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Kursumlijska Banja " data-ts="1787385600000" data-par="M15 Kursumlijska Banja |1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Kursumlijska Banja <span class="loc">Serbia · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 4 1º</span></td>
+    <td class="c-jug">Anton Arzhankin <b>[4]</b><span class="pais">RUS</span></td>
+    <td class="c-rank mono">ATP 722<span class="wtn mejor">WTN 6.44 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.93</span></span></td>
+    <td class="c-od mono">1.83</td>
+    <td class="c-od mono">1.83</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-0 4-0 · <i class="g">R2✓</i> 6-4 6-1 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-1 7-5 <i class="vs">v[8]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151883/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M15 Kursumlijska Banja " data-ts="1787385600000" data-par="M15 Kursumlijska Banja |1787385600000">
+    
+    <td class="c-jug">Kristijan Juhas <b>[7]</b><span class="pais">SRB</span></td>
+    <td class="c-rank mono">ATP 951<span class="wtn">WTN 7.37</span></td>
+    <td class="c-od mono">1.83</td>
+    <td class="c-od mono">1.83</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-4 · <i class="g">R2✓</i> 6-3 6-0 · <i class="g">QF✓</i> 6-2 6-2 <i class="vs">v[2]</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Kursumlijska Banja |1787385600000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.93 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ0.93 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Kursumlijska Banja " data-ts="1787391000000" data-par="M15 Kursumlijska Banja |1787391000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 11:30 loc · <b>05:30</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Kursumlijska Banja <span class="loc">Serbia · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court Viktor Troicki 2º</span></td>
+    <td class="c-jug">Lidia Encheva<span class="pais">BUL</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn"></span></td>
+    <td class="c-od mono">2.67</td>
+    <td class="c-od mono">2.55</td>
+    <td class="c-llega"><span class="sin">debuta</span></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151890/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M15 Kursumlijska Banja " data-ts="1787391000000" data-par="M15 Kursumlijska Banja |1787391000000">
+    
+    <td class="c-jug">Luna Vujovic<span class="pais">SRB</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn"></span></td>
+    <td class="c-od mono">1.40</td>
+    <td class="c-od mono">1.44</td>
+    <td class="c-llega"><span class="sin">debuta</span></td>
+    
+  </tr><tr class="analisis" data-par="M15 Kursumlijska Banja |1787391000000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Falta el WTN de alguno: no se puede comparar nivel.</span>
+      <span class="bandera">sin datos de nivel</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Kursumlijska Banja " data-ts="1787391000000" data-par="M15 Kursumlijska Banja |1787391000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 11:30 loc · <b>05:30</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Kursumlijska Banja <span class="loc">Serbia · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 4 2º</span></td>
+    <td class="c-jug">Semen Pankin <b>[1]</b><span class="pais">RUS</span></td>
+    <td class="c-rank mono">ATP 424<span class="wtn mejor">WTN 5.58 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ7.46</span></span></td>
+    <td class="c-od mono">1.36</td>
+    <td class="c-od mono">1.44</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-1 <i class="vs">vWC</i> · <i class="g">R2✓</i> 7-6(9) 3-6 6-2 · <i class="g">QF✓</i> 7-6(4) 3-0 <i class="vs">v[6]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151893/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M15 Kursumlijska Banja " data-ts="1787391000000" data-par="M15 Kursumlijska Banja |1787391000000">
+    
+    <td class="c-jug">Dimitar Kisimov <b>JR</b><span class="pais">BUL</span></td>
+    <td class="c-rank mono">ATP 1764<span class="wtn">WTN 13.04</span></td>
+    <td class="c-od mono">2.85</td>
+    <td class="c-od mono">2.55</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-0 6-2 <i class="vs">v[5]</i> · <i class="g">R2✓</i> 6-4 6-4 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-4 6-3 <i class="vs">v[3]</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Kursumlijska Banja |1787391000000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ7.46 de WTN a favor (5.58 contra 13.04). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.36 implica 73.5%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ7.46 muy fuerte</span><span class="bandera">choque nivel vs forma</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Lambermont" data-ts="1787392800000" data-par="M15 Lambermont|1787392800000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">12:00 loc · <b>06:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Lambermont<span class="loc">Belgium · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 9 1º</span></td>
+    <td class="c-jug">Jack Loge <b>[1]</b><span class="pais">BEL</span></td>
+    <td class="c-rank mono">ATP 410<span class="wtn mejor">WTN 5.71 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.47</span></span></td>
+    <td class="c-od mono">1.36</td>
+    <td class="c-od mono">1.44</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vLL</i> · <i class="g">R2✓</i> 6-0 6-4 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6(3)-7 6-3 6-3 <i class="vs">v[8]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151885/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M15 Lambermont" data-ts="1787392800000" data-par="M15 Lambermont|1787392800000">
+    
+    <td class="c-jug">Marlon Vankan <b>[3]</b><span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 616<span class="wtn">WTN 6.18</span></td>
+    <td class="c-od mono">2.85</td>
+    <td class="c-od mono">2.55</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 7-6(4) · <i class="g">R2✓</i> 6-2 7-6(3) <i class="vs">vQ</i> · <i class="g">QF✓</i> 1-6 7-6(6) 6-1 <i class="vs">v[5]</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Lambermont|1787392800000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.47 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ0.47 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Lambermont" data-ts="1787407200000" data-par="M15 Lambermont|1787407200000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 16:00 loc · <b>10:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Lambermont<span class="loc">Belgium · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 9 3º</span></td>
+    <td class="c-jug">Martin VAN DER MEERSCHEN <b>[4]</b><span class="pais">BEL</span></td>
+    <td class="c-rank mono">ATP 723<span class="wtn mejor">WTN 6.76 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.03</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-2 2-6 6-2 · <i class="g">QF✓</i> 6-2 6-2</td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Lambermont" data-ts="1787407200000" data-par="M15 Lambermont|1787407200000">
+    
+    <td class="c-jug">Romain Faucon <b>[2]</b><span class="pais">BEL</span></td>
+    <td class="c-rank mono">ATP 588<span class="wtn">WTN 6.79</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-0 6-4 <i class="vs">vSE</i> · <i class="g">R2✓</i> 7-5 6-4 · <i class="g">QF✓</i> 6(5)-7 6-2 6-4 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Lambermont|1787407200000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.03 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ0.03 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Maanshan<span class="loc">China, P.R. · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C2 (Center Court)  1º</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Yun Seong Chung<span class="pais">KOR</span></td>
+    <td class="c-rank mono">ATP 1059<span class="wtn mejor">WTN 4.66 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ1.55</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-4 <i class="vs">v[4]</i> · <i class="g">R2✓</i> 6-3 6-3 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-2 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
+    
+    <td class="c-jug">M Rifqi Fitriadi <b>[2]</b><span class="pais">INA</span></td>
+    <td class="c-rank mono">ATP 549<span class="wtn">WTN 6.21</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 5-7 6-0 · <i class="g">R2✓</i> 6-3 6-1 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-4 7-6(1) <i class="vs">v[8]</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Maanshan|1787364000000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b>Yun Seong Chung</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ1.55 de WTN a favor (4.66 contra 6.21). Nivel y forma coinciden: banda del 67%. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ1.55 moderada</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Maanshan<span class="loc">China, P.R. · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 3 1º</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Petr Bar Biryukov <b>[1]</b><span class="pais">RUS</span></td>
+    <td class="c-rank mono">ATP 281<span class="wtn mejor">WTN 3.68 <span class="dw f3" title="diferencia fuerte: acierta 72%">Δ2.70</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-4 6(6)-7 6-4 <i class="vs">vQ</i> · <i class="g">QF✓</i> 7-6(3) 6-4 <i class="vs">v[7]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Maanshan" data-ts="1787364000000" data-par="M15 Maanshan|1787364000000">
+    
+    <td class="c-jug">Kokoro Isomura <b>[3]</b><span class="pais">JPN</span></td>
+    <td class="c-rank mono">ATP 562<span class="wtn">WTN 6.38</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 3-6 7-6(5) 6-1 · <i class="g">R2✓</i> 6-2 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-1 6-3 <i class="vs">v[5]</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Maanshan|1787364000000">
+    <td colspan="9">
+      <span class="conf c-media">media</span>
+      <b>Petr Bar Biryukov [1]</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ2.70 de WTN a favor (3.68 contra 6.38). Nivel y forma coinciden: banda del 71%. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ2.70 fuerte</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Mistelbach" data-ts="1787385600000" data-par="M15 Mistelbach|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Mistelbach<span class="loc">Austria · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C1 Pro-Ject  1º</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Nikita Mashtakov <b>[3]</b><span class="pais">UKR</span></td>
+    <td class="c-rank mono">ATP 652<span class="wtn mejor">WTN 4.83 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ1.68</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 5-7 7-6(6) · <i class="g">R2✓</i> 7-6(5) 6-3 <i class="vs">vLL</i> · <i class="g">QF✓</i> 7-6(5) 4-6 6-0</td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Mistelbach" data-ts="1787385600000" data-par="M15 Mistelbach|1787385600000">
+    
+    <td class="c-jug">Marcel Zielinski <b>[2]</b><span class="pais">POL</span></td>
+    <td class="c-rank mono">ATP 586<span class="wtn">WTN 6.51</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 7-6(5) 6-2 · <i class="g">QF✓</i> 6-1 6(2)-7 6-2 <i class="vs">v[7]</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Mistelbach|1787385600000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b>Nikita Mashtakov [3]</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ1.68 de WTN a favor (4.83 contra 6.51). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ1.68 moderada</span><span class="bandera">choque nivel vs forma</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M15 Mistelbach" data-ts="1787392800000" data-par="M15 Mistelbach|1787392800000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 12:00 loc · <b>06:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M15 Mistelbach<span class="loc">Austria · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">C1 Pro-Ject  2º</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Gabriele Maria Noce <b>[6]</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 855<span class="wtn mejor">WTN 8.56 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ4.72</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 4-6 6-2 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-3 6-4 · <i class="g">QF✓</i> 6-2 6-4 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M15 Mistelbach" data-ts="1787392800000" data-par="M15 Mistelbach|1787392800000">
+    
+    <td class="c-jug">Thilo Behrmann <b>JR</b><span class="pais">AUT</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn">WTN 13.28</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-0 <i class="vs">v[5]</i> · <i class="g">R2✓</i> 6-1 6-2 · <i class="g">QF✓</i> 6-0 7-6(5) <i class="vs">vQ</i></td>
+    
+  </tr><tr class="analisis" data-par="M15 Mistelbach|1787392800000">
+    <td colspan="9">
+      <span class="conf c-media">media</span>
+      <b>Gabriele Maria Noce [6]</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ4.72 de WTN a favor (8.56 contra 13.28). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ4.72 muy fuerte</span><span class="bandera">choque nivel vs forma</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Idanha-a-Nova" data-ts="1787387400000" data-par="M25 Idanha-a-Nova|1787387400000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">09:30 loc · <b>04:30</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Idanha-a-Nova<span class="loc">Portugal · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug">Rodrigo Fernandes<span class="pais">POR</span></td>
+    <td class="c-rank mono">ATP 1237<span class="wtn">WTN 6.59</span></td>
+    <td class="c-od mono">3.40</td>
+    <td class="c-od mono">2.90</td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(3) 1-6 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 7-5 7-5 <i class="vs">v[5]</i> · <i class="g">QF✓</i> 3-6 6-3 6-4 <i class="vs">v[1]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151894/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Idanha-a-Nova" data-ts="1787387400000" data-par="M25 Idanha-a-Nova|1787387400000">
+    
+    <td class="c-jug">Pavel Lagutin <b>[3]</b><span class="pais">RUS</span></td>
+    <td class="c-rank mono">ATP 718<span class="wtn mejor">WTN 6.41 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.18</span></span></td>
+    <td class="c-od mono">1.26</td>
+    <td class="c-od mono">1.34</td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(0) 7-6(3) · <i class="g">R2✓</i> 6-4 6-2 <i class="vs">vWC</i> · <i class="g">QF✓</i> 4-6 6-2 6-2</td>
+    
+  </tr><tr class="analisis" data-par="M25 Idanha-a-Nova|1787387400000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.18 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ0.18 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Idanha-a-Nova" data-ts="1787392800000" data-par="M25 Idanha-a-Nova|1787392800000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">no antes 11:00 loc · <b>06:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Idanha-a-Nova<span class="loc">Portugal · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 2º</span></td>
+    <td class="c-jug">Goncalo Marques<span class="pais">POR</span></td>
+    <td class="c-rank mono">ATP 1025<span class="wtn mejor">WTN 7.51 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.17</span></span></td>
+    <td class="c-od mono">1.62</td>
+    <td class="c-od mono">1.67</td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(7) 7-5 · <i class="g">R2✓</i> 6-3 6-4 <i class="vs">v[4]</i> · <i class="g">QF✓</i> 6-3 3-6 7-5 <i class="vs">v[8]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91162319/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Idanha-a-Nova" data-ts="1787392800000" data-par="M25 Idanha-a-Nova|1787392800000">
+    
+    <td class="c-jug">Andrea Colombo<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1048<span class="wtn">WTN 7.68</span></td>
+    <td class="c-od mono">2.10</td>
+    <td class="c-od mono">2.05</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 7-6(5) <i class="vs">v[2]</i> · <i class="g">R2✓</i> 2-6 6-3 6-2 · <i class="g">QF✓</i> 7-5 6-2 <i class="vs">v[6]</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Idanha-a-Nova|1787392800000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.17 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ0.17 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug">Daniele Rapagnetta<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 734<span class="wtn">WTN 5.58</span></td>
+    <td class="c-od mono">1.98</td>
+    <td class="c-od mono">1.93</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 3-6 7-5 <i class="vs">v[8]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91051197/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    
+    <td class="c-jug">Manuel Mazza<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 756<span class="wtn mejor">WTN 5.31 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.27</span></span></td>
+    <td class="c-od mono">1.72</td>
+    <td class="c-od mono">1.75</td>
+    <td class="c-llega"><i class="g">R1✓</i> 3-6 6-4 6-3</td>
+    
+  </tr><tr class="analisis" data-par="M25 Lesa|1787385600000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.27 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ0.27 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 2 1º</span></td>
+    <td class="c-jug">Denis Constantin Spiridon <b>Q</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1107<span class="wtn">WTN 9.10</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">Q1✓</i> 6-4 6-3 · <i class="g">Q2✓</i> 6-3 6-1 <i class="vs">v[14]</i> · <i class="g">R1✓</i> 6-3 4-6 6-4</td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Laurent Lokoli <b>[3]</b><span class="pais">FRA</span></td>
+    <td class="c-rank mono">ATP 384<span class="wtn mejor">WTN 3.41 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ5.69</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-4 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Lesa|1787385600000">
+    <td colspan="9">
+      <span class="conf c-media">media</span>
+      <b>Laurent Lokoli [3]</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ5.69 de WTN a favor (3.41 contra 9.1). Nivel y forma coinciden: banda del 88%. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ5.69 muy fuerte</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 3 1º</span></td>
+    <td class="c-jug">Samuele Seghetti <b>WC</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1486<span class="wtn">WTN 10.34</span></td>
+    <td class="c-od mono">2.80</td>
+    <td class="c-od mono">2.52</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-0 <i class="vs">v[5]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91040136/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787385600000" data-par="M25 Lesa|1787385600000">
+    
+    <td class="c-jug">Lorenzo Rottoli<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 896<span class="wtn mejor">WTN 6.67 <span class="dw f3" title="diferencia fuerte: acierta 72%">Δ3.67</span></span></td>
+    <td class="c-od mono">1.36</td>
+    <td class="c-od mono">1.44</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-0 3-6 6-0 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Lesa|1787385600000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ3.67 de WTN a favor (6.67 contra 10.34). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.36 implica 73.5%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ3.67 fuerte</span><span class="bandera">choque nivel vs forma</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 1 2º turno</span></td>
+    <td class="c-jug">Lorenzo Comino <b>WC</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 1178<span class="wtn">WTN 8.93</span></td>
+    <td class="c-od mono">3.95</td>
+    <td class="c-od mono">3.05</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 4-0 <i class="vs">v[1]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91041098/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    
+    <td class="c-jug">Pierluigi Basile<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 623<span class="wtn mejor">WTN 5.01 <span class="dw f3" title="diferencia fuerte: acierta 72%">Δ3.92</span></span></td>
+    <td class="c-od mono">1.20</td>
+    <td class="c-od mono">1.31</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-1 6-3 <i class="vs">vWC</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Lesa|1787390100000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ3.92 de WTN a favor (5.01 contra 8.93). Nivel y forma coinciden: banda del 71%. A 1.2 implica 83.3%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ3.92 fuerte</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 2 2º turno</span></td>
+    <td class="c-jug">Blu Baker<span class="pais">GBR</span></td>
+    <td class="c-rank mono">ATP 959<span class="wtn">WTN 8.65</span></td>
+    <td class="c-od mono">2.85</td>
+    <td class="c-od mono">2.55</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 4-6 6-4 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91039712/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    
+    <td class="c-jug">Andrea De Marchi<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 813<span class="wtn mejor">WTN 7.87 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.78</span></span></td>
+    <td class="c-od mono">1.36</td>
+    <td class="c-od mono">1.44</td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-5 2-1 <i class="vs">v[2]</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Lesa|1787390100000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.78 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ0.78 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 3 2º turno</span></td>
+    <td class="c-jug">Nico Hipfl<span class="pais">AUT</span></td>
+    <td class="c-rank mono">ATP 918<span class="wtn">WTN 6.99</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(4) 6-2 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787390100000" data-par="M25 Lesa|1787390100000">
+    
+    <td class="c-jug">Stefano Reitano <b>WC</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn"></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(7) <i class="vs">v[6]</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Lesa|1787390100000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Falta el WTN de alguno: no se puede comparar nivel.</span>
+      <span class="bandera">sin datos de nivel</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Lesa" data-ts="1787394600000" data-par="M25 Lesa|1787394600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Lesa<span class="loc">Italy · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">R2</span><span class="loc">Court 2 3º turno</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Juan Cruz Martin Manzano <b>[4]</b><span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 438<span class="wtn mejor">WTN 4.13 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ2.21</span></span></td>
+    <td class="c-od mono">1.62</td>
+    <td class="c-od mono">1.67</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-2 6-1 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91044602/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Lesa" data-ts="1787394600000" data-par="M25 Lesa|1787394600000">
+    
+    <td class="c-jug">Giovanni Oradini<span class="pais">ITA</span></td>
+    <td class="c-rank mono">ATP 636<span class="wtn">WTN 6.34</span></td>
+    <td class="c-od mono">2.10</td>
+    <td class="c-od mono">2.02</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-1 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="analisis top" data-par="M25 Lesa|1787394600000">
+    <td colspan="9">
+      <span class="conf c-media">media</span>
+      <b>Juan Cruz Martin Manzano [4]</b> <span class="mkt">gana</span>
+      <span class="chip-top">mejor opción</span>
+      <span class="razon">Δ2.21 de WTN a favor (4.13 contra 6.34). Nivel y forma coinciden: banda del 67%. A 1.62 implica 61.7% → apenas +10%: margen fino.</span>
+      <span class="bandera">Δ2.21 moderada</span><span class="bandera">margen fino</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">11:00 loc · <b>05:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Slovenj Gradec<span class="loc">Slovenia · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Center Court 1º</span></td>
+    <td class="c-jug">Sebastian Dominko<span class="pais">SLO</span></td>
+    <td class="c-rank mono">ATP 1122<span class="wtn mejor">WTN 4.88 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.08</span></span></td>
+    <td class="c-od mono">2.25</td>
+    <td class="c-od mono">2.15</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 7-6(6) 6-1 <i class="vs">v[1]</i> · <i class="g">QF✓</i> 2-6 6-4 7-5 <i class="vs">v[5]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151892/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
+    
+    <td class="c-jug">Sebastian Sorger <b>[3]</b><span class="pais">AUT</span></td>
+    <td class="c-rank mono">ATP 476<span class="wtn">WTN 4.96</span></td>
+    <td class="c-od mono">1.55</td>
+    <td class="c-od mono">1.60</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-0 6-0 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-0 6-1 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-2 6-2</td>
+    
+  </tr><tr class="analisis" data-par="M25 Slovenj Gradec|1787389200000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.08 de WTN a favor (4.88 contra 4.96). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 2.25 implica 44.4%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ0.08 moderada</span><span class="bandera">choque nivel vs forma</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">11:00 loc · <b>05:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Slovenj Gradec<span class="loc">Slovenia · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug">Filip Jeff Planinsek <b>[6]</b><span class="pais">SLO</span></td>
+    <td class="c-rank mono">ATP 592<span class="wtn mejor">WTN 5.56 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ5.37</span></span></td>
+    <td class="c-od mono">1.13</td>
+    <td class="c-od mono">1.22</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 7-6(4) <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-0 6-0 <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-0 6-2 <i class="vs">v[4]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91151884/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Slovenj Gradec" data-ts="1787389200000" data-par="M25 Slovenj Gradec|1787389200000">
+    
+    <td class="c-jug">Jonas GUNDACKER <b>Q</b><span class="pais">AUT</span></td>
+    <td class="c-rank mono">ATP 1876<span class="wtn">WTN 10.93</span></td>
+    <td class="c-od mono">4.80</td>
+    <td class="c-od mono">3.75</td>
+    <td class="c-llega"><i class="g">Q2✓</i> 6-1 6-1 · <i class="g">Q3✓</i> 6-1 6-3 <i class="vs">v[9]</i> · <i class="g">R1✓</i> 7-6(2) 6-4 <i class="vs">vQ</i> · <i class="g">R2✓</i> 2-6 6-2 6-3 <i class="vs">v[2]</i> · <i class="g">QF✓</i> 6-1 6(7)-7 6-3 <i class="vs">vQ</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Slovenj Gradec|1787389200000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ5.37 de WTN a favor (5.56 contra 10.93). Nivel y forma coinciden: banda del 88%. A 1.13 implica 88.5%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ5.37 muy fuerte</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Taipei<span class="loc">Chinese Taipei · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Show Court 1º</span></td>
+    <td class="c-jug">Yu Hsiou Hsu <b>[1]</b><span class="pais">TPE</span></td>
+    <td class="c-rank mono">ATP 222<span class="wtn mejor">WTN 3.25 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ1.24</span></span></td>
+    <td class="c-od mono">1.47</td>
+    <td class="c-od mono">1.53</td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(5) 6-3 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-2 7-6(5) <i class="vs">vWC</i> · <i class="g">QF✓</i> 6-3 6-2 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91138633/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
+    
+    <td class="c-jug">Masamichi Imamura <b>[5]</b><span class="pais">JPN</span></td>
+    <td class="c-rank mono">ATP 409<span class="wtn">WTN 4.49</span></td>
+    <td class="c-od mono">2.45</td>
+    <td class="c-od mono">2.30</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-1 · <i class="g">R2✓</i> 6-1 6-0 <i class="vs">vQ</i> · <i class="g">QF✓</i> 3-6 6-0 10-2</td>
+    
+  </tr><tr class="analisis" data-par="M25 Taipei|1787364000000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ1.24 de WTN: bajo 1.5 es ruido — el mejor WTN acierta 52-57% ahí, azar. Sin lado.</span>
+      <span class="bandera">Δ1.24 ruido</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
+    <td rowspan="2" class="c-cuando"><b class="mono">vie, 21-08</b><span class="loc mono">10:00 loc · <b>22:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Taipei<span class="loc">Chinese Taipei · Hard</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Semi-final</span><span class="loc">Court 1 1º</span></td>
+    <td class="c-jug">Shunsuke Mitsui<span class="pais">JPN</span></td>
+    <td class="c-rank mono">ATP 651<span class="wtn mejor">WTN 3.68 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.64</span></span></td>
+    <td class="c-od mono">1.70</td>
+    <td class="c-od mono">1.72</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">v[8]</i> · <i class="g">R2✓</i> 6-2 6-1 · <i class="g">QF✓</i> 7-6(4) 4-6 10-7 <i class="vs">v[3]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91141175/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Taipei" data-ts="1787364000000" data-par="M25 Taipei|1787364000000">
+    
+    <td class="c-jug">Matthew Dellavedova <b>[2]</b><span class="pais">AUS</span></td>
+    <td class="c-rank mono">ATP 309<span class="wtn">WTN 4.32</span></td>
+    <td class="c-od mono">2.00</td>
+    <td class="c-od mono">1.95</td>
+    <td class="c-llega"><i class="g">R1✓</i> 7-6(1) 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 6-1 6-2 <i class="vs">vQ</i> · <i class="g">QF✓</i> 6-2 6-4</td>
+    
+  </tr><tr class="analisis" data-par="M25 Taipei|1787364000000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ0.64 de WTN a favor (3.68 contra 4.32). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.7 implica 58.8%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ0.64 moderada</span><span class="bandera">choque nivel vs forma</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">VOLKSBANK C-Court 1º</span></td>
+    <td class="c-jug">Mika Petkovic <b>[4]</b><span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 428<span class="wtn mejor">WTN 4.57 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ2.25</span></span></td>
+    <td class="c-od mono">1.40</td>
+    <td class="c-od mono">1.47</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 2-6 6-4 6-3 <i class="vs">vQ</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91106986/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
+    
+    <td class="c-jug">TIM Handel<span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 772<span class="wtn">WTN 6.82</span></td>
+    <td class="c-od mono">2.65</td>
+    <td class="c-od mono">2.42</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 7-6(8) · <i class="g">R2✓</i> 6-2 6-4 <i class="vs">v[7]</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Ueberlingen|1787385600000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ2.25 de WTN a favor (4.57 contra 6.82). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.4 implica 71.4%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ2.25 moderada</span><span class="bandera">choque nivel vs forma</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">DISPLAY-MAX Court 1º</span></td>
+    <td class="c-jug">Nicola Senn <b>Q</b><span class="pais">SUI</span></td>
+    <td class="c-rank mono">ATP 1832<span class="wtn">WTN 12.28</span></td>
+    <td class="c-od mono">2.52</td>
+    <td class="c-od mono">2.35</td>
+    <td class="c-llega"><i class="g">Q1✓</i> 6-3 7-6(3) <i class="vs">vWC</i> · <i class="g">Q2✓</i> 6-2 6-0 <i class="vs">v[13]</i> · <i class="g">R1✓</i> 6-3 6-0 <i class="vs">vWC</i> · <i class="g">R2✓</i> 4-2 <i class="vs">v[1]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91096643/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787385600000" data-par="M25 Ueberlingen|1787385600000">
+    
+    <td class="c-jug">Tymur Bieldiugin <b>Q</b><span class="pais">UKR</span></td>
+    <td class="c-rank mono">ATP 1582<span class="wtn mejor">WTN 10.33 <span class="dw f2" title="diferencia moderada: acierta 68%">Δ1.95</span></span></td>
+    <td class="c-od mono">1.44</td>
+    <td class="c-od mono">1.50</td>
+    <td class="c-llega"><i class="g">Q1✓</i> 6-0 6-2 · <i class="g">Q2✓</i> 6-3 6-1 <i class="vs">v[10]</i> · <i class="g">R1✓</i> 2-6 7-6(2) 6-3 · <i class="g">R2✓</i> 6-1 6(4)-7 6-2 <i class="vs">v[8]</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Ueberlingen|1787385600000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ1.95 de WTN a favor (10.33 contra 12.28). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.44 implica 69.4%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ1.95 moderada</span><span class="bandera">choque nivel vs forma</span><span class="bandera">sin valor</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">VOLKSBANK C-Court 2º turno</span></td>
+    <td class="c-jug elegido"><span class="tick" title="elegido por el análisis">▸</span>Maximilian Marterer <b>WC</b><span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 581<span class="wtn mejor">WTN 3.07 <span class="dw f0" title="diferencia sin valor predictivo: 52-57%, azar">Δ0.63</span></span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 2-6 6-0 6-3 · <i class="g">R2✓</i> 7-6(3) 7-6(4) <i class="vs">v[6]</i></td>
+    <td rowspan="2" class="c-link"><span class="sin">aún sin línea</span></td>
+  </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
+    
+    <td class="c-jug">Daniel Masur <b>[2]</b><span class="pais">GER</span></td>
+    <td class="c-rank mono">ATP 377<span class="wtn">WTN 3.70</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-od mono"><span class="sin">·</span></td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-4 6-3 · <i class="g">R2✓</i> 7-6(8) 6-3 <i class="vs">vWC</i></td>
+    
+  </tr><tr class="analisis" data-par="M25 Ueberlingen|1787390100000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b>Maximilian Marterer WC</b> <span class="mkt">gana</span>
+      
+      <span class="razon">Δ0.63 de WTN a favor (3.07 contra 3.7). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.</span>
+      <span class="bandera">Δ0.63 moderada</span><span class="bandera">choque nivel vs forma</span><span class="bandera">línea sin abrir</span>
+    </td>
+  </tr><tr class="a" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
+    <td rowspan="2" class="c-cuando"><b class="mono">sáb, 22-08</b><span class="loc mono">10:00 loc · <b>04:00</b> CL</span></td>
+    <td rowspan="2" class="c-torneo">M25 Ueberlingen<span class="loc">Germany · Clay</span></td>
+    <td rowspan="2" class="c-ronda"><span class="mono">Quarter-final</span><span class="loc">DISPLAY-MAX Court 2º turno</span></td>
+    <td class="c-jug">Jannik Maute <b>Q</b><span class="pais">GER</span></td>
+    <td class="c-rank mono"><span class="sin">sin ATP</span><span class="wtn">WTN 10.68</span></td>
+    <td class="c-od mono">3.05</td>
+    <td class="c-od mono">2.67</td>
+    <td class="c-llega"><i class="g">Q1✓</i> 6-2 6-0 <i class="vs">v[15]</i> · <i class="g">Q2✓</i> 6-2 6-4 <i class="vs">v[1]</i> · <i class="g">R1✓</i> 6-3 7-5 <i class="vs">vWC</i> · <i class="g">R2✓</i> 7-6(3) 6(5)-7 6-4 <i class="vs">v[5]</i></td>
+    <td rowspan="2" class="c-link"><a href="https://lat.betano.com/cuotas-de-partido/e-e/91096636/" target="_blank" rel="noopener">Betano ↗</a><span class="loc">cuota 17:48</span></td>
+  </tr><tr class="b" data-torneo="M25 Ueberlingen" data-ts="1787390100000" data-par="M25 Ueberlingen|1787390100000">
+    
+    <td class="c-jug">Arthur Nagel <b>[3]</b><span class="pais">FRA</span></td>
+    <td class="c-rank mono">ATP 399<span class="wtn mejor">WTN 5.71 <span class="dw f4" title="diferencia muy fuerte: acierta 88%">Δ4.97</span></span></td>
+    <td class="c-od mono">1.32</td>
+    <td class="c-od mono">1.40</td>
+    <td class="c-llega"><i class="g">R1✓</i> 6-3 6-2 <i class="vs">vQ</i> · <i class="g">R2✓</i> 6-1 6(6)-7 6-2</td>
+    
+  </tr><tr class="analisis" data-par="M25 Ueberlingen|1787390100000">
+    <td colspan="9">
+      <span class="conf c-baja">baja</span>
+      <b class="pasar">Pasar</b>
+      
+      <span class="razon">Δ4.97 de WTN a favor (5.71 contra 10.68). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.32 implica 75.8%, sobre nuestra estimación: sin valor.</span>
+      <span class="bandera">Δ4.97 muy fuerte</span><span class="bandera">choque nivel vs forma</span><span class="bandera">sin valor</span>
+    </td>
+  </tr></tbody>
+</table></div>
+<footer>Generado 2026-08-21 21:57 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
 </div>
 <script>
 (function(){
-  var el = document.getElementById('edad');
-  function pinta(){
-    var min = Math.round((Date.now() - new Date(el.dataset.generado).getTime()) / 60000);
-    el.innerHTML = 'datos de hace <b>' + (min < 60 ? min + ' min' : (min / 60).toFixed(1) + ' h') + '</b>';
-    el.className = 'edad' + (min > 360 ? ' rancia' : min > 120 ? ' vieja' : '');
-  }
-  pinta(); setInterval(pinta, 60000);
+  var el=document.getElementById('edad');
+  function p(){var m=Math.round((Date.now()-new Date(el.dataset.generado).getTime())/60000);
+    el.innerHTML='datos de hace <b>'+(m<60?m+' min':(m/60).toFixed(1)+' h')+'</b>';
+    el.className='edad'+(m>360?' rancia':m>120?' vieja':'');}
+  p();setInterval(p,60000);
+  var cuerpo=document.getElementById('cuerpo');
+  if(!cuerpo)return;
+  window.ordenar=function(modo){
+    var pares=[],vistos={};
+    Array.prototype.forEach.call(cuerpo.querySelectorAll('tr.a'),function(tr){
+      var b=tr.nextElementSibling, an=b&&b.nextElementSibling;
+      if(an&&!an.classList.contains('analisis'))an=null;
+      pares.push({a:tr,b:b,an:an,torneo:tr.dataset.torneo,ts:+tr.dataset.ts});});
+    pares.sort(function(x,y){return modo==='hora'
+      ? x.ts-y.ts || x.torneo.localeCompare(y.torneo)
+      : x.torneo.localeCompare(y.torneo) || x.ts-y.ts;});
+    pares.forEach(function(par,i){
+      par.a.classList.toggle('par',i%2===1); par.b.classList.toggle('par',i%2===1);
+      cuerpo.appendChild(par.a); cuerpo.appendChild(par.b);
+      if(par.an)cuerpo.appendChild(par.an);});
+    document.getElementById('b-torneo').className=modo==='hora'?'':'on';
+    document.getElementById('b-hora').className=modo==='hora'?'on':'';
+  };
+  window.ordenar('torneo');
+  window.verAnalisis=function(){
+    var on=document.body.classList.toggle('an');
+    document.getElementById('resumen').hidden=!on;
+    document.getElementById('b-an').className=on?'on':'';
+    document.getElementById('b-an').textContent=on?'🧠 Ocultar análisis':'🧠 Analizar';
+  };
 })();
 </script>
