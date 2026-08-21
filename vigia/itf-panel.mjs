@@ -467,5 +467,17 @@ ${campeones.length ? `<section>
 </footer>
 </div>`;
 
+/* Antes de pisar el panel, la versión anterior queda en el historial,
+   nombrada por su fecha de generación. */
+try {
+  if (fs.existsSync(SALIDA)) {
+    const HIST = path.join(DATOS, 'panel-historia');
+    fs.mkdirSync(HIST, { recursive: true });
+    const marca = new Date(fs.statSync(SALIDA).mtime).toISOString().slice(0, 16).replace(/[T:]/g, '-');
+    const destino = path.join(HIST, `panel-${marca}.html`);
+    if (!fs.existsSync(destino)) fs.copyFileSync(SALIDA, destino);
+  }
+} catch (e) { console.log('historial:', e.message); }
+
 fs.writeFileSync(SALIDA, html);
 console.log(`✓ ${SALIDA} (${(html.length / 1024).toFixed(0)} KB) · ${activos.length} en juego · ${porVenir.length} por venir · ${stats.torneos} terminados con cuadro`);
