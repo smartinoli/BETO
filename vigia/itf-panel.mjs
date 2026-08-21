@@ -44,8 +44,13 @@ if (process.argv[2] === 'vivo') {
   const { eventos, cuadro } = await import('./itf.mjs');
   fs.mkdirSync(VIVO, { recursive: true });
   let wafSeguidos = 0;
-  for (const t of activos) {
+  /* Los que no tienen cuadro van primero; los bajados hace <3 h se saltan
+     para no gastar tolerancia del WAF en datos frescos. */
+  const edad = t => { try { return Date.now() - new Date(JSON.parse(fs.readFileSync(path.join(VIVO, t.clave + '.json'), 'utf8')).bajado).getTime() } catch { return Infinity; } };
+  const cola = [...activos].sort((a, b) => edad(b) - edad(a));
+  for (const t of cola) {
     if (wafSeguidos >= 2) { console.log('  WAF en serie: sigo con lo que hay'); break; }
+    if (edad(t) < 3 * 3600e3) { console.log(`  = vivo ${t.clave} fresco`); continue; }
     try {
       const ev = await eventos(t.clave);
       const cuadros = {};
@@ -168,6 +173,9 @@ function filaVenir(t) {
 /* ---------- por jugarse: cuadros en vivo ---------- */
 const RONDA_CORTA = { 1: 'R1', 2: 'R2', 3: 'QF', 4: 'SF', 5: 'F' };
 
+/* Marca compacta de un lado: seed y/o entrada distinta de DA. */
+const marcaDe = l => [l?.seed ? `[${l.seed}]` : null, l?.entrada && l.entrada !== 'DA' ? l.entrada : null].filter(Boolean).join('');
+
 function trayectoriaHtml(nombre, cuadros) {
   const pasos = [];
   const orden = Object.entries(cuadros).sort(([a], [b]) => (a === 'Q' ? 0 : 1) - (b === 'Q' ? 0 : 1));
@@ -180,7 +188,10 @@ function trayectoriaHtml(nombre, cuadros) {
         const yo = p.lados[idx], rival = p.lados[1 - idx];
         const ronda = evento === 'Q' ? 'Q' + r.numero : (RONDA_CORTA[r.numero] || 'R' + r.numero);
         const pares = yo.sets.map((s, i) => s + '-' + (rival.sets[i] ?? '?')).join(' ');
+        /* Contra quién: la marca del rival (seed/Q/WC/LL/JE…) le da peso al resultado. */
+        const vs = marcaDe(rival);
         pasos.push(`<span class="${yo.ganador ? 'paso-g' : 'paso-p'}">${ronda}${yo.ganador ? '✓' : '✗'} ${esc(pares)}</span>`
+          + (vs ? ` <span class="paso-vs">v${esc(vs)}</span>` : '')
           + (/retired/i.test(p.nota || '') && !yo.ganador ? ' <span class="paso-ret">RET</span>' : ''));
       }
     }
@@ -188,13 +199,40 @@ function trayectoriaHtml(nombre, cuadros) {
   return pasos.join(' · ');
 }
 
-function jugadorHtml(l, cuadros, listado) {
+/* Cuotas del tablero de vigía (itf.json) para un partido pendiente:
+   empareja por nombres en ambos órdenes y devuelve por lado la cuota de
+   Betano (favorito o no) y la de bet365 (solo la del favorito viene en el
+   feed). null = OddsPapi no trajo nombres para ese partido todavía. */
+const cuotasIndice = tablero?.partidos ? Object.values(tablero.partidos).filter(e => e.p1 && e.p2) : [];
+function cuotasDe(lados) {
+  for (const e of cuotasIndice) {
+    let mapa = null;
+    if (pareceElMismo(e.p1, lados[0]) && pareceElMismo(e.p2, lados[1])) mapa = [1, 2];
+    else if (pareceElMismo(e.p1, lados[1]) && pareceElMismo(e.p2, lados[0])) mapa = [2, 1];
+    if (!mapa) continue;
+    return lados.map((l, i) => {
+      const esFav = e.fav === mapa[i];
+      return { betano: esFav ? e.cB : e.dB, b365: esFav ? e.cJ : null, esFav };
+    });
+  }
+  return null;
+}
+
+const cuotaTxt = c => {
+  if (!c || (c.betano == null && c.b365 == null)) return '<span class="jug-c mono sin">—</span>';
+  const b = c.betano != null ? (+c.betano).toFixed(2) : '—';
+  const j = c.b365 != null ? (+c.b365).toFixed(2) : '—';
+  return `<span class="jug-c mono${c.esFav ? ' fav' : ''}">B ${b} · 365 ${j}</span>`;
+};
+
+function jugadorHtml(l, cuadros, listado, cuota) {
   const e = listado.find(x => pareceElMismo(l.nombre, { nombre: x.nombre }));
   const rank = e?.atp ? `ATP ${e.atp}` : (e?.wtn ? `WTN ${e.wtn}` : 'sin rank');
-  const marcas = [l.seed ? `[${l.seed}]` : null, l.entrada && l.entrada !== 'DA' ? l.entrada : null].filter(Boolean).join(' ');
+  const marcas = marcaDe(l);
   const tray = trayectoriaHtml(l.nombre, cuadros);
   return `<div class="jug"><span class="jug-n">${esc(l.nombre)}${marcas ? ' <b>' + esc(marcas) + '</b>' : ''}</span>
     <span class="jug-r mono">${rank}</span>
+    ${cuotaTxt(cuota)}
     <span class="jug-t">${tray || 'debuta'}</span></div>`;
 }
 
@@ -211,15 +249,16 @@ function seccionPorJugarse() {
         for (const p of r.partidos) {
           if (p.estado !== 'pendiente' || !p.lados.every(l => l.nombre)) continue;
           const ronda = evento === 'Q' ? 'Q·R' + r.numero : (RONDA_CORTA[r.numero] || 'R' + r.numero);
+          const cuotas = cuotasDe(p.lados);
           filas.push(`<tr><td class="mono">${ronda}</td>
-            <td class="celda-partido">${p.lados.map(l => jugadorHtml(l, v.cuadros, listado)).join('')}</td></tr>`);
+            <td class="celda-partido">${p.lados.map((l, i) => jugadorHtml(l, v.cuadros, listado, cuotas?.[i])).join('')}</td></tr>`);
         }
       }
     }
     if (!filas.length) continue;
     bloques.push(`<h3 class="sub-torneo">${esc(t.nombre)} <span class="mono sub-fecha">cuadro al ${esc((v.bajado || '').slice(0, 16).replace('T', ' '))}</span></h3>
       <div class="tabla-envoltura"><table class="tabla-partidos">
-      <thead><tr><th>Ronda</th><th>Partido — seed, entrada, ranking y cómo llega (qualis primero)</th></tr></thead>
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
       <tbody>${filas.join('\n')}</tbody></table></div>`);
   }
   if (!bloques.length) return `<p class="nota">Sin cuadros en vivo aún: correr <span class="mono">node vigia/itf-panel.mjs vivo</span> (o esperar a que el WAF se enfríe).</p>`;
@@ -351,11 +390,15 @@ footer{color:var(--tinta2);font-size:12.5px;border-top:1px solid var(--linea);pa
 .sub-fecha{font-size:11.5px;color:var(--tinta2);font-weight:400;margin-left:8px}
 .tabla-partidos{min-width:560px}
 .celda-partido{display:flex;flex-direction:column;gap:6px;padding:10px 14px}
-.jug{display:grid;grid-template-columns:minmax(180px,240px) 90px 1fr;gap:12px;align-items:baseline}
+.jug{display:grid;grid-template-columns:minmax(180px,240px) 84px 128px 1fr;gap:12px;align-items:baseline}
 .jug-n b{color:var(--acento);font-weight:600}
 .jug-r{color:var(--tinta2)}
+.jug-c{font-size:12px;color:var(--tinta2);white-space:nowrap}
+.jug-c.fav{color:var(--tinta);font-weight:500}
+.jug-c.sin{opacity:.45}
 .jug-t{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tinta2)}
 .paso-g{color:var(--acento)}
+.paso-vs{color:var(--tinta);font-weight:500}
 .paso-p,.paso-ret{color:var(--alerta)}
 .chip.est-f{background:var(--acento-suave);color:var(--acento);border-color:transparent}
 .chip.est-d{background:var(--arcilla-bg);color:var(--alerta);border-color:transparent}
