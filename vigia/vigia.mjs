@@ -1481,6 +1481,7 @@ async function cmdItf(horas = 6) {
   let ambos = 0, soloBet = 0, logPath = 0, grabados = 0;
   const candTablero = new Map();   /* sin índice: a la espera de nombres vía /fixture */
   let bFixAdd = 0;                 /* links de Betano completados en entradas viejas */
+  let cuotasFrescas = 0;           /* pendientes con cuotas g/s1 refrescadas este barrido */
   for (let i = 0; i < tids.length && i < 60; i += 5) {
     const lote = tids.slice(i, i + 5);
     let bet, b365;
@@ -1511,6 +1512,8 @@ async function cmdItf(horas = 6) {
       }
       if (!j) { soloBet++; continue; }
       ambos++;
+      /* Los dos mercados que Betano ofrece en ITF, lado a lado, para la mesa */
+      let mGan = null, mS1 = null;
       for (const mid of Object.keys(b.markets || {})) {
         const meta = await metaDe(mid);
         if (!meta || meta.len !== 2) continue;
@@ -1528,36 +1531,11 @@ async function cmdItf(horas = 6) {
         if (!ok) continue;
         const [jA, jB2] = desvigar(pJ[oids[0]], pJ[oids[1]]);
         const justos = { [oids[0]]: jA, [oids[1]]: jB2 };
-        /* tablero de favoritos: se anota TODO partido con mercado Ganador.
-           Con nombres del índice → directo. Sin índice → queda como candidato
-           y el rescate /fixture de más abajo le pone nombres y hora antes de
-           grabarlo: así el tablero agarra todo lo que el feed trae. */
-        if (fam.fam === 'Ganador') {
-          const db = cargarItf();
-          /* a los ya grabados sin link se les completa el id de Betano */
-          const ya = db.partidos[f.fixtureId];
-          if (ya && !ya.bFix && b.bookmakerFixtureId) { ya.bFix = b.bookmakerFixtureId; bFixAdd++; }
-          if (!db.partidos[f.fixtureId] && !candTablero.has(f.fixtureId)) {
-            const o1 = oids.find(o => /^1$|home/i.test(meta.outs[o] || o)) || oids[0];
-            const o2 = oids.find(o => o !== o1) || oids[1];
-            const favLado = pB[o1] <= pB[o2] ? 1 : 2;
-            const favOid = favLado === 1 ? o1 : o2, dogOid = favLado === 1 ? o2 : o1;
-            const reg = {
-              visto: new Date().toISOString(), t: info.sinIndice ? null : info.startTime,
-              torneo: info.tournamentName || 'ITF',
-              p1: info.sinIndice ? null : info.participant1Name, p2: info.sinIndice ? null : info.participant2Name,
-              fav: favLado, cB: +pB[favOid].toFixed(2), cJ: +pJ[favOid].toFixed(2),
-              dB: +pB[dogOid].toFixed(2), estado: 'pendiente',
-              bFix: b.bookmakerFixtureId || null,   /* → lat.betano.com/cuotas-de-partido/e-e/<bFix>/ */
-            };
-            if (!info.sinIndice && new Date(info.startTime).getTime() > Date.now()) {
-              db.partidos[f.fixtureId] = reg;
-              grabados++;
-            } else if (info.sinIndice) {
-              candTablero.set(f.fixtureId, reg);
-            }
-          }
-        }
+        /* cuotas de ambos lados, orientadas a participante 1/2 */
+        const o1m = oids.find(o => /^1$|home/i.test(meta.outs[o] || o)) || oids[0];
+        const o2m = oids.find(o => o !== o1m) || oids[1];
+        if (fam.fam === 'Ganador') mGan = { p1: pB[o1m], p2: pB[o2m], j1: pJ[o1m], j2: pJ[o2m] };
+        else if (fam.fam === 'Ganador 1er set') mS1 = { p1: pB[o1m], p2: pB[o2m] };
         for (const oid of oids) {
           const vent = pB[oid] / justos[oid] - 1;
           if (vent <= 0.005 || pB[oid] > (CFG.sombraCuotaMaxima ?? 3.5)) continue;
@@ -1574,6 +1552,44 @@ async function cmdItf(horas = 6) {
             inicio: info.startTime, familia: fam.fam, lado,
             cuota: +pB[oid].toFixed(3), justo: +justos[oid].toFixed(3), vent: +vent.toFixed(4),
           });
+        }
+      }
+      /* tablero de favoritos: se anota TODO partido con mercado Ganador.
+         Con nombres del índice → directo; sin índice → candidato que el
+         rescate /fixture nombra antes de grabar. En cada barrido se
+         refrescan las cuotas VIVAS de ambos mercados (g = ganador,
+         s1 = ganador 1er set, ambos lados, solo Betano) y el link. */
+      if (mGan) {
+        const db = cargarItf();
+        const vivas = {
+          g: { p1: +mGan.p1.toFixed(2), p2: +mGan.p2.toFixed(2) },
+          s1: mS1 ? { p1: +mS1.p1.toFixed(2), p2: +mS1.p2.toFixed(2) } : null,
+          cuotasAl: new Date().toISOString(),
+        };
+        const ya = db.partidos[f.fixtureId];
+        if (ya) {
+          if (ya.estado === 'pendiente') { Object.assign(ya, vivas); cuotasFrescas++; }
+          if (!ya.bFix && b.bookmakerFixtureId) { ya.bFix = b.bookmakerFixtureId; bFixAdd++; }
+        } else if (!candTablero.has(f.fixtureId)) {
+          const favLado = mGan.p1 <= mGan.p2 ? 1 : 2;
+          const reg = {
+            visto: new Date().toISOString(), t: info.sinIndice ? null : info.startTime,
+            torneo: info.tournamentName || 'ITF',
+            p1: info.sinIndice ? null : info.participant1Name, p2: info.sinIndice ? null : info.participant2Name,
+            fav: favLado,
+            cB: favLado === 1 ? +mGan.p1.toFixed(2) : +mGan.p2.toFixed(2),
+            cJ: favLado === 1 ? +mGan.j1.toFixed(2) : +mGan.j2.toFixed(2),
+            dB: favLado === 1 ? +mGan.p2.toFixed(2) : +mGan.p1.toFixed(2),
+            estado: 'pendiente',
+            bFix: b.bookmakerFixtureId || null,   /* → lat.betano.com/cuotas-de-partido/e-e/<bFix>/ */
+            ...vivas,
+          };
+          if (!info.sinIndice && new Date(info.startTime).getTime() > Date.now()) {
+            db.partidos[f.fixtureId] = reg;
+            grabados++;
+          } else if (info.sinIndice) {
+            candTablero.set(f.fixtureId, reg);
+          }
         }
       }
     }
@@ -1636,6 +1652,7 @@ async function cmdItf(horas = 6) {
     }
     if (tableroNuevos || tableroNombrados) console.log(`itf rescate: ${tableroNuevos} nuevos al tablero, ${tableroNombrados} viejos re-nombrados`);
   }
+  console.log(`itf tablero: ${cuotasFrescas} cuotas refrescadas · ${candTablero.size} candidatos sin índice · ${grabados} grabados`);
   /* fuera los partidos YA COMENZADOS: sus cuotas prematch quedan congeladas
      en el feed y las "ventajas" gigantes son líneas muertas, no valor. Solo
      se reporta/anota lo verificado como futuro. */
@@ -1657,7 +1674,7 @@ async function cmdItf(horas = 6) {
     nuevas++;
   }
   if (nuevas || corregidas) guardarRegistro();
-  if (grabados || tableroNombrados || bFixAdd) guardarItf();
+  if (grabados || tableroNombrados || bFixAdd || cuotasFrescas) guardarItf();
   /* Solo el resumen por Telegram: el detalle partido a partido vive en el
      panel (vigia/itf-panel.html), no en el chat. */
   await telegram([
