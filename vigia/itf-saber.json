@@ -3,6 +3,12 @@
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
+   "regla": "El WTN (World Tennis Number) predice mejor que el ranking ATP en ITF: mide nivel de juego partido a partido, no puntos acumulados. Menor es mejor.",
+   "n": 27,
+   "fuente": "mesa 2026-08-21: cambió 8 de 27 veredictos y explicó todas las cuotas que parecían 'invertidas'",
+   "uso": "comparar SIEMPRE el WTN de ambos antes que el ATP; cuando ATP y WTN se contradicen, el mercado suele seguir al WTN"
+  },
+  {
    "regla": "En R1 del main draw, el qualifier gana solo el 33% contra jugadores de entrada directa",
    "n": 94,
    "fuente": "16 torneos cosechados, ago 2026",
@@ -52,7 +58,10 @@
   "Jornada doble (dos rondas el mismo día por lluvia) sube el desgaste y el riesgo de retiro en la segunda tanda",
   "El ranking ATP engaña con jugadores que vuelven de lesión: ranking protegido o sin ranking pueden esconder nivel de top-100",
   "Una victoria por retiro del rival (marcador tipo '6-4 4-0' o '7-6(7)' suelto) NO es evidencia de forma: leerla como partido no jugado",
-  "Un súper tiebreak (10-x) en el partido anterior indica que se llegó al límite: desgaste mayor que un 2-0"
+  "Un súper tiebreak (10-x) en el partido anterior indica que se llegó al límite: desgaste mayor que un 2-0",
+  "Cuando el mercado pone favorito al peor rankeado ATP, revisar el WTN antes de gritar 'valor': casi siempre el WTN explica la cuota",
+  "La oportunidad real aparece cuando el WTN y la cuota se contradicen (no cuando se contradicen ATP y cuota)",
+  "Un jugador puede arrasar (6-0 6-0) contra rivales flojos y tener peor WTN que otro que sufrió contra seeds: mirar contra quién se logró la forma"
  ],
  "jugadoresNotables": [
   {
@@ -84,7 +93,8 @@
   "El order of play es la fuente al día: marca jugado/en curso mientras el cuadro todavía dice pendiente",
   "Las cuotas de Betano en ITF aparecen tarde: muchas semifinales abren línea recién unas horas antes",
   "Solo hay dos mercados en ITF por Betano: Ganador y Ganador 1er set",
-  "Las reglas de retiro difieren entre casas: en ITF eso importa más que en otros circuitos"
+  "Las reglas de retiro difieren entre casas: en ITF eso importa más que en otros circuitos",
+  "Al citar un WTN, tomarlo SIEMPRE de la entry list del propio torneo: el índice global de entry lists produce falsos positivos con homónimos y apellidos compartidos (me pasó con Madaras y Noce)"
  ],
  "historial": [
   {
@@ -98,7 +108,31 @@
     "Marterer (ranking engañoso)",
     "Lithen vs Borg (contra favorito de papel)"
    ],
-   "pendiente": "verificar resultados y anotar aciertos/fallos para calibrar las reglas"
+   "pendiente": "verificar resultados y anotar aciertos/fallos para calibrar las reglas",
+   "leccion": "Elegí a Lithen, Zielinski, Senn y Behrmann mirando solo la forma de la semana; el WTN mostró que en los cuatro casos el otro lado era mejor jugador. La forma sin nivel es ruido."
+  },
+  {
+   "fecha": "2026-08-21",
+   "corrida": "análisis con WTN",
+   "partidosAnalizados": 27,
+   "correcciones": [
+    "Mitsui sobre Dellavedova (el mercado tenía razón)",
+    "Borg sobre Lithen",
+    "Mashtakov sobre Zielinski",
+    "Bieldiugin sobre Senn",
+    "Nagel sobre pasar",
+    "Rottoli sobre pasar",
+    "Sorger baja de mejor opción a pasar",
+    "Behrmann baja a pasar"
+   ],
+   "destacados": [
+    "Borg [1] a 2.45 con WTN 5.40 vs 8.50 — mayor discrepancia",
+    "Marterer WTN 3.07 sin ranking ATP",
+    "Mitsui 1.62 correctamente favorito",
+    "Chung WTN 4.66 vs 6.55"
+   ],
+   "pendiente": "verificar resultados del sábado 22 y anotar aciertos",
+   "erroresPropios": "Cité WTN de un índice global mal cruzado: Madaras aparecía 7.92 cuando es 3.59 (la mayor diferencia de la mesa) y Noce 12.26 cuando es 8.56. Verificar contra el dossier antes de escribir el veredicto."
   }
  ]
 }

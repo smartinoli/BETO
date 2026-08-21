@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-21T19:46:27.235Z",
+ "generado": "2026-08-21T19:54:58.371Z",
  "partidos": [
   {
    "id": 1183661738,
@@ -20,7 +20,8 @@
      "nombre": "Robert Guna",
      "pais": "ROU",
      "marca": "[7]",
-     "rank": "ATP 1028",
+     "atp": 1028,
+     "wtn": 8.18,
      "llega": "R1✓ 6-4 6-0 vJR · R2✓ 6-3 6-2 vQ · QF✓ 6-1 6-3 v[4]",
      "gana": 1.4,
      "set1": 1.47
@@ -29,7 +30,8 @@
      "nombre": "Iannis Miletich",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 1136",
+     "atp": 1136,
+     "wtn": 8.66,
      "llega": "R1✓ 7-6(6) 6-2 vWC · R2✓ 3-6 6-1 4-0 v[2] · QF✓ 7-6(2) 3-6 6-0 v[6]",
      "gana": 2.65,
      "set1": 2.42
@@ -56,7 +58,8 @@
      "nombre": "Matteo Sciahbasi",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 1288",
+     "atp": 1288,
+     "wtn": 9.02,
      "llega": "R1✓ 5-7 7-6(2) 1-0 · R2✓ 6-2 6-4 v[5] · QF✓ 6-4 6-4",
      "gana": null,
      "set1": null
@@ -65,7 +68,8 @@
      "nombre": "Dragos Nicolae Madaras",
      "pais": "SWE",
      "marca": "[3]",
-     "rank": "ATP 589",
+     "atp": 589,
+     "wtn": 3.59,
      "llega": "R1✓ 6-2 6-0 vQ · R2✓ 6-4 4-6 6-2 vSE · QF✓ 6-4 6-4 v[8]",
      "gana": null,
      "set1": null
@@ -92,7 +96,8 @@
      "nombre": "Leo Borg",
      "pais": "SWE",
      "marca": "[1]",
-     "rank": "ATP 542",
+     "atp": 542,
+     "wtn": 5.4,
      "llega": "R1✓ 6-4 6-3 vQ · R2✓ 6-0 6-3 · QF✓ 6-2 4-6 6-4",
      "gana": 2.45,
      "set1": 2.3
@@ -101,7 +106,8 @@
      "nombre": "John Hallquist Lithen",
      "pais": "SWE",
      "marca": "[4]",
-     "rank": "ATP 761",
+     "atp": 761,
+     "wtn": 8.5,
      "llega": "R1✓ 6-0 6-2 vQ · R2✓ 6-3 6-0 · QF✓ 6-1 6-2 v[8]",
      "gana": 1.47,
      "set1": 1.53
@@ -128,7 +134,8 @@
      "nombre": "Jan Simonsson",
      "pais": "SWE",
      "marca": "WC",
-     "rank": "ATP 1905",
+     "atp": 1905,
+     "wtn": 10.38,
      "llega": "R1✓ 6-1 6-3 vQ · R2✓ 6-3 5-7 6-2 v[7] · QF✓ 1-6 7-5 6-1",
      "gana": null,
      "set1": null
@@ -137,7 +144,8 @@
      "nombre": "Niklas Guttau",
      "pais": "GER",
      "marca": "",
-     "rank": "ATP 1211",
+     "atp": 1211,
+     "wtn": 8.13,
      "llega": "R1✓ 6-4 6-2 · R2✓ 6-2 6-2 · QF✓ 3-6 6-2 6-1",
      "gana": null,
      "set1": null
@@ -164,7 +172,8 @@
      "nombre": "Jack Loge",
      "pais": "BEL",
      "marca": "[1]",
-     "rank": "ATP 410",
+     "atp": 410,
+     "wtn": 5.71,
      "llega": "R1✓ 6-1 6-3 vLL · R2✓ 6-0 6-4 vQ · QF✓ 6(3)-7 6-3 6-3 v[8]",
      "gana": 1.36,
      "set1": 1.44
@@ -173,7 +182,8 @@
      "nombre": "Marlon Vankan",
      "pais": "GER",
      "marca": "[3]",
-     "rank": "ATP 616",
+     "atp": 616,
+     "wtn": 6.18,
      "llega": "R1✓ 6-3 7-6(4) · R2✓ 6-2 7-6(3) vQ · QF✓ 1-6 7-6(6) 6-1 v[5]",
      "gana": 2.85,
      "set1": 2.55
@@ -200,7 +210,8 @@
      "nombre": "Martin VAN DER MEERSCHEN",
      "pais": "BEL",
      "marca": "[4]",
-     "rank": "ATP 723",
+     "atp": 723,
+     "wtn": 6.76,
      "llega": "R1✓ 6-3 6-2 vWC · R2✓ 6-2 2-6 6-2 · QF✓ 6-2 6-2",
      "gana": null,
      "set1": null
@@ -209,7 +220,8 @@
      "nombre": "Romain Faucon",
      "pais": "BEL",
      "marca": "[2]",
-     "rank": "ATP 588",
+     "atp": 588,
+     "wtn": 6.79,
      "llega": "R1✓ 6-0 6-4 vSE · R2✓ 7-5 6-4 · QF✓ 6(5)-7 6-2 6-4 vQ",
      "gana": null,
      "set1": null
@@ -236,7 +248,8 @@
      "nombre": "Yun Seong Chung",
      "pais": "KOR",
      "marca": "",
-     "rank": "ATP 1059",
+     "atp": 1059,
+     "wtn": 4.66,
      "llega": "R1✓ 6-4 6-4 v[4] · R2✓ 6-3 6-3 vWC · QF✓ 6-2 vQ",
      "gana": null,
      "set1": null
@@ -245,7 +258,8 @@
      "nombre": "M Rifqi Fitriadi",
      "pais": "INA",
      "marca": "[2]",
-     "rank": "ATP 549",
+     "atp": 549,
+     "wtn": 6.21,
      "llega": "R1✓ 6-4 5-7 6-0 · R2✓ 6-3 6-1 vWC · QF✓ 6-4 7-6(1) v[8]",
      "gana": null,
      "set1": null
@@ -272,7 +286,8 @@
      "nombre": "Petr Bar Biryukov",
      "pais": "RUS",
      "marca": "[1]",
-     "rank": "ATP 281",
+     "atp": 281,
+     "wtn": 3.68,
      "llega": "R1✓ 6-4 6-4 vQ · R2✓ 6-4 6(6)-7 6-4 vQ · QF✓ 7-6(3) 6-4 v[7]",
      "gana": null,
      "set1": null
@@ -281,7 +296,8 @@
      "nombre": "Kokoro Isomura",
      "pais": "JPN",
      "marca": "[3]",
-     "rank": "ATP 562",
+     "atp": 562,
+     "wtn": 6.38,
      "llega": "R1✓ 3-6 7-6(5) 6-1 · R2✓ 6-2 6-2 vQ · QF✓ 6-1 6-3 v[5]",
      "gana": null,
      "set1": null
@@ -308,7 +324,8 @@
      "nombre": "Nikita Mashtakov",
      "pais": "UKR",
      "marca": "[3]",
-     "rank": "ATP 652",
+     "atp": 652,
+     "wtn": 4.83,
      "llega": "R1✓ 6-4 5-7 7-6(6) · R2✓ 7-6(5) 6-3 vLL · QF✓ 7-6(5) 4-6 6-0",
      "gana": null,
      "set1": null
@@ -317,7 +334,8 @@
      "nombre": "Marcel Zielinski",
      "pais": "POL",
      "marca": "[2]",
-     "rank": "ATP 586",
+     "atp": 586,
+     "wtn": 6.51,
      "llega": "R1✓ 6-1 6-0 vWC · R2✓ 7-6(5) 6-2 · QF✓ 6-1 6(2)-7 6-2 v[7]",
      "gana": null,
      "set1": null
@@ -344,7 +362,8 @@
      "nombre": "Gabriele Maria Noce",
      "pais": "ITA",
      "marca": "[6]",
-     "rank": "ATP 855",
+     "atp": 855,
+     "wtn": 8.56,
      "llega": "R1✓ 6-2 4-6 6-2 vWC · R2✓ 6-3 6-4 · QF✓ 6-2 6-4 vQ",
      "gana": null,
      "set1": null
@@ -353,7 +372,8 @@
      "nombre": "Thilo Behrmann",
      "pais": "AUT",
      "marca": "JR",
-     "rank": "WTN 13.28",
+     "atp": null,
+     "wtn": 13.28,
      "llega": "R1✓ 6-1 6-0 v[5] · R2✓ 6-1 6-2 · QF✓ 6-0 7-6(5) vQ",
      "gana": null,
      "set1": null
@@ -380,7 +400,8 @@
      "nombre": "Rodrigo Fernandes",
      "pais": "POR",
      "marca": "",
-     "rank": "ATP 1237",
+     "atp": 1237,
+     "wtn": 6.59,
      "llega": "R1✓ 7-6(3) 1-6 6-4 vQ · R2✓ 7-5 7-5 v[5] · QF✓ 3-6 6-3 6-4 v[1]",
      "gana": null,
      "set1": null
@@ -389,7 +410,8 @@
      "nombre": "Pavel Lagutin",
      "pais": "RUS",
      "marca": "[3]",
-     "rank": "ATP 718",
+     "atp": 718,
+     "wtn": 6.41,
      "llega": "R1✓ 7-6(0) 7-6(3) · R2✓ 6-4 6-2 vWC · QF✓ 4-6 6-2 6-2",
      "gana": null,
      "set1": null
@@ -416,7 +438,8 @@
      "nombre": "Goncalo Marques",
      "pais": "POR",
      "marca": "",
-     "rank": "ATP 1025",
+     "atp": 1025,
+     "wtn": 7.51,
      "llega": "R1✓ 7-6(7) 7-5 · R2✓ 6-3 6-4 v[4] · QF✓ 6-3 3-6 7-5 v[8]",
      "gana": 1.62,
      "set1": 1.67
@@ -425,7 +448,8 @@
      "nombre": "Andrea Colombo",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 1048",
+     "atp": 1048,
+     "wtn": 7.68,
      "llega": "R1✓ 6-2 7-6(5) v[2] · R2✓ 2-6 6-3 6-2 · QF✓ 7-5 6-2 v[6]",
      "gana": 2.1,
      "set1": 2.05
@@ -452,7 +476,8 @@
      "nombre": "Daniele Rapagnetta",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 734",
+     "atp": 734,
+     "wtn": 5.58,
      "llega": "R1✓ 6-4 3-6 7-5 v[8]",
      "gana": 1.91,
      "set1": 1.9
@@ -461,7 +486,8 @@
      "nombre": "Manuel Mazza",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 756",
+     "atp": 756,
+     "wtn": 5.31,
      "llega": "R1✓ 3-6 6-4 6-3",
      "gana": 1.75,
      "set1": 1.78
@@ -488,7 +514,8 @@
      "nombre": "Denis Constantin Spiridon",
      "pais": "ITA",
      "marca": "Q",
-     "rank": "ATP 1107",
+     "atp": 1107,
+     "wtn": 9.1,
      "llega": "Q1✓ 6-4 6-3 · Q2✓ 6-3 6-1 v[14] · R1✓ 6-3 4-6 6-4",
      "gana": null,
      "set1": null
@@ -497,7 +524,8 @@
      "nombre": "Laurent Lokoli",
      "pais": "FRA",
      "marca": "[3]",
-     "rank": "ATP 384",
+     "atp": 384,
+     "wtn": 3.41,
      "llega": "R1✓ 6-1 6-4 vQ",
      "gana": null,
      "set1": null
@@ -524,7 +552,8 @@
      "nombre": "Samuele Seghetti",
      "pais": "ITA",
      "marca": "WC",
-     "rank": "ATP 1486",
+     "atp": 1486,
+     "wtn": 10.34,
      "llega": "R1✓ 6-2 6-0 v[5]",
      "gana": 2.8,
      "set1": 2.52
@@ -533,7 +562,8 @@
      "nombre": "Lorenzo Rottoli",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 896",
+     "atp": 896,
+     "wtn": 6.67,
      "llega": "R1✓ 6-0 3-6 6-0 vQ",
      "gana": 1.36,
      "set1": 1.44
@@ -560,7 +590,8 @@
      "nombre": "Lorenzo Comino",
      "pais": "ITA",
      "marca": "WC",
-     "rank": "ATP 1178",
+     "atp": 1178,
+     "wtn": 8.93,
      "llega": "R1✓ 6-4 4-0 v[1]",
      "gana": 4.75,
      "set1": 3.45
@@ -569,7 +600,8 @@
      "nombre": "Pierluigi Basile",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 623",
+     "atp": 623,
+     "wtn": 5.01,
      "llega": "R1✓ 6-1 6-3 vWC",
      "gana": 1.14,
      "set1": 1.25
@@ -596,7 +628,8 @@
      "nombre": "Blu Baker",
      "pais": "GBR",
      "marca": "",
-     "rank": "ATP 959",
+     "atp": 959,
+     "wtn": 8.65,
      "llega": "R1✓ 6-2 4-6 6-4 vQ",
      "gana": 2.85,
      "set1": 2.55
@@ -605,7 +638,8 @@
      "nombre": "Andrea De Marchi",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 813",
+     "atp": 813,
+     "wtn": 7.87,
      "llega": "R1✓ 7-5 2-1 v[2]",
      "gana": 1.36,
      "set1": 1.44
@@ -632,7 +666,8 @@
      "nombre": "Nico Hipfl",
      "pais": "AUT",
      "marca": "",
-     "rank": "ATP 918",
+     "atp": 918,
+     "wtn": 6.99,
      "llega": "R1✓ 7-6(4) 6-2 vQ",
      "gana": null,
      "set1": null
@@ -641,7 +676,8 @@
      "nombre": "Stefano Reitano",
      "pais": "ITA",
      "marca": "WC",
-     "rank": null,
+     "atp": null,
+     "wtn": null,
      "llega": "R1✓ 7-6(7) v[6]",
      "gana": null,
      "set1": null
@@ -668,7 +704,8 @@
      "nombre": "Juan Cruz Martin Manzano",
      "pais": "ITA",
      "marca": "[4]",
-     "rank": "ATP 438",
+     "atp": 438,
+     "wtn": 4.13,
      "llega": "R1✓ 6-2 6-1 vQ",
      "gana": 1.62,
      "set1": 1.67
@@ -677,7 +714,8 @@
      "nombre": "Giovanni Oradini",
      "pais": "ITA",
      "marca": "",
-     "rank": "ATP 636",
+     "atp": 636,
+     "wtn": 6.34,
      "llega": "R1✓ 6-3 6-1 vQ",
      "gana": 2.1,
      "set1": 2.02
@@ -704,7 +742,8 @@
      "nombre": "Sebastian Dominko",
      "pais": "SLO",
      "marca": "",
-     "rank": "ATP 1122",
+     "atp": 1122,
+     "wtn": 4.88,
      "llega": "R1✓ 6-3 6-2 vQ · R2✓ 7-6(6) 6-1 v[1] · QF✓ 2-6 6-4 7-5 v[5]",
      "gana": null,
      "set1": null
@@ -713,7 +752,8 @@
      "nombre": "Sebastian Sorger",
      "pais": "AUT",
      "marca": "[3]",
-     "rank": "ATP 476",
+     "atp": 476,
+     "wtn": 4.96,
      "llega": "R1✓ 6-0 6-0 vQ · R2✓ 6-0 6-1 vQ · QF✓ 6-2 6-2",
      "gana": null,
      "set1": null
@@ -740,7 +780,8 @@
      "nombre": "Filip Jeff Planinsek",
      "pais": "SLO",
      "marca": "[6]",
-     "rank": "ATP 592",
+     "atp": 592,
+     "wtn": 5.56,
      "llega": "R1✓ 6-4 7-6(4) vWC · R2✓ 6-0 6-0 vWC · QF✓ 6-0 6-2 v[4]",
      "gana": 1.14,
      "set1": 1.22
@@ -749,7 +790,8 @@
      "nombre": "Jonas GUNDACKER",
      "pais": "AUT",
      "marca": "Q",
-     "rank": "ATP 1876",
+     "atp": 1876,
+     "wtn": 10.93,
      "llega": "Q2✓ 6-1 6-1 · Q3✓ 6-1 6-3 v[9] · R1✓ 7-6(2) 6-4 vQ · R2✓ 2-6 6-2 6-3 v[2] · QF✓ 6-1 6(7)-7 6-3 vQ",
      "gana": 4.75,
      "set1": 3.7
@@ -776,7 +818,8 @@
      "nombre": "Yu Hsiou Hsu",
      "pais": "TPE",
      "marca": "[1]",
-     "rank": "ATP 222",
+     "atp": 222,
+     "wtn": 3.25,
      "llega": "R1✓ 7-6(5) 6-3 vWC · R2✓ 6-2 7-6(5) vWC · QF✓ 6-3 6-2 vQ",
      "gana": 1.47,
      "set1": 1.53
@@ -785,7 +828,8 @@
      "nombre": "Masamichi Imamura",
      "pais": "JPN",
      "marca": "[5]",
-     "rank": "ATP 409",
+     "atp": 409,
+     "wtn": 4.49,
      "llega": "R1✓ 6-4 6-1 · R2✓ 6-1 6-0 vQ · QF✓ 3-6 6-0 10-2",
      "gana": 2.45,
      "set1": 2.3
@@ -812,7 +856,8 @@
      "nombre": "Shunsuke Mitsui",
      "pais": "JPN",
      "marca": "",
-     "rank": "ATP 651",
+     "atp": 651,
+     "wtn": 3.68,
      "llega": "R1✓ 6-3 6-2 v[8] · R2✓ 6-2 6-1 · QF✓ 7-6(4) 4-6 10-7 v[3]",
      "gana": 1.62,
      "set1": 1.67
@@ -821,7 +866,8 @@
      "nombre": "Matthew Dellavedova",
      "pais": "AUS",
      "marca": "[2]",
-     "rank": "ATP 309",
+     "atp": 309,
+     "wtn": 4.32,
      "llega": "R1✓ 7-6(1) 6-0 vWC · R2✓ 6-1 6-2 vQ · QF✓ 6-2 6-4",
      "gana": 2.1,
      "set1": 2.05
@@ -848,7 +894,8 @@
      "nombre": "Mika Petkovic",
      "pais": "GER",
      "marca": "[4]",
-     "rank": "ATP 428",
+     "atp": 428,
+     "wtn": 4.57,
      "llega": "R1✓ 6-3 6-2 vQ · R2✓ 2-6 6-4 6-3 vQ",
      "gana": 1.4,
      "set1": 1.47
@@ -857,7 +904,8 @@
      "nombre": "TIM Handel",
      "pais": "GER",
      "marca": "",
-     "rank": "ATP 772",
+     "atp": 772,
+     "wtn": 6.82,
      "llega": "R1✓ 6-4 7-6(8) · R2✓ 6-2 6-4 v[7]",
      "gana": 2.65,
      "set1": 2.42
@@ -884,7 +932,8 @@
      "nombre": "Nicola Senn",
      "pais": "SUI",
      "marca": "Q",
-     "rank": "ATP 1832",
+     "atp": 1832,
+     "wtn": 12.28,
      "llega": "Q1✓ 6-3 7-6(3) vWC · Q2✓ 6-2 6-0 v[13] · R1✓ 6-3 6-0 vWC · R2✓ 4-2 v[1]",
      "gana": 2.52,
      "set1": 2.35
@@ -893,7 +942,8 @@
      "nombre": "Tymur Bieldiugin",
      "pais": "UKR",
      "marca": "Q",
-     "rank": "ATP 1582",
+     "atp": 1582,
+     "wtn": 10.33,
      "llega": "Q1✓ 6-0 6-2 · Q2✓ 6-3 6-1 v[10] · R1✓ 2-6 7-6(2) 6-3 · R2✓ 6-1 6(4)-7 6-2 v[8]",
      "gana": 1.44,
      "set1": 1.5
@@ -920,7 +970,8 @@
      "nombre": "Maximilian Marterer",
      "pais": "GER",
      "marca": "",
-     "rank": null,
+     "atp": 581,
+     "wtn": 3.07,
      "llega": "R1✓ 2-6 6-0 6-3",
      "gana": null,
      "set1": null
@@ -929,7 +980,8 @@
      "nombre": "Daniel Masur",
      "pais": "GER",
      "marca": "[2]",
-     "rank": "ATP 377",
+     "atp": 377,
+     "wtn": 3.7,
      "llega": "R1✓ 6-4 6-3 · R2✓ 7-6(8) 6-3 vWC",
      "gana": null,
      "set1": null
@@ -956,7 +1008,8 @@
      "nombre": "Jannik Maute",
      "pais": "GER",
      "marca": "Q",
-     "rank": "WTN 10.68",
+     "atp": null,
+     "wtn": 10.68,
      "llega": "Q1✓ 6-2 6-0 v[15] · Q2✓ 6-2 6-4 v[1] · R1✓ 6-3 7-5 vWC · R2✓ 7-6(3) 6(5)-7 6-4 v[5]",
      "gana": 3.05,
      "set1": 2.67
@@ -965,7 +1018,8 @@
      "nombre": "Arthur Nagel",
      "pais": "FRA",
      "marca": "[3]",
-     "rank": "ATP 399",
+     "atp": 399,
+     "wtn": 5.71,
      "llega": "R1✓ 6-3 6-2 vQ · R2✓ 6-1 6(6)-7 6-2",
      "gana": 1.32,
      "set1": 1.4

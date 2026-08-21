@@ -141,6 +141,20 @@ function trayectoria(nombre, cuadros) {
   return pasos.join(' · ');
 }
 
+/* Índice GLOBAL de entry lists: el WTN (World Tennis Number) es el rating
+   de nivel real de ITF — mide cómo juega, no puntos acumulados — y resulta
+   mejor predictor que el ranking ATP en este circuito. Se busca en todas
+   las listas porque un jugador puede faltar en la de su propio torneo. */
+const listaGlobal = [];
+for (const f of fs.existsSync(DATOS) ? fs.readdirSync(DATOS) : []) {
+  if (!f.endsWith('.aceptacion.json')) continue;
+  const a = leer(path.join(DATOS, f));
+  if (a) for (const sec of Object.values(a.secciones)) listaGlobal.push(...sec);
+}
+function fichaDe(nombre) {
+  return listaGlobal.find(x => pareceElMismo(nombre, { nombre: x.nombre })) || null;
+}
+
 /* Índice por torneo: cuadros, entry list y lados por matchId. */
 const ctxCache = new Map();
 function contextoTorneo(clave) {
@@ -201,12 +215,13 @@ for (const t of activos) {
         + (propia ? 0 : (p.orden - 1) * 75 * 60e3);
       const lados = p.lados.map(l => {
         const delCuadro = (ctx.porMatch.get(p.matchId) || []).find(x => pareceElMismo(l.nombre, x));
-        const en = ctx.listado.find(x => pareceElMismo(l.nombre, { nombre: x.nombre }));
+        const en = ctx.listado.find(x => pareceElMismo(l.nombre, { nombre: x.nombre })) || fichaDe(l.nombre);
         return {
           nombre: l.nombre,
           pais: l.jugadores?.[0]?.pais || '',
           marca: marcaDe(delCuadro) || marcaDe(l),
-          rank: en?.atp ? 'ATP ' + en.atp : (en?.wtn ? 'WTN ' + en.wtn : null),
+          atp: en?.atp ?? null,
+          wtn: en?.wtn ?? null,
           llega: ctx.cuadros ? trayectoria(l.nombre, ctx.cuadros) : '',
         };
       });
@@ -235,7 +250,7 @@ fs.writeFileSync(path.join(DIR, 'itf-mesa-datos.json'), JSON.stringify({
     local: p.hhmm, horarioTxt: p.horarioTxt, cancha: p.cancha, turno: p.turno,
     ronda: p.ronda, evento: p.evento,
     lados: p.lados.map((l, k) => ({
-      nombre: l.nombre, pais: l.pais, marca: l.marca, rank: l.rank,
+      nombre: l.nombre, pais: l.pais, marca: l.marca, atp: l.atp, wtn: l.wtn,
       llega: l.llega.replace(/<[^>]+>/g, ''),
       gana: p.cuotas?.lados[k].gana ?? null,
       set1: p.cuotas?.lados[k].set1 ?? null,
@@ -258,12 +273,14 @@ function filas(p) {
   const top = analisis.destacados?.includes(p.matchId);
   const clave = `${p.t.nombre}|${p.ordenTs}`;
   const marcaVer = l => v && v.favorito && pareceElMismo(v.favorito.replace(/\s*\[\d+\]|\s*\(Q\)|\s*\(JR\)|\s*\(WC\)/g, ''), { nombre: l.nombre });
+  const w0 = p.lados[0].wtn, w1 = p.lados[1].wtn;
+  const mejorWtn = (w0 && w1) ? (w0 < w1 ? 0 : 1) : -1;
   const linea = (l, k) => `<tr class="${k ? 'b' : 'a'}" data-torneo="${esc(p.t.nombre)}" data-ts="${p.ordenTs}" data-par="${esc(clave)}">
     ${k ? '' : `<td rowspan="2" class="c-cuando"><b class="mono">${esc(dia)}</b><span class="loc mono">${esc(local)} loc · <b>${esc(horaCl)}</b> CL</span></td>
     <td rowspan="2" class="c-torneo">${esc(p.t.nombre)}<span class="loc">${esc(p.t.pais)} · ${esc(p.t.superficie || '')}</span></td>
     <td rowspan="2" class="c-ronda"><span class="mono">${p.evento === 'Q' ? 'Q·' : ''}${esc(p.ronda)}</span><span class="loc">${esc(p.cancha || '')} ${esc(turno)}</span></td>`}
     <td class="c-jug${marcaVer(l) ? ' elegido' : ''}">${marcaVer(l) ? '<span class="tick" title="elegido por el análisis">▸</span>' : ''}${esc(l.nombre)}${l.marca ? ` <b>${esc(l.marca)}</b>` : ''}<span class="pais">${esc(l.pais)}</span></td>
-    <td class="c-rank mono">${esc(l.rank || '')}</td>
+    <td class="c-rank mono">${l.atp ? 'ATP ' + l.atp : '<span class="sin">sin ATP</span>'}<span class="wtn${mejorWtn === k ? ' mejor' : ''}">${l.wtn != null ? 'WTN ' + (+l.wtn).toFixed(2) : ''}</span></td>
     <td class="c-od mono">${num(cq?.lados[k].gana)}</td>
     <td class="c-od mono">${num(cq?.lados[k].set1)}</td>
     <td class="c-llega">${l.llega || '<span class="sin">debuta</span>'}</td>
@@ -330,6 +347,8 @@ tr.par td{background:var(--franja)}
 .c-jug{font-weight:500;min-width:185px} .c-jug b{color:var(--acento);font-weight:600}
 .c-jug .pais{color:var(--tinta2);font-size:11px;margin-left:5px;font-weight:400}
 .c-rank{font-size:12px;color:var(--tinta2);white-space:nowrap}
+.wtn{display:block;font-size:11.5px;color:var(--tinta2);margin-top:1px}
+.wtn.mejor{color:var(--acento);font-weight:600}
 .c-od{text-align:right;font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;width:62px}
 .c-llega{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tinta2);line-height:1.6}
 .c-llega i{font-style:normal} .c-llega .g{color:var(--acento);font-weight:600}
@@ -358,6 +377,7 @@ tr.analisis b{color:var(--tinta)} .pasar{color:var(--tinta2)!important;font-weig
 .resumen{background:var(--carta);border:1px solid var(--linea);border-left:3px solid var(--acento);
   border-radius:6px;padding:16px 20px;margin-bottom:14px}
 .resumen h2{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:21px;margin:0 0 6px;letter-spacing:.5px}
+.titular{font-size:14px;color:var(--tinta);margin:0 0 8px;font-weight:500}
 .resumen-nota{font-size:12.5px;color:var(--tinta2);margin:0}
 .mejores{margin:10px 0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:13.5px}
 .mejores .ctx{color:var(--tinta2);font-size:11.5px;margin-left:8px}
@@ -378,6 +398,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <p class="nota">Solo lo que ITF marca <b>por jugar</b> en su order of play (los jugados y en curso quedan fuera) · ${partidos.length} partidos, <b>${conCuota} con cuota</b> de Betano y ${partidos.length - conCuota} que Betano todavía no cotiza (abre la línea horas antes) · hora local del torneo y hora de Chile.</p>
 <div id="resumen" class="resumen" hidden>
   <h2>Lo que ve el análisis</h2>
+  ${analisis.titular ? `<p class="titular">${esc(analisis.titular)}</p>` : ''}
   <p class="resumen-nota">Sobre ${partidos.length} partidos por jugar, con las reglas medidas en ${saber.reglasMedidas?.length || 0} patrones de nuestros propios datos (${(saber.reglasMedidas || []).reduce((n, r) => n + (r.n || 0), 0).toLocaleString('es-CL')} partidos históricos). Análisis del ${analisis.generado ? analisis.generado.slice(0, 16).replace('T', ' ') + ' UTC' : '—'}.</p>
   <ol class="mejores">${(analisis.destacados || []).map(id => {
     const p = partidos.find(x => x.matchId === id); const v = analisis.veredictos[String(id)];
@@ -388,7 +409,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
   <p class="resumen-nota">${Object.values(analisis.veredictos).filter(v => v.mercado === 'pasar').length} partidos marcados para pasar (parejos o en la banda de cuota donde el favorito rinde menos de lo que promete).</p>
 </div>
 ${partidos.length ? `<div class="tabla-env"><table>
-  <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Jugador</th><th>Ranking</th>
+  <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Jugador</th><th>ATP / WTN</th>
     <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
   <tbody id="cuerpo">${partidos.map(filas).join('')}</tbody>
 </table></div>` : '<p class="vacio">Nada por jugar en la programación de ITF ahora mismo. Recarga más tarde.</p>'}
