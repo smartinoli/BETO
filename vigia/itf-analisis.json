@@ -1,18 +1,19 @@
 {
  "generado": "2026-08-21T20:06:15+00:00",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + vigia/itf-saber.json",
- "titular": "La diferencia de WTN solo vale desde 1.5: bajo eso acierta 52-57% (azar) y sobre 4 acierta 88%. Con esa vara, 11 de los 26 partidos comparables son moneda al aire.",
+ "titular": "La diferencia de WTN solo vale desde 1.5. Y cuando choca con la forma, decide el tamaño de la brecha: bajo 2.5 manda la forma (42%), sobre 2.5 manda el nivel (63%).",
  "advertencia": "Acertar el ganador no es ganar: el mercado ya paga esos favoritos. Solo Borg junta señal fuerte y cuota generosa.",
  "veredictos": {
   "1183664355": {
    "favorito": "Leo Borg [1]",
    "confianza": "alta",
    "mercado": "gana",
-   "razon": "LA OPORTUNIDAD DE LA MESA: Δ3.10 de WTN a favor de Borg (5.40 contra 8.50) — en esa banda el mejor WTN acierta 72% — y sin embargo paga 2.45 mientras Lithen es favorito a 1.47. El mercado premia la forma de la semana e ignora la brecha de nivel. Es el único partido con señal fuerte y cuota generosa a la vez.",
+   "razon": "EL CASO MEDIDO: Borg y Lithen son un CHOQUE — mejor WTN contra mejor forma. Nuestros datos dicen que ese choque es 50/50 en general, PERO cuando la brecha de nivel es grande (Δ2.5+, y acá es Δ3.10) el WTN se impone 63% (n=27, ±18). El mercado está pesando la forma de Lithen y paga 2.45 a Borg, que implica 40.8%. Incluso en el borde pesimista del intervalo (45%) el precio deja ganancia. Es la mejor relación señal/precio de la mesa — con la advertencia de que el mercado puede saber algo que nosotros no (lesión, físico).",
    "banderas": [
     "Δ3.10 fuerte",
+    "choque nivel vs forma",
     "valor de cuota",
-    "mercado invertido"
+    "n=27 muestra chica"
    ]
   },
   "1183661737": {

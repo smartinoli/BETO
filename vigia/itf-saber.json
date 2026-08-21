@@ -75,10 +75,16 @@
    "uso": "solo las colas importan; si Betano paga >3% más que bet365, hay algo"
   },
   {
-   "regla": "El WTN pierde valor en rondas avanzadas: con Δ<1.5 en QF o después, el mejor WTN ganó solo 40% (n=15). En R1-R2 con Δ<1.5 gana 59%.",
-   "n": 39,
+   "regla": "El WTN NO pierde valor en rondas avanzadas cuando la brecha es real: con Δ>=1.5 acierta 75.0% en QF/SF/F (n=24) y 79.3% en R1-R2 (n=82). El 40% que vi antes era solo para Δ<1.5, donde de todos modos es ruido.",
+   "n": 106,
    "fuente": "backtest por ronda 2026-08-21",
-   "uso": "en semis y finales entre jugadores parejos, el nivel de base no decide: pesa más la forma del torneo"
+   "uso": "no descartar el WTN por ser ronda avanzada: descartar por brecha chica"
+  },
+  {
+   "regla": "Cuando WTN y forma se contradicen, decide el TAMAÑO de la brecha: con Δ<2.5 gana la forma (WTN acierta 42.1%, n=19); con Δ>=2.5 gana el nivel (WTN acierta 63.0%, n=27).",
+   "n": 46,
+   "fuente": "backtest de choques 2026-08-21",
+   "uso": "la regla operativa más útil que tenemos: en un choque, mirar primero cuánto es el Δ"
   }
  ],
  "senalesDelCuadro": [
@@ -189,6 +195,13 @@
    },
    "correccionPropia": "Mi destacado Mitsui vs Dellavedova tenía Δ0.64 — ruido. Y Marterer vs Masur Δ0.63: la alerta ahí es el precio (ranking ausente), no la brecha de nivel.",
    "conclusion": "De 26 partidos comparables de la mesa, 11 quedaron en moneda al aire y solo Borg junta señal fuerte con cuota generosa."
+  },
+  {
+   "fecha": "2026-08-21",
+   "corrida": "choque WTN vs forma por tamaño de brecha",
+   "hallazgo": "El choque no es 'gana el nivel' ni 'gana la forma': depende del Δ. Bajo 2.5 la forma acierta 58%, sobre 2.5 el nivel acierta 63%.",
+   "aplicacion": "Borg vs Lithen (Δ3.10, choque) queda del lado del nivel: 63% contra una cuota que implica 40.8%.",
+   "cautela": "n=27 y ±18: el borde inferior (45%) todavía deja ganancia a 2.45, pero es muestra chica y el mercado puede tener información privada."
   }
  ],
  "pendienteCritico": "Juntar (cuota + ΔWTN + resultado) del MISMO partido: hoy tenemos 0 pares. El libro itf-registro.json ya los acumula en cada corrida; con ~100 pares se podrá saber si nuestras señales superan el vig de 9%.",
