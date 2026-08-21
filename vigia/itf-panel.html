@@ -1,0 +1,1156 @@
+<title>Vigía ITF</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --papel:#F3F5F7; --carta:#FFFFFF; --tinta:#1A2732; --tinta2:#5A6B7A;
+  --linea:#D9E0E6; --acento:#0F6B5C; --acento-suave:#E3EFEB;
+  --arcilla-bg:#F4E3DD; --arcilla-tx:#8C3A25; --dura-bg:#E0EAF5; --dura-tx:#24568C;
+  --pasto-bg:#E2EEDF; --pasto-tx:#33632F; --alerta:#A33B2A;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --papel:#0F151B; --carta:#161F28; --tinta:#DAE4EC; --tinta2:#8FA1B0;
+  --linea:#26313C; --acento:#3FB79E; --acento-suave:#15302B;
+  --arcilla-bg:#3A241D; --arcilla-tx:#E5A18F; --dura-bg:#1C2C40; --dura-tx:#9FC0E8;
+  --pasto-bg:#20301D; --pasto-tx:#A6CC9F; --alerta:#E08A79;
+}}
+:root[data-theme="dark"]{
+  --papel:#0F151B; --carta:#161F28; --tinta:#DAE4EC; --tinta2:#8FA1B0;
+  --linea:#26313C; --acento:#3FB79E; --acento-suave:#15302B;
+  --arcilla-bg:#3A241D; --arcilla-tx:#E5A18F; --dura-bg:#1C2C40; --dura-tx:#9FC0E8;
+  --pasto-bg:#20301D; --pasto-tx:#A6CC9F; --alerta:#E08A79;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);
+  font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif;}
+.envoltura{max-width:1160px;margin:0 auto;padding:32px 20px 64px;display:flex;flex-direction:column;gap:40px}
+header.cabecera h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:44px;
+  line-height:1.05;margin:0;letter-spacing:.5px;text-wrap:balance}
+header.cabecera .bajo{color:var(--tinta2);margin:6px 0 0;font-size:14px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--acento);margin:0 0 12px}
+section h2{margin:0}
+/* stats del pasado */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{background:var(--carta);border:1px solid var(--linea);border-radius:6px;padding:14px 16px}
+.tile .v{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:34px;line-height:1;
+  font-variant-numeric:tabular-nums}
+.tile .k{color:var(--tinta2);font-size:12.5px;margin-top:5px;line-height:1.35}
+/* tarjetas en juego */
+.malla{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.tarjeta{background:var(--carta);border:1px solid var(--linea);border-radius:6px;padding:16px 18px;
+  display:flex;flex-direction:column;gap:10px}
+.tarjeta h3{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:23px;margin:0;line-height:1.1}
+.tarjeta .sub{color:var(--tinta2);font-size:13px;margin:4px 0 0}
+.fila-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:2px 8px;border-radius:99px;
+  border:1px solid var(--linea);color:var(--tinta2);white-space:nowrap}
+.chip.cat{background:var(--acento-suave);color:var(--acento);border-color:transparent;font-weight:500}
+.chip.sup-arcilla{background:var(--arcilla-bg);color:var(--arcilla-tx);border-color:transparent}
+.chip.sup-dura{background:var(--dura-bg);color:var(--dura-tx);border-color:transparent}
+.chip.sup-pasto{background:var(--pasto-bg);color:var(--pasto-tx);border-color:transparent}
+.metricas{display:grid;grid-template-columns:repeat(4,auto);gap:4px 18px;margin:0;padding:10px 0;
+  border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.metricas dt{font-size:11px;color:var(--tinta2);text-transform:uppercase;letter-spacing:.8px}
+.metricas dd{margin:0;font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.metricas dd.alerta{color:var(--alerta)}
+.cabezas{margin:0;padding:0 0 0 2px;list-style:none;display:flex;flex-direction:column;gap:3px;font-size:13.5px}
+.cabezas .rk{font-family:"IBM Plex Mono",monospace;color:var(--tinta2);display:inline-block;
+  min-width:42px;font-variant-numeric:tabular-nums}
+.cabezas .pais{color:var(--tinta2);font-size:12px}
+.nota{color:var(--tinta2);font-size:13px;margin:0}
+.enlace{color:var(--acento);font-size:13px;text-decoration:none;margin-top:auto}
+.enlace:hover,.enlace:focus-visible{text-decoration:underline}
+a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+/* tablas */
+.tabla-envoltura{overflow-x:auto;background:var(--carta);border:1px solid var(--linea);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:720px}
+th{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:14px;letter-spacing:1px;
+  text-transform:uppercase;color:var(--tinta2);text-align:left;padding:10px 14px;
+  border-bottom:1px solid var(--linea);white-space:nowrap}
+td{padding:8px 14px;border-bottom:1px solid var(--linea);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+footer{color:var(--tinta2);font-size:12.5px;border-top:1px solid var(--linea);padding-top:14px}
+/* por jugarse */
+.sub-torneo{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:20px;margin:18px 0 8px}
+.sub-fecha{font-size:11.5px;color:var(--tinta2);font-weight:400;margin-left:8px}
+.tabla-partidos{min-width:560px}
+.celda-partido{display:flex;flex-direction:column;gap:6px;padding:10px 14px}
+.jug{display:grid;grid-template-columns:minmax(180px,240px) 84px 128px 1fr;gap:12px;align-items:baseline}
+.jug-n b{color:var(--acento);font-weight:600}
+.jug-r{color:var(--tinta2)}
+.jug-c{font-size:12px;color:var(--tinta2);white-space:nowrap}
+.jug-c.fav{color:var(--tinta);font-weight:500}
+.jug-c.sin{opacity:.45}
+.jug-t{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tinta2)}
+.paso-g{color:var(--acento)}
+.paso-vs{color:var(--tinta);font-weight:500}
+.paso-p,.paso-ret{color:var(--alerta)}
+.chip.est-f{background:var(--acento-suave);color:var(--acento);border-color:transparent}
+.chip.est-d{background:var(--arcilla-bg);color:var(--alerta);border-color:transparent}
+@media (max-width:640px){ .jug{grid-template-columns:1fr;gap:2px} }
+</style>
+<div class="envoltura">
+<header class="cabecera">
+  <h1>Vigía ITF</h1>
+  <p class="bajo">World Tennis Tour masculino · generado 2026-08-21 · calendario al 2026-08-20</p>
+</header>
+
+<section>
+  <p class="eyebrow">El pasado, medido — 14 torneos terminados, 433 partidos de main draw</p>
+  <div class="tiles">
+    <div class="tile"><div class="v">46%</div><div class="k">partidos de R1 con un qualifier</div></div>
+    <div class="tile"><div class="v">33%</div><div class="k">gana el qualifier vs entrada directa (n94)</div></div>
+    <div class="tile"><div class="v">0/5</div><div class="k">record de lucky losers en R1</div></div>
+    <div class="tile"><div class="v">72%</div><div class="k">gana el seed vs no-seed en R1 (n109)</div></div>
+    <div class="tile"><div class="v">5%</div><div class="k">partidos de main que terminan en retiro</div></div>
+    <div class="tile"><div class="v">11/14</div><div class="k">campeones con seed</div></div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">En juego esta semana — 14 torneos</p>
+  <div class="malla">
+    <article class="tarjeta">
+    <header>
+      <h3>M25 Lesa</h3>
+      <div class="fila-chips"><span class="chip cat">M25</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Italy · $30,000 · M25 Lesa</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>371–896</dd></div>
+      <div><dt>Sin rank</dt><dd>3/20</dd></div>
+      <div><dt>Retiros pre</dt><dd>338</dd></div>
+      <div><dt>Última semana</dt><dd>86</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">371</span> Francesco Forti <span class="pais">ITA</span></li><li><span class="rk">384</span> Laurent Lokoli <span class="pais">FRA</span></li><li><span class="rk">402</span> Gabriele Piraino <span class="pais">ITA</span></li><li><span class="rk">438</span> Juan Cruz Martin Manzano <span class="pais">ITA</span></li><li><span class="rk">452</span> Gianmarco Ferrari <span class="pais">ITA</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m25-lesa/ita/2026/m-itf-ita-2026-007/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M25 Ueberlingen</h3>
+      <div class="fila-chips"><span class="chip cat">M25</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Germany · $30,000 · Überlingen Open</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>365–1015</dd></div>
+      <div><dt>Sin rank</dt><dd>3/20</dd></div>
+      <div><dt>Retiros pre</dt><dd>377</dd></div>
+      <div><dt>Última semana</dt><dd>78</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">365</span> Max Wiskandt <span class="pais">GER</span></li><li><span class="rk">377</span> Daniel Masur <span class="pais">GER</span></li><li><span class="rk">399</span> Arthur Nagel <span class="pais">FRA</span></li><li><span class="rk">428</span> Mika Petkovic <span class="pais">GER</span></li><li><span class="rk">441</span> Denis Yevseyev <span class="pais">KAZ</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m25-ueberlingen/ger/2026/m-itf-ger-2026-015/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M25 Santander</h3>
+      <div class="fila-chips"><span class="chip cat">M25</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Spain · $30,000 · LXXVII TORNEO INTERNACIONAL RSTM</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>374–1294</dd></div>
+      <div><dt>Sin rank</dt><dd>3/20</dd></div>
+      <div><dt>Retiros pre</dt><dd>295</dd></div>
+      <div><dt>Última semana</dt><dd>86</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">374</span> Carlos Sanchez Jover <span class="pais">ESP</span></li><li><span class="rk">459</span> Ivan Gakhov <span class="pais">RUS</span></li><li><span class="rk">461</span> Sergi Perez Contri <span class="pais">ESP</span></li><li><span class="rk">530</span> Pedro Vives Marcos <span class="pais">ESP</span></li><li><span class="rk">580</span> Alexander Ritschard <span class="pais">SUI</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m25-santander/esp/2026/m-itf-esp-2026-034/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M25 Taipei</h3>
+      <div class="fila-chips"><span class="chip cat">M25</span><span class="chip sup-dura">Dura</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Chinese Taipei · $30,000 · Formosa Cup</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>222–651</dd></div>
+      <div><dt>Sin rank</dt><dd>4/20</dd></div>
+      <div><dt>Retiros pre</dt><dd>262</dd></div>
+      <div><dt>Última semana</dt><dd>40</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">222</span> Yu Hsiou Hsu <span class="pais">TPE</span></li><li><span class="rk">309</span> Matthew Dellavedova <span class="pais">AUS</span></li><li><span class="rk">357</span> Tung-Lin Wu <span class="pais">TPE</span></li><li><span class="rk">403</span> Kasidit Samrej <span class="pais">THA</span></li><li><span class="rk">409</span> Masamichi Imamura <span class="pais">JPN</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m25-taipei/tpe/2026/m-itf-tpe-2026-001/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M25 Idanha-a-Nova</h3>
+      <div class="fila-chips"><span class="chip cat">M25</span><span class="chip sup-dura">Dura</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Portugal · $30,000 · M25 Idanha-a-Nova</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>295–1069</dd></div>
+      <div><dt>Sin rank</dt><dd>2/19</dd></div>
+      <div><dt>Retiros pre</dt><dd>310</dd></div>
+      <div><dt>Última semana</dt><dd>83</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">295</span> Philip Henning <span class="pais">RSA</span></li><li><span class="rk">363</span> Robin Bertrand <span class="pais">FRA</span></li><li><span class="rk">504</span> Fabrizio Andaloro <span class="pais">ITA</span></li><li><span class="rk">532</span> Izan Almazan Valiente <span class="pais">ESP</span></li><li><span class="rk">611</span> Alberto Barroso Campos <span class="pais">ESP</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m25-idanha-a-nova/por/2026/m-itf-por-2026-013/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M25 Slovenj Gradec</h3>
+      <div class="fila-chips"><span class="chip cat">M25</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Slovenia · $30,000 · SLOVENJ GRADEC OPEN</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>352–1167</dd></div>
+      <div><dt>Sin rank</dt><dd>5/20</dd></div>
+      <div><dt>Retiros pre</dt><dd>398</dd></div>
+      <div><dt>Última semana</dt><dd>78</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">352</span> Mili Poljicak <span class="pais">CRO</span></li><li><span class="rk">400</span> Samuele Pieri <span class="pais">ITA</span></li><li><span class="rk">427</span> Valerio Aboian <span class="pais">ARG</span></li><li><span class="rk">476</span> Sebastian Sorger <span class="pais">AUT</span></li><li><span class="rk">497</span> Giuseppe La Vela <span class="pais">ITA</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m25-slovenj-gradec/slo/2026/m-itf-slo-2026-010/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M15 Arad</h3>
+      <div class="fila-chips"><span class="chip cat">M15</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Romania · $15,000 · M15 Arad</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>534–1203</dd></div>
+      <div><dt>Sin rank</dt><dd>4/19</dd></div>
+      <div><dt>Retiros pre</dt><dd>413</dd></div>
+      <div><dt>Última semana</dt><dd>129</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">534</span> Sebastian Gima <span class="pais">ROU</span></li><li><span class="rk">589</span> Dragos Nicolae Madaras <span class="pais">SWE</span></li><li><span class="rk">630</span> Ignacio Monzon <span class="pais">ARG</span></li><li><span class="rk">664</span> Stefan Adrian Andreescu <span class="pais">ROU</span></li><li><span class="rk">828</span> Anas Mazdrashki <span class="pais">BUL</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m15-arad/rou/2026/m-itf-rou-2026-012/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M15 Krakow</h3>
+      <div class="fila-chips"><span class="chip cat">M15</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Poland · $15,000 · Krakow Open</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>305–1393</dd></div>
+      <div><dt>Sin rank</dt><dd>4/19</dd></div>
+      <div><dt>Retiros pre</dt><dd>520</dd></div>
+      <div><dt>Última semana</dt><dd>142</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">305</span> Daniel Michalski <span class="pais">POL</span></li><li><span class="rk">591</span> Karol Filar <span class="pais">POL</span></li><li><span class="rk">653</span> Peter Fajta <span class="pais">HUN</span></li><li><span class="rk">764</span> Mate Valkusz <span class="pais">HUN</span></li><li><span class="rk">780</span> Filippo Moroni <span class="pais">ITA</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m15-krakow/pol/2026/m-itf-pol-2026-007/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M15 Kursumlijska Banja </h3>
+      <div class="fila-chips"><span class="chip cat">M15</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Serbia · $15,000 · M15 Kursumlijska Banja </p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>424–1424</dd></div>
+      <div><dt>Sin rank</dt><dd>3/19</dd></div>
+      <div><dt>Retiros pre</dt><dd>378</dd></div>
+      <div><dt>Última semana</dt><dd>99</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">424</span> Semen Pankin <span class="pais">RUS</span></li><li><span class="rk">625</span> Dmitry Popko <span class="pais">KAZ</span></li><li><span class="rk">686</span> Timofei Derepasko <span class="pais">RUS</span></li><li><span class="rk">722</span> Anton Arzhankin <span class="pais">RUS</span></li><li><span class="rk">771</span> Denis Klok <span class="pais">RUS</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m15-kursumlijska-banja-/srb/2026/m-itf-srb-2026-015/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M15 Maanshan</h3>
+      <div class="fila-chips"><span class="chip cat">M15</span><span class="chip sup-dura">Dura</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">China, P.R. · $15,000 · 2026 Ma'anshan Open</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>281–1009</dd></div>
+      <div><dt>Sin rank</dt><dd>3/20</dd></div>
+      <div><dt>Retiros pre</dt><dd>230</dd></div>
+      <div><dt>Última semana</dt><dd>38</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">281</span> Petr Bar Biryukov <span class="pais">RUS</span></li><li><span class="rk">549</span> M Rifqi Fitriadi <span class="pais">INA</span></li><li><span class="rk">562</span> Kokoro Isomura <span class="pais">JPN</span></li><li><span class="rk">640</span> Chase Ferguson <span class="pais">AUS</span></li><li><span class="rk">677</span> Yusuke Takahashi <span class="pais">JPN</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m15-maanshan/chn/2026/m-itf-chn-2026-028/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M15 Mistelbach</h3>
+      <div class="fila-chips"><span class="chip cat">M15</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Austria · $15,000 · Pro-Ject Open 2026</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>430–1297</dd></div>
+      <div><dt>Sin rank</dt><dd>5/18</dd></div>
+      <div><dt>Retiros pre</dt><dd>529</dd></div>
+      <div><dt>Última semana</dt><dd>163</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">430</span> Vladyslav Orlov <span class="pais">UKR</span></li><li><span class="rk">586</span> Marcel Zielinski <span class="pais">POL</span></li><li><span class="rk">652</span> Nikita Mashtakov <span class="pais">UKR</span></li><li><span class="rk">767</span> Attila Dominik Boros <span class="pais">HUN</span></li><li><span class="rk">796</span> Gabriele Pennaforti <span class="pais">ITA</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m15-mistelbach/aut/2026/m-itf-aut-2026-002/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M15 Bastad</h3>
+      <div class="fila-chips"><span class="chip cat">M15</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Sweden · $15,000 · M15 Bastad</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>542–1427</dd></div>
+      <div><dt>Sin rank</dt><dd>2/20</dd></div>
+      <div><dt>Retiros pre</dt><dd>397</dd></div>
+      <div><dt>Última semana</dt><dd>103</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">542</span> Leo Borg <span class="pais">SWE</span></li><li><span class="rk">703</span> Andreja Petrovic <span class="pais">NOR</span></li><li><span class="rk">745</span> Herman Hoeyeraal <span class="pais">NOR</span></li><li><span class="rk">761</span> John Hallquist Lithen <span class="pais">SWE</span></li><li><span class="rk">799</span> Nikola Slavic <span class="pais">SWE</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m15-bastad/swe/2026/m-itf-swe-2026-003/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M15 Lambermont</h3>
+      <div class="fila-chips"><span class="chip cat">M15</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/23</span></div>
+      <p class="sub">Belgium · $15,000 · Tournoi International de la Province de Liège</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>410–1385</dd></div>
+      <div><dt>Sin rank</dt><dd>5/20</dd></div>
+      <div><dt>Retiros pre</dt><dd>322</dd></div>
+      <div><dt>Última semana</dt><dd>101</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">410</span> Jack Loge <span class="pais">BEL</span></li><li><span class="rk">588</span> Romain Faucon <span class="pais">BEL</span></li><li><span class="rk">616</span> Marlon Vankan <span class="pais">GER</span></li><li><span class="rk">704</span> Marc Majdandzic <span class="pais">GER</span></li><li><span class="rk">723</span> Martin VAN DER MEERSCHEN <span class="pais">BEL</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m15-lambermont/bel/2026/m-itf-bel-2026-004/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+<article class="tarjeta">
+    <header>
+      <h3>M15 Asuncion</h3>
+      <div class="fila-chips"><span class="chip cat">M15</span><span class="chip sup-arcilla">Arcilla</span><span class="chip fechas">08/17–08/22</span></div>
+      <p class="sub">Paraguay · $15,000 · M15 Asuncion</p>
+    </header>
+    <dl class="metricas">
+      <div><dt>Corte ATP</dt><dd>315–1075</dd></div>
+      <div><dt>Sin rank</dt><dd>2/18</dd></div>
+      <div><dt>Retiros pre</dt><dd>144</dd></div>
+      <div><dt>Última semana</dt><dd>21</dd></div>
+    </dl>
+    <ol class="cabezas"><li><span class="rk">315</span> Gonzalo Villanueva <span class="pais">ARG</span></li><li><span class="rk">482</span> Joaquin Aguilar Cardozo <span class="pais">URU</span></li><li><span class="rk">694</span> Nicolas Villalon Valdes <span class="pais">CHI</span></li><li><span class="rk">739</span> Santiago De la fuente <span class="pais">ARG</span></li><li><span class="rk">760</span> Nicolas Zanellato <span class="pais">BRA</span></li></ol>
+    <a class="enlace" href="https://www.itftennis.com/en/tournament/m15-asuncion/par/2026/m-itf-par-2026-002/draws-and-results/" target="_blank" rel="noopener">cuadro en itftennis.com ↗</a>
+  </article>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Por jugarse — cuadros en vivo de los torneos en juego</p>
+  <h3 class="sub-torneo">M25 Lesa <span class="mono sub-fecha">cuadro al 2026-08-20 22:26</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
+      <tbody><tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Lorenzo Comino <b>WC</b></span>
+    <span class="jug-r mono">ATP 1178</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 4-0</span> <span class="paso-vs">v[1]</span></span></div><div class="jug"><span class="jug-n">Pierluigi Basile</span>
+    <span class="jug-r mono">ATP 623</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-1 6-3</span> <span class="paso-vs">vWC</span></span></div></td></tr>
+<tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Nico Hipfl</span>
+    <span class="jug-r mono">ATP 918</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 7-6(4) 6-2</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Stefano Reitano <b>WC</b></span>
+    <span class="jug-r mono">sin rank</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 7-6(7)</span> <span class="paso-vs">v[6]</span></span></div></td></tr>
+<tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Juan Cruz Martin Manzano <b>[4]</b></span>
+    <span class="jug-r mono">ATP 438</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 6-1</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Giovanni Oradini</span>
+    <span class="jug-r mono">ATP 636</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6-1</span> <span class="paso-vs">vQ</span></span></div></td></tr>
+<tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Daniele Rapagnetta</span>
+    <span class="jug-r mono">ATP 734</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 3-6 7-5</span> <span class="paso-vs">v[8]</span></span></div><div class="jug"><span class="jug-n">Manuel Mazza</span>
+    <span class="jug-r mono">ATP 756</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 3-6 6-4 6-3</span></span></div></td></tr>
+<tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Denis Constantin Spiridon <b>Q</b></span>
+    <span class="jug-r mono">ATP 1107</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-4 6-3</span> · <span class="paso-g">Q2✓ 6-3 6-1</span> <span class="paso-vs">v[14]</span> · <span class="paso-g">R1✓ 6-3 4-6 6-4</span></span></div><div class="jug"><span class="jug-n">Laurent Lokoli <b>[3]</b></span>
+    <span class="jug-r mono">ATP 384</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-1 6-4</span> <span class="paso-vs">vQ</span></span></div></td></tr>
+<tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Samuele Seghetti <b>WC</b></span>
+    <span class="jug-r mono">ATP 1486</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 6-0</span> <span class="paso-vs">v[5]</span></span></div><div class="jug"><span class="jug-n">Lorenzo Rottoli</span>
+    <span class="jug-r mono">ATP 896</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-0 3-6 6-0</span> <span class="paso-vs">vQ</span></span></div></td></tr>
+<tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Blu Baker</span>
+    <span class="jug-r mono">ATP 959</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 4-6 6-4</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Andrea De Marchi</span>
+    <span class="jug-r mono">ATP 813</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 7-5 2-1</span> <span class="paso-vs">v[2]</span></span></div></td></tr></tbody></table></div>
+<h3 class="sub-torneo">M25 Ueberlingen <span class="mono sub-fecha">cuadro al 2026-08-20 22:26</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
+      <tbody><tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Nicola Senn <b>Q</b></span>
+    <span class="jug-r mono">ATP 1832</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-3 7-6(3)</span> <span class="paso-vs">vWC</span> · <span class="paso-g">Q2✓ 6-2 6-0</span> <span class="paso-vs">v[13]</span> · <span class="paso-g">R1✓ 6-3 6-0</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 4-2</span> <span class="paso-vs">v[1]</span></span></div><div class="jug"><span class="jug-n">Tymur Bieldiugin <b>Q</b></span>
+    <span class="jug-r mono">ATP 1582</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-0 6-2</span> · <span class="paso-g">Q2✓ 6-3 6-1</span> <span class="paso-vs">v[10]</span> · <span class="paso-g">R1✓ 2-6 7-6(2) 6-3</span> · <span class="paso-g">R2✓ 6-1 6(4)-7 6-2</span> <span class="paso-vs">v[8]</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Mika Petkovic <b>[4]</b></span>
+    <span class="jug-r mono">ATP 428</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6-2</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 2-6 6-4 6-3</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">TIM Handel</span>
+    <span class="jug-r mono">ATP 772</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 7-6(8)</span> · <span class="paso-g">R2✓ 6-2 6-4</span> <span class="paso-vs">v[7]</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Jannik Maute <b>Q</b></span>
+    <span class="jug-r mono">WTN 10.68</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-2 6-0</span> <span class="paso-vs">v[15]</span> · <span class="paso-g">Q2✓ 6-2 6-4</span> <span class="paso-vs">v[1]</span> · <span class="paso-g">R1✓ 6-3 7-5</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 7-6(3) 6(5)-7 6-4</span> <span class="paso-vs">v[5]</span></span></div><div class="jug"><span class="jug-n">Arthur Nagel <b>[3]</b></span>
+    <span class="jug-r mono">ATP 399</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6-2</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 6-1 6(6)-7 6-2</span></span></div></td></tr></tbody></table></div>
+<h3 class="sub-torneo">M25 Taipei <span class="mono sub-fecha">cuadro al 2026-08-20 22:26</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
+      <tbody><tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Noritaka Koizumi <b>Q</b></span>
+    <span class="jug-r mono">ATP 946</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-3 6-1</span> · <span class="paso-g">Q2✓ 6-1 6-3</span> <span class="paso-vs">v[12]</span> · <span class="paso-g">R1✓ 6-3 7-6(4)</span></span></div><div class="jug"><span class="jug-n">Masamichi Imamura <b>[5]</b></span>
+    <span class="jug-r mono">ATP 409</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 6-1</span></span></div></td></tr>
+<tr><td class="mono">R2</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Shunsuke Mitsui</span>
+    <span class="jug-r mono">ATP 651</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6-2</span> <span class="paso-vs">v[8]</span></span></div><div class="jug"><span class="jug-n">Tsung-Hao Huang</span>
+    <span class="jug-r mono">ATP 620</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 7-5</span></span></div></td></tr></tbody></table></div>
+<h3 class="sub-torneo">M25 Slovenj Gradec <span class="mono sub-fecha">cuadro al 2026-08-20 22:27</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
+      <tbody><tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Sebastian Dominko</span>
+    <span class="jug-r mono">ATP 1122</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6-2</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 7-6(6) 6-1</span> <span class="paso-vs">v[1]</span></span></div><div class="jug"><span class="jug-n">Giuseppe La Vela <b>[5]</b></span>
+    <span class="jug-r mono">ATP 497</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-1 6-1</span> <span class="paso-vs">vLL</span> · <span class="paso-g">R2✓ 6-2 6-0</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Sebastian Sorger <b>[3]</b></span>
+    <span class="jug-r mono">ATP 476</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-0 6-0</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 6-0 6-1</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Luca Castagnola</span>
+    <span class="jug-r mono">ATP 784</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 4-6 6-3</span> · <span class="paso-g">R2✓ 7-6(6) 3-6 7-5</span> <span class="paso-vs">v[8]</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Filip Jeff Planinsek <b>[6]</b></span>
+    <span class="jug-r mono">ATP 592</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 7-6(4)</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 6-0 6-0</span> <span class="paso-vs">vWC</span></span></div><div class="jug"><span class="jug-n">Valerio Aboian <b>[4]</b></span>
+    <span class="jug-r mono">ATP 427</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 6-4</span> · <span class="paso-g">R2✓ 6-4 7-6(2)</span> <span class="paso-vs">vQ</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Frederic Schlossmann <b>Q</b></span>
+    <span class="jug-r mono">WTN 11.22</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-3 6-0</span> · <span class="paso-g">Q2✓ 6-1 6-0</span> <span class="paso-vs">v[8]</span> · <span class="paso-g">Q3✓ 6-4 6-2</span> <span class="paso-vs">v[16]</span> · <span class="paso-g">R1✓ 7-6(5) 6-1</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 6(4)-7 6-1 6-2</span> <span class="paso-vs">v[7]</span></span></div><div class="jug"><span class="jug-n">Jonas GUNDACKER <b>Q</b></span>
+    <span class="jug-r mono">ATP 1876</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q2✓ 6-1 6-1</span> · <span class="paso-g">Q3✓ 6-1 6-3</span> <span class="paso-vs">v[9]</span> · <span class="paso-g">R1✓ 7-6(2) 6-4</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 2-6 6-2 6-3</span> <span class="paso-vs">v[2]</span></span></div></td></tr></tbody></table></div>
+<h3 class="sub-torneo">M15 Arad <span class="mono sub-fecha">cuadro al 2026-08-20 22:27</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
+      <tbody><tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Tudor Batin</span>
+    <span class="jug-r mono">ATP 1203</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 6-3</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 6-4 4-6 7-5</span> <span class="paso-vs">v[1]</span></span></div><div class="jug"><span class="jug-n">Matteo Sciahbasi</span>
+    <span class="jug-r mono">ATP 1288</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 5-7 7-6(2) 1-0</span> · <span class="paso-g">R2✓ 6-2 6-4</span> <span class="paso-vs">v[5]</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Dragos Nicolae Madaras <b>[3]</b></span>
+    <span class="jug-r mono">ATP 589</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 6-0</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 6-4 4-6 6-2</span> <span class="paso-vs">vSE</span></span></div><div class="jug"><span class="jug-n">Giannicola Misasi <b>[8]</b></span>
+    <span class="jug-r mono">ATP 923</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-0 6-0</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 6-1 6-2</span> <span class="paso-vs">vLL</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Robert Guna <b>[7]</b></span>
+    <span class="jug-r mono">ATP 1028</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 6-0</span> <span class="paso-vs">vJR</span> · <span class="paso-g">R2✓ 6-3 6-2</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Ignacio Monzon <b>[4]</b></span>
+    <span class="jug-r mono">ATP 630</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-1 6-4</span> · <span class="paso-g">R2✓ 3-6 6-1 6-4</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Fermin Tenti <b>[6]</b></span>
+    <span class="jug-r mono">ATP 898</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 7-6(3) 6-3</span> · <span class="paso-g">R2✓ 6-3 6-4</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Iannis Miletich</span>
+    <span class="jug-r mono">ATP 1136</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 7-6(6) 6-2</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 3-6 6-1 4-0</span> <span class="paso-vs">v[2]</span></span></div></td></tr></tbody></table></div>
+<h3 class="sub-torneo">M15 Krakow <span class="mono sub-fecha">cuadro al 2026-08-20 22:27</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
+      <tbody><tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Daniel Michalski <b>[1]</b></span>
+    <span class="jug-r mono">ATP 305</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 6-2</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 6-1 6-4</span></span></div><div class="jug"><span class="jug-n">Tom Zeuch <b>[8]</b></span>
+    <span class="jug-r mono">ATP 911</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-1 5-7 6-2</span> · <span class="paso-g">R2✓ 6-1 4-6 7-6(5)</span> <span class="paso-vs">vWC</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Achilles Belkovics</span>
+    <span class="jug-r mono">ATP 1394</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6-3</span> · <span class="paso-g">R2✓ 6-4 7-5</span> <span class="paso-vs">v[3]</span></span></div><div class="jug"><span class="jug-n">Jan Sadzik <b>JR</b></span>
+    <span class="jug-r mono">ATP 1984</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6(6)-7 6-4</span> · <span class="paso-g">R2✓ 6-3 3-6 7-6(3)</span> <span class="paso-vs">v[7]WC</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Pawel Juszczak</span>
+    <span class="jug-r mono">ATP 1505</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 7-5</span> <span class="paso-vs">v[6]</span> · <span class="paso-g">R2✓ 6-4 6-1</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Mate Valkusz <b>[4]</b></span>
+    <span class="jug-r mono">ATP 764</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-1 6-0</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 6-4 6-2</span></span></div></td></tr></tbody></table></div>
+<h3 class="sub-torneo">M15 Maanshan <span class="mono sub-fecha">cuadro al 2026-08-20 22:28</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
+      <tbody><tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Petr Bar Biryukov <b>[1]</b></span>
+    <span class="jug-r mono">ATP 281</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 6-4</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 6-4 6(6)-7 6-4</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Tianhui Zhang <b>[7]</b></span>
+    <span class="jug-r mono">ATP 712</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 2-6 7-6(6) 6-4</span> · <span class="paso-g">R2✓ 6-4 6-2</span> <span class="paso-vs">vQ</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Kokoro Isomura <b>[3]</b></span>
+    <span class="jug-r mono">ATP 562</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 3-6 7-6(5) 6-1</span> · <span class="paso-g">R2✓ 6-2 6-2</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Yusuke Takahashi <b>[5]</b></span>
+    <span class="jug-r mono">ATP 677</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 6-3</span> · <span class="paso-g">R2✓ 6-2 6-1</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Ku Keon Kang <b>Q</b></span>
+    <span class="jug-r mono">WTN 10.14</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-0 6-0</span> · <span class="paso-g">Q2✓ 6-3 3-0</span> <span class="paso-vs">v[3]</span> · <span class="paso-g">Q3✓ 6-2 7-5</span> · <span class="paso-g">R1✓ 6-3 6-3</span> <span class="paso-vs">v[6]</span> · <span class="paso-g">R2✓ 1-6 6-3 6-4</span></span></div><div class="jug"><span class="jug-n">Yun Seong Chung</span>
+    <span class="jug-r mono">ATP 1059</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 6-4</span> <span class="paso-vs">v[4]</span> · <span class="paso-g">R2✓ 6-3 6-3</span> <span class="paso-vs">vWC</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Isaac Becroft <b>[8]</b></span>
+    <span class="jug-r mono">ATP 910</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6-2</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 6-1 6-4</span></span></div><div class="jug"><span class="jug-n">M Rifqi Fitriadi <b>[2]</b></span>
+    <span class="jug-r mono">ATP 549</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 5-7 6-0</span> · <span class="paso-g">R2✓ 6-3 6-1</span> <span class="paso-vs">vWC</span></span></div></td></tr></tbody></table></div>
+<h3 class="sub-torneo">M15 Mistelbach <span class="mono sub-fecha">cuadro al 2026-08-20 22:28</span></h3>
+      <div class="tabla-envoltura"><table class="tabla-partidos">
+      <thead><tr><th>Ronda</th><th>Partido — seed/entrada · ranking · cuotas (Betano · bet365) · cómo llega, con la marca del rival de cada resultado</th></tr></thead>
+      <tbody><tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">David Wallechner <b>Q</b></span>
+    <span class="jug-r mono">WTN 13.88</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-1 6-4</span> · <span class="paso-g">Q2✓ 6-0 6(4)-7 10-7</span> · <span class="paso-g">Q3✓ 2-6 6-4 10-7</span> <span class="paso-vs">v[15]</span> · <span class="paso-g">R1✓ 2-1</span> <span class="paso-vs">v[1]</span> · <span class="paso-g">R2✓ 6-3 6-0</span> <span class="paso-vs">vWC</span></span></div><div class="jug"><span class="jug-n">Gabriele Maria Noce <b>[6]</b></span>
+    <span class="jug-r mono">ATP 855</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-2 4-6 6-2</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 6-3 6-4</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Facundo Yunis <b>Q</b></span>
+    <span class="jug-r mono">ATP 2230</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">Q1✓ 6-3 6-0</span> · <span class="paso-g">Q2✓ 7-6(6) 6-3</span> · <span class="paso-g">Q3✓ 7-5 3-6 12-10</span> · <span class="paso-g">R1✓ 1-6 6-2 6-3</span> · <span class="paso-g">R2✓ 6-2 6-3</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Thilo Behrmann <b>JR</b></span>
+    <span class="jug-r mono">WTN 13.28</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-1 6-0</span> <span class="paso-vs">v[5]</span> · <span class="paso-g">R2✓ 6-1 6-2</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Alexander Wagner</span>
+    <span class="jug-r mono">ATP 1207</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 6-4</span> <span class="paso-vs">v[8]</span> · <span class="paso-g">R2✓ 7-5 7-6(7)</span></span></div><div class="jug"><span class="jug-n">Nikita Mashtakov <b>[3]</b></span>
+    <span class="jug-r mono">ATP 652</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-4 5-7 7-6(6)</span> · <span class="paso-g">R2✓ 7-6(5) 6-3</span> <span class="paso-vs">vLL</span></span></div></td></tr>
+<tr><td class="mono">QF</td>
+            <td class="celda-partido"><div class="jug"><span class="jug-n">Theodore Dean <b>[7]</b></span>
+    <span class="jug-r mono">ATP 888</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-3 6-4</span> <span class="paso-vs">vQ</span> · <span class="paso-g">R2✓ 2-6 7-6(5) 6-2</span> <span class="paso-vs">vQ</span></span></div><div class="jug"><span class="jug-n">Marcel Zielinski <b>[2]</b></span>
+    <span class="jug-r mono">ATP 586</span>
+    <span class="jug-c mono sin">—</span>
+    <span class="jug-t"><span class="paso-g">R1✓ 6-1 6-0</span> <span class="paso-vs">vWC</span> · <span class="paso-g">R2✓ 7-6(5) 6-2</span></span></div></td></tr></tbody></table></div>
+</section>
+
+<section>
+    <p class="eyebrow">Cuotas en seguimiento — tablero de favoritos de vigía (/itf)</p>
+    <div class="tabla-envoltura"><table>
+      <thead><tr><th>Torneo</th><th>Partido</th><th>Favorito</th><th>Betano</th><th>bet365</th><th>Resultado</th><th>Contexto cuadro</th></tr></thead>
+      <tbody><tr>
+        <td>Kursumlijska Banja</td>
+        <td>Katarina Zavatska vs Giorgia Pedone</td>
+        <td>Katarina Zavatska</td>
+        <td class="mono">1.37</td>
+        <td class="mono">1.40</td>
+        <td><span class="chip">pendiente</span></td>
+        <td class="mono">—</td>
+      </tr>
+<tr>
+        <td>Kursumlijska Banja</td>
+        <td>Semen Pankin vs Drazen Petrovic</td>
+        <td>Semen Pankin</td>
+        <td class="mono">1.08</td>
+        <td class="mono">1.07</td>
+        <td><span class="chip est-f">favorito ganó</span> <span class="mono">2-1</span></td>
+        <td class="mono">R2</td>
+      </tr>
+<tr>
+        <td>Kursumlijska Banja</td>
+        <td>Kristijan Juhas vs Alvaro Peiro Serrano</td>
+        <td>Kristijan Juhas</td>
+        <td class="mono">1.12</td>
+        <td class="mono">1.11</td>
+        <td><span class="chip est-f">favorito ganó</span> <span class="mono">2-0</span></td>
+        <td class="mono">R2</td>
+      </tr></tbody></table></div>
+    <p class="nota" style="margin-top:8px">97 partidos seguidos; 94 llegaron sin nombres desde OddsPapi (sin nombre no hay cruce con el cuadro). El contexto lo anota itf-cruce al liquidar.</p>
+  </section>
+
+<section>
+  <p class="eyebrow">Por venir — 35 torneos</p>
+  <div class="tabla-envoltura"><table>
+    <thead><tr><th>Fechas</th><th>Cat.</th><th>Torneo</th><th>País</th><th>Sup.</th><th>Bolsa</th><th>Corte ATP</th><th>Retiros pre</th><th>Alternates</th></tr></thead>
+    <tbody><tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Lausanne</td>
+    <td>Switzerland</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">353–959</td>
+    <td class="mono">295</td>
+    <td class="mono">83</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Oldenzaal</td>
+    <td>Netherlands</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">371–1030</td>
+    <td class="mono">228</td>
+    <td class="mono">74</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Taipei</td>
+    <td>Chinese Taipei</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">241–575</td>
+    <td class="mono">257</td>
+    <td class="mono">74</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Maribor</td>
+    <td>Slovenia</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">378–1128</td>
+    <td class="mono">357</td>
+    <td class="mono">62</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Poznan</td>
+    <td>Poland</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">338–1137</td>
+    <td class="mono">320</td>
+    <td class="mono">80</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Oviedo</td>
+    <td>Spain</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">377–793</td>
+    <td class="mono">212</td>
+    <td class="mono">87</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Kursumlijska Banja </td>
+    <td>Serbia</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">586–1428</td>
+    <td class="mono">288</td>
+    <td class="mono">65</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Mar Del Plata</td>
+    <td>Argentina</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">316–1190</td>
+    <td class="mono">79</td>
+    <td class="mono">69</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Hurghada</td>
+    <td>Egypt</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">401–1259</td>
+    <td class="mono">325</td>
+    <td class="mono">55</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Maanshan</td>
+    <td>China, P.R.</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">254–935</td>
+    <td class="mono">220</td>
+    <td class="mono">108</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Monastir</td>
+    <td>Tunisia</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">368–1841</td>
+    <td class="mono">345</td>
+    <td class="mono">47</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Bucharest</td>
+    <td>Romania</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">279–1073</td>
+    <td class="mono">374</td>
+    <td class="mono">105</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Champaign, IL</td>
+    <td>USA</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">664–1086</td>
+    <td class="mono">164</td>
+    <td class="mono">153</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Pecs</td>
+    <td>Hungary</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">603–1317</td>
+    <td class="mono">283</td>
+    <td class="mono">51</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Cap d'Agde</td>
+    <td>France</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">466–1443</td>
+    <td class="mono">257</td>
+    <td class="mono">78</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Allershausen</td>
+    <td>Germany</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">485–1100</td>
+    <td class="mono">328</td>
+    <td class="mono">85</td>
+  </tr>
+<tr>
+    <td class="mono">08/24–08/30</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Vienna</td>
+    <td>Austria</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">395–1359</td>
+    <td class="mono">482</td>
+    <td class="mono">113</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25+H Bagnères-de-Bigorre</td>
+    <td>France</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">202–637</td>
+    <td class="mono">219</td>
+    <td class="mono">126</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Casablanca</td>
+    <td>Morocco</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">242–1268</td>
+    <td class="mono">297</td>
+    <td class="mono">118</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Meerbusch</td>
+    <td>Germany</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">319–913</td>
+    <td class="mono">275</td>
+    <td class="mono">120</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Urayasu</td>
+    <td>Japan</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$30,000</td>
+    <td class="mono">280–861</td>
+    <td class="mono">115</td>
+    <td class="mono">36</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Bali</td>
+    <td>Indonesia</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">465–1240</td>
+    <td class="mono">301</td>
+    <td class="mono">147</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Haren</td>
+    <td>Netherlands</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">379–1308</td>
+    <td class="mono">262</td>
+    <td class="mono">141</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Madrid</td>
+    <td>Spain</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">504–891</td>
+    <td class="mono">298</td>
+    <td class="mono">215</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Kursumlijska Banja </td>
+    <td>Serbia</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">586–1304</td>
+    <td class="mono">249</td>
+    <td class="mono">132</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Porto Velho</td>
+    <td>Brazil</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">447–1478</td>
+    <td class="mono">94</td>
+    <td class="mono">105</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Trelew</td>
+    <td>Argentina</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">316–1190</td>
+    <td class="mono">73</td>
+    <td class="mono">100</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Hurghada</td>
+    <td>Egypt</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">483–1120</td>
+    <td class="mono">292</td>
+    <td class="mono">152</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Wuning</td>
+    <td>China, P.R.</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">503–1165</td>
+    <td class="mono">150</td>
+    <td class="mono">108</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Nonthaburi</td>
+    <td>Thailand</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">247–1289</td>
+    <td class="mono">194</td>
+    <td class="mono">95</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Monastir</td>
+    <td>Tunisia</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">494–1221</td>
+    <td class="mono">308</td>
+    <td class="mono">163</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Buzau</td>
+    <td>Romania</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">279–1164</td>
+    <td class="mono">254</td>
+    <td class="mono">143</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Szczawno</td>
+    <td>Poland</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">338–1056</td>
+    <td class="mono">260</td>
+    <td class="mono">164</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Bologna</td>
+    <td>Italy</td>
+    <td><span class="chip sup-arcilla">Arcilla</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">499–984</td>
+    <td class="mono">262</td>
+    <td class="mono">222</td>
+  </tr>
+<tr>
+    <td class="mono">08/31–09/06</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Nakhon Pathom (CANCELLED - moved to Nonthaburi)</td>
+    <td>Thailand</td>
+    <td><span class="chip sup-dura">Dura</span></td>
+    <td class="mono">$15,000</td>
+    <td class="mono">—</td>
+    <td class="mono">—</td>
+    <td class="mono">—</td>
+  </tr></tbody>
+  </table></div>
+  <p class="nota" style="margin-top:8px">Corte ATP = mejor y peor ranking de los aceptados directos al momento de la foto de la entry list. Los retiros pre-torneo vienen fechados en los datos.</p>
+</section>
+
+<section>
+  <p class="eyebrow">Terminados cosechados — campeones</p>
+  <div class="tabla-envoltura"><table>
+    <thead><tr><th>Fechas</th><th>Cat.</th><th>Torneo</th><th>Campeón</th><th>Seed</th><th>Entrada</th></tr></thead>
+    <tbody><tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Muttenz</td>
+    <td>Luca Staeheli</td>
+    <td class="mono">[7]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 East Lansing</td>
+    <td>Karl Poling</td>
+    <td class="mono">[2]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Idanha-a-Nova</td>
+    <td>Philip Henning</td>
+    <td class="mono">[2]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Koksijde</td>
+    <td>Raphael Perot</td>
+    <td class="mono">[3]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Kursumlijska Banja </td>
+    <td>Sean Cuenin</td>
+    <td class="mono">[1]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Tianjin</td>
+    <td>Omar Jasika</td>
+    <td class="mono">[2]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Trier</td>
+    <td>Michael Agwi</td>
+    <td class="mono">—</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Targu Jiu</td>
+    <td>Vlad Cristian Breazu</td>
+    <td class="mono">—</td>
+    <td>Q</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Warsaw</td>
+    <td>Robert Strombachs</td>
+    <td class="mono">[1]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/16</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Malmö</td>
+    <td>Karl Friberg</td>
+    <td class="mono">—</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/10–08/15</td>
+    <td><span class="chip cat">M15</span></td>
+    <td>M15 Asuncion</td>
+    <td>Joaquin Aguilar Cardozo</td>
+    <td class="mono">[2]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/03–08/09</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25+H Tauste</td>
+    <td>Alejo Sanchez Quilez</td>
+    <td class="mono">[2]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/03–08/09</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Southaven, MS</td>
+    <td>Timo Legout</td>
+    <td class="mono">[5]</td>
+    <td>directa</td>
+  </tr>
+<tr>
+    <td class="mono">08/03–08/09</td>
+    <td><span class="chip cat">M25</span></td>
+    <td>M25 Roehampton</td>
+    <td>Charles Broom</td>
+    <td class="mono">[1]</td>
+    <td>directa</td>
+  </tr></tbody>
+  </table></div>
+</section>
+
+<footer>
+  Datos: itftennis.com (endpoints abiertos + fotos de entry list vía navegador) · cuotas y justo viven en vigía (/itf).
+  Regenerar: <span class="mono">node vigia/itf-panel.mjs</span> · refrescar datos: <span class="mono">itf-navegador.mjs cosecha</span> + <span class="mono">itf-cosecha.mjs cosechar</span>.
+</footer>
+</div>
