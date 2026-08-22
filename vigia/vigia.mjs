@@ -1634,7 +1634,14 @@ async function cmdItf(horas = 6) {
             bFix: b.bookmakerFixtureId || null,   /* → lat.betano.com/cuotas-de-partido/e-e/<bFix>/ */
             ...vivas,
           };
-          if (!info.sinIndice && new Date(info.startTime).getTime() > Date.now()) {
+          /* Se graba SIN mirar el reloj. El horario de ITF es referencial
+             ("Not Before 15:30", "Followed By"): un partido puede tener la
+             hora pasada y no haber empezado, y ahi Betano sigue con linea
+             viva. Quien decide si ya se jugo es el estado del order of play,
+             no startTime — la mesa solo muestra lo que ITF marca pendiente.
+             Con el filtro de reloj se perdian los cuartos de Lesa del
+             2026-08-22, que tenian cuota abierta y aun no arrancaban. */
+          if (!info.sinIndice) {
             db.partidos[f.fixtureId] = reg;
             grabados++;
           } else if (info.sinIndice) {
@@ -1684,9 +1691,10 @@ async function cmdItf(horas = 6) {
           if (c.tournamentName) e.liga = c.tournamentName;
           corregidas++;
         }
-        /* candidato nuevo al tablero: se graba solo con hora futura real */
+        /* candidato nuevo al tablero: la hora se guarda pero no filtra
+           (ver arriba: manda el order of play, no startTime) */
         const cand = candTablero.get(fixId);
-        if (cand && !db.partidos[fixId] && tOk && new Date(c.startTime).getTime() > Date.now()) {
+        if (cand && !db.partidos[fixId] && tOk) {
           db.partidos[fixId] = { ...cand, t: c.startTime, p1: n1, p2: n2, torneo: c.tournamentName || cand.torneo };
           grabados++; tableroNuevos++;
         }
