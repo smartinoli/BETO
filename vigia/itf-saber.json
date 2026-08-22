@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-22T11:00:00Z",
+ "actualizado": "2026-08-22T13:45:00Z",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -178,7 +178,9 @@
   "Un 'valor' de +90% contra una casa que cotiza miles de partidos casi nunca es una cuota mal puesta: es un dato nuestro mal leído. Antes de creerle a un EV enorme, revisar de dónde sale cada input (el WTN salió correcto de la entry list del propio torneo; lo que fallaba era usarlo contra un rival cuyo rating no está al día)",
   "Los marcadores de la trayectoria traen más información de la que usábamos: games cedidos (no solo sets) miden la dominancia que el mercado parece leer — Hallquist Lithen llegó a semis de Bastad cediendo 12 games en 3 partidos y el mercado lo puso favorito sobre Leo Borg [1] pese a peor ATP y peor WTN. Y un set sin terminar ('6-3 2-0') es un retiro del rival, o sea frescura",
   "Sebastián tenia razon desde el primer mensaje: 'la plata esta solo en el primer dia o las qualis'. Tarde cinco dias en medirlo y el dato le da la razon por 19 puntos de acierto. Cuando el usuario propone una hipotesis estructural, medirla ANTES de construir encima",
-  "Un veto que nunca se valido no es una regla, es una corazonada con codigo. Los tres vetos que escribi el 2026-08-22 mataron a Borg [1], que gano 6-3 7-5 con residuo de mercado -0.205. Solo queda como veto duro el de calidad de dato (rival sin ATP): los otros dos bajan la confianza y se muestran, que quien mira decida"
+  "Un veto que nunca se valido no es una regla, es una corazonada con codigo. Los tres vetos que escribi el 2026-08-22 mataron a Borg [1], que gano 6-3 7-5 con residuo de mercado -0.205. Solo queda como veto duro el de calidad de dato (rival sin ATP): los otros dos bajan la confianza y se muestran, que quien mira decida",
+  "El horario de ITF es REFERENCIAL, no un hecho: 'Starting at 10:00', 'Followed By', 'Not Before 15:30'. Un partido puede tener la hora pasada y no haber empezado. Para saber si se jugo hay que mirar el estado del order of play (jugado / In Progress / pendiente), nunca comparar la hora con el reloj. Me equivoque justo en eso el 2026-08-22 al presentar 'los que vienen': filtre por reloj y deje fuera partidos que ITF seguia marcando pendientes",
+  "El feed de Betano via OddsPapi va DETRAS de betano.com. El 2026-08-22, con los cuartos de Lesa por jugar (Not Before 15:30/16:30/17:30), el feed solo traia los 7 partidos de segunda ronda, todos ya jugados, y ninguno de los 12 pendientes de la mesa aparecia. Si en la web de Betano hay linea y en la mesa no, lo mas probable es lag del feed, no un fallo de cruce de nombres — se verifica pidiendo odds-by-tournaments del torneo y resolviendo los nombres con /fixture"
  ],
  "historial": [
   {
