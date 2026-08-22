@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T06:53:17.245Z",
+ "generado": "2026-08-22T10:07:20.369Z",
  "partidos": [
   {
    "id": 1183661738,
@@ -22,7 +22,7 @@
      "marca": "[7]",
      "atp": 1028,
      "wtn": 8.18,
-     "llega": "R1✓ 6-4 6-0 vJR · R2✓ 6-3 6-2 vQ · QF✓ 6-1 6-3 v[4]",
+     "llega": "R1✓ 6-4 6-0 vJR · R2✓ 6-3 6-2 vQ · QF✓ 6-1 6-3 v[4] · SF✗ 3-6 5-7",
      "gana": 1.38,
      "set1": 1.45
     },
@@ -32,7 +32,7 @@
      "marca": "",
      "atp": 1136,
      "wtn": 8.66,
-     "llega": "R1✓ 7-6(6) 6-2 vWC · R2✓ 3-6 6-1 4-0 v[2] · QF✓ 7-6(2) 3-6 6-0 v[6]",
+     "llega": "R1✓ 7-6(6) 6-2 vWC · R2✓ 3-6 6-1 4-0 v[2] · QF✓ 7-6(2) 3-6 6-0 v[6] · SF✓ 6-3 7-5 v[7]",
      "gana": 2.75,
      "set1": 2.5
     }
@@ -137,8 +137,8 @@
      "atp": 542,
      "wtn": 5.4,
      "llega": "R1✓ 6-4 6-3 vQ · R2✓ 6-0 6-3 · QF✓ 6-2 4-6 6-4",
-     "gana": 2.42,
-     "set1": 2.27
+     "gana": 2.22,
+     "set1": 2.05
     },
     {
      "nombre": "John Hallquist Lithen",
@@ -147,8 +147,8 @@
      "atp": 761,
      "wtn": 8.5,
      "llega": "R1✓ 6-0 6-2 vQ · R2✓ 6-3 6-0 · QF✓ 6-1 6-2 v[8]",
-     "gana": 1.47,
-     "set1": 1.55
+     "gana": 1.57,
+     "set1": 1.67
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151889/"
@@ -289,8 +289,8 @@
      "atp": 1505,
      "wtn": 6.98,
      "llega": "R1✓ 6-3 7-5 v[6] · R2✓ 6-4 6-1 vQ · QF✓ 1-6 6-3 6-4 v[4]",
-     "gana": 2.55,
-     "set1": 2.37
+     "gana": 2.9,
+     "set1": 2.6
     },
     {
      "nombre": "Michael Agwi",
@@ -299,87 +299,11 @@
      "atp": 795,
      "wtn": 9.08,
      "llega": "R1✓ 6-3 7-6(1) vQ · R2✓ 6-3 2-0 · QF✓ 5-7 6-4 6-1 vQ",
-     "gana": 1.44,
-     "set1": 1.5
+     "gana": 1.34,
+     "set1": 1.42
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91164309/"
-  },
-  {
-   "id": 1183662575,
-   "torneo": "M15 Kursumlijska Banja ",
-   "pais": "Serbia",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
-   "cancha": "Court Viktor Troicki",
-   "turno": 1,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Rada Zolotareva",
-     "pais": "RUS",
-     "marca": "",
-     "atp": null,
-     "wtn": null,
-     "llega": "",
-     "gana": 1.62,
-     "set1": 1.62
-    },
-    {
-     "nombre": "Lisa Zaar",
-     "pais": "SWE",
-     "marca": "",
-     "atp": null,
-     "wtn": null,
-     "llega": "",
-     "gana": 2.12,
-     "set1": 2.1
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151891/"
-  },
-  {
-   "id": 1183662489,
-   "torneo": "M15 Kursumlijska Banja ",
-   "pais": "Serbia",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
-   "cancha": "Court 4",
-   "turno": 1,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Anton Arzhankin",
-     "pais": "RUS",
-     "marca": "[4]",
-     "atp": 722,
-     "wtn": 6.44,
-     "llega": "R1✓ 6-0 4-0 · R2✓ 6-4 6-1 vQ · QF✓ 6-1 7-5 v[8]",
-     "gana": 1.83,
-     "set1": 1.83
-    },
-    {
-     "nombre": "Kristijan Juhas",
-     "pais": "SRB",
-     "marca": "[7]",
-     "atp": 951,
-     "wtn": 7.37,
-     "llega": "R1✓ 6-2 6-4 · R2✓ 6-3 6-0 · QF✓ 6-2 6-2 v[2]",
-     "gana": 1.83,
-     "set1": 1.83
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151883/"
   },
   {
    "id": 1183662576,
@@ -403,8 +327,8 @@
      "atp": null,
      "wtn": null,
      "llega": "",
-     "gana": 2.77,
-     "set1": 2.62
+     "gana": 2.65,
+     "set1": 2.52
     },
     {
      "nombre": "Luna Vujovic",
@@ -413,8 +337,8 @@
      "atp": null,
      "wtn": null,
      "llega": "",
-     "gana": 1.37,
-     "set1": 1.42
+     "gana": 1.4,
+     "set1": 1.44
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151890/"
@@ -479,8 +403,8 @@
      "atp": 410,
      "wtn": 5.71,
      "llega": "R1✓ 6-1 6-3 vLL · R2✓ 6-0 6-4 vQ · QF✓ 6(3)-7 6-3 6-3 v[8]",
-     "gana": 1.42,
-     "set1": 1.5
+     "gana": 1.35,
+     "set1": 1.42
     },
     {
      "nombre": "Marlon Vankan",
@@ -489,8 +413,8 @@
      "atp": 616,
      "wtn": 6.18,
      "llega": "R1✓ 6-3 7-6(4) · R2✓ 6-2 7-6(3) vQ · QF✓ 1-6 7-6(6) 6-1 v[5]",
-     "gana": 2.6,
-     "set1": 2.37
+     "gana": 2.87,
+     "set1": 2.57
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151885/"
@@ -517,8 +441,8 @@
      "atp": 723,
      "wtn": 6.76,
      "llega": "R1✓ 6-3 6-2 vWC · R2✓ 6-2 2-6 6-2 · QF✓ 6-2 6-2",
-     "gana": 1.53,
-     "set1": 1.57
+     "gana": 1.45,
+     "set1": 1.52
     },
     {
      "nombre": "Romain Faucon",
@@ -527,8 +451,8 @@
      "atp": 588,
      "wtn": 6.79,
      "llega": "R1✓ 6-0 6-4 vSE · R2✓ 7-5 6-4 · QF✓ 6(5)-7 6-2 6-4 vQ",
-     "gana": 2.3,
-     "set1": 2.2
+     "gana": 2.5,
+     "set1": 2.32
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162321/"
@@ -570,44 +494,6 @@
     }
    ],
    "betano": null
-  },
-  {
-   "id": 1183662141,
-   "torneo": "M15 Mistelbach",
-   "pais": "Austria",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
-   "cancha": "C1 Pro-Ject ",
-   "turno": 1,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Nikita Mashtakov",
-     "pais": "UKR",
-     "marca": "[3]",
-     "atp": 652,
-     "wtn": 4.83,
-     "llega": "R1✓ 6-4 5-7 7-6(6) · R2✓ 7-6(5) 6-3 vLL · QF✓ 7-6(5) 4-6 6-0",
-     "gana": 1.82,
-     "set1": 1.82
-    },
-    {
-     "nombre": "Marcel Zielinski",
-     "pais": "POL",
-     "marca": "[2]",
-     "atp": 586,
-     "wtn": 6.51,
-     "llega": "R1✓ 6-1 6-0 vWC · R2✓ 7-6(5) 6-2 · QF✓ 6-1 6(2)-7 6-2 v[7]",
-     "gana": 1.85,
-     "set1": 1.85
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162314/"
   },
   {
    "id": 1183662140,
@@ -724,120 +610,6 @@
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162319/"
   },
   {
-   "id": 1183664162,
-   "torneo": "M25 Lesa",
-   "pais": "Italy",
-   "categoria": "M25",
-   "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
-   "cancha": "Court 1",
-   "turno": 1,
-   "ronda": "R2",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Daniele Rapagnetta",
-     "pais": "ITA",
-     "marca": "",
-     "atp": 734,
-     "wtn": 5.58,
-     "llega": "R1✓ 6-4 3-6 7-5 v[8]",
-     "gana": 1.98,
-     "set1": 1.93
-    },
-    {
-     "nombre": "Manuel Mazza",
-     "pais": "ITA",
-     "marca": "",
-     "atp": 756,
-     "wtn": 5.31,
-     "llega": "R1✓ 3-6 6-4 6-3",
-     "gana": 1.72,
-     "set1": 1.75
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91051197/"
-  },
-  {
-   "id": 1183664163,
-   "torneo": "M25 Lesa",
-   "pais": "Italy",
-   "categoria": "M25",
-   "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
-   "cancha": "Court 2",
-   "turno": 1,
-   "ronda": "R2",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Denis Constantin Spiridon",
-     "pais": "ITA",
-     "marca": "Q",
-     "atp": 1107,
-     "wtn": 9.1,
-     "llega": "Q1✓ 6-4 6-3 · Q2✓ 6-3 6-1 v[14] · R1✓ 6-3 4-6 6-4",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Laurent Lokoli",
-     "pais": "FRA",
-     "marca": "[3]",
-     "atp": 384,
-     "wtn": 3.41,
-     "llega": "R1✓ 6-1 6-4 vQ",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183664164,
-   "torneo": "M25 Lesa",
-   "pais": "Italy",
-   "categoria": "M25",
-   "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
-   "cancha": "Court 3",
-   "turno": 1,
-   "ronda": "R2",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Samuele Seghetti",
-     "pais": "ITA",
-     "marca": "WC",
-     "atp": 1486,
-     "wtn": 10.34,
-     "llega": "R1✓ 6-2 6-0 v[5]",
-     "gana": 2.8,
-     "set1": 2.52
-    },
-    {
-     "nombre": "Lorenzo Rottoli",
-     "pais": "ITA",
-     "marca": "",
-     "atp": 896,
-     "wtn": 6.67,
-     "llega": "R1✓ 6-0 3-6 6-0 vQ",
-     "gana": 1.36,
-     "set1": 1.44
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91040136/"
-  },
-  {
    "id": 1183664158,
    "torneo": "M25 Lesa",
    "pais": "Italy",
@@ -859,8 +631,8 @@
      "atp": 1178,
      "wtn": 8.93,
      "llega": "R1✓ 6-4 4-0 v[1]",
-     "gana": 4.35,
-     "set1": 3.3
+     "gana": 3.95,
+     "set1": 3.05
     },
     {
      "nombre": "Pierluigi Basile",
@@ -869,8 +641,8 @@
      "atp": 623,
      "wtn": 5.01,
      "llega": "R1✓ 6-1 6-3 vWC",
-     "gana": 1.16,
-     "set1": 1.27
+     "gana": 1.2,
+     "set1": 1.31
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91041098/"
@@ -974,7 +746,7 @@
      "wtn": 4.13,
      "llega": "R1✓ 6-2 6-1 vQ",
      "gana": 1.6,
-     "set1": 1.65
+     "set1": 1.62
     },
     {
      "nombre": "Giovanni Oradini",
@@ -984,10 +756,48 @@
      "wtn": 6.34,
      "llega": "R1✓ 6-3 6-1 vQ",
      "gana": 2.15,
-     "set1": 2.07
+     "set1": 2.1
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91044602/"
+  },
+  {
+   "id": 1183662739,
+   "torneo": "M25 Santander",
+   "pais": "Spain",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-22T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "After Rest, Not Before 12:30",
+   "cancha": "Court 1",
+   "turno": 2,
+   "ronda": "Semi-final",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Carlos Sanchez Jover",
+     "pais": "ESP",
+     "marca": "[1]",
+     "atp": 374,
+     "wtn": 3.5,
+     "llega": "R1✓ 4-6 6-3 6-1 · R2✓ 6-4 6-0 · QF✓ 7-6(3) 6-3 v[6]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alejandro Juan Mano",
+     "pais": "ESP",
+     "marca": "[8]",
+     "atp": 645,
+     "wtn": 6.49,
+     "llega": "R1✓ 6-3 6-4 vWC · R2✓ 7-6(6) 4-6 7-5",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
   },
   {
    "id": 1183662679,
@@ -1087,8 +897,8 @@
      "atp": 428,
      "wtn": 4.57,
      "llega": "R1✓ 6-3 6-2 vQ · R2✓ 2-6 6-4 6-3 vQ",
-     "gana": 1.4,
-     "set1": 1.47
+     "gana": 3.4,
+     "set1": 1.98
     },
     {
      "nombre": "TIM Handel",
@@ -1097,8 +907,8 @@
      "atp": 772,
      "wtn": 6.82,
      "llega": "R1✓ 6-4 7-6(8) · R2✓ 6-2 6-4 v[7]",
-     "gana": 2.67,
-     "set1": 2.45
+     "gana": 1.26,
+     "set1": 1.7
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91106986/"
@@ -1163,8 +973,8 @@
      "atp": 581,
      "wtn": 3.07,
      "llega": "R1✓ 2-6 6-0 6-3 · R2✓ 7-6(3) 7-6(4) v[6]",
-     "gana": 1.82,
-     "set1": 1.82
+     "gana": 1.78,
+     "set1": 1.78
     },
     {
      "nombre": "Daniel Masur",
@@ -1173,8 +983,8 @@
      "atp": 377,
      "wtn": 3.7,
      "llega": "R1✓ 6-4 6-3 · R2✓ 7-6(8) 6-3 vWC",
-     "gana": 1.85,
-     "set1": 1.85
+     "gana": 1.91,
+     "set1": 1.9
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91115649/"
