@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T14:00:53.742Z",
+ "generado": "2026-08-22T15:57:26.375Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + reglas medidas de vigia/itf-saber.json",
  "titular": "Valor esperado partido a partido, con la probabilidad ajustada por etapa del cuadro: el WTN acierta 75% en qualis/R1/R2 y solo 56% de cuartos en adelante.",
  "advertencia": "El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las rondas finales son el peor terreno para estas señales — el cuadro ya filtro y las Δ se achican. Los \"ojo:\" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano).",
@@ -38,22 +38,13 @@
     "línea sin abrir"
    ]
   },
-  "1183662140": {
+  "1183662139": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "El ΔWTN de 4.72 apunta a Gabriele Maria Noce, pero el numero no sirve: el WTN de Thilo Behrmann (13.28) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega cediendo el 21% de los games.",
+   "razon": "El ΔWTN de 8.45 apunta a Nikita Mashtakov, pero el numero no sirve: el WTN de Thilo Behrmann (13.28) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega cediendo el 21% de los games.",
    "banderas": [
     "veto: dato no confiable"
-   ]
-  },
-  "1183662341": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.47 de WTN: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.",
-   "banderas": [
-    "Δ0.47 ruido"
    ]
   },
   "1183662342": {
@@ -94,29 +85,6 @@
     "línea sin abrir"
    ]
   },
-  "1183663109": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "El ΔWTN de 12.33 apunta a Daniel Michalski, pero el numero no sirve: el WTN de Jan Sadzik (15.78) no es confiable: junior, su rating mide partidos viejos y llega cediendo el 47% de los games.",
-   "banderas": [
-    "veto: dato no confiable"
-   ]
-  },
-  "1183663110": {
-   "favorito": "Pawel Juszczak",
-   "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ2.10 de WTN a favor (6.98 contra 9.08), en ronda final. Nivel y forma coinciden: banda del 60%. A 2.9 el mercado implica 34.5% → valor +74%. Con reparos: el ATP dice lo contrario que el WTN (1505 contra 795, 710 puestos) — y en rondas finales el ATP acierta mas que el WTN; el mercado lo paga a 2.9 (32% real) cuando su propio modelo por ΔWTN daria 58%: 26 puntos que no vemos; Michael Agwi gano un partido por retiro: llega mas fresco; ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
-   "banderas": [
-    "Δ2.10 moderada",
-    "ojo: el ATP dice lo contrario que el WTN (1505 contra 795, 710 puestos)",
-    "ojo: el mercado lo paga a 2.9 (32% real) cuando su propio modelo por ΔWTN daria 58%",
-    "ojo: Michael Agwi gano un partido por retiro",
-    "ojo: ronda final",
-    "valor de cuota"
-   ]
-  },
   "1183663250": {
    "favorito": "—",
    "confianza": "baja",
@@ -149,6 +117,18 @@
     "línea sin abrir"
    ]
   },
+  "1183664155": {
+   "favorito": "Alexander Weis [7]",
+   "confianza": "baja",
+   "mercado": "gana",
+   "razon": "Δ1.65 de WTN a favor (4.69 contra 6.34), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
+   "banderas": [
+    "Δ1.65 moderada",
+    "choque nivel vs forma",
+    "ojo: ronda final",
+    "línea sin abrir"
+   ]
+  },
   "1183664156": {
    "favorito": "Laurent Lokoli [3]",
    "confianza": "baja",
@@ -160,18 +140,6 @@
     "línea sin abrir"
    ]
   },
-  "1183664157": {
-   "favorito": "Andrea De Marchi",
-   "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ2.47 de WTN a favor (7.87 contra 10.34), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
-   "banderas": [
-    "Δ2.47 moderada",
-    "choque nivel vs forma",
-    "ojo: ronda final",
-    "línea sin abrir"
-   ]
-  },
   "1183664354": {
    "favorito": "Leo Borg [1]",
    "confianza": "baja",
@@ -179,17 +147,6 @@
    "razon": "Δ2.73 de WTN a favor (5.4 contra 8.13), en ronda final. Nivel y forma coinciden: banda del 63%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
    "banderas": [
     "Δ2.73 fuerte",
-    "ojo: ronda final",
-    "línea sin abrir"
-   ]
-  },
-  "1183664410": {
-   "favorito": "TIM Handel",
-   "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ3.51 de WTN a favor (6.82 contra 10.33), en ronda final. Nivel y forma coinciden: banda del 63%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
-   "banderas": [
-    "Δ3.51 fuerte",
     "ojo: ronda final",
     "línea sin abrir"
    ]
@@ -206,7 +163,5 @@
    ]
   }
  },
- "destacados": [
-  1183663110
- ]
+ "destacados": []
 }

@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-22T13:45:00Z",
+ "actualizado": "2026-08-22T16:00:00Z",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -166,6 +166,11 @@
   {
    "nombre": "Thilo Behrmann",
    "nota": "junior (JR) arrasando en M15 Mistelbach: 6-1 6-0 al [5]. Los juniors sin ranking ATP suelen estar mal precificados en ambos sentidos."
+  },
+  {
+   "jugador": "Jonas Gundacker (AUT)",
+   "que": "Elimino a Planinsek [6] en semis de M25 Slovenj Gradec el 2026-08-22 cuando el mercado pagaba 1.14 al rival (88% implicito). Juega la final del domingo contra Sorger [3].",
+   "uso": "candidato a rating atrasado: revisar su WTN contra sus resultados recientes antes de creerle a una Δ en su contra"
   }
  ],
  "leccionesOperativas": [
@@ -290,6 +295,20 @@
    "hallazgo": "Al medir por ronda sobre 744 partidos aparecio el factor mas fuerte de todo el proyecto: temprano 75.2% contra tarde 56.4%. Toda la semana estuvimos probando el metodo en semifinales y finales, que es exactamente donde no funciona, y sacando conclusiones pesimistas de ahi. El mecanismo es el filtro del cuadro: la Δ mediana cae de 3.49 en qualis a 1.96 en cuartos.",
    "cambio": "itf-analizar.mjs usa bandas separadas por etapa, degrada el veto del residuo y el del ATP a banderas 'ojo:' que solo bajan la confianza, y deja como veto duro solo el rival sin ranking ATP (problema de dato, no de criterio).",
    "lectura": "Los -51% de las tres apuestas simuladas no miden el metodo: miden el metodo aplicado a semifinales. La prueba de verdad es la proxima semana en qualis y R1, donde ademas esta el 93% del volumen."
+  },
+  {
+   "fecha": "2026-08-22",
+   "corrida": "refresco de las 15:47",
+   "cerrados": 4,
+   "detalle": [
+    "Planinsek [6] @1.14 (SF Slovenj Gradec) → FALLO, gano Gundacker. Un favorito de 88% implicito que se cae",
+    "Dominko vs Sorger (veredicto 'pasar') → gano Sorger",
+    "Fernandes vs Lagutin (veredicto 'pasar') → gano Lagutin",
+    "Marques vs Colombo (veredicto 'pasar') → gano Marques"
+   ],
+   "rendimiento": "acumulado 6 de 13 con lado tomado, -3.36 unidades. Los 'pasar' van 10, con el favorito de la cuota cayendo en 5",
+   "lectura": "El fallo de Planinsek a 1.14 es el mas caro de la semana en terminos de sorpresa: el mercado le daba 88% y perdio. Con cuotas asi una sola caida borra siete aciertos, que es exactamente el riesgo de perseguir favoritos cortos. Y refuerza lo ya medido: todo esto sigue siendo material de semis y finales, la etapa donde el WTN acierta 56%.",
+   "nota": "Gundacker tambien llega a la final de Slovenj Gradec tras ganarle al [6]: vale seguirlo la proxima semana"
   }
  ],
  "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",

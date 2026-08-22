@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T14:00:53.955Z",
+ "generado": "2026-08-22T15:57:26.603Z",
  "partidos": [
   {
    "id": 1183661736,
@@ -116,82 +116,6 @@
    "betano": null
   },
   {
-   "id": 1183663109,
-   "torneo": "M15 Krakow",
-   "pais": "Poland",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T12:00:00.000Z",
-   "local": "14:00",
-   "horarioTxt": "Not Before 14:00",
-   "cancha": "Centre Court",
-   "turno": 2,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Daniel Michalski",
-     "pais": "POL",
-     "marca": "[1]",
-     "atp": 305,
-     "wtn": 3.45,
-     "llega": "R1✓ 6-2 6-2 vQ · R2✓ 6-1 6-4 · QF✓ 6-1 6-1 v[8]",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Jan Sadzik",
-     "pais": "POL",
-     "marca": "JR",
-     "atp": 1984,
-     "wtn": 15.78,
-     "llega": "R1✓ 6-3 6(6)-7 6-4 · R2✓ 6-3 3-6 7-6(3) v[7]WC · QF✓ 7-6(5) 2-6 6-3",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183663110,
-   "torneo": "M15 Krakow",
-   "pais": "Poland",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T12:00:00.000Z",
-   "local": "14:00",
-   "horarioTxt": "Not Before 14:00",
-   "cancha": "Court 7",
-   "turno": 2,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Pawel Juszczak",
-     "pais": "POL",
-     "marca": "",
-     "atp": 1505,
-     "wtn": 6.98,
-     "llega": "R1✓ 6-3 7-5 v[6] · R2✓ 6-4 6-1 vQ · QF✓ 1-6 6-3 6-4 v[4]",
-     "gana": 2.9,
-     "set1": 2.6
-    },
-    {
-     "nombre": "Michael Agwi",
-     "pais": "IRL",
-     "marca": "[5]",
-     "atp": 795,
-     "wtn": 9.08,
-     "llega": "R1✓ 6-3 7-6(1) vQ · R2✓ 6-3 2-0 · QF✓ 5-7 6-4 6-1 vQ",
-     "gana": 1.34,
-     "set1": 1.42
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91164309/"
-  },
-  {
    "id": 1183662574,
    "torneo": "M15 Kursumlijska Banja ",
    "pais": "Serbia",
@@ -268,55 +192,17 @@
    "betano": null
   },
   {
-   "id": 1183662341,
-   "torneo": "M15 Lambermont",
-   "pais": "Belgium",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T10:00:00.000Z",
-   "local": "12:00",
-   "horarioTxt": "Starting at 12:00",
-   "cancha": "Court 9",
-   "turno": 1,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Jack Loge",
-     "pais": "BEL",
-     "marca": "[1]",
-     "atp": 410,
-     "wtn": 5.71,
-     "llega": "R1✓ 6-1 6-3 vLL · R2✓ 6-0 6-4 vQ · QF✓ 6(3)-7 6-3 6-3 v[8]",
-     "gana": 1.35,
-     "set1": 1.42
-    },
-    {
-     "nombre": "Marlon Vankan",
-     "pais": "GER",
-     "marca": "[3]",
-     "atp": 616,
-     "wtn": 6.18,
-     "llega": "R1✓ 6-3 7-6(4) · R2✓ 6-2 7-6(3) vQ · QF✓ 1-6 7-6(6) 6-1 v[5]",
-     "gana": 2.87,
-     "set1": 2.57
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151885/"
-  },
-  {
    "id": 1183662342,
    "torneo": "M15 Lambermont",
    "pais": "Belgium",
    "categoria": "M15",
    "superficie": "Clay",
    "bolsa": "$15,000",
-   "cuando": "2026-08-22T14:00:00.000Z",
-   "local": "16:00",
-   "horarioTxt": "Not Before 16:00",
-   "cancha": "Court 9",
-   "turno": 3,
+   "cuando": "2026-08-22T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 10",
+   "turno": 2,
    "ronda": "Semi-final",
    "evento": "M",
    "lados": [
@@ -382,42 +268,42 @@
    "betano": null
   },
   {
-   "id": 1183662140,
+   "id": 1183662139,
    "torneo": "M15 Mistelbach",
    "pais": "Austria",
    "categoria": "M15",
    "superficie": "Clay",
    "bolsa": "$15,000",
-   "cuando": "2026-08-22T10:00:00.000Z",
-   "local": "12:00",
-   "horarioTxt": "Not Before 12:00",
+   "cuando": "2026-08-23T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
    "cancha": "C1 Pro-Ject ",
-   "turno": 2,
-   "ronda": "Semi-final",
+   "turno": 1,
+   "ronda": "F",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Gabriele Maria Noce",
-     "pais": "ITA",
-     "marca": "[6]",
-     "atp": 855,
-     "wtn": 8.56,
-     "llega": "R1✓ 6-2 4-6 6-2 vWC · R2✓ 6-3 6-4 · QF✓ 6-2 6-4 vQ",
-     "gana": 3.05,
-     "set1": 2.67
-    },
-    {
      "nombre": "Thilo Behrmann",
      "pais": "AUT",
-     "marca": "JR",
+     "marca": "",
      "atp": null,
      "wtn": 13.28,
      "llega": "R1✓ 6-1 6-0 v[5] · R2✓ 6-1 6-2 · QF✓ 6-0 7-6(5) vQ",
-     "gana": 1.32,
-     "set1": 1.4
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Nikita Mashtakov",
+     "pais": "UKR",
+     "marca": "[3]",
+     "atp": 652,
+     "wtn": 4.83,
+     "llega": "R1✓ 6-4 5-7 7-6(6) · R2✓ 7-6(5) 6-3 vLL · QF✓ 7-6(5) 4-6 6-0 · SF✓ 1-6 6-4 7-5 v[2]",
+     "gana": null,
+     "set1": null
     }
    ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162303/"
+   "betano": null
   },
   {
    "id": 1183663250,
@@ -440,7 +326,7 @@
      "marca": "[3]",
      "atp": 718,
      "wtn": 6.41,
-     "llega": "R1✓ 7-6(0) 7-6(3) · R2✓ 6-4 6-2 vWC · QF✓ 4-6 6-2 6-2",
+     "llega": "R1✓ 7-6(0) 7-6(3) · R2✓ 6-4 6-2 vWC · QF✓ 4-6 6-2 6-2 · SF✓ 6-3 6-2",
      "gana": null,
      "set1": null
     },
@@ -450,7 +336,7 @@
      "marca": "",
      "atp": 1025,
      "wtn": 7.51,
-     "llega": "R1✓ 7-6(7) 7-5 · R2✓ 6-3 6-4 v[4] · QF✓ 6-3 3-6 7-5 v[8]",
+     "llega": "R1✓ 7-6(7) 7-5 · R2✓ 6-3 6-4 v[4] · QF✓ 6-3 3-6 7-5 v[8] · SF✓ 4-6 6-3 7-5",
      "gana": null,
      "set1": null
     }
@@ -496,44 +382,6 @@
    "betano": null
   },
   {
-   "id": 1183664157,
-   "torneo": "M25 Lesa",
-   "pais": "Italy",
-   "categoria": "M25",
-   "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T14:30:00.000Z",
-   "local": "16:30",
-   "horarioTxt": "Not Before 16:30",
-   "cancha": "Court 2",
-   "turno": 4,
-   "ronda": "Quarter-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Samuele Seghetti",
-     "pais": "ITA",
-     "marca": "WC",
-     "atp": 1486,
-     "wtn": 10.34,
-     "llega": "R1✓ 6-2 6-0 v[5] · R2✓ 7-5 6-2",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Andrea De Marchi",
-     "pais": "ITA",
-     "marca": "",
-     "atp": 813,
-     "wtn": 7.87,
-     "llega": "R1✓ 7-5 2-1 v[2] · R2✓ 2-6 6-4 11-9",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
    "id": 1183664154,
    "torneo": "M25 Lesa",
    "pais": "Italy",
@@ -543,7 +391,7 @@
    "cuando": "2026-08-22T15:30:00.000Z",
    "local": "17:30",
    "horarioTxt": "Not Before 17:30",
-   "cancha": "Court 1",
+   "cancha": "Court 2",
    "turno": 5,
    "ronda": "Quarter-final",
    "evento": "M",
@@ -572,6 +420,44 @@
    "betano": null
   },
   {
+   "id": 1183664155,
+   "torneo": "M25 Lesa",
+   "pais": "Italy",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-22T17:15:00.000Z",
+   "local": "19:15",
+   "horarioTxt": "Not Before 19:15",
+   "cancha": "Court 1",
+   "turno": 5,
+   "ronda": "Quarter-final",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Giovanni Oradini",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 636,
+     "wtn": 6.34,
+     "llega": "R1✓ 6-3 6-1 vQ · R2✓ 6-2 6-0 v[4]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alexander Weis",
+     "pais": "ITA",
+     "marca": "[7]",
+     "atp": 531,
+     "wtn": 4.69,
+     "llega": "R1✓ 5-7 6-2 6-3",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
    "id": 1183662681,
    "torneo": "M25 Slovenj Gradec",
    "pais": "Slovenia",
@@ -592,17 +478,17 @@
      "marca": "[3]",
      "atp": 476,
      "wtn": 4.96,
-     "llega": "R1✓ 6-0 6-0 vQ · R2✓ 6-0 6-1 vQ · QF✓ 6-2 6-2",
+     "llega": "R1✓ 6-0 6-0 vQ · R2✓ 6-0 6-1 vQ · QF✓ 6-2 6-2 · SF✓ 6-4 6-1",
      "gana": null,
      "set1": null
     },
     {
      "nombre": "Jonas GUNDACKER",
      "pais": "AUT",
-     "marca": "",
+     "marca": "Q",
      "atp": 1876,
      "wtn": 10.93,
-     "llega": "Q2✓ 6-1 6-1 · Q3✓ 6-1 6-3 v[9] · R1✓ 7-6(2) 6-4 vQ · R2✓ 2-6 6-2 6-3 v[2] · QF✓ 6-1 6(7)-7 6-3 vQ",
+     "llega": "Q2✓ 6-1 6-1 · Q3✓ 6-1 6-3 v[9] · R1✓ 7-6(2) 6-4 vQ · R2✓ 2-6 6-2 6-3 v[2] · QF✓ 6-1 6(7)-7 6-3 vQ · SF✓ 2-6 6-1 6-2 v[6]",
      "gana": null,
      "set1": null
     }
@@ -641,44 +527,6 @@
      "atp": 309,
      "wtn": 4.32,
      "llega": "R1✓ 7-6(1) 6-0 vWC · R2✓ 6-1 6-2 vQ · QF✓ 6-2 6-4 · SF✓ 7-5 6-2",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183664410,
-   "torneo": "M25 Ueberlingen",
-   "pais": "Germany",
-   "categoria": "M25",
-   "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T13:00:00.000Z",
-   "local": "15:00",
-   "horarioTxt": "Not Before 15:00",
-   "cancha": "VOLKSBANK C-Court",
-   "turno": 4,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Tymur Bieldiugin",
-     "pais": "UKR",
-     "marca": "Q",
-     "atp": 1582,
-     "wtn": 10.33,
-     "llega": "Q1✓ 6-0 6-2 · Q2✓ 6-3 6-1 v[10] · R1✓ 2-6 7-6(2) 6-3 · R2✓ 6-1 6(4)-7 6-2 v[8] · QF✓ 6-3 6-3 vQ",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "TIM Handel",
-     "pais": "GER",
-     "marca": "",
-     "atp": 772,
-     "wtn": 6.82,
-     "llega": "R1✓ 6-4 7-6(8) · R2✓ 6-2 6-4 v[7] · QF✓ 7-5 7-5 v[4]",
      "gana": null,
      "set1": null
     }
