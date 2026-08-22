@@ -250,7 +250,11 @@
     "confianza": "baja",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Nikita Mashtakov",
+    "idxGanador": 0,
+    "cerrado": "2026-08-22T12:55:56.721Z"
+   }
   },
   "1183662341": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -345,7 +349,11 @@
     }
    ],
    "veredicto": null,
-   "resultado": null
+   "resultado": {
+    "ganador": "Dimitar Kisimov",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T12:55:56.721Z"
+   }
   },
   "1183662489": {
    "visto": "2026-08-21T21:56:54.790Z",
@@ -374,7 +382,11 @@
     }
    ],
    "veredicto": null,
-   "resultado": null
+   "resultado": {
+    "ganador": "Kristijan Juhas",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T12:55:56.721Z"
+   }
   },
   "1183662575": {
    "visto": "2026-08-21T21:56:54.790Z",
@@ -762,7 +774,11 @@
     "confianza": "baja",
     "mercado": "pasar"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Daniele Rapagnetta",
+    "idxGanador": 0,
+    "cerrado": "2026-08-22T12:55:56.721Z"
+   }
   },
   "1183664164": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -795,7 +811,11 @@
     "confianza": "alta",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Samuele Seghetti",
+    "idxGanador": 0,
+    "cerrado": "2026-08-22T12:55:56.721Z"
+   }
   },
   "1183664165": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -828,7 +848,11 @@
     "confianza": "baja",
     "mercado": "pasar"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Andrea De Marchi",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T12:55:56.721Z"
+   }
   },
   "1183664355": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -1005,7 +1029,11 @@
     "confianza": "alta",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Arthur Nagel",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T12:55:56.721Z"
+   }
   },
   "1183664415": {
    "visto": "2026-08-22T00:52:25.096Z",
@@ -1038,7 +1066,11 @@
     "confianza": "baja",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Daniel Masur",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T12:55:56.721Z"
+   }
   }
  }
 }

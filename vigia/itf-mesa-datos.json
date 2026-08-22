@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T12:40:21.621Z",
+ "generado": "2026-08-22T12:55:56.719Z",
  "partidos": [
   {
    "id": 1183661736,
@@ -154,42 +154,42 @@
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91164309/"
   },
   {
-   "id": 1183662576,
+   "id": 1183662487,
    "torneo": "M15 Kursumlijska Banja ",
    "pais": "Serbia",
    "categoria": "M15",
    "superficie": "Clay",
    "bolsa": "$15,000",
-   "cuando": "2026-08-22T09:30:00.000Z",
-   "local": "11:30",
-   "horarioTxt": "Not Before 11:30",
-   "cancha": "Court Viktor Troicki",
-   "turno": 2,
-   "ronda": "Semi-final",
+   "cuando": "2026-08-23T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "F",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Lidia Encheva",
+     "nombre": "Dimitar Kisimov",
      "pais": "BUL",
-     "marca": "",
-     "atp": null,
-     "wtn": null,
-     "llega": "",
-     "gana": 2.65,
-     "set1": 2.52
+     "marca": "JR",
+     "atp": 1764,
+     "wtn": 13.04,
+     "llega": "R1✓ 6-0 6-2 v[5] · R2✓ 6-4 6-4 vQ · QF✓ 6-4 6-3 v[3] · SF✓ 7-5 6-1 v[1]",
+     "gana": null,
+     "set1": null
     },
     {
-     "nombre": "Luna Vujovic",
+     "nombre": "Kristijan Juhas",
      "pais": "SRB",
-     "marca": "",
-     "atp": null,
-     "wtn": null,
-     "llega": "",
-     "gana": 1.4,
-     "set1": 1.44
+     "marca": "[7]",
+     "atp": 951,
+     "wtn": 7.37,
+     "llega": "R1✓ 6-2 6-4 · R2✓ 6-3 6-0 · QF✓ 6-2 6-2 v[2] · SF✓ 6-3 6-0 v[4]",
+     "gana": null,
+     "set1": null
     }
    ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151890/"
+   "betano": null
   },
   {
    "id": 1183662341,
@@ -251,8 +251,8 @@
      "atp": 723,
      "wtn": 6.76,
      "llega": "R1✓ 6-3 6-2 vWC · R2✓ 6-2 2-6 6-2 · QF✓ 6-2 6-2",
-     "gana": 1.45,
-     "set1": 1.52
+     "gana": 1.44,
+     "set1": 1.5
     },
     {
      "nombre": "Romain Faucon",
@@ -261,8 +261,8 @@
      "atp": 588,
      "wtn": 6.79,
      "llega": "R1✓ 6-0 6-4 vSE · R2✓ 7-5 6-4 · QF✓ 6(5)-7 6-2 6-4 vQ",
-     "gana": 2.5,
-     "set1": 2.32
+     "gana": 2.52,
+     "set1": 2.35
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162321/"
@@ -306,68 +306,20 @@
    "betano": null
   },
   {
-   "id": 1183662140,
-   "torneo": "M15 Mistelbach",
-   "pais": "Austria",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T10:00:00.000Z",
-   "local": "12:00",
-   "horarioTxt": "Not Before 12:00",
-   "cancha": "C1 Pro-Ject ",
-   "turno": 2,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Gabriele Maria Noce",
-     "pais": "ITA",
-     "marca": "[6]",
-     "atp": 855,
-     "wtn": 8.56,
-     "llega": "R1✓ 6-2 4-6 6-2 vWC · R2✓ 6-3 6-4 · QF✓ 6-2 6-4 vQ",
-     "gana": 3.05,
-     "set1": 2.67
-    },
-    {
-     "nombre": "Thilo Behrmann",
-     "pais": "AUT",
-     "marca": "JR",
-     "atp": null,
-     "wtn": 13.28,
-     "llega": "R1✓ 6-1 6-0 v[5] · R2✓ 6-1 6-2 · QF✓ 6-0 7-6(5) vQ",
-     "gana": 1.32,
-     "set1": 1.4
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162303/"
-  },
-  {
-   "id": 1183663251,
+   "id": 1183663250,
    "torneo": "M25 Idanha-a-Nova",
    "pais": "Portugal",
    "categoria": "M25",
    "superficie": "Hard",
    "bolsa": "$30,000",
-   "cuando": "2026-08-22T08:30:00.000Z",
-   "local": "09:30",
-   "horarioTxt": "Starting at 9:30",
+   "cuando": "2026-08-23T09:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
    "cancha": "Court 1",
    "turno": 1,
-   "ronda": "Semi-final",
+   "ronda": "F",
    "evento": "M",
    "lados": [
-    {
-     "nombre": "Rodrigo Fernandes",
-     "pais": "POR",
-     "marca": "",
-     "atp": 1237,
-     "wtn": 6.59,
-     "llega": "R1✓ 7-6(3) 1-6 6-4 vQ · R2✓ 7-5 7-5 v[5] · QF✓ 3-6 6-3 6-4 v[1]",
-     "gana": 3.65,
-     "set1": 3.05
-    },
     {
      "nombre": "Pavel Lagutin",
      "pais": "RUS",
@@ -375,27 +327,9 @@
      "atp": 718,
      "wtn": 6.41,
      "llega": "R1✓ 7-6(0) 7-6(3) · R2✓ 6-4 6-2 vWC · QF✓ 4-6 6-2 6-2",
-     "gana": 1.23,
-     "set1": 1.31
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151894/"
-  },
-  {
-   "id": 1183663252,
-   "torneo": "M25 Idanha-a-Nova",
-   "pais": "Portugal",
-   "categoria": "M25",
-   "superficie": "Hard",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T10:00:00.000Z",
-   "local": "11:00",
-   "horarioTxt": "Not Before 11:00",
-   "cancha": "Court 1",
-   "turno": 2,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
+     "gana": null,
+     "set1": null
+    },
     {
      "nombre": "Goncalo Marques",
      "pais": "POR",
@@ -403,21 +337,11 @@
      "atp": 1025,
      "wtn": 7.51,
      "llega": "R1✓ 7-6(7) 7-5 · R2✓ 6-3 6-4 v[4] · QF✓ 6-3 3-6 7-5 v[8]",
-     "gana": 1.53,
-     "set1": 1.6
-    },
-    {
-     "nombre": "Andrea Colombo",
-     "pais": "ITA",
-     "marca": "",
-     "atp": 1048,
-     "wtn": 7.68,
-     "llega": "R1✓ 6-2 7-6(5) v[2] · R2✓ 2-6 6-3 6-2 · QF✓ 7-5 6-2 v[6]",
-     "gana": 2.27,
-     "set1": 2.15
+     "gana": null,
+     "set1": null
     }
    ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162319/"
+   "betano": null
   },
   {
    "id": 1183664160,
@@ -478,7 +402,7 @@
      "marca": "",
      "atp": 734,
      "wtn": 5.58,
-     "llega": "R1✓ 6-4 3-6 7-5 v[8]",
+     "llega": "R1✓ 6-4 3-6 7-5 v[8] · R2✓ 6-4 7-5",
      "gana": null,
      "set1": null
     },
@@ -513,10 +437,10 @@
     {
      "nombre": "Samuele Seghetti",
      "pais": "ITA",
-     "marca": "",
+     "marca": "WC",
      "atp": 1486,
      "wtn": 10.34,
-     "llega": "R1✓ 6-2 6-0 v[5]",
+     "llega": "R1✓ 6-2 6-0 v[5] · R2✓ 7-5 6-2",
      "gana": null,
      "set1": null
     },
@@ -526,83 +450,7 @@
      "marca": "",
      "atp": 813,
      "wtn": 7.87,
-     "llega": "R1✓ 7-5 2-1 v[2]",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183662739,
-   "torneo": "M25 Santander",
-   "pais": "Spain",
-   "categoria": "M25",
-   "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T10:30:00.000Z",
-   "local": "12:30",
-   "horarioTxt": "After Rest, Not Before 12:30",
-   "cancha": "Court 1",
-   "turno": 2,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Carlos Sanchez Jover",
-     "pais": "ESP",
-     "marca": "[1]",
-     "atp": 374,
-     "wtn": 3.5,
-     "llega": "R1✓ 4-6 6-3 6-1 · R2✓ 6-4 6-0 · QF✓ 7-6(3) 6-3 v[6]",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Alejandro Juan Mano",
-     "pais": "ESP",
-     "marca": "[8]",
-     "atp": 645,
-     "wtn": 6.49,
-     "llega": "R1✓ 6-3 6-4 vWC · R2✓ 7-6(6) 4-6 7-5 · QF✓ 7-6(3) 6-1",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183662740,
-   "torneo": "M25 Santander",
-   "pais": "Spain",
-   "categoria": "M25",
-   "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T11:15:00.000Z",
-   "local": "13:15",
-   "horarioTxt": "After Rest, Not Before 13:15",
-   "cancha": "Court 3 (CC)",
-   "turno": 2,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Alexander Ritschard",
-     "pais": "SUI",
-     "marca": "[7]",
-     "atp": 580,
-     "wtn": 3.15,
-     "llega": "R1✓ 6-2 6-1 vWC · R2✓ 6-2 6-3 · QF✓ 6-1 7-6(1)",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Sergi Perez Contri",
-     "pais": "ESP",
-     "marca": "[2]",
-     "atp": 461,
-     "wtn": 5.15,
-     "llega": "R1✓ 7-6(2) 6-1 vQ · R2✓ 2-6 6-1 6-3 · QF✓ 3-6 6-4 7-6(3) v[5]",
+     "llega": "R1✓ 7-5 2-1 v[2] · R2✓ 2-6 6-4 11-9",
      "gana": null,
      "set1": null
     }
@@ -686,44 +534,6 @@
    "betano": null
   },
   {
-   "id": 1183664415,
-   "torneo": "M25 Ueberlingen",
-   "pais": "Germany",
-   "categoria": "M25",
-   "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Followed By",
-   "cancha": "VOLKSBANK C-Court",
-   "turno": 2,
-   "ronda": "Quarter-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Maximilian Marterer",
-     "pais": "GER",
-     "marca": "WC",
-     "atp": 581,
-     "wtn": 3.07,
-     "llega": "R1✓ 2-6 6-0 6-3 · R2✓ 7-6(3) 7-6(4) v[6]",
-     "gana": 1.78,
-     "set1": 1.78
-    },
-    {
-     "nombre": "Daniel Masur",
-     "pais": "GER",
-     "marca": "[2]",
-     "atp": 377,
-     "wtn": 3.7,
-     "llega": "R1✓ 6-4 6-3 · R2✓ 7-6(8) 6-3 vWC",
-     "gana": 1.91,
-     "set1": 1.9
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91115649/"
-  },
-  {
    "id": 1183664410,
    "torneo": "M25 Ueberlingen",
    "pais": "Germany",
@@ -755,6 +565,44 @@
      "atp": 772,
      "wtn": 6.82,
      "llega": "R1✓ 6-4 7-6(8) · R2✓ 6-2 6-4 v[7] · QF✓ 7-5 7-5 v[4]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183664411,
+   "torneo": "M25 Ueberlingen",
+   "pais": "Germany",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-22T15:00:00.000Z",
+   "local": "17:00",
+   "horarioTxt": "Not Before 17:00",
+   "cancha": "VOLKSBANK C-Court",
+   "turno": 5,
+   "ronda": "Semi-final",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Arthur Nagel",
+     "pais": "FRA",
+     "marca": "[3]",
+     "atp": 399,
+     "wtn": 5.71,
+     "llega": "R1✓ 6-3 6-2 vQ · R2✓ 6-1 6(6)-7 6-2 · QF✓ 6-4 6-3 vQ",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Daniel Masur",
+     "pais": "GER",
+     "marca": "[2]",
+     "atp": 377,
+     "wtn": 3.7,
+     "llega": "R1✓ 6-4 6-3 · R2✓ 7-6(8) 6-3 vWC · QF✓ 7-6(7) 6-3 vWC",
      "gana": null,
      "set1": null
     }
