@@ -307,6 +307,87 @@ function filas(p) {
 }
 
 const generado = new Date().toISOString();
+/* ---------- libro de registro: la pieza que falta ----------
+   Para saber si nuestras señales le ganan al mercado (y no solo al azar)
+   hace falta juntar, del mismo partido: cuota vista + ΔWTN + resultado.
+   Cada corrida anota los partidos con cuota, y cuando el cuadro los da
+   por jugados escribe quién ganó. Sin este acumulado no hay forma de
+   medir rendimiento contra el precio. */
+const REG = path.join(DIR, 'itf-registro.json');
+const reg = leer(REG) || { nota: 'cuota + nivel + resultado por partido, para medir contra el mercado', partidos: {} };
+for (const p of partidos) {
+  if (!p.cuotas) continue;
+  const k = String(p.matchId);
+  if (reg.partidos[k]) continue;
+  reg.partidos[k] = {
+    visto: new Date().toISOString(),
+    torneo: p.t.nombre, categoria: p.t.categoria, superficie: p.t.superficie,
+    ronda: p.ronda, evento: p.evento, cuando: p.inicio ? p.inicio.toISOString() : null,
+    lados: p.lados.map((l, i) => ({
+      nombre: l.nombre, atp: l.atp, wtn: l.wtn, marca: l.marca,
+      gana: p.cuotas.lados[i].gana, set1: p.cuotas.lados[i].set1,
+    })),
+    veredicto: analisis.veredictos[k] ? {
+      favorito: analisis.veredictos[k].favorito,
+      confianza: analisis.veredictos[k].confianza,
+      mercado: analisis.veredictos[k].mercado,
+    } : null,
+    resultado: null,
+  };
+}
+/* cerrar los que ya se jugaron, mirando los cuadros */
+let cerrados = 0;
+for (const t of activos) {
+  const ctx = contextoTorneo(t.clave);
+  for (const [k, e] of Object.entries(reg.partidos)) {
+    if (e.resultado) continue;
+    const lados = ctx.porMatch.get(+k);
+    if (!lados) continue;
+    const gi = lados.findIndex(l => l.ganador);
+    if (gi < 0) continue;
+    const gan = lados[gi].nombre;
+    e.resultado = {
+      ganador: gan,
+      idxGanador: e.lados.findIndex(l => pareceElMismo(gan, { nombre: l.nombre })),
+      cerrado: new Date().toISOString(),
+    };
+    cerrados++;
+  }
+}
+fs.writeFileSync(REG, JSON.stringify(reg, null, 1));
+const conRes = Object.values(reg.partidos).filter(e => e.resultado).length;
+
+
+/* ---------- lo ya jugado: el marcador de nuestro propio metodo ----------
+   La tabla de arriba solo muestra lo que falta jugar, asi que los partidos
+   van desapareciendo a medida que se resuelven. Aca quedan a la vista, con
+   lo que el analisis habia dicho antes de que se jugaran. */
+const idxDelVeredicto = e => {
+  if (!e.veredicto || e.veredicto.mercado === 'pasar') return -1;
+  return e.lados.findIndex(l => pareceElMismo(e.veredicto.favorito.replace(/\[.*?\]|\s*\(.*?\)/g, '').trim(), { nombre: l.nombre }));
+};
+const cerradas = Object.values(reg.partidos)
+  .filter(e => e.resultado && e.resultado.idxGanador >= 0)
+  .map(e => {
+    const iv = idxDelVeredicto(e), ig = e.resultado.idxGanador;
+    const tomado = iv >= 0;
+    const acerto = tomado ? iv === ig : null;
+    const cuota = tomado ? e.lados[iv].gana : null;
+    /* Un "pasar" se juzga distinto: no hay apuesta, pero sirve saber si el
+       favorito de la cuota gano o no (o sea si pasar salio barato o caro). */
+    const iFavMercado = e.lados[0].gana != null && e.lados[1].gana != null
+      ? (e.lados[0].gana <= e.lados[1].gana ? 0 : 1) : -1;
+    return { ...e, iv, ig, tomado, acerto, cuota,
+      pnl: tomado ? (acerto ? cuota - 1 : -1) : 0,
+      sorpresa: iFavMercado >= 0 && iFavMercado !== ig };
+  })
+  .sort((a, b) => String(b.resultado.cerrado).localeCompare(String(a.resultado.cerrado)));
+const conLado = cerradas.filter(c => c.tomado);
+const aciertos = conLado.filter(c => c.acerto).length;
+const pnl = conLado.reduce((x, c) => x + c.pnl, 0);
+const pasados = cerradas.filter(c => !c.tomado);
+const pasadosOk = pasados.filter(c => c.sorpresa).length;
+
 const conCuota = partidos.filter(p => p.cuotas).length;
 const html = `<title>Mesa ITF</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -335,6 +416,22 @@ button:hover{border-color:var(--acento)} button:focus-visible{outline:2px solid 
 button.on{background:var(--acento);color:var(--carta)}
 .nota{font-size:12.5px;color:var(--tinta2);margin:0 0 12px}
 .tabla-env{overflow-x:auto;background:var(--carta);border:1px solid var(--linea);border-radius:6px}
+.cerradas{margin-top:34px}
+.cab-cer{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:3px}
+.cerradas h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:23px;margin:0;letter-spacing:.4px}
+.cuenta{font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--tinta2);font-weight:400}
+.marcador{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--tinta2)}
+.marcador b{font-family:"IBM Plex Mono",monospace;color:var(--tinta)}
+.marcador .bien b{color:var(--acento)} .marcador .mal b{color:var(--alerta)}
+table.t-cer{min-width:920px}
+.t-cer td{padding:8px 10px;border-top:1px solid var(--linea);vertical-align:top}
+.t-cer tr.f-ok td:first-child{box-shadow:inset 3px 0 0 var(--acento)}
+.t-cer tr.f-no td:first-child{box-shadow:inset 3px 0 0 var(--alerta)}
+.t-cer tr.f-pas td:first-child{box-shadow:inset 3px 0 0 var(--linea)}
+.t-cer .gano{font-weight:600}
+.t-cer .ok{color:var(--acento)} .t-cer .no{color:var(--alerta)}
+.t-cer .pasar{color:var(--tinta2);font-weight:600}
+.t-cer .loc{color:var(--tinta2);font-weight:400}
 table{border-collapse:collapse;width:100%;min-width:1150px}
 th{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;
   text-transform:uppercase;color:var(--tinta2);text-align:left;padding:9px 10px;
@@ -425,6 +522,35 @@ ${partidos.length ? `<div class="tabla-env"><table>
     <th class="n">Gana</th><th class="n">1er set</th><th>Cómo llega</th><th>Betano</th></tr></thead>
   <tbody id="cuerpo">${partidos.map(filas).join('')}</tbody>
 </table></div>` : '<p class="vacio">Nada por jugar en la programación de ITF ahora mismo. Recarga más tarde.</p>'}
+${cerradas.length ? `<section class="cerradas">
+  <div class="cab-cer">
+    <h2>Ya jugados <span class="cuenta">${cerradas.length}</span></h2>
+    <div class="marcador">
+      ${conLado.length ? `<span class="m-item"><b>${aciertos}</b> de ${conLado.length} con lado tomado</span>
+      <span class="m-item ${pnl >= 0 ? 'bien' : 'mal'}"><b>${pnl >= 0 ? '+' : ''}${pnl.toFixed(2)}</b> unidades a cuota</span>` : ''}
+      ${pasados.length ? `<span class="m-item"><b>${pasadosOk}</b> de ${pasados.length} pasados donde cayó el favorito</span>` : ''}
+    </div>
+  </div>
+  <p class="nota">El veredicto que se muestra es el que había <b>antes</b> de jugarse. Sin esto la mesa borra su propia historia: los partidos se resuelven y desaparecen de la tabla de arriba.</p>
+  <div class="tabla-env"><table class="t-cer">
+    <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Resultado</th><th class="n">Cuota</th><th>Decía el análisis</th><th class="n">Saldo</th></tr></thead>
+    <tbody>${cerradas.map(c => {
+      const nom = (i) => `${esc(c.lados[i].nombre)}${c.lados[i].marca ? ` <b>${esc(c.lados[i].marca)}</b>` : ''}`;
+      const dia = c.cuando ? fmtDiaCorto.format(new Date(c.cuando)) : '—';
+      const est = c.tomado ? (c.acerto ? '<b class="ok">acertó</b>' : '<b class="no">falló</b>')
+        : `<b class="pasar">pasó</b>${c.sorpresa ? ' <span class="loc">y cayó el favorito</span>' : ''}`;
+      return `<tr class="${c.tomado ? (c.acerto ? 'f-ok' : 'f-no') : 'f-pas'}">
+        <td class="mono">${esc(dia)}</td>
+        <td>${esc(c.torneo)}<span class="loc">${esc(c.categoria || '')} ${esc(c.superficie || '')}</span></td>
+        <td class="mono">${c.evento === 'Q' ? 'Q·' : ''}${esc(c.ronda || '')}</td>
+        <td class="c-res"><span class="gano">${nom(c.ig)}</span> <span class="loc">venció a</span> ${nom(1 - c.ig)}</td>
+        <td class="n mono">${c.lados[c.ig].gana != null ? (+c.lados[c.ig].gana).toFixed(2) : '<span class="sin">·</span>'}</td>
+        <td>${est}${c.veredicto && c.veredicto.mercado !== 'pasar' ? ` <span class="loc">iba con ${esc(c.veredicto.favorito)} (${esc(c.veredicto.confianza)})</span>` : ''}</td>
+        <td class="n mono">${c.tomado ? `<span class="${c.pnl >= 0 ? 'ok' : 'no'}">${c.pnl >= 0 ? '+' : ''}${c.pnl.toFixed(2)}</span>` : '<span class="sin">·</span>'}</td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table></div>
+</section>` : ''}
 <footer>Generado ${generado.slice(0, 16).replace('T', ' ')} UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
 </div>
 <script>
@@ -465,53 +591,4 @@ ${partidos.length ? `<div class="tabla-env"><table>
 fs.writeFileSync(SALIDA, html);
 console.log(`✓ ${SALIDA} (${(html.length / 1024).toFixed(0)} KB) · ${partidos.length} por jugar (${conCuota} con cuota) · ${activos.length} torneos`);
 
-/* ---------- libro de registro: la pieza que falta ----------
-   Para saber si nuestras señales le ganan al mercado (y no solo al azar)
-   hace falta juntar, del mismo partido: cuota vista + ΔWTN + resultado.
-   Cada corrida anota los partidos con cuota, y cuando el cuadro los da
-   por jugados escribe quién ganó. Sin este acumulado no hay forma de
-   medir rendimiento contra el precio. */
-const REG = path.join(DIR, 'itf-registro.json');
-const reg = leer(REG) || { nota: 'cuota + nivel + resultado por partido, para medir contra el mercado', partidos: {} };
-for (const p of partidos) {
-  if (!p.cuotas) continue;
-  const k = String(p.matchId);
-  if (reg.partidos[k]) continue;
-  reg.partidos[k] = {
-    visto: new Date().toISOString(),
-    torneo: p.t.nombre, categoria: p.t.categoria, superficie: p.t.superficie,
-    ronda: p.ronda, evento: p.evento, cuando: p.inicio ? p.inicio.toISOString() : null,
-    lados: p.lados.map((l, i) => ({
-      nombre: l.nombre, atp: l.atp, wtn: l.wtn, marca: l.marca,
-      gana: p.cuotas.lados[i].gana, set1: p.cuotas.lados[i].set1,
-    })),
-    veredicto: analisis.veredictos[k] ? {
-      favorito: analisis.veredictos[k].favorito,
-      confianza: analisis.veredictos[k].confianza,
-      mercado: analisis.veredictos[k].mercado,
-    } : null,
-    resultado: null,
-  };
-}
-/* cerrar los que ya se jugaron, mirando los cuadros */
-let cerrados = 0;
-for (const t of activos) {
-  const ctx = contextoTorneo(t.clave);
-  for (const [k, e] of Object.entries(reg.partidos)) {
-    if (e.resultado) continue;
-    const lados = ctx.porMatch.get(+k);
-    if (!lados) continue;
-    const gi = lados.findIndex(l => l.ganador);
-    if (gi < 0) continue;
-    const gan = lados[gi].nombre;
-    e.resultado = {
-      ganador: gan,
-      idxGanador: e.lados.findIndex(l => pareceElMismo(gan, { nombre: l.nombre })),
-      cerrado: new Date().toISOString(),
-    };
-    cerrados++;
-  }
-}
-fs.writeFileSync(REG, JSON.stringify(reg, null, 1));
-const conRes = Object.values(reg.partidos).filter(e => e.resultado).length;
 console.log(`  registro: ${Object.keys(reg.partidos).length} partidos con cuota anotados, ${conRes} con resultado (${cerrados} cerrados ahora)`);
