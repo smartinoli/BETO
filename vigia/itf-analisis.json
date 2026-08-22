@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T13:27:05.240Z",
+ "generado": "2026-08-22T14:00:53.742Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + reglas medidas de vigia/itf-saber.json",
  "titular": "Valor esperado partido a partido, con la probabilidad ajustada por etapa del cuadro: el WTN acierta 75% en qualis/R1/R2 y solo 56% de cuartos en adelante.",
  "advertencia": "El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las rondas finales son el peor terreno para estas señales — el cuadro ya filtro y las Δ se achican. Los \"ojo:\" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano).",
@@ -66,14 +66,21 @@
    ]
   },
   "1183662487": {
-   "favorito": "Kristijan Juhas [7]",
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ5.67 de WTN a favor (7.37 contra 13.04), en ronda final. Nivel y forma coinciden: banda del 63%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
+   "mercado": "pasar",
+   "razon": "El ΔWTN de 5.67 apunta a Kristijan Juhas, pero el numero no sirve: el WTN de Dimitar Kisimov (13.04) no es confiable: junior, su rating mide partidos viejos y llega cediendo el 32% de los games.",
    "banderas": [
-    "Δ5.67 muy fuerte",
-    "ojo: ronda final",
-    "línea sin abrir"
+    "veto: dato no confiable"
+   ]
+  },
+  "1183662574": {
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
+   "banderas": [
+    "sin datos de nivel"
    ]
   },
   "1183662681": {
@@ -161,6 +168,17 @@
    "banderas": [
     "Δ2.47 moderada",
     "choque nivel vs forma",
+    "ojo: ronda final",
+    "línea sin abrir"
+   ]
+  },
+  "1183664354": {
+   "favorito": "Leo Borg [1]",
+   "confianza": "baja",
+   "mercado": "gana",
+   "razon": "Δ2.73 de WTN a favor (5.4 contra 8.13), en ronda final. Nivel y forma coinciden: banda del 63%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
+   "banderas": [
+    "Δ2.73 fuerte",
     "ojo: ronda final",
     "línea sin abrir"
    ]
