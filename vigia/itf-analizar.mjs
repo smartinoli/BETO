@@ -10,20 +10,27 @@
        con Δ>=2.5 manda el nivel (63%)
      · valor = p_estimada × cuota − 1, contra el vig de 9% de Betano
 
-   VETOS (medidos 2026-08-22, ver "modeloDelMercado" en el saber).
-   El modelo del mercado es logit(p) = −0.081 + 0.183·ΔWTN con R²=0.626:
-   el ΔWTN explica dos tercios del precio, un tercio se le escapa. Cuando
-   la cuota real se aleja mucho de lo que ese modelo predice, NO estamos
-   ante una cuota mal puesta: estamos dentro del tercio que no vemos. El
-   analizador viejo leía justamente esa distancia como "valor" y por eso
-   proponía como mejores apuestas los partidos donde más ciego estaba.
-   Tres frenos:
-     1. WTN no confiable: rival sin ranking ATP o junior → su WTN atrasa
-        (mide partidos viejos). Un Δ grande contra él no prueba nada.
-     2. ATP contradice al WTN por más de 400 puestos → nuestras dos señales
-        no coinciden y el backtest no distingue cuál manda (71% vs 66%,
-        intervalos superpuestos). Sin lado.
-     3. Residuo del mercado < −0.15 → el mercado sabe algo que no tenemos.
+   LA RONDA MANDA (medido 2026-08-22 sobre 744 partidos con WTN y resultado).
+   El cuadro filtra: la Δ mediana cae de 3.49 en qualis a 1.96 en cuartos, o
+   sea que para las rondas finales casi todos los partidos ya cayeron en la
+   banda de ruido. El acierto del mejor WTN sigue esa curva:
+     QUALI 74.6% (n=393) · R1 77.4% (n=199) · R2 73.2% (n=97) · QF 57.4% (n=47)
+   Agrupado: temprano (Q+R1+R2) 75.2% n=689 contra tarde (QF+SF+F) 56.4% n=55,
+   intervalos que no se tocan. En rondas finales el ATP incluso le gana al WTN
+   (63.5% contra 55.8%, n=52). Ahí no hay lado: hay que esperar R1 y qualis.
+
+   FRENOS. Uno solo es veto duro, y es por calidad de dato:
+     1. VETO — rival sin ranking ATP o junior: su WTN mide partidos viejos y
+        atrasa cuando el jugador sube rapido (Behrmann, JR sin ATP, WTN 13.28,
+        le gano 6-1 6-0 al [5] en Mistelbach). Un Δ grande contra el no prueba
+        nada porque el numero mismo no vale.
+     2. BANDERA — ATP contra WTN por mas de 400 puestos: nuestras dos senales
+        discrepan y el backtest no distingue cual manda. Baja la confianza.
+     3. BANDERA — residuo del mercado bajo -0.15 sobre su modelo
+        logit(p) = -0.081 + 0.183·ΔWTN (R²=0.626): el mercado ve algo que no
+        tenemos. Pero NO es veto: Borg [1] tenia residuo -0.205 y gano 6-3 7-5
+        el 2026-08-22. Se muestra y baja la confianza; decide quien mira.
+
    Uso: node vigia/itf-analizar.mjs
    ============================================================ */
 import fs from 'node:fs';
@@ -68,7 +75,15 @@ function huboRetiro(t) {
   return false;
 }
 
-const banda = d => d >= 4 ? 0.88 : d >= 2.5 ? 0.717 : d >= 1.5 ? 0.677 : null;
+/* Probabilidad por banda de Δ, separada por etapa del cuadro. */
+const BANDAS = {
+  temprano: { nota: 'Q+R1+R2, n=689', p: d => d >= 4 ? 0.886 : d >= 2.5 ? 0.716 : d >= 1.5 ? 0.682 : null },
+  /* Muestras chicas (n=11 y n=24): se usan encogidas hacia 50% y nunca dan
+     confianza alta. En rondas finales lo medido es 56.4% global. */
+  tarde: { nota: 'QF+SF+F, n=55', p: d => d >= 2.5 ? 0.63 : d >= 1.5 ? 0.60 : null },
+};
+const esTarde = r => /Quarter|Semi|Final/i.test(r || '') && !/1st|2nd|3rd/i.test(r || '');
+const banda = (d, tarde) => (tarde ? BANDAS.tarde : BANDAS.temprano).p(d);
 const sig = x => 1 / (1 + Math.exp(-x));
 /* Precio que el mercado DEBERÍA poner según su propio modelo ajustado. */
 const pMercadoModelo = d => sig(-0.081 + 0.183 * d);
@@ -76,31 +91,35 @@ const pMercadoModelo = d => sig(-0.081 + 0.183 * d);
 const veredictos = {}, conValor = [];
 for (const p of dossier.partidos) {
   const l = p.lados;
+  const tarde = esTarde(p.ronda);
   let k = null, d = null, choque = null, pe = null;
   if (l[0].wtn && l[1].wtn) {
     d = Math.abs(l[0].wtn - l[1].wtn);
     k = l[0].wtn < l[1].wtn ? 0 : 1;
     const f = l.map(x => setsCedidos(x.llega));
     if (f[0] != null && f[1] != null && f[0] !== f[1]) choque = ((f[0] < f[1] ? 0 : 1) !== k);
-    pe = choque ? (d >= 2.5 ? 0.63 : 0.42) : banda(d);
+    pe = choque ? (d >= 2.5 ? 0.63 : 0.42) : banda(d, tarde);
+    /* En rondas finales el choque tampoco sostiene: se encoge hacia el azar. */
+    if (tarde && choque) pe = 0.5 + (pe - 0.5) * 0.5;
   }
 
-  /* ---- vetos: casos donde nuestras señales no sirven ---- */
-  const vetos = [];
+  /* ---- un veto duro (dato roto) + banderas que solo bajan la confianza ---- */
+  const vetos = [], avisos = [];
   if (k != null) {
     const yo = l[k], otro = l[1 - k];
     if (otro.atp == null || /JR/i.test(otro.marca || ''))
       vetos.push(`el WTN de ${otro.nombre} (${otro.wtn}) no es confiable: ${otro.atp == null ? 'sin ranking ATP' : 'junior'}, su rating mide partidos viejos y llega ${gamesCedidos(otro.llega) != null ? 'cediendo el ' + Math.round(gamesCedidos(otro.llega) * 100) + '% de los games' : 'sin datos de forma'}`);
     if (yo.atp != null && otro.atp != null && otro.atp < yo.atp - 400)
-      vetos.push(`el ATP dice lo contrario que el WTN (${yo.atp} contra ${otro.atp}, ${yo.atp - otro.atp} puestos) y nuestro backtest no distingue cuál manda`);
+      avisos.push(`el ATP dice lo contrario que el WTN (${yo.atp} contra ${otro.atp}, ${yo.atp - otro.atp} puestos)${tarde ? ' — y en rondas finales el ATP acierta mas que el WTN' : ''}`);
     const cA = yo.gana, cB = otro.gana;
     if (cA && cB) {
       const devig = (1 / cA) / ((1 / cA) + (1 / cB));
       const res = devig - pMercadoModelo(d);
       if (res < -0.15)
-        vetos.push(`el mercado lo paga a ${cA} (${Math.round(devig * 100)}% real) cuando su propio modelo por ΔWTN daría ${Math.round(pMercadoModelo(d) * 100)}%: ${Math.round(-res * 100)} puntos de diferencia, información que no tenemos`);
+        avisos.push(`el mercado lo paga a ${cA} (${Math.round(devig * 100)}% real) cuando su propio modelo por ΔWTN daria ${Math.round(pMercadoModelo(d) * 100)}%: ${Math.round(-res * 100)} puntos que no vemos`);
     }
-    if (huboRetiro(otro.llega)) vetos.push(`${otro.nombre} llega más fresco: ganó un partido por retiro`);
+    if (huboRetiro(otro.llega)) avisos.push(`${otro.nombre} gano un partido por retiro: llega mas fresco`);
+    if (tarde) avisos.push('ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55)');
   }
 
   const c = k != null ? l[k].gana : null;
@@ -110,8 +129,8 @@ for (const p of dossier.partidos) {
   if (pe != null && vetos.length) {
     veredictos[String(p.id)] = {
       favorito: '—', confianza: 'baja', mercado: 'pasar',
-      razon: `El ΔWTN de ${d.toFixed(2)} apunta a ${l[k].nombre}, pero hay que descartarlo: ${vetos.join('; ')}. Cuando el mercado se aparta tanto de nuestro modelo, el que está ciego es el modelo, no la cuota.`,
-      banderas: ['veto: ' + (vetos.length > 1 ? vetos.length + ' señales en contra' : 'señal en contra')],
+      razon: `El ΔWTN de ${d.toFixed(2)} apunta a ${l[k].nombre}, pero el numero no sirve: ${vetos.join('; ')}.`,
+      banderas: ['veto: dato no confiable'],
     };
     continue;
   }
@@ -128,7 +147,8 @@ for (const p of dossier.partidos) {
   const nom = l[k].nombre + (l[k].marca ? ' ' + l[k].marca : '');
   const ban = [`Δ${d.toFixed(2)} ` + (d >= 4 ? 'muy fuerte' : d >= 2.5 ? 'fuerte' : 'moderada')];
   if (choque) ban.push('choque nivel vs forma');
-  let razon = `Δ${d.toFixed(2)} de WTN a favor (${l[k].wtn} contra ${l[1 - k].wtn}). `;
+  for (const a of avisos) ban.push('ojo: ' + a.split(':')[0].split(' —')[0]);
+  let razon = `Δ${d.toFixed(2)} de WTN a favor (${l[k].wtn} contra ${l[1 - k].wtn}), ${tarde ? 'en ronda final' : 'en ronda temprana'}. `;
   razon += choque
     ? `Choque nivel-contra-forma con brecha ${d >= 2.5 ? 'grande' : 'chica'}: nuestros datos dan ${Math.round(pe * 100)}% a este lado. `
     : `Nivel y forma coinciden: banda del ${Math.round(pe * 100)}%. `;
@@ -141,21 +161,24 @@ for (const p of dossier.partidos) {
   } else {
     razon += 'Betano todavía no abre la línea.'; conf = d >= 2.5 ? 'media' : 'baja'; mkt = 'gana'; ban.push('línea sin abrir');
   }
+  if (avisos.length) {
+    razon += ` Con reparos: ${avisos.join('; ')}.`;
+    conf = avisos.length >= 2 ? 'baja' : conf === 'alta' ? 'media' : 'baja';
+  }
   veredictos[String(p.id)] = { favorito: mkt === 'pasar' ? '—' : nom, confianza: conf, mercado: mkt, razon, banderas: ban };
 }
 conValor.sort((a, b) => b.val - a.val);
 const destacados = conValor.filter(x => x.val > 0.08).slice(0, 6).map(x => x.id);
 const vetados = Object.values(veredictos).filter(v => v.banderas.some(b => b.startsWith('veto'))).length;
+const conReparos = Object.values(veredictos).filter(v => v.banderas.some(b => b.startsWith('ojo'))).length;
 fs.writeFileSync(path.join(DIR, 'itf-analisis.json'), JSON.stringify({
   generado: new Date().toISOString(),
   analista: 'agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + reglas medidas de vigia/itf-saber.json',
-  titular: destacados.length
-    ? 'Valor esperado partido a partido, ya descontando los partidos donde el mercado se aparta de nuestro modelo.'
-    : 'Sin lado hoy: todos los partidos con ΔWTN suficiente caen en un veto. Ninguno pasa el filtro.',
-  advertencia: 'El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Un ΔWTN grande contra un jugador sin ranking ATP no es señal, y una cuota lejos de nuestro modelo es ceguera nuestra, no error del mercado.',
+  titular: 'Valor esperado partido a partido, con la probabilidad ajustada por etapa del cuadro: el WTN acierta 75% en qualis/R1/R2 y solo 56% de cuartos en adelante.',
+  advertencia: 'El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las rondas finales son el peor terreno para estas señales — el cuadro ya filtro y las Δ se achican. Los "ojo:" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano).',
   veredictos, destacados,
 }, null, 1));
-console.log(`✓ análisis: ${Object.keys(veredictos).length} veredictos, ${destacados.length} destacados, ${vetados} vetados`);
+console.log(`✓ análisis: ${Object.keys(veredictos).length} veredictos, ${destacados.length} destacados, ${vetados} vetados, ${conReparos} con reparos`);
 for (const x of conValor.slice(0, 5)) {
   const p = dossier.partidos.find(q => q.id === x.id);
   console.log(`   ${(x.val * 100).toFixed(1).padStart(6)}%  ${veredictos[String(x.id)].favorito}  ${p.torneo}`);
