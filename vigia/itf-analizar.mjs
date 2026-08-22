@@ -82,7 +82,11 @@ const BANDAS = {
      confianza alta. En rondas finales lo medido es 56.4% global. */
   tarde: { nota: 'QF+SF+F, n=55', p: d => d >= 2.5 ? 0.63 : d >= 1.5 ? 0.60 : null },
 };
-const esTarde = r => /Quarter|Semi|Final/i.test(r || '') && !/1st|2nd|3rd/i.test(r || '');
+/* El order of play usa tanto nombres largos ("Semi-final") como codigos
+   cortos ("F", "SF", "QF"): sin los cortos las FINALES caian en la banda
+   temprana del 75% cuando les corresponde la tardia del 56%. */
+const esTarde = r => /^(f|sf|qf)$/i.test(String(r || '').trim())
+  || (/Quarter|Semi|Final/i.test(r || '') && !/1st|2nd|3rd/i.test(r || ''));
 const banda = (d, tarde) => (tarde ? BANDAS.tarde : BANDAS.temprano).p(d);
 const sig = x => 1 / (1 + Math.exp(-x));
 /* Precio que el mercado DEBERÍA poner según su propio modelo ajustado. */

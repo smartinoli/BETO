@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T12:26:40.830Z",
+ "generado": "2026-08-22T13:17:01.902Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + reglas medidas de vigia/itf-saber.json",
  "titular": "Valor esperado partido a partido, con la probabilidad ajustada por etapa del cuadro: el WTN acierta 75% en qualis/R1/R2 y solo 56% de cuartos en adelante.",
  "advertencia": "El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las rondas finales son el peor terreno para estas señales — el cuadro ya filtro y las Δ se achican. Los \"ojo:\" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano).",
@@ -17,10 +17,11 @@
    "favorito": "M Rifqi Fitriadi [2]",
    "confianza": "baja",
    "mercado": "gana",
-   "razon": "Δ0.17 de WTN a favor (6.21 contra 6.38), en ronda temprana. Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.",
+   "razon": "Δ0.17 de WTN a favor (6.21 contra 6.38), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
    "banderas": [
     "Δ0.17 moderada",
     "choque nivel vs forma",
+    "ojo: ronda final",
     "línea sin abrir"
    ]
   },
@@ -28,21 +29,13 @@
    "favorito": "Iannis Miletich",
    "confianza": "baja",
    "mercado": "gana",
-   "razon": "Δ0.36 de WTN a favor (8.66 contra 9.02), en ronda temprana. Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea. Con reparos: Matteo Sciahbasi gano un partido por retiro: llega mas fresco.",
+   "razon": "Δ0.36 de WTN a favor (8.66 contra 9.02), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. Betano todavía no abre la línea. Con reparos: Matteo Sciahbasi gano un partido por retiro: llega mas fresco; ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
    "banderas": [
     "Δ0.36 moderada",
     "choque nivel vs forma",
     "ojo: Matteo Sciahbasi gano un partido por retiro",
+    "ojo: ronda final",
     "línea sin abrir"
-   ]
-  },
-  "1183662140": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "El ΔWTN de 4.72 apunta a Gabriele Maria Noce, pero el numero no sirve: el WTN de Thilo Behrmann (13.28) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega cediendo el 21% de los games.",
-   "banderas": [
-    "veto: dato no confiable"
    ]
   },
   "1183662341": {
@@ -63,43 +56,22 @@
     "Δ0.03 ruido"
    ]
   },
-  "1183662576": {
+  "1183662487": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
+   "razon": "El ΔWTN de 5.67 apunta a Kristijan Juhas, pero el numero no sirve: el WTN de Dimitar Kisimov (13.04) no es confiable: junior, su rating mide partidos viejos y llega cediendo el 32% de los games.",
    "banderas": [
-    "sin datos de nivel"
+    "veto: dato no confiable"
    ]
   },
   "1183662681": {
    "favorito": "Sebastian Sorger [3]",
-   "confianza": "media",
+   "confianza": "baja",
    "mercado": "gana",
-   "razon": "Δ5.97 de WTN a favor (4.96 contra 10.93), en ronda temprana. Nivel y forma coinciden: banda del 89%. Betano todavía no abre la línea.",
+   "razon": "Δ5.97 de WTN a favor (4.96 contra 10.93), en ronda final. Nivel y forma coinciden: banda del 63%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
    "banderas": [
     "Δ5.97 muy fuerte",
-    "línea sin abrir"
-   ]
-  },
-  "1183662739": {
-   "favorito": "Carlos Sanchez Jover [1]",
-   "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ2.99 de WTN a favor (3.5 contra 6.49), en ronda final. Nivel y forma coinciden: banda del 63%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
-   "banderas": [
-    "Δ2.99 fuerte",
-    "ojo: ronda final",
-    "línea sin abrir"
-   ]
-  },
-  "1183662740": {
-   "favorito": "Alexander Ritschard [7]",
-   "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ2.00 de WTN a favor (3.15 contra 5.15), en ronda final. Nivel y forma coinciden: banda del 60%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
-   "banderas": [
-    "Δ2.00 moderada",
     "ojo: ronda final",
     "línea sin abrir"
    ]
@@ -127,32 +99,24 @@
     "valor de cuota"
    ]
   },
-  "1183663251": {
+  "1183663250": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ0.18 de WTN: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.",
+   "razon": "Δ1.10 de WTN: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.",
    "banderas": [
-    "Δ0.18 ruido"
-   ]
-  },
-  "1183663252": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.17 de WTN: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.",
-   "banderas": [
-    "Δ0.17 ruido"
+    "Δ1.10 ruido"
    ]
   },
   "1183663305": {
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ0.16 de WTN a favor (3.45 contra 3.61), en ronda temprana. Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 2.1 implica 47.6%, sobre nuestra estimación: sin valor.",
+   "razon": "Δ0.16 de WTN a favor (3.45 contra 3.61), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. A 2.1 implica 47.6%, sobre nuestra estimación: sin valor. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
    "banderas": [
     "Δ0.16 moderada",
     "choque nivel vs forma",
+    "ojo: ronda final",
     "sin valor"
    ]
   },
@@ -171,9 +135,10 @@
    "favorito": "Andrea De Marchi",
    "confianza": "baja",
    "mercado": "gana",
-   "razon": "Δ2.47 de WTN a favor (7.87 contra 10.34), en ronda final. Nivel y forma coinciden: banda del 60%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
+   "razon": "Δ2.47 de WTN a favor (7.87 contra 10.34), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
    "banderas": [
     "Δ2.47 moderada",
+    "choque nivel vs forma",
     "ojo: ronda final",
     "línea sin abrir"
    ]
@@ -199,16 +164,15 @@
     "línea sin abrir"
    ]
   },
-  "1183664415": {
-   "favorito": "—",
+  "1183664411": {
+   "favorito": "Daniel Masur [2]",
    "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.63 de WTN a favor (3.07 contra 3.7), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. A 1.78 implica 56.2%, sobre nuestra estimación: sin valor. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
+   "mercado": "gana",
+   "razon": "Δ2.01 de WTN a favor (3.7 contra 5.71), en ronda final. Nivel y forma coinciden: banda del 60%. Betano todavía no abre la línea. Con reparos: ronda final: el cuadro ya filtro y el WTN cae a 56% (n=55).",
    "banderas": [
-    "Δ0.63 moderada",
-    "choque nivel vs forma",
+    "Δ2.01 moderada",
     "ojo: ronda final",
-    "sin valor"
+    "línea sin abrir"
    ]
   }
  },
