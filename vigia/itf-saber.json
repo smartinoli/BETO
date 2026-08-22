@@ -202,6 +202,20 @@
    "hallazgo": "El choque no es 'gana el nivel' ni 'gana la forma': depende del Δ. Bajo 2.5 la forma acierta 58%, sobre 2.5 el nivel acierta 63%.",
    "aplicacion": "Borg vs Lithen (Δ3.10, choque) queda del lado del nivel: 63% contra una cuota que implica 40.8%.",
    "cautela": "n=27 y ±18: el borde inferior (45%) todavía deja ganancia a 2.45, pero es muestra chica y el mercado puede tener información privada."
+  },
+  {
+   "fecha": "2026-08-22",
+   "corrida": "primeros resultados del registro",
+   "cerrados": 4,
+   "detalle": [
+    "Hsu @1.47 (Δ1.24 ruido, confianza baja) → ACIERTO",
+    "Mitsui vs Dellavedova (Δ0.64, veredicto 'pasar') → ganó Dellavedova: pasar fue correcto, y mi destacado original a favor de Mitsui habría fallado",
+    "Biryukov @1.39 (Δ2.70, banda 71.7%) → FALLO, ganó Isomura",
+    "Chung @1.36 (Δ1.55, banda 67.7%) → FALLO, ganó Fitriadi"
+   ],
+   "rendimiento": "1 acierto / 2 fallos con lado; -1.53 unidades en 3 apuestas (-51%)",
+   "lectura": "n=3, sin valor estadístico. Pero los dos fallos cayeron en bandas donde el WTN debería acertar (1.5-2.5 y 2.5-4), y el único acierto vino de una banda de ruido. Es el recordatorio de que 67-72% de acierto implica perder 1 de cada 3.",
+   "aciertoDelMetodo": "Bajar Mitsui de destacado a 'pasar' tras medir el Δ evitó un fallo: la disciplina del umbral funcionó aunque la muestra sea mínima."
   }
  ],
  "pendienteCritico": "Juntar (cuota + ΔWTN + resultado) del MISMO partido: hoy tenemos 0 pares. El libro itf-registro.json ya los acumula en cada corrida; con ~100 pares se podrá saber si nuestras señales superan el vig de 9%.",

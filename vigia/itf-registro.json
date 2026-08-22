@@ -32,7 +32,11 @@
     "confianza": "baja",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Yu Hsiou Hsu",
+    "idxGanador": 0,
+    "cerrado": "2026-08-22T06:52:48.938Z"
+   }
   },
   "1183661182": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -65,7 +69,11 @@
     "confianza": "baja",
     "mercado": "pasar"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Matthew Dellavedova",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T06:52:48.938Z"
+   }
   },
   "1183661236": {
    "visto": "2026-08-22T00:52:25.096Z",
@@ -98,7 +106,11 @@
     "confianza": "media",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Kokoro Isomura",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T06:52:48.938Z"
+   }
   },
   "1183661237": {
    "visto": "2026-08-22T00:52:25.096Z",
@@ -131,7 +143,11 @@
     "confianza": "baja",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "M Rifqi Fitriadi",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T06:52:48.938Z"
+   }
   },
   "1183661738": {
    "visto": "2026-08-21T20:11:54.667Z",

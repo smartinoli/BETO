@@ -1,47 +1,18 @@
 {
- "generado": "2026-08-22T03:53:13.666Z",
+ "generado": "2026-08-22T06:53:16.801Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + reglas medidas de vigia/itf-saber.json",
  "titular": "Valor esperado partido a partido: probabilidad estimada (ΔWTN y choque nivel-forma) contra la que implica cada cuota.",
  "advertencia": "El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las reglas del choque salen de muestras chicas (n=27).",
  "veredictos": {
-  "1183661181": {
-   "favorito": "—",
+  "1183661235": {
+   "favorito": "M Rifqi Fitriadi [2]",
    "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ1.24 de WTN: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.",
+   "mercado": "gana",
+   "razon": "Δ0.17 de WTN a favor (6.21 contra 6.38). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.",
    "banderas": [
-    "Δ1.24 ruido"
-   ]
-  },
-  "1183661182": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.64 de WTN a favor (3.68 contra 4.32). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.7 implica 58.8%, sobre nuestra estimación: sin valor.",
-   "banderas": [
-    "Δ0.64 moderada",
+    "Δ0.17 moderada",
     "choque nivel vs forma",
-    "sin valor"
-   ]
-  },
-  "1183661236": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ2.70 de WTN a favor (3.68 contra 6.38). Nivel y forma coinciden: banda del 72%. A 1.39 implica 71.9%, sobre nuestra estimación: sin valor.",
-   "banderas": [
-    "Δ2.70 fuerte",
-    "sin valor"
-   ]
-  },
-  "1183661237": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ1.55 de WTN a favor (4.66 contra 6.21). Nivel y forma coinciden: banda del 68%. A 1.36 implica 73.5%, sobre nuestra estimación: sin valor.",
-   "banderas": [
-    "Δ1.55 moderada",
-    "sin valor"
+    "línea sin abrir"
    ]
   },
   "1183661737": {
@@ -142,14 +113,14 @@
    ]
   },
   "1183662679": {
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ0.08 de WTN a favor (4.88 contra 4.96). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 2.25 implica 44.4%, sobre nuestra estimación: sin valor.",
+   "favorito": "Sebastian Dominko",
+   "confianza": "media",
+   "mercado": "gana",
+   "razon": "Δ0.08 de WTN a favor (4.88 contra 4.96). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 2.47 implica 40.5% → apenas +4%: margen fino.",
    "banderas": [
     "Δ0.08 moderada",
     "choque nivel vs forma",
-    "sin valor"
+    "margen fino"
    ]
   },
   "1183662680": {
@@ -224,7 +195,7 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ3.92 de WTN a favor (5.01 contra 8.93). Nivel y forma coinciden: banda del 72%. A 1.2 implica 83.3%, sobre nuestra estimación: sin valor.",
+   "razon": "Δ3.92 de WTN a favor (5.01 contra 8.93). Nivel y forma coinciden: banda del 72%. A 1.16 implica 86.2%, sobre nuestra estimación: sin valor.",
    "banderas": [
     "Δ3.92 fuerte",
     "sin valor"
@@ -243,7 +214,7 @@
    "favorito": "Juan Cruz Martin Manzano [4]",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ2.21 de WTN a favor (4.13 contra 6.34). Nivel y forma coinciden: banda del 68%. A 1.62 implica 61.7% → apenas +10%: margen fino.",
+   "razon": "Δ2.21 de WTN a favor (4.13 contra 6.34). Nivel y forma coinciden: banda del 68%. A 1.6 implica 62.5% → apenas +8%: margen fino.",
    "banderas": [
     "Δ2.21 moderada",
     "margen fino"
@@ -313,7 +284,7 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ1.95 de WTN a favor (10.33 contra 12.28). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.44 implica 69.4%, sobre nuestra estimación: sin valor.",
+   "razon": "Δ1.95 de WTN a favor (10.33 contra 12.28). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 1.47 implica 68.0%, sobre nuestra estimación: sin valor.",
    "banderas": [
     "Δ1.95 moderada",
     "choque nivel vs forma",
@@ -335,7 +306,7 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ4.97 de WTN a favor (5.71 contra 10.68). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.32 implica 75.8%, sobre nuestra estimación: sin valor.",
+   "razon": "Δ4.97 de WTN a favor (5.71 contra 10.68). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.31 implica 76.3%, sobre nuestra estimación: sin valor.",
    "banderas": [
     "Δ4.97 muy fuerte",
     "choque nivel vs forma",
