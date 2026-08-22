@@ -67,6 +67,72 @@
    },
    "resultado": null
   },
+  "1183661236": {
+   "visto": "2026-08-22T00:52:25.096Z",
+   "torneo": "M15 Maanshan",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T02:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Petr Bar Biryukov",
+     "atp": 281,
+     "wtn": 3.68,
+     "marca": "[1]",
+     "gana": 1.39,
+     "set1": 1.47
+    },
+    {
+     "nombre": "Kokoro Isomura",
+     "atp": 562,
+     "wtn": 6.38,
+     "marca": "[3]",
+     "gana": 2.72,
+     "set1": 2.47
+    }
+   ],
+   "veredicto": {
+    "favorito": "Petr Bar Biryukov [1]",
+    "confianza": "media",
+    "mercado": "gana"
+   },
+   "resultado": null
+  },
+  "1183661237": {
+   "visto": "2026-08-22T00:52:25.096Z",
+   "torneo": "M15 Maanshan",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T02:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Yun Seong Chung",
+     "atp": 1059,
+     "wtn": 4.66,
+     "marca": "",
+     "gana": 1.36,
+     "set1": 1.44
+    },
+    {
+     "nombre": "M Rifqi Fitriadi",
+     "atp": 549,
+     "wtn": 6.21,
+     "marca": "[2]",
+     "gana": 2.85,
+     "set1": 2.55
+    }
+   ],
+   "veredicto": {
+    "favorito": "Yun Seong Chung",
+    "confianza": "baja",
+    "mercado": "gana"
+   },
+   "resultado": null
+  },
   "1183661738": {
    "visto": "2026-08-21T20:11:54.667Z",
    "torneo": "M15 Arad",
@@ -97,6 +163,72 @@
     "favorito": "Robert Guna [7]",
     "confianza": "baja",
     "mercado": "pasar"
+   },
+   "resultado": null
+  },
+  "1183662140": {
+   "visto": "2026-08-22T00:52:25.096Z",
+   "torneo": "M15 Mistelbach",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T10:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Gabriele Maria Noce",
+     "atp": 855,
+     "wtn": 8.56,
+     "marca": "[6]",
+     "gana": 2.35,
+     "set1": 2.22
+    },
+    {
+     "nombre": "Thilo Behrmann",
+     "atp": null,
+     "wtn": 13.28,
+     "marca": "JR",
+     "gana": 1.5,
+     "set1": 1.57
+    }
+   ],
+   "veredicto": {
+    "favorito": "Gabriele Maria Noce [6]",
+    "confianza": "media",
+    "mercado": "gana"
+   },
+   "resultado": null
+  },
+  "1183662141": {
+   "visto": "2026-08-22T00:52:25.096Z",
+   "torneo": "M15 Mistelbach",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T08:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Nikita Mashtakov",
+     "atp": 652,
+     "wtn": 4.83,
+     "marca": "[3]",
+     "gana": 1.82,
+     "set1": 1.82
+    },
+    {
+     "nombre": "Marcel Zielinski",
+     "atp": 586,
+     "wtn": 6.51,
+     "marca": "[2]",
+     "gana": 1.85,
+     "set1": 1.85
+    }
+   ],
+   "veredicto": {
+    "favorito": "Nikita Mashtakov [3]",
+    "confianza": "baja",
+    "mercado": "gana"
    },
    "resultado": null
   },
@@ -311,6 +443,39 @@
    "veredicto": {
     "favorito": "Filip Jeff Planinsek [6]",
     "confianza": "alta",
+    "mercado": "gana"
+   },
+   "resultado": null
+  },
+  "1183663110": {
+   "visto": "2026-08-22T00:52:25.096Z",
+   "torneo": "M15 Krakow",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T12:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Pawel Juszczak",
+     "atp": 1505,
+     "wtn": 6.98,
+     "marca": "",
+     "gana": 2.2,
+     "set1": 2.12
+    },
+    {
+     "nombre": "Michael Agwi",
+     "atp": 795,
+     "wtn": 9.08,
+     "marca": "[5]",
+     "gana": 1.57,
+     "set1": 1.62
+    }
+   ],
+   "veredicto": {
+    "favorito": "Pawel Juszczak",
+    "confianza": "baja",
     "mercado": "gana"
    },
    "resultado": null
@@ -707,6 +872,39 @@
    "veredicto": {
     "favorito": "Arthur Nagel [3]",
     "confianza": "alta",
+    "mercado": "gana"
+   },
+   "resultado": null
+  },
+  "1183664415": {
+   "visto": "2026-08-22T00:52:25.096Z",
+   "torneo": "M25 Ueberlingen",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "ronda": "Quarter-final",
+   "evento": "M",
+   "cuando": "2026-08-22T08:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Maximilian Marterer",
+     "atp": 581,
+     "wtn": 3.07,
+     "marca": "WC",
+     "gana": 1.82,
+     "set1": 1.82
+    },
+    {
+     "nombre": "Daniel Masur",
+     "atp": 377,
+     "wtn": 3.7,
+     "marca": "[2]",
+     "gana": 1.85,
+     "set1": 1.85
+    }
+   ],
+   "veredicto": {
+    "favorito": "Maximilian Marterer WC",
+    "confianza": "baja",
     "mercado": "gana"
    },
    "resultado": null

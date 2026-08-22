@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-21T21:57:53.521Z",
+ "generado": "2026-08-22T00:52:59.806Z",
  "partidos": [
   {
    "id": 1183661738,
@@ -289,8 +289,8 @@
      "atp": 1505,
      "wtn": 6.98,
      "llega": "R1✓ 6-3 7-5 v[6] · R2✓ 6-4 6-1 vQ · QF✓ 1-6 6-3 6-4 v[4]",
-     "gana": null,
-     "set1": null
+     "gana": 2.2,
+     "set1": 2.12
     },
     {
      "nombre": "Michael Agwi",
@@ -299,11 +299,11 @@
      "atp": 795,
      "wtn": 9.08,
      "llega": "R1✓ 6-3 7-6(1) vQ · R2✓ 6-3 2-0 · QF✓ 5-7 6-4 6-1 vQ",
-     "gana": null,
-     "set1": null
+     "gana": 1.57,
+     "set1": 1.62
     }
    ],
-   "betano": null
+   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91164309/"
   },
   {
    "id": 1183662575,
@@ -327,8 +327,8 @@
      "atp": null,
      "wtn": null,
      "llega": "",
-     "gana": 1.78,
-     "set1": 1.8
+     "gana": 1.65,
+     "set1": 1.67
     },
     {
      "nombre": "Lisa Zaar",
@@ -337,8 +337,8 @@
      "atp": null,
      "wtn": null,
      "llega": "",
-     "gana": 1.88,
-     "set1": 1.88
+     "gana": 2.07,
+     "set1": 2.05
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151891/"
@@ -479,8 +479,8 @@
      "atp": 410,
      "wtn": 5.71,
      "llega": "R1✓ 6-1 6-3 vLL · R2✓ 6-0 6-4 vQ · QF✓ 6(3)-7 6-3 6-3 v[8]",
-     "gana": 1.36,
-     "set1": 1.44
+     "gana": 1.4,
+     "set1": 1.47
     },
     {
      "nombre": "Marlon Vankan",
@@ -489,8 +489,8 @@
      "atp": 616,
      "wtn": 6.18,
      "llega": "R1✓ 6-3 7-6(4) · R2✓ 6-2 7-6(3) vQ · QF✓ 1-6 7-6(6) 6-1 v[5]",
-     "gana": 2.85,
-     "set1": 2.55
+     "gana": 2.65,
+     "set1": 2.42
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151885/"
@@ -555,8 +555,8 @@
      "atp": 1059,
      "wtn": 4.66,
      "llega": "R1✓ 6-4 6-4 v[4] · R2✓ 6-3 6-3 vWC · QF✓ 6-2 vQ",
-     "gana": null,
-     "set1": null
+     "gana": 1.36,
+     "set1": 1.44
     },
     {
      "nombre": "M Rifqi Fitriadi",
@@ -565,11 +565,11 @@
      "atp": 549,
      "wtn": 6.21,
      "llega": "R1✓ 6-4 5-7 6-0 · R2✓ 6-3 6-1 vWC · QF✓ 6-4 7-6(1) v[8]",
-     "gana": null,
-     "set1": null
+     "gana": 2.85,
+     "set1": 2.55
     }
    ],
-   "betano": null
+   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91133449/"
   },
   {
    "id": 1183661236,
@@ -593,8 +593,8 @@
      "atp": 281,
      "wtn": 3.68,
      "llega": "R1✓ 6-4 6-4 vQ · R2✓ 6-4 6(6)-7 6-4 vQ · QF✓ 7-6(3) 6-4 v[7]",
-     "gana": null,
-     "set1": null
+     "gana": 1.39,
+     "set1": 1.47
     },
     {
      "nombre": "Kokoro Isomura",
@@ -603,11 +603,11 @@
      "atp": 562,
      "wtn": 6.38,
      "llega": "R1✓ 3-6 7-6(5) 6-1 · R2✓ 6-2 6-2 vQ · QF✓ 6-1 6-3 v[5]",
-     "gana": null,
-     "set1": null
+     "gana": 2.72,
+     "set1": 2.47
     }
    ],
-   "betano": null
+   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91133447/"
   },
   {
    "id": 1183662141,
@@ -631,8 +631,8 @@
      "atp": 652,
      "wtn": 4.83,
      "llega": "R1✓ 6-4 5-7 7-6(6) · R2✓ 7-6(5) 6-3 vLL · QF✓ 7-6(5) 4-6 6-0",
-     "gana": null,
-     "set1": null
+     "gana": 1.82,
+     "set1": 1.82
     },
     {
      "nombre": "Marcel Zielinski",
@@ -641,11 +641,11 @@
      "atp": 586,
      "wtn": 6.51,
      "llega": "R1✓ 6-1 6-0 vWC · R2✓ 7-6(5) 6-2 · QF✓ 6-1 6(2)-7 6-2 v[7]",
-     "gana": null,
-     "set1": null
+     "gana": 1.85,
+     "set1": 1.85
     }
    ],
-   "betano": null
+   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162314/"
   },
   {
    "id": 1183662140,
@@ -669,8 +669,8 @@
      "atp": 855,
      "wtn": 8.56,
      "llega": "R1✓ 6-2 4-6 6-2 vWC · R2✓ 6-3 6-4 · QF✓ 6-2 6-4 vQ",
-     "gana": null,
-     "set1": null
+     "gana": 2.35,
+     "set1": 2.22
     },
     {
      "nombre": "Thilo Behrmann",
@@ -679,11 +679,11 @@
      "atp": null,
      "wtn": 13.28,
      "llega": "R1✓ 6-1 6-0 v[5] · R2✓ 6-1 6-2 · QF✓ 6-0 7-6(5) vQ",
-     "gana": null,
-     "set1": null
+     "gana": 1.5,
+     "set1": 1.57
     }
    ],
-   "betano": null
+   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162303/"
   },
   {
    "id": 1183663251,
@@ -707,8 +707,8 @@
      "atp": 1237,
      "wtn": 6.59,
      "llega": "R1✓ 7-6(3) 1-6 6-4 vQ · R2✓ 7-5 7-5 v[5] · QF✓ 3-6 6-3 6-4 v[1]",
-     "gana": 3.4,
-     "set1": 2.9
+     "gana": 3.6,
+     "set1": 3.05
     },
     {
      "nombre": "Pavel Lagutin",
@@ -717,8 +717,8 @@
      "atp": 718,
      "wtn": 6.41,
      "llega": "R1✓ 7-6(0) 7-6(3) · R2✓ 6-4 6-2 vWC · QF✓ 4-6 6-2 6-2",
-     "gana": 1.26,
-     "set1": 1.34
+     "gana": 1.23,
+     "set1": 1.31
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151894/"
@@ -745,8 +745,8 @@
      "atp": 1025,
      "wtn": 7.51,
      "llega": "R1✓ 7-6(7) 7-5 · R2✓ 6-3 6-4 v[4] · QF✓ 6-3 3-6 7-5 v[8]",
-     "gana": 1.62,
-     "set1": 1.67
+     "gana": 1.53,
+     "set1": 1.6
     },
     {
      "nombre": "Andrea Colombo",
@@ -755,8 +755,8 @@
      "atp": 1048,
      "wtn": 7.68,
      "llega": "R1✓ 6-2 7-6(5) v[2] · R2✓ 2-6 6-3 6-2 · QF✓ 7-5 6-2 v[6]",
-     "gana": 2.1,
-     "set1": 2.05
+     "gana": 2.27,
+     "set1": 2.15
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162319/"
@@ -1087,8 +1087,8 @@
      "atp": 592,
      "wtn": 5.56,
      "llega": "R1✓ 6-4 7-6(4) vWC · R2✓ 6-0 6-0 vWC · QF✓ 6-0 6-2 v[4]",
-     "gana": 1.13,
-     "set1": 1.22
+     "gana": 1.12,
+     "set1": 1.2
     },
     {
      "nombre": "Jonas GUNDACKER",
@@ -1097,8 +1097,8 @@
      "atp": 1876,
      "wtn": 10.93,
      "llega": "Q2✓ 6-1 6-1 · Q3✓ 6-1 6-3 v[9] · R1✓ 7-6(2) 6-4 vQ · R2✓ 2-6 6-2 6-3 v[2] · QF✓ 6-1 6(7)-7 6-3 vQ",
-     "gana": 4.8,
-     "set1": 3.75
+     "gana": 5.1,
+     "set1": 3.9
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91151884/"
@@ -1277,8 +1277,8 @@
      "atp": 581,
      "wtn": 3.07,
      "llega": "R1✓ 2-6 6-0 6-3 · R2✓ 7-6(3) 7-6(4) v[6]",
-     "gana": null,
-     "set1": null
+     "gana": 1.82,
+     "set1": 1.82
     },
     {
      "nombre": "Daniel Masur",
@@ -1287,11 +1287,11 @@
      "atp": 377,
      "wtn": 3.7,
      "llega": "R1✓ 6-4 6-3 · R2✓ 7-6(8) 6-3 vWC",
-     "gana": null,
-     "set1": null
+     "gana": 1.85,
+     "set1": 1.85
     }
    ],
-   "betano": null
+   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91115649/"
   },
   {
    "id": 1183664414,
