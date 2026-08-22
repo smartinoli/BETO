@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T13:27:05.390Z",
+ "generado": "2026-08-22T14:00:53.955Z",
  "partidos": [
   {
    "id": 1183661736,
@@ -22,7 +22,7 @@
      "marca": "",
      "atp": 1288,
      "wtn": 9.02,
-     "llega": "R1✓ 5-7 7-6(2) 1-0 · R2✓ 6-2 6-4 v[5] · QF✓ 6-4 6-4",
+     "llega": "R1✓ 5-7 7-6(2) 1-0 · R2✓ 6-2 6-4 v[5] · QF✓ 6-4 6-4 · SF✓ 6-4 6-0 v[3]",
      "gana": null,
      "set1": null
     },
@@ -76,6 +76,44 @@
     }
    ],
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91168516/"
+  },
+  {
+   "id": 1183664354,
+   "torneo": "M15 Bastad",
+   "pais": "Sweden",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-23T08:15:00.000Z",
+   "local": "10:15",
+   "horarioTxt": "Starting at 10:15",
+   "cancha": "Court 1",
+   "turno": 1,
+   "ronda": "F",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Leo Borg",
+     "pais": "SWE",
+     "marca": "[1]",
+     "atp": 542,
+     "wtn": 5.4,
+     "llega": "R1✓ 6-4 6-3 vQ · R2✓ 6-0 6-3 · QF✓ 6-2 4-6 6-4 · SF✓ 6-3 7-5 v[4]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Niklas Guttau",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1211,
+     "wtn": 8.13,
+     "llega": "R1✓ 6-4 6-2 · R2✓ 6-2 6-2 · QF✓ 3-6 6-2 6-1 · SF✓ 6-3 4-6 6-4 vWC",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
   },
   {
    "id": 1183663109,
@@ -154,6 +192,44 @@
    "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91164309/"
   },
   {
+   "id": 1183662574,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-23T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court Viktor Troicki",
+   "turno": 1,
+   "ronda": "F",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Rada Zolotareva",
+     "pais": "RUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Lidia Encheva",
+     "pais": "BUL",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
    "id": 1183662487,
    "torneo": "M15 Kursumlijska Banja ",
    "pais": "Serbia",
@@ -171,10 +247,10 @@
     {
      "nombre": "Dimitar Kisimov",
      "pais": "BUL",
-     "marca": "",
+     "marca": "JR",
      "atp": 1764,
      "wtn": 13.04,
-     "llega": "R1✓ 6-0 6-2 v[5] · R2✓ 6-4 6-4 vQ · QF✓ 6-4 6-3 v[3]",
+     "llega": "R1✓ 6-0 6-2 v[5] · R2✓ 6-4 6-4 vQ · QF✓ 6-4 6-3 v[3] · SF✓ 7-5 6-1 v[1]",
      "gana": null,
      "set1": null
     },
@@ -478,7 +554,7 @@
      "marca": "",
      "atp": 623,
      "wtn": 5.01,
-     "llega": "R1✓ 6-1 6-3 vWC",
+     "llega": "R1✓ 6-1 6-3 vWC · R2✓ 6-2 7-5 vWC",
      "gana": null,
      "set1": null
     },
@@ -488,7 +564,7 @@
      "marca": "",
      "atp": 918,
      "wtn": 6.99,
-     "llega": "R1✓ 7-6(4) 6-2 vQ",
+     "llega": "R1✓ 7-6(4) 6-2 vQ · R2✓ 6-3 7-6(3) vWC",
      "gana": null,
      "set1": null
     }

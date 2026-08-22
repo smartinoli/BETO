@@ -708,7 +708,11 @@
     "confianza": "alta",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Pierluigi Basile",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T14:00:53.676Z"
+   }
   },
   "1183664160": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -741,7 +745,11 @@
     "confianza": "media",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Giovanni Oradini",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T14:00:53.676Z"
+   }
   },
   "1183664162": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -922,7 +930,11 @@
     "confianza": "baja",
     "mercado": "pasar"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Niklas Guttau",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T14:00:53.676Z"
+   }
   },
   "1183664412": {
    "visto": "2026-08-21T20:11:54.667Z",
