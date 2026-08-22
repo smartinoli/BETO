@@ -25,6 +25,22 @@ button:hover{border-color:var(--acento)} button:focus-visible{outline:2px solid 
 button.on{background:var(--acento);color:var(--carta)}
 .nota{font-size:12.5px;color:var(--tinta2);margin:0 0 12px}
 .tabla-env{overflow-x:auto;background:var(--carta);border:1px solid var(--linea);border-radius:6px}
+.cerradas{margin-top:34px}
+.cab-cer{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:3px}
+.cerradas h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:23px;margin:0;letter-spacing:.4px}
+.cuenta{font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--tinta2);font-weight:400}
+.marcador{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--tinta2)}
+.marcador b{font-family:"IBM Plex Mono",monospace;color:var(--tinta)}
+.marcador .bien b{color:var(--acento)} .marcador .mal b{color:var(--alerta)}
+table.t-cer{min-width:920px}
+.t-cer td{padding:8px 10px;border-top:1px solid var(--linea);vertical-align:top}
+.t-cer tr.f-ok td:first-child{box-shadow:inset 3px 0 0 var(--acento)}
+.t-cer tr.f-no td:first-child{box-shadow:inset 3px 0 0 var(--alerta)}
+.t-cer tr.f-pas td:first-child{box-shadow:inset 3px 0 0 var(--linea)}
+.t-cer .gano{font-weight:600}
+.t-cer .ok{color:var(--acento)} .t-cer .no{color:var(--alerta)}
+.t-cer .pasar{color:var(--tinta2);font-weight:600}
+.t-cer .loc{color:var(--tinta2);font-weight:400}
 table{border-collapse:collapse;width:100%;min-width:1150px}
 th{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;
   text-transform:uppercase;color:var(--tinta2);text-align:left;padding:9px 10px;
@@ -87,7 +103,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <div class="envoltura">
 <div class="cabecera">
   <h1>Mesa ITF</h1>
-  <span class="edad" id="edad" data-generado="2026-08-22T12:26:41.073Z">datos de hace <b>—</b></span>
+  <span class="edad" id="edad" data-generado="2026-08-22T12:40:21.622Z">datos de hace <b>—</b></span>
   <div class="controles">
     <span class="orden">Ordenar:</span>
     <button id="b-torneo" class="on" onclick="ordenar('torneo')">Campeonato</button>
@@ -632,7 +648,86 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     </td>
   </tr></tbody>
 </table></div>
-<footer>Generado 2026-08-22 12:26 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
+<section class="cerradas">
+  <div class="cab-cer">
+    <h2>Ya jugados <span class="cuenta">8</span></h2>
+    <div class="marcador">
+      <span class="m-item"><b>3</b> de 6 con lado tomado</span>
+      <span class="m-item mal"><b>-0.64</b> unidades a cuota</span>
+      <span class="m-item"><b>2</b> de 2 pasados donde cayó el favorito</span>
+    </div>
+  </div>
+  <p class="nota">El veredicto que se muestra es el que había <b>antes</b> de jugarse. Sin esto la mesa borra su propia historia: los partidos se resuelven y desaparecen de la tabla de arriba.</p>
+  <div class="tabla-env"><table class="t-cer">
+    <thead><tr><th>Cuándo</th><th>Campeonato</th><th>Ronda</th><th>Resultado</th><th class="n">Cuota</th><th>Decía el análisis</th><th class="n">Saldo</th></tr></thead>
+    <tbody><tr class="f-ok">
+        <td class="mono">sáb, 22-08</td>
+        <td>M15 Bastad<span class="loc">M15 Clay</span></td>
+        <td class="mono">Semi-final</td>
+        <td class="c-res"><span class="gano">Leo Borg <b>[1]</b></span> <span class="loc">venció a</span> John Hallquist Lithen <b>[4]</b></td>
+        <td class="n mono">2.45</td>
+        <td><b class="ok">acertó</b> <span class="loc">iba con Leo Borg [1] (alta)</span></td>
+        <td class="n mono"><span class="ok">+1.45</span></td>
+      </tr><tr class="f-ok">
+        <td class="mono">sáb, 22-08</td>
+        <td>M25 Ueberlingen<span class="loc">M25 Clay</span></td>
+        <td class="mono">Quarter-final</td>
+        <td class="c-res"><span class="gano">Tymur Bieldiugin <b>Q</b></span> <span class="loc">venció a</span> Nicola Senn <b>Q</b></td>
+        <td class="n mono">1.44</td>
+        <td><b class="ok">acertó</b> <span class="loc">iba con Tymur Bieldiugin Q (media)</span></td>
+        <td class="n mono"><span class="ok">+0.44</span></td>
+      </tr><tr class="f-no">
+        <td class="mono">sáb, 22-08</td>
+        <td>M25 Ueberlingen<span class="loc">M25 Clay</span></td>
+        <td class="mono">Quarter-final</td>
+        <td class="c-res"><span class="gano">TIM Handel</span> <span class="loc">venció a</span> Mika Petkovic <b>[4]</b></td>
+        <td class="n mono">2.65</td>
+        <td><b class="no">falló</b> <span class="loc">iba con Mika Petkovic [4] (media)</span></td>
+        <td class="n mono"><span class="no">-1.00</span></td>
+      </tr><tr class="f-pas">
+        <td class="mono">sáb, 22-08</td>
+        <td>M15 Arad<span class="loc">M15 Clay</span></td>
+        <td class="mono">Semi-final</td>
+        <td class="c-res"><span class="gano">Iannis Miletich</span> <span class="loc">venció a</span> Robert Guna <b>[7]</b></td>
+        <td class="n mono">2.65</td>
+        <td><b class="pasar">pasó</b> <span class="loc">y cayó el favorito</span></td>
+        <td class="n mono"><span class="sin">·</span></td>
+      </tr><tr class="f-ok">
+        <td class="mono">vie, 21-08</td>
+        <td>M25 Taipei<span class="loc">M25 Hard</span></td>
+        <td class="mono">Semi-final</td>
+        <td class="c-res"><span class="gano">Yu Hsiou Hsu <b>[1]</b></span> <span class="loc">venció a</span> Masamichi Imamura <b>[5]</b></td>
+        <td class="n mono">1.47</td>
+        <td><b class="ok">acertó</b> <span class="loc">iba con Yu Hsiou Hsu [1] (baja)</span></td>
+        <td class="n mono"><span class="ok">+0.47</span></td>
+      </tr><tr class="f-pas">
+        <td class="mono">vie, 21-08</td>
+        <td>M25 Taipei<span class="loc">M25 Hard</span></td>
+        <td class="mono">Semi-final</td>
+        <td class="c-res"><span class="gano">Matthew Dellavedova <b>[2]</b></span> <span class="loc">venció a</span> Shunsuke Mitsui</td>
+        <td class="n mono">2.10</td>
+        <td><b class="pasar">pasó</b> <span class="loc">y cayó el favorito</span></td>
+        <td class="n mono"><span class="sin">·</span></td>
+      </tr><tr class="f-no">
+        <td class="mono">vie, 21-08</td>
+        <td>M15 Maanshan<span class="loc">M15 Hard</span></td>
+        <td class="mono">Semi-final</td>
+        <td class="c-res"><span class="gano">Kokoro Isomura <b>[3]</b></span> <span class="loc">venció a</span> Petr Bar Biryukov <b>[1]</b></td>
+        <td class="n mono">2.72</td>
+        <td><b class="no">falló</b> <span class="loc">iba con Petr Bar Biryukov [1] (media)</span></td>
+        <td class="n mono"><span class="no">-1.00</span></td>
+      </tr><tr class="f-no">
+        <td class="mono">vie, 21-08</td>
+        <td>M15 Maanshan<span class="loc">M15 Hard</span></td>
+        <td class="mono">Semi-final</td>
+        <td class="c-res"><span class="gano">M Rifqi Fitriadi <b>[2]</b></span> <span class="loc">venció a</span> Yun Seong Chung</td>
+        <td class="n mono">2.85</td>
+        <td><b class="no">falló</b> <span class="loc">iba con Yun Seong Chung (baja)</span></td>
+        <td class="n mono"><span class="no">-1.00</span></td>
+      </tr></tbody>
+  </table></div>
+</section>
+<footer>Generado 2026-08-22 12:40 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
 </div>
 <script>
 (function(){
