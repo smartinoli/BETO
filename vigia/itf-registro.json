@@ -861,7 +861,11 @@
     "confianza": "alta",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Leo Borg",
+    "idxGanador": 0,
+    "cerrado": "2026-08-22T12:26:35.329Z"
+   }
   },
   "1183664356": {
    "visto": "2026-08-21T21:51:24.114Z",
@@ -927,7 +931,11 @@
     "confianza": "media",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Tymur Bieldiugin",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T12:26:35.329Z"
+   }
   },
   "1183664413": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -960,7 +968,11 @@
     "confianza": "media",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "TIM Handel",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T12:26:35.329Z"
+   }
   },
   "1183664414": {
    "visto": "2026-08-21T20:11:54.667Z",

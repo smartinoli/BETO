@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-22T10:15:00Z",
+ "actualizado": "2026-08-22T11:00:00Z",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -103,6 +103,30 @@
    "n": "4 casos medidos el 2026-08-22 (residuos -0.20 a -0.38), mecanismo derivado del propio R²",
    "fuente": "corrida 2026-08-22: Noce -0.384, Petkovic -0.312, Juszczak -0.259, Borg -0.205",
    "uso": "veto duro con residuo < -0.15. Es el error que cometía el analizador viejo: ordenaba los destacados por distancia al mercado, o sea proponía como mejores apuestas los partidos donde más ciego estaba"
+  },
+  {
+   "regla": "LA RONDA ES EL FACTOR MAS FUERTE QUE HEMOS MEDIDO. El mejor WTN acierta QUALI 74.6% (n=393), R1 77.4% (n=199), R2 73.2% (n=97), QF 57.4% (n=47). Agrupado: temprano (Q+R1+R2) 75.2% con n=689 contra tarde (QF+SF+F) 56.4% con n=55 — los intervalos no se tocan (72.0-78.4 contra 43.3-69.5).",
+   "n": 744,
+   "fuente": "backtest 2026-08-22 sobre todos los cuadros en disco con WTN de la entry list del propio torneo, sin retiros",
+   "uso": "concentrar el trabajo en qualis, R1 y R2. De cuartos en adelante no hay lado que defender"
+  },
+  {
+   "regla": "El mecanismo: EL CUADRO FILTRA. La Δ mediana de WTN cae 3.49 (quali) → 3.28 (R1) → 3.17 (R2) → 1.96 (QF). Los partidos con Δ>=2.5 pasan del 65% en qualis al 43% en cuartos. O sea que en rondas finales la mayoria de los partidos ya cayo en la banda de ruido donde el WTN acierta 52-57%. No es que la señal se rompa: es que deja de haber diferencia que medir.",
+   "n": 744,
+   "fuente": "backtest 2026-08-22",
+   "uso": "explica por que las semis son el peor banco de pruebas posible, que es justo donde estuvimos midiendo toda la semana"
+  },
+  {
+   "regla": "En rondas finales el ATP le gana al WTN: 63.5% contra 55.8% (n=52). Se da vuelta respecto a las rondas tempranas, donde el WTN gana 72.4% contra 66.7% (n=279). Muestra chica en la parte tarde, pero coherente con el mecanismo: entre jugadores parejos el ranking ATP, que pesa resultados del año, discrimina mejor que un rating de nivel.",
+   "n": 331,
+   "fuente": "backtest 2026-08-22, subconjunto donde ambos tienen ATP",
+   "uso": "si hay que mirar una ronda final, mirar el ATP antes que el WTN"
+  },
+  {
+   "regla": "El volumen tambien esta temprano: 689 de 744 partidos medidos son qualis, R1 o R2. Las rondas finales no solo predicen peor, ademas son cuatro partidos por torneo.",
+   "n": 744,
+   "fuente": "backtest 2026-08-22",
+   "uso": "la semana util empieza el lunes con las qualis y R1, no el sabado con las semis"
   }
  ],
  "senalesDelCuadro": [
@@ -152,7 +176,9 @@
   "Al citar un WTN, tomarlo SIEMPRE de la entry list del propio torneo: el índice global de entry lists produce falsos positivos con homónimos y apellidos compartidos (me pasó con Madaras y Noce)",
   "Ningún porcentaje de acierto sirve solo: un 71% de acierto en favoritos no gana plata si el mercado ya los paga a 1.40. Lo que hay que medir es el rendimiento CONTRA LA CUOTA, no contra el resultado.",
   "Un 'valor' de +90% contra una casa que cotiza miles de partidos casi nunca es una cuota mal puesta: es un dato nuestro mal leído. Antes de creerle a un EV enorme, revisar de dónde sale cada input (el WTN salió correcto de la entry list del propio torneo; lo que fallaba era usarlo contra un rival cuyo rating no está al día)",
-  "Los marcadores de la trayectoria traen más información de la que usábamos: games cedidos (no solo sets) miden la dominancia que el mercado parece leer — Hallquist Lithen llegó a semis de Bastad cediendo 12 games en 3 partidos y el mercado lo puso favorito sobre Leo Borg [1] pese a peor ATP y peor WTN. Y un set sin terminar ('6-3 2-0') es un retiro del rival, o sea frescura"
+  "Los marcadores de la trayectoria traen más información de la que usábamos: games cedidos (no solo sets) miden la dominancia que el mercado parece leer — Hallquist Lithen llegó a semis de Bastad cediendo 12 games en 3 partidos y el mercado lo puso favorito sobre Leo Borg [1] pese a peor ATP y peor WTN. Y un set sin terminar ('6-3 2-0') es un retiro del rival, o sea frescura",
+  "Sebastián tenia razon desde el primer mensaje: 'la plata esta solo en el primer dia o las qualis'. Tarde cinco dias en medirlo y el dato le da la razon por 19 puntos de acierto. Cuando el usuario propone una hipotesis estructural, medirla ANTES de construir encima",
+  "Un veto que nunca se valido no es una regla, es una corazonada con codigo. Los tres vetos que escribi el 2026-08-22 mataron a Borg [1], que gano 6-3 7-5 con residuo de mercado -0.205. Solo queda como veto duro el de calidad de dato (rival sin ATP): los otros dos bajan la confianza y se muestran, que quien mira decida"
  ],
  "historial": [
   {
@@ -248,9 +274,23 @@
    "hallazgo": "Audité los 4 destacados que el analizador daba con +40% a +96% de valor y los cuatro eran el MISMO error: el analizador ordenaba por p_estimada×cuota−1, o sea por cuánto se apartaba el mercado de nuestro ΔWTN. Eso no mide valor, mide nuestra ceguera. Cada uno tenía además una causa visible en datos que ya teníamos: Behrmann es junior sin ATP con rating atrasado; Juszczak tiene el ATP en contra por 710 puestos y su rival ganó un partido por retiro; Lithen llegaba cediendo 12 games en 3 partidos; en Petkovic el mercado paga 1.26 al rival cuando nuestras DOS métricas dicen lo contrario.",
    "cambio": "itf-analizar.mjs ahora aplica tres vetos (rating no confiable, ATP contra WTN, residuo de mercado < -0.15). Con eso los 27 partidos de hoy dejan 11 vetados y 1 solo destacado: Martin Manzano a 1.60, con +8% de valor — por debajo del vig de 9%, o sea nada.",
    "lectura": "El resultado honesto de la corrida es que hoy no hay apuesta. Con una sola señal de nivel contra un margen de 9%, cuando el mercado nos da la razón no queda margen y cuando nos la quita el equivocado somos nosotros. Para ganarle hace falta una señal que el mercado NO tenga, no una versión más ruidosa de la que ya tiene."
+  },
+  {
+   "fecha": "2026-08-22",
+   "corrida": "correccion: la ronda manda, y los vetos eran demasiado",
+   "cerrados": 2,
+   "detalle": [
+    "Borg [1] @2.22 → GANO 6-3 7-5. Mi veto por residuo de mercado (-0.205) lo habia sacado de la lista: el veto se equivoco",
+    "Petkovic [4] @3.40 → PERDIO 5-7 5-7 contra Handel. Ahi el mismo veto acerto (residuo -0.312)",
+    "Noce y Juszczak seguian pendientes al cierre de esta corrida"
+   ],
+   "rendimiento": "los vetos van 1 y 1. No hay base para tratarlos como regla",
+   "hallazgo": "Al medir por ronda sobre 744 partidos aparecio el factor mas fuerte de todo el proyecto: temprano 75.2% contra tarde 56.4%. Toda la semana estuvimos probando el metodo en semifinales y finales, que es exactamente donde no funciona, y sacando conclusiones pesimistas de ahi. El mecanismo es el filtro del cuadro: la Δ mediana cae de 3.49 en qualis a 1.96 en cuartos.",
+   "cambio": "itf-analizar.mjs usa bandas separadas por etapa, degrada el veto del residuo y el del ATP a banderas 'ojo:' que solo bajan la confianza, y deja como veto duro solo el rival sin ranking ATP (problema de dato, no de criterio).",
+   "lectura": "Los -51% de las tres apuestas simuladas no miden el metodo: miden el metodo aplicado a semifinales. La prueba de verdad es la proxima semana en qualis y R1, donde ademas esta el 93% del volumen."
   }
  ],
- "pendienteCritico": "Juntar (cuota + ΔWTN + resultado) del MISMO partido: van 5 cerrados de 31 anotados en itf-registro.json. Con ~100 pares se podrá medir si alguna señal supera el vig de 9%. Pero la corrida del 2026-08-22 deja una pregunta previa y más importante: si el ΔWTN ya explica el 63% del precio de Betano, no alcanza con refinarlo — hay que buscar un dato que el mercado no tenga (H2H, superficie por jugador, viaje/fatiga entre torneos, o cuotas capturadas temprano antes de que la línea madure).",
+ "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",
  "modeloDelMercado": {
   "nota": "Ingeniería inversa de las cuotas de Betano en ITF (desvigadas). Preliminar: n=18.",
   "forma": "logit(p) = -0.081 + 0.183·ΔWTN",
