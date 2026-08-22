@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T00:52:59.458Z",
+ "generado": "2026-08-22T03:53:13.666Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + reglas medidas de vigia/itf-saber.json",
  "titular": "Valor esperado partido a partido: probabilidad estimada (ΔWTN y choque nivel-forma) contra la que implica cada cuota.",
  "advertencia": "El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las reglas del choque salen de muestras chicas (n=27).",
@@ -67,7 +67,7 @@
    "favorito": "Gabriele Maria Noce [6]",
    "confianza": "alta",
    "mercado": "gana",
-   "razon": "Δ4.72 de WTN a favor (8.56 contra 13.28). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 2.35 el mercado implica 42.6% → valor +48%.",
+   "razon": "Δ4.72 de WTN a favor (8.56 contra 13.28). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 3.05 el mercado implica 32.8% → valor +92%.",
    "banderas": [
     "Δ4.72 muy fuerte",
     "choque nivel vs forma",
@@ -107,7 +107,7 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ7.46 de WTN a favor (5.58 contra 13.04). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.36 implica 73.5%, sobre nuestra estimación: sin valor.",
+   "razon": "Δ7.46 de WTN a favor (5.58 contra 13.04). Choque nivel-contra-forma con brecha grande: nuestros datos dan 63% a este lado. A 1.47 implica 68.0%, sobre nuestra estimación: sin valor.",
    "banderas": [
     "Δ7.46 muy fuerte",
     "choque nivel vs forma",
@@ -156,7 +156,7 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ5.37 de WTN a favor (5.56 contra 10.93). Nivel y forma coinciden: banda del 88%. A 1.12 implica 89.3%, sobre nuestra estimación: sin valor.",
+   "razon": "Δ5.37 de WTN a favor (5.56 contra 10.93). Nivel y forma coinciden: banda del 88%. A 1.11 implica 90.1%, sobre nuestra estimación: sin valor.",
    "banderas": [
     "Δ5.37 muy fuerte",
     "sin valor"
@@ -176,7 +176,7 @@
    "favorito": "Pawel Juszczak",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ2.10 de WTN a favor (6.98 contra 9.08). Nivel y forma coinciden: banda del 68%. A 2.2 el mercado implica 45.5% → valor +49%.",
+   "razon": "Δ2.10 de WTN a favor (6.98 contra 9.08). Nivel y forma coinciden: banda del 68%. A 2.55 el mercado implica 39.2% → valor +73%.",
    "banderas": [
     "Δ2.10 moderada",
     "valor de cuota"
@@ -210,14 +210,14 @@
    ]
   },
   "1183663305": {
-   "favorito": "Gonzalo Villanueva [1]",
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "gana",
-   "razon": "Δ0.16 de WTN a favor (3.45 contra 3.61). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. Betano todavía no abre la línea.",
+   "mercado": "pasar",
+   "razon": "Δ0.16 de WTN a favor (3.45 contra 3.61). Choque nivel-contra-forma con brecha chica: nuestros datos dan 42% a este lado. A 2.1 implica 47.6%, sobre nuestra estimación: sin valor.",
    "banderas": [
     "Δ0.16 moderada",
     "choque nivel vs forma",
-    "línea sin abrir"
+    "sin valor"
    ]
   },
   "1183664158": {
@@ -355,9 +355,9 @@
   }
  },
  "destacados": [
-  1183664355,
-  1183663110,
   1183662140,
+  1183663110,
+  1183664355,
   1183664160
  ]
 }
