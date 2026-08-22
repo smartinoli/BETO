@@ -265,6 +265,39 @@
    },
    "resultado": null
   },
+  "1183662342": {
+   "visto": "2026-08-22T03:52:59.513Z",
+   "torneo": "M15 Lambermont",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "Semi-final",
+   "evento": "M",
+   "cuando": "2026-08-22T14:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Martin VAN DER MEERSCHEN",
+     "atp": 723,
+     "wtn": 6.76,
+     "marca": "[4]",
+     "gana": 1.53,
+     "set1": 1.57
+    },
+    {
+     "nombre": "Romain Faucon",
+     "atp": 588,
+     "wtn": 6.79,
+     "marca": "[2]",
+     "gana": 2.3,
+     "set1": 2.2
+    }
+   ],
+   "veredicto": {
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar"
+   },
+   "resultado": null
+  },
   "1183662488": {
    "visto": "2026-08-21T21:56:54.790Z",
    "torneo": "M15 Kursumlijska Banja ",
@@ -480,6 +513,39 @@
    },
    "resultado": null
   },
+  "1183663195": {
+   "visto": "2026-08-22T03:52:59.513Z",
+   "torneo": "M15 Krakow",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "F",
+   "evento": "M",
+   "cuando": "2026-08-22T10:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Dalila Jakupovic",
+     "atp": null,
+     "wtn": null,
+     "marca": "[6]",
+     "gana": 3.3,
+     "set1": 3
+    },
+    {
+     "nombre": "Ariana Geerlings",
+     "atp": null,
+     "wtn": null,
+     "marca": "",
+     "gana": 1.27,
+     "set1": 1.32
+    }
+   ],
+   "veredicto": {
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar"
+   },
+   "resultado": null
+  },
   "1183663251": {
    "visto": "2026-08-21T21:51:24.114Z",
    "torneo": "M25 Idanha-a-Nova",
@@ -543,6 +609,39 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar"
+   },
+   "resultado": null
+  },
+  "1183663305": {
+   "visto": "2026-08-22T03:52:59.513Z",
+   "torneo": "M15 Asuncion",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "ronda": "F",
+   "evento": "M",
+   "cuando": "2026-08-22T19:00:00.000Z",
+   "lados": [
+    {
+     "nombre": "Gonzalo Villanueva",
+     "atp": 315,
+     "wtn": 3.45,
+     "marca": "[1]",
+     "gana": 2.1,
+     "set1": 2.05
+    },
+    {
+     "nombre": "Joaquin Aguilar Cardozo",
+     "atp": 482,
+     "wtn": 3.61,
+     "marca": "[2]",
+     "gana": 1.62,
+     "set1": 1.67
+    }
+   ],
+   "veredicto": {
+    "favorito": "Gonzalo Villanueva [1]",
+    "confianza": "baja",
+    "mercado": "gana"
    },
    "resultado": null
   },
