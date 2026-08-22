@@ -477,7 +477,11 @@
     "confianza": "baja",
     "mercado": "pasar"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Sebastian Sorger",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T15:57:26.262Z"
+   }
   },
   "1183662680": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -510,7 +514,11 @@
     "confianza": "alta",
     "mercado": "gana"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Jonas GUNDACKER",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T15:57:26.262Z"
+   }
   },
   "1183663110": {
    "visto": "2026-08-22T00:52:25.096Z",
@@ -609,7 +617,11 @@
     "confianza": "baja",
     "mercado": "pasar"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Pavel Lagutin",
+    "idxGanador": 1,
+    "cerrado": "2026-08-22T15:57:26.262Z"
+   }
   },
   "1183663252": {
    "visto": "2026-08-21T20:11:54.667Z",
@@ -642,7 +654,11 @@
     "confianza": "baja",
     "mercado": "pasar"
    },
-   "resultado": null
+   "resultado": {
+    "ganador": "Goncalo Marques",
+    "idxGanador": 0,
+    "cerrado": "2026-08-22T15:57:26.262Z"
+   }
   },
   "1183663305": {
    "visto": "2026-08-22T03:52:59.513Z",
