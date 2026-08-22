@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-21",
+ "actualizado": "2026-08-22T10:15:00Z",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -85,6 +85,24 @@
    "n": 46,
    "fuente": "backtest de choques 2026-08-21",
    "uso": "la regla operativa más útil que tenemos: en un choque, mirar primero cuánto es el Δ"
+  },
+  {
+   "regla": "Un ΔWTN grande contra un jugador SIN ranking ATP (o junior) no es señal: su WTN mide partidos viejos y atrasa cuando el jugador está subiendo rápido. El caso testigo es Thilo Behrmann (JR, sin ATP, WTN 13.28) que llegó a semis de Mistelbach ganando 6-1 6-0 al [5], 6-1 6-2 y 6-0 7-6: su WTN daba Δ4.72 a favor de Noce y el mercado lo hacía favorito a 1.32.",
+   "n": "caso puntual, mecanismo claro",
+   "fuente": "corrida 2026-08-22, semis de M15 Mistelbach",
+   "uso": "vetar el partido cuando el rival no tiene ATP o viene marcado JR, por grande que sea el Δ"
+  },
+  {
+   "regla": "Cuando el ATP y el WTN se contradicen por más de ~400 puestos, no hay lado: el backtest no distingue cuál de los dos manda (71.1% vs 66.0%, intervalos superpuestos). Caso testigo: Juszczak (ATP 1505, WTN 6.98) contra Agwi (ATP 795, WTN 9.08) — el mercado se puso del lado del ATP a 1.34.",
+   "n": 309,
+   "fuente": "backtest 2026-08-21 + corrida 2026-08-22",
+   "uso": "vetar en vez de elegir: si nuestras dos señales de nivel discrepan fuerte, no tenemos veredicto"
+  },
+  {
+   "regla": "El residuo del modelo del mercado es una señal EN CONTRA nuestra, no a favor. Con logit(p) = -0.081 + 0.183·ΔWTN y R²=0.626, cuando la cuota real se aparta más de 15 puntos de lo que ese modelo predice, estamos parados justo en el 37% de varianza que el ΔWTN no explica — el tercio donde el mercado ve lesiones, forma reciente y dinero que nosotros no vemos.",
+   "n": "4 casos medidos el 2026-08-22 (residuos -0.20 a -0.38), mecanismo derivado del propio R²",
+   "fuente": "corrida 2026-08-22: Noce -0.384, Petkovic -0.312, Juszczak -0.259, Borg -0.205",
+   "uso": "veto duro con residuo < -0.15. Es el error que cometía el analizador viejo: ordenaba los destacados por distancia al mercado, o sea proponía como mejores apuestas los partidos donde más ciego estaba"
   }
  ],
  "senalesDelCuadro": [
@@ -132,7 +150,9 @@
   "Solo hay dos mercados en ITF por Betano: Ganador y Ganador 1er set",
   "Las reglas de retiro difieren entre casas: en ITF eso importa más que en otros circuitos",
   "Al citar un WTN, tomarlo SIEMPRE de la entry list del propio torneo: el índice global de entry lists produce falsos positivos con homónimos y apellidos compartidos (me pasó con Madaras y Noce)",
-  "Ningún porcentaje de acierto sirve solo: un 71% de acierto en favoritos no gana plata si el mercado ya los paga a 1.40. Lo que hay que medir es el rendimiento CONTRA LA CUOTA, no contra el resultado."
+  "Ningún porcentaje de acierto sirve solo: un 71% de acierto en favoritos no gana plata si el mercado ya los paga a 1.40. Lo que hay que medir es el rendimiento CONTRA LA CUOTA, no contra el resultado.",
+  "Un 'valor' de +90% contra una casa que cotiza miles de partidos casi nunca es una cuota mal puesta: es un dato nuestro mal leído. Antes de creerle a un EV enorme, revisar de dónde sale cada input (el WTN salió correcto de la entry list del propio torneo; lo que fallaba era usarlo contra un rival cuyo rating no está al día)",
+  "Los marcadores de la trayectoria traen más información de la que usábamos: games cedidos (no solo sets) miden la dominancia que el mercado parece leer — Hallquist Lithen llegó a semis de Bastad cediendo 12 games en 3 partidos y el mercado lo puso favorito sobre Leo Borg [1] pese a peor ATP y peor WTN. Y un set sin terminar ('6-3 2-0') es un retiro del rival, o sea frescura"
  ],
  "historial": [
   {
@@ -216,9 +236,21 @@
    "rendimiento": "1 acierto / 2 fallos con lado; -1.53 unidades en 3 apuestas (-51%)",
    "lectura": "n=3, sin valor estadístico. Pero los dos fallos cayeron en bandas donde el WTN debería acertar (1.5-2.5 y 2.5-4), y el único acierto vino de una banda de ruido. Es el recordatorio de que 67-72% de acierto implica perder 1 de cada 3.",
    "aciertoDelMetodo": "Bajar Mitsui de destacado a 'pasar' tras medir el Δ evitó un fallo: la disciplina del umbral funcionó aunque la muestra sea mínima."
+  },
+  {
+   "fecha": "2026-08-22",
+   "corrida": "revisión del analizador tras auditar los destacados",
+   "cerrados": 1,
+   "detalle": [
+    "Guna @1.40 (Δ0.48 ruido, veredicto 'pasar') → ganó Miletich: pasar fue correcto"
+   ],
+   "rendimiento": "con lado sigue 1 acierto / 2 fallos, -1.53 unidades en 3 apuestas. Los 'pasar' van 3 de 3: en los tres casos el favorito de la cuota perdió",
+   "hallazgo": "Audité los 4 destacados que el analizador daba con +40% a +96% de valor y los cuatro eran el MISMO error: el analizador ordenaba por p_estimada×cuota−1, o sea por cuánto se apartaba el mercado de nuestro ΔWTN. Eso no mide valor, mide nuestra ceguera. Cada uno tenía además una causa visible en datos que ya teníamos: Behrmann es junior sin ATP con rating atrasado; Juszczak tiene el ATP en contra por 710 puestos y su rival ganó un partido por retiro; Lithen llegaba cediendo 12 games en 3 partidos; en Petkovic el mercado paga 1.26 al rival cuando nuestras DOS métricas dicen lo contrario.",
+   "cambio": "itf-analizar.mjs ahora aplica tres vetos (rating no confiable, ATP contra WTN, residuo de mercado < -0.15). Con eso los 27 partidos de hoy dejan 11 vetados y 1 solo destacado: Martin Manzano a 1.60, con +8% de valor — por debajo del vig de 9%, o sea nada.",
+   "lectura": "El resultado honesto de la corrida es que hoy no hay apuesta. Con una sola señal de nivel contra un margen de 9%, cuando el mercado nos da la razón no queda margen y cuando nos la quita el equivocado somos nosotros. Para ganarle hace falta una señal que el mercado NO tenga, no una versión más ruidosa de la que ya tiene."
   }
  ],
- "pendienteCritico": "Juntar (cuota + ΔWTN + resultado) del MISMO partido: hoy tenemos 0 pares. El libro itf-registro.json ya los acumula en cada corrida; con ~100 pares se podrá saber si nuestras señales superan el vig de 9%.",
+ "pendienteCritico": "Juntar (cuota + ΔWTN + resultado) del MISMO partido: van 5 cerrados de 31 anotados en itf-registro.json. Con ~100 pares se podrá medir si alguna señal supera el vig de 9%. Pero la corrida del 2026-08-22 deja una pregunta previa y más importante: si el ΔWTN ya explica el 63% del precio de Betano, no alcanza con refinarlo — hay que buscar un dato que el mercado no tenga (H2H, superficie por jugador, viaje/fatiga entre torneos, o cuotas capturadas temprano antes de que la línea madure).",
  "modeloDelMercado": {
   "nota": "Ingeniería inversa de las cuotas de Betano en ITF (desvigadas). Preliminar: n=18.",
   "forma": "logit(p) = -0.081 + 0.183·ΔWTN",
