@@ -1404,7 +1404,7 @@ async function cmdItfResultados() {
     await telegram(`📈 Tablero ITF: aún nada liquidado (${pendN} esperando resultado · ${liq} recién liquidados · ${REQ - req0} requests).`);
     return;
   }
-  const BANDAS = [['≤1.15', e => e.cB <= 1.15], ['1.16-1.30', e => e.cB > 1.15 && e.cB <= 1.3],
+  const BANDAS = [['≤1.15', e => e.cB && e.cB <= 1.15], ['1.16-1.30', e => e.cB > 1.15 && e.cB <= 1.3],
     ['1.31-1.50', e => e.cB > 1.3 && e.cB <= 1.5], ['1.51-1.80', e => e.cB > 1.5 && e.cB <= 1.8],
     ['1.81+', e => e.cB > 1.8]];
   const filas = [];
@@ -1412,7 +1412,8 @@ async function cmdItfResultados() {
     const a = cer.filter(fil);
     if (!a.length) continue;
     const gano = a.filter(e => e.estado === 'F').length;
-    const impl = a.reduce((x, e) => x + 1 / e.cB, 0) / a.length;
+    const conB = a.filter(e => e.cB);
+    const impl = conB.length ? conB.reduce((x, e) => x + 1 / e.cB, 0) / conB.length : 0;
     const triunfos = a.filter(e => e.estado === 'F');
     const dosCero = triunfos.filter(e => e.marcador === '2-0' || e.marcador === '3-0').length;
     filas.push(`<b>${nom}</b> · n${a.length} · favorito gana <b>${(gano / a.length * 100).toFixed(0)}%</b> `
@@ -1522,21 +1523,28 @@ async function cmdItf(horas = 6) {
         const oB = b.markets[mid].outcomes || {}, oJ = (j.markets || {})[mid]?.outcomes || {};
         const oids = Object.keys(oB);
         if (oids.length !== 2) continue;
-        const pB = {}, pJ = {}; let ok = true;
+        /* cada casa por separado: Betano manda, pero si solo bet365 tiene
+           linea igual se captura (sirve para comparar mercado con realidad
+           cuando Betano abre tarde — pedido 2026-08-22) */
+        const pB = {}, pJ = {}; let okB = true, okJ = true;
         for (const oid of oids) {
           const b0 = (oB[oid].players || {})['0'], j0 = ((oJ[oid] || {}).players || {})['0'];
-          if (!b0?.active || !(b0.price > 1) || !j0?.active || !(j0.price > 1)) { ok = false; break; }
-          pB[oid] = b0.price; pJ[oid] = j0.price;
+          if (b0?.active && b0.price > 1) pB[oid] = b0.price; else okB = false;
+          if (j0?.active && j0.price > 1) pJ[oid] = j0.price; else okJ = false;
         }
-        if (!ok) continue;
-        const [jA, jB2] = desvigar(pJ[oids[0]], pJ[oids[1]]);
-        const justos = { [oids[0]]: jA, [oids[1]]: jB2 };
+        if (!okB && !okJ) continue;
+        let justos = null;
+        if (okJ) {
+          const [jA, jB2] = desvigar(pJ[oids[0]], pJ[oids[1]]);
+          justos = { [oids[0]]: jA, [oids[1]]: jB2 };
+        }
         /* cuotas de ambos lados, orientadas a participante 1/2 */
         const o1m = oids.find(o => /^1$|home/i.test(meta.outs[o] || o)) || oids[0];
         const o2m = oids.find(o => o !== o1m) || oids[1];
-        if (fam.fam === 'Ganador') mGan = { p1: pB[o1m], p2: pB[o2m], j1: pJ[o1m], j2: pJ[o2m] };
-        else if (fam.fam === 'Ganador 1er set') mS1 = { p1: pB[o1m], p2: pB[o2m] };
+        if (fam.fam === 'Ganador') mGan = { p1: pB[o1m] ?? null, p2: pB[o2m] ?? null, j1: pJ[o1m] ?? null, j2: pJ[o2m] ?? null };
+        else if (fam.fam === 'Ganador 1er set') mS1 = { p1: pB[o1m] ?? null, p2: pB[o2m] ?? null, j1: pJ[o1m] ?? null, j2: pJ[o2m] ?? null };
         for (const oid of oids) {
+          if (!okB || !okJ) break;
           const vent = pB[oid] / justos[oid] - 1;
           if (vent <= 0.005 || pB[oid] > (CFG.sombraCuotaMaxima ?? 3.5)) continue;
           const crudo = meta.outs[oid] || oid;
@@ -1562,8 +1570,10 @@ async function cmdItf(horas = 6) {
       if (mGan) {
         const db = cargarItf();
         const vivas = {
-          g: { p1: +mGan.p1.toFixed(2), p2: +mGan.p2.toFixed(2) },
-          s1: mS1 ? { p1: +mS1.p1.toFixed(2), p2: +mS1.p2.toFixed(2) } : null,
+          g: mGan.p1 ? { p1: +mGan.p1.toFixed(2), p2: +mGan.p2.toFixed(2) } : null,
+          jg: mGan.j1 ? { p1: +mGan.j1.toFixed(2), p2: +mGan.j2.toFixed(2) } : null,
+          s1: mS1?.p1 ? { p1: +mS1.p1.toFixed(2), p2: +mS1.p2.toFixed(2) } : null,
+          js1: mS1?.j1 ? { p1: +mS1.j1.toFixed(2), p2: +mS1.j2.toFixed(2) } : null,
           cuotasAl: new Date().toISOString(),
         };
         const ya = db.partidos[f.fixtureId];
@@ -1571,15 +1581,16 @@ async function cmdItf(horas = 6) {
           if (ya.estado === 'pendiente') { Object.assign(ya, vivas); cuotasFrescas++; }
           if (!ya.bFix && b.bookmakerFixtureId) { ya.bFix = b.bookmakerFixtureId; bFixAdd++; }
         } else if (!candTablero.has(f.fixtureId)) {
-          const favLado = mGan.p1 <= mGan.p2 ? 1 : 2;
+          const base = mGan.p1 ? [mGan.p1, mGan.p2] : [mGan.j1, mGan.j2];
+          const favLado = base[0] <= base[1] ? 1 : 2;
           const reg = {
             visto: new Date().toISOString(), t: info.sinIndice ? null : info.startTime,
             torneo: info.tournamentName || 'ITF',
             p1: info.sinIndice ? null : info.participant1Name, p2: info.sinIndice ? null : info.participant2Name,
             fav: favLado,
-            cB: favLado === 1 ? +mGan.p1.toFixed(2) : +mGan.p2.toFixed(2),
-            cJ: favLado === 1 ? +mGan.j1.toFixed(2) : +mGan.j2.toFixed(2),
-            dB: favLado === 1 ? +mGan.p2.toFixed(2) : +mGan.p1.toFixed(2),
+            cB: mGan.p1 ? +(favLado === 1 ? mGan.p1 : mGan.p2).toFixed(2) : null,
+            cJ: mGan.j1 ? +(favLado === 1 ? mGan.j1 : mGan.j2).toFixed(2) : null,
+            dB: mGan.p1 ? +(favLado === 1 ? mGan.p2 : mGan.p1).toFixed(2) : null,
             estado: 'pendiente',
             bFix: b.bookmakerFixtureId || null,   /* → lat.betano.com/cuotas-de-partido/e-e/<bFix>/ */
             ...vivas,

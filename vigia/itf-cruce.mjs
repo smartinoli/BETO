@@ -174,7 +174,8 @@ export function resumenEntradas(db) {
     const a = cer.filter(fil);
     if (a.length < 2) continue;
     const gano = a.filter(e => e.estado === 'F').length;
-    const impl = a.reduce((x, e) => x + 1 / e.cB, 0) / a.length;
+    const conB = a.filter(e => e.cB);
+    const impl = conB.length ? conB.reduce((x, e) => x + 1 / e.cB, 0) / conB.length : 0;
     filas.push(`${nom} · n${a.length} · gana ${(gano / a.length * 100).toFixed(0)}% (cuota implica ${(impl * 100).toFixed(0)}%)`);
   }
   return filas;
