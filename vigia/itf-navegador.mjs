@@ -47,14 +47,14 @@ import { normalizarEventos, normalizarCuadro } from './itf.mjs';
 import { liquidarConItf, resumenEntradas } from './itf-cruce.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
-const DATOS = path.join(DIR, 'datos', 'itf');
-const CACHE_CALENDARIO = path.join(DIR, 'itf-calendario.json');
+export const DATOS = path.join(DIR, 'datos', 'itf');
+export const CACHE_CALENDARIO = path.join(DIR, 'itf-calendario.json');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
 
-const espera = ms => new Promise(r => setTimeout(r, ms));
-const pausaHumana = () => espera(2500 + Math.random() * 2500);
+export const espera = ms => new Promise(r => setTimeout(r, ms));
+export const pausaHumana = () => espera(2500 + Math.random() * 2500);
 
-async function abrirNavegador() {
+export async function abrirNavegador() {
   let chromium;
   try { ({ chromium } = await import('playwright')); }
   catch { console.error('Falta playwright: npm i playwright (o NODE_PATH hacia donde esté)'); process.exit(1); }
@@ -72,7 +72,7 @@ async function abrirNavegador() {
 
 /* Carga una página real para resolver el desafío y deja el tab listo
    para hacer fetch same-origin desde adentro. */
-async function calentar(ctx, url) {
+export async function calentar(ctx, url) {
   const page = await ctx.newPage();
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(6000);
@@ -81,7 +81,7 @@ async function calentar(ctx, url) {
   return page;
 }
 
-async function fetchDesdePagina(page, url) {
+export async function fetchDesdePagina(page, url) {
   const r = await page.evaluate(async u => {
     const res = await fetch(u, { headers: { Accept: 'application/json, text/plain, */*' } });
     return { status: res.status, texto: await res.text() };
@@ -91,7 +91,7 @@ async function fetchDesdePagina(page, url) {
 }
 
 /* ---------- calendario ---------- */
-async function bajarCalendario(page, circuito, desde, hasta) {
+export async function bajarCalendario(page, circuito, desde, hasta) {
   const u = 'https://www.itftennis.com/tennis/api/TournamentApi/GetCalendar?' + new URLSearchParams({
     circuitCode: circuito, searchString: '', skip: 0, take: 200,
     nationCodes: '', zoneCodes: '', dateFrom: desde, dateTo: hasta,
@@ -113,7 +113,7 @@ async function bajarCalendario(page, circuito, desde, hasta) {
 /* ---------- acceptance list ---------- */
 const numero = s => { const n = parseInt(String(s ?? '').replace(/[^\d]/g, ''), 10); return isNaN(n) ? null : n; };
 
-function normalizarAceptacion(crudo, clave) {
+export function normalizarAceptacion(crudo, clave) {
   const bloque = Array.isArray(crudo) ? crudo[0] : crudo;
   const out = { clave, bajado: new Date().toISOString(), secciones: {} };
   for (const ec of bloque?.entryClassifications || []) {
@@ -129,6 +129,11 @@ function normalizarAceptacion(crudo, clave) {
         itf: numero(p.itfWorldTennisRanking),
         nacional: numero(p.nationalRanking),
         wtn: p.worldRating ? +p.worldRating : null,
+        /* shouldDisplayWtn=false → la web tapa el numero con la insignia
+           "ProZone" (descubierto 2026-08-22, Bastad: Slavic y Couto la
+           llevan y la API igual trae 8.58/8.99). Se guarda como señal de
+           rating de baja confianza; snapshots viejos no tienen el campo. */
+        wtnVisible: p.shouldDisplayWtn !== false,
         nacido: p.birthYear || null,
         /* En W viene "W 25 Jul 2026": la fecha del retiro. */
         info: e.information || null,
@@ -138,20 +143,92 @@ function normalizarAceptacion(crudo, clave) {
   return out;
 }
 
-async function bajarAceptacion(page, clave) {
+export async function bajarAceptacion(page, clave) {
   const circuito = clave.startsWith('w') ? 'WT' : 'MT';
   const u = `https://www.itftennis.com/tennis/api/TournamentApi/GetAcceptanceList?tournamentKey=${clave}&circuitCode=${circuito}&matchTypeCode=S`;
   return normalizarAceptacion(await fetchDesdePagina(page, u), clave);
 }
 
+
+/* ---------- cosecha de UN torneo: order of play + cuadros ----------
+   Navega DIRECTO a la página del torneo (nunca pasar antes por el
+   calendario: marca la sesión y el WAF bloquea, medido 2026-08-21).
+   Reutilizable desde el CLI (comando oop) y desde itf-scrap.mjs. */
+export async function cosecharTorneo(page, t, hoy = new Date().toISOString().slice(0, 10)) {
+  const api = 'https://www.itftennis.com/tennis/api/TournamentApi/';
+  const OOP = path.join(DATOS, 'oop');
+  fs.mkdirSync(OOP, { recursive: true });
+  fs.mkdirSync(path.join(DATOS, 'vivo'), { recursive: true });
+  const capt = new Map();
+  const oyente = async r => {
+    if (!/TournamentApi\/Get/i.test(r.url())) return;
+    try { capt.set(r.url(), await r.text()) } catch {}
+  };
+  page.on('response', oyente);
+  try {
+    await page.goto(t.enlace + 'order-of-play/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(6000);
+    const parse = s => { try { return JSON.parse(s) } catch { return null } };
+    let dias = null;
+    for (const [u, cuerpo] of capt) if (/GetOrderOfPlayDays/i.test(u)) dias = parse(cuerpo);
+    if (!Array.isArray(dias)) throw new Error('sin días de order of play');
+    const futuros = dias.filter(d => (d.playDate || '').slice(0, 10) >= hoy);
+    for (const d of futuros) {
+      const url = `${api}GetOrderOfPlay?orderOfPlayDayId=${d.orderOfPlayDayId}`;
+      let crudo = null;
+      for (const [u, cuerpo] of capt) if (u.includes('orderOfPlayDayId=' + d.orderOfPlayDayId)) crudo = parse(cuerpo);
+      if (!crudo) { await pausaHumana(); crudo = await fetchDesdePagina(page, url); }
+      const partidos = [];
+      for (const cancha of (Array.isArray(crudo) ? crudo : [])) {
+        let orden = 0;
+        for (const m of cancha.matches || []) {
+          orden++;
+          partidos.push({
+            matchId: m.matchId, cancha: cancha.courtName || '', orden,
+            horario: m.schedule || '', evento: m.eventClassificationCode || '',
+            eventoDesc: m.eventDesc || '', tipo: m.matchDescription || '',
+            ronda: m.roundGroupDesc || '',
+            estado: m.playStatusCode === 'PC' ? 'jugado' : m.playStatusCode === 'TP' ? 'pendiente' : (m.playStatusDesc || '?'),
+            nota: m.resultStatusDesc || null,
+            lados: (m.teams || []).map(eq => {
+              const j = (eq.players || []).filter(Boolean).map(x => ({
+                id: x.playerId, nombre: [x.givenName, x.familyName].filter(Boolean).join(' '), pais: x.nationality,
+              }));
+              return { jugadores: j, nombre: j.map(x => x.nombre).join(' / ') || null, seed: eq.seeding ?? null, entrada: eq.entryStatus || null, ganador: !!eq.isWinner, sets: [] };
+            }),
+          });
+        }
+      }
+      const fecha = (d.playDate || '').slice(0, 10);
+      fs.writeFileSync(path.join(OOP, `${t.clave}-${fecha}.json`),
+        JSON.stringify({ clave: t.clave, fecha, fechaTxt: d.playDateString || '', bajado: new Date().toISOString(), partidos }));
+      console.log(`  ✓ oop ${t.clave} ${fecha}: ${partidos.length} partidos`);
+    }
+    await pausaHumana();
+    const ev = normalizarEventos(await fetchDesdePagina(page, `${api}GetEventFilters?tournamentKey=${t.clave}`), t.clave);
+    const cuadros = {};
+    for (const c of ev.cuadros.filter(c => c.tipo === 'S')) {
+      await pausaHumana();
+      cuadros[c.evento] = normalizarCuadro(await fetchDesdePagina(page,
+        `${api}GetDrawsheet?eventClassificationCode=${c.evento}&matchTypeCode=S&tourType=${ev.tourType}&tournamentId=${ev.tournamentId}&weekNumber=0`));
+    }
+    fs.writeFileSync(path.join(DATOS, 'vivo', t.clave + '.json'),
+      JSON.stringify({ clave: t.clave, bajado: new Date().toISOString(), cuadros }));
+    console.log(`  ✓ cuadro ${t.clave}`);
+    return { dias: futuros.length };
+  } finally { page.off('response', oyente); }
+}
+
 /* ---------- CLI ---------- */
-const [cmd, ...args] = process.argv.slice(2);
-if (!cmd) {
+const esCli = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+const [cmd, ...args] = esCli ? process.argv.slice(2) : [null];
+if (esCli && !cmd) {
   console.log('Uso: node vigia/itf-navegador.mjs calendario [MT|WT] [desde] [hasta] | aceptacion <claves…> | cosecha [N]');
   process.exit(0);
 }
 
-const { browser, ctx } = await abrirNavegador();
+const { browser, ctx } = esCli ? await abrirNavegador() : {};
+if (esCli)
 try {
   /* 'oop' navega directo a cada torneo: pasar antes por el calendario marca
      la sesión y despues Incapsula bloquea las llamadas API de las páginas de
@@ -241,67 +318,8 @@ try {
     console.log(`Programación de ${activos.length} torneos en juego…`);
     let ok = 0, mal = 0;
     for (const t of activos) {
-      const capt = new Map();
-      const oyente = async r => {
-        if (!/TournamentApi\/Get/i.test(r.url())) return;
-        try { capt.set(r.url(), await r.text()) } catch {}
-      };
-      page.on('response', oyente);
-      try {
-        await page.goto(t.enlace + 'order-of-play/', { waitUntil: 'domcontentloaded', timeout: 60000 });
-        await page.waitForTimeout(6000);
-        /* lo que la propia página cargó */
-        const parse = s => { try { return JSON.parse(s) } catch { return null } };
-        let dias = null;
-        for (const [u, cuerpo] of capt) if (/GetOrderOfPlayDays/i.test(u)) dias = parse(cuerpo);
-        if (!Array.isArray(dias)) throw new Error('sin días de order of play');
-        const futuros = dias.filter(d => (d.playDate || '').slice(0, 10) >= hoy);
-        for (const d of futuros) {
-          const url = `${api}GetOrderOfPlay?orderOfPlayDayId=${d.orderOfPlayDayId}`;
-          let crudo = null;
-          for (const [u, cuerpo] of capt) if (u.includes('orderOfPlayDayId=' + d.orderOfPlayDayId)) crudo = parse(cuerpo);
-          if (!crudo) { await pausaHumana(); crudo = await fetchDesdePagina(page, url); }
-          const partidos = [];
-          for (const cancha of (Array.isArray(crudo) ? crudo : [])) {
-            let orden = 0;
-            for (const m of cancha.matches || []) {
-              orden++;
-              partidos.push({
-                matchId: m.matchId, cancha: cancha.courtName || '', orden,
-                horario: m.schedule || '', evento: m.eventClassificationCode || '',
-                eventoDesc: m.eventDesc || '', tipo: m.matchDescription || '',
-                ronda: m.roundGroupDesc || '',
-                estado: m.playStatusCode === 'PC' ? 'jugado' : m.playStatusCode === 'TP' ? 'pendiente' : (m.playStatusDesc || '?'),
-                nota: m.resultStatusDesc || null,
-                lados: (m.teams || []).map(eq => {
-                  const j = (eq.players || []).filter(Boolean).map(x => ({
-                    id: x.playerId, nombre: [x.givenName, x.familyName].filter(Boolean).join(' '), pais: x.nationality,
-                  }));
-                  return { jugadores: j, nombre: j.map(x => x.nombre).join(' / ') || null, seed: eq.seeding ?? null, entrada: eq.entryStatus || null, ganador: !!eq.isWinner, sets: [] };
-                }),
-              });
-            }
-          }
-          const fecha = (d.playDate || '').slice(0, 10);
-          fs.writeFileSync(path.join(OOP, `${t.clave}-${fecha}.json`),
-            JSON.stringify({ clave: t.clave, fecha, fechaTxt: d.playDateString || '', bajado: new Date().toISOString(), partidos }));
-          console.log(`  ✓ oop ${t.clave} ${fecha}: ${partidos.length} partidos`);
-        }
-        /* cuadro (seed, entrada, trayectoria) desde la misma página del torneo */
-        await pausaHumana();
-        const ev = normalizarEventos(await fetchDesdePagina(page, `${api}GetEventFilters?tournamentKey=${t.clave}`), t.clave);
-        const cuadros = {};
-        for (const c of ev.cuadros.filter(c => c.tipo === 'S')) {
-          await pausaHumana();
-          cuadros[c.evento] = normalizarCuadro(await fetchDesdePagina(page,
-            `${api}GetDrawsheet?eventClassificationCode=${c.evento}&matchTypeCode=S&tourType=${ev.tourType}&tournamentId=${ev.tournamentId}&weekNumber=0`));
-        }
-        fs.writeFileSync(path.join(DATOS, 'vivo', t.clave + '.json'),
-          JSON.stringify({ clave: t.clave, bajado: new Date().toISOString(), cuadros }));
-        console.log(`  ✓ cuadro ${t.clave}`);
-        ok++;
-      } catch (e) { console.log(`  ✗ ${t.clave}: ${e.message.split(' para ')[0].split('\n')[0]}`); mal++; }
-      finally { page.off('response', oyente); }
+      try { await cosecharTorneo(page, t, hoy); ok++; }
+      catch (e) { console.log(`  ✗ ${t.clave}: ${e.message.split(' para ')[0].split('\n')[0]}`); mal++; }
     }
     console.log(`Listo: ${ok} torneos completos, ${mal} fallidos.`);
   } else if (cmd === 'liquidar') {

@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-22T16:00:00Z",
+ "actualizado": "2026-08-22T17:40:00Z",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -185,7 +185,8 @@
   "Sebastián tenia razon desde el primer mensaje: 'la plata esta solo en el primer dia o las qualis'. Tarde cinco dias en medirlo y el dato le da la razon por 19 puntos de acierto. Cuando el usuario propone una hipotesis estructural, medirla ANTES de construir encima",
   "Un veto que nunca se valido no es una regla, es una corazonada con codigo. Los tres vetos que escribi el 2026-08-22 mataron a Borg [1], que gano 6-3 7-5 con residuo de mercado -0.205. Solo queda como veto duro el de calidad de dato (rival sin ATP): los otros dos bajan la confianza y se muestran, que quien mira decida",
   "El horario de ITF es REFERENCIAL, no un hecho: 'Starting at 10:00', 'Followed By', 'Not Before 15:30'. Un partido puede tener la hora pasada y no haber empezado. Para saber si se jugo hay que mirar el estado del order of play (jugado / In Progress / pendiente), nunca comparar la hora con el reloj. Me equivoque justo en eso el 2026-08-22 al presentar 'los que vienen': filtre por reloj y deje fuera partidos que ITF seguia marcando pendientes",
-  "El feed de Betano via OddsPapi va DETRAS de betano.com. El 2026-08-22, con los cuartos de Lesa por jugar (Not Before 15:30/16:30/17:30), el feed solo traia los 7 partidos de segunda ronda, todos ya jugados, y ninguno de los 12 pendientes de la mesa aparecia. Si en la web de Betano hay linea y en la mesa no, lo mas probable es lag del feed, no un fallo de cruce de nombres — se verifica pidiendo odds-by-tournaments del torneo y resolviendo los nombres con /fixture"
+  "El feed de Betano via OddsPapi va DETRAS de betano.com. El 2026-08-22, con los cuartos de Lesa por jugar (Not Before 15:30/16:30/17:30), el feed solo traia los 7 partidos de segunda ronda, todos ya jugados, y ninguno de los 12 pendientes de la mesa aparecia. Si en la web de Betano hay linea y en la mesa no, lo mas probable es lag del feed, no un fallo de cruce de nombres — se verifica pidiendo odds-by-tournaments del torneo y resolviendo los nombres con /fixture",
+  "ProZone RESUELTO (2026-08-22, sondeo del JSON crudo de Bastad): la insignia de la web corresponde al campo shouldDisplayWtn=false de GetAcceptanceList — ITF decide NO mostrar el numero de ese jugador, pero la API igual entrega worldRating (Slavic 8.58 y Couto 8.99 con insignia; Borg 5.40 sin ella). No es 'tiene ATP': en Bastad 6 de 8 con ATP muestran numero. Es un marcador de confianza del propio ITF sobre su rating. Desde ahora se guarda como wtnVisible en cada snapshot; cuando wtnVisible=false, tratar el WTN como dato dudoso (mismo veto que 'sin ATP')"
  ],
  "historial": [
   {
@@ -309,6 +310,15 @@
    "rendimiento": "acumulado 6 de 13 con lado tomado, -3.36 unidades. Los 'pasar' van 10, con el favorito de la cuota cayendo en 5",
    "lectura": "El fallo de Planinsek a 1.14 es el mas caro de la semana en terminos de sorpresa: el mercado le daba 88% y perdio. Con cuotas asi una sola caida borra siete aciertos, que es exactamente el riesgo de perseguir favoritos cortos. Y refuerza lo ya medido: todo esto sigue siendo material de semis y finales, la etapa donde el WTN acierta 56%.",
    "nota": "Gundacker tambien llega a la final de Slovenj Gradec tras ganarle al [6]: vale seguirlo la proxima semana"
+  },
+  {
+   "fecha": "2026-08-22",
+   "corrida": "caso Borg + descubrimiento shouldDisplayWtn",
+   "detalle": [
+    "Sebastian nota: Leo Borg fue SIEMPRE el [1] del cuadro de Bastad (mejor ATP 542, mejor WTN 5.40, 1 del ranking nacional) y aun asi las casas le dieron cuota de no-favorito contra el [4] Lithen (2.22 vs 1.57). Borg gano 6-3 7-5.",
+    "Lectura: el mercado dio vuelta al favorito de nivel por la forma recentista de Lithen (llego cediendo 12 games en 3 partidos) y perdio. El contrapeso es Petkovic ese mismo dia: mercado con la forma (Handel) contra nuestras dos metricas, y la forma gano. Va 1-1: no hay regla todavia, pero 'top seed con todas las metricas a favor pagado como underdog' queda como CASO A SEGUIR cada vez que aparezca"
+   ],
+   "hallazgo": "shouldDisplayWtn=false en el crudo de la acceptance list = insignia ProZone en la web = ITF no confia en mostrar ese numero. La API igual trae el rating. Capturado como wtnVisible en itf-navegador desde ahora."
   }
  ],
  "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",
