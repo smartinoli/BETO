@@ -1,7 +1,295 @@
 {
- "actualizado": "2026-08-23T04:11:31.996Z",
+ "actualizado": "2026-08-23T12:24:10.641Z",
  "nota": "registro maestro de torneos ITF, solo hombres singles (M15/M25)",
  "semanas": {
+  "2026-W30": {
+   "m-itf-aut-2026-004": {
+    "nombre": "M25 Ollersbach ",
+    "pais": "Austria",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "Ollersbach",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-ollersbach-/aut/2026/m-itf-aut-2026-004/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-esp-2026-027": {
+    "nombre": "M25 Denia",
+    "pais": "Spain",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "DENIA",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-denia/esp/2026/m-itf-esp-2026-027/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-ger-2026-010": {
+    "nombre": "M25 Metzingen",
+    "pais": "Germany",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "Metzingen",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-metzingen/ger/2026/m-itf-ger-2026-010/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-usa-2026-031": {
+    "nombre": "M25 Champaign, IL",
+    "pais": "USA",
+    "categoria": "M25",
+    "superficie": "Hard",
+    "bolsa": "$30,000",
+    "sede": "Urbana",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-champaign-il/usa/2026/m-itf-usa-2026-031/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-bra-2026-006": {
+    "nombre": "M25 Sao Paulo",
+    "pais": "Brazil",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "Sao Paulo",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-sao-paulo/bra/2026/m-itf-bra-2026-006/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-rou-2026-007": {
+    "nombre": "M25+H Bacau",
+    "pais": "Romania",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "Bacau",
+    "enlace": "https://www.itftennis.com/en/tournament/m25plush-bacau/rou/2026/m-itf-rou-2026-007/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-mex-2026-005": {
+    "nombre": "M15 Huamantla",
+    "pais": "Mexico",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Huamantla",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-huamantla/mex/2026/m-itf-mex-2026-005/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-srb-2026-011": {
+    "nombre": "M15 Kursumlijska Banja ",
+    "pais": "Serbia",
+    "categoria": "M15",
+    "superficie": "Clay",
+    "bolsa": "$15,000",
+    "sede": "KURSUMLIJSKA BANJA",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-kursumlijska-banja-/srb/2026/m-itf-srb-2026-011/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 2
+   },
+   "m-itf-ina-2026-001": {
+    "nombre": "M15 Bali",
+    "pais": "Indonesia",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Bali",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-bali/ina/2026/m-itf-ina-2026-001/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-aus-2026-006": {
+    "nombre": "M15 Brisbane",
+    "pais": "Australia",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Brisbane",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-brisbane/aus/2026/m-itf-aus-2026-006/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-fra-2026-023": {
+    "nombre": "M15 Rognac",
+    "pais": "France",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Rognac",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-rognac/fra/2026/m-itf-fra-2026-023/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-ita-2026-009": {
+    "nombre": "M15 Segrate",
+    "pais": "Italy",
+    "categoria": "M15",
+    "superficie": "Clay",
+    "bolsa": "$15,000",
+    "sede": "Segrate",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-segrate/ita/2026/m-itf-ita-2026-009/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-tha-2026-007": {
+    "nombre": "M15 Nakhon Pathom (CANCELLED)",
+    "pais": "Thailand",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Nakhon Pathom",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-nakhon-pathom-(cancelled)/tha/2026/m-itf-tha-2026-007/",
+    "fechas": {
+     "quali": "2026-07-18",
+     "main": "2026-07-20",
+     "final": "2026-07-26"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   }
+  },
   "2026-W31": {
    "m-itf-ita-2026-006": {
     "nombre": "M25 Bolzano",
@@ -11,50 +299,6 @@
     "bolsa": "$30,000",
     "sede": "BOLZANO",
     "enlace": "https://www.itftennis.com/en/tournament/m25-bolzano/ita/2026/m-itf-ita-2026-006/",
-    "fechas": {
-     "quali": "2026-07-25",
-     "main": "2026-07-27",
-     "final": "2026-08-02"
-    },
-    "archivado": true,
-    "frescura": {
-     "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-ger-2026-017": {
-    "nombre": "M25 Wetzlar",
-    "pais": "Germany",
-    "categoria": "M25",
-    "superficie": "Clay",
-    "bolsa": "$30,000",
-    "sede": "Wetzlar",
-    "enlace": "https://www.itftennis.com/en/tournament/m25-wetzlar/ger/2026/m-itf-ger-2026-017/",
-    "fechas": {
-     "quali": "2026-07-25",
-     "main": "2026-07-27",
-     "final": "2026-08-02"
-    },
-    "archivado": true,
-    "frescura": {
-     "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-gbr-2026-006": {
-    "nombre": "M25 Aldershot",
-    "pais": "Great Britain",
-    "categoria": "M25",
-    "superficie": "Hard",
-    "bolsa": "$30,000",
-    "sede": "Aldershot",
-    "enlace": "https://www.itftennis.com/en/tournament/m25-aldershot/gbr/2026/m-itf-gbr-2026-006/",
     "fechas": {
      "quali": "2026-07-25",
      "main": "2026-07-27",
@@ -143,6 +387,72 @@
     "bolsa": "$30,000",
     "sede": "Koszalin",
     "enlace": "https://www.itftennis.com/en/tournament/m25-koszalin/pol/2026/m-itf-pol-2026-004/",
+    "fechas": {
+     "quali": "2026-07-25",
+     "main": "2026-07-27",
+     "final": "2026-08-02"
+    },
+    "archivado": true,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-ger-2026-017": {
+    "nombre": "M25 Wetzlar",
+    "pais": "Germany",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "Wetzlar",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-wetzlar/ger/2026/m-itf-ger-2026-017/",
+    "fechas": {
+     "quali": "2026-07-25",
+     "main": "2026-07-27",
+     "final": "2026-08-02"
+    },
+    "archivado": true,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-gbr-2026-006": {
+    "nombre": "M25 Aldershot",
+    "pais": "Great Britain",
+    "categoria": "M25",
+    "superficie": "Hard",
+    "bolsa": "$30,000",
+    "sede": "Aldershot",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-aldershot/gbr/2026/m-itf-gbr-2026-006/",
+    "fechas": {
+     "quali": "2026-07-25",
+     "main": "2026-07-27",
+     "final": "2026-08-02"
+    },
+    "archivado": true,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-aus-2026-007": {
+    "nombre": "M15 Brisbane",
+    "pais": "Australia",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Brisbane",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-brisbane/aus/2026/m-itf-aus-2026-007/",
     "fechas": {
      "quali": "2026-07-25",
      "main": "2026-07-27",
@@ -283,8 +593,8 @@
     "archivado": false,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": "2026-08-23T02:33:52.538Z",
-     "cuadroQ": "2026-08-23T02:33:52.538Z",
+     "cuadroM": "2026-08-23T12:22:32.008Z",
+     "cuadroQ": "2026-08-23T12:22:32.008Z",
      "oop": {}
     },
     "pendientesDeCierre": 2
@@ -297,28 +607,6 @@
     "bolsa": "$15,000",
     "sede": "Sao Paulo",
     "enlace": "https://www.itftennis.com/en/tournament/m15-sao-paulo/bra/2026/m-itf-bra-2026-007/",
-    "fechas": {
-     "quali": "2026-07-25",
-     "main": "2026-07-27",
-     "final": "2026-08-02"
-    },
-    "archivado": true,
-    "frescura": {
-     "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-aus-2026-007": {
-    "nombre": "M15 Brisbane",
-    "pais": "Australia",
-    "categoria": "M15",
-    "superficie": "Hard",
-    "bolsa": "$15,000",
-    "sede": "Brisbane",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-brisbane/aus/2026/m-itf-aus-2026-007/",
     "fechas": {
      "quali": "2026-07-25",
      "main": "2026-07-27",
@@ -445,6 +733,28 @@
     },
     "pendientesDeCierre": 0
    },
+   "m-itf-srb-2026-013": {
+    "nombre": "M25 Kursumlijska Banja ",
+    "pais": "Serbia",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "KURSUMLIJSKA BANJA",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-kursumlijska-banja-/srb/2026/m-itf-srb-2026-013/",
+    "fechas": {
+     "quali": "2026-08-01",
+     "main": "2026-08-03",
+     "final": "2026-08-09"
+    },
+    "archivado": true,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
    "m-itf-usa-2026-033": {
     "nombre": "M25 Southaven, MS",
     "pais": "USA",
@@ -485,50 +795,6 @@
      "aceptacion": null,
      "cuadroM": "historico",
      "cuadroQ": "historico",
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-srb-2026-013": {
-    "nombre": "M25 Kursumlijska Banja ",
-    "pais": "Serbia",
-    "categoria": "M25",
-    "superficie": "Clay",
-    "bolsa": "$30,000",
-    "sede": "KURSUMLIJSKA BANJA",
-    "enlace": "https://www.itftennis.com/en/tournament/m25-kursumlijska-banja-/srb/2026/m-itf-srb-2026-013/",
-    "fechas": {
-     "quali": "2026-08-01",
-     "main": "2026-08-03",
-     "final": "2026-08-09"
-    },
-    "archivado": true,
-    "frescura": {
-     "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-chn-2026-020": {
-    "nombre": "M15 Tianjin",
-    "pais": "China, P.R.",
-    "categoria": "M15",
-    "superficie": "Hard",
-    "bolsa": "$15,000",
-    "sede": "Tianjin",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-tianjin/chn/2026/m-itf-chn-2026-020/",
-    "fechas": {
-     "quali": "2026-08-01",
-     "main": "2026-08-03",
-     "final": "2026-08-09"
-    },
-    "archivado": true,
-    "frescura": {
-     "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
      "oop": {}
     },
     "pendientesDeCierre": 0
@@ -621,6 +887,28 @@
     },
     "pendientesDeCierre": 0
    },
+   "m-itf-chn-2026-020": {
+    "nombre": "M15 Tianjin",
+    "pais": "China, P.R.",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Tianjin",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-tianjin/chn/2026/m-itf-chn-2026-020/",
+    "fechas": {
+     "quali": "2026-08-01",
+     "main": "2026-08-03",
+     "final": "2026-08-09"
+    },
+    "archivado": true,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
    "m-itf-bel-2026-005": {
     "nombre": "M15 Eupen",
     "pais": "Belgium",
@@ -689,6 +977,28 @@
     },
     "pendientesDeCierre": 0
    },
+   "m-itf-bel-2026-003": {
+    "nombre": "M25 Koksijde",
+    "pais": "Belgium",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "Koksijde",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-koksijde/bel/2026/m-itf-bel-2026-003/",
+    "fechas": {
+     "quali": "2026-08-08",
+     "main": "2026-08-10",
+     "final": "2026-08-16"
+    },
+    "archivado": true,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": "historico",
+     "cuadroQ": "historico",
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
    "m-itf-usa-2026-034": {
     "nombre": "M25 East Lansing",
     "pais": "USA",
@@ -719,28 +1029,6 @@
     "bolsa": "$30,000",
     "sede": "Idanha-a-Nova",
     "enlace": "https://www.itftennis.com/en/tournament/m25-idanha-a-nova/por/2026/m-itf-por-2026-012/",
-    "fechas": {
-     "quali": "2026-08-08",
-     "main": "2026-08-10",
-     "final": "2026-08-16"
-    },
-    "archivado": true,
-    "frescura": {
-     "aceptacion": null,
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-bel-2026-003": {
-    "nombre": "M25 Koksijde",
-    "pais": "Belgium",
-    "categoria": "M25",
-    "superficie": "Clay",
-    "bolsa": "$30,000",
-    "sede": "Koksijde",
-    "enlace": "https://www.itftennis.com/en/tournament/m25-koksijde/bel/2026/m-itf-bel-2026-003/",
     "fechas": {
      "quali": "2026-08-08",
      "main": "2026-08-10",
@@ -799,28 +1087,6 @@
     },
     "pendientesDeCierre": 0
    },
-   "m-itf-ger-2026-009": {
-    "nombre": "M15 Trier",
-    "pais": "Germany",
-    "categoria": "M15",
-    "superficie": "Clay",
-    "bolsa": "$15,000",
-    "sede": "Trier",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-trier/ger/2026/m-itf-ger-2026-009/",
-    "fechas": {
-     "quali": "2026-08-08",
-     "main": "2026-08-10",
-     "final": "2026-08-16"
-    },
-    "archivado": true,
-    "frescura": {
-     "aceptacion": null,
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
    "m-itf-rou-2026-011": {
     "nombre": "M15 Targu Jiu",
     "pais": "Romania",
@@ -865,6 +1131,28 @@
     },
     "pendientesDeCierre": 0
    },
+   "m-itf-ger-2026-009": {
+    "nombre": "M15 Trier",
+    "pais": "Germany",
+    "categoria": "M15",
+    "superficie": "Clay",
+    "bolsa": "$15,000",
+    "sede": "Trier",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-trier/ger/2026/m-itf-ger-2026-009/",
+    "fechas": {
+     "quali": "2026-08-08",
+     "main": "2026-08-10",
+     "final": "2026-08-16"
+    },
+    "archivado": true,
+    "frescura": {
+     "aceptacion": null,
+     "cuadroM": "historico",
+     "cuadroQ": "historico",
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
    "m-itf-par-2026-001": {
     "nombre": "M15 Asuncion",
     "pais": "Paraguay",
@@ -881,8 +1169,8 @@
     "archivado": false,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": "2026-08-23T02:26:28.944Z",
-     "cuadroQ": "2026-08-23T02:26:28.944Z",
+     "cuadroM": "2026-08-23T12:15:50.526Z",
+     "cuadroQ": "2026-08-23T12:15:50.526Z",
      "oop": {}
     },
     "pendientesDeCierre": 1
@@ -976,7 +1264,7 @@
      "oop": {
       "2026-08-21": "2026-08-21T21:52:59.494Z",
       "2026-08-22": "2026-08-22T15:53:29.443Z",
-      "2026-08-23": "2026-08-23T04:03:15.374Z"
+      "2026-08-23": "2026-08-23T12:17:15.721Z"
      }
     },
     "pendientesDeCierre": 0
@@ -997,12 +1285,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:18.869Z",
-     "cuadroM": "2026-08-23T04:09:49.182Z",
-     "cuadroQ": "2026-08-23T04:09:49.182Z",
+     "cuadroM": "2026-08-23T12:17:09.263Z",
+     "cuadroQ": "2026-08-23T12:17:09.263Z",
      "oop": {
       "2026-08-21": "2026-08-21T21:53:24.097Z",
       "2026-08-22": "2026-08-22T15:53:52.923Z",
-      "2026-08-23": "2026-08-23T04:09:37.621Z"
+      "2026-08-23": "2026-08-23T12:16:58.361Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1023,12 +1311,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:23.031Z",
-     "cuadroM": "2026-08-23T04:09:30.987Z",
-     "cuadroQ": "2026-08-23T04:09:30.987Z",
+     "cuadroM": "2026-08-23T12:16:51.803Z",
+     "cuadroQ": "2026-08-23T12:16:51.803Z",
      "oop": {
       "2026-08-21": "2026-08-21T21:53:45.998Z",
       "2026-08-22": "2026-08-22T15:54:09.630Z",
-      "2026-08-23": "2026-08-23T04:09:20.760Z"
+      "2026-08-23": "2026-08-23T12:16:41.203Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1127,12 +1415,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:38.219Z",
-     "cuadroM": "2026-08-23T04:04:34.647Z",
-     "cuadroQ": "2026-08-23T04:04:34.647Z",
+     "cuadroM": "2026-08-23T12:18:05.501Z",
+     "cuadroQ": "2026-08-23T12:18:05.501Z",
      "oop": {
       "2026-08-21": "2026-08-21T19:14:24.760Z",
       "2026-08-22": "2026-08-22T15:55:22.837Z",
-      "2026-08-23": "2026-08-23T04:04:23.614Z"
+      "2026-08-23": "2026-08-23T12:17:53.080Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1179,12 +1467,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:47.768Z",
-     "cuadroM": "2026-08-22T15:56:02.933Z",
-     "cuadroQ": "2026-08-22T15:56:02.933Z",
+     "cuadroM": "2026-08-23T12:18:33.163Z",
+     "cuadroQ": "2026-08-23T12:18:33.163Z",
      "oop": {
       "2026-08-21": "2026-08-21T21:55:08.973Z",
       "2026-08-22": "2026-08-22T15:55:50.299Z",
-      "2026-08-23": "2026-08-22T15:55:45.710Z"
+      "2026-08-23": "2026-08-23T12:18:19.984Z"
      }
     },
     "pendientesDeCierre": 2
@@ -1215,6 +1503,31 @@
     },
     "pendientesDeCierre": 0
    },
+   "m-itf-par-2026-002": {
+    "nombre": "M15 Asuncion",
+    "pais": "Paraguay",
+    "categoria": "M15",
+    "superficie": "Clay",
+    "bolsa": "$15,000",
+    "sede": "Asuncion",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-asuncion/par/2026/m-itf-par-2026-002/",
+    "fechas": {
+     "quali": "2026-08-15",
+     "main": "2026-08-17",
+     "final": "2026-08-22"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": "2026-08-20T05:28:14.445Z",
+     "cuadroM": "2026-08-22T15:57:20.450Z",
+     "cuadroQ": "2026-08-22T15:57:20.450Z",
+     "oop": {
+      "2026-08-21": "2026-08-21T21:56:29.475Z",
+      "2026-08-22": "2026-08-22T15:57:06.954Z"
+     }
+    },
+    "pendientesDeCierre": 1
+   },
    "m-itf-aut-2026-002": {
     "nombre": "M15 Mistelbach",
     "pais": "Austria",
@@ -1231,12 +1544,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:28:00.740Z",
-     "cuadroM": "2026-08-23T04:09:02.300Z",
-     "cuadroQ": "2026-08-23T04:09:02.300Z",
+     "cuadroM": "2026-08-23T12:16:09.884Z",
+     "cuadroQ": "2026-08-23T12:16:09.884Z",
      "oop": {
       "2026-08-21": "2026-08-21T19:15:19.314Z",
       "2026-08-22": "2026-08-22T15:56:34.557Z",
-      "2026-08-23": "2026-08-23T04:08:50.364Z"
+      "2026-08-23": "2026-08-23T12:15:57.176Z"
      }
     },
     "pendientesDeCierre": 1
@@ -1262,7 +1575,7 @@
      "oop": {
       "2026-08-21": "2026-08-21T19:15:41.218Z",
       "2026-08-22": "2026-08-22T14:00:01.976Z",
-      "2026-08-23": "2026-08-23T02:34:28.907Z"
+      "2026-08-23": "2026-08-23T12:18:39.585Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1283,40 +1596,15 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:28:09.606Z",
-     "cuadroM": "2026-08-23T04:02:36.481Z",
-     "cuadroQ": "2026-08-23T04:02:36.481Z",
+     "cuadroM": "2026-08-23T12:23:44.659Z",
+     "cuadroQ": "2026-08-23T12:23:44.659Z",
      "oop": {
       "2026-08-21": "2026-08-21T21:56:06.452Z",
       "2026-08-22": "2026-08-22T15:52:45.438Z",
-      "2026-08-23": "2026-08-23T04:02:22.936Z"
+      "2026-08-23": "2026-08-23T12:23:32.764Z"
      }
     },
     "pendientesDeCierre": 2
-   },
-   "m-itf-par-2026-002": {
-    "nombre": "M15 Asuncion",
-    "pais": "Paraguay",
-    "categoria": "M15",
-    "superficie": "Clay",
-    "bolsa": "$15,000",
-    "sede": "Asuncion",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-asuncion/par/2026/m-itf-par-2026-002/",
-    "fechas": {
-     "quali": "2026-08-15",
-     "main": "2026-08-17",
-     "final": "2026-08-22"
-    },
-    "archivado": false,
-    "frescura": {
-     "aceptacion": "2026-08-20T05:28:14.445Z",
-     "cuadroM": "2026-08-22T15:57:20.450Z",
-     "cuadroQ": "2026-08-22T15:57:20.450Z",
-     "oop": {
-      "2026-08-21": "2026-08-21T21:56:29.475Z",
-      "2026-08-22": "2026-08-22T15:57:06.954Z"
-     }
-    },
-    "pendientesDeCierre": 1
    }
   },
   "2026-W35": {
@@ -1336,10 +1624,10 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:28:18.589Z",
-     "cuadroM": "2026-08-23T02:33:00.376Z",
-     "cuadroQ": "2026-08-23T02:33:00.376Z",
+     "cuadroM": "2026-08-23T12:21:42.241Z",
+     "cuadroQ": "2026-08-23T12:21:42.241Z",
      "oop": {
-      "2026-08-23": "2026-08-23T02:32:48.998Z"
+      "2026-08-23": "2026-08-23T12:21:33.797Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1360,10 +1648,10 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:28:23.100Z",
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-08-23T12:20:48.700Z",
+     "cuadroQ": "2026-08-23T12:20:48.700Z",
      "oop": {
-      "2026-08-23": "2026-08-23T04:10:55.036Z"
+      "2026-08-23": "2026-08-23T12:20:35.744Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1392,6 +1680,54 @@
     },
     "pendientesDeCierre": 0
    },
+   "m-itf-pol-2026-008": {
+    "nombre": "M25 Poznan",
+    "pais": "Poland",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "Poznan",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-poznan/pol/2026/m-itf-pol-2026-008/",
+    "fechas": {
+     "quali": "2026-08-22",
+     "main": "2026-08-24",
+     "final": "2026-08-30"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": "2026-08-20T05:28:36.739Z",
+     "cuadroM": "2026-08-23T12:23:26.558Z",
+     "cuadroQ": "2026-08-23T12:23:26.558Z",
+     "oop": {
+      "2026-08-23": "2026-08-23T12:23:14.530Z"
+     }
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-esp-2026-044": {
+    "nombre": "M25 Oviedo",
+    "pais": "Spain",
+    "categoria": "M25",
+    "superficie": "Clay",
+    "bolsa": "$30,000",
+    "sede": "Oviedo",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-oviedo/esp/2026/m-itf-esp-2026-044/",
+    "fechas": {
+     "quali": "2026-08-22",
+     "main": "2026-08-24",
+     "final": "2026-08-30"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": "2026-08-20T05:28:41.153Z",
+     "cuadroM": "2026-08-23T12:19:53.476Z",
+     "cuadroQ": "2026-08-23T12:19:53.476Z",
+     "oop": {
+      "2026-08-23": "2026-08-23T12:19:40.865Z"
+     }
+    },
+    "pendientesDeCierre": 0
+   },
    "m-itf-slo-2026-009": {
     "nombre": "M25 Maribor",
     "pais": "Slovenia",
@@ -1416,14 +1752,14 @@
     },
     "pendientesDeCierre": 0
    },
-   "m-itf-pol-2026-008": {
-    "nombre": "M25 Poznan",
-    "pais": "Poland",
-    "categoria": "M25",
-    "superficie": "Clay",
-    "bolsa": "$30,000",
-    "sede": "Poznan",
-    "enlace": "https://www.itftennis.com/en/tournament/m25-poznan/pol/2026/m-itf-pol-2026-008/",
+   "m-itf-tun-2026-034": {
+    "nombre": "M15 Monastir",
+    "pais": "Tunisia",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Monastir",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-monastir/tun/2026/m-itf-tun-2026-034/",
     "fechas": {
      "quali": "2026-08-22",
      "main": "2026-08-24",
@@ -1431,23 +1767,23 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:28:36.739Z",
-     "cuadroM": "2026-08-23T02:31:58.197Z",
-     "cuadroQ": "2026-08-23T02:31:58.197Z",
+     "aceptacion": "2026-08-20T05:29:05.488Z",
+     "cuadroM": "2026-08-23T12:22:08.386Z",
+     "cuadroQ": "2026-08-23T12:22:08.386Z",
      "oop": {
-      "2026-08-23": "2026-08-23T02:31:47.077Z"
+      "2026-08-23": "2026-08-23T12:21:55.885Z"
      }
     },
     "pendientesDeCierre": 0
    },
-   "m-itf-esp-2026-044": {
-    "nombre": "M25 Oviedo",
-    "pais": "Spain",
-    "categoria": "M25",
+   "m-itf-rou-2026-013": {
+    "nombre": "M15 Bucharest",
+    "pais": "Romania",
+    "categoria": "M15",
     "superficie": "Clay",
-    "bolsa": "$30,000",
-    "sede": "Oviedo",
-    "enlace": "https://www.itftennis.com/en/tournament/m25-oviedo/esp/2026/m-itf-esp-2026-044/",
+    "bolsa": "$15,000",
+    "sede": "Bucharest",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-bucharest/rou/2026/m-itf-rou-2026-013/",
     "fechas": {
      "quali": "2026-08-22",
      "main": "2026-08-24",
@@ -1455,11 +1791,11 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:28:41.153Z",
-     "cuadroM": "2026-08-23T02:30:41.807Z",
-     "cuadroQ": "2026-08-23T02:30:41.807Z",
+     "aceptacion": "2026-08-20T05:29:10.436Z",
+     "cuadroM": "2026-08-23T04:07:45.062Z",
+     "cuadroQ": "2026-08-23T04:07:45.062Z",
      "oop": {
-      "2026-08-23": "2026-08-23T02:30:28.889Z"
+      "2026-08-23": "2026-08-23T04:07:33.423Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1507,7 +1843,7 @@
      "cuadroM": "2026-08-23T04:10:31.616Z",
      "cuadroQ": "2026-08-23T04:10:31.616Z",
      "oop": {
-      "2026-08-23": "2026-08-23T04:10:21.266Z"
+      "2026-08-23": "2026-08-23T12:19:03.416Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1560,52 +1896,6 @@
     },
     "pendientesDeCierre": 0
    },
-   "m-itf-tun-2026-034": {
-    "nombre": "M15 Monastir",
-    "pais": "Tunisia",
-    "categoria": "M15",
-    "superficie": "Hard",
-    "bolsa": "$15,000",
-    "sede": "Monastir",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-monastir/tun/2026/m-itf-tun-2026-034/",
-    "fechas": {
-     "quali": "2026-08-22",
-     "main": "2026-08-24",
-     "final": "2026-08-30"
-    },
-    "archivado": false,
-    "frescura": {
-     "aceptacion": "2026-08-20T05:29:05.488Z",
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-rou-2026-013": {
-    "nombre": "M15 Bucharest",
-    "pais": "Romania",
-    "categoria": "M15",
-    "superficie": "Clay",
-    "bolsa": "$15,000",
-    "sede": "Bucharest",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-bucharest/rou/2026/m-itf-rou-2026-013/",
-    "fechas": {
-     "quali": "2026-08-22",
-     "main": "2026-08-24",
-     "final": "2026-08-30"
-    },
-    "archivado": false,
-    "frescura": {
-     "aceptacion": "2026-08-20T05:29:10.436Z",
-     "cuadroM": "2026-08-23T04:07:45.062Z",
-     "cuadroQ": "2026-08-23T04:07:45.062Z",
-     "oop": {
-      "2026-08-23": "2026-08-23T04:07:33.423Z"
-     }
-    },
-    "pendientesDeCierre": 0
-   },
    "m-itf-usa-2026-035": {
     "nombre": "M15 Champaign, IL",
     "pais": "USA",
@@ -1644,10 +1934,10 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:29:21.469Z",
-     "cuadroM": "2026-08-23T04:07:02.805Z",
-     "cuadroQ": "2026-08-23T04:07:02.805Z",
+     "cuadroM": "2026-08-23T12:20:29.108Z",
+     "cuadroQ": "2026-08-23T12:20:29.108Z",
      "oop": {
-      "2026-08-23": "2026-08-23T04:06:50.928Z"
+      "2026-08-23": "2026-08-23T12:20:15.956Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1768,28 +2058,6 @@
     },
     "pendientesDeCierre": 0
    },
-   "m-itf-ger-2026-022": {
-    "nombre": "M25 Meerbusch",
-    "pais": "Germany",
-    "categoria": "M25",
-    "superficie": "Clay",
-    "bolsa": "$30,000",
-    "sede": "Meerbusch",
-    "enlace": "https://www.itftennis.com/en/tournament/m25-meerbusch/ger/2026/m-itf-ger-2026-022/",
-    "fechas": {
-     "quali": "2026-08-29",
-     "main": "2026-08-31",
-     "final": "2026-09-06"
-    },
-    "archivado": false,
-    "frescura": {
-     "aceptacion": "2026-08-20T05:29:50.435Z",
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
    "m-itf-jpn-2026-015": {
     "nombre": "M25 Urayasu",
     "pais": "Japan",
@@ -1812,36 +2080,14 @@
     },
     "pendientesDeCierre": 0
    },
-   "m-itf-ina-2026-003": {
-    "nombre": "M15 Bali",
-    "pais": "Indonesia",
-    "categoria": "M15",
-    "superficie": "Hard",
-    "bolsa": "$15,000",
-    "sede": "Bali",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-bali/ina/2026/m-itf-ina-2026-003/",
-    "fechas": {
-     "quali": "2026-08-29",
-     "main": "2026-08-31",
-     "final": "2026-09-06"
-    },
-    "archivado": false,
-    "frescura": {
-     "aceptacion": "2026-08-20T05:29:58.512Z",
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-ned-2026-007": {
-    "nombre": "M15 Haren",
-    "pais": "Netherlands",
-    "categoria": "M15",
+   "m-itf-ger-2026-022": {
+    "nombre": "M25 Meerbusch",
+    "pais": "Germany",
+    "categoria": "M25",
     "superficie": "Clay",
-    "bolsa": "$15,000",
-    "sede": "Haren",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-haren/ned/2026/m-itf-ned-2026-007/",
+    "bolsa": "$30,000",
+    "sede": "Meerbusch",
+    "enlace": "https://www.itftennis.com/en/tournament/m25-meerbusch/ger/2026/m-itf-ger-2026-022/",
     "fechas": {
      "quali": "2026-08-29",
      "main": "2026-08-31",
@@ -1849,29 +2095,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:30:02.145Z",
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
-    },
-    "pendientesDeCierre": 0
-   },
-   "m-itf-esp-2026-031": {
-    "nombre": "M15 Madrid",
-    "pais": "Spain",
-    "categoria": "M15",
-    "superficie": "Clay",
-    "bolsa": "$15,000",
-    "sede": "Madrid",
-    "enlace": "https://www.itftennis.com/en/tournament/m15-madrid/esp/2026/m-itf-esp-2026-031/",
-    "fechas": {
-     "quali": "2026-08-29",
-     "main": "2026-08-31",
-     "final": "2026-09-06"
-    },
-    "archivado": false,
-    "frescura": {
-     "aceptacion": "2026-08-20T05:30:07.549Z",
+     "aceptacion": "2026-08-20T05:29:50.435Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2070,6 +2294,72 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:31:18.418Z",
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-ina-2026-003": {
+    "nombre": "M15 Bali",
+    "pais": "Indonesia",
+    "categoria": "M15",
+    "superficie": "Hard",
+    "bolsa": "$15,000",
+    "sede": "Bali",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-bali/ina/2026/m-itf-ina-2026-003/",
+    "fechas": {
+     "quali": "2026-08-29",
+     "main": "2026-08-31",
+     "final": "2026-09-06"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": "2026-08-20T05:29:58.512Z",
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-ned-2026-007": {
+    "nombre": "M15 Haren",
+    "pais": "Netherlands",
+    "categoria": "M15",
+    "superficie": "Clay",
+    "bolsa": "$15,000",
+    "sede": "Haren",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-haren/ned/2026/m-itf-ned-2026-007/",
+    "fechas": {
+     "quali": "2026-08-29",
+     "main": "2026-08-31",
+     "final": "2026-09-06"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": "2026-08-20T05:30:02.145Z",
+     "cuadroM": null,
+     "cuadroQ": null,
+     "oop": {}
+    },
+    "pendientesDeCierre": 0
+   },
+   "m-itf-esp-2026-031": {
+    "nombre": "M15 Madrid",
+    "pais": "Spain",
+    "categoria": "M15",
+    "superficie": "Clay",
+    "bolsa": "$15,000",
+    "sede": "Madrid",
+    "enlace": "https://www.itftennis.com/en/tournament/m15-madrid/esp/2026/m-itf-esp-2026-031/",
+    "fechas": {
+     "quali": "2026-08-29",
+     "main": "2026-08-31",
+     "final": "2026-09-06"
+    },
+    "archivado": false,
+    "frescura": {
+     "aceptacion": "2026-08-20T05:30:07.549Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
