@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T08:00:00Z",
+ "actualizado": "2026-08-23T13:05:00Z",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -223,7 +223,8 @@
   "Me equivoque el 2026-08-23 al concluir 'las cuotas no faltan, todavia no existen': medi la antelacion con que aparecen en OddsPapi y la extendi a Betano, que es otra cosa. Sebastian mostro Betano con las qualis de Oviedo cotizadas mientras OddsPapi no las tenia. La medicion de 4.9 h de mediana sigue siendo valida PARA ODDSPAPI, pero no dice nada de cuando Betano abre linea. Lección: no extender una medicion de una fuente a otra sin medir la segunda",
   "El catalogo vivo de OddsPapi (2026-08-23, 06:30 UTC) tiene 61 torneos de tenis y NINGUNO de la semana entrante: los ITF que lista son los que terminan hoy (Lesa, Idanha, Ueberlingen, Kursumlijska, Arad, Bastad, Slovenj Gradec, Mistelbach, Lambermont, Santander). No es retraso de horas: el agregador no ha creado todavia los eventos de la semana siguiente, y las qualis del domingo pertenecen a esos",
   "Ojo con la medicion de 'antelacion mediana 4.9 h': mide cuando un partido entra al tablero, no cuando Betano abre linea. El 2026-08-23 Behrmann arrancaba en 1.25 h, Betano lo pagaba 1.60/2.15 y OddsPapi seguia en hasOdds:false — o sea que la antelacion real del agregador es aun peor que esa mediana para las rondas que nos interesan. Betano publica con mas de un dia; el agregador, cerca del saque o ya en vivo",
-  "Error corregido el 2026-08-23: habia metido 'rival sin ATP' y 'rival junior' en un mismo veto, deducido de UN caso (Behrmann). Al medirlos por separado resultaron opuestos — junior 31% (vetar), sin ATP 81% (favorable). El veto mal puesto mataba 8 de las 11 qualis de Oviedo, o sea justo la ronda donde el metodo funciona mejor. Leccion repetida por tercera vez en este proyecto: una regla deducida de un caso hay que medirla ANTES de dejarla actuando, sobre todo cuando decide que no apostar"
+  "Error corregido el 2026-08-23: habia metido 'rival sin ATP' y 'rival junior' en un mismo veto, deducido de UN caso (Behrmann). Al medirlos por separado resultaron opuestos — junior 31% (vetar), sin ATP 81% (favorable). El veto mal puesto mataba 8 de las 11 qualis de Oviedo, o sea justo la ronda donde el metodo funciona mejor. Leccion repetida por tercera vez en este proyecto: una regla deducida de un caso hay que medirla ANTES de dejarla actuando, sobre todo cuando decide que no apostar",
+  "Las DOS casas estan cerradas para nosotros desde este entorno, por mecanismos distintos (probado 2026-08-23): betano.com da 403 instantaneo con una pantalla que dice 'Access to this page is restricted due to security and compliance measures' — bloqueo geografico, salimos por Washington (cf-ray IAD). bet365.es da 403 con un desafio de Cloudflare que se queda en 'Just a moment... verifica que no eres un bot' y NO se resuelve ni esperando 60 s en un Chromium real. Sacar pantallazos yo mismo no ayuda: la captura sale del bloqueo, no de las cuotas. El unico camino que funciona es que Sebastian capture desde su conexion y yo extraiga de la imagen, que si puedo hacer sin problema"
  ],
  "historial": [
   {
