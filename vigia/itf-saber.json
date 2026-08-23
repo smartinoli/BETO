@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T06:40:00Z",
+ "actualizado": "2026-08-23T06:50:00Z",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -139,6 +139,12 @@
    "n": "23 entradas con ronda anotada + 31 del registro",
    "fuente": "itf.json e itf-registro.json al 2026-08-23",
    "uso": "choca de frente con lo medido sobre la ronda: el nivel predice 75-84% en qualis/R1/R2 y solo 56% de cuartos en adelante, pero justo de las rondas buenas no hay precio. Con esta fuente de cuotas solo se puede apostar donde el metodo NO funciona"
+  },
+  {
+   "regla": "OddsPapi entrega la cuota DEMASIADO TARDE para servir de algo. Prueba directa del 2026-08-23 06:45 UTC con las cinco finales del dia, con Betano en pantalla al lado: Handel-Nagel (2.25/1.55), Behrmann-Mashtakov (1.60/2.15), Loge-Faucon (1.30/3.15) e Isomura-Fitriadi (1.98/1.72) estan las cuatro INDEXADAS en OddsPapi y las cuatro con hasOdds:false. La unica con cuotas es Hsu-Dellavedova, que en ese momento estaba EN VIVO. Behrmann arrancaba en 1.25 h y seguia sin precio.",
+   "n": 5,
+   "fuente": "cruce OddsPapi vs capturas de pantalla de betano.com, 2026-08-23",
+   "uso": "el problema no es el catalogo ni el indice ni el cruce de nombres: el fixture existe con nombres correctos y el precio no llega. Sirve para descartar de una vez toda hipotesis de bug propio"
   }
  ],
  "senalesDelCuadro": [
@@ -203,7 +209,8 @@
   "Scrapear betano.com directo NO se puede desde este entorno (probado 2026-08-23): lat.betano.com, ro.betano.com, br.betano.com y www.betano.com devuelven todos HTTP 403 de Cloudflare con una 'Betano Splash Screen' de 1808 bytes. El cf-ray termina en IAD, o sea que nuestra salida es Washington y el bloqueo es geografico/por ASN de datacenter, no un desafio de bot que se resuelva pareciendo mas humano. El navegador que vence al WAF de ITF no sirve aca porque el 403 llega antes de cargar nada",
   "Cuando OddsPapi dice que no tiene cuotas, es verdad (control 2026-08-23): el endpoint /odds por fixture devuelve hasOdds:true y bookmakerOdds poblado para la semi de Bastad que si tenia 36 mercados, y hasOdds:false con bookmakerOdds:null para la final del dia siguiente. O sea que el flag NO es poco confiable en /odds — la advertencia del codigo aplica al listado masivo /fixtures, no a la consulta por partido. Sirve para descartar en un request si vale la pena insistir",
   "Me equivoque el 2026-08-23 al concluir 'las cuotas no faltan, todavia no existen': medi la antelacion con que aparecen en OddsPapi y la extendi a Betano, que es otra cosa. Sebastian mostro Betano con las qualis de Oviedo cotizadas mientras OddsPapi no las tenia. La medicion de 4.9 h de mediana sigue siendo valida PARA ODDSPAPI, pero no dice nada de cuando Betano abre linea. Lección: no extender una medicion de una fuente a otra sin medir la segunda",
-  "El catalogo vivo de OddsPapi (2026-08-23, 06:30 UTC) tiene 61 torneos de tenis y NINGUNO de la semana entrante: los ITF que lista son los que terminan hoy (Lesa, Idanha, Ueberlingen, Kursumlijska, Arad, Bastad, Slovenj Gradec, Mistelbach, Lambermont, Santander). No es retraso de horas: el agregador no ha creado todavia los eventos de la semana siguiente, y las qualis del domingo pertenecen a esos"
+  "El catalogo vivo de OddsPapi (2026-08-23, 06:30 UTC) tiene 61 torneos de tenis y NINGUNO de la semana entrante: los ITF que lista son los que terminan hoy (Lesa, Idanha, Ueberlingen, Kursumlijska, Arad, Bastad, Slovenj Gradec, Mistelbach, Lambermont, Santander). No es retraso de horas: el agregador no ha creado todavia los eventos de la semana siguiente, y las qualis del domingo pertenecen a esos",
+  "Ojo con la medicion de 'antelacion mediana 4.9 h': mide cuando un partido entra al tablero, no cuando Betano abre linea. El 2026-08-23 Behrmann arrancaba en 1.25 h, Betano lo pagaba 1.60/2.15 y OddsPapi seguia en hasOdds:false — o sea que la antelacion real del agregador es aun peor que esa mediana para las rondas que nos interesan. Betano publica con mas de un dia; el agregador, cerca del saque o ya en vivo"
  ],
  "historial": [
   {
