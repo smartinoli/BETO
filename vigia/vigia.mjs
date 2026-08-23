@@ -1488,19 +1488,25 @@ async function cmdItf(horas = 6) {
     let bet, b365;
     try {
       bet = await oddsBatch(lote, CASA);
-      b365 = bet.length ? await oddsBatch(lote, JB) : [];
+      b365 = await oddsBatch(lote, JB);
     } catch (e) { await telegram('❌ ' + escHtml(e.message)); return; }
     const jIdx = new Map(b365.map(f => [f.fixtureId, (f.bookmakerOdds || {})[JB]]));
+    const bIdx = new Map(bet.map(f => [f.fixtureId, (f.bookmakerOdds || {})[CASA]]));
     console.log(`itf lote ${lote.join(',')}: betano trae ${bet.length} fixtures, bet365 trae ${b365.length}`);
-    for (const f of bet) {
-      const b = (f.bookmakerOdds || {})[CASA], j = jIdx.get(f.fixtureId);
-      if (!b) continue;
+    /* UNION de ambas casas: Betano abre linea tarde en ITF y muchas veces
+       ni siquiera lista el partido. Recorrer solo sus fixtures dejaba fuera
+       lo que bet365 si tenia — medido 2026-08-23: las cuatro finales del dia
+       estaban en el feed y no entraban. Ahora basta con que UNA casa lo traiga. */
+    const union = [...new Map([...bet, ...b365].map(f => [f.fixtureId, f])).values()];
+    for (const f of union) {
+      const b = bIdx.get(f.fixtureId), j = jIdx.get(f.fixtureId);
+      if (!b && !j) continue;
       let info = idx.get(f.fixtureId);
       if (!info) {
         /* el índice /fixtures de OddsPapi viene incompleto en ITF: el partido
            existe en el feed de cuotas — los nombres se rescatan del slug del
            link de Betano y la hora queda estimada */
-        const crudoPath = String(b.fixturePath || '');
+        const crudoPath = String((b || j)?.fixturePath || '');
         if (logPath++ < 3) console.log('itf fixturePath ej:', JSON.stringify(crudoPath));
         const partes = crudoPath.split('/').filter(x => x && !/^https?:$/.test(x) && !/betano/.test(x));
         const slugNom = partes.filter(x => /[a-z]-[a-z]/i.test(x)).pop() || partes[partes.length - 2] || '';
@@ -1511,24 +1517,23 @@ async function cmdItf(horas = 6) {
           tournamentName: 'ITF (sin índice)', sinIndice: true,
         };
       }
-      if (!j) { soloBet++; continue; }
-      ambos++;
+      if (!j) soloBet++; else if (b) ambos++;
       /* Los dos mercados que Betano ofrece en ITF, lado a lado, para la mesa */
       let mGan = null, mS1 = null;
-      for (const mid of Object.keys(b.markets || {})) {
+      for (const mid of Object.keys((b || j).markets || {})) {
         const meta = await metaDe(mid);
         if (!meta || meta.len !== 2) continue;
         const fam = familiaDe('12', meta.n);
         if (!fam) continue;
-        const oB = b.markets[mid].outcomes || {}, oJ = (j.markets || {})[mid]?.outcomes || {};
-        const oids = Object.keys(oB);
+        const oB = (b?.markets || {})[mid]?.outcomes || {}, oJ = (j?.markets || {})[mid]?.outcomes || {};
+        const oids = Object.keys(Object.keys(oB).length ? oB : oJ);
         if (oids.length !== 2) continue;
         /* cada casa por separado: Betano manda, pero si solo bet365 tiene
            linea igual se captura (sirve para comparar mercado con realidad
            cuando Betano abre tarde — pedido 2026-08-22) */
         const pB = {}, pJ = {}; let okB = true, okJ = true;
         for (const oid of oids) {
-          const b0 = (oB[oid].players || {})['0'], j0 = ((oJ[oid] || {}).players || {})['0'];
+          const b0 = ((oB[oid] || {}).players || {})['0'], j0 = ((oJ[oid] || {}).players || {})['0'];
           if (b0?.active && b0.price > 1) pB[oid] = b0.price; else okB = false;
           if (j0?.active && j0.price > 1) pJ[oid] = j0.price; else okJ = false;
         }
@@ -1579,7 +1584,7 @@ async function cmdItf(horas = 6) {
         const ya = db.partidos[f.fixtureId];
         if (ya) {
           if (ya.estado === 'pendiente') { Object.assign(ya, vivas); cuotasFrescas++; }
-          if (!ya.bFix && b.bookmakerFixtureId) { ya.bFix = b.bookmakerFixtureId; bFixAdd++; }
+          if (!ya.bFix && b?.bookmakerFixtureId) { ya.bFix = b.bookmakerFixtureId; bFixAdd++; }
         } else if (!candTablero.has(f.fixtureId)) {
           const base = mGan.p1 ? [mGan.p1, mGan.p2] : [mGan.j1, mGan.j2];
           const favLado = base[0] <= base[1] ? 1 : 2;
@@ -1592,7 +1597,7 @@ async function cmdItf(horas = 6) {
             cJ: mGan.j1 ? +(favLado === 1 ? mGan.j1 : mGan.j2).toFixed(2) : null,
             dB: mGan.p1 ? +(favLado === 1 ? mGan.p2 : mGan.p1).toFixed(2) : null,
             estado: 'pendiente',
-            bFix: b.bookmakerFixtureId || null,   /* → lat.betano.com/cuotas-de-partido/e-e/<bFix>/ */
+            bFix: b?.bookmakerFixtureId || null,   /* → lat.betano.com/cuotas-de-partido/e-e/<bFix>/ */
             ...vivas,
           };
           /* Se graba SIN mirar el reloj. El horario de ITF es referencial
