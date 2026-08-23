@@ -89,8 +89,17 @@ export function analizar(p) {
   const vetos = [];
   if (otro.wtnVisible === false)
     vetos.push(`ITF no publica el WTN de ${otro.nombre} (insignia ProZone): su propio rating está marcado como no mostrable`);
-  if (otro.atp == null || /JR/i.test(otro.marca || ''))
-    vetos.push(`el WTN de ${otro.nombre} (${otro.wtn}) no es confiable: ${otro.atp == null ? 'sin ranking ATP' : 'junior'}, su rating mide partidos viejos y llega ${gamesCedidos(otro.llega) != null ? 'cediendo el ' + Math.round(gamesCedidos(otro.llega) * 100) + '% de los games' : 'sin datos de forma'}`);
+  /* Medido el 2026-08-23 sobre 778 partidos, y me hizo corregir el veto
+     anterior: contra JUNIORES el mejor WTN acierta 31.3% (n=16) contra
+     79.9% del resto — se da vuelta, porque el rating de un junior que
+     mejora rapido va atrasado. Pero "sin ranking ATP" resulto ser lo
+     CONTRARIO de lo que asumi por el caso Behrmann: con el rival sin ATP
+     el WTN acierta 81.1% (n=334) contra 74.7% con ambos rankeados, y con
+     Δ>=4 sube a 89.5%. Tenia las dos condiciones juntas y la que mandaba
+     era la de junior. Vetar por falta de ATP mataba justo las qualis, que
+     es donde el metodo funciona. */
+  if (otro.jr || /JR/i.test(otro.marca || ''))
+    vetos.push(`${otro.nombre} es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta${gamesCedidos(otro.llega) != null ? `, y llega cediendo el ${Math.round(gamesCedidos(otro.llega) * 100)}% de los games` : ''}`);
   if (vetos.length)
     return { favorito: '—', confianza: 'baja', mercado: 'pasar', val: null, d, k,
       razon: `El ΔWTN de ${d.toFixed(2)} apunta a ${yo.nombre}, pero el número no sirve: ${vetos.join('; ')}.`,
@@ -103,6 +112,7 @@ export function analizar(p) {
 
   /* --- reparos: bajan la confianza, NO ocultan el partido --- */
   const avisos = [];
+  if (otro.atp == null) avisos.push(`${otro.nombre} no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%)`);
   if (yo.atp != null && otro.atp != null && otro.atp < yo.atp - 400)
     avisos.push(`el ATP dice lo contrario que el WTN (${yo.atp} contra ${otro.atp}, ${yo.atp - otro.atp} puestos)${tarde ? ' — y en rondas finales el ATP acierta más que el WTN' : ''}`);
   if (yo.gana && otro.gana) {
@@ -128,10 +138,12 @@ export function analizar(p) {
     else if (val > 0) { razon += `A ${c} implica ${imp.toFixed(1)}% → apenas +${Math.round(val * 100)}%: margen fino.`; conf = 'media'; mkt = 'gana'; ban.push('margen fino'); }
     else { razon += `A ${c} implica ${imp.toFixed(1)}%, sobre nuestra estimación: sin valor.`; conf = 'baja'; mkt = 'pasar'; ban.push('sin valor'); }
   } else { razon += 'Todavía sin línea en Betano ni bet365.'; conf = d >= 2.5 ? 'media' : 'baja'; mkt = 'gana'; ban.push('sin línea'); }
+  /* el aviso de "sin ATP" es informativo y va A FAVOR: no baja confianza */
+  const enContra = avisos.filter(a => !/no tiene ranking ATP/.test(a));
   if (avisos.length) {
     razon += ` Con reparos: ${avisos.join('; ')}.`;
-    conf = avisos.length >= 2 ? 'baja' : conf === 'alta' ? 'media' : 'baja';
-    for (const a of avisos) ban.push('ojo: ' + a.split(':')[0].split(' —')[0]);
+    if (enContra.length) conf = enContra.length >= 2 ? 'baja' : conf === 'alta' ? 'media' : 'baja';
+    for (const a of enContra) ban.push('ojo: ' + a.split(':')[0].split(' —')[0]);
   }
   return { favorito: mkt === 'pasar' ? '—' : yo.nombre + (yo.marca ? ' ' + yo.marca : ''),
     confianza: conf, mercado: mkt, razon, banderas: ban, val, pe, d, k };

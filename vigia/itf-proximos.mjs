@@ -78,7 +78,9 @@ const marcaDe = l => [l?.seed ? `[${l.seed}]` : null, l?.entrada && l.entrada !=
 function contexto(clave) {
   const acc = leer(path.join(DATOS, clave + '.aceptacion.json'));
   const vivo = leer(path.join(VIVO, clave + '.json'));
-  const lista = acc ? Object.values(acc.secciones).flat() : [];
+  /* se conserva la seccion (MDA/Q/A/W/JR): la JR es la que manda para el
+     veto por junior, medido en 31% de acierto contra 80% del resto */
+  const lista = acc ? Object.entries(acc.secciones).flatMap(([sec, arr]) => arr.map(p => ({ ...p, seccion: sec }))) : [];
   return { lista, cuadros: vivo?.cuadros || {}, bajadoCuadro: vivo?.bajado || null };
 }
 /* ficha SIEMPRE de la entry list del propio torneo: el índice global
@@ -105,7 +107,17 @@ function trayectoria(nombre, cuadros) {
 }
 const trayTexto = h => String(h).replace(/<[^>]+>/g, '');
 
-/* ---------- cuotas: Betano manda, bet365 acompaña ---------- */
+/* ---------- cuotas ----------
+   Tres fuentes, en este orden: Betano vía OddsPapi, bet365 vía OddsPapi
+   como respaldo, y cuotas leídas A MANO de betano.com.
+
+   Las manuales existen por necesidad, no por gusto: OddsPapi indexa el
+   fixture pero no entrega el precio hasta que el partido empieza (las
+   cinco finales del 2026-08-23 estaban indexadas y sin cuotas mientras
+   Betano las pagaba), y betano.com nos bloquea con 403 de Cloudflare
+   porque salimos desde un datacenter en EE.UU. Se marcan aparte para no
+   confundirlas nunca con las del feed. */
+const manuales = leer(path.join(DIR, 'itf-cuotas-manuales.json'))?.cuotas || [];
 const tablero = leer(path.join(DIR, 'itf.json')) || { partidos: {} };
 const idxCuotas = Object.values(tablero.partidos).filter(e => e.p1 && e.p2 && (e.g || e.jg));
 function cuotasDe(n0, n1) {
@@ -121,8 +133,21 @@ function cuotasDe(n0, n1) {
     let discrepan = false;
     if (e.g && e.jg) discrepan = ((e.g.p1 <= e.g.p2) !== (e.jg.p1 <= e.jg.p2));
     return {
-      casa, discrepan, bFix: e.bFix || null, cuotasAl: e.cuotasAl || null,
+      casa, discrepan, manual: false, bFix: e.bFix || null, cuotasAl: e.cuotasAl || null,
       lados: ord.map(k => ({ gana: G?.[k] ?? null, set1: S?.[k] ?? null })),
+    };
+  }
+  /* nada en el feed: se busca en las leídas a mano */
+  for (const m of manuales) {
+    let inv = null;
+    if (pareceElMismo(m.p1, { nombre: n0 }) && pareceElMismo(m.p2, { nombre: n1 })) inv = false;
+    else if (pareceElMismo(m.p1, { nombre: n1 }) && pareceElMismo(m.p2, { nombre: n0 })) inv = true;
+    if (inv === null) continue;
+    const g = inv ? [m.g2, m.g1] : [m.g1, m.g2];
+    const s1 = inv ? [m.s2, m.s1] : [m.s1, m.s2];
+    return {
+      casa: 'betano', discrepan: false, manual: true, bFix: null, cuotasAl: m.visto || null,
+      lados: [0, 1].map(i => ({ gana: g[i] ?? null, set1: s1[i] ?? null })),
     };
   }
   return null;
@@ -172,7 +197,7 @@ for (const { clave, t, estado } of activos) {
           nombre: l.nombre, pais: (l.jugadores || [])[0]?.pais || fi.pais || '',
           marca: marcaDe(l) || (fi.seccion === 'JR' ? 'JR' : ''),
           atp: fi.atp ?? null, wtn: fi.wtn ?? null,
-          wtnVisible: fi.wtnVisible !== false,
+          wtnVisible: fi.wtnVisible !== false, jr: fi.seccion === 'JR',
           gana: cq?.lados[i].gana ?? null, set1: cq?.lados[i].set1 ?? null,
           llegaHtml, llega: trayTexto(llegaHtml),
         };
@@ -204,7 +229,8 @@ function filaPartido(p, tClave) {
   const dia = p.inicio ? fmtDia.format(p.inicio) : (p.fecha ? fmtDia.format(new Date(p.fecha + 'T12:00:00Z')) : '—');
   const horaCl = p.inicio ? fmtHora.format(p.inicio) + ' CL' : `<span class="sinhora">${esc(p.horarioTxt || 'sin hora')}</span>`;
   const cq = p.cq;
-  const marcaCasa = cq?.casa === 'bet365' ? '<abbr class="casa365" title="cuota de bet365: Betano aún no abre línea">ᴶ</abbr>' : '';
+  const marcaCasa = cq?.manual ? '<abbr class="casaMan" title="cuota de Betano leída a mano: OddsPapi no la entrega hasta que el partido empieza">✋</abbr>'
+    : cq?.casa === 'bet365' ? '<abbr class="casa365" title="cuota de bet365: Betano aún no abre línea">ᴶ</abbr>' : '';
   const jug = (l, k) => {
     const alerta = l.wtn == null ? '<abbr class="alerta" title="sin WTN en la entry list">⚠sinWTN</abbr>'
       : !l.wtnVisible ? '<abbr class="alerta" title="ITF marca este rating como no mostrable (insignia ProZone)">⚠PZ</abbr>'
@@ -347,6 +373,7 @@ details.etapa>.e-cab:hover{background:var(--franja)}
 .j-od{font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums}
 .j-od .s1{display:block;font-size:11px;font-weight:400;color:var(--tinta2)}
 .casa365{font-size:11px;color:var(--ambar);text-decoration:none;border:none;margin-left:2px}
+.casaMan{font-size:10px;text-decoration:none;border:none;margin-left:3px;opacity:.75}
 .alerta{color:var(--alerta);font-size:10.5px;font-weight:600;text-decoration:none;border:none;white-space:nowrap}
 .j-llega{font-size:11.5px;color:var(--tinta2);line-height:1.5}
 .j-llega i{font-style:normal;font-family:"IBM Plex Mono",monospace}
@@ -377,7 +404,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
   <button id="b-abrir" class="fantasma">Abrir todo</button>
   <button id="b-cerrar" class="fantasma">Cerrar todo</button>
 </div>
-<p class="nota">Manda el <b>order of play</b> de ITF: entra lo que marca “to be played”, nunca lo que diga el reloj. Solo hombres singles. Betano acompaña y, cuando no abre línea, se muestra la de bet365 marcada <span class="casa365">ᴶ</span>. El filtro por defecto deja las qualis y primeras rondas, que es donde el nivel predice 75-84%; de cuartos en adelante cae a 56%.</p>
+<p class="nota">Manda el <b>order of play</b> de ITF: entra lo que marca “to be played”, nunca lo que diga el reloj. Solo hombres singles. Betano acompaña y, cuando no abre línea, se muestra la de bet365 marcada <span class="casa365">ᴶ</span>; las leídas a mano de betano.com van con <span class="casaMan">✋</span>, porque el feed no las entrega hasta que el partido empieza. El filtro por defecto deja las qualis y primeras rondas, que es donde el nivel predice 75-84%; de cuartos en adelante cae a 56%.</p>
 ${torneos.length ? secciones : '<p class="vacio">No hay partidos por jugar en la programación de ITF ahora mismo. Corre <span class="mono">node vigia/itf-scrap.mjs</span> y vuelve a generar.</p>'}
 <footer>Datos en disco de <span class="mono">itf-scrap.mjs</span> (order of play, cuadros y entry lists) y del barrido de cuotas de vigía. Esta página no baja nada: si algo está viejo, la hora lo dice. Los veredictos salen de las reglas medidas en <span class="mono">itf-saber.json</span> vía <span class="mono">itf-reglas.mjs</span>.</footer>
 </div>

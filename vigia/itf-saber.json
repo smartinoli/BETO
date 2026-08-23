@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-23T06:50:00Z",
+ "actualizado": "2026-08-23T08:00:00Z",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -145,6 +145,18 @@
    "n": 5,
    "fuente": "cruce OddsPapi vs capturas de pantalla de betano.com, 2026-08-23",
    "uso": "el problema no es el catalogo ni el indice ni el cruce de nombres: el fixture existe con nombres correctos y el precio no llega. Sirve para descartar de una vez toda hipotesis de bug propio"
+  },
+  {
+   "regla": "CONTRA JUNIORES EL WTN SE DA VUELTA: con Δ>=1.5, el mejor WTN acierta 31.3% cuando el rival esta en la seccion JR de la entry list, contra 79.9% en el resto. Muestra chica (n=16) pero el efecto es enorme y los intervalos no se tocan (8.6-54.0 contra 76.6-83.2).",
+   "n": 584,
+   "fuente": "backtest 2026-08-23 sobre 778 partidos jugados con WTN de la entry list del propio torneo",
+   "uso": "veto duro cuando el rival es junior. Es la explicacion real del caso Behrmann en Mistelbach: el rating de un junior que mejora rapido va atrasado"
+  },
+  {
+   "regla": "QUE EL RIVAL NO TENGA RANKING ATP ES BUENA SEÑAL, NO MALA — al reves de lo que asumi. Con Δ>=1.5 el mejor WTN acierta 81.1% (n=334) cuando el rival no tiene ATP, contra 74.7% (n=241) cuando ambos estan rankeados. Con Δ>=4 la brecha crece: 89.5% (n=219) contra 80.2% (n=91). En qualis, donde casi nadie tiene ATP, el acierto es 80.6% (n=273).",
+   "n": 575,
+   "fuente": "backtest 2026-08-23",
+   "uso": "NO vetar por falta de ATP. Se muestra como nota informativa a favor, sin bajar la confianza"
   }
  ],
  "senalesDelCuadro": [
@@ -210,7 +222,8 @@
   "Cuando OddsPapi dice que no tiene cuotas, es verdad (control 2026-08-23): el endpoint /odds por fixture devuelve hasOdds:true y bookmakerOdds poblado para la semi de Bastad que si tenia 36 mercados, y hasOdds:false con bookmakerOdds:null para la final del dia siguiente. O sea que el flag NO es poco confiable en /odds — la advertencia del codigo aplica al listado masivo /fixtures, no a la consulta por partido. Sirve para descartar en un request si vale la pena insistir",
   "Me equivoque el 2026-08-23 al concluir 'las cuotas no faltan, todavia no existen': medi la antelacion con que aparecen en OddsPapi y la extendi a Betano, que es otra cosa. Sebastian mostro Betano con las qualis de Oviedo cotizadas mientras OddsPapi no las tenia. La medicion de 4.9 h de mediana sigue siendo valida PARA ODDSPAPI, pero no dice nada de cuando Betano abre linea. Lección: no extender una medicion de una fuente a otra sin medir la segunda",
   "El catalogo vivo de OddsPapi (2026-08-23, 06:30 UTC) tiene 61 torneos de tenis y NINGUNO de la semana entrante: los ITF que lista son los que terminan hoy (Lesa, Idanha, Ueberlingen, Kursumlijska, Arad, Bastad, Slovenj Gradec, Mistelbach, Lambermont, Santander). No es retraso de horas: el agregador no ha creado todavia los eventos de la semana siguiente, y las qualis del domingo pertenecen a esos",
-  "Ojo con la medicion de 'antelacion mediana 4.9 h': mide cuando un partido entra al tablero, no cuando Betano abre linea. El 2026-08-23 Behrmann arrancaba en 1.25 h, Betano lo pagaba 1.60/2.15 y OddsPapi seguia en hasOdds:false — o sea que la antelacion real del agregador es aun peor que esa mediana para las rondas que nos interesan. Betano publica con mas de un dia; el agregador, cerca del saque o ya en vivo"
+  "Ojo con la medicion de 'antelacion mediana 4.9 h': mide cuando un partido entra al tablero, no cuando Betano abre linea. El 2026-08-23 Behrmann arrancaba en 1.25 h, Betano lo pagaba 1.60/2.15 y OddsPapi seguia en hasOdds:false — o sea que la antelacion real del agregador es aun peor que esa mediana para las rondas que nos interesan. Betano publica con mas de un dia; el agregador, cerca del saque o ya en vivo",
+  "Error corregido el 2026-08-23: habia metido 'rival sin ATP' y 'rival junior' en un mismo veto, deducido de UN caso (Behrmann). Al medirlos por separado resultaron opuestos — junior 31% (vetar), sin ATP 81% (favorable). El veto mal puesto mataba 8 de las 11 qualis de Oviedo, o sea justo la ronda donde el metodo funciona mejor. Leccion repetida por tercera vez en este proyecto: una regla deducida de un caso hay que medirla ANTES de dejarla actuando, sobre todo cuando decide que no apostar"
  ],
  "historial": [
   {
@@ -343,6 +356,17 @@
     "Lectura: el mercado dio vuelta al favorito de nivel por la forma recentista de Lithen (llego cediendo 12 games en 3 partidos) y perdio. El contrapeso es Petkovic ese mismo dia: mercado con la forma (Handel) contra nuestras dos metricas, y la forma gano. Va 1-1: no hay regla todavia, pero 'top seed con todas las metricas a favor pagado como underdog' queda como CASO A SEGUIR cada vez que aparezca"
    ],
    "hallazgo": "shouldDisplayWtn=false en el crudo de la acceptance list = insignia ProZone en la web = ITF no confia en mostrar ese numero. La API igual trae el rating. Capturado como wtnVisible en itf-navegador desde ahora."
+  },
+  {
+   "fecha": "2026-08-23",
+   "corrida": "primeras cuotas de qualificacion de la historia del proyecto",
+   "detalle": [
+    "Sebastian paso a mano, leidas de betano.com, las cuotas que OddsPapi no entrega: 5 finales, 11 qualis de M25 Oviedo y varias mas. Se creo vigia/itf-cuotas-manuales.json y la mesa las cruza y las marca con mano alzada",
+    "Es la primera vez que el proyecto tiene precio en ronda de qualificacion: hasta hoy el registro tenia Semi-final, F, R2 y QF, y cero qualis",
+    "Al analizarlas salto el veto mal calibrado y se corrigio midiendo (ver reglas de junior y de sin-ATP)"
+   ],
+   "resultado": "de las 11 qualis de Oviedo quedan 5 con lado. La mejor, Jose Dominguez Alonso a 1.42 con +26% de valor; las otras cuatro entre +1% y +3%, o sea por debajo del vig",
+   "lectura": "Vale mas como prueba de concepto que como apuesta: por primera vez se puede comparar el modelo contra el precio en la ronda donde medimos 75-84% de acierto. Con una sola oportunidad clara de 11, el filtro sigue siendo severo, que es lo que se espera si el mercado tambien sabe"
   }
  ],
  "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",

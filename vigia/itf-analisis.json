@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-22T15:57:26.375Z",
+ "generado": "2026-08-23T04:11:50.661Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano + reglas medidas de vigia/itf-saber.json",
  "titular": "Valor esperado partido a partido, con la probabilidad ajustada por etapa del cuadro: el WTN acierta 75% en qualis/R1/R2 y solo 56% de cuartos en adelante.",
  "advertencia": "El margen de Betano en ITF es 9%: valor por debajo de eso es ruido. Las rondas finales son el peor terreno para estas señales — el cuadro ya filtro y las Δ se achican. Los \"ojo:\" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano).",
