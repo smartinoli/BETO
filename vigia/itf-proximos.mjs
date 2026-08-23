@@ -179,7 +179,7 @@ for (const { clave, t, estado } of activos) {
       });
       const etapa = nombreEtapa(p.evento, p.ronda);
       const v = analizar({ lados, ronda: p.evento === 'Q' ? 'Q·' + p.ronda : p.ronda });
-      const fila = { id: p.matchId, etapa, fecha: j.fecha, hhmm, inicio, cancha: p.cancha, turno: p.orden, lados, cq, v };
+      const fila = { id: p.matchId, etapa, fecha: j.fecha, hhmm, horarioTxt: p.horario || '', inicio, cancha: p.cancha, turno: p.orden, lados, cq, v };
       if (!etapas.has(etapa)) etapas.set(etapa, { nombre: etapa, total: 0, jugados: 0, pendientes: [] });
       etapas.get(etapa).pendientes.push(fila);
       totalPend++; if (cq) totalConCuota++;
@@ -199,8 +199,10 @@ torneos.sort((a, b) => a.prox - b.prox || a.t.nombre.localeCompare(b.t.nombre));
 /* ---------- render ---------- */
 const num = v => v == null ? '<span class="sin">·</span>' : (+v).toFixed(2);
 function filaPartido(p, tClave) {
-  const dia = p.inicio ? fmtDia.format(p.inicio) : '—';
-  const horaCl = p.inicio ? fmtHora.format(p.inicio) : '—';
+  /* Sin hora fija ("Followed By", "After Rest"): se muestra el texto de ITF
+     tal cual, que es la unica verdad disponible, y el dia del order of play. */
+  const dia = p.inicio ? fmtDia.format(p.inicio) : (p.fecha ? fmtDia.format(new Date(p.fecha + 'T12:00:00Z')) : '—');
+  const horaCl = p.inicio ? fmtHora.format(p.inicio) + ' CL' : `<span class="sinhora">${esc(p.horarioTxt || 'sin hora')}</span>`;
   const cq = p.cq;
   const marcaCasa = cq?.casa === 'bet365' ? '<abbr class="casa365" title="cuota de bet365: Betano aún no abre línea">ᴶ</abbr>' : '';
   const jug = (l, k) => {
@@ -217,7 +219,7 @@ function filaPartido(p, tClave) {
   };
   return `<article class="partido" data-etapa="${esc(p.etapa)}" data-cuota="${cq ? 1 : 0}">
     <header class="p-cab">
-      <span class="mono cuando"><b>${esc(dia)}</b> ${esc(horaCl)} CL${p.hhmm ? `<span class="loc">${esc(p.hhmm)} loc</span>` : ''}</span>
+      <span class="mono cuando"><b>${esc(dia)}</b> ${horaCl}${p.hhmm ? `<span class="loc">${esc(p.hhmm)} loc</span>` : ''}</span>
       <span class="lugar">${esc(p.cancha || '')}${p.turno ? ` · ${p.turno}º turno` : ''}</span>
       ${cq?.bFix ? `<a class="link" href="https://lat.betano.com/cuotas-de-partido/e-e/${esc(cq.bFix)}/" target="_blank" rel="noopener">Betano ↗</a>` : ''}
       ${cq?.discrepan ? '<span class="disc" title="Betano y bet365 no coinciden en quién es favorito: cuota poco fiable">⚡ casas en desacuerdo</span>' : ''}
@@ -231,27 +233,38 @@ function filaPartido(p, tClave) {
   </article>`;
 }
 
-const secciones = torneos.map(T => {
+const secciones = torneos.map((T, iT) => {
   const etapasHtml = T.etapas.map(e => {
     const pct = e.total ? Math.round(e.jugados / e.total * 100) : 0;
     const abierta = e.pendientes.length > 0;
-    return `<div class="etapa${abierta ? ' abierta' : ''}">
-      <div class="e-cab"><span class="e-nom mono">${esc(e.nombre)}</span>
-        <span class="barra" style="--pct:${pct}%" title="${e.jugados} de ${e.total} jugados"></span>
-        <span class="e-num mono">${e.jugados}/${e.total || '?'}</span>
-        ${abierta ? `<span class="e-pend">${e.pendientes.length} por jugar</span>` : ''}</div>
-      ${e.pendientes.sort((a, b) => (a.inicio || 0) - (b.inicio || 0)).map(p => filaPartido(p, T.clave)).join('')}
-    </div>`;
+    /* En qualis el cuadro todavia no existe: sin total no hay barra que pintar. */
+    const conCuadro = e.total > 0;
+    const cab = `<summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">${esc(e.nombre)}</span>
+      ${conCuadro ? `<span class="barra" style="--pct:${pct}%" title="${e.jugados} de ${e.total} jugados"></span>
+      <span class="e-num mono">${e.jugados}/${e.total}</span>` : '<span class="e-sincuadro">cuadro aún sin publicar</span>'}
+      ${abierta ? `<span class="e-pend">${e.pendientes.length} por jugar</span>` : '<span class="e-fin">completa</span>'}</summary>`;
+    /* Las etapas ya jugadas no despliegan nada: no hay partido que mostrar. */
+    if (!abierta) return `<div class="etapa cerrada">${cab.replace('<summary', '<div').replace('</summary>', '</div>')}</div>`;
+    return `<details class="etapa abierta" open>${cab}
+      <div class="e-cuerpo">${e.pendientes.sort((a, b) => (a.inicio || 0) - (b.inicio || 0)).map(p => filaPartido(p, T.clave)).join('')}</div>
+    </details>`;
   }).join('');
-  return `<section class="torneo" data-torneo="${esc(T.t.nombre)}">
-    <header class="t-cab">
+  const prox = Number.isFinite(T.prox) ? new Date(T.prox) : null;
+  /* Se abren solos los tres torneos que juegan antes: el resto, a un clic. */
+  const abrir = iT < 3 ? ' open' : '';
+  return `<details class="torneo"${abrir} data-torneo="${esc(T.t.nombre)}">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>${esc(T.t.nombre)}</h2>
-      <span class="t-meta">${esc(T.t.pais)} · ${esc(T.t.superficie || '')} · ${esc(T.t.bolsa || '')}</span>
       <span class="pill p-${T.estado.toLowerCase()}">${T.estado === 'QUALI' ? 'qualis' : 'en juego'}</span>
-      <span class="t-pend">${T.pend} por jugar</span>
-    </header>
+      <span class="t-meta">${esc(T.t.pais)} · ${esc(T.t.superficie || '')} · ${esc(T.t.bolsa || '')}</span>
+      <span class="t-cifras">
+        <b>${T.pend}</b> por jugar${prox ? ` <span class="t-prox mono">· desde ${esc(fmtDia.format(prox))} ${esc(fmtHora.format(prox))}</span>` : ''}
+      </span>
+    </summary>
     <div class="etapas">${etapasHtml}</div>
-  </section>`;
+  </details>`;
 }).join('');
 
 const generado = new Date().toISOString();
@@ -278,25 +291,47 @@ button{font:600 12.5px "IBM Plex Sans",sans-serif;color:var(--tinta2);background
   border:1px solid var(--linea);border-radius:999px;padding:6px 13px;cursor:pointer}
 button:hover{border-color:var(--acento);color:var(--acento)}
 button.on{background:var(--acento);color:var(--carta);border-color:var(--acento)}
+button.fantasma{background:none;border-style:dashed}
+.sep{flex:0 0 10px}
 button:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 .nota{font-size:12.5px;color:var(--tinta2);margin:2px 0 18px;max-width:74ch}
-.torneo{margin-top:26px;background:var(--carta);border:1px solid var(--linea);border-radius:8px;overflow:hidden}
-.t-cab{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:11px 14px;border-bottom:1px solid var(--linea);background:var(--franja)}
+/* --- torneo y etapa: acordeones nativos (<details>) --- */
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:focus-visible{outline:2px solid var(--acento);outline-offset:-2px}
+.chev{flex:0 0 auto;width:9px;height:9px;border-right:2px solid var(--tinta2);border-bottom:2px solid var(--tinta2);
+  transform:rotate(-45deg);transform-origin:60% 60%;margin-right:3px}
+@media (prefers-reduced-motion:no-preference){.chev{transition:transform .16s ease}}
+details[open]>summary>.chev{transform:rotate(45deg)}
+
+.torneo{margin-top:12px;background:var(--carta);border:1px solid var(--linea);border-radius:8px;overflow:hidden}
+.torneo[open]{box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.t-cab{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:11px 14px;background:var(--franja)}
+.torneo[open]>.t-cab{border-bottom:1px solid var(--linea)}
+.t-cab:hover{background:var(--acento-suave)}
 .t-cab h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:20px;margin:0;letter-spacing:.3px}
 .t-meta{font-size:12px;color:var(--tinta2)}
-.t-pend{margin-left:auto;font-size:12px;color:var(--tinta2);font-variant-numeric:tabular-nums}
+.t-cifras{margin-left:auto;font-size:12px;color:var(--tinta2);font-variant-numeric:tabular-nums}
+.t-cifras b{color:var(--tinta)}
+.t-prox{font-size:11.5px}
 .pill{font-size:10.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:999px}
 .p-quali{background:var(--ambar-suave);color:var(--ambar)} .p-main{background:var(--acento-suave);color:var(--acento)}
 .etapas{padding:4px 0}
 .etapa{border-top:1px solid var(--linea)}
 .etapa:first-child{border-top:none}
 .e-cab{display:flex;align-items:center;gap:10px;padding:7px 14px}
+details.etapa>.e-cab:hover{background:var(--franja)}
 .e-nom{font-weight:600;min-width:30px;font-size:13px}
 .barra{flex:0 0 120px;height:5px;border-radius:3px;background:var(--linea);position:relative;overflow:hidden}
 .barra::before{content:"";position:absolute;inset:0;width:var(--pct);background:var(--acento);border-radius:3px}
 .e-num{font-size:12px;color:var(--tinta2)}
 .e-pend{font-size:11.5px;font-weight:600;color:var(--ambar);background:var(--ambar-suave);padding:2px 8px;border-radius:999px}
-.etapa:not(.abierta) .e-cab{opacity:.55}
+.e-fin{font-size:11.5px;color:var(--tinta2)}
+.e-sincuadro{font-size:11.5px;color:var(--tinta2);font-style:italic}
+.sinhora{color:var(--ambar);font-style:italic}
+.etapa.cerrada{opacity:.5}
+.etapa.cerrada .chev{visibility:hidden}
+.e-cuerpo{padding-bottom:4px}
 .partido{margin:2px 10px 12px;border:1px solid var(--linea);border-radius:6px;overflow:hidden}
 .p-cab{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 11px;background:var(--franja);font-size:12px}
 .cuando b{font-weight:600} .cuando .loc{color:var(--tinta2);margin-left:6px;font-size:11px}
@@ -338,6 +373,9 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
 <div class="filtros">
   <button id="f-etapa" class="on" data-modo="temprano">Solo qualis, R1 y R2</button>
   <button id="f-cuota" data-modo="todos">Solo con cuota</button>
+  <span class="sep"></span>
+  <button id="b-abrir" class="fantasma">Abrir todo</button>
+  <button id="b-cerrar" class="fantasma">Cerrar todo</button>
 </div>
 <p class="nota">Manda el <b>order of play</b> de ITF: entra lo que marca “to be played”, nunca lo que diga el reloj. Solo hombres singles. Betano acompaña y, cuando no abre línea, se muestra la de bet365 marcada <span class="casa365">ᴶ</span>. El filtro por defecto deja las qualis y primeras rondas, que es donde el nivel predice 75-84%; de cuartos en adelante cae a 56%.</p>
 ${torneos.length ? secciones : '<p class="vacio">No hay partidos por jugar en la programación de ITF ahora mismo. Corre <span class="mono">node vigia/itf-scrap.mjs</span> y vuelve a generar.</p>'}
@@ -351,18 +389,26 @@ ${torneos.length ? secciones : '<p class="vacio">No hay partidos por jugar en la
     var soloTemp = bE.classList.contains('on'), soloCuota = bC.classList.contains('on');
     document.querySelectorAll('.partido').forEach(function(p){
       var ok = (!soloTemp || TEMPRANO[p.dataset.etapa]) && (!soloCuota || p.dataset.cuota === '1');
-      p.style.display = ok ? '' : 'none';
+      p.hidden = !ok;
     });
-    document.querySelectorAll('.etapa').forEach(function(e){
-      var vis = [].slice.call(e.querySelectorAll('.partido')).some(function(p){ return p.style.display !== 'none'; });
-      e.style.display = (e.classList.contains('abierta') && !vis) ? 'none' : '';
+    document.querySelectorAll('details.etapa').forEach(function(e){
+      var vis = [].slice.call(e.querySelectorAll('.partido')).some(function(p){ return !p.hidden; });
+      e.hidden = !vis;
     });
+    /* una etapa ya jugada solo estorba si su torneo quedo sin nada por jugar */
     document.querySelectorAll('.torneo').forEach(function(t){
-      var vis = [].slice.call(t.querySelectorAll('.partido')).some(function(p){ return p.style.display !== 'none'; });
-      t.style.display = vis ? '' : 'none';
+      var vis = [].slice.call(t.querySelectorAll('.partido')).some(function(p){ return !p.hidden; });
+      t.hidden = !vis;
+      t.querySelectorAll('.etapa.cerrada').forEach(function(e){ e.hidden = !vis; });
     });
   }
   [bE, bC].forEach(function(b){ b.onclick = function(){ b.classList.toggle('on'); pinta(); }; });
+  function todos(abrir){
+    document.querySelectorAll('.torneo').forEach(function(t){ if(!t.hidden) t.open = abrir; });
+    if (abrir) document.querySelectorAll('details.etapa').forEach(function(e){ e.open = true; });
+  }
+  document.getElementById('b-abrir').onclick = function(){ todos(true); };
+  document.getElementById('b-cerrar').onclick = function(){ todos(false); };
   pinta();
 })();
 </script>`;

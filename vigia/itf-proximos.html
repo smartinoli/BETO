@@ -21,25 +21,47 @@ button{font:600 12.5px "IBM Plex Sans",sans-serif;color:var(--tinta2);background
   border:1px solid var(--linea);border-radius:999px;padding:6px 13px;cursor:pointer}
 button:hover{border-color:var(--acento);color:var(--acento)}
 button.on{background:var(--acento);color:var(--carta);border-color:var(--acento)}
+button.fantasma{background:none;border-style:dashed}
+.sep{flex:0 0 10px}
 button:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 .nota{font-size:12.5px;color:var(--tinta2);margin:2px 0 18px;max-width:74ch}
-.torneo{margin-top:26px;background:var(--carta);border:1px solid var(--linea);border-radius:8px;overflow:hidden}
-.t-cab{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:11px 14px;border-bottom:1px solid var(--linea);background:var(--franja)}
+/* --- torneo y etapa: acordeones nativos (<details>) --- */
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:focus-visible{outline:2px solid var(--acento);outline-offset:-2px}
+.chev{flex:0 0 auto;width:9px;height:9px;border-right:2px solid var(--tinta2);border-bottom:2px solid var(--tinta2);
+  transform:rotate(-45deg);transform-origin:60% 60%;margin-right:3px}
+@media (prefers-reduced-motion:no-preference){.chev{transition:transform .16s ease}}
+details[open]>summary>.chev{transform:rotate(45deg)}
+
+.torneo{margin-top:12px;background:var(--carta);border:1px solid var(--linea);border-radius:8px;overflow:hidden}
+.torneo[open]{box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.t-cab{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:11px 14px;background:var(--franja)}
+.torneo[open]>.t-cab{border-bottom:1px solid var(--linea)}
+.t-cab:hover{background:var(--acento-suave)}
 .t-cab h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:20px;margin:0;letter-spacing:.3px}
 .t-meta{font-size:12px;color:var(--tinta2)}
-.t-pend{margin-left:auto;font-size:12px;color:var(--tinta2);font-variant-numeric:tabular-nums}
+.t-cifras{margin-left:auto;font-size:12px;color:var(--tinta2);font-variant-numeric:tabular-nums}
+.t-cifras b{color:var(--tinta)}
+.t-prox{font-size:11.5px}
 .pill{font-size:10.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:999px}
 .p-quali{background:var(--ambar-suave);color:var(--ambar)} .p-main{background:var(--acento-suave);color:var(--acento)}
 .etapas{padding:4px 0}
 .etapa{border-top:1px solid var(--linea)}
 .etapa:first-child{border-top:none}
 .e-cab{display:flex;align-items:center;gap:10px;padding:7px 14px}
+details.etapa>.e-cab:hover{background:var(--franja)}
 .e-nom{font-weight:600;min-width:30px;font-size:13px}
 .barra{flex:0 0 120px;height:5px;border-radius:3px;background:var(--linea);position:relative;overflow:hidden}
 .barra::before{content:"";position:absolute;inset:0;width:var(--pct);background:var(--acento);border-radius:3px}
 .e-num{font-size:12px;color:var(--tinta2)}
 .e-pend{font-size:11.5px;font-weight:600;color:var(--ambar);background:var(--ambar-suave);padding:2px 8px;border-radius:999px}
-.etapa:not(.abierta) .e-cab{opacity:.55}
+.e-fin{font-size:11.5px;color:var(--tinta2)}
+.e-sincuadro{font-size:11.5px;color:var(--tinta2);font-style:italic}
+.sinhora{color:var(--ambar);font-style:italic}
+.etapa.cerrada{opacity:.5}
+.etapa.cerrada .chev{visibility:hidden}
+.e-cuerpo{padding-bottom:4px}
 .partido{margin:2px 10px 12px;border:1px solid var(--linea);border-radius:6px;overflow:hidden}
 .p-cab{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 11px;background:var(--franja);font-size:12px}
 .cuando b{font-weight:600} .cuando .loc{color:var(--tinta2);margin-left:6px;font-size:11px}
@@ -76,28 +98,33 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
 <div class="envoltura">
 <header class="cab">
   <h1>Próximos ITF</h1>
-  <span class="gen">generado <b>2026-08-23 03:14</b> UTC · 22 torneos · <b>241</b> por jugar · <b>1</b> con cuota</span>
+  <span class="gen">generado <b>2026-08-23 03:28</b> UTC · 22 torneos · <b>241</b> por jugar · <b>1</b> con cuota</span>
 </header>
 <div class="filtros">
   <button id="f-etapa" class="on" data-modo="temprano">Solo qualis, R1 y R2</button>
   <button id="f-cuota" data-modo="todos">Solo con cuota</button>
+  <span class="sep"></span>
+  <button id="b-abrir" class="fantasma">Abrir todo</button>
+  <button id="b-cerrar" class="fantasma">Cerrar todo</button>
 </div>
 <p class="nota">Manda el <b>order of play</b> de ITF: entra lo que marca “to be played”, nunca lo que diga el reloj. Solo hombres singles. Betano acompaña y, cuando no abre línea, se muestra la de bet365 marcada <span class="casa365">ᴶ</span>. El filtro por defecto deja las qualis y primeras rondas, que es donde el nivel predice 75-84%; de cuartos en adelante cae a 56%.</p>
-<section class="torneo" data-torneo="M15 Maanshan">
-    <header class="t-cab">
+<details class="torneo" open data-torneo="M15 Maanshan">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Maanshan</h2>
-      <span class="t-meta">China, P.R. · Hard · $15,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">30 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 0 jugados"></span>
-        <span class="e-num mono">0/?</span>
-        <span class="e-pend">30 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">China, P.R. · Hard · $15,000</span>
+      <span class="t-cifras">
+        <b>30</b> por jugar <span class="t-prox mono">· desde sáb, 22-08 21:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="e-sincuadro">cuadro aún sin publicar</span>
+      <span class="e-pend">30 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">C2 (Center Court) · 2º turno</span>
       
       
@@ -120,7 +147,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">C2 (Center Court) · 4º turno</span>
       
       
@@ -143,7 +170,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 2º turno</span>
       
       
@@ -166,7 +193,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 3º turno</span>
       
       
@@ -189,7 +216,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 4º turno</span>
       
       
@@ -212,7 +239,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 5º turno</span>
       
       
@@ -235,7 +262,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 2º turno</span>
       
       
@@ -258,7 +285,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 3º turno</span>
       
       
@@ -281,7 +308,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 4º turno</span>
       
       
@@ -304,7 +331,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 5º turno</span>
       
       
@@ -327,7 +354,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 6º turno</span>
       
       
@@ -350,7 +377,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 2º turno</span>
       
       
@@ -373,7 +400,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 3º turno</span>
       
       
@@ -396,7 +423,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 4º turno</span>
       
       
@@ -419,7 +446,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 5º turno</span>
       
       
@@ -442,7 +469,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 6º turno</span>
       
       
@@ -465,7 +492,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 2º turno</span>
       
       
@@ -488,7 +515,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 3º turno</span>
       
       
@@ -511,7 +538,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 4º turno</span>
       
       
@@ -534,7 +561,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 5º turno</span>
       
       
@@ -557,7 +584,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 6º turno</span>
       
       
@@ -580,7 +607,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 2º turno</span>
       
       
@@ -603,7 +630,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 3º turno</span>
       
       
@@ -626,7 +653,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 4º turno</span>
       
       
@@ -649,7 +676,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 5º turno</span>
       
       
@@ -785,57 +812,48 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">El ΔWTN de 12.82 apunta a Ryo Minakata, pero el número no sirve: el WTN de Aidan Biyan (23.59) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega sin datos de forma.</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Taipei">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" open data-torneo="M25 Taipei">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Taipei</h2>
-      <span class="t-meta">Chinese Taipei · Hard · $30,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Chinese Taipei · Hard · $30,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde sáb, 22-08 21:30</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>sáb, 22-08</b> 21:30 CL<span class="loc">9:30 loc</span></span>
       <span class="lugar">Show Court · 1º turno</span>
@@ -858,23 +876,25 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">Δ1.07 de WTN en ronda final: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Taipei">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" open data-torneo="M25 Taipei">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Taipei</h2>
-      <span class="t-meta">Chinese Taipei · Hard · $30,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">16 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 0 jugados"></span>
-        <span class="e-num mono">0/?</span>
-        <span class="e-pend">16 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">Chinese Taipei · Hard · $30,000</span>
+      <span class="t-cifras">
+        <b>16</b> por jugar <span class="t-prox mono">· desde sáb, 22-08 22:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="e-sincuadro">cuadro aún sin publicar</span>
+      <span class="e-pend">16 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 1º turno</span>
       
       
@@ -897,7 +917,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 2º turno</span>
       
       
@@ -920,7 +940,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 2º turno</span>
       
       
@@ -943,7 +963,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 2º turno</span>
       
       
@@ -966,7 +986,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 2º turno</span>
       
       
@@ -989,7 +1009,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 7 · 2º turno</span>
       
       
@@ -1012,7 +1032,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 8 · 2º turno</span>
       
       
@@ -1240,63 +1260,52 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">Δ1.45 de WTN en ronda temprana: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Maanshan">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Maanshan">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Maanshan</h2>
-      <span class="t-meta">China, P.R. · Hard · $15,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:100%" title="32 de 32 jugados"></span>
-        <span class="e-num mono">32/32</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">China, P.R. · Hard · $15,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 01:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:100%" title="32 de 32 jugados"></span>
+      <span class="e-num mono">32/32</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 01:00 CL<span class="loc">13:00 loc</span></span>
       <span class="lugar">C2 (Center Court)  · 1º turno</span>
@@ -1319,23 +1328,25 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b>M Rifqi Fitriadi [2]</b>
       <span class="razon">Δ0.17 de WTN a favor (6.21 contra 6.38), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. Todavía sin línea en Betano ni bet365. Con reparos: ronda final: el cuadro ya filtró y el WTN cae a 56% (n=55).</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Bucharest">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Bucharest">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Bucharest</h2>
-      <span class="t-meta">Romania · Clay · $15,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">32 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 0 jugados"></span>
-        <span class="e-num mono">0/?</span>
-        <span class="e-pend">32 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">Romania · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>32</b> por jugar <span class="t-prox mono">· desde dom, 23-08 02:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="e-sincuadro">cuadro aún sin publicar</span>
+      <span class="e-pend">32 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 2º turno</span>
       
       
@@ -1358,7 +1369,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 3º turno</span>
       
       
@@ -1381,7 +1392,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 5º turno</span>
       
       
@@ -1404,7 +1415,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 2º turno</span>
       
       
@@ -1427,7 +1438,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 3º turno</span>
       
       
@@ -1450,7 +1461,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 5º turno</span>
       
       
@@ -1473,7 +1484,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 2º turno</span>
       
       
@@ -1496,7 +1507,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 3º turno</span>
       
       
@@ -1519,7 +1530,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 5º turno</span>
       
       
@@ -1542,7 +1553,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 2º turno</span>
       
       
@@ -1565,7 +1576,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 3º turno</span>
       
       
@@ -1588,7 +1599,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 5º turno</span>
       
       
@@ -1611,7 +1622,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 2º turno</span>
       
       
@@ -1634,7 +1645,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 3º turno</span>
       
       
@@ -1657,7 +1668,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 5º turno</span>
       
       
@@ -1680,7 +1691,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 2º turno</span>
       
       
@@ -1703,7 +1714,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 4º turno</span>
       
       
@@ -2069,23 +2080,26 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">El ΔWTN de 1.99 apunta a Gheorghe Claudiu Schinteie, pero el número no sirve: el WTN de Joshua Schaefer (15.59) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega sin datos de forma.</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Kursumlijska Banja ">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Kursumlijska Banja ">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Kursumlijska Banja </h2>
-      <span class="t-meta">Serbia · Clay · $15,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">32 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 32 jugados"></span>
-        <span class="e-num mono">0/32</span>
-        <span class="e-pend">32 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">Serbia · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>32</b> por jugar <span class="t-prox mono">· desde dom, 23-08 03:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:0%" title="0 de 32 jugados"></span>
+      <span class="e-num mono">0/32</span>
+      <span class="e-pend">32 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 7º turno</span>
       
       
@@ -2108,7 +2122,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 7º turno</span>
       
       
@@ -2131,7 +2145,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 2º turno</span>
       
       
@@ -2154,7 +2168,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 2º turno</span>
       
       
@@ -2177,7 +2191,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 7 · 2º turno</span>
       
       
@@ -2200,7 +2214,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 8 · 2º turno</span>
       
       
@@ -2819,105 +2833,80 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">El ΔWTN de 2.43 apunta a Simone Massucco, pero el número no sirve: el WTN de Pietro Mugelli (14.46) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega sin datos de forma.</span>
     </p>
-  </article>
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
-        <span class="e-num mono">0/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
-        <span class="e-num mono">0/2</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        </div>
-      
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Arad">
-    <header class="t-cab">
+  </article></div>
+    </details><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
+      <span class="e-num mono">0/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
+      <span class="e-num mono">0/2</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-fin">completa</span></div></div></div>
+  </details><details class="torneo" data-torneo="M15 Arad">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Arad</h2>
-      <span class="t-meta">Romania · Clay · $15,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:50%" title="16 de 32 jugados"></span>
-        <span class="e-num mono">16/32</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Romania · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:50%" title="16 de 32 jugados"></span>
+      <span class="e-num mono">16/32</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 04:00 CL<span class="loc">11:00 loc</span></span>
       <span class="lugar">Center Court · 1º turno</span>
@@ -2940,23 +2929,26 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b>Iannis Miletich</b>
       <span class="razon">Δ0.36 de WTN a favor (8.66 contra 9.02), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. Todavía sin línea en Betano ni bet365. Con reparos: Matteo Sciahbasi ganó un partido por retiro: llega más fresco; ronda final: el cuadro ya filtró y el WTN cae a 56% (n=55).</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Cap d'Agde">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Cap d'Agde">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Cap d'Agde</h2>
-      <span class="t-meta">France · Clay · $15,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">16 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        <span class="e-pend">16 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">France · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>16</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-pend">16 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 7 · 2º turno</span>
       
       
@@ -2979,7 +2971,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 9 · 2º turno</span>
       
       
@@ -3002,7 +2994,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 10 · 2º turno</span>
       
       
@@ -3322,99 +3314,76 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">El ΔWTN de 3.49 apunta a Andrea Baudel, pero el número no sirve: el WTN de Victor Bonnet Eymard (20.25) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega sin datos de forma.</span>
     </p>
-  </article>
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
-        <span class="e-num mono">0/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
-        <span class="e-num mono">0/2</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        </div>
-      
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Kursumlijska Banja ">
-    <header class="t-cab">
+  </article></div>
+    </details><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
+      <span class="e-num mono">0/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
+      <span class="e-num mono">0/2</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-fin">completa</span></div></div></div>
+  </details><details class="torneo" data-torneo="M15 Kursumlijska Banja ">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Kursumlijska Banja </h2>
-      <span class="t-meta">Serbia · Clay · $15,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:94%" title="30 de 32 jugados"></span>
-        <span class="e-num mono">30/32</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Serbia · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:94%" title="30 de 32 jugados"></span>
+      <span class="e-num mono">30/32</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 04:00 CL<span class="loc">10:00 loc</span></span>
       <span class="lugar">Court 4 · 1º turno</span>
@@ -3437,63 +3406,52 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b>Kristijan Juhas [7]</b>
       <span class="razon">Δ5.67 de WTN a favor (7.37 contra 13.04), en ronda final. Nivel y forma coinciden: banda del 63% (cuartos en adelante · n=55 · 56.4%). Todavía sin línea en Betano ni bet365. Con reparos: ronda final: el cuadro ya filtró y el WTN cae a 56% (n=55).</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Mistelbach">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Mistelbach">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Mistelbach</h2>
-      <span class="t-meta">Austria · Clay · $15,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:91%" title="29 de 32 jugados"></span>
-        <span class="e-num mono">29/32</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Austria · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:91%" title="29 de 32 jugados"></span>
+      <span class="e-num mono">29/32</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 04:00 CL<span class="loc">10:00 loc</span></span>
       <span class="lugar">C1 Pro-Ject  · 1º turno</span>
@@ -3516,21 +3474,24 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">El ΔWTN de 8.45 apunta a Nikita Mashtakov, pero el número no sirve: el WTN de Thilo Behrmann (13.28) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega cediendo el 23% de los games.</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Pecs">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Pecs">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Pecs</h2>
-      <span class="t-meta">Hungary · Clay · $15,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">22 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 32 jugados"></span>
-        <span class="e-num mono">0/32</span>
-        <span class="e-pend">22 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">Hungary · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>22</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:0%" title="0 de 32 jugados"></span>
+      <span class="e-num mono">0/32</span>
+      <span class="e-pend">22 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 04:00 CL<span class="loc">10:00 loc</span></span>
       <span class="lugar">Court 5 · 1º turno</span>
@@ -4036,65 +3997,54 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">Falta el WTN de alguno de los dos: no se puede comparar nivel.</span>
     </p>
-  </article>
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
-        <span class="e-num mono">0/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
-        <span class="e-num mono">0/2</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        </div>
-      
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Lausanne">
-    <header class="t-cab">
+  </article></div>
+    </details><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
+      <span class="e-num mono">0/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
+      <span class="e-num mono">0/2</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-fin">completa</span></div></div></div>
+  </details><details class="torneo" data-torneo="M25 Lausanne">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Lausanne</h2>
-      <span class="t-meta">Switzerland · Clay · $30,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">16 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        <span class="e-pend">16 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">Switzerland · Clay · $30,000</span>
+      <span class="t-cifras">
+        <b>16</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-pend">16 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Centre Court · 2º turno</span>
       
       
@@ -4117,7 +4067,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Centre Court · 4º turno</span>
       
       
@@ -4140,7 +4090,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 2º turno</span>
       
       
@@ -4163,7 +4113,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 4º turno</span>
       
       
@@ -4186,7 +4136,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 2º turno</span>
       
       
@@ -4209,7 +4159,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 4º turno</span>
       
       
@@ -4232,7 +4182,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 2º turno</span>
       
       
@@ -4255,7 +4205,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 4º turno</span>
       
       
@@ -4460,57 +4410,48 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">El ΔWTN de 2.76 apunta a Panya Stauffer, pero el número no sirve: el WTN de Sebastian Anthony Vlahos (17.91) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega sin datos de forma.</span>
     </p>
-  </article>
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
-        <span class="e-num mono">0/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
-        <span class="e-num mono">0/2</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        </div>
-      
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Oviedo">
-    <header class="t-cab">
+  </article></div>
+    </details><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
+      <span class="e-num mono">0/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
+      <span class="e-num mono">0/2</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-fin">completa</span></div></div></div>
+  </details><details class="torneo" data-torneo="M25 Oviedo">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Oviedo</h2>
-      <span class="t-meta">Spain · Clay · $30,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">16 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        <span class="e-pend">16 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">Spain · Clay · $30,000</span>
+      <span class="t-cifras">
+        <b>16</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-pend">16 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 04:00 CL<span class="loc">10:00 loc</span></span>
       <span class="lugar">Court 1 · 1º turno</span>
@@ -4878,59 +4819,50 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b>Pavel Petrov</b>
       <span class="razon">Δ3.12 de WTN a favor (11.72 contra 14.84), en ronda temprana. Nivel y forma coinciden: banda del 72% (qualis, R1 y R2 · n=689 · 75.2%). Todavía sin línea en Betano ni bet365.</span>
     </p>
-  </article>
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
-        <span class="e-num mono">0/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
-        <span class="e-num mono">0/2</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        </div>
-      
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Poznan">
-    <header class="t-cab">
+  </article></div>
+    </details><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
+      <span class="e-num mono">0/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
+      <span class="e-num mono">0/2</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-fin">completa</span></div></div></div>
+  </details><details class="torneo" data-torneo="M25 Poznan">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Poznan</h2>
-      <span class="t-meta">Poland · Clay · $30,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">16 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 32 jugados"></span>
-        <span class="e-num mono">0/32</span>
-        <span class="e-pend">16 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">Poland · Clay · $30,000</span>
+      <span class="t-cifras">
+        <b>16</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:0%" title="0 de 32 jugados"></span>
+      <span class="e-num mono">0/32</span>
+      <span class="e-pend">16 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 2º turno</span>
       
       
@@ -4953,7 +4885,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 4º turno</span>
       
       
@@ -4976,7 +4908,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 2º turno</span>
       
       
@@ -4999,7 +4931,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 2º turno</span>
       
       
@@ -5022,7 +4954,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 4º turno</span>
       
       
@@ -5045,7 +4977,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 2º turno</span>
       
       
@@ -5068,7 +5000,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 4º turno</span>
       
       
@@ -5296,105 +5228,80 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">El ΔWTN de 1.04 apunta a Karol Romer, pero el número no sirve: el WTN de Jan Werblinski (22.64) no es confiable: sin ranking ATP, su rating mide partidos viejos y llega sin datos de forma.</span>
     </p>
-  </article>
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
-        <span class="e-num mono">0/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
-        <span class="e-num mono">0/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
-        <span class="e-num mono">0/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
-        <span class="e-num mono">0/2</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        </div>
-      
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Slovenj Gradec">
-    <header class="t-cab">
+  </article></div>
+    </details><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:0%" title="0 de 16 jugados"></span>
+      <span class="e-num mono">0/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:0%" title="0 de 8 jugados"></span>
+      <span class="e-num mono">0/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:0%" title="0 de 4 jugados"></span>
+      <span class="e-num mono">0/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
+      <span class="e-num mono">0/2</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-fin">completa</span></div></div></div>
+  </details><details class="torneo" data-torneo="M25 Slovenj Gradec">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Slovenj Gradec</h2>
-      <span class="t-meta">Slovenia · Clay · $30,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:28%" title="9 de 32 jugados"></span>
-        <span class="e-num mono">9/32</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Slovenia · Clay · $30,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:28%" title="9 de 32 jugados"></span>
+      <span class="e-num mono">9/32</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 04:00 CL<span class="loc">10:00 loc</span></span>
       <span class="lugar">Center Court · 1º turno</span>
@@ -5417,57 +5324,48 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b>Sebastian Sorger [3]</b>
       <span class="razon">Δ5.97 de WTN a favor (4.96 contra 10.93), en ronda final. Nivel y forma coinciden: banda del 63% (cuartos en adelante · n=55 · 56.4%). Todavía sin línea en Betano ni bet365. Con reparos: ronda final: el cuadro ya filtró y el WTN cae a 56% (n=55).</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Bastad">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Bastad">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Bastad</h2>
-      <span class="t-meta">Sweden · Clay · $15,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Sweden · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:15</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 04:15 CL<span class="loc">10:15 loc</span></span>
       <span class="lugar">Court 1 · 1º turno</span>
@@ -5490,57 +5388,48 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b>Leo Borg [1]</b>
       <span class="razon">Δ2.73 de WTN a favor (5.4 contra 8.13), en ronda final. Nivel y forma coinciden: banda del 63% (cuartos en adelante · n=55 · 56.4%). Todavía sin línea en Betano ni bet365. Con reparos: ronda final: el cuadro ya filtró y el WTN cae a 56% (n=55).</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Santander">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M25 Santander">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Santander</h2>
-      <span class="t-meta">Spain · Clay · $30,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Spain · Clay · $30,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 04:30</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 04:30 CL<span class="loc">10:30 loc</span></span>
       <span class="lugar">Court 3 (CC) · 1º turno</span>
@@ -5563,57 +5452,48 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">Δ0.35 de WTN en ronda final: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Idanha-a-Nova">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M25 Idanha-a-Nova">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Idanha-a-Nova</h2>
-      <span class="t-meta">Portugal · Hard · $30,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:69%" title="11 de 16 jugados"></span>
-        <span class="e-num mono">11/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="1">
+      <span class="t-meta">Portugal · Hard · $30,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 05:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:69%" title="11 de 16 jugados"></span>
+      <span class="e-num mono">11/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="1">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 05:00 CL<span class="loc">10:00 loc</span></span>
       <span class="lugar">Court 1 · 1º turno</span>
@@ -5636,51 +5516,44 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">Δ1.10 de WTN en ronda final: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Lesa">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M25 Lesa">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Lesa</h2>
-      <span class="t-meta">Italy · Clay · $30,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">2 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
-        <span class="e-num mono">0/2</span>
-        <span class="e-pend">2 por jugar</span></div>
-      <article class="partido" data-etapa="SF" data-cuota="0">
+      <span class="t-meta">Italy · Clay · $30,000</span>
+      <span class="t-cifras">
+        <b>2</b> por jugar <span class="t-prox mono">· desde dom, 23-08 05:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
+      <span class="e-num mono">0/2</span>
+      <span class="e-pend">2 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="SF" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 05:00 CL<span class="loc">11:00 loc</span></span>
       <span class="lugar">Court 1 · 1º turno</span>
@@ -5726,63 +5599,52 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b>Laurent Lokoli [3]</b>
       <span class="razon">Δ6.93 de WTN a favor (3.41 contra 10.34), en ronda final. Nivel y forma coinciden: banda del 63% (cuartos en adelante · n=55 · 56.4%). Todavía sin línea en Betano ni bet365. Con reparos: ronda final: el cuadro ya filtró y el WTN cae a 56% (n=55).</span>
     </p>
-  </article>
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        </div>
-      
-    </div></div>
-  </section><section class="torneo" data-torneo="M25 Ueberlingen">
-    <header class="t-cab">
+  </article></div>
+    </details><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-fin">completa</span></div></div></div>
+  </details><details class="torneo" data-torneo="M25 Ueberlingen">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M25 Ueberlingen</h2>
-      <span class="t-meta">Germany · Clay · $30,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
-        <span class="e-num mono">2/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Germany · Clay · $30,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 08:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:100%" title="2 de 2 jugados"></span>
+      <span class="e-num mono">2/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 08:00 CL<span class="loc">14:00 loc</span></span>
       <span class="lugar">VOLKSBANK C-Court · 1º turno</span>
@@ -5805,63 +5667,52 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b>Arthur Nagel [3]</b>
       <span class="razon">Δ1.11 de WTN a favor (5.71 contra 6.82), en ronda final. Choque nivel-contra-forma con brecha chica: nuestros datos dan 46% a este lado. Todavía sin línea en Betano ni bet365. Con reparos: ronda final: el cuadro ya filtró y el WTN cae a 56% (n=55).</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Lambermont">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Lambermont">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Lambermont</h2>
-      <span class="t-meta">Belgium · Clay · $15,000</span>
       <span class="pill p-main">en juego</span>
-      <span class="t-pend">1 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:50%" title="16 de 32 jugados"></span>
-        <span class="e-num mono">16/32</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q2</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">Q3</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R1</span>
-        <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
-        <span class="e-num mono">16/16</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">R2</span>
-        <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
-        <span class="e-num mono">8/8</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">QF</span>
-        <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
-        <span class="e-num mono">4/4</span>
-        </div>
-      
-    </div><div class="etapa">
-      <div class="e-cab"><span class="e-nom mono">SF</span>
-        <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
-        <span class="e-num mono">0/2</span>
-        </div>
-      
-    </div><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">F</span>
-        <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
-        <span class="e-num mono">0/1</span>
-        <span class="e-pend">1 por jugar</span></div>
-      <article class="partido" data-etapa="F" data-cuota="0">
+      <span class="t-meta">Belgium · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>1</b> por jugar <span class="t-prox mono">· desde dom, 23-08 09:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="barra" style="--pct:50%" title="16 de 32 jugados"></span>
+      <span class="e-num mono">16/32</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q2</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q3</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R1</span>
+      <span class="barra" style="--pct:100%" title="16 de 16 jugados"></span>
+      <span class="e-num mono">16/16</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">R2</span>
+      <span class="barra" style="--pct:100%" title="8 de 8 jugados"></span>
+      <span class="e-num mono">8/8</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">QF</span>
+      <span class="barra" style="--pct:100%" title="4 de 4 jugados"></span>
+      <span class="e-num mono">4/4</span>
+      <span class="e-fin">completa</span></div></div><div class="etapa cerrada"><div class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">SF</span>
+      <span class="barra" style="--pct:0%" title="0 de 2 jugados"></span>
+      <span class="e-num mono">0/2</span>
+      <span class="e-fin">completa</span></div></div><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">F</span>
+      <span class="barra" style="--pct:0%" title="0 de 1 jugados"></span>
+      <span class="e-num mono">0/1</span>
+      <span class="e-pend">1 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="F" data-cuota="0">
     <header class="p-cab">
       <span class="mono cuando"><b>dom, 23-08</b> 09:00 CL<span class="loc">15:00 loc</span></span>
       <span class="lugar">Court 9 · 1º turno</span>
@@ -5884,23 +5735,25 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">Δ1.08 de WTN en ronda final: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.</span>
     </p>
-  </article>
-    </div></div>
-  </section><section class="torneo" data-torneo="M15 Mar Del Plata">
-    <header class="t-cab">
+  </article></div>
+    </details></div>
+  </details><details class="torneo" data-torneo="M15 Mar Del Plata">
+    <summary class="t-cab">
+      <span class="chev" aria-hidden="true"></span>
       <h2>M15 Mar Del Plata</h2>
-      <span class="t-meta">Argentina · Clay · $15,000</span>
       <span class="pill p-quali">qualis</span>
-      <span class="t-pend">32 por jugar</span>
-    </header>
-    <div class="etapas"><div class="etapa abierta">
-      <div class="e-cab"><span class="e-nom mono">Q1</span>
-        <span class="barra" style="--pct:0%" title="0 de 0 jugados"></span>
-        <span class="e-num mono">0/?</span>
-        <span class="e-pend">32 por jugar</span></div>
-      <article class="partido" data-etapa="Q1" data-cuota="0">
+      <span class="t-meta">Argentina · Clay · $15,000</span>
+      <span class="t-cifras">
+        <b>32</b> por jugar <span class="t-prox mono">· desde dom, 23-08 09:00</span>
+      </span>
+    </summary>
+    <div class="etapas"><details class="etapa abierta" open><summary class="e-cab"><span class="chev" aria-hidden="true"></span>
+      <span class="e-nom mono">Q1</span>
+      <span class="e-sincuadro">cuadro aún sin publicar</span>
+      <span class="e-pend">32 por jugar</span></summary>
+      <div class="e-cuerpo"><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 2º turno</span>
       
       
@@ -5923,7 +5776,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 1 · 4º turno</span>
       
       
@@ -5946,7 +5799,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 2º turno</span>
       
       
@@ -5969,7 +5822,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 2 · 4º turno</span>
       
       
@@ -5992,7 +5845,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 2º turno</span>
       
       
@@ -6015,7 +5868,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 3 · 4º turno</span>
       
       
@@ -6038,7 +5891,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 2º turno</span>
       
       
@@ -6061,7 +5914,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 4 · 4º turno</span>
       
       
@@ -6084,7 +5937,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 2º turno</span>
       
       
@@ -6107,7 +5960,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 5 · 4º turno</span>
       
       
@@ -6130,7 +5983,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 2º turno</span>
       
       
@@ -6153,7 +6006,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 6 · 4º turno</span>
       
       
@@ -6176,7 +6029,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 7 · 2º turno</span>
       
       
@@ -6199,7 +6052,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 7 · 4º turno</span>
       
       
@@ -6222,7 +6075,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 8 · 2º turno</span>
       
       
@@ -6245,7 +6098,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     </p>
   </article><article class="partido" data-etapa="Q1" data-cuota="0">
     <header class="p-cab">
-      <span class="mono cuando"><b>—</b> — CL</span>
+      <span class="mono cuando"><b>dom, 23-08</b> <span class="sinhora">Followed By</span></span>
       <span class="lugar">Court 8 · 4º turno</span>
       
       
@@ -6634,9 +6487,9 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
       <b class="pasar">Pasar</b>
       <span class="razon">Falta el WTN de alguno de los dos: no se puede comparar nivel.</span>
     </p>
-  </article>
-    </div></div>
-  </section>
+  </article></div>
+    </details></div>
+  </details>
 <footer>Datos en disco de <span class="mono">itf-scrap.mjs</span> (order of play, cuadros y entry lists) y del barrido de cuotas de vigía. Esta página no baja nada: si algo está viejo, la hora lo dice. Los veredictos salen de las reglas medidas en <span class="mono">itf-saber.json</span> vía <span class="mono">itf-reglas.mjs</span>.</footer>
 </div>
 <script>
@@ -6647,18 +6500,26 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
     var soloTemp = bE.classList.contains('on'), soloCuota = bC.classList.contains('on');
     document.querySelectorAll('.partido').forEach(function(p){
       var ok = (!soloTemp || TEMPRANO[p.dataset.etapa]) && (!soloCuota || p.dataset.cuota === '1');
-      p.style.display = ok ? '' : 'none';
+      p.hidden = !ok;
     });
-    document.querySelectorAll('.etapa').forEach(function(e){
-      var vis = [].slice.call(e.querySelectorAll('.partido')).some(function(p){ return p.style.display !== 'none'; });
-      e.style.display = (e.classList.contains('abierta') && !vis) ? 'none' : '';
+    document.querySelectorAll('details.etapa').forEach(function(e){
+      var vis = [].slice.call(e.querySelectorAll('.partido')).some(function(p){ return !p.hidden; });
+      e.hidden = !vis;
     });
+    /* una etapa ya jugada solo estorba si su torneo quedo sin nada por jugar */
     document.querySelectorAll('.torneo').forEach(function(t){
-      var vis = [].slice.call(t.querySelectorAll('.partido')).some(function(p){ return p.style.display !== 'none'; });
-      t.style.display = vis ? '' : 'none';
+      var vis = [].slice.call(t.querySelectorAll('.partido')).some(function(p){ return !p.hidden; });
+      t.hidden = !vis;
+      t.querySelectorAll('.etapa.cerrada').forEach(function(e){ e.hidden = !vis; });
     });
   }
   [bE, bC].forEach(function(b){ b.onclick = function(){ b.classList.toggle('on'); pinta(); }; });
+  function todos(abrir){
+    document.querySelectorAll('.torneo').forEach(function(t){ if(!t.hidden) t.open = abrir; });
+    if (abrir) document.querySelectorAll('details.etapa').forEach(function(e){ e.open = true; });
+  }
+  document.getElementById('b-abrir').onclick = function(){ todos(true); };
+  document.getElementById('b-cerrar').onclick = function(){ todos(false); };
   pinta();
 })();
 </script>
