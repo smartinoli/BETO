@@ -129,6 +129,11 @@ export function normalizarAceptacion(crudo, clave) {
         itf: numero(p.itfWorldTennisRanking),
         nacional: numero(p.nationalRanking),
         wtn: p.worldRating ? +p.worldRating : null,
+        /* shouldDisplayWtn=false → la web tapa el numero con la insignia
+           "ProZone" (descubierto 2026-08-22, Bastad: Slavic y Couto la
+           llevan y la API igual trae 8.58/8.99). Se guarda como señal de
+           rating de baja confianza; snapshots viejos no tienen el campo. */
+        wtnVisible: p.shouldDisplayWtn !== false,
         nacido: p.birthYear || null,
         /* En W viene "W 25 Jul 2026": la fecha del retiro. */
         info: e.information || null,

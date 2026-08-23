@@ -1,0 +1,1038 @@
+<title>Torre ITF</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--papel:#F3F5F7;--carta:#FFF;--tinta:#1A2732;--tinta2:#5A6B7A;--linea:#D9E0E6;
+  --acento:#0F6B5C;--acento-suave:#E3EFEB;--alerta:#A33B2A;--ambar:#8A6116;--ambar-suave:#F4ECDD;--franja:#F7F9FA}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--papel:#0F151B;--carta:#161F28;
+  --tinta:#DAE4EC;--tinta2:#8FA1B0;--linea:#26313C;--acento:#3FB79E;--acento-suave:#15302B;
+  --alerta:#E08A79;--ambar:#D9A94B;--ambar-suave:#2A2415;--franja:#131C24}}
+:root[data-theme="dark"]{--papel:#0F151B;--carta:#161F28;--tinta:#DAE4EC;--tinta2:#8FA1B0;
+  --linea:#26313C;--acento:#3FB79E;--acento-suave:#15302B;--alerta:#E08A79;--ambar:#D9A94B;--ambar-suave:#2A2415;--franja:#131C24}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font:14px/1.45 "IBM Plex Sans",system-ui,sans-serif}
+.envoltura{max-width:1360px;margin:0 auto;padding:18px 14px 50px}
+header.cab{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:30px;margin:0;letter-spacing:.5px}
+.gen{font-size:12.5px;color:var(--tinta2)} .gen b{font-variant-numeric:tabular-nums}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
+.chip{font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--linea);background:var(--carta)}
+.chip b{font-family:"IBM Plex Mono",monospace}
+.nota{font-size:12.5px;color:var(--tinta2);margin:2px 0 16px;max-width:72ch}
+.semana{margin-top:26px}
+.semana.plegada{opacity:.55}
+h2{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:21px;margin:0 0 6px;letter-spacing:.4px}
+h2 .sub{font-size:13px}
+.sub{color:var(--tinta2);font-weight:400;font-size:11.5px;display:inline-block;margin-left:4px}
+.tabla-env{overflow-x:auto;background:var(--carta);border:1px solid var(--linea);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:1050px}
+th{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12.5px;letter-spacing:1px;
+  text-transform:uppercase;color:var(--tinta2);text-align:left;padding:8px 10px;border-bottom:1px solid var(--linea)}
+th.n{text-align:center}
+td{padding:7px 10px;border-top:1px solid var(--linea);vertical-align:top}
+tbody tr:nth-child(even){background:var(--franja)}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-variant-numeric:tabular-nums}
+.c-nom{font-weight:600;min-width:180px} .c-nom .sub{display:block;margin:1px 0 0}
+.c-dato{text-align:center;font-family:"IBM Plex Mono",monospace;font-size:13px;min-width:64px}
+.c-dato .sub{display:block;margin:0;font-size:10.5px}
+.c-dato.ok{color:var(--acento)} .c-dato.viejo{color:var(--ambar)}
+.c-dato.falta{color:var(--alerta);font-weight:600} .c-dato.sin{color:var(--tinta2)}
+.c-pend{text-align:center} .c-pend b{color:var(--ambar)}
+.c-razon{font-size:12.5px;color:var(--tinta2);min-width:180px}
+.pill{font-size:11.5px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;
+  padding:3px 9px;border-radius:999px;white-space:nowrap}
+.p-proximo{background:var(--franja);color:var(--tinta2);border:1px solid var(--linea)}
+.p-quali{background:var(--ambar-suave);color:var(--ambar)}
+.p-main{background:var(--acento-suave);color:var(--acento)}
+.p-terminado{background:var(--franja);color:var(--tinta2);border:1px dashed var(--linea)}
+.p-archivado{background:none;color:var(--tinta2);border:1px solid transparent}
+tr.e-archivado{opacity:.5}
+footer{margin-top:26px;font-size:12px;color:var(--tinta2);max-width:80ch}
+@media (prefers-reduced-motion:no-preference){ .chip{transition:border-color .15s} }
+</style>
+<div class="envoltura">
+<header class="cab">
+  <h1>Torre ITF</h1>
+  <span class="gen">generado <b>2026-08-23 02:44</b> UTC · solo hombres singles M15/M25</span>
+</header>
+<div class="chips">
+  <span class="chip">en juego <b>13</b></span>
+  <span class="chip">qualis <b>17</b></span>
+  <span class="chip">próximos <b>18</b></span>
+  <span class="chip">terminados <b>4</b></span>
+  <span class="chip">archivados <b>40</b></span>
+  <span class="chip">próxima corrida: <b>13</b> tareas</span>
+</div>
+<p class="nota">Cada fila dice qué hay en disco y de qué hora (✓ verde fresco, ámbar con más de 3 h, ✗ rojo faltante crítico) y qué haría la próxima corrida de <span class="mono">itf-scrap</span>. La entry list es lo urgente en torneos próximos: ITF la borra cuando el torneo termina.</p>
+<section class="semana">
+    <h2>2026-W31 <span class="sub">lunes 2026-07-27</span></h2>
+    <div class="tabla-env"><table>
+      <thead><tr><th>Torneo</th><th>Estado</th><th>Fechas (q · main → final)</th>
+        <th class="n">Entry list</th><th class="n">Cuadro Q</th><th class="n">Cuadro M</th><th class="n">OOP hoy</th>
+        <th class="n">Sin cerrar</th><th>Próxima corrida</th></tr></thead>
+      <tbody><tr class="e-archivado">
+      <td class="c-nom">M15 Brisbane<span class="sub">Australia · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Wels<span class="sub">Austria · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Sao Paulo<span class="sub">Brazil · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Gentofte<span class="sub">Denmark · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Xativa<span class="sub">Spain · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Strasbourg<span class="sub">France · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Aldershot<span class="sub">Great Britain · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Wetzlar<span class="sub">Germany · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Bali<span class="sub">Indonesia · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Dublin<span class="sub">Ireland · Carpet · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Bolzano<span class="sub">Italy · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Astana<span class="sub">Kazakhstan · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Huamantla<span class="sub">Mexico · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Koszalin<span class="sub">Poland · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Pitesti<span class="sub">Romania · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-terminado">
+      <td class="c-nom">M15 Kursumlijska Banja <span class="sub">Serbia · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-terminado">terminado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">02:33</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:33</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend"><b>2</b></td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Edwardsville, IL<span class="sub">USA · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">07-25<span class="sub">q</span> 07-27<span class="sub">→</span>08-02</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr></tbody>
+    </table></div>
+  </section><section class="semana plegada">
+    <h2>2026-W32 <span class="sub">lunes 2026-08-03</span> <span class="sub">· toda archivada</span></h2>
+    <div class="tabla-env"><table>
+      <thead><tr><th>Torneo</th><th>Estado</th><th>Fechas (q · main → final)</th>
+        <th class="n">Entry list</th><th class="n">Cuadro Q</th><th class="n">Cuadro M</th><th class="n">OOP hoy</th>
+        <th class="n">Sin cerrar</th><th>Próxima corrida</th></tr></thead>
+      <tbody><tr class="e-archivado">
+      <td class="c-nom">M15 Eupen<span class="sub">Belgium · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Londrina<span class="sub">Brazil · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-08</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Tianjin<span class="sub">China, P.R. · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25+H Tauste<span class="sub">Spain · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Roehampton<span class="sub">Great Britain · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Frankfurt<span class="sub">Germany · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Fano<span class="sub">Italy · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-08</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Astana<span class="sub">Kazakhstan · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Bielsko Biala<span class="sub">Poland · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Curtea de Arges<span class="sub">Romania · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Kursumlijska Banja <span class="sub">Serbia · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Poprad<span class="sub">Slovakia · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Southaven, MS<span class="sub">USA · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-01<span class="sub">q</span> 08-03<span class="sub">→</span>08-09</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr></tbody>
+    </table></div>
+  </section><section class="semana">
+    <h2>2026-W33 <span class="sub">lunes 2026-08-10</span></h2>
+    <div class="tabla-env"><table>
+      <thead><tr><th>Torneo</th><th>Estado</th><th>Fechas (q · main → final)</th>
+        <th class="n">Entry list</th><th class="n">Cuadro Q</th><th class="n">Cuadro M</th><th class="n">OOP hoy</th>
+        <th class="n">Sin cerrar</th><th>Próxima corrida</th></tr></thead>
+      <tbody><tr class="e-terminado">
+      <td class="c-nom">M15 Brisbane (Cancelled)<span class="sub">Australia · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-terminado">terminado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Koksijde<span class="sub">Belgium · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Tianjin<span class="sub">China, P.R. · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Turku<span class="sub">Finland · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Trier<span class="sub">Germany · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-terminado">
+      <td class="c-nom">M15 Asuncion<span class="sub">Paraguay · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-terminado">terminado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-15</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">02:26</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:26</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend"><b>1</b></td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Warsaw<span class="sub">Poland · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Idanha-a-Nova<span class="sub">Portugal · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Targu Jiu<span class="sub">Romania · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Kursumlijska Banja <span class="sub">Serbia · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 Muttenz<span class="sub">Switzerland · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M15 Malmö<span class="sub">Sweden · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr><tr class="e-archivado">
+      <td class="c-nom">M25 East Lansing<span class="sub">USA · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-archivado">archivado</span></td>
+      <td class="c-fechas mono">08-08<span class="sub">q</span> 08-10<span class="sub">→</span>08-16</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato ok">✓<span class="sub">arch</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"></td>
+    </tr></tbody>
+    </table></div>
+  </section><section class="semana">
+    <h2>2026-W34 <span class="sub">lunes 2026-08-17</span></h2>
+    <div class="tabla-env"><table>
+      <thead><tr><th>Torneo</th><th>Estado</th><th>Fechas (q · main → final)</th>
+        <th class="n">Entry list</th><th class="n">Cuadro Q</th><th class="n">Cuadro M</th><th class="n">OOP hoy</th>
+        <th class="n">Sin cerrar</th><th>Próxima corrida</th></tr></thead>
+      <tbody><tr class="e-main">
+      <td class="c-nom">M15 Mistelbach<span class="sub">Austria · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:26</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:26</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:26</span></td>
+      <td class="c-pend"><b>1</b></td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M15 Lambermont<span class="sub">Belgium · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:52</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:52</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:26</span></td>
+      <td class="c-pend"><b>2</b></td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M15 Maanshan<span class="sub">China, P.R. · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:56</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:56</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:56</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ oop de hoy de las 15:56</td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M25 Santander<span class="sub">Spain · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:27</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:27</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:27</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M25 Ueberlingen<span class="sub">Germany · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:27</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:27</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:27</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M25 Lesa<span class="sub">Italy · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:34</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:34</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:34</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-terminado">
+      <td class="c-nom">M15 Asuncion<span class="sub">Paraguay · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-terminado">terminado</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-22</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:57</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:57</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend"><b>1</b></td>
+      <td class="c-razon">⟳ 1 filas del registro sin cerrar</td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M15 Krakow<span class="sub">Poland · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:51</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:51</span></td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-pend"><b>2</b></td>
+      <td class="c-razon">⟳ sin oop de hoy</td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M25 Idanha-a-Nova<span class="sub">Portugal · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:50</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:50</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:28</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M15 Arad<span class="sub">Romania · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:51</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:51</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:55</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ oop de hoy de las 15:55</td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M25 Slovenj Gradec<span class="sub">Slovenia · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:29</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:29</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:28</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M15 Kursumlijska Banja <span class="sub">Serbia · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:27</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:56</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:56</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:55</span></td>
+      <td class="c-pend"><b>2</b></td>
+      <td class="c-razon">⟳ oop de hoy de las 15:55</td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M15 Bastad<span class="sub">Sweden · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato viejo">✓<span class="sub">14:00</span></td>
+      <td class="c-dato viejo">✓<span class="sub">14:00</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:34</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-main">
+      <td class="c-nom">M25 Taipei<span class="sub">Chinese Taipei · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-main">en juego</span></td>
+      <td class="c-fechas mono">08-15<span class="sub">q</span> 08-17<span class="sub">→</span>08-23</td>
+      <td class="c-dato viejo">✓<span class="sub">05:25</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:54</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:54</span></td>
+      <td class="c-dato viejo">✓<span class="sub">15:54</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ oop de hoy de las 15:54</td>
+    </tr></tbody>
+    </table></div>
+  </section><section class="semana">
+    <h2>2026-W35 <span class="sub">lunes 2026-08-24</span></h2>
+    <div class="tabla-env"><table>
+      <thead><tr><th>Torneo</th><th>Estado</th><th>Fechas (q · main → final)</th>
+        <th class="n">Entry list</th><th class="n">Cuadro Q</th><th class="n">Cuadro M</th><th class="n">OOP hoy</th>
+        <th class="n">Sin cerrar</th><th>Próxima corrida</th></tr></thead>
+      <tbody><tr class="e-quali">
+      <td class="c-nom">M15 Mar Del Plata<span class="sub">Argentina · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">02:29</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Vienna<span class="sub">Austria · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ quali: aún sin oop</td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Maanshan<span class="sub">China, P.R. · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">02:35</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Hurghada<span class="sub">Egypt · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ quali: aún sin oop</td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M25 Oviedo<span class="sub">Spain · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:30</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:30</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:30</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Cap d'Agde<span class="sub">France · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:30</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:30</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:30</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Allershausen<span class="sub">Germany · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ quali: aún sin oop</td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Pecs<span class="sub">Hungary · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:31</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:31</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:31</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M25 Oldenzaal<span class="sub">Netherlands · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ quali: aún sin oop</td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M25 Poznan<span class="sub">Poland · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:31</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:31</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:31</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Bucharest<span class="sub">Romania · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">02:32</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M25 Maribor<span class="sub">Slovenia · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ quali: aún sin oop</td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Kursumlijska Banja <span class="sub">Serbia · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:32</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:32</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:32</span></td>
+      <td class="c-pend"><b>2</b></td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M25 Lausanne<span class="sub">Switzerland · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:33</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:33</span></td>
+      <td class="c-dato ok">✓<span class="sub">02:32</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M25 Taipei<span class="sub">Chinese Taipei · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:28</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato ok">✓<span class="sub">02:35</span></td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Monastir<span class="sub">Tunisia · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ quali: aún sin oop</td>
+    </tr><tr class="e-quali">
+      <td class="c-nom">M15 Champaign, IL<span class="sub">USA · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-quali">qualis</span></td>
+      <td class="c-fechas mono">08-22<span class="sub">q</span> 08-24<span class="sub">→</span>08-30</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon">⟳ quali: aún sin oop</td>
+    </tr></tbody>
+    </table></div>
+  </section><section class="semana">
+    <h2>2026-W36 <span class="sub">lunes 2026-08-31</span></h2>
+    <div class="tabla-env"><table>
+      <thead><tr><th>Torneo</th><th>Estado</th><th>Fechas (q · main → final)</th>
+        <th class="n">Entry list</th><th class="n">Cuadro Q</th><th class="n">Cuadro M</th><th class="n">OOP hoy</th>
+        <th class="n">Sin cerrar</th><th>Próxima corrida</th></tr></thead>
+      <tbody><tr class="e-proximo">
+      <td class="c-nom">M15 Trelew<span class="sub">Argentina · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:30</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Porto Velho<span class="sub">Brazil · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:30</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Wuning<span class="sub">China, P.R. · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:30</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Hurghada<span class="sub">Egypt · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:30</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Madrid<span class="sub">Spain · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:30</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M25+H Bagnères-de-Bigorre<span class="sub">France · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M25 Meerbusch<span class="sub">Germany · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Bali<span class="sub">Indonesia · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Bologna<span class="sub">Italy · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:31</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M25 Urayasu<span class="sub">Japan · Hard · $30,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M25 Casablanca<span class="sub">Morocco · Clay · $30,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:29</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Haren<span class="sub">Netherlands · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:30</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Szczawno<span class="sub">Poland · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:31</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Buzau<span class="sub">Romania · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:31</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Kursumlijska Banja <span class="sub">Serbia · Clay · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:30</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend"><b>2</b></td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Nakhon Pathom (CANCELLED - moved to Nonthaburi)<span class="sub">Thailand · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato falta">✗</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Nonthaburi<span class="sub">Thailand · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:30</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr><tr class="e-proximo">
+      <td class="c-nom">M15 Monastir<span class="sub">Tunisia · Hard · $15,000</span></td>
+      <td class="c-est"><span class="pill p-proximo">próximo</span></td>
+      <td class="c-fechas mono">08-29<span class="sub">q</span> 08-31<span class="sub">→</span>09-06</td>
+      <td class="c-dato viejo">✓<span class="sub">05:31</span></td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-dato sin">·</td>
+      <td class="c-pend">·</td>
+      <td class="c-razon"><span class="sub">al día</span></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<footer>Mapa maestro: <span class="mono">vigia/datos/itf/torneos.json</span> · se actualiza con <span class="mono">node vigia/itf-scrap.mjs</span> (baja solo lo que falta; nada corre solo). El estado sale de las fechas oficiales del calendario ITF; "sin cerrar" son filas del registro de apuestas esperando resultado.</footer>
+</div>
