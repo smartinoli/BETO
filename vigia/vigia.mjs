@@ -1927,6 +1927,57 @@ async function cmdCasas() {
 /* Compara, para un partido concreto, lo que cotiza cada casa del plan.
    Sirve para saber qué espejo de Betano calza con lo que ves en pantalla:
    abres el partido en tu Betano y miras cuál columna coincide. */
+/* ---------- /salud: ¿qué casas están vivas ahora? ----------
+   Un partido, un request, y el veredicto por casa: cuántas cuotas trae
+   activas y de cuándo son. Con esto se sabe si el espejo revivió sin
+   gastar un barrido completo (~20 requests) para descubrir que no. */
+async function cmdSalud() {
+  let elegido = null;
+  for (const sid of (CFG.barridoDeportes || ['10'])) {
+    const fx = await fixturesDe(sid);
+    const cands = fx.filter(f => new Date(f.startTime).getTime() > Date.now() + 20 * 60e3)
+      .sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+    if (cands.length) { elegido = cands[0]; break; }
+  }
+  if (!elegido) { await telegram('No hay partidos próximos para sondear.'); return; }
+  const d = await api('odds', { fixtureId: elegido.fixtureId, oddsFormat: 'decimal' });
+  const fx = Array.isArray(d) ? d[0] : (d.data ? d.data[0] : d);
+  const bo = fx?.bookmakerOdds || {};
+  const filas = [];
+  let casaViva = null;
+  for (const casa of Object.keys(bo)) {
+    let vivas = 0, muertas = 0, ultimo = 0;
+    for (const mid of Object.keys(bo[casa].markets || {})) {
+      for (const oid of Object.keys(bo[casa].markets[mid].outcomes || {})) {
+        const q = (bo[casa].markets[mid].outcomes[oid].players || {})['0'];
+        if (!q) continue;
+        (q.active && q.price > 1) ? vivas++ : muertas++;
+        const ts = q.changedAt ? Date.parse(q.changedAt) : 0;
+        if (ts > ultimo) ultimo = ts;
+      }
+    }
+    const h = ultimo ? (Date.now() - ultimo) / 3600e3 : null;
+    const sana = vivas > 0 && h != null && h < 2;
+    if (casa === CASA) casaViva = sana;
+    filas.push(`${sana ? '✅' : '⛔'} <b>${escHtml(casa)}</b>${casa === CASA ? ' (tu espejo)' : ''}${casa === JUEZ ? ' (tu juez)' : ''}`
+      + `\n   ${vivas} cuotas vivas · ${muertas} muertas · `
+      + (h == null ? 'sin fecha' : `última hace ${h < 1 ? Math.round(h * 60) + ' min' : h.toFixed(1) + ' h'}`));
+  }
+  const vivasOtras = Object.keys(bo).filter(c => c !== CASA);
+  await telegram([
+    '<b>🩺 Salud de los feeds</b>',
+    `<i>sondeo sobre ${escHtml(elegido.p1)} vs ${escHtml(elegido.p2)} · ${escHtml(elegido.liga)}</i>`,
+    '',
+    ...(filas.length ? filas : ['Ese partido no trae cuotas de ninguna casa.']),
+    '',
+    casaViva === false
+      ? `⛔ <b>${escHtml(CASA)} está caída</b> — mientras siga así, /barrer no puede dar señales por más `
+        + `que ajustes criterios. Es del lado de OddsPapi, no del bot.`
+        + (vivasOtras.length ? ` Casas con datos en tu plan: ${vivasOtras.map(escHtml).join(', ')}.` : '')
+      : casaViva ? `✅ <b>${escHtml(CASA)} está sana</b> — /barrer debería funcionar normal.` : '',
+    `<i>${REQ} request(s) usados en el sondeo.</i>`,
+  ].filter(Boolean).join('\n'));
+}
 async function cmdComparar(busca) {
   let elegido = null;
   for (const sid of Object.keys(CFG.deportes)) {
@@ -2056,6 +2107,11 @@ async function ejecutar(texto) {
     return true;
   }
   if (['casas', 'betanos', 'bookmakers', 'espejos'].includes(c)) { await cmdCasas(); return true; }
+  if (['salud', 'health', 'vivo', 'feeds', 'feed'].includes(c)) {
+    await telegram('🩺 Sondeando qué casas están vivas…');
+    await cmdSalud();
+    return true;
+  }
   if (['comparar', 'compara', 'cuotas', 'ver'].includes(c)) {
     const busca = texto.replace(/^\/?\S+\s*/, '').trim().toLowerCase();
     await telegram('⚖️ Buscando' + (busca ? ' "' + escHtml(busca) + '"' : ' el próximo partido') + '…');
@@ -2096,6 +2152,7 @@ async function ejecutar(texto) {
       '<b>/cosechar</b> — recoge resultados de tenis de mesa para la base propia del Elo (~200 req)',
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
+      '<b>/salud</b> — qué casas están vivas ahora mismo y de cuándo son sus cuotas (1 partido, ~2 requests)',
       '<b>/casas</b> — qué espejos de Betano existen y a qué dominio apuntan',
       '<b>/comparar equipo</b> — 1 partido, las 10 primeras cuotas que lee el bot (precio, si está viva y de cuándo es) + link para verificar',
       '',
