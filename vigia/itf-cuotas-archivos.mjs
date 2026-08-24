@@ -119,53 +119,62 @@ function torneoDe(pais, fechaISO, quali) {
 }
 
 /* ---------- leer un PDF ---------- */
-const RE_FECHA = /^\s*(\d{2})\/(\d{2})(?:\s+(\d{1,2}:\d{2}))?\s*$/;
-/* "Nombre Apellido 3.05 Otro Nombre 1.32" — dos nombres con su decimal */
-const RE_CUOTA = /^\s*([A-Za-zÀ-ÿ'’.\- ]{3,45}?)\s+(\d{1,2}[.,]\d{1,2})\s+([A-Za-zÀ-ÿ'’.\- ]{3,45}?)\s+(\d{1,2}[.,]\d{1,2})\s*$/;
+/* Betano imprime en dos formatos distintos, y cambian sin aviso:
+     A) "25/08 06:00" en una linea, y debajo los nombres y las cuotas
+     B) la fecha pegada al primer jugador, la hora DEBAJO de la cuota:
+          25/08   Nicolas Ulrich
+                  Nicolas Ulrich  2.07   Laurin Aerne  1.65
+          05:00   Laurin Aerne
+   Por eso no se asume orden: se marca cada linea por lo que es y despues
+   se le pega a cada cuota la fecha y la hora mas cercanas. */
+const RE_FECHA = /^\s*(\d{1,2})[\/.](\d{1,2})(?!\d)/;
+const RE_HORA  = /^\s*(\d{1,2}:\d{2})(?!\d)/;
+const RE_CUOTA = /^\s*([A-Za-zÀ-ÿ'’.\- ]{3,45}?)\s\s*(\d{1,3}[.,]\d{1,2})\s\s+([A-Za-zÀ-ÿ'’.\- ]{3,45}?)\s\s*(\d{1,3}[.,]\d{1,2})\s*$/;
+const CERCA = 8;                       /* cuantas lineas se mira alrededor */
 
 function leerPdf(ruta) {
   let txt;
   try { txt = execFileSync('pdftotext', ['-layout', ruta, '-'], { encoding: 'utf8', maxBuffer: 40e6 }); }
   catch (e) { return { error: 'no pude leer el PDF (¿falta pdftotext?): ' + e.message.split('\n')[0] }; }
   const lineas = txt.split('\n');
-  const out = [];
-  let fecha = null, hora = null;
-  for (const ln of lineas) {
-    const f = ln.match(RE_FECHA);
-    if (f) { fecha = { dia: f[1], mes: f[2] }; hora = f[3] || null; continue; }
+
+  /* pasada 1: marcar que es cada linea */
+  const fechas = [], horas = [], cuotas = [];
+  lineas.forEach((ln, i) => {
     const c = ln.match(RE_CUOTA);
-    if (!c) continue;
-    const p1 = c[1].trim(), p2 = c[3].trim();
-    const g1 = +c[2].replace(',', '.'), g2 = +c[4].replace(',', '.');
-    if (!(g1 > 1 && g1 < 60 && g2 > 1 && g2 < 60)) continue;
-    if (p1.length < 4 || p2.length < 4) continue;
-    if (norm(p1) === norm(p2)) continue;
-    out.push({ p1, p2, g1, g2, fecha, hora });
+    if (c) {
+      const g1 = +c[2].replace(',', '.'), g2 = +c[4].replace(',', '.');
+      const p1 = c[1].trim(), p2 = c[3].trim();
+      if (g1 > 1 && g1 < 100 && g2 > 1 && g2 < 100 && p1.length >= 4 && p2.length >= 4 && norm(p1) !== norm(p2))
+        cuotas.push({ i, p1, p2, g1, g2 });
+      return;                          /* una linea de cuotas no es fecha ni hora */
+    }
+    const f = ln.match(RE_FECHA);
+    if (f && +f[1] >= 1 && +f[1] <= 31 && +f[2] >= 1 && +f[2] <= 12)
+      fechas.push({ i, dia: f[1].padStart(2, '0'), mes: f[2].padStart(2, '0') });
+    const h = ln.match(RE_HORA);
+    if (h) horas.push({ i, hora: h[1] });
+  });
+
+  /* pasada 2: a cada cuota, la fecha de arriba y la hora mas cercana */
+  const cercano = (arr, i) => {
+    let mejor = null, md = Infinity;
+    for (const x of arr) { const d = Math.abs(x.i - i); if (d < md) { md = d; mejor = x; } }
+    return md <= CERCA ? mejor : null;
+  };
+  const out = [];
+  for (const c of cuotas) {
+    const arriba = fechas.filter(f => f.i <= c.i);
+    const f = arriba.length ? arriba[arriba.length - 1] : cercano(fechas, c.i);
+    const h = cercano(horas, c.i);
+    out.push({ p1: c.p1, p2: c.p2, g1: c.g1, g2: c.g2,
+      fecha: f ? { dia: f.dia, mes: f.mes } : null, hora: h ? h.hora : null });
   }
-  /* el mismo partido aparece repetido cuando la página se corta entre hojas */
+  /* el mismo partido sale repetido cuando la pagina se corta entre hojas */
   const visto = new Set(), unicos = [];
   for (const x of out) { const k = norm(x.p1) + '|' + norm(x.p2);
     if (visto.has(k)) continue; visto.add(k); unicos.push(x); }
   return { partidos: unicos };
-}
-
-/* JSON de vigia/local/betano-consola.js */
-function leerJson(ruta) {
-  const j = leer(ruta);
-  if (!j) return { error: 'no es un JSON válido' };
-  if (!Array.isArray(j.partidos)) return { error: 'al JSON le falta el arreglo "partidos"' };
-  if (!j.partidos.length)
-    return { error: 'el JSON no trae partidos' + (j.textoCrudo ? ' — lleva textoCrudo, mándamelo y ajusto el lector' : '') };
-  const partidos = [];
-  for (const x of j.partidos) {
-    const g1 = +x.g1, g2 = +x.g2;
-    if (!x.p1 || !x.p2 || !(g1 > 1) || !(g2 > 1)) continue;
-    const f = String(x.fecha || '').match(/(\d{1,2})[\/.](\d{1,2})/);
-    partidos.push({ p1: String(x.p1).trim(), p2: String(x.p2).trim(), g1, g2,
-      fecha: f ? { dia: f[1].padStart(2, '0'), mes: f[2].padStart(2, '0') } : null,
-      hora: x.hora || null });
-  }
-  return { partidos, pais: j.pais || null };
 }
 
 const paisDeNombre = f => {
