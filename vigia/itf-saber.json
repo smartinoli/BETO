@@ -424,6 +424,20 @@
    "reglaNueva": "Antes de jugar una ronda, ajustar la curva del mercado sobre sus cuotas y mirar la pendiente sobre ΔWTN. Si es positiva y con ajuste (como Q1: 0.227, R2=0.406) es un mercado de nivel y competimos. Si se va a cero (Q2: 0.012) o se da vuelta (finales: -0.058) el precio lleva informacion que no tenemos. Implementado en itf-resultados.mjs.",
    "correccion": "El modelo del mercado que veniamos usando (logit p = -0.081 + 0.183·Δ, R2=0.626) estaba ajustado sobre n=18 de rondas AVANZADAS, cosa que la propia nota advertia. Comparado contra nuestra curva de Q2/R1 daba +15 puntos de diferencia sistematica, que resulto ser puro sesgo de ronda. Reajustado por grupo, la diferencia real en Q1 es de solo 4-7 puntos.",
    "estadoDelRegistro": "27 apuestas con resultado, -10% si se apuestan todas. Nada ha dado ganancia todavia, ni siquiera donde acertamos 9 de 10: en Q1 los precios van de 1.08 a 1.42 y con el vig de 8.1% de Betano, acertar 67% no alcanza. La conclusion honesta es que todavia NO hay ventaja demostrada en ninguna ronda."
+  },
+  {
+   "fecha": "2026-08-24",
+   "corrida": "primeras cuotas de R1 del cuadro principal — y un error de especificacion del modelo",
+   "detalle": [
+    "Sebastian paso 26 cuotas de 8 torneos (3 PDF de Betano + 5 capturas): Alemania/Allershausen, Francia/Cap d'Agde, Espana/Oviedo, Suiza/Lausanne, Rumania/Bucharest, Eslovenia/Maribor, Taipei y Austria/Vienna. Casi todas del 25/08, o sea R1",
+    "21 cruzaron con cuadro y WTN. Las 3 que no: las dos de Lausanne (la ITF todavia no publica su cuadro principal) y una vieja de Maanshan",
+    "LA PRUEBA DE R1 PASA: la curva del mercado sobre R1 es logit p = 0.087 + 0.180·Δ con R2=0.564 (n=21). Es la mas alta que hemos visto. En Q2 la pendiente se va a 0.144 con R2=0.211, y mezclando Q2+R1 el ajuste se arruina. Confirma la teoria: en un cuadro nuevo casi nadie ha jugado y el mercado vuelve a cotizar por nivel"
+   ],
+   "errorEncontrado": "El modelo tenia una CONSTANTE LIBRE por grupo y daba p=59% en Δ=0 para Q2/R1. Es imposible: con dos WTN iguales no hay favorito, y si se da vuelta la etiqueta la probabilidad se da vuelta con ella. Salio a la luz al mirar las cuotas de R1 — un partido con Δ0.03 donde el modelo decia 60% y el mercado 48%. Fabricaba ventaja justo en los partidos mas parejos, que es donde menos sabemos.",
+   "correccion": "Modelo simetrico, sin constante: logit p = pendiente[grupo] × Δ. Pendientes Q1 0.2896 · buenas 0.3701 · medias 0.2056 · finales 0.1065, mas -0.3776 si la forma contradice al nivel. Ademas de estar bien esta MEJOR: dejando un torneo afuera da 0.5280 contra 0.5294 del anterior. Calibracion verificada por tramo de Δ: en el grupo 'buenas' decimos 58.4% y pasa 64.0% en Δ0-2 (n=111), decimos 94.8% y pasa 93.0% en Δ6+ (n=86).",
+   "pisoNuevo": "Δ minima para el piso de 58%: buenas 0.87 · Q1 1.11 · medias 1.57 · finales 3.03 (con la forma en contra: 1.89 / 2.42 / 3.41 / 6.58)",
+   "aviso": "El partido con mayor discrepancia a favor nuestro en R1 es Victor Barreira Bonzom a 2.67 (+30 puntos sobre el mercado), y es exactamente el perfil que fallo hoy dos veces: residuo -1.02 contra la propia curva de R1. Avcibasi y Petrov tenian el mismo perfil y perdieron los dos. Todavia NO hay evidencia para apostarlo.",
+   "herramientaNueva": "vigia/itf-mercado.mjs — ajusta la curva del mercado por grupo de rondas sobre las cuotas, sin necesitar resultados. Es el semaforo antes de mirar ningun partido."
   }
  ],
  "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",

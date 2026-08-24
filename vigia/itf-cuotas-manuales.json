@@ -322,6 +322,214 @@
    "g1": 1.53,
    "g2": 2.35,
    "visto": "2026-08-23T23:59Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Edison Ambarzumjan",
+   "p2": "Marko Bekeni",
+   "g1": 3.05,
+   "g2": 1.32,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Hazem Naw",
+   "p2": "Bruno Fernandez",
+   "g1": 1.83,
+   "g2": 1.83,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Thiago Cigarran",
+   "p2": "Thanaphat Boosarawongse",
+   "g1": 1.72,
+   "g2": 1.98,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Noah Lopez",
+   "p2": "Jaron Held",
+   "g1": 1.21,
+   "g2": 3.8,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Daniel Bagnolini",
+   "p2": "Elias Julian Werner",
+   "g1": 1.16,
+   "g2": 4.45,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Lenny Couturier",
+   "p2": "Zaccharie Cado",
+   "g1": 1.29,
+   "g2": 3.2,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Matis Roche",
+   "p2": "Leo Raquillet",
+   "g1": 5.5,
+   "g2": 1.1,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Kenny De Schepper",
+   "p2": "Massimo Pizzigoni",
+   "g1": 1.19,
+   "g2": 4.05,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Matisse Martin",
+   "p2": "Pierre Delage",
+   "g1": 4.8,
+   "g2": 1.14,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Victor Barreira Bonzom",
+   "p2": "Jaume Casas Blasi",
+   "g1": 2.67,
+   "g2": 1.4,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Ferdinand Livet Novkirichka",
+   "p2": "Andrea Baudel",
+   "g1": 1.27,
+   "g2": 3.3,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Mathieu Scaglia",
+   "p2": "Mohamed Nazim Makhlouf",
+   "g1": 1.75,
+   "g2": 1.91,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Tanguy Genier",
+   "p2": "Pierre Antoine Tailleu",
+   "g1": 1.6,
+   "g2": 2.15,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Carles Cordoba",
+   "p2": "Sergi Fita Juan",
+   "g1": 1.88,
+   "g2": 1.78,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Ignacio Parisca",
+   "p2": "Sergi Perez Contri",
+   "g1": 1.72,
+   "g2": 1.95,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Tristan Mccormick",
+   "p2": "Imanol Lopez Morillo",
+   "g1": 1.93,
+   "g2": 1.75,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Alejandro Juan Mano",
+   "p2": "Alejandro Turriziani Alvarez",
+   "g1": 1.26,
+   "g2": 3.4,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Carlos Sanchez Jover",
+   "p2": "Alexander Ritschard",
+   "g1": 2.3,
+   "g2": 1.53,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Nicolas Ulrich",
+   "p2": "Laurin Aerne",
+   "g1": 2.05,
+   "g2": 1.67,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Alessandro Hunziker",
+   "p2": "Dimitris Sakellaridis",
+   "g1": 4.8,
+   "g2": 1.14,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Alessandro Battiston",
+   "p2": "Radu David Turcanu",
+   "g1": 4.45,
+   "g2": 1.15,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Anas Mazdrashki",
+   "p2": "Stefan Ilie Bogdan Petre",
+   "g1": 1.28,
+   "g2": 3.25,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Rares Teodor Pieleanu",
+   "p2": "Alejandro Mateo Berge Nourescu",
+   "g1": 1.09,
+   "g2": 5.8,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Samuele Pieri",
+   "p2": "Theodore Dean",
+   "g1": 1.3,
+   "g2": 3.1,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Kai-I Wang",
+   "p2": "Ryota Tanuma",
+   "g1": 4.1,
+   "g2": 1.18,
+   "visto": "2026-08-24T16:30Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Alex Huszar",
+   "p2": "Heorhii Shylov",
+   "g1": 2.3,
+   "g2": 1.53,
+   "visto": "2026-08-24T16:30Z"
   }
  ]
 }

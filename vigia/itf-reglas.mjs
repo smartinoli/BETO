@@ -117,18 +117,21 @@ export const GRUPO = {
   R3: 'medias', R4: 'medias', QF: 'finales', SF: 'finales', F: 'finales',
 };
 export const MODELO = {
-  base: -0.0286, dWtn: 0.2731,
-  grupo: { Q1: 0, buenas: 0.4110, medias: -0.1074, finales: -0.4422 },
+  /* SIN constante: la curva TIENE que pasar por 50% en Δ=0. Con dos WTN
+     iguales no hay favorito — "favorito" es una etiqueta arbitraria, y si
+     se da vuelta la etiqueta la probabilidad se da vuelta con ella. El
+     ajuste anterior llevaba una constante libre por grupo y daba 59% en
+     Δ=0 para Q2/R1: fabricaba ventaja justo en los partidos mas parejos,
+     que es donde menos sabemos. Salio a la luz el 2026-08-24 mirando las
+     primeras cuotas de R1 — Δ0.03 y el modelo decia 60% mientras el
+     mercado decia 48%. Ademas de estar mal estaba peor: dejando un torneo
+     afuera, el simetrico da 0.5280 contra 0.5294. */
+  pendiente: { Q1: 0.2896, buenas: 0.3701, medias: 0.2056, finales: 0.1065 },
   /* Choque nivel-contra-forma: el favorito por WTN llega cediendo MAS
-     games que el rival, en el mismo cuadro. Costo medido -0.2976 en logit
-     sobre los 324 partidos donde los dos lados tienen trayectoria (134 con
-     choque). Antes esto era un reemplazo plano (0.42 si Δ<2.5, 0.63 si no)
-     que borraba la ronda entera: un Q1 con Δ4+ y un choque caia de 89% a
-     63%. Probe tambien separarlo por fuerza de la banda y por Δ; dejando
-     un torneo afuera gana por 0.0027 en log-loss sobre n=324, o sea nada,
-     y los coeficientes se daban vuelta segun contra que linea base los
-     midiera. Con esa inestabilidad, el termino simple. */
-  choque: -0.2976,
+     games que el rival en el mismo cuadro. Medido contra la curva de
+     arriba sobre los 134 partidos con choque y trayectoria en los dos
+     lados: 59.7% real contra 68.4% esperado. */
+  choque: -0.3776,
 };
 export const N_GRUPO = { Q1: 312, buenas: 345, medias: 162, finales: 83 };
 
@@ -136,10 +139,10 @@ export const N_GRUPO = { Q1: 312, buenas: 345, medias: 162, finales: 83 };
    regla de Δ ("bajo 1.5 es ruido", que valia igual para Q1 que para una
    semi) sino de probabilidad, que es lo que decide si la cuota la paga.
    En Δ, el piso se traduce distinto en cada grupo — y eso es el punto:
-     buenas   desde Δ 0.00 (Q2 y R1 ya pasan el piso con la Δ mas chica)
-     Q1       desde Δ 1.29
-     medias   desde Δ 1.68
-     finales  desde Δ 2.91   (con choque, Δ 4.00) */
+     buenas   desde Δ 0.87  (con la forma en contra, Δ 1.89)
+     Q1       desde Δ 1.11  (con la forma en contra, Δ 2.42)
+     medias   desde Δ 1.57  (con la forma en contra, Δ 3.41)
+     finales  desde Δ 3.03  (con la forma en contra, Δ 6.58) */
 export const P_MIN = 0.58;
 
 export const RONDA_FINAL = r => GRUPO[normRonda(r)] === 'finales';
@@ -150,21 +153,25 @@ export const esTarde = RONDA_FINAL;
    llega con mejor forma (menos games cedidos) que nuestro favorito. */
 export function pNivel(d, ronda, choque) {
   const r = normRonda(ronda), g = GRUPO[r] || 'medias';
-  const eta = MODELO.base + MODELO.dWtn * d + MODELO.grupo[g] + (choque ? MODELO.choque : 0);
+  const eta = MODELO.pendiente[g] * d + (choque ? MODELO.choque : 0);
   return { p: 1 / (1 + Math.exp(-eta)), grupo: g, ronda: r, n: N_GRUPO[g],
            conocida: !!GRUPO[r] };
 }
 /* Δ a partir de la cual este grupo pasa el piso, para poder explicarlo. */
 export function dMinima(ronda, choque) {
   const g = GRUPO[normRonda(ronda)] || 'medias';
-  const objetivo = Math.log(P_MIN / (1 - P_MIN));
-  const d = (objetivo - MODELO.base - MODELO.grupo[g] - (choque ? MODELO.choque : 0)) / MODELO.dWtn;
-  return Math.max(0, d);
+  const objetivo = Math.log(P_MIN / (1 - P_MIN)) - (choque ? MODELO.choque : 0);
+  return Math.max(0, objetivo / MODELO.pendiente[g]);
 }
 
 const sig = x => 1 / (1 + Math.exp(-x));
-/* Precio que el mercado DEBERIA poner segun su propio modelo ajustado
-   (logit p = -0.081 + 0.183·ΔWTN, R²=0.626 sobre cuotas desvigadas). */
+/* Precio que el mercado DEBERIA poner segun su propio modelo por nivel
+   (logit p = -0.081 + 0.183·ΔWTN, R²=0.626 sobre cuotas desvigadas).
+   PENDIENTE DE REAJUSTE: se ajusto sobre n=18 de rondas avanzadas. Con las
+   cuotas de hoy la curva del mercado sale distinta en cada grupo — en R1
+   es 0.087 + 0.180·Δ (R²=0.564, n=21) y en Q2 la pendiente se va a cero.
+   Ver itf-mercado.mjs, que ya la ajusta por grupo. Este modelo global solo
+   se usa para la bandera de residuo. */
 export const pMercadoModelo = d => sig(-0.081 + 0.183 * d);
 
 /* ---------- el juicio ----------
