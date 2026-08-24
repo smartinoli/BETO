@@ -352,6 +352,10 @@ function procesarSync(info, bet, cb, metas, salida) {
     const pB = {}, pC = {}, idB = {}; let ok = true, faltaJuez = false;
     for (const oid of oids) {
       const b0 = (oB[oid].players || {})['0'], c0 = ((oC[oid] || {}).players || {})['0'];
+      for (const [q, dest] of [[b0, 'tsCasa'], [c0, 'tsJuez']]) {
+        const ts = q?.changedAt ? Date.parse(q.changedAt) : NaN;
+        if (ts) salida[dest] = Math.max(salida[dest] || 0, ts);
+      }
       if (!b0?.active || !(b0.price > 1)) { ok = false; break; }
       if (!c0?.active || !(c0.price > 1)) { ok = false; faltaJuez = true; break; }
       pB[oid] = b0.price; pC[oid] = c0.price;
@@ -754,9 +758,21 @@ async function reportar(r, titulo) {
         : '')
       + `\n\n<i>Si ${escHtml(CASA)} viene con precios pero el código no los lee, cambió el formato de la API. Manda <code>/depurar plan</code> para descartar que sea la suscripción.</i>`
     : '';
+  /* ¿está vivo el espejo? Se compara su última cuota movida contra la del
+     juez: si la casa lleva horas quieta y el juez no, el problema es del
+     proveedor, no de los criterios. */
+  const horasQuieto = r.tsCasa ? (Date.now() - r.tsCasa) / 3600e3 : null;
+  const desfase = r.tsCasa && r.tsJuez ? (r.tsJuez - r.tsCasa) / 3600e3 : null;
+  const congelado = desfase != null && desfase >= 2
+    ? `⛔ <b>El feed de ${escHtml(CASA)} está congelado</b>: su cuota más reciente es de hace `
+      + `${horasQuieto.toFixed(1)} h, mientras ${escHtml(JUEZ)} sigue moviendo precios. `
+      + `No son tus criterios ni el código — OddsPapi no está refrescando esa casa. `
+      + `Manda <b>/casas</b> para ver si otro espejo de Betano está vivo en tu plan.`
+    : '';
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
+    congelado,
     r.fueraDeFoco != null ? `<i>🎯 Foco: AH −(x) primer tiempo · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco ${CFG.sombras !== false ? 'a la sombra' : 'descartada(s)'}</i>` : '',
     r.deportesFuera?.length ? `⚠️ Sin acceso en tu plan OddsPapi: ${r.deportesFuera.map(escHtml).join(' · ')} — se saltaron. Revisa el panel si no fue a propósito.` : '',
     r.avisoLotes || '',
