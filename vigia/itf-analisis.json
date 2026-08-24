@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-24T19:19:55.839Z",
+ "generado": "2026-08-24T19:34:56.933Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano/bet365 + reglas medidas (itf-reglas.mjs)",
  "titular": "Valor esperado partido a partido, con la probabilidad de la RONDA EXACTA: el WTN no acierta lo mismo en Q1 (75%) que en Q2 o R1 (79% y 77%) que en cuartos (60%) o semis (50%).",
  "advertencia": "El margen de Betano en ITF es 9%: por eso la cuota minima de cada banda es 1.09/p y no 1/p. Los \"ojo:\" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano 6-3 6-5).",
@@ -1220,7 +1220,7 @@
    "favorito": "Sergi Perez Contri [3]",
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ1.72 de WTN a favor (5.43 contra 7.15), en ronda R1: la curva del grupo \"buenas\" (n=345) da 65%. A 1.95 paga sobre la minima de 1.67: +28% de valor. Pero: el nivel es solo \"claro\", no fuerte; ninguno de los dos tiene trayectoria en el cuadro: no se pudo mirar la forma.",
+   "razon": "Δ1.72 de WTN a favor (5.43 contra 7.15), en ronda R1: la curva del grupo \"buenas\" (n=345) da 65%. A 1.95 paga sobre la minima de 1.67: +28% de valor. Pero: el nivel es solo \"claro\", no fuerte.",
    "banderas": [
     "Δ1.72 claro",
     "mirar"
@@ -1401,7 +1401,7 @@
    ]
   },
   "1183671102": {
-   "tipo": "mirar",
+   "tipo": "segura",
    "nivel": {
     "fuerza": "muy fuerte",
     "p": 0.9657196741341008,
@@ -1424,12 +1424,12 @@
     "veredicto": "barato"
    },
    "favorito": "Dimitris Sakellaridis [5]",
-   "confianza": "media",
+   "confianza": "alta",
    "mercado": "gana",
-   "razon": "Δ9.02 de WTN a favor (6.94 contra 15.96), en ronda R1: la curva del grupo \"buenas\" (n=345) da 97%. A 1.14 paga sobre la minima de 1.13: +10% de valor. Pero: ninguno de los dos tiene trayectoria en el cuadro: no se pudo mirar la forma. Alessandro Hunziker no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+   "razon": "Δ9.02 de WTN a favor (6.94 contra 15.96), en ronda R1: la curva del grupo \"buenas\" (n=345) da 97%. A 1.14 paga sobre la minima de 1.13: +10% de valor. Nivel fuerte, R1 está en \"buenas\" (n=345), y sin reparos. (Alessandro Hunziker no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%))",
    "banderas": [
     "Δ9.02 muy fuerte",
-    "mirar"
+    "segura"
    ]
   },
   "1183671105": {
@@ -2258,7 +2258,7 @@
    ]
   },
   "1183671319": {
-   "tipo": "mirar",
+   "tipo": "segura",
    "nivel": {
     "fuerza": "muy fuerte",
     "p": 0.9096545289614233,
@@ -2281,12 +2281,12 @@
     "veredicto": "barato"
    },
    "favorito": "Anas Mazdrashki [7]",
-   "confianza": "media",
+   "confianza": "alta",
    "mercado": "gana",
-   "razon": "Δ6.24 de WTN a favor (7.31 contra 13.55), en ronda R1: la curva del grupo \"buenas\" (n=345) da 91%. A 1.28 paga sobre la minima de 1.20: +16% de valor. Pero: ninguno de los dos tiene trayectoria en el cuadro: no se pudo mirar la forma.",
+   "razon": "Δ6.24 de WTN a favor (7.31 contra 13.55), en ronda R1: la curva del grupo \"buenas\" (n=345) da 91%. A 1.28 paga sobre la minima de 1.20: +16% de valor. Nivel fuerte, R1 está en \"buenas\" (n=345), y sin reparos.",
    "banderas": [
     "Δ6.24 muy fuerte",
-    "mirar"
+    "segura"
    ]
   },
   "1183671320": {
@@ -3333,6 +3333,8 @@
  },
  "destacados": [
   1183671170,
-  1183671175
+  1183671319,
+  1183671175,
+  1183671102
  ]
 }

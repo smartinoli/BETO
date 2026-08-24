@@ -313,7 +313,14 @@ export function analizar(p) {
   if (d < 2.5) bloqueo.push('el nivel es solo "claro", no fuerte');
   if (choque) bloqueo.push('la forma contradice al nivel');
   if (final) bloqueo.push(`es ${R}, donde el nivel deja de mandar`);
-  if (!yo.llega && !otro.llega) bloqueo.push('ninguno de los dos tiene trayectoria en el cuadro: no se pudo mirar la forma');
+  /* Que no haya trayectoria es un reparo solo donde se esperaria tenerla.
+     En la PRIMERA ronda de cualquier cuadro (Q1, y R1 para quien entro
+     directo) nadie ha jugado todavia: es el estado normal, no una senal.
+     Bloquear por eso dejaba fuera de SEGURA a todo R1 entre dos directos,
+     que es justo donde el metodo mide mejor. */
+  const primeraRonda = R === 'Q1' || R === 'R1';
+  if (!yo.llega && !otro.llega && !primeraRonda)
+    bloqueo.push('ninguno de los dos tiene trayectoria en el cuadro: no se pudo mirar la forma');
   if (!cel.conocida) bloqueo.push(`${R} es una ronda que nunca vimos`);
   if (enContra.length) bloqueo.push(enContra.length + ' reparo' + (enContra.length > 1 ? 's' : ''));
   if (residuo < -0.15) bloqueo.push('el mercado se aparta ' + Math.round(-residuo * 100) + ' puntos de su propio modelo');

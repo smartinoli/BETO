@@ -438,6 +438,20 @@
    "pisoNuevo": "Δ minima para el piso de 58%: buenas 0.87 · Q1 1.11 · medias 1.57 · finales 3.03 (con la forma en contra: 1.89 / 2.42 / 3.41 / 6.58)",
    "aviso": "El partido con mayor discrepancia a favor nuestro en R1 es Victor Barreira Bonzom a 2.67 (+30 puntos sobre el mercado), y es exactamente el perfil que fallo hoy dos veces: residuo -1.02 contra la propia curva de R1. Avcibasi y Petrov tenian el mismo perfil y perdieron los dos. Todavia NO hay evidencia para apostarlo.",
    "herramientaNueva": "vigia/itf-mercado.mjs — ajusta la curva del mercado por grupo de rondas sobre las cuotas, sin necesitar resultados. Es el semaforo antes de mirar ningun partido."
+  },
+  {
+   "fecha": "2026-08-24",
+   "corrida": "el nicho que buscaba Sebastian: Δ alto en R1 del cuadro principal",
+   "detalle": [
+    "Sebastian corrigio el foco: en las cuotas de R1 hay tres partidos donde damos 90%+ con cuota 1.27-1.29, y eso es lo que busca. Tenia razon en insistir",
+    "Primero verifique que nuestro 90%+ es real: en el grupo 'buenas' con Δ6+, el modelo dice 94.8% y la realidad da 93.0% (n=86). Bien calibrado",
+    "Mi primera reaccion fue advertir que 4 de 6 rivales eran clasificados, y traje el caso Cado (que hoy le gano a Lenders, nuestra segura de Δ6.28). ERA UN MAL ARGUMENTO por dos razones: ese partido fue clasificado-contra-clasificado en Q2, no R1 del cuadro; y medido, el clasificado NO protege al perdedor en Δ alto"
+   ],
+   "hallazgo": "R1 del cuadro principal, ΔWTN >= 5, rival NO junior: el favorito por WTN gana 52/54 = 96.3%, intervalo 95% de 87.5% a 99.0%. Empata en cuota 1.04, y con el extremo pesimista del intervalo en 1.14. A las cuotas de hoy (1.27-1.29) eso es +22% a +24% de valor, y +11% a +13% AUNQUE la tasa real sea la peor compatible con lo medido. Es lo primero en todo el proyecto que sobrevive una cota pesimista.",
+   "robustez": "La celda mas cargada (rival clasificado, Δ>=5) es 31/32 repartido en 13 torneos distintos, con una sola derrota (Koki Matsuda contra Chen Hui Ho en Taipei). Dejando cada torneo afuera la tasa va de 96.4% a 100%: no la sostiene un torneo. La celda 'rival directo' es 5/6 — no es que el directo sea peor, es que no hay datos, por eso se juntan todas las vias menos junior.",
+   "excepcion": "Rival JUNIOR sigue siendo veto duro y funciono: Rares Teodor Pieleanu a 1.09 con Δ6.26 salio PASAR porque el rival es JR, y ahi el WTN se da vuelta (38.5%, n=13 en R1).",
+   "correccion": "Un reparo que meti hoy mismo bloqueaba de SEGURA a todo R1 entre dos jugadores sin trayectoria — que en la primera ronda de un cuadro es el estado NORMAL, no una senal. Dejaba fuera justo la ronda donde el metodo mide mejor. Ahora solo aplica desde la segunda ronda en adelante.",
+   "resultado": "Con eso quedan 4 SEGURAS para el 25/08: Novkirichka @1.27 (+19%), Mazdrashki @1.28 (+16%), Couturier @1.29 (+16%) y Sakellaridis @1.14 (+10%). Es la primera vez que el sistema marca varias con respaldo de una celda medida y no solo del modelo."
   }
  ],
  "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",
