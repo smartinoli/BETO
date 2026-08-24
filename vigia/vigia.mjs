@@ -357,14 +357,25 @@ function procesarSync(info, bet, cb, metas, salida) {
     const oB = bet.markets[mid].outcomes || {}, oC = (cb.markets || {})[mid]?.outcomes || {};
     const oids = Object.keys(oB);
     if (oids.length !== 2) continue;
-    const pB = {}, pC = {}, idB = {}; let ok = true, faltaJuez = false;
+    const pB = {}, pC = {}, idB = {}; let ok = true, faltaJuez = false, congelada = 0;
     for (const oid of oids) {
       const b0 = (oB[oid].players || {})['0'], c0 = ((oC[oid] || {}).players || {})['0'];
       for (const [q, dest] of [[b0, 'tsCasa'], [c0, 'tsJuez']]) {
         const ts = q?.changedAt ? Date.parse(q.changedAt) : NaN;
         if (ts) salida[dest] = Math.max(salida[dest] || 0, ts);
       }
-      if (!b0?.active || !(b0.price > 1)) { ok = false; break; }
+      /* usarCongeladas: cuando el feed de la casa se detiene, sus precios
+         siguen llegando con precio pero con active:false. Aceptarlos deja al
+         Vigía operando en vez de mudo, a cambio de que la cuota pueda ya no
+         existir. No se acepta en silencio: la señal viaja marcada con las
+         horas que tiene, para verificarla en pantalla antes de apostar.
+         El JUEZ sí debe estar vivo — sin justo fresco no hay ventaja que medir. */
+      const vivaCasa = b0?.active && b0.price > 1;
+      if (!vivaCasa && !(CFG.usarCongeladas && b0?.price > 1)) { ok = false; break; }
+      if (!vivaCasa) {
+        const ts = b0.changedAt ? Date.parse(b0.changedAt) : 0;
+        congelada = Math.max(congelada, ts ? (Date.now() - ts) / 3600e3 : 999);
+      }
       if (!c0?.active || !(c0.price > 1)) { ok = false; faltaJuez = true; break; }
       pB[oid] = b0.price; pC[oid] = c0.price;
       idB[oid] = b0.bookmakerOutcomeId || null;   /* id nativo de Betano */
@@ -453,6 +464,7 @@ function procesarSync(info, bet, cb, metas, salida) {
         }
         continue;
       }
+      if (congelada) E.congeladas++;
       const s = {
         sig: info.fixtureId + '|' + mid + '|' + oid, fix: info.fixtureId,
         partido: info.p1 + ' vs ' + info.p2, liga: info.liga, sid: info.sid,
@@ -461,6 +473,7 @@ function procesarSync(info, bet, cb, metas, salida) {
         bOid: idB[oid], bMid: bmid,
         link: linkDe(info, { oid: idB[oid], mid: bmid, lado, cuota: pB[oid].toFixed(2), fam: fam.fam }),
         deriva,
+        congelada: congelada || null,
         sospechosa: vent > CFG.umbralSospechosa,
       };
       const mejor = porFam.get(famKey);
@@ -556,7 +569,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const salida = {
     senales: [], sombras: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {},
     embudo: { fueraWhitelist: 0, cuartos: 0, lineasLejanas: 0, sinJuez: 0, inactivos: 0,
-              sinMeta: 0, sinCentral: 0,
+              sinMeta: 0, sinCentral: 0, congeladas: 0,
               cuotaAlta: 0, cuotaBaja: 0, ventajaBaja: 0, sinVentaja: 0, hermanas: 0, sinCloudbet: 0,
               /* ejemplos reales para el comando /porque */
               ej: { lejanas: [], sinJuez: [], cuotaAlta: [], hermanas: [], inactivos: [] },
@@ -703,6 +716,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       inicio: s.inicio, sid: s.sid, liga: s.liga, partido: s.partido,
       familia: s.familia, lado: s.lado, cuota: s.cuota, justo: s.justo,
       vent: s.vent, monto: montoDe(s.cuota, s.vent), estado: 'pendiente',
+      ...(s.congelada ? { congelada: +s.congelada.toFixed(1) } : {}),
     };
     salida.registradas++;
   }
@@ -731,6 +745,8 @@ function bloqueSenal(s, i) {
     `<b>${escHtml(s.lado)}</b> · ${escHtml(s.familia)}`,
     `${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${plata(montoDe(s.cuota, s.vent))}`,
     s.deriva ? `⚡ <b>El juez acortó ${Math.abs(s.deriva.dc)}% hace ${s.deriva.min} min y Betano no ha reaccionado</b> — información fresca` : '',
+    s.congelada ? `🧊 <b>CUOTA CONGELADA hace ${s.congelada.toFixed(1)} h</b> — ${escHtml(CASA)} no la está refrescando. `
+      + 'Ábrela y verifica el precio: si cambió, esta ventaja no existe.' : '',
     s.link ? `<a href="${escHtml(s.link)}">Abrir en ${escHtml(DOM_APUESTA)}</a>`
            : `<i>apostar en ${escHtml(CASA)}</i>`,
   ].filter(Boolean).join('\n');
@@ -750,6 +766,7 @@ async function reportar(r, titulo) {
     E.lineasLejanas && `${E.lineasLejanas} líneas lejos de la central`,
     E.cuartos && `${E.cuartos} de cuarto (0.25/0.75, no están en LAT)`,
     E.hermanas && `${E.hermanas} hermanas de la misma familia (queda la mejor)`,
+    E.congeladas && `${E.congeladas} con cuota congelada (aceptadas: usarCongeladas)`,
     E.inactivos && `${E.inactivos} con la cuota de ${escHtml(CASA)} cerrada o sin precio`,
     E.sinCentral && `${E.sinCentral} sin línea central utilizable (la central era de cuarto)`,
     E.fueraWhitelist && `${E.fueraWhitelist} familias fuera de la lista blanca`,
