@@ -23,14 +23,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { pNivel, normRonda, GRUPO } from './itf-reglas.mjs';
+import { pNivel, normRonda, GRUPO, mismoJugador, elegirNombre} from './itf-reglas.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const DATOS = path.join(DIR, 'datos', 'itf');
 const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z ]/g, ' ').replace(/\s+/g, ' ').trim();
-const tok = s => new Set(norm(s).split(' ').filter(x => x.length >= 3));
-const calza = (a, b) => { const A = tok(a), B = tok(b); let c = 0; for (const x of A) if (B.has(x)) c++;
-  return c >= 1 && c >= Math.min(A.size, B.size) - 1; };
+/* el cruce difuso de nombres vive en itf-reglas.mjs: una sola version,
+   probada, en vez de tres copias sueltas que ya nos costaron una cuota
+   guardada con el jugador equivocado */
+const calza = mismoJugador;
 const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch { return null } };
 
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};

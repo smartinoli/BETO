@@ -36,13 +36,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { mismoJugador, elegirNombre } from './itf-reglas.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const DATOS = path.join(DIR, 'datos', 'itf');
 const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z ]/g, ' ').replace(/\s+/g, ' ').trim();
-const tok = s => new Set(norm(s).split(' ').filter(x => x.length >= 3));
-const calza = (a, b) => { const A = tok(a), B = tok(b); let c = 0; for (const x of A) if (B.has(x)) c++;
-  return c >= 1 && c >= Math.min(A.size, B.size) - 1; };
+/* el cruce difuso de nombres vive en itf-reglas.mjs: una sola version,
+   probada, en vez de tres copias sueltas que ya nos costaron una cuota
+   guardada con el jugador equivocado */
+const calza = mismoJugador;
 const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch { return null } };
 
 const args = process.argv.slice(2);
@@ -208,22 +210,30 @@ for (const ruta of pdfs) {
   const { t, error } = torneoDe(info.pais, fechaISO, info.quali);
   if (error) { problemas.push(`${base}: ${error}`); continue; }
 
-  const conocidos = jugadores.get(t.k) || new Set();
+  /* Se guarda el nombre como lo escribe la ITF, no como lo escribe Betano
+     ("Aren Baybar" contra "Aren Baybars", "Luca" contra "Lucca"). El cruce
+     de aca en adelante es difuso igual, pero un registro con la ortografia
+     oficial se puede leer y comparar a mano sin dudar de nada. */
+  const conocidos = [...(jugadores.get(t.k) || new Set())];
   const ok = [], fuera = [];
   for (const x of r.partidos) {
-    const e1 = [...conocidos].some(n => calza(n, x.p1));
-    const e2 = [...conocidos].some(n => calza(n, x.p2));
-    (e1 && e2 ? ok : fuera).push({ ...x, e1, e2 });
+    const n1 = elegirNombre(conocidos, x.p1);
+    const n2 = elegirNombre(conocidos, x.p2);
+    (n1 && n2 ? ok : fuera).push({ ...x, e1: !!n1, e2: !!n2,
+      itf1: n1 || x.p1, itf2: n2 || x.p2 });
   }
   console.log(`\n${base}`);
   console.log(`  ${esJson ? 'JSON' : 'PDF'} · país "${info.pais}"${info.quali ? ' (clasificación)' : ''} · ${fechaISO} → ${t.nombre} [${t.k}]`);
   console.log(`  ${r.partidos.length} partidos leídos · ${ok.length} verificados en el cuadro · ${fuera.length} sin verificar`);
   for (const x of ok) {
-    const k = norm(t.nombre) + '|' + norm(x.p1) + '|' + norm(x.p2);
+    const k = norm(t.nombre) + '|' + norm(x.itf1) + '|' + norm(x.itf2);
     if (yaHay.has(k)) { repes++; continue; }
     yaHay.add(k); nuevas++;
-    doc.cuotas.push({ torneo: t.nombre, p1: x.p1, p2: x.p2, g1: x.g1, g2: x.g2, visto });
-    console.log(`    + ${x.p1} ${x.g1} / ${x.p2} ${x.g2}`);
+    doc.cuotas.push({ torneo: t.nombre, p1: x.itf1, p2: x.itf2, g1: x.g1, g2: x.g2, visto,
+      ...(norm(x.itf1) !== norm(x.p1) || norm(x.itf2) !== norm(x.p2)
+        ? { betano: `${x.p1} / ${x.p2}` } : {}) });
+    const ren = norm(x.itf1) !== norm(x.p1) || norm(x.itf2) !== norm(x.p2);
+    console.log(`    + ${x.itf1} ${x.g1} / ${x.itf2} ${x.g2}${ren ? `   (Betano los escribe "${x.p1}" / "${x.p2}")` : ''}`);
   }
   for (const x of fuera)
     console.log(`    ? ${x.p1} ${x.g1} / ${x.p2} ${x.g2}   — ${!x.e1 && !x.e2 ? 'ninguno de los dos está' : 'no está ' + (x.e1 ? x.p2 : x.p1)} en el cuadro de ${t.nombre}`);

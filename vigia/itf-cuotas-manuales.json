@@ -93,11 +93,12 @@
   },
   {
    "torneo": "M25 Oviedo (qualis)",
-   "p1": "Alejandro Garcia",
+   "p1": "Alejandro Garcia Carbajal",
    "p2": "Marc Ros Mesas",
    "g1": 1.08,
    "g2": 6.5,
-   "visto": "2026-08-23T06:00Z"
+   "visto": "2026-08-23T06:00Z",
+   "betano": "Alejandro Garcia / Marc Ros Mesas"
   },
   {
    "torneo": "M25 Oviedo (qualis)",
@@ -390,10 +391,11 @@
   {
    "torneo": "M15 Cap d'Agde",
    "p1": "Mathieu Scaglia",
-   "p2": "Mohamed Nazim Makhlouf",
+   "p2": "Nazim Makhlouf",
    "g1": 1.75,
    "g2": 1.91,
-   "visto": "2026-08-24T16:30Z"
+   "visto": "2026-08-24T16:30Z",
+   "betano": "Mathieu Scaglia / Mohamed Nazim Makhlouf"
   },
   {
    "torneo": "M15 Cap d'Agde",
@@ -530,6 +532,31 @@
    "g1": 2.67,
    "g2": 1.4,
    "visto": "2026-08-24T20:11Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Denis Constantin Spiridon",
+   "p2": "Giuseppe La Vela",
+   "g1": 3.2,
+   "g2": 1.29,
+   "visto": "2026-08-24T22:42Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Mario Mansilla Diez",
+   "p2": "Jose Dominguez Alonso",
+   "g1": 1.65,
+   "g2": 2.07,
+   "visto": "2026-08-24T22:42Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Pedro Vives Marcos",
+   "p2": "Aren Baybars",
+   "g1": 1.11,
+   "g2": 5.2,
+   "visto": "2026-08-24T22:42Z",
+   "betano": "Pedro Vives Marcos / Aren Baybar"
   }
  ]
 }

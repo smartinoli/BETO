@@ -55,6 +55,79 @@ export function huboRetiro(t) {
   return false;
 }
 
+/* ---------- cruzar nombres entre fuentes ----------
+   Betano y la ITF no escriben igual: "Aren Baybar" contra "Aren Baybars",
+   "Luca" contra "Lucca", "Matisse MARTIN" contra "Matisse Martin", y los
+   PDF a veces cortan el apellido. Hacia falta un cruce difuso.
+
+   El primero que escribi era demasiado suelto: le bastaba UN token en
+   comun cuando los dos nombres tenian dos. Con eso, "Carles Cordoba" de
+   Betano caso con "Carles Hernandez" del cuadro de Oviedo — dos jugadores
+   distintos, los dos en el mismo torneo — y entro una cuota al registro
+   con el nombre equivocado. Encontrado el 2026-08-24.
+
+   Ahora los trozos se comparan tolerando el plural, el acento perdido y
+   el corte ("baybar" vale por "baybars"), pero tienen que calzar TODOS
+   los del nombre mas corto. Y entre varios candidatos gana el que mas
+   comparte, no el primero de la lista. */
+const NORM = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+  .toLowerCase().replace(/[^a-z ]/g, ' ').replace(/\s+/g, ' ').trim();
+/* se descartan solo las iniciales sueltas: un apellido de dos letras
+   ("Wu", "Ho") es un apellido, y tirarlo hacia que "Kai-An Wu" pasara por
+   "Kai-I Wang" — les quedaba "kai" como unico trozo en comun */
+const PARTES = s => NORM(s).split(' ').filter(x => x.length >= 2);
+
+function distancia(a, b) {
+  const m = a.length, n = b.length;
+  if (Math.abs(m - n) > 2) return 9;
+  let prev = Array.from({ length: n + 1 }, (_, j) => j);
+  for (let i = 1; i <= m; i++) {
+    const cur = [i];
+    for (let j = 1; j <= n; j++)
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    prev = cur;
+  }
+  return prev[n];
+}
+/* dos trozos de nombre que son el mismo, escritos distinto */
+const mismoTrozo = (a, b) => a === b
+  || (Math.min(a.length, b.length) >= 4 && (a.startsWith(b) || b.startsWith(a)))
+  /* 4 letras y no 5: hacia falta para "Luca"/"Lucca". Es seguro porque
+     un trozo suelto nunca alcanza — siempre se piden dos. */
+  || (Math.min(a.length, b.length) >= 4 && distancia(a, b) <= 1);
+
+/* cuantos trozos comparten, sin contar dos veces el mismo */
+function comunes(A, B) {
+  const libres = [...B]; let c = 0;
+  for (const x of A) {
+    const i = libres.findIndex(y => mismoTrozo(x, y));
+    if (i >= 0) { libres.splice(i, 1); c++; }
+  }
+  return c;
+}
+export function mismoJugador(a, b) {
+  const A = PARTES(a), B = PARTES(b);
+  if (!A.length || !B.length) return false;
+  /* TODOS los trozos del nombre mas corto tienen que calzar. Una fuente
+     puede traer un nombre de mas ("Mohamed Nazim Makhlouf" contra "Nazim
+     Makhlouf") pero no puede contradecir al otro. Sin esto, dos hermanos
+     pasan por la misma persona: Enrique y Maxi Carrascosa Diaz en Oviedo,
+     Kai-i y Yen-Chun Wang en Taipei. */
+  return comunes(A, B) >= Math.min(A.length, B.length);
+}
+/* De una lista, el nombre que mejor calza — no el primero que pase. */
+export function elegirNombre(lista, nombre) {
+  const A = PARTES(nombre);
+  let mejor = null, ms = -1;
+  for (const n of lista) {
+    if (!mismoJugador(n, nombre)) continue;
+    const B = PARTES(n);
+    const s = comunes(A, B) * 10 - Math.abs(A.length - B.length);
+    if (s > ms) { ms = s; mejor = n; }
+  }
+  return mejor;
+}
+
 /* ---------- ronda, bandas y choque ---------- */
 /* El nombre de la ronda llega de tres vocabularios distintos: el cuadro
    ("Quarter-finals"), el order of play ("Quarter-final", en singular) y
