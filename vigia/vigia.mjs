@@ -131,15 +131,18 @@ const slug = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 /* El link lleva un hash propio (#vg=...) que Betano ignora pero el marcador
    "Llenar boleta" lee para ubicar y clickear la selección exacta. */
-/* El deep link solo existe para los espejos de Betano: su bookmakerFixtureId
-   arma la URL del partido. Con otra casa se devuelve '' y el reporte no
-   muestra link — mandar a Betano a apostar una cuota de otra casa sería
-   peor que no dar link. */
+/* DÓNDE SE LEE ≠ DÓNDE SE APUESTA. El precio se lee del espejo "casa"; el
+   link va siempre a "dominioApuesta" (tu Betano de Chile). Si el espejo
+   leído no es el de Chile, la cuota mostrada es la de ESE espejo y puede
+   no coincidir con la de tu pantalla: el reporte lo avisa arriba.
+   Con una casa que no sea Betano no hay link (mandarte a Betano a apostar
+   una cuota de otra casa sería peor que no dar link). */
+const DOM_APUESTA = CFG.dominioApuesta || 'lat.betano.com';
 const linkDe = (f, sel) => {
   if (!/betano/i.test(CASA)) return '';
   const base = f.bookmakerFixtureId
-    ? `https://lat.betano.com/cuotas-de-partido/${slug(f.p1)}-${slug(f.p2)}/${f.bookmakerFixtureId}/`
-    : 'https://lat.betano.com/';
+    ? `https://${DOM_APUESTA}/cuotas-de-partido/${slug(f.p1)}-${slug(f.p2)}/${f.bookmakerFixtureId}/`
+    : `https://${DOM_APUESTA}/`;
   if (!sel) return base;
   const h = [sel.oid || '', sel.mid || '', sel.lado || '', sel.cuota || '', sel.fam || '']
     .map(encodeURIComponent).join('~');
@@ -728,7 +731,7 @@ function bloqueSenal(s, i) {
     `<b>${escHtml(s.lado)}</b> · ${escHtml(s.familia)}`,
     `${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${plata(montoDe(s.cuota, s.vent))}`,
     s.deriva ? `⚡ <b>El juez acortó ${Math.abs(s.deriva.dc)}% hace ${s.deriva.min} min y Betano no ha reaccionado</b> — información fresca` : '',
-    s.link ? `<a href="${escHtml(s.link)}">Abrir en Betano</a>`
+    s.link ? `<a href="${escHtml(s.link)}">Abrir en ${escHtml(DOM_APUESTA)}</a>`
            : `<i>apostar en ${escHtml(CASA)}</i>`,
   ].filter(Boolean).join('\n');
 }
@@ -775,10 +778,17 @@ async function reportar(r, titulo) {
       + `No son tus criterios ni el código — OddsPapi no está refrescando esa casa. `
       + `Manda <b>/casas</b> para ver si otro espejo de Betano está vivo en tu plan.`
     : '';
+  /* leer un espejo y apostar en otro es legítimo cuando el tuyo está caído,
+     pero la cuota puede no calzar: hay que verificarla en pantalla. */
+  const espejoAjeno = /betano/i.test(CASA) && CASA !== 'betano'
+    ? `⚠️ <b>Precios leídos de ${escHtml(CASA)}</b>, pero apuestas en ${escHtml(DOM_APUESTA)}. `
+      + `Son espejos distintos: <b>verifica la cuota en pantalla antes de apostar</b> — si bajó, la ventaja se evapora.`
+    : '';
   const cab = [
     `<b>${titulo}</b>`,
-    `<i>espejo: ${escHtml(CASA)}</i>`,
+    `<i>espejo: ${escHtml(CASA)} → apuestas en ${escHtml(DOM_APUESTA)}</i>`,
     congelado,
+    espejoAjeno,
     r.fueraDeFoco != null ? `<i>🎯 Foco: AH −(x) primer tiempo · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco ${CFG.sombras !== false ? 'a la sombra' : 'descartada(s)'}</i>` : '',
     r.deportesFuera?.length ? `⚠️ Sin acceso en tu plan OddsPapi: ${r.deportesFuera.map(escHtml).join(' · ')} — se saltaron. Revisa el panel si no fue a propósito.` : '',
     r.avisoLotes || '',
