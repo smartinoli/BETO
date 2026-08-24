@@ -1,0 +1,4035 @@
+{
+ "generado": "2026-08-24T12:59:45.343Z",
+ "torneos": [
+  {
+   "clave": "m-itf-arg-2026-008",
+   "bajado": "2026-08-20T05:28:51.921Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 64,
+     "de": {
+      "MDA": 0,
+      "Q": 46,
+      "A": 16,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 2
+     },
+     "dilucion": 0.28125
+    }
+   },
+   "retiros": {
+    "total": 79,
+    "conRanking": 40,
+    "mejorAtp": 330,
+    "aOtroTorneo": 6,
+    "destinos": [
+     [
+      "M15 Monastir",
+      4
+     ],
+     [
+      "M15 Hurghada",
+      1
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      1
+     ]
+    ],
+    "top": [
+     {
+      "atp": 330,
+      "nombre": "Hernan Casanova",
+      "fecha": "09 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 444,
+      "nombre": "Daniel Dutra da Silva"
+     },
+     {
+      "atp": 454,
+      "nombre": "Lorenzo Joaquin Rodriguez",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 532,
+      "nombre": "Joao Eduardo Schiessl",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 705,
+      "nombre": "Nicolas Villalon Valdes",
+      "fecha": "09 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 749,
+      "nombre": "Wilson Leite",
+      "fecha": "09 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "bautista de la Pena",
+      "atp": 1470,
+      "wtn": 15.9
+     },
+     {
+      "seed": 2,
+      "nombre": "Dakotah Bobo",
+      "atp": 1559,
+      "wtn": 8.9
+     },
+     {
+      "seed": 3,
+      "nombre": "Valentin Garay",
+      "atp": 1563,
+      "wtn": 11.26
+     },
+     {
+      "seed": 4,
+      "nombre": "Tadeo Meneo",
+      "atp": 1577,
+      "wtn": 14.12
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-aut-2026-002",
+   "bajado": "2026-08-20T05:28:00.740Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 13,
+      "Q": 14,
+      "A": 3,
+      "JR": 2,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0.09375
+    },
+    "Q": {
+     "total": 63,
+     "de": {
+      "MDA": 0,
+      "Q": 37,
+      "A": 24,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 1
+     },
+     "dilucion": 0.3968253968253968
+    }
+   },
+   "retiros": {
+    "total": 529,
+    "conRanking": 152,
+    "mejorAtp": 460,
+    "aOtroTorneo": 160,
+    "destinos": [
+     [
+      "M25 Slovenj Gradec",
+      40
+     ],
+     [
+      "M15 Arad",
+      18
+     ],
+     [
+      "M25 Lesa",
+      16
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      12
+     ],
+     [
+      "M25 Ueberlingen",
+      12
+     ]
+    ],
+    "top": [
+     {
+      "atp": 460,
+      "nombre": "Yannik Kelm",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 527,
+      "nombre": "Oleksii Krutykh"
+     },
+     {
+      "atp": 553,
+      "nombre": "Matyas Fuele",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 566,
+      "nombre": "Kirill Kivattsev",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 587,
+      "nombre": "Imanol Lopez Morillo",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 616,
+      "nombre": "Marlon Vankan",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Vladyslav Orlov",
+      "atp": 430,
+      "wtn": 5.34
+     },
+     {
+      "seed": 2,
+      "nombre": "Marcel Zielinski",
+      "atp": 586,
+      "wtn": 6.51
+     },
+     {
+      "seed": 3,
+      "nombre": "Nikita Mashtakov",
+      "atp": 652,
+      "wtn": 4.83
+     },
+     {
+      "seed": 4,
+      "nombre": "Attila Dominik Boros",
+      "atp": 767,
+      "wtn": 8.02
+     }
+    ],
+    "Q": [
+     {
+      "seed": 2,
+      "nombre": "Facundo Yunis",
+      "atp": 2230,
+      "wtn": 8.83
+     },
+     {
+      "seed": 3,
+      "nombre": "Bastian Berenz",
+      "atp": 1735,
+      "wtn": 14.13
+     },
+     {
+      "seed": 4,
+      "nombre": "Kabeer Kapasi",
+      "atp": null,
+      "wtn": 11.92
+     },
+     {
+      "seed": 5,
+      "nombre": "Filip Drab",
+      "atp": 1984,
+      "wtn": 13.01
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-aut-2026-003",
+   "bajado": "2026-08-20T05:29:37.798Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 64,
+     "de": {
+      "MDA": 0,
+      "Q": 38,
+      "A": 23,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 3
+     },
+     "dilucion": 0.40625
+    }
+   },
+   "retiros": {
+    "total": 482,
+    "conRanking": 176,
+    "mejorAtp": 331,
+    "aOtroTorneo": 25,
+    "destinos": [
+     [
+      "M15 Monastir",
+      12
+     ],
+     [
+      "M15 Pécs",
+      10
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      2
+     ],
+     [
+      "M15 Hurghada",
+      1
+     ]
+    ],
+    "top": [
+     {
+      "atp": 331,
+      "nombre": "Petr Brunclik",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 380,
+      "nombre": "Lucio Ratti",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 420,
+      "nombre": "Eric Vanshelboim",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 431,
+      "nombre": "Vladyslav Orlov",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 485,
+      "nombre": "Jack Loge",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 522,
+      "nombre": "Oleksii Krutykh",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Patrik Homola",
+      "atp": 1872,
+      "wtn": 10.71
+     },
+     {
+      "seed": 2,
+      "nombre": "Kabeer Kapasi",
+      "atp": 1910,
+      "wtn": 11.83
+     },
+     {
+      "seed": 3,
+      "nombre": "Samuel Stolarik",
+      "atp": 1995,
+      "wtn": 14.79
+     },
+     {
+      "seed": 4,
+      "nombre": "Enrique Bogo",
+      "atp": 2081,
+      "wtn": 13.57
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-bel-2026-004",
+   "bajado": "2026-08-20T05:28:09.606Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 15,
+      "Q": 15,
+      "A": 1,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.0625
+    },
+    "Q": {
+     "total": 48,
+     "de": {
+      "MDA": 0,
+      "Q": 30,
+      "A": 16,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 1
+     },
+     "dilucion": 0.3541666666666667
+    }
+   },
+   "retiros": {
+    "total": 322,
+    "conRanking": 95,
+    "mejorAtp": 460,
+    "aOtroTorneo": 71,
+    "destinos": [
+     [
+      "M25 Ueberlingen",
+      13
+     ],
+     [
+      "M15 Mistelbach",
+      9
+     ],
+     [
+      "M25 Slovenj Gradec",
+      9
+     ],
+     [
+      "M15 Bastad",
+      7
+     ],
+     [
+      "M25 Lesa",
+      7
+     ]
+    ],
+    "top": [
+     {
+      "atp": 460,
+      "nombre": "Yannik Kelm",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 528,
+      "nombre": "Louis Wessels",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 585,
+      "nombre": "Adrian Oetzbach",
+      "fecha": "03 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 586,
+      "nombre": "Marcel Zielinski",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 621,
+      "nombre": "Etienne Donnet",
+      "fecha": "01 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 630,
+      "nombre": "Ignacio Monzon",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Jack Loge",
+      "atp": 410,
+      "wtn": 5.71
+     },
+     {
+      "seed": 2,
+      "nombre": "Romain Faucon",
+      "atp": 588,
+      "wtn": 6.79
+     },
+     {
+      "seed": 3,
+      "nombre": "Marlon Vankan",
+      "atp": 616,
+      "wtn": 6.18
+     },
+     {
+      "seed": 4,
+      "nombre": "Martin VAN DER MEERSCHEN",
+      "atp": 723,
+      "wtn": 6.76
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Thanaphat Boosarawongse",
+      "atp": 2147,
+      "wtn": 8.9
+     },
+     {
+      "seed": 3,
+      "nombre": "Noah Thurner",
+      "atp": 1428,
+      "wtn": 10.35
+     },
+     {
+      "seed": 4,
+      "nombre": "Pijus Vaitiekunas",
+      "atp": 1470,
+      "wtn": 9.89
+     },
+     {
+      "seed": 5,
+      "nombre": "Daniel Verbeek",
+      "atp": 1585,
+      "wtn": 9.06
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-chn-2026-028",
+   "bajado": "2026-08-20T05:27:55.251Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 17,
+      "Q": 14,
+      "A": 1,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0.03125
+    },
+    "Q": {
+     "total": 64,
+     "de": {
+      "MDA": 0,
+      "Q": 45,
+      "A": 18,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.296875
+    }
+   },
+   "retiros": {
+    "total": 230,
+    "conRanking": 92,
+    "mejorAtp": 354,
+    "aOtroTorneo": 35,
+    "destinos": [
+     [
+      "M25 Taipei",
+      22
+     ],
+     [
+      "M15 Arad",
+      2
+     ],
+     [
+      "J100 Chestertown",
+      1
+     ],
+     [
+      "J60 CHENNAI",
+      1
+     ],
+     [
+      "J60 Cholpon-Ata",
+      1
+     ]
+    ],
+    "top": [
+     {
+      "atp": 354,
+      "nombre": "Jake Delaney",
+      "fecha": "04 Aug 2026",
+      "destino": "M25 Taipei"
+     },
+     {
+      "atp": 395,
+      "nombre": "Arthur Weber",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 432,
+      "nombre": "Luca Castelnuovo",
+      "fecha": "03 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 443,
+      "nombre": "Sanhui Shin",
+      "fecha": "04 Aug 2026",
+      "destino": "M25 Taipei"
+     },
+     {
+      "atp": 477,
+      "nombre": "Dominik Palan",
+      "fecha": "04 Aug 2026",
+      "destino": "M25 Taipei"
+     },
+     {
+      "atp": 480,
+      "nombre": "Moerani Bouzige",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Petr Bar Biryukov",
+      "atp": 281,
+      "wtn": 3.68
+     },
+     {
+      "seed": 2,
+      "nombre": "M Rifqi Fitriadi",
+      "atp": 549,
+      "wtn": 6.21
+     },
+     {
+      "seed": 3,
+      "nombre": "Kokoro Isomura",
+      "atp": 562,
+      "wtn": 6.38
+     },
+     {
+      "seed": 4,
+      "nombre": "Chase Ferguson",
+      "atp": 640,
+      "wtn": 6.67
+     }
+    ],
+    "Q": [
+     {
+      "seed": 2,
+      "nombre": "James Van Herzeele",
+      "atp": 1086,
+      "wtn": 9.8
+     },
+     {
+      "seed": 3,
+      "nombre": "Jaesung Choe",
+      "atp": 1201,
+      "wtn": 8.94
+     },
+     {
+      "seed": 4,
+      "nombre": "Xing Dao Chen",
+      "atp": 1308,
+      "wtn": 9.8
+     },
+     {
+      "seed": 5,
+      "nombre": "Shu Muto",
+      "atp": 1333,
+      "wtn": 10.17
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-chn-2026-029",
+   "bajado": "2026-08-20T05:29:00.176Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 64,
+     "de": {
+      "MDA": 0,
+      "Q": 38,
+      "A": 26,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0.40625
+    }
+   },
+   "retiros": {
+    "total": 220,
+    "conRanking": 87,
+    "mejorAtp": 307,
+    "aOtroTorneo": 35,
+    "destinos": [
+     [
+      "M15 Hurghada",
+      11
+     ],
+     [
+      "M25 Taipei",
+      9
+     ],
+     [
+      "M15 Monastir",
+      4
+     ],
+     [
+      "J60 Shenzhen",
+      4
+     ],
+     [
+      "J200 Sydney",
+      3
+     ]
+    ],
+    "top": [
+     {
+      "atp": 307,
+      "nombre": "Matthew Dellavedova",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Taipei"
+     },
+     {
+      "atp": 354,
+      "nombre": "Jake Delaney",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Taipei"
+     },
+     {
+      "atp": 398,
+      "nombre": "Arthur Weber",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 443,
+      "nombre": "Luca Castelnuovo",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Taipei"
+     },
+     {
+      "atp": 473,
+      "nombre": "Moerani Bouzige",
+      "fecha": "10 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 478,
+      "nombre": "Koki Matsuda",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 2,
+      "nombre": "Daisuke Sumizawa",
+      "atp": 1289,
+      "wtn": 9.77
+     },
+     {
+      "seed": 3,
+      "nombre": "Shu Muto",
+      "atp": 1340,
+      "wtn": 10.17
+     },
+     {
+      "seed": 4,
+      "nombre": "Weiwen Pan",
+      "atp": 1417,
+      "wtn": 12.11
+     },
+     {
+      "seed": 6,
+      "nombre": "XIAOYIN YANG",
+      "atp": 1429,
+      "wtn": 10.44
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-egy-2026-022",
+   "bajado": "2026-08-20T05:28:55.400Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 61,
+     "de": {
+      "MDA": 0,
+      "Q": 45,
+      "A": 14,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 1
+     },
+     "dilucion": 0.2459016393442623
+    }
+   },
+   "retiros": {
+    "total": 325,
+    "conRanking": 81,
+    "mejorAtp": 540,
+    "aOtroTorneo": 22,
+    "destinos": [
+     [
+      "M15 Monastir",
+      21
+     ],
+     [
+      "J300 College Park",
+      1
+     ]
+    ],
+    "top": [
+     {
+      "atp": 540,
+      "nombre": "Digvijay Pratap Singh",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 580,
+      "nombre": "Mae Malige",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 598,
+      "nombre": "Karan Singh",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 608,
+      "nombre": "Ergi Kirkin",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 624,
+      "nombre": "Etienne Donnet",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 632,
+      "nombre": "Maxwell McKennon",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Andrea Bacaloni",
+      "atp": 1431,
+      "wtn": 10.02
+     },
+     {
+      "seed": 2,
+      "nombre": "Aryan Lakshmanan",
+      "atp": 1552,
+      "wtn": 11.22
+     },
+     {
+      "seed": 3,
+      "nombre": "Aleksandre Shvangiradze",
+      "atp": 1642,
+      "wtn": 16.58
+     },
+     {
+      "seed": 4,
+      "nombre": "Essa Qabazard",
+      "atp": 1884,
+      "wtn": 13.79
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-esp-2026-034",
+   "bajado": "2026-08-20T05:27:23.031Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 17,
+      "Q": 12,
+      "A": 1,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 2
+     },
+     "dilucion": 0.09375
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 21,
+      "A": 9,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 2
+     },
+     "dilucion": 0.34375
+    }
+   },
+   "retiros": {
+    "total": 295,
+    "conRanking": 98,
+    "mejorAtp": 378,
+    "aOtroTorneo": 79,
+    "destinos": [
+     [
+      "M25 Idanha-a-Nova",
+      21
+     ],
+     [
+      "M15 Bastad",
+      9
+     ],
+     [
+      "M15 Mistelbach",
+      9
+     ],
+     [
+      "M25 Slovenj Gradec",
+      9
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      7
+     ]
+    ],
+    "top": [
+     {
+      "atp": 378,
+      "nombre": "Ioannis Xilas",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 384,
+      "nombre": "Laurent Lokoli",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 415,
+      "nombre": "Eric Vanshelboim",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 427,
+      "nombre": "Valerio Aboian",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 430,
+      "nombre": "Vladyslav Orlov",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 438,
+      "nombre": "Juan Cruz Martin Manzano",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Carlos Sanchez Jover",
+      "atp": 374,
+      "wtn": 3.5
+     },
+     {
+      "seed": 2,
+      "nombre": "Sergi Perez Contri",
+      "atp": 461,
+      "wtn": 5.15
+     },
+     {
+      "seed": 3,
+      "nombre": "Ivan Gakhov",
+      "atp": 459,
+      "wtn": 3.58
+     },
+     {
+      "seed": 4,
+      "nombre": "Pedro Vives Marcos",
+      "atp": 530,
+      "wtn": 4.59
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Toprak Avcibasi",
+      "atp": 1467,
+      "wtn": 11.43
+     },
+     {
+      "seed": 2,
+      "nombre": "Ivan Iutkin",
+      "atp": 1480,
+      "wtn": 12.27
+     },
+     {
+      "seed": 3,
+      "nombre": "Sergio Planella Hernandez",
+      "atp": 1421,
+      "wtn": 10.72
+     },
+     {
+      "seed": 4,
+      "nombre": "Mateo Luis Alvarez Sarmiento",
+      "atp": 1818,
+      "wtn": 10.45
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-esp-2026-044",
+   "bajado": "2026-08-20T05:28:41.153Z",
+   "cuadros": {
+    "M": {
+     "total": 24,
+     "de": {
+      "MDA": 18,
+      "Q": 6,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 17,
+      "A": 13,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 2
+     },
+     "dilucion": 0.46875
+    }
+   },
+   "retiros": {
+    "total": 212,
+    "conRanking": 79,
+    "mejorAtp": 321,
+    "aOtroTorneo": 52,
+    "destinos": [
+     [
+      "M15 Monastir",
+      8
+     ],
+     [
+      "M15 Vienna",
+      8
+     ],
+     [
+      "M15 Bucharest",
+      7
+     ],
+     [
+      "M25 Lausanne",
+      5
+     ],
+     [
+      "M15 Pécs",
+      5
+     ]
+    ],
+    "top": [
+     {
+      "atp": 321,
+      "nombre": "Enrico Dalla valle",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Lausanne"
+     },
+     {
+      "atp": 331,
+      "nombre": "Petr Brunclik",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 342,
+      "nombre": "Oriol Roca Batalla",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 353,
+      "nombre": "Andrey Chepelev",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Lausanne"
+     },
+     {
+      "atp": 371,
+      "nombre": "Max Wiskandt",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 403,
+      "nombre": "Laurent Lokoli",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Carlos Sanchez Jover",
+      "atp": 377,
+      "wtn": 3.5
+     },
+     {
+      "seed": 2,
+      "nombre": "Javier Barranco Cosano",
+      "atp": 457,
+      "wtn": 3.89
+     },
+     {
+      "seed": 3,
+      "nombre": "Sergi Perez Contri",
+      "atp": 461,
+      "wtn": 5.43
+     },
+     {
+      "seed": 4,
+      "nombre": "Ivan Gakhov",
+      "atp": 469,
+      "wtn": 3.58
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Aren Baybars",
+      "atp": 1320,
+      "wtn": 14.97
+     },
+     {
+      "seed": 2,
+      "nombre": "Madhwin Kamath",
+      "atp": 1415,
+      "wtn": 10.94
+     },
+     {
+      "seed": 3,
+      "nombre": "Alejandro Garcia Carbajal",
+      "atp": 1436,
+      "wtn": 7.62
+     },
+     {
+      "seed": 4,
+      "nombre": "Toprak Avcibasi",
+      "atp": 1468,
+      "wtn": 11.43
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-fra-2026-025",
+   "bajado": "2026-08-20T05:29:26.527Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 17,
+      "A": 14,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 0
+     },
+     "dilucion": 0.4375
+    }
+   },
+   "retiros": {
+    "total": 257,
+    "conRanking": 85,
+    "mejorAtp": 380,
+    "aOtroTorneo": 56,
+    "destinos": [
+     [
+      "M15 Pécs",
+      12
+     ],
+     [
+      "M15 Monastir",
+      11
+     ],
+     [
+      "M15 Vienna",
+      10
+     ],
+     [
+      "M15 Hurghada",
+      6
+     ],
+     [
+      "M25 Oldenzaal",
+      5
+     ]
+    ],
+    "top": [
+     {
+      "atp": 380,
+      "nombre": "Lucio Ratti",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 438,
+      "nombre": "Corentin Denolly",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 559,
+      "nombre": "Maxime Janvier"
+     },
+     {
+      "atp": 565,
+      "nombre": "Yanis Ghazouani Durand"
+     },
+     {
+      "atp": 594,
+      "nombre": "Alexander Weis",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 603,
+      "nombre": "Lorenzo Bocchi",
+      "fecha": "11 Aug 2026",
+      "destino": "M15 Pécs"
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Massimo Pizzigoni",
+      "atp": 1771,
+      "wtn": 12.07
+     },
+     {
+      "seed": 2,
+      "nombre": "Nicola Senn",
+      "atp": 1841,
+      "wtn": 12.3
+     },
+     {
+      "seed": 3,
+      "nombre": "Ruslan Serazhetdinov",
+      "atp": 1860,
+      "wtn": 13.41
+     },
+     {
+      "seed": 4,
+      "nombre": "Thomas Gerbaud",
+      "atp": 1860,
+      "wtn": 10.76
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-ger-2026-015",
+   "bajado": "2026-08-20T05:27:18.869Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 17,
+      "Q": 10,
+      "A": 4,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.15625
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 19,
+      "A": 12,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.40625
+    }
+   },
+   "retiros": {
+    "total": 377,
+    "conRanking": 138,
+    "mejorAtp": 305,
+    "aOtroTorneo": 53,
+    "destinos": [
+     [
+      "M15 Lambermont",
+      17
+     ],
+     [
+      "M25 Slovenj Gradec",
+      8
+     ],
+     [
+      "M25 Lesa",
+      8
+     ],
+     [
+      "M15 Mistelbach",
+      6
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      3
+     ]
+    ],
+    "top": [
+     {
+      "atp": 305,
+      "nombre": "Daniel Michalski",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 352,
+      "nombre": "Mili Poljicak",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 374,
+      "nombre": "Carlos Sanchez Jover",
+      "fecha": "01 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 378,
+      "nombre": "Ioannis Xilas",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 408,
+      "nombre": "Geoffrey Blancaneaux"
+     },
+     {
+      "atp": 410,
+      "nombre": "Jack Loge",
+      "fecha": "31 Jul 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Max Wiskandt",
+      "atp": 365,
+      "wtn": 4.8
+     },
+     {
+      "seed": 2,
+      "nombre": "Daniel Masur",
+      "atp": 377,
+      "wtn": 3.7
+     },
+     {
+      "seed": 3,
+      "nombre": "Arthur Nagel",
+      "atp": 399,
+      "wtn": 5.71
+     },
+     {
+      "seed": 4,
+      "nombre": "Mika Petkovic",
+      "atp": 428,
+      "wtn": 4.57
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Tanguy Genier",
+      "atp": 1204,
+      "wtn": 8.1
+     },
+     {
+      "seed": 2,
+      "nombre": "Gray Voelzke",
+      "atp": 1364,
+      "wtn": 13.29
+     },
+     {
+      "seed": 3,
+      "nombre": "Niklas Waldner",
+      "atp": 1370,
+      "wtn": 10.98
+     },
+     {
+      "seed": 4,
+      "nombre": "Elias Julian Werner",
+      "atp": 1552,
+      "wtn": 12.76
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-hun-2026-004",
+   "bajado": "2026-08-20T05:29:21.469Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 54,
+     "de": {
+      "MDA": 0,
+      "Q": 34,
+      "A": 16,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 4
+     },
+     "dilucion": 0.37037037037037035
+    }
+   },
+   "retiros": {
+    "total": 283,
+    "conRanking": 94,
+    "mejorAtp": 342,
+    "aOtroTorneo": 11,
+    "destinos": [
+     [
+      "M15 Monastir",
+      10
+     ],
+     [
+      "J100 Budapest",
+      1
+     ]
+    ],
+    "top": [
+     {
+      "atp": 342,
+      "nombre": "Oriol Roca Batalla",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 395,
+      "nombre": "Andrej Martin",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 405,
+      "nombre": "Juan Cruz Martin Manzano",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 431,
+      "nombre": "Vladyslav Orlov",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 555,
+      "nombre": "Matyas Fuele",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 596,
+      "nombre": "Karol Filar",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Stepan Baum",
+      "atp": 1536,
+      "wtn": 8.46
+     },
+     {
+      "seed": 2,
+      "nombre": "Andrea Paolini",
+      "atp": 1656,
+      "wtn": 10.17
+     },
+     {
+      "seed": 3,
+      "nombre": "Botond Kisantal",
+      "atp": 1746,
+      "wtn": 12.47
+     },
+     {
+      "seed": 4,
+      "nombre": "Leonardo Angeloni",
+      "atp": 1860,
+      "wtn": 10.81
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-ita-2026-007",
+   "bajado": "2026-08-20T05:27:14.465Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 17,
+      "Q": 14,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.03125
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 16,
+      "A": 12,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 3
+     },
+     "dilucion": 0.46875
+    }
+   },
+   "retiros": {
+    "total": 338,
+    "conRanking": 126,
+    "mejorAtp": 305,
+    "aOtroTorneo": 51,
+    "destinos": [
+     [
+      "M25 Slovenj Gradec",
+      11
+     ],
+     [
+      "M25 Idanha-a-Nova",
+      7
+     ],
+     [
+      "M25 Santander",
+      6
+     ],
+     [
+      "M25 Ueberlingen",
+      4
+     ],
+     [
+      "M15 Bastad",
+      4
+     ]
+    ],
+    "top": [
+     {
+      "atp": 305,
+      "nombre": "Daniel Michalski",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 352,
+      "nombre": "Mili Poljicak",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 374,
+      "nombre": "Carlos Sanchez Jover",
+      "fecha": "01 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 408,
+      "nombre": "Geoffrey Blancaneaux",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 414,
+      "nombre": "Oleg Prihodko",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 415,
+      "nombre": "Eric Vanshelboim",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Gabriele Piraino",
+      "atp": 402,
+      "wtn": 4.31
+     },
+     {
+      "seed": 2,
+      "nombre": "Francesco Forti",
+      "atp": 371,
+      "wtn": 3.52
+     },
+     {
+      "seed": 3,
+      "nombre": "Laurent Lokoli",
+      "atp": 384,
+      "wtn": 3.41
+     },
+     {
+      "seed": 4,
+      "nombre": "Juan Cruz Martin Manzano",
+      "atp": 438,
+      "wtn": 4.13
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Denis Constantin Spiridon",
+      "atp": 1107,
+      "wtn": 9.1
+     },
+     {
+      "seed": 2,
+      "nombre": "Giacomo Crisostomo",
+      "atp": 1133,
+      "wtn": 8.8
+     },
+     {
+      "seed": 3,
+      "nombre": "Tobia Costanzo Baragiola Mordini",
+      "atp": 1182,
+      "wtn": 10.6
+     },
+     {
+      "seed": 4,
+      "nombre": "Leonardo Primucci",
+      "atp": 1165,
+      "wtn": 10.09
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-ned-2026-006",
+   "bajado": "2026-08-20T05:28:23.100Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 58,
+     "de": {
+      "MDA": 0,
+      "Q": 36,
+      "A": 20,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 2
+     },
+     "dilucion": 0.3793103448275862
+    }
+   },
+   "retiros": {
+    "total": 228,
+    "conRanking": 93,
+    "mejorAtp": 321,
+    "aOtroTorneo": 48,
+    "destinos": [
+     [
+      "M15 Pécs",
+      15
+     ],
+     [
+      "M15 Vienna",
+      9
+     ],
+     [
+      "M25 Poznan",
+      4
+     ],
+     [
+      "M15 Monastir",
+      4
+     ],
+     [
+      "M25 Maribor",
+      4
+     ]
+    ],
+    "top": [
+     {
+      "atp": 321,
+      "nombre": "Enrico Dalla valle",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Lausanne"
+     },
+     {
+      "atp": 331,
+      "nombre": "Petr Brunclik",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 342,
+      "nombre": "Oriol Roca Batalla",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 353,
+      "nombre": "Andrey Chepelev",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Lausanne"
+     },
+     {
+      "atp": 377,
+      "nombre": "Carlos Sanchez Jover",
+      "fecha": "10 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 403,
+      "nombre": "Laurent Lokoli",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Rafael Giotis",
+      "atp": 1360,
+      "wtn": 11.12
+     },
+     {
+      "seed": 2,
+      "nombre": "Richard Antoni",
+      "atp": 1362,
+      "wtn": 11.81
+     },
+     {
+      "seed": 3,
+      "nombre": "Jesse De Jager",
+      "atp": 1397,
+      "wtn": 7.9
+     },
+     {
+      "seed": 4,
+      "nombre": "Daniel Verbeek",
+      "atp": 1585,
+      "wtn": 9.06
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-par-2026-002",
+   "bajado": "2026-08-20T05:28:14.445Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 16,
+      "Q": 13,
+      "A": 0,
+      "JR": 2,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.03125
+    },
+    "Q": {
+     "total": 48,
+     "de": {
+      "MDA": 0,
+      "Q": 33,
+      "A": 12,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 3
+     },
+     "dilucion": 0.3125
+    }
+   },
+   "retiros": {
+    "total": 144,
+    "conRanking": 58,
+    "mejorAtp": 425,
+    "aOtroTorneo": 13,
+    "destinos": [
+     [
+      "M25 Taipei",
+      3
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      2
+     ],
+     [
+      "J30 Serra Negra",
+      2
+     ],
+     [
+      "M15 Arad",
+      2
+     ],
+     [
+      "M25 Idanha-a-Nova",
+      1
+     ]
+    ],
+    "top": [
+     {
+      "atp": 425,
+      "nombre": "Daniel Dutra da Silva"
+     },
+     {
+      "atp": 496,
+      "nombre": "Pedro Sakamoto"
+     },
+     {
+      "atp": 505,
+      "nombre": "Joao Eduardo Schiessl",
+      "fecha": "01 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 617,
+      "nombre": "Ryan Dickerson"
+     },
+     {
+      "atp": 621,
+      "nombre": "Etienne Donnet",
+      "fecha": "01 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 749,
+      "nombre": "Wilson Leite"
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Gonzalo Villanueva",
+      "atp": 315,
+      "wtn": 3.45
+     },
+     {
+      "seed": 2,
+      "nombre": "Joaquin Aguilar Cardozo",
+      "atp": 482,
+      "wtn": 3.61
+     },
+     {
+      "seed": 3,
+      "nombre": "Nicolas Villalon Valdes",
+      "atp": 694,
+      "wtn": 7.43
+     },
+     {
+      "seed": 4,
+      "nombre": "Santiago De la fuente",
+      "atp": 739,
+      "wtn": 7.24
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Rocco Valente",
+      "atp": 1156,
+      "wtn": 10.98
+     },
+     {
+      "seed": 2,
+      "nombre": "Felipe De Dios",
+      "atp": 1181,
+      "wtn": 11.2
+     },
+     {
+      "seed": 3,
+      "nombre": "Santiago Giamichelle",
+      "atp": 1327,
+      "wtn": 8.03
+     },
+     {
+      "seed": 4,
+      "nombre": "Valentino Grippo",
+      "atp": 1366,
+      "wtn": 12.59
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-pol-2026-007",
+   "bajado": "2026-08-20T05:27:42.592Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 15,
+      "Q": 12,
+      "A": 2,
+      "JR": 1,
+      "CA": 0,
+      "W": 2,
+      "fuera": 0
+     },
+     "dilucion": 0.0625
+    },
+    "Q": {
+     "total": 48,
+     "de": {
+      "MDA": 0,
+      "Q": 30,
+      "A": 15,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 2
+     },
+     "dilucion": 0.3541666666666667
+    }
+   },
+   "retiros": {
+    "total": 520,
+    "conRanking": 160,
+    "mejorAtp": 414,
+    "aOtroTorneo": 165,
+    "destinos": [
+     [
+      "M15 Mistelbach",
+      34
+     ],
+     [
+      "M25 Slovenj Gradec",
+      23
+     ],
+     [
+      "M15 Arad",
+      21
+     ],
+     [
+      "M15 Bastad",
+      15
+     ],
+     [
+      "M25 Lesa",
+      12
+     ]
+    ],
+    "top": [
+     {
+      "atp": 414,
+      "nombre": "Oleg Prihodko",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 415,
+      "nombre": "Eric Vanshelboim",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 430,
+      "nombre": "Vladyslav Orlov",
+      "fecha": "04 Aug 2026",
+      "destino": "M15 Mistelbach"
+     },
+     {
+      "atp": 497,
+      "nombre": "Giuseppe La Vela",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 527,
+      "nombre": "Oleksii Krutykh",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 528,
+      "nombre": "Louis Wessels",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Daniel Michalski",
+      "atp": 305,
+      "wtn": 3.45
+     },
+     {
+      "seed": 2,
+      "nombre": "Karol Filar",
+      "atp": 591,
+      "wtn": 6.96
+     },
+     {
+      "seed": 3,
+      "nombre": "Peter Fajta",
+      "atp": 653,
+      "wtn": 6.96
+     },
+     {
+      "seed": 4,
+      "nombre": "Mate Valkusz",
+      "atp": 764,
+      "wtn": 3.66
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Darrshan Suresh",
+      "atp": 1576,
+      "wtn": 14.03
+     },
+     {
+      "seed": 2,
+      "nombre": "Piotr Galus",
+      "atp": 1654,
+      "wtn": 10.09
+     },
+     {
+      "seed": 3,
+      "nombre": "Evangelos Kypriotis",
+      "atp": 1865,
+      "wtn": 11.68
+     },
+     {
+      "seed": 4,
+      "nombre": "Adam Kaczmarek",
+      "atp": 1764,
+      "wtn": 14.01
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-pol-2026-008",
+   "bajado": "2026-08-20T05:28:36.739Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 48,
+     "de": {
+      "MDA": 0,
+      "Q": 29,
+      "A": 19,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0.3958333333333333
+    }
+   },
+   "retiros": {
+    "total": 320,
+    "conRanking": 147,
+    "mejorAtp": 321,
+    "aOtroTorneo": 64,
+    "destinos": [
+     [
+      "M15 Pécs",
+      19
+     ],
+     [
+      "M15 Allershausen",
+      6
+     ],
+     [
+      "M15 Vienna",
+      6
+     ],
+     [
+      "M25 Maribor",
+      6
+     ],
+     [
+      "M15 Bucharest",
+      5
+     ]
+    ],
+    "top": [
+     {
+      "atp": 321,
+      "nombre": "Enrico Dalla valle",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Lausanne"
+     },
+     {
+      "atp": 331,
+      "nombre": "Petr Brunclik"
+     },
+     {
+      "atp": 342,
+      "nombre": "Oriol Roca Batalla",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 371,
+      "nombre": "Max Wiskandt",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 377,
+      "nombre": "Carlos Sanchez Jover",
+      "fecha": "10 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 380,
+      "nombre": "Lucio Ratti",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Jasza Szajrych",
+      "atp": 1400,
+      "wtn": 9.27
+     },
+     {
+      "seed": 2,
+      "nombre": "Darrshan Suresh",
+      "atp": 1580,
+      "wtn": 14.05
+     },
+     {
+      "seed": 3,
+      "nombre": "Michael Savano",
+      "atp": 1623,
+      "wtn": 14.39
+     },
+     {
+      "seed": 4,
+      "nombre": "Peetu Pohjola",
+      "atp": 1652,
+      "wtn": 11.72
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-por-2026-013",
+   "bajado": "2026-08-20T05:27:26.293Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 17,
+      "Q": 12,
+      "A": 2,
+      "JR": 0,
+      "CA": 1,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0.0625
+    },
+    "Q": {
+     "total": 29,
+     "de": {
+      "MDA": 0,
+      "Q": 15,
+      "A": 13,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.4827586206896552
+    }
+   },
+   "retiros": {
+    "total": 310,
+    "conRanking": 100,
+    "mejorAtp": 238,
+    "aOtroTorneo": 62,
+    "destinos": [
+     [
+      "M25 Santander",
+      19
+     ],
+     [
+      "M15 Mistelbach",
+      8
+     ],
+     [
+      "M25 Slovenj Gradec",
+      7
+     ],
+     [
+      "M25 Taipei",
+      6
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      5
+     ]
+    ],
+    "top": [
+     {
+      "atp": 238,
+      "nombre": "James McCabe",
+      "fecha": "04 Aug 2026",
+      "destino": "M25 Taipei"
+     },
+     {
+      "atp": 367,
+      "nombre": "Tiago Pereira"
+     },
+     {
+      "atp": 407,
+      "nombre": "Sergio Callejon Hernando"
+     },
+     {
+      "atp": 467,
+      "nombre": "Yassine Dlimi",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 477,
+      "nombre": "Dominik Palan",
+      "fecha": "04 Aug 2026",
+      "destino": "M25 Taipei"
+     },
+     {
+      "atp": 494,
+      "nombre": "Samir Banerjee"
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Philip Henning",
+      "atp": 295,
+      "wtn": 3.56
+     },
+     {
+      "seed": 2,
+      "nombre": "Robin Bertrand",
+      "atp": 363,
+      "wtn": 4.39
+     },
+     {
+      "seed": 3,
+      "nombre": "Pavel Lagutin",
+      "atp": 718,
+      "wtn": 6.41
+     },
+     {
+      "seed": 4,
+      "nombre": "Fabrizio Andaloro",
+      "atp": 504,
+      "wtn": 5.01
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Artem Alekseychuk",
+      "atp": 1389,
+      "wtn": 11.82
+     },
+     {
+      "seed": 2,
+      "nombre": "Bienvenue Bolangi",
+      "atp": 1586,
+      "wtn": null
+     },
+     {
+      "seed": 3,
+      "nombre": "Jeffrey Fradkin",
+      "atp": 1702,
+      "wtn": 11.99
+     },
+     {
+      "seed": 4,
+      "nombre": "Bader Alabdullah",
+      "atp": 1984,
+      "wtn": 14.41
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-rou-2026-012",
+   "bajado": "2026-08-20T05:27:38.219Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 15,
+      "Q": 15,
+      "A": 0,
+      "JR": 1,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.03125
+    },
+    "Q": {
+     "total": 48,
+     "de": {
+      "MDA": 0,
+      "Q": 30,
+      "A": 17,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 0
+     },
+     "dilucion": 0.3541666666666667
+    }
+   },
+   "retiros": {
+    "total": 413,
+    "conRanking": 116,
+    "mejorAtp": 566,
+    "aOtroTorneo": 116,
+    "destinos": [
+     [
+      "M25 Slovenj Gradec",
+      18
+     ],
+     [
+      "M25 Lesa",
+      14
+     ],
+     [
+      "M15 Mistelbach",
+      14
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      14
+     ],
+     [
+      "M15 Krakow",
+      11
+     ]
+    ],
+    "top": [
+     {
+      "atp": 566,
+      "nombre": "Kirill Kivattsev",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 621,
+      "nombre": "Etienne Donnet",
+      "fecha": "01 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 633,
+      "nombre": "Fryderyk Lechno-Wasiutynski",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 636,
+      "nombre": "Giovanni Oradini",
+      "fecha": "03 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 653,
+      "nombre": "Peter Fajta",
+      "fecha": "04 Aug 2026",
+      "destino": "M15 Krakow"
+     },
+     {
+      "atp": 654,
+      "nombre": "Leo Raquillet",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Sebastian Gima",
+      "atp": 534,
+      "wtn": 6.58
+     },
+     {
+      "seed": 2,
+      "nombre": "Stefan Adrian Andreescu",
+      "atp": 664,
+      "wtn": 8.08
+     },
+     {
+      "seed": 3,
+      "nombre": "Dragos Nicolae Madaras",
+      "atp": 589,
+      "wtn": 3.59
+     },
+     {
+      "seed": 4,
+      "nombre": "Ignacio Monzon",
+      "atp": 630,
+      "wtn": 7.82
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Vito Dell'elba",
+      "atp": 1422,
+      "wtn": 11.17
+     },
+     {
+      "seed": 2,
+      "nombre": "Filippo Francesco Garbero",
+      "atp": 1459,
+      "wtn": 10.72
+     },
+     {
+      "seed": 3,
+      "nombre": "Andrea Paolini",
+      "atp": 1654,
+      "wtn": 10.17
+     },
+     {
+      "seed": 4,
+      "nombre": "Gheorghe Claudiu Schinteie",
+      "atp": 1552,
+      "wtn": 13.97
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-rou-2026-013",
+   "bajado": "2026-08-20T05:29:10.436Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 64,
+     "de": {
+      "MDA": 0,
+      "Q": 38,
+      "A": 24,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 2
+     },
+     "dilucion": 0.40625
+    }
+   },
+   "retiros": {
+    "total": 374,
+    "conRanking": 103,
+    "mejorAtp": 405,
+    "aOtroTorneo": 89,
+    "destinos": [
+     [
+      "M15 Monastir",
+      26
+     ],
+     [
+      "M15 Pécs",
+      22
+     ],
+     [
+      "J30 Cluj Napoca",
+      10
+     ],
+     [
+      "M15 Hurghada",
+      6
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      5
+     ]
+    ],
+    "top": [
+     {
+      "atp": 405,
+      "nombre": "Juan Cruz Martin Manzano",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 585,
+      "nombre": "Gerard Campana Lee",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Poznan"
+     },
+     {
+      "atp": 627,
+      "nombre": "Pierluigi Basile",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 633,
+      "nombre": "Ignacio Monzon",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 636,
+      "nombre": "Fryderyk Lechno-Wasiutynski",
+      "fecha": "10 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 639,
+      "nombre": "Giovanni Oradini",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Gheorghe Claudiu Schinteie",
+      "atp": 1684,
+      "wtn": 13.6
+     },
+     {
+      "seed": 2,
+      "nombre": "Vlad Cristian Breazu",
+      "atp": 1694,
+      "wtn": 8.12
+     },
+     {
+      "seed": 3,
+      "nombre": "Valentin Vanta",
+      "atp": 1829,
+      "wtn": 12.9
+     },
+     {
+      "seed": 4,
+      "nombre": "Daniele Minighini",
+      "atp": 1995,
+      "wtn": 10.01
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-slo-2026-009",
+   "bajado": "2026-08-20T05:28:32.991Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 47,
+     "de": {
+      "MDA": 0,
+      "Q": 26,
+      "A": 16,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 4
+     },
+     "dilucion": 0.425531914893617
+    }
+   },
+   "retiros": {
+    "total": 357,
+    "conRanking": 152,
+    "mejorAtp": 279,
+    "aOtroTorneo": 79,
+    "destinos": [
+     [
+      "M15 Pécs",
+      18
+     ],
+     [
+      "M15 Vienna",
+      16
+     ],
+     [
+      "M15 Bucharest",
+      11
+     ],
+     [
+      "M25 Poznan",
+      6
+     ],
+     [
+      "M15 Allershausen",
+      6
+     ]
+    ],
+    "top": [
+     {
+      "atp": 279,
+      "nombre": "Filip Cristian Jianu",
+      "fecha": "11 Aug 2026",
+      "destino": "M15 Bucharest"
+     },
+     {
+      "atp": 321,
+      "nombre": "Enrico Dalla valle",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Lausanne"
+     },
+     {
+      "atp": 331,
+      "nombre": "Petr Brunclik",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 338,
+      "nombre": "Daniel Michalski",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Poznan"
+     },
+     {
+      "atp": 342,
+      "nombre": "Oriol Roca Batalla",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 353,
+      "nombre": "Andrey Chepelev",
+      "fecha": "11 Aug 2026",
+      "destino": "M25 Lausanne"
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Edoardo Cherie Ligniere",
+      "atp": 1136,
+      "wtn": 9.37
+     },
+     {
+      "seed": 2,
+      "nombre": "Miha Vetrih",
+      "atp": 1403,
+      "wtn": 10.59
+     },
+     {
+      "seed": 3,
+      "nombre": "Karlo Kajin",
+      "atp": 1546,
+      "wtn": 9.3
+     },
+     {
+      "seed": 4,
+      "nombre": "Piotr Galus",
+      "atp": 1656,
+      "wtn": 10.09
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-slo-2026-010",
+   "bajado": "2026-08-20T05:27:31.573Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 15,
+      "Q": 16,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.03125
+    },
+    "Q": {
+     "total": 42,
+     "de": {
+      "MDA": 0,
+      "Q": 33,
+      "A": 8,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.21428571428571427
+    }
+   },
+   "retiros": {
+    "total": 398,
+    "conRanking": 157,
+    "mejorAtp": 305,
+    "aOtroTorneo": 96,
+    "destinos": [
+     [
+      "M15 Kursumlijska Banja",
+      17
+     ],
+     [
+      "M15 Mistelbach",
+      16
+     ],
+     [
+      "M25 Lesa",
+      15
+     ],
+     [
+      "M15 Krakow",
+      10
+     ],
+     [
+      "M15 Arad",
+      10
+     ]
+    ],
+    "top": [
+     {
+      "atp": 305,
+      "nombre": "Daniel Michalski",
+      "fecha": "04 Aug 2026",
+      "destino": "M15 Krakow"
+     },
+     {
+      "atp": 374,
+      "nombre": "Carlos Sanchez Jover",
+      "fecha": "01 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 378,
+      "nombre": "Ioannis Xilas"
+     },
+     {
+      "atp": 408,
+      "nombre": "Geoffrey Blancaneaux",
+      "fecha": "04 Aug 2026",
+      "destino": "M25 Ueberlingen"
+     },
+     {
+      "atp": 410,
+      "nombre": "Jack Loge",
+      "fecha": "31 Jul 2026",
+      "destino": null
+     },
+     {
+      "atp": 414,
+      "nombre": "Oleg Prihodko"
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Mili Poljicak",
+      "atp": 352,
+      "wtn": 3.4
+     },
+     {
+      "seed": 2,
+      "nombre": "Samuele Pieri",
+      "atp": 400,
+      "wtn": 4.17
+     },
+     {
+      "seed": 3,
+      "nombre": "Sebastian Sorger",
+      "atp": 476,
+      "wtn": 4.96
+     },
+     {
+      "seed": 4,
+      "nombre": "Valerio Aboian",
+      "atp": 427,
+      "wtn": 4.34
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Ivan Biletic",
+      "atp": 1420,
+      "wtn": 9.15
+     },
+     {
+      "seed": 2,
+      "nombre": "Nik Mikovic",
+      "atp": 1470,
+      "wtn": 10.04
+     },
+     {
+      "seed": 3,
+      "nombre": "Karlo Kajin",
+      "atp": 1543,
+      "wtn": 9.3
+     },
+     {
+      "seed": 4,
+      "nombre": "Jonas GUNDACKER",
+      "atp": 1876,
+      "wtn": 10.93
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-srb-2026-015",
+   "bajado": "2026-08-20T05:27:47.768Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 16,
+      "Q": 11,
+      "A": 1,
+      "JR": 1,
+      "CA": 0,
+      "W": 0,
+      "fuera": 3
+     },
+     "dilucion": 0.125
+    },
+    "Q": {
+     "total": 64,
+     "de": {
+      "MDA": 0,
+      "Q": 43,
+      "A": 16,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 5
+     },
+     "dilucion": 0.328125
+    }
+   },
+   "retiros": {
+    "total": 378,
+    "conRanking": 90,
+    "mejorAtp": 378,
+    "aOtroTorneo": 77,
+    "destinos": [
+     [
+      "M15 Arad",
+      14
+     ],
+     [
+      "M25 Lesa",
+      10
+     ],
+     [
+      "M15 Krakow",
+      7
+     ],
+     [
+      "M15 Mistelbach",
+      6
+     ],
+     [
+      "M25 Idanha-a-Nova",
+      6
+     ]
+    ],
+    "top": [
+     {
+      "atp": 378,
+      "nombre": "Ioannis Xilas",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 472,
+      "nombre": "Dusan Obradovic",
+      "fecha": "13 Aug 2026",
+      "destino": "Prague ATP Challenger 75 Qualifying Draw"
+     },
+     {
+      "atp": 497,
+      "nombre": "Giuseppe La Vela",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 598,
+      "nombre": "Stefan Popovic",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 622,
+      "nombre": "Branko Djuric"
+     },
+     {
+      "atp": 623,
+      "nombre": "Pierluigi Basile",
+      "fecha": "04 Aug 2026",
+      "destino": "M25 Lesa"
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Semen Pankin",
+      "atp": 424,
+      "wtn": 5.58
+     },
+     {
+      "seed": 2,
+      "nombre": "Dmitry Popko",
+      "atp": 625,
+      "wtn": 3.65
+     },
+     {
+      "seed": 3,
+      "nombre": "Timofei Derepasko",
+      "atp": 686,
+      "wtn": 8.74
+     },
+     {
+      "seed": 4,
+      "nombre": "Anton Arzhankin",
+      "atp": 722,
+      "wtn": 6.44
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Veljko Krstic",
+      "atp": 1735,
+      "wtn": 9.37
+     },
+     {
+      "seed": 2,
+      "nombre": "Mario Arce Fernandez",
+      "atp": 2270,
+      "wtn": 11.3
+     },
+     {
+      "seed": 3,
+      "nombre": "Caheer Warik",
+      "atp": 1876,
+      "wtn": 12.75
+     },
+     {
+      "seed": 5,
+      "nombre": "Manuel Belda",
+      "atp": 1905,
+      "wtn": 15.23
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-srb-2026-016",
+   "bajado": "2026-08-20T05:28:44.418Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 64,
+     "de": {
+      "MDA": 0,
+      "Q": 43,
+      "A": 15,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 5
+     },
+     "dilucion": 0.3125
+    }
+   },
+   "retiros": {
+    "total": 288,
+    "conRanking": 65,
+    "mejorAtp": 421,
+    "aOtroTorneo": 53,
+    "destinos": [
+     [
+      "M15 Monastir",
+      16
+     ],
+     [
+      "M15 Pécs",
+      11
+     ],
+     [
+      "J200 Belgrade",
+      5
+     ],
+     [
+      "M15 Bucharest",
+      4
+     ],
+     [
+      "J30 Skopje",
+      4
+     ]
+    ],
+    "top": [
+     {
+      "atp": 421,
+      "nombre": "Semen Pankin"
+     },
+     {
+      "atp": 485,
+      "nombre": "Jack Loge",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 499,
+      "nombre": "Giuseppe La Vela",
+      "fecha": "10 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 603,
+      "nombre": "Lorenzo Bocchi",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 633,
+      "nombre": "Ignacio Monzon",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 654,
+      "nombre": "Nikita Mashtakov",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Mario Arce Fernandez",
+      "atp": 1884,
+      "wtn": 10.51
+     },
+     {
+      "seed": 2,
+      "nombre": "Maties Torres Ramis",
+      "atp": 1860,
+      "wtn": 11.85
+     },
+     {
+      "seed": 3,
+      "nombre": "Marko Nikolic",
+      "atp": null,
+      "wtn": null
+     },
+     {
+      "seed": 4,
+      "nombre": "Giovanni Ciocca",
+      "atp": 1872,
+      "wtn": 12.06
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-sui-2026-004",
+   "bajado": "2026-08-20T05:28:18.589Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 11,
+      "A": 20,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 0
+     },
+     "dilucion": 0.625
+    }
+   },
+   "retiros": {
+    "total": 295,
+    "conRanking": 122,
+    "mejorAtp": 279,
+    "aOtroTorneo": 8,
+    "destinos": [
+     [
+      "M15 Monastir",
+      4
+     ],
+     [
+      "M15 Vienna",
+      3
+     ],
+     [
+      "M15 Bucharest",
+      1
+     ]
+    ],
+    "top": [
+     {
+      "atp": 279,
+      "nombre": "Filip Cristian Jianu",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 321,
+      "nombre": "Enrico Dalla valle"
+     },
+     {
+      "atp": 331,
+      "nombre": "Petr Brunclik",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 342,
+      "nombre": "Oriol Roca Batalla",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 371,
+      "nombre": "Max Wiskandt",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 377,
+      "nombre": "Carlos Sanchez Jover",
+      "fecha": "10 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Florent Lagarrigue",
+      "atp": null,
+      "wtn": 9.46
+     },
+     {
+      "seed": 2,
+      "nombre": "Leonardo Taddia",
+      "atp": null,
+      "wtn": 12.63
+     },
+     {
+      "seed": 3,
+      "nombre": "Batiste Guerra",
+      "atp": null,
+      "wtn": 11.93
+     },
+     {
+      "seed": 4,
+      "nombre": "Yannick Castelnuovo",
+      "atp": null,
+      "wtn": 14.07
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-swe-2026-003",
+   "bajado": "2026-08-20T05:28:04.969Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 18,
+      "Q": 13,
+      "A": 1,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0.03125
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 18,
+      "A": 14,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0.4375
+    }
+   },
+   "retiros": {
+    "total": 397,
+    "conRanking": 133,
+    "mejorAtp": 415,
+    "aOtroTorneo": 69,
+    "destinos": [
+     [
+      "M25 Lesa",
+      12
+     ],
+     [
+      "M15 Arad",
+      9
+     ],
+     [
+      "M25 Idanha-a-Nova",
+      7
+     ],
+     [
+      "M25 Santander",
+      7
+     ],
+     [
+      "M15 Lambermont",
+      6
+     ]
+    ],
+    "top": [
+     {
+      "atp": 415,
+      "nombre": "Eric Vanshelboim",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 460,
+      "nombre": "Yannik Kelm",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 531,
+      "nombre": "Alexander Weis",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 585,
+      "nombre": "Adrian Oetzbach",
+      "fecha": "03 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 586,
+      "nombre": "Marcel Zielinski",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 595,
+      "nombre": "Ergi Kirkin",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Leo Borg",
+      "atp": 542,
+      "wtn": 5.4
+     },
+     {
+      "seed": 2,
+      "nombre": "Andreja Petrovic",
+      "atp": 703,
+      "wtn": 6.73
+     },
+     {
+      "seed": 3,
+      "nombre": "Herman Hoeyeraal",
+      "atp": 745,
+      "wtn": 7.38
+     },
+     {
+      "seed": 4,
+      "nombre": "John Hallquist Lithen",
+      "atp": 761,
+      "wtn": 8.5
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Dorian Tremblay",
+      "atp": 1674,
+      "wtn": 10.66
+     },
+     {
+      "seed": 2,
+      "nombre": "Oren Vasser",
+      "atp": 1702,
+      "wtn": 9.05
+     },
+     {
+      "seed": 3,
+      "nombre": "Lawrence Bataljin",
+      "atp": 1708,
+      "wtn": 15.08
+     },
+     {
+      "seed": 4,
+      "nombre": "Martins Rocens",
+      "atp": 1789,
+      "wtn": 12.68
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-tpe-2026-001",
+   "bajado": "2026-08-20T05:25:02.869Z",
+   "cuadros": {
+    "M": {
+     "total": 32,
+     "de": {
+      "MDA": 16,
+      "Q": 12,
+      "A": 3,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 1
+     },
+     "dilucion": 0.125
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 21,
+      "A": 11,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": 0.34375
+    }
+   },
+   "retiros": {
+    "total": 262,
+    "conRanking": 123,
+    "mejorAtp": 238,
+    "aOtroTorneo": 39,
+    "destinos": [
+     [
+      "M15 Maanshan",
+      20
+     ],
+     [
+      "M25 Idanha-a-Nova",
+      4
+     ],
+     [
+      "J60 CHENNAI",
+      3
+     ],
+     [
+      "M25 Santander",
+      2
+     ],
+     [
+      "J30 Macao",
+      2
+     ]
+    ],
+    "top": [
+     {
+      "atp": 238,
+      "nombre": "James McCabe"
+     },
+     {
+      "atp": 287,
+      "nombre": "Yanki Erel"
+     },
+     {
+      "atp": 301,
+      "nombre": "Philip Sekulic",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 354,
+      "nombre": "Jake Delaney"
+     },
+     {
+      "atp": 395,
+      "nombre": "Arthur Weber",
+      "fecha": "04 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 432,
+      "nombre": "Luca Castelnuovo",
+      "fecha": "03 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [
+     {
+      "seed": 1,
+      "nombre": "Yu Hsiou Hsu",
+      "atp": 222,
+      "wtn": 3.25
+     },
+     {
+      "seed": 2,
+      "nombre": "Matthew Dellavedova",
+      "atp": 309,
+      "wtn": 4.32
+     },
+     {
+      "seed": 3,
+      "nombre": "Tung-Lin Wu",
+      "atp": 357,
+      "wtn": 3.22
+     },
+     {
+      "seed": 4,
+      "nombre": "Kasidit Samrej",
+      "atp": 403,
+      "wtn": 4.15
+     }
+    ],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Manish Sureshkumar",
+      "atp": 724,
+      "wtn": 6.49
+     },
+     {
+      "seed": 2,
+      "nombre": "Taisei Ichikawa",
+      "atp": 792,
+      "wtn": 7.01
+     },
+     {
+      "seed": 3,
+      "nombre": "Ryuki Matsuda",
+      "atp": 789,
+      "wtn": 8.17
+     },
+     {
+      "seed": 4,
+      "nombre": "Nitin Kumar Sinha",
+      "atp": 890,
+      "wtn": 8.74
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-tpe-2026-002",
+   "bajado": "2026-08-20T05:28:27.509Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 32,
+     "de": {
+      "MDA": 0,
+      "Q": 19,
+      "A": 12,
+      "JR": 0,
+      "CA": 0,
+      "W": 1,
+      "fuera": 0
+     },
+     "dilucion": 0.375
+    }
+   },
+   "retiros": {
+    "total": 257,
+    "conRanking": 85,
+    "mejorAtp": 239,
+    "aOtroTorneo": 33,
+    "destinos": [
+     [
+      "M15 Maanshan",
+      12
+     ],
+     [
+      "M15 Monastir",
+      6
+     ],
+     [
+      "M15 Hurghada",
+      5
+     ],
+     [
+      "J60 Shenzhen",
+      4
+     ],
+     [
+      "J60 Hyderabad",
+      2
+     ]
+    ],
+    "top": [
+     {
+      "atp": 239,
+      "nombre": "James McCabe"
+     },
+     {
+      "atp": 304,
+      "nombre": "Philip Sekulic",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 415,
+      "nombre": "Masamichi Imamura",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 448,
+      "nombre": "Renta Tokuda",
+      "fecha": "09 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 478,
+      "nombre": "Koki Matsuda",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 498,
+      "nombre": "Dominik Palan"
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Yuki Mochizuki",
+      "atp": 732,
+      "wtn": 7.34
+     },
+     {
+      "seed": 2,
+      "nombre": "Taisei Ichikawa",
+      "atp": 781,
+      "wtn": 6.93
+     },
+     {
+      "seed": 3,
+      "nombre": "Ryuki Matsuda",
+      "atp": 806,
+      "wtn": 7.63
+     },
+     {
+      "seed": 4,
+      "nombre": "Nitin Kumar Sinha",
+      "atp": 880,
+      "wtn": 8.74
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-tun-2026-034",
+   "bajado": "2026-08-20T05:29:05.488Z",
+   "cuadros": {
+    "M": {
+     "total": 0,
+     "de": {
+      "MDA": 0,
+      "Q": 0,
+      "A": 0,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 0
+     },
+     "dilucion": null
+    },
+    "Q": {
+     "total": 57,
+     "de": {
+      "MDA": 0,
+      "Q": 45,
+      "A": 7,
+      "JR": 0,
+      "CA": 0,
+      "W": 0,
+      "fuera": 5
+     },
+     "dilucion": 0.21052631578947367
+    }
+   },
+   "retiros": {
+    "total": 345,
+    "conRanking": 81,
+    "mejorAtp": 494,
+    "aOtroTorneo": 30,
+    "destinos": [
+     [
+      "M15 Hurghada",
+      12
+     ],
+     [
+      "J100 Clermont-Ferrand",
+      2
+     ],
+     [
+      "J60 Megrine",
+      2
+     ],
+     [
+      "J60 Hyderabad",
+      2
+     ],
+     [
+      "M15 Pécs",
+      2
+     ]
+    ],
+    "top": [
+     {
+      "atp": 494,
+      "nombre": "Aziz Ouakaa"
+     },
+     {
+      "atp": 505,
+      "nombre": "Cesar Bouchelaghem"
+     },
+     {
+      "atp": 540,
+      "nombre": "Digvijay Pratap Singh",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 595,
+      "nombre": "Jacob Bradshaw",
+      "fecha": "11 Aug 2026",
+      "destino": "M15 Hurghada"
+     },
+     {
+      "atp": 598,
+      "nombre": "Karan Singh"
+     },
+     {
+      "atp": 608,
+      "nombre": "Ergi Kirkin",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     }
+    ]
+   },
+   "siembra": {
+    "M": [],
+    "Q": [
+     {
+      "seed": 1,
+      "nombre": "Rahul Dhokia",
+      "atp": 2237,
+      "wtn": 11.93
+     },
+     {
+      "seed": 2,
+      "nombre": "Thomas Drayton",
+      "atp": 2203,
+      "wtn": 12.38
+     },
+     {
+      "seed": 3,
+      "nombre": "Romain Andres",
+      "atp": 2278,
+      "wtn": 12.12
+     },
+     {
+      "seed": 4,
+      "nombre": "Abdulhamid Mubarak",
+      "atp": null,
+      "wtn": 13.27
+     }
+    ]
+   }
+  },
+  {
+   "clave": "m-itf-usa-2026-035",
+   "bajado": "2026-08-20T05:29:15.099Z",
+   "cuadros": {},
+   "retiros": {
+    "total": 164,
+    "conRanking": 71,
+    "mejorAtp": 552,
+    "aOtroTorneo": 27,
+    "destinos": [
+     [
+      "M15 Monastir",
+      11
+     ],
+     [
+      "J300 College Park",
+      3
+     ],
+     [
+      "M25 Oviedo",
+      2
+     ],
+     [
+      "M15 Hurghada",
+      2
+     ],
+     [
+      "M15 Kursumlijska Banja",
+      2
+     ]
+    ],
+    "top": [
+     {
+      "atp": 552,
+      "nombre": "Gavin Young",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 595,
+      "nombre": "Jacob Bradshaw",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 632,
+      "nombre": "Maxwell McKennon",
+      "fecha": "08 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 673,
+      "nombre": "Roger Pascual Ferra"
+     },
+     {
+      "atp": 674,
+      "nombre": "Olaf Pieczkowski",
+      "fecha": "11 Aug 2026",
+      "destino": null
+     },
+     {
+      "atp": 696,
+      "nombre": "Leo Vithoontien"
+     }
+    ]
+   },
+   "siembra": {}
+  }
+ ]
+}

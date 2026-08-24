@@ -1,0 +1,547 @@
+<title>Cómo se llena un cuadro ITF</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{--papel:#F4F6F7;--carta:#FFF;--tinta:#18242E;--tinta2:#5A6B7A;--tinta3:#93A3B0;--linea:#DCE3E8;
+  --mda:#0E8A6E;--q:#4B7FA8;--a:#C08A2E;--dn:#C0392B;--franja:#F9FBFC;--realce:#EDF3F6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--papel:#0E141A;--carta:#151E26;
+  --tinta:#DCE6ED;--tinta2:#8FA1B0;--tinta3:#62727E;--linea:#25303A;
+  --mda:#26A98A;--q:#6C9DC4;--a:#D9A94B;--dn:#DB6350;--franja:#121A21;--realce:#1B252E}}
+:root[data-theme="dark"]{--papel:#0E141A;--carta:#151E26;--tinta:#DCE6ED;--tinta2:#8FA1B0;--tinta3:#62727E;
+  --linea:#25303A;--mda:#26A98A;--q:#6C9DC4;--a:#D9A94B;--dn:#DB6350;--franja:#121A21;--realce:#1B252E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif}
+.env{max-width:1000px;margin:0 auto;padding:26px 18px 60px}
+h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:33px;margin:0;letter-spacing:.4px;text-wrap:balance}
+.sub{color:var(--tinta2);font-size:14px;margin:2px 0 20px}
+h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:22px;margin:32px 0 3px;letter-spacing:.4px}
+.nota{color:var(--tinta2);font-size:13.5px;margin:0 0 12px;max-width:76ch}
+.flujo{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:11px;margin:16px 0 4px}
+.caja{background:var(--carta);border:1px solid var(--linea);border-radius:8px;padding:12px 14px;border-top:3px solid var(--linea)}
+.caja.mda{border-top-color:var(--mda)} .caja.q{border-top-color:var(--q)}
+.caja.a{border-top-color:var(--a)} .caja.w{border-top-color:var(--dn)}
+.caja .cod{font:600 12px "IBM Plex Mono",monospace;letter-spacing:.5px}
+.caja.mda .cod{color:var(--mda)} .caja.q .cod{color:var(--q)}
+.caja.a .cod{color:var(--a)} .caja.w .cod{color:var(--dn)}
+.caja h3{font-size:14.5px;margin:3px 0 5px;font-weight:600}
+.caja p{margin:0;font-size:12.5px;color:var(--tinta2);line-height:1.5}
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0 4px}
+.tarj{background:var(--carta);border:1px solid var(--linea);border-radius:8px;padding:13px 15px}
+.tarj .cifra{font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+.tarj .et{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--tinta2);font-weight:600;margin-bottom:4px}
+.tarj p{margin:5px 0 0;font-size:12.5px;color:var(--tinta2);line-height:1.5}
+.env-t{overflow-x:auto;background:var(--carta);border:1px solid var(--linea);border-radius:8px}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:760px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--linea)}
+thead th{font:600 10.5px "IBM Plex Sans",sans-serif;text-transform:uppercase;letter-spacing:.7px;
+  color:var(--tinta2);text-align:right;white-space:nowrap;border-bottom:2px solid var(--linea)}
+thead th:first-child,thead th.iz{text-align:left}
+tbody th{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:12px;text-align:left;white-space:nowrap}
+tbody tr:hover td,tbody tr:hover th{background:var(--realce)}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
+td.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-variant-numeric:tabular-nums}
+td.c-txt{font-size:12px;color:var(--tinta2)} td.c-txt i{font-style:normal;color:var(--tinta3)}
+td.c-ap{min-width:150px}
+.ap{display:inline-flex;width:104px;height:9px;border-radius:2px;overflow:hidden;background:var(--linea);vertical-align:-1px;gap:1px}
+.ap i{display:block;height:100%}
+.s-mda{background:var(--mda)} .s-q{background:var(--q)} .s-a{background:var(--a)}
+td.c-ap b{font:600 11.5px "IBM Plex Mono",monospace;margin-left:7px;color:var(--a)}
+.nada{color:var(--tinta3)}
+.leyenda{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:var(--tinta2);margin:9px 0 0;align-items:center}
+.mu{display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:-1px;margin-right:5px}
+.mu.mda{background:var(--mda)} .mu.q{background:var(--q)} .mu.a{background:var(--a)}
+.hall{background:var(--carta);border:1px solid var(--linea);border-left:3px solid var(--dn);
+  border-radius:0 8px 8px 0;padding:13px 16px;margin:12px 0}
+.hall h3{font-size:14.5px;margin:0 0 5px;font-weight:600}
+.hall p{margin:0;font-size:13.5px;color:var(--tinta2);line-height:1.6}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--tinta)}
+.dest{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 0}
+.dest span{background:var(--carta);border:1px solid var(--linea);border-radius:999px;padding:4px 11px;font-size:12.5px}
+.dest b{font-family:"IBM Plex Mono",monospace;color:var(--dn)}
+footer{margin-top:32px;padding-top:14px;border-top:1px solid var(--linea);font-size:12px;color:var(--tinta2);line-height:1.6}
+</style>
+<div class="env">
+<h1>Cómo se llena un cuadro ITF</h1>
+<p class="sub">29 torneos con lista de aceptación y cuadro real · la lista no es una foto del torneo, es una cola</p>
+
+<h2>Las cuatro secciones</h2>
+<p class="nota">Cuando alguien se baja, sube el siguiente de la cola. Por eso el cuadro que finalmente juega puede parecerse poco a la lista original.</p>
+<div class="flujo">
+  <div class="caja mda"><div class="cod">MDA</div><h3>Aceptados al cuadro principal</h3>
+    <p>Entran directo por ranking. Son los que la lista promete.</p></div>
+  <div class="caja q"><div class="cod">Q</div><h3>Aceptados a la clasificación</h3>
+    <p>Juegan las qualis para ganarse un lugar en el cuadro principal.</p></div>
+  <div class="caja a"><div class="cod">A</div><h3>Suplentes</h3>
+    <p>En lista de espera. Suben cada vez que alguien se retira, y son muchos más de los que uno pensaría.</p></div>
+  <div class="caja w"><div class="cod">W</div><h3>Retirados</h3>
+    <p>Con fecha, y a veces con el torneo al que se fueron en su lugar.</p></div>
+</div>
+
+<h2>De dónde sale cada cuadro</h2>
+<p class="nota">La barra muestra la composición y el número a su derecha es la <b>dilución</b>: qué parte del cuadro NO estaba aceptada de entrada.</p>
+<div class="cifras">
+  <div class="tarj"><div class="et">clasificación</div><div class="cifra" style="color:var(--a)">38%</div>
+    <p>de dilución mediana, con casos de hasta 63%. <b>Casi la mitad de un cuadro de qualis son suplentes</b> que originalmente no habían entrado.</p></div>
+  <div class="tarj"><div class="et">cuadro principal</div><div class="cifra" style="color:var(--mda)">6%</div>
+    <p>de dilución mediana. El cuadro grande se sostiene: los que se bajan son los de más abajo en la cola.</p></div>
+  <div class="tarj"><div class="et">retiros por torneo</div><div class="cifra" style="color:var(--dn)">320</div>
+    <p>mediana, con máximo de 529. De esos, 98 traen ranking ATP.</p></div>
+</div>
+<div class="env-t"><table>
+  <thead><tr><th class="iz">Torneo</th><th class="iz">Cuadro principal</th><th class="iz">Clasificación</th>
+    <th>Retiros</th><th>Con ATP</th><th>Mejor ATP</th><th>A otro torneo</th><th class="iz">Destino principal</th></tr></thead>
+  <tbody><tr>
+  <th scope="row">arg-2026-008</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="64 jugadores">
+  
+  <i class="s-q" style="width:71.875%"></i>
+  <i class="s-a" style="width:28.125%"></i>
+</span><b>28%</b></td>
+  <td class="n">79</td>
+  <td class="n">40</td>
+  <td class="n">330</td>
+  <td class="n">6</td>
+  <td class="c-txt">M15 Monastir <i>4</i></td>
+</tr><tr>
+  <th scope="row">aut-2026-002</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:40.625%"></i>
+  <i class="s-q" style="width:43.75%"></i>
+  <i class="s-a" style="width:9.375%"></i>
+</span><b>9%</b></td>
+  <td class="c-ap"><span class="ap" title="63 jugadores">
+  
+  <i class="s-q" style="width:58.730158730158735%"></i>
+  <i class="s-a" style="width:39.682539682539684%"></i>
+</span><b>40%</b></td>
+  <td class="n">529</td>
+  <td class="n">152</td>
+  <td class="n">460</td>
+  <td class="n">160</td>
+  <td class="c-txt">M25 Slovenj Gradec <i>40</i></td>
+</tr><tr>
+  <th scope="row">aut-2026-003</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="64 jugadores">
+  
+  <i class="s-q" style="width:59.375%"></i>
+  <i class="s-a" style="width:40.625%"></i>
+</span><b>41%</b></td>
+  <td class="n">482</td>
+  <td class="n">176</td>
+  <td class="n">331</td>
+  <td class="n">25</td>
+  <td class="c-txt">M15 Monastir <i>12</i></td>
+</tr><tr>
+  <th scope="row">bel-2026-004</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:46.875%"></i>
+  <i class="s-q" style="width:46.875%"></i>
+  <i class="s-a" style="width:6.25%"></i>
+</span><b>6%</b></td>
+  <td class="c-ap"><span class="ap" title="48 jugadores">
+  
+  <i class="s-q" style="width:62.5%"></i>
+  <i class="s-a" style="width:35.41666666666667%"></i>
+</span><b>35%</b></td>
+  <td class="n">322</td>
+  <td class="n">95</td>
+  <td class="n">460</td>
+  <td class="n">71</td>
+  <td class="c-txt">M25 Ueberlingen <i>13</i></td>
+</tr><tr>
+  <th scope="row">chn-2026-028</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:53.125%"></i>
+  <i class="s-q" style="width:43.75%"></i>
+  <i class="s-a" style="width:3.125%"></i>
+</span><b>3%</b></td>
+  <td class="c-ap"><span class="ap" title="64 jugadores">
+  
+  <i class="s-q" style="width:70.3125%"></i>
+  <i class="s-a" style="width:29.6875%"></i>
+</span><b>30%</b></td>
+  <td class="n">230</td>
+  <td class="n">92</td>
+  <td class="n">354</td>
+  <td class="n">35</td>
+  <td class="c-txt">M25 Taipei <i>22</i></td>
+</tr><tr>
+  <th scope="row">chn-2026-029</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="64 jugadores">
+  
+  <i class="s-q" style="width:59.375%"></i>
+  <i class="s-a" style="width:40.625%"></i>
+</span><b>41%</b></td>
+  <td class="n">220</td>
+  <td class="n">87</td>
+  <td class="n">307</td>
+  <td class="n">35</td>
+  <td class="c-txt">M15 Hurghada <i>11</i></td>
+</tr><tr>
+  <th scope="row">egy-2026-022</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="61 jugadores">
+  
+  <i class="s-q" style="width:73.77049180327869%"></i>
+  <i class="s-a" style="width:24.59016393442623%"></i>
+</span><b>25%</b></td>
+  <td class="n">325</td>
+  <td class="n">81</td>
+  <td class="n">540</td>
+  <td class="n">22</td>
+  <td class="c-txt">M15 Monastir <i>21</i></td>
+</tr><tr>
+  <th scope="row">esp-2026-034</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:53.125%"></i>
+  <i class="s-q" style="width:37.5%"></i>
+  <i class="s-a" style="width:9.375%"></i>
+</span><b>9%</b></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:65.625%"></i>
+  <i class="s-a" style="width:34.375%"></i>
+</span><b>34%</b></td>
+  <td class="n">295</td>
+  <td class="n">98</td>
+  <td class="n">378</td>
+  <td class="n">79</td>
+  <td class="c-txt">M25 Idanha-a-Nova <i>21</i></td>
+</tr><tr>
+  <th scope="row">esp-2026-044</th>
+  <td class="c-ap"><span class="ap" title="24 jugadores">
+  <i class="s-mda" style="width:75%"></i>
+  <i class="s-q" style="width:25%"></i>
+  
+</span><b>0%</b></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:53.125%"></i>
+  <i class="s-a" style="width:46.875%"></i>
+</span><b>47%</b></td>
+  <td class="n">212</td>
+  <td class="n">79</td>
+  <td class="n">321</td>
+  <td class="n">52</td>
+  <td class="c-txt">M15 Monastir <i>8</i></td>
+</tr><tr>
+  <th scope="row">fra-2026-025</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:53.125%"></i>
+  <i class="s-a" style="width:43.75%"></i>
+</span><b>44%</b></td>
+  <td class="n">257</td>
+  <td class="n">85</td>
+  <td class="n">380</td>
+  <td class="n">56</td>
+  <td class="c-txt">M15 Pécs <i>12</i></td>
+</tr><tr>
+  <th scope="row">ger-2026-015</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:53.125%"></i>
+  <i class="s-q" style="width:31.25%"></i>
+  <i class="s-a" style="width:15.625%"></i>
+</span><b>16%</b></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:59.375%"></i>
+  <i class="s-a" style="width:40.625%"></i>
+</span><b>41%</b></td>
+  <td class="n">377</td>
+  <td class="n">138</td>
+  <td class="n">305</td>
+  <td class="n">53</td>
+  <td class="c-txt">M15 Lambermont <i>17</i></td>
+</tr><tr>
+  <th scope="row">hun-2026-004</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="54 jugadores">
+  
+  <i class="s-q" style="width:62.96296296296296%"></i>
+  <i class="s-a" style="width:37.03703703703704%"></i>
+</span><b>37%</b></td>
+  <td class="n">283</td>
+  <td class="n">94</td>
+  <td class="n">342</td>
+  <td class="n">11</td>
+  <td class="c-txt">M15 Monastir <i>10</i></td>
+</tr><tr>
+  <th scope="row">ita-2026-007</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:53.125%"></i>
+  <i class="s-q" style="width:43.75%"></i>
+  <i class="s-a" style="width:3.125%"></i>
+</span><b>3%</b></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:50%"></i>
+  <i class="s-a" style="width:46.875%"></i>
+</span><b>47%</b></td>
+  <td class="n">338</td>
+  <td class="n">126</td>
+  <td class="n">305</td>
+  <td class="n">51</td>
+  <td class="c-txt">M25 Slovenj Gradec <i>11</i></td>
+</tr><tr>
+  <th scope="row">ned-2026-006</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="58 jugadores">
+  
+  <i class="s-q" style="width:62.06896551724138%"></i>
+  <i class="s-a" style="width:37.93103448275862%"></i>
+</span><b>38%</b></td>
+  <td class="n">228</td>
+  <td class="n">93</td>
+  <td class="n">321</td>
+  <td class="n">48</td>
+  <td class="c-txt">M15 Pécs <i>15</i></td>
+</tr><tr>
+  <th scope="row">par-2026-002</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:50%"></i>
+  <i class="s-q" style="width:40.625%"></i>
+  <i class="s-a" style="width:3.125%"></i>
+</span><b>3%</b></td>
+  <td class="c-ap"><span class="ap" title="48 jugadores">
+  
+  <i class="s-q" style="width:68.75%"></i>
+  <i class="s-a" style="width:31.25%"></i>
+</span><b>31%</b></td>
+  <td class="n">144</td>
+  <td class="n">58</td>
+  <td class="n">425</td>
+  <td class="n">13</td>
+  <td class="c-txt">M25 Taipei <i>3</i></td>
+</tr><tr>
+  <th scope="row">pol-2026-007</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:46.875%"></i>
+  <i class="s-q" style="width:37.5%"></i>
+  <i class="s-a" style="width:6.25%"></i>
+</span><b>6%</b></td>
+  <td class="c-ap"><span class="ap" title="48 jugadores">
+  
+  <i class="s-q" style="width:62.5%"></i>
+  <i class="s-a" style="width:35.41666666666667%"></i>
+</span><b>35%</b></td>
+  <td class="n">520</td>
+  <td class="n">160</td>
+  <td class="n">414</td>
+  <td class="n">165</td>
+  <td class="c-txt">M15 Mistelbach <i>34</i></td>
+</tr><tr>
+  <th scope="row">pol-2026-008</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="48 jugadores">
+  
+  <i class="s-q" style="width:60.416666666666664%"></i>
+  <i class="s-a" style="width:39.58333333333333%"></i>
+</span><b>40%</b></td>
+  <td class="n">320</td>
+  <td class="n">147</td>
+  <td class="n">321</td>
+  <td class="n">64</td>
+  <td class="c-txt">M15 Pécs <i>19</i></td>
+</tr><tr>
+  <th scope="row">por-2026-013</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:53.125%"></i>
+  <i class="s-q" style="width:37.5%"></i>
+  <i class="s-a" style="width:6.25%"></i>
+</span><b>6%</b></td>
+  <td class="c-ap"><span class="ap" title="29 jugadores">
+  
+  <i class="s-q" style="width:51.724137931034484%"></i>
+  <i class="s-a" style="width:48.275862068965516%"></i>
+</span><b>48%</b></td>
+  <td class="n">310</td>
+  <td class="n">100</td>
+  <td class="n">238</td>
+  <td class="n">62</td>
+  <td class="c-txt">M25 Santander <i>19</i></td>
+</tr><tr>
+  <th scope="row">rou-2026-012</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:46.875%"></i>
+  <i class="s-q" style="width:46.875%"></i>
+  <i class="s-a" style="width:3.125%"></i>
+</span><b>3%</b></td>
+  <td class="c-ap"><span class="ap" title="48 jugadores">
+  
+  <i class="s-q" style="width:62.5%"></i>
+  <i class="s-a" style="width:35.41666666666667%"></i>
+</span><b>35%</b></td>
+  <td class="n">413</td>
+  <td class="n">116</td>
+  <td class="n">566</td>
+  <td class="n">116</td>
+  <td class="c-txt">M25 Slovenj Gradec <i>18</i></td>
+</tr><tr>
+  <th scope="row">rou-2026-013</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="64 jugadores">
+  
+  <i class="s-q" style="width:59.375%"></i>
+  <i class="s-a" style="width:40.625%"></i>
+</span><b>41%</b></td>
+  <td class="n">374</td>
+  <td class="n">103</td>
+  <td class="n">405</td>
+  <td class="n">89</td>
+  <td class="c-txt">M15 Monastir <i>26</i></td>
+</tr><tr>
+  <th scope="row">slo-2026-009</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="47 jugadores">
+  
+  <i class="s-q" style="width:55.319148936170215%"></i>
+  <i class="s-a" style="width:42.5531914893617%"></i>
+</span><b>43%</b></td>
+  <td class="n">357</td>
+  <td class="n">152</td>
+  <td class="n">279</td>
+  <td class="n">79</td>
+  <td class="c-txt">M15 Pécs <i>18</i></td>
+</tr><tr>
+  <th scope="row">slo-2026-010</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:46.875%"></i>
+  <i class="s-q" style="width:50%"></i>
+  <i class="s-a" style="width:3.125%"></i>
+</span><b>3%</b></td>
+  <td class="c-ap"><span class="ap" title="42 jugadores">
+  
+  <i class="s-q" style="width:78.57142857142857%"></i>
+  <i class="s-a" style="width:21.428571428571427%"></i>
+</span><b>21%</b></td>
+  <td class="n">398</td>
+  <td class="n">157</td>
+  <td class="n">305</td>
+  <td class="n">96</td>
+  <td class="c-txt">M15 Kursumlijska Banja <i>17</i></td>
+</tr><tr>
+  <th scope="row">srb-2026-015</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:50%"></i>
+  <i class="s-q" style="width:34.375%"></i>
+  <i class="s-a" style="width:12.5%"></i>
+</span><b>13%</b></td>
+  <td class="c-ap"><span class="ap" title="64 jugadores">
+  
+  <i class="s-q" style="width:67.1875%"></i>
+  <i class="s-a" style="width:32.8125%"></i>
+</span><b>33%</b></td>
+  <td class="n">378</td>
+  <td class="n">90</td>
+  <td class="n">378</td>
+  <td class="n">77</td>
+  <td class="c-txt">M15 Arad <i>14</i></td>
+</tr><tr>
+  <th scope="row">srb-2026-016</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="64 jugadores">
+  
+  <i class="s-q" style="width:67.1875%"></i>
+  <i class="s-a" style="width:31.25%"></i>
+</span><b>31%</b></td>
+  <td class="n">288</td>
+  <td class="n">65</td>
+  <td class="n">421</td>
+  <td class="n">53</td>
+  <td class="c-txt">M15 Monastir <i>16</i></td>
+</tr><tr>
+  <th scope="row">sui-2026-004</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:34.375%"></i>
+  <i class="s-a" style="width:62.5%"></i>
+</span><b>63%</b></td>
+  <td class="n">295</td>
+  <td class="n">122</td>
+  <td class="n">279</td>
+  <td class="n">8</td>
+  <td class="c-txt">M15 Monastir <i>4</i></td>
+</tr><tr>
+  <th scope="row">swe-2026-003</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:56.25%"></i>
+  <i class="s-q" style="width:40.625%"></i>
+  <i class="s-a" style="width:3.125%"></i>
+</span><b>3%</b></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:56.25%"></i>
+  <i class="s-a" style="width:43.75%"></i>
+</span><b>44%</b></td>
+  <td class="n">397</td>
+  <td class="n">133</td>
+  <td class="n">415</td>
+  <td class="n">69</td>
+  <td class="c-txt">M25 Lesa <i>12</i></td>
+</tr><tr>
+  <th scope="row">tpe-2026-001</th>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  <i class="s-mda" style="width:50%"></i>
+  <i class="s-q" style="width:37.5%"></i>
+  <i class="s-a" style="width:12.5%"></i>
+</span><b>13%</b></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:65.625%"></i>
+  <i class="s-a" style="width:34.375%"></i>
+</span><b>34%</b></td>
+  <td class="n">262</td>
+  <td class="n">123</td>
+  <td class="n">238</td>
+  <td class="n">39</td>
+  <td class="c-txt">M15 Maanshan <i>20</i></td>
+</tr><tr>
+  <th scope="row">tpe-2026-002</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="32 jugadores">
+  
+  <i class="s-q" style="width:59.375%"></i>
+  <i class="s-a" style="width:37.5%"></i>
+</span><b>38%</b></td>
+  <td class="n">257</td>
+  <td class="n">85</td>
+  <td class="n">239</td>
+  <td class="n">33</td>
+  <td class="c-txt">M15 Maanshan <i>12</i></td>
+</tr><tr>
+  <th scope="row">tun-2026-034</th>
+  <td class="c-ap"><span class="nada">—</span></td>
+  <td class="c-ap"><span class="ap" title="57 jugadores">
+  
+  <i class="s-q" style="width:78.94736842105263%"></i>
+  <i class="s-a" style="width:21.052631578947366%"></i>
+</span><b>21%</b></td>
+  <td class="n">345</td>
+  <td class="n">81</td>
+  <td class="n">494</td>
+  <td class="n">30</td>
+  <td class="c-txt">M15 Hurghada <i>12</i></td>
+</tr></tbody>
+</table></div>
+<div class="leyenda"><span><span class="mu mda"></span>aceptados directo</span><span><span class="mu q"></span>vinieron de qualis</span><span><span class="mu a"></span>suplentes y no listados</span></div>
+
+<h2>Por qué faltan rankeados</h2>
+<p class="nota">La lista de retiros trae la fecha y, en muchos casos, el torneo elegido en su lugar. No desaparecen: se van a jugar a otra parte esa misma semana.</p>
+<div class="dest"><span>M15 Monastir <b>126</b></span><span>M25 Slovenj Gradec <b>125</b></span><span>M15 Pécs <b>114</b></span><span>M15 Mistelbach <b>102</b></span><span>M25 Lesa <b>94</b></span><span>M15 Arad <b>76</b></span></div>
+
+<h2>Lo que probamos y NO sirve</h2>
+<div class="hall"><h3>La dilución del cuadro no cambia lo predecible que es</h3>
+<p>Parecía razonable que un cuadro lleno de suplentes fuera más caótico. Se midió partiendo las clasificaciones en tercios por dilución: el mejor WTN acierta <span class="mono">73.2%</span> con poca, <span class="mono">78.3%</span> con media y <span class="mono">73.4%</span> con mucha. Todo dentro del error. En cuadro principal, <span class="mono">71.7%</span> contra <span class="mono">70.5%</span>. No hay que ajustar nada por esto.</p></div>
+<div class="hall"><h3>La fuerza del campo tampoco</h3>
+<p>Medida por el ATP del cabeza de serie 1, que en estos torneos va de <span class="mono">222</span> a <span class="mono">542</span>: campo fuerte <span class="mono">70.1%</span>, medio <span class="mono">74.5%</span>, débil <span class="mono">73.7%</span>. Que el torneo tenga mejores o peores jugadores no cambia cuánto acierta la comparación de nivel entre los dos que están en la cancha.</p></div>
+
+<footer>Medido con <span class="mono">vigia/itf-entradas.mjs</span> cruzando cada lista de aceptación con su cuadro real. El detalle por torneo queda en <span class="mono">vigia/itf-entradas.json</span>.<br>
+“No listados” son jugadores que aparecen en el cuadro y no figuran en ninguna sección de la lista: suelen ser invitaciones de último minuto.</footer>
+</div>
