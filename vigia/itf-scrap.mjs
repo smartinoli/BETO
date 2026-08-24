@@ -26,8 +26,11 @@
    Frescura para no repetir: oop de hoy < 30 min → no se toca;
    acceptance < 4 días (PROXIMO/QUALI) → no se toca.
 
-   Uso:  node vigia/itf-scrap.mjs            corrida completa
-         node vigia/itf-scrap.mjs --plan     solo muestra la cola, no baja
+   Uso:  node vigia/itf-scrap.mjs                 corrida completa
+         node vigia/itf-scrap.mjs --plan          muestra la cola, no baja
+         node vigia/itf-scrap.mjs --solo lausanne sui-2026-004
+                                                  solo esos torneos, sin
+                                                  mirar frescura ni archivar
    ============================================================ */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -41,14 +44,21 @@ const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch 
 const edad = iso => iso ? Date.now() - new Date(iso).getTime() : Infinity;
 
 /* ---------- armar la cola ---------- */
-export function planificar(hoy = new Date().toISOString().slice(0, 10)) {
+export function planificar(hoy = new Date().toISOString().slice(0, 10), solo = null) {
+  /* 'solo' limita la corrida a unos torneos (por clave o por trozo del
+     nombre). Sin esto habia que barrer los 27 para refrescar uno, que con
+     las pausas humanas del navegador son ~18 minutos. */
   const m = refrescarMapa();
   const filas = torneosDelMapa(m, hoy);
   const cal = leer(CACHE_CALENDARIO);
   const colaA = [], colaB = [], archivar = [], notas = [];
-  if (edad(cal?.actualizado) > 3 * 864e5) colaB.push({ tipo: 'calendario', razon: 'caché con más de 3 días' });
+  if (!solo && edad(cal?.actualizado) > 3 * 864e5) colaB.push({ tipo: 'calendario', razon: 'caché con más de 3 días' });
+  const quiero = solo && solo.length
+    ? (clave, t) => solo.some(x => clave.includes(x.toLowerCase()) || t.nombre.toLowerCase().includes(x.toLowerCase()))
+    : () => true;
   for (const { clave, t, estado } of filas) {
     if (/CANCELLED/i.test(t.nombre)) continue;
+    if (!quiero(clave, t)) continue;
     if (estado === 'ARCHIVADO') continue;
     const fr = t.frescura;
     if (estado === 'TERMINADO') {
@@ -63,7 +73,7 @@ export function planificar(hoy = new Date().toISOString().slice(0, 10)) {
     /* order of play + cuadros: solo con el torneo en cancha */
     if (estado === 'QUALI' || estado === 'MAIN') {
       const oopHoy = fr.oop[hoy];
-      if (!oopHoy || edad(oopHoy) > MIN_OOP)
+      if (solo || !oopHoy || edad(oopHoy) > MIN_OOP)
         colaA.push({ tipo: 'cosecha', clave, t, razon: oopHoy ? `oop de hoy de las ${oopHoy.slice(11, 16)}` : (estado === 'QUALI' ? 'quali: aún sin oop' : 'sin oop de hoy') });
     }
   }
@@ -90,9 +100,9 @@ async function ejecutarCola(cola, trabajar, log) {
 }
 
 /* ---------- corrida ---------- */
-export async function correr({ soloPlan = false, log = console.log } = {}) {
+export async function correr({ soloPlan = false, solo = null, log = console.log } = {}) {
   const hoy = new Date().toISOString().slice(0, 10);
-  const { colaA, colaB, archivar } = planificar(hoy);
+  const { colaA, colaB, archivar } = planificar(hoy, solo);
   log(`Plan: ${colaA.length} cosechas (oop/cuadros) · ${colaB.length} tareas de calendario/acceptance · ${archivar.length} por archivar`);
   for (const i of [...colaA, ...colaB]) log(`  · ${i.tipo.padEnd(10)} ${(i.clave || '').padEnd(22)} ${i.razon}`);
   if (soloPlan) return null;
@@ -135,7 +145,8 @@ export async function correr({ soloPlan = false, log = console.log } = {}) {
 
   /* archivar y dejar el mapa al día con lo recién bajado */
   const m = refrescarMapa();
-  for (const sem of Object.values(m.semanas))
+  /* con --solo no se archiva: la corrida no miró los demás torneos */
+  if (!solo) for (const sem of Object.values(m.semanas))
     for (const [clave, t] of Object.entries(sem))
       if (archivar.includes(clave)) { t.archivado = true; res.archivados++; }
   guardarMapa(m);
@@ -145,4 +156,10 @@ export async function correr({ soloPlan = false, log = console.log } = {}) {
 
 /* ---------- CLI ---------- */
 const esCli = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
-if (esCli) await correr({ soloPlan: process.argv.includes('--plan') });
+if (esCli) {
+  const args = process.argv.slice(2);
+  const i = args.indexOf('--solo');
+  const solo = i >= 0 ? args.slice(i + 1).filter(a => !a.startsWith('--')) : null;
+  if (i >= 0 && !solo.length) { console.error('--solo necesita al menos una clave o nombre de torneo'); process.exit(1); }
+  await correr({ soloPlan: args.includes('--plan'), solo });
+}
