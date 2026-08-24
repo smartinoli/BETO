@@ -175,6 +175,49 @@ if (cv.length > 3) {
   console.log('  o sea justo donde el mercado más nos contradice. Los dos criterios se pelean.');
 }
 
+/* ---------- la prueba que decide si vale la pena jugar una ronda ----------
+   En Q1 nadie ha jugado todavia: el mercado solo tiene ranking, igual que
+   nosotros, y cotiza POR NIVEL (pendiente 0.227, R2=0.406 — casi la nuestra,
+   0.273). Ahi le empatamos. En Q2 su pendiente se va a cero (0.012, R2=0.001):
+   deja de usar el nivel porque ya vio jugar a los dos, y nos gana feo
+   (log-loss 0.780 contra 0.580). No sabemos que usa — probamos si era la forma
+   de la Q1 en games cedidos y no correlaciona (r=-0.087).
+
+   De ahi la regla: antes de jugar una ronda nueva, mirar si el mercado la
+   cotiza por nivel. Si el R2 sobre Δ es alto, competimos. Si es ~0, el precio
+   lleva informacion que no tenemos y hay que quedarse afuera. */
+const GRUPO_R = { Q1:'Q1', Q2:'buenas', R1:'buenas', Q3:'medias', R2:'medias',
+                  QF:'finales', SF:'finales', F:'finales' };
+function curva(a) {
+  if (a.length < 5) return null;
+  const lg = p => Math.log(p / (1 - p));
+  const n = a.length, mx = a.reduce((s, x) => s + x.d, 0) / n, my = a.reduce((s, x) => s + lg(x.p), 0) / n;
+  const b = a.reduce((s, x) => s + (x.d - mx) * (lg(x.p) - my), 0) / a.reduce((s, x) => s + (x.d - mx) ** 2, 0);
+  const i = my - b * mx;
+  const ss = a.reduce((s, x) => s + (lg(x.p) - my) ** 2, 0);
+  const rs = a.reduce((s, x) => s + (lg(x.p) - (i + b * x.d)) ** 2, 0);
+  return { i, b, r2: 1 - rs / ss, n };
+}
+const pts = {};
+for (const r of ok) {
+  const [a, b] = r.lados || [];
+  if (!a?.gana || !b?.gana || a.wtn == null || b.wtn == null || a.wtn === b.wtn) continue;
+  const k = a.wtn < b.wtn ? 0 : 1, yo = r.lados[k], otro = r.lados[1 - k];
+  (pts[GRUPO_R[r.etapa] || r.etapa] ??= []).push({
+    d: Math.abs(a.wtn - b.wtn), p: (1 / yo.gana) / ((1 / yo.gana) + (1 / otro.gana)) });
+}
+console.log('\n¿EL MERCADO COTIZA ESA RONDA POR NIVEL? — la prueba antes de jugarla');
+console.log('  nuestra pendiente sobre Δ es 0.273. Hace falta que la suya se le parezca');
+console.log('  (positiva y con ajuste): si se va a cero o se da vuelta, el precio sabe');
+console.log('  algo que nosotros no y ahí no hay nada que hacer.');
+for (const g of ['Q1', 'buenas', 'medias', 'finales']) {
+  const c = curva(pts[g] || []);
+  if (!c) { console.log(`  ${T(g, 9)} n=${(pts[g] || []).length} — faltan cuotas`); continue; }
+  console.log(`  ${T(g, 9)} logit p = ${c.i.toFixed(3)} + ${c.b.toFixed(3)}·Δ   R²=${c.r2.toFixed(3)}  n=${c.n}` +
+    `   ${c.b >= 0.12 && c.r2 >= 0.25 ? '← cotiza por nivel: competimos'
+        : c.b < 0 ? 'cotiza AL REVÉS del nivel: afuera' : 'el precio no sigue el nivel: afuera'}`);
+}
+
 console.log('\nTODO EL REGISTRO, DE MÁS A MENOS SEGURO');
 for (const r of ok.sort((a, b) => (b.v.nivel?.p || 0) - (a.v.nivel?.p || 0)))
   console.log(`  ${r.gano == null ? '?' : r.gano ? '✓' : '✗'} ${T(r.etapa, 4)} ${T(r.q.torneo.replace(/ \(qualis\)/, ''), 16)} ` +
