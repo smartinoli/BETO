@@ -74,7 +74,7 @@ export function analizar(p) {
   const tarde = esTarde(p.ronda);
   const etapa = tarde ? 'ronda final' : 'ronda temprana';
   if (l.length !== 2 || l[0].wtn == null || l[1].wtn == null)
-    return { favorito: '—', confianza: 'baja', mercado: 'pasar', val: null, d: null,
+    return { tipo: 'pasar', nivel: null, precio: null, favorito: '—', confianza: 'baja', mercado: 'pasar',
       razon: 'Falta el WTN de alguno de los dos: no se puede comparar nivel.', banderas: ['sin datos de nivel'] };
 
   const d = Math.abs(l[0].wtn - l[1].wtn);
@@ -101,12 +101,12 @@ export function analizar(p) {
   if (otro.jr || /JR/i.test(otro.marca || ''))
     vetos.push(`${otro.nombre} es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta${gamesCedidos(otro.llega) != null ? `, y llega cediendo el ${Math.round(gamesCedidos(otro.llega) * 100)}% de los games` : ''}`);
   if (vetos.length)
-    return { favorito: '—', confianza: 'baja', mercado: 'pasar', val: null, d, k,
+    return { tipo: 'pasar', nivel: null, precio: null, favorito: '—', confianza: 'baja', mercado: 'pasar',
       razon: `El ΔWTN de ${d.toFixed(2)} apunta a ${yo.nombre}, pero el número no sirve: ${vetos.join('; ')}.`,
       banderas: ['veto: dato no confiable'] };
 
   if (pe == null)
-    return { favorito: '—', confianza: 'baja', mercado: 'pasar', val: null, d, k,
+    return { tipo: 'pasar', nivel: null, precio: null, favorito: '—', confianza: 'baja', mercado: 'pasar',
       razon: `Δ${d.toFixed(2)} de WTN en ${etapa}: bajo 1.5 es ruido — ahí el mejor WTN acierta 52-57%, azar. Sin lado.`,
       banderas: [`Δ${d.toFixed(2)} ruido`] };
 
@@ -123,28 +123,80 @@ export function analizar(p) {
   if (huboRetiro(otro.llega)) avisos.push(`${otro.nombre} ganó un partido por retiro: llega más fresco`);
   if (tarde) avisos.push('ronda final: el cuadro ya filtró y el WTN cae a 56% (n=55)');
 
+  /* ---------- LAS DOS VIAS ----------
+     Definidas con Sebastian el 2026-08-24, porque "gana/pasar" mezclaba dos
+     preguntas que necesitan datos distintos: si tenemos favorito (solo WTN
+     y etapa) y si el precio lo paga (necesita cuota). Sin cuota la segunda
+     no tiene respuesta, y el sistema igual decia "gana" — 131 de 292
+     partidos salian asi, leyendose como recomendacion sin serlo.
+
+     SEGURA   el nivel manda y la cuota compensa. Cada banda tiene su cuota
+              minima: con 89% de acierto se empata en 1.13 y con 72% en
+              1.40, asi que pedir +9% de margen sobre el vig da 1.23 y 1.52.
+              Por eso un 1.05 no pasa nunca, ni con el nivel mas fuerte.
+     ANOMALIA el mercado nos contradice y paga de mas: nuestro favorito
+              cotizado como no favorito. Es la via de multiplicar, y tambien
+              la mas incierta — el registro va 1-1 (Borg gano a 2.22,
+              Petkovic perdio a 3.40). Se muestra siempre con el reparo.  */
   const c = yo.gana;
   const val = c ? pe * c - 1 : null;
-  const ban = [`Δ${d.toFixed(2)} ` + (d >= 4 ? 'muy fuerte' : d >= 2.5 ? 'fuerte' : 'moderada')];
+  /* cuota a la que la apuesta empata, y la que deja +9% sobre el margen */
+  const cEmpate = 1 / pe, cMinima = 1.09 / pe;
+  const fuerza = d >= 4 ? 'muy fuerte' : d >= 2.5 ? 'fuerte' : 'claro';
+  const nivel = { fuerza, p: pe, d, favorito: yo.nombre + (yo.marca ? ' ' + yo.marca : ''), tarde, cEmpate, cMinima };
+
+  const ban = [`Δ${d.toFixed(2)} ${fuerza}`];
   if (choque) ban.push('choque nivel vs forma');
-  let razon = `Δ${d.toFixed(2)} de WTN a favor (${yo.wtn} contra ${otro.wtn}), en ${etapa}. `;
-  razon += choque
-    ? `Choque nivel-contra-forma con brecha ${d >= 2.5 ? 'grande' : 'chica'}: nuestros datos dan ${Math.round(pe * 100)}% a este lado. `
-    : `Nivel y forma coinciden: banda del ${Math.round(pe * 100)}% (${tarde ? BANDAS.tarde.nota : BANDAS.temprano.nota}). `;
-  let conf, mkt;
-  if (c) {
-    const imp = 100 / c;
-    if (val > 0.10) { razon += `A ${c} el mercado implica ${imp.toFixed(1)}% → valor +${Math.round(val * 100)}%.`; conf = d >= 2.5 ? 'alta' : 'media'; mkt = 'gana'; ban.push('valor de cuota'); }
-    else if (val > 0) { razon += `A ${c} implica ${imp.toFixed(1)}% → apenas +${Math.round(val * 100)}%: margen fino.`; conf = 'media'; mkt = 'gana'; ban.push('margen fino'); }
-    else { razon += `A ${c} implica ${imp.toFixed(1)}%, sobre nuestra estimación: sin valor.`; conf = 'baja'; mkt = 'pasar'; ban.push('sin valor'); }
-  } else { razon += 'Todavía sin línea en Betano ni bet365.'; conf = d >= 2.5 ? 'media' : 'baja'; mkt = 'gana'; ban.push('sin línea'); }
-  /* el aviso de "sin ATP" es informativo y va A FAVOR: no baja confianza */
   const enContra = avisos.filter(a => !/no tiene ranking ATP/.test(a));
-  if (avisos.length) {
-    razon += ` Con reparos: ${avisos.join('; ')}.`;
-    if (enContra.length) conf = enContra.length >= 2 ? 'baja' : conf === 'alta' ? 'media' : 'baja';
-    for (const a of enContra) ban.push('ojo: ' + a.split(':')[0].split(' —')[0]);
+  for (const a of enContra) ban.push('ojo: ' + a.split(':')[0].split(' —')[0]);
+
+  let razon = `Δ${d.toFixed(2)} de WTN a favor (${yo.wtn} contra ${otro.wtn}), en ${etapa}: banda del ${Math.round(pe * 100)}% (${tarde ? BANDAS.tarde.nota : BANDAS.temprano.nota}). `;
+  if (choque) razon = razon.replace('banda del', 'choque nivel-contra-forma, banda del');
+
+  /* --- sin cuota: se informa el nivel y nada mas --- */
+  if (!c) {
+    razon += `Empataria a ${cEmpate.toFixed(2)} y valdria la pena desde ${cMinima.toFixed(2)}. Falta el precio.`;
+    if (avisos.length) razon += ` Con reparos: ${avisos.join('; ')}.`;
+    return { tipo: 'sin-precio', nivel, precio: null, favorito: nivel.favorito,
+      confianza: 'baja', mercado: 'sin precio', razon, banderas: [...ban, 'sin precio'] };
   }
-  return { favorito: mkt === 'pasar' ? '—' : yo.nombre + (yo.marca ? ' ' + yo.marca : ''),
-    confianza: conf, mercado: mkt, razon, banderas: ban, val, pe, d, k };
+
+  /* --- con cuota: se decide --- */
+  const devig = otro.gana ? (1 / c) / ((1 / c) + (1 / otro.gana)) : 1 / c;
+  const residuo = devig - pMercadoModelo(d);
+  const esAnomalia = c >= 2.00 && d >= 2.5;      /* nuestro favorito, pagado como no favorito */
+  const precio = { cuota: c, cMinima, val, devig, residuo,
+    veredicto: val <= 0 ? 'caro' : c < cMinima ? 'justo' : 'barato' };
+
+  if (esAnomalia) {
+    razon += `El mercado lo pone de NO favorito a ${c} (${Math.round(devig * 100)}%) cuando nuestra banda dice ${Math.round(pe * 100)}%: ${Math.round(val * 100)}% de valor si tenemos razon. `;
+    razon += 'Es la via de multiplicar y la mas incierta: cuando el mercado se aparta tanto suele ver algo que no vemos, y nuestro registro en estos casos va 1-1.';
+    if (avisos.length) razon += ` Reparos: ${avisos.join('; ')}.`;
+    return { tipo: 'anomalia', nivel, precio, favorito: nivel.favorito,
+      confianza: enContra.length ? 'baja' : 'media', mercado: 'gana', razon,
+      banderas: [...ban, 'anomalía'] };
+  }
+  if (val <= 0) {
+    razon += `A ${c} el mercado implica ${(100 / c).toFixed(0)}%, por encima de nuestra banda: cuota corta, no compensa.`;
+    return { tipo: 'pasar', nivel, precio, favorito: '—', confianza: 'baja', mercado: 'pasar', razon, banderas: [...ban, 'cuota corta'] };
+  }
+  if (c < cMinima) {
+    razon += `A ${c} hay apenas +${Math.round(val * 100)}%: por debajo del margen de la casa (haria falta ${cMinima.toFixed(2)}). Dentro del error de estimacion.`;
+    return { tipo: 'pasar', nivel, precio, favorito: '—', confianza: 'baja', mercado: 'pasar', razon, banderas: [...ban, 'margen fino'] };
+  }
+  /* barato de verdad: candidata a SEGURA si el nivel manda y nada estorba */
+  razon += `A ${c} paga sobre la minima de ${cMinima.toFixed(2)}: +${Math.round(val * 100)}% de valor. `;
+  const bloqueo = [];
+  if (d < 2.5) bloqueo.push('el nivel es solo "claro", no fuerte');
+  if (tarde) bloqueo.push('es ronda final, donde el nivel cae a 56%');
+  if (enContra.length) bloqueo.push(enContra.length + ' reparo' + (enContra.length > 1 ? 's' : ''));
+  if (residuo < -0.15) bloqueo.push('el mercado se aparta ' + Math.round(-residuo * 100) + ' puntos de su propio modelo');
+  if (!bloqueo.length) {
+    razon += 'Nivel fuerte, ronda temprana y sin reparos.';
+    if (avisos.length) razon += ` (${avisos.join('; ')})`;
+    return { tipo: 'segura', nivel, precio, favorito: nivel.favorito, confianza: 'alta', mercado: 'gana', razon, banderas: [...ban, 'segura'] };
+  }
+  razon += `Pero: ${bloqueo.join('; ')}.`;
+  if (avisos.length) razon += ` ${avisos.join('; ')}.`;
+  return { tipo: 'mirar', nivel, precio, favorito: nivel.favorito, confianza: 'media', mercado: 'gana', razon, banderas: [...ban, 'mirar'] };
 }

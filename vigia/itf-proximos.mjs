@@ -223,6 +223,10 @@ torneos.sort((a, b) => a.prox - b.prox || a.t.nombre.localeCompare(b.t.nombre));
 
 /* ---------- render ---------- */
 const num = v => v == null ? '<span class="sin">·</span>' : (+v).toFixed(2);
+/* Las cinco etiquetas que puede llevar una fila. "sin precio" no es un
+   veredicto: dice el nivel y se calla, porque sin cuota la pregunta de si
+   conviene apostar no tiene respuesta. */
+const ETIQUETA = { segura: '✓ SEGURA', anomalia: '⚡ ANOMALÍA', mirar: '· mirar', pasar: '— pasar', 'sin-precio': '· sin precio' };
 function filaPartido(p, tClave) {
   /* Sin hora fija ("Followed By", "After Rest"): se muestra el texto de ITF
      tal cual, que es la unica verdad disponible, y el dia del order of play. */
@@ -235,7 +239,7 @@ function filaPartido(p, tClave) {
     const alerta = l.wtn == null ? '<abbr class="alerta" title="sin WTN en la entry list">⚠sinWTN</abbr>'
       : !l.wtnVisible ? '<abbr class="alerta" title="ITF marca este rating como no mostrable (insignia ProZone)">⚠PZ</abbr>'
       : l.atp == null ? '<abbr class="alerta" title="sin ranking ATP: su WTN mide partidos viejos">⚠sinATP</abbr>' : '';
-    const elegido = p.v.mercado !== 'pasar' && p.v.k === k;
+    const elegido = /^(segura|anomalia|mirar)$/.test(p.v.tipo) && p.v.nivel && p.lados[k].nombre === p.v.nivel.favorito.replace(/\s*\[.*$/, '').trim();
     return `<div class="jug${elegido ? ' elegido' : ''}">
       <div class="j-nom">${elegido ? '<span class="tick">▸</span>' : ''}${esc(l.nombre)}${l.marca ? ` <b class="marca">${esc(l.marca)}</b>` : ''}<span class="pais">${esc(l.pais)}</span></div>
       <div class="j-niv mono">${l.atp ? 'ATP ' + l.atp : '<span class="sin">sin ATP</span>'} · ${l.wtn != null ? 'WTN ' + (+l.wtn).toFixed(2) : '<span class="sin">sin WTN</span>'} ${alerta}</div>
@@ -243,7 +247,7 @@ function filaPartido(p, tClave) {
       <div class="j-llega">${l.llegaHtml || '<span class="sin">debuta</span>'}</div>
     </div>`;
   };
-  return `<article class="partido" data-etapa="${esc(p.etapa)}" data-cuota="${cq ? 1 : 0}">
+  return `<article class="partido" data-etapa="${esc(p.etapa)}" data-cuota="${cq ? 1 : 0}" data-tipo="${esc(p.v.tipo)}">
     <header class="p-cab">
       <span class="mono cuando"><b>${esc(dia)}</b> ${horaCl}${p.hhmm ? `<span class="loc">${esc(p.hhmm)} loc</span>` : ''}</span>
       <span class="lugar">${esc(p.cancha || '')}${p.turno ? ` · ${p.turno}º turno` : ''}</span>
@@ -251,9 +255,10 @@ function filaPartido(p, tClave) {
       ${cq?.discrepan ? '<span class="disc" title="Betano y bet365 no coinciden en quién es favorito: cuota poco fiable">⚡ casas en desacuerdo</span>' : ''}
     </header>
     ${jug(p.lados[0], 0)}${jug(p.lados[1], 1)}
-    <p class="veredicto c-${esc(p.v.confianza)}">
-      <span class="conf">${esc(p.v.confianza)}</span>
-      ${p.v.mercado === 'pasar' ? '<b class="pasar">Pasar</b>' : `<b>${esc(p.v.favorito)}</b>`}
+    <p class="veredicto t-${esc(p.v.tipo)}">
+      <span class="etiq">${ETIQUETA[p.v.tipo] || p.v.tipo}</span>
+      ${p.v.tipo === 'pasar' ? '' : `<b>${esc(p.v.favorito)}</b>`}
+      ${p.v.nivel ? `<span class="niv">nivel ${esc(p.v.nivel.fuerza)} · ${Math.round(p.v.nivel.p * 100)}%${p.v.precio ? '' : ` · desde ${p.v.nivel.cMinima.toFixed(2)}`}</span>` : ''}
       <span class="razon">${esc(p.v.razon)}</span>
     </p>
   </article>`;
@@ -383,11 +388,14 @@ details.etapa>.e-cab:hover{background:var(--franja)}
 .sin{color:var(--tinta2);opacity:.7}
 .mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 .veredicto{margin:0;padding:7px 11px;border-top:1px solid var(--linea);font-size:12.5px;background:var(--carta)}
-.conf{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;
-  border-radius:999px;margin-right:7px;background:var(--franja);color:var(--tinta2)}
-.c-alta .conf{background:var(--acento);color:var(--carta)}
-.c-media .conf{background:var(--acento-suave);color:var(--acento)}
-.pasar{color:var(--tinta2)}
+.etiq{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:2px 8px;
+  border-radius:999px;margin-right:8px;background:var(--franja);color:var(--tinta2);white-space:nowrap}
+.t-segura .etiq{background:var(--acento);color:var(--carta)}
+.t-anomalia .etiq{background:var(--ambar);color:var(--carta)}
+.t-mirar .etiq{background:var(--acento-suave);color:var(--acento)}
+.t-segura{border-left:3px solid var(--acento)}
+.t-anomalia{border-left:3px solid var(--ambar)}
+.niv{font-size:11.5px;color:var(--tinta2);margin-left:7px;font-variant-numeric:tabular-nums}
 .razon{color:var(--tinta2);margin-left:6px}
 .vacio{padding:40px 0;text-align:center;color:var(--tinta2)}
 footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
@@ -400,6 +408,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
 <div class="filtros">
   <button id="f-etapa" class="on" data-modo="temprano">Solo qualis, R1 y R2</button>
   <button id="f-cuota" data-modo="todos">Solo con cuota</button>
+  <button id="f-jugables" data-modo="todos">Solo seguras y anomalías</button>
   <span class="sep"></span>
   <button id="b-abrir" class="fantasma">Abrir todo</button>
   <button id="b-cerrar" class="fantasma">Cerrar todo</button>
@@ -411,11 +420,12 @@ ${torneos.length ? secciones : '<p class="vacio">No hay partidos por jugar en la
 <script>
 (function(){
   var TEMPRANO = {Q1:1,Q2:1,Q3:1,R1:1,R2:1};
-  var bE = document.getElementById('f-etapa'), bC = document.getElementById('f-cuota');
+  var bE = document.getElementById('f-etapa'), bC = document.getElementById('f-cuota'), bJ = document.getElementById('f-jugables');
   function pinta(){
-    var soloTemp = bE.classList.contains('on'), soloCuota = bC.classList.contains('on');
+    var soloTemp = bE.classList.contains('on'), soloCuota = bC.classList.contains('on'), soloJug = bJ.classList.contains('on');
     document.querySelectorAll('.partido').forEach(function(p){
-      var ok = (!soloTemp || TEMPRANO[p.dataset.etapa]) && (!soloCuota || p.dataset.cuota === '1');
+      var ok = (!soloTemp || TEMPRANO[p.dataset.etapa]) && (!soloCuota || p.dataset.cuota === '1')
+        && (!soloJug || p.dataset.tipo === 'segura' || p.dataset.tipo === 'anomalia');
       p.hidden = !ok;
     });
     document.querySelectorAll('details.etapa').forEach(function(e){
@@ -429,7 +439,7 @@ ${torneos.length ? secciones : '<p class="vacio">No hay partidos por jugar en la
       t.querySelectorAll('.etapa.cerrada').forEach(function(e){ e.hidden = !vis; });
     });
   }
-  [bE, bC].forEach(function(b){ b.onclick = function(){ b.classList.toggle('on'); pinta(); }; });
+  [bE, bC, bJ].forEach(function(b){ b.onclick = function(){ b.classList.toggle('on'); pinta(); }; });
   function todos(abrir){
     document.querySelectorAll('.torneo').forEach(function(t){ if(!t.hidden) t.open = abrir; });
     if (abrir) document.querySelectorAll('details.etapa').forEach(function(e){ e.open = true; });
