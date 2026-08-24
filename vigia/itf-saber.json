@@ -452,6 +452,18 @@
    "excepcion": "Rival JUNIOR sigue siendo veto duro y funciono: Rares Teodor Pieleanu a 1.09 con Δ6.26 salio PASAR porque el rival es JR, y ahi el WTN se da vuelta (38.5%, n=13 en R1).",
    "correccion": "Un reparo que meti hoy mismo bloqueaba de SEGURA a todo R1 entre dos jugadores sin trayectoria — que en la primera ronda de un cuadro es el estado NORMAL, no una senal. Dejaba fuera justo la ronda donde el metodo mide mejor. Ahora solo aplica desde la segunda ronda en adelante.",
    "resultado": "Con eso quedan 4 SEGURAS para el 25/08: Novkirichka @1.27 (+19%), Mazdrashki @1.28 (+16%), Couturier @1.29 (+16%) y Sakellaridis @1.14 (+10%). Es la primera vez que el sistema marca varias con respaldo de una celda medida y no solo del modelo."
+  },
+  {
+   "fecha": "2026-08-24",
+   "corrida": "segundo intento de leer betano directo, ahora con navegador de verdad",
+   "detalle": [
+    "Sebastian pregunto si podia hacer yo lo que hace el: abrir la pagina del torneo en betano e imprimirla a PDF",
+    "Probado con Chromium real (no fetch plano) a traves del proxy, con user agent de Windows y locale es-CL: HTTP 403 de Cloudflare, titulo 'Betano Splash Screen', cuerpo vacio. cf-ray termina en -IAD",
+    "La salida a internet de esta maquina esta en Columbus, Ohio (AS396982 Google LLC, IP 160.79.106.128). www.betano.com, lat.betano.com y betano.cl responden 403 o nada desde ahi"
+   ],
+   "conclusion": "Es un bloqueo GEOGRAFICO, no un desafio antibot. No hay nada que 'resolver': con navegador real da exactamente lo mismo que con fetch. La parte de abrir la pagina e imprimir a PDF la tiene que seguir haciendo Sebastian desde su conexion. No se intento evadir el bloqueo y no corresponde intentarlo.",
+   "loQueSiSeGano": "La otra mitad quedo automatizada. Se instalo poppler-utils y se escribio vigia/itf-cuotas-pdf.mjs: lee los PDF impresos de Betano, saca fecha, jugadores y cuotas, deduce el torneo del nombre del archivo cruzado con las fechas del mapa (si un pais tiene dos torneos abiertos gana el que contiene la fecha del partido), y VERIFICA cada partido contra los cuadros en disco antes de guardarlo. Probado sobre los 3 PDF de hoy: 18 de 18 leidas y verificadas, con deteccion de repetidas. Antes esas 26 cuotas las tipee a mano.",
+   "detalleTecnico": "El nombre del archivo pierde acentos y la ñ al subirse ('España' llega como 'Espa a'), asi que el pais se resuelve con distancia de edicion hasta 2 sobre la forma sin espacios. Los PDF de Betano traen el texto con fuentes subset y CMaps propios, por eso hizo falta pdftotext y no sirvio un parser casero."
   }
  ],
  "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",
