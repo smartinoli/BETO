@@ -451,4 +451,26 @@ ${torneos.length ? secciones : '<p class="vacio">No hay partidos por jugar en la
 </script>`;
 
 fs.writeFileSync(SALIDA, html);
+
+/* Dossier plano para la tabla esquemática (itf-tabla.mjs): mismos datos,
+   sin decisiones tomadas. Sebastián quiere ver las variables crudas y
+   filtrar por su cuenta, así que se guarda todo lo que entra al juicio. */
+const dossier = [];
+for (const T of torneos) for (const e of T.etapas) for (const p of e.pendientes) {
+  const k = p.v.nivel ? p.lados.findIndex(l => l.nombre === p.v.nivel.favorito.replace(/\s*\[.*$/, '').trim()) : -1;
+  const [yo, otro] = k >= 0 ? [p.lados[k], p.lados[1 - k]] : p.lados;
+  dossier.push({
+    id: p.id, torneo: T.t.nombre, pais: T.t.pais, superficie: T.t.superficie, categoria: T.t.categoria,
+    etapa: p.etapa, fecha: p.fecha, hhmm: p.hhmm, horarioTxt: p.horarioTxt,
+    inicio: p.inicio ? p.inicio.toISOString() : null, cancha: p.cancha, turno: p.turno,
+    yo: { nombre: yo.nombre, pais: yo.pais, marca: yo.marca, atp: yo.atp, wtn: yo.wtn,
+      wtnVisible: yo.wtnVisible, jr: yo.jr, gana: yo.gana, llega: yo.llega },
+    otro: { nombre: otro.nombre, pais: otro.pais, marca: otro.marca, atp: otro.atp, wtn: otro.wtn,
+      wtnVisible: otro.wtnVisible, jr: otro.jr, gana: otro.gana, llega: otro.llega },
+    casa: p.cq?.manual ? 'mano' : p.cq?.casa || null,
+    cuotasAl: p.cq?.cuotasAl || null, bFix: p.cq?.bFix || null,
+    v: p.v,
+  });
+}
+fs.writeFileSync(path.join(DIR, 'itf-proximos-datos.json'), JSON.stringify({ generado, partidos: dossier }));
 console.log(`✓ ${SALIDA} (${(html.length / 1024).toFixed(0)} KB) · ${torneos.length} torneos · ${totalPend} por jugar (${totalConCuota} con cuota)`);
