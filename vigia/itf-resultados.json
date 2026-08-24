@@ -1,0 +1,2323 @@
+{
+ "generado": "2026-08-24T16:08:16.173Z",
+ "registro": [
+  {
+   "q": {
+    "torneo": "M25 Ueberlingen",
+    "p1": "Tim Handel",
+    "p2": "Arthur Nagel",
+    "g1": 2.25,
+    "g2": 1.55,
+    "visto": "2026-08-23T06:45Z"
+   },
+   "estado": "ok",
+   "etapa": "F",
+   "clave": "m-itf-ger-2026-015",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.11 de WTN en ronda final (F): ahí el mejor WTN sale 46%, bajo el piso de 58%. En finales (n=83) haría falta Δ2.91. Sin lado.",
+    "banderas": [
+     "Δ1.11 corta en F"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "TIM Handel",
+     "marca": "",
+     "atp": 772,
+     "itf": null,
+     "wtn": 6.82,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.25,
+     "llega": "6-4 7-6(8) · 6-2 6-4 · 7-5 7-5 · 6-2 6-4"
+    },
+    {
+     "nombre": "Arthur Nagel",
+     "marca": "[3]",
+     "atp": 399,
+     "itf": null,
+     "wtn": 5.71,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.55,
+     "llega": "6-3 6-2 · 6-1 6(6)-7 6-2 · 6-4 6-3 · 6(5)-7 6-3 6-3"
+    }
+   ],
+   "etiqueta": "Δ1.11 corta en F",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Arthur Nagel",
+    "marca": "[3]",
+    "atp": 399,
+    "itf": null,
+    "wtn": 5.71,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.55,
+    "llega": "6-3 6-2 · 6-1 6(6)-7 6-2 · 6-4 6-3 · 6(5)-7 6-3 6-3"
+   },
+   "cuota": 1.55,
+   "gano": true,
+   "devig": 0.5921052631578947,
+   "resid": 0.06161065786422615
+  },
+  {
+   "q": {
+    "torneo": "M15 Mistelbach",
+    "p1": "Thilo Behrmann",
+    "p2": "Nikita Mashtakov",
+    "g1": 1.6,
+    "g2": 2.15,
+    "visto": "2026-08-23T06:45Z"
+   },
+   "estado": "ok",
+   "etapa": "F",
+   "clave": "m-itf-aut-2026-002",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "El ΔWTN de 8.45 apunta a Nikita Mashtakov, pero el número no sirve: Thilo Behrmann es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta, y llega cediendo el 23% de los games.",
+    "banderas": [
+     "veto: dato no confiable"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Thilo Behrmann",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": 13.28,
+     "wtnVisible": true,
+     "jr": true,
+     "gana": 1.6,
+     "llega": "6-1 6-0 · 6-1 6-2 · 6-0 7-6(5) · 6-1 6-4"
+    },
+    {
+     "nombre": "Nikita Mashtakov",
+     "marca": "[3]",
+     "atp": 652,
+     "itf": null,
+     "wtn": 4.83,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.15,
+     "llega": "6-4 5-7 7-6(6) · 7-6(5) 6-3 · 7-6(5) 4-6 6-0 · 1-6 6-4 7-5"
+    }
+   ],
+   "etiqueta": "veto: dato no confiable",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Nikita Mashtakov",
+    "marca": "[3]",
+    "atp": 652,
+    "itf": null,
+    "wtn": 4.83,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 2.15,
+    "llega": "6-4 5-7 7-6(6) · 7-6(5) 6-3 · 7-6(5) 4-6 6-0 · 1-6 6-4 7-5"
+   },
+   "cuota": 2.15,
+   "gano": true,
+   "devig": 0.4266666666666667,
+   "resid": -0.3856829131855995
+  },
+  {
+   "q": {
+    "torneo": "M15 Bastad",
+    "p1": "Leo Borg",
+    "p2": "Niklas Guttau",
+    "g1": 1.62,
+    "g2": 2.12,
+    "visto": "2026-08-23T05:00Z"
+   },
+   "estado": "ok",
+   "etapa": "F",
+   "clave": "m-itf-swe-2026-003",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ2.73 de WTN en ronda final (F): ahí el mejor WTN sale 57%, bajo el piso de 58%. En finales (n=83) haría falta Δ2.91. Sin lado.",
+    "banderas": [
+     "Δ2.73 corta en F"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Leo Borg",
+     "marca": "[1]",
+     "atp": 542,
+     "itf": null,
+     "wtn": 5.4,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.62,
+     "llega": "6-4 6-3 · 6-0 6-3 · 6-2 4-6 6-4 · 6-3 7-5"
+    },
+    {
+     "nombre": "Niklas Guttau",
+     "marca": "",
+     "atp": 1211,
+     "itf": 401,
+     "wtn": 8.13,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.12,
+     "llega": "6-4 6-2 · 6-2 6-2 · 3-6 6-2 6-1 · 6-3 4-6 6-4"
+    }
+   ],
+   "etiqueta": "Δ2.73 corta en F",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Leo Borg",
+    "marca": "[1]",
+    "atp": 542,
+    "itf": null,
+    "wtn": 5.4,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.62,
+    "llega": "6-4 6-3 · 6-0 6-3 · 6-2 4-6 6-4 · 6-3 7-5"
+   },
+   "cuota": 1.62,
+   "gano": false,
+   "devig": 0.5668449197860962,
+   "resid": -0.03630088028080425
+  },
+  {
+   "q": {
+    "torneo": "M25 Santander",
+    "p1": "Carlos Sanchez Jover",
+    "p2": "Alexander Ritschard",
+    "g1": 2.42,
+    "g2": 1.47,
+    "visto": "2026-08-23T07:00Z"
+   },
+   "estado": "ok",
+   "etapa": "F",
+   "clave": "m-itf-esp-2026-034",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.35 de WTN en ronda final (F): ahí el mejor WTN sale 41%, bajo el piso de 58%. En finales (n=83) haría falta Δ2.91. Sin lado.",
+    "banderas": [
+     "Δ0.35 corta en F"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Carlos Sanchez Jover",
+     "marca": "[1]",
+     "atp": 374,
+     "itf": null,
+     "wtn": 3.5,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.42,
+     "llega": "4-6 6-3 6-1 · 6-4 6-0 · 7-6(3) 6-3 · 1-6 6-2 6-2"
+    },
+    {
+     "nombre": "Alexander Ritschard",
+     "marca": "[7]",
+     "atp": 580,
+     "itf": null,
+     "wtn": 3.15,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.47,
+     "llega": "6-2 6-1 · 6-2 6-3 · 6-1 7-6(1) · 6-3 6-4"
+    }
+   ],
+   "etiqueta": "Δ0.35 corta en F",
+   "ret": true,
+   "favWtn": {
+    "nombre": "Alexander Ritschard",
+    "marca": "[7]",
+    "atp": 580,
+    "itf": null,
+    "wtn": 3.15,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.47,
+    "llega": "6-2 6-1 · 6-2 6-3 · 6-1 7-6(1) · 6-3 6-4"
+   },
+   "cuota": 1.47,
+   "gano": false,
+   "devig": 0.6221079691516709,
+   "resid": 0.12634536770089033
+  },
+  {
+   "q": {
+    "torneo": "M15 Arad",
+    "p1": "Matteo Sciahbasi",
+    "p2": "Iannis Miletich",
+    "g1": 1.6,
+    "g2": 2.15,
+    "visto": "2026-08-23T07:00Z"
+   },
+   "estado": "ok",
+   "etapa": "F",
+   "clave": "m-itf-rou-2026-012",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.36 de WTN en ronda final (F): ahí el mejor WTN sale 34%, bajo el piso de 58%. En finales (n=83) haría falta Δ4.00 con el choque en contra. Sin lado.",
+    "banderas": [
+     "Δ0.36 corta en F"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Matteo Sciahbasi",
+     "marca": "",
+     "atp": 1288,
+     "itf": 89,
+     "wtn": 9.02,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.6,
+     "llega": "5-7 7-6(2) 1-0 · 6-2 6-4 · 6-4 6-4 · 6-4 6-0"
+    },
+    {
+     "nombre": "Iannis Miletich",
+     "marca": "",
+     "atp": 1136,
+     "itf": 2132,
+     "wtn": 8.66,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.15,
+     "llega": "7-6(6) 6-2 · 3-6 6-1 4-0 · 7-6(2) 3-6 6-0 · 6-3 7-5"
+    }
+   ],
+   "etiqueta": "Δ0.36 corta en F",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Iannis Miletich",
+    "marca": "",
+    "atp": 1136,
+    "itf": 2132,
+    "wtn": 8.66,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 2.15,
+    "llega": "7-6(6) 6-2 · 3-6 6-1 4-0 · 7-6(2) 3-6 6-0 · 6-3 7-5"
+   },
+   "cuota": 2.15,
+   "gano": false,
+   "devig": 0.4266666666666667,
+   "resid": -0.06955340534522303
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Alejandro Garcia",
+    "p2": "Marc Ros Mesas",
+    "g1": 1.08,
+    "g2": 6.5,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.9078187502918442,
+     "d": 8.48,
+     "favorito": "Alejandro Garcia Carbajal [3]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.1015414692398913,
+     "cMinima": 1.2006802014714815
+    },
+    "precio": {
+     "cuota": 1.08,
+     "cMinima": 1.2006802014714815,
+     "val": -0.01955574968480822,
+     "devig": 0.8575197889182057,
+     "residuo": 0.04433476059825803,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ8.48 de WTN a favor (7.62 contra 16.1), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 91%. A 1.08 el mercado implica 93%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ8.48 muy fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Alejandro Garcia Carbajal",
+     "marca": "[3]",
+     "atp": 1436,
+     "itf": 611,
+     "wtn": 7.62,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.08,
+     "llega": ""
+    },
+    {
+     "nombre": "Marc Ros Mesas",
+     "marca": "",
+     "atp": null,
+     "itf": 1045,
+     "wtn": 16.1,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 6.5,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Alejandro Garcia Carbajal",
+    "marca": "[3]",
+    "atp": 1436,
+    "itf": 611,
+    "wtn": 7.62,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.08,
+    "llega": ""
+   },
+   "cuota": 1.08,
+   "gano": true,
+   "devig": 0.8575197889182057,
+   "resid": 0.04433476059825803
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Jorge Lopez Dominguez",
+    "p2": "Oriol Font",
+    "g1": 3.25,
+    "g2": 1.3,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "fuerte",
+     "p": 0.7030169633609256,
+     "d": 3.26,
+     "favorito": "Oriol Font [15]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.422440783248362,
+     "cMinima": 1.5504604537407147
+    },
+    "precio": {
+     "cuota": 1.3,
+     "cMinima": 1.5504604537407147,
+     "val": -0.08607794763079679,
+     "devig": 0.7142857142857143,
+     "residuo": 0.08817207128833338,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ3.26 de WTN a favor (12.68 contra 15.94), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 70%. A 1.3 el mercado implica 77%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ3.26 fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Jorge Lopez Dominguez",
+     "marca": "",
+     "atp": null,
+     "itf": 2604,
+     "wtn": 15.94,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.25,
+     "llega": ""
+    },
+    {
+     "nombre": "Oriol Font",
+     "marca": "[15]",
+     "atp": 1995,
+     "itf": 510,
+     "wtn": 12.68,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.3,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Oriol Font",
+    "marca": "[15]",
+    "atp": 1995,
+    "itf": 510,
+    "wtn": 12.68,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.3,
+    "llega": ""
+   },
+   "cuota": 1.3,
+   "gano": true,
+   "devig": 0.7142857142857143,
+   "resid": 0.08817207128833338
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Aren Baybars",
+    "p2": "Alex Martinez Sanz",
+    "g1": 1.13,
+    "g2": 5,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.56 de WTN en ronda Q1: ahí el mejor WTN sale 53%, bajo el piso de 58%. En Q1 (n=312) haría falta Δ1.29. Sin lado.",
+    "banderas": [
+     "Δ0.56 corta en Q1"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Aren Baybars",
+     "marca": "[1]",
+     "atp": 1320,
+     "itf": 1558,
+     "wtn": 14.97,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.13,
+     "llega": ""
+    },
+    {
+     "nombre": "Alex Martinez Sanz",
+     "marca": "",
+     "atp": null,
+     "itf": 1332,
+     "wtn": 14.41,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 5,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "Δ0.56 corta en Q1",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Alex Martinez Sanz",
+    "marca": "",
+    "atp": null,
+    "itf": 1332,
+    "wtn": 14.41,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 5,
+    "llega": ""
+   },
+   "cuota": 5,
+   "gano": false,
+   "devig": 0.18433931484502447,
+   "resid": -0.32103047869229756
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Javier Gonzalez",
+    "p2": "Amaan Siddiqui",
+    "g1": 5,
+    "g2": 1.14,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6201747465521921,
+     "d": 1.8999999999999986,
+     "favorito": "Amaan Siddiqui [16]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.6124487582885527,
+     "cMinima": 1.7575691465345227
+    },
+    "precio": {
+     "cuota": 1.14,
+     "cMinima": 1.7575691465345227,
+     "val": -0.2930007889305011,
+     "devig": 0.8143322475570033,
+     "residuo": 0.2480496664561619,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.90 de WTN a favor (16 contra 17.9), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 62%. A 1.14 el mercado implica 88%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ1.90 claro",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Javier Gonzalez",
+     "marca": "",
+     "atp": null,
+     "itf": 2650,
+     "wtn": 17.9,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 5,
+     "llega": ""
+    },
+    {
+     "nombre": "Amaan Siddiqui",
+     "marca": "[16]",
+     "atp": 1995,
+     "itf": 888,
+     "wtn": 16,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.14,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Amaan Siddiqui",
+    "marca": "[16]",
+    "atp": 1995,
+    "itf": 888,
+    "wtn": 16,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.14,
+    "llega": ""
+   },
+   "cuota": 1.14,
+   "gano": true,
+   "devig": 0.8143322475570033,
+   "resid": 0.2480496664561619
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Raghav Harsh",
+    "p2": "Nicolas Rafael Goldberg Alviani",
+    "g1": 2.67,
+    "g2": 1.42,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "fuerte",
+     "p": 0.7307155492761546,
+     "d": 3.7600000000000016,
+     "favorito": "Nicolas Rafael Goldberg Alviani [14]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.3685215827015014,
+     "cMinima": 1.4916885251446366
+    },
+    "precio": {
+     "cuota": 1.42,
+     "cMinima": 1.4916885251446366,
+     "val": 0.03761607997213945,
+     "devig": 0.6528117359413204,
+     "residuo": 0.005537312730001909,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ3.76 de WTN a favor (14.41 contra 18.17), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 73%. A 1.42 hay apenas +4%: por debajo del margen de la casa (haria falta 1.49). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ3.76 fuerte",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Raghav Harsh",
+     "marca": "",
+     "atp": null,
+     "itf": 2673,
+     "wtn": 18.17,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.67,
+     "llega": ""
+    },
+    {
+     "nombre": "Nicolas Rafael Goldberg Alviani",
+     "marca": "[14]",
+     "atp": 1995,
+     "itf": 590,
+     "wtn": 14.41,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.42,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Nicolas Rafael Goldberg Alviani",
+    "marca": "[14]",
+    "atp": 1995,
+    "itf": 590,
+    "wtn": 14.41,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.42,
+    "llega": ""
+   },
+   "cuota": 1.42,
+   "gano": true,
+   "devig": 0.6528117359413204,
+   "resid": 0.005537312730001909
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Atharva Sharma",
+    "p2": "Mario Mansilla Diez",
+    "g1": 4.05,
+    "g2": 1.2,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "fuerte",
+     "p": 0.740802742189989,
+     "d": 3.9499999999999993,
+     "favorito": "Mario Mansilla Diez [9]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.349887011816077,
+     "cMinima": 1.4713768428795242
+    },
+    "precio": {
+     "cuota": 1.2,
+     "cMinima": 1.4713768428795242,
+     "val": -0.11103670937201326,
+     "devig": 0.7714285714285714,
+     "residuo": 0.11625703560597955,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ3.95 de WTN a favor (10.73 contra 14.68), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 74%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ3.95 fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Atharva Sharma",
+     "marca": "",
+     "atp": null,
+     "itf": 86,
+     "wtn": 14.68,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.05,
+     "llega": ""
+    },
+    {
+     "nombre": "Mario Mansilla Diez",
+     "marca": "[9]",
+     "atp": 1717,
+     "itf": null,
+     "wtn": 10.73,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.2,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Mario Mansilla Diez",
+    "marca": "[9]",
+    "atp": 1717,
+    "itf": null,
+    "wtn": 10.73,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.2,
+    "llega": ""
+   },
+   "cuota": 1.2,
+   "gano": true,
+   "devig": 0.7714285714285714,
+   "resid": 0.11625703560597955
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Toprak Avcibasi",
+    "p2": "Aaron Paul Samson",
+    "g1": 1.14,
+    "g2": 5,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.8910566516170882,
+     "d": 7.800000000000001,
+     "favorito": "Toprak Avcibasi [4]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.1222630998659866,
+     "cMinima": 1.2232667788539255
+    },
+    "precio": {
+     "cuota": 1.14,
+     "cMinima": 1.2232667788539255,
+     "val": 0.01580458284348052,
+     "devig": 0.8143322475570033,
+     "residuo": 0.020791798526352046,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ7.80 de WTN a favor (11.43 contra 19.23), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 89%. A 1.14 hay apenas +2%: por debajo del margen de la casa (haria falta 1.22). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ7.80 muy fuerte",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Toprak Avcibasi",
+     "marca": "[4]",
+     "atp": 1468,
+     "itf": 133,
+     "wtn": 11.43,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.14,
+     "llega": ""
+    },
+    {
+     "nombre": "Aaron Paul Samson",
+     "marca": "",
+     "atp": null,
+     "itf": 1763,
+     "wtn": 19.23,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 5,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Toprak Avcibasi",
+    "marca": "[4]",
+    "atp": 1468,
+    "itf": 133,
+    "wtn": 11.43,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.14,
+    "llega": ""
+   },
+   "cuota": 1.14,
+   "gano": true,
+   "devig": 0.8143322475570033,
+   "resid": 0.020791798526352046
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Bernardo Tedesco",
+    "p2": "Jose Dominguez Alonso",
+    "g1": 2.67,
+    "g2": 1.42,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "mirar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.8622306618503017,
+     "d": 6.8199999999999985,
+     "favorito": "Jose Dominguez Alonso [13]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.1597824622173056,
+     "cMinima": 1.2641628838168633
+    },
+    "precio": {
+     "cuota": 1.42,
+     "cMinima": 1.2641628838168633,
+     "val": 0.2243675398274283,
+     "devig": 0.6528117359413204,
+     "residuo": -0.10980144990031204,
+     "veredicto": "barato"
+    },
+    "favorito": "Jose Dominguez Alonso [13]",
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ6.82 de WTN a favor (12.67 contra 19.49), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 86%. A 1.42 paga sobre la minima de 1.26: +22% de valor. Pero: ninguno de los dos tiene trayectoria en el cuadro: no se pudo mirar la forma. Bernardo Tedesco no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+    "banderas": [
+     "Δ6.82 muy fuerte",
+     "mirar"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Bernardo Tedesco",
+     "marca": "",
+     "atp": null,
+     "itf": 2378,
+     "wtn": 19.49,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.67,
+     "llega": ""
+    },
+    {
+     "nombre": "Jose Dominguez Alonso",
+     "marca": "[13]",
+     "atp": 1904,
+     "itf": 217,
+     "wtn": 12.67,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.42,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "mirar",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Jose Dominguez Alonso",
+    "marca": "[13]",
+    "atp": 1904,
+    "itf": 217,
+    "wtn": 12.67,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.42,
+    "llega": ""
+   },
+   "cuota": 1.42,
+   "gano": true,
+   "devig": 0.6528117359413204,
+   "resid": -0.10980144990031204
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Enzo Helguera Casado",
+    "p2": "Maxi Carrascosa Diaz",
+    "g1": 5.9,
+    "g2": 1.1,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
+    "banderas": [
+     "sin datos de nivel"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Enzo Helguera casado",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": null,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 5.9,
+     "llega": ""
+    },
+    {
+     "nombre": "Maxi Carrascosa Diaz",
+     "marca": "[11]",
+     "atp": 1860,
+     "itf": 839,
+     "wtn": 14.23,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.1,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "sin datos de nivel",
+   "ret": false,
+   "favWtn": null,
+   "cuota": null,
+   "gano": null
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Mateo Luis Alvarez Sarmiento",
+    "p2": "Ian Lucca Cervantes Tomas",
+    "g1": 1.42,
+    "g2": 2.67,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "fuerte",
+     "p": 0.6838632289009283,
+     "d": 2.9299999999999997,
+     "favorito": "Mateo Luis Alvarez Sarmiento [6]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.4622806984477748,
+     "cMinima": 1.5938859613080747
+    },
+    "precio": {
+     "cuota": 1.42,
+     "cMinima": 1.5938859613080747,
+     "val": -0.028914214960681806,
+     "devig": 0.6528117359413204,
+     "residuo": 0.040939243916943924,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ2.93 de WTN a favor (10.44 contra 13.37), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 68%. A 1.42 el mercado implica 70%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ2.93 fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Mateo Luis Alvarez Sarmiento",
+     "marca": "[6]",
+     "atp": 1656,
+     "itf": 269,
+     "wtn": 10.44,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.42,
+     "llega": ""
+    },
+    {
+     "nombre": "Ian Lucca Cervantes Tomas",
+     "marca": "",
+     "atp": null,
+     "itf": 1995,
+     "wtn": 13.37,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.67,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Mateo Luis Alvarez Sarmiento",
+    "marca": "[6]",
+    "atp": 1656,
+    "itf": 269,
+    "wtn": 10.44,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.42,
+    "llega": ""
+   },
+   "cuota": 1.42,
+   "gano": true,
+   "devig": 0.6528117359413204,
+   "resid": 0.040939243916943924
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo (qualis)",
+    "p1": "Xavi Palomar",
+    "p2": "Alvaro De Miguel Montero",
+    "g1": 1.16,
+    "g2": 4.6,
+    "visto": "2026-08-23T06:00Z"
+   },
+   "estado": "ok",
+   "etapa": "Q1",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.8264741413002304,
+     "d": 5.82,
+     "favorito": "Xavi Palomar [7]",
+     "ronda": "Q1",
+     "grupo": "Q1",
+     "tarde": false,
+     "choque": false,
+     "n": 312,
+     "cEmpate": 1.2099592110973663,
+     "cMinima": 1.3188555400961293
+    },
+    "precio": {
+     "cuota": 1.16,
+     "cMinima": 1.3188555400961293,
+     "val": -0.041289996091732784,
+     "devig": 0.7986111111111112,
+     "residuo": 0.07069804525081502,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ5.82 de WTN a favor (12.98 contra 18.8), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 83%. A 1.16 el mercado implica 86%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ5.82 muy fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Xavi Palomar",
+     "marca": "[7]",
+     "atp": 1579,
+     "itf": 2378,
+     "wtn": 12.98,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.16,
+     "llega": ""
+    },
+    {
+     "nombre": "Alvaro De Miguel Montero",
+     "marca": "",
+     "atp": null,
+     "itf": 1688,
+     "wtn": 18.8,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.6,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Xavi Palomar",
+    "marca": "[7]",
+    "atp": 1579,
+    "itf": 2378,
+    "wtn": 12.98,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.16,
+    "llega": ""
+   },
+   "cuota": 1.16,
+   "gano": true,
+   "devig": 0.7986111111111112,
+   "resid": 0.07069804525081502
+  },
+  {
+   "q": {
+    "torneo": "M25 Lausanne",
+    "p1": "Leonardo Taddia",
+    "p2": "Arthur Vildeuil",
+    "g1": 1.08,
+    "g2": 6.6,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-sui-2026-004",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.7341911547582742,
+     "d": 2.3199999999999985,
+     "favorito": "Leonardo Taddia [2]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.3620431048767414,
+     "cMinima": 1.4846269843156483
+    },
+    "precio": {
+     "cuota": 1.08,
+     "cMinima": 1.4846269843156483,
+     "val": -0.20707355286106377,
+     "devig": 0.8593749999999999,
+     "residuo": 0.274319970523206,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ2.32 de WTN a favor (12.63 contra 14.95), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 73%. A 1.08 el mercado implica 93%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ2.32 claro",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Leonardo Taddia",
+     "marca": "[2]",
+     "atp": null,
+     "itf": 380,
+     "wtn": 12.63,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.08,
+     "llega": "6-4 6-1"
+    },
+    {
+     "nombre": "Arthur Vildeuil",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": 14.95,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 6.6,
+     "llega": "6-0 0-6 11-9"
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Leonardo Taddia",
+    "marca": "[2]",
+    "atp": null,
+    "itf": 380,
+    "wtn": 12.63,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.08,
+    "llega": "6-4 6-1"
+   },
+   "cuota": 1.08,
+   "gano": true,
+   "devig": 0.8593749999999999,
+   "resid": 0.274319970523206
+  },
+  {
+   "q": {
+    "torneo": "M25 Lausanne",
+    "p1": "Marko Maric",
+    "p2": "Mateo Comamala",
+    "g1": 1.38,
+    "g2": 2.82,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-sui-2026-004",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6812141152535119,
+     "d": 2.4700000000000024,
+     "favorito": "Marko Maric [6]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": true,
+     "n": 345,
+     "cEmpate": 1.4679672332213092,
+     "cMinima": 1.6000842842112273
+    },
+    "precio": {
+     "cuota": 1.38,
+     "cMinima": 1.6000842842112273,
+     "val": -0.05992452095015355,
+     "devig": 0.6714285714285714,
+     "residuo": 0.07972556395055264,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ2.47 de WTN a favor (13.7 contra 16.17), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 74%. Mateo Comamala llega cediendo menos games y el choque la baja a 68%. A 1.38 el mercado implica 72%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ2.47 claro",
+     "choque nivel vs forma",
+     "ojo: Mateo Comamala llega cediendo menos games",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Marko Maric",
+     "marca": "[6]",
+     "atp": null,
+     "itf": 1359,
+     "wtn": 13.7,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.38,
+     "llega": "6-2 6-2"
+    },
+    {
+     "nombre": "Mateo Comamala",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": 16.17,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.82,
+     "llega": "6-0 6-1"
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Marko Maric",
+    "marca": "[6]",
+    "atp": null,
+    "itf": 1359,
+    "wtn": 13.7,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.38,
+    "llega": "6-2 6-2"
+   },
+   "cuota": 1.38,
+   "gano": true,
+   "devig": 0.6714285714285714,
+   "resid": 0.07972556395055264
+  },
+  {
+   "q": {
+    "torneo": "M25 Lausanne",
+    "p1": "Dany Robas",
+    "p2": "Filippo Valdetara",
+    "g1": 1.72,
+    "g2": 2,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-sui-2026-004",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
+    "banderas": [
+     "sin datos de nivel"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Dany Robas",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": 13.85,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.72,
+     "llega": "6-3 6-3"
+    },
+    {
+     "nombre": "Filippo Valdetara",
+     "marca": "[9]",
+     "atp": null,
+     "itf": 2378,
+     "wtn": null,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2,
+     "llega": "6-0 6-1"
+    }
+   ],
+   "etiqueta": "sin datos de nivel",
+   "ret": true,
+   "favWtn": null,
+   "cuota": null,
+   "gano": null
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Justin Lenders",
+    "p2": "Zaccharie Cado",
+    "g1": 1.42,
+    "g2": 2.67,
+    "visto": "2026-08-23T23:59Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "segura",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.8906568381236004,
+     "d": 6.279999999999999,
+     "favorito": "Justin Lenders [5]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.1227668807963787,
+     "cMinima": 1.2238159000680529
+    },
+    "precio": {
+     "cuota": 1.42,
+     "cMinima": 1.2238159000680529,
+     "val": 0.2647327101355126,
+     "devig": 0.6528117359413204,
+     "residuo": -0.0914503324901128,
+     "veredicto": "barato"
+    },
+    "favorito": "Justin Lenders [5]",
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ6.28 de WTN a favor (10.49 contra 16.77), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 89%. A 1.42 paga sobre la minima de 1.22: +26% de valor. Nivel fuerte, Q2 está en \"buenas\" (n=345), y sin reparos. (Zaccharie Cado no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%))",
+    "banderas": [
+     "Δ6.28 muy fuerte",
+     "segura"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Justin Lenders",
+     "marca": "[5]",
+     "atp": 1872,
+     "itf": 259,
+     "wtn": 10.49,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.42,
+     "llega": "6-2 6-0"
+    },
+    {
+     "nombre": "Zaccharie Cado",
+     "marca": "[9]",
+     "atp": null,
+     "itf": 1688,
+     "wtn": 16.77,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.67,
+     "llega": "6-2 6-4"
+    }
+   ],
+   "etiqueta": "segura",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Justin Lenders",
+    "marca": "[5]",
+    "atp": 1872,
+    "itf": 259,
+    "wtn": 10.49,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.42,
+    "llega": "6-2 6-0"
+   },
+   "cuota": 1.42,
+   "gano": false,
+   "devig": 0.6528117359413204,
+   "resid": -0.0914503324901128
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Massimo Pizzigoni",
+    "p2": "Pascal Tylek",
+    "g1": 1.2,
+    "g2": 4.05,
+    "visto": "2026-08-23T23:59Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "fuerte",
+     "p": 0.7890374241502253,
+     "d": 3.4299999999999997,
+     "favorito": "Massimo Pizzigoni [1]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.267367008703011,
+     "cMinima": 1.3814300394862822
+    },
+    "precio": {
+     "cuota": 1.2,
+     "cMinima": 1.3814300394862822,
+     "val": -0.053155091019729706,
+     "devig": 0.7714285714285714,
+     "residuo": 0.13806126612564584,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ3.43 de WTN a favor (12.07 contra 15.5), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 79%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ3.43 fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Massimo Pizzigoni",
+     "marca": "[1]",
+     "atp": 1771,
+     "itf": 599,
+     "wtn": 12.07,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.2,
+     "llega": "6-0 6-0"
+    },
+    {
+     "nombre": "Pascal Tylek",
+     "marca": "[12]",
+     "atp": null,
+     "itf": 1757,
+     "wtn": 15.5,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.05,
+     "llega": "6-4 7-6(10)"
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Massimo Pizzigoni",
+    "marca": "[1]",
+    "atp": 1771,
+    "itf": 599,
+    "wtn": 12.07,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.2,
+    "llega": "6-0 6-0"
+   },
+   "cuota": 1.2,
+   "gano": true,
+   "devig": 0.7714285714285714,
+   "resid": 0.13806126612564584
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo",
+    "p1": "Aren Baybars",
+    "p2": "Amaan Siddiqui",
+    "g1": 1.12,
+    "g2": 5.4,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6600894811025899,
+     "d": 1.0299999999999994,
+     "favorito": "Aren Baybars [1]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.514946122652395,
+     "cMinima": 1.6512912736911107
+    },
+    "precio": {
+     "cuota": 1.12,
+     "cMinima": 1.6512912736911107,
+     "val": -0.2606997811650992,
+     "devig": 0.8282208588957055,
+     "residuo": 0.3013742029984926,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.03 de WTN a favor (14.97 contra 16), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 66%. A 1.12 el mercado implica 89%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ1.03 claro",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Aren Baybars",
+     "marca": "[1]",
+     "atp": 1320,
+     "itf": 1558,
+     "wtn": 14.97,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.12,
+     "llega": "7-6(5) 6-1"
+    },
+    {
+     "nombre": "Amaan Siddiqui",
+     "marca": "[16]",
+     "atp": 1995,
+     "itf": 888,
+     "wtn": 16,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 5.4,
+     "llega": "7-6(8) 6-2"
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Aren Baybars",
+    "marca": "[1]",
+    "atp": 1320,
+    "itf": 1558,
+    "wtn": 14.97,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.12,
+    "llega": "7-6(5) 6-1"
+   },
+   "cuota": 1.12,
+   "gano": true,
+   "devig": 0.8282208588957055,
+   "resid": 0.3013742029984926
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo",
+    "p1": "Sergio Planella Hernandez",
+    "p2": "Mario Mansilla Diez",
+    "g1": 1.32,
+    "g2": 3.1,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6101502904778238,
+     "d": 0.2400000000000002,
+     "favorito": "Sergio Planella Hernandez [5]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.6389404636960434,
+     "cMinima": 1.7864451054286874
+    },
+    "precio": {
+     "cuota": 1.32,
+     "cMinima": 1.7864451054286874,
+     "val": -0.19460161656927255,
+     "devig": 0.7013574660633485,
+     "residuo": 0.21062640407871924,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.24 de WTN a favor (10.49 contra 10.73), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 61%. A 1.32 el mercado implica 76%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ0.24 claro",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Sergio Planella Hernandez",
+     "marca": "[5]",
+     "atp": 1488,
+     "itf": 323,
+     "wtn": 10.49,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.32,
+     "llega": "6-2 6-0"
+    },
+    {
+     "nombre": "Mario Mansilla Diez",
+     "marca": "[9]",
+     "atp": 1717,
+     "itf": null,
+     "wtn": 10.73,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.1,
+     "llega": "6-4 6-1"
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Sergio Planella Hernandez",
+    "marca": "[5]",
+    "atp": 1488,
+    "itf": 323,
+    "wtn": 10.49,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.32,
+    "llega": "6-2 6-0"
+   },
+   "cuota": 1.32,
+   "gano": false,
+   "devig": 0.7013574660633485,
+   "resid": 0.21062640407871924
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo",
+    "p1": "Toprak Avcibasi",
+    "p2": "Maxi Carrascosa Diaz",
+    "g1": 2.42,
+    "g2": 1.5,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "anomalia",
+    "nivel": {
+     "fuerza": "fuerte",
+     "p": 0.7004580492314538,
+     "d": 2.8000000000000007,
+     "favorito": "Toprak Avcibasi [4]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": true,
+     "n": 345,
+     "cEmpate": 1.4276372455098563,
+     "cMinima": 1.5561245976057434
+    },
+    "precio": {
+     "cuota": 2.42,
+     "cMinima": 1.5561245976057434,
+     "val": 0.6951084791401183,
+     "devig": 0.3826530612244898,
+     "residuo": -0.22355486468085045,
+     "veredicto": "barato"
+    },
+    "favorito": "Toprak Avcibasi [4]",
+    "confianza": "baja",
+    "mercado": "gana",
+    "razon": "Δ2.80 de WTN a favor (11.43 contra 14.23), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 76%. Maxi Carrascosa Diaz llega cediendo menos games y el choque la baja a 70%. El mercado lo pone de NO favorito a 2.42 (38%) cuando nuestra curva dice 70%: 70% de valor si tenemos razon. Es la via de multiplicar y la mas incierta: cuando el mercado se aparta tanto suele ver algo que no vemos, y nuestro registro en estos casos va 1-1. Reparos: el mercado lo paga a 2.42 (38% real) cuando su propio modelo por ΔWTN daría 61%: 22 puntos que no vemos; Maxi Carrascosa Diaz llega cediendo menos games: el choque baja la estimación de 76% a 70%.",
+    "banderas": [
+     "Δ2.80 fuerte",
+     "choque nivel vs forma",
+     "ojo: el mercado lo paga a 2.42 (38% real) cuando su propio modelo por ΔWTN daría 61%",
+     "ojo: Maxi Carrascosa Diaz llega cediendo menos games",
+     "anomalía"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Toprak Avcibasi",
+     "marca": "[4]",
+     "atp": 1468,
+     "itf": 133,
+     "wtn": 11.43,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.42,
+     "llega": "6(4)-7 6-2 10-7"
+    },
+    {
+     "nombre": "Maxi Carrascosa Diaz",
+     "marca": "[11]",
+     "atp": 1860,
+     "itf": 839,
+     "wtn": 14.23,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.5,
+     "llega": "6-2 6-2"
+    }
+   ],
+   "etiqueta": "anomalía",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Toprak Avcibasi",
+    "marca": "[4]",
+    "atp": 1468,
+    "itf": 133,
+    "wtn": 11.43,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 2.42,
+    "llega": "6(4)-7 6-2 10-7"
+   },
+   "cuota": 2.42,
+   "gano": false,
+   "devig": 0.3826530612244898,
+   "resid": -0.22355486468085045
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo",
+    "p1": "Mateo Luis Alvarez Sarmiento",
+    "p2": "Jose Dominguez Alonso",
+    "g1": 1.2,
+    "g2": 4.05,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.7293669259458542,
+     "d": 2.2300000000000004,
+     "favorito": "Mateo Luis Alvarez Sarmiento [6]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.371052023922232,
+     "cMinima": 1.494446706075233
+    },
+    "precio": {
+     "cuota": 1.2,
+     "cMinima": 1.494446706075233,
+     "val": -0.12475968886497502,
+     "devig": 0.7714285714285714,
+     "residuo": 0.1903774104120315,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ2.23 de WTN a favor (10.44 contra 12.67), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 73%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ2.23 claro",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Mateo Luis Alvarez Sarmiento",
+     "marca": "[6]",
+     "atp": 1656,
+     "itf": 269,
+     "wtn": 10.44,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.2,
+     "llega": "6-2 6-4"
+    },
+    {
+     "nombre": "Jose Dominguez Alonso",
+     "marca": "[13]",
+     "atp": 1904,
+     "itf": 217,
+     "wtn": 12.67,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.05,
+     "llega": "7-6(3) 6-2"
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Mateo Luis Alvarez Sarmiento",
+    "marca": "[6]",
+    "atp": 1656,
+    "itf": 269,
+    "wtn": 10.44,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.2,
+    "llega": "6-2 6-4"
+   },
+   "cuota": 1.2,
+   "gano": false,
+   "devig": 0.7714285714285714,
+   "resid": 0.1903774104120315
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo",
+    "p1": "Pablo Aunion",
+    "p2": "Noah Regas Luis",
+    "g1": 1.3,
+    "g2": 3.25,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.622438650652332,
+     "d": 1.5200000000000014,
+     "favorito": "Pablo Aunion [8]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": true,
+     "n": 345,
+     "cEmpate": 1.6065840367592434,
+     "cMinima": 1.7511766000675755
+    },
+    "precio": {
+     "cuota": 1.3,
+     "cMinima": 1.7511766000675755,
+     "val": -0.19082975415196846,
+     "devig": 0.7142857142857143,
+     "residuo": 0.16515476306829346,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.52 de WTN a favor (9.61 contra 11.13), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 69%. Noah Regas Luis llega cediendo menos games y el choque la baja a 62%. A 1.3 el mercado implica 77%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ1.52 claro",
+     "choque nivel vs forma",
+     "ojo: Noah Regas Luis llega cediendo menos games",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Pablo Aunion",
+     "marca": "[8]",
+     "atp": 1702,
+     "itf": 21,
+     "wtn": 9.61,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.3,
+     "llega": "6(5)-7 6-1 10-8"
+    },
+    {
+     "nombre": "Noah Regas Luis",
+     "marca": "[12]",
+     "atp": 1893,
+     "itf": 26,
+     "wtn": 11.13,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.25,
+     "llega": "6-4 6-4"
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Pablo Aunion",
+    "marca": "[8]",
+    "atp": 1702,
+    "itf": 21,
+    "wtn": 9.61,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.3,
+    "llega": "6(5)-7 6-1 10-8"
+   },
+   "cuota": 1.3,
+   "gano": true,
+   "devig": 0.7142857142857143,
+   "resid": 0.16515476306829346
+  },
+  {
+   "q": {
+    "torneo": "M25 Oviedo",
+    "p1": "Xavi Palomar",
+    "p2": "Pavel Petrov",
+    "g1": 1.31,
+    "g2": 3.15,
+    "visto": "2026-08-24T02:40Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-esp-2026-044",
+   "v": {
+    "tipo": "mirar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6740380705294368,
+     "d": 1.2599999999999998,
+     "favorito": "Pavel Petrov",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.4835957251116838,
+     "cMinima": 1.6171193403717354
+    },
+    "precio": {
+     "cuota": 3.15,
+     "cMinima": 1.6171193403717354,
+     "val": 1.123219922167726,
+     "devig": 0.2937219730941704,
+     "residuo": -0.2436034590268777,
+     "veredicto": "barato"
+    },
+    "favorito": "Pavel Petrov",
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ1.26 de WTN a favor (11.72 contra 12.98), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 67%. A 3.15 paga sobre la minima de 1.62: +112% de valor. Pero: el nivel es solo \"claro\", no fuerte; 1 reparo; el mercado se aparta 24 puntos de su propio modelo. el mercado lo paga a 3.15 (29% real) cuando su propio modelo por ΔWTN daría 54%: 24 puntos que no vemos.",
+    "banderas": [
+     "Δ1.26 claro",
+     "ojo: el mercado lo paga a 3.15 (29% real) cuando su propio modelo por ΔWTN daría 54%",
+     "mirar"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Xavi Palomar",
+     "marca": "[7]",
+     "atp": 1579,
+     "itf": 2378,
+     "wtn": 12.98,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.31,
+     "llega": "6-4 7-6(8)"
+    },
+    {
+     "nombre": "Pavel Petrov",
+     "marca": "",
+     "atp": null,
+     "itf": 677,
+     "wtn": 11.72,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.15,
+     "llega": "6-3 6-1"
+    }
+   ],
+   "etiqueta": "mirar",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Pavel Petrov",
+    "marca": "",
+    "atp": null,
+    "itf": 677,
+    "wtn": 11.72,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 3.15,
+    "llega": "6-3 6-1"
+   },
+   "cuota": 3.15,
+   "gano": false,
+   "devig": 0.2937219730941704,
+   "resid": -0.2436034590268777
+  },
+  {
+   "q": {
+    "torneo": "M25 Taipei",
+    "p1": "Yeongseok Jeong",
+    "p2": "Ethan Cook",
+    "g1": 2.25,
+    "g2": 1.57,
+    "visto": "2026-08-23T23:59Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-tpe-2026-002",
+   "v": {
+    "tipo": "mirar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.7117751179384333,
+     "d": 1.9100000000000001,
+     "favorito": "Ethan Cook [11]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.4049381255365792,
+     "cMinima": 1.5313825568348713
+    },
+    "precio": {
+     "cuota": 1.57,
+     "cMinima": 1.5313825568348713,
+     "val": 0.1174869351633403,
+     "devig": 0.5890052356020942,
+     "residuo": 0.022273249024682085,
+     "veredicto": "barato"
+    },
+    "favorito": "Ethan Cook [11]",
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ1.91 de WTN a favor (8.45 contra 10.36), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 71%. A 1.57 paga sobre la minima de 1.53: +12% de valor. Pero: el nivel es solo \"claro\", no fuerte.",
+    "banderas": [
+     "Δ1.91 claro",
+     "mirar"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Yeongseok Jeong",
+     "marca": "",
+     "atp": 1995,
+     "itf": 1290,
+     "wtn": 10.36,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.25,
+     "llega": "6-4 2-6 10-6"
+    },
+    {
+     "nombre": "Ethan Cook",
+     "marca": "[11]",
+     "atp": 1248,
+     "itf": 726,
+     "wtn": 8.45,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.57,
+     "llega": "6-1 6-3"
+    }
+   ],
+   "etiqueta": "mirar",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Ethan Cook",
+    "marca": "[11]",
+    "atp": 1248,
+    "itf": 726,
+    "wtn": 8.45,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.57,
+    "llega": "6-1 6-3"
+   },
+   "cuota": 1.57,
+   "gano": true,
+   "devig": 0.5890052356020942,
+   "resid": 0.022273249024682085
+  },
+  {
+   "q": {
+    "torneo": "M25 Taipei",
+    "p1": "Seongwoo Cho",
+    "p2": "Ryota Tanuma",
+    "g1": 2.25,
+    "g2": 1.57,
+    "visto": "2026-08-23T23:59Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-tpe-2026-002",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6600894811025899,
+     "d": 1.0299999999999994,
+     "favorito": "Ryota Tanuma [12]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.514946122652395,
+     "cMinima": 1.6512912736911107
+    },
+    "precio": {
+     "cuota": 1.57,
+     "cMinima": 1.6512912736911107,
+     "val": 0.03634048533106626,
+     "devig": 0.5890052356020942,
+     "residuo": 0.062158579704881256,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.03 de WTN a favor (8.06 contra 9.09), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 66%. A 1.57 hay apenas +4%: por debajo del margen de la casa (haria falta 1.65). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ1.03 claro",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Seongwoo Cho",
+     "marca": "[8]",
+     "atp": 1145,
+     "itf": 64,
+     "wtn": 9.09,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.25,
+     "llega": "7-5 7-5"
+    },
+    {
+     "nombre": "Ryota Tanuma",
+     "marca": "[12]",
+     "atp": 1301,
+     "itf": 145,
+     "wtn": 8.06,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.57,
+     "llega": "6-2 6-1"
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": true,
+   "favWtn": {
+    "nombre": "Ryota Tanuma",
+    "marca": "[12]",
+    "atp": 1301,
+    "itf": 145,
+    "wtn": 8.06,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.57,
+    "llega": "6-2 6-1"
+   },
+   "cuota": 1.57,
+   "gano": true,
+   "devig": 0.5890052356020942,
+   "resid": 0.062158579704881256
+  }
+ ]
+}
