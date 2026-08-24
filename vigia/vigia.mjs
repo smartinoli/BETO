@@ -131,7 +131,12 @@ const slug = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 /* El link lleva un hash propio (#vg=...) que Betano ignora pero el marcador
    "Llenar boleta" lee para ubicar y clickear la selección exacta. */
+/* El deep link solo existe para los espejos de Betano: su bookmakerFixtureId
+   arma la URL del partido. Con otra casa se devuelve '' y el reporte no
+   muestra link — mandar a Betano a apostar una cuota de otra casa sería
+   peor que no dar link. */
 const linkDe = (f, sel) => {
+  if (!/betano/i.test(CASA)) return '';
   const base = f.bookmakerFixtureId
     ? `https://lat.betano.com/cuotas-de-partido/${slug(f.p1)}-${slug(f.p2)}/${f.bookmakerFixtureId}/`
     : 'https://lat.betano.com/';
@@ -723,7 +728,8 @@ function bloqueSenal(s, i) {
     `<b>${escHtml(s.lado)}</b> · ${escHtml(s.familia)}`,
     `${s.cuota.toFixed(2)} vs justo ${s.justo.toFixed(2)} → <b>+${(s.vent * 100).toFixed(1)}%</b> · ${plata(montoDe(s.cuota, s.vent))}`,
     s.deriva ? `⚡ <b>El juez acortó ${Math.abs(s.deriva.dc)}% hace ${s.deriva.min} min y Betano no ha reaccionado</b> — información fresca` : '',
-    `<a href="${escHtml(s.link)}">Abrir en Betano</a>`,
+    s.link ? `<a href="${escHtml(s.link)}">Abrir en Betano</a>`
+           : `<i>apostar en ${escHtml(CASA)}</i>`,
   ].filter(Boolean).join('\n');
 }
 async function reportar(r, titulo) {
@@ -737,7 +743,7 @@ async function reportar(r, titulo) {
     E.cuotaAlta && `${E.cuotaAlta} líneas con cuota > ${CFG.cuotaMaxima}`,
     E.cuotaBaja && `${E.cuotaBaja} con cuota bajo ${CFG.cuotaMinima}` + (CFG.sombras !== false ? ' (a sombra)' : ''),
     E.ventajaBaja && `${E.ventajaBaja} con ventaja bajo tu mínimo`,
-    E.sinVentaja && `${E.sinVentaja} sin ventaja (Betano paga bajo el justo)`,
+    E.sinVentaja && `${E.sinVentaja} sin ventaja (${escHtml(CASA)} paga bajo el justo)`,
     E.lineasLejanas && `${E.lineasLejanas} líneas lejos de la central`,
     E.cuartos && `${E.cuartos} de cuarto (0.25/0.75, no están en LAT)`,
     E.hermanas && `${E.hermanas} hermanas de la misma familia (queda la mejor)`,
@@ -2012,7 +2018,7 @@ async function ejecutar(texto) {
     if (E.cuotaAlta || E.ventajaBaja || E.sinVentaja) bloques.push(
       `<b>Por tus criterios</b>\n· ${E.cuotaAlta} con cuota > ${CFG.cuotaMaxima}\n`
       + `· ${E.ventajaBaja} con ventaja positiva pero bajo tu mínimo\n`
-      + `· ${E.sinVentaja} sin ventaja (Betano paga bajo el justo)`);
+      + `· ${E.sinVentaja} sin ventaja (${escHtml(CASA)} paga bajo el justo)`);
     if (E.sinCloudbet || E.cuartos) bloques.push(
       `<b>Otros</b>\n· ${E.sinCloudbet} partidos que Cloudbet no cubre\n`
       + `· ${E.cuartos} líneas de cuarto (0.25/0.75)`);
