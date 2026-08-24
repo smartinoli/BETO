@@ -392,11 +392,11 @@ function procesarSync(info, bet, cb, metas, salida) {
       if (otras.length) {
         E.juezOtraLinea++;
         if (E.ej.sinJuez.length < 7) E.ej.sinJuez.push(
-          `${info.p1.slice(0, 16)} · ${meta.n} ${meta.h} → Cloudbet tiene ${otras.sort((a, b) => a - b).slice(0, 4).join(', ')}`);
+          `${info.p1.slice(0, 16)} · ${meta.n} ${meta.h} → ${JUEZ} tiene ${otras.sort((a, b) => a - b).slice(0, 4).join(', ')}`);
       } else {
         E.juezNiFamilia++;
         if (E.ej.sinJuez.length < 7) E.ej.sinJuez.push(
-          `${info.p1.slice(0, 16)} · ${meta.n} ${meta.h ?? ''} → Cloudbet no tiene esa familia`);
+          `${info.p1.slice(0, 16)} · ${meta.n} ${meta.h ?? ''} → ${JUEZ} no tiene esa familia`);
       }
       continue;
     }
@@ -741,8 +741,8 @@ async function reportar(r, titulo) {
   /* el embudo dice qué quedó fuera y por qué: sin esto, "no hay señales"
      es indistinguible de "el filtro está demasiado apretado" */
   const descartes = [
-    E.sinCloudbet && `${E.sinCloudbet} partidos sin Cloudbet (sin juez)`,
-    E.sinJuez && `${E.sinJuez} mercados que Cloudbet no cotiza`,
+    E.sinCloudbet && `${E.sinCloudbet} partidos sin ${escHtml(JUEZ)} (sin juez)`,
+    E.sinJuez && `${E.sinJuez} mercados que ${escHtml(JUEZ)} no cotiza`,
     E.cuotaAlta && `${E.cuotaAlta} líneas con cuota > ${CFG.cuotaMaxima}`,
     E.cuotaBaja && `${E.cuotaBaja} con cuota bajo ${CFG.cuotaMinima}` + (CFG.sombras !== false ? ' (a sombra)' : ''),
     E.ventajaBaja && `${E.ventajaBaja} con ventaja bajo tu mínimo`,
@@ -786,7 +786,11 @@ async function reportar(r, titulo) {
     : '';
   const cab = [
     `<b>${titulo}</b>`,
-    `<i>espejo: ${escHtml(CASA)} → apuestas en ${escHtml(DOM_APUESTA)}</i>`,
+    /* solo los espejos de Betano tienen link propio; con otra casa no se
+       promete un dominio de apuesta que no corresponde */
+    /betano/i.test(CASA)
+      ? `<i>espejo: ${escHtml(CASA)} → apuestas en ${escHtml(DOM_APUESTA)}</i>`
+      : `<i>espejo: ${escHtml(CASA)} · juez: ${escHtml(JUEZ)}</i>`,
     congelado,
     espejoAjeno,
     r.fueraDeFoco != null ? `<i>🎯 Foco: AH −(x) primer tiempo · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco ${CFG.sombras !== false ? 'a la sombra' : 'descartada(s)'}</i>` : '',
@@ -2013,8 +2017,8 @@ async function ejecutar(texto) {
         + `${r.candidatas.toLocaleString('es-CL')} líneas · ${r.senales.length} señales`,
     ];
     if (E.sinJuez) bloques.push(
-      `<b>Sin juez de Cloudbet: ${E.sinJuez}</b>\n`
-      + `· ${E.juezOtraLinea} son mercados que Cloudbet <b>sí</b> tiene, pero en otra línea\n`
+      `<b>Sin juez de ${escHtml(JUEZ)}: ${E.sinJuez}</b>\n`
+      + `· ${E.juezOtraLinea} son mercados que ${escHtml(JUEZ)} <b>sí</b> tiene, pero en otra línea\n`
       + `· ${E.juezNiFamilia} son familias que Cloudbet no cotiza\n`
       + (E.ej.sinJuez.length ? '\n<i>' + E.ej.sinJuez.map(escHtml).join('\n') + '</i>' : ''));
     if (E.lineasLejanas) bloques.push(
