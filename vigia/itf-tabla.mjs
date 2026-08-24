@@ -54,6 +54,10 @@ const filas = datos.partidos.filter(p => p.yo.gana || p.otro.gana).map(p => {
     orden: ini ? +ini : Number.MAX_SAFE_INTEGER };
 }).sort((a, b) => a.orden - b.orden);
 
+/* La entry list trae solo el año de nacimiento, así que la edad es
+   aproximada: puede errar un año según el cumpleaños. */
+const ANIO = new Date().getUTCFullYear();
+const edad = n => n ? ANIO - n : null;
 const pct = v => v == null ? '' : (v * 100).toFixed(0);
 const n2 = v => v == null ? '' : (+v).toFixed(2);
 const TIPO = { segura: 'segura', anomalia: 'anomalía', mirar: 'mirar', pasar: 'pasar', 'sin-precio': 'sin precio' };
@@ -70,6 +74,8 @@ const cuerpo = filas.map(f => `<tr data-tipo="${esc(f.v.tipo)}" data-etapa="${es
     <i class="tray">${f.yo.llegaHtml || 'debuta'}</i></td>
   <td class="n">${f.yo.atp ?? '<i>—</i>'}</td>
   <td class="n">${f.yo.itf ?? '<i>—</i>'}</td>
+  <td class="n">${f.yo.nac ?? '<i>—</i>'}</td>
+  <td class="n">${edad(f.yo.nacido) ?? '<i>—</i>'}</td>
   <td class="n">${f.yo.wtn ?? '<i>—</i>'}</td>
   <td class="n dst">${n2(f.cA)}</td>
   <td class="n">${f.gA == null ? '' : pct(f.gA)}</td>
@@ -77,6 +83,8 @@ const cuerpo = filas.map(f => `<tr data-tipo="${esc(f.v.tipo)}" data-etapa="${es
     <i class="tray">${f.otro.llegaHtml || 'debuta'}</i></td>
   <td class="n sec">${f.otro.atp ?? '<i>—</i>'}</td>
   <td class="n sec">${f.otro.itf ?? '<i>—</i>'}</td>
+  <td class="n sec">${f.otro.nac ?? '<i>—</i>'}</td>
+  <td class="n sec">${edad(f.otro.nacido) ?? '<i>—</i>'}</td>
   <td class="n sec">${f.otro.wtn ?? '<i>—</i>'}</td>
   <td class="n sec">${n2(f.cB)}</td>
   <td class="n sec">${f.gB == null ? '' : pct(f.gB)}</td>
@@ -182,9 +190,9 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
 ${filas.length ? `<div class="env-tabla"><table id="t">
   <thead><tr>
     <th data-k="orden">Cuándo</th><th data-k="torneo">Torneo</th><th data-k="etapa">Et</th>
-    <th data-k="nomA">Favorito por WTN · cómo llega</th><th class="n" data-k="atpA">ATP</th><th class="n" data-k="itfA">ITF</th><th class="n" data-k="wtnA">WTN</th>
+    <th data-k="nomA">Favorito por WTN · cómo llega</th><th class="n" data-k="atpA">ATP</th><th class="n" data-k="itfA">ITF</th><th class="n" data-k="nacA">País</th><th class="n" data-k="edadA">Años</th><th class="n" data-k="wtnA">WTN</th>
     <th class="n" data-k="cuota">Cuota</th><th class="n" data-k="gA">Ced%</th>
-    <th data-k="nomB">Rival · cómo llega</th><th class="n" data-k="atpB">ATP</th><th class="n" data-k="itfB">ITF</th><th class="n" data-k="wtnB">WTN</th>
+    <th data-k="nomB">Rival · cómo llega</th><th class="n" data-k="atpB">ATP</th><th class="n" data-k="itfB">ITF</th><th class="n" data-k="nacB">País</th><th class="n" data-k="edadB">Años</th><th class="n" data-k="wtnB">WTN</th>
     <th class="n" data-k="cB">Cuota</th><th class="n" data-k="gB">Ced%</th>
     <th class="n" data-k="d">Δ WTN</th><th class="n" data-k="dAtp">Δ ATP</th><th class="n" data-k="dItf">Δ ITF</th><th class="n" data-k="pe">Banda</th><th class="n" data-k="devig">Mercado</th>
     <th class="n" data-k="cMin">Mín</th><th class="n" data-k="val">Valor</th><th class="n" data-k="residuo">Resid</th>
@@ -200,6 +208,7 @@ ${filas.length ? `<div class="env-tabla"><table id="t">
 <b>Mín</b> = cuota desde la que la apuesta deja +9% sobre ese margen ·
 <b>Valor</b> = banda × cuota − 1 ·
 <b>Resid</b> = cuánto se aparta el mercado de su propio modelo por Δ (logit p = −0.081 + 0.183·Δ). Muy negativo = ve algo que no vemos.<br>
+<b>País</b> = ranking nacional · <b>Años</b> = edad aproximada, la entry list solo da el año de nacimiento.<br>
 <b>Δ ATP</b> y <b>Δ ITF</b> = puestos de ventaja de nuestro favorito en cada ranking. <b>Positivo</b> = ese ranking coincide con el WTN; <b>negativo</b> = lo contradice.
 <b>Cómo llega</b>: cada tramo es <code>ronda ✓/✗ marcador v(marca del rival)</code> — verde ganó, rojo perdió, y la marca dice si el rival era sembrado <code>[4]</code>, clasificado <code>Q</code>, junior <code>JR</code> o invitado <code>WC</code>.<br>
 Señales: <code>JR</code> rival junior (ahí el WTN se da vuelta: 31%) · <code>sinATP</code> rival sin ranking (buena señal: 81% contra 75%) ·
