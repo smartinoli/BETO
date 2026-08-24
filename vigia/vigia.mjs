@@ -292,7 +292,7 @@ function procesarSync(info, bet, cb, metas, salida) {
   const E = salida.embudo;
   for (const mid of Object.keys(bet.markets || {})) {
     const meta = metas[mid];
-    if (!meta || meta.len !== 2) continue;
+    if (!meta || meta.len !== 2) { E.sinMeta++; continue; }
     const fam = familiaDe(info.sid, meta.n);
     if (!fam) { E.fueraWhitelist++; continue; }
     if (CFG.sinCuartos && meta.h != null && Math.abs(meta.h * 2) % 1 !== 0) { E.cuartos++; continue; }
@@ -316,7 +316,19 @@ function procesarSync(info, bet, cb, metas, salida) {
     if (!CFG.soloLineaCentral || grupo.length === 1 || grupo[0].meta.h == null) { elegidos.push(...grupo); continue; }
     grupo.sort((a, b) => a.meta.h - b.meta.h);
     const ic = grupo.findIndex(c => c.central === true);
-    if (ic < 0) { elegidos.push(...grupo.filter(c => c.central !== false)); continue; }
+    if (ic < 0) {
+      /* el feed no marcó central entre las líneas que sobrevivieron. Pasa
+         cuando la central ES de cuarto (0.25/0.75) y sinCuartos la sacó
+         justo antes: las que quedan vienen todas con mainLine:false y este
+         filtro no dejaba pasar NINGUNA — el grupo entero desaparecía sin
+         contador. Sin central no hay desde dónde contar vecinas, así que
+         se usa el grupo completo (con vecinas=99 es lo mismo que habría
+         hecho la rama de abajo si la central hubiera estado). */
+      const vivos = grupo.filter(c => c.central !== false);
+      if (!vivos.length) E.sinCentral += grupo.length;
+      elegidos.push(...(vivos.length ? vivos : grupo));
+      continue;
+    }
     /* cuántas líneas a cada lado de la central: 0 = solo la central,
        1 = una vecina por lado, 99 = todas las que ofrezca el feed */
     const paso = CFG.vecinas != null ? CFG.vecinas : (CFG.lineasVecinas ? 1 : 0);
@@ -346,7 +358,12 @@ function procesarSync(info, bet, cb, metas, salida) {
       idB[oid] = b0.bookmakerOutcomeId || null;   /* id nativo de Betano */
     }
     if (!ok) {
-      if (!faltaJuez) { E.inactivos++; continue; }
+      if (!faltaJuez) {
+        E.inactivos++;
+        if (E.ej.inactivos.length < 7)
+          E.ej.inactivos.push(`${info.p1.slice(0, 16)} · ${meta.n} ${meta.h ?? ''}`);
+        continue;
+      }
       E.sinJuez++;
       /* ¿es que Cloudbet no cotiza NADA de esa familia, o solo tiene otras
          líneas? Distinguirlo dice si estamos perdiendo señales de verdad. */
@@ -522,9 +539,10 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
   const salida = {
     senales: [], sombras: [], candidatas: 0, ligas: 0, partidos: 0, porDeporte: {},
     embudo: { fueraWhitelist: 0, cuartos: 0, lineasLejanas: 0, sinJuez: 0, inactivos: 0,
+              sinMeta: 0, sinCentral: 0,
               cuotaAlta: 0, cuotaBaja: 0, ventajaBaja: 0, sinVentaja: 0, hermanas: 0, sinCloudbet: 0,
               /* ejemplos reales para el comando /porque */
-              ej: { lejanas: [], sinJuez: [], cuotaAlta: [], hermanas: [] },
+              ej: { lejanas: [], sinJuez: [], cuotaAlta: [], hermanas: [], inactivos: [] },
               /* de los mercados sin juez: ¿Cloudbet tiene la familia con otra línea? */
               juezOtraLinea: 0, juezNiFamilia: 0, lejanasConJuez: 0 },
   };
@@ -714,7 +732,18 @@ async function reportar(r, titulo) {
     E.lineasLejanas && `${E.lineasLejanas} líneas lejos de la central`,
     E.cuartos && `${E.cuartos} de cuarto (0.25/0.75, no están en LAT)`,
     E.hermanas && `${E.hermanas} hermanas de la misma familia (queda la mejor)`,
+    E.inactivos && `${E.inactivos} con la cuota de ${escHtml(CASA)} cerrada o sin precio`,
+    E.sinCentral && `${E.sinCentral} sin línea central utilizable (la central era de cuarto)`,
+    E.fueraWhitelist && `${E.fueraWhitelist} familias fuera de la lista blanca`,
+    E.sinMeta && `${E.sinMeta} mercados sin ficha en el catálogo`,
   ].filter(Boolean);
+  /* un barrido que no evalúa NI UNA línea no es "no hay valor": es que algo
+     se las tragó antes de poder compararlas. Sin este bloque el cero es mudo
+     y no se distingue un filtro apretado de un motor roto. */
+  const ceroMudo = r.candidatas === 0 && r.partidos > 0
+    ? '\n<b>⚠️ No se evaluó ni una línea</b> — esto no es "sin valor", es que nada llegó a compararse.'
+      + (E.ej.inactivos.length ? '\n<i>' + E.ej.inactivos.map(escHtml).join('\n') + '</i>' : '')
+    : '';
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
@@ -735,6 +764,7 @@ async function reportar(r, titulo) {
         + (r.registradasSombra ? ` + ${r.registradasSombra} sombra(s) bajo tus umbrales, solo datos` : '') + '</i>'
       : '',
     descartes.length ? `\n<i>Quedó fuera: ${descartes.join(' · ')}</i>` : '',
+    ceroMudo,
   ].filter(Boolean).join('\n');
   await telegram(cab);
   if (!orden.length) return;
