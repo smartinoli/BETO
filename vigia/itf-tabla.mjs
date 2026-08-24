@@ -194,7 +194,7 @@ ${filas.length ? `<div class="env-tabla"><table id="t">
     <th class="n" data-k="cuota">Cuota</th><th class="n" data-k="gA">Ced%</th>
     <th data-k="nomB">Rival · cómo llega</th><th class="n" data-k="atpB">ATP</th><th class="n" data-k="itfB">ITF</th><th class="n" data-k="nacB">País</th><th class="n" data-k="edadB">Años</th><th class="n" data-k="wtnB">WTN</th>
     <th class="n" data-k="cB">Cuota</th><th class="n" data-k="gB">Ced%</th>
-    <th class="n" data-k="d">Δ WTN</th><th class="n" data-k="dAtp">Δ ATP</th><th class="n" data-k="dItf">Δ ITF</th><th class="n" data-k="pe">Banda</th><th class="n" data-k="devig">Mercado</th>
+    <th class="n" data-k="d">Δ WTN</th><th class="n" data-k="dAtp">Δ ATP</th><th class="n" data-k="dItf">Δ ITF</th><th class="n" data-k="pe">Curva</th><th class="n" data-k="devig">Mercado</th>
     <th class="n" data-k="cMin">Mín</th><th class="n" data-k="val">Valor</th><th class="n" data-k="residuo">Resid</th>
     <th data-k="flags">Señales</th><th data-k="tipo">Tipo</th>
   </tr></thead>
@@ -203,10 +203,11 @@ ${filas.length ? `<div class="env-tabla"><table id="t">
 
 <p class="pie">
 <b>Ced%</b> = games cedidos en el torneo, la dominancia de la forma (menos es mejor) ·
-<b>Banda</b> = nuestra probabilidad medida para el favorito, según Δ y etapa ·
+<b>Curva</b> = nuestra probabilidad para el favorito: una logística en Δ WTN con un nivel propio por grupo de rondas
+(<i>Q1</i> · <i>buenas</i> = Q2 y R1 · <i>medias</i> = Q3 y R2 · <i>finales</i> = QF, SF y F), ajustada sobre 902 partidos ·
 <b>Mercado</b> = la que implica la cuota, sin el margen de la casa ·
 <b>Mín</b> = cuota desde la que la apuesta deja +9% sobre ese margen ·
-<b>Valor</b> = banda × cuota − 1 ·
+<b>Valor</b> = curva × cuota − 1 ·
 <b>Resid</b> = cuánto se aparta el mercado de su propio modelo por Δ (logit p = −0.081 + 0.183·Δ). Muy negativo = ve algo que no vemos.<br>
 <b>País</b> = ranking nacional · <b>Años</b> = edad aproximada, la entry list solo da el año de nacimiento.<br>
 <b>Δ ATP</b> y <b>Δ ITF</b> = puestos de ventaja de nuestro favorito en cada ranking. <b>Positivo</b> = ese ranking coincide con el WTN; <b>negativo</b> = lo contradice.

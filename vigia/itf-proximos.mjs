@@ -204,7 +204,7 @@ for (const { clave, t, estado } of activos) {
         };
       });
       const etapa = nombreEtapa(p.evento, p.ronda);
-      const v = analizar({ lados, ronda: p.evento === 'Q' ? 'Q·' + p.ronda : p.ronda });
+      const v = analizar({ lados, ronda: etapa });   /* etapa ya viene normalizada: Q1/R1/QF… */
       const fila = { id: p.matchId, etapa, fecha: j.fecha, hhmm, horarioTxt: p.horario || '', inicio, cancha: p.cancha, turno: p.orden, lados, cq, v };
       if (!etapas.has(etapa)) etapas.set(etapa, { nombre: etapa, total: 0, jugados: 0, pendientes: [] });
       etapas.get(etapa).pendientes.push(fila);
@@ -414,7 +414,7 @@ footer{margin-top:30px;font-size:12px;color:var(--tinta2);max-width:80ch}
   <button id="b-abrir" class="fantasma">Abrir todo</button>
   <button id="b-cerrar" class="fantasma">Cerrar todo</button>
 </div>
-<p class="nota">Manda el <b>order of play</b> de ITF: entra lo que marca “to be played”, nunca lo que diga el reloj. Solo hombres singles. Betano acompaña y, cuando no abre línea, se muestra la de bet365 marcada <span class="casa365">ᴶ</span>; las leídas a mano de betano.com van con <span class="casaMan">✋</span>, porque el feed no las entrega hasta que el partido empieza. El filtro por defecto deja las qualis y primeras rondas, que es donde el nivel predice 75-84%; de cuartos en adelante cae a 56%.</p>
+<p class="nota">Manda el <b>order of play</b> de ITF: entra lo que marca “to be played”, nunca lo que diga el reloj. Solo hombres singles. Betano acompaña y, cuando no abre línea, se muestra la de bet365 marcada <span class="casa365">ᴶ</span>; las leídas a mano de betano.com van con <span class="casaMan">✋</span>, porque el feed no las entrega hasta que el partido empieza. El filtro por defecto deja las qualis y primeras rondas: el mejor WTN acierta 79.5% en Q2 y 77.4% en R1, 75.3% en Q1, y de cuartos en adelante se cae a 59.6% y 50.0%, donde ya no es el nivel el que manda sino la siembra.</p>
 ${torneos.length ? secciones : '<p class="vacio">No hay partidos por jugar en la programación de ITF ahora mismo. Corre <span class="mono">node vigia/itf-scrap.mjs</span> y vuelve a generar.</p>'}
 <footer>Datos en disco de <span class="mono">itf-scrap.mjs</span> (order of play, cuadros y entry lists) y del barrido de cuotas de vigía. Esta página no baja nada: si algo está viejo, la hora lo dice. Los veredictos salen de las reglas medidas en <span class="mono">itf-saber.json</span> vía <span class="mono">itf-reglas.mjs</span>.</footer>
 </div>

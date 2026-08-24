@@ -19,7 +19,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { gamesCedidos } from './itf-reglas.mjs';
+import { gamesCedidos, setsCedidos } from './itf-reglas.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const DATOS = path.join(DIR, 'datos', 'itf');
@@ -99,13 +99,14 @@ for (const arch of archivos) {
       const iw = L.findIndex(x => x.ganador); if (iw < 0) continue;
       const a = busca(F, L[0].nombre), b = busca(F, L[1].nombre);
       if (!a || !b) continue;
-      const forma = [0, 1].map(i => gamesCedidos(formaPrevia(L[i].nombre, cuadros, ev, r.numero)));
+      const tray = [0, 1].map(i => formaPrevia(L[i].nombre, cuadros, ev, r.numero));
+      const forma = tray.map(gamesCedidos), sets = tray.map(setsCedidos);
       filas.push({
         clave, ...meta, evento: ev, ronda: rondaDe(ev, r.nombre), retiro: ret, ganador: iw,
         lados: [0, 1].map(i => ({
           nombre: L[i].nombre, seed: L[i].seed ?? null, entrada: L[i].entrada || null,
           wtn: [a, b][i].wtn, atp: [a, b][i].atp, itf: [a, b][i].itf,
-          nac: [a, b][i].nac, nacido: [a, b][i].nacido, jr: [a, b][i].jr, forma: forma[i],
+          nac: [a, b][i].nac, nacido: [a, b][i].nacido, jr: [a, b][i].jr, forma: forma[i], sets: sets[i],
         })),
       });
     }

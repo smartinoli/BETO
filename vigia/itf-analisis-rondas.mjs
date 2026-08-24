@@ -93,6 +93,16 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 .hallazgo h3{font-size:14.5px;margin:0 0 5px;font-weight:600}
 .hallazgo p{margin:0;font-size:13.5px;color:var(--tinta2);line-height:1.6}
 .hallazgo .mono,.nota .mono,p .mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--tinta)}
+.hallazgo p+p{margin-top:9px}
+.cmpWrap{margin:11px 0;background:transparent;border-color:var(--linea)}
+table.cmp{min-width:0}
+table.cmp td,table.cmp th{padding:6px 10px;font-size:13px}
+table.cmp td:first-child{color:var(--tinta2)}
+table.cmp td.n,table.cmp th.n{text-align:right}
+table.cmp .mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+table.cmp td.peor{color:var(--dn)}
+table.cmp tr.gana td{background:var(--up-suave);color:var(--tinta)}
+table.cmp tr.gana td:first-child{color:var(--tinta)}
 footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--linea);font-size:12px;color:var(--tinta2);line-height:1.6}
 </style>
 <div class="env">
@@ -133,6 +143,31 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--linea);font-s
 <div class="hallazgo malo"><h3>La banda global nos hacía sobreestimar Q1</h3>
 <p>Veníamos usando <span class="mono">68.2%</span> para todo Δ1.5-2.5 en ronda temprana. Pero eso es el promedio de rondas que no se parecen: en <b>Q1</b> esa banda acierta <span class="mono">59.5%</span> y en <b>R1</b> <span class="mono">77.8%</span>. Un partido de Q1 con Δ2 lo estábamos cobrando casi nueve puntos por encima de lo que vale — y la cuota mínima que calculábamos con ese número quedaba demasiado baja.</p></div>
 
+<div class="hallazgo malo"><h3>Y la tabla que armamos para arreglarlo también predecía peor</h3>
+<p>El paso obvio era reemplazar las dos bandas por una tabla de <b>ronda × banda de Δ</b>, que es exactamente lo que muestra esta página. Antes de publicarla la validamos dejando <b>un torneo afuera</b> cada vez: ajustar con todos los demás y predecir el que quedó fuera. La tabla salió <b>peor que la regla vieja que venía a reemplazar</b>.</p>
+<div class="env-t cmpWrap"><table class="cmp">
+<thead><tr><th>regla</th><th class="n">log-loss</th><th class="n">Brier</th><th class="n">acierto</th></tr></thead>
+<tbody>
+<tr><td>vieja, dos grupos (temprano / tarde)</td><td class="n mono">0.5360</td><td class="n mono">0.1794</td><td class="n mono">73.3%</td></tr>
+<tr><td>tabla ronda × banda</td><td class="n mono peor">0.5456</td><td class="n mono peor">0.1834</td><td class="n mono">72.5%</td></tr>
+<tr><td>solo bandas de Δ, sin ronda</td><td class="n mono peor">0.5438</td><td class="n mono peor">0.1819</td><td class="n mono">73.3%</td></tr>
+<tr><td>logística en Δ, sin ronda</td><td class="n mono">0.5326</td><td class="n mono">0.1794</td><td class="n mono">73.3%</td></tr>
+<tr class="gana"><td><b>logística en Δ + grupo de rondas</b> ← la que quedó</td><td class="n mono">0.5294</td><td class="n mono">0.1785</td><td class="n mono">73.1%</td></tr>
+</tbody></table></div>
+<p>La razón es de muestra, no de tenis: partir 902 partidos en 28 celdas deja celdas de 5 y de 9. La ronda <b>sí</b> importa — se ve en toda esta página — pero las cajas se comen la ganancia en varianza, y cortar la Δ en cuatro tramos tira la diferencia entre un Δ1.6 y un Δ2.4. Lo que sirve es dejar la Δ continua y que la ronda mueva el nivel.</p></div>
+
+<div class="hallazgo"><h3>Las rondas se agrupan de a cuatro, y no por dónde están en el cuadro</h3>
+<p>Agrupadas por cómo se comportan, cada grupo se estima con 83 a 345 partidos en vez de 31 a 312:</p>
+<div class="env-t cmpWrap"><table class="cmp">
+<thead><tr><th>grupo</th><th>rondas</th><th class="n">n</th><th class="n">Δ1.5</th><th class="n">Δ2.5</th><th class="n">Δ4</th><th class="n">Δ desde la que hay lado</th></tr></thead>
+<tbody>
+<tr><td><b>buenas</b></td><td>Q2, R1</td><td class="n mono">345</td><td class="n mono">69%</td><td class="n mono">74%</td><td class="n mono">81%</td><td class="n mono">cualquiera</td></tr>
+<tr><td><b>Q1</b></td><td>Q1</td><td class="n mono">312</td><td class="n mono">59%</td><td class="n mono">66%</td><td class="n mono">74%</td><td class="n mono">Δ 1.29</td></tr>
+<tr><td><b>medias</b></td><td>Q3, R2</td><td class="n mono">162</td><td class="n mono">57%</td><td class="n mono">63%</td><td class="n mono">72%</td><td class="n mono">Δ 1.68</td></tr>
+<tr><td><b>finales</b></td><td>QF, SF, F</td><td class="n mono">83</td><td class="n mono">48%</td><td class="n mono">55%</td><td class="n mono">65%</td><td class="n mono">Δ 2.91</td></tr>
+</tbody></table></div>
+<p>Q2 y R1 juntas son el mejor terreno que tenemos, mejor que Q1: en Q1 entra el campo entero y hay muchos que no han jugado nunca, así que el rating llega a ciegas. La última columna es la que cambia cómo se opera: el piso dejó de ser “Δ&lt;1.5 es ruido” para todos y pasó a ser <b>58% de probabilidad</b>, que cada grupo alcanza con una Δ distinta.</p></div>
+
 <div class="hallazgo"><h3>El ranking ITF sirve en qualis y no sirve en el cuadro principal</h3>
 <p>Acierta <span class="mono">66.7%</span> en Q1, <span class="mono">67.0%</span> en Q2 y <span class="mono">66.7%</span> en Q3, pero cae a <span class="mono">52.3%</span> en R1 y <span class="mono">42.9%</span> en cuartos. Tiene sentido: es un ranking de circuito menor, así que discrimina entre jugadores de nivel clasificatorio y deja de hacerlo cuando todos son mejores que eso.</p></div>
 
@@ -144,6 +179,9 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--linea);font-s
 
 <div class="hallazgo"><h3>El sembrado manda en cuartos, justo donde el WTN falla</h3>
 <p>En QF el mejor sembrado gana <span class="mono">81.3%</span> mientras el WTN acierta <span class="mono">59.6%</span>. Muestra chica (n=16), pero apunta a lo mismo que veníamos midiendo: en rondas finales el nivel deja de discriminar y hay que mirar otra cosa.</p></div>
+
+<div class="hallazgo"><h3>Cómo se valida de ahora en adelante</h3>
+<p>Ninguna regla nueva entra sin dejar un torneo afuera. La versión por bandas se veía más detallada, más “separada por ronda” — que era justo lo pedido — y predecía peor. Sin esta validación la habríamos publicado.</p></div>
 
 <footer>Reconstruido con <span class="mono">vigia/itf-backtest.mjs</span> sobre todos los cuadros en disco. Se excluyen retiros y walkovers. El detalle partido a partido queda en <span class="mono">vigia/itf-backtest.json</span>.<br>
 Las rondas con menos de 10 partidos para una señal aparecen como <span class="mono">n=…</span> sin barra: no alcanzan para decir nada.</footer>

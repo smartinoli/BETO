@@ -1,7 +1,19 @@
 {
- "actualizado": "2026-08-24T00:30:00Z",
+ "actualizado": "2026-08-24",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
+  {
+   "regla": "La Δ de WTN es continua, no de bandas, y la ronda le mueve el nivel. Validado dejando un torneo afuera: la logistica en Δ + grupo de rondas da log-loss 0.5294, contra 0.5360 del par temprano/tarde y 0.5456 de la tabla ronda x banda. Cortar la Δ en cajas PIERDE informacion, aunque se vea mas detallado.",
+   "n": 902,
+   "fuente": "itf-backtest.mjs + validacion dejando un torneo afuera, 2026-08-24",
+   "uso": "usar pNivel(d, ronda, choque) de itf-reglas.mjs y nunca volver a escribir bandas a mano. Cualquier regla nueva se valida dejando un torneo afuera ANTES de publicarla: la version por bandas se veia mejor y predecia peor."
+  },
+  {
+   "regla": "Acierto del mejor WTN por ronda exacta, sin retiros: Q1 75.3% (n=391) · Q2 79.5% (n=158) · Q3 61.0% (n=60) · R1 77.4% (n=201) · R2 71.8% (n=105) · QF 59.6% (n=53) · SF 50.0% (n=26) · F n=5. Q2 y R1 son el mejor terreno, no Q1: en Q1 entra el campo entero y hay muchos que no han jugado nunca.",
+   "n": 999,
+   "fuente": "itf-backtest.mjs 2026-08-24",
+   "uso": "de cuartos en adelante el WTN deja de mandar: en QF la siembra acierta 81.3% y en SF el ATP le gana al WTN (64.0% contra 50.0%). Ahi no hay lado por nivel salvo Δ grande."
+  },
   {
    "regla": "El WTN predice algo mejor que el ranking ATP, pero la ventaja NO es concluyente: 71.1% ±5.1 vs 66.0% ±5.3 sobre el mismo subconjunto. Los intervalos se solapan.",
    "n": 309,
@@ -368,6 +380,22 @@
    ],
    "resultado": "de las 11 qualis de Oviedo quedan 5 con lado. La mejor, Jose Dominguez Alonso a 1.42 con +26% de valor; las otras cuatro entre +1% y +3%, o sea por debajo del vig",
    "lectura": "Vale mas como prueba de concepto que como apuesta: por primera vez se puede comparar el modelo contra el precio en la ronda donde medimos 75-84% de acierto. Con una sola oportunidad clara de 11, el filtro sigue siendo severo, que es lo que se espera si el mercado tambien sabe"
+  },
+  {
+   "fecha": "2026-08-24",
+   "corrida": "bandas por ronda: el intento literal fallo la validacion y hubo que cambiar de forma",
+   "detalle": [
+    "Sebastian pidio separar todas las rondas (Q1, Q2, Q3, R1, R2, QF, SF, F) porque 'seguimos fallando mucho'. Se midio el historial completo ronda por ronda con itf-backtest.mjs: 1045 partidos, 999 sin retiros",
+    "Lo medido confirma que la ronda importa y que el par temprano/tarde mentia en las dos puntas: Q1 con Δ1.5-2.5 vale 61.8% y lo cobrabamos 68.2%, mientras R1 con la misma Δ vale 76.1% y tambien lo cobrabamos 68.2%",
+    "Se construyo la tabla ronda x banda que pidio, 28 celdas. Validada dejando un torneo afuera, resulto PEOR que la regla vieja que reemplazaba: log-loss 0.5456 contra 0.5360. Partir 902 partidos en 28 celdas deja celdas de 5 y 9 partidos, y la varianza se come la ganancia",
+    "La forma que si sirve es tratar la Δ como continua y dejar que la ronda mueva el nivel: logistica en Δ + grupo de rondas en 4 niveles. Log-loss 0.5294, mejor que la vieja (0.5360) y que la tabla (0.5456), y bien calibrada de punta a punta fuera de muestra",
+    "Los grupos salen de como se comportan, no de donde estan en el cuadro: Q1 solo (n=312, entra el campo entero), 'buenas' = Q2 y R1 (n=345, ya se filtro una vuelta y el rating vio a los dos), 'medias' = Q3 y R2 (n=162), 'finales' = QF, SF y F (n=83)"
+   ],
+   "modelo": "logit(p) = -0.0286 + 0.2731*ΔWTN + [Q1 0 · buenas +0.4110 · medias -0.1074 · finales -0.4422] + (-0.2976 si la forma contradice al nivel)",
+   "hallazgo": "El piso dejo de ser una regla de Δ y paso a ser una de probabilidad (58%). Traducido a Δ, cada grupo pide una cosa distinta, y ESE es el punto: 'buenas' pasa el piso con cualquier Δ, Q1 desde Δ1.29, 'medias' desde Δ1.68 y 'finales' desde Δ2.91 (Δ4.00 si ademas la forma contradice)",
+   "correccion": "El choque nivel-contra-forma era un reemplazo plano (0.42 si Δ<2.5, 0.63 si no) que borraba la ronda entera: un Q1 con Δ4+ y un choque caia de 89% a 63%. Ahora es -0.2976 en logit, medido sobre los 324 partidos con trayectoria en los dos lados. Se probo repartirlo por Δ y por fuerza de la banda; gana por 0.0027 en log-loss sobre n=324 (nada) y los coeficientes se daban vuelta segun la linea base, asi que quedo el termino simple",
+   "lectura": "La leccion no es sobre tenis sino sobre metodo: 'separar por ronda' es la pregunta correcta y 'una tabla por ronda' era la respuesta equivocada. Sin la validacion dejando un torneo afuera habriamos publicado algo que se ve mas detallado y predice peor. Cualquier cambio de reglas se valida asi antes de entrar",
+   "ademas": "itf-analizar.mjs llevaba su propia copia de las bandas y se habia quedado atras (seguia con el veto por 'rival sin ranking ATP', que ya habiamos medido al reves). Ahora importa el juicio de itf-reglas.mjs como todos los demas"
   }
  ],
  "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",
@@ -382,15 +410,16 @@
  "criterioDeDecision": {
   "nota": "Definido con Sebastian el 2026-08-24. Antes 'gana/pasar' mezclaba dos preguntas que necesitan datos distintos, y 131 de 292 partidos salian 'media + gana' SIN CUOTA, leyendose como recomendacion sin serlo.",
   "dosEjes": {
-   "nivel": "solo con WTN y etapa, no necesita cuota. claro (Δ1.5-2.5, 68%) · fuerte (Δ2.5-4, 72%) · muy fuerte (Δ4+, 89%). En rondas finales baja a 60-63%.",
-   "precio": "solo si hay cuota. Cada banda tiene su cuota de empate (1/p) y su minima con +9% sobre el vig (1.09/p): banda 89% empata en 1.13 y vale desde 1.23; banda 72% empata en 1.40 y vale desde 1.52; banda 68% desde 1.60. Por eso un 1.05 no pasa nunca."
+   "nivel": "solo con WTN y ronda, no necesita cuota. Sale de la curva ajustada (ver historial 2026-08-24): logit(p) = -0.0286 + 0.2731*ΔWTN + nivel del grupo de rondas, menos 0.2976 si la forma contradice al nivel. Grupos: Q1 (0) · buenas = Q2 y R1 (+0.4110) · medias = Q3 y R2 (-0.1074) · finales = QF, SF y F (-0.4422). Etiquetas por Δ: claro (1.5-2.5) · fuerte (2.5-4) · muy fuerte (4+).",
+   "precio": "solo si hay cuota. Cada partido tiene SU probabilidad, no la de una banda: la cuota de empate es 1/p y la minima con +9% sobre el vig de Betano es 1.09/p. Un Q2 con Δ6.28 sale 89% y vale desde 1.22; el mismo Δ en una semifinal sale 76% y recien vale desde 1.43. Por eso un 1.05 no pasa nunca."
   },
   "vias": {
-   "SEGURA": "nivel fuerte o muy fuerte + ronda temprana + cuota sobre la minima de su banda + sin reparos + el mercado no se aparta de su propio modelo. Es la via de ganar seguido.",
+   "SEGURA": "nivel fuerte o muy fuerte + ronda que no sea final + cuota sobre la minima de ESE partido + sin reparos + la forma no contradice + el mercado no se aparta de su propio modelo. Es la via de ganar seguido.",
    "ANOMALIA": "nuestro favorito cotizado como NO favorito (cuota >= 2.00) con Δ >= 2.5. Es la via de multiplicar y la mas incierta: cuando el mercado se aparta tanto suele ver algo que no vemos. Registro 1-1 (Borg gano a 2.22, Petkovic perdio a 3.40).",
    "mirar": "hay valor pero algo estorba: nivel solo claro, ronda final, reparos, o residuo de mercado fuerte.",
    "pasar": "cuota corta (valor negativo), margen fino (bajo la minima), ruido (Δ<1.5) o veto.",
    "sin-precio": "no es veredicto: se informa el nivel y la cuota desde la que valdria la pena, y se calla. Sin precio la pregunta de si conviene apostar no tiene respuesta."
-  }
+  },
+  "piso": "58% de probabilidad. Reemplaza al viejo 'Δ<1.5 es ruido', que valia igual para una Q1 que para una semi. En Δ el piso se traduce distinto en cada grupo: buenas pasa con cualquier Δ · Q1 desde Δ1.29 · medias desde Δ1.68 · finales desde Δ2.91, y Δ4.00 si ademas la forma contradice."
  }
 }
