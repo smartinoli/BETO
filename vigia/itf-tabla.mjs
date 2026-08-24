@@ -29,6 +29,11 @@ const fmtHora = new Intl.DateTimeFormat('es-CL', { timeZone: 'America/Santiago',
 /* solo lo que tiene precio: sin cuota no hay nada que comparar */
 const filas = datos.partidos.filter(p => p.yo.gana || p.otro.gana).map(p => {
   const d = (p.yo.wtn != null && p.otro.wtn != null) ? Math.abs(p.yo.wtn - p.otro.wtn) : null;
+  /* Las tres diferencias con el mismo signo: POSITIVO = ese ranking coincide
+     con el WTN en señalar a nuestro favorito; negativo = lo contradice.
+     En ranking, mejor es número más chico, de ahí la resta al revés. */
+  const dAtp = (p.yo.atp != null && p.otro.atp != null) ? p.otro.atp - p.yo.atp : null;
+  const dItf = (p.yo.itf != null && p.otro.itf != null) ? p.otro.itf - p.yo.itf : null;
   const pe = p.v.nivel?.p ?? null;
   const cA = p.yo.gana, cB = p.otro.gana;
   const devig = (cA && cB) ? (1 / cA) / ((1 / cA) + (1 / cB)) : (cA ? 1 / cA : null);
@@ -43,7 +48,7 @@ const filas = datos.partidos.filter(p => p.yo.gana || p.otro.gana).map(p => {
   if (gA != null && gB != null && gB < gA) flags.push('choque');
   if (residuo != null && residuo < -0.15) flags.push('resid');
   const ini = p.inicio ? new Date(p.inicio) : null;
-  return { ...p, d, pe, cA, cB, devig, val, residuo, gA, gB, flags,
+  return { ...p, d, dAtp, dItf, pe, cA, cB, devig, val, residuo, gA, gB, flags,
     cMin: p.v.nivel?.cMinima ?? null, ini,
     cuando: ini ? fmtDia.format(ini) + ' ' + fmtHora.format(ini) : (p.fecha ? p.fecha.slice(5) + ' ' + (p.horarioTxt || '') : '—'),
     orden: ini ? +ini : Number.MAX_SAFE_INTEGER };
@@ -56,21 +61,28 @@ const torneos = [...new Set(filas.map(f => f.torneo))].sort();
 const etapas = [...new Set(filas.map(f => f.etapa))].sort();
 
 const cuerpo = filas.map(f => `<tr data-tipo="${esc(f.v.tipo)}" data-etapa="${esc(f.etapa)}" data-torneo="${esc(f.torneo)}"
-  data-d="${f.d ?? ''}" data-cuota="${f.cA ?? ''}" data-val="${f.val ?? ''}">
+  data-d="${f.d ?? ''}" data-cuota="${f.cA ?? ''}" data-val="${f.val ?? ''}"
+  data-datp="${f.dAtp ?? ''}" data-ditf="${f.dItf ?? ''}">
   <td class="c-txt">${esc(f.cuando)}</td>
   <td class="c-txt">${esc(f.torneo.replace(/^M\d+\s/, ''))}<i>${esc(f.categoria)}·${esc(f.superficie || '')}</i></td>
   <td class="c-et">${esc(f.etapa)}</td>
-  <td class="c-nom">${esc(f.yo.nombre)}${f.yo.marca ? `<b>${esc(f.yo.marca)}</b>` : ''}</td>
+  <td class="c-nom">${esc(f.yo.nombre)}${f.yo.marca ? `<b>${esc(f.yo.marca)}</b>` : ''}
+    <i class="tray">${f.yo.llegaHtml || 'debuta'}</i></td>
   <td class="n">${f.yo.atp ?? '<i>—</i>'}</td>
+  <td class="n">${f.yo.itf ?? '<i>—</i>'}</td>
   <td class="n">${f.yo.wtn ?? '<i>—</i>'}</td>
   <td class="n dst">${n2(f.cA)}</td>
   <td class="n">${f.gA == null ? '' : pct(f.gA)}</td>
-  <td class="c-nom sec">${esc(f.otro.nombre)}${f.otro.marca ? `<b>${esc(f.otro.marca)}</b>` : ''}</td>
+  <td class="c-nom sec">${esc(f.otro.nombre)}${f.otro.marca ? `<b>${esc(f.otro.marca)}</b>` : ''}
+    <i class="tray">${f.otro.llegaHtml || 'debuta'}</i></td>
   <td class="n sec">${f.otro.atp ?? '<i>—</i>'}</td>
+  <td class="n sec">${f.otro.itf ?? '<i>—</i>'}</td>
   <td class="n sec">${f.otro.wtn ?? '<i>—</i>'}</td>
   <td class="n sec">${n2(f.cB)}</td>
   <td class="n sec">${f.gB == null ? '' : pct(f.gB)}</td>
   <td class="n dst">${f.d == null ? '' : f.d.toFixed(2)}</td>
+  <td class="n ${f.dAtp == null ? '' : f.dAtp > 0 ? 'pos' : 'neg'}">${f.dAtp == null ? '' : (f.dAtp > 0 ? '+' : '') + f.dAtp}</td>
+  <td class="n ${f.dItf == null ? '' : f.dItf > 0 ? 'pos' : 'neg'}">${f.dItf == null ? '' : (f.dItf > 0 ? '+' : '') + f.dItf}</td>
   <td class="n">${pct(f.pe)}</td>
   <td class="n">${pct(f.devig)}</td>
   <td class="n">${n2(f.cMin)}</td>
@@ -122,6 +134,12 @@ td.n{text-align:right}
 td.sec{color:var(--tinta2)}
 td.c-nom{font-family:"IBM Plex Sans",sans-serif;font-weight:500;max-width:190px;overflow:hidden;text-overflow:ellipsis}
 td.c-nom b{color:var(--acento);font-weight:600;margin-left:4px}
+td.c-nom .tray{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;font-style:normal;
+  color:var(--tinta3);margin-top:2px;white-space:normal;line-height:1.35}
+td.c-nom .tray .g{color:var(--acento);font-weight:600}
+td.c-nom .tray .p{color:var(--alerta);font-weight:600}
+td.c-nom .tray .vs{color:var(--tinta2)}
+td.c-nom{max-width:250px;white-space:normal}
 td.c-txt{font-family:"IBM Plex Sans",sans-serif;color:var(--tinta2);font-size:11.5px}
 td.c-txt i{display:block;font-style:normal;color:var(--tinta3);font-size:10px}
 td.c-et{color:var(--tinta2);font-weight:600}
@@ -153,6 +171,10 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
     <div class="grupo"><label>cuota mín</label><input type="number" id="f-cuota" step="0.1" placeholder="1.00"></div>
     <div class="grupo"><label>cuota máx</label><input type="number" id="f-cuotaMax" step="0.1" placeholder="99"></div>
     <div class="grupo"><label>valor mín %</label><input type="number" id="f-val" step="5" placeholder="—"></div>
+    <div class="grupo"><label>rankings</label><select id="f-rank"><option value="">todos</option>
+      <option value="acuerdo">ATP e ITF de acuerdo</option>
+      <option value="atpContra">ATP en contra</option>
+      <option value="itfContra">ITF en contra</option></select></div>
   </div>
   <div class="cuenta"><b id="visibles">${filas.length}</b> / ${filas.length}</div>
 </div>
@@ -160,11 +182,11 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
 ${filas.length ? `<div class="env-tabla"><table id="t">
   <thead><tr>
     <th data-k="orden">Cuándo</th><th data-k="torneo">Torneo</th><th data-k="etapa">Et</th>
-    <th data-k="nomA">Favorito por WTN</th><th class="n" data-k="atpA">ATP</th><th class="n" data-k="wtnA">WTN</th>
+    <th data-k="nomA">Favorito por WTN · cómo llega</th><th class="n" data-k="atpA">ATP</th><th class="n" data-k="itfA">ITF</th><th class="n" data-k="wtnA">WTN</th>
     <th class="n" data-k="cuota">Cuota</th><th class="n" data-k="gA">Ced%</th>
-    <th data-k="nomB">Rival</th><th class="n" data-k="atpB">ATP</th><th class="n" data-k="wtnB">WTN</th>
+    <th data-k="nomB">Rival · cómo llega</th><th class="n" data-k="atpB">ATP</th><th class="n" data-k="itfB">ITF</th><th class="n" data-k="wtnB">WTN</th>
     <th class="n" data-k="cB">Cuota</th><th class="n" data-k="gB">Ced%</th>
-    <th class="n" data-k="d">Δ WTN</th><th class="n" data-k="pe">Banda</th><th class="n" data-k="devig">Mercado</th>
+    <th class="n" data-k="d">Δ WTN</th><th class="n" data-k="dAtp">Δ ATP</th><th class="n" data-k="dItf">Δ ITF</th><th class="n" data-k="pe">Banda</th><th class="n" data-k="devig">Mercado</th>
     <th class="n" data-k="cMin">Mín</th><th class="n" data-k="val">Valor</th><th class="n" data-k="residuo">Resid</th>
     <th data-k="flags">Señales</th><th data-k="tipo">Tipo</th>
   </tr></thead>
@@ -178,6 +200,8 @@ ${filas.length ? `<div class="env-tabla"><table id="t">
 <b>Mín</b> = cuota desde la que la apuesta deja +9% sobre ese margen ·
 <b>Valor</b> = banda × cuota − 1 ·
 <b>Resid</b> = cuánto se aparta el mercado de su propio modelo por Δ (logit p = −0.081 + 0.183·Δ). Muy negativo = ve algo que no vemos.<br>
+<b>Δ ATP</b> y <b>Δ ITF</b> = puestos de ventaja de nuestro favorito en cada ranking. <b>Positivo</b> = ese ranking coincide con el WTN; <b>negativo</b> = lo contradice.
+<b>Cómo llega</b>: cada tramo es <code>ronda ✓/✗ marcador v(marca del rival)</code> — verde ganó, rojo perdió, y la marca dice si el rival era sembrado <code>[4]</code>, clasificado <code>Q</code>, junior <code>JR</code> o invitado <code>WC</code>.<br>
 Señales: <code>JR</code> rival junior (ahí el WTN se da vuelta: 31%) · <code>sinATP</code> rival sin ranking (buena señal: 81% contra 75%) ·
 <code>ATP≠</code> el ATP contradice al WTN por +400 puestos · <code>choque</code> el rival llega con mejor forma ·
 <code>resid</code> el mercado se aparta más de 15 puntos · <code>PZ</code> ITF no publica ese WTN.<br>
@@ -204,11 +228,19 @@ Clic en cualquier encabezado para ordenar. Los filtros se combinan.
       if (!isNaN(cMin) && !(c >= cMin)) ok = false;
       if (!isNaN(cMax) && !(c <= cMax)) ok = false;
       if (!isNaN(vMin) && !(val >= vMin)) ok = false;
+      var rk = document.getElementById('f-rank').value;
+      if (rk) {
+        var da = parseFloat(r.dataset.datp), di = parseFloat(r.dataset.ditf);
+        if (rk === 'acuerdo' && !(da > 0 && di > 0)) ok = false;
+        if (rk === 'atpContra' && !(da < 0)) ok = false;
+        if (rk === 'itfContra' && !(di < 0)) ok = false;
+      }
       r.hidden = !ok; if (ok) vis++;
     });
     document.getElementById('visibles').textContent = vis;
   }
   Object.keys(F).forEach(function(k){ document.getElementById(F[k]).onchange = pinta; });
+  document.getElementById('f-rank').onchange = pinta;
   ['f-d','f-cuota','f-cuotaMax','f-val'].forEach(function(id){ document.getElementById(id).oninput = pinta; });
 
   /* orden: numérico si toda la columna lo es, texto si no */

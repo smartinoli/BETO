@@ -40,6 +40,12 @@ td.n{text-align:right}
 td.sec{color:var(--tinta2)}
 td.c-nom{font-family:"IBM Plex Sans",sans-serif;font-weight:500;max-width:190px;overflow:hidden;text-overflow:ellipsis}
 td.c-nom b{color:var(--acento);font-weight:600;margin-left:4px}
+td.c-nom .tray{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;font-style:normal;
+  color:var(--tinta3);margin-top:2px;white-space:normal;line-height:1.35}
+td.c-nom .tray .g{color:var(--acento);font-weight:600}
+td.c-nom .tray .p{color:var(--alerta);font-weight:600}
+td.c-nom .tray .vs{color:var(--tinta2)}
+td.c-nom{max-width:250px;white-space:normal}
 td.c-txt{font-family:"IBM Plex Sans",sans-serif;color:var(--tinta2);font-size:11.5px}
 td.c-txt i{display:block;font-style:normal;color:var(--tinta3);font-size:10px}
 td.c-et{color:var(--tinta2);font-weight:600}
@@ -57,7 +63,7 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
 </style>
 <div class="env">
 <h1>Tabla ITF</h1>
-<div class="gen">18 partidos con cuota · generado 2026-08-24 02:48 UTC · cada fila orientada a nuestro favorito por WTN</div>
+<div class="gen">18 partidos con cuota · generado 2026-08-24 03:21 UTC · cada fila orientada a nuestro favorito por WTN</div>
 
 <div class="barra">
   <div class="grupo"><label>tipo</label><select id="f-tipo"><option value="">todos</option>
@@ -71,6 +77,10 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
     <div class="grupo"><label>cuota mín</label><input type="number" id="f-cuota" step="0.1" placeholder="1.00"></div>
     <div class="grupo"><label>cuota máx</label><input type="number" id="f-cuotaMax" step="0.1" placeholder="99"></div>
     <div class="grupo"><label>valor mín %</label><input type="number" id="f-val" step="5" placeholder="—"></div>
+    <div class="grupo"><label>rankings</label><select id="f-rank"><option value="">todos</option>
+      <option value="acuerdo">ATP e ITF de acuerdo</option>
+      <option value="atpContra">ATP en contra</option>
+      <option value="itfContra">ITF en contra</option></select></div>
   </div>
   <div class="cuenta"><b id="visibles">18</b> / 18</div>
 </div>
@@ -78,30 +88,37 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
 <div class="env-tabla"><table id="t">
   <thead><tr>
     <th data-k="orden">Cuándo</th><th data-k="torneo">Torneo</th><th data-k="etapa">Et</th>
-    <th data-k="nomA">Favorito por WTN</th><th class="n" data-k="atpA">ATP</th><th class="n" data-k="wtnA">WTN</th>
+    <th data-k="nomA">Favorito por WTN · cómo llega</th><th class="n" data-k="atpA">ATP</th><th class="n" data-k="itfA">ITF</th><th class="n" data-k="wtnA">WTN</th>
     <th class="n" data-k="cuota">Cuota</th><th class="n" data-k="gA">Ced%</th>
-    <th data-k="nomB">Rival</th><th class="n" data-k="atpB">ATP</th><th class="n" data-k="wtnB">WTN</th>
+    <th data-k="nomB">Rival · cómo llega</th><th class="n" data-k="atpB">ATP</th><th class="n" data-k="itfB">ITF</th><th class="n" data-k="wtnB">WTN</th>
     <th class="n" data-k="cB">Cuota</th><th class="n" data-k="gB">Ced%</th>
-    <th class="n" data-k="d">Δ WTN</th><th class="n" data-k="pe">Banda</th><th class="n" data-k="devig">Mercado</th>
+    <th class="n" data-k="d">Δ WTN</th><th class="n" data-k="dAtp">Δ ATP</th><th class="n" data-k="dItf">Δ ITF</th><th class="n" data-k="pe">Banda</th><th class="n" data-k="devig">Mercado</th>
     <th class="n" data-k="cMin">Mín</th><th class="n" data-k="val">Valor</th><th class="n" data-k="residuo">Resid</th>
     <th data-k="flags">Señales</th><th data-k="tipo">Tipo</th>
   </tr></thead>
   <tbody><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Taipei"
-  data-d="1.7600000000000007" data-cuota="1.09" data-val="-0.25661999999999985">
+  data-d="1.7600000000000007" data-cuota="1.09" data-val="-0.25661999999999985"
+  data-datp="757" data-ditf="">
   <td class="c-txt">dom, 23-08 21:30</td>
   <td class="c-txt">Taipei<i>M25·Hard</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Ryuki Matsuda<b>[3]</b></td>
+  <td class="c-nom">Ryuki Matsuda<b>[3]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-3 <i class="vs">vWC</i></i></td>
   <td class="n">806</td>
+  <td class="n"><i>—</i></td>
   <td class="n">7.63</td>
   <td class="n dst">1.09</td>
   <td class="n">29</td>
-  <td class="c-nom sec">Chun-Chien Hou<b>[14]</b></td>
+  <td class="c-nom sec">Chun-Chien Hou<b>[14]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-2</i></td>
   <td class="n sec">1563</td>
+  <td class="n sec">315</td>
   <td class="n sec">9.39</td>
   <td class="n sec">6.10</td>
   <td class="n sec">25</td>
   <td class="n dst">1.76</td>
+  <td class="n pos">+757</td>
+  <td class="n "></td>
   <td class="n">68</td>
   <td class="n">85</td>
   <td class="n">1.60</td>
@@ -110,21 +127,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">choque</span></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Taipei"
-  data-d="1.9100000000000001" data-cuota="1.57" data-val="0.07074000000000003">
+  data-d="1.9100000000000001" data-cuota="1.57" data-val="0.07074000000000003"
+  data-datp="747" data-ditf="564">
   <td class="c-txt">dom, 23-08 21:30</td>
   <td class="c-txt">Taipei<i>M25·Hard</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Ethan Cook<b>[11]</b></td>
+  <td class="c-nom">Ethan Cook<b>[11]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-1 6-3</i></td>
   <td class="n">1248</td>
+  <td class="n">726</td>
   <td class="n">8.45</td>
   <td class="n dst">1.57</td>
   <td class="n">25</td>
-  <td class="c-nom sec">Yeongseok Jeong</td>
+  <td class="c-nom sec">Yeongseok Jeong
+    <i class="tray"><i class="g">Q1✓</i> 6-4 2-6 10-6 <i class="vs">v[4]</i></i></td>
   <td class="n sec">1995</td>
+  <td class="n sec">1290</td>
   <td class="n sec">10.36</td>
   <td class="n sec">2.25</td>
   <td class="n sec">47</td>
   <td class="n dst">1.91</td>
+  <td class="n pos">+747</td>
+  <td class="n pos">+564</td>
   <td class="n">68</td>
   <td class="n">59</td>
   <td class="n">1.60</td>
@@ -133,21 +157,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Taipei"
-  data-d="1.0299999999999994" data-cuota="2.25" data-val="">
+  data-d="1.0299999999999994" data-cuota="2.25" data-val=""
+  data-datp="156" data-ditf="81">
   <td class="c-txt">dom, 23-08 21:30</td>
   <td class="c-txt">Taipei<i>M25·Hard</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Seongwoo Cho<b>[8]</b></td>
+  <td class="c-nom">Seongwoo Cho<b>[8]</b>
+    <i class="tray"><i class="g">Q1✓</i> 7-5 7-5</i></td>
   <td class="n">1145</td>
+  <td class="n">64</td>
   <td class="n">9.09</td>
   <td class="n dst">2.25</td>
   <td class="n">42</td>
-  <td class="c-nom sec">Ryota Tanuma<b>[12]</b></td>
+  <td class="c-nom sec">Ryota Tanuma<b>[12]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-1 <i class="vs">vWC</i></i></td>
   <td class="n sec">1301</td>
+  <td class="n sec">145</td>
   <td class="n sec">8.06</td>
   <td class="n sec">1.57</td>
   <td class="n sec">20</td>
   <td class="n dst">1.03</td>
+  <td class="n pos">+156</td>
+  <td class="n pos">+81</td>
   <td class="n"></td>
   <td class="n">41</td>
   <td class="n"></td>
@@ -156,21 +187,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">choque</span></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Taipei"
-  data-d="1.5199999999999996" data-cuota="1.57" data-val="-0.3406">
+  data-d="1.5199999999999996" data-cuota="1.57" data-val="-0.3406"
+  data-datp="388" data-ditf="-518">
   <td class="c-txt">dom, 23-08 21:30</td>
   <td class="c-txt">Taipei<i>M25·Hard</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Taisei Ichikawa<b>[2]</b></td>
+  <td class="c-nom">Taisei Ichikawa<b>[2]</b>
+    <i class="tray"><i class="g">Q1✓</i> 7-6(9) 2-6 10-8 <i class="vs">vWC</i></i></td>
   <td class="n">781</td>
+  <td class="n">603</td>
   <td class="n">6.93</td>
   <td class="n dst">1.57</td>
   <td class="n">51</td>
-  <td class="c-nom sec">Hiromasa Koyama<b>[10]</b></td>
+  <td class="c-nom sec">Hiromasa Koyama<b>[10]</b>
+    <i class="tray"><i class="g">Q1✓</i> 7-5 6-4</i></td>
   <td class="n sec">1169</td>
+  <td class="n sec">85</td>
   <td class="n sec">8.45</td>
   <td class="n sec">2.25</td>
   <td class="n sec">41</td>
   <td class="n dst">1.52</td>
+  <td class="n pos">+388</td>
+  <td class="n neg">-518</td>
   <td class="n">42</td>
   <td class="n">59</td>
   <td class="n">2.60</td>
@@ -179,21 +217,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">choque</span></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Oviedo"
-  data-d="1.0299999999999994" data-cuota="1.12" data-val="">
+  data-d="1.0299999999999994" data-cuota="1.12" data-val=""
+  data-datp="675" data-ditf="-670">
   <td class="c-txt">lun, 24-08 04:00</td>
   <td class="c-txt">Oviedo<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Aren Baybars<b>[1]</b></td>
+  <td class="c-nom">Aren Baybars<b>[1]</b>
+    <i class="tray"><i class="g">Q1✓</i> 7-6(5) 6-1</i></td>
   <td class="n">1320</td>
+  <td class="n">1558</td>
   <td class="n">14.97</td>
   <td class="n dst">1.12</td>
   <td class="n">35</td>
-  <td class="c-nom sec">Amaan Siddiqui<b>[16]</b></td>
+  <td class="c-nom sec">Amaan Siddiqui<b>[16]</b>
+    <i class="tray"><i class="g">Q1✓</i> 7-6(8) 6-2</i></td>
   <td class="n sec">1995</td>
+  <td class="n sec">888</td>
   <td class="n sec">16</td>
   <td class="n sec">5.40</td>
   <td class="n sec">38</td>
   <td class="n dst">1.03</td>
+  <td class="n pos">+675</td>
+  <td class="n neg">-670</td>
   <td class="n"></td>
   <td class="n">83</td>
   <td class="n"></td>
@@ -202,21 +247,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M15 Cap d'Agde"
-  data-d="3.4299999999999997" data-cuota="1.2" data-val="-0.14080000000000004">
+  data-d="3.4299999999999997" data-cuota="1.2" data-val="-0.14080000000000004"
+  data-datp="" data-ditf="1158">
   <td class="c-txt">lun, 24-08 04:30</td>
   <td class="c-txt">Cap d'Agde<i>M15·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Massimo Pizzigoni<b>[1]</b></td>
+  <td class="c-nom">Massimo Pizzigoni<b>[1]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-0 6-0</i></td>
   <td class="n">1771</td>
+  <td class="n">599</td>
   <td class="n">12.07</td>
   <td class="n dst">1.20</td>
   <td class="n">0</td>
-  <td class="c-nom sec">Pascal Tylek<b>[12]</b></td>
+  <td class="c-nom sec">Pascal Tylek<b>[12]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-4 7-6(10)</i></td>
   <td class="n sec"><i>—</i></td>
+  <td class="n sec">1757</td>
   <td class="n sec">15.5</td>
   <td class="n sec">4.05</td>
   <td class="n sec">43</td>
   <td class="n dst">3.43</td>
+  <td class="n "></td>
+  <td class="n pos">+1158</td>
   <td class="n">72</td>
   <td class="n">77</td>
   <td class="n">1.52</td>
@@ -225,21 +277,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">sinATP</span></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="segura" data-etapa="Q2" data-torneo="M15 Cap d'Agde"
-  data-d="6.279999999999999" data-cuota="1.42" data-val="0.2581199999999999">
+  data-d="6.279999999999999" data-cuota="1.42" data-val="0.2581199999999999"
+  data-datp="" data-ditf="1429">
   <td class="c-txt">lun, 24-08 04:30</td>
   <td class="c-txt">Cap d'Agde<i>M15·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Justin Lenders<b>[5]</b></td>
+  <td class="c-nom">Justin Lenders<b>[5]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-0</i></td>
   <td class="n">1872</td>
+  <td class="n">259</td>
   <td class="n">10.49</td>
   <td class="n dst">1.42</td>
   <td class="n">14</td>
-  <td class="c-nom sec">Zaccharie Cado<b>[9]</b></td>
+  <td class="c-nom sec">Zaccharie Cado<b>[9]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-4</i></td>
   <td class="n sec"><i>—</i></td>
+  <td class="n sec">1688</td>
   <td class="n sec">16.77</td>
   <td class="n sec">2.67</td>
   <td class="n sec">33</td>
   <td class="n dst">6.28</td>
+  <td class="n "></td>
+  <td class="n pos">+1429</td>
   <td class="n">89</td>
   <td class="n">65</td>
   <td class="n">1.23</td>
@@ -248,21 +307,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">sinATP</span></td>
   <td class="c-tp t-segura">segura</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Lausanne"
-  data-d="2.3199999999999985" data-cuota="1.08" data-val="-0.2634399999999999">
+  data-d="2.3199999999999985" data-cuota="1.08" data-val="-0.2634399999999999"
+  data-datp="" data-ditf="">
   <td class="c-txt">lun, 24-08 04:30</td>
   <td class="c-txt">Lausanne<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Leonardo Taddia<b>[2]</b></td>
+  <td class="c-nom">Leonardo Taddia<b>[2]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-4 6-1</i></td>
   <td class="n"><i>—</i></td>
+  <td class="n">380</td>
   <td class="n">12.63</td>
   <td class="n dst">1.08</td>
   <td class="n">29</td>
-  <td class="c-nom sec">Arthur Vildeuil</td>
+  <td class="c-nom sec">Arthur Vildeuil
+    <i class="tray"><i class="g">Q1✓</i> 6-0 0-6 11-9</i></td>
+  <td class="n sec"><i>—</i></td>
   <td class="n sec"><i>—</i></td>
   <td class="n sec">14.95</td>
   <td class="n sec">6.60</td>
   <td class="n sec">47</td>
   <td class="n dst">2.32</td>
+  <td class="n "></td>
+  <td class="n "></td>
   <td class="n">68</td>
   <td class="n">86</td>
   <td class="n">1.60</td>
@@ -271,21 +337,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">sinATP</span></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Lausanne"
-  data-d="2.4700000000000024" data-cuota="1.38" data-val="-0.05884">
+  data-d="2.4700000000000024" data-cuota="1.38" data-val="-0.05884"
+  data-datp="" data-ditf="">
   <td class="c-txt">lun, 24-08 04:30</td>
   <td class="c-txt">Lausanne<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Marko Maric<b>[6]</b></td>
+  <td class="c-nom">Marko Maric<b>[6]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-2</i></td>
   <td class="n"><i>—</i></td>
+  <td class="n">1359</td>
   <td class="n">13.7</td>
   <td class="n dst">1.38</td>
   <td class="n">25</td>
-  <td class="c-nom sec">Mateo Comamala</td>
+  <td class="c-nom sec">Mateo Comamala
+    <i class="tray"><i class="g">Q1✓</i> 6-0 6-1 <i class="vs">vA</i></i></td>
+  <td class="n sec"><i>—</i></td>
   <td class="n sec"><i>—</i></td>
   <td class="n sec">16.17</td>
   <td class="n sec">2.82</td>
   <td class="n sec">8</td>
   <td class="n dst">2.47</td>
+  <td class="n "></td>
+  <td class="n "></td>
   <td class="n">68</td>
   <td class="n">67</td>
   <td class="n">1.60</td>
@@ -294,21 +367,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">sinATP</span><span class="fl">choque</span></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Oviedo"
-  data-d="0.2400000000000002" data-cuota="1.32" data-val="">
+  data-d="0.2400000000000002" data-cuota="1.32" data-val=""
+  data-datp="229" data-ditf="">
   <td class="c-txt">lun, 24-08 05:00</td>
   <td class="c-txt">Oviedo<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Sergio Planella Hernandez<b>[5]</b></td>
+  <td class="c-nom">Sergio Planella Hernandez<b>[5]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-0 <i class="vs">vWC</i></i></td>
   <td class="n">1488</td>
+  <td class="n">323</td>
   <td class="n">10.49</td>
   <td class="n dst">1.32</td>
   <td class="n">14</td>
-  <td class="c-nom sec">Mario Mansilla Diez<b>[9]</b></td>
+  <td class="c-nom sec">Mario Mansilla Diez<b>[9]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-4 6-1</i></td>
   <td class="n sec">1717</td>
+  <td class="n sec"><i>—</i></td>
   <td class="n sec">10.73</td>
   <td class="n sec">3.10</td>
   <td class="n sec">29</td>
   <td class="n dst">0.24</td>
+  <td class="n pos">+229</td>
+  <td class="n "></td>
   <td class="n"></td>
   <td class="n">70</td>
   <td class="n"></td>
@@ -317,21 +397,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="anomalia" data-etapa="Q2" data-torneo="M25 Oviedo"
-  data-d="2.8000000000000007" data-cuota="2.42" data-val="0.5246">
+  data-d="2.8000000000000007" data-cuota="2.42" data-val="0.5246"
+  data-datp="392" data-ditf="706">
   <td class="c-txt">lun, 24-08 05:00</td>
   <td class="c-txt">Oviedo<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Toprak Avcibasi<b>[4]</b></td>
+  <td class="c-nom">Toprak Avcibasi<b>[4]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6(4)-7 6-2 10-7</i></td>
   <td class="n">1468</td>
+  <td class="n">133</td>
   <td class="n">11.43</td>
   <td class="n dst">2.42</td>
   <td class="n">42</td>
-  <td class="c-nom sec">Maxi Carrascosa Diaz<b>[11]</b></td>
+  <td class="c-nom sec">Maxi Carrascosa Diaz<b>[11]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-2 <i class="vs">vWC</i></i></td>
   <td class="n sec">1860</td>
+  <td class="n sec">839</td>
   <td class="n sec">14.23</td>
   <td class="n sec">1.50</td>
   <td class="n sec">25</td>
   <td class="n dst">2.80</td>
+  <td class="n pos">+392</td>
+  <td class="n pos">+706</td>
   <td class="n">63</td>
   <td class="n">38</td>
   <td class="n">1.73</td>
@@ -340,21 +427,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">choque</span><span class="fl">resid</span></td>
   <td class="c-tp t-anomalia">anomalía</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Oviedo"
-  data-d="2.2300000000000004" data-cuota="1.2" data-val="-0.18159999999999998">
+  data-d="2.2300000000000004" data-cuota="1.2" data-val="-0.18159999999999998"
+  data-datp="248" data-ditf="-52">
   <td class="c-txt">lun, 24-08 05:00</td>
   <td class="c-txt">Oviedo<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Mateo Luis Alvarez Sarmiento<b>[6]</b></td>
+  <td class="c-nom">Mateo Luis Alvarez Sarmiento<b>[6]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-4</i></td>
   <td class="n">1656</td>
+  <td class="n">269</td>
   <td class="n">10.44</td>
   <td class="n dst">1.20</td>
   <td class="n">33</td>
-  <td class="c-nom sec">Jose Dominguez Alonso<b>[13]</b></td>
+  <td class="c-nom sec">Jose Dominguez Alonso<b>[13]</b>
+    <i class="tray"><i class="g">Q1✓</i> 7-6(3) 6-2</i></td>
   <td class="n sec">1904</td>
+  <td class="n sec">217</td>
   <td class="n sec">12.67</td>
   <td class="n sec">4.05</td>
   <td class="n sec">38</td>
   <td class="n dst">2.23</td>
+  <td class="n pos">+248</td>
+  <td class="n neg">-52</td>
   <td class="n">68</td>
   <td class="n">77</td>
   <td class="n">1.60</td>
@@ -363,21 +457,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Oviedo"
-  data-d="1.2599999999999998" data-cuota="1.31" data-val="">
+  data-d="1.2599999999999998" data-cuota="1.31" data-val=""
+  data-datp="" data-ditf="-1701">
   <td class="c-txt">lun, 24-08 06:30</td>
   <td class="c-txt">Oviedo<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Xavi Palomar<b>[7]</b></td>
+  <td class="c-nom">Xavi Palomar<b>[7]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-4 7-6(8)</i></td>
   <td class="n">1579</td>
+  <td class="n">2378</td>
   <td class="n">12.98</td>
   <td class="n dst">1.31</td>
   <td class="n">43</td>
-  <td class="c-nom sec">Pavel Petrov</td>
+  <td class="c-nom sec">Pavel Petrov
+    <i class="tray"><i class="g">Q1✓</i> 6-3 6-1 <i class="vs">v[10]</i></i></td>
   <td class="n sec"><i>—</i></td>
+  <td class="n sec">677</td>
   <td class="n sec">11.72</td>
   <td class="n sec">3.15</td>
   <td class="n sec">25</td>
   <td class="n dst">1.26</td>
+  <td class="n "></td>
+  <td class="n neg">-1701</td>
   <td class="n"></td>
   <td class="n">71</td>
   <td class="n"></td>
@@ -386,21 +487,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">sinATP</span><span class="fl">choque</span></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Oviedo"
-  data-d="1.5200000000000014" data-cuota="1.3" data-val="-0.45399999999999996">
+  data-d="1.5200000000000014" data-cuota="1.3" data-val="-0.45399999999999996"
+  data-datp="191" data-ditf="5">
   <td class="c-txt">lun, 24-08 06:30</td>
   <td class="c-txt">Oviedo<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Pablo Aunion<b>[8]</b></td>
+  <td class="c-nom">Pablo Aunion<b>[8]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6(5)-7 6-1 10-8</i></td>
   <td class="n">1702</td>
+  <td class="n">21</td>
   <td class="n">9.61</td>
   <td class="n dst">1.30</td>
   <td class="n">42</td>
-  <td class="c-nom sec">Noah Regas Luis<b>[12]</b></td>
+  <td class="c-nom sec">Noah Regas Luis<b>[12]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-4 6-4</i></td>
   <td class="n sec">1893</td>
+  <td class="n sec">26</td>
   <td class="n sec">11.13</td>
   <td class="n sec">3.25</td>
   <td class="n sec">40</td>
   <td class="n dst">1.52</td>
+  <td class="n pos">+191</td>
+  <td class="n pos">+5</td>
   <td class="n">42</td>
   <td class="n">71</td>
   <td class="n">2.60</td>
@@ -409,21 +517,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">choque</span></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="mirar" data-etapa="Q2" data-torneo="M25 Taipei"
-  data-d="1.8199999999999985" data-cuota="2.35" data-val="0.6027000000000002">
+  data-d="1.8199999999999985" data-cuota="2.35" data-val="0.6027000000000002"
+  data-datp="" data-ditf="">
   <td class="c-txt">08-24 Followed By</td>
   <td class="c-txt">Taipei<i>M25·Hard</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Ren Nakamura<b>[15]</b></td>
+  <td class="c-nom">Ren Nakamura<b>[15]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-2 6-1</i></td>
   <td class="n">1684</td>
+  <td class="n">372</td>
   <td class="n">11.46</td>
   <td class="n dst">2.35</td>
   <td class="n">20</td>
-  <td class="c-nom sec">Chen Hui Ho</td>
+  <td class="c-nom sec">Chen Hui Ho
+    <i class="tray"><i class="g">Q1✓</i> 6-2 7-6(1) <i class="vs">v[6]</i></i></td>
+  <td class="n sec"><i>—</i></td>
   <td class="n sec"><i>—</i></td>
   <td class="n sec">13.28</td>
   <td class="n sec">1.53</td>
   <td class="n sec">38</td>
   <td class="n dst">1.82</td>
+  <td class="n "></td>
+  <td class="n "></td>
   <td class="n">68</td>
   <td class="n">39</td>
   <td class="n">1.60</td>
@@ -432,21 +547,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"><span class="fl">sinATP</span><span class="fl">resid</span></td>
   <td class="c-tp t-mirar">mirar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Taipei"
-  data-d="1.46" data-cuota="1.67" data-val="">
+  data-d="1.46" data-cuota="1.67" data-val=""
+  data-datp="225" data-ditf="">
   <td class="c-txt">08-24 Followed By</td>
   <td class="c-txt">Taipei<i>M25·Hard</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Noritaka Koizumi<b>[7]</b></td>
+  <td class="c-nom">Noritaka Koizumi<b>[7]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-1 6-2</i></td>
   <td class="n">940</td>
+  <td class="n">644</td>
   <td class="n">7.94</td>
   <td class="n dst">1.67</td>
   <td class="n">20</td>
-  <td class="c-nom sec">Kristjan Tamm<b>[9]</b></td>
+  <td class="c-nom sec">Kristjan Tamm<b>[9]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-3 6-1 <i class="vs">vPR</i></i></td>
   <td class="n sec">1165</td>
+  <td class="n sec"><i>—</i></td>
   <td class="n sec">9.4</td>
   <td class="n sec">2.07</td>
   <td class="n sec">25</td>
   <td class="n dst">1.46</td>
+  <td class="n pos">+225</td>
+  <td class="n "></td>
   <td class="n"></td>
   <td class="n">55</td>
   <td class="n"></td>
@@ -455,21 +577,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Taipei"
-  data-d="1.6599999999999993" data-cuota="1.2" data-val="-0.18159999999999998">
+  data-d="1.6599999999999993" data-cuota="1.2" data-val="-0.18159999999999998"
+  data-datp="507" data-ditf="-142">
   <td class="c-txt">08-24 Followed By</td>
   <td class="c-txt">Taipei<i>M25·Hard</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Kosuke Ogura<b>[5]</b></td>
+  <td class="c-nom">Kosuke Ogura<b>[5]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-1 6-3 <i class="vs">vWC</i></i></td>
   <td class="n">861</td>
+  <td class="n">698</td>
   <td class="n">7.63</td>
   <td class="n dst">1.20</td>
   <td class="n">25</td>
-  <td class="c-nom sec">Tomohiro Masabayashi<b>[13]</b></td>
+  <td class="c-nom sec">Tomohiro Masabayashi<b>[13]</b>
+    <i class="tray"><i class="g">Q1✓</i> 7-6(6) 6(1)-7 11-9</i></td>
   <td class="n sec">1368</td>
+  <td class="n sec">556</td>
   <td class="n sec">9.29</td>
   <td class="n sec">4.05</td>
   <td class="n sec">48</td>
   <td class="n dst">1.66</td>
+  <td class="n pos">+507</td>
+  <td class="n neg">-142</td>
   <td class="n">68</td>
   <td class="n">77</td>
   <td class="n">1.60</td>
@@ -478,21 +607,28 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="c-fl"></td>
   <td class="c-tp t-pasar">pasar</td>
 </tr><tr data-tipo="pasar" data-etapa="Q2" data-torneo="M25 Lausanne"
-  data-d="" data-cuota="1.72" data-val="">
+  data-d="" data-cuota="1.72" data-val=""
+  data-datp="" data-ditf="">
   <td class="c-txt">08-24 Followed By</td>
   <td class="c-txt">Lausanne<i>M25·Clay</i></td>
   <td class="c-et">Q2</td>
-  <td class="c-nom">Dany Robas</td>
+  <td class="c-nom">Dany Robas
+    <i class="tray"><i class="g">Q1✓</i> 6-3 6-3 <i class="vs">v[8]</i></i></td>
+  <td class="n"><i>—</i></td>
   <td class="n"><i>—</i></td>
   <td class="n">13.85</td>
   <td class="n dst">1.72</td>
   <td class="n">33</td>
-  <td class="c-nom sec">Filippo Valdetara<b>[9]</b></td>
+  <td class="c-nom sec">Filippo Valdetara<b>[9]</b>
+    <i class="tray"><i class="g">Q1✓</i> 6-0 6-1</i></td>
   <td class="n sec"><i>—</i></td>
+  <td class="n sec">2378</td>
   <td class="n sec"><i>—</i></td>
   <td class="n sec">2.00</td>
   <td class="n sec">8</td>
   <td class="n dst"></td>
+  <td class="n "></td>
+  <td class="n "></td>
   <td class="n"></td>
   <td class="n">54</td>
   <td class="n"></td>
@@ -510,6 +646,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
 <b>Mín</b> = cuota desde la que la apuesta deja +9% sobre ese margen ·
 <b>Valor</b> = banda × cuota − 1 ·
 <b>Resid</b> = cuánto se aparta el mercado de su propio modelo por Δ (logit p = −0.081 + 0.183·Δ). Muy negativo = ve algo que no vemos.<br>
+<b>Δ ATP</b> y <b>Δ ITF</b> = puestos de ventaja de nuestro favorito en cada ranking. <b>Positivo</b> = ese ranking coincide con el WTN; <b>negativo</b> = lo contradice.
+<b>Cómo llega</b>: cada tramo es <code>ronda ✓/✗ marcador v(marca del rival)</code> — verde ganó, rojo perdió, y la marca dice si el rival era sembrado <code>[4]</code>, clasificado <code>Q</code>, junior <code>JR</code> o invitado <code>WC</code>.<br>
 Señales: <code>JR</code> rival junior (ahí el WTN se da vuelta: 31%) · <code>sinATP</code> rival sin ranking (buena señal: 81% contra 75%) ·
 <code>ATP≠</code> el ATP contradice al WTN por +400 puestos · <code>choque</code> el rival llega con mejor forma ·
 <code>resid</code> el mercado se aparta más de 15 puntos · <code>PZ</code> ITF no publica ese WTN.<br>
@@ -536,11 +674,19 @@ Clic en cualquier encabezado para ordenar. Los filtros se combinan.
       if (!isNaN(cMin) && !(c >= cMin)) ok = false;
       if (!isNaN(cMax) && !(c <= cMax)) ok = false;
       if (!isNaN(vMin) && !(val >= vMin)) ok = false;
+      var rk = document.getElementById('f-rank').value;
+      if (rk) {
+        var da = parseFloat(r.dataset.datp), di = parseFloat(r.dataset.ditf);
+        if (rk === 'acuerdo' && !(da > 0 && di > 0)) ok = false;
+        if (rk === 'atpContra' && !(da < 0)) ok = false;
+        if (rk === 'itfContra' && !(di < 0)) ok = false;
+      }
       r.hidden = !ok; if (ok) vis++;
     });
     document.getElementById('visibles').textContent = vis;
   }
   Object.keys(F).forEach(function(k){ document.getElementById(F[k]).onchange = pinta; });
+  document.getElementById('f-rank').onchange = pinta;
   ['f-d','f-cuota','f-cuotaMax','f-val'].forEach(function(id){ document.getElementById(id).oninput = pinta; });
 
   /* orden: numérico si toda la columna lo es, texto si no */
