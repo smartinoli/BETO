@@ -1,37 +1,74 @@
 # Vigía
 
-> **Modo actual: 100% FOCO en AH (fútbol), bajo demanda.** El bot no manda
-> alertas solo: escucha tu chat de Telegram y barre cuando se lo pides. Todo
-> el sistema mide UNA sola cosa: hándicap asiático (y su gemelo DNB) de
-> fútbol, cuota 1.6–3.0.
+> **Modo actual: el foco del foco — AH −(x) de primer tiempo.** El bot no
+> manda alertas solo: escucha tu chat de Telegram y barre cuando se lo pides.
+> Todo el sistema mide UNA sola cosa: **el favorito dando goles al descanso**
+> (hándicap asiático negativo de primer tiempo), cuota 1.6–3.0, ventaja ≥1,5%.
 >
 > - **Sombras apagadas** (`"sombras": false`): ya no se anotan ni liquidan
 >   apuestas fantasma — cero requests en calibración. Las sombras viejas
 >   quedan congeladas en `registro.json` como historial.
 > - **Props apagados** (`"propsPrueba": false`): el espejo de líneas de
 >   jugador tampoco anota nada.
-> - **`/tablero` muestra solo lo que estamos jugando**: AH fútbol filtrado
->   por los criterios vigentes del config (cuota y ventaja mínima), con DNB
->   contado como AH 0.0 — total y desglose FT/1T, sin bandas ni rangos.
->   `/tablero todo` da el historial completo (criterios viejos, otras
->   familias, otros deportes, sombras liquidadas).
+> - **`/tablero` muestra solo el foco**: total y desglose por línea (−0.5,
+>   −1), con los dos ROI (el de la plata y el por unidad apostada).
+>   `/tablero todo` da el historial completo.
 > - `/itf` sigue disponible bajo demanda, pero ya no escribe sombras al
 >   registro: solo alimenta su propio tablero de favoritos (`itf.json`).
 >
-> Para volver a medir más cosas: reencender `sombras`/`propsPrueba` en
-> `config.json` y commitear.
+> Para volver a medir más cosas: ampliar `foco` o reencender
+> `sombras`/`propsPrueba` en `config.json` y commitear.
 >
 > | Comando | Qué hace | Costo |
 > |---|---|---|
-> | `/barrer` | barrido del foco (fútbol) | ~110 requests, ~2 min |
+> | `/barrer` | barrido del foco | ~110 requests, ~2 min |
 > | `/rapido` | solo lo que empieza dentro de 6 h | ~30 requests |
-> | `/tablero` | balance del foco AH/DNB | requests solo al liquidar |
+> | `/tablero` | balance del foco, por línea | requests solo al liquidar |
 > | `/estado` | cuota de API y último barrido | gratis |
 > | `/ayuda` | lista de comandos | gratis |
 >
 > Escuchar no gasta requests de OddsPapi. El cron levanta un escucha cada 30
 > min que vive ~28 min; si mandas un comando cuando no hay ninguno vivo, el
 > mensaje espera en Telegram y se atiende al despertar el siguiente.
+
+## Por qué el foco es AH −(x) de primer tiempo
+
+Corte sobre 118 apuestas AH/DNB liquidadas (18–23 ago 2026), medido en **ROI
+por unidad apostada** — no ponderado por monto, para que dos apuestas grandes
+que ganaron no distorsionen la lectura:
+
+| Segmento | n | Récord | ROI |
+|---|---|---|---|
+| **−(x) primer tiempo** | 28 | 18G 5E 5P | **+36,9%** |
+| −(x) tiempo completo | 14 | 9G 5P | +14,7% |
+| +(x) tiempo completo | 17 | 12G 5P | +13,9% |
+| 0.0 tiempo completo | 40 | 19G 12E 9P | −1,6% |
+| 0.0 primer tiempo | 19 | 6G 7E 6P | −15,7% |
+
+El −(x) de primer tiempo es el único que aguanta las dos pruebas de robustez:
+quitando cualquier día del historial se mantiene entre +31% y +49%, y el
+remuestreo (bootstrap) le da 1% de probabilidad de ser realmente negativo
+(rango de confianza 90%: +12% a +60%). El 0.0 de primer tiempo, en cambio,
+da negativo en los seis cortes posibles — por eso salió del foco.
+
+Lectura de fondo: el 0.0 (favorito sin riesgo de empate) es la apuesta cómoda
+que todo el mundo juega y el mercado precifica bien. Dar goles en el primer
+tiempo es la línea incómoda, de menor volumen, donde la casa está más floja.
+
+**Umbrales:** se dejaron sin tocar a propósito. Las 28 apuestas del segmento
+cayeron entre cuota 1,62 y 2,55, así que el techo de 3,0 y el piso de 1,6 no
+cortan nada; y no hay ni una sombra del segmento fuera de ese rango. Apretar
+a la mejor banda (1,75–2,00, +46%) sería sobreajustar sobre 12 apuestas.
+
+**El filtro corre después de la competencia interna** (una señal por familia y
+partido, gana la de mayor ventaja). Eso es a propósito: reproduce exactamente
+la selección que produjo el +36,9% medido. Filtrar antes recuperaría señales
+que perdieron esa competencia — más volumen, pero de menor ventaja y sin medir.
+
+**Advertencia honesta:** son 6 días de datos y 21 de las 28 apuestas vienen de
+los últimos dos. La dirección del hallazgo es sólida; la magnitud no. Un +37%
+sostenido no existe — el filo real es bastante menor. Volumen esperado: ~6
+señales/día.
 
 
 Barrido continuo de Betano vs el justo de Cloudbet (des-vigado) sobre OddsPapi v4.

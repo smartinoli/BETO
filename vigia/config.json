@@ -18,7 +18,7 @@
   "umbralCastigado": 0.035,
   "devig": "pow",
   "foco": {
-    "10": "^(AH|Empate no válido)"
+    "10": "^AH 1er tiempo · .+ -\\d+(\\.\\d+)?$"
   },
   "barridoDeportes": ["10"],
   "cuotaMinima": 1.6,

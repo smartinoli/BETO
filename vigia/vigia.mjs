@@ -6,9 +6,12 @@
    request de OddsPapi hasta que tú pides algo.
 
    MODO 100% FOCO (config: sombras=false, propsPrueba=false): solo se
-   registra, liquida y muestra el foco (fútbol AH/DNB). Las sombras
-   viejas quedan congeladas en registro.json — no se miden ni gastan
-   requests; reencender "sombras" en config.json las reactiva.
+   registra, liquida y muestra el foco. Hoy el foco es el HÁNDICAP
+   ASIÁTICO NEGATIVO DE PRIMER TIEMPO en fútbol — el favorito dando
+   goles al descanso: el único segmento que aguantó todas las pruebas
+   de robustez sobre el histórico (ver README). Las sombras viejas
+   quedan congeladas en registro.json — no se miden ni gastan requests;
+   reencender "sombras" en config.json las reactiva.
 
    Comandos del chat:
      /barrer   barrido del foco sin límites (~110 requests) y te manda
@@ -715,7 +718,7 @@ async function reportar(r, titulo) {
   const cab = [
     `<b>${titulo}</b>`,
     `<i>espejo: ${escHtml(CASA)}</i>`,
-    r.fueraDeFoco != null ? `<i>🎯 Foco: fútbol AH/DNB · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco ${CFG.sombras !== false ? 'a la sombra' : 'descartada(s)'}</i>` : '',
+    r.fueraDeFoco != null ? `<i>🎯 Foco: AH −(x) primer tiempo · cuota ${CFG.cuotaMinima ?? '—'}-${CFG.cuotaMaxima} · ${r.fueraDeFoco} señal(es) fuera del foco ${CFG.sombras !== false ? 'a la sombra' : 'descartada(s)'}</i>` : '',
     r.deportesFuera?.length ? `⚠️ Sin acceso en tu plan OddsPapi: ${r.deportesFuera.map(escHtml).join(' · ')} — se saltaron. Revisa el panel si no fue a propósito.` : '',
     r.avisoLotes || '',
     `${r.ligas} ligas · ${r.partidos} partidos · ${r.candidatas.toLocaleString('es-CL')} líneas evaluadas`,
@@ -916,6 +919,21 @@ const recTxt = arr => {
   return ['G', 'P', 'MG', 'MP', 'E'].filter(k => rec[k]).map(k => rec[k] + k).join(' ');
 };
 const conSigno = n => (n >= 0 ? '🟢 +' : '🔴 −') + plata(Math.abs(n));
+/* ROI por unidad apostada: cada señal pesa igual, sin importar el monto
+   Kelly. Es la medida del filo; el ROI de la plata mide el banco. */
+const roiUnidad = arr => arr.reduce((a, e) => a + (retornoDe(e) / e.monto - 1), 0) / arr.length * 100;
+const signoPct = n => (n >= 0 ? '+' : '−') + Math.abs(n).toFixed(1) + '%';
+/* la línea del hándicap tal como quedó anotada ("Arsenal FC -0.5" → "-0.5") */
+const lineaDe = e => (String(e.lado).match(/(-?\d+(?:\.\d+)?)\s*$/) || [, '—'])[1];
+const agrupaLinea = arr => {
+  const m = new Map();
+  for (const e of arr) {
+    const k = lineaDe(e);
+    if (!m.has(k)) m.set(k, []);
+    m.get(k).push(e);
+  }
+  return [...m.entries()].sort((a, b) => parseFloat(b[0]) - parseFloat(a[0]));
+};
 /* fila de un tipo de apuesta: n · cuota media · % sobre el justo · récord · neto */
 const fila = (nombre, arr) => `· ${escHtml(nombre)} — ${arr.length} ap · cuota ${media(arr, e => e.cuota).toFixed(2)}`
   + ` · +${(media(arr, e => e.vent) * 100).toFixed(1)}% s/justo · ${recTxt(arr)} → <b>${conSigno(netoDe(arr))}</b>`;
@@ -937,8 +955,8 @@ async function cmdTableroFoco(liq) {
   const viejas = todas.filter(e => CERRADO.includes(e.estado) && delFoco(e) && !okHoy(e)).length;
   const criterios = `cuota ${CFG.cuotaMinima ?? '—'}–${CFG.cuotaMaxima} · ventaja ≥ ${(CFG.ventajaMinima['10'] * 100).toFixed(1)}%`;
   const lineas = [
-    '<b>📒 Tablero · 🎯 AH fútbol</b>',
-    `<i>${criterios} · DNB cuenta como AH 0.0</i>`,
+    '<b>📒 Tablero · 🎯 AH −(x) primer tiempo</b>',
+    `<i>${criterios}</i>`,
     '',
   ];
   if (!cerradas.length) {
@@ -946,16 +964,13 @@ async function cmdTableroFoco(liq) {
       : 'Aún no hay apuestas del foco: se anotan solas con cada /barrer o /rapido.');
   } else {
     const apostado = cerradas.reduce((a, e) => a + e.monto, 0);
+    /* dos ROI que dicen cosas distintas: el de la plata (ponderado por el
+       monto Kelly, o sea el resultado real del banco) y el por unidad
+       apostada, que es la medida honesta del filo porque una apuesta
+       grande que ganó no lo infla */
     lineas.push(`<b>TOTAL</b> · ${cerradas.length} ap · ${plata(apostado)} apostados · ${recTxt(cerradas)}`
-      + ` → <b>${conSigno(netoDe(cerradas))}</b> (ROI ${(netoDe(cerradas) / apostado * 100).toFixed(1)}%)`);
-    const porFam = new Map();
-    for (const e of cerradas) {
-      const k = famTablero(e);
-      if (!porFam.has(k)) porFam.set(k, []);
-      porFam.get(k).push(e);
-    }
-    for (const [fam, sub] of [...porFam.entries()].sort((a, b) => netoDe(b[1]) - netoDe(a[1])))
-      lineas.push(fila(fam, sub));
+      + ` → <b>${conSigno(netoDe(cerradas))}</b> (ROI ${(netoDe(cerradas) / apostado * 100).toFixed(1)}% · por unidad ${signoPct(roiUnidad(cerradas))})`);
+    for (const [lin, sub] of agrupaLinea(cerradas)) lineas.push(fila('línea ' + lin, sub));
   }
   lineas.push('', `<i>${pend} pendiente(s)`
     + (liq.porMarcador ? ` · ${liq.porMarcador} por marcador` : '')
@@ -1981,9 +1996,9 @@ async function ejecutar(texto) {
     await telegram([
       '<b>Vigía · comandos</b>',
       '',
-      `<b>/barrer</b> — fútbol (el foco) en las próximas ${CFG.horizonteHoras} h; agrega deporte para barrer otro`,
+      `<b>/barrer</b> — el foco (AH −(x) de primer tiempo) en las próximas ${CFG.horizonteHoras} h; agrega deporte para barrer otro`,
       '<b>/rapido</b> — el foco, dentro de 6 h',
-      '<b>/tablero</b> — el balance de lo que estamos jugando: AH fútbol con tus criterios actuales, DNB contado como AH 0.0 (<code>/tablero todo</code> = historial completo)',
+      '<b>/tablero</b> — el balance de lo que estamos jugando: AH −(x) de primer tiempo con tus criterios actuales, desglosado por línea (<code>/tablero todo</code> = historial completo)',
       '<b>/props</b> — qué líneas de jugador trae tu feed (WNBA, MLB) y si tienen juez (~7 requests)',
       '<b>/liquidar zakynthos G</b> — cierra a mano una del punto ciego que tú viste (G/P/E/MG/MP)',
       '<b>/cosechar</b> — recoge resultados de tenis de mesa para la base propia del Elo (~200 req)',
