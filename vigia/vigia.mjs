@@ -1980,8 +1980,17 @@ async function cmdSalud() {
 }
 async function cmdComparar(busca) {
   let elegido = null;
-  for (const sid of Object.keys(CFG.deportes)) {
-    const fx = await fixturesDe(sid);
+  /* el plan puede no cubrir todos los deportes del config: un deporte
+     restringido tiene que saltarse, no tumbar el comando. Se prueban
+     primero los del barrido (los que de verdad se usan). */
+  const deportes = [...new Set([...(CFG.barridoDeportes || []), ...Object.keys(CFG.deportes)])];
+  for (const sid of deportes) {
+    let fx = [];
+    try { fx = await fixturesDe(sid); }
+    catch (e) {
+      if (/RESTRICTED/.test((e.api || {}).code || '')) continue;
+      throw e;
+    }
     const cands = fx
       .filter(f => new Date(f.startTime).getTime() > Date.now() + 10 * 60e3)
       .filter(f => !busca || (f.p1 + ' ' + f.p2 + ' ' + f.liga).toLowerCase().includes(busca));
@@ -2031,10 +2040,12 @@ async function cmdComparar(busca) {
     }
     if (filas.length >= 10) break;
   }
-  /* para verificar contra tu pantalla: la URL que la propia API da para ese
-     partido en la casa; si no viene, se arma con el dominio de apuesta */
-  const link = B.fixturePath
-    || linkDe({ ...elegido, bookmakerFixtureId: B.bookmakerFixtureId });
+  /* El feed de Betano es el RO, pero el id de partido es el mismo en todos
+     sus dominios: por eso el link se arma sobre dominioApuesta (lat = Chile)
+     y no con el fixturePath que devuelve la API, que apunta a ro.betano.com.
+     Es la transformación de siempre; verificar allá no sirve de nada. */
+  const link = linkDe({ ...elegido, bookmakerFixtureId: B.bookmakerFixtureId })
+    || B.fixturePath;
   await telegram([
     `<b>⚖️ ${escHtml(elegido.p1)} vs ${escHtml(elegido.p2)}</b>`,
     `${escHtml(elegido.liga)} · ${horaTxt(elegido.startTime)}`,
