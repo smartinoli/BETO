@@ -1,9 +1,9 @@
 {
   "comentario": "Configuración del Vigía. Edita y commitea: el próximo ciclo la toma.",
-  "casa": "cloudbet",
+  "casa": "betano",
   "comentarioCasa": "casa = de qué espejo se LEEN los precios · dominioApuesta = dónde APUESTAS tú (solo aplica a espejos de Betano)",
   "dominioApuesta": "lat.betano.com",
-  "juez": "bet365",
+  "juez": "cloudbet",
   "banca": 1800000,
   "kellyDivisor": 4,
   "topePctBanca": 0.05,
