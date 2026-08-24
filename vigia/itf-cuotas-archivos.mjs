@@ -1,29 +1,36 @@
 #!/usr/bin/env node
 /* ============================================================
-   ITF-CUOTAS-PDF — lee los PDF que Sebastian imprime de Betano y carga
-   las cuotas solo, sin tipearlas.
+   ITF-CUOTAS-ARCHIVOS — carga cuotas de Betano desde archivos, sin
+   tipearlas: los JSON que produce vigia/local/betano-consola.js y los
+   PDF impresos de la pagina.
 
    Por que existe: betano bloquea nuestra salida a internet. La IP de esta
-   maquina esta en Columbus, Ohio (datacenter de Google) y todos los
-   dominios de Betano responden 403 de Cloudflare — probado con fetch
-   plano y con Chromium de verdad, mismo resultado ("Betano Splash Screen",
-   cf-ray ...-IAD). Es un bloqueo geografico, no un desafio antibot. Asi
-   que la parte de abrir la pagina la hace el, y esta la hace el programa.
+   maquina esta en Columbus, Ohio (datacenter de Google) y todos sus
+   dominios responden 403 de Cloudflare — probado con fetch plano y con
+   Chromium real, mismo resultado ("Betano Splash Screen", cf-ray ...-IAD).
+   Es un bloqueo geografico, no un desafio antibot: no hay nada que
+   resolver desde aca. La lectura la hace el navegador de Sebastian, en
+   Chile, y a este lado solo llega el archivo.
 
-   El flujo: en betano, cada pestana de pais es un torneo. Imprimir a PDF,
-   subir, y correr esto con las rutas.
+   Dos formas de traer las cuotas, de mejor a peor:
+     1. JSON — pegar vigia/local/betano-consola.js en la consola del
+        navegador con la pagina del torneo abierta. Trae nombres, cuotas,
+        fecha y hora exactos, y el pais de la pestana.
+     2. PDF — imprimir la pagina a PDF y subirla. Funciona igual pero el
+        pais sale del nombre del archivo y la hora a veces se pierde.
 
-   Lee: la linea de fecha "25/08 06:00" y la de cuotas
-   "Jugador A 3.05 Jugador B 1.32". El torneo sale del nombre del archivo
-   ("Apuestas_de_Alemania_...") cruzado con las fechas del mapa: si un pais
-   tiene dos torneos abiertos, gana el que contiene la fecha del partido.
+   De donde sale el torneo: del pais (campo del JSON, o nombre del archivo
+   en el PDF) cruzado con las fechas del mapa. Si un pais tiene dos
+   torneos abiertos, gana el que contiene la fecha del partido, y la
+   pestana "- Clasificacion" apunta al que sigue en qualis.
 
-   Cada cuota se verifica contra los cuadros en disco ANTES de guardarla:
-   si los dos jugadores no aparecen en ese torneo, se reporta y no se
-   escribe. Asi un PDF mal mapeado no contamina el registro.
+   Cada partido se verifica contra los cuadros en disco ANTES de
+   guardarlo: si los dos jugadores no aparecen en ese torneo, se reporta
+   y no se escribe. Asi un archivo mal mapeado no contamina el registro.
 
-   Uso:  node vigia/itf-cuotas-pdf.mjs archivo1.pdf archivo2.pdf ...
-         node vigia/itf-cuotas-pdf.mjs --ensayo *.pdf     (no escribe)
+   Uso:  node vigia/itf-cuotas-archivos.mjs betano-Francia-2026-08-25.json
+         node vigia/itf-cuotas-archivos.mjs *.json *.pdf
+         node vigia/itf-cuotas-archivos.mjs --ensayo *.json   (no escribe)
    ============================================================ */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -41,7 +48,7 @@ const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch 
 const args = process.argv.slice(2);
 const ensayo = args.includes('--ensayo');
 const pdfs = args.filter(a => !a.startsWith('--'));
-if (!pdfs.length) { console.error('uso: node vigia/itf-cuotas-pdf.mjs archivo.pdf [...]'); process.exit(1); }
+if (!pdfs.length) { console.error('uso: node vigia/itf-cuotas-archivos.mjs archivo.json|archivo.pdf [...]'); process.exit(1); }
 
 /* ---------- pais → torneo, desambiguando por fecha ---------- */
 const PAIS = {
@@ -142,6 +149,25 @@ function leerPdf(ruta) {
   return { partidos: unicos };
 }
 
+/* JSON de vigia/local/betano-consola.js */
+function leerJson(ruta) {
+  const j = leer(ruta);
+  if (!j) return { error: 'no es un JSON válido' };
+  if (!Array.isArray(j.partidos)) return { error: 'al JSON le falta el arreglo "partidos"' };
+  if (!j.partidos.length)
+    return { error: 'el JSON no trae partidos' + (j.textoCrudo ? ' — lleva textoCrudo, mándamelo y ajusto el lector' : '') };
+  const partidos = [];
+  for (const x of j.partidos) {
+    const g1 = +x.g1, g2 = +x.g2;
+    if (!x.p1 || !x.p2 || !(g1 > 1) || !(g2 > 1)) continue;
+    const f = String(x.fecha || '').match(/(\d{1,2})[\/.](\d{1,2})/);
+    partidos.push({ p1: String(x.p1).trim(), p2: String(x.p2).trim(), g1, g2,
+      fecha: f ? { dia: f[1].padStart(2, '0'), mes: f[2].padStart(2, '0') } : null,
+      hora: x.hora || null });
+  }
+  return { partidos, pais: j.pais || null };
+}
+
 const paisDeNombre = f => {
   const m = path.basename(f).match(/Apuestas_de_(.+?)_Pron/i);
   if (!m) return null;
@@ -159,10 +185,12 @@ const problemas = [];
 
 for (const ruta of pdfs) {
   const base = path.basename(ruta);
-  const info = paisDeNombre(ruta);
-  if (!info) { problemas.push(`${base}: no pude sacar el país del nombre del archivo`); continue; }
-  const r = leerPdf(ruta);
+  const esJson = /\.json$/i.test(ruta);
+  const r = esJson ? leerJson(ruta) : leerPdf(ruta);
   if (r.error) { problemas.push(`${base}: ${r.error}`); continue; }
+  /* el JSON trae el país adentro; el PDF sólo en el nombre del archivo */
+  const info = (esJson && r.pais) ? { pais: r.pais, quali: /Clasificaci/i.test(r.pais) } : paisDeNombre(ruta);
+  if (!info) { problemas.push(`${base}: no pude determinar el país`); continue; }
   if (!r.partidos.length) { problemas.push(`${base}: no encontré ninguna línea de cuotas`); continue; }
   const f0 = r.partidos.find(x => x.fecha)?.fecha;
   if (!f0) { problemas.push(`${base}: no encontré ninguna fecha`); continue; }
@@ -179,7 +207,7 @@ for (const ruta of pdfs) {
     (e1 && e2 ? ok : fuera).push({ ...x, e1, e2 });
   }
   console.log(`\n${base}`);
-  console.log(`  país "${info.pais}"${info.quali ? ' (clasificación)' : ''} · ${fechaISO} → ${t.nombre} [${t.k}]`);
+  console.log(`  ${esJson ? 'JSON' : 'PDF'} · país "${info.pais}"${info.quali ? ' (clasificación)' : ''} · ${fechaISO} → ${t.nombre} [${t.k}]`);
   console.log(`  ${r.partidos.length} partidos leídos · ${ok.length} verificados en el cuadro · ${fuera.length} sin verificar`);
   for (const x of ok) {
     const k = norm(t.nombre) + '|' + norm(x.p1) + '|' + norm(x.p2);
