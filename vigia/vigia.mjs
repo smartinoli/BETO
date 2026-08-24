@@ -1945,44 +1945,60 @@ async function cmdComparar(busca) {
   const d = await api('odds', { fixtureId: elegido.fixtureId, oddsFormat: 'decimal' });
   const fx = Array.isArray(d) ? d[0] : (d.data ? d.data[0] : d);
   const bo = fx?.bookmakerOdds || {};
-  const casas = Object.keys(bo);
-  if (!casas.length) { await telegram('Ese partido no trae cuotas todavía.'); return; }
-
-  /* mercados whitelisted que cotice al menos una casa */
-  const filas = [];
-  const vistos = new Set();
-  for (const casa of casas) {
-    for (const mid of Object.keys(bo[casa].markets || {})) {
-      if (vistos.has(mid)) continue;
-      const meta = await metaDe(mid);
-      if (!meta || meta.len !== 2) continue;
-      const fam = familiaDe(elegido.sid || '10', meta.n);
-      if (!fam) continue;
-      vistos.add(mid);
-      const precios = casas.map(c => {
-        const outs = (bo[c].markets || {})[mid]?.outcomes || {};
-        const ps = Object.keys(outs).map(oid => (outs[oid].players || {})['0']?.price)
-          .filter(p => p > 1).map(p => p.toFixed(2));
-        return ps.length ? ps.join('/') : '—';
-      });
-      if (precios.filter(p => p !== '—').length) {
-        filas.push(`<code>${escHtml((meta.n + ' ' + (meta.h ?? '')).slice(0, 30).padEnd(30))}</code> ${precios.join(' · ')}`);
-      }
-      if (filas.length >= 14) break;
-    }
-    if (filas.length >= 14) break;
+  const B = bo[CASA], J = bo[JUEZ];
+  if (!B) {
+    await telegram(`Ese partido no trae cuotas de <b>${escHtml(CASA)}</b>.`
+      + ` Casas con datos: ${Object.keys(bo).map(escHtml).join(', ') || 'ninguna'}.`);
+    return;
   }
+  /* la EDAD de la cuota es lo que separa un precio vivo de uno muerto: sin
+     esto, una cuota congelada de ayer se ve igual que una de hace un minuto */
+  const edad = q => {
+    const ts = q?.changedAt ? Date.parse(q.changedAt) : NaN;
+    if (!ts) return 'sin fecha';
+    const min = Math.round((Date.now() - ts) / 60e3);
+    return min < 60 ? `hace ${min} min` : `hace ${(min / 60).toFixed(1)} h`;
+  };
+  const precio = q => (q && q.price > 1 ? q.price.toFixed(2) : '—');
+  const estado = q => (!q ? 'sin cuota' : q.active ? '✅' : '⛔ inactiva');
+  const filas = [];
+  for (const mid of Object.keys(B.markets || {})) {
+    const meta = await metaDe(mid);
+    /* la línea solo se muestra donde significa algo: 'Asian Handicap 0' sí
+       (es la línea 0.0), 'Winner 0' no — ahí el 0 es relleno del catálogo */
+    const conLinea = meta && meta.h != null && (meta.h !== 0 || /handicap/i.test(meta.n));
+    const nom = meta ? meta.n + (conLinea ? ' ' + meta.h : '') : 'mercado ' + mid;
+    const outsB = B.markets[mid].outcomes || {};
+    const outsJ = ((J || {}).markets || {})[mid]?.outcomes || {};
+    for (const oid of Object.keys(outsB)) {
+      const qb = (outsB[oid].players || {})['0'];
+      const qj = ((outsJ[oid] || {}).players || {})['0'];
+      filas.push(`<b>${escHtml(nom)}</b> · ${escHtml(String((meta?.outs || {})[oid] ?? oid))}\n`
+        + `   ${escHtml(CASA)} <b>${precio(qb)}</b> ${estado(qb)} ${escHtml(edad(qb))}\n`
+        + `   ${escHtml(JUEZ)} ${precio(qj)} ${estado(qj)} ${qj ? escHtml(edad(qj)) : ''}`);
+      if (filas.length >= 10) break;
+    }
+    if (filas.length >= 10) break;
+  }
+  /* para verificar contra tu pantalla: la URL que la propia API da para ese
+     partido en la casa; si no viene, se arma con el dominio de apuesta */
+  const link = B.fixturePath
+    || linkDe({ ...elegido, bookmakerFixtureId: B.bookmakerFixtureId });
   await telegram([
     `<b>⚖️ ${escHtml(elegido.p1)} vs ${escHtml(elegido.p2)}</b>`,
     `${escHtml(elegido.liga)} · ${horaTxt(elegido.startTime)}`,
+    link ? `🔗 <a href="${escHtml(link)}">Abrir el partido para verificar</a>` : '',
     '',
-    '<b>Casas:</b> ' + casas.map(escHtml).join(' · '),
+    filas.length
+      ? `<b>Las ${filas.length} primeras cuotas que está leyendo el Vigía</b>`
+        + ` — espejo <b>${escHtml(CASA)}</b> vs juez <b>${escHtml(JUEZ)}</b>:`
+      : `<b>${escHtml(CASA)}</b> no trae ni un mercado en este partido.`,
     '',
     ...filas,
     '',
-    '<i>Cada columna es una casa, en ese orden. Abre este partido en tu Betano '
-      + 'y compara: la columna que coincida con lo que ves es tu espejo real.</i>',
-    elegido.bookmakerFixtureId ? '' : '',
+    '<i>Compara estos números con los de tu pantalla. Si no calzan, el espejo '
+      + 'configurado no es el tuyo. Si dicen "inactiva" o la edad es de horas, '
+      + 'el feed está congelado — por eso no salen señales.</i>',
   ].filter(Boolean).join('\n'));
 }
 async function ejecutar(texto) {
@@ -2081,7 +2097,7 @@ async function ejecutar(texto) {
       '<b>/estado</b> — cuota de API y último barrido (gratis)',
       '<b>/porque</b> — qué quedó fuera y por qué, con ejemplos reales',
       '<b>/casas</b> — qué espejos de Betano existen y a qué dominio apuntan',
-      '<b>/comparar equipo</b> — cuotas de cada casa en un partido, para calzar con tu pantalla',
+      '<b>/comparar equipo</b> — 1 partido, las 10 primeras cuotas que lee el bot (precio, si está viva y de cuándo es) + link para verificar',
       '',
       'Se les puede agregar <b>deporte</b> y <b>horas</b>, en cualquier orden:',
       '· <code>/barrer futbol 6</code>',
