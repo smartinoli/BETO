@@ -362,6 +362,11 @@ function procesarSync(info, bet, cb, metas, salida) {
         E.inactivos++;
         if (E.ej.inactivos.length < 7)
           E.ej.inactivos.push(`${info.p1.slice(0, 16)} · ${meta.n} ${meta.h ?? ''}`);
+        if (!salida.crudo) salida.crudo = {
+          partido: info.p1 + ' vs ' + info.p2, mercado: meta.n + ' ' + (meta.h ?? ''),
+          casa: JSON.stringify(oB[oids[0]] ?? null).slice(0, 420),
+          juez: JSON.stringify(oC[oids[0]] ?? null).slice(0, 260),
+        };
         continue;
       }
       E.sinJuez++;
@@ -743,6 +748,11 @@ async function reportar(r, titulo) {
   const ceroMudo = r.candidatas === 0 && r.partidos > 0
     ? '\n<b>⚠️ No se evaluó ni una línea</b> — esto no es "sin valor", es que nada llegó a compararse.'
       + (E.ej.inactivos.length ? '\n<i>' + E.ej.inactivos.map(escHtml).join('\n') + '</i>' : '')
+      + (r.crudo ? `\n\n<b>Estructura cruda</b> — ${escHtml(r.crudo.partido)} · ${escHtml(r.crudo.mercado)}\n`
+          + `<b>${escHtml(CASA)}:</b> <code>${escHtml(r.crudo.casa)}</code>\n`
+          + `<b>${escHtml(JUEZ)}:</b> <code>${escHtml(r.crudo.juez)}</code>`
+        : '')
+      + `\n\n<i>Si ${escHtml(CASA)} viene con precios pero el código no los lee, cambió el formato de la API. Manda <code>/depurar plan</code> para descartar que sea la suscripción.</i>`
     : '';
   const cab = [
     `<b>${titulo}</b>`,
