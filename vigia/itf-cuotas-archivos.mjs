@@ -76,7 +76,7 @@ for (const ts of Object.values(mapa.semanas || {})) for (const [k, t] of Object.
 for (const [k, t] of Object.entries(mapa.torneos || {})) if (!torneos.find(x => x.k === k)) torneos.push({ k, ...t });
 
 /* ---------- indice de jugadores por torneo, para verificar ---------- */
-const jugadores = new Map();          /* clave → Set de nombres */
+const jugadores = new Map();          /* clave → Set de nombres del CUADRO */
 for (const dir of [DATOS, path.join(DATOS, 'vivo')]) {
   for (const f of fs.readdirSync(dir)) {
     if (!f.startsWith('m-itf') || !f.endsWith('.json') || f.includes('aceptacion')) continue;
@@ -87,6 +87,26 @@ for (const dir of [DATOS, path.join(DATOS, 'vivo')]) {
       for (const l of m.lados || []) if (l.nombre) s.add(l.nombre);
     jugadores.set(clave, s);
   }
+}
+/* Segunda red: la ENTRY LIST del torneo.
+   El cuadro es la verificación buena porque prueba que el partido existe
+   tal como Betano lo cotiza. Pero cuando la ITF no ha publicado el cuadro
+   actualizado —Maanshan el 25-08: el cuadro en disco era del 23-08 y los
+   clasificados todavía no estaban— el cruce contra el cuadro rechaza
+   partidos que SI se juegan, y perdemos el torneo entero.
+   La entry list es la lista oficial de inscritos de ese mismo torneo, así
+   que sirve para confirmar que el jugador es quien Betano dice y que está
+   en ESE torneo. Lo que NO prueba es el emparejamiento: ahí confiamos en
+   el PDF. Por eso la fila queda marcada con via:"lista" y se puede
+   auditar después. */
+const inscritos = new Map();
+for (const f of fs.readdirSync(DATOS)) {
+  if (!f.endsWith('.aceptacion.json')) continue;
+  const clave = f.replace('.aceptacion.json', '');
+  const j = leer(path.join(DATOS, f)); if (!j?.secciones) continue;
+  const s = new Set();
+  for (const arr of Object.values(j.secciones)) for (const q of arr) if (q.nombre) s.add(q.nombre);
+  inscritos.set(clave, s);
 }
 
 /* Al subir, el nombre del archivo pierde los acentos y la ñ: "España"
@@ -225,28 +245,38 @@ for (const ruta of pdfs) {
      de aca en adelante es difuso igual, pero un registro con la ortografia
      oficial se puede leer y comparar a mano sin dudar de nada. */
   const conocidos = [...(jugadores.get(t.k) || new Set())];
+  const enLista = [...(inscritos.get(t.k) || new Set())];
   const ok = [], fuera = [];
+  let porLista = 0;
   for (const x of r.partidos) {
-    const n1 = elegirNombre(conocidos, x.p1);
-    const n2 = elegirNombre(conocidos, x.p2);
-    (n1 && n2 ? ok : fuera).push({ ...x, e1: !!n1, e2: !!n2,
+    let n1 = elegirNombre(conocidos, x.p1), n2 = elegirNombre(conocidos, x.p2), via = 'cuadro';
+    if (!n1 || !n2) {
+      const l1 = n1 || elegirNombre(enLista, x.p1), l2 = n2 || elegirNombre(enLista, x.p2);
+      if (l1 && l2) { n1 = l1; n2 = l2; via = 'lista'; porLista++; }
+    }
+    (n1 && n2 ? ok : fuera).push({ ...x, e1: !!n1, e2: !!n2, via,
       itf1: n1 || x.p1, itf2: n2 || x.p2 });
   }
   console.log(`\n${base}`);
   console.log(`  ${esJson ? 'JSON' : 'PDF'} · país "${info.pais}"${info.quali ? ' (clasificación)' : ''} · ${fechaISO} → ${t.nombre} [${t.k}]`);
-  console.log(`  ${r.partidos.length} partidos leídos · ${ok.length} verificados en el cuadro · ${fuera.length} sin verificar`);
+  console.log(`  ${r.partidos.length} partidos leídos · ${ok.length - porLista} verificados en el cuadro`
+    + (porLista ? ` · ${porLista} solo en la entry list (cuadro desactualizado)` : '')
+    + ` · ${fuera.length} sin verificar`);
   for (const x of ok) {
     const k = norm(t.nombre) + '|' + norm(x.itf1) + '|' + norm(x.itf2);
     if (yaHay.has(k)) { repes++; continue; }
     yaHay.add(k); nuevas++;
     doc.cuotas.push({ torneo: t.nombre, p1: x.itf1, p2: x.itf2, g1: x.g1, g2: x.g2, visto,
+      ...(x.via === 'lista' ? { via: 'lista' } : {}),
       ...(norm(x.itf1) !== norm(x.p1) || norm(x.itf2) !== norm(x.p2)
         ? { betano: `${x.p1} / ${x.p2}` } : {}) });
     const ren = norm(x.itf1) !== norm(x.p1) || norm(x.itf2) !== norm(x.p2);
-    console.log(`    + ${x.itf1} ${x.g1} / ${x.itf2} ${x.g2}${ren ? `   (Betano los escribe "${x.p1}" / "${x.p2}")` : ''}`);
+    console.log(`    ${x.via === 'lista' ? '~' : '+'} ${x.itf1} ${x.g1} / ${x.itf2} ${x.g2}`
+      + (ren ? `   (Betano los escribe "${x.p1}" / "${x.p2}")` : '')
+      + (x.via === 'lista' ? '   [entry list: el emparejamiento sale del PDF]' : ''));
   }
   for (const x of fuera)
-    console.log(`    ? ${x.p1} ${x.g1} / ${x.p2} ${x.g2}   — ${!x.e1 && !x.e2 ? 'ninguno de los dos está' : 'no está ' + (x.e1 ? x.p2 : x.p1)} en el cuadro de ${t.nombre}`);
+    console.log(`    ? ${x.p1} ${x.g1} / ${x.p2} ${x.g2}   — ${!x.e1 && !x.e2 ? 'ninguno de los dos está' : 'no está ' + (x.e1 ? x.p2 : x.p1)} ni en el cuadro ni en la entry list de ${t.nombre}`);
 }
 
 if (problemas.length) { console.log('\nPROBLEMAS'); for (const p of problemas) console.log('  ' + p); }

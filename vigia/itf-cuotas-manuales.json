@@ -1322,6 +1322,52 @@
    "g2": 1.33,
    "visto": "2026-08-25T21:34Z",
    "betano": "Liu Shaoyun / Reiya Komagata"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Linang Xiao",
+   "p2": "M Rifqi Fitriadi",
+   "g1": 3.85,
+   "g2": 1.21,
+   "visto": "2026-08-25T22:38Z",
+   "via": "lista",
+   "betano": "Linang Xiao / Muhammad Rifqi Fitriadi"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Miles Jones",
+   "p2": "Suk Ann",
+   "g1": 1.23,
+   "g2": 3.65,
+   "visto": "2026-08-25T22:38Z",
+   "via": "lista"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Wishaya Trongcharoenchaikul",
+   "p2": "Lingxi Zhao",
+   "g1": 2.37,
+   "g2": 1.5,
+   "visto": "2026-08-25T22:38Z",
+   "via": "lista"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Chan-Yeong Oh",
+   "p2": "Sam Ryan Ziegann",
+   "g1": 1.32,
+   "g2": 3.05,
+   "visto": "2026-08-25T22:38Z",
+   "via": "lista"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Enzo Aguiard",
+   "p2": "Fanming Meng",
+   "g1": 1.25,
+   "g2": 3.4,
+   "visto": "2026-08-25T22:38Z",
+   "via": "lista"
   }
  ]
 }
