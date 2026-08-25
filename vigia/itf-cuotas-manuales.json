@@ -1150,6 +1150,178 @@
    "g1": 1.4,
    "g2": 2.65,
    "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Tomas Lanik",
+   "p2": "John Sperle",
+   "g1": 2.47,
+   "g2": 1.47,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Joao Victor Couto Loureiro",
+   "p2": "Botond Kisantal",
+   "g1": 1.23,
+   "g2": 3.6,
+   "visto": "2026-08-25T21:34Z",
+   "betano": "Joao Victor Couto Loureiro / Botond Kisandal"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Herman Hoeyeraal",
+   "p2": "Filip Drab",
+   "g1": 1.2,
+   "g2": 3.85,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Giammarco Gandolfi",
+   "p2": "Kolos Kincses",
+   "g1": 1.42,
+   "g2": 2.62,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Trisztan Gubi",
+   "p2": "Rafael Behr",
+   "g1": 1.08,
+   "g2": 6,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Bercel Sandor Takacs",
+   "p2": "Matas Vasiliauskas",
+   "g1": 1.67,
+   "g2": 2.05,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Marat Salbiev",
+   "p2": "Michal Krajci",
+   "g1": 5.8,
+   "g2": 1.09,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Aditya Balsekar",
+   "p2": "Dmitry Bessonov",
+   "g1": 1.7,
+   "g2": 1.98,
+   "visto": "2026-08-25T21:34Z",
+   "betano": "Aditya Vishal Balsekar / Dmitry Bessonov"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Vadym Ursu",
+   "p2": "Dev Javia",
+   "g1": 1.2,
+   "g2": 3.9,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Luke Hooper",
+   "p2": "Amr Elsayed",
+   "g1": 2.95,
+   "g2": 1.33,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Omar Kandil",
+   "p2": "Makar Elesin",
+   "g1": 1.4,
+   "g2": 2.65,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Ivan Gretskiy",
+   "p2": "Jake Fellows",
+   "g1": 1.88,
+   "g2": 1.78,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Adrien Burdet",
+   "p2": "Mateo Fluri",
+   "g1": 1.2,
+   "g2": 3.9,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Adrien Berrut",
+   "p2": "Jeffrey Von Der Schulenburg",
+   "g1": 2.62,
+   "g2": 1.42,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Felix Seres",
+   "p2": "Michalis Sakellaridis",
+   "g1": 1.75,
+   "g2": 1.93,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Ethan Cook",
+   "p2": "Manish Sureshkumar",
+   "g1": 2.57,
+   "g2": 1.42,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Tai Leonard Sach",
+   "p2": "Sasikumar Mukund",
+   "g1": 1.72,
+   "g2": 1.98,
+   "visto": "2026-08-25T21:34Z",
+   "betano": "Tai Sach / Sasikumar Mukund"
+  },
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Kasidit Samrej",
+   "p2": "Yuki Mochizuki",
+   "g1": 1.38,
+   "g2": 2.72,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Keisuke Saitoh",
+   "p2": "Matthew Dellavedova",
+   "g1": 3.3,
+   "g2": 1.27,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Moerani Bouzige",
+   "p2": "Luca Castelnuovo",
+   "g1": 1.8,
+   "g2": 1.88,
+   "visto": "2026-08-25T21:34Z"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Shaoyun Liu",
+   "p2": "Reiya Komagata",
+   "g1": 2.95,
+   "g2": 1.33,
+   "visto": "2026-08-25T21:34Z",
+   "betano": "Liu Shaoyun / Reiya Komagata"
   }
  ]
 }
