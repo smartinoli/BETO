@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T21:48:57.235Z",
+ "generado": "2026-08-25T22:06:58.791Z",
  "registro": [
   {
    "q": {
@@ -80,15 +80,40 @@
    "etapa": "F",
    "clave": "m-itf-aut-2026-002",
    "v": {
-    "tipo": "pasar",
-    "nivel": null,
-    "precio": null,
-    "favorito": "—",
+    "tipo": "anomalia",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.6276912681599711,
+     "d": 8.45,
+     "favorito": "Nikita Mashtakov [3]",
+     "ronda": "F",
+     "grupo": "finales",
+     "tarde": true,
+     "choque": true,
+     "n": 83,
+     "cEmpate": 1.5931398933291256,
+     "cMinima": 1.7365224837287472
+    },
+    "precio": {
+     "cuota": 2.15,
+     "cMinima": 1.7365224837287472,
+     "val": 0.3495362265439379,
+     "devig": 0.4266666666666667,
+     "residuo": -0.3856829131855995,
+     "veredicto": "barato"
+    },
+    "favorito": "Nikita Mashtakov [3]",
     "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "El ΔWTN de 8.45 apunta a Nikita Mashtakov, pero el número no sirve: Thilo Behrmann es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta, y llega cediendo el 23% de los games.",
+    "mercado": "gana",
+    "razon": "Δ8.45 de WTN a favor (4.83 contra 13.28), en ronda final (F): la curva del grupo \"finales\" (n=83) da 71%. Thilo Behrmann llega cediendo menos games y el choque la baja a 63%. El mercado lo pone de NO favorito a 2.15 (43%) cuando nuestra curva dice 63%: 35% de valor si tenemos razon. Es la via de multiplicar y la mas incierta: cuando el mercado se aparta tanto suele ver algo que no vemos, y nuestro registro en estos casos va 1-1. Reparos: Thilo Behrmann no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); el mercado lo paga a 2.15 (43% real) cuando su propio modelo por ΔWTN daría 81%: 39 puntos que no vemos; Thilo Behrmann es junior y no tengo su ranking junior en ninguna entry list: no puedo saber si es un top 60 —el tramo donde el favorito gana solo 22%— o uno del monton; sin ese dato no lo cobro como segura; F: el cuadro ya filtró y el WTN cae — en cuartos acierta 59.6% (n=53) y en semis 50.0% (n=26), donde manda la siembra (81.3% en cuartos) y el ATP le gana al WTN (64% contra 50%); Thilo Behrmann llega cediendo menos games: el choque baja la estimación de 71% a 63%.",
     "banderas": [
-     "veto: dato no confiable"
+     "Δ8.45 muy fuerte",
+     "choque nivel vs forma",
+     "ojo: el mercado lo paga a 2.15 (43% real) cuando su propio modelo por ΔWTN daría 81%",
+     "ojo: Thilo Behrmann es junior y no tengo su ranking junior en ninguna entry list",
+     "ojo: F",
+     "ojo: Thilo Behrmann llega cediendo menos games",
+     "anomalía"
     ]
    },
    "lados": [
@@ -115,7 +140,7 @@
      "llega": "6-4 5-7 7-6(6) · 7-6(5) 6-3 · 7-6(5) 4-6 6-0 · 1-6 6-4 7-5"
     }
    ],
-   "etiqueta": "veto: dato no confiable",
+   "etiqueta": "anomalía",
    "ret": false,
    "favWtn": {
     "nombre": "Nikita Mashtakov",
@@ -3571,14 +3596,35 @@
    "clave": "m-itf-rou-2026-013",
    "v": {
     "tipo": "pasar",
-    "nivel": null,
-    "precio": null,
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.9102610069929841,
+     "d": 6.26,
+     "favorito": "Rares Teodor Pieleanu",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.0985860015068267,
+     "cMinima": 1.1974587416424411
+    },
+    "precio": {
+     "cuota": 1.09,
+     "cMinima": 1.1974587416424411,
+     "val": -0.007815502377647277,
+     "devig": 0.841799709724238,
+     "residuo": 0.098234893771047,
+     "veredicto": "caro"
+    },
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "El ΔWTN de 6.26 apunta a Rares Teodor Pieleanu, pero el número no sirve: Alejandro Mateo Berge Nourescu es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta.",
+    "razon": "Δ6.26 de WTN a favor (9.07 contra 15.33), en ronda R1: la curva del grupo \"buenas\" (n=345) da 91%. A 1.09 el mercado implica 92%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
-     "veto: dato no confiable"
+     "Δ6.26 muy fuerte",
+     "ojo: Alejandro Mateo Berge Nourescu es junior y no tengo su ranking junior en ninguna entry list",
+     "cuota corta"
     ]
    },
    "lados": [
@@ -3605,7 +3651,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "veto: dato no confiable",
+   "etiqueta": "cuota corta",
    "ret": false,
    "favWtn": {
     "nombre": "Rares Teodor Pieleanu",

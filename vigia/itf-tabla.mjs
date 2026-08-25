@@ -239,7 +239,7 @@ Sale de cruzar todos los cuadros en disco por identificador de jugador de la ITF
 cuando dice <i>—</i> es que ese jugador no aparece en ningún torneo que hayamos bajado, no que no haya jugado.<br>
 <b>JR 93</b> junto al nombre = puesto en el ranking junior de la ITF. Sólo lo traen los nacidos 2008-2009.<br>
 <b>Cómo llega</b>: cada tramo es <code>ronda ✓/✗ marcador v(marca del rival)</code> — verde ganó, rojo perdió, y la marca dice si el rival era sembrado <code>[4]</code>, clasificado <code>Q</code>, junior <code>JR</code> o invitado <code>WC</code>.<br>
-Señales: <code>JR</code> rival junior (ahí el WTN se da vuelta: 31%) · <code>sinATP</code> rival sin ranking (buena señal: 81% contra 75%) ·
+Señales: <code>JR</code> rival junior — con su ranking junior al lado: dentro del top 60 el WTN se da vuelta (el favorito gana 22%, 2 de 9) y se veta; del 61 para abajo no descuenta nada (4 de 4) · <code>sinATP</code> rival sin ranking (buena señal: 81% contra 75%) ·
 <code>ATP≠</code> el ATP contradice al WTN por +400 puestos · <code>choque</code> el rival llega con mejor forma ·
 <code>resid</code> el mercado se aparta más de 15 puntos ·
 <code>PZ</code> la ITF tapa ese WTN en su web con la insignia ProZone — la API lo entrega igual, así que no falta el dato.

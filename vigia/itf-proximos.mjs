@@ -24,7 +24,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pareceElMismo } from './itf-cruce.mjs';
-import { analizar } from './itf-reglas.mjs';
+import { analizar, mismoJugador, NORM } from './itf-reglas.mjs';
 import { torneosDelMapa, estadoDe, cargarMapa } from './itf-mapa.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -79,7 +79,8 @@ function contexto(clave) {
   const acc = leer(path.join(DATOS, clave + '.aceptacion.json'));
   const vivo = leer(path.join(VIVO, clave + '.json'));
   /* se conserva la seccion (MDA/Q/A/W/JR): la JR es la que manda para el
-     veto por junior, medido en 31% de acierto contra 80% del resto */
+     regla por junior — que ya no es plana: veta solo si es top 60 del
+     mundo junior (ahi el favorito gana 22%), y con el resto no descuenta */
   const lista = acc ? Object.entries(acc.secciones).flatMap(([sec, arr]) => arr.map(p => ({ ...p, seccion: sec }))) : [];
   return { lista, cuadros: vivo?.cuadros || {}, bajadoCuadro: vivo?.bajado || null };
 }
@@ -90,6 +91,41 @@ function contexto(clave) {
    nombre. De 316 jugadores del order of play de mañana, 205 tienen un
    torneo anterior guardado; los otros jugaron en torneos que nunca
    bajamos, y eso se muestra como tal en vez de inventar nada. */
+/* ---------- ranking junior, buscado en TODO el disco ----------
+   El campo juniorRanking se empezó a guardar el 2026-08-25, así que las
+   entry lists bajadas antes no lo traen. Sin esto, Behrmann figuraba como
+   "junior sin ranking" cuando en realidad es el 7 del mundo junior: el
+   dato estaba, solo que en la ficha de OTRO torneo suyo. Se indexa por
+   playerId (exacto) y por nombre normalizado (para las fichas viejas, que
+   no guardaban id), y se queda con el MEJOR ranking visto — el de un
+   junior que sube baja de número con las semanas. */
+let _jr = null;
+function indiceJunior() {
+  if (_jr) return _jr;
+  const porId = new Map(), porNombre = new Map();
+  const mejor = (m, k, v) => { if (k != null && (m.get(k) == null || v < m.get(k))) m.set(k, v) };
+  let ff = []; try { ff = fs.readdirSync(DATOS) } catch { }
+  for (const f of ff) {
+    if (!f.endsWith('.aceptacion.json')) continue;
+    const j = leer(path.join(DATOS, f)); if (!j?.secciones) continue;
+    for (const arr of Object.values(j.secciones)) for (const p of arr) {
+      if (p.juniorRanking != null && p.jrRank == null) p.jrRank = p.juniorRanking;
+      if (p.jrRank == null) continue;
+      mejor(porId, p.id, p.jrRank);
+      mejor(porNombre, NORM(p.nombre), p.jrRank);
+    }
+  }
+  return (_jr = { porId, porNombre });
+}
+function rankJunior(id, nombre) {
+  const { porId, porNombre } = indiceJunior();
+  if (id != null && porId.has(id)) return porId.get(id);
+  const k = NORM(nombre);
+  if (porNombre.has(k)) return porNombre.get(k);
+  for (const [kk, v] of porNombre) if (mismoJugador(kk, k)) return v;
+  return null;
+}
+
 const ORDEN_R = ['Q1', 'Q2', 'Q3', 'R1', 'R2', 'R3', 'QF', 'SF', 'F'];
 /* Perezoso a proposito: nombreEtapa se define mas abajo, asi que armar el
    indice al cargar el modulo reventaria. Se arma la primera vez que se
@@ -260,7 +296,7 @@ for (const { clave, t, estado } of activos) {
           wtnVisible: fi.wtnVisible !== false, jr: fi.seccion === 'JR',
           /* ranking JUNIOR de la ITF: sin él, un rival marcado JR era una
              incógnita. Sólo lo traen los nacidos 2008-2009. */
-          jrRank: fi.jrRank ?? null,
+          jrRank: fi.jrRank ?? rankJunior((l.jugadores || [])[0]?.id, l.nombre),
           id: (l.jugadores || [])[0]?.id ?? null,
           /* de qué torneo viene y hasta dónde llegó ahí */
           previo: deDondeViene((l.jugadores || [])[0]?.id, clave, j.fecha),

@@ -1,114 +1,456 @@
 {
- "generado": "2026-08-22T15:57:26.603Z",
+ "generado": "2026-08-25T22:07:23.560Z",
  "partidos": [
   {
-   "id": 1183661736,
-   "torneo": "M15 Arad",
+   "id": 1183673185,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Starting at 10:30",
+   "cancha": "8 Industr Strategix",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jonathan Dazert",
+     "pais": "GER",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 18.44,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Frederic Schlossmann",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 11.22,
+     "llega": "Q1✓ 6-2 6-2 v[5] · Q2✓ 6-3 1-6 13-11 v[16]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673189,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Starting at 10:30",
+   "cancha": "3 Von Ameln",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Pijus Vaitiekunas",
+     "pais": "LTU",
+     "marca": "",
+     "atp": 1470,
+     "wtn": 9.89,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Justin Schlageter",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1070,
+     "wtn": 7.76,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673180,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Starting at 10:30",
+   "cancha": "6 ESB",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Marlon Vankan",
+     "pais": "GER",
+     "marca": "[1]",
+     "atp": 618,
+     "wtn": 6.61,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "David Eichenseher",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1005,
+     "wtn": 9.29,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673187,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Starting at 10:30",
+   "cancha": "1 Tierschutzverein",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Louis Van Herck",
+     "pais": "LUX",
+     "marca": "Q",
+     "atp": 1704,
+     "wtn": 9.83,
+     "llega": "Q1✓ 6-3 6-3 · Q2✓ 6-1 6-4 v[13]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "William Rejchtman Vinciguerra",
+     "pais": "SWE",
+     "marca": "[7]",
+     "atp": 871,
+     "wtn": 9.14,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673183,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Followed By",
+   "cancha": "8 Industr Strategix",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Vincent Dullinger",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1478,
+     "wtn": 8.74,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Daniel Salazar",
+     "pais": "COL",
+     "marca": "[5]",
+     "atp": 774,
+     "wtn": 7.82,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673182,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Followed By",
+   "cancha": "3 Von Ameln",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Georg Eduard Israelan",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 12.59,
+     "llega": "Q1✓ 6-0 6-1 v[3] · Q2✓ 6-2 7-5 vWC",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Jannik Maute",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 10.68,
+     "llega": "Q1✓ 6-1 6-0 vWC · Q2✓ 6-1 6-0 v[7]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673188,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Followed By",
+   "cancha": "6 ESB",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jakub Filip",
+     "pais": "CZE",
+     "marca": "[8]",
+     "atp": 933,
+     "wtn": 7.08,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Max Frohlich",
+     "pais": "CZE",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 17.18,
+     "llega": "Q1✓ 7-6(2) 6-0 · Q2✓ 6-3 6-1",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673193,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Followed By",
+   "cancha": "1 Tierschutzverein",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Maximilian Alessandro Erhardt",
+     "pais": "GER",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 14.23,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dean Thurner",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 14.99,
+     "llega": "Q1✓ 6-1 3-6 10-6 · Q2✓ 6(3)-7 6-3 10-7",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673192,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "10:30",
+   "horarioTxt": "Followed By",
+   "cancha": "3 Von Ameln",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Calvin Mueller",
+     "pais": "GER",
+     "marca": "[6]",
+     "atp": 831,
+     "wtn": 7.76,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Stephan Iserath",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 12.23,
+     "llega": "Q1✓ 6-4 6-1 v[6] · Q2✓ 6-3 6-3",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673186,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T12:00:00.000Z",
+   "local": "14:00",
+   "horarioTxt": "Not Before 14:00",
+   "cancha": "8 Industr Strategix",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Niklas Waldner",
+     "pais": "AUT",
+     "marca": "",
+     "atp": 1369,
+     "wtn": 10.98,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Aiden Spoolder",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 13.84,
+     "llega": "Q1✓ 6-1 6-3 v[10] · Q2✓ 4-6 6-3 11-9 v[4]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673190,
+   "torneo": "M15 Allershausen",
+   "pais": "Germany",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T14:30:00.000Z",
+   "local": "16:30",
+   "horarioTxt": "Not Before 16:30",
+   "cancha": "8 Industr Strategix",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Thilo Behrmann",
+     "pais": "AUT",
+     "marca": "JR",
+     "atp": 1910,
+     "wtn": 12.93,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Niklas Schell",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1017,
+     "wtn": 8.54,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671316,
+   "torneo": "M15 Bucharest",
    "pais": "Romania",
    "categoria": "M15",
    "superficie": "Clay",
    "bolsa": "$15,000",
-   "cuando": "2026-08-23T08:00:00.000Z",
-   "local": "11:00",
-   "horarioTxt": "Starting at 11:00",
-   "cancha": "Center Court",
-   "turno": 1,
-   "ronda": "F",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Matteo Sciahbasi",
-     "pais": "ITA",
-     "marca": "",
-     "atp": 1288,
-     "wtn": 9.02,
-     "llega": "R1✓ 5-7 7-6(2) 1-0 · R2✓ 6-2 6-4 v[5] · QF✓ 6-4 6-4 · SF✓ 6-4 6-0 v[3]",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Iannis Miletich",
-     "pais": "ITA",
-     "marca": "",
-     "atp": 1136,
-     "wtn": 8.66,
-     "llega": "R1✓ 7-6(6) 6-2 vWC · R2✓ 3-6 6-1 4-0 v[2] · QF✓ 7-6(2) 3-6 6-0 v[6] · SF✓ 6-3 7-5 v[7]",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183663305,
-   "torneo": "M15 Asuncion",
-   "pais": "Paraguay",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T19:00:00.000Z",
-   "local": "16:00",
-   "horarioTxt": "Starting at 16:00",
-   "cancha": "Court 5",
-   "turno": 1,
-   "ronda": "F",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Gonzalo Villanueva",
-     "pais": "ARG",
-     "marca": "[1]",
-     "atp": 315,
-     "wtn": 3.45,
-     "llega": "R1✓ 6-1 6-0 · R2✓ 6-1 6-3 vQ · QF✓ 4-6 6-1 7-5 · SF✓ 6-1 6-0 vWC",
-     "gana": 2.1,
-     "set1": 2.05
-    },
-    {
-     "nombre": "Joaquin Aguilar Cardozo",
-     "pais": "URU",
-     "marca": "[2]",
-     "atp": 482,
-     "wtn": 3.61,
-     "llega": "R1✓ 6-4 6-0 · R2✓ 6-1 6-4 vWC · QF✓ 6-1 6-1 v[6] · SF✓ 6-3 6-3",
-     "gana": 1.62,
-     "set1": 1.67
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91168516/"
-  },
-  {
-   "id": 1183664354,
-   "torneo": "M15 Bastad",
-   "pais": "Sweden",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-23T08:15:00.000Z",
-   "local": "10:15",
-   "horarioTxt": "Starting at 10:15",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
    "cancha": "Court 1",
    "turno": 1,
-   "ronda": "F",
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Leo Borg",
-     "pais": "SWE",
-     "marca": "[1]",
-     "atp": 542,
-     "wtn": 5.4,
-     "llega": "R1✓ 6-4 6-3 vQ · R2✓ 6-0 6-3 · QF✓ 6-2 4-6 6-4 · SF✓ 6-3 7-5 v[4]",
+     "nombre": "Giannicola Misasi",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 919,
+     "wtn": 8.57,
+     "llega": "",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Niklas Guttau",
-     "pais": "GER",
-     "marca": "",
-     "atp": 1211,
-     "wtn": 8.13,
-     "llega": "R1✓ 6-4 6-2 · R2✓ 6-2 6-2 · QF✓ 3-6 6-2 6-1 · SF✓ 6-3 4-6 6-4 vWC",
+     "nombre": "Gheorghe Claudiu Schinteie",
+     "pais": "ROU",
+     "marca": "Q",
+     "atp": 1684,
+     "wtn": 13.6,
+     "llega": "Q1✓ 7-5 6(2)-7 10-7 · Q2✓ 6-1 6-2 · Q3✓ 6-0 7-5",
      "gana": null,
      "set1": null
     }
@@ -116,23 +458,3177 @@
    "betano": null
   },
   {
-   "id": 1183662574,
+   "id": 1183671308,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 2",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Robert Guna",
+     "pais": "ROU",
+     "marca": "",
+     "atp": 914,
+     "wtn": 7.72,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Daniele Minighini",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": 1995,
+     "wtn": 10.01,
+     "llega": "Q1✓ 6-2 6-1 vWC · Q2✓ 6-0 6-1 · Q3✓ 6-4 4-1 v[9]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671307,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 3",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Filip Cristian Jianu",
+     "pais": "ROU",
+     "marca": "[1]",
+     "atp": 279,
+     "wtn": 3.37,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Vladislav Melnic",
+     "pais": "ROU",
+     "marca": "",
+     "atp": 1098,
+     "wtn": 9.63,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671310,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lenny Petit",
+     "pais": "MON",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 14.17,
+     "llega": "Q1✓ 6-2 6-1 · Q2✓ 6-1 6-3 vWC · Q3✓ 6-3 6-2 v[7]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Nicolas Robert",
+     "pais": "FRA",
+     "marca": "[8]",
+     "atp": 849,
+     "wtn": 8.38,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671315,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Gabriel Ghetu",
+     "pais": "ROU",
+     "marca": "[6]",
+     "atp": 703,
+     "wtn": 5.06,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Valentin Vanta",
+     "pais": "ROU",
+     "marca": "Q",
+     "atp": 1829,
+     "wtn": 12.9,
+     "llega": "Q1✓ 7-5 6-3 · Q2✓ 6-1 6-3 · Q3✓ 6-2 6-3",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671321,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 2",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Andre Meinertz",
+     "pais": "DEN",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 16.58,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Matteo Vavassori",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 9.96,
+     "llega": "Q1✓ 6-3 6-2 vWC · Q2✓ 6-2 6-1 · Q3✓ 6-4 6-2 v[13]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671318,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Matei Sucu",
+     "pais": "ROU",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 22.21,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Stefan Adrian Andreescu",
+     "pais": "ROU",
+     "marca": "[3]",
+     "atp": 649,
+     "wtn": 8.18,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671311,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Dragos Nicolae Madaras",
+     "pais": "SWE",
+     "marca": "[4]",
+     "atp": 593,
+     "wtn": 4.1,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Uladzimir Ignatik",
+     "pais": "BLR",
+     "marca": "",
+     "atp": 1334,
+     "wtn": 6.7,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671313,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 2",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Giacomo Crisostomo",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1142,
+     "wtn": 8.8,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Louis Allen",
+     "pais": "GBR",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 14.8,
+     "llega": "Q1✓ 6-1 6-1 vWC · Q2✓ 6-2 6-2 · Q3✓ 2-6 7-5 10-6 v[5]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671322,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Rares Andrei Golescu",
+     "pais": "ROU",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 16.01,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sebastian Gima",
+     "pais": "ROU",
+     "marca": "[2]",
+     "atp": 537,
+     "wtn": 7.07,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671309,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Vlad Cristian Breazu",
+     "pais": "ROU",
+     "marca": "Q",
+     "atp": 1694,
+     "wtn": 8.12,
+     "llega": "Q1✓ 6-3 6-0 · Q2✓ 6-2 6-1 · Q3✓ 6-1 6-0 v[16]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Andrei Corneliu Gadoiu",
+     "pais": "ROU",
+     "marca": "WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671312,
+   "torneo": "M15 Bucharest",
+   "pais": "Romania",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lucian Stefan Andrei",
+     "pais": "ROU",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 19.63,
+     "llega": "Q1✓ 6-1 6-2 · Q2✓ 6-4 7-5 · Q3✓ 4-6 6-4 10-6 v[6]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tudor Batin",
+     "pais": "ROU",
+     "marca": "",
+     "atp": 1043,
+     "wtn": 9.61,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671168,
+   "torneo": "M15 Cap d'Agde",
+   "pais": "France",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 7",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Yuto Hisano",
+     "pais": "JPN",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 19.64,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Axel Garcian",
+     "pais": "FRA",
+     "marca": "[7]",
+     "atp": 991,
+     "wtn": 7.84,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671165,
+   "torneo": "M15 Cap d'Agde",
+   "pais": "France",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 8",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Maxime Chazal",
+     "pais": "FRA",
+     "marca": "[1]",
+     "atp": 466,
+     "wtn": 5.69,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Filip Malis",
+     "pais": "CAN",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 19.19,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671167,
+   "torneo": "M15 Cap d'Agde",
+   "pais": "France",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 9",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Timeo Trufelli",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 1227,
+     "wtn": 10.34,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Liam Branger",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 1214,
+     "wtn": 8.15,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671178,
+   "torneo": "M15 Cap d'Agde",
+   "pais": "France",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 7",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Victor Barreira Bonzom",
+     "pais": "FRA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 16.46,
+     "llega": "Q1✓ 2-6 7-5 10-6 v[2] · Q2✓ 6-2 3-6 10-5",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Jaume Casas Blasi",
+     "pais": "ESP",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 18.07,
+     "llega": "Q1✓ 6-0 6-2 · Q2✓ 6-4 7-6(3) v[15]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671172,
+   "torneo": "M15 Cap d'Agde",
+   "pais": "France",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 8",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Samy IRAQI",
+     "pais": "MAR",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 21.33,
+     "llega": "Q1✓ 6-4 6-4 v[3] · Q2✓ 6-4 6-2 v[11]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Amaury Raynel",
+     "pais": "FRA",
+     "marca": "[5]",
+     "atp": 916,
+     "wtn": 9.53,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671174,
+   "torneo": "M15 Cap d'Agde",
+   "pais": "France",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T10:00:00.000Z",
+   "local": "12:00",
+   "horarioTxt": "Starting at 12:00",
+   "cancha": "Court 10",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Samuele Seghetti",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1482,
+     "wtn": 10.34,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dorian Tremblay",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 1677,
+     "wtn": 10.87,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671179,
+   "torneo": "M15 Cap d'Agde",
+   "pais": "France",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 7",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Damien Salvestre",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 1443,
+     "wtn": 8.08,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Thomas Gerbaud",
+     "pais": "FRA",
+     "marca": "Q",
+     "atp": 1860,
+     "wtn": 10.76,
+     "llega": "Q1✓ 6-1 6-2 · Q2✓ 6-4 6-4 v[16]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671170,
+   "torneo": "M15 Cap d'Agde",
+   "pais": "France",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 8",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ferdinand Livet Novkirichka",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 1266,
+     "wtn": 9.45,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Andrea Baudel",
+     "pais": "FRA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 16.76,
+     "llega": "Q1✓ 6-2 6-1 · Q2✓ 6-2 6-2",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673957,
+   "torneo": "M15 Champaign, IL",
+   "pais": "USA",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T20:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 1",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Zsombor Velcz",
+     "pais": "HUN",
+     "marca": "[7]",
+     "atp": 907,
+     "wtn": 6.66,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Zachary Viiala",
+     "pais": "AUS",
+     "marca": "",
+     "atp": 1271,
+     "wtn": 7.9,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183673948,
+   "torneo": "M15 Champaign, IL",
+   "pais": "USA",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T20:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jeremy Zhang",
+     "pais": "AUS",
+     "marca": "WC",
+     "atp": 1385,
+     "wtn": 9.91,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Ofek Shimanov",
+     "pais": "ISR",
+     "marca": "[8]",
+     "atp": 922,
+     "wtn": 7.27,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670053,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 3",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Luke Hooper",
+     "pais": "GBR",
+     "marca": "",
+     "atp": 1259,
+     "wtn": 10.2,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Amr Elsayed",
+     "pais": "EGY",
+     "marca": "[2]",
+     "atp": 587,
+     "wtn": 7.72,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670048,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Omar Kandil",
+     "pais": "EGY",
+     "marca": "WC",
+     "atp": 1995,
+     "wtn": 17.13,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Makar Elesin",
+     "pais": "RUS",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 14.47,
+     "llega": "Q1✓ 6-0 6-0 · Q2✓ 6-3 6-1 · Q3✓ 6-4 6-3 v[8]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670051,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 5",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ivan Gretskiy",
+     "pais": "RUS",
+     "marca": "",
+     "atp": 1267,
+     "wtn": 12.28,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Jake Fellows",
+     "pais": "USA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 9.55,
+     "llega": "Q1✓ 6-2 6-0 · Q2✓ 6-2 6-4 v[3] · Q3✓ 2-6 6-3 10-7 v[11]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670040,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 6",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Saveliy Ivanov",
+     "pais": "RUS",
+     "marca": "",
+     "atp": 1148,
+     "wtn": 9.55,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Omaansh Choudhary Saharia",
+     "pais": "IND",
+     "marca": "WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670041,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 7",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Marat Salbiev",
+     "pais": "RUS",
+     "marca": "JR",
+     "atp": null,
+     "wtn": 15.49,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Michal Krajci",
+     "pais": "SVK",
+     "marca": "[5]",
+     "atp": 747,
+     "wtn": 6.1,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670046,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 8",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Aditya Balsekar",
+     "pais": "IND",
+     "marca": "[8]",
+     "atp": 1002,
+     "wtn": 9.91,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dmitry Bessonov",
+     "pais": "RUS",
+     "marca": "",
+     "atp": 1426,
+     "wtn": 11.16,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670047,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 9",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Rishit Dakhane",
+     "pais": "IND",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 16.71,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Chirag Duhan",
+     "pais": "IND",
+     "marca": "",
+     "atp": 1262,
+     "wtn": 10.3,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670038,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 10",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Vadym Ursu",
+     "pais": "UKR",
+     "marca": "[1]",
+     "atp": 401,
+     "wtn": 5.75,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dev Javia",
+     "pais": "IND",
+     "marca": "",
+     "atp": 981,
+     "wtn": 8.98,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670039,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Karim Mabrouk",
+     "pais": "EGY",
+     "marca": "WC",
+     "atp": 1495,
+     "wtn": 11.68,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Mayank Sharma",
+     "pais": "IND",
+     "marca": "Q",
+     "atp": null,
+     "wtn": null,
+     "llega": "Q1✓ 4-6 7-6(2) 10-8 · Q2✓ 6-3 6-4 v[16] · Q3✓ 6-0 2-6 10-4",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670043,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Karim Ibrahim",
+     "pais": "EGY",
+     "marca": "",
+     "atp": 970,
+     "wtn": 8.56,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Andrea Bacaloni",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": 1431,
+     "wtn": 10.02,
+     "llega": "Q2✓ 6-1 6-1 · Q3✓ 6-1 6-3 v[9]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670044,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 5",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alberto Morolli",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 11.99,
+     "llega": "Q1✓ 6-1 6-3 · Q2✓ 6-3 6-1 · Q3✓ 6-1 6-0",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Rohan Mehra",
+     "pais": "IND",
+     "marca": "",
+     "atp": 1159,
+     "wtn": 10.1,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670042,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 6",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Saba Purtseladze",
+     "pais": "GEO",
+     "marca": "[3]",
+     "atp": 659,
+     "wtn": 6.2,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Nikita Ianin",
+     "pais": "RUS",
+     "marca": "",
+     "atp": 1001,
+     "wtn": 9.92,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670052,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 7",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mousa Alkotop",
+     "pais": "JOR",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 12.07,
+     "llega": "Q1✓ 7-5 4-0 · Q2✓ 6-3 6-2 v[6] · Q3✓ 7-5 6-1 v[15]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Lorenzo Lorusso",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1175,
+     "wtn": 9.91,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670045,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 8",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Yassine Smiej",
+     "pais": "MAR",
+     "marca": "",
+     "atp": 1268,
+     "wtn": 9.23,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alvin Nicholas Tudorica",
+     "pais": "CAN",
+     "marca": "[6]",
+     "atp": 1078,
+     "wtn": 6.89,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670050,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 9",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Aaron Funk",
+     "pais": "GER",
+     "marca": "[7]",
+     "atp": 979,
+     "wtn": 8.65,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Gabriele Thomas Brancatelli",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": 2081,
+     "wtn": 10.82,
+     "llega": "Q1✓ 6-1 6-4 · Q2✓ 6-2 6-1 · Q3✓ 6-3 6-1 v[13]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670049,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 10",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Vansh Bisht",
+     "pais": "IND",
+     "marca": "Q",
+     "atp": null,
+     "wtn": null,
+     "llega": "Q1✓ 6-3 6-0 · Q2✓ 6-1 7-5 v[2] · Q3✓ 4-6 7-5 12-10 v[14]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Aleksandre Bakshi",
+     "pais": "GEO",
+     "marca": "[4]",
+     "atp": 730,
+     "wtn": 7.58,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670126,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Aya El Sayed",
+     "pais": "EGY",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Saoirse Breen",
+     "pais": "FIJ",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670137,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Maria Herazo",
+     "pais": "COL",
+     "marca": "[5]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Jian Ibrahim",
+     "pais": "EGY",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670129,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 5",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mariia Tkacheva",
+     "pais": "RUS",
+     "marca": "[4]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Soha Sadiq",
+     "pais": "IND",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670130,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 6",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Bianca Compuesto",
+     "pais": "AUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Andrea Lola Popovic",
+     "pais": "FRA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670131,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 7",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Carol Plakk",
+     "pais": "EST",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sarafina Olivia Hansen",
+     "pais": "DEN",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670135,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 8",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ekaterina Khodzhaeva",
+     "pais": "RUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sofia Avataneo",
+     "pais": "ITA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670136,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 9",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Justine Bretnacher",
+     "pais": "FRA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Yasmin Ezzat",
+     "pais": "EGY",
+     "marca": "[3]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670127,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T06:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 10",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Eva Zabolotnaia",
+     "pais": "MDA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Julia Khramtsova",
+     "pais": "RUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670133,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T13:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Kateryna Diatlova",
+     "pais": "UKR",
+     "marca": "[8]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Hania Abouelsaad",
+     "pais": "EGY",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670139,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T13:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Wozuko Mdlulwa",
+     "pais": "RSA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Joody Elkady",
+     "pais": "EGY",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670132,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T13:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Katarina Kujovic",
+     "pais": "BEL",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alyssa Reguer",
+     "pais": "FRA",
+     "marca": "[6]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670134,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T13:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 6",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Selina Atay",
+     "pais": "TUR",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Warona Mdlulwa",
+     "pais": "RSA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670125,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T13:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 7",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Dune Vaissaud",
+     "pais": "FRA",
+     "marca": "[1]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Livia Keller",
+     "pais": "AUT",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670138,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T13:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 8",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Viola Bedini",
+     "pais": "ITA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Naomi McKenzie",
+     "pais": "AUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670128,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T13:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 9",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lara Wagner",
+     "pais": "GER",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Coco Bosman",
+     "pais": "NED",
+     "marca": "[7]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670140,
+   "torneo": "M15 Hurghada",
+   "pais": "Egypt",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T13:00:00.000Z",
+   "local": "16:00",
+   "horarioTxt": "Not Before 16:00",
+   "cancha": "Court 10",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Emilia Carlotta Brune",
+     "pais": "GER",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Laia Petretic",
+     "pais": "FRA",
+     "marca": "[2]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671824,
    "torneo": "M15 Kursumlijska Banja ",
    "pais": "Serbia",
    "categoria": "M15",
    "superficie": "Clay",
    "bolsa": "$15,000",
-   "cuando": "2026-08-23T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
+   "cuando": "2026-08-25T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
    "cancha": "Court Viktor Troicki",
    "turno": 1,
-   "ronda": "F",
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Rada Zolotareva",
+     "nombre": "Haruka Kaji",
+     "pais": "JPN",
+     "marca": "[3]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Amandine Hesse",
+     "pais": "FRA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671827,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Nalah Kaler",
+     "pais": "CAN",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alina Granwehr",
+     "pais": "SUI",
+     "marca": "[7]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671825,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court Viktor Troicki",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Elena Milovanovic",
+     "pais": "SRB",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Lucija Ciric Bagaric",
+     "pais": "CRO",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671831,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Natalija Senic",
+     "pais": "SRB",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Samira De Stefano",
+     "pais": "ITA",
+     "marca": "[4]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671742,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T10:00:00.000Z",
+   "local": "12:00",
+   "horarioTxt": "Not Before 12:00",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Chris Spyrou",
+     "pais": "GRE",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 12.51,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Fedor Sosedkin",
      "pais": "RUS",
+     "marca": "WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671737,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T10:00:00.000Z",
+   "local": "12:00",
+   "horarioTxt": "Not Before 12:00",
+   "cancha": "Court 6",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Denis Klok",
+     "pais": "RUS",
+     "marca": "[4]",
+     "atp": 773,
+     "wtn": 7.52,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Mukkesh Sabaresh Vijay Shankar",
+     "pais": "IND",
+     "marca": "WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671745,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T10:00:00.000Z",
+   "local": "12:00",
+   "horarioTxt": "Not Before 12:00",
+   "cancha": "Court 7",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Stefano D'Agostino",
+     "pais": "ITA",
+     "marca": "[5]",
+     "atp": 846,
+     "wtn": 6.73,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alvaro Peiro Serrano",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 1357,
+     "wtn": 10.42,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671747,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T10:00:00.000Z",
+   "local": "12:00",
+   "horarioTxt": "Not Before 12:00",
+   "cancha": "Court 8",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Parth Aggarwal",
+     "pais": "IND",
+     "marca": "",
+     "atp": 1428,
+     "wtn": 12.07,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alexander Zgirovsky",
+     "pais": "BLR",
+     "marca": "",
+     "atp": 1352,
+     "wtn": 8.18,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671746,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 5",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Filiberto Fumagalli",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1250,
+     "wtn": 8.17,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Drazen Petrovic",
+     "pais": "BIH",
+     "marca": "",
+     "atp": 1574,
+     "wtn": 10.88,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671743,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Starting at 9:00",
+   "cancha": "Court 5",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alessandro Bellifemine",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1559,
+     "wtn": 8.86,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Samuil Chestovaliev",
+     "pais": "MKD",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 21.47,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671741,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Starting at 9:00",
+   "cancha": "Court 6",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Kristijan Juhas",
+     "pais": "SRB",
+     "marca": "[8]",
+     "atp": 915,
+     "wtn": 6.99,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Giovanni Ciocca",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1872,
+     "wtn": 12.06,
+     "llega": "Q1✓ 6-0 6-1 · Q2✓ 6-1 6-4",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671744,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Starting at 9:00",
+   "cancha": "Court 7",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Viktor Kirov",
+     "pais": "BUL",
+     "marca": "",
+     "atp": null,
+     "wtn": 14.4,
+     "llega": "Q1✓ 6-0 6-0 vWC · Q2✓ 7-5 2-6 10-6 v[8]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Anton Arzhankin",
+     "pais": "RUS",
+     "marca": "[3]",
+     "atp": 723,
+     "wtn": 6.44,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671739,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Starting at 9:00",
+   "cancha": "Court 8",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Leonid Sheyngezikht",
+     "pais": "BUL",
+     "marca": "",
+     "atp": 1307,
+     "wtn": 9.15,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Mihail Ivanov",
+     "pais": "BUL",
+     "marca": "",
+     "atp": null,
+     "wtn": 12.66,
+     "llega": "Q1✓ 7-5 6-1 · Q2✓ 7-6(2) 6-4",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671832,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court Viktor Troicki",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Giorgia Pedone",
+     "pais": "ITA",
+     "marca": "[5]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Zhibek Kulambayeva",
+     "pais": "KAZ",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671823,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 3",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Beatrice Ricci",
+     "pais": "ITA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Rositsa Dencheva",
+     "pais": "BUL",
+     "marca": "[6]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671828,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lea Boskovic",
+     "pais": "CRO",
+     "marca": "[8]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tahlia Kokkinis",
+     "pais": "AUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671733,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 5",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Branko Djuric",
+     "pais": "SRB",
+     "marca": "[1]",
+     "atp": 586,
+     "wtn": 6.39,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Maties Torres Ramis",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 1860,
+     "wtn": 11.85,
+     "llega": "Q1✓ 6(4)-7 6-4 10-6 · Q2✓ 6-3 6-2",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671736,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 6",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Marko Nikolic",
+     "pais": "SRB",
+     "marca": "",
+     "atp": 1841,
+     "wtn": 10.95,
+     "llega": "Q1✓ 7-6(2) 6-4 · Q2✓ 6-3 6-2",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "George Lazarov",
+     "pais": "BUL",
+     "marca": "[7]",
+     "atp": 1112,
+     "wtn": 8.79,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671735,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 7",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Cem Christopher Kucukhuseyin",
+     "pais": "TUR",
+     "marca": "",
+     "atp": 1634,
+     "wtn": 14.1,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Aleksa Oparnica",
+     "pais": "SRB",
+     "marca": "",
+     "atp": 2081,
+     "wtn": 15.13,
+     "llega": "Q1✓ 3-6 6-2 12-10 · Q2✓ 6-1 6-1",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671738,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 8",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Esteban Talavera Cortes",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 1704,
+     "wtn": 13.53,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Andrea Motta",
+     "pais": "ITA",
+     "marca": "",
+     "atp": null,
+     "wtn": 10.8,
+     "llega": "Q1✓ 6-0 6-2 · Q2✓ 6-4 6-4",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671826,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court Viktor Troicki",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Anja Stankovic",
+     "pais": "SRB",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Ikumi Yamazaki",
+     "pais": "JPN",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671830,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ekaterina Perelygina",
+     "pais": "AUT",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Lejla Hana Golubovic",
+     "pais": "USA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671821,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Denislava Glushkova",
+     "pais": "BUL",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dunja Maric",
+     "pais": "SRB",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671748,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T10:00:00.000Z",
+   "local": "12:00",
+   "horarioTxt": "Not Before 12:00",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Edouard Villoslada",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 1308,
+     "wtn": 11.73,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dmitry Popko",
+     "pais": "KAZ",
+     "marca": "[2]",
+     "atp": 666,
+     "wtn": 3.66,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671740,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T10:00:00.000Z",
+   "local": "12:00",
+   "horarioTxt": "Not Before 12:00",
+   "cancha": "Court 6",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Antoni Fabre",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 1139,
+     "wtn": 8.97,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alexandre Aubriot",
+     "pais": "FRA",
+     "marca": "[6]",
+     "atp": 873,
+     "wtn": 7.29,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671734,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T10:00:00.000Z",
+   "local": "12:00",
+   "horarioTxt": "Not Before 12:00",
+   "cancha": "Court 7",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mario Arce Fernandez",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 1884,
+     "wtn": 10.51,
+     "llega": "Q1✓ 6-4 6-2 · Q2✓ 6-4 6-2",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Boris Butulija",
+     "pais": "SRB",
+     "marca": "",
+     "atp": 1264,
+     "wtn": 9.58,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671835,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court Viktor Troicki",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alina Yuneva",
+     "pais": "RUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Miriam Bianca Bulgaru",
+     "pais": "ROU",
+     "marca": "[2]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671829,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lia Karatancheva",
+     "pais": "BUL",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Ksenia Zaytseva",
+     "pais": "RUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671834,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Sara Cakarevic",
+     "pais": "FRA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Maria Golovina",
+     "pais": "RUS",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671822,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court Viktor Troicki",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Xinran Sun",
+     "pais": "CHN",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Luna Vujovic",
+     "pais": "SRB",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671833,
+   "torneo": "M15 Kursumlijska Banja ",
+   "pais": "Serbia",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Antonia Vergara Rivera",
+     "pais": "CHI",
      "marca": "",
      "atp": null,
      "wtn": null,
@@ -154,37 +3650,37 @@
    "betano": null
   },
   {
-   "id": 1183662487,
+   "id": 1183671820,
    "torneo": "M15 Kursumlijska Banja ",
    "pais": "Serbia",
    "categoria": "M15",
    "superficie": "Clay",
    "bolsa": "$15,000",
-   "cuando": "2026-08-23T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
    "cancha": "Court 4",
-   "turno": 1,
-   "ronda": "F",
+   "turno": 4,
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Dimitar Kisimov",
-     "pais": "BUL",
-     "marca": "JR",
-     "atp": 1764,
-     "wtn": 13.04,
-     "llega": "R1✓ 6-0 6-2 v[5] · R2✓ 6-4 6-4 vQ · QF✓ 6-4 6-3 v[3] · SF✓ 7-5 6-1 v[1]",
+     "nombre": "Selena Janicijevic",
+     "pais": "FRA",
+     "marca": "[1]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Kristijan Juhas",
-     "pais": "SRB",
-     "marca": "[7]",
-     "atp": 951,
-     "wtn": 7.37,
-     "llega": "R1✓ 6-2 6-4 · R2✓ 6-3 6-0 · QF✓ 6-2 6-2 v[2] · SF✓ 6-3 6-0 v[4]",
+     "nombre": "Lea Nilsson",
+     "pais": "SWE",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
      "gana": null,
      "set1": null
     }
@@ -192,75 +3688,113 @@
    "betano": null
   },
   {
-   "id": 1183662342,
-   "torneo": "M15 Lambermont",
-   "pais": "Belgium",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-22T08:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Followed By",
-   "cancha": "Court 10",
-   "turno": 2,
-   "ronda": "Semi-final",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Martin VAN DER MEERSCHEN",
-     "pais": "BEL",
-     "marca": "[4]",
-     "atp": 723,
-     "wtn": 6.76,
-     "llega": "R1✓ 6-3 6-2 vWC · R2✓ 6-2 2-6 6-2 · QF✓ 6-2 6-2",
-     "gana": 1.44,
-     "set1": 1.5
-    },
-    {
-     "nombre": "Romain Faucon",
-     "pais": "BEL",
-     "marca": "[2]",
-     "atp": 588,
-     "wtn": 6.79,
-     "llega": "R1✓ 6-0 6-4 vSE · R2✓ 7-5 6-4 · QF✓ 6(5)-7 6-2 6-4 vQ",
-     "gana": 2.52,
-     "set1": 2.35
-    }
-   ],
-   "betano": "https://lat.betano.com/cuotas-de-partido/e-e/91162321/"
-  },
-  {
-   "id": 1183661235,
+   "id": 1183669611,
    "torneo": "M15 Maanshan",
    "pais": "China, P.R.",
    "categoria": "M15",
    "superficie": "Hard",
    "bolsa": "$15,000",
-   "cuando": "2026-08-23T05:00:00.000Z",
-   "local": "13:00",
-   "horarioTxt": "Starting at 13:00",
-   "cancha": "C2 (Center Court) ",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "C2 (Center Court)",
    "turno": 1,
-   "ronda": "F",
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Kokoro Isomura",
+     "nombre": "Wishaya Trongcharoenchaikul",
+     "pais": "THA",
+     "marca": "",
+     "atp": 935,
+     "wtn": 8.97,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Lingxi Zhao",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1829,
+     "wtn": 7.13,
+     "llega": "Q1✓ 6-4 6-1",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669614,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 3",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Shaoyun Liu",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1677,
+     "wtn": 13.67,
+     "llega": "Q1✓ 7-6(4) 2-6 10-5",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Reiya Komagata",
      "pais": "JPN",
-     "marca": "[3]",
-     "atp": 562,
-     "wtn": 6.38,
-     "llega": "R1✓ 3-6 7-6(5) 6-1 · R2✓ 6-2 6-2 vQ · QF✓ 6-1 6-3 v[5] · SF✓ 7-5 6-3 v[1]",
+     "marca": "",
+     "atp": 1995,
+     "wtn": 12.14,
+     "llega": "Q1✓ 6-2 6-2 vWC",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669612,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Linang Xiao",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1113,
+     "wtn": 6.68,
+     "llega": "",
      "gana": null,
      "set1": null
     },
     {
      "nombre": "M Rifqi Fitriadi",
      "pais": "INA",
-     "marca": "[2]",
-     "atp": 549,
-     "wtn": 6.21,
-     "llega": "R1✓ 6-4 5-7 6-0 · R2✓ 6-3 6-1 vWC · QF✓ 6-4 7-6(1) v[8] · SF✓ 4-6 6-3 6-2",
+     "marca": "[5]",
+     "atp": 548,
+     "wtn": 6.55,
+     "llega": "",
      "gana": null,
      "set1": null
     }
@@ -268,37 +3802,2545 @@
    "betano": null
   },
   {
-   "id": 1183662139,
-   "torneo": "M15 Mistelbach",
+   "id": 1183669610,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 5",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Miles Jones",
+     "pais": "USA",
+     "marca": "",
+     "atp": 869,
+     "wtn": 6.97,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Suk Ann",
+     "pais": "KOR",
+     "marca": "",
+     "atp": 2237,
+     "wtn": 10.13,
+     "llega": "Q1✓ 6-0 6-1 vA",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669609,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "C2 (Center Court)",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Kaichi Uchida",
+     "pais": "JPN",
+     "marca": "[1]",
+     "atp": 254,
+     "wtn": 5.11,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tianhui Zhang",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 719,
+     "wtn": 7.69,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669613,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Enzo Aguiard",
+     "pais": "AUS",
+     "marca": "[4]",
+     "atp": 484,
+     "wtn": 4.61,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Fanming Meng",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1054,
+     "wtn": 9.44,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669616,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Denis Vishenchuk Vishenko",
+     "pais": "RUS",
+     "marca": "",
+     "atp": 1872,
+     "wtn": 14.46,
+     "llega": "Q1✓ 6-2 6-4 vWC",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Yusuke Takahashi",
+     "pais": "JPN",
+     "marca": "[8]",
+     "atp": 682,
+     "wtn": 5.49,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669615,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 5",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Chan-Yeong Oh",
+     "pais": "KOR",
+     "marca": "",
+     "atp": 976,
+     "wtn": 7.99,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sam Ryan Ziegann",
+     "pais": "AUS",
+     "marca": "",
+     "atp": 888,
+     "wtn": 9.11,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669623,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "C2 (Center Court)",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Dong Ju Kim",
+     "pais": "KOR",
+     "marca": "",
+     "atp": 704,
+     "wtn": 6.27,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Fumin Jiang",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1704,
+     "wtn": 11.37,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669618,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alex Jones",
+     "pais": "USA",
+     "marca": "",
+     "atp": 1539,
+     "wtn": 9.79,
+     "llega": "Q1✓ 6-4 6-3",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Weiyi Kong",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1652,
+     "wtn": 12.97,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669620,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Xirui Han",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1446,
+     "wtn": 10.67,
+     "llega": "Q1✓ 6-4 7-6(2)",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sergey Fomin",
+     "pais": "UZB",
+     "marca": "[3]",
+     "atp": 305,
+     "wtn": 4.08,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669617,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Filip Peliwo",
+     "pais": "POL",
+     "marca": "[6]",
+     "atp": 547,
+     "wtn": 7.96,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Joshua Charlton",
+     "pais": "AUS",
+     "marca": "",
+     "atp": 759,
+     "wtn": 7.37,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669624,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "C2 (Center Court)",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Qian Sun",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 930,
+     "wtn": 8.45,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Petr Bar Biryukov",
+     "pais": "RUS",
+     "marca": "[2]",
+     "atp": 285,
+     "wtn": 3.8,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669619,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ammar Faleh Alhogbani",
+     "pais": "KSA",
+     "marca": "",
+     "atp": 1053,
+     "wtn": 9.19,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Rigele Te",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1014,
+     "wtn": 6.85,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669622,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Hanyi Liu",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 899,
+     "wtn": 6.38,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Xing Dao Chen",
+     "pais": "CHN",
+     "marca": "",
+     "atp": 1316,
+     "wtn": 9.8,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669621,
+   "torneo": "M15 Maanshan",
+   "pais": "China, P.R.",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T02:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 5",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Chase Ferguson",
+     "pais": "AUS",
+     "marca": "[7]",
+     "atp": 641,
+     "wtn": 6.83,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Yua Taka",
+     "pais": "JPN",
+     "marca": "",
+     "atp": 1555,
+     "wtn": 8.84,
+     "llega": "Q1✓ 7-5 6-1",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183672020,
+   "torneo": "M15 Mar Del Plata",
+   "pais": "Argentina",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T16:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 1",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Tobia Grandinetti",
+     "pais": "ARG",
+     "marca": "WC",
+     "atp": 1841,
+     "wtn": 12.94,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Santiago De la fuente",
+     "pais": "ARG",
+     "marca": "[5]",
+     "atp": 741,
+     "wtn": 7.24,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183672027,
+   "torneo": "M15 Mar Del Plata",
+   "pais": "Argentina",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T16:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Felipe De Dios",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 1190,
+     "wtn": 11.2,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Mateo Del Pino",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 1097,
+     "wtn": 10.51,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183672024,
+   "torneo": "M15 Mar Del Plata",
+   "pais": "Argentina",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T16:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 8",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Nicolas Garcia Longo",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 1117,
+     "wtn": 10.62,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Lorenzo Gagliardo",
+     "pais": "ARG",
+     "marca": "[8]",
+     "atp": 896,
+     "wtn": 7.41,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183672028,
+   "torneo": "M15 Mar Del Plata",
+   "pais": "Argentina",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T13:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Nicolas Bruna",
+     "pais": "CHI",
+     "marca": "",
+     "atp": 1018,
+     "wtn": 10.16,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Maximo Zeitune",
+     "pais": "ARG",
+     "marca": "[4] WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183672023,
+   "torneo": "M15 Mar Del Plata",
+   "pais": "Argentina",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T13:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Valentino Grippo",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 1364,
+     "wtn": 12.59,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Gonzalo Zeitune",
+     "pais": "ARG",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 14.09,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183672025,
+   "torneo": "M15 Mar Del Plata",
+   "pais": "Argentina",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T13:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 8",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Bastian Malla",
+     "pais": "CHI",
+     "marca": "[7]",
+     "atp": 948,
+     "wtn": 6.32,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Jackson Ross",
+     "pais": "USA",
+     "marca": "PR",
+     "atp": 1097,
+     "wtn": 10.69,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183672030,
+   "torneo": "M15 Mar Del Plata",
+   "pais": "Argentina",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-25T18:30:00.000Z",
+   "local": "15:30",
+   "horarioTxt": "Not Before 15:30",
+   "cancha": "Court 1",
+   "turno": 5,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ezequiel Monferrer",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 1032,
+     "wtn": 9.23,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Felipe Vazquez",
+     "pais": "URU",
+     "marca": "JR",
+     "atp": 2081,
+     "wtn": 18.28,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671883,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court Central",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Nicolas Jadoun",
+     "pais": "FRA",
+     "marca": "[8]",
+     "atp": 815,
+     "wtn": 8.29,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Josh Manuel",
+     "pais": "GBR",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 13.22,
+     "llega": "Q1✓ 6-1 6-1 · Q2✓ 5-1 · Q3✓ 6-0 6-1",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671876,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court 1",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Chetanna Amadike",
+     "pais": "CAN",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 12.04,
+     "llega": "Q2✓ 6-2 6-4 · Q3✓ 0-6 7-6(2) 10-8 v[7]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Adam Nagoudi",
+     "pais": "TUN",
+     "marca": "Q",
+     "atp": null,
+     "wtn": null,
+     "llega": "Q2✓ 6-4 0-6 10-7 · Q3✓ 6-2 6-3 v[12]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671890,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court 2",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Thando Longwe-Smit",
+     "pais": "RSA",
+     "marca": "",
+     "atp": 1187,
+     "wtn": 8.85,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Toufik Sahtali",
+     "pais": "ALG",
+     "marca": "[2]",
+     "atp": 550,
+     "wtn": 6.64,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671885,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court 3",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Abdulhamid Mubarak",
+     "pais": "KUW",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 13.27,
+     "llega": "Q2✓ 6-1 6-0 · Q3✓ 6-2 6-3",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Bader Alabdullah",
+     "pais": "KUW",
+     "marca": "",
+     "atp": 1995,
+     "wtn": 14.14,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671889,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Stevan Popovic",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1694,
+     "wtn": 13.48,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Nav Dayal",
+     "pais": "USA",
+     "marca": "",
+     "atp": 1841,
+     "wtn": 11.17,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671882,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court 5",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Rahul Dhokia",
+     "pais": "GBR",
+     "marca": "Q",
+     "atp": 2237,
+     "wtn": 11.93,
+     "llega": "Q2✓ 6-0 6-1 · Q3✓ 6-3 6-2",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Daniel Jade",
+     "pais": "FRA",
+     "marca": "[7]",
+     "atp": 711,
+     "wtn": 7.75,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671962,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court 6",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alexandra Vagramov",
+     "pais": "CAN",
+     "marca": "[1]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Juliette Mazzoni",
+     "pais": "FRA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671976,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court 7",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Luisa Schruff",
+     "pais": "GER",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Meriem Ben Ezzedine",
+     "pais": "TUN",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671964,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T07:00:00.000Z",
+   "local": "08:00",
+   "horarioTxt": "Starting at 8:00",
+   "cancha": "Court 8",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Liana Cammilleri",
+     "pais": "GER",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tinatini Mtvarelishvili",
+     "pais": "GEO",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671875,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court Central",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Robin Bertrand",
+     "pais": "FRA",
+     "marca": "[1]",
+     "atp": 368,
+     "wtn": 4.39,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alessandro Aufiero",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": null,
+     "llega": "Q1✓ 6-1 6-0 · Q2✓ 6-0 2-1 v[5] · Q3✓ 6-4 6-4 v[9]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671888,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 1",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Skander Nsairi",
+     "pais": "TUN",
+     "marca": "WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Louis Larue",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 934,
+     "wtn": 8.79,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671879,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 2",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mae Malige",
+     "pais": "FRA",
+     "marca": "[3]",
+     "atp": 580,
+     "wtn": 6.45,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Romain Andres",
+     "pais": "FRA",
+     "marca": "Q",
+     "atp": 2278,
+     "wtn": 12.12,
+     "llega": "Q2✓ 6-2 6-3 · Q3✓ 6-3 6-1",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671968,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Not Before 9:00",
+   "cancha": "Court 3",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Zala Bizjak",
+     "pais": "SLO",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Aleksandra Mateva",
+     "pais": "BUL",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671969,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Not Before 9:30",
+   "cancha": "Court 4",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ada Gergec",
+     "pais": "GER",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sofia Camila Rojas",
+     "pais": "USA",
+     "marca": "[7]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671963,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Not Before 9:30",
+   "cancha": "Court 5",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mirabelle Tahiri",
+     "pais": "USA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "kimia sagheb tehrani",
+     "pais": "IRI",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671965,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Not Before 9:30",
+   "cancha": "Court 6",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Chloe Cleaver",
+     "pais": "GBR",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Johanna Silva",
+     "pais": "GER",
+     "marca": "[5]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671966,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Not Before 9:30",
+   "cancha": "Court 7",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Natsuho Arakawa",
+     "pais": "JPN",
+     "marca": "[4]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Eloise Newberry",
+     "pais": "GBR",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671967,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Not Before 9:30",
+   "cancha": "Court 8",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Sana Garakani",
+     "pais": "POR",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Aurora Nosei",
+     "pais": "ITA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671971,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T16:00:00.000Z",
+   "local": "17:00",
+   "horarioTxt": "Not Before 17:00",
+   "cancha": "Court Central",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Theresa Stabauer",
+     "pais": "AUT",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sofia Alekseeva",
+     "pais": "SUI",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671878,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T16:00:00.000Z",
+   "local": "17:00",
+   "horarioTxt": "Not Before 17:00",
+   "cancha": "Court 1",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mahmoud chetouane",
+     "pais": "TUN",
+     "marca": "WC",
+     "atp": 1669,
+     "wtn": 18.82,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Etienne Donnet",
+     "pais": "FRA",
+     "marca": "[5]",
+     "atp": 624,
+     "wtn": 4.58,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671881,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T16:00:00.000Z",
+   "local": "17:00",
+   "horarioTxt": "Not Before 17:00",
+   "cancha": "Court 2",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mohamed Ali Abibsi",
+     "pais": "ALG",
+     "marca": "",
+     "atp": 1305,
+     "wtn": 10.44,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tchegoun DeRosa",
+     "pais": "USA",
+     "marca": "WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671974,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T16:00:00.000Z",
+   "local": "17:00",
+   "horarioTxt": "Not Before 17:00",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Clarissa Blomqvist",
+     "pais": "FIN",
+     "marca": "[8]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Silvia Caliman",
+     "pais": "ROU",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671884,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T16:00:00.000Z",
+   "local": "17:00",
+   "horarioTxt": "Not Before 17:00",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Hugo Cardinaud",
+     "pais": "FRA",
+     "marca": "",
+     "atp": 1841,
+     "wtn": 11.51,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Ilya Polonskiy",
+     "pais": "RUS",
+     "marca": "Q",
+     "atp": null,
+     "wtn": null,
+     "llega": "Q1✓ 6-1 6-1 · Q2✓ 6-4 6-4 v[2] · Q3✓ 2-6 6-1 10-8",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671972,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T16:00:00.000Z",
+   "local": "17:00",
+   "horarioTxt": "Not Before 17:00",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Daniela Darta Feldmane",
+     "pais": "LAT",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Riko Kikawada",
+     "pais": "JPN",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671977,
+   "torneo": "M15 Monastir",
+   "pais": "Tunisia",
+   "categoria": "M15",
+   "superficie": "Hard",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T16:00:00.000Z",
+   "local": "17:00",
+   "horarioTxt": "Not Before 17:00",
+   "cancha": "Court 6",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ophelia Korpanec Davies",
+     "pais": "GBR",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Haruna Arakawa",
+     "pais": "JPN",
+     "marca": "[2]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670792,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 5",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Herman Hoeyeraal",
+     "pais": "NOR",
+     "marca": "[3]",
+     "atp": 745,
+     "wtn": 7.61,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Filip Drab",
+     "pais": "SVK",
+     "marca": "Q",
+     "atp": 1995,
+     "wtn": 13.01,
+     "llega": "Q2✓ 6-0 6-1 · Q3✓ 6-4 5-7 10-5",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670794,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 7",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Adam Gabor Szoke",
+     "pais": "HUN",
+     "marca": "Q",
+     "atp": 2081,
+     "wtn": 16.71,
+     "llega": "Q2✓ 6(4)-7 6-1 10-8 · Q3✓ 7-5 6-2",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Stepan Baum",
+     "pais": "CZE",
+     "marca": "Q",
+     "atp": 1536,
+     "wtn": 8.46,
+     "llega": "Q2✓ 6-2 6-2 · Q3✓ 6(4)-7 6-1 10-3",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670796,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 8",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Joao Victor Couto Loureiro",
+     "pais": "BRA",
+     "marca": "[8]",
+     "atp": 851,
+     "wtn": 9,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Botond Kisantal",
+     "pais": "HUN",
+     "marca": "Q",
+     "atp": 1746,
+     "wtn": 12.47,
+     "llega": "Q2✓ 6-1 6-0 · Q3✓ 6-3 6-1",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670791,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 9",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Tomas Lanik",
+     "pais": "SVK",
+     "marca": "",
+     "atp": 1449,
+     "wtn": 8.35,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "John Sperle",
+     "pais": "GER",
+     "marca": "[7]",
+     "atp": 821,
+     "wtn": 7.13,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670788,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T09:30:00.000Z",
+   "local": "11:30",
+   "horarioTxt": "Not Before 11:30",
+   "cancha": "Court 5",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lorenzo Bocchi",
+     "pais": "ITA",
+     "marca": "[1]",
+     "atp": 603,
+     "wtn": 7.43,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Achilles Belkovics",
+     "pais": "HUN",
+     "marca": "",
+     "atp": 1394,
+     "wtn": 10.36,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670799,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T09:30:00.000Z",
+   "local": "11:30",
+   "horarioTxt": "Not Before 11:30",
+   "cancha": "Court 7",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Peter Sallay",
+     "pais": "HUN",
+     "marca": "WC",
+     "atp": 2203,
+     "wtn": 12.93,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "John Hallquist Lithen",
+     "pais": "SWE",
+     "marca": "[4]",
+     "atp": 758,
+     "wtn": 8.52,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670790,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T09:30:00.000Z",
+   "local": "11:30",
+   "horarioTxt": "Not Before 11:30",
+   "cancha": "Court 8",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Giammarco Gandolfi",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1413,
+     "wtn": 8.54,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Kolos Kincses",
+     "pais": "HUN",
+     "marca": "WC",
+     "atp": 1995,
+     "wtn": 13.35,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670797,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T09:30:00.000Z",
+   "local": "11:30",
+   "horarioTxt": "Not Before 11:30",
+   "cancha": "Court 9",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Trisztan Gubi",
+     "pais": "HUN",
+     "marca": "WC",
+     "atp": 2081,
+     "wtn": 12.4,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Rafael Behr",
+     "pais": "CRO",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 17.29,
+     "llega": "Q2✓ 6-4 6-0 · Q3✓ 6-2 4-6 10-8",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670802,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Marcell Kovacs",
+     "pais": "HUN",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 17.04,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Leonardo Angeloni",
+     "pais": "ITA",
+     "marca": "LL",
+     "atp": 1860,
+     "wtn": 10.81,
+     "llega": "Q2✓ 6-4 6-3 · Q3✗ 1-6 5-7 v[11]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670798,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 7",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Bercel Sandor Takacs",
+     "pais": "HUN",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 17.3,
+     "llega": "Q1✓ 6-2 6-1 · Q2✓ 7-6(4) 6-2 · Q3✓ 6-1 7-5 v[4]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Matas Vasiliauskas",
+     "pais": "LTU",
+     "marca": "",
+     "atp": 1265,
+     "wtn": 11.14,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670800,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 8",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mate Valkusz",
+     "pais": "HUN",
+     "marca": "[5]",
+     "atp": 761,
+     "wtn": 3.66,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Michael Gloeckler",
+     "pais": "AUT",
+     "marca": "",
+     "atp": 1314,
+     "wtn": 11.05,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670795,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 9",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Leonardo Condo",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": null,
+     "llega": "Q1✓ 6-4 6-3 · Q2✓ 6-4 6-3 v[13] · Q3✓ 6-1 6-2 v[8]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Attila Dominik Boros",
+     "pais": "HUN",
+     "marca": "[6]",
+     "atp": 765,
+     "wtn": 8.02,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670801,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T12:30:00.000Z",
+   "local": "14:30",
+   "horarioTxt": "Not Before 14:30",
+   "cancha": "Court 5",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Andrea Paolini",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": 1656,
+     "wtn": 10.17,
+     "llega": "Q2✓ 6-0 6-0 · Q3✓ 6-0 6-2",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Radovan Michalik",
+     "pais": "SVK",
+     "marca": "",
+     "atp": 1304,
+     "wtn": 10.59,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670789,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T12:30:00.000Z",
+   "local": "14:30",
+   "horarioTxt": "Not Before 14:30",
+   "cancha": "Court 7",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jeremy Gschwendtner",
+     "pais": "GBR",
+     "marca": "",
+     "atp": 1008,
+     "wtn": 8.5,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Thiago Agustin Pernas",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 1161,
+     "wtn": 8.82,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670793,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T12:30:00.000Z",
+   "local": "14:30",
+   "horarioTxt": "Not Before 14:30",
+   "cancha": "Court 8",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jan Hrazdil",
+     "pais": "CZE",
+     "marca": "",
+     "atp": 1317,
+     "wtn": 10.74,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Preston Brown",
+     "pais": "USA",
+     "marca": "",
+     "atp": 1055,
+     "wtn": 10.06,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670803,
+   "torneo": "M15 Pecs",
+   "pais": "Hungary",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T12:30:00.000Z",
+   "local": "14:30",
+   "horarioTxt": "Not Before 14:30",
+   "cancha": "Court 9",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Fermin Tenti",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 901,
+     "wtn": 7.55,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Ignacio Monzon",
+     "pais": "ARG",
+     "marca": "[2]",
+     "atp": 633,
+     "wtn": 7.82,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671595,
+   "torneo": "M15 Vienna",
    "pais": "Austria",
    "categoria": "M15",
    "superficie": "Clay",
    "bolsa": "$15,000",
-   "cuando": "2026-08-23T08:00:00.000Z",
+   "cuando": "2026-08-26T08:00:00.000Z",
    "local": "10:00",
    "horarioTxt": "Starting at 10:00",
-   "cancha": "C1 Pro-Ject ",
+   "cancha": "media4more CC",
    "turno": 1,
-   "ronda": "F",
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Thilo Behrmann",
+     "nombre": "Giovanni Oradini",
+     "pais": "ITA",
+     "marca": "[4]",
+     "atp": 639,
+     "wtn": 6.34,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Patrick Jozwicki",
+     "pais": "AUT",
+     "marca": "Q",
+     "atp": 2267,
+     "wtn": 12.15,
+     "llega": "Q1✓ 6-0 6-0 vA · Q2✓ 6-2 6-0 · Q3✓ 6-3 6-3",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671605,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "any.act Court 9",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Daniel Bien",
+     "pais": "CZE",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 15.54,
+     "llega": "Q1✓ 6-2 6-0 vWC · Q2✓ 7-6(3) 6-3 v[3] · Q3✓ 6-2 6-2",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Juan Ignacio Gallego",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 1466,
+     "wtn": 11.66,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671604,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "better.tennis Ct 10",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Tim Vaisman",
+     "pais": "ISR",
+     "marca": "Q",
+     "atp": 2203,
+     "wtn": 13.21,
+     "llega": "Q1✓ 6-1 6-1 · Q2✓ 6-4 6-0",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Patrik Homola",
+     "pais": "CZE",
+     "marca": "Q",
+     "atp": 1872,
+     "wtn": 10.71,
+     "llega": "Q1✓ 6-1 6-0 · Q2✓ 6-1 6-4 vWC · Q3✓ 6-4 7-6(4) v[10]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671598,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "PKE Court 11",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Matyas Kozlovsky",
+     "pais": "CZE",
+     "marca": "Q",
+     "atp": 2203,
+     "wtn": 13,
+     "llega": "Q1✓ 6-4 6-1 · Q2✓ 6-3 7-5 · Q3✓ 4-6 7-6(2) 10-5",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Pavlos Tsitsipas",
+     "pais": "GRE",
+     "marca": "[8]",
+     "atp": 1037,
+     "wtn": 8.83,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671601,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "media4more CC",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alen Mujakic",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1220,
+     "wtn": 9.13,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Manuel Lazic",
+     "pais": "AUT",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 13.15,
+     "llega": "Q1✓ 6-1 6-4 vWC · Q2✓ 7-6(2) 6-4 v[14] · Q3✓ 6-3 6-0",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671606,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "any.act Court 9",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Bastian Berenz",
      "pais": "AUT",
      "marca": "",
-     "atp": null,
-     "wtn": 13.28,
-     "llega": "R1✓ 6-1 6-0 v[5] · R2✓ 6-1 6-2 · QF✓ 6-0 7-6(5) vQ",
+     "atp": 1746,
+     "wtn": 14.13,
+     "llega": "",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Nikita Mashtakov",
-     "pais": "UKR",
-     "marca": "[3]",
-     "atp": 652,
-     "wtn": 4.83,
-     "llega": "R1✓ 6-4 5-7 7-6(6) · R2✓ 7-6(5) 6-3 vLL · QF✓ 7-6(5) 4-6 6-0 · SF✓ 1-6 6-4 7-5 v[2]",
+     "nombre": "Corentin Denolly",
+     "pais": "FRA",
+     "marca": "[2]",
+     "atp": 438,
+     "wtn": 3.78,
+     "llega": "",
      "gana": null,
      "set1": null
     }
@@ -306,75 +6348,37 @@
    "betano": null
   },
   {
-   "id": 1183663250,
-   "torneo": "M25 Idanha-a-Nova",
-   "pais": "Portugal",
-   "categoria": "M25",
-   "superficie": "Hard",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-23T09:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Starting at 10:00",
-   "cancha": "Court 1",
-   "turno": 1,
-   "ronda": "F",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Pavel Lagutin",
-     "pais": "RUS",
-     "marca": "[3]",
-     "atp": 718,
-     "wtn": 6.41,
-     "llega": "R1✓ 7-6(0) 7-6(3) · R2✓ 6-4 6-2 vWC · QF✓ 4-6 6-2 6-2 · SF✓ 6-3 6-2",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Goncalo Marques",
-     "pais": "POR",
-     "marca": "",
-     "atp": 1025,
-     "wtn": 7.51,
-     "llega": "R1✓ 7-6(7) 7-5 · R2✓ 6-3 6-4 v[4] · QF✓ 6-3 3-6 7-5 v[8] · SF✓ 4-6 6-3 7-5",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183664156,
-   "torneo": "M25 Lesa",
-   "pais": "Italy",
-   "categoria": "M25",
+   "id": 1183671597,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
    "superficie": "Clay",
-   "bolsa": "$30,000",
-   "cuando": "2026-08-22T13:30:00.000Z",
-   "local": "15:30",
-   "horarioTxt": "Not Before 15:30",
-   "cancha": "Court 1",
-   "turno": 4,
-   "ronda": "Quarter-final",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "PKE Court 11",
+   "turno": 2,
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Daniele Rapagnetta",
+     "nombre": "Jonas GUNDACKER",
+     "pais": "AUT",
+     "marca": "SE",
+     "atp": 1884,
+     "wtn": 10.66,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tobia Costanzo Baragiola Mordini",
      "pais": "ITA",
      "marca": "",
-     "atp": 734,
-     "wtn": 5.58,
-     "llega": "R1✓ 6-4 3-6 7-5 v[8] · R2✓ 6-4 7-5",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Laurent Lokoli",
-     "pais": "FRA",
-     "marca": "[3]",
-     "atp": 384,
-     "wtn": 3.41,
-     "llega": "R1✓ 6-1 6-4 vQ · R2✓ 6-3 6-3 vQ",
+     "atp": 1170,
+     "wtn": 10.33,
+     "llega": "",
      "gana": null,
      "set1": null
     }
@@ -382,37 +6386,265 @@
    "betano": null
   },
   {
-   "id": 1183664154,
-   "torneo": "M25 Lesa",
-   "pais": "Italy",
+   "id": 1183671592,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "media4more CC",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Marcel Jelinek",
+     "pais": "AUT",
+     "marca": "WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Leyton Rivera",
+     "pais": "NOR",
+     "marca": "",
+     "atp": 1056,
+     "wtn": 9.19,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671596,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "any.act Court 9",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alexander Wagner",
+     "pais": "AUT",
+     "marca": "",
+     "atp": 1186,
+     "wtn": 9.22,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Adam Soukup",
+     "pais": "CZE",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 12.67,
+     "llega": "Q1✓ 6-1 6-2 · Q2✓ 6-3 6-2 · Q3✓ 7-5 4-6 10-8",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671599,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "PKE Court 11",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Aleksandr Braynin",
+     "pais": "UKR",
+     "marca": "[5]",
+     "atp": 770,
+     "wtn": 8.77,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Paul Schmid",
+     "pais": "AUT",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 18.71,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671593,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "media4more CC",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Matthias Ujvary",
+     "pais": "AUT",
+     "marca": "",
+     "atp": 1319,
+     "wtn": 9.83,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Noel Larwig",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1260,
+     "wtn": 9.24,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671594,
+   "torneo": "M15 Vienna",
+   "pais": "Austria",
+   "categoria": "M15",
+   "superficie": "Clay",
+   "bolsa": "$15,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "PKE Court 11",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Janos Fekete",
+     "pais": "SVK",
+     "marca": "Q",
+     "atp": null,
+     "wtn": null,
+     "llega": "Q1✓ 6-1 6-1 vWC · Q2✓ 6-4 6-1 v[9] · Q3✓ 7-6(0) 4-2 v[2]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Lorenzo Rottoli",
+     "pais": "ITA",
+     "marca": "[7]",
+     "atp": 886,
+     "wtn": 6.68,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671098,
+   "torneo": "M25 Lausanne",
+   "pais": "Switzerland",
    "categoria": "M25",
    "superficie": "Clay",
    "bolsa": "$30,000",
-   "cuando": "2026-08-22T15:30:00.000Z",
-   "local": "17:30",
-   "horarioTxt": "Not Before 17:30",
-   "cancha": "Court 2",
-   "turno": 5,
-   "ronda": "Quarter-final",
+   "cuando": "2026-08-26T09:00:00.000Z",
+   "local": "11:00",
+   "horarioTxt": "Starting at 11:00",
+   "cancha": "Centre Court",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mateja Stanisavljevic",
+     "pais": "SUI",
+     "marca": "",
+     "atp": null,
+     "wtn": 11.72,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Nino Ehrenschneider",
+     "pais": "GER",
+     "marca": "[7]",
+     "atp": 599,
+     "wtn": 7.23,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671109,
+   "torneo": "M25 Lausanne",
+   "pais": "Switzerland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T09:00:00.000Z",
+   "local": "11:00",
+   "horarioTxt": "Starting at 11:00",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
      "nombre": "Pierluigi Basile",
      "pais": "ITA",
      "marca": "",
-     "atp": 623,
+     "atp": 627,
      "wtn": 5.01,
-     "llega": "R1✓ 6-1 6-3 vWC · R2✓ 6-2 7-5 vWC",
+     "llega": "",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Nico Hipfl",
-     "pais": "AUT",
-     "marca": "",
-     "atp": 918,
-     "wtn": 6.99,
-     "llega": "R1✓ 7-6(4) 6-2 vQ · R2✓ 6-3 7-6(3) vWC",
+     "nombre": "Filippo Valdetara",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": null,
+     "llega": "Q1✓ 6-0 6-1 · Q2✓ 6-4 2-0 vWC",
      "gana": null,
      "set1": null
     }
@@ -420,37 +6652,37 @@
    "betano": null
   },
   {
-   "id": 1183664155,
-   "torneo": "M25 Lesa",
-   "pais": "Italy",
+   "id": 1183671110,
+   "torneo": "M25 Lausanne",
+   "pais": "Switzerland",
    "categoria": "M25",
    "superficie": "Clay",
    "bolsa": "$30,000",
-   "cuando": "2026-08-22T17:15:00.000Z",
-   "local": "19:15",
-   "horarioTxt": "Not Before 19:15",
-   "cancha": "Court 1",
-   "turno": 5,
-   "ronda": "Quarter-final",
+   "cuando": "2026-08-26T09:00:00.000Z",
+   "local": "11:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Centre Court",
+   "turno": 2,
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Giovanni Oradini",
-     "pais": "ITA",
-     "marca": "",
-     "atp": 636,
-     "wtn": 6.34,
-     "llega": "R1✓ 6-3 6-1 vQ · R2✓ 6-2 6-0 v[4]",
+     "nombre": "Florent Lagarrigue",
+     "pais": "FRA",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 9.46,
+     "llega": "Q1✓ 6-1 6-1 · Q2✓ 6-3 6-3",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Alexander Weis",
-     "pais": "ITA",
-     "marca": "[7]",
-     "atp": 531,
-     "wtn": 4.69,
-     "llega": "R1✓ 5-7 6-2 6-3",
+     "nombre": "Johan Nikles",
+     "pais": "SUI",
+     "marca": "[2]",
+     "atp": 412,
+     "wtn": 5.35,
+     "llega": "",
      "gana": null,
      "set1": null
     }
@@ -458,37 +6690,607 @@
    "betano": null
   },
   {
-   "id": 1183662681,
-   "torneo": "M25 Slovenj Gradec",
+   "id": 1183671108,
+   "torneo": "M25 Lausanne",
+   "pais": "Switzerland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T09:00:00.000Z",
+   "local": "11:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Adrien Burdet",
+     "pais": "SUI",
+     "marca": "",
+     "atp": 1462,
+     "wtn": 9.25,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Mateo Fluri",
+     "pais": "SUI",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 17.02,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671107,
+   "torneo": "M25 Lausanne",
+   "pais": "Switzerland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 3",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alexander Weis",
+     "pais": "ITA",
+     "marca": "[6]",
+     "atp": 594,
+     "wtn": 4.69,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Oscar Blardone",
+     "pais": "SUI",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 14.19,
+     "llega": "Q1✓ 7-5 3-6 10-6 v[3] · Q2✓ 7-5 6-3",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671104,
+   "torneo": "M25 Lausanne",
+   "pais": "Switzerland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T09:00:00.000Z",
+   "local": "11:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Felix Seres",
+     "pais": "SUI",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 12.45,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Michalis Sakellaridis",
+     "pais": "GRE",
+     "marca": "",
+     "atp": 1646,
+     "wtn": 13.75,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671103,
+   "torneo": "M25 Lausanne",
+   "pais": "Switzerland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T12:00:00.000Z",
+   "local": "14:00",
+   "horarioTxt": "Not Before 14:00",
+   "cancha": "Centre Court",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Oleksandr Ovcharenko",
+     "pais": "UKR",
+     "marca": "[8]",
+     "atp": 613,
+     "wtn": 6.13,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Arthur Laborde",
+     "pais": "SUI",
+     "marca": "",
+     "atp": 2203,
+     "wtn": 10.23,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671097,
+   "torneo": "M25 Lausanne",
+   "pais": "Switzerland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T12:00:00.000Z",
+   "local": "14:00",
+   "horarioTxt": "Not Before 14:00",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Adrien Berrut",
+     "pais": "SUI",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 9.32,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Jeffrey Von Der Schulenburg",
+     "pais": "SUI",
+     "marca": "",
+     "atp": 927,
+     "wtn": 7.33,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670317,
+   "torneo": "M25 Maribor",
    "pais": "Slovenia",
    "categoria": "M25",
    "superficie": "Clay",
    "bolsa": "$30,000",
-   "cuando": "2026-08-23T08:00:00.000Z",
+   "cuando": "2026-08-26T08:00:00.000Z",
    "local": "10:00",
    "horarioTxt": "Starting at 10:00",
-   "cancha": "Center Court",
+   "cancha": "Court 2",
    "turno": 1,
-   "ronda": "F",
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Vaal Urankar",
+     "pais": "SLO",
+     "marca": "Q",
+     "atp": 2153,
+     "wtn": 12.97,
+     "llega": "Q2✓ 6-2 6-0 · Q3✓ 6-3 6-1 v[7]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Nicolo Toffanin",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1191,
+     "wtn": 10.54,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670319,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mattias Pisanu",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": 2153,
+     "wtn": 14.09,
+     "llega": "Q2✓ 6-4 7-5 · Q3✓ 6-2 7-6(6)",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Andrea De Marchi",
+     "pais": "ITA",
+     "marca": "[8]",
+     "atp": 794,
+     "wtn": 7.91,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670324,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 5",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Filip Jeff Planinsek",
+     "pais": "SLO",
+     "marca": "[6]",
+     "atp": 510,
+     "wtn": 4.76,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Matic Hribar",
+     "pais": "SLO",
+     "marca": "WC",
+     "atp": 1841,
+     "wtn": 13.42,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670329,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 6",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Sebastian Dominko",
+     "pais": "SLO",
+     "marca": "",
+     "atp": 1128,
+     "wtn": 4.88,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Matic Dimic",
+     "pais": "SLO",
+     "marca": "Q",
+     "atp": 1904,
+     "wtn": 10.58,
+     "llega": "Q2✓ 6-3 6-4 · Q3✓ 6-1 7-6(9) v[12]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670325,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T09:30:00.000Z",
+   "local": "11:30",
+   "horarioTxt": "Not Before 11:30",
+   "cancha": "Court 2",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lun Obrul",
+     "pais": "SLO",
+     "marca": "LL",
+     "atp": 1995,
+     "wtn": 13.83,
+     "llega": "Q2✓ 6-3 7-5 · Q3✗ 3-6 1-6 v[9]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Maximilian Figl",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 1176,
+     "wtn": 9.97,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670321,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T09:30:00.000Z",
+   "local": "11:30",
+   "horarioTxt": "Not Before 11:30",
+   "cancha": "Court 4",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Andrea Fiorentini",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 842,
+     "wtn": 7.57,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Miha Vetrih",
+     "pais": "SLO",
+     "marca": "Q",
+     "atp": 1403,
+     "wtn": 10.59,
+     "llega": "Q2✓ 6-2 6-4 · Q3✓ 6-2 6-3",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670331,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T09:30:00.000Z",
+   "local": "11:30",
+   "horarioTxt": "Not Before 11:30",
+   "cancha": "Court 5",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Aadarsh Tripathi",
+     "pais": "USA",
+     "marca": "Q",
+     "atp": 1995,
+     "wtn": 9.16,
+     "llega": "Q2✓ 6-3 6-0 · Q3✓ 7-6(5) 6-3 v[14]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dimitar Kuzmanov",
+     "pais": "BUL",
+     "marca": "[2]",
+     "atp": 378,
+     "wtn": 3.36,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670318,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T09:30:00.000Z",
+   "local": "11:30",
+   "horarioTxt": "Not Before 11:30",
+   "cancha": "Court 6",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Aljaz Jeran",
+     "pais": "SLO",
+     "marca": "",
+     "atp": 1003,
+     "wtn": 8.43,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Maj Premzl",
+     "pais": "SLO",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 13.25,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670328,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 2",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Stefan Popovic",
+     "pais": "SRB",
+     "marca": "[7]",
+     "atp": 604,
+     "wtn": 7.9,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Piotr Galus",
+     "pais": "POL",
+     "marca": "Q",
+     "atp": 1656,
+     "wtn": 10.09,
+     "llega": "Q2✓ 6-2 6-3 · Q3✓ 7-5 7-5",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670330,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Edoardo Cherie Ligniere",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": 1136,
+     "wtn": 9.37,
+     "llega": "Q2✓ 6-1 6(6)-7 10-5 · Q3✓ 6-1 6-1 v[15]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Ivan Biletic",
+     "pais": "BIH",
+     "marca": "",
+     "atp": 1424,
+     "wtn": 9.49,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670320,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
      "nombre": "Sebastian Sorger",
      "pais": "AUT",
      "marca": "[3]",
-     "atp": 476,
-     "wtn": 4.96,
-     "llega": "R1✓ 6-0 6-0 vQ · R2✓ 6-0 6-1 vQ · QF✓ 6-2 6-2 · SF✓ 6-4 6-1",
+     "atp": 479,
+     "wtn": 5.15,
+     "llega": "",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Jonas GUNDACKER",
-     "pais": "AUT",
-     "marca": "Q",
-     "atp": 1876,
-     "wtn": 10.93,
-     "llega": "Q2✓ 6-1 6-1 · Q3✓ 6-1 6-3 v[9] · R1✓ 7-6(2) 6-4 vQ · R2✓ 2-6 6-2 6-3 v[2] · QF✓ 6-1 6(7)-7 6-3 vQ · SF✓ 2-6 6-1 6-2 v[6]",
+     "nombre": "Jan Kupcic",
+     "pais": "SLO",
+     "marca": "",
+     "atp": 1164,
+     "wtn": 8.42,
+     "llega": "",
      "gana": null,
      "set1": null
     }
@@ -496,37 +7298,1443 @@
    "betano": null
   },
   {
-   "id": 1183661180,
+   "id": 1183670322,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 6",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Mak Mikovic",
+     "pais": "SLO",
+     "marca": "",
+     "atp": 1417,
+     "wtn": 10.87,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Nik Mikovic",
+     "pais": "SLO",
+     "marca": "",
+     "atp": 1470,
+     "wtn": 10.04,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183670326,
+   "torneo": "M25 Maribor",
+   "pais": "Slovenia",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T12:30:00.000Z",
+   "local": "14:30",
+   "horarioTxt": "Not Before 14:30",
+   "cancha": "Court 2",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Marko Retelj",
+     "pais": "SLO",
+     "marca": "WC",
+     "atp": 1838,
+     "wtn": 11.35,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Karlo Kajin",
+     "pais": "CRO",
+     "marca": "Q",
+     "atp": 1546,
+     "wtn": 9.3,
+     "llega": "Q2✓ 6-3 4-6 10-7 · Q3✓ 6-2 6-2 v[11]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671475,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Centre Court",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Isis Louise Van den Broek",
+     "pais": "NED",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Loes Ebeling Koning",
+     "pais": "NED",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671389,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 6",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Richard Antoni",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": 1362,
+     "wtn": 11.81,
+     "llega": "Q2✓ 6-2 6-2 · Q3✓ 6-1 6-4",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Daniel Verbeek",
+     "pais": "NED",
+     "marca": "Q",
+     "atp": 1585,
+     "wtn": 9.06,
+     "llega": "Q2✓ 6-3 6-0 · Q3✓ 6-0 6-2 v[13]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671381,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 5",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Sebastian Heinrich",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 14.27,
+     "llega": "Q1✓ 6-2 7-6(2) · Q2✓ 7-6(7) 7-6(3) · Q3✓ 7-6(5) 6-4 v[5]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Mac Visser",
+     "pais": "NED",
+     "marca": "",
+     "atp": 1352,
+     "wtn": 9.87,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671473,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 3",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Sina Herrmann",
+     "pais": "GER",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Amandine Monnot",
+     "pais": "FRA",
+     "marca": "[6]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671479,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 2",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Arina Gabriela Vasilescu",
+     "pais": "ROU",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tena Lukas",
+     "pais": "CRO",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671476,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 1",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Margaux Maquet",
+     "pais": "BEL",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Daria Yesypchuk",
+     "pais": "UKR",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671380,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Centre Court",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Manvydas Balciunas",
+     "pais": "NED",
+     "marca": "WC",
+     "atp": 1525,
+     "wtn": 8.96,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sander Jong",
+     "pais": "NED",
+     "marca": "",
+     "atp": 692,
+     "wtn": 5.03,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671379,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 6",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lucio Ratti",
+     "pais": "ARG",
+     "marca": "[1]",
+     "atp": 380,
+     "wtn": 4.72,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Maximilian Todorov",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": 1995,
+     "wtn": 11.72,
+     "llega": "Q2✓ 6-2 6-0 · Q3✓ 6-4 6-3 v[16]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671390,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 5",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Iiro Vasa",
+     "pais": "FIN",
+     "marca": "",
+     "atp": 988,
+     "wtn": 7.67,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Eero Vasa",
+     "pais": "FIN",
+     "marca": "[3]",
+     "atp": 480,
+     "wtn": 5.17,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671388,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Wout Vermeer",
+     "pais": "NED",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 13.58,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Steffan Van Weldam",
+     "pais": "NED",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 11.56,
+     "llega": "Q1✓ 6-1 7-6(3) v[14] · Q2✓ 6-2 6-3 vWC · Q3✓ 7-5 7-6(1)",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671382,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 2",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Matteo Covato",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 751,
+     "wtn": 11.59,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Luca Wiedenmann",
+     "pais": "GER",
+     "marca": "[6]",
+     "atp": 539,
+     "wtn": 6.08,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671477,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Madison Sieg",
+     "pais": "USA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alicia Herrero Linana",
+     "pais": "ESP",
+     "marca": "[4]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671472,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Centre Court",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Josy Daems",
+     "pais": "GER",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Diletta Cherubini",
+     "pais": "ITA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671387,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 6",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Lorenzo Angelini",
+     "pais": "ITA",
+     "marca": "[7]",
+     "atp": 564,
+     "wtn": 5.35,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Stan Put",
+     "pais": "NED",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 15.82,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671468,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 5",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Carlota Martinez Cirez",
+     "pais": "ESP",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Beatrise Zeltina",
+     "pais": "LAT",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671478,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Sahaja Yamalapalli",
+     "pais": "IND",
+     "marca": "[8]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Joy De Zeeuw",
+     "pais": "NED",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671385,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 2",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Stian Klaassen",
+     "pais": "NED",
+     "marca": "WC",
+     "atp": 1380,
+     "wtn": 7.21,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Gray Voelzke",
+     "pais": "USA",
+     "marca": "",
+     "atp": 1308,
+     "wtn": 12.83,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671481,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T10:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 1",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alena Kovackova",
+     "pais": "CZE",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Eva Bennemann",
+     "pais": "GER",
+     "marca": "[2]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671383,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Centre Court",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Louis Wessels",
+     "pais": "GER",
+     "marca": "[4]",
+     "atp": 523,
+     "wtn": 5.84,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Karim Al-Amin",
+     "pais": "GER",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 10.34,
+     "llega": "Q1✓ 6-1 6-3 · Q3✓ 7-6(3) 6(5)-7 10-8 v[11]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671469,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 6",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Antonia Stoyanov",
+     "pais": "NED",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Britt Du Pree",
+     "pais": "NED",
+     "marca": "[5]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671386,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 5",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jim Hendrikx",
+     "pais": "NED",
+     "marca": "Q",
+     "atp": 1893,
+     "wtn": 11.66,
+     "llega": "Q1✓ 6-2 6-3 · Q2✓ 6-2 6-0 · Q3✓ 6-3 3-6 10-2",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Emilien Demanet",
+     "pais": "BEL",
+     "marca": "[8]",
+     "atp": 658,
+     "wtn": 6.32,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671466,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alice Rame",
+     "pais": "FRA",
+     "marca": "[1]",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Katerina Tsygourova",
+     "pais": "SUI",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671467,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 2",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Francesca Pace",
+     "pais": "ITA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Enola Chiesa",
+     "pais": "ITA",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671384,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Zian Vanderstappen",
+     "pais": "BEL",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 13.54,
+     "llega": "Q1✓ 6-2 6-3 · Q2✓ 6-2 7-5 v[10] · Q3✓ 7-6(4) 6-3",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Elgin Khoeblal",
+     "pais": "NED",
+     "marca": "",
+     "atp": 989,
+     "wtn": 7.16,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671480,
+   "torneo": "M25 Oldenzaal",
+   "pais": "Netherlands",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T16:00:00.000Z",
+   "local": "18:00",
+   "horarioTxt": "Not Before 18:00",
+   "cancha": "Centre Court",
+   "turno": 5,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Julia Koller",
+     "pais": "NED",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Nastasja Schunk",
+     "pais": "GER",
+     "marca": "",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671051,
+   "torneo": "M25 Oviedo",
+   "pais": "Spain",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 1",
+   "turno": 1,
+   "ronda": "R2",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ryan Nijboer",
+     "pais": "NED",
+     "marca": "[6]",
+     "atp": 504,
+     "wtn": 4.05,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Carles Hernandez",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 786,
+     "wtn": 7.34,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671054,
+   "torneo": "M25 Oviedo",
+   "pais": "Spain",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 3",
+   "turno": 1,
+   "ronda": "R2",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Pedro Rodenas",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 675,
+     "wtn": 6.68,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Alejandro Garcia Carbajal",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 1436,
+     "wtn": 7.62,
+     "llega": "Q1✓ 6-1 6-0 · Q2✓ 6-2 6-2 v[14]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671052,
+   "torneo": "M25 Oviedo",
+   "pais": "Spain",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R2",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Carles Cordoba",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 841,
+     "wtn": 7.22,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sergi Perez Contri",
+     "pais": "ESP",
+     "marca": "[3]",
+     "atp": 461,
+     "wtn": 5.43,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671053,
+   "torneo": "M25 Oviedo",
+   "pais": "Spain",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 3,
+   "ronda": "R2",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Pedro Vives Marcos",
+     "pais": "ESP",
+     "marca": "[5]",
+     "atp": 468,
+     "wtn": 4.51,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Bernardo Munk Mesa",
+     "pais": "ESP",
+     "marca": "WC",
+     "atp": 1340,
+     "wtn": 7.42,
+     "llega": "R1✓ 6-4 6-4",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671048,
+   "torneo": "M25 Oviedo",
+   "pais": "Spain",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R2",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Yaroslav Demin",
+     "pais": "RUS",
+     "marca": "",
+     "atp": 668,
+     "wtn": 6.21,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tristan McCormick",
+     "pais": "USA",
+     "marca": "",
+     "atp": 646,
+     "wtn": 6.98,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671050,
+   "torneo": "M25 Oviedo",
+   "pais": "Spain",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T07:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R2",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jose Dominguez Alonso",
+     "pais": "ESP",
+     "marca": "",
+     "atp": 1904,
+     "wtn": 12.67,
+     "llega": "Q1✓ 7-6(3) 6-2 · Q2✓ 6-3 6(7)-7 10-7 v[6]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Yanaki Milev",
+     "pais": "BUL",
+     "marca": "",
+     "atp": 750,
+     "wtn": 6.91,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671232,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-25T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 1",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Fryderyk Lechno-Wasiutynski",
+     "pais": "POL",
+     "marca": "[8]",
+     "atp": 636,
+     "wtn": 6.57,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Hugo Pawel Rytelewski",
+     "pais": "POL",
+     "marca": "WC",
+     "atp": null,
+     "wtn": null,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671223,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-25T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 2",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jan Sadzik",
+     "pais": "POL",
+     "marca": "WC",
+     "atp": 1995,
+     "wtn": 15.78,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Karol Filar",
+     "pais": "POL",
+     "marca": "[7]",
+     "atp": 596,
+     "wtn": 6.96,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671230,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-25T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 3",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alan Wazny",
+     "pais": "POL",
+     "marca": "",
+     "atp": 859,
+     "wtn": 6.77,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Filip Pieczonka",
+     "pais": "POL",
+     "marca": "",
+     "atp": 1061,
+     "wtn": 4.62,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671228,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-25T11:00:00.000Z",
+   "local": "13:00",
+   "horarioTxt": "Not Before 13:00",
+   "cancha": "Court 4",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Gerard Campana Lee",
+     "pais": "KOR",
+     "marca": "[5]",
+     "atp": 585,
+     "wtn": 5.26,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Jiri Cizek",
+     "pais": "CZE",
+     "marca": "",
+     "atp": 1358,
+     "wtn": 10.25,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669565,
    "torneo": "M25 Taipei",
    "pais": "Chinese Taipei",
    "categoria": "M25",
    "superficie": "Hard",
    "bolsa": "$30,000",
-   "cuando": "2026-08-23T01:30:00.000Z",
+   "cuando": "2026-08-26T01:30:00.000Z",
    "local": "09:30",
-   "horarioTxt": "Starting at 9:30",
+   "horarioTxt": "Not Before 9:30",
    "cancha": "Show Court",
-   "turno": 1,
-   "ronda": "F",
+   "turno": 2,
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Yu Hsiou Hsu",
-     "pais": "TPE",
-     "marca": "[1]",
-     "atp": 222,
-     "wtn": 3.25,
-     "llega": "R1✓ 7-6(5) 6-3 vWC · R2✓ 6-2 7-6(5) vWC · QF✓ 6-3 6-2 vQ · SF✓ 6-1 6-1 v[5]",
+     "nombre": "Keisuke Saitoh",
+     "pais": "JPN",
+     "marca": "",
+     "atp": 681,
+     "wtn": 6.15,
+     "llega": "",
      "gana": null,
      "set1": null
     },
     {
      "nombre": "Matthew Dellavedova",
      "pais": "AUS",
-     "marca": "[2]",
-     "atp": 309,
-     "wtn": 4.32,
-     "llega": "R1✓ 7-6(1) 6-0 vWC · R2✓ 6-1 6-2 vQ · QF✓ 6-2 6-4 · SF✓ 7-5 6-2",
+     "marca": "[3]",
+     "atp": 307,
+     "wtn": 4.65,
+     "llega": "",
      "gana": null,
      "set1": null
     }
@@ -534,37 +8742,531 @@
    "betano": null
   },
   {
-   "id": 1183664411,
-   "torneo": "M25 Ueberlingen",
-   "pais": "Germany",
+   "id": 1183669558,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
    "categoria": "M25",
-   "superficie": "Clay",
+   "superficie": "Hard",
    "bolsa": "$30,000",
-   "cuando": "2026-08-22T15:00:00.000Z",
-   "local": "17:00",
-   "horarioTxt": "Not Before 17:00",
-   "cancha": "VOLKSBANK C-Court",
-   "turno": 5,
-   "ronda": "Semi-final",
+   "cuando": "2026-08-26T01:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 1",
+   "turno": 1,
+   "ronda": "R1",
    "evento": "M",
    "lados": [
     {
-     "nombre": "Arthur Nagel",
-     "pais": "FRA",
-     "marca": "[3]",
-     "atp": 399,
-     "wtn": 5.71,
-     "llega": "R1✓ 6-3 6-2 vQ · R2✓ 6-1 6(6)-7 6-2 · QF✓ 6-4 6-3 vQ",
+     "nombre": "Jake Delaney",
+     "pais": "AUS",
+     "marca": "[4]",
+     "atp": 354,
+     "wtn": 5.33,
+     "llega": "",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Daniel Masur",
-     "pais": "GER",
+     "nombre": "Hyeon Chung",
+     "pais": "KOR",
+     "marca": "",
+     "atp": 575,
+     "wtn": 3.57,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669566,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T01:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 2",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Kasidit Samrej",
+     "pais": "THA",
+     "marca": "[6]",
+     "atp": 406,
+     "wtn": 4.15,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Yuki Mochizuki",
+     "pais": "JPN",
+     "marca": "Q",
+     "atp": 732,
+     "wtn": 7.34,
+     "llega": "Q1✓ 6-0 6-0 vWC · Q2✓ 6-2 6-1",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669564,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T01:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 6",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Tai Leonard Sach",
+     "pais": "AUS",
+     "marca": "",
+     "atp": 512,
+     "wtn": 6.54,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Sasikumar Mukund",
+     "pais": "IND",
+     "marca": "",
+     "atp": 578,
+     "wtn": 6.47,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669559,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T01:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Starting at 9:30",
+   "cancha": "Court 7",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ethan Cook",
+     "pais": "AUS",
+     "marca": "Q",
+     "atp": 1248,
+     "wtn": 8.45,
+     "llega": "Q1✓ 6-1 6-3 · Q2✓ 6-2 6-1",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Manish Sureshkumar",
+     "pais": "IND",
+     "marca": "",
+     "atp": 727,
+     "wtn": 6.91,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669554,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T01:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Yanki Erel",
+     "pais": "TUR",
+     "marca": "[1]",
+     "atp": 280,
+     "wtn": 3.66,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Kokoro Isomura",
+     "pais": "JPN",
+     "marca": "",
+     "atp": 566,
+     "wtn": 6.27,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669569,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T01:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 2",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Sanhui Shin",
+     "pais": "KOR",
+     "marca": "",
+     "atp": 491,
+     "wtn": 5.36,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Akira Santillan",
+     "pais": "JPN",
      "marca": "[2]",
-     "atp": 377,
-     "wtn": 3.7,
-     "llega": "R1✓ 6-4 6-3 · R2✓ 7-6(8) 6-3 vWC · QF✓ 7-6(7) 6-3 vWC",
+     "atp": 291,
+     "wtn": 3.66,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669557,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T01:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 6",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Moerani Bouzige",
+     "pais": "AUS",
+     "marca": "",
+     "atp": 473,
+     "wtn": 7.05,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Luca Castelnuovo",
+     "pais": "SUI",
+     "marca": "[8]",
+     "atp": 443,
+     "wtn": 5.07,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669556,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T01:30:00.000Z",
+   "local": "09:30",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 7",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Hiromasa Koyama",
+     "pais": "JPN",
+     "marca": "Q",
+     "atp": 1169,
+     "wtn": 8.45,
+     "llega": "Q1✓ 7-5 6-4 · Q2✓ 4-6 7-6(3) 10-5 v[2]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Shinji Hazawa",
+     "pais": "JPN",
+     "marca": "",
+     "atp": 720,
+     "wtn": 7.54,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669555,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T01:00:00.000Z",
+   "local": "09:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Show Court",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Hikaru Shiraishi",
+     "pais": "JPN",
+     "marca": "",
+     "atp": 506,
+     "wtn": 6.71,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Kuan-Yi Lee",
+     "pais": "TPE",
+     "marca": "",
+     "atp": 588,
+     "wtn": 5.58,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669568,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T04:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Show Court",
+   "turno": 4,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Yan Cheng CHEN",
+     "pais": "TPE",
+     "marca": "WC",
+     "atp": 1048,
+     "wtn": 9.35,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Yen-Chun Wang",
+     "pais": "TPE",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 18.06,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669562,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T04:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 1",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Arthur Weber",
+     "pais": "FRA",
+     "marca": "[5]",
+     "atp": 398,
+     "wtn": 5.28,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tsung-Hao Huang",
+     "pais": "TPE",
+     "marca": "",
+     "atp": 623,
+     "wtn": 6.74,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669560,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T04:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 2",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Ryuki Matsuda",
+     "pais": "JPN",
+     "marca": "Q",
+     "atp": 806,
+     "wtn": 7.63,
+     "llega": "Q1✓ 6-2 6-3 vWC · Q2✓ 6-3 7-6(4) v[14]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Kuan-Shou Chen",
+     "pais": "TPE",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 14.29,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669561,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T04:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 6",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Kosuke Ogura",
+     "pais": "JPN",
+     "marca": "Q",
+     "atp": 861,
+     "wtn": 7.63,
+     "llega": "Q1✓ 6-1 6-3 vWC · Q2✓ 3-6 6-3 10-7 v[13]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Omar Jasika",
+     "pais": "AUS",
+     "marca": "[7]",
+     "atp": 492,
+     "wtn": 4.98,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183669563,
+   "torneo": "M25 Taipei",
+   "pais": "Chinese Taipei",
+   "categoria": "M25",
+   "superficie": "Hard",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T04:30:00.000Z",
+   "local": "12:30",
+   "horarioTxt": "Not Before 12:30",
+   "cancha": "Court 7",
+   "turno": 3,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Kristjan Tamm",
+     "pais": "EST",
+     "marca": "Q",
+     "atp": 1165,
+     "wtn": 9.4,
+     "llega": "Q1✓ 6-3 6-1 vPR · Q2✓ 6-2 7-6(5) v[7]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Ren Nakamura",
+     "pais": "JPN",
+     "marca": "Q",
+     "atp": 1684,
+     "wtn": 11.46,
+     "llega": "Q1✓ 6-2 6-1",
      "gana": null,
      "set1": null
     }

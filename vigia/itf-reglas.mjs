@@ -70,7 +70,7 @@ export function huboRetiro(t) {
    el corte ("baybar" vale por "baybars"), pero tienen que calzar TODOS
    los del nombre mas corto. Y entre varios candidatos gana el que mas
    comparte, no el primero de la lista. */
-const NORM = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+export const NORM = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
   .toLowerCase().replace(/[^a-z ]/g, ' ').replace(/\s+/g, ' ').trim();
 /* se descartan solo las iniciales sueltas: un apellido de dos letras
    ("Wu", "Ho") es un apellido, y tirarlo hacia que "Kai-An Wu" pasara por
@@ -280,17 +280,37 @@ export function analizar(p) {
      falta ningun dato. Se quito el veto: la insignia no dice nada sobre
      la calidad del numero, solo algo sobre el jugador, y eso el WTN ya lo
      dice mejor. */
-  /* Medido el 2026-08-23 sobre 778 partidos, y me hizo corregir el veto
-     anterior: contra JUNIORES el mejor WTN acierta 31.3% (n=16) contra
-     79.9% del resto — se da vuelta, porque el rating de un junior que
-     mejora rapido va atrasado. Pero "sin ranking ATP" resulto ser lo
-     CONTRARIO de lo que asumi por el caso Behrmann: con el rival sin ATP
-     el WTN acierta 81.1% (n=334) contra 74.7% con ambos rankeados, y con
-     Δ>=4 sube a 89.5%. Tenia las dos condiciones juntas y la que mandaba
-     era la de junior. Vetar por falta de ATP mataba justo las qualis, que
-     es donde el metodo funciona. */
-  if (otro.jr || /JR/i.test(otro.marca || ''))
-    vetos.push(`${otro.nombre} es junior${otro.jrRank != null ? ` (${otro.jrRank} del mundo junior)` : ''}: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta${gamesCedidos(otro.llega) != null ? `, y llega cediendo el ${Math.round(gamesCedidos(otro.llega) * 100)}% de los games` : ''}`);
+  /* JUNIORES — el veto plano fue un error, corregido el 2026-08-25.
+     La primera medicion (2026-08-23) dio "contra juniores el mejor WTN
+     acierta 31%" y de ahi salio un veto que tumbaba TODO partido contra
+     un JR. Al revisarlo, esos 19 partidos eran 7 jugadores: tres de ellos
+     hicieron carreras largas y cada ronda ganada sumaba otra fila en
+     contra, mientras que un junior que pierde al tiro aporta una sola fila
+     a favor. El promedio no describia a los juniores, describia tres
+     rachas.
+     Lo que si separa, con el ranking JUNIOR mundial ya indexado sobre todo
+     el disco (el campo se guardaba solo desde ayer, y sin buscarlo en las
+     otras fichas del mismo jugador Behrmann figuraba "sin ranking" siendo
+     el 7 del mundo):
+
+       junior top 60      el favorito gano  2 de  9   (esperado 6.6, p=0.0013)
+       junior #61+        el favorito gano  4 de  4   (esperado 3.6, p=1.00)
+       sin ranking        el favorito gano  1 de  6   (esperado 4.5, p=0.0022)
+
+     El top 60 es peligro real y se veta: el WTN de un junior de elite va
+     atrasado respecto de lo que juega hoy. El #61+ no muestra ningun
+     efecto y NO se toca — vetarlo era tirar partidos buenos por un sesgo
+     que no existe. El "sin ranking" mide 1 de 6 pero son DOS jugadores
+     (Kisimov 5, Frutos 1), y Kisimov —ATP 1764 a los 18, finalista— es
+     casi seguro un top 60 cuya ficha bajamos antes de guardar el campo.
+     Por eso no se veta pero tampoco pasa a SEGURA: no sabemos a quien
+     tenemos enfrente. */
+  const esJunior = otro.jr || /JR/i.test(otro.marca || '');
+  const JR_PELIGRO = 60;
+  const jrElite = esJunior && otro.jrRank != null && otro.jrRank <= JR_PELIGRO;
+  const jrIncognito = esJunior && otro.jrRank == null;
+  if (jrElite)
+    vetos.push(`${otro.nombre} es el ${otro.jrRank} del mundo junior: contra juniores de top ${JR_PELIGRO} el mejor WTN acierta 22% (2 de 9, esperaba 6.6), porque el rating de un junior de elite va atrasado respecto de lo que juega hoy${gamesCedidos(otro.llega) != null ? `, y llega cediendo el ${Math.round(gamesCedidos(otro.llega) * 100)}% de los games` : ''}`);
   if (vetos.length)
     return { tipo: 'pasar', nivel: null, precio: null, favorito: '—', confianza: 'baja', mercado: 'pasar',
       razon: `El ΔWTN de ${d.toFixed(2)} apunta a ${yo.nombre}, pero el número no sirve: ${vetos.join('; ')}.`,
@@ -319,6 +339,15 @@ export function analizar(p) {
     const res = devig - pMercadoModelo(d);
     if (res < -0.15) avisos.push(`el mercado lo paga a ${yo.gana} (${Math.round(devig * 100)}% real) cuando su propio modelo por ΔWTN daría ${Math.round(pMercadoModelo(d) * 100)}%: ${Math.round(-res * 100)} puntos que no vemos`);
   }
+  /* Junior que NO es top 60: se dice y nada mas. Medido, el favorito gano
+     4 de 4 contra ellos — bloquear aca era el sesgo que no servia. Va
+     marcado para que el filtro de SEGURA lo deje pasar. */
+  if (esJunior && otro.jrRank != null && otro.jrRank > JR_PELIGRO)
+    avisos.push(`${otro.nombre} es junior pero el ${otro.jrRank} del mundo junior, fuera del top ${JR_PELIGRO} donde el WTN se da vuelta: medido, contra juniores de ese tramo el favorito ganó 4 de 4 — no descuenta nada`);
+  /* Junior del que no tenemos ranking junior en ninguna ficha: no se veta
+     (seria el mismo sesgo plano de antes) pero no puede ser SEGURA. */
+  if (jrIncognito)
+    avisos.push(`${otro.nombre} es junior y no tengo su ranking junior en ninguna entry list: no puedo saber si es un top 60 —el tramo donde el favorito gana solo 22%— o uno del monton; sin ese dato no lo cobro como segura`);
   if (huboRetiro(otro.llega)) avisos.push(`${otro.nombre} ganó un partido por retiro: llega más fresco`);
   if (final) avisos.push(`${R}: el cuadro ya filtró y el WTN cae — en cuartos acierta 59.6% (n=53) y en semis 50.0% (n=26), donde manda la siembra (81.3% en cuartos) y el ATP le gana al WTN (64% contra 50%)`);
   if (!cel.conocida) avisos.push(`${R} no es una ronda que hayamos visto nunca (solo aparece en cuadros de 64): se cobra con el grupo "medias", que es lo más parecido`);
@@ -349,7 +378,7 @@ export function analizar(p) {
 
   const ban = [`Δ${d.toFixed(2)} ${fuerza}`];
   if (choque) ban.push('choque nivel vs forma');
-  const enContra = avisos.filter(a => !/no tiene ranking ATP/.test(a));
+  const enContra = avisos.filter(a => !/no tiene ranking ATP|no descuenta nada/.test(a));
   for (const a of enContra) ban.push('ojo: ' + a.split(':')[0].split(' —')[0]);
 
   let razon = `Δ${d.toFixed(2)} de WTN a favor (${yo.wtn} contra ${otro.wtn}), en ${etapa}: la curva del grupo "${cel.grupo}" (n=${cel.n}) da ${Math.round(pSinChoque * 100)}%. `;
