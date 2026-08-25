@@ -241,7 +241,10 @@ cuando dice <i>—</i> es que ese jugador no aparece en ningún torneo que hayam
 <b>Cómo llega</b>: cada tramo es <code>ronda ✓/✗ marcador v(marca del rival)</code> — verde ganó, rojo perdió, y la marca dice si el rival era sembrado <code>[4]</code>, clasificado <code>Q</code>, junior <code>JR</code> o invitado <code>WC</code>.<br>
 Señales: <code>JR</code> rival junior (ahí el WTN se da vuelta: 31%) · <code>sinATP</code> rival sin ranking (buena señal: 81% contra 75%) ·
 <code>ATP≠</code> el ATP contradice al WTN por +400 puestos · <code>choque</code> el rival llega con mejor forma ·
-<code>resid</code> el mercado se aparta más de 15 puntos · <code>PZ</code> ITF no publica ese WTN.<br>
+<code>resid</code> el mercado se aparta más de 15 puntos ·
+<code>PZ</code> la ITF tapa ese WTN en su web con la insignia ProZone — la API lo entrega igual, así que no falta el dato.
+Medido sobre 1941 inscritos, <b>no</b> es un corte de nivel: los tapados van de 3.13 a 14.68 y los visibles de 0.00 a 30.88.
+Correlaciona con ser bueno pero no lo determina, y por eso dejó de ser un veto.<br>
 Clic en cualquier encabezado para ordenar. Los filtros se combinan.
 </p>
 </div>

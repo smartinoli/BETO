@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T13:24:03.899Z",
+ "generado": "2026-08-25T14:01:31.300Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano/bet365 + reglas medidas (itf-reglas.mjs)",
  "titular": "Valor esperado partido a partido, con la probabilidad de la RONDA EXACTA: el WTN no acierta lo mismo en Q1 (75%) que en Q2 o R1 (79% y 77%) que en cuartos (60%) o semis (50%).",
  "advertencia": "El margen de Betano en ITF es 9%: por eso la cuota minima de cada banda es 1.09/p y no 1/p. Los \"ojo:\" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano 6-3 6-5).",
@@ -1534,7 +1534,7 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "El ΔWTN de 6.26 apunta a Rares Teodor Pieleanu, pero el número no sirve: Alejandro Mateo Berge Nourescu es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta.",
+   "razon": "El ΔWTN de 6.26 apunta a Rares Teodor Pieleanu, pero el número no sirve: Alejandro Mateo Berge Nourescu es junior (93 del mundo junior): contra juniores el mejor WTN acierta 31% (n=16), se da vuelta.",
    "banderas": [
     "veto: dato no confiable"
    ]
@@ -2675,7 +2675,7 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "El ΔWTN de 9.05 apunta a Ezequiel Monferrer, pero el número no sirve: Felipe Vazquez es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta.",
+   "razon": "El ΔWTN de 9.05 apunta a Ezequiel Monferrer, pero el número no sirve: Felipe Vazquez es junior (97 del mundo junior): contra juniores el mejor WTN acierta 31% (n=16), se da vuelta.",
    "banderas": [
     "veto: dato no confiable"
    ]

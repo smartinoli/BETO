@@ -290,7 +290,7 @@ export function analizar(p) {
      era la de junior. Vetar por falta de ATP mataba justo las qualis, que
      es donde el metodo funciona. */
   if (otro.jr || /JR/i.test(otro.marca || ''))
-    vetos.push(`${otro.nombre} es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta${gamesCedidos(otro.llega) != null ? `, y llega cediendo el ${Math.round(gamesCedidos(otro.llega) * 100)}% de los games` : ''}`);
+    vetos.push(`${otro.nombre} es junior${otro.jrRank != null ? ` (${otro.jrRank} del mundo junior)` : ''}: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta${gamesCedidos(otro.llega) != null ? `, y llega cediendo el ${Math.round(gamesCedidos(otro.llega) * 100)}% de los games` : ''}`);
   if (vetos.length)
     return { tipo: 'pasar', nivel: null, precio: null, favorito: '—', confianza: 'baja', mercado: 'pasar',
       razon: `El ΔWTN de ${d.toFixed(2)} apunta a ${yo.nombre}, pero el número no sirve: ${vetos.join('; ')}.`,
