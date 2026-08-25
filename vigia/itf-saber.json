@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-24",
+ "actualizado": "2026-08-25",
  "nota": "Conocimiento acumulado del circuito ITF. Lo alimenta el agente en cada análisis: reglas medidas sobre nuestros propios datos, notas de jugadores y lecciones operativas. Es la memoria que se lee antes de analizar.",
  "reglasMedidas": [
   {
@@ -464,6 +464,19 @@
    "conclusion": "Es un bloqueo GEOGRAFICO, no un desafio antibot. No hay nada que 'resolver': con navegador real da exactamente lo mismo que con fetch. La parte de abrir la pagina e imprimir a PDF la tiene que seguir haciendo Sebastian desde su conexion. No se intento evadir el bloqueo y no corresponde intentarlo.",
    "loQueSiSeGano": "La otra mitad quedo automatizada. Se instalo poppler-utils y se escribio vigia/itf-cuotas-pdf.mjs: lee los PDF impresos de Betano, saca fecha, jugadores y cuotas, deduce el torneo del nombre del archivo cruzado con las fechas del mapa (si un pais tiene dos torneos abiertos gana el que contiene la fecha del partido), y VERIFICA cada partido contra los cuadros en disco antes de guardarlo. Probado sobre los 3 PDF de hoy: 18 de 18 leidas y verificadas, con deteccion de repetidas. Antes esas 26 cuotas las tipee a mano.",
    "detalleTecnico": "El nombre del archivo pierde acentos y la ñ al subirse ('España' llega como 'Espa a'), asi que el pais se resuelve con distancia de edicion hasta 2 sobre la forma sin espacios. Los PDF de Betano traen el texto con fuentes subset y CMaps propios, por eso hizo falta pdftotext y no sirvio un parser casero."
+  },
+  {
+   "fecha": "2026-08-25",
+   "corrida": "primera medicion con R1 en curso — y el callejon sin salida del criterio de valor",
+   "detalle": [
+    "163 cuotas en el registro, 49 con resultado. El favorito por WTN va 29/44 (65.9%), y apostarlos todos da -10%",
+    "El modelo de nivel sigue bien calibrado en conjunto: esperaba 22.9 aciertos de 30 y hubo 24 (80% contra 76%, p=76%)",
+    "Pero los 7 que el sistema MARCO van 3/7. El modelo esperaba 5.6. p=2%: ya no es ruido"
+   ],
+   "hallazgoDecisivo": "LOS 7 PARTIDOS MARCADOS TIENEN RESIDUO NEGATIVO. Ni uno positivo. No es casualidad: la correlacion entre el valor que calculamos y el residuo de mercado es r=-0.932. El criterio valor = p x cuota - 1 SOLO puede elegir partidos donde el mercado paga mas largo de lo que su propia curva de nivel implica. Por eso el residuo no sirve como filtro: aplicarlo no filtraria nada, apagaria el sistema entero. Ayer propuse volver a subirlo a veto con n=8; hoy con n=15 y p=1% queda claro que el problema no es el umbral sino la forma del criterio.",
+   "loQueSeparaElRegistro": "mercado a favor (resid >= 0): 24/29, +9% apostandolos, y aciertan MAS de lo que predecimos. mercado en contra (resid < 0): 5/15, -48%, y aciertan MUCHO menos (esperabamos 80%, p=1%). Dos dias seguidos con el mismo signo y muestras independientes.",
+   "elNicho": "Lo unico que no se rompe es la celda medida aparte: R1 con ΔWTN>=5 y rival no junior. De los 5 jugados va 4/5, contra 4.8 esperados por la celda historica (96.3%, n=54). La unica derrota fue Sakellaridis a 1.14. Economicamente -6% sobre n=5, que no dice nada. Ese nicho tiene respaldo propio y no depende del criterio de valor: no se elige porque la cuota sea larga sino porque la celda esta medida.",
+   "pendiente": "Quedan 65 partidos de R1 con cuota sin jugar. Esa es la medicion que importa y llega manana."
   }
  ],
  "pendienteCritico": "Capturar cuotas de Betano en QUALIS y R1 la proxima semana, que es donde el WTN acierta 75-84% y donde esta el 93% del volumen. Ese es el unico terreno donde vale la pena comparar contra el vig de 9%: lo de esta semana (semis y finales) fue medir en el peor sitio posible. Problema operativo conocido: Betano abre linea tarde, asi que hay que barrer temprano y seguido desde el lunes.",

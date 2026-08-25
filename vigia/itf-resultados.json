@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-24T19:15:28.072Z",
+ "generado": "2026-08-25T21:39:42.991Z",
  "registro": [
   {
    "q": {
@@ -20,7 +20,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ1.11 de WTN en ronda final (F): ahí el mejor WTN sale 46%, bajo el piso de 58%. En finales (n=83) haría falta Δ2.91. Sin lado.",
+    "razon": "Δ1.11 de WTN en ronda final (F): ahí el mejor WTN sale 53%, bajo el piso de 58%. En finales (n=83) haría falta Δ3.03. Sin lado.",
     "banderas": [
      "Δ1.11 corta en F"
     ]
@@ -152,7 +152,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ2.73 de WTN en ronda final (F): ahí el mejor WTN sale 57%, bajo el piso de 58%. En finales (n=83) haría falta Δ2.91. Sin lado.",
+    "razon": "Δ2.73 de WTN en ronda final (F): ahí el mejor WTN sale 57%, bajo el piso de 58%. En finales (n=83) haría falta Δ3.03. Sin lado.",
     "banderas": [
      "Δ2.73 corta en F"
     ]
@@ -218,7 +218,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ0.35 de WTN en ronda final (F): ahí el mejor WTN sale 41%, bajo el piso de 58%. En finales (n=83) haría falta Δ2.91. Sin lado.",
+    "razon": "Δ0.35 de WTN en ronda final (F): ahí el mejor WTN sale 51%, bajo el piso de 58%. En finales (n=83) haría falta Δ3.03. Sin lado.",
     "banderas": [
      "Δ0.35 corta en F"
     ]
@@ -284,7 +284,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ0.36 de WTN en ronda final (F): ahí el mejor WTN sale 34%, bajo el piso de 58%. En finales (n=83) haría falta Δ4.00 con el choque en contra. Sin lado.",
+    "razon": "Δ0.36 de WTN en ronda final (F): ahí el mejor WTN sale 42%, bajo el piso de 58%. En finales (n=83) haría falta Δ6.58 con el choque en contra. Sin lado.",
     "banderas": [
      "Δ0.36 corta en F"
     ]
@@ -334,11 +334,12 @@
   {
    "q": {
     "torneo": "M25 Oviedo (qualis)",
-    "p1": "Alejandro Garcia",
+    "p1": "Alejandro Garcia Carbajal",
     "p2": "Marc Ros Mesas",
     "g1": 1.08,
     "g2": 6.5,
-    "visto": "2026-08-23T06:00Z"
+    "visto": "2026-08-23T06:00Z",
+    "betano": "Alejandro Garcia / Marc Ros Mesas"
    },
    "estado": "ok",
    "etapa": "Q1",
@@ -347,7 +348,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "muy fuerte",
-     "p": 0.9078187502918442,
+     "p": 0.9209851425146299,
      "d": 8.48,
      "favorito": "Alejandro Garcia Carbajal [3]",
      "ronda": "Q1",
@@ -355,13 +356,13 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.1015414692398913,
-     "cMinima": 1.2006802014714815
+     "cEmpate": 1.0857938460001975,
+     "cMinima": 1.1835152921402152
     },
     "precio": {
      "cuota": 1.08,
-     "cMinima": 1.2006802014714815,
-     "val": -0.01955574968480822,
+     "cMinima": 1.1835152921402152,
+     "val": -0.005336046084199575,
      "devig": 0.8575197889182057,
      "residuo": 0.04433476059825803,
      "veredicto": "caro"
@@ -369,7 +370,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ8.48 de WTN a favor (7.62 contra 16.1), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 91%. A 1.08 el mercado implica 93%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ8.48 de WTN a favor (7.62 contra 16.1), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 92%. A 1.08 el mercado implica 93%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ8.48 muy fuerte",
      "cuota corta"
@@ -433,7 +434,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "fuerte",
-     "p": 0.7030169633609256,
+     "p": 0.7199262873295046,
      "d": 3.26,
      "favorito": "Oriol Font [15]",
      "ronda": "Q1",
@@ -441,13 +442,13 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.422440783248362,
-     "cMinima": 1.5504604537407147
+     "cEmpate": 1.3890310960992982,
+     "cMinima": 1.514043894748235
     },
     "precio": {
      "cuota": 1.3,
-     "cMinima": 1.5504604537407147,
-     "val": -0.08607794763079679,
+     "cMinima": 1.514043894748235,
+     "val": -0.06409582647164402,
      "devig": 0.7142857142857143,
      "residuo": 0.08817207128833338,
      "veredicto": "caro"
@@ -455,7 +456,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ3.26 de WTN a favor (12.68 contra 15.94), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 70%. A 1.3 el mercado implica 77%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ3.26 de WTN a favor (12.68 contra 15.94), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 72%. A 1.3 el mercado implica 77%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ3.26 fuerte",
      "cuota corta"
@@ -522,7 +523,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ0.56 de WTN en ronda Q1: ahí el mejor WTN sale 53%, bajo el piso de 58%. En Q1 (n=312) haría falta Δ1.29. Sin lado.",
+    "razon": "Δ0.56 de WTN en ronda Q1: ahí el mejor WTN sale 54%, bajo el piso de 58%. En Q1 (n=312) haría falta Δ1.11. Sin lado.",
     "banderas": [
      "Δ0.56 corta en Q1"
     ]
@@ -585,7 +586,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "claro",
-     "p": 0.6201747465521921,
+     "p": 0.6341912710524251,
      "d": 1.8999999999999986,
      "favorito": "Amaan Siddiqui [16]",
      "ronda": "Q1",
@@ -593,13 +594,13 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.6124487582885527,
-     "cMinima": 1.7575691465345227
+     "cEmpate": 1.5768113590408208,
+     "cMinima": 1.7187243813544948
     },
     "precio": {
      "cuota": 1.14,
-     "cMinima": 1.7575691465345227,
-     "val": -0.2930007889305011,
+     "cMinima": 1.7187243813544948,
+     "val": -0.2770219510002354,
      "devig": 0.8143322475570033,
      "residuo": 0.2480496664561619,
      "veredicto": "caro"
@@ -607,7 +608,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ1.90 de WTN a favor (16 contra 17.9), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 62%. A 1.14 el mercado implica 88%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ1.90 de WTN a favor (16 contra 17.9), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 63%. A 1.14 el mercado implica 88%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ1.90 claro",
      "cuota corta"
@@ -671,7 +672,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "fuerte",
-     "p": 0.7307155492761546,
+     "p": 0.7481737742077273,
      "d": 3.7600000000000016,
      "favorito": "Nicolas Rafael Goldberg Alviani [14]",
      "ronda": "Q1",
@@ -679,13 +680,13 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.3685215827015014,
-     "cMinima": 1.4916885251446366
+     "cEmpate": 1.3365878816842278,
+     "cMinima": 1.4568807910358084
     },
     "precio": {
      "cuota": 1.42,
-     "cMinima": 1.4916885251446366,
-     "val": 0.03761607997213945,
+     "cMinima": 1.4568807910358084,
+     "val": 0.062406759374972864,
      "devig": 0.6528117359413204,
      "residuo": 0.005537312730001909,
      "veredicto": "justo"
@@ -693,7 +694,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ3.76 de WTN a favor (14.41 contra 18.17), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 73%. A 1.42 hay apenas +4%: por debajo del margen de la casa (haria falta 1.49). Dentro del error de estimacion.",
+    "razon": "Δ3.76 de WTN a favor (14.41 contra 18.17), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 75%. A 1.42 hay apenas +6%: por debajo del margen de la casa (haria falta 1.46). Dentro del error de estimacion.",
     "banderas": [
      "Δ3.76 fuerte",
      "margen fino"
@@ -757,7 +758,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "fuerte",
-     "p": 0.740802742189989,
+     "p": 0.7583986285469486,
      "d": 3.9499999999999993,
      "favorito": "Mario Mansilla Diez [9]",
      "ronda": "Q1",
@@ -765,13 +766,13 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.349887011816077,
-     "cMinima": 1.4713768428795242
+     "cEmpate": 1.3185677852766515,
+     "cMinima": 1.4372388859515504
     },
     "precio": {
      "cuota": 1.2,
-     "cMinima": 1.4713768428795242,
-     "val": -0.11103670937201326,
+     "cMinima": 1.4372388859515504,
+     "val": -0.08992164574366168,
      "devig": 0.7714285714285714,
      "residuo": 0.11625703560597955,
      "veredicto": "caro"
@@ -779,7 +780,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ3.95 de WTN a favor (10.73 contra 14.68), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 74%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ3.95 de WTN a favor (10.73 contra 14.68), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 76%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ3.95 fuerte",
      "cuota corta"
@@ -792,7 +793,7 @@
      "atp": null,
      "itf": 86,
      "wtn": 14.68,
-     "wtnVisible": true,
+     "wtnVisible": false,
      "jr": false,
      "gana": 4.05,
      "llega": ""
@@ -803,7 +804,7 @@
      "atp": 1717,
      "itf": null,
      "wtn": 10.73,
-     "wtnVisible": true,
+     "wtnVisible": false,
      "jr": false,
      "gana": 1.2,
      "llega": ""
@@ -817,7 +818,7 @@
     "atp": 1717,
     "itf": null,
     "wtn": 10.73,
-    "wtnVisible": true,
+    "wtnVisible": false,
     "jr": false,
     "gana": 1.2,
     "llega": ""
@@ -843,7 +844,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "muy fuerte",
-     "p": 0.8910566516170882,
+     "p": 0.9054137581453693,
      "d": 7.800000000000001,
      "favorito": "Toprak Avcibasi [4]",
      "ronda": "Q1",
@@ -851,13 +852,13 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.1222630998659866,
-     "cMinima": 1.2232667788539255
+     "cEmpate": 1.1044674227707554,
+     "cMinima": 1.2038694908201235
     },
     "precio": {
      "cuota": 1.14,
-     "cMinima": 1.2232667788539255,
-     "val": 0.01580458284348052,
+     "cMinima": 1.2038694908201235,
+     "val": 0.032171684285720925,
      "devig": 0.8143322475570033,
      "residuo": 0.020791798526352046,
      "veredicto": "justo"
@@ -865,7 +866,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ7.80 de WTN a favor (11.43 contra 19.23), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 89%. A 1.14 hay apenas +2%: por debajo del margen de la casa (haria falta 1.22). Dentro del error de estimacion.",
+    "razon": "Δ7.80 de WTN a favor (11.43 contra 19.23), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 91%. A 1.14 hay apenas +3%: por debajo del margen de la casa (haria falta 1.20). Dentro del error de estimacion.",
     "banderas": [
      "Δ7.80 muy fuerte",
      "margen fino"
@@ -926,10 +927,10 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "mirar",
+    "tipo": "segura",
     "nivel": {
      "fuerza": "muy fuerte",
-     "p": 0.8622306618503017,
+     "p": 0.8781548533614355,
      "d": 6.8199999999999985,
      "favorito": "Jose Dominguez Alonso [13]",
      "ronda": "Q1",
@@ -937,24 +938,24 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.1597824622173056,
-     "cMinima": 1.2641628838168633
+     "cEmpate": 1.1387513217881344,
+     "cMinima": 1.2412389407490665
     },
     "precio": {
      "cuota": 1.42,
-     "cMinima": 1.2641628838168633,
-     "val": 0.2243675398274283,
+     "cMinima": 1.2412389407490665,
+     "val": 0.24697989177323842,
      "devig": 0.6528117359413204,
      "residuo": -0.10980144990031204,
      "veredicto": "barato"
     },
     "favorito": "Jose Dominguez Alonso [13]",
-    "confianza": "media",
+    "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ6.82 de WTN a favor (12.67 contra 19.49), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 86%. A 1.42 paga sobre la minima de 1.26: +22% de valor. Pero: ninguno de los dos tiene trayectoria en el cuadro: no se pudo mirar la forma. Bernardo Tedesco no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+    "razon": "Δ6.82 de WTN a favor (12.67 contra 19.49), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 88%. A 1.42 paga sobre la minima de 1.24: +25% de valor. Nivel fuerte, Q1 está en \"Q1\" (n=312), y sin reparos. (Bernardo Tedesco no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%))",
     "banderas": [
      "Δ6.82 muy fuerte",
-     "mirar"
+     "segura"
     ]
    },
    "lados": [
@@ -981,7 +982,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "segura",
    "ret": false,
    "favWtn": {
     "nombre": "Jose Dominguez Alonso",
@@ -1069,7 +1070,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "fuerte",
-     "p": 0.6838632289009283,
+     "p": 0.7002582657455341,
      "d": 2.9299999999999997,
      "favorito": "Mateo Luis Alvarez Sarmiento [6]",
      "ronda": "Q1",
@@ -1077,13 +1078,13 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.4622806984477748,
-     "cMinima": 1.5938859613080747
+     "cEmpate": 1.428044550013764,
+     "cMinima": 1.556568559515003
     },
     "precio": {
      "cuota": 1.42,
-     "cMinima": 1.5938859613080747,
-     "val": -0.028914214960681806,
+     "cMinima": 1.556568559515003,
+     "val": -0.005633262641341674,
      "devig": 0.6528117359413204,
      "residuo": 0.040939243916943924,
      "veredicto": "caro"
@@ -1091,7 +1092,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ2.93 de WTN a favor (10.44 contra 13.37), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 68%. A 1.42 el mercado implica 70%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ2.93 de WTN a favor (10.44 contra 13.37), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 70%. A 1.42 el mercado implica 70%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ2.93 fuerte",
      "cuota corta"
@@ -1155,7 +1156,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "muy fuerte",
-     "p": 0.8264741413002304,
+     "p": 0.8436277552637049,
      "d": 5.82,
      "favorito": "Xavi Palomar [7]",
      "ronda": "Q1",
@@ -1163,13 +1164,13 @@
      "tarde": false,
      "choque": false,
      "n": 312,
-     "cEmpate": 1.2099592110973663,
-     "cMinima": 1.3188555400961293
+     "cEmpate": 1.1853569228378642,
+     "cMinima": 1.292039045893272
     },
     "precio": {
      "cuota": 1.16,
-     "cMinima": 1.3188555400961293,
-     "val": -0.041289996091732784,
+     "cMinima": 1.292039045893272,
+     "val": -0.021391803894102335,
      "devig": 0.7986111111111112,
      "residuo": 0.07069804525081502,
      "veredicto": "caro"
@@ -1177,7 +1178,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ5.82 de WTN a favor (12.98 contra 18.8), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 83%. A 1.16 el mercado implica 86%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ5.82 de WTN a favor (12.98 contra 18.8), en ronda Q1: la curva del grupo \"Q1\" (n=312) da 84%. A 1.16 el mercado implica 86%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ5.82 muy fuerte",
      "cuota corta"
@@ -1241,7 +1242,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "claro",
-     "p": 0.7341911547582742,
+     "p": 0.7023747607224745,
      "d": 2.3199999999999985,
      "favorito": "Leonardo Taddia [2]",
      "ronda": "Q2",
@@ -1249,13 +1250,13 @@
      "tarde": false,
      "choque": false,
      "n": 345,
-     "cEmpate": 1.3620431048767414,
-     "cMinima": 1.4846269843156483
+     "cEmpate": 1.4237413641848167,
+     "cMinima": 1.5518780869614501
     },
     "precio": {
      "cuota": 1.08,
-     "cMinima": 1.4846269843156483,
-     "val": -0.20707355286106377,
+     "cMinima": 1.5518780869614501,
+     "val": -0.24143525841972746,
      "devig": 0.8593749999999999,
      "residuo": 0.274319970523206,
      "veredicto": "caro"
@@ -1263,7 +1264,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ2.32 de WTN a favor (12.63 contra 14.95), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 73%. A 1.08 el mercado implica 93%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ2.32 de WTN a favor (12.63 contra 14.95), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 70%. A 1.08 el mercado implica 93%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ2.32 claro",
      "cuota corta"
@@ -1327,7 +1328,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "claro",
-     "p": 0.6812141152535119,
+     "p": 0.6310087969629784,
      "d": 2.4700000000000024,
      "favorito": "Marko Maric [6]",
      "ronda": "Q2",
@@ -1335,13 +1336,13 @@
      "tarde": false,
      "choque": true,
      "n": 345,
-     "cEmpate": 1.4679672332213092,
-     "cMinima": 1.6000842842112273
+     "cEmpate": 1.5847639602062005,
+     "cMinima": 1.7273927166247587
     },
     "precio": {
      "cuota": 1.38,
-     "cMinima": 1.6000842842112273,
-     "val": -0.05992452095015355,
+     "cMinima": 1.7273927166247587,
+     "val": -0.12920786019108987,
      "devig": 0.6714285714285714,
      "residuo": 0.07972556395055264,
      "veredicto": "caro"
@@ -1349,7 +1350,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ2.47 de WTN a favor (13.7 contra 16.17), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 74%. Mateo Comamala llega cediendo menos games y el choque la baja a 68%. A 1.38 el mercado implica 72%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ2.47 de WTN a favor (13.7 contra 16.17), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 71%. Mateo Comamala llega cediendo menos games y el choque la baja a 63%. A 1.38 el mercado implica 72%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ2.47 claro",
      "choque nivel vs forma",
@@ -1469,7 +1470,7 @@
     "tipo": "segura",
     "nivel": {
      "fuerza": "muy fuerte",
-     "p": 0.8906568381236004,
+     "p": 0.9108638127463907,
      "d": 6.279999999999999,
      "favorito": "Justin Lenders [5]",
      "ronda": "Q2",
@@ -1477,13 +1478,13 @@
      "tarde": false,
      "choque": false,
      "n": 345,
-     "cEmpate": 1.1227668807963787,
-     "cMinima": 1.2238159000680529
+     "cEmpate": 1.0978589620163417,
+     "cMinima": 1.1966662685978127
     },
     "precio": {
      "cuota": 1.42,
-     "cMinima": 1.2238159000680529,
-     "val": 0.2647327101355126,
+     "cMinima": 1.1966662685978127,
+     "val": 0.2934266140998747,
      "devig": 0.6528117359413204,
      "residuo": -0.0914503324901128,
      "veredicto": "barato"
@@ -1491,7 +1492,7 @@
     "favorito": "Justin Lenders [5]",
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ6.28 de WTN a favor (10.49 contra 16.77), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 89%. A 1.42 paga sobre la minima de 1.22: +26% de valor. Nivel fuerte, Q2 está en \"buenas\" (n=345), y sin reparos. (Zaccharie Cado no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%))",
+    "razon": "Δ6.28 de WTN a favor (10.49 contra 16.77), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 91%. A 1.42 paga sobre la minima de 1.20: +29% de valor. Nivel fuerte, Q2 está en \"buenas\" (n=345), y sin reparos. (Zaccharie Cado no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%))",
     "banderas": [
      "Δ6.28 muy fuerte",
      "segura"
@@ -1555,7 +1556,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "fuerte",
-     "p": 0.7890374241502253,
+     "p": 0.7806473837873633,
      "d": 3.4299999999999997,
      "favorito": "Massimo Pizzigoni [1]",
      "ronda": "Q2",
@@ -1563,13 +1564,13 @@
      "tarde": false,
      "choque": false,
      "n": 345,
-     "cEmpate": 1.267367008703011,
-     "cMinima": 1.3814300394862822
+     "cEmpate": 1.2809880885636646,
+     "cMinima": 1.3962770165343945
     },
     "precio": {
      "cuota": 1.2,
-     "cMinima": 1.3814300394862822,
-     "val": -0.053155091019729706,
+     "cMinima": 1.3962770165343945,
+     "val": -0.06322313945516411,
      "devig": 0.7714285714285714,
      "residuo": 0.13806126612564584,
      "veredicto": "caro"
@@ -1577,7 +1578,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ3.43 de WTN a favor (12.07 contra 15.5), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 79%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ3.43 de WTN a favor (12.07 contra 15.5), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 78%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ3.43 fuerte",
      "cuota corta"
@@ -1641,7 +1642,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "claro",
-     "p": 0.6600894811025899,
+     "p": 0.5941632191087017,
      "d": 1.0299999999999994,
      "favorito": "Aren Baybars [1]",
      "ronda": "Q2",
@@ -1649,13 +1650,13 @@
      "tarde": false,
      "choque": false,
      "n": 345,
-     "cEmpate": 1.514946122652395,
-     "cMinima": 1.6512912736911107
+     "cEmpate": 1.6830392185838934,
+     "cMinima": 1.8345127482564438
     },
     "precio": {
      "cuota": 1.12,
-     "cMinima": 1.6512912736911107,
-     "val": -0.2606997811650992,
+     "cMinima": 1.8345127482564438,
+     "val": -0.33453719459825404,
      "devig": 0.8282208588957055,
      "residuo": 0.3013742029984926,
      "veredicto": "caro"
@@ -1663,7 +1664,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ1.03 de WTN a favor (14.97 contra 16), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 66%. A 1.12 el mercado implica 89%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ1.03 de WTN a favor (14.97 contra 16), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 59%. A 1.12 el mercado implica 89%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ1.03 claro",
      "cuota corta"
@@ -1725,34 +1726,14 @@
    "clave": "m-itf-esp-2026-044",
    "v": {
     "tipo": "pasar",
-    "nivel": {
-     "fuerza": "claro",
-     "p": 0.6101502904778238,
-     "d": 0.2400000000000002,
-     "favorito": "Sergio Planella Hernandez [5]",
-     "ronda": "Q2",
-     "grupo": "buenas",
-     "tarde": false,
-     "choque": false,
-     "n": 345,
-     "cEmpate": 1.6389404636960434,
-     "cMinima": 1.7864451054286874
-    },
-    "precio": {
-     "cuota": 1.32,
-     "cMinima": 1.7864451054286874,
-     "val": -0.19460161656927255,
-     "devig": 0.7013574660633485,
-     "residuo": 0.21062640407871924,
-     "veredicto": "caro"
-    },
+    "nivel": null,
+    "precio": null,
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ0.24 de WTN a favor (10.49 contra 10.73), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 61%. A 1.32 el mercado implica 76%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ0.24 de WTN en ronda Q2: ahí el mejor WTN sale 52%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
     "banderas": [
-     "Δ0.24 claro",
-     "cuota corta"
+     "Δ0.24 corta en Q2"
     ]
    },
    "lados": [
@@ -1773,13 +1754,13 @@
      "atp": 1717,
      "itf": null,
      "wtn": 10.73,
-     "wtnVisible": true,
+     "wtnVisible": false,
      "jr": false,
      "gana": 3.1,
      "llega": "6-4 6-1"
     }
    ],
-   "etiqueta": "cuota corta",
+   "etiqueta": "Δ0.24 corta en Q2",
    "ret": false,
    "favWtn": {
     "nombre": "Sergio Planella Hernandez",
@@ -1813,7 +1794,7 @@
     "tipo": "anomalia",
     "nivel": {
      "fuerza": "fuerte",
-     "p": 0.7004580492314538,
+     "p": 0.6589638064560362,
      "d": 2.8000000000000007,
      "favorito": "Toprak Avcibasi [4]",
      "ronda": "Q2",
@@ -1821,13 +1802,13 @@
      "tarde": false,
      "choque": true,
      "n": 345,
-     "cEmpate": 1.4276372455098563,
-     "cMinima": 1.5561245976057434
+     "cEmpate": 1.5175340287322996,
+     "cMinima": 1.6541120913182066
     },
     "precio": {
      "cuota": 2.42,
-     "cMinima": 1.5561245976057434,
-     "val": 0.6951084791401183,
+     "cMinima": 1.6541120913182066,
+     "val": 0.5946924116236076,
      "devig": 0.3826530612244898,
      "residuo": -0.22355486468085045,
      "veredicto": "barato"
@@ -1835,7 +1816,7 @@
     "favorito": "Toprak Avcibasi [4]",
     "confianza": "baja",
     "mercado": "gana",
-    "razon": "Δ2.80 de WTN a favor (11.43 contra 14.23), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 76%. Maxi Carrascosa Diaz llega cediendo menos games y el choque la baja a 70%. El mercado lo pone de NO favorito a 2.42 (38%) cuando nuestra curva dice 70%: 70% de valor si tenemos razon. Es la via de multiplicar y la mas incierta: cuando el mercado se aparta tanto suele ver algo que no vemos, y nuestro registro en estos casos va 1-1. Reparos: el mercado lo paga a 2.42 (38% real) cuando su propio modelo por ΔWTN daría 61%: 22 puntos que no vemos; Maxi Carrascosa Diaz llega cediendo menos games: el choque baja la estimación de 76% a 70%.",
+    "razon": "Δ2.80 de WTN a favor (11.43 contra 14.23), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 74%. Maxi Carrascosa Diaz llega cediendo menos games y el choque la baja a 66%. El mercado lo pone de NO favorito a 2.42 (38%) cuando nuestra curva dice 66%: 59% de valor si tenemos razon. Es la via de multiplicar y la mas incierta: cuando el mercado se aparta tanto suele ver algo que no vemos, y nuestro registro en estos casos va 1-1. Reparos: el mercado lo paga a 2.42 (38% real) cuando su propio modelo por ΔWTN daría 61%: 22 puntos que no vemos; Maxi Carrascosa Diaz llega cediendo menos games: el choque baja la estimación de 74% a 66%.",
     "banderas": [
      "Δ2.80 fuerte",
      "choque nivel vs forma",
@@ -1902,7 +1883,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "claro",
-     "p": 0.7293669259458542,
+     "p": 0.6953650955557231,
      "d": 2.2300000000000004,
      "favorito": "Mateo Luis Alvarez Sarmiento [6]",
      "ronda": "Q2",
@@ -1910,13 +1891,13 @@
      "tarde": false,
      "choque": false,
      "n": 345,
-     "cEmpate": 1.371052023922232,
-     "cMinima": 1.494446706075233
+     "cEmpate": 1.438093465420231,
+     "cMinima": 1.567521877308052
     },
     "precio": {
      "cuota": 1.2,
-     "cMinima": 1.494446706075233,
-     "val": -0.12475968886497502,
+     "cMinima": 1.567521877308052,
+     "val": -0.16556188533313232,
      "devig": 0.7714285714285714,
      "residuo": 0.1903774104120315,
      "veredicto": "caro"
@@ -1924,7 +1905,7 @@
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ2.23 de WTN a favor (10.44 contra 12.67), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 73%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ2.23 de WTN a favor (10.44 contra 12.67), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 70%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ2.23 claro",
      "cuota corta"
@@ -1986,36 +1967,14 @@
    "clave": "m-itf-esp-2026-044",
    "v": {
     "tipo": "pasar",
-    "nivel": {
-     "fuerza": "claro",
-     "p": 0.622438650652332,
-     "d": 1.5200000000000014,
-     "favorito": "Pablo Aunion [8]",
-     "ronda": "Q2",
-     "grupo": "buenas",
-     "tarde": false,
-     "choque": true,
-     "n": 345,
-     "cEmpate": 1.6065840367592434,
-     "cMinima": 1.7511766000675755
-    },
-    "precio": {
-     "cuota": 1.3,
-     "cMinima": 1.7511766000675755,
-     "val": -0.19082975415196846,
-     "devig": 0.7142857142857143,
-     "residuo": 0.16515476306829346,
-     "veredicto": "caro"
-    },
+    "nivel": null,
+    "precio": null,
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ1.52 de WTN a favor (9.61 contra 11.13), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 69%. Noah Regas Luis llega cediendo menos games y el choque la baja a 62%. A 1.3 el mercado implica 77%, por encima de nuestra banda: cuota corta, no compensa.",
+    "razon": "Δ1.52 de WTN en ronda Q2 da 64%, pero Noah Regas Luis llega cediendo menos games y el choque lo baja a 55%: bajo el piso de 58%. Sin lado.",
     "banderas": [
-     "Δ1.52 claro",
-     "choque nivel vs forma",
-     "ojo: Noah Regas Luis llega cediendo menos games",
-     "cuota corta"
+     "choque hunde el nivel"
     ]
    },
    "lados": [
@@ -2042,7 +2001,7 @@
      "llega": "6-4 6-4"
     }
    ],
-   "etiqueta": "cuota corta",
+   "etiqueta": "choque hunde el nivel",
    "ret": false,
    "favWtn": {
     "nombre": "Pablo Aunion",
@@ -2076,7 +2035,7 @@
     "tipo": "mirar",
     "nivel": {
      "fuerza": "claro",
-     "p": 0.6740380705294368,
+     "p": 0.6145138020516726,
      "d": 1.2599999999999998,
      "favorito": "Pavel Petrov",
      "ronda": "Q2",
@@ -2084,13 +2043,13 @@
      "tarde": false,
      "choque": false,
      "n": 345,
-     "cEmpate": 1.4835957251116838,
-     "cMinima": 1.6171193403717354
+     "cEmpate": 1.6273027500136001,
+     "cMinima": 1.7737599975148244
     },
     "precio": {
      "cuota": 3.15,
-     "cMinima": 1.6171193403717354,
-     "val": 1.123219922167726,
+     "cMinima": 1.7737599975148244,
+     "val": 0.9357184764627686,
      "devig": 0.2937219730941704,
      "residuo": -0.2436034590268777,
      "veredicto": "barato"
@@ -2098,7 +2057,7 @@
     "favorito": "Pavel Petrov",
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.26 de WTN a favor (11.72 contra 12.98), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 67%. A 3.15 paga sobre la minima de 1.62: +112% de valor. Pero: el nivel es solo \"claro\", no fuerte; 1 reparo; el mercado se aparta 24 puntos de su propio modelo. el mercado lo paga a 3.15 (29% real) cuando su propio modelo por ΔWTN daría 54%: 24 puntos que no vemos.",
+    "razon": "Δ1.26 de WTN a favor (11.72 contra 12.98), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 61%. A 3.15 paga sobre la minima de 1.77: +94% de valor. Pero: el nivel es solo \"claro\", no fuerte; 1 reparo; el mercado se aparta 24 puntos de su propio modelo. el mercado lo paga a 3.15 (29% real) cuando su propio modelo por ΔWTN daría 54%: 24 puntos que no vemos.",
     "banderas": [
      "Δ1.26 claro",
      "ojo: el mercado lo paga a 3.15 (29% real) cuando su propio modelo por ΔWTN daría 54%",
@@ -2160,10 +2119,10 @@
    "etapa": "Q2",
    "clave": "m-itf-tpe-2026-002",
    "v": {
-    "tipo": "mirar",
+    "tipo": "pasar",
     "nivel": {
      "fuerza": "claro",
-     "p": 0.7117751179384333,
+     "p": 0.6697138208763305,
      "d": 1.9100000000000001,
      "favorito": "Ethan Cook [11]",
      "ronda": "Q2",
@@ -2171,24 +2130,24 @@
      "tarde": false,
      "choque": false,
      "n": 345,
-     "cEmpate": 1.4049381255365792,
-     "cMinima": 1.5313825568348713
+     "cEmpate": 1.4931750978223581,
+     "cMinima": 1.6275608566263706
     },
     "precio": {
      "cuota": 1.57,
-     "cMinima": 1.5313825568348713,
-     "val": 0.1174869351633403,
+     "cMinima": 1.6275608566263706,
+     "val": 0.051450698775838966,
      "devig": 0.5890052356020942,
      "residuo": 0.022273249024682085,
-     "veredicto": "barato"
+     "veredicto": "justo"
     },
-    "favorito": "Ethan Cook [11]",
-    "confianza": "media",
-    "mercado": "gana",
-    "razon": "Δ1.91 de WTN a favor (8.45 contra 10.36), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 71%. A 1.57 paga sobre la minima de 1.53: +12% de valor. Pero: el nivel es solo \"claro\", no fuerte.",
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.91 de WTN a favor (8.45 contra 10.36), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 67%. A 1.57 hay apenas +5%: por debajo del margen de la casa (haria falta 1.63). Dentro del error de estimacion.",
     "banderas": [
      "Δ1.91 claro",
-     "mirar"
+     "margen fino"
     ]
    },
    "lados": [
@@ -2209,13 +2168,13 @@
      "atp": 1248,
      "itf": 726,
      "wtn": 8.45,
-     "wtnVisible": true,
+     "wtnVisible": false,
      "jr": false,
      "gana": 1.57,
      "llega": "6-1 6-3"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "margen fino",
    "ret": false,
    "favWtn": {
     "nombre": "Ethan Cook",
@@ -2223,7 +2182,7 @@
     "atp": 1248,
     "itf": 726,
     "wtn": 8.45,
-    "wtnVisible": true,
+    "wtnVisible": false,
     "jr": false,
     "gana": 1.57,
     "llega": "6-1 6-3"
@@ -2249,7 +2208,7 @@
     "tipo": "pasar",
     "nivel": {
      "fuerza": "claro",
-     "p": 0.6600894811025899,
+     "p": 0.5941632191087017,
      "d": 1.0299999999999994,
      "favorito": "Ryota Tanuma [12]",
      "ronda": "Q2",
@@ -2257,24 +2216,24 @@
      "tarde": false,
      "choque": false,
      "n": 345,
-     "cEmpate": 1.514946122652395,
-     "cMinima": 1.6512912736911107
+     "cEmpate": 1.6830392185838934,
+     "cMinima": 1.8345127482564438
     },
     "precio": {
      "cuota": 1.57,
-     "cMinima": 1.6512912736911107,
-     "val": 0.03634048533106626,
+     "cMinima": 1.8345127482564438,
+     "val": -0.06716374599933828,
      "devig": 0.5890052356020942,
      "residuo": 0.062158579704881256,
-     "veredicto": "justo"
+     "veredicto": "caro"
     },
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
-    "razon": "Δ1.03 de WTN a favor (8.06 contra 9.09), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 66%. A 1.57 hay apenas +4%: por debajo del margen de la casa (haria falta 1.65). Dentro del error de estimacion.",
+    "razon": "Δ1.03 de WTN a favor (8.06 contra 9.09), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 59%. A 1.57 el mercado implica 64%, por encima de nuestra banda: cuota corta, no compensa.",
     "banderas": [
      "Δ1.03 claro",
-     "margen fino"
+     "cuota corta"
     ]
    },
    "lados": [
@@ -2284,7 +2243,7 @@
      "atp": 1145,
      "itf": 64,
      "wtn": 9.09,
-     "wtnVisible": true,
+     "wtnVisible": false,
      "jr": false,
      "gana": 2.25,
      "llega": "7-5 7-5"
@@ -2301,7 +2260,7 @@
      "llega": "6-2 6-1"
     }
    ],
-   "etiqueta": "margen fino",
+   "etiqueta": "cuota corta",
    "ret": true,
    "favWtn": {
     "nombre": "Ryota Tanuma",
@@ -2318,6 +2277,1511 @@
    "gano": true,
    "devig": 0.5890052356020942,
    "resid": 0.062158579704881256
+  },
+  {
+   "q": {
+    "torneo": "M15 Allershausen",
+    "p1": "Edison Ambarzumjan",
+    "p2": "Marko Bekeni",
+    "g1": 3.05,
+    "g2": 1.32,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-ger-2026-013",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
+    "banderas": [
+     "sin datos de nivel"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Edison Ambarzumjan",
+     "marca": "",
+     "atp": 1219,
+     "itf": 850,
+     "wtn": 12.67,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.05,
+     "llega": ""
+    },
+    {
+     "nombre": "Marko Bekeni",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": null,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.32,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "sin datos de nivel",
+   "ret": false,
+   "favWtn": null,
+   "cuota": null,
+   "gano": null
+  },
+  {
+   "q": {
+    "torneo": "M15 Allershausen",
+    "p1": "Hazem Naw",
+    "p2": "Bruno Fernandez",
+    "g1": 1.83,
+    "g2": 1.83,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-ger-2026-013",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.5941632191087017,
+     "d": 1.0299999999999994,
+     "favorito": "Bruno Fernandez [2]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.6830392185838934,
+     "cMinima": 1.8345127482564438
+    },
+    "precio": {
+     "cuota": 1.83,
+     "cMinima": 1.8345127482564438,
+     "val": 0.0873186909689243,
+     "devig": 0.5,
+     "residuo": -0.026846655897212912,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.03 de WTN a favor (6.23 contra 7.26), en ronda R1: la curva del grupo \"buenas\" (n=345) da 59%. A 1.83 hay apenas +9%: por debajo del margen de la casa (haria falta 1.83). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ1.03 claro",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Hazem Naw",
+     "marca": "",
+     "atp": 999,
+     "itf": null,
+     "wtn": 7.26,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.83,
+     "llega": ""
+    },
+    {
+     "nombre": "Bruno Fernandez",
+     "marca": "[2]",
+     "atp": 642,
+     "itf": 453,
+     "wtn": 6.23,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.83,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Bruno Fernandez",
+    "marca": "[2]",
+    "atp": 642,
+    "itf": 453,
+    "wtn": 6.23,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.83,
+    "llega": ""
+   },
+   "cuota": 1.83,
+   "gano": false,
+   "devig": 0.5,
+   "resid": -0.026846655897212912
+  },
+  {
+   "q": {
+    "torneo": "M15 Allershausen",
+    "p1": "Thiago Cigarran",
+    "p2": "Thanaphat Boosarawongse",
+    "g1": 1.72,
+    "g2": 1.98,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-ger-2026-013",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.72 de WTN en ronda R1: ahí el mejor WTN sale 57%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+    "banderas": [
+     "Δ0.72 corta en R1"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Thiago Cigarran",
+     "marca": "[3]",
+     "atp": 687,
+     "itf": null,
+     "wtn": 7.25,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.72,
+     "llega": ""
+    },
+    {
+     "nombre": "Thanaphat Boosarawongse",
+     "marca": "",
+     "atp": 1058,
+     "itf": 550,
+     "wtn": 7.97,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.98,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "Δ0.72 corta en R1",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Thiago Cigarran",
+    "marca": "[3]",
+    "atp": 687,
+    "itf": null,
+    "wtn": 7.25,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.72,
+    "llega": ""
+   },
+   "cuota": 1.72,
+   "gano": true,
+   "devig": 0.5351351351351351,
+   "resid": 0.022447859164082096
+  },
+  {
+   "q": {
+    "torneo": "M15 Allershausen",
+    "p1": "Noah Lopez",
+    "p2": "Jaron Held",
+    "g1": 1.21,
+    "g2": 3.8,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-ger-2026-013",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
+    "banderas": [
+     "sin datos de nivel"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Noah Lopez",
+     "marca": "",
+     "atp": 1296,
+     "itf": 176,
+     "wtn": 7.6,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.21,
+     "llega": ""
+    },
+    {
+     "nombre": "Jaron Held",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": null,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.8,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "sin datos de nivel",
+   "ret": false,
+   "favWtn": null,
+   "cuota": null,
+   "gano": null
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Daniel Bagnolini",
+    "p2": "Elias Julian Werner",
+    "g1": 1.16,
+    "g2": 4.45,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.8369683633153663,
+     "d": 4.42,
+     "favorito": "Daniel Bagnolini",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.1947882904902631,
+     "cMinima": 1.302319236634387
+    },
+    "precio": {
+     "cuota": 1.16,
+     "cMinima": 1.302319236634387,
+     "val": -0.029116698554175202,
+     "devig": 0.7932263814616756,
+     "residuo": 0.11889089270804365,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ4.42 de WTN a favor (8.34 contra 12.76), en ronda R1: la curva del grupo \"buenas\" (n=345) da 84%. A 1.16 el mercado implica 86%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ4.42 muy fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Daniel Bagnolini",
+     "marca": "",
+     "atp": 1412,
+     "itf": 626,
+     "wtn": 8.34,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.16,
+     "llega": ""
+    },
+    {
+     "nombre": "Elias Julian Werner",
+     "marca": "",
+     "atp": 1555,
+     "itf": 335,
+     "wtn": 12.76,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.45,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Daniel Bagnolini",
+    "marca": "",
+    "atp": 1412,
+    "itf": 626,
+    "wtn": 8.34,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.16,
+    "llega": ""
+   },
+   "cuota": 1.16,
+   "gano": true,
+   "devig": 0.7932263814616756,
+   "resid": 0.11889089270804365
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Lenny Couturier",
+    "p2": "Zaccharie Cado",
+    "g1": 1.29,
+    "g2": 3.2,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "segura",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.8963845447812443,
+     "d": 5.83,
+     "favorito": "Lenny Couturier",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.1155926391435522,
+     "cMinima": 1.215995976666472
+    },
+    "precio": {
+     "cuota": 1.29,
+     "cMinima": 1.215995976666472,
+     "val": 0.1563360627678052,
+     "devig": 0.7126948775055678,
+     "residuo": -0.015580478960096955,
+     "veredicto": "barato"
+    },
+    "favorito": "Lenny Couturier",
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ5.83 de WTN a favor (10.94 contra 16.77), en ronda R1: la curva del grupo \"buenas\" (n=345) da 90%. A 1.29 paga sobre la minima de 1.22: +16% de valor. Nivel fuerte, R1 está en \"buenas\" (n=345), y sin reparos. (Zaccharie Cado no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%))",
+    "banderas": [
+     "Δ5.83 muy fuerte",
+     "segura"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Lenny Couturier",
+     "marca": "",
+     "atp": 1884,
+     "itf": 166,
+     "wtn": 10.94,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.29,
+     "llega": ""
+    },
+    {
+     "nombre": "Zaccharie Cado",
+     "marca": "Q",
+     "atp": null,
+     "itf": 1688,
+     "wtn": 16.77,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.2,
+     "llega": "6-2 6-4 · 5-7 6-4 10-5"
+    }
+   ],
+   "etiqueta": "segura",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Lenny Couturier",
+    "marca": "",
+    "atp": 1884,
+    "itf": 166,
+    "wtn": 10.94,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.29,
+    "llega": ""
+   },
+   "cuota": 1.29,
+   "gano": true,
+   "devig": 0.7126948775055678,
+   "resid": -0.015580478960096955
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Matisse Martin",
+    "p2": "Pierre Delage",
+    "g1": 4.8,
+    "g2": 1.14,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.9537975231096776,
+     "d": 8.18,
+     "favorito": "Pierre Delage [2]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.0484405502959244,
+     "cMinima": 1.1428001998225576
+    },
+    "precio": {
+     "cuota": 1.14,
+     "cMinima": 1.1428001998225576,
+     "val": 0.08732917634503234,
+     "devig": 0.8080808080808082,
+     "residuo": 0.0033796607158064207,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ8.18 de WTN a favor (6.53 contra 14.71), en ronda R1: la curva del grupo \"buenas\" (n=345) da 95%. A 1.14 hay apenas +9%: por debajo del margen de la casa (haria falta 1.14). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ8.18 muy fuerte",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Matisse MARTIN",
+     "marca": "",
+     "atp": 1771,
+     "itf": 1402,
+     "wtn": 14.71,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.8,
+     "llega": ""
+    },
+    {
+     "nombre": "Pierre Delage",
+     "marca": "[2]",
+     "atp": 680,
+     "itf": 1402,
+     "wtn": 6.53,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.14,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Pierre Delage",
+    "marca": "[2]",
+    "atp": 680,
+    "itf": 1402,
+    "wtn": 6.53,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.14,
+    "llega": ""
+   },
+   "cuota": 1.14,
+   "gano": true,
+   "devig": 0.8080808080808082,
+   "resid": 0.0033796607158064207
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Mathieu Scaglia",
+    "p2": "Nazim Makhlouf",
+    "g1": 1.75,
+    "g2": 1.91,
+    "visto": "2026-08-24T16:30Z",
+    "betano": "Mathieu Scaglia / Mohamed Nazim Makhlouf"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.33 de WTN en ronda R1: ahí el mejor WTN sale 53%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+    "banderas": [
+     "Δ0.33 corta en R1"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Mathieu Scaglia",
+     "marca": "[8]",
+     "atp": 1033,
+     "itf": 1845,
+     "wtn": 8.49,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.75,
+     "llega": ""
+    },
+    {
+     "nombre": "Nazim Makhlouf",
+     "marca": "",
+     "atp": 1121,
+     "itf": 1319,
+     "wtn": 8.82,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.91,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "Δ0.33 corta en R1",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Mathieu Scaglia",
+    "marca": "[8]",
+    "atp": 1033,
+    "itf": 1845,
+    "wtn": 8.49,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.75,
+    "llega": ""
+   },
+   "cuota": 1.75,
+   "gano": true,
+   "devig": 0.5218579234972677,
+   "resid": 0.027010241118494094
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Tanguy Genier",
+    "p2": "Pierre Antoine Tailleu",
+    "g1": 1.6,
+    "g2": 2.15,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.01 de WTN en ronda R1: ahí el mejor WTN sale 50%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+    "banderas": [
+     "Δ0.01 corta en R1"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Tanguy Genier",
+     "marca": "",
+     "atp": 1209,
+     "itf": 24,
+     "wtn": 8.48,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.6,
+     "llega": ""
+    },
+    {
+     "nombre": "Pierre Antoine Tailleu",
+     "marca": "",
+     "atp": 1300,
+     "itf": 29,
+     "wtn": 8.49,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.15,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "Δ0.01 corta en R1",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Tanguy Genier",
+    "marca": "",
+    "atp": 1209,
+    "itf": 24,
+    "wtn": 8.48,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.6,
+    "llega": ""
+   },
+   "cuota": 1.6,
+   "gano": false,
+   "devig": 0.5733333333333334,
+   "resid": 0.0931155017097775
+  },
+  {
+   "q": {
+    "torneo": "M25 Lausanne",
+    "p1": "Nicolas Ulrich",
+    "p2": "Laurin Aerne",
+    "g1": 2.05,
+    "g2": 1.67,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-sui-2026-004",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.57 de WTN en ronda R1: ahí el mejor WTN sale 55%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+    "banderas": [
+     "Δ0.57 corta en R1"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Nicolas Ulrich",
+     "marca": "Q",
+     "atp": null,
+     "itf": null,
+     "wtn": 12.9,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.05,
+     "llega": "6-2 6-3 · 7-5 6-1"
+    },
+    {
+     "nombre": "Laurin Aerne",
+     "marca": "",
+     "atp": 2237,
+     "itf": 378,
+     "wtn": 12.33,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.67,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "Δ0.57 corta en R1",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Laurin Aerne",
+    "marca": "",
+    "atp": 2237,
+    "itf": 378,
+    "wtn": 12.33,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.67,
+    "llega": ""
+   },
+   "cuota": 1.67,
+   "gano": false,
+   "devig": 0.5510752688172044,
+   "resid": 0.045248032670173854
+  },
+  {
+   "q": {
+    "torneo": "M25 Lausanne",
+    "p1": "Alessandro Hunziker",
+    "p2": "Dimitris Sakellaridis",
+    "g1": 4.8,
+    "g2": 1.14,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-sui-2026-004",
+   "v": {
+    "tipo": "segura",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.9657196741341008,
+     "d": 9.02,
+     "favorito": "Dimitris Sakellaridis [5]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.035497180790726,
+     "cMinima": 1.1286919270618916
+    },
+    "precio": {
+     "cuota": 1.14,
+     "cMinima": 1.1286919270618916,
+     "val": 0.10092042851287486,
+     "devig": 0.8080808080808082,
+     "residuo": -0.01965432509531362,
+     "veredicto": "barato"
+    },
+    "favorito": "Dimitris Sakellaridis [5]",
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ9.02 de WTN a favor (6.94 contra 15.96), en ronda R1: la curva del grupo \"buenas\" (n=345) da 97%. A 1.14 paga sobre la minima de 1.13: +10% de valor. Nivel fuerte, R1 está en \"buenas\" (n=345), y sin reparos. (Alessandro Hunziker no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%))",
+    "banderas": [
+     "Δ9.02 muy fuerte",
+     "segura"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Alessandro Hunziker",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": 15.96,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.8,
+     "llega": ""
+    },
+    {
+     "nombre": "Dimitris Sakellaridis",
+     "marca": "[5]",
+     "atp": 556,
+     "itf": null,
+     "wtn": 6.94,
+     "wtnVisible": false,
+     "jr": false,
+     "gana": 1.14,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "segura",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Dimitris Sakellaridis",
+    "marca": "[5]",
+    "atp": 556,
+    "itf": null,
+    "wtn": 6.94,
+    "wtnVisible": false,
+    "jr": false,
+    "gana": 1.14,
+    "llega": ""
+   },
+   "cuota": 1.14,
+   "gano": false,
+   "devig": 0.8080808080808082,
+   "resid": -0.01965432509531362
+  },
+  {
+   "q": {
+    "torneo": "M25 Maribor",
+    "p1": "Samuele Pieri",
+    "p2": "Theodore Dean",
+    "g1": 1.3,
+    "g2": 3.1,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-slo-2026-009",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.7100531096341584,
+     "d": 2.42,
+     "favorito": "Samuele Pieri [1]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.408345356751175,
+     "cMinima": 1.5350964388587809
+    },
+    "precio": {
+     "cuota": 1.3,
+     "cMinima": 1.5350964388587809,
+     "val": -0.07693095747559409,
+     "devig": 0.7045454545454546,
+     "residuo": 0.11505484162299096,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ2.42 de WTN a favor (4.21 contra 6.63), en ronda R1: la curva del grupo \"buenas\" (n=345) da 71%. A 1.3 el mercado implica 77%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ2.42 claro",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Samuele Pieri",
+     "marca": "[1]",
+     "atp": 386,
+     "itf": null,
+     "wtn": 4.21,
+     "wtnVisible": false,
+     "jr": false,
+     "gana": 1.3,
+     "llega": ""
+    },
+    {
+     "nombre": "Theodore Dean",
+     "marca": "",
+     "atp": 878,
+     "itf": 553,
+     "wtn": 6.63,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.1,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Samuele Pieri",
+    "marca": "[1]",
+    "atp": 386,
+    "itf": null,
+    "wtn": 4.21,
+    "wtnVisible": false,
+    "jr": false,
+    "gana": 1.3,
+    "llega": ""
+   },
+   "cuota": 1.3,
+   "gano": true,
+   "devig": 0.7045454545454546,
+   "resid": 0.11505484162299096
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Kenny De Schepper",
+    "p2": "Massimo Pizzigoni",
+    "g1": 1.19,
+    "g2": 4.05,
+    "visto": "2026-08-24T20:01Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.9152695057281663,
+     "d": 6.430000000000001,
+     "favorito": "Kenny De Schepper [6]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.0925743660654619,
+     "cMinima": 1.1909060590113536
+    },
+    "precio": {
+     "cuota": 1.19,
+     "cMinima": 1.1909060590113536,
+     "val": 0.08917071181651792,
+     "devig": 0.7729007633587786,
+     "residuo": 0.023449092687978235,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ6.43 de WTN a favor (5.64 contra 12.07), en ronda R1: la curva del grupo \"buenas\" (n=345) da 92%. A 1.19 hay apenas +9%: por debajo del margen de la casa (haria falta 1.19). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ6.43 muy fuerte",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Kenny De Schepper",
+     "marca": "[6]",
+     "atp": 944,
+     "itf": null,
+     "wtn": 5.64,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.19,
+     "llega": ""
+    },
+    {
+     "nombre": "Massimo Pizzigoni",
+     "marca": "Q",
+     "atp": 1771,
+     "itf": 599,
+     "wtn": 12.07,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.05,
+     "llega": "6-0 6-0 · 6-0 6-2"
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Kenny De Schepper",
+    "marca": "[6]",
+    "atp": 944,
+    "itf": null,
+    "wtn": 5.64,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.19,
+    "llega": ""
+   },
+   "cuota": 1.19,
+   "gano": true,
+   "devig": 0.7729007633587786,
+   "resid": 0.023449092687978235
+  },
+  {
+   "q": {
+    "torneo": "M15 Cap d'Agde",
+    "p1": "Matis Roche",
+    "p2": "Leo Raquillet",
+    "g1": 5.5,
+    "g2": 1.1,
+    "visto": "2026-08-24T20:11Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-fra-2026-025",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
+    "banderas": [
+     "sin datos de nivel"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Matis Roche",
+     "marca": "Q",
+     "atp": null,
+     "itf": null,
+     "wtn": null,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 5.5,
+     "llega": "7-6(1) 6-1 · 7-6(2) 2-6 10-4"
+    },
+    {
+     "nombre": "Leo Raquillet",
+     "marca": "[3]",
+     "atp": 656,
+     "itf": null,
+     "wtn": 6.24,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.1,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "sin datos de nivel",
+   "ret": false,
+   "favWtn": null,
+   "cuota": null,
+   "gano": null
+  },
+  {
+   "q": {
+    "torneo": "M25 Maribor",
+    "p1": "Denis Constantin Spiridon",
+    "p2": "Giuseppe La Vela",
+    "g1": 3.2,
+    "g2": 1.29,
+    "visto": "2026-08-24T22:42Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-slo-2026-009",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "fuerte",
+     "p": 0.727259982687603,
+     "d": 2.6500000000000004,
+     "favorito": "Giuseppe La Vela [5]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.3750240956534983,
+     "cMinima": 1.4987762642623133
+    },
+    "precio": {
+     "cuota": 1.29,
+     "cMinima": 1.4987762642623133,
+     "val": -0.061834622332992195,
+     "devig": 0.7126948775055678,
+     "residuo": 0.11305855848355639,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ2.65 de WTN a favor (6.25 contra 8.9), en ronda R1: la curva del grupo \"buenas\" (n=345) da 73%. A 1.29 el mercado implica 78%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ2.65 fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Denis Constantin Spiridon",
+     "marca": "",
+     "atp": 1114,
+     "itf": 54,
+     "wtn": 8.9,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.2,
+     "llega": ""
+    },
+    {
+     "nombre": "Giuseppe La Vela",
+     "marca": "[5]",
+     "atp": 499,
+     "itf": null,
+     "wtn": 6.25,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.29,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Giuseppe La Vela",
+    "marca": "[5]",
+    "atp": 499,
+    "itf": null,
+    "wtn": 6.25,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.29,
+    "llega": ""
+   },
+   "cuota": 1.29,
+   "gano": true,
+   "devig": 0.7126948775055678,
+   "resid": 0.11305855848355639
+  },
+  {
+   "q": {
+    "torneo": "M25 Oldenzaal",
+    "p1": "Jelle Sels",
+    "p2": "Stijn Paardekooper",
+    "g1": 1.83,
+    "g2": 1.83,
+    "visto": "2026-08-24T22:47Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-ned-2026-006",
+   "v": {
+    "tipo": "mirar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.705460154798661,
+     "d": 2.3600000000000003,
+     "favorito": "Jelle Sels [5]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.4175145019854467,
+     "cMinima": 1.545090807164137
+    },
+    "precio": {
+     "cuota": 1.83,
+     "cMinima": 1.545090807164137,
+     "val": 0.2909920832815496,
+     "devig": 0.5,
+     "residuo": -0.08683096034650684,
+     "veredicto": "barato"
+    },
+    "favorito": "Jelle Sels [5]",
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ2.36 de WTN a favor (5.31 contra 7.67), en ronda R1: la curva del grupo \"buenas\" (n=345) da 71%. A 1.83 paga sobre la minima de 1.55: +29% de valor. Pero: el nivel es solo \"claro\", no fuerte.",
+    "banderas": [
+     "Δ2.36 claro",
+     "mirar"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Jelle Sels",
+     "marca": "[5]",
+     "atp": 529,
+     "itf": null,
+     "wtn": 5.31,
+     "wtnVisible": false,
+     "jr": false,
+     "gana": 1.83,
+     "llega": ""
+    },
+    {
+     "nombre": "Stijn Paardekooper",
+     "marca": "",
+     "atp": 879,
+     "itf": 915,
+     "wtn": 7.67,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.83,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "mirar",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Jelle Sels",
+    "marca": "[5]",
+    "atp": 529,
+    "itf": null,
+    "wtn": 5.31,
+    "wtnVisible": false,
+    "jr": false,
+    "gana": 1.83,
+    "llega": ""
+   },
+   "cuota": 1.83,
+   "gano": true,
+   "devig": 0.5,
+   "resid": -0.08683096034650684
+  },
+  {
+   "q": {
+    "torneo": "M25 Oldenzaal",
+    "p1": "Brian Bozemoj",
+    "p2": "Fons Van Sambeek",
+    "g1": 1.65,
+    "g2": 2.07,
+    "visto": "2026-08-24T22:47Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-ned-2026-006",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.32 de WTN en ronda R1: ahí el mejor WTN sale 53%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+    "banderas": [
+     "Δ0.32 corta en R1"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Brian Bozemoj",
+     "marca": "",
+     "atp": 1071,
+     "itf": 807,
+     "wtn": 8.29,
+     "wtnVisible": false,
+     "jr": false,
+     "gana": 1.65,
+     "llega": ""
+    },
+    {
+     "nombre": "Fons Van Sambeek",
+     "marca": "",
+     "atp": 1030,
+     "itf": 131,
+     "wtn": 7.97,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.07,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "Δ0.32 corta en R1",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Fons Van Sambeek",
+    "marca": "",
+    "atp": 1030,
+    "itf": 131,
+    "wtn": 7.97,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 2.07,
+    "llega": ""
+   },
+   "cuota": 2.07,
+   "gano": false,
+   "devig": 0.4435483870967742,
+   "resid": -0.050841848302680126
+  },
+  {
+   "q": {
+    "torneo": "M25 Oldenzaal",
+    "p1": "Marc Majdandzic",
+    "p2": "Eric Vanshelboim",
+    "g1": 2.3,
+    "g2": 1.53,
+    "visto": "2026-08-24T22:47Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-ned-2026-006",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6697138208763305,
+     "d": 1.9100000000000001,
+     "favorito": "Eric Vanshelboim [2]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.4931750978223581,
+     "cMinima": 1.6275608566263706
+    },
+    "precio": {
+     "cuota": 1.53,
+     "cMinima": 1.6275608566263706,
+     "val": 0.02466214594078564,
+     "devig": 0.6005221932114883,
+     "residuo": 0.03379020663407617,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.91 de WTN a favor (5.88 contra 7.79), en ronda R1: la curva del grupo \"buenas\" (n=345) da 67%. A 1.53 hay apenas +2%: por debajo del margen de la casa (haria falta 1.63). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ1.91 claro",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Marc Majdandzic",
+     "marca": "",
+     "atp": 707,
+     "itf": 1095,
+     "wtn": 7.79,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.3,
+     "llega": ""
+    },
+    {
+     "nombre": "Eric Vanshelboim",
+     "marca": "[2]",
+     "atp": 420,
+     "itf": 1765,
+     "wtn": 5.88,
+     "wtnVisible": false,
+     "jr": false,
+     "gana": 1.53,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Eric Vanshelboim",
+    "marca": "[2]",
+    "atp": 420,
+    "itf": 1765,
+    "wtn": 5.88,
+    "wtnVisible": false,
+    "jr": false,
+    "gana": 1.53,
+    "llega": ""
+   },
+   "cuota": 1.53,
+   "gano": true,
+   "devig": 0.6005221932114883,
+   "resid": 0.03379020663407617
+  },
+  {
+   "q": {
+    "torneo": "M25 Lausanne",
+    "p1": "Noah Karma",
+    "p2": "Sebastian Anthony Vlahos",
+    "g1": 1.09,
+    "g2": 5.7,
+    "visto": "2026-08-25T13:23Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-sui-2026-004",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.9720573062870979,
+     "d": 9.59,
+     "favorito": "Noah Karma",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.0287459325002484,
+     "cMinima": 1.1213330664252708
+    },
+    "precio": {
+     "cuota": 1.09,
+     "cMinima": 1.1213330664252708,
+     "val": 0.05954246385293671,
+     "devig": 0.8394698085419735,
+     "residuo": -0.0026345991806859814,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ9.59 de WTN a favor (8.32 contra 17.91), en ronda R1: la curva del grupo \"buenas\" (n=345) da 97%. A 1.09 hay apenas +6%: por debajo del margen de la casa (haria falta 1.12). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ9.59 muy fuerte",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Noah Karma",
+     "marca": "",
+     "atp": 1416,
+     "itf": 149,
+     "wtn": 8.32,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.09,
+     "llega": ""
+    },
+    {
+     "nombre": "Sebastian Anthony Vlahos",
+     "marca": "Q",
+     "atp": null,
+     "itf": null,
+     "wtn": 17.91,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 5.7,
+     "llega": "6-4 2-6 10-4 · 6-0 6-4"
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Noah Karma",
+    "marca": "",
+    "atp": 1416,
+    "itf": 149,
+    "wtn": 8.32,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.09,
+    "llega": ""
+   },
+   "cuota": 1.09,
+   "gano": true,
+   "devig": 0.8394698085419735,
+   "resid": -0.0026345991806859814
+  },
+  {
+   "q": {
+    "torneo": "M25 Lausanne",
+    "p1": "Sam Kydd Baumgartner",
+    "p2": "Tymur Bieldiugin",
+    "g1": 2.42,
+    "g2": 1.47,
+    "visto": "2026-08-25T13:23Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-sui-2026-004",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ0.16 de WTN en ronda R1: ahí el mejor WTN sale 51%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+    "banderas": [
+     "Δ0.16 corta en R1"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Sam Kydd Baumgartner",
+     "marca": "Q",
+     "atp": null,
+     "itf": 1245,
+     "wtn": 10.17,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.42,
+     "llega": "6-3 6-1 · 3-6 6-1 10-6"
+    },
+    {
+     "nombre": "Tymur Bieldiugin",
+     "marca": "",
+     "atp": 1580,
+     "itf": 1920,
+     "wtn": 10.33,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.47,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "Δ0.16 corta en R1",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Sam Kydd Baumgartner",
+    "marca": "Q",
+    "atp": null,
+    "itf": 1245,
+    "wtn": 10.17,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 2.42,
+    "llega": "6-3 6-1 · 3-6 6-1 10-6"
+   },
+   "cuota": 2.42,
+   "gano": false,
+   "devig": 0.37789203084832906,
+   "resid": -0.10918085064856092
   }
  ]
 }
