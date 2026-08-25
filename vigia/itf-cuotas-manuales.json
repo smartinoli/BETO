@@ -720,6 +720,55 @@
    "g1": 1.4,
    "g2": 2.65,
    "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "p1": "Ryan Colby",
+   "p2": "Nikola Djosic",
+   "g1": 1.27,
+   "g2": 3.3,
+   "visto": "2026-08-25T13:23Z"
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "p1": "Shu Matsuoka",
+   "p2": "Marko Mesarovic",
+   "g1": 2.02,
+   "g2": 1.67,
+   "visto": "2026-08-25T13:23Z"
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "p1": "Jeremy Zhang",
+   "p2": "Ofek Shimanov",
+   "g1": 1.93,
+   "g2": 1.75,
+   "visto": "2026-08-25T13:23Z"
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "p1": "Zsombor Velcz",
+   "p2": "Zachary Viiala",
+   "g1": 1.31,
+   "g2": 3.05,
+   "visto": "2026-08-25T13:23Z",
+   "betano": "Zsombor Velcz / Zach Viiala"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Noah Karma",
+   "p2": "Sebastian Anthony Vlahos",
+   "g1": 1.09,
+   "g2": 5.7,
+   "visto": "2026-08-25T13:23Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Sam Kydd Baumgartner",
+   "p2": "Tymur Bieldiugin",
+   "g1": 2.42,
+   "g2": 1.47,
+   "visto": "2026-08-25T13:23Z"
   }
  ]
 }

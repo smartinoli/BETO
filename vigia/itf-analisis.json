@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T13:22:49.707Z",
+ "generado": "2026-08-25T13:24:03.899Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano/bet365 + reglas medidas (itf-reglas.mjs)",
  "titular": "Valor esperado partido a partido, con la probabilidad de la RONDA EXACTA: el WTN no acierta lo mismo en Q1 (75%) que en Q2 o R1 (79% y 77%) que en cuartos (60%) o semis (50%).",
  "advertencia": "El margen de Betano en ITF es 9%: por eso la cuota minima de cada banda es 1.09/p y no 1/p. Los \"ojo:\" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano 6-3 6-5).",
@@ -725,13 +725,13 @@
    "favorito": "—",
    "confianza": "baja",
    "mercado": "pasar",
-   "razon": "Δ0.57 de WTN en ronda R1: ahí el mejor WTN sale 55%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+   "razon": "Δ0.57 de WTN en ronda R1: ahí el mejor WTN sale 46%, bajo el piso de 58%. En buenas (n=345) haría falta Δ1.89 con el choque en contra. Sin lado.",
    "banderas": [
     "Δ0.57 corta en R1"
    ]
   },
   "1183671101": {
-   "tipo": "sin-precio",
+   "tipo": "pasar",
    "nivel": {
     "fuerza": "muy fuerte",
     "p": 0.9720573062870979,
@@ -745,14 +745,21 @@
     "cEmpate": 1.0287459325002484,
     "cMinima": 1.1213330664252708
    },
-   "precio": null,
-   "favorito": "Noah Karma",
+   "precio": {
+    "cuota": 1.09,
+    "cMinima": 1.1213330664252708,
+    "val": 0.05954246385293671,
+    "devig": 0.8394698085419735,
+    "residuo": -0.0026345991806859814,
+    "veredicto": "justo"
+   },
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ9.59 de WTN a favor (8.32 contra 17.91), en ronda R1: la curva del grupo \"buenas\" (n=345) da 97%. Empataria a 1.03 y valdria la pena desde 1.12. Falta el precio. Con reparos: Sebastian Anthony Vlahos no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+   "mercado": "pasar",
+   "razon": "Δ9.59 de WTN a favor (8.32 contra 17.91), en ronda R1: la curva del grupo \"buenas\" (n=345) da 97%. A 1.09 hay apenas +6%: por debajo del margen de la casa (haria falta 1.12). Dentro del error de estimacion.",
    "banderas": [
     "Δ9.59 muy fuerte",
-    "sin precio"
+    "margen fino"
    ]
   },
   "1183671102": {
@@ -2962,10 +2969,269 @@
    "banderas": [
     "Δ0.87 corta en Q2"
    ]
+  },
+  "1183673945": {
+   "tipo": "pasar",
+   "nivel": {
+    "fuerza": "fuerte",
+    "p": 0.7781018611552671,
+    "d": 3.3899999999999997,
+    "favorito": "Ryan Colby [1]",
+    "ronda": "R1",
+    "grupo": "buenas",
+    "tarde": false,
+    "choque": false,
+    "n": 345,
+    "cEmpate": 1.285178779183583,
+    "cMinima": 1.4008448693101054
+   },
+   "precio": {
+    "cuota": 1.27,
+    "cMinima": 1.4008448693101054,
+    "val": -0.011810636332810764,
+    "devig": 0.7221006564551422,
+    "residuo": 0.09043480494183342,
+    "veredicto": "caro"
+   },
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ3.39 de WTN a favor (6.3 contra 9.69), en ronda R1: la curva del grupo \"buenas\" (n=345) da 78%. A 1.27 el mercado implica 79%, por encima de nuestra banda: cuota corta, no compensa.",
+   "banderas": [
+    "Δ3.39 fuerte",
+    "cuota corta"
+   ]
+  },
+  "1183673948": {
+   "tipo": "segura",
+   "nivel": {
+    "fuerza": "fuerte",
+    "p": 0.7265252614762826,
+    "d": 2.6400000000000006,
+    "favorito": "Ofek Shimanov [8]",
+    "ronda": "R1",
+    "grupo": "buenas",
+    "tarde": false,
+    "choque": false,
+    "n": 345,
+    "cEmpate": 1.3764146314307406,
+    "cMinima": 1.5002919482595074
+   },
+   "precio": {
+    "cuota": 1.75,
+    "cMinima": 1.5002919482595074,
+    "val": 0.27141920758349447,
+    "devig": 0.5244565217391304,
+    "residuo": -0.07474038442020636,
+    "veredicto": "barato"
+   },
+   "favorito": "Ofek Shimanov [8]",
+   "confianza": "alta",
+   "mercado": "gana",
+   "razon": "Δ2.64 de WTN a favor (7.27 contra 9.91), en ronda R1: la curva del grupo \"buenas\" (n=345) da 73%. A 1.75 paga sobre la minima de 1.50: +27% de valor. Nivel fuerte, R1 está en \"buenas\" (n=345), y sin reparos.",
+   "banderas": [
+    "Δ2.64 fuerte",
+    "segura"
+   ]
+  },
+  "1183673957": {
+   "tipo": "pasar",
+   "nivel": {
+    "fuerza": "claro",
+    "p": 0.6127588880116122,
+    "d": 1.2400000000000002,
+    "favorito": "Zsombor Velcz [7]",
+    "ronda": "R1",
+    "grupo": "buenas",
+    "tarde": false,
+    "choque": false,
+    "n": 345,
+    "cEmpate": 1.6319632722831259,
+    "cMinima": 1.7788399667886072
+   },
+   "precio": {
+    "cuota": 1.31,
+    "cMinima": 1.7788399667886072,
+    "val": -0.19728585670478804,
+    "devig": 0.6995412844036698,
+    "residuo": 0.16312587651850508,
+    "veredicto": "caro"
+   },
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ1.24 de WTN a favor (6.66 contra 7.9), en ronda R1: la curva del grupo \"buenas\" (n=345) da 61%. A 1.31 el mercado implica 76%, por encima de nuestra banda: cuota corta, no compensa.",
+   "banderas": [
+    "Δ1.24 claro",
+    "cuota corta"
+   ]
+  },
+  "1183673958": {
+   "tipo": "pasar",
+   "nivel": null,
+   "precio": null,
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.79 de WTN en ronda R1: ahí el mejor WTN sale 57%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+   "banderas": [
+    "Δ0.79 corta en R1"
+   ]
+  },
+  "1183673961": {
+   "tipo": "pasar",
+   "nivel": null,
+   "precio": null,
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.45 de WTN en ronda Q2: ahí el mejor WTN sale 54%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+   "banderas": [
+    "Δ0.45 corta en Q2"
+   ]
+  },
+  "1183673962": {
+   "tipo": "pasar",
+   "nivel": null,
+   "precio": null,
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.79 de WTN en ronda Q2: ahí el mejor WTN sale 57%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+   "banderas": [
+    "Δ0.79 corta en Q2"
+   ]
+  },
+  "1183673963": {
+   "tipo": "pasar",
+   "nivel": null,
+   "precio": null,
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Δ0.44 de WTN en ronda Q2: ahí el mejor WTN sale 54%, bajo el piso de 58%. En buenas (n=345) haría falta Δ0.87. Sin lado.",
+   "banderas": [
+    "Δ0.44 corta en Q2"
+   ]
+  },
+  "1183673964": {
+   "tipo": "sin-precio",
+   "nivel": {
+    "fuerza": "muy fuerte",
+    "p": 0.8889402817766652,
+    "d": 5.62,
+    "favorito": "Preston Stearns [4]",
+    "ronda": "Q2",
+    "grupo": "buenas",
+    "tarde": false,
+    "choque": false,
+    "n": 345,
+    "cEmpate": 1.1249349596368468,
+    "cMinima": 1.2261791060041631
+   },
+   "precio": null,
+   "favorito": "Preston Stearns [4]",
+   "confianza": "baja",
+   "mercado": "sin precio",
+   "razon": "Δ5.62 de WTN a favor (6.87 contra 12.49), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 89%. Empataria a 1.12 y valdria la pena desde 1.23. Falta el precio. Con reparos: Jon Gamble no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+   "banderas": [
+    "Δ5.62 muy fuerte",
+    "sin precio"
+   ]
+  },
+  "1183673965": {
+   "tipo": "sin-precio",
+   "nivel": {
+    "fuerza": "muy fuerte",
+    "p": 0.9767496911064578,
+    "d": 11.12,
+    "favorito": "Jakub Vrba [5]",
+    "ronda": "Q2",
+    "grupo": "buenas",
+    "tarde": false,
+    "choque": true,
+    "n": 345,
+    "cEmpate": 1.0238037535156057,
+    "cMinima": 1.1159460913320103
+   },
+   "precio": null,
+   "favorito": "Jakub Vrba [5]",
+   "confianza": "baja",
+   "mercado": "sin precio",
+   "razon": "Δ11.12 de WTN a favor (6.6 contra 17.72), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 98%. Nicholas Mekhael llega cediendo menos games y el choque la baja a 98%. Empataria a 1.02 y valdria la pena desde 1.12. Falta el precio. Con reparos: Nicholas Mekhael no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Nicholas Mekhael llega cediendo menos games: el choque baja la estimación de 98% a 98%.",
+   "banderas": [
+    "Δ11.12 muy fuerte",
+    "choque nivel vs forma",
+    "ojo: Nicholas Mekhael llega cediendo menos games",
+    "sin precio"
+   ]
+  },
+  "1183673966": {
+   "tipo": "sin-precio",
+   "nivel": {
+    "fuerza": "muy fuerte",
+    "p": 0.8889402817766652,
+    "d": 5.620000000000001,
+    "favorito": "Matisse Farzam [6]",
+    "ronda": "Q2",
+    "grupo": "buenas",
+    "tarde": false,
+    "choque": false,
+    "n": 345,
+    "cEmpate": 1.1249349596368468,
+    "cMinima": 1.2261791060041631
+   },
+   "precio": null,
+   "favorito": "Matisse Farzam [6]",
+   "confianza": "baja",
+   "mercado": "sin precio",
+   "razon": "Δ5.62 de WTN a favor (7.77 contra 13.39), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 89%. Empataria a 1.12 y valdria la pena desde 1.23. Falta el precio. Con reparos: Rishvanth Krishna no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+   "banderas": [
+    "Δ5.62 muy fuerte",
+    "sin precio"
+   ]
+  },
+  "1183673967": {
+   "tipo": "pasar",
+   "nivel": null,
+   "precio": null,
+   "favorito": "—",
+   "confianza": "baja",
+   "mercado": "pasar",
+   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
+   "banderas": [
+    "sin datos de nivel"
+   ]
+  },
+  "1183673968": {
+   "tipo": "sin-precio",
+   "nivel": {
+    "fuerza": "claro",
+    "p": 0.6039411624169284,
+    "d": 1.1400000000000006,
+    "favorito": "Alexander Petrov [9]",
+    "ronda": "Q2",
+    "grupo": "buenas",
+    "tarde": false,
+    "choque": false,
+    "n": 345,
+    "cEmpate": 1.6557904349458035,
+    "cMinima": 1.8048115740909259
+   },
+   "precio": null,
+   "favorito": "Alexander Petrov [9]",
+   "confianza": "baja",
+   "mercado": "sin precio",
+   "razon": "Δ1.14 de WTN a favor (8.77 contra 9.91), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 60%. Empataria a 1.66 y valdria la pena desde 1.80. Falta el precio.",
+   "banderas": [
+    "Δ1.14 claro",
+    "sin precio"
+   ]
   }
  },
  "destacados": [
   1183671060,
+  1183673948,
   1183671170,
   1183671319,
   1183671175,
