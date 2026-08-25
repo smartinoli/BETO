@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T21:39:42.991Z",
+ "generado": "2026-08-25T21:47:23.796Z",
  "registro": [
   {
    "q": {
@@ -3080,6 +3080,244 @@
    "gano": false,
    "devig": 0.8080808080808082,
    "resid": -0.01965432509531362
+  },
+  {
+   "q": {
+    "torneo": "M15 Bucharest",
+    "p1": "Alessandro Battiston",
+    "p2": "Radu David Turcanu",
+    "g1": 4.45,
+    "g2": 1.15,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-rou-2026-013",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.8185132594263504,
+     "d": 4.07,
+     "favorito": "Radu David Turcanu [5]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.2217273067767325,
+     "cMinima": 1.3316827643866385
+    },
+    "precio": {
+     "cuota": 1.15,
+     "cMinima": 1.3316827643866385,
+     "val": -0.05870975165969705,
+     "devig": 0.7946428571428572,
+     "residuo": 0.13452712508309916,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ4.07 de WTN a favor (6.73 contra 10.8), en ronda R1: la curva del grupo \"buenas\" (n=345) da 82%. A 1.15 el mercado implica 87%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ4.07 muy fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Alessandro Battiston",
+     "marca": "",
+     "atp": 1345,
+     "itf": 751,
+     "wtn": 10.8,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.45,
+     "llega": ""
+    },
+    {
+     "nombre": "Radu David Turcanu",
+     "marca": "[5]",
+     "atp": 648,
+     "itf": 592,
+     "wtn": 6.73,
+     "wtnVisible": false,
+     "jr": false,
+     "gana": 1.15,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Radu David Turcanu",
+    "marca": "[5]",
+    "atp": 648,
+    "itf": 592,
+    "wtn": 6.73,
+    "wtnVisible": false,
+    "jr": false,
+    "gana": 1.15,
+    "llega": ""
+   },
+   "cuota": 1.15,
+   "gano": true,
+   "devig": 0.7946428571428572,
+   "resid": 0.13452712508309916
+  },
+  {
+   "q": {
+    "torneo": "M15 Bucharest",
+    "p1": "Anas Mazdrashki",
+    "p2": "Stefan Ilie Bogdan Petre",
+    "g1": 1.28,
+    "g2": 3.25,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-rou-2026-013",
+   "v": {
+    "tipo": "segura",
+    "nivel": {
+     "fuerza": "muy fuerte",
+     "p": 0.9096545289614233,
+     "d": 6.240000000000001,
+     "favorito": "Anas Mazdrashki [7]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.0993184425099565,
+     "cMinima": 1.1982571023358528
+    },
+    "precio": {
+     "cuota": 1.28,
+     "cMinima": 1.1982571023358528,
+     "val": 0.1643577970706218,
+     "devig": 0.717439293598234,
+     "residuo": -0.025427025641358125,
+     "veredicto": "barato"
+    },
+    "favorito": "Anas Mazdrashki [7]",
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ6.24 de WTN a favor (7.31 contra 13.55), en ronda R1: la curva del grupo \"buenas\" (n=345) da 91%. A 1.28 paga sobre la minima de 1.20: +16% de valor. Nivel fuerte, R1 está en \"buenas\" (n=345), y sin reparos.",
+    "banderas": [
+     "Δ6.24 muy fuerte",
+     "segura"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Anas Mazdrashki",
+     "marca": "[7]",
+     "atp": 848,
+     "itf": null,
+     "wtn": 7.31,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.28,
+     "llega": ""
+    },
+    {
+     "nombre": "Stefan Ilie Bogdan Petre",
+     "marca": "",
+     "atp": 1302,
+     "itf": 318,
+     "wtn": 13.55,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.25,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "segura",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Anas Mazdrashki",
+    "marca": "[7]",
+    "atp": 848,
+    "itf": null,
+    "wtn": 7.31,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.28,
+    "llega": ""
+   },
+   "cuota": 1.28,
+   "gano": true,
+   "devig": 0.717439293598234,
+   "resid": -0.025427025641358125
+  },
+  {
+   "q": {
+    "torneo": "M15 Bucharest",
+    "p1": "Rares Teodor Pieleanu",
+    "p2": "Alejandro Mateo Berge Nourescu",
+    "g1": 1.09,
+    "g2": 5.8,
+    "visto": "2026-08-24T16:30Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-rou-2026-013",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "El ΔWTN de 6.26 apunta a Rares Teodor Pieleanu, pero el número no sirve: Alejandro Mateo Berge Nourescu es junior: contra juniores el mejor WTN acierta 31% (n=16), se da vuelta.",
+    "banderas": [
+     "veto: dato no confiable"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Rares Teodor Pieleanu",
+     "marca": "",
+     "atp": 1094,
+     "itf": 790,
+     "wtn": 9.07,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.09,
+     "llega": ""
+    },
+    {
+     "nombre": "Alejandro Mateo Berge Nourescu",
+     "marca": "",
+     "atp": null,
+     "itf": null,
+     "wtn": 15.33,
+     "wtnVisible": true,
+     "jr": true,
+     "gana": 5.8,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "veto: dato no confiable",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Rares Teodor Pieleanu",
+    "marca": "",
+    "atp": 1094,
+    "itf": 790,
+    "wtn": 9.07,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.09,
+    "llega": ""
+   },
+   "cuota": 1.09,
+   "gano": true,
+   "devig": 0.841799709724238,
+   "resid": 0.098234893771047
   },
   {
    "q": {

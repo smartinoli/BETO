@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T21:39:26.267Z",
+ "generado": "2026-08-25T21:47:23.424Z",
  "puntos": [
   {
    "clave": "m-itf-ger-2026-015",
@@ -916,8 +916,8 @@
    "seed": 5,
    "entradaRival": "DA",
    "nuestra": 0.8185132594263504,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-rou-2026-013",
@@ -933,8 +933,8 @@
    "seed": 7,
    "entradaRival": "DA",
    "nuestra": 0.9096545289614233,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-rou-2026-013",
@@ -950,8 +950,8 @@
    "seed": null,
    "entradaRival": "JR",
    "nuestra": 0.9102610069929841,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-slo-2026-009",
@@ -1479,6 +1479,108 @@
    "nuestra": 0.5147996756214314,
    "jugado": true,
    "gano": false
+  },
+  {
+   "clave": "m-itf-rou-2026-013",
+   "torneo": "M15 Bucharest",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 5.029999999999999,
+   "mkt": 0.841799709724238,
+   "vig": 0.08984498576399869,
+   "cuota": 1.09,
+   "favorito": "Giannicola Misasi",
+   "rival": "Gheorghe Claudiu Schinteie",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.8654836813603862,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-rou-2026-013",
+   "torneo": "M15 Bucharest",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 5.789999999999999,
+   "mkt": 0.583554376657825,
+   "vig": 0.09148812970469011,
+   "cuota": 1.57,
+   "favorito": "Nicolas Robert",
+   "rival": "Lenny Petit",
+   "seed": 8,
+   "entradaRival": "Q",
+   "nuestra": 0.8950014689971032,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-rou-2026-013",
+   "torneo": "M15 Bucharest",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 2.29,
+   "mkt": 0.7786116322701688,
+   "vig": 0.08842148254033089,
+   "cuota": 1.18,
+   "favorito": "Robert Guna",
+   "rival": "Daniele Minighini",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.700048537074703,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-rou-2026-013",
+   "torneo": "M15 Bucharest",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 7.840000000000001,
+   "mkt": 0.8333333333333334,
+   "vig": 0.09090909090909083,
+   "cuota": 1.1,
+   "favorito": "Gabriel Ghetu",
+   "rival": "Valentin Vanta",
+   "seed": 6,
+   "entradaRival": "Q",
+   "nuestra": 0.9479246841706986,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-rou-2026-013",
+   "torneo": "M15 Bucharest",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 6,
+   "mkt": 0.8495821727019499,
+   "vig": 0.08986035215543398,
+   "cuota": 1.08,
+   "favorito": "Giacomo Crisostomo",
+   "rival": "Louis Allen",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.9020842054645182,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-rou-2026-013",
+   "torneo": "M15 Bucharest",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 10.02,
+   "mkt": 0.8495821727019499,
+   "vig": 0.08986035215543398,
+   "cuota": 1.08,
+   "favorito": "Tudor Batin",
+   "rival": "Lucian Stefan Andrei",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.9760700139389079,
+   "jugado": false,
+   "gano": null
   },
   {
    "clave": "m-itf-pol-2026-008",
