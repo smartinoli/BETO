@@ -272,8 +272,14 @@ export function analizar(p) {
 
   /* --- veto duro: el número mismo no vale --- */
   const vetos = [];
-  if (otro.wtnVisible === false)
-    vetos.push(`ITF no publica el WTN de ${otro.nombre} (insignia ProZone): su propio rating está marcado como no mostrable`);
+  /* Aca hubo un veto por la insignia "ProZone" (shouldDisplayWtn=false),
+     con el razonamiento de que si la ITF tapa el numero es porque no
+     confia en el. Medido el 2026-08-25 sobre 1941 inscritos, es al reves:
+     los tapados son DESPROPORCIONADAMENTE BUENOS — 8% de los de WTN 0-8 y
+     casi ninguno sobre 16. La API entrega el rating igual, asi que no
+     falta ningun dato. Se quito el veto: la insignia no dice nada sobre
+     la calidad del numero, solo algo sobre el jugador, y eso el WTN ya lo
+     dice mejor. */
   /* Medido el 2026-08-23 sobre 778 partidos, y me hizo corregir el veto
      anterior: contra JUNIORES el mejor WTN acierta 31.3% (n=16) contra
      79.9% del resto — se da vuelta, porque el rating de un junior que

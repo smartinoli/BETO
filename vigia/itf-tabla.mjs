@@ -48,7 +48,11 @@ const filas = datos.partidos.filter(p => p.yo.gana || p.otro.gana).map(p => {
   if (gA != null && gB != null && gB < gA) flags.push('choque');
   if (residuo != null && residuo < -0.15) flags.push('resid');
   const ini = p.inicio ? new Date(p.inicio) : null;
-  return { ...p, d, dAtp, dItf, pe, cA, cB, devig, val, residuo, gA, gB, flags,
+  /* "viene de": para ordenar hace falta un número, no el nombre de la ronda */
+  const ORD = ['Q1', 'Q2', 'Q3', 'R1', 'R2', 'R3', 'QF', 'SF', 'F'];
+  const ordPrev = x => x ? (x.campeon ? 99 : ORD.indexOf(x.etapa)) : -1;
+  const prevA = ordPrev(p.yo.previo), prevB = ordPrev(p.otro.previo);
+  return { ...p, d, dAtp, dItf, pe, cA, cB, devig, val, residuo, gA, gB, flags, prevA, prevB,
     cMin: p.v.nivel?.cMinima ?? null, ini,
     cuando: ini ? fmtDia.format(ini) + ' ' + fmtHora.format(ini) : (p.fecha ? p.fecha.slice(5) + ' ' + (p.horarioTxt || '') : '—'),
     orden: ini ? +ini : Number.MAX_SAFE_INTEGER };
@@ -58,6 +62,19 @@ const filas = datos.partidos.filter(p => p.yo.gana || p.otro.gana).map(p => {
    aproximada: puede errar un año según el cumpleaños. */
 const ANIO = new Date().getUTCFullYear();
 const edad = n => n ? ANIO - n : null;
+/* Un rival marcado JR era una incógnita: ahora la marca lleva su puesto
+   en el ranking junior de la ITF cuando lo hay. Sólo lo traen los
+   nacidos 2008-2009, que es justo cuando importa. */
+const marcaConJr = l => l.jr && l.jrRank != null ? l.marca.replace(/\bJR\b/, 'JR ' + l.jrRank) : l.marca;
+/* De qué torneo viene y hasta dónde llegó ahí. "campeón" cuando ganó la
+   final; si no, la ronda donde se quedó. */
+function vieneDe(l) {
+  const v = l.previo;
+  if (!v) return '<i>—</i>';
+  const t = String(v.torneo || '').replace(/^M\d+\s/, '').trim();
+  return `<span class="prev"><b>${v.campeon ? 'campeón' : esc(v.etapa)}</b> ${esc(t)}` +
+    `<i>${v.ganados}/${v.jugados}</i></span>`;
+}
 const pct = v => v == null ? '' : (v * 100).toFixed(0);
 const n2 = v => v == null ? '' : (+v).toFixed(2);
 const TIPO = { segura: 'segura', anomalia: 'anomalía', mirar: 'mirar', pasar: 'pasar', 'sin-precio': 'sin precio' };
@@ -70,7 +87,7 @@ const cuerpo = filas.map(f => `<tr data-tipo="${esc(f.v.tipo)}" data-etapa="${es
   <td class="c-txt">${esc(f.cuando)}</td>
   <td class="c-txt">${esc(f.torneo.replace(/^M\d+\s/, ''))}<i>${esc(f.categoria)}·${esc(f.superficie || '')}</i></td>
   <td class="c-et">${esc(f.etapa)}</td>
-  <td class="c-nom">${esc(f.yo.nombre)}${f.yo.marca ? `<b>${esc(f.yo.marca)}</b>` : ''}
+  <td class="c-nom">${esc(f.yo.nombre)}${f.yo.marca ? `<b>${esc(marcaConJr(f.yo))}</b>` : ''}
     <i class="tray">${f.yo.llegaHtml || 'debuta'}</i></td>
   <td class="n">${f.yo.atp ?? '<i>—</i>'}</td>
   <td class="n">${f.yo.itf ?? '<i>—</i>'}</td>
@@ -79,7 +96,8 @@ const cuerpo = filas.map(f => `<tr data-tipo="${esc(f.v.tipo)}" data-etapa="${es
   <td class="n">${f.yo.wtn ?? '<i>—</i>'}</td>
   <td class="n dst">${n2(f.cA)}</td>
   <td class="n">${f.gA == null ? '' : pct(f.gA)}</td>
-  <td class="c-nom sec">${esc(f.otro.nombre)}${f.otro.marca ? `<b>${esc(f.otro.marca)}</b>` : ''}
+  <td class="c-prev">${vieneDe(f.yo)}</td>
+  <td class="c-nom sec">${esc(f.otro.nombre)}${f.otro.marca ? `<b>${esc(marcaConJr(f.otro))}</b>` : ''}
     <i class="tray">${f.otro.llegaHtml || 'debuta'}</i></td>
   <td class="n sec">${f.otro.atp ?? '<i>—</i>'}</td>
   <td class="n sec">${f.otro.itf ?? '<i>—</i>'}</td>
@@ -88,6 +106,7 @@ const cuerpo = filas.map(f => `<tr data-tipo="${esc(f.v.tipo)}" data-etapa="${es
   <td class="n sec">${f.otro.wtn ?? '<i>—</i>'}</td>
   <td class="n sec">${n2(f.cB)}</td>
   <td class="n sec">${f.gB == null ? '' : pct(f.gB)}</td>
+  <td class="c-prev sec">${vieneDe(f.otro)}</td>
   <td class="n dst">${f.d == null ? '' : f.d.toFixed(2)}</td>
   <td class="n ${f.dAtp == null ? '' : f.dAtp > 0 ? 'pos' : 'neg'}">${f.dAtp == null ? '' : (f.dAtp > 0 ? '+' : '') + f.dAtp}</td>
   <td class="n ${f.dItf == null ? '' : f.dItf > 0 ? 'pos' : 'neg'}">${f.dItf == null ? '' : (f.dItf > 0 ? '+' : '') + f.dItf}</td>
@@ -139,6 +158,10 @@ tbody td{padding:5px 6px;border-bottom:1px solid var(--linea);white-space:nowrap
   font-variant-numeric:tabular-nums}
 tbody tr:hover td{background:var(--realce)}
 td.n{text-align:right}
+.c-prev{white-space:nowrap;font-size:12px}
+.c-prev .prev b{font-weight:600;color:var(--tinta)}
+.c-prev .prev i{font-style:normal;color:var(--tinta3);margin-left:5px;font-family:"IBM Plex Mono",monospace;font-size:11px}
+.c-prev.sec .prev b{color:var(--tinta2)}
 td.sec{color:var(--tinta2)}
 td.c-nom{font-family:"IBM Plex Sans",sans-serif;font-weight:500;max-width:190px;overflow:hidden;text-overflow:ellipsis}
 td.c-nom b{color:var(--acento);font-weight:600;margin-left:4px}
@@ -191,9 +214,9 @@ ${filas.length ? `<div class="env-tabla"><table id="t">
   <thead><tr>
     <th data-k="orden">Cuándo</th><th data-k="torneo">Torneo</th><th data-k="etapa">Et</th>
     <th data-k="nomA">Favorito por WTN · cómo llega</th><th class="n" data-k="atpA">ATP</th><th class="n" data-k="itfA">ITF</th><th class="n" data-k="nacA">País</th><th class="n" data-k="edadA">Años</th><th class="n" data-k="wtnA">WTN</th>
-    <th class="n" data-k="cuota">Cuota</th><th class="n" data-k="gA">Ced%</th>
+    <th class="n" data-k="cuota">Cuota</th><th class="n" data-k="gA">Ced%</th><th data-k="prevA">Viene de</th>
     <th data-k="nomB">Rival · cómo llega</th><th class="n" data-k="atpB">ATP</th><th class="n" data-k="itfB">ITF</th><th class="n" data-k="nacB">País</th><th class="n" data-k="edadB">Años</th><th class="n" data-k="wtnB">WTN</th>
-    <th class="n" data-k="cB">Cuota</th><th class="n" data-k="gB">Ced%</th>
+    <th class="n" data-k="cB">Cuota</th><th class="n" data-k="gB">Ced%</th><th data-k="prevB">Viene de</th>
     <th class="n" data-k="d">Δ WTN</th><th class="n" data-k="dAtp">Δ ATP</th><th class="n" data-k="dItf">Δ ITF</th><th class="n" data-k="pe">Curva</th><th class="n" data-k="devig">Mercado</th>
     <th class="n" data-k="cMin">Mín</th><th class="n" data-k="val">Valor</th><th class="n" data-k="residuo">Resid</th>
     <th data-k="flags">Señales</th><th data-k="tipo">Tipo</th>
@@ -211,6 +234,10 @@ ${filas.length ? `<div class="env-tabla"><table id="t">
 <b>Resid</b> = cuánto se aparta el mercado de su propio modelo por Δ (logit p = −0.081 + 0.183·Δ). Muy negativo = ve algo que no vemos.<br>
 <b>País</b> = ranking nacional · <b>Años</b> = edad aproximada, la entry list solo da el año de nacimiento.<br>
 <b>Δ ATP</b> y <b>Δ ITF</b> = puestos de ventaja de nuestro favorito en cada ranking. <b>Positivo</b> = ese ranking coincide con el WTN; <b>negativo</b> = lo contradice.
+<b>Viene de</b> = el torneo anterior de ese jugador y hasta qué ronda llegó ahí, con partidos ganados sobre jugados.
+Sale de cruzar todos los cuadros en disco por identificador de jugador de la ITF, así que no depende de cómo se escriba el nombre;
+cuando dice <i>—</i> es que ese jugador no aparece en ningún torneo que hayamos bajado, no que no haya jugado.<br>
+<b>JR 93</b> junto al nombre = puesto en el ranking junior de la ITF. Sólo lo traen los nacidos 2008-2009.<br>
 <b>Cómo llega</b>: cada tramo es <code>ronda ✓/✗ marcador v(marca del rival)</code> — verde ganó, rojo perdió, y la marca dice si el rival era sembrado <code>[4]</code>, clasificado <code>Q</code>, junior <code>JR</code> o invitado <code>WC</code>.<br>
 Señales: <code>JR</code> rival junior (ahí el WTN se da vuelta: 31%) · <code>sinATP</code> rival sin ranking (buena señal: 81% contra 75%) ·
 <code>ATP≠</code> el ATP contradice al WTN por +400 puestos · <code>choque</code> el rival llega con mejor forma ·

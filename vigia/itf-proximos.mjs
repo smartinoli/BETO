@@ -83,6 +83,65 @@ function contexto(clave) {
   const lista = acc ? Object.entries(acc.secciones).flatMap(([sec, arr]) => arr.map(p => ({ ...p, seccion: sec }))) : [];
   return { lista, cuadros: vivo?.cuadros || {}, bajadoCuadro: vivo?.bajado || null };
 }
+/* ---------- de dónde viene cada jugador ----------
+   El torneo ANTERIOR y hasta qué ronda llegó. Se arma una sola vez sobre
+   todos los cuadros en disco, indexado por playerId — que la ITF trae en
+   cada lado del cuadro y es exacto, sin depender de cómo se escriba el
+   nombre. De 316 jugadores del order of play de mañana, 205 tienen un
+   torneo anterior guardado; los otros jugaron en torneos que nunca
+   bajamos, y eso se muestra como tal en vez de inventar nada. */
+const ORDEN_R = ['Q1', 'Q2', 'Q3', 'R1', 'R2', 'R3', 'QF', 'SF', 'F'];
+/* Perezoso a proposito: nombreEtapa se define mas abajo, asi que armar el
+   indice al cargar el modulo reventaria. Se arma la primera vez que se
+   pide y queda cacheado. */
+let _hist = null;
+function indiceHistoria() {
+  if (_hist) return _hist;
+  const h = new Map(), fin = {}, nom = {};
+  const m = cargarMapa();
+  for (const ts of Object.values(m.semanas || {}))
+    for (const [k, t] of Object.entries(ts)) { fin[k] = t.fechas?.final; nom[k] = t.nombre; }
+  for (const [k, t] of Object.entries(m.torneos || {}))
+    if (!fin[k]) { fin[k] = t.fechas?.final; nom[k] = t.nombre; }
+  for (const dir of [DATOS, VIVO]) {
+    let ff = []; try { ff = fs.readdirSync(dir) } catch { continue }
+    for (const f of ff) {
+      if (!f.startsWith('m-itf') || !f.endsWith('.json') || f.includes('aceptacion')) continue;
+      const clave = f.replace('.json', '');
+      const j = leer(path.join(dir, f)); if (!j?.cuadros) continue;
+      for (const [ev, c] of Object.entries(j.cuadros)) {
+        if (!c?.rondas) continue;
+        for (const r of c.rondas) for (const p of r.partidos) {
+          if (p.estado !== 'jugado') continue;
+          for (const l of p.lados || []) {
+            const id = (l.jugadores || [])[0]?.id; if (!id) continue;
+            const arr = h.get(id) || [];
+            arr.push({ clave, etapa: nombreEtapa(ev, r.nombre), gano: !!l.ganador,
+              fin: fin[clave] || null, torneo: nom[clave] || clave.slice(6) });
+            h.set(id, arr);
+          }
+        }
+      }
+    }
+  }
+  _hist = h;
+  return h;
+}
+/* El torneo anterior de este jugador: el mas reciente que ya termino y no
+   es el de ahora, con la ronda mas lejos a la que llego. */
+function deDondeViene(id, claveAhora, hoy) {
+  if (!id) return null;
+  const prev = (indiceHistoria().get(id) || []).filter(x => x.clave !== claveAhora && x.fin && x.fin < hoy);
+  if (!prev.length) return null;
+  const ultima = prev.reduce((a, b) => (b.fin > a.fin ? b : a));
+  const enEse = prev.filter(x => x.clave === ultima.clave);
+  const lejos = enEse.reduce((a, b) => (ORDEN_R.indexOf(b.etapa) > ORDEN_R.indexOf(a.etapa) ? b : a));
+  return { clave: ultima.clave, torneo: ultima.torneo, etapa: lejos.etapa,
+    /* si gano la final, fue campeon; si no, ahi se quedo */
+    campeon: lejos.etapa === 'F' && lejos.gano, fin: lejos.fin,
+    jugados: enEse.length, ganados: enEse.filter(x => x.gano).length };
+}
+
 /* ficha SIEMPRE de la entry list del propio torneo: el índice global
    produce falsos positivos con homónimos (pasó con Madaras y Noce) */
 const fichaDe = (lista, nombre) => lista.find(x => pareceElMismo(nombre, { nombre: x.nombre })) || null;
@@ -199,6 +258,12 @@ for (const { clave, t, estado } of activos) {
           atp: fi.atp ?? null, itf: fi.itf ?? null, nac: fi.nacional ?? null,
           nacido: fi.nacido ?? null, wtn: fi.wtn ?? null,
           wtnVisible: fi.wtnVisible !== false, jr: fi.seccion === 'JR',
+          /* ranking JUNIOR de la ITF: sin él, un rival marcado JR era una
+             incógnita. Sólo lo traen los nacidos 2008-2009. */
+          jrRank: fi.jrRank ?? null,
+          id: (l.jugadores || [])[0]?.id ?? null,
+          /* de qué torneo viene y hasta dónde llegó ahí */
+          previo: deDondeViene((l.jugadores || [])[0]?.id, clave, j.fecha),
           gana: cq?.lados[i].gana ?? null, set1: cq?.lados[i].set1 ?? null,
           llegaHtml, llega: trayTexto(llegaHtml),
         };
@@ -466,10 +531,12 @@ for (const T of torneos) for (const e of T.etapas) for (const p of e.pendientes)
     inicio: p.inicio ? p.inicio.toISOString() : null, cancha: p.cancha, turno: p.turno,
     yo: { nombre: yo.nombre, pais: yo.pais, marca: yo.marca, atp: yo.atp, itf: yo.itf,
       nac: yo.nac, nacido: yo.nacido, wtn: yo.wtn,
-      wtnVisible: yo.wtnVisible, jr: yo.jr, gana: yo.gana, llega: yo.llega, llegaHtml: yo.llegaHtml },
+      wtnVisible: yo.wtnVisible, jr: yo.jr, jrRank: yo.jrRank, previo: yo.previo,
+      gana: yo.gana, llega: yo.llega, llegaHtml: yo.llegaHtml },
     otro: { nombre: otro.nombre, pais: otro.pais, marca: otro.marca, atp: otro.atp, itf: otro.itf,
       nac: otro.nac, nacido: otro.nacido, wtn: otro.wtn,
-      wtnVisible: otro.wtnVisible, jr: otro.jr, gana: otro.gana, llega: otro.llega, llegaHtml: otro.llegaHtml },
+      wtnVisible: otro.wtnVisible, jr: otro.jr, jrRank: otro.jrRank, previo: otro.previo,
+      gana: otro.gana, llega: otro.llega, llegaHtml: otro.llegaHtml },
     casa: p.cq?.manual ? 'mano' : p.cq?.casa || null,
     cuotasAl: p.cq?.cuotasAl || null, bFix: p.cq?.bFix || null,
     v: p.v,

@@ -128,11 +128,22 @@ export function normalizarAceptacion(crudo, clave) {
         atp: numero(p.atpWtaRank),
         itf: numero(p.itfWorldTennisRanking),
         nacional: numero(p.nationalRanking),
+        /* Ranking JUNIOR de la ITF. Existe en la API y no lo guardabamos:
+           sin el, un rival marcado JR era una incognita total. Berge
+           Nourescu, el JR de Bucharest, es el 93 del mundo junior.
+           Lo traen pocos (12 de 1941 inscritos, todos nacidos 2008-2009).
+           Se llama jrRank y no jr porque "jr" ya significa "es junior"
+           (booleano) en la mesa y en el backtest. */
+        jrRank: numero(p.juniorRanking),
         wtn: p.worldRating ? +p.worldRating : null,
         /* shouldDisplayWtn=false → la web tapa el numero con la insignia
-           "ProZone" (descubierto 2026-08-22, Bastad: Slavic y Couto la
-           llevan y la API igual trae 8.58/8.99). Se guarda como señal de
-           rating de baja confianza; snapshots viejos no tienen el campo. */
+           "ProZone". La API igual trae el rating, asi que no perdemos nada.
+           Medido el 2026-08-25 sobre 1941 inscritos de 4 torneos: NO es un
+           corte de WTN como suponiamos. Los tapados van de 3.13 a 14.68 y
+           los visibles de 0.00 a 30.88 — se solapan de lado a lado.
+           Correlaciona con ser bueno (8% de los de WTN 0-8, casi ninguno
+           sobre 16) pero no lo determina. Se guarda por si algun dia
+           sirve; NO es señal de rating poco confiable. */
         wtnVisible: p.shouldDisplayWtn !== false,
         nacido: p.birthYear || null,
         /* En W viene "W 25 Jul 2026": la fecha del retiro. */
