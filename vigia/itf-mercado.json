@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T21:47:23.424Z",
+ "generado": "2026-08-25T21:48:56.859Z",
  "puntos": [
   {
    "clave": "m-itf-ger-2026-015",
@@ -542,8 +542,8 @@
    "seed": 3,
    "entradaRival": "DA",
    "nuestra": 0.6573204741030374,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-tpe-2026-002",
@@ -593,8 +593,8 @@
    "seed": 2,
    "entradaRival": "DA",
    "nuestra": 0.6370428179678969,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": false
   },
   {
    "clave": "m-itf-tpe-2026-002",
@@ -610,8 +610,8 @@
    "seed": 7,
    "entradaRival": "DA",
    "nuestra": 0.6318929024829626,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": false
   },
   {
    "clave": "m-itf-tpe-2026-002",
@@ -627,8 +627,8 @@
    "seed": 5,
    "entradaRival": "DA",
    "nuestra": 0.6489361012506927,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-tpe-2026-002",
@@ -1392,8 +1392,8 @@
    "seed": 1,
    "entradaRival": "DA",
    "nuestra": 0.7781018611552671,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-usa-2026-035",
@@ -2106,6 +2106,23 @@
    "seed": null,
    "entradaRival": "DA",
    "nuestra": 0.5064763877728572,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-tpe-2026-002",
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 3.1899999999999995,
+   "mkt": 0.6634146341463415,
+   "vig": 0.09228473998294984,
+   "cuota": 1.38,
+   "favorito": "Kasidit Samrej",
+   "rival": "Yuki Mochizuki",
+   "seed": 6,
+   "entradaRival": "Q",
+   "nuestra": 0.7650590833573915,
    "jugado": false,
    "gano": null
   },

@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T21:47:23.796Z",
+ "generado": "2026-08-25T21:48:57.235Z",
  "registro": [
   {
    "q": {
@@ -2109,6 +2109,72 @@
   {
    "q": {
     "torneo": "M25 Taipei",
+    "p1": "Ryuki Matsuda",
+    "p2": "Chun-Chien Hou",
+    "g1": 1.09,
+    "g2": 6.1,
+    "visto": "2026-08-23T23:59Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-tpe-2026-002",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.76 de WTN en ronda Q2 da 66%, pero Chun-Chien Hou llega cediendo menos games y el choque lo baja a 57%: bajo el piso de 58%. Sin lado.",
+    "banderas": [
+     "choque hunde el nivel"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Ryuki Matsuda",
+     "marca": "[3]",
+     "atp": 806,
+     "itf": null,
+     "wtn": 7.63,
+     "wtnVisible": false,
+     "jr": false,
+     "gana": 1.09,
+     "llega": "6-2 6-3"
+    },
+    {
+     "nombre": "Chun-Chien Hou",
+     "marca": "[14]",
+     "atp": 1563,
+     "itf": 315,
+     "wtn": 9.39,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 6.1,
+     "llega": "6-2 6-2"
+    }
+   ],
+   "etiqueta": "choque hunde el nivel",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Ryuki Matsuda",
+    "marca": "[3]",
+    "atp": 806,
+    "itf": null,
+    "wtn": 7.63,
+    "wtnVisible": false,
+    "jr": false,
+    "gana": 1.09,
+    "llega": "6-2 6-3"
+   },
+   "cuota": 1.09,
+   "gano": true,
+   "devig": 0.8484005563282336,
+   "resid": 0.28842077522744936
+  },
+  {
+   "q": {
+    "torneo": "M25 Taipei",
     "p1": "Yeongseok Jeong",
     "p2": "Ethan Cook",
     "g1": 2.25,
@@ -2277,6 +2343,244 @@
    "gano": true,
    "devig": 0.5890052356020942,
    "resid": 0.062158579704881256
+  },
+  {
+   "q": {
+    "torneo": "M25 Taipei",
+    "p1": "Taisei Ichikawa",
+    "p2": "Hiromasa Koyama",
+    "g1": 1.57,
+    "g2": 2.25,
+    "visto": "2026-08-23T23:59Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-tpe-2026-002",
+   "v": {
+    "tipo": "pasar",
+    "nivel": null,
+    "precio": null,
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.52 de WTN en ronda Q2 da 64%, pero Hiromasa Koyama llega cediendo menos games y el choque lo baja a 55%: bajo el piso de 58%. Sin lado.",
+    "banderas": [
+     "choque hunde el nivel"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Taisei Ichikawa",
+     "marca": "[2]",
+     "atp": 781,
+     "itf": 603,
+     "wtn": 6.93,
+     "wtnVisible": false,
+     "jr": false,
+     "gana": 1.57,
+     "llega": "7-6(9) 2-6 10-8"
+    },
+    {
+     "nombre": "Hiromasa Koyama",
+     "marca": "[10]",
+     "atp": 1169,
+     "itf": 85,
+     "wtn": 8.45,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.25,
+     "llega": "7-5 6-4"
+    }
+   ],
+   "etiqueta": "choque hunde el nivel",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Taisei Ichikawa",
+    "marca": "[2]",
+    "atp": 781,
+    "itf": 603,
+    "wtn": 6.93,
+    "wtnVisible": false,
+    "jr": false,
+    "gana": 1.57,
+    "llega": "7-6(9) 2-6 10-8"
+   },
+   "cuota": 1.57,
+   "gano": false,
+   "devig": 0.5890052356020942,
+   "resid": 0.03987428438467344
+  },
+  {
+   "q": {
+    "torneo": "M25 Taipei",
+    "p1": "Noritaka Koizumi",
+    "p2": "Kristjan Tamm",
+    "g1": 1.67,
+    "g2": 2.07,
+    "visto": "2026-08-23T23:59Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-tpe-2026-002",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6318929024829626,
+     "d": 1.46,
+     "favorito": "Noritaka Koizumi [7]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.5825466563567907,
+     "cMinima": 1.7249758554289019
+    },
+    "precio": {
+     "cuota": 1.67,
+     "cMinima": 1.7249758554289019,
+     "val": 0.055261147146547396,
+     "devig": 0.553475935828877,
+     "residuo": 0.007064920498846439,
+     "veredicto": "justo"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.46 de WTN a favor (7.94 contra 9.4), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 63%. A 1.67 hay apenas +6%: por debajo del margen de la casa (haria falta 1.72). Dentro del error de estimacion.",
+    "banderas": [
+     "Δ1.46 claro",
+     "margen fino"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Noritaka Koizumi",
+     "marca": "[7]",
+     "atp": 940,
+     "itf": 644,
+     "wtn": 7.94,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.67,
+     "llega": "6-1 6-2"
+    },
+    {
+     "nombre": "Kristjan Tamm",
+     "marca": "[9]",
+     "atp": 1165,
+     "itf": null,
+     "wtn": 9.4,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 2.07,
+     "llega": "6-3 6-1"
+    }
+   ],
+   "etiqueta": "margen fino",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Noritaka Koizumi",
+    "marca": "[7]",
+    "atp": 940,
+    "itf": 644,
+    "wtn": 7.94,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.67,
+    "llega": "6-1 6-2"
+   },
+   "cuota": 1.67,
+   "gano": false,
+   "devig": 0.553475935828877,
+   "resid": 0.007064920498846439
+  },
+  {
+   "q": {
+    "torneo": "M25 Taipei",
+    "p1": "Kosuke Ogura",
+    "p2": "Tomohiro Masabayashi",
+    "g1": 1.2,
+    "g2": 4.05,
+    "visto": "2026-08-23T23:59Z"
+   },
+   "estado": "ok",
+   "etapa": "Q2",
+   "clave": "m-itf-tpe-2026-002",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "claro",
+     "p": 0.6489361012506927,
+     "d": 1.6599999999999993,
+     "favorito": "Kosuke Ogura [5]",
+     "ronda": "Q2",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.5409837703168354,
+     "cMinima": 1.6796723096453505
+    },
+    "precio": {
+     "cuota": 1.2,
+     "cMinima": 1.6796723096453505,
+     "val": -0.22127667849916877,
+     "devig": 0.7714285714285714,
+     "residuo": 0.21596278344168418,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ1.66 de WTN a favor (7.63 contra 9.29), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 65%. A 1.2 el mercado implica 83%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ1.66 claro",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Kosuke Ogura",
+     "marca": "[5]",
+     "atp": 861,
+     "itf": 698,
+     "wtn": 7.63,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.2,
+     "llega": "6-1 6-3"
+    },
+    {
+     "nombre": "Tomohiro Masabayashi",
+     "marca": "[13]",
+     "atp": 1368,
+     "itf": 556,
+     "wtn": 9.29,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 4.05,
+     "llega": "7-6(6) 6(1)-7 11-9"
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Kosuke Ogura",
+    "marca": "[5]",
+    "atp": 861,
+    "itf": 698,
+    "wtn": 7.63,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.2,
+    "llega": "6-1 6-3"
+   },
+   "cuota": 1.2,
+   "gano": true,
+   "devig": 0.7714285714285714,
+   "resid": 0.21596278344168418
   },
   {
    "q": {
@@ -3868,6 +4172,92 @@
    "gano": true,
    "devig": 0.6005221932114883,
    "resid": 0.03379020663407617
+  },
+  {
+   "q": {
+    "torneo": "M15 Champaign, IL",
+    "p1": "Ryan Colby",
+    "p2": "Nikola Djosic",
+    "g1": 1.27,
+    "g2": 3.3,
+    "visto": "2026-08-25T13:23Z"
+   },
+   "estado": "ok",
+   "etapa": "R1",
+   "clave": "m-itf-usa-2026-035",
+   "v": {
+    "tipo": "pasar",
+    "nivel": {
+     "fuerza": "fuerte",
+     "p": 0.7781018611552671,
+     "d": 3.3899999999999997,
+     "favorito": "Ryan Colby [1]",
+     "ronda": "R1",
+     "grupo": "buenas",
+     "tarde": false,
+     "choque": false,
+     "n": 345,
+     "cEmpate": 1.285178779183583,
+     "cMinima": 1.4008448693101054
+    },
+    "precio": {
+     "cuota": 1.27,
+     "cMinima": 1.4008448693101054,
+     "val": -0.011810636332810764,
+     "devig": 0.7221006564551422,
+     "residuo": 0.09043480494183342,
+     "veredicto": "caro"
+    },
+    "favorito": "—",
+    "confianza": "baja",
+    "mercado": "pasar",
+    "razon": "Δ3.39 de WTN a favor (6.3 contra 9.69), en ronda R1: la curva del grupo \"buenas\" (n=345) da 78%. A 1.27 el mercado implica 79%, por encima de nuestra banda: cuota corta, no compensa.",
+    "banderas": [
+     "Δ3.39 fuerte",
+     "cuota corta"
+    ]
+   },
+   "lados": [
+    {
+     "nombre": "Ryan Colby",
+     "marca": "[1]",
+     "atp": 664,
+     "itf": 469,
+     "wtn": 6.3,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 1.27,
+     "llega": ""
+    },
+    {
+     "nombre": "Nikola Djosic",
+     "marca": "",
+     "atp": 1067,
+     "itf": 561,
+     "wtn": 9.69,
+     "wtnVisible": true,
+     "jr": false,
+     "gana": 3.3,
+     "llega": ""
+    }
+   ],
+   "etiqueta": "cuota corta",
+   "ret": false,
+   "favWtn": {
+    "nombre": "Ryan Colby",
+    "marca": "[1]",
+    "atp": 664,
+    "itf": 469,
+    "wtn": 6.3,
+    "wtnVisible": true,
+    "jr": false,
+    "gana": 1.27,
+    "llega": ""
+   },
+   "cuota": 1.27,
+   "gano": true,
+   "devig": 0.7221006564551422,
+   "resid": 0.09043480494183342
   },
   {
    "q": {
