@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T21:32:41.661Z",
+ "generado": "2026-08-25T21:39:26.267Z",
  "puntos": [
   {
    "clave": "m-itf-ger-2026-015",
@@ -661,8 +661,8 @@
    "seed": 2,
    "entradaRival": "DA",
    "nuestra": 0.5941632191087017,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": false
   },
   {
    "clave": "m-itf-ger-2026-013",
@@ -678,8 +678,8 @@
    "seed": 3,
    "entradaRival": "DA",
    "nuestra": 0.5662265819455679,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-fra-2026-025",
@@ -695,8 +695,8 @@
    "seed": null,
    "entradaRival": "DA",
    "nuestra": 0.8369683633153663,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-fra-2026-025",
@@ -712,8 +712,8 @@
    "seed": null,
    "entradaRival": "Q",
    "nuestra": 0.8963845447812443,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-fra-2026-025",
@@ -729,8 +729,8 @@
    "seed": 2,
    "entradaRival": "WC",
    "nuestra": 0.9537975231096776,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-fra-2026-025",
@@ -763,8 +763,8 @@
    "seed": 8,
    "entradaRival": "DA",
    "nuestra": 0.5304953525038373,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-fra-2026-025",
@@ -780,8 +780,8 @@
    "seed": null,
    "entradaRival": "DA",
    "nuestra": 0.5009252489438748,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": false
   },
   {
    "clave": "m-itf-esp-2026-044",
@@ -899,8 +899,8 @@
    "seed": 5,
    "entradaRival": "WC",
    "nuestra": 0.9657196741341008,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": false
   },
   {
    "clave": "m-itf-rou-2026-013",
@@ -967,8 +967,8 @@
    "seed": 1,
    "entradaRival": "DA",
    "nuestra": 0.7100531096341584,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-tpe-2026-002",
@@ -1018,8 +1018,8 @@
    "seed": 6,
    "entradaRival": "Q",
    "nuestra": 0.9152695057281663,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-fra-2026-025",
@@ -1052,8 +1052,8 @@
    "seed": 5,
    "entradaRival": "DA",
    "nuestra": 0.727259982687603,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-esp-2026-044",
@@ -1103,8 +1103,8 @@
    "seed": 5,
    "entradaRival": "DA",
    "nuestra": 0.705460154798661,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-ned-2026-006",
@@ -1120,8 +1120,8 @@
    "seed": null,
    "entradaRival": "DA",
    "nuestra": 0.5295734413123201,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": false
   },
   {
    "clave": "m-itf-ned-2026-006",
@@ -1154,8 +1154,8 @@
    "seed": 2,
    "entradaRival": "DA",
    "nuestra": 0.6697138208763305,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": true
   },
   {
    "clave": "m-itf-arg-2026-008",
@@ -1477,8 +1477,8 @@
    "seed": null,
    "entradaRival": "DA",
    "nuestra": 0.5147996756214314,
-   "jugado": false,
-   "gano": null
+   "jugado": true,
+   "gano": false
   },
   {
    "clave": "m-itf-pol-2026-008",
@@ -1587,6 +1587,23 @@
    "torneo": "M25 Maribor",
    "etapa": "R1",
    "grupo": "buenas",
+   "d": 2.4300000000000015,
+   "mkt": 0.6301020408163265,
+   "vig": 0.0945134720089349,
+   "cuota": 1.45,
+   "favorito": "Nicolo Toffanin",
+   "rival": "Vaal Urankar",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.7108144702132793,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-slo-2026-009",
+   "torneo": "M25 Maribor",
+   "etapa": "R1",
+   "grupo": "buenas",
    "d": 4.82,
    "mkt": 0.7932263814616756,
    "vig": 0.08678806664083694,
@@ -1630,6 +1647,57 @@
    "seed": 3,
    "entradaRival": "DA",
    "nuestra": 0.7703391116166787,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-slo-2026-009",
+   "torneo": "M25 Maribor",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 0.120000000000001,
+   "mkt": 0.7045454545454546,
+   "vig": 0.09181141439205942,
+   "cuota": 1.3,
+   "favorito": "Edoardo Cherie Ligniere",
+   "rival": "Ivan Biletic",
+   "seed": null,
+   "entradaRival": "DA",
+   "nuestra": 0.5111011753729737,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-slo-2026-009",
+   "torneo": "M25 Maribor",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 2.1899999999999995,
+   "mkt": 0.841799709724238,
+   "vig": 0.08984498576399869,
+   "cuota": 1.09,
+   "favorito": "Stefan Popovic",
+   "rival": "Piotr Galus",
+   "seed": 7,
+   "entradaRival": "Q",
+   "nuestra": 0.6922200890274814,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-slo-2026-009",
+   "torneo": "M25 Maribor",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 2.049999999999999,
+   "mkt": 0.49591280653950953,
+   "vig": 0.08999108999108985,
+   "cuota": 1.85,
+   "favorito": "Karlo Kajin",
+   "rival": "Marko Retelj",
+   "seed": null,
+   "entradaRival": "WC",
+   "nuestra": 0.6810725092657834,
    "jugado": false,
    "gano": null
   },
@@ -1681,6 +1749,295 @@
    "seed": 1,
    "entradaRival": "DA",
    "nuestra": 0.7294567293922852,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-ger-2026-013",
+   "torneo": "M15 Allershausen",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 7.220000000000001,
+   "mkt": 0.7946428571428572,
+   "vig": 0.09428431851489982,
+   "cuota": 1.15,
+   "favorito": "Frederic Schlossmann",
+   "rival": "Jonathan Dazert",
+   "seed": null,
+   "entradaRival": "WC",
+   "nuestra": 0.9353614469711512,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-ger-2026-013",
+   "torneo": "M15 Allershausen",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 0.6899999999999995,
+   "mkt": 0.7094594594594595,
+   "vig": 0.09265411590992967,
+   "cuota": 1.29,
+   "favorito": "William Rejchtman Vinciguerra",
+   "rival": "Louis Van Herck",
+   "seed": 7,
+   "entradaRival": "Q",
+   "nuestra": 0.5634975506023603,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-ger-2026-013",
+   "torneo": "M15 Allershausen",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 10.1,
+   "mkt": 0.8495821727019499,
+   "vig": 0.08986035215543398,
+   "cuota": 1.08,
+   "favorito": "Jakub Filip",
+   "rival": "Max Frohlich",
+   "seed": 8,
+   "entradaRival": "Q",
+   "nuestra": 0.9767519165562186,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-ger-2026-013",
+   "torneo": "M15 Allershausen",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 0.7599999999999998,
+   "mkt": 0.654320987654321,
+   "vig": 0.09164420485175206,
+   "cuota": 1.4,
+   "favorito": "Maximilian Alessandro Erhardt",
+   "rival": "Dean Thurner",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.5698590245383665,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-hun-2026-004",
+   "torneo": "M15 Pecs",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 1.2199999999999998,
+   "mkt": 0.6269035532994924,
+   "vig": 0.08513040843867903,
+   "cuota": 1.47,
+   "favorito": "John Sperle",
+   "rival": "Tomas Lanik",
+   "seed": 7,
+   "entradaRival": "DA",
+   "nuestra": 0.6110010420904358,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-hun-2026-004",
+   "torneo": "M15 Pecs",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 3.4700000000000006,
+   "mkt": 0.7453416149068324,
+   "vig": 0.09078590785907847,
+   "cuota": 1.23,
+   "favorito": "Joao Victor Couto Loureiro",
+   "rival": "Botond Kisantal",
+   "seed": 8,
+   "entradaRival": "Q",
+   "nuestra": 0.7831718425329035,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-hun-2026-004",
+   "torneo": "M15 Pecs",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 5.3999999999999995,
+   "mkt": 0.7623762376237624,
+   "vig": 0.09307359307359309,
+   "cuota": 1.2,
+   "favorito": "Herman Hoeyeraal",
+   "rival": "Filip Drab",
+   "seed": 3,
+   "entradaRival": "Q",
+   "nuestra": 0.8806437020990117,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-hun-2026-004",
+   "torneo": "M15 Pecs",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 4.8100000000000005,
+   "mkt": 0.6485148514851486,
+   "vig": 0.08590474142565308,
+   "cuota": 1.42,
+   "favorito": "Giammarco Gandolfi",
+   "rival": "Kolos Kincses",
+   "seed": null,
+   "entradaRival": "WC",
+   "nuestra": 0.8557192143034696,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-hun-2026-004",
+   "torneo": "M15 Pecs",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 4.889999999999999,
+   "mkt": 0.847457627118644,
+   "vig": 0.09259259259259256,
+   "cuota": 1.08,
+   "favorito": "Trisztan Gubi",
+   "rival": "Rafael Behr",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.8593363710740305,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-hun-2026-004",
+   "torneo": "M15 Pecs",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 6.16,
+   "mkt": 0.44892473118279574,
+   "vig": 0.08660727325836137,
+   "cuota": 2.05,
+   "favorito": "Matas Vasiliauskas",
+   "rival": "Bercel Sandor Takacs",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.9071915561567687,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-sui-2026-004",
+   "torneo": "M25 Lausanne",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 7.77,
+   "mkt": 0.7647058823529411,
+   "vig": 0.08974358974358987,
+   "cuota": 1.2,
+   "favorito": "Adrien Burdet",
+   "rival": "Mateo Fluri",
+   "seed": null,
+   "entradaRival": "WC",
+   "nuestra": 0.9466308831621091,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-sui-2026-004",
+   "torneo": "M25 Lausanne",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 1.9900000000000002,
+   "mkt": 0.6485148514851486,
+   "vig": 0.08590474142565308,
+   "cuota": 1.42,
+   "favorito": "Jeffrey Von Der Schulenburg",
+   "rival": "Adrien Berrut",
+   "seed": null,
+   "entradaRival": "WC",
+   "nuestra": 0.6762298100243413,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-sui-2026-004",
+   "torneo": "M25 Lausanne",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 1.3000000000000007,
+   "mkt": 0.5244565217391304,
+   "vig": 0.0895632864544782,
+   "cuota": 1.75,
+   "favorito": "Felix Seres",
+   "rival": "Michalis Sakellaridis",
+   "seed": null,
+   "entradaRival": "DA",
+   "nuestra": 0.6180146722870152,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-tpe-2026-002",
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 1.5399999999999991,
+   "mkt": 0.6441102756892231,
+   "vig": 0.09333041047843493,
+   "cuota": 1.42,
+   "favorito": "Manish Sureshkumar",
+   "rival": "Ethan Cook",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.6387525608211551,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-tpe-2026-002",
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 0.07000000000000028,
+   "mkt": 0.4648648648648649,
+   "vig": 0.08644585388771442,
+   "cuota": 1.98,
+   "favorito": "Sasikumar Mukund",
+   "rival": "Tai Leonard Sach",
+   "seed": null,
+   "entradaRival": "DA",
+   "nuestra": 0.5064763877728572,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-tpe-2026-002",
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 1.5,
+   "mkt": 0.7221006564551422,
+   "vig": 0.09043187783345252,
+   "cuota": 1.27,
+   "favorito": "Matthew Dellavedova",
+   "rival": "Keisuke Saitoh",
+   "seed": 3,
+   "entradaRival": "DA",
+   "nuestra": 0.6353296029130066,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-tpe-2026-002",
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 1.9799999999999995,
+   "mkt": 0.4891304347826087,
+   "vig": 0.08747044917257685,
+   "cuota": 1.88,
+   "favorito": "Luca Castelnuovo",
+   "rival": "Moerani Bouzige",
+   "seed": 8,
+   "entradaRival": "DA",
+   "nuestra": 0.6754189738579419,
    "jugado": false,
    "gano": null
   }
