@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T22:07:23.560Z",
+ "generado": "2026-08-25T22:20:31.968Z",
  "partidos": [
   {
    "id": 1183673185,
@@ -4296,234 +4296,6 @@
    "betano": null
   },
   {
-   "id": 1183672020,
-   "torneo": "M15 Mar Del Plata",
-   "pais": "Argentina",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-25T16:00:00.000Z",
-   "local": "13:00",
-   "horarioTxt": "Not Before 13:00",
-   "cancha": "Court 1",
-   "turno": 3,
-   "ronda": "R1",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Tobia Grandinetti",
-     "pais": "ARG",
-     "marca": "WC",
-     "atp": 1841,
-     "wtn": 12.94,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Santiago De la fuente",
-     "pais": "ARG",
-     "marca": "[5]",
-     "atp": 741,
-     "wtn": 7.24,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183672027,
-   "torneo": "M15 Mar Del Plata",
-   "pais": "Argentina",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-25T16:00:00.000Z",
-   "local": "13:00",
-   "horarioTxt": "Not Before 13:00",
-   "cancha": "Court 4",
-   "turno": 3,
-   "ronda": "R1",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Felipe De Dios",
-     "pais": "ARG",
-     "marca": "",
-     "atp": 1190,
-     "wtn": 11.2,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Mateo Del Pino",
-     "pais": "ARG",
-     "marca": "",
-     "atp": 1097,
-     "wtn": 10.51,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183672024,
-   "torneo": "M15 Mar Del Plata",
-   "pais": "Argentina",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-25T16:00:00.000Z",
-   "local": "13:00",
-   "horarioTxt": "Not Before 13:00",
-   "cancha": "Court 8",
-   "turno": 3,
-   "ronda": "R1",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Nicolas Garcia Longo",
-     "pais": "ARG",
-     "marca": "",
-     "atp": 1117,
-     "wtn": 10.62,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Lorenzo Gagliardo",
-     "pais": "ARG",
-     "marca": "[8]",
-     "atp": 896,
-     "wtn": 7.41,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183672028,
-   "torneo": "M15 Mar Del Plata",
-   "pais": "Argentina",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-25T13:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Followed By",
-   "cancha": "Court 1",
-   "turno": 4,
-   "ronda": "R1",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Nicolas Bruna",
-     "pais": "CHI",
-     "marca": "",
-     "atp": 1018,
-     "wtn": 10.16,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Maximo Zeitune",
-     "pais": "ARG",
-     "marca": "[4] WC",
-     "atp": null,
-     "wtn": null,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183672023,
-   "torneo": "M15 Mar Del Plata",
-   "pais": "Argentina",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-25T13:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Followed By",
-   "cancha": "Court 4",
-   "turno": 4,
-   "ronda": "R1",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Valentino Grippo",
-     "pais": "ARG",
-     "marca": "",
-     "atp": 1364,
-     "wtn": 12.59,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Gonzalo Zeitune",
-     "pais": "ARG",
-     "marca": "WC",
-     "atp": null,
-     "wtn": 14.09,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
-   "id": 1183672025,
-   "torneo": "M15 Mar Del Plata",
-   "pais": "Argentina",
-   "categoria": "M15",
-   "superficie": "Clay",
-   "bolsa": "$15,000",
-   "cuando": "2026-08-25T13:00:00.000Z",
-   "local": "10:00",
-   "horarioTxt": "Followed By",
-   "cancha": "Court 8",
-   "turno": 4,
-   "ronda": "R1",
-   "evento": "M",
-   "lados": [
-    {
-     "nombre": "Bastian Malla",
-     "pais": "CHI",
-     "marca": "[7]",
-     "atp": 948,
-     "wtn": 6.32,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    },
-    {
-     "nombre": "Jackson Ross",
-     "pais": "USA",
-     "marca": "PR",
-     "atp": 1097,
-     "wtn": 10.69,
-     "llega": "",
-     "gana": null,
-     "set1": null
-    }
-   ],
-   "betano": null
-  },
-  {
    "id": 1183672030,
    "torneo": "M15 Mar Del Plata",
    "pais": "Argentina",
@@ -8552,13 +8324,317 @@
    "betano": null
   },
   {
-   "id": 1183671232,
+   "id": 1183671225,
    "torneo": "M25 Poznan",
    "pais": "Poland",
    "categoria": "M25",
    "superficie": "Clay",
    "bolsa": "$30,000",
-   "cuando": "2026-08-25T11:00:00.000Z",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 1",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Borys Zgola",
+     "pais": "POL",
+     "marca": "WC",
+     "atp": null,
+     "wtn": 14.08,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dawid Wisniewski",
+     "pais": "POL",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 14.67,
+     "llega": "Q1✓ 7-6(5) 6-3 · Q2✓ 6-4 6-3 v[15] · Q3✓ 6-2 6-3 v[1]",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671235,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 2",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Niccolo Catini",
+     "pais": "ITA",
+     "marca": "",
+     "atp": 887,
+     "wtn": 8.66,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tiago Pereira",
+     "pais": "POR",
+     "marca": "[2]",
+     "atp": 389,
+     "wtn": 3.71,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671221,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 3",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Jan Wygona",
+     "pais": "POL",
+     "marca": "WC",
+     "atp": 1899,
+     "wtn": 14.19,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Jan Chlodnicki",
+     "pais": "POL",
+     "marca": "Q",
+     "atp": 1995,
+     "wtn": 17.07,
+     "llega": "Q2✓ 6-2 6-0 · Q3✓ 1-6 6-3 10-7",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671224,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Starting at 10:00",
+   "cancha": "Court 4",
+   "turno": 1,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Vladyslav Orlov",
+     "pais": "UKR",
+     "marca": "[4]",
+     "atp": 431,
+     "wtn": 5.5,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Dominik Kellovsky",
+     "pais": "CZE",
+     "marca": "",
+     "atp": 895,
+     "wtn": 7.45,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671220,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 1",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Daniel Michalski",
+     "pais": "POL",
+     "marca": "[1]",
+     "atp": 338,
+     "wtn": 3.44,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Franco Ribero",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 733,
+     "wtn": 7.15,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671229,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 2",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Alex Finkelstein",
+     "pais": "USA",
+     "marca": "Q",
+     "atp": 2203,
+     "wtn": 9.95,
+     "llega": "Q2✓ 6-4 6-3 · Q3✓ 0-6 6-3 10-7",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Valentin Basel",
+     "pais": "ARG",
+     "marca": "",
+     "atp": 1137,
+     "wtn": 8.84,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671226,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 3",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Nikita Mashtakov",
+     "pais": "UKR",
+     "marca": "",
+     "atp": 654,
+     "wtn": 4.83,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Tom Zeuch",
+     "pais": "GER",
+     "marca": "",
+     "atp": 900,
+     "wtn": 7.69,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671222,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T08:00:00.000Z",
+   "local": "10:00",
+   "horarioTxt": "Followed By",
+   "cancha": "Court 4",
+   "turno": 2,
+   "ronda": "R1",
+   "evento": "M",
+   "lados": [
+    {
+     "nombre": "Milosz Sroka",
+     "pais": "POL",
+     "marca": "Q",
+     "atp": null,
+     "wtn": 14.81,
+     "llega": "Q2✓ 6-3 6-0 vWC · Q3✓ 6-4 6-2 v[7]",
+     "gana": null,
+     "set1": null
+    },
+    {
+     "nombre": "Matyas Cerny",
+     "pais": "CZE",
+     "marca": "",
+     "atp": 717,
+     "wtn": 6.05,
+     "llega": "",
+     "gana": null,
+     "set1": null
+    }
+   ],
+   "betano": null
+  },
+  {
+   "id": 1183671234,
+   "torneo": "M25 Poznan",
+   "pais": "Poland",
+   "categoria": "M25",
+   "superficie": "Clay",
+   "bolsa": "$30,000",
+   "cuando": "2026-08-26T11:00:00.000Z",
    "local": "13:00",
    "horarioTxt": "Not Before 13:00",
    "cancha": "Court 1",
@@ -8567,22 +8643,22 @@
    "evento": "M",
    "lados": [
     {
-     "nombre": "Fryderyk Lechno-Wasiutynski",
-     "pais": "POL",
-     "marca": "[8]",
-     "atp": 636,
-     "wtn": 6.57,
-     "llega": "",
+     "nombre": "Michael Savano",
+     "pais": "USA",
+     "marca": "Q",
+     "atp": 1623,
+     "wtn": 14.39,
+     "llega": "Q2✓ 6-4 6-0 · Q3✓ 6-1 6-2 v[9]WC",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Hugo Pawel Rytelewski",
+     "nombre": "Przemyslaw Michocki",
      "pais": "POL",
-     "marca": "WC",
+     "marca": "Q",
      "atp": null,
-     "wtn": null,
-     "llega": "",
+     "wtn": 12.27,
+     "llega": "Q2✓ 6-4 6-2 · Q3✓ 6-2 6-3 v[4]",
      "gana": null,
      "set1": null
     }
@@ -8590,13 +8666,13 @@
    "betano": null
   },
   {
-   "id": 1183671223,
+   "id": 1183671231,
    "torneo": "M25 Poznan",
    "pais": "Poland",
    "categoria": "M25",
    "superficie": "Clay",
    "bolsa": "$30,000",
-   "cuando": "2026-08-25T11:00:00.000Z",
+   "cuando": "2026-08-26T11:00:00.000Z",
    "local": "13:00",
    "horarioTxt": "Not Before 13:00",
    "cancha": "Court 2",
@@ -8605,21 +8681,21 @@
    "evento": "M",
    "lados": [
     {
-     "nombre": "Jan Sadzik",
-     "pais": "POL",
-     "marca": "WC",
-     "atp": 1995,
-     "wtn": 15.78,
-     "llega": "",
+     "nombre": "Uladzislau Tarasevich",
+     "pais": "BLR",
+     "marca": "Q",
+     "atp": 2081,
+     "wtn": 13.31,
+     "llega": "Q2✓ 6-1 6-3 · Q3✓ 6-2 6-4",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Karol Filar",
-     "pais": "POL",
-     "marca": "[7]",
-     "atp": 596,
-     "wtn": 6.96,
+     "nombre": "Oleg Prihodko",
+     "pais": "MKD",
+     "marca": "[3]",
+     "atp": 425,
+     "wtn": 4.22,
      "llega": "",
      "gana": null,
      "set1": null
@@ -8628,13 +8704,13 @@
    "betano": null
   },
   {
-   "id": 1183671230,
+   "id": 1183671227,
    "torneo": "M25 Poznan",
    "pais": "Poland",
    "categoria": "M25",
    "superficie": "Clay",
    "bolsa": "$30,000",
-   "cuando": "2026-08-25T11:00:00.000Z",
+   "cuando": "2026-08-26T11:00:00.000Z",
    "local": "13:00",
    "horarioTxt": "Not Before 13:00",
    "cancha": "Court 3",
@@ -8643,21 +8719,21 @@
    "evento": "M",
    "lados": [
     {
-     "nombre": "Alan Wazny",
-     "pais": "POL",
-     "marca": "",
-     "atp": 859,
-     "wtn": 6.77,
-     "llega": "",
+     "nombre": "Leonardo Iemmi",
+     "pais": "ITA",
+     "marca": "Q",
+     "atp": 2081,
+     "wtn": 11.49,
+     "llega": "Q2✓ 6-1 6-0 vWC · Q3✓ 6-2 7-6(4) v[6]",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Filip Pieczonka",
-     "pais": "POL",
-     "marca": "",
-     "atp": 1061,
-     "wtn": 4.62,
+     "nombre": "Kirill Kivattsev",
+     "pais": "RUS",
+     "marca": "[6]",
+     "atp": 572,
+     "wtn": 6.78,
      "llega": "",
      "gana": null,
      "set1": null
@@ -8666,13 +8742,13 @@
    "betano": null
   },
   {
-   "id": 1183671228,
+   "id": 1183671233,
    "torneo": "M25 Poznan",
    "pais": "Poland",
    "categoria": "M25",
    "superficie": "Clay",
    "bolsa": "$30,000",
-   "cuando": "2026-08-25T11:00:00.000Z",
+   "cuando": "2026-08-26T11:00:00.000Z",
    "local": "13:00",
    "horarioTxt": "Not Before 13:00",
    "cancha": "Court 4",
@@ -8681,21 +8757,21 @@
    "evento": "M",
    "lados": [
     {
-     "nombre": "Gerard Campana Lee",
-     "pais": "KOR",
-     "marca": "[5]",
-     "atp": 585,
-     "wtn": 5.26,
+     "nombre": "Niklas Guttau",
+     "pais": "GER",
+     "marca": "",
+     "atp": 1218,
+     "wtn": 8.13,
      "llega": "",
      "gana": null,
      "set1": null
     },
     {
-     "nombre": "Jiri Cizek",
-     "pais": "CZE",
+     "nombre": "Kacper Knitter",
+     "pais": "POL",
      "marca": "",
-     "atp": 1358,
-     "wtn": 10.25,
+     "atp": 1312,
+     "wtn": 10.83,
      "llega": "",
      "gana": null,
      "set1": null

@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-25T22:07:17.046Z",
+ "actualizado": "2026-08-25T22:15:02.583Z",
  "nota": "registro maestro de torneos ITF, solo hombres singles (M15/M25)",
  "semanas": {
   "2026-W30": {
@@ -1169,8 +1169,8 @@
     "archivado": false,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": "2026-08-23T23:37:23.857Z",
-     "cuadroQ": "2026-08-23T23:37:23.857Z",
+     "cuadroM": "2026-08-25T22:13:48.272Z",
+     "cuadroQ": "2026-08-25T22:13:48.272Z",
      "oop": {}
     },
     "pendientesDeCierre": 1
@@ -1256,7 +1256,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:14.465Z",
      "cuadroM": "2026-08-23T04:03:27.281Z",
@@ -1282,7 +1282,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:18.869Z",
      "cuadroM": "2026-08-23T23:38:32.906Z",
@@ -1308,7 +1308,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:23.031Z",
      "cuadroM": "2026-08-23T23:38:15.226Z",
@@ -1334,7 +1334,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:25:02.869Z",
      "cuadroM": "2026-08-22T15:54:43.595Z",
@@ -1360,7 +1360,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:26.293Z",
      "cuadroM": "2026-08-23T04:04:16.180Z",
@@ -1386,7 +1386,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:31.573Z",
      "cuadroM": "2026-08-23T02:29:02.684Z",
@@ -1412,7 +1412,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:38.219Z",
      "cuadroM": "2026-08-23T23:39:26.850Z",
@@ -1441,8 +1441,8 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:42.592Z",
-     "cuadroM": "2026-08-23T04:03:58.242Z",
-     "cuadroQ": "2026-08-23T04:03:58.242Z",
+     "cuadroM": "2026-08-25T22:09:36.683Z",
+     "cuadroQ": "2026-08-25T22:09:36.683Z",
      "oop": {
       "2026-08-21": "2026-08-21T21:54:43.786Z",
       "2026-08-22": "2026-08-22T15:51:10.260Z",
@@ -1490,7 +1490,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:27:55.251Z",
      "cuadroM": "2026-08-22T15:56:23.867Z",
@@ -1544,8 +1544,8 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:28:00.740Z",
-     "cuadroM": "2026-08-23T23:46:52.428Z",
-     "cuadroQ": "2026-08-23T23:46:52.428Z",
+     "cuadroM": "2026-08-25T22:08:41.034Z",
+     "cuadroQ": "2026-08-25T22:08:41.034Z",
      "oop": {
       "2026-08-21": "2026-08-21T19:15:19.314Z",
       "2026-08-22": "2026-08-22T15:56:34.557Z",
@@ -1567,7 +1567,7 @@
      "main": "2026-08-17",
      "final": "2026-08-23"
     },
-    "archivado": false,
+    "archivado": true,
     "frescura": {
      "aceptacion": "2026-08-20T05:28:04.969Z",
      "cuadroM": "2026-08-23T23:47:10.710Z",
@@ -1596,8 +1596,8 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:28:09.606Z",
-     "cuadroM": "2026-08-23T12:23:44.659Z",
-     "cuadroQ": "2026-08-23T12:23:44.659Z",
+     "cuadroM": "2026-08-25T22:09:02.018Z",
+     "cuadroQ": "2026-08-25T22:09:02.018Z",
      "oop": {
       "2026-08-21": "2026-08-21T21:56:06.452Z",
       "2026-08-22": "2026-08-22T15:52:45.438Z",
@@ -1624,13 +1624,13 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T13:59:36.252Z",
-     "cuadroM": "2026-08-25T21:34:13.045Z",
-     "cuadroQ": "2026-08-25T21:34:13.045Z",
+     "cuadroM": "2026-08-25T22:12:14.465Z",
+     "cuadroQ": "2026-08-25T22:12:14.465Z",
      "oop": {
       "2026-08-23": "2026-08-23T12:21:33.797Z",
       "2026-08-24": "2026-08-24T22:48:07.581Z",
-      "2026-08-25": "2026-08-25T21:33:58.818Z",
-      "2026-08-26": "2026-08-25T21:33:54.295Z"
+      "2026-08-25": "2026-08-25T22:12:03.519Z",
+      "2026-08-26": "2026-08-25T22:11:59.004Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1705,12 +1705,13 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T13:59:33.860Z",
-     "cuadroM": "2026-08-24T22:47:56.630Z",
-     "cuadroQ": "2026-08-24T22:47:56.630Z",
+     "cuadroM": "2026-08-25T22:11:24.984Z",
+     "cuadroQ": "2026-08-25T22:11:24.984Z",
      "oop": {
       "2026-08-23": "2026-08-23T23:42:47.632Z",
       "2026-08-24": "2026-08-24T22:47:47.225Z",
-      "2026-08-25": "2026-08-24T22:47:43.180Z"
+      "2026-08-25": "2026-08-25T22:11:11.228Z",
+      "2026-08-26": "2026-08-25T22:11:06.285Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1758,13 +1759,13 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T14:01:02.414Z",
-     "cuadroM": "2026-08-25T21:37:37.043Z",
-     "cuadroQ": "2026-08-25T21:37:37.043Z",
+     "cuadroM": "2026-08-25T22:13:29.631Z",
+     "cuadroQ": "2026-08-25T22:13:29.631Z",
      "oop": {
       "2026-08-23": "2026-08-23T23:43:15.077Z",
       "2026-08-24": "2026-08-24T19:16:33.501Z",
-      "2026-08-25": "2026-08-25T21:37:25.706Z",
-      "2026-08-26": "2026-08-25T21:37:22.664Z"
+      "2026-08-25": "2026-08-25T22:13:17.540Z",
+      "2026-08-26": "2026-08-25T22:13:13.955Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1785,13 +1786,13 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:29:05.488Z",
-     "cuadroM": "2026-08-25T21:38:03.799Z",
-     "cuadroQ": "2026-08-25T21:38:03.799Z",
+     "cuadroM": "2026-08-25T22:12:35.713Z",
+     "cuadroQ": "2026-08-25T22:12:35.713Z",
      "oop": {
       "2026-08-23": "2026-08-23T23:44:27.392Z",
       "2026-08-24": "2026-08-24T22:48:31.163Z",
-      "2026-08-25": "2026-08-25T21:37:54.014Z",
-      "2026-08-26": "2026-08-25T21:37:50.948Z"
+      "2026-08-25": "2026-08-25T22:12:25.535Z",
+      "2026-08-26": "2026-08-25T22:12:21.100Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1866,12 +1867,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T14:01:05.091Z",
-     "cuadroM": "2026-08-24T22:42:29.242Z",
-     "cuadroQ": "2026-08-24T22:42:29.242Z",
+     "cuadroM": "2026-08-25T22:09:54.860Z",
+     "cuadroQ": "2026-08-25T22:09:54.860Z",
      "oop": {
       "2026-08-23": "2026-08-23T12:19:03.416Z",
       "2026-08-24": "2026-08-24T22:42:17.736Z",
-      "2026-08-25": "2026-08-24T22:42:12.787Z"
+      "2026-08-25": "2026-08-25T22:09:43.656Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1969,12 +1970,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:29:21.469Z",
-     "cuadroM": "2026-08-25T21:33:13.962Z",
-     "cuadroQ": "2026-08-25T21:33:13.962Z",
+     "cuadroM": "2026-08-25T22:10:59.321Z",
+     "cuadroQ": "2026-08-25T22:10:59.321Z",
      "oop": {
       "2026-08-23": "2026-08-23T12:20:15.956Z",
-      "2026-08-25": "2026-08-25T21:33:03.429Z",
-      "2026-08-26": "2026-08-25T21:33:00.584Z"
+      "2026-08-25": "2026-08-25T22:10:49.184Z",
+      "2026-08-26": "2026-08-25T22:10:45.985Z"
      }
     },
     "pendientesDeCierre": 0
@@ -2053,8 +2054,8 @@
      "oop": {
       "2026-08-23": "2026-08-23T23:40:36.451Z",
       "2026-08-24": "2026-08-24T19:14:34.687Z",
-      "2026-08-25": "2026-08-25T21:35:41.541Z",
-      "2026-08-26": "2026-08-25T21:35:38.784Z"
+      "2026-08-25": "2026-08-25T22:10:03.886Z",
+      "2026-08-26": "2026-08-25T22:10:01.275Z"
      }
     },
     "pendientesDeCierre": 0
@@ -2076,7 +2077,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:29:41.122Z",
+     "aceptacion": "2026-08-25T22:14:22.680Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2098,7 +2099,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:29:46.018Z",
+     "aceptacion": "2026-08-25T22:14:45.021Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2120,7 +2121,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:29:54.985Z",
+     "aceptacion": "2026-08-25T22:14:40.882Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2142,7 +2143,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:29:50.435Z",
+     "aceptacion": "2026-08-25T22:14:27.375Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2186,7 +2187,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:30:20.248Z",
+     "aceptacion": "2026-08-25T22:14:05.494Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2208,7 +2209,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:30:29.038Z",
+     "aceptacion": "2026-08-25T22:14:01.724Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2230,7 +2231,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:30:42.462Z",
+     "aceptacion": "2026-08-25T22:14:13.603Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2252,7 +2253,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:30:51.402Z",
+     "aceptacion": "2026-08-25T22:14:10.284Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2274,7 +2275,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:30:58.555Z",
+     "aceptacion": "2026-08-25T22:15:02.392Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2318,7 +2319,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:31:13.698Z",
+     "aceptacion": "2026-08-25T22:14:58.626Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2340,7 +2341,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:31:18.418Z",
+     "aceptacion": "2026-08-25T22:14:54.749Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2362,7 +2363,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:29:58.512Z",
+     "aceptacion": "2026-08-25T22:14:32.117Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2384,7 +2385,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:30:02.145Z",
+     "aceptacion": "2026-08-25T22:14:50.149Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2406,7 +2407,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:30:07.549Z",
+     "aceptacion": "2026-08-25T22:14:17.576Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2428,7 +2429,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": "2026-08-20T05:31:23.041Z",
+     "aceptacion": "2026-08-25T22:14:37.556Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
