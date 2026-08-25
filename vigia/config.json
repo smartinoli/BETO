@@ -24,7 +24,7 @@
   },
   "barridoDeportes": ["10"],
   "cuotaMinima": 1.6,
-  "usarCongeladas": true,
+  "usarCongeladas": false,
   "comentarioCongeladas": "acepta cuotas con active:false (feed detenido). Cada señal avisa cuántas horas tiene: hay que verificarla en pantalla",
   "sombras": false,
   "propsPrueba": false,
