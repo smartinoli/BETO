@@ -59,6 +59,16 @@ const PAIS = {
   polonia: 'pol', belgica: 'bel', china: 'chn', hungria: 'hun', serbia: 'srb', suecia: 'swe',
   paraguay: 'par', argentina: 'arg', egipto: 'egy', tunez: 'tun', holanda: 'ned',
   'paises bajos': 'ned', 'estados unidos': 'usa', turquia: 'tur', grecia: 'gre', croacia: 'cro',
+  /* Betano titula la pestana "EE.UU.", que al perder los puntos queda
+     "ee uu" y no se parece a "estados unidos" ni de lejos */
+  'ee uu': 'usa', eeuu: 'usa', usa: 'usa', 'gran bretana': 'gbr', japon: 'jpn',
+  brasil: 'bra', mexico: 'mex', canada: 'can', australia: 'aus', india: 'ind',
+  colombia: 'col', peru: 'per', chile: 'chi', uruguay: 'uru', bolivia: 'bol',
+  ecuador: 'ecu', republica: 'dom', finlandia: 'fin', noruega: 'nor',
+  dinamarca: 'den', letonia: 'lat', lituania: 'ltu', estonia: 'est',
+  bulgaria: 'bul', eslovaquia: 'svk', 'republica checa': 'cze', ucrania: 'ukr',
+  israel: 'isr', marruecos: 'mar', 'corea del sur': 'kor', tailandia: 'tha',
+  indonesia: 'ina', vietnam: 'vie', kazajistan: 'kaz', uzbekistan: 'uzb',
 };
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};
 const torneos = [];

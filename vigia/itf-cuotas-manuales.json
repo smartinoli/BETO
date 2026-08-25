@@ -615,6 +615,111 @@
    "g2": 4.15,
    "visto": "2026-08-24T22:47Z",
    "betano": "Stefano DAgostino / Alvaro Serrano Peiro"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Alejandro Garcia Carbajal",
+   "p2": "Javier Barranco Cosano",
+   "g1": 4.05,
+   "g2": 1.19,
+   "visto": "2026-08-25T13:22Z",
+   "betano": "Alejandro Garcia / Javier Barranco Cosano"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Pedro Rodenas",
+   "p2": "Maxi Carrascosa Diaz",
+   "g1": 1.09,
+   "g2": 5.7,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Samuel De Felipe Garcia",
+   "p2": "Xavi Palomar",
+   "g1": 2.32,
+   "g2": 1.52,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Ivan Gakhov",
+   "p2": "Enrique Carrascosa Diaz",
+   "g1": 1.12,
+   "g2": 5.2,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Daniel Bien",
+   "p2": "Juan Ignacio Gallego",
+   "g1": 3.9,
+   "g2": 1.2,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Matyas Kozlovsky",
+   "p2": "Pavlos Tsitsipas",
+   "g1": 2.07,
+   "g2": 1.65,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Tim Vaisman",
+   "p2": "Patrik Homola",
+   "g1": 1.65,
+   "g2": 2.07,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Jonas GUNDACKER",
+   "p2": "Tobia Costanzo Baragiola Mordini",
+   "g1": 1.35,
+   "g2": 2.85,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Aleksandr Braynin",
+   "p2": "Paul Schmid",
+   "g1": 1.12,
+   "g2": 5.1,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Marcel Jelinek",
+   "p2": "Leyton Rivera",
+   "g1": 5.6,
+   "g2": 1.1,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Alexander Wagner",
+   "p2": "Adam Soukup",
+   "g1": 1.28,
+   "g2": 3.25,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Matthias Ujvary",
+   "p2": "Noel Larwig",
+   "g1": 1.45,
+   "g2": 2.47,
+   "visto": "2026-08-25T13:22Z"
+  },
+  {
+   "torneo": "M15 Mar Del Plata",
+   "p1": "Valentino Grippo",
+   "p2": "Gonzalo Zeitune",
+   "g1": 1.4,
+   "g2": 2.65,
+   "visto": "2026-08-25T13:22Z"
   }
  ]
 }

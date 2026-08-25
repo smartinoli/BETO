@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-24T22:48:14.765Z",
+ "generado": "2026-08-25T13:22:49.707Z",
  "analista": "agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano/bet365 + reglas medidas (itf-reglas.mjs)",
  "titular": "Valor esperado partido a partido, con la probabilidad de la RONDA EXACTA: el WTN no acierta lo mismo en Q1 (75%) que en Q2 o R1 (79% y 77%) que en cuartos (60%) o semis (50%).",
  "advertencia": "El margen de Betano en ITF es 9%: por eso la cuota minima de cada banda es 1.09/p y no 1/p. Los \"ojo:\" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano 6-3 6-5).",
@@ -98,701 +98,6 @@
    "banderas": [
     "Δ1.46 claro",
     "margen fino"
-   ]
-  },
-  "1183669633": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "claro",
-    "p": 0.5905885641536138,
-    "d": 0.9900000000000002,
-    "favorito": "Zhenxiong Dong",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.6932261487879015,
-    "cMinima": 1.8456165021788127
-   },
-   "precio": null,
-   "favorito": "Zhenxiong Dong",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ0.99 de WTN a favor (9.78 contra 10.77), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 59%. Empataria a 1.69 y valdria la pena desde 1.85. Falta el precio. Con reparos: Ryo Minakata no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ0.99 claro",
-    "sin precio"
-   ]
-  },
-  "1183669634": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9823512851348366,
-    "d": 10.86,
-    "favorito": "Lingxi Zhao [14]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.0179657879337338,
-    "cMinima": 1.1095827088477699
-   },
-   "precio": null,
-   "favorito": "Lingxi Zhao [14]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ10.86 de WTN a favor (7.13 contra 17.99), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 98%. Empataria a 1.02 y valdria la pena desde 1.11. Falta el precio. Con reparos: Emmanuel Valsamis no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ10.86 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183669635": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9052965380640087,
-    "d": 7.120000000000001,
-    "favorito": "Daisuke Sumizawa [2]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": true,
-    "n": 345,
-    "cEmpate": 1.1046104320011167,
-    "cMinima": 1.2040253708812172
-   },
-   "precio": null,
-   "favorito": "Daisuke Sumizawa [2]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ7.12 de WTN a favor (9.77 contra 16.89), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 93%. Xin Zhou llega cediendo menos games y el choque la baja a 91%. Empataria a 1.10 y valdria la pena desde 1.20. Falta el precio. Con reparos: Xin Zhou no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Xin Zhou llega cediendo menos games: el choque baja la estimación de 93% a 91%.",
-   "banderas": [
-    "Δ7.12 muy fuerte",
-    "choque nivel vs forma",
-    "ojo: Xin Zhou llega cediendo menos games",
-    "sin precio"
-   ]
-  },
-  "1183669636": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9146860570175549,
-    "d": 7.4300000000000015,
-    "favorito": "Shaoyun Liu [13]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": true,
-    "n": 345,
-    "cEmpate": 1.0932712839863565,
-    "cMinima": 1.1916656995451287
-   },
-   "precio": null,
-   "favorito": "Shaoyun Liu [13]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ7.43 de WTN a favor (13.67 contra 21.1), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 94%. Yan Lang Chen llega cediendo menos games y el choque la baja a 91%. Empataria a 1.09 y valdria la pena desde 1.19. Falta el precio. Con reparos: Yan Lang Chen no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Yan Lang Chen llega cediendo menos games: el choque baja la estimación de 94% a 91%.",
-   "banderas": [
-    "Δ7.43 muy fuerte",
-    "choque nivel vs forma",
-    "ojo: Yan Lang Chen llega cediendo menos games",
-    "sin precio"
-   ]
-  },
-  "1183669637": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.8223300179270387,
-    "d": 4.140000000000001,
-    "favorito": "Shu Muto [3]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.2160567876639583,
-    "cMinima": 1.3255018985537146
-   },
-   "precio": null,
-   "favorito": "Shu Muto [3]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ4.14 de WTN a favor (10.17 contra 14.31), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 82%. Empataria a 1.22 y valdria la pena desde 1.33. Falta el precio. Con reparos: Xinyuan Xie no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ4.14 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183669638": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "claro",
-    "p": 0.5878775102706031,
-    "d": 1.9800000000000004,
-    "favorito": "Denis Vishenchuk Vishenko [15]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": true,
-    "n": 345,
-    "cEmpate": 1.7010346246103116,
-    "cMinima": 1.85412774082524
-   },
-   "precio": null,
-   "favorito": "Denis Vishenchuk Vishenko [15]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ1.98 de WTN a favor (14.46 contra 16.44), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 68%. Xiuyuan Ye llega cediendo menos games y el choque la baja a 59%. Empataria a 1.70 y valdria la pena desde 1.85. Falta el precio. Con reparos: Xiuyuan Ye no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Xiuyuan Ye llega cediendo menos games: el choque baja la estimación de 68% a 59%.",
-   "banderas": [
-    "Δ1.98 claro",
-    "choque nivel vs forma",
-    "ojo: Xiuyuan Ye llega cediendo menos games",
-    "sin precio"
-   ]
-  },
-  "1183669639": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.8718167084261507,
-    "d": 5.18,
-    "favorito": "Vladimir Osminkin",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.147030092833679,
-    "cMinima": 1.25026280118871
-   },
-   "precio": null,
-   "favorito": "Vladimir Osminkin",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ5.18 de WTN a favor (12.96 contra 18.14), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 87%. Empataria a 1.15 y valdria la pena desde 1.25. Falta el precio. Con reparos: Ivan Dorokhov no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ5.18 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183669640": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Δ1.86 de WTN en ronda Q2 da 67%, pero Adrian Arcon llega cediendo menos games y el choque lo baja a 58%: bajo el piso de 58%. Sin lado.",
-   "banderas": [
-    "choque hunde el nivel"
-   ]
-  },
-  "1183669641": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183669642": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.982981611875976,
-    "d": 10.96,
-    "favorito": "Yua Taka [11]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.017313027953336,
-    "cMinima": 1.1088712004691363
-   },
-   "precio": null,
-   "favorito": "Yua Taka [11]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ10.96 de WTN a favor (8.84 contra 19.8), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 98%. Empataria a 1.02 y valdria la pena desde 1.11. Falta el precio. Con reparos: Kazuki Nakajima no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ10.96 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183669643": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.8570726220380968,
-    "d": 5.860000000000001,
-    "favorito": "Zijiang Yang",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": true,
-    "n": 345,
-    "cEmpate": 1.1667622722821616,
-    "cMinima": 1.2717708767875562
-   },
-   "precio": null,
-   "favorito": "Zijiang Yang",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ5.86 de WTN a favor (12.6 contra 18.46), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 90%. Zhiheng Xia llega cediendo menos games y el choque la baja a 86%. Empataria a 1.17 y valdria la pena desde 1.27. Falta el precio. Con reparos: Zhiheng Xia no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Zhiheng Xia llega cediendo menos games: el choque baja la estimación de 90% a 86%.",
-   "banderas": [
-    "Δ5.86 muy fuerte",
-    "choque nivel vs forma",
-    "ojo: Zhiheng Xia llega cediendo menos games",
-    "sin precio"
-   ]
-  },
-  "1183669644": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9456831970263064,
-    "d": 8.740000000000002,
-    "favorito": "Alex Jones [10]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": true,
-    "n": 345,
-    "cEmpate": 1.0574365740498428,
-    "cMinima": 1.1526058657143288
-   },
-   "precio": null,
-   "favorito": "Alex Jones [10]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ8.74 de WTN a favor (9.79 contra 18.53), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 96%. Luke McMillan llega cediendo menos games y el choque la baja a 95%. Empataria a 1.06 y valdria la pena desde 1.15. Falta el precio. Con reparos: Luke McMillan no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Luke McMillan llega cediendo menos games: el choque baja la estimación de 96% a 95%.",
-   "banderas": [
-    "Δ8.74 muy fuerte",
-    "choque nivel vs forma",
-    "ojo: Luke McMillan llega cediendo menos games",
-    "sin precio"
-   ]
-  },
-  "1183669645": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.93422755120063,
-    "d": 8.19,
-    "favorito": "Xirui Han [7]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": true,
-    "n": 345,
-    "cEmpate": 1.0704030283787307,
-    "cMinima": 1.1667393009328166
-   },
-   "precio": null,
-   "favorito": "Xirui Han [7]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ8.19 de WTN a favor (10.67 contra 18.86), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 95%. Haolong He llega cediendo menos games y el choque la baja a 93%. Empataria a 1.07 y valdria la pena desde 1.17. Falta el precio. Con reparos: Haolong He no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Haolong He llega cediendo menos games: el choque baja la estimación de 95% a 93%.",
-   "banderas": [
-    "Δ8.19 muy fuerte",
-    "choque nivel vs forma",
-    "ojo: Haolong He llega cediendo menos games",
-    "sin precio"
-   ]
-  },
-  "1183669646": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9129449574802617,
-    "d": 6.349999999999998,
-    "favorito": "Natsuki Yamamoto [16]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.095356288247663,
-    "cMinima": 1.1939383541899529
-   },
-   "precio": null,
-   "favorito": "Natsuki Yamamoto [16]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ6.35 de WTN a favor (13.73 contra 20.08), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 91%. Empataria a 1.10 y valdria la pena desde 1.19. Falta el precio. Con reparos: Zhe Jiang no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ6.35 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183669647": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183669648": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9777393374754593,
-    "d": 10.22,
-    "favorito": "Suk Ann",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.0227674817523638,
-    "cMinima": 1.1148165551100766
-   },
-   "precio": null,
-   "favorito": "Suk Ann",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ10.22 de WTN a favor (10.13 contra 20.35), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 98%. Empataria a 1.02 y valdria la pena desde 1.11. Falta el precio. Con reparos: Xingyu Chen no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ10.22 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670062": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9965763993994142,
-    "d": 15.330000000000002,
-    "favorito": "Andrea Bacaloni [1]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.0034353619076761,
-    "cMinima": 1.093744544479367
-   },
-   "precio": null,
-   "favorito": "Andrea Bacaloni [1]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ15.33 de WTN a favor (10.02 contra 25.35), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 100%. Empataria a 1.00 y valdria la pena desde 1.09. Falta el precio. Con reparos: Ali Sherif Abdellatif no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ15.33 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670063": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.8379758658507334,
-    "d": 4.440000000000001,
-    "favorito": "Makar Krivoshchekov [9]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.1933517906088809,
-    "cMinima": 1.3007534517636803
-   },
-   "precio": null,
-   "favorito": "Makar Krivoshchekov [9]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ4.44 de WTN a favor (12.09 contra 16.53), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 84%. Empataria a 1.19 y valdria la pena desde 1.30. Falta el precio. Con reparos: Abdullah Amr Mohamed Genedy no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ4.44 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670064": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183670065": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9735263244064936,
-    "d": 9.74,
-    "favorito": "Prasad Ingale [14]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.0271935898699462,
-    "cMinima": 1.1196410129582415
-   },
-   "precio": null,
-   "favorito": "Prasad Ingale [14]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ9.74 de WTN a favor (14.51 contra 24.25), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 97%. Empataria a 1.03 y valdria la pena desde 1.12. Falta el precio. Con reparos: Sharan Somasi no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ9.74 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670066": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9309775275652858,
-    "d": 7.029999999999998,
-    "favorito": "Jake Fellows",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.074139783604899,
-    "cMinima": 1.17081236412934
-   },
-   "precio": null,
-   "favorito": "Jake Fellows",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ7.03 de WTN a favor (9.55 contra 16.58), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 93%. Empataria a 1.07 y valdria la pena desde 1.17. Falta el precio.",
-   "banderas": [
-    "Δ7.03 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670067": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.8953487580785832,
-    "d": 5.799999999999999,
-    "favorito": "Gawad El Feky [11]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.1168832155929922,
-    "cMinima": 1.2174027049963616
-   },
-   "precio": null,
-   "favorito": "Gawad El Feky [11]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ5.80 de WTN a favor (11.88 contra 17.68), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 90%. Empataria a 1.12 y valdria la pena desde 1.22. Falta el precio. Con reparos: Yauheni Bursau no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ5.80 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670068": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183670069": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183670070": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "claro",
-    "p": 0.6074767185866425,
-    "d": 1.1799999999999997,
-    "favorito": "Finn Reilly",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.6461536210418128,
-    "cMinima": 1.7943074469355762
-   },
-   "precio": null,
-   "favorito": "Finn Reilly",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ1.18 de WTN a favor (18.53 contra 19.71), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 61%. Empataria a 1.65 y valdria la pena desde 1.79. Falta el precio. Con reparos: Issah Ali no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ1.18 claro",
-    "sin precio"
-   ]
-  },
-  "1183670071": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183670072": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "fuerte",
-    "p": 0.7812804737964922,
-    "d": 3.4399999999999995,
-    "favorito": "Mousa Alkotop",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.2799500736792762,
-    "cMinima": 1.3951455803104111
-   },
-   "precio": null,
-   "favorito": "Mousa Alkotop",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ3.44 de WTN a favor (12.07 contra 15.51), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 78%. Empataria a 1.28 y valdria la pena desde 1.40. Falta el precio.",
-   "banderas": [
-    "Δ3.44 fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670073": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183670074": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9155560820886832,
-    "d": 6.440000000000001,
-    "favorito": "Gabriele Thomas Brancatelli [7]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.0922323815693218,
-    "cMinima": 1.1905332959105608
-   },
-   "precio": null,
-   "favorito": "Gabriele Thomas Brancatelli [7]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ6.44 de WTN a favor (10.82 contra 17.26), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 92%. Empataria a 1.09 y valdria la pena desde 1.19. Falta el precio. Con reparos: George Russell no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ6.44 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670075": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183670076": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.8786848930790242,
-    "d": 5.349999999999998,
-    "favorito": "Mustapha El Natour [8]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.1380644049721536,
-    "cMinima": 1.2404902014196475
-   },
-   "precio": null,
-   "favorito": "Mustapha El Natour [8]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ5.35 de WTN a favor (14.89 contra 20.24), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 88%. Empataria a 1.14 y valdria la pena desde 1.24. Falta el precio. Con reparos: Daniil Ovcharenko no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ5.35 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183670077": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.8234088959875242,
-    "d": 4.159999999999998,
-    "favorito": "Makar Elesin [12]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.2144634395778393,
-    "cMinima": 1.323765149139845
-   },
-   "precio": null,
-   "favorito": "Makar Elesin [12]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ4.16 de WTN a favor (14.47 contra 18.63), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 82%. Empataria a 1.21 y valdria la pena desde 1.32. Falta el precio. Con reparos: Ibrahim Kandil no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ4.16 muy fuerte",
-    "sin precio"
    ]
   },
   "1183670316": {
@@ -1088,7 +393,7 @@
    ]
   },
   "1183671059": {
-   "tipo": "sin-precio",
+   "tipo": "pasar",
    "nivel": {
     "fuerza": "muy fuerte",
     "p": 0.947003604620269,
@@ -1102,18 +407,25 @@
     "cEmpate": 1.055962189712025,
     "cMinima": 1.1509987867861073
    },
-   "precio": null,
-   "favorito": "Ivan Gakhov [4]",
+   "precio": {
+    "cuota": 1.12,
+    "cMinima": 1.1509987867861073,
+    "val": 0.06064403717470146,
+    "devig": 0.8227848101265823,
+    "residuo": 0.029544338382472946,
+    "veredicto": "justo"
+   },
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ7.79 de WTN a favor (3.58 contra 11.37), en ronda R1: la curva del grupo \"buenas\" (n=345) da 95%. Empataria a 1.06 y valdria la pena desde 1.15. Falta el precio.",
+   "mercado": "pasar",
+   "razon": "Δ7.79 de WTN a favor (3.58 contra 11.37), en ronda R1: la curva del grupo \"buenas\" (n=345) da 95%. A 1.12 hay apenas +6%: por debajo del margen de la casa (haria falta 1.15). Dentro del error de estimacion.",
    "banderas": [
     "Δ7.79 muy fuerte",
-    "sin precio"
+    "margen fino"
    ]
   },
   "1183671060": {
-   "tipo": "sin-precio",
+   "tipo": "anomalia",
    "nivel": {
     "fuerza": "fuerte",
     "p": 0.7257893072962524,
@@ -1127,14 +439,22 @@
     "cEmpate": 1.3778103231160175,
     "cMinima": 1.5018132521964593
    },
-   "precio": null,
+   "precio": {
+    "cuota": 2.32,
+    "cMinima": 1.5018132521964593,
+    "val": 0.6838311929273053,
+    "devig": 0.3958333333333333,
+    "residuo": -0.20292400040087671,
+    "veredicto": "barato"
+   },
    "favorito": "Samuel De Felipe Garcia",
    "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ2.63 de WTN a favor (10.35 contra 12.98), en ronda R1: la curva del grupo \"buenas\" (n=345) da 73%. Empataria a 1.38 y valdria la pena desde 1.50. Falta el precio.",
+   "mercado": "gana",
+   "razon": "Δ2.63 de WTN a favor (10.35 contra 12.98), en ronda R1: la curva del grupo \"buenas\" (n=345) da 73%. El mercado lo pone de NO favorito a 2.32 (40%) cuando nuestra curva dice 73%: 68% de valor si tenemos razon. Es la via de multiplicar y la mas incierta: cuando el mercado se aparta tanto suele ver algo que no vemos, y nuestro registro en estos casos va 1-1. Reparos: el mercado lo paga a 2.32 (40% real) cuando su propio modelo por ΔWTN daría 60%: 20 puntos que no vemos.",
    "banderas": [
     "Δ2.63 fuerte",
-    "sin precio"
+    "ojo: el mercado lo paga a 2.32 (40% real) cuando su propio modelo por ΔWTN daría 60%",
+    "anomalía"
    ]
   },
   "1183671061": {
@@ -1273,7 +593,7 @@
    ]
   },
   "1183671069": {
-   "tipo": "sin-precio",
+   "tipo": "pasar",
    "nivel": {
     "fuerza": "muy fuerte",
     "p": 0.9423645844517435,
@@ -1287,18 +607,25 @@
     "cEmpate": 1.0611604218783202,
     "cMinima": 1.156664859847369
    },
-   "precio": null,
-   "favorito": "Pedro Rodenas",
+   "precio": {
+    "cuota": 1.09,
+    "cMinima": 1.156664859847369,
+    "val": 0.02717739705240052,
+    "devig": 0.8394698085419735,
+    "residuo": 0.05352545188848368,
+    "veredicto": "justo"
+   },
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ7.55 de WTN a favor (6.68 contra 14.23), en ronda R1: la curva del grupo \"buenas\" (n=345) da 94%. Empataria a 1.06 y valdria la pena desde 1.16. Falta el precio.",
+   "mercado": "pasar",
+   "razon": "Δ7.55 de WTN a favor (6.68 contra 14.23), en ronda R1: la curva del grupo \"buenas\" (n=345) da 94%. A 1.09 hay apenas +3%: por debajo del margen de la casa (haria falta 1.16). Dentro del error de estimacion.",
    "banderas": [
     "Δ7.55 muy fuerte",
-    "sin precio"
+    "margen fino"
    ]
   },
   "1183671070": {
-   "tipo": "sin-precio",
+   "tipo": "pasar",
    "nivel": {
     "fuerza": "fuerte",
     "p": 0.7990669553788489,
@@ -1312,14 +639,21 @@
     "cEmpate": 1.2514595845424317,
     "cMinima": 1.3640909471512506
    },
-   "precio": null,
-   "favorito": "Javier Barranco Cosano [2]",
+   "precio": {
+    "cuota": 1.19,
+    "cMinima": 1.3640909471512506,
+    "val": -0.04911032309916985,
+    "devig": 0.7729007633587786,
+    "residuo": 0.12688077449382085,
+    "veredicto": "caro"
+   },
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ3.73 de WTN a favor (3.89 contra 7.62), en ronda R1: la curva del grupo \"buenas\" (n=345) da 80%. Empataria a 1.25 y valdria la pena desde 1.36. Falta el precio.",
+   "mercado": "pasar",
+   "razon": "Δ3.73 de WTN a favor (3.89 contra 7.62), en ronda R1: la curva del grupo \"buenas\" (n=345) da 80%. A 1.19 el mercado implica 84%, por encima de nuestra banda: cuota corta, no compensa.",
    "banderas": [
     "Δ3.73 fuerte",
-    "sin precio"
+    "cuota corta"
    ]
   },
   "1183671095": {
@@ -3090,9 +2424,10 @@
    "favorito": "Rahul Dhokia [1]",
    "confianza": "baja",
    "mercado": "sin precio",
-   "razon": "Δ5.19 de WTN a favor (11.93 contra 17.12), en ronda Q3: la curva del grupo \"medias\" (n=162) da 74%. Empataria a 1.34 y valdria la pena desde 1.46. Falta el precio. Con reparos: Alessandro Barbieri no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+   "razon": "Δ5.19 de WTN a favor (11.93 contra 17.12), en ronda Q3: la curva del grupo \"medias\" (n=162) da 74%. Empataria a 1.34 y valdria la pena desde 1.46. Falta el precio. Con reparos: Alessandro Barbieri no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Alessandro Barbieri ganó un partido por retiro: llega más fresco.",
    "banderas": [
     "Δ5.19 muy fuerte",
+    "ojo: Alessandro Barbieri ganó un partido por retiro",
     "sin precio"
    ]
   },
@@ -3124,24 +2459,26 @@
    "tipo": "sin-precio",
    "nivel": {
     "fuerza": "muy fuerte",
-    "p": 0.7276571026443732,
+    "p": 0.6468377712010317,
     "d": 4.779999999999999,
     "favorito": "Jaden Weekes",
     "ronda": "Q3",
     "grupo": "medias",
     "tarde": false,
-    "choque": false,
+    "choque": true,
     "n": 162,
-    "cEmpate": 1.3742736741878936,
-    "cMinima": 1.4979583048648042
+    "cEmpate": 1.5459826938418049,
+    "cMinima": 1.6851211362875673
    },
    "precio": null,
    "favorito": "Jaden Weekes",
    "confianza": "baja",
    "mercado": "sin precio",
-   "razon": "Δ4.78 de WTN a favor (8.49 contra 13.27), en ronda Q3: la curva del grupo \"medias\" (n=162) da 73%. Empataria a 1.37 y valdria la pena desde 1.50. Falta el precio. Con reparos: Abdulhamid Mubarak no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+   "razon": "Δ4.78 de WTN a favor (8.49 contra 13.27), en ronda Q3: la curva del grupo \"medias\" (n=162) da 73%. Abdulhamid Mubarak llega cediendo menos games y el choque la baja a 65%. Empataria a 1.55 y valdria la pena desde 1.69. Falta el precio. Con reparos: Abdulhamid Mubarak no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Abdulhamid Mubarak llega cediendo menos games: el choque baja la estimación de 73% a 65%.",
    "banderas": [
     "Δ4.78 muy fuerte",
+    "choque nivel vs forma",
+    "ojo: Abdulhamid Mubarak llega cediendo menos games",
     "sin precio"
    ]
   },
@@ -3170,292 +2507,18 @@
    ]
   },
   "1183671897": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "claro",
-    "p": 0.6170373282421857,
-    "d": 2.3200000000000003,
-    "favorito": "Chetanna Amadike [10]",
-    "ronda": "Q3",
-    "grupo": "medias",
-    "tarde": false,
-    "choque": false,
-    "n": 162,
-    "cEmpate": 1.6206474944535323,
-    "cMinima": 1.7665057689543502
-   },
+   "tipo": "pasar",
+   "nivel": null,
    "precio": null,
-   "favorito": "Chetanna Amadike [10]",
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ2.32 de WTN a favor (12.04 contra 14.36), en ronda Q3: la curva del grupo \"medias\" (n=162) da 62%. Empataria a 1.62 y valdria la pena desde 1.77. Falta el precio. Con reparos: Renaud Lefevre no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+   "mercado": "pasar",
+   "razon": "Δ2.32 de WTN en ronda Q3 da 62%, pero Renaud Lefevre llega cediendo menos games y el choque lo baja a 52%: bajo el piso de 58%. Sin lado.",
    "banderas": [
-    "Δ2.32 claro",
-    "sin precio"
+    "choque hunde el nivel"
    ]
   },
   "1183671898": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671899": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671900": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671901": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671902": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.8994288035460243,
-    "d": 6.9399999999999995,
-    "favorito": "Jaishnav Shinde",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": true,
-    "n": 345,
-    "cEmpate": 1.1118167397546874,
-    "cMinima": 1.2118802463326095
-   },
-   "precio": null,
-   "favorito": "Jaishnav Shinde",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ6.94 de WTN a favor (15.4 contra 22.34), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 93%. Ektoras Tsatsakis llega cediendo menos games y el choque la baja a 90%. Empataria a 1.11 y valdria la pena desde 1.21. Falta el precio. Con reparos: Ektoras Tsatsakis no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%); Ektoras Tsatsakis ganó un partido por retiro: llega más fresco; Ektoras Tsatsakis llega cediendo menos games: el choque baja la estimación de 93% a 90%.",
-   "banderas": [
-    "Δ6.94 muy fuerte",
-    "choque nivel vs forma",
-    "ojo: Ektoras Tsatsakis ganó un partido por retiro",
-    "ojo: Ektoras Tsatsakis llega cediendo menos games",
-    "sin precio"
-   ]
-  },
-  "1183671903": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9944929504398532,
-    "d": 14.040000000000001,
-    "favorito": "Romain Andres [3]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.005537545095429,
-    "cMinima": 1.0960359241540176
-   },
-   "precio": null,
-   "favorito": "Romain Andres [3]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ14.04 de WTN a favor (12.12 contra 26.16), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 99%. Empataria a 1.01 y valdria la pena desde 1.10. Falta el precio. Con reparos: Dhruv Sharma no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ14.04 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183671905": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671906": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671907": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671908": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9625210682529973,
-    "d": 8.77,
-    "favorito": "Rayan Sajjid Koothrat [9]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.0389382975429597,
-    "cMinima": 1.1324427443218261
-   },
-   "precio": null,
-   "favorito": "Rayan Sajjid Koothrat [9]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ8.77 de WTN a favor (19.47 contra 28.24), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 96%. Empataria a 1.04 y valdria la pena desde 1.13. Falta el precio. Con reparos: Louis Elias Klein no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ8.77 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183671909": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671910": {
-   "tipo": "pasar",
-   "nivel": null,
-   "precio": null,
-   "favorito": "—",
-   "confianza": "baja",
-   "mercado": "pasar",
-   "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
-   "banderas": [
-    "sin datos de nivel"
-   ]
-  },
-  "1183671911": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9706149842804956,
-    "d": 9.45,
-    "favorito": "Renaud Lefevre [7]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.0302746363855975,
-    "cMinima": 1.1229993536603013
-   },
-   "precio": null,
-   "favorito": "Renaud Lefevre [7]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ9.45 de WTN a favor (14.36 contra 23.81), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 97%. Empataria a 1.03 y valdria la pena desde 1.12. Falta el precio. Con reparos: Nicholas Van Aken no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ9.45 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183671912": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "muy fuerte",
-    "p": 0.9719566042768149,
-    "d": 9.580000000000002,
-    "favorito": "Chetanna Amadike [10]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.0288525183118138,
-    "cMinima": 1.1214492449598772
-   },
-   "precio": null,
-   "favorito": "Chetanna Amadike [10]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ9.58 de WTN a favor (12.04 contra 21.62), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 97%. Empataria a 1.03 y valdria la pena desde 1.12. Falta el precio. Con reparos: federico sartori no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ9.58 muy fuerte",
-    "sin precio"
-   ]
-  },
-  "1183671913": {
-   "tipo": "sin-precio",
-   "nivel": {
-    "fuerza": "fuerte",
-    "p": 0.7309150277119836,
-    "d": 2.6999999999999993,
-    "favorito": "Josh Manuel [8]",
-    "ronda": "Q2",
-    "grupo": "buenas",
-    "tarde": false,
-    "choque": false,
-    "n": 345,
-    "cEmpate": 1.3681480912088309,
-    "cMinima": 1.4912814194176256
-   },
-   "precio": null,
-   "favorito": "Josh Manuel [8]",
-   "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ2.70 de WTN a favor (13.22 contra 15.92), en ronda Q2: la curva del grupo \"buenas\" (n=345) da 73%. Empataria a 1.37 y valdria la pena desde 1.49. Falta el precio. Con reparos: Daniele Augenti no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
-   "banderas": [
-    "Δ2.70 fuerte",
-    "sin precio"
-   ]
-  },
-  "1183671914": {
    "tipo": "pasar",
    "nivel": null,
    "precio": null,
@@ -3493,7 +2556,7 @@
    ]
   },
   "1183672023": {
-   "tipo": "sin-precio",
+   "tipo": "pasar",
    "nivel": {
     "fuerza": "claro",
     "p": 0.6353296029130066,
@@ -3507,14 +2570,21 @@
     "cEmpate": 1.5739861568152467,
     "cMinima": 1.7156449109286191
    },
-   "precio": null,
-   "favorito": "Valentino Grippo",
+   "precio": {
+    "cuota": 1.4,
+    "cMinima": 1.7156449109286191,
+    "val": -0.11053855592179085,
+    "devig": 0.654320987654321,
+    "residuo": 0.10609636370794084,
+    "veredicto": "caro"
+   },
+   "favorito": "—",
    "confianza": "baja",
-   "mercado": "sin precio",
-   "razon": "Δ1.50 de WTN a favor (12.59 contra 14.09), en ronda R1: la curva del grupo \"buenas\" (n=345) da 64%. Empataria a 1.57 y valdria la pena desde 1.72. Falta el precio. Con reparos: Gonzalo Zeitune no tiene ranking ATP (normal en qualis; medido, el WTN ahi acierta MAS: 81% contra 75%).",
+   "mercado": "pasar",
+   "razon": "Δ1.50 de WTN a favor (12.59 contra 14.09), en ronda R1: la curva del grupo \"buenas\" (n=345) da 64%. A 1.4 el mercado implica 71%, por encima de nuestra banda: cuota corta, no compensa.",
    "banderas": [
     "Δ1.50 claro",
-    "sin precio"
+    "cuota corta"
    ]
   },
   "1183672024": {
@@ -3895,6 +2965,7 @@
   }
  },
  "destacados": [
+  1183671060,
   1183671170,
   1183671319,
   1183671175,

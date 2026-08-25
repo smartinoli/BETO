@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-24T22:48:43.992Z",
+ "actualizado": "2026-08-25T13:23:19.563Z",
  "nota": "registro maestro de torneos ITF, solo hombres singles (M15/M25)",
  "semanas": {
   "2026-W30": {
@@ -1624,12 +1624,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:28:18.589Z",
-     "cuadroM": "2026-08-24T22:48:20.147Z",
-     "cuadroQ": "2026-08-24T22:48:20.147Z",
+     "cuadroM": "2026-08-25T13:23:19.296Z",
+     "cuadroQ": "2026-08-25T13:23:19.296Z",
      "oop": {
       "2026-08-23": "2026-08-23T12:21:33.797Z",
       "2026-08-24": "2026-08-24T22:48:07.581Z",
-      "2026-08-25": "2026-08-24T22:48:03.364Z"
+      "2026-08-25": "2026-08-25T13:23:07.794Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1934,9 +1934,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-20T05:29:15.099Z",
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
+     "cuadroM": "2026-08-25T13:23:01.189Z",
+     "cuadroQ": "2026-08-25T13:23:01.189Z",
+     "oop": {
+      "2026-08-25": "2026-08-25T13:22:49.079Z"
+     }
     },
     "pendientesDeCierre": 0
    },
