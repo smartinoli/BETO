@@ -9,10 +9,11 @@
 
      1. itf-cuotas-archivos  carga los PDF/JSON nuevos y verifica cada
                              partido contra el cuadro oficial
-     2. itf-proximos         la mesa por torneo
-     3. itf-tabla            la tabla esquematica
-     4. itf-mercado          ¿el mercado cotiza esta ronda por nivel?
-     5. itf-resultados       lo que dijimos contra lo que paso
+     2. itf-informe          EL ANALISIS: una ficha por partido cotizado
+     3. itf-proximos         la mesa por torneo
+     4. itf-tabla            la tabla esquematica
+     5. itf-mercado          ¿el mercado cotiza esta ronda por nivel?
+     6. itf-resultados       lo que dijimos contra lo que paso
 
    NO baja nada de la ITF: para eso esta itf-scrap.mjs, que es lento y
    depende del WAF. Este trabaja con lo que ya hay en disco.
@@ -45,6 +46,7 @@ if (archivos.length) {
 } else console.log('(sin archivos nuevos: sólo se recalcula)');
 
 titulo('2 · MESA Y TABLA');
+console.log(correr('itf-informe.mjs').trim());
 console.log(correr('itf-proximos.mjs').trim());
 console.log(correr('itf-tabla.mjs').trim());
 
@@ -59,4 +61,4 @@ console.log(res.split('TODO EL REGISTRO')[0].trim());
 titulo('5 · LO QUE EL SISTEMA MARCA AHORA');
 console.log(correr('itf-analizar.mjs').trim());
 
-console.log('\n→ vigia/itf-tabla.html · vigia/itf-proximos.html');
+console.log('\n→ vigia/itf-informe.html · vigia/itf-tabla.html · vigia/itf-proximos.html');

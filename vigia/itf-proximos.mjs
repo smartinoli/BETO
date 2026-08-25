@@ -360,7 +360,7 @@ function filaPartido(p, tClave) {
     <p class="veredicto t-${esc(p.v.tipo)}">
       <span class="etiq">${ETIQUETA[p.v.tipo] || p.v.tipo}</span>
       ${p.v.tipo === 'pasar' ? '' : `<b>${esc(p.v.favorito)}</b>`}
-      ${p.v.nivel ? `<span class="niv">nivel ${esc(p.v.nivel.fuerza)} · ${Math.round(p.v.nivel.p * 100)}%${p.v.precio ? '' : ` · desde ${p.v.nivel.cMinima.toFixed(2)}`}</span>` : ''}
+      ${p.v.nivel ? `<span class="niv">nivel ${esc(p.v.nivel.fuerza)} · ${Math.round(p.v.nivel.p * 100)}%${p.v.precio ? '' : ` · desde ${(1 / p.v.nivel.p).toFixed(2)}`}</span>` : ''}
       <span class="razon">${esc(p.v.razon)}</span>
     </p>
   </article>`;

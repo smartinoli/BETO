@@ -47,19 +47,24 @@ for (const p of partidos(dossier)) {
 conValor.sort((a, b) => b.val - a.val);
 /* destacado = las dos vias que definimos con Sebastian, no "el mayor valor":
    un valor alto con banda floja es justamente lo que nos venia fallando */
-const destacados = conValor.filter(x => x.tipo === 'segura' || x.tipo === 'anomalia').map(x => x.id);
+/* "anomalia" murio el 2026-08-25: era la casilla de mucho valor y mucha
+   discrepancia con el mercado, que medida rindio -57%. Ahora se llama
+   TRAMPA y no se destaca, se evita. Lo unico que se destaca es lo que se
+   juega. */
+const destacados = conValor.filter(x => x.tipo === 'segura').map(x => x.id);
 const cuenta = t => Object.values(veredictos).filter(v => v.tipo === t).length;
 
 fs.writeFileSync(path.join(DIR, 'itf-analisis.json'), JSON.stringify({
   generado: new Date().toISOString(),
-  analista: 'agente (Claude) — order of play + cuadros + entry lists (ATP y WTN) + cuotas Betano/bet365 + reglas medidas (itf-reglas.mjs)',
-  titular: 'Valor esperado partido a partido, con la probabilidad de la RONDA EXACTA: el WTN no acierta lo mismo en Q1 (75%) que en Q2 o R1 (79% y 77%) que en cuartos (60%) o semis (50%).',
-  advertencia: 'El margen de Betano en ITF es 9%: por eso la cuota minima de cada banda es 1.09/p y no 1/p. Los "ojo:" son reparos, no vetos: bajan la confianza pero el partido sigue en la lista (Borg tenia el reparo del mercado y gano 6-3 6-5).',
+  analista: 'agente (Claude) — cuotas Betano como universo + cuadros + entry lists + historial por jugador + modelo multi-senal (itf-modelo.mjs) y juicio contra el mercado (itf-reglas.mjs)',
+  titular: 'La probabilidad ya no sale solo del WTN: entran edad, siembra, games cedidos en el cuadro y hasta donde llego en el torneo anterior. Validado dejando un torneo afuera sobre 1243 partidos: log-loss 0.4967 y 75.5% de acierto contra 0.5097 y 74.3% del modelo anterior.',
+  advertencia: 'Lo que decide ya no es el valor p x cuota - 1 sino cuanto DISCREPAMOS con el mercado. Medido sobre 50 partidos con cuota y resultado: sacarle mas de 15 puntos al mercado dio 4 aciertos de 13 y -57%. Por eso "trampa" no es una oportunidad, es la casilla que hay que evitar.',
   veredictos, destacados,
 }, null, 1));
 
 console.log(`✓ análisis: ${Object.keys(veredictos).length} veredictos — ` +
-  `${cuenta('segura')} seguras, ${cuenta('anomalia')} anomalías, ${cuenta('mirar')} a mirar, ` +
+  `${cuenta('segura')} seguras, ${cuenta('trampa')} trampas, ${cuenta('mirar')} a mirar, ` +
   `${cuenta('sin-precio')} sin precio, ${cuenta('pasar')} descartados`);
-for (const x of conValor.slice(0, 6))
+const aMostrar = conValor.filter(x => x.tipo === 'segura').slice(0, 8);
+for (const x of (aMostrar.length ? aMostrar : conValor.slice(0, 6)))
   console.log(`   ${(x.val * 100).toFixed(1).padStart(6)}%  ${String(x.tipo).padEnd(9)} ${veredictos[String(x.id)].favorito}  ${x.torneo || ''}`);
