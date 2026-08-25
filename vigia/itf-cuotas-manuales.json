@@ -769,6 +769,387 @@
    "g1": 2.42,
    "g2": 1.47,
    "visto": "2026-08-25T13:23Z"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Stevan Popovic",
+   "p2": "Nav Dayal",
+   "g1": 3.35,
+   "g2": 1.27,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Thando Longwe-Smit",
+   "p2": "Toufik Sahtali",
+   "g1": 4,
+   "g2": 1.19,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Chetanna Amadike",
+   "p2": "Adam Nagoudi",
+   "g1": 1.44,
+   "g2": 2.52,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Nicolas Jadoun",
+   "p2": "Josh Manuel",
+   "g1": 1.13,
+   "g2": 4.85,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Rahul Dhokia",
+   "p2": "Daniel Jade",
+   "g1": 4.45,
+   "g2": 1.15,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Skander Nsairi",
+   "p2": "Louis Larue",
+   "g1": 4.8,
+   "g2": 1.13,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Leonid Sheyngezikht",
+   "p2": "Mihail Ivanov",
+   "g1": 1.1,
+   "g2": 5.5,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Branko Djuric",
+   "p2": "Maties Torres Ramis",
+   "g1": 1.1,
+   "g2": 5.5,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Cem Christopher Kucukhuseyin",
+   "p2": "Aleksa Oparnica",
+   "g1": 2.15,
+   "g2": 1.6,
+   "visto": "2026-08-25T21:32Z",
+   "betano": "Cem Cristopher Kucukhuseyin / Aleksa Oparnica"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Esteban Talavera Cortes",
+   "p2": "Andrea Motta",
+   "g1": 3.05,
+   "g2": 1.32,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Marko Nikolic",
+   "p2": "George Lazarov",
+   "g1": 5.8,
+   "g2": 1.09,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Antoni Fabre",
+   "p2": "Alexandre Aubriot",
+   "g1": 1.93,
+   "g2": 1.75,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Giannicola Misasi",
+   "p2": "Gheorghe Claudiu Schinteie",
+   "g1": 1.09,
+   "g2": 5.8,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Lenny Petit",
+   "p2": "Nicolas Robert",
+   "g1": 2.2,
+   "g2": 1.57,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Robert Guna",
+   "p2": "Daniele Minighini",
+   "g1": 1.18,
+   "g2": 4.15,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Gabriel Ghetu",
+   "p2": "Valentin Vanta",
+   "g1": 1.1,
+   "g2": 5.5,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Giacomo Crisostomo",
+   "p2": "Louis Allen",
+   "g1": 1.08,
+   "g2": 6.1,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Lucian Stefan Andrei",
+   "p2": "Tudor Batin",
+   "g1": 6.1,
+   "g2": 1.08,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Niccolo Catini",
+   "p2": "Tiago Pereira",
+   "g1": 5.6,
+   "g2": 1.1,
+   "visto": "2026-08-25T21:32Z",
+   "betano": "Niccolo Catini / Tiago João Luís Pereira"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Vladyslav Orlov",
+   "p2": "Dominik Kellovsky",
+   "g1": 1.23,
+   "g2": 3.65,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Borys Zgola",
+   "p2": "Dawid Wisniewski",
+   "g1": 1.29,
+   "g2": 3.15,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Jan Wygona",
+   "p2": "Jan Chlodnicki",
+   "g1": 2.07,
+   "g2": 1.65,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Nikita Mashtakov",
+   "p2": "Tom Zeuch",
+   "g1": 1.3,
+   "g2": 3.1,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Alex Finkelstein",
+   "p2": "Valentin Basel",
+   "g1": 2.65,
+   "g2": 1.4,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Iiro Vasa",
+   "p2": "Eero Vasa",
+   "g1": 2.9,
+   "g2": 1.34,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Manvydas Balciunas",
+   "p2": "Sander Jong",
+   "g1": 3.7,
+   "g2": 1.22,
+   "visto": "2026-08-25T21:32Z",
+   "betano": "Manvydas Balciunas / Jong Sander"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Stian Klaassen",
+   "p2": "Gray Voelzke",
+   "g1": 1.1,
+   "g2": 5.6,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Ryan Nijboer",
+   "p2": "Carles Hernandez",
+   "g1": 1.32,
+   "g2": 3.05,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Carles Cordoba",
+   "p2": "Sergi Perez Contri",
+   "g1": 2.37,
+   "g2": 1.5,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Pedro Rodenas",
+   "p2": "Alejandro Garcia Carbajal",
+   "g1": 1.26,
+   "g2": 3.35,
+   "visto": "2026-08-25T21:32Z",
+   "betano": "Pedro Rodenas / Alejandro Garcia"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Jose Dominguez Alonso",
+   "p2": "Yanaki Milev",
+   "g1": 4.45,
+   "g2": 1.15,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Pedro Vives Marcos",
+   "p2": "Bernardo Munk Mesa",
+   "g1": 1.44,
+   "g2": 2.52,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Yaroslav Demin",
+   "p2": "Tristan McCormick",
+   "g1": 1.72,
+   "g2": 1.98,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Vaal Urankar",
+   "p2": "Nicolo Toffanin",
+   "g1": 2.47,
+   "g2": 1.45,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Aljaz Jeran",
+   "p2": "Maj Premzl",
+   "g1": 1.16,
+   "g2": 4.45,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Mak Mikovic",
+   "p2": "Nik Mikovic",
+   "g1": 2.32,
+   "g2": 1.52,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Sebastian Sorger",
+   "p2": "Jan Kupcic",
+   "g1": 1.1,
+   "g2": 5.5,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Edoardo Cherie Ligniere",
+   "p2": "Ivan Biletic",
+   "g1": 1.3,
+   "g2": 3.1,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Stefan Popovic",
+   "p2": "Piotr Galus",
+   "g1": 1.09,
+   "g2": 5.8,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Marko Retelj",
+   "p2": "Karlo Kajin",
+   "g1": 1.82,
+   "g2": 1.85,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Alen Mujakic",
+   "p2": "Manuel Lazic",
+   "g1": 1.36,
+   "g2": 2.85,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Pijus Vaitiekunas",
+   "p2": "Justin Schlageter",
+   "g1": 3.75,
+   "g2": 1.22,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Marlon Vankan",
+   "p2": "David Eichenseher",
+   "g1": 1.19,
+   "g2": 4,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Jonathan Dazert",
+   "p2": "Frederic Schlossmann",
+   "g1": 4.45,
+   "g2": 1.15,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Louis Van Herck",
+   "p2": "William Rejchtman Vinciguerra",
+   "g1": 3.15,
+   "g2": 1.29,
+   "visto": "2026-08-25T21:32Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Jakub Filip",
+   "p2": "Max Frohlich",
+   "g1": 1.08,
+   "g2": 6.1,
+   "visto": "2026-08-25T21:32Z",
+   "betano": "Filip Jakub / Max Frohlich"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Maximilian Alessandro Erhardt",
+   "p2": "Dean Thurner",
+   "g1": 1.4,
+   "g2": 2.65,
+   "visto": "2026-08-25T21:32Z"
   }
  ]
 }
