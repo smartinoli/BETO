@@ -492,10 +492,10 @@ details.etapa>.e-cab:hover{background:var(--franja)}
 .veredicto{margin:0;padding:7px 11px;border-top:1px solid var(--linea);font-size:12.5px;background:var(--carta)}
 .etiq{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:2px 8px;
   border-radius:999px;margin-right:8px;background:var(--franja);color:var(--tinta2);white-space:nowrap}
-.t-segura .etiq{background:var(--acento);color:var(--carta)}
+.t-mira .etiq{background:var(--acento);color:var(--carta)}
 .t-anomalia .etiq{background:var(--ambar);color:var(--carta)}
 .t-mirar .etiq{background:var(--acento-suave);color:var(--acento)}
-.t-segura{border-left:3px solid var(--acento)}
+.t-mira{border-left:3px solid var(--acento)}
 .t-anomalia{border-left:3px solid var(--ambar)}
 .niv{font-size:11.5px;color:var(--tinta2);margin-left:7px;font-variant-numeric:tabular-nums}
 .razon{color:var(--tinta2);margin-left:6px}
@@ -527,7 +527,7 @@ ${torneos.length ? secciones : '<p class="vacio">No hay partidos por jugar en la
     var soloTemp = bE.classList.contains('on'), soloCuota = bC.classList.contains('on'), soloJug = bJ.classList.contains('on');
     document.querySelectorAll('.partido').forEach(function(p){
       var ok = (!soloTemp || TEMPRANO[p.dataset.etapa]) && (!soloCuota || p.dataset.cuota === '1')
-        && (!soloJug || p.dataset.tipo === 'segura' || p.dataset.tipo === 'anomalia');
+        && (!soloJug || p.dataset.tipo === 'mira');
       p.hidden = !ok;
     });
     document.querySelectorAll('details.etapa').forEach(function(e){

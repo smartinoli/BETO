@@ -59,7 +59,7 @@ td.pos{color:var(--acento);font-weight:600} td.tibio{color:var(--ambar)} td.neg{
 .fl{display:inline-block;font-size:9.5px;padding:1px 5px;border-radius:3px;margin-right:3px;
   background:var(--ambar-suave);color:var(--ambar);font-weight:600}
 td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-.t-segura{color:var(--acento)} .t-anomalia{color:var(--ambar)} .t-mirar{color:var(--tinta2)} .t-pasar{color:var(--tinta3)}
+.t-mira{color:var(--acento)} .t-flojo{color:var(--tinta2)} .t-fuera{color:var(--tinta3)} .t-sin-precio{color:var(--tinta3)}
 .grupos{border-left:2px solid var(--linea);padding-left:14px;margin-left:2px}
 .pie{margin-top:10px;font-size:11px;color:var(--tinta2);line-height:1.6;max-width:130ch}
 .pie code{font-family:"IBM Plex Mono",monospace;color:var(--tinta)}
@@ -67,11 +67,11 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
 </style>
 <div class="env">
 <h1>Tabla ITF</h1>
-<div class="gen">87 partidos con cuota · generado 2026-08-26 03:15 UTC · cada fila orientada a nuestro favorito por WTN</div>
+<div class="gen">87 partidos con cuota · generado 2026-08-26 03:39 UTC · cada fila orientada a nuestro favorito por WTN</div>
 
 <div class="barra">
   <div class="grupo"><label>tipo</label><select id="f-tipo"><option value="">todos</option>
-    <option value="segura">segura</option><option value="anomalia">anomalía</option><option value="mirar">mirar</option><option value="pasar">pasar</option><option value="sin-precio">sin precio</option></select></div>
+    <option value="mira">con lado</option><option value="flojo">flojo</option><option value="fuera">fuera</option><option value="sin-precio">sin precio</option></select></div>
   <div class="grupo"><label>etapa</label><select id="f-etapa"><option value="">todas</option>
     <option>R1</option><option>R2</option></select></div>
   <div class="grupo"><label>torneo</label><select id="f-torneo"><option value="">todos</option>
@@ -100,7 +100,7 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
     <th class="n" data-k="cMin">Mín</th><th class="n" data-k="val">Valor</th><th class="n" data-k="residuo">Resid</th>
     <th data-k="flags">Señales</th><th data-k="tipo">Tipo</th>
   </tr></thead>
-  <tbody><tr data-tipo="mirar" data-etapa="R1" data-torneo="M25 Taipei"
+  <tbody><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Taipei"
   data-d="1.5" data-cuota="1.27" data-val="-0.15033222771178945"
   data-datp="374" data-ditf="">
   <td class="c-txt">mar, 25-08 21:30</td>
@@ -135,8 +135,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-15</td>
   <td class="n ">+17</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M25 Taipei"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Taipei"
   data-d="3.1899999999999995" data-cuota="1.38" data-val="0.12758275228632554"
   data-datp="326" data-ditf="">
   <td class="c-txt">mar, 25-08 21:30</td>
@@ -171,8 +171,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+13</td>
   <td class="n ">+4</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M25 Taipei"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Taipei"
   data-d="0.07000000000000028" data-cuota="1.98" data-val="0.006256318680305961"
   data-datp="-66" data-ditf="">
   <td class="c-txt">mar, 25-08 21:30</td>
@@ -207,8 +207,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+1</td>
   <td class="n ">-2</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M25 Taipei"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Taipei"
   data-d="1.5399999999999991" data-cuota="1.42" data-val="-0.0440953946064323"
   data-datp="521" data-ditf="-322">
   <td class="c-txt">mar, 25-08 21:30</td>
@@ -243,8 +243,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-4</td>
   <td class="n ">+9</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Maanshan"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Maanshan"
   data-d="1.8400000000000007" data-cuota="1.5" data-val="0.055033249459281564"
   data-datp="-894" data-ditf="-205">
   <td class="c-txt">mar, 25-08 22:00</td>
@@ -279,8 +279,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+6</td>
   <td class="n ">+5</td>
   <td class="c-fl"><span class="fl">ATP≠</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Maanshan"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Maanshan"
   data-d="1.5299999999999994" data-cuota="1.33" data-val="0.0561267815056401"
   data-datp="-318" data-ditf="">
   <td class="c-txt">mar, 25-08 22:00</td>
@@ -315,8 +315,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+6</td>
   <td class="n ">+14</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Maanshan"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Maanshan"
   data-d="0.1299999999999999" data-cuota="1.21" data-val="-0.3765544285595922"
   data-datp="565" data-ditf="">
   <td class="c-txt">mar, 25-08 22:00</td>
@@ -351,8 +351,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-38</td>
   <td class="n ">+28</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Maanshan"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Maanshan"
   data-d="3.160000000000001" data-cuota="1.23" data-val="0.0024202725384221413"
   data-datp="1368" data-ditf="-1091">
   <td class="c-txt">mar, 25-08 22:00</td>
@@ -387,8 +387,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+0</td>
   <td class="n ">+13</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Hurghada"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Hurghada"
   data-d="2.4799999999999995" data-cuota="1.33" data-val="0.013445556022942728"
   data-datp="672" data-ditf="">
   <td class="c-txt">mié, 26-08 02:00</td>
@@ -423,8 +423,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+1</td>
   <td class="n ">+10</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Hurghada"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Hurghada"
   data-d="2.6599999999999984" data-cuota="2.65" data-val="0.07672973504510727"
   data-datp="" data-ditf="761">
   <td class="c-txt">mié, 26-08 02:00</td>
@@ -459,8 +459,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+8</td>
   <td class="n neg">-25</td>
   <td class="c-fl"><span class="fl">resid</span></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Hurghada"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Hurghada"
   data-d="2.7299999999999986" data-cuota="1.78" data-val="0.39303807399349555"
   data-datp="" data-ditf="-1567">
   <td class="c-txt">mié, 26-08 02:00</td>
@@ -495,8 +495,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+39</td>
   <td class="n ">-9</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Hurghada"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Hurghada"
   data-d="9.39" data-cuota="1.09" data-val="0.02623742572917509"
   data-datp="" data-ditf="">
   <td class="c-txt">mié, 26-08 02:00</td>
@@ -531,8 +531,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+3</td>
   <td class="n ">+0</td>
   <td class="c-fl"><span class="fl">JR</span><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Hurghada"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Hurghada"
   data-d="1.25" data-cuota="1.7" data-val="0.09235485741287874"
   data-datp="424" data-ditf="547">
   <td class="c-txt">mié, 26-08 02:00</td>
@@ -567,8 +567,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+9</td>
   <td class="n ">+0</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Hurghada"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Hurghada"
   data-d="3.2300000000000004" data-cuota="1.2" data-val="-0.01614731258481994"
   data-datp="580" data-ditf="">
   <td class="c-txt">mié, 26-08 02:00</td>
@@ -603,8 +603,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-2</td>
   <td class="n ">+14</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Bucharest"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Bucharest"
   data-d="5.029999999999999" data-cuota="1.09" data-val="-0.004032341849331766"
   data-datp="765" data-ditf="-625">
   <td class="c-txt">mié, 26-08 02:30</td>
@@ -639,8 +639,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-0</td>
   <td class="n ">+14</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Bucharest"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Bucharest"
   data-d="2.29" data-cuota="1.18" data-val="-0.12037410126555548"
   data-datp="1081" data-ditf="233">
   <td class="c-txt">mié, 26-08 02:30</td>
@@ -675,8 +675,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-12</td>
   <td class="n ">+19</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Bucharest"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Bucharest"
   data-d="5.789999999999999" data-cuota="1.57" data-val="0.17477242833247875"
   data-datp="" data-ditf="820">
   <td class="c-txt">mié, 26-08 02:30</td>
@@ -711,8 +711,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+17</td>
   <td class="n ">-14</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
   data-d="3.51" data-cuota="1.1" data-val="-0.07768239193466975"
   data-datp="" data-ditf="1033">
   <td class="c-txt">mié, 26-08 03:00</td>
@@ -747,8 +747,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-8</td>
   <td class="n ">+20</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Monastir"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Monastir"
   data-d="4.9300000000000015" data-cuota="1.13" data-val="0.028255667836861065"
   data-datp="" data-ditf="981">
   <td class="c-txt">mié, 26-08 03:00</td>
@@ -783,8 +783,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+3</td>
   <td class="n ">+12</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Monastir"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="fuera" data-etapa="R1" data-torneo="M15 Monastir"
   data-d="" data-cuota="1.44" data-val=""
   data-datp="" data-ditf="">
   <td class="c-txt">mié, 26-08 03:00</td>
@@ -819,8 +819,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n "></td>
   <td class="n "></td>
   <td class="c-fl"><span class="fl">sinATP</span><span class="fl">choque</span></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Monastir"
+  <td class="c-tp t-fuera">fuera</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Monastir"
   data-d="2.21" data-cuota="1.19" data-val="-0.12147345627516437"
   data-datp="637" data-ditf="">
   <td class="c-txt">mié, 26-08 03:00</td>
@@ -855,8 +855,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-12</td>
   <td class="n ">+19</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Monastir"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Monastir"
   data-d="2.3100000000000005" data-cuota="1.27" data-val="-0.051027747333521445"
   data-datp="-147" data-ditf="65">
   <td class="c-txt">mié, 26-08 03:00</td>
@@ -891,8 +891,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-5</td>
   <td class="n ">+14</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Monastir"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Monastir"
   data-d="4.18" data-cuota="1.15" data-val="0.11907088259964427"
   data-datp="1526" data-ditf="-706">
   <td class="c-txt">mié, 26-08 03:00</td>
@@ -927,8 +927,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+12</td>
   <td class="n ">+13</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="mirar" data-etapa="R2" data-torneo="M25 Oviedo"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R2" data-torneo="M25 Oviedo"
   data-d="3.29" data-cuota="1.32" data-val="-0.029523600133957828"
   data-datp="282" data-ditf="">
   <td class="c-txt">mié, 26-08 03:30</td>
@@ -963,8 +963,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-3</td>
   <td class="n ">+7</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="pasar" data-etapa="R2" data-torneo="M25 Oviedo"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R2" data-torneo="M25 Oviedo"
   data-d="0.9400000000000004" data-cuota="1.26" data-val="-0.2787371019927751"
   data-datp="761" data-ditf="-1234">
   <td class="c-txt">mié, 26-08 03:30</td>
@@ -999,8 +999,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-28</td>
   <td class="n ">+20</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="mirar" data-etapa="R2" data-torneo="M25 Oviedo"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="flojo" data-etapa="R2" data-torneo="M25 Oviedo"
   data-d="1.79" data-cuota="1.5" data-val="-0.046843657402723116"
   data-datp="380" data-ditf="">
   <td class="c-txt">mié, 26-08 03:30</td>
@@ -1035,8 +1035,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-5</td>
   <td class="n ">+5</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Monastir"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="fuera" data-etapa="R1" data-torneo="M15 Monastir"
   data-d="" data-cuota="4.8" data-val=""
   data-datp="" data-ditf="">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1071,8 +1071,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n "></td>
   <td class="n "></td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Pecs"
+  <td class="c-tp t-fuera">fuera</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Pecs"
   data-d="5.3999999999999995" data-cuota="1.2" data-val="0.11176333137511141"
   data-datp="1250" data-ditf="609">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1107,8 +1107,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+11</td>
   <td class="n ">+5</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Pecs"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Pecs"
   data-d="3.4700000000000006" data-cuota="1.23" data-val="0.028172354686336387"
   data-datp="895" data-ditf="-1085">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1143,8 +1143,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+3</td>
   <td class="n ">+11</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Pecs"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Pecs"
   data-d="1.2199999999999998" data-cuota="1.47" data-val="-0.06019620113606017"
   data-datp="628" data-ditf="-465">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1179,8 +1179,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-6</td>
   <td class="n ">+9</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="3.879999999999999" data-cuota="1.2" data-val="0.03275075895305202"
   data-datp="" data-ditf="1575">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1215,8 +1215,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+3</td>
   <td class="n ">+11</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="2.5" data-cuota="2.07" data-val="0.4645432095080182"
   data-datp="331" data-ditf="252">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1251,8 +1251,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+46</td>
   <td class="n ">-15</td>
   <td class="c-fl"><span class="fl">choque</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="4.17" data-cuota="1.65" data-val="0.4456650181797619"
   data-datp="1166" data-ditf="-1181">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1287,8 +1287,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+45</td>
   <td class="n ">-11</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M25 Maribor"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Maribor"
   data-d="2.4300000000000015" data-cuota="1.45" data-val="0.09867700547817138"
   data-datp="962" data-ditf="539">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1323,8 +1323,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+10</td>
   <td class="n ">+4</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M25 Oldenzaal"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Oldenzaal"
   data-d="2.75" data-cuota="1.31" data-val="0.08542390550634282"
   data-datp="-223" data-ditf="-14">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1359,8 +1359,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+9</td>
   <td class="n ">+10</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M25 Poznan"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Poznan"
   data-d="0.5899999999999999" data-cuota="1.29" data-val="-0.2662887705246486"
   data-datp="" data-ditf="-691">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1395,8 +1395,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-27</td>
   <td class="n ">+20</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M25 Poznan"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Poznan"
   data-d="4.95" data-cuota="1.1" data-val="0.0017993341158057952"
   data-datp="498" data-ditf="">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1431,8 +1431,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+0</td>
   <td class="n ">+14</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M25 Poznan"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Poznan"
   data-d="2.880000000000001" data-cuota="2.07" data-val="-0.10693220016435423"
   data-datp="96" data-ditf="">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1467,8 +1467,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-11</td>
   <td class="n neg">-17</td>
   <td class="c-fl"><span class="fl">resid</span></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M25 Poznan"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Poznan"
   data-d="1.9500000000000002" data-cuota="1.23" data-val="-0.12176773081052983"
   data-datp="464" data-ditf="">
   <td class="c-txt">mié, 26-08 04:00</td>
@@ -1503,8 +1503,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-12</td>
   <td class="n ">+18</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Allershausen"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Allershausen"
   data-d="7.220000000000001" data-cuota="1.15" data-val="-0.01876223059385318"
   data-datp="" data-ditf="">
   <td class="c-txt">mié, 26-08 04:30</td>
@@ -1539,8 +1539,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-2</td>
   <td class="n ">+2</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Allershausen"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Allershausen"
   data-d="2.130000000000001" data-cuota="1.22" data-val="-0.10825343369045692"
   data-datp="400" data-ditf="-121">
   <td class="c-txt">mié, 26-08 04:30</td>
@@ -1575,8 +1575,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-11</td>
   <td class="n ">+18</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Allershausen"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Allershausen"
   data-d="2.679999999999999" data-cuota="1.19" data-val="-0.07348044481802896"
   data-datp="387" data-ditf="-2038">
   <td class="c-txt">mié, 26-08 04:30</td>
@@ -1611,8 +1611,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-7</td>
   <td class="n ">+17</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Allershausen"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Allershausen"
   data-d="0.6899999999999995" data-cuota="1.29" data-val="-0.2514937592677178"
   data-datp="833" data-ditf="-392">
   <td class="c-txt">mié, 26-08 04:30</td>
@@ -1647,8 +1647,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-25</td>
   <td class="n ">+20</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Pecs"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Pecs"
   data-d="4.8100000000000005" data-cuota="1.42" data-val="0.2854407119785709"
   data-datp="582" data-ditf="1195">
   <td class="c-txt">mié, 26-08 05:30</td>
@@ -1683,8 +1683,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+29</td>
   <td class="n ">-4</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Pecs"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Pecs"
   data-d="4.889999999999999" data-cuota="1.08" data-val="-0.28628112806396255"
   data-datp="" data-ditf="1719">
   <td class="c-txt">mié, 26-08 05:30</td>
@@ -1719,8 +1719,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-29</td>
   <td class="n ">+15</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M25 Maribor"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Maribor"
   data-d="4.82" data-cuota="1.16" data-val="0.05054432095524031"
   data-datp="" data-ditf="1101">
   <td class="c-txt">mié, 26-08 05:30</td>
@@ -1755,8 +1755,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+5</td>
   <td class="n ">+10</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
   data-d="1.6800000000000006" data-cuota="1.75" data-val="0.20304929036425157"
   data-datp="266" data-ditf="-614">
   <td class="c-txt">mié, 26-08 06:00</td>
@@ -1791,8 +1791,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+20</td>
   <td class="n ">-3</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M25 Oldenzaal"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Oldenzaal"
   data-d="5.62" data-cuota="1.1" data-val="0.02651914562115798"
   data-datp="-72" data-ditf="">
   <td class="c-txt">mié, 26-08 06:30</td>
@@ -1827,8 +1827,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+3</td>
   <td class="n ">+12</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Cap d'Agde"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Cap d'Agde"
   data-d="7.310000000000002" data-cuota="1.27" data-val="0.2301532041463059"
   data-datp="" data-ditf="1814">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -1863,8 +1863,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+23</td>
   <td class="n ">-6</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Pecs"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Pecs"
   data-d="6.16" data-cuota="2.05" data-val="0.5980514583202499"
   data-datp="" data-ditf="1514">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -1899,8 +1899,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+60</td>
   <td class="n neg">-29</td>
   <td class="c-fl"><span class="fl">sinATP</span><span class="fl">resid</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="fuera" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="" data-cuota="5.6" data-val=""
   data-datp="" data-ditf="">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -1935,8 +1935,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n "></td>
   <td class="n "></td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-fuera">fuera</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="3.4499999999999993" data-cuota="1.28" data-val="0.06831524748764362"
   data-datp="" data-ditf="803">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -1971,8 +1971,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+7</td>
   <td class="n ">+8</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="9.940000000000001" data-cuota="1.12" data-val="0.06870198326453258"
   data-datp="" data-ditf="">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -2007,8 +2007,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+7</td>
   <td class="n ">-3</td>
   <td class="c-fl"><span class="fl">PZ</span><span class="fl">sinATP</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M25 Maribor"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Maribor"
   data-d="2.1899999999999995" data-cuota="1.09" data-val="-0.19728012922750193"
   data-datp="1052" data-ditf="">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -2043,8 +2043,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-20</td>
   <td class="n ">+26</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M25 Maribor"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Maribor"
   data-d="0.120000000000001" data-cuota="1.3" data-val="-0.3317060326151191"
   data-datp="288" data-ditf="-159">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -2079,8 +2079,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-33</td>
   <td class="n ">+22</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M25 Maribor"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Maribor"
   data-d="3.2699999999999996" data-cuota="1.1" data-val="-0.09510452487123"
   data-datp="685" data-ditf="">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -2115,8 +2115,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-10</td>
   <td class="n ">+21</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M25 Maribor"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Maribor"
   data-d="0.8300000000000001" data-cuota="1.52" data-val="-0.09385668097810451"
   data-datp="-53" data-ditf="133">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -2151,8 +2151,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-9</td>
   <td class="n ">+9</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M25 Poznan"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Poznan"
   data-d="2.6999999999999993" data-cuota="1.17" data-val="-0.0871644460601727"
   data-datp="94" data-ditf="-285">
   <td class="c-txt">mié, 26-08 07:00</td>
@@ -2187,8 +2187,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-9</td>
   <td class="n ">+18</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M25 Lausanne"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Lausanne"
   data-d="1.9900000000000002" data-cuota="1.42" data-val="0.019314272430408952"
   data-datp="" data-ditf="">
   <td class="c-txt">mié, 26-08 08:00</td>
@@ -2223,8 +2223,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+2</td>
   <td class="n ">+8</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Pecs"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Pecs"
   data-d="0.6799999999999997" data-cuota="2.42" data-val="0.4014079032659317"
   data-datp="262" data-ditf="-1521">
   <td class="c-txt">mié, 26-08 08:30</td>
@@ -2259,8 +2259,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+40</td>
   <td class="n ">-13</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M25 Maribor"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Maribor"
   data-d="2.049999999999999" data-cuota="1.85" data-val="0.3384639990106879"
   data-datp="292" data-ditf="-382">
   <td class="c-txt">mié, 26-08 08:30</td>
@@ -2295,8 +2295,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+34</td>
   <td class="n ">-8</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Monastir"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="fuera" data-etapa="R1" data-torneo="M15 Monastir"
   data-d="" data-cuota="1.44" data-val=""
   data-datp="" data-ditf="">
   <td class="c-txt">mié, 26-08 12:00</td>
@@ -2331,8 +2331,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n "></td>
   <td class="n "></td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M25 Taipei"
+  <td class="c-tp t-fuera">fuera</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Taipei"
   data-d="1.9799999999999995" data-cuota="1.88" data-val="0.347726147910719"
   data-datp="30" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -2367,8 +2367,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+35</td>
   <td class="n ">-8</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Maanshan"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Maanshan"
   data-d="4.829999999999999" data-cuota="1.25" data-val="0.1325523096628589"
   data-datp="570" data-ditf="-727">
   <td class="c-txt">08-26 Followed By</td>
@@ -2403,8 +2403,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+13</td>
   <td class="n ">+4</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Maanshan"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Maanshan"
   data-d="1.1199999999999992" data-cuota="1.32" data-val="-0.17046727536508555"
   data-datp="-88" data-ditf="586">
   <td class="c-txt">08-26 Followed By</td>
@@ -2439,8 +2439,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-17</td>
   <td class="n ">+17</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Bucharest"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Bucharest"
   data-d="7.840000000000001" data-cuota="1.1" data-val="0.0728984453704582"
   data-datp="1126" data-ditf="-830">
   <td class="c-txt">08-26 Followed By</td>
@@ -2475,8 +2475,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+7</td>
   <td class="n ">+4</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Bucharest"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Bucharest"
   data-d="6" data-cuota="1.08" data-val="0.01897103382810128"
   data-datp="" data-ditf="526">
   <td class="c-txt">08-26 Followed By</td>
@@ -2511,8 +2511,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+2</td>
   <td class="n ">+12</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Bucharest"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Bucharest"
   data-d="10.02" data-cuota="1.08" data-val="0.03227586606776933"
   data-datp="" data-ditf="212">
   <td class="c-txt">08-26 Followed By</td>
@@ -2547,8 +2547,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+3</td>
   <td class="n ">-0</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
   data-d="5.46" data-cuota="1.1" data-val="0.02120082748913421"
   data-datp="1274" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -2583,8 +2583,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+2</td>
   <td class="n ">+12</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="fuera" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
   data-d="" data-cuota="5.8" data-val=""
   data-datp="" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -2619,8 +2619,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n "></td>
   <td class="n "></td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
+  <td class="c-tp t-fuera">fuera</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
   data-d="1.0300000000000011" data-cuota="2.15" data-val="0.3298204842941137"
   data-datp="447" data-ditf="1272">
   <td class="c-txt">08-26 Followed By</td>
@@ -2655,8 +2655,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+33</td>
   <td class="n ">-10</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Kursumlijska Banja "
   data-d="2.7299999999999986" data-cuota="1.32" data-val="0.03303947060191814"
   data-datp="" data-ditf="-15">
   <td class="c-txt">08-26 Followed By</td>
@@ -2691,8 +2691,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+3</td>
   <td class="n ">+9</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="segura" data-etapa="R2" data-torneo="M25 Oviedo"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R2" data-torneo="M25 Oviedo"
   data-d="2.91" data-cuota="1.44" data-val="0.024732502656624078"
   data-datp="872" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -2727,8 +2727,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+2</td>
   <td class="n ">+3</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="pasar" data-etapa="R2" data-torneo="M25 Oviedo"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R2" data-torneo="M25 Oviedo"
   data-d="0.7700000000000005" data-cuota="1.72" data-val="-0.03771302416077371"
   data-datp="-22" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -2763,8 +2763,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-4</td>
   <td class="n ">+2</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="mirar" data-etapa="R2" data-torneo="M25 Oviedo"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R2" data-torneo="M25 Oviedo"
   data-d="5.76" data-cuota="1.15" data-val="-0.014829375221734997"
   data-datp="1154" data-ditf="-1548">
   <td class="c-txt">08-26 Followed By</td>
@@ -2799,8 +2799,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-1</td>
   <td class="n ">+7</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Cap d'Agde"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Cap d'Agde"
   data-d="1.6099999999999994" data-cuota="2.67" data-val="0.6133300418783494"
   data-datp="" data-ditf="-123">
   <td class="c-txt">08-26 Followed By</td>
@@ -2835,8 +2835,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+61</td>
   <td class="n neg">-21</td>
   <td class="c-fl"><span class="fl">sinATP</span><span class="fl">choque</span><span class="fl">resid</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="4.02" data-cuota="1.36" data-val="0.18091495533369928"
   data-datp="" data-ditf="918">
   <td class="c-txt">08-26 Followed By</td>
@@ -2871,8 +2871,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+18</td>
   <td class="n ">+2</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="0.5899999999999999" data-cuota="2.47" data-val="0.4048579355070683"
   data-datp="59" data-ditf="-332">
   <td class="c-txt">08-26 Followed By</td>
@@ -2907,8 +2907,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+40</td>
   <td class="n ">-14</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="pasar" data-etapa="R1" data-torneo="M15 Vienna"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Vienna"
   data-d="0.33000000000000007" data-cuota="2.85" data-val="0.5351007731317401"
   data-datp="714" data-ditf="-66">
   <td class="c-txt">08-26 Followed By</td>
@@ -2943,8 +2943,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+54</td>
   <td class="n neg">-17</td>
   <td class="c-fl"><span class="fl">resid</span></td>
-  <td class="c-tp t-pasar">pasar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M25 Oldenzaal"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Oldenzaal"
   data-d="3.9300000000000006" data-cuota="1.22" data-val="0.05336740427296882"
   data-datp="833" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -2979,8 +2979,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+5</td>
   <td class="n ">+10</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M25 Oldenzaal"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Oldenzaal"
   data-d="2.5" data-cuota="1.34" data-val="0.023340381248899256"
   data-datp="508" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -3015,8 +3015,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+2</td>
   <td class="n ">+9</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M25 Poznan"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Poznan"
   data-d="1.1099999999999994" data-cuota="1.4" data-val="-0.12172733275693548"
   data-datp="1066" data-ditf="-476">
   <td class="c-txt">08-26 Followed By</td>
@@ -3051,8 +3051,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-12</td>
   <td class="n ">+12</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M25 Poznan"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Poznan"
   data-d="2.8600000000000003" data-cuota="1.3" data-val="0.030645451293487946"
   data-datp="246" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -3087,8 +3087,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+3</td>
   <td class="n ">+10</td>
   <td class="c-fl"><span class="fl">PZ</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M15 Allershausen"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M15 Allershausen"
   data-d="10.1" data-cuota="1.08" data-val="0.07063399847185181"
   data-datp="" data-ditf="197">
   <td class="c-txt">08-26 Followed By</td>
@@ -3123,8 +3123,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+7</td>
   <td class="n ">-0</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-trampa">trampa</td>
-</tr><tr data-tipo="mirar" data-etapa="R1" data-torneo="M15 Allershausen"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M15 Allershausen"
   data-d="0.7599999999999998" data-cuota="1.4" data-val="-0.17649871475944878"
   data-datp="" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -3159,8 +3159,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n neg">-18</td>
   <td class="n ">+14</td>
   <td class="c-fl"><span class="fl">sinATP</span></td>
-  <td class="c-tp t-mirar">mirar</td>
-</tr><tr data-tipo="segura" data-etapa="R1" data-torneo="M25 Lausanne"
+  <td class="c-tp t-flojo">flojo</td>
+</tr><tr data-tipo="mira" data-etapa="R1" data-torneo="M25 Lausanne"
   data-d="7.77" data-cuota="1.2" data-val="0.05925656943262925"
   data-datp="" data-ditf="">
   <td class="c-txt">08-26 Followed By</td>
@@ -3195,8 +3195,8 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n tibio">+6</td>
   <td class="n ">-3</td>
   <td class="c-fl"><span class="fl">PZ</span><span class="fl">sinATP</span></td>
-  <td class="c-tp t-segura">segura</td>
-</tr><tr data-tipo="trampa" data-etapa="R1" data-torneo="M25 Lausanne"
+  <td class="c-tp t-mira">con lado</td>
+</tr><tr data-tipo="flojo" data-etapa="R1" data-torneo="M25 Lausanne"
   data-d="1.3000000000000007" data-cuota="1.75" data-val="0.13388043560031182"
   data-datp="" data-ditf="596">
   <td class="c-txt">08-26 Followed By</td>
@@ -3231,7 +3231,7 @@ td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;
   <td class="n pos">+13</td>
   <td class="n ">-1</td>
   <td class="c-fl"></td>
-  <td class="c-tp t-trampa">trampa</td>
+  <td class="c-tp t-flojo">flojo</td>
 </tr></tbody>
 </table></div>
 

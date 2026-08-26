@@ -298,45 +298,60 @@ for (const q of cuotas) {
 }
 
 /* ---------- consola ---------- */
-const ORDEN_TIPO = { segura: 0, mirar: 1, trampa: 2, 'sin-precio': 3, pasar: 4 };
-filas.sort((a, b) => (ORDEN_TIPO[a.v?.tipo] ?? 9) - (ORDEN_TIPO[b.v?.tipo] ?? 9)
+/* Sin categorías: ordena por cuánto rinde la apuesta SI TENEMOS RAZÓN,
+   que es el único número que depende de nosotros. Al lado va siempre lo
+   que rinde si la tiene el mercado, para que no se lea solo la mitad. */
+filas.sort((a, b) => (b.v?.precio?.val ?? -9) - (a.v?.precio?.val ?? -9)
   || (b.v?.nivel?.p ?? 0) - (a.v?.nivel?.p ?? 0));
-const cuenta = {};
-for (const f of filas) cuenta[f.v?.tipo || 'sin datos'] = (cuenta[f.v?.tipo || 'sin datos'] || 0) + 1;
+const cuenta = {
+  'con precio': filas.filter(f => f.v?.precio).length,
+  'con alerta': filas.filter(f => f.v?.alertas?.length).length,
+  'sin datos': filas.filter(f => !f.v?.nivel).length,
+};
 
 console.log(`\n${cuotas.length} partidos con cuota de Betano${tandaDoc ? ` (tanda del ${tandaDoc.generado.slice(0, 16).replace('T', ' ')}, ${tandaDoc.archivos.length} archivos)` : ' — registro completo'} · ${filas.filter(f => f.v).length} analizados`
   + (sinTorneo.length ? ` · ${sinTorneo.length} sin torneo en el mapa` : ''));
 console.log('  ' + Object.entries(cuenta).map(([k, v]) => `${k} ${v}`).join(' · ') + '\n');
 
 const T = (s, n) => String(s ?? '').slice(0, n).padEnd(n);
-const marca = { segura: '★', mirar: '·', trampa: '⚠', pasar: ' ', 'sin-precio': '?' };
+console.log('                                                    nuestra  mercado         rinde si');
+console.log('  torneo               et  favorito                     p       p     cuota  nosotros  mercado  alertas');
 for (const f of filas) {
-  if (soloJugables && !['segura', 'mirar'].includes(f.v?.tipo)) continue;
-  const p = f.v?.nivel?.p, dis = f.v?.precio?.discrepancia;
-  const cuotaFav = f.v?.precio?.cuota ?? null;
+  if (soloJugables && !f.v?.precio) continue;
+  const p = f.v?.nivel?.p, pr = f.v?.precio;
+  const cuotaFav = pr?.cuota ?? null;
+  const pc = v => v == null ? '   —' : ((v >= 0 ? '+' : '−') + Math.abs(Math.round(v * 100)) + '%').padStart(6);
   /* en trampa y pasar, analizar() deja favorito en "—" a proposito (no hay
      nada que jugar); para leer el informe igual sirve saber a quien apunta
      el modelo, asi que se muestra el del nivel */
   const quien = (f.v?.favorito !== '—' && f.v?.favorito) || f.v?.nivel?.favorito || '—';
   const res = f.res ? (mismoJugador(f.res.ganador, quien) ? ' ✓' : ' ✗') : '';
-  console.log(`${marca[f.v?.tipo] || ' '} ${T(f.v?.tipo, 11)} ${T(f.etapa, 3)} ${T(f.t.nombre, 20)} `
-    + `${T(quien, 30)} ${String(cuotaFav ?? '—').padStart(5)}  `
-    + `p=${p != null ? String(Math.round(p * 100)).padStart(3) + '%' : ' — '}  `
-    + `mercado ${dis != null ? (dis >= 0 ? '+' : '') + String(Math.round(dis * 100)).padStart(3) : '  —'}  `
-    + `valor ${f.v?.precio?.val != null ? (f.v.precio.val >= 0 ? '+' : '') + String(Math.round(f.v.precio.val * 100)).padStart(3) + '%' : '   —'}${res}`);
+  console.log(`  ${T(f.t.nombre, 20)} ${T(f.etapa, 3)} ${T(quien, 27)} `
+    + `${p != null ? String(Math.round(p * 100)).padStart(4) + '%' : '   — '}  `
+    + `${pr?.devig != null ? String(Math.round(pr.devig * 100)).padStart(4) + '%' : '   — '}  `
+    + `${String(cuotaFav ?? '—').padStart(6)}  ${pc(pr?.val)}   ${pc(pr?.valMercado)}  `
+    + `${(f.v?.alertas || []).map(a => a.clave).join(' ')}${res}`);
 }
-const jug = filas.filter(f => f.v?.tipo === 'segura');
-if (jug.length) {
-  console.log('\nPARA JUGAR');
-  for (const f of jug) {
-    console.log(`\n  ${f.t.nombre} · ${f.etapa} · ${f.v.favorito} a ${f.v.precio.cuota}`);
+/* Las tres de arriba, con el razonamiento completo. No es una
+   recomendación: son las que más rinden SI nuestro modelo tiene razón. */
+const arriba = filas.filter(f => f.v?.precio?.val != null).slice(0, 3);
+if (arriba.length) {
+  console.log('\nLAS TRES DE MÁS VALOR — si nuestro modelo tiene razón');
+  for (const f of arriba) {
+    console.log(`\n  ${f.t.nombre} · ${f.etapa} · ${f.v.nivel.favorito} a ${f.v.precio.cuota}`);
     console.log(`    ${f.v.razon}`);
   }
-} else console.log('\nNada llega a SEGURA con las cuotas de ahora.');
+}
 
-/* ---------- HTML ---------- */
-const badge = t => `<span class="tp t-${t}">${t === 'sin-precio' ? 'sin precio' : t}</span>`;
+/* ---------- HTML ----------
+   Sin categorías. Una fila por partido con los cuatro números que
+   importan —nuestra p, la del mercado, la cuota, y cuánto rinde bajo
+   cada supuesto— y las alertas que sí están medidas. La decisión es
+   de Sebastián, no del script. */
 const num = (v, s = '') => v == null ? '<i>—</i>' : `${v}${s}`;
+const pctN = v => v == null ? '<i>—</i>' : Math.round(v * 100) + '%';
+const rend = v => v == null ? '<i>—</i>'
+  : `<span class="${v >= 0 ? 'pos' : 'neg'}">${v >= 0 ? '+' : '−'}${Math.abs(Math.round(v * 100))}%</span>`;
 const trayHtml = f => f.tray.length
   ? f.tray.map(x => `<i class="${x.gano ? 'g' : 'p'}">${x.etapa}${x.gano ? '✓' : '✗'}</i> `
     + x.sets.map((s, i) => `${s}-${x.setsRiv[i] ?? ''}`).join(' ')
@@ -346,18 +361,18 @@ const prevHtml = f => f.previo
   ? `<b>${f.previo.ronda}</b> ${esc(f.previo.torneo.replace(/^M\d+\+?H? /, ''))} <i>${f.previo.gan}/${f.previo.jug}</i>`
   : '<i>—</i>';
 
-const seccion = f => {
+const partido = f => {
   const n = f.v?.nivel, pr = f.v?.precio;
+  const apunta = (f.v?.favorito !== '—' && f.v?.favorito) || n?.favorito || '';
+  const favEs1 = apunta.startsWith(f.f1.nombre);
   const lado = (x, cu, fav) => `<div class="jug${fav ? ' fav' : ''}">
     <div class="nom">${esc(x.nombre)}${x.marca ? ` <b>${esc(x.marca)}</b>` : ''}${x.jr && x.jrRank != null ? ` <b>jr ${x.jrRank}</b>` : ''}
       ${cu ? `<span class="cu">${cu}</span>` : ''}</div>
-    <div class="dat">WTN ${num(x.wtn)} · ATP ${num(x.atp)} · ITF ${num(x.itf)} · nac ${num(x.nac)} · ${x.nacido ? 2026 - x.nacido + ' años' : '<i>edad —</i>'}</div>
+    <div class="dat">WTN ${num(x.wtn)} · ${x.nacido ? 2026 - x.nacido + ' años' : '<i>edad —</i>'} · ATP ${num(x.atp)} · ITF ${num(x.itf)} · nac ${num(x.nac)}</div>
     <div class="tray">${trayHtml(x)}</div>
     <div class="dat">viene de ${prevHtml(x)}</div></div>`;
-  const apunta = (f.v?.favorito !== '—' && f.v?.favorito) || f.v?.nivel?.favorito || '';
-  const favEs1 = apunta.startsWith(f.f1.nombre);
-  return `<div class="p ${f.v?.tipo || 'sd'}">
-    <div class="cab">${badge(f.v?.tipo || 'sin datos')}
+  return `<article class="p${(f.v?.alertas || []).length ? ' conalerta' : ''}">
+    <div class="cab">
       <span class="tor">${esc(f.t.nombre)}</span> <span class="et">${esc(f.etapa || '')}</span>
       ${f.horario ? `<span class="hr">${esc(f.horario.fecha || '')} ${esc(f.horario.hora || '')}</span>` : ''}
       ${f.fuenteEtapa === 'deducida' ? '<span class="av">etapa deducida: el partido no está en el cuadro que tenemos</span>' : ''}
@@ -367,89 +382,110 @@ const seccion = f => {
     </div>
     <div class="duelo">${lado(f.f1, f.q.g1, favEs1)}${lado(f.f2, f.q.g2, !favEs1)}</div>
     ${n ? `<div class="cifras">
-      <span><label>modelo</label>${Math.round(n.p * 100)}%</span>
-      <span><label>solo WTN</label>${Math.round(n.soloNivel * 100)}%</span>
-      ${pr?.devig != null ? `<span><label>mercado</label>${Math.round(pr.devig * 100)}%</span>
-      <span class="${pr.discrepancia > 0.12 ? 'mal' : Math.abs(pr.discrepancia) < 0.05 ? 'bien' : ''}"><label>discrepancia</label>${pr.discrepancia >= 0 ? '+' : ''}${Math.round(pr.discrepancia * 100)}</span>` : ''}
-      ${pr ? `<span><label>mínima</label>${pr.cMinima.toFixed(2)}</span>` : ''}
+      <span><label>nuestra p</label>${pctN(n.p)}</span>
+      <span><label>sólo WTN</label><i class="sec">${pctN(n.soloNivel)}</i></span>
+      ${pr?.devig != null ? `<span><label>el mercado</label>${pctN(pr.devig)}</span>` : ''}
+      ${pr ? `<span class="sep"><label>rinde si acertamos</label>${rend(pr.val)}</span>
+      <span><label>si acierta el mercado</label>${rend(pr.valMercado)}</span>` : ''}
     </div>` : ''}
-    <p class="raz">${esc(f.v?.razon || f.motivo || '')}</p></div>`;
+    ${(f.v?.alertas || []).length ? `<ul class="alertas">${f.v.alertas.map(a => `<li>${esc(a.texto)}</li>`).join('')}</ul>` : ''}
+    <p class="raz">${esc(f.v?.razon || f.motivo || '')}</p></article>`;
 };
 
-const html = `<title>Informe ITF</title>
+const html = `<title>Partidos cotizados hoy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-:root{--papel:#F3F5F7;--carta:#FFF;--tinta:#1A2732;--tinta2:#5A6B7A;--tinta3:#93A3B0;--linea:#DDE4EA;
-  --verde:#0F6B5C;--verde-s:#E3EFEB;--rojo:#A33B2A;--rojo-s:#F7E9E6;--ambar:#8A6116;--ambar-s:#F6EEDC;--realce:#EAF1F5}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--papel:#0F151B;--carta:#151E26;--tinta:#DAE4EC;
-  --tinta2:#8FA1B0;--tinta3:#63737F;--linea:#26313C;--verde:#3FB79E;--verde-s:#15302B;--rojo:#E08A79;--rojo-s:#2E1D19;
-  --ambar:#D9A94B;--ambar-s:#2A2415;--realce:#1B252E}}
-:root[data-theme="dark"]{--papel:#0F151B;--carta:#151E26;--tinta:#DAE4EC;--tinta2:#8FA1B0;--tinta3:#63737F;
-  --linea:#26313C;--verde:#3FB79E;--verde-s:#15302B;--rojo:#E08A79;--rojo-s:#2E1D19;--ambar:#D9A94B;--ambar-s:#2A2415;--realce:#1B252E}
+:root{--ground:#F5F7F8;--panel:#FFFFFF;--sunk:#EDF1F3;--ink:#141F28;--ink2:#54687A;--ink3:#8496A5;
+  --rule:#DBE3E8;--rule2:#C3CFD7;--accent:#1B5B70;--accent-soft:#E2EEF2;
+  --pos:#2C7A58;--pos-soft:#DEEDE5;--neg:#9E4C33;--ojo:#856512;--ojo-soft:#F6EEDC}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0D1319;--panel:#141C24;--sunk:#111920;--ink:#DDE6ED;--ink2:#93A5B4;--ink3:#647686;
+  --rule:#222E39;--rule2:#31404C;--accent:#5BA9BF;--accent-soft:#15303A;
+  --pos:#57B98A;--pos-soft:#142C22;--neg:#DE9077;--ojo:#CFA23F;--ojo-soft:#2A2415}}
+:root[data-theme="dark"]{--ground:#0D1319;--panel:#141C24;--sunk:#111920;--ink:#DDE6ED;--ink2:#93A5B4;
+  --ink3:#647686;--rule:#222E39;--rule2:#31404C;--accent:#5BA9BF;--accent-soft:#15303A;
+  --pos:#57B98A;--pos-soft:#142C22;--neg:#DE9077;--ojo:#CFA23F;--ojo-soft:#2A2415}
 *{box-sizing:border-box}
-body{margin:0;background:var(--papel);color:var(--tinta);font:14px/1.5 "IBM Plex Sans",system-ui,sans-serif}
-.env{max-width:1000px;margin:0 auto;padding:18px 14px 60px}
-h1{font-size:20px;margin:0 0 4px;font-weight:600}
-.gen{font-size:12px;color:var(--tinta2);margin-bottom:6px}
-.resumen{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
-.resumen b{background:var(--carta);border:1px solid var(--linea);border-radius:5px;padding:6px 10px;font:600 12px "IBM Plex Mono",monospace}
-h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--tinta2);margin:26px 0 10px;font-weight:600}
-.p{background:var(--carta);border:1px solid var(--linea);border-left-width:4px;border-radius:6px;padding:11px 13px;margin-bottom:9px}
-.p.segura{border-left-color:var(--verde)} .p.mirar{border-left-color:var(--tinta3)}
-.p.trampa{border-left-color:var(--rojo)} .p.pasar,.p.sd,.p\\.sin-precio{border-left-color:var(--linea)}
-.cab{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:9px}
-.tp{font:600 10px "IBM Plex Sans",sans-serif;text-transform:uppercase;letter-spacing:.6px;padding:2px 7px;border-radius:3px}
-.t-segura{background:var(--verde-s);color:var(--verde)} .t-trampa{background:var(--rojo-s);color:var(--rojo)}
-.t-mirar{background:var(--realce);color:var(--tinta2)} .t-pasar{color:var(--tinta3)}
-.tor{font-weight:600} .et{font:600 11px "IBM Plex Mono",monospace;color:var(--tinta2)}
-.hr,.av,.res{font-size:11px;color:var(--tinta3)} .av{color:var(--ambar);background:var(--ambar-s);padding:1px 6px;border-radius:3px}
-.res{margin-left:auto;font-family:"IBM Plex Mono",monospace;color:var(--tinta2)}
-.duelo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:640px){.duelo{grid-template-columns:1fr}}
-.jug{padding:8px 10px;border-radius:5px;background:var(--papel)}
-.jug.fav{background:var(--verde-s)}
-.nom{font-weight:600;font-size:13.5px} .nom b{color:var(--verde);font-size:11px;margin-left:3px}
-.cu{float:right;font:600 13px "IBM Plex Mono",monospace}
-.dat{font:11px "IBM Plex Mono",monospace;color:var(--tinta2);margin-top:3px}
-.dat i,.tray i.vs{font-style:normal;color:var(--tinta3)}
-.tray{font:11px "IBM Plex Mono",monospace;color:var(--tinta3);margin-top:3px;line-height:1.4}
-.tray i.g{color:var(--verde);font-weight:600;font-style:normal} .tray i.p{color:var(--rojo);font-weight:600;font-style:normal}
-.cifras{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;padding-top:9px;border-top:1px solid var(--linea);
-  font:600 14px "IBM Plex Mono",monospace}
-.cifras label{display:block;font:600 9.5px "IBM Plex Sans",sans-serif;text-transform:uppercase;letter-spacing:.6px;color:var(--tinta3)}
-.cifras .bien{color:var(--verde)} .cifras .mal{color:var(--rojo)}
-.raz{margin:9px 0 0;font-size:12.5px;color:var(--tinta2);line-height:1.55}
-.pie{margin-top:28px;font-size:12px;color:var(--tinta2);line-height:1.65}
-.pie code{font-family:"IBM Plex Mono",monospace;color:var(--tinta)}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Source Serif 4",Georgia,serif}
+.env{max-width:940px;margin:0 auto;padding:0 18px 80px}
+header{padding:46px 0 24px;border-bottom:2px solid var(--ink);margin-bottom:14px}
+.kicker{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1{font:700 clamp(30px,5.5vw,48px)/1.03 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.025em;margin:0 0 12px;text-wrap:balance}
+.bajada{font-size:17.5px;line-height:1.55;color:var(--ink2);max-width:62ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:0 24px;margin-top:18px;font:500 12px/1.8 "IBM Plex Mono",monospace;color:var(--ink3)}
+.meta b{color:var(--ink);font-weight:600}
+.casa{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--ojo);border-radius:6px;
+  padding:14px 16px;margin:22px 0 30px;max-width:70ch;font-size:14.5px;line-height:1.58;color:var(--ink2)}
+.casa b{color:var(--ink)}
+.p{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:13px 15px;margin-bottom:11px}
+.p.conalerta{border-left:3px solid var(--ojo)}
+.cab{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.tor{font:600 15px "Bricolage Grotesque",system-ui,sans-serif}
+.et{font:600 11px "IBM Plex Mono",monospace;color:var(--ink2)}
+.hr,.res{font-size:11.5px;color:var(--ink3);font-family:"IBM Plex Mono",monospace}
+.av{font-size:11px;color:var(--ojo);background:var(--ojo-soft);padding:2px 7px;border-radius:3px}
+.res{margin-left:auto}
+.duelo{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+@media(max-width:620px){.duelo{grid-template-columns:1fr}}
+.jug{padding:9px 11px;border-radius:6px;background:var(--sunk)}
+.jug.fav{background:var(--accent-soft)}
+.nom{font:600 14px "Bricolage Grotesque",system-ui,sans-serif}
+.nom b{color:var(--accent);font-size:11px;margin-left:3px}
+.cu{float:right;font:600 14px "IBM Plex Mono",monospace}
+.dat{font:11px/1.5 "IBM Plex Mono",monospace;color:var(--ink2);margin-top:4px}
+.dat i,.tray i.vs{font-style:normal;color:var(--ink3)}
+.tray{font:11px/1.45 "IBM Plex Mono",monospace;color:var(--ink3);margin-top:4px}
+.tray i.g{color:var(--pos);font-weight:600;font-style:normal}
+.tray i.p{color:var(--neg);font-weight:600;font-style:normal}
+.cifras{display:flex;gap:20px;flex-wrap:wrap;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);
+  font:600 16px "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.cifras label{display:block;font:600 9.5px/1.4 "IBM Plex Sans","Bricolage Grotesque",sans-serif;
+  text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);white-space:nowrap}
+.cifras .sep{margin-left:auto;padding-left:20px;border-left:1px solid var(--rule)}
+.cifras i.sec{font-style:normal;color:var(--ink3);font-weight:500}
+.pos{color:var(--pos)} .neg{color:var(--neg)}
+.alertas{margin:11px 0 0;padding:0 0 0 18px;font-size:13.5px;line-height:1.55;color:var(--ojo)}
+.alertas li{margin-bottom:4px}
+.raz{margin:10px 0 0;font-size:12.5px;line-height:1.55;color:var(--ink3)}
+.vacias{margin-top:34px}
+.vacias h2{font:600 13px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:0 0 10px}
+footer{border-top:1px solid var(--rule);padding-top:20px;margin-top:34px;font-size:13.5px;line-height:1.65;color:var(--ink3);max-width:70ch}
+footer b{color:var(--ink2)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <div class="env">
-<h1>Informe ITF</h1>
-<div class="gen">${cuotas.length} partidos cotizados por Betano${tandaDoc ? ` en ${tandaDoc.archivos.length} torneos` : ''} · generado ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC</div>
-<div class="gen">El universo son las cuotas, no el order of play: se analiza lo que Betano puso precio, con toda la información de la ITF encima.${tandaDoc ? ' Esta es la foto de la última carga de PDF, no el registro histórico.' : ''}</div>
-<div class="resumen">${Object.entries(cuenta).map(([k, v]) => `<b>${k === 'sin-precio' ? 'sin precio' : k} ${v}</b>`).join('')}</div>
-${['segura', 'mirar', 'trampa', 'sin-precio', 'pasar'].map(t => {
-  const g = filas.filter(f => (f.v?.tipo || 'sin datos') === t);
-  if (!g.length) return '';
-  const titulo = { segura: 'Para jugar', mirar: 'Con lado, pero algo falta',
-    trampa: 'Trampa: el mercado nos contradice fuerte', 'sin-precio': 'Sin precio', pasar: 'Descartadas' }[t] || t;
-  return `<h2>${titulo} · ${g.length}</h2>${g.map(seccion).join('')}`;
-}).join('')}
-${filas.filter(f => !f.v).length ? `<h2>Sin datos de nivel · ${filas.filter(f => !f.v).length}</h2>${filas.filter(f => !f.v).map(seccion).join('')}` : ''}
-<p class="pie">
-<b>modelo</b> = nuestra probabilidad con todas las señales: ΔWTN por grupo de rondas, edad, siembra, games cedidos en el cuadro y hasta dónde llegó en el torneo anterior.
-Validado dejando un torneo afuera sobre 1243 partidos: log-loss 0.4967 y 75.5% de acierto, contra 0.5097 y 74.3% del modelo que solo miraba el WTN.<br>
-<b>solo WTN</b> = lo que decía el modelo anterior, para ver cuánto mueven las otras señales.<br>
-<b>mercado</b> = la probabilidad que implica la cuota una vez sacado el margen de la casa.<br>
-<b>discrepancia</b> = modelo menos mercado, en puntos. <b>Esta es la señal que decide.</b> Medido sobre los 50 partidos con cuota y resultado:
-sacarle al mercado más de 15 puntos dio 4 aciertos de 13 y −57%; estar dentro de ±5 dio 6 de 7 y +13%.
-Por eso <code>trampa</code> no es una oportunidad: es la casilla donde el precio sabe algo que nosotros no.<br>
-<b>segura</b> = el modelo da 70% o más, no le sacamos más de 12 puntos al mercado, y la cuota deja 9% sobre el margen. Esa combinación midió 16 de 16 y +20%,
-con el modelo reajustado sin el torneo de cada partido — pero son 16 partidos y el umbral lo elegí mirando esos mismos datos, así que hay que volver a medirlo.<br>
-<b>ATP, ranking ITF y nacional</b> se muestran porque sirven para mirar, pero <b>no entran en el modelo</b>: medidos uno por uno, el ITF y el nacional dan coeficiente negativo (ruido)
-y el ATP deja de aportar cuando la edad ya está adentro — estaba diciendo "joven que sube", que la edad dice mejor y con el triple de datos.
-</p>
+<header>
+  <div class="kicker">${tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'}</div>
+  <h1>Partidos cotizados hoy</h1>
+  <p class="bajada">Los ${cuotas.length} partidos que Betano puso en precio, con todo lo que la ITF sabe de cada jugador encima.
+    Ordenados por cuánto rinde la apuesta si nuestro modelo tiene razón.</p>
+  <div class="meta">
+    <span><b>${filas.filter(f => f.v?.precio).length}</b> con precio</span>
+    <span><b>${filas.filter(f => f.v?.alertas?.length).length}</b> con alerta</span>
+    <span>generado ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC</span>
+  </div>
+</header>
+<div class="casa">
+  <b>La columna que importa es la de la derecha.</b> "Si acierta el mercado" da siempre alrededor de −8%:
+  ese es el margen de la casa, y es lo que se pierde jugando cuando el precio tiene razón.
+  La única forma de ganar plata es estar en lo cierto donde el mercado no lo está — y sobre los 52 partidos
+  que tenemos con precio y resultado, el mercado nos gana. Estos números son para mirar, no son una recomendación.
+</div>
+${filas.filter(f => f.v?.nivel).map(partido).join('')}
+${filas.filter(f => !f.v?.nivel).length ? `<div class="vacias"><h2>Sin datos de nivel · ${filas.filter(f => !f.v?.nivel).length}</h2>
+  ${filas.filter(f => !f.v?.nivel).map(partido).join('')}</div>` : ''}
+<footer>
+  <p><b>nuestra p</b> — el modelo: ΔWTN por grupo de rondas, escalón sub-19, games cedidos en el cuadro y hasta dónde llegó
+  en su torneo anterior. Validado dejando un torneo afuera sobre 1243 partidos: 76.5% de acierto.</p>
+  <p><b>el mercado</b> — la probabilidad que implica la cuota una vez sacado el margen de la casa.</p>
+  <p><b>las alertas</b> son las tres cosas que están medidas: el favorito por WTN que paga sobre 1.50 (rinde −17% entre
+  1.50 y 2.00, −69% sobre 2.00), el partido parejo con ΔWTN bajo 2 (el precio decía 58% y pasó 43%, n=23), y el rival
+  junior sin ranking conocido. Todo lo demás que uno querría marcar está dentro del ruido con 52 partidos con precio.</p>
+</footer>
 </div>`;
 fs.writeFileSync(path.join(DIR, 'itf-informe.html'), html);
 console.log(`\n✓ vigia/itf-informe.html`);

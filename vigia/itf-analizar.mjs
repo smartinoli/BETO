@@ -51,20 +51,22 @@ conValor.sort((a, b) => b.val - a.val);
    discrepancia con el mercado, que medida rindio -57%. Ahora se llama
    TRAMPA y no se destaca, se evita. Lo unico que se destaca es lo que se
    juega. */
-const destacados = conValor.filter(x => x.tipo === 'segura').map(x => x.id);
+/* Las categorias murieron el 2026-08-26: un umbral elegido sobre 52
+   partidos no es una conclusion. Se destaca lo que mas rinde SI nuestro
+   modelo tiene razon, que es lo unico que depende de nosotros. */
+const destacados = conValor.slice(0, 6).map(x => x.id);
 const cuenta = t => Object.values(veredictos).filter(v => v.tipo === t).length;
 
 fs.writeFileSync(path.join(DIR, 'itf-analisis.json'), JSON.stringify({
   generado: new Date().toISOString(),
   analista: 'agente (Claude) — cuotas Betano como universo + cuadros + entry lists + historial por jugador + modelo multi-senal (itf-modelo.mjs) y juicio contra el mercado (itf-reglas.mjs)',
   titular: 'La probabilidad ya no sale solo del WTN: entran edad, siembra, games cedidos en el cuadro y hasta donde llego en el torneo anterior. Validado dejando un torneo afuera sobre 1243 partidos: log-loss 0.4967 y 75.5% de acierto contra 0.5097 y 74.3% del modelo anterior.',
-  advertencia: 'Lo que decide ya no es el valor p x cuota - 1 sino cuanto DISCREPAMOS con el mercado. Medido sobre 50 partidos con cuota y resultado: sacarle mas de 15 puntos al mercado dio 4 aciertos de 13 y -57%. Por eso "trampa" no es una oportunidad, es la casilla que hay que evitar.',
+  advertencia: 'NO hay ventaja demostrada sobre el mercado. Medido el 2026-08-26 sobre los 52 partidos con precio y resultado, el mercado le gana al modelo (log-loss 0.5220 contra 0.5485), y el hallazgo del escalon sub-19 resulta que el precio ya lo tenia (decia 64%, paso 67%, nuestra curva vieja decia 83%). Lo unico medido son tres alertas: favorito por WTN sobre cuota 1.50 (-17% y -69%), partido parejo con dWTN bajo 2 (el precio decia 58%, paso 43%), y junior top 60. El resto es ruido con 52 partidos.',
   veredictos, destacados,
 }, null, 1));
 
 console.log(`✓ análisis: ${Object.keys(veredictos).length} veredictos — ` +
-  `${cuenta('segura')} seguras, ${cuenta('trampa')} trampas, ${cuenta('mirar')} a mirar, ` +
-  `${cuenta('sin-precio')} sin precio, ${cuenta('pasar')} descartados`);
-const aMostrar = conValor.filter(x => x.tipo === 'segura').slice(0, 8);
-for (const x of (aMostrar.length ? aMostrar : conValor.slice(0, 6)))
+  `${cuenta('mira')} con lado, ${cuenta('flojo')} flojos, ` +
+  `${cuenta('sin-precio')} sin precio, ${cuenta('fuera')} sin datos o vetados`);
+for (const x of conValor.slice(0, 6))
   console.log(`   ${(x.val * 100).toFixed(1).padStart(6)}%  ${String(x.tipo).padEnd(9)} ${veredictos[String(x.id)].favorito}  ${x.torneo || ''}`);

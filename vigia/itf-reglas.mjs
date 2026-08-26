@@ -213,85 +213,57 @@ const sig = x => 1 / (1 + Math.exp(-x));
 export const pMercadoModelo = d => sig(-0.081 + 0.183 * d);
 
 /* ---------- el juicio ----------
-   lado: { nombre, marca, atp, wtn, wtnVisible, gana, llega }
-   Devuelve { favorito, confianza, mercado, razon, banderas, val, pe, d, k } */
-/* ---------- el juicio ----------
-   lado: { nombre, marca, atp, itf, nac, nacido, wtn, wtnVisible, seed,
-           jr, jrRank, gana, llega, previo }
-   Devuelve { tipo, nivel, precio, favorito, confianza, mercado, razon, banderas }
+   lado: { nombre, marca, atp, itf, nac, nacido, wtn, seed, jr, jrRank,
+           gana, llega, previo }
 
-   LAS TRES PREGUNTAS, EN ESTE ORDEN:
-     1. ¿el dato sirve?            → veto
-     2. ¿hay lado?                 → probabilidad del modelo completo
-     3. ¿el MERCADO nos acompaña?  → esta es la que cambió todo
+   NO HAY CATEGORÍAS. Las había —segura, trampa, mirar, anomalía— y se
+   quitaron el 2026-08-26 a pedido de Sebastián, con razón: una etiqueta
+   que sale de un umbral elegido sobre 52 partidos no es una conclusión,
+   es una opinión disfrazada de conclusión. Lo que se entrega ahora son
+   los números y las alertas que SÍ están medidas, y la decisión es suya.
 
-   POR QUÉ LA TERCERA. Hasta el 2026-08-25 el criterio era el valor
-   clásico: p×cuota−1 sobre un mínimo. Medido sobre los 50 partidos que
-   tienen cuota Y resultado, esa regla eligió 5 de 15 ganadores y rindió
-   −51%. No es que estuviera mal calibrada: está mal PLANTEADA. El valor
-   se maximiza donde la cuota es más larga de lo que dice nuestra p, o
-   sea justo donde el mercado más nos contradice — y ahí el mercado tiene
-   razón. Partiendo el registro por cuánto discrepamos:
+   POR QUÉ NO HAY UNA "SEGURA". Medido el 2026-08-26 sobre los 52 partidos
+   que tienen precio Y resultado, el mercado le gana a nuestro modelo
+   (log-loss 0.5220 contra 0.5485). Y el hallazgo grande de la auditoría
+   —que contra un rival sub-19 el WTN se equivoca 14 puntos— resulta que
+   el mercado YA LO SABE:
 
-     nosotros +15 puntos o más que el mercado   4/13 = 31%   −57%
-     +5 a +15                                 17/19 = 89%   +17%
-     ±5 (de acuerdo)                            6/7 = 86%   +13%
-     −5 a −15                                   4/7 = 57%   −30%
-     −15 o menos                                3/4 = 75%    +9%
+     rival de 18 o menos   el precio decía 64%   pasó 67%   el WTN decía 83%
+     rival de 19 a 22      el precio decía 66%   pasó 72%   el WTN decía 69%
+     rival de 23 o más     el precio decía 67%   pasó 59%   el WTN decía 66%
 
-   La regla nueva es al revés que la vieja: se juega donde el modelo dice
-   que el favorito es fuerte Y el mercado piensa parecido. Discrepar mucho
-   a nuestro favor deja de ser "anomalía aprovechable" y pasa a ser
-   TRAMPA, que es lo que la evidencia dice que es.
+   O sea: el escalón sub-19 corrige NUESTRO modelo hasta donde el precio
+   ya estaba. Mejora la estimación, no da ventaja. Apostar al sub-19 a la
+   cuota que pagan rindió −16% en 12 partidos.
 
-     regla                                    n   acierto    rinde
-     la de hoy: valor ≥ 9%                   15   53% (8/15)   −24%
-     p≥70%, no discrepar +12, valor ≥ 0      11  100% (11/11)  +26%
+   LO QUE SÍ ESTÁ MEDIDO, y por eso son alertas y no categorías:
 
-   Remedido el 2026-08-26 con el modelo del escalón sub-18 y el registro
-   ya en 52 partidos. Las BANDAS de discrepancia se movieron bastante
-   entre una medición y otra (el tramo +5/+15 pasó de 89% a 76%, el de
-   ±5 de 86% a 57%): con 7 a 21 partidos por casilla eso es lo esperable
-   y hay que tratarlas como orientación, no como número. Lo que se
-   sostiene entre las dos mediciones es que el criterio viejo pierde
-   plata y que la regla nueva no.
+     1. FAVORITO CARO. El favorito por WTN cuando el precio lo pone sobre
+        2.00 gana 14% de las veces (n=7) y la apuesta rinde −69%. Entre
+        1.50 y 2.00, −17% (n=12). Bajo 1.50 la cosa se aplana (−4% y +4%).
+        Es el sesgo clásico: si nuestro favorito paga largo, el precio
+        sabe algo que el WTN no.
 
-   (con el modelo reajustado sin el torneo de cada partido, para que no se
-   esté juzgando a sí mismo)
+     2. JUNIOR DE ÉLITE. Contra un top 60 del mundo junior el mejor WTN
+        acierta 22% (2 de 9, esperaba 6.6). Es el único veto que queda.
 
-   AVISO HONESTO SOBRE EL 11/11: son 11 partidos y el umbral de +12 lo
-   elegí mirando este mismo registro. El intervalo de Wilson es 74–100%. Lo
-   que la evidencia sostiene es el SIGNO —discrepar a nuestro favor es
-   malo, no bueno— y eso además coincide con el residuo de mercado que
-   veníamos midiendo aparte. El número exacto hay que volver a medirlo
-   cuando haya el doble de registro. */
+     3. PARTIDO PAREJO. Con ΔWTN bajo 2 el precio decía 58% y pasó 43%
+        (n=23, la casilla más grande del barrido). En un partido parejo
+        nadie sabe nada, ni el precio ni nosotros.
 
-const DISCREPANCIA_MAX = 0.12;   /* cuántos puntos podemos estar por sobre el mercado */
+   Y LO QUE NO ESTÁ MEDIDO, dicho para que no se confunda con lo anterior:
+   con 52 partidos con precio, una casilla de 10 tiene un margen de error
+   de ±30 puntos. Todo lo que no está en esa lista de tres es ruido. */
+
 const P_SEGURA = 0.70;
-const pct = v => `${v >= 0 ? '+' : ''}${Math.round(v * 100)}%`;           /* piso de probabilidad para jugarla */
-/* Cuánto tiene que sobrar la cuota. Era 0.09 heredado del criterio viejo
-   y con el nuevo NO PASA NINGUNA: si el mercado está de acuerdo con
-   nosotros, por construcción el precio no va a ser generoso. Ese 9% era
-   justamente lo que empujaba al sistema hacia las cuotas largas, o sea
-   hacia la casilla trampa. Medido con p≥70% y discrepancia ≤+12 ya
-   puestos, pedirle margen a la cuota casi no mejora el acierto y sí
-   achica la muestra:
-
-     margen  n   acierto      rinde
-     sin      17   17/17       +22%
-      0%      11   11/11       +26%
-     +9%       0    —            —
-
-   Se queda en 0: la única condición sensata es que la apuesta no pierda
-   plata con nuestra propia probabilidad. */
-const MARGEN = 0;
+const CUOTA_CARA = 1.50;   /* sobre esto, el favorito por WTN es una trampa medida */
 
 export function analizar(p) {
   const l = p.lados || [];
   const R = normRonda(p.ronda);
   const final = RONDA_FINAL(R);
-  const nada = (razon, banderas) => ({ tipo: 'pasar', nivel: null, precio: null,
-    favorito: '—', confianza: 'baja', mercado: 'pasar', razon, banderas });
+  const nada = (razon, banderas) => ({ tipo: 'fuera', nivel: null, precio: null,
+    favorito: '—', confianza: 'baja', mercado: 'pasar', alertas: [], razon, banderas });
 
   if (l.length !== 2 || l[0].wtn == null || l[1].wtn == null)
     return nada('Falta el WTN de alguno de los dos: no se puede comparar nivel.', ['sin datos de nivel']);
@@ -301,105 +273,69 @@ export function analizar(p) {
   const otro = { ...l[1 - k], cedidos: gamesCedidos(l[1 - k].llega) };
   const d = Math.abs(l[0].wtn - l[1].wtn);
 
-  /* --- 1. veto: el número mismo no vale --- */
+  /* --- el único veto que sobrevivió a la medición --- */
   const esJunior = otro.jr || /JR/i.test(otro.marca || '');
   const JR_PELIGRO = 60;
-  const jrElite = esJunior && otro.jrRank != null && otro.jrRank <= JR_PELIGRO;
-  const jrIncognito = esJunior && otro.jrRank == null;
-  if (jrElite)
+  if (esJunior && otro.jrRank != null && otro.jrRank <= JR_PELIGRO)
     return nada(`El ΔWTN de ${d.toFixed(2)} apunta a ${yo.nombre}, pero el número no sirve: `
       + `${otro.nombre} es el ${otro.jrRank} del mundo junior, y contra juniores de top ${JR_PELIGRO} `
-      + `el mejor WTN acierta 22% (2 de 9, esperaba 6.6) porque el rating de un junior de élite `
-      + `va atrasado respecto de lo que juega hoy.`, ['veto: junior de élite']);
+      + `el mejor WTN acierta 22% (2 de 9, esperaba 6.6).`, ['veto: junior de élite']);
 
-  /* --- 2. la probabilidad, con todas las señales --- */
+  /* --- la probabilidad, con todas las señales --- */
   const est = probabilidad(yo, otro, R);
   const pe = est.p;
   const soloNivel = 1 / (1 + Math.exp(-MOD.pendiente[est.grupo] * est.dW));
   const conocida = !!G[R];
-  const nivel = { p: pe, soloNivel, d, grupo: est.grupo, n: est.n, conocida,
-    partes: est.partes, favorito: yo.nombre + (yo.marca ? ' ' + yo.marca : ''),
-    fuerza: pe >= 0.85 ? 'muy fuerte' : pe >= 0.75 ? 'fuerte' : pe >= P_MIN ? 'claro' : 'sin lado' };
+  const nivel = { p: pe, soloNivel, d, grupo: est.grupo, n: est.n, conocida, partes: est.partes,
+    favorito: yo.nombre + (yo.marca ? ' ' + yo.marca : '') };
 
-  /* de qué está hecha la estimación, en palabras */
   const mueve = est.partes.filter(x => x.nombre !== 'nivel' && Math.abs(x.aporte) > 0.02);
+  const pAntes = a => 1 / (1 + Math.exp(-(est.eta - a)));
   const desglose = mueve.length
-    ? ` Ajustan: ${mueve.map(x => `${x.texto} (${x.aporte >= 0 ? '+' : ''}${Math.round(100 * (1 / (1 + Math.exp(-(est.eta))) - 1 / (1 + Math.exp(-(est.eta - x.aporte)))))} pts)`).join('; ')}.`
+    ? ` Ajustan: ${mueve.map(x => `${x.texto} (${x.aporte >= 0 ? '+' : '−'}${Math.abs(Math.round(100 * (est.p - pAntes(x.aporte))))} pts)`).join('; ')}.`
     : '';
-  const cabeza = `Δ${d.toFixed(2)} de WTN a favor de ${yo.nombre} (${yo.wtn} contra ${otro.wtn}), en ${R}: `
+  const razonNivel = `Δ${d.toFixed(2)} de WTN a favor de ${yo.nombre} (${yo.wtn} contra ${otro.wtn}), en ${R}: `
     + `la curva del grupo "${est.grupo}" (n=${est.n}) da ${Math.round(soloNivel * 100)}%.${desglose}`
     + (mueve.length ? ` Queda en ${Math.round(pe * 100)}%.` : '');
 
-  if (pe < P_MIN)
-    return { ...nada(`${cabeza} No llega al piso de ${Math.round(P_MIN * 100)}%: acá no hay lado, es el azar con otro nombre.`,
-      [`p${Math.round(pe * 100)}% bajo el piso`]), nivel };
+  /* --- alertas: sólo las tres que están medidas --- */
+  const alertas = [];
+  if (d < 2) alertas.push({ clave: 'parejo', texto:
+    `ΔWTN de ${d.toFixed(2)}: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.` });
+  if (esJunior && otro.jrRank == null) alertas.push({ clave: 'jr-incognito', texto:
+    `${otro.nombre} es junior y no tengo su ranking junior: no sé si es un top ${JR_PELIGRO}, que es el tramo donde el WTN se da vuelta.` });
+  if (final) alertas.push({ clave: 'ronda-final', texto:
+    `${R}: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a ${MOD.pendiente.finales} contra ${MOD.pendiente.buenas} en R1.` });
+  if (!conocida) alertas.push({ clave: 'ronda-rara', texto: `${R} no es una ronda que hayamos visto nunca: se cobra con el grupo "medias".` });
+  if (huboRetiro(otro.llega)) alertas.push({ clave: 'retiro', texto: `${otro.nombre} ganó un partido por retiro: llega más fresco.` });
 
-  /* --- reparos que no ocultan el partido --- */
-  const avisos = [];
-  if (jrIncognito) avisos.push(`${otro.nombre} es junior y no tengo su ranking junior en ninguna entry list: `
-    + `no sé si es un top ${JR_PELIGRO} —donde el favorito gana solo 22%— o uno del montón`);
-  if (!conocida) avisos.push(`${R} no es una ronda que hayamos visto nunca: se cobra con el grupo "medias"`);
-  if (final) avisos.push(`${R}: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a ${MOD.pendiente.finales} contra ${MOD.pendiente.buenas} en R1`);
-  if (huboRetiro(otro.llega)) avisos.push(`${otro.nombre} ganó un partido por retiro: llega más fresco`);
-
-  /* --- 3. el mercado --- */
   const c = yo.gana, cRival = otro.gana;
-  if (!c) {
-    const razon = `${cabeza} Sin cuota todavía: se informa el nivel y nada más.`
-      + (avisos.length ? ` Con reparos: ${avisos.join('; ')}.` : '');
-    return { tipo: 'sin-precio', nivel, precio: null, favorito: nivel.favorito,
-      confianza: 'media', mercado: 'sin precio', razon, banderas: [`p${Math.round(pe * 100)}%`] };
-  }
+  if (!c)
+    return { tipo: 'sin-precio', nivel, precio: null, favorito: nivel.favorito, alertas,
+      confianza: 'media', mercado: 'sin precio',
+      razon: `${razonNivel} Sin cuota todavía.`, banderas: [`p${Math.round(pe * 100)}%`] };
+
+  if (c > CUOTA_CARA) alertas.push({ clave: 'favorito-caro', texto:
+    `El favorito por WTN paga ${c}. Medido, el favorito por WTN sobre ${CUOTA_CARA.toFixed(2)} `
+    + `rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.` });
+
   const devig = cRival ? (1 / c) / ((1 / c) + (1 / cRival)) : null;
   const discrepancia = devig != null ? pe - devig : null;
-  const cMinima = (1 + MARGEN) / pe;
-  const val = pe * c - 1;
-  const precio = { cuota: c, cuotaRival: cRival ?? null, devig, discrepancia, cMinima, val };
-  const ban = [`p${Math.round(pe * 100)}%`];
-  if (discrepancia != null) ban.push(`mercado ${discrepancia >= 0 ? '+' : ''}${Math.round(discrepancia * 100)}`);
+  const val = pe * c - 1;                                   /* si tenemos razón nosotros */
+  const valMercado = devig != null ? devig * c - 1 : null;  /* si tiene razón el mercado */
+  const precio = { cuota: c, cuotaRival: cRival ?? null, devig, discrepancia,
+    cMinima: 1 / pe, val, valMercado };
 
-  const mercadoTxt = devig != null
-    ? ` El mercado la paga a ${c} (${Math.round(devig * 100)}% real, sin su margen); nosotros decimos ${Math.round(pe * 100)}%: `
-      + (Math.abs(discrepancia) < 0.05 ? 'estamos de acuerdo.'
-        : `${Math.abs(Math.round(discrepancia * 100))} puntos ${discrepancia > 0 ? 'por encima' : 'por debajo'}.`)
+  const cuentaMercado = devig != null
+    ? ` El mercado la paga a ${c}: ${Math.round(devig * 100)}% una vez sacado su margen. `
+      + `A esa cuota, la apuesta rinde ${val >= 0 ? '+' : '−'}${Math.abs(Math.round(val * 100))}% si tenemos razón nosotros `
+      + `y ${valMercado >= 0 ? '+' : '−'}${Math.abs(Math.round(valMercado * 100))}% si la tiene el mercado.`
     : ` A ${c}, sin la cuota del rival no se puede descontar el margen de la casa.`;
 
-  /* TRAMPA: creemos mucho más que el mercado. Medido, es la peor casilla. */
-  if (discrepancia != null && discrepancia > DISCREPANCIA_MAX)
-    return { tipo: 'trampa', nivel, precio, favorito: '—', confianza: 'baja', mercado: 'pasar',
-      razon: `${cabeza}${mercadoTxt} Esa distancia es la señal más mala que tenemos: `
-        + `cuando le sacamos más de ${Math.round(DISCREPANCIA_MAX * 100)} puntos al mercado, el favorito ganó 4 de 13 y `
-        + `la apuesta rindió −57%. El precio sabe algo que nosotros no.`,
-      banderas: [...ban, 'trampa: discrepamos con el mercado'] };
-
-  if (pe < P_SEGURA)
-    return { tipo: 'mirar', nivel, precio, favorito: nivel.favorito, confianza: 'media', mercado: 'gana',
-      razon: `${cabeza}${mercadoTxt} Hay lado pero no llega a ${Math.round(P_SEGURA * 100)}%, que es el piso desde el que medimos que rinde.`
-        + (avisos.length ? ` ${avisos.join('; ')}.` : ''),
-      banderas: [...ban, 'mirar'] };
-
-  if (c < cMinima)
-    return { tipo: 'mirar', nivel, precio, favorito: nivel.favorito, confianza: 'media', mercado: 'gana',
-      razon: `${cabeza}${mercadoTxt} A ${c} sobra ${pct(val)}, o sea que a ese precio la apuesta pierde plata `
-        + `con nuestra propia probabilidad (haría falta ${cMinima.toFixed(2)}). El partido es bueno, el precio no.`
-        + (avisos.length ? ` ${avisos.join('; ')}.` : ''),
-      banderas: [...ban, 'cuota corta'] };
-
-  /* --- lo que sí se juega --- */
-  const bloqueo = [];
-  if (jrIncognito) bloqueo.push('el rival es un junior que no puedo calificar');
-  if (final) bloqueo.push(`es ${R}, donde el nivel deja de mandar`);
-  if (!conocida) bloqueo.push(`${R} es una ronda que nunca vimos`);
-  if (devig == null) bloqueo.push('falta la cuota del rival para descontar el margen');
-  if (!bloqueo.length)
-    return { tipo: 'segura', nivel, precio, favorito: nivel.favorito, confianza: 'alta', mercado: 'gana',
-      razon: `${cabeza}${mercadoTxt} A ${c} paga sobre la mínima de ${cMinima.toFixed(2)}: ${pct(val)} de valor. `
-        + `Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.`
-        + (avisos.length ? ` (${avisos.join('; ')})` : ''),
-      banderas: [...ban, 'segura'] };
-
-  return { tipo: 'mirar', nivel, precio, favorito: nivel.favorito, confianza: 'media', mercado: 'gana',
-    razon: `${cabeza}${mercadoTxt} A ${c} el precio da (${pct(val)}), pero no es segura: ${bloqueo.join('; ')}.`
-      + (avisos.length ? ` ${avisos.join('; ')}.` : ''),
-    banderas: [...ban, 'mirar'] };
+  return { tipo: pe < P_SEGURA ? 'flojo' : 'mira', nivel, precio, favorito: nivel.favorito, alertas,
+    confianza: alertas.length ? 'media' : 'alta', mercado: 'gana',
+    razon: razonNivel + cuentaMercado + (alertas.length ? ' ' + alertas.map(a => a.texto).join(' ') : ''),
+    banderas: [`p${Math.round(pe * 100)}%`,
+      ...(discrepancia != null ? [`mercado ${discrepancia >= 0 ? '+' : '−'}${Math.abs(Math.round(discrepancia * 100))}`] : []),
+      ...alertas.map(a => a.clave)] };
 }

@@ -138,7 +138,7 @@ console.log(`cuotas registradas ${doc.cuotas.length} · con resultado ${ok.lengt
 
 console.log('EL FAVORITO POR WTN, MIRE O NO EL SISTEMA');
 console.log(`  ${con.filter(r => r.gano).length}/${con.length} = ${(100 * con.filter(r => r.gano).length / con.length).toFixed(1)}%  ·  apostarlos todos: ${eco(con)}`);
-const marc = con.filter(r => ['segura', 'anomalia', 'mirar'].includes(r.v.tipo));
+const marc = con.filter(r => r.v.tipo === 'mira');
 const desc = con.filter(r => r.v.tipo === 'pasar');
 console.log(`  los que el sistema MARCA   : ${marc.filter(r => r.gano).length}/${marc.length}  ·  ${eco(marc)}`);
 console.log(`  los que el sistema DESCARTA: ${desc.filter(r => r.gano).length}/${desc.length}  ·  ${eco(desc)}`);

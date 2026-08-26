@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-26T03:15:17.203Z",
+ "generado": "2026-08-26T03:40:03.887Z",
  "registro": [
   {
    "q": {
@@ -14,7 +14,7 @@
    "etapa": "F",
    "clave": "m-itf-ger-2026-015",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5601891526360444,
      "soloNivel": 0.5481629522841241,
@@ -36,16 +36,41 @@
        "texto": "Arthur Nagel viene cediendo menos games (37% contra 39%)"
       }
      ],
-     "favorito": "Arthur Nagel [3]",
-     "fuerza": "sin lado"
+     "favorito": "Arthur Nagel [3]"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ1.11 de WTN a favor de Arthur Nagel (5.71 contra 6.82), en F: la curva del grupo \"finales\" (n=79) da 55%. Ajustan: Arthur Nagel viene cediendo menos games (37% contra 39%) (+1 pts). Queda en 56%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 1.55,
+     "cuotaRival": 2.25,
+     "devig": 0.5921052631578947,
+     "discrepancia": -0.03191611052185028,
+     "cMinima": 1.7851113240846725,
+     "val": -0.13170681341413115,
+     "valMercado": -0.08223684210526316
+    },
+    "favorito": "Arthur Nagel [3]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.11: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "ronda-final",
+      "texto": "F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.55. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ1.11 de WTN a favor de Arthur Nagel (5.71 contra 6.82), en F: la curva del grupo \"finales\" (n=79) da 55%. Ajustan: Arthur Nagel viene cediendo menos games (37% contra 39%) (+1 pts). Queda en 56%. El mercado la paga a 1.55: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −13% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.11: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. El favorito por WTN paga 1.55. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
-     "p56% bajo el piso"
+     "p56%",
+     "mercado −3",
+     "parejo",
+     "ronda-final",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -72,7 +97,7 @@
      "llega": "6-3 6-2 · 6-1 6(6)-7 6-2 · 6-4 6-3 · 6(5)-7 6-3 6-3"
     }
    ],
-   "etiqueta": "p56% bajo el piso",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Arthur Nagel",
@@ -103,7 +128,7 @@
    "etapa": "F",
    "clave": "m-itf-aut-2026-002",
    "v": {
-    "tipo": "trampa",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.695757405353041,
      "soloNivel": 0.8132313580112112,
@@ -125,8 +150,7 @@
        "texto": "Thilo Behrmann viene cediendo menos games (23% contra 46%): la forma contradice al nivel"
       }
      ],
-     "favorito": "Nikita Mashtakov [3]",
-     "fuerza": "claro"
+     "favorito": "Nikita Mashtakov [3]"
     },
     "precio": {
      "cuota": 2.15,
@@ -134,16 +158,33 @@
      "devig": 0.4266666666666667,
      "discrepancia": 0.2690907386863743,
      "cMinima": 1.4372825819835584,
-     "val": 0.49587842150903794
+     "val": 0.49587842150903794,
+     "valMercado": -0.08266666666666667
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ8.45 de WTN a favor de Nikita Mashtakov (4.83 contra 13.28), en F: la curva del grupo \"finales\" (n=79) da 81%. Ajustan: Thilo Behrmann viene cediendo menos games (23% contra 46%): la forma contradice al nivel (-12 pts). Queda en 70%. El mercado la paga a 2.15 (43% real, sin su margen); nosotros decimos 70%: 27 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Nikita Mashtakov [3]",
+    "alertas": [
+     {
+      "clave": "jr-incognito",
+      "texto": "Thilo Behrmann es junior y no tengo su ranking junior: no sé si es un top 60, que es el tramo donde el WTN se da vuelta."
+     },
+     {
+      "clave": "ronda-final",
+      "texto": "F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 2.15. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ8.45 de WTN a favor de Nikita Mashtakov (4.83 contra 13.28), en F: la curva del grupo \"finales\" (n=79) da 81%. Ajustan: Thilo Behrmann viene cediendo menos games (23% contra 46%): la forma contradice al nivel (−12 pts). Queda en 70%. El mercado la paga a 2.15: 43% una vez sacado su margen. A esa cuota, la apuesta rinde +50% si tenemos razón nosotros y −8% si la tiene el mercado. Thilo Behrmann es junior y no tengo su ranking junior: no sé si es un top 60, que es el tramo donde el WTN se da vuelta. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. El favorito por WTN paga 2.15. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p70%",
      "mercado +27",
-     "trampa: discrepamos con el mercado"
+     "jr-incognito",
+     "ronda-final",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -170,7 +211,7 @@
      "llega": "6-4 5-7 7-6(6) · 7-6(5) 6-3 · 7-6(5) 4-6 6-0 · 1-6 6-4 7-5"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Nikita Mashtakov",
@@ -201,7 +242,7 @@
    "etapa": "F",
    "clave": "m-itf-bel-2026-004",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5293194690456022,
      "soloNivel": 0.5468689953604935,
@@ -223,16 +264,36 @@
        "texto": "Romain Faucon viene cediendo menos games (35% contra 38%): la forma contradice al nivel"
       }
      ],
-     "favorito": "Jack Loge [1]",
-     "fuerza": "sin lado"
+     "favorito": "Jack Loge [1]"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ1.08 de WTN a favor de Jack Loge (5.71 contra 6.79), en F: la curva del grupo \"finales\" (n=79) da 55%. Ajustan: Romain Faucon viene cediendo menos games (35% contra 38%): la forma contradice al nivel (-2 pts). Queda en 53%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 1.3,
+     "cuotaRival": 3.15,
+     "devig": 0.7078651685393258,
+     "discrepancia": -0.17854569949372356,
+     "cMinima": 1.889218248108398,
+     "val": -0.3118846902407171,
+     "valMercado": -0.07977528089887642
+    },
+    "favorito": "Jack Loge [1]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.08: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "ronda-final",
+      "texto": "F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ1.08 de WTN a favor de Jack Loge (5.71 contra 6.79), en F: la curva del grupo \"finales\" (n=79) da 55%. Ajustan: Romain Faucon viene cediendo menos games (35% contra 38%): la forma contradice al nivel (−2 pts). Queda en 53%. El mercado la paga a 1.3: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −31% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.08: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
     "banderas": [
-     "p53% bajo el piso"
+     "p53%",
+     "mercado −18",
+     "parejo",
+     "ronda-final"
     ]
    },
    "lados": [
@@ -259,7 +320,7 @@
      "llega": "6-0 6-4 · 7-5 6-4 · 6(5)-7 6-2 6-4 · 6-2 6-2"
     }
    ],
-   "etiqueta": "p53% bajo el piso",
+   "etiqueta": "ronda-final",
    "ret": false,
    "favWtn": {
     "nombre": "Jack Loge",
@@ -290,7 +351,7 @@
    "etapa": "F",
    "clave": "m-itf-swe-2026-003",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6209082492496839,
      "soloNivel": 0.6166357709443563,
@@ -312,8 +373,7 @@
        "texto": "Leo Borg viene cediendo menos games (36% contra 37%)"
       }
      ],
-     "favorito": "Leo Borg [1]",
-     "fuerza": "claro"
+     "favorito": "Leo Borg [1]"
     },
     "precio": {
      "cuota": 1.62,
@@ -321,16 +381,28 @@
      "devig": 0.5668449197860962,
      "discrepancia": 0.05406332946358772,
      "cMinima": 1.61054391080875,
-     "val": 0.005871363784488048
+     "val": 0.005871363784488048,
+     "valMercado": -0.08171122994652413
     },
     "favorito": "Leo Borg [1]",
+    "alertas": [
+     {
+      "clave": "ronda-final",
+      "texto": "F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.62. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ2.73 de WTN a favor de Leo Borg (5.4 contra 8.13), en F: la curva del grupo \"finales\" (n=79) da 62%. El mercado la paga a 1.62 (57% real, sin su margen); nosotros decimos 62%: 5 puntos por encima. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "razon": "Δ2.73 de WTN a favor de Leo Borg (5.4 contra 8.13), en F: la curva del grupo \"finales\" (n=79) da 62%. El mercado la paga a 1.62: 57% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −8% si la tiene el mercado. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. El favorito por WTN paga 1.62. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p62%",
      "mercado +5",
-     "mirar"
+     "ronda-final",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -357,7 +429,7 @@
      "llega": "6-4 6-2 · 6-2 6-2 · 3-6 6-2 6-1 · 6-3 4-6 6-4"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Leo Borg",
@@ -388,7 +460,7 @@
    "etapa": "F",
    "clave": "m-itf-esp-2026-034",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.564242597229253,
      "soloNivel": 0.5152290380791905,
@@ -410,16 +482,36 @@
        "texto": "Alexander Ritschard viene cediendo menos games (31% contra 38%)"
       }
      ],
-     "favorito": "Alexander Ritschard [7]",
-     "fuerza": "sin lado"
+     "favorito": "Alexander Ritschard [7]"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ0.35 de WTN a favor de Alexander Ritschard (3.15 contra 3.5), en F: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Alexander Ritschard viene cediendo menos games (31% contra 38%) (+5 pts). Queda en 56%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 1.47,
+     "cuotaRival": 2.42,
+     "devig": 0.6221079691516709,
+     "discrepancia": -0.05786537192241792,
+     "cMinima": 1.7722873191612258,
+     "val": -0.17056338207299815,
+     "valMercado": -0.08550128534704382
+    },
+    "favorito": "Alexander Ritschard [7]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.35: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "ronda-final",
+      "texto": "F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ0.35 de WTN a favor de Alexander Ritschard (3.15 contra 3.5), en F: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Alexander Ritschard viene cediendo menos games (31% contra 38%) (+5 pts). Queda en 56%. El mercado la paga a 1.47: 62% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.35: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
     "banderas": [
-     "p56% bajo el piso"
+     "p56%",
+     "mercado −6",
+     "parejo",
+     "ronda-final"
     ]
    },
    "lados": [
@@ -446,7 +538,7 @@
      "llega": "6-2 6-1 · 6-2 6-3 · 6-1 7-6(1) · 6-3 6-4"
     }
    ],
-   "etiqueta": "p56% bajo el piso",
+   "etiqueta": "ronda-final",
    "ret": true,
    "favWtn": {
     "nombre": "Alexander Ritschard",
@@ -477,7 +569,7 @@
    "etapa": "F",
    "clave": "m-itf-pol-2026-007",
    "v": {
-    "tipo": "mirar",
+    "tipo": "mira",
     "nivel": {
      "p": 0.7879331536388626,
      "soloNivel": 0.7271445260319951,
@@ -499,8 +591,7 @@
        "texto": "Daniel Michalski viene cediendo menos games (27% contra 39%)"
       }
      ],
-     "favorito": "Daniel Michalski [1]",
-     "fuerza": "fuerte"
+     "favorito": "Daniel Michalski [1]"
     },
     "precio": {
      "cuota": 1.32,
@@ -508,16 +599,28 @@
      "devig": 0.6944444444444445,
      "discrepancia": 0.0934887091944181,
      "cMinima": 1.2691431949293697,
-     "val": 0.040071762803298716
+     "val": 0.040071762803298716,
+     "valMercado": -0.08333333333333315
     },
     "favorito": "Daniel Michalski [1]",
+    "alertas": [
+     {
+      "clave": "ronda-final",
+      "texto": "F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+     },
+     {
+      "clave": "retiro",
+      "texto": "Michael Agwi ganó un partido por retiro: llega más fresco."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ5.63 de WTN a favor de Daniel Michalski (3.45 contra 9.08), en F: la curva del grupo \"finales\" (n=79) da 73%. Ajustan: Daniel Michalski viene cediendo menos games (27% contra 39%) (+6 pts). Queda en 79%. El mercado la paga a 1.32 (69% real, sin su margen); nosotros decimos 79%: 9 puntos por encima. A 1.32 el precio da (+4%), pero no es segura: es F, donde el nivel deja de mandar. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1; Michael Agwi ganó un partido por retiro: llega más fresco.",
+    "razon": "Δ5.63 de WTN a favor de Daniel Michalski (3.45 contra 9.08), en F: la curva del grupo \"finales\" (n=79) da 73%. Ajustan: Daniel Michalski viene cediendo menos games (27% contra 39%) (+6 pts). Queda en 79%. El mercado la paga a 1.32: 69% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −8% si la tiene el mercado. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Michael Agwi ganó un partido por retiro: llega más fresco.",
     "banderas": [
      "p79%",
      "mercado +9",
-     "mirar"
+     "ronda-final",
+     "retiro"
     ]
    },
    "lados": [
@@ -544,7 +647,7 @@
      "llega": "6-3 7-6(1) · 6-3 2-0 · 5-7 6-4 6-1 · 7-5 6-3"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "retiro",
    "ret": true,
    "favWtn": {
     "nombre": "Daniel Michalski",
@@ -575,7 +678,7 @@
    "etapa": "F",
    "clave": "m-itf-rou-2026-012",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5146775595996117,
      "soloNivel": 0.5156638726612689,
@@ -597,16 +700,46 @@
        "texto": "Matteo Sciahbasi viene cediendo menos games (39% contra 39%): la forma contradice al nivel"
       }
      ],
-     "favorito": "Iannis Miletich",
-     "fuerza": "sin lado"
+     "favorito": "Iannis Miletich"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ0.36 de WTN a favor de Iannis Miletich (8.66 contra 9.02), en F: la curva del grupo \"finales\" (n=79) da 52%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 2.15,
+     "cuotaRival": 1.6,
+     "devig": 0.4266666666666667,
+     "discrepancia": 0.088010892932945,
+     "cMinima": 1.942964058463983,
+     "val": 0.10655675313916513,
+     "valMercado": -0.08266666666666667
+    },
+    "favorito": "Iannis Miletich",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.36: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "ronda-final",
+      "texto": "F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+     },
+     {
+      "clave": "retiro",
+      "texto": "Matteo Sciahbasi ganó un partido por retiro: llega más fresco."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 2.15. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ0.36 de WTN a favor de Iannis Miletich (8.66 contra 9.02), en F: la curva del grupo \"finales\" (n=79) da 52%. El mercado la paga a 2.15: 43% una vez sacado su margen. A esa cuota, la apuesta rinde +11% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.36: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. F: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Matteo Sciahbasi ganó un partido por retiro: llega más fresco. El favorito por WTN paga 2.15. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
-     "p51% bajo el piso"
+     "p51%",
+     "mercado +9",
+     "parejo",
+     "ronda-final",
+     "retiro",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -633,7 +766,7 @@
      "llega": "7-6(6) 6-2 · 3-6 6-1 4-0 · 7-6(2) 3-6 6-0 · 6-3 7-5"
     }
    ],
-   "etiqueta": "p51% bajo el piso",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Iannis Miletich",
@@ -665,7 +798,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9701434586632337,
      "soloNivel": 0.9701434586632337,
@@ -681,8 +814,7 @@
        "texto": "Δ8.48 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Alejandro Garcia Carbajal [3]",
-     "fuerza": "muy fuerte"
+     "favorito": "Alejandro Garcia Carbajal [3]"
     },
     "precio": {
      "cuota": 1.08,
@@ -690,16 +822,17 @@
      "devig": 0.8575197889182057,
      "discrepancia": 0.11262366974502802,
      "cMinima": 1.0307753879801507,
-     "val": 0.047754935356292494
+     "val": 0.047754935356292494,
+     "valMercado": -0.07387862796833777
     },
     "favorito": "Alejandro Garcia Carbajal [3]",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ8.48 de WTN a favor de Alejandro Garcia Carbajal (7.62 contra 16.1), en Q1: la curva del grupo \"Q1\" (n=422) da 97%. El mercado la paga a 1.08 (86% real, sin su margen); nosotros decimos 97%: 11 puntos por encima. A 1.08 paga sobre la mínima de 1.03: +5% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ8.48 de WTN a favor de Alejandro Garcia Carbajal (7.62 contra 16.1), en Q1: la curva del grupo \"Q1\" (n=422) da 97%. El mercado la paga a 1.08: 86% una vez sacado su margen. A esa cuota, la apuesta rinde +5% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p97%",
-     "mercado +11",
-     "segura"
+     "mercado +11"
     ]
    },
    "lados": [
@@ -726,7 +859,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +11",
    "ret": false,
    "favWtn": {
     "nombre": "Alejandro Garcia Carbajal",
@@ -757,7 +890,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.792198714893861,
      "soloNivel": 0.792198714893861,
@@ -773,8 +906,7 @@
        "texto": "Δ3.26 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Oriol Font [15]",
-     "fuerza": "fuerte"
+     "favorito": "Oriol Font [15]"
     },
     "precio": {
      "cuota": 1.3,
@@ -782,16 +914,17 @@
      "devig": 0.7142857142857143,
      "discrepancia": 0.07791300060814665,
      "cMinima": 1.262309545823967,
-     "val": 0.029858329362019376
+     "val": 0.029858329362019376,
+     "valMercado": -0.0714285714285714
     },
     "favorito": "Oriol Font [15]",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ3.26 de WTN a favor de Oriol Font (12.68 contra 15.94), en Q1: la curva del grupo \"Q1\" (n=422) da 79%. El mercado la paga a 1.3 (71% real, sin su margen); nosotros decimos 79%: 8 puntos por encima. A 1.3 paga sobre la mínima de 1.26: +3% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ3.26 de WTN a favor de Oriol Font (12.68 contra 15.94), en Q1: la curva del grupo \"Q1\" (n=422) da 79%. El mercado la paga a 1.3: 71% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p79%",
-     "mercado +8",
-     "segura"
+     "mercado +8"
     ]
    },
    "lados": [
@@ -818,7 +951,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +8",
    "ret": false,
    "favWtn": {
     "nombre": "Oriol Font",
@@ -849,7 +982,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5572182476732219,
      "soloNivel": 0.5572182476732219,
@@ -865,16 +998,36 @@
        "texto": "Δ0.56 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Alex Martinez Sanz",
-     "fuerza": "sin lado"
+     "favorito": "Alex Martinez Sanz"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ0.56 de WTN a favor de Alex Martinez Sanz (14.41 contra 14.97), en Q1: la curva del grupo \"Q1\" (n=422) da 56%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 5,
+     "cuotaRival": 1.13,
+     "devig": 0.18433931484502447,
+     "discrepancia": 0.37287893282819745,
+     "cMinima": 1.794628952256505,
+     "val": 1.7860912383661098,
+     "valMercado": -0.07830342577487759
+    },
+    "favorito": "Alex Martinez Sanz",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.56: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 5. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ0.56 de WTN a favor de Alex Martinez Sanz (14.41 contra 14.97), en Q1: la curva del grupo \"Q1\" (n=422) da 56%. El mercado la paga a 5: 18% una vez sacado su margen. A esa cuota, la apuesta rinde +179% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.56: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 5. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
-     "p56% bajo el piso"
+     "p56%",
+     "mercado +37",
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -901,7 +1054,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "p56% bajo el piso",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Alex Martinez Sanz",
@@ -932,7 +1085,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6856693376934448,
      "soloNivel": 0.6856693376934448,
@@ -948,8 +1101,7 @@
        "texto": "Δ1.90 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Amaan Siddiqui [16]",
-     "fuerza": "claro"
+     "favorito": "Amaan Siddiqui [16]"
     },
     "precio": {
      "cuota": 1.14,
@@ -957,16 +1109,23 @@
      "devig": 0.8143322475570033,
      "discrepancia": -0.12866290986355844,
      "cMinima": 1.4584289321788062,
-     "val": -0.21833695502947292
+     "val": -0.21833695502947292,
+     "valMercado": -0.07166123778501632
     },
     "favorito": "Amaan Siddiqui [16]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.90: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.90 de WTN a favor de Amaan Siddiqui (16 contra 17.9), en Q1: la curva del grupo \"Q1\" (n=422) da 69%. El mercado la paga a 1.14 (81% real, sin su margen); nosotros decimos 69%: 13 puntos por debajo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ1.90 de WTN a favor de Amaan Siddiqui (16 contra 17.9), en Q1: la curva del grupo \"Q1\" (n=422) da 69%. El mercado la paga a 1.14: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −22% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.90: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
     "banderas": [
      "p69%",
-     "mercado -13",
-     "mirar"
+     "mercado −13",
+     "parejo"
     ]
    },
    "lados": [
@@ -993,7 +1152,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "parejo",
    "ret": false,
    "favWtn": {
     "nombre": "Amaan Siddiqui",
@@ -1024,7 +1183,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.8239700454824529,
      "soloNivel": 0.8239700454824529,
@@ -1040,8 +1199,7 @@
        "texto": "Δ3.76 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Nicolas Rafael Goldberg Alviani [14]",
-     "fuerza": "fuerte"
+     "favorito": "Nicolas Rafael Goldberg Alviani [14]"
     },
     "precio": {
      "cuota": 1.42,
@@ -1049,16 +1207,17 @@
      "devig": 0.6528117359413204,
      "discrepancia": 0.17115830954113254,
      "cMinima": 1.2136363518099467,
-     "val": 0.17003746458508306
+     "val": 0.17003746458508306,
+     "valMercado": -0.07300733496332512
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ3.76 de WTN a favor de Nicolas Rafael Goldberg Alviani (14.41 contra 18.17), en Q1: la curva del grupo \"Q1\" (n=422) da 82%. El mercado la paga a 1.42 (65% real, sin su margen); nosotros decimos 82%: 17 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Nicolas Rafael Goldberg Alviani [14]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ3.76 de WTN a favor de Nicolas Rafael Goldberg Alviani (14.41 contra 18.17), en Q1: la curva del grupo \"Q1\" (n=422) da 82%. El mercado la paga a 1.42: 65% una vez sacado su margen. A esa cuota, la apuesta rinde +17% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p82%",
-     "mercado +17",
-     "trampa: discrepamos con el mercado"
+     "mercado +17"
     ]
    },
    "lados": [
@@ -1085,7 +1244,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +17",
    "ret": false,
    "favWtn": {
     "nombre": "Nicolas Rafael Goldberg Alviani",
@@ -1116,7 +1275,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.8349984498944834,
      "soloNivel": 0.8349984498944834,
@@ -1132,8 +1291,7 @@
        "texto": "Δ3.95 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Mario Mansilla Diez [9]",
-     "fuerza": "fuerte"
+     "favorito": "Mario Mansilla Diez [9]"
     },
     "precio": {
      "cuota": 1.2,
@@ -1141,16 +1299,17 @@
      "devig": 0.7714285714285714,
      "discrepancia": 0.063569878465912,
      "cMinima": 1.1976070136733397,
-     "val": 0.001998139873379934
+     "val": 0.001998139873379934,
+     "valMercado": -0.0742857142857144
     },
     "favorito": "Mario Mansilla Diez [9]",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ3.95 de WTN a favor de Mario Mansilla Diez (10.73 contra 14.68), en Q1: la curva del grupo \"Q1\" (n=422) da 83%. El mercado la paga a 1.2 (77% real, sin su margen); nosotros decimos 83%: 6 puntos por encima. A 1.2 paga sobre la mínima de 1.20: +0% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ3.95 de WTN a favor de Mario Mansilla Diez (10.73 contra 14.68), en Q1: la curva del grupo \"Q1\" (n=422) da 83%. El mercado la paga a 1.2: 77% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p83%",
-     "mercado +6",
-     "segura"
+     "mercado +6"
     ]
    },
    "lados": [
@@ -1177,7 +1336,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +6",
    "ret": false,
    "favWtn": {
     "nombre": "Mario Mansilla Diez",
@@ -1208,7 +1367,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9609057149928922,
      "soloNivel": 0.9609057149928922,
@@ -1224,8 +1383,7 @@
        "texto": "Δ7.80 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Toprak Avcibasi [4]",
-     "fuerza": "muy fuerte"
+     "favorito": "Toprak Avcibasi [4]"
     },
     "precio": {
      "cuota": 1.14,
@@ -1233,16 +1391,17 @@
      "devig": 0.8143322475570033,
      "discrepancia": 0.14657346743588895,
      "cMinima": 1.0406848293200097,
-     "val": 0.0954325150918971
+     "val": 0.0954325150918971,
+     "valMercado": -0.07166123778501632
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ7.80 de WTN a favor de Toprak Avcibasi (11.43 contra 19.23), en Q1: la curva del grupo \"Q1\" (n=422) da 96%. El mercado la paga a 1.14 (81% real, sin su margen); nosotros decimos 96%: 15 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Toprak Avcibasi [4]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ7.80 de WTN a favor de Toprak Avcibasi (11.43 contra 19.23), en Q1: la curva del grupo \"Q1\" (n=422) da 96%. El mercado la paga a 1.14: 81% una vez sacado su margen. A esa cuota, la apuesta rinde +10% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p96%",
-     "mercado +15",
-     "trampa: discrepamos con el mercado"
+     "mercado +15"
     ]
    },
    "lados": [
@@ -1269,7 +1428,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +15",
    "ret": false,
    "favWtn": {
     "nombre": "Toprak Avcibasi",
@@ -1300,7 +1459,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9426547455975752,
      "soloNivel": 0.9426547455975752,
@@ -1316,8 +1475,7 @@
        "texto": "Δ6.82 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Jose Dominguez Alonso [13]",
-     "fuerza": "muy fuerte"
+     "favorito": "Jose Dominguez Alonso [13]"
     },
     "precio": {
      "cuota": 1.42,
@@ -1325,16 +1483,17 @@
      "devig": 0.6528117359413204,
      "discrepancia": 0.28984300965625487,
      "cMinima": 1.0608337831748484,
-     "val": 0.33856973874855667
+     "val": 0.33856973874855667,
+     "valMercado": -0.07300733496332512
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ6.82 de WTN a favor de Jose Dominguez Alonso (12.67 contra 19.49), en Q1: la curva del grupo \"Q1\" (n=422) da 94%. El mercado la paga a 1.42 (65% real, sin su margen); nosotros decimos 94%: 29 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Jose Dominguez Alonso [13]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ6.82 de WTN a favor de Jose Dominguez Alonso (12.67 contra 19.49), en Q1: la curva del grupo \"Q1\" (n=422) da 94%. El mercado la paga a 1.42: 65% una vez sacado su margen. A esa cuota, la apuesta rinde +34% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p94%",
-     "mercado +29",
-     "trampa: discrepamos con el mercado"
+     "mercado +29"
     ]
    },
    "lados": [
@@ -1361,7 +1520,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +29",
    "ret": false,
    "favWtn": {
     "nombre": "Jose Dominguez Alonso",
@@ -1392,12 +1551,13 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "pasar",
+    "tipo": "fuera",
     "nivel": null,
     "precio": null,
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
+    "alertas": [],
     "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
     "banderas": [
      "sin datos de nivel"
@@ -1446,7 +1606,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.7690162963801889,
      "soloNivel": 0.7690162963801889,
@@ -1462,8 +1622,7 @@
        "texto": "Δ2.93 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Mateo Luis Alvarez Sarmiento [6]",
-     "fuerza": "fuerte"
+     "favorito": "Mateo Luis Alvarez Sarmiento [6]"
     },
     "precio": {
      "cuota": 1.42,
@@ -1471,16 +1630,17 @@
      "devig": 0.6528117359413204,
      "discrepancia": 0.11620456043886851,
      "cMinima": 1.3003625602045976,
-     "val": 0.09200314085986805
+     "val": 0.09200314085986805,
+     "valMercado": -0.07300733496332512
     },
     "favorito": "Mateo Luis Alvarez Sarmiento [6]",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ2.93 de WTN a favor de Mateo Luis Alvarez Sarmiento (10.44 contra 13.37), en Q1: la curva del grupo \"Q1\" (n=422) da 77%. El mercado la paga a 1.42 (65% real, sin su margen); nosotros decimos 77%: 12 puntos por encima. A 1.42 paga sobre la mínima de 1.30: +9% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ2.93 de WTN a favor de Mateo Luis Alvarez Sarmiento (10.44 contra 13.37), en Q1: la curva del grupo \"Q1\" (n=422) da 77%. El mercado la paga a 1.42: 65% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p77%",
-     "mercado +12",
-     "segura"
+     "mercado +12"
     ]
    },
    "lados": [
@@ -1507,7 +1667,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +12",
    "ret": false,
    "favWtn": {
     "nombre": "Mateo Luis Alvarez Sarmiento",
@@ -1538,7 +1698,7 @@
    "etapa": "Q1",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9159931081899336,
      "soloNivel": 0.9159931081899336,
@@ -1554,8 +1714,7 @@
        "texto": "Δ5.82 de WTN en Q1 (grupo \"Q1\", n=422)"
       }
      ],
-     "favorito": "Xavi Palomar [7]",
-     "fuerza": "muy fuerte"
+     "favorito": "Xavi Palomar [7]"
     },
     "precio": {
      "cuota": 1.16,
@@ -1563,16 +1722,17 @@
      "devig": 0.7986111111111112,
      "discrepancia": 0.11738199707882246,
      "cMinima": 1.0917112705968606,
-     "val": 0.06255200550032303
+     "val": 0.06255200550032303,
+     "valMercado": -0.07361111111111107
     },
     "favorito": "Xavi Palomar [7]",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ5.82 de WTN a favor de Xavi Palomar (12.98 contra 18.8), en Q1: la curva del grupo \"Q1\" (n=422) da 92%. El mercado la paga a 1.16 (80% real, sin su margen); nosotros decimos 92%: 12 puntos por encima. A 1.16 paga sobre la mínima de 1.09: +6% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ5.82 de WTN a favor de Xavi Palomar (12.98 contra 18.8), en Q1: la curva del grupo \"Q1\" (n=422) da 92%. El mercado la paga a 1.16: 80% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p92%",
-     "mercado +12",
-     "segura"
+     "mercado +12"
     ]
    },
    "lados": [
@@ -1599,7 +1759,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +12",
    "ret": false,
    "favWtn": {
     "nombre": "Xavi Palomar",
@@ -1630,7 +1790,7 @@
    "etapa": "Q2",
    "clave": "m-itf-sui-2026-004",
    "v": {
-    "tipo": "mirar",
+    "tipo": "mira",
     "nivel": {
      "p": 0.8299197614337053,
      "soloNivel": 0.7481074481725732,
@@ -1652,8 +1812,7 @@
        "texto": "Leonardo Taddia viene cediendo menos games (29% contra 47%)"
       }
      ],
-     "favorito": "Leonardo Taddia [2]",
-     "fuerza": "fuerte"
+     "favorito": "Leonardo Taddia [2]"
     },
     "precio": {
      "cuota": 1.08,
@@ -1661,16 +1820,17 @@
      "devig": 0.8593749999999999,
      "discrepancia": -0.029455238566294617,
      "cMinima": 1.2049357618289234,
-     "val": -0.10368665765159824
+     "val": -0.10368665765159824,
+     "valMercado": -0.07187500000000002
     },
     "favorito": "Leonardo Taddia [2]",
-    "confianza": "media",
+    "alertas": [],
+    "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ2.32 de WTN a favor de Leonardo Taddia (12.63 contra 14.95), en Q2: la curva del grupo \"buenas\" (n=528) da 75%. Ajustan: Leonardo Taddia viene cediendo menos games (29% contra 47%) (+8 pts). Queda en 83%. El mercado la paga a 1.08 (86% real, sin su margen); nosotros decimos 83%: estamos de acuerdo. A 1.08 sobra -10%, o sea que a ese precio la apuesta pierde plata con nuestra propia probabilidad (haría falta 1.20). El partido es bueno, el precio no.",
+    "razon": "Δ2.32 de WTN a favor de Leonardo Taddia (12.63 contra 14.95), en Q2: la curva del grupo \"buenas\" (n=528) da 75%. Ajustan: Leonardo Taddia viene cediendo menos games (29% contra 47%) (+8 pts). Queda en 83%. El mercado la paga a 1.08: 86% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p83%",
-     "mercado -3",
-     "cuota corta"
+     "mercado −3"
     ]
    },
    "lados": [
@@ -1697,7 +1857,7 @@
      "llega": "6-0 0-6 11-9"
     }
    ],
-   "etiqueta": "cuota corta",
+   "etiqueta": "mercado −3",
    "ret": false,
    "favWtn": {
     "nombre": "Leonardo Taddia",
@@ -1728,7 +1888,7 @@
    "etapa": "Q2",
    "clave": "m-itf-sui-2026-004",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6607933595013683,
      "soloNivel": 0.7611371450604534,
@@ -1750,8 +1910,7 @@
        "texto": "Mateo Comamala viene cediendo menos games (8% contra 25%): la forma contradice al nivel"
       }
      ],
-     "favorito": "Marko Maric [6]",
-     "fuerza": "claro"
+     "favorito": "Marko Maric [6]"
     },
     "precio": {
      "cuota": 1.38,
@@ -1759,16 +1918,17 @@
      "devig": 0.6714285714285714,
      "discrepancia": -0.01063521192720307,
      "cMinima": 1.5133323990340877,
-     "val": -0.08810516388811185
+     "val": -0.08810516388811185,
+     "valMercado": -0.07342857142857162
     },
     "favorito": "Marko Maric [6]",
-    "confianza": "media",
+    "alertas": [],
+    "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ2.47 de WTN a favor de Marko Maric (13.7 contra 16.17), en Q2: la curva del grupo \"buenas\" (n=528) da 76%. Ajustan: Mateo Comamala viene cediendo menos games (8% contra 25%): la forma contradice al nivel (-10 pts). Queda en 66%. El mercado la paga a 1.38 (67% real, sin su margen); nosotros decimos 66%: estamos de acuerdo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ2.47 de WTN a favor de Marko Maric (13.7 contra 16.17), en Q2: la curva del grupo \"buenas\" (n=528) da 76%. Ajustan: Mateo Comamala viene cediendo menos games (8% contra 25%): la forma contradice al nivel (−10 pts). Queda en 66%. El mercado la paga a 1.38: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p66%",
-     "mercado -1",
-     "mirar"
+     "mercado −1"
     ]
    },
    "lados": [
@@ -1795,7 +1955,7 @@
      "llega": "6-0 6-1"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "mercado −1",
    "ret": false,
    "favWtn": {
     "nombre": "Marko Maric",
@@ -1826,12 +1986,13 @@
    "etapa": "Q2",
    "clave": "m-itf-sui-2026-004",
    "v": {
-    "tipo": "pasar",
+    "tipo": "fuera",
     "nivel": null,
     "precio": null,
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
+    "alertas": [],
     "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
     "banderas": [
      "sin datos de nivel"
@@ -1880,7 +2041,7 @@
    "etapa": "Q2",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9703483657430939,
      "soloNivel": 0.9501014109282301,
@@ -1902,8 +2063,7 @@
        "texto": "Justin Lenders viene cediendo menos games (14% contra 33%)"
       }
      ],
-     "favorito": "Justin Lenders [5]",
-     "fuerza": "muy fuerte"
+     "favorito": "Justin Lenders [5]"
     },
     "precio": {
      "cuota": 1.42,
@@ -1911,16 +2071,17 @@
      "devig": 0.6528117359413204,
      "discrepancia": 0.31753662980177355,
      "cMinima": 1.0305577206122245,
-     "val": 0.3778946793551934
+     "val": 0.3778946793551934,
+     "valMercado": -0.07300733496332512
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ6.28 de WTN a favor de Justin Lenders (10.49 contra 16.77), en Q2: la curva del grupo \"buenas\" (n=528) da 95%. Ajustan: Justin Lenders viene cediendo menos games (14% contra 33%) (+2 pts). Queda en 97%. El mercado la paga a 1.42 (65% real, sin su margen); nosotros decimos 97%: 32 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Justin Lenders [5]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ6.28 de WTN a favor de Justin Lenders (10.49 contra 16.77), en Q2: la curva del grupo \"buenas\" (n=528) da 95%. Ajustan: Justin Lenders viene cediendo menos games (14% contra 33%) (+2 pts). Queda en 97%. El mercado la paga a 1.42: 65% una vez sacado su margen. A esa cuota, la apuesta rinde +38% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p97%",
-     "mercado +32",
-     "trampa: discrepamos con el mercado"
+     "mercado +32"
     ]
    },
    "lados": [
@@ -1947,7 +2108,7 @@
      "llega": "6-2 6-4"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +32",
    "ret": false,
    "favWtn": {
     "nombre": "Justin Lenders",
@@ -1978,7 +2139,7 @@
    "etapa": "Q2",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9450871578177124,
      "soloNivel": 0.8333219562957411,
@@ -2000,8 +2161,7 @@
        "texto": "Massimo Pizzigoni viene cediendo menos games (0% contra 43%)"
       }
      ],
-     "favorito": "Massimo Pizzigoni [1]",
-     "fuerza": "muy fuerte"
+     "favorito": "Massimo Pizzigoni [1]"
     },
     "precio": {
      "cuota": 1.2,
@@ -2009,16 +2169,17 @@
      "devig": 0.7714285714285714,
      "discrepancia": 0.173658586389141,
      "cMinima": 1.0581034687944402,
-     "val": 0.1341045893812547
+     "val": 0.1341045893812547,
+     "valMercado": -0.0742857142857144
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ3.43 de WTN a favor de Massimo Pizzigoni (12.07 contra 15.5), en Q2: la curva del grupo \"buenas\" (n=528) da 83%. Ajustan: Massimo Pizzigoni viene cediendo menos games (0% contra 43%) (+11 pts). Queda en 95%. El mercado la paga a 1.2 (77% real, sin su margen); nosotros decimos 95%: 17 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Massimo Pizzigoni [1]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ3.43 de WTN a favor de Massimo Pizzigoni (12.07 contra 15.5), en Q2: la curva del grupo \"buenas\" (n=528) da 83%. Ajustan: Massimo Pizzigoni viene cediendo menos games (0% contra 43%) (+11 pts). Queda en 95%. El mercado la paga a 1.2: 77% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p95%",
-     "mercado +17",
-     "trampa: discrepamos con el mercado"
+     "mercado +17"
     ]
    },
    "lados": [
@@ -2045,7 +2206,7 @@
      "llega": "6-4 7-6(10)"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +17",
    "ret": false,
    "favWtn": {
     "nombre": "Massimo Pizzigoni",
@@ -2076,7 +2237,7 @@
    "etapa": "Q2",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6390584320423198,
      "soloNivel": 0.6185211554856342,
@@ -2098,8 +2259,7 @@
        "texto": "Aren Baybars viene cediendo menos games (35% contra 38%)"
       }
      ],
-     "favorito": "Aren Baybars [1]",
-     "fuerza": "claro"
+     "favorito": "Aren Baybars [1]"
     },
     "precio": {
      "cuota": 1.12,
@@ -2107,16 +2267,23 @@
      "devig": 0.8282208588957055,
      "discrepancia": -0.1891624268533857,
      "cMinima": 1.5648021368001883,
-     "val": -0.28425455611260175
+     "val": -0.28425455611260175,
+     "valMercado": -0.07239263803680973
     },
     "favorito": "Aren Baybars [1]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.03: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.03 de WTN a favor de Aren Baybars (14.97 contra 16), en Q2: la curva del grupo \"buenas\" (n=528) da 62%. Ajustan: Aren Baybars viene cediendo menos games (35% contra 38%) (+2 pts). Queda en 64%. El mercado la paga a 1.12 (83% real, sin su margen); nosotros decimos 64%: 19 puntos por debajo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ1.03 de WTN a favor de Aren Baybars (14.97 contra 16), en Q2: la curva del grupo \"buenas\" (n=528) da 62%. Ajustan: Aren Baybars viene cediendo menos games (35% contra 38%) (+2 pts). Queda en 64%. El mercado la paga a 1.12: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.03: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
     "banderas": [
      "p64%",
-     "mercado -19",
-     "mirar"
+     "mercado −19",
+     "parejo"
     ]
    },
    "lados": [
@@ -2143,7 +2310,7 @@
      "llega": "7-6(8) 6-2"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "parejo",
    "ret": false,
    "favWtn": {
     "nombre": "Aren Baybars",
@@ -2174,7 +2341,7 @@
    "etapa": "Q2",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.632433742567784,
      "soloNivel": 0.5281222890768869,
@@ -2196,8 +2363,7 @@
        "texto": "Sergio Planella Hernandez viene cediendo menos games (14% contra 29%)"
       }
      ],
-     "favorito": "Sergio Planella Hernandez [5]",
-     "fuerza": "claro"
+     "favorito": "Sergio Planella Hernandez [5]"
     },
     "precio": {
      "cuota": 1.32,
@@ -2205,16 +2371,23 @@
      "devig": 0.7013574660633485,
      "discrepancia": -0.06892372349556453,
      "cMinima": 1.5811933056257201,
-     "val": -0.16518745981052518
+     "val": -0.16518745981052518,
+     "valMercado": -0.07420814479637994
     },
     "favorito": "Sergio Planella Hernandez [5]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.24: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ0.24 de WTN a favor de Sergio Planella Hernandez (10.49 contra 10.73), en Q2: la curva del grupo \"buenas\" (n=528) da 53%. Ajustan: Sergio Planella Hernandez viene cediendo menos games (14% contra 29%) (+10 pts). Queda en 63%. El mercado la paga a 1.32 (70% real, sin su margen); nosotros decimos 63%: 7 puntos por debajo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ0.24 de WTN a favor de Sergio Planella Hernandez (10.49 contra 10.73), en Q2: la curva del grupo \"buenas\" (n=528) da 53%. Ajustan: Sergio Planella Hernandez viene cediendo menos games (14% contra 29%) (+10 pts). Queda en 63%. El mercado la paga a 1.32: 70% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.24: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
     "banderas": [
      "p63%",
-     "mercado -7",
-     "mirar"
+     "mercado −7",
+     "parejo"
     ]
    },
    "lados": [
@@ -2241,7 +2414,7 @@
      "llega": "6-4 6-1"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "parejo",
    "ret": false,
    "favWtn": {
     "nombre": "Sergio Planella Hernandez",
@@ -2272,7 +2445,7 @@
    "etapa": "Q2",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "trampa",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6958097945874039,
      "soloNivel": 0.7881416597495664,
@@ -2294,8 +2467,7 @@
        "texto": "Maxi Carrascosa Diaz viene cediendo menos games (25% contra 42%): la forma contradice al nivel"
       }
      ],
-     "favorito": "Toprak Avcibasi [4]",
-     "fuerza": "claro"
+     "favorito": "Toprak Avcibasi [4]"
     },
     "precio": {
      "cuota": 2.42,
@@ -2303,16 +2475,23 @@
      "devig": 0.3826530612244898,
      "discrepancia": 0.3131567333629141,
      "cMinima": 1.4371743654355607,
-     "val": 0.6838597029015174
+     "val": 0.6838597029015174,
+     "valMercado": -0.07397959183673475
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ2.80 de WTN a favor de Toprak Avcibasi (11.43 contra 14.23), en Q2: la curva del grupo \"buenas\" (n=528) da 79%. Ajustan: Maxi Carrascosa Diaz viene cediendo menos games (25% contra 42%): la forma contradice al nivel (-9 pts). Queda en 70%. El mercado la paga a 2.42 (38% real, sin su margen); nosotros decimos 70%: 31 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Toprak Avcibasi [4]",
+    "alertas": [
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 2.42. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ2.80 de WTN a favor de Toprak Avcibasi (11.43 contra 14.23), en Q2: la curva del grupo \"buenas\" (n=528) da 79%. Ajustan: Maxi Carrascosa Diaz viene cediendo menos games (25% contra 42%): la forma contradice al nivel (−9 pts). Queda en 70%. El mercado la paga a 2.42: 38% una vez sacado su margen. A esa cuota, la apuesta rinde +68% si tenemos razón nosotros y −7% si la tiene el mercado. El favorito por WTN paga 2.42. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p70%",
      "mercado +31",
-     "trampa: discrepamos con el mercado"
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -2339,7 +2518,7 @@
      "llega": "6-2 6-2"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Toprak Avcibasi",
@@ -2370,7 +2549,7 @@
    "etapa": "Q2",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "mirar",
+    "tipo": "mira",
     "nivel": {
      "p": 0.7652544939868327,
      "soloNivel": 0.7400668428083735,
@@ -2392,8 +2571,7 @@
        "texto": "Mateo Luis Alvarez Sarmiento viene cediendo menos games (33% contra 38%)"
       }
      ],
-     "favorito": "Mateo Luis Alvarez Sarmiento [6]",
-     "fuerza": "fuerte"
+     "favorito": "Mateo Luis Alvarez Sarmiento [6]"
     },
     "precio": {
      "cuota": 1.2,
@@ -2401,16 +2579,17 @@
      "devig": 0.7714285714285714,
      "discrepancia": -0.006174077441738701,
      "cMinima": 1.3067548219026943,
-     "val": -0.08169460721580091
+     "val": -0.08169460721580091,
+     "valMercado": -0.0742857142857144
     },
     "favorito": "Mateo Luis Alvarez Sarmiento [6]",
-    "confianza": "media",
+    "alertas": [],
+    "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ2.23 de WTN a favor de Mateo Luis Alvarez Sarmiento (10.44 contra 12.67), en Q2: la curva del grupo \"buenas\" (n=528) da 74%. Ajustan: Mateo Luis Alvarez Sarmiento viene cediendo menos games (33% contra 38%) (+3 pts). Queda en 77%. El mercado la paga a 1.2 (77% real, sin su margen); nosotros decimos 77%: estamos de acuerdo. A 1.2 sobra -8%, o sea que a ese precio la apuesta pierde plata con nuestra propia probabilidad (haría falta 1.31). El partido es bueno, el precio no.",
+    "razon": "Δ2.23 de WTN a favor de Mateo Luis Alvarez Sarmiento (10.44 contra 12.67), en Q2: la curva del grupo \"buenas\" (n=528) da 74%. Ajustan: Mateo Luis Alvarez Sarmiento viene cediendo menos games (33% contra 38%) (+3 pts). Queda en 77%. El mercado la paga a 1.2: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −7% si la tiene el mercado.",
     "banderas": [
      "p77%",
-     "mercado -1",
-     "cuota corta"
+     "mercado −1"
     ]
    },
    "lados": [
@@ -2437,7 +2616,7 @@
      "llega": "7-6(3) 6-2"
     }
    ],
-   "etiqueta": "cuota corta",
+   "etiqueta": "mercado −1",
    "ret": false,
    "favWtn": {
     "nombre": "Mateo Luis Alvarez Sarmiento",
@@ -2468,7 +2647,7 @@
    "etapa": "Q2",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6577598379373416,
      "soloNivel": 0.6711043253152847,
@@ -2490,8 +2669,7 @@
        "texto": "Noah Regas Luis viene cediendo menos games (40% contra 42%): la forma contradice al nivel"
       }
      ],
-     "favorito": "Pablo Aunion [8]",
-     "fuerza": "claro"
+     "favorito": "Pablo Aunion [8]"
     },
     "precio": {
      "cuota": 1.3,
@@ -2499,16 +2677,23 @@
      "devig": 0.7142857142857143,
      "discrepancia": -0.056525876348372694,
      "cMinima": 1.5203117343495518,
-     "val": -0.14491221068145588
+     "val": -0.14491221068145588,
+     "valMercado": -0.0714285714285714
     },
     "favorito": "Pablo Aunion [8]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.52: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.52 de WTN a favor de Pablo Aunion (9.61 contra 11.13), en Q2: la curva del grupo \"buenas\" (n=528) da 67%. Ajustan: Noah Regas Luis viene cediendo menos games (40% contra 42%): la forma contradice al nivel (-1 pts). Queda en 66%. El mercado la paga a 1.3 (71% real, sin su margen); nosotros decimos 66%: 6 puntos por debajo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ1.52 de WTN a favor de Pablo Aunion (9.61 contra 11.13), en Q2: la curva del grupo \"buenas\" (n=528) da 67%. Ajustan: Noah Regas Luis viene cediendo menos games (40% contra 42%): la forma contradice al nivel (−1 pts). Queda en 66%. El mercado la paga a 1.3: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.52: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
     "banderas": [
      "p66%",
-     "mercado -6",
-     "mirar"
+     "mercado −6",
+     "parejo"
     ]
    },
    "lados": [
@@ -2535,7 +2720,7 @@
      "llega": "6-4 6-4"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "parejo",
    "ret": false,
    "favWtn": {
     "nombre": "Pablo Aunion",
@@ -2566,7 +2751,7 @@
    "etapa": "Q2",
    "clave": "m-itf-esp-2026-044",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.753351173128935,
      "soloNivel": 0.6436385990817514,
@@ -2588,8 +2773,7 @@
        "texto": "Pavel Petrov viene cediendo menos games (25% contra 43%)"
       }
      ],
-     "favorito": "Pavel Petrov",
-     "fuerza": "fuerte"
+     "favorito": "Pavel Petrov"
     },
     "precio": {
      "cuota": 3.15,
@@ -2597,16 +2781,28 @@
      "devig": 0.2937219730941704,
      "discrepancia": 0.45962920003476454,
      "cMinima": 1.3274021939152825,
-     "val": 1.373056195356145
+     "val": 1.373056195356145,
+     "valMercado": -0.07477578475336322
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ1.26 de WTN a favor de Pavel Petrov (11.72 contra 12.98), en Q2: la curva del grupo \"buenas\" (n=528) da 64%. Ajustan: Pavel Petrov viene cediendo menos games (25% contra 43%) (+11 pts). Queda en 75%. El mercado la paga a 3.15 (29% real, sin su margen); nosotros decimos 75%: 46 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Pavel Petrov",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.26: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 3.15. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ1.26 de WTN a favor de Pavel Petrov (11.72 contra 12.98), en Q2: la curva del grupo \"buenas\" (n=528) da 64%. Ajustan: Pavel Petrov viene cediendo menos games (25% contra 43%) (+11 pts). Queda en 75%. El mercado la paga a 3.15: 29% una vez sacado su margen. A esa cuota, la apuesta rinde +137% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.26: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 3.15. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p75%",
      "mercado +46",
-     "trampa: discrepamos con el mercado"
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -2633,7 +2829,7 @@
      "llega": "6-3 6-1"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Pavel Petrov",
@@ -2664,7 +2860,7 @@
    "etapa": "Q2",
    "clave": "m-itf-tpe-2026-002",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6682668537090409,
      "soloNivel": 0.6954644358845791,
@@ -2686,8 +2882,7 @@
        "texto": "Chun-Chien Hou viene cediendo menos games (25% contra 29%): la forma contradice al nivel"
       }
      ],
-     "favorito": "Ryuki Matsuda [3]",
-     "fuerza": "claro"
+     "favorito": "Ryuki Matsuda [3]"
     },
     "precio": {
      "cuota": 1.09,
@@ -2695,16 +2890,23 @@
      "devig": 0.8484005563282336,
      "discrepancia": -0.1801337026191927,
      "cMinima": 1.496408200481231,
-     "val": -0.2715891294571453
+     "val": -0.2715891294571453,
+     "valMercado": -0.07524339360222532
     },
     "favorito": "Ryuki Matsuda [3]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.76: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.76 de WTN a favor de Ryuki Matsuda (7.63 contra 9.39), en Q2: la curva del grupo \"buenas\" (n=528) da 70%. Ajustan: Chun-Chien Hou viene cediendo menos games (25% contra 29%): la forma contradice al nivel (-3 pts). Queda en 67%. El mercado la paga a 1.09 (85% real, sin su margen); nosotros decimos 67%: 18 puntos por debajo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ1.76 de WTN a favor de Ryuki Matsuda (7.63 contra 9.39), en Q2: la curva del grupo \"buenas\" (n=528) da 70%. Ajustan: Chun-Chien Hou viene cediendo menos games (25% contra 29%): la forma contradice al nivel (−3 pts). Queda en 67%. El mercado la paga a 1.09: 85% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.76: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
     "banderas": [
      "p67%",
-     "mercado -18",
-     "mirar"
+     "mercado −18",
+     "parejo"
     ]
    },
    "lados": [
@@ -2731,7 +2933,7 @@
      "llega": "6-2 6-2"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "parejo",
    "ret": false,
    "favWtn": {
     "nombre": "Ryuki Matsuda",
@@ -2762,7 +2964,7 @@
    "etapa": "Q2",
    "clave": "m-itf-tpe-2026-002",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.821031030784184,
      "soloNivel": 0.710162212661667,
@@ -2784,8 +2986,7 @@
        "texto": "Ethan Cook viene cediendo menos games (25% contra 47%)"
       }
      ],
-     "favorito": "Ethan Cook [11]",
-     "fuerza": "fuerte"
+     "favorito": "Ethan Cook [11]"
     },
     "precio": {
      "cuota": 1.57,
@@ -2793,16 +2994,28 @@
      "devig": 0.5890052356020942,
      "discrepancia": 0.23202579518208988,
      "cMinima": 1.2179807613908076,
-     "val": 0.289018718331169
+     "val": 0.289018718331169,
+     "valMercado": -0.07526178010471207
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ1.91 de WTN a favor de Ethan Cook (8.45 contra 10.36), en Q2: la curva del grupo \"buenas\" (n=528) da 71%. Ajustan: Ethan Cook viene cediendo menos games (25% contra 47%) (+11 pts). Queda en 82%. El mercado la paga a 1.57 (59% real, sin su margen); nosotros decimos 82%: 23 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Ethan Cook [11]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.91: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ1.91 de WTN a favor de Ethan Cook (8.45 contra 10.36), en Q2: la curva del grupo \"buenas\" (n=528) da 71%. Ajustan: Ethan Cook viene cediendo menos games (25% contra 47%) (+11 pts). Queda en 82%. El mercado la paga a 1.57: 59% una vez sacado su margen. A esa cuota, la apuesta rinde +29% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.91: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p82%",
      "mercado +23",
-     "trampa: discrepamos con el mercado"
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -2829,7 +3042,7 @@
      "llega": "6-1 6-3"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Ethan Cook",
@@ -2860,7 +3073,7 @@
    "etapa": "Q2",
    "clave": "m-itf-tpe-2026-002",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.7501294235317991,
      "soloNivel": 0.6185211554856342,
@@ -2882,8 +3095,7 @@
        "texto": "Ryota Tanuma viene cediendo menos games (20% contra 42%)"
       }
      ],
-     "favorito": "Ryota Tanuma [12]",
-     "fuerza": "fuerte"
+     "favorito": "Ryota Tanuma [12]"
     },
     "precio": {
      "cuota": 1.57,
@@ -2891,16 +3103,28 @@
      "devig": 0.5890052356020942,
      "discrepancia": 0.16112418792970495,
      "cMinima": 1.3331032867525006,
-     "val": 0.1777031949449246
+     "val": 0.1777031949449246,
+     "valMercado": -0.07526178010471207
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ1.03 de WTN a favor de Ryota Tanuma (8.06 contra 9.09), en Q2: la curva del grupo \"buenas\" (n=528) da 62%. Ajustan: Ryota Tanuma viene cediendo menos games (20% contra 42%) (+13 pts). Queda en 75%. El mercado la paga a 1.57 (59% real, sin su margen); nosotros decimos 75%: 16 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Ryota Tanuma [12]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.03: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ1.03 de WTN a favor de Ryota Tanuma (8.06 contra 9.09), en Q2: la curva del grupo \"buenas\" (n=528) da 62%. Ajustan: Ryota Tanuma viene cediendo menos games (20% contra 42%) (+13 pts). Queda en 75%. El mercado la paga a 1.57: 59% una vez sacado su margen. A esa cuota, la apuesta rinde +18% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.03: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p75%",
      "mercado +16",
-     "trampa: discrepamos con el mercado"
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -2927,7 +3151,7 @@
      "llega": "6-2 6-1"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "favorito-caro",
    "ret": true,
    "favWtn": {
     "nombre": "Ryota Tanuma",
@@ -2958,7 +3182,7 @@
    "etapa": "Q2",
    "clave": "m-itf-tpe-2026-002",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6030668060354334,
      "soloNivel": 0.6711043253152846,
@@ -2980,8 +3204,7 @@
        "texto": "Hiromasa Koyama viene cediendo menos games (41% contra 51%): la forma contradice al nivel"
       }
      ],
-     "favorito": "Taisei Ichikawa [2]",
-     "fuerza": "claro"
+     "favorito": "Taisei Ichikawa [2]"
     },
     "precio": {
      "cuota": 1.57,
@@ -2989,16 +3212,28 @@
      "devig": 0.5890052356020942,
      "discrepancia": 0.014061570433339221,
      "cMinima": 1.6581910826331314,
-     "val": -0.05318511452436958
+     "val": -0.05318511452436958,
+     "valMercado": -0.07526178010471207
     },
     "favorito": "Taisei Ichikawa [2]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.52: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.52 de WTN a favor de Taisei Ichikawa (6.93 contra 8.45), en Q2: la curva del grupo \"buenas\" (n=528) da 67%. Ajustan: Hiromasa Koyama viene cediendo menos games (41% contra 51%): la forma contradice al nivel (-7 pts). Queda en 60%. El mercado la paga a 1.57 (59% real, sin su margen); nosotros decimos 60%: estamos de acuerdo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ1.52 de WTN a favor de Taisei Ichikawa (6.93 contra 8.45), en Q2: la curva del grupo \"buenas\" (n=528) da 67%. Ajustan: Hiromasa Koyama viene cediendo menos games (41% contra 51%): la forma contradice al nivel (−7 pts). Queda en 60%. El mercado la paga a 1.57: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −5% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.52: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p60%",
      "mercado +1",
-     "mirar"
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -3025,7 +3260,7 @@
      "llega": "7-5 6-4"
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Taisei Ichikawa",
@@ -3056,7 +3291,7 @@
    "etapa": "Q2",
    "clave": "m-itf-tpe-2026-002",
    "v": {
-    "tipo": "trampa",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6957608658340702,
      "soloNivel": 0.6648608607122807,
@@ -3078,8 +3313,7 @@
        "texto": "Noritaka Koizumi viene cediendo menos games (20% contra 25%)"
       }
      ],
-     "favorito": "Noritaka Koizumi [7]",
-     "fuerza": "claro"
+     "favorito": "Noritaka Koizumi [7]"
     },
     "precio": {
      "cuota": 1.67,
@@ -3087,16 +3321,28 @@
      "devig": 0.553475935828877,
      "discrepancia": 0.14228493000519316,
      "cMinima": 1.4372754334223892,
-     "val": 0.161920645942897
+     "val": 0.161920645942897,
+     "valMercado": -0.0756951871657755
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ1.46 de WTN a favor de Noritaka Koizumi (7.94 contra 9.4), en Q2: la curva del grupo \"buenas\" (n=528) da 66%. Ajustan: Noritaka Koizumi viene cediendo menos games (20% contra 25%) (+3 pts). Queda en 70%. El mercado la paga a 1.67 (55% real, sin su margen); nosotros decimos 70%: 14 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Noritaka Koizumi [7]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.46: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.67. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ1.46 de WTN a favor de Noritaka Koizumi (7.94 contra 9.4), en Q2: la curva del grupo \"buenas\" (n=528) da 66%. Ajustan: Noritaka Koizumi viene cediendo menos games (20% contra 25%) (+3 pts). Queda en 70%. El mercado la paga a 1.67: 55% una vez sacado su margen. A esa cuota, la apuesta rinde +16% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.46: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.67. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p70%",
      "mercado +14",
-     "trampa: discrepamos con el mercado"
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -3123,7 +3369,7 @@
      "llega": "6-3 6-1"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Noritaka Koizumi",
@@ -3154,7 +3400,7 @@
    "etapa": "Q2",
    "clave": "m-itf-tpe-2026-002",
    "v": {
-    "tipo": "mirar",
+    "tipo": "mira",
     "nivel": {
      "p": 0.8065681755046026,
      "soloNivel": 0.6854369532088256,
@@ -3176,8 +3422,7 @@
        "texto": "Kosuke Ogura viene cediendo menos games (25% contra 48%)"
       }
      ],
-     "favorito": "Kosuke Ogura [5]",
-     "fuerza": "fuerte"
+     "favorito": "Kosuke Ogura [5]"
     },
     "precio": {
      "cuota": 1.2,
@@ -3185,16 +3430,23 @@
      "devig": 0.7714285714285714,
      "discrepancia": 0.03513960407603123,
      "cMinima": 1.2398207992453747,
-     "val": -0.03211818939447697
+     "val": -0.03211818939447697,
+     "valMercado": -0.0742857142857144
     },
     "favorito": "Kosuke Ogura [5]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.66: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.66 de WTN a favor de Kosuke Ogura (7.63 contra 9.29), en Q2: la curva del grupo \"buenas\" (n=528) da 69%. Ajustan: Kosuke Ogura viene cediendo menos games (25% contra 48%) (+12 pts). Queda en 81%. El mercado la paga a 1.2 (77% real, sin su margen); nosotros decimos 81%: estamos de acuerdo. A 1.2 sobra -3%, o sea que a ese precio la apuesta pierde plata con nuestra propia probabilidad (haría falta 1.24). El partido es bueno, el precio no.",
+    "razon": "Δ1.66 de WTN a favor de Kosuke Ogura (7.63 contra 9.29), en Q2: la curva del grupo \"buenas\" (n=528) da 69%. Ajustan: Kosuke Ogura viene cediendo menos games (25% contra 48%) (+12 pts). Queda en 81%. El mercado la paga a 1.2: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.66: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
     "banderas": [
      "p81%",
      "mercado +4",
-     "cuota corta"
+     "parejo"
     ]
    },
    "lados": [
@@ -3221,7 +3473,7 @@
      "llega": "7-6(6) 6(1)-7 11-9"
     }
    ],
-   "etiqueta": "cuota corta",
+   "etiqueta": "parejo",
    "ret": false,
    "favWtn": {
     "nombre": "Kosuke Ogura",
@@ -3252,12 +3504,13 @@
    "etapa": "R1",
    "clave": "m-itf-ger-2026-013",
    "v": {
-    "tipo": "pasar",
+    "tipo": "fuera",
     "nivel": null,
     "precio": null,
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
+    "alertas": [],
     "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
     "banderas": [
      "sin datos de nivel"
@@ -3306,7 +3559,7 @@
    "etapa": "R1",
    "clave": "m-itf-ger-2026-013",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.6185211554856342,
      "soloNivel": 0.6185211554856342,
@@ -3322,8 +3575,7 @@
        "texto": "Δ1.03 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Bruno Fernandez [2]",
-     "fuerza": "claro"
+     "favorito": "Bruno Fernandez [2]"
     },
     "precio": {
      "cuota": 1.83,
@@ -3331,16 +3583,28 @@
      "devig": 0.5,
      "discrepancia": 0.11852115548563424,
      "cMinima": 1.6167595742377578,
-     "val": 0.13189371453871068
+     "val": 0.13189371453871068,
+     "valMercado": -0.08499999999999996
     },
     "favorito": "Bruno Fernandez [2]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.03: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.83. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.03 de WTN a favor de Bruno Fernandez (6.23 contra 7.26), en R1: la curva del grupo \"buenas\" (n=528) da 62%. El mercado la paga a 1.83 (50% real, sin su margen); nosotros decimos 62%: 12 puntos por encima. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ1.03 de WTN a favor de Bruno Fernandez (6.23 contra 7.26), en R1: la curva del grupo \"buenas\" (n=528) da 62%. El mercado la paga a 1.83: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.03: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.83. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p62%",
      "mercado +12",
-     "mirar"
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -3367,7 +3631,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Bruno Fernandez",
@@ -3398,7 +3662,7 @@
    "etapa": "R1",
    "clave": "m-itf-ger-2026-013",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5836618498759343,
      "soloNivel": 0.5836618498759343,
@@ -3414,8 +3678,7 @@
        "texto": "Δ0.72 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Thiago Cigarran [3]",
-     "fuerza": "claro"
+     "favorito": "Thiago Cigarran [3]"
     },
     "precio": {
      "cuota": 1.72,
@@ -3423,16 +3686,28 @@
      "devig": 0.5351351351351351,
      "discrepancia": 0.04852671474079917,
      "cMinima": 1.7133208213155688,
-     "val": 0.0038983817866069526
+     "val": 0.0038983817866069526,
+     "valMercado": -0.07956756756756767
     },
     "favorito": "Thiago Cigarran [3]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.72: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.72. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ0.72 de WTN a favor de Thiago Cigarran (7.25 contra 7.97), en R1: la curva del grupo \"buenas\" (n=528) da 58%. El mercado la paga a 1.72 (54% real, sin su margen); nosotros decimos 58%: estamos de acuerdo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ0.72 de WTN a favor de Thiago Cigarran (7.25 contra 7.97), en R1: la curva del grupo \"buenas\" (n=528) da 58%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.72: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.72. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p58%",
      "mercado +5",
-     "mirar"
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -3459,7 +3734,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Thiago Cigarran",
@@ -3490,12 +3765,13 @@
    "etapa": "R1",
    "clave": "m-itf-ger-2026-013",
    "v": {
-    "tipo": "pasar",
+    "tipo": "fuera",
     "nivel": null,
     "precio": null,
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
+    "alertas": [],
     "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
     "banderas": [
      "sin datos de nivel"
@@ -3544,7 +3820,7 @@
    "etapa": "R1",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.8883368245541843,
      "soloNivel": 0.8883368245541843,
@@ -3560,8 +3836,7 @@
        "texto": "Δ4.42 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Daniel Bagnolini",
-     "fuerza": "muy fuerte"
+     "favorito": "Daniel Bagnolini"
     },
     "precio": {
      "cuota": 1.16,
@@ -3569,16 +3844,17 @@
      "devig": 0.7932263814616756,
      "discrepancia": 0.09511044309250871,
      "cMinima": 1.1256991406405497,
-     "val": 0.03047071648285371
+     "val": 0.03047071648285371,
+     "valMercado": -0.07985739750445642
     },
     "favorito": "Daniel Bagnolini",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ4.42 de WTN a favor de Daniel Bagnolini (8.34 contra 12.76), en R1: la curva del grupo \"buenas\" (n=528) da 89%. El mercado la paga a 1.16 (79% real, sin su margen); nosotros decimos 89%: 10 puntos por encima. A 1.16 paga sobre la mínima de 1.13: +3% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ4.42 de WTN a favor de Daniel Bagnolini (8.34 contra 12.76), en R1: la curva del grupo \"buenas\" (n=528) da 89%. El mercado la paga a 1.16: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p89%",
-     "mercado +10",
-     "segura"
+     "mercado +10"
     ]
    },
    "lados": [
@@ -3605,7 +3881,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +10",
    "ret": false,
    "favWtn": {
     "nombre": "Daniel Bagnolini",
@@ -3636,7 +3912,7 @@
    "etapa": "R1",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9390855407427727,
      "soloNivel": 0.9390855407427727,
@@ -3652,8 +3928,7 @@
        "texto": "Δ5.83 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Lenny Couturier",
-     "fuerza": "muy fuerte"
+     "favorito": "Lenny Couturier"
     },
     "precio": {
      "cuota": 1.29,
@@ -3661,16 +3936,17 @@
      "devig": 0.7126948775055678,
      "discrepancia": 0.22639066323720491,
      "cMinima": 1.0648657194839213,
-     "val": 0.21142034755817685
+     "val": 0.21142034755817685,
+     "valMercado": -0.08062360801781754
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ5.83 de WTN a favor de Lenny Couturier (10.94 contra 16.77), en R1: la curva del grupo \"buenas\" (n=528) da 94%. El mercado la paga a 1.29 (71% real, sin su margen); nosotros decimos 94%: 23 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Lenny Couturier",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ5.83 de WTN a favor de Lenny Couturier (10.94 contra 16.77), en R1: la curva del grupo \"buenas\" (n=528) da 94%. El mercado la paga a 1.29: 71% una vez sacado su margen. A esa cuota, la apuesta rinde +21% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p94%",
-     "mercado +23",
-     "trampa: discrepamos con el mercado"
+     "mercado +23"
     ]
    },
    "lados": [
@@ -3697,7 +3973,7 @@
      "llega": "6-2 6-4 · 5-7 6-4 10-5"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +23",
    "ret": false,
    "favWtn": {
     "nombre": "Lenny Couturier",
@@ -3728,7 +4004,7 @@
    "etapa": "R1",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9789185719775261,
      "soloNivel": 0.9789185719775261,
@@ -3744,8 +4020,7 @@
        "texto": "Δ8.18 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Pierre Delage [2]",
-     "fuerza": "muy fuerte"
+     "favorito": "Pierre Delage [2]"
     },
     "precio": {
      "cuota": 1.14,
@@ -3753,16 +4028,17 @@
      "devig": 0.8080808080808082,
      "discrepancia": 0.1708377638967179,
      "cMinima": 1.0215354255460565,
-     "val": 0.11596717205437956
+     "val": 0.11596717205437956,
+     "valMercado": -0.07878787878787874
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ8.18 de WTN a favor de Pierre Delage (6.53 contra 14.71), en R1: la curva del grupo \"buenas\" (n=528) da 98%. El mercado la paga a 1.14 (81% real, sin su margen); nosotros decimos 98%: 17 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Pierre Delage [2]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ8.18 de WTN a favor de Pierre Delage (6.53 contra 14.71), en R1: la curva del grupo \"buenas\" (n=528) da 98%. El mercado la paga a 1.14: 81% una vez sacado su margen. A esa cuota, la apuesta rinde +12% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p98%",
-     "mercado +17",
-     "trampa: discrepamos con el mercado"
+     "mercado +17"
     ]
    },
    "lados": [
@@ -3789,7 +4065,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +17",
    "ret": false,
    "favWtn": {
     "nombre": "Pierre Delage",
@@ -3821,7 +4097,7 @@
    "etapa": "R1",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5386318502216632,
      "soloNivel": 0.5386318502216632,
@@ -3837,16 +4113,36 @@
        "texto": "Δ0.33 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Mathieu Scaglia [8]",
-     "fuerza": "sin lado"
+     "favorito": "Mathieu Scaglia [8]"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ0.33 de WTN a favor de Mathieu Scaglia (8.49 contra 8.82), en R1: la curva del grupo \"buenas\" (n=528) da 54%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 1.75,
+     "cuotaRival": 1.91,
+     "devig": 0.5218579234972677,
+     "discrepancia": 0.016773926724395483,
+     "cMinima": 1.856555641090422,
+     "val": -0.057394262112089534,
+     "valMercado": -0.0867486338797816
+    },
+    "favorito": "Mathieu Scaglia [8]",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.33: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.75. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ0.33 de WTN a favor de Mathieu Scaglia (8.49 contra 8.82), en R1: la curva del grupo \"buenas\" (n=528) da 54%. El mercado la paga a 1.75: 52% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.33: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.75. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
-     "p54% bajo el piso"
+     "p54%",
+     "mercado +2",
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -3873,7 +4169,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "p54% bajo el piso",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Mathieu Scaglia",
@@ -3904,7 +4200,7 @@
    "etapa": "R1",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5011729978480517,
      "soloNivel": 0.5011729978480517,
@@ -3920,16 +4216,36 @@
        "texto": "Δ0.01 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Tanguy Genier",
-     "fuerza": "sin lado"
+     "favorito": "Tanguy Genier"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ0.01 de WTN a favor de Tanguy Genier (8.48 contra 8.49), en R1: la curva del grupo \"buenas\" (n=528) da 50%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 1.6,
+     "cuotaRival": 2.15,
+     "devig": 0.5733333333333334,
+     "discrepancia": -0.07216033548528167,
+     "cMinima": 1.9953189902365518,
+     "val": -0.1981232034431173,
+     "valMercado": -0.08266666666666656
+    },
+    "favorito": "Tanguy Genier",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.01: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.6. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ0.01 de WTN a favor de Tanguy Genier (8.48 contra 8.49), en R1: la curva del grupo \"buenas\" (n=528) da 50%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −20% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.01: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.6. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
-     "p50% bajo el piso"
+     "p50%",
+     "mercado −7",
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -3956,7 +4272,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "p50% bajo el piso",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Tanguy Genier",
@@ -3987,7 +4303,7 @@
    "etapa": "R1",
    "clave": "m-itf-sui-2026-004",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5664653034064665,
      "soloNivel": 0.5664653034064665,
@@ -4003,16 +4319,36 @@
        "texto": "Δ0.57 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Laurin Aerne",
-     "fuerza": "sin lado"
+     "favorito": "Laurin Aerne"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ0.57 de WTN a favor de Laurin Aerne (12.33 contra 12.9), en R1: la curva del grupo \"buenas\" (n=528) da 57%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 1.67,
+     "cuotaRival": 2.05,
+     "devig": 0.5510752688172044,
+     "discrepancia": 0.015390034589262136,
+     "cMinima": 1.765333188081338,
+     "val": -0.054002943311201035,
+     "valMercado": -0.07970430107526871
+    },
+    "favorito": "Laurin Aerne",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.57: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.67. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ0.57 de WTN a favor de Laurin Aerne (12.33 contra 12.9), en R1: la curva del grupo \"buenas\" (n=528) da 57%. El mercado la paga a 1.67: 55% una vez sacado su margen. A esa cuota, la apuesta rinde −5% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.57: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.67. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
-     "p57% bajo el piso"
+     "p57%",
+     "mercado +2",
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -4039,7 +4375,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "p57% bajo el piso",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Laurin Aerne",
@@ -4070,7 +4406,7 @@
    "etapa": "R1",
    "clave": "m-itf-sui-2026-004",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9856871884159888,
      "soloNivel": 0.9856871884159888,
@@ -4086,8 +4422,7 @@
        "texto": "Δ9.02 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Dimitris Sakellaridis [5]",
-     "fuerza": "muy fuerte"
+     "favorito": "Dimitris Sakellaridis [5]"
     },
     "precio": {
      "cuota": 1.14,
@@ -4095,16 +4430,17 @@
      "devig": 0.8080808080808082,
      "discrepancia": 0.1776063803351806,
      "cMinima": 1.0145206428086095,
-     "val": 0.12368339479422708
+     "val": 0.12368339479422708,
+     "valMercado": -0.07878787878787874
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ9.02 de WTN a favor de Dimitris Sakellaridis (6.94 contra 15.96), en R1: la curva del grupo \"buenas\" (n=528) da 99%. El mercado la paga a 1.14 (81% real, sin su margen); nosotros decimos 99%: 18 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Dimitris Sakellaridis [5]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ9.02 de WTN a favor de Dimitris Sakellaridis (6.94 contra 15.96), en R1: la curva del grupo \"buenas\" (n=528) da 99%. El mercado la paga a 1.14: 81% una vez sacado su margen. A esa cuota, la apuesta rinde +12% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p99%",
-     "mercado +18",
-     "trampa: discrepamos con el mercado"
+     "mercado +18"
     ]
    },
    "lados": [
@@ -4131,7 +4467,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +18",
    "ret": false,
    "favWtn": {
     "nombre": "Dimitris Sakellaridis",
@@ -4162,7 +4498,7 @@
    "etapa": "R1",
    "clave": "m-itf-rou-2026-013",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.8709791478249448,
      "soloNivel": 0.8709791478249448,
@@ -4178,8 +4514,7 @@
        "texto": "Δ4.07 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Radu David Turcanu [5]",
-     "fuerza": "muy fuerte"
+     "favorito": "Radu David Turcanu [5]"
     },
     "precio": {
      "cuota": 1.15,
@@ -4187,16 +4522,17 @@
      "devig": 0.7946428571428572,
      "discrepancia": 0.07633629068208758,
      "cMinima": 1.1481331125977619,
-     "val": 0.00162601999868639
+     "val": 0.00162601999868639,
+     "valMercado": -0.08616071428571426
     },
     "favorito": "Radu David Turcanu [5]",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ4.07 de WTN a favor de Radu David Turcanu (6.73 contra 10.8), en R1: la curva del grupo \"buenas\" (n=528) da 87%. El mercado la paga a 1.15 (79% real, sin su margen); nosotros decimos 87%: 8 puntos por encima. A 1.15 paga sobre la mínima de 1.15: +0% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ4.07 de WTN a favor de Radu David Turcanu (6.73 contra 10.8), en R1: la curva del grupo \"buenas\" (n=528) da 87%. El mercado la paga a 1.15: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −9% si la tiene el mercado.",
     "banderas": [
      "p87%",
-     "mercado +8",
-     "segura"
+     "mercado +8"
     ]
    },
    "lados": [
@@ -4223,7 +4559,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +8",
    "ret": false,
    "favWtn": {
     "nombre": "Radu David Turcanu",
@@ -4254,7 +4590,7 @@
    "etapa": "R1",
    "clave": "m-itf-rou-2026-013",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9492040902935439,
      "soloNivel": 0.9492040902935439,
@@ -4270,8 +4606,7 @@
        "texto": "Δ6.24 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Anas Mazdrashki [7]",
-     "fuerza": "muy fuerte"
+     "favorito": "Anas Mazdrashki [7]"
     },
     "precio": {
      "cuota": 1.28,
@@ -4279,16 +4614,17 @@
      "devig": 0.717439293598234,
      "discrepancia": 0.23176479669530992,
      "cMinima": 1.0535142128293478,
-     "val": 0.21498123557573634
+     "val": 0.21498123557573634,
+     "valMercado": -0.08167770419426046
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ6.24 de WTN a favor de Anas Mazdrashki (7.31 contra 13.55), en R1: la curva del grupo \"buenas\" (n=528) da 95%. El mercado la paga a 1.28 (72% real, sin su margen); nosotros decimos 95%: 23 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Anas Mazdrashki [7]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ6.24 de WTN a favor de Anas Mazdrashki (7.31 contra 13.55), en R1: la curva del grupo \"buenas\" (n=528) da 95%. El mercado la paga a 1.28: 72% una vez sacado su margen. A esa cuota, la apuesta rinde +21% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p95%",
-     "mercado +23",
-     "trampa: discrepamos con el mercado"
+     "mercado +23"
     ]
    },
    "lados": [
@@ -4315,7 +4651,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +23",
    "ret": false,
    "favWtn": {
     "nombre": "Anas Mazdrashki",
@@ -4346,7 +4682,7 @@
    "etapa": "R1",
    "clave": "m-itf-rou-2026-013",
    "v": {
-    "tipo": "mirar",
+    "tipo": "mira",
     "nivel": {
      "p": 0.949654643745754,
      "soloNivel": 0.949654643745754,
@@ -4362,8 +4698,7 @@
        "texto": "Δ6.26 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Rares Teodor Pieleanu",
-     "fuerza": "muy fuerte"
+     "favorito": "Rares Teodor Pieleanu"
     },
     "precio": {
      "cuota": 1.09,
@@ -4371,16 +4706,23 @@
      "devig": 0.841799709724238,
      "discrepancia": 0.10785493402151602,
      "cMinima": 1.053014384319406,
-     "val": 0.035123561682872007
+     "val": 0.035123561682872007,
+     "valMercado": -0.08243831640058052
     },
     "favorito": "Rares Teodor Pieleanu",
+    "alertas": [
+     {
+      "clave": "jr-incognito",
+      "texto": "Alejandro Mateo Berge Nourescu es junior y no tengo su ranking junior: no sé si es un top 60, que es el tramo donde el WTN se da vuelta."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ6.26 de WTN a favor de Rares Teodor Pieleanu (9.07 contra 15.33), en R1: la curva del grupo \"buenas\" (n=528) da 95%. El mercado la paga a 1.09 (84% real, sin su margen); nosotros decimos 95%: 11 puntos por encima. A 1.09 el precio da (+4%), pero no es segura: el rival es un junior que no puedo calificar. Alejandro Mateo Berge Nourescu es junior y no tengo su ranking junior en ninguna entry list: no sé si es un top 60 —donde el favorito gana solo 22%— o uno del montón.",
+    "razon": "Δ6.26 de WTN a favor de Rares Teodor Pieleanu (9.07 contra 15.33), en R1: la curva del grupo \"buenas\" (n=528) da 95%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −8% si la tiene el mercado. Alejandro Mateo Berge Nourescu es junior y no tengo su ranking junior: no sé si es un top 60, que es el tramo donde el WTN se da vuelta.",
     "banderas": [
      "p95%",
      "mercado +11",
-     "mirar"
+     "jr-incognito"
     ]
    },
    "lados": [
@@ -4407,7 +4749,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "jr-incognito",
    "ret": false,
    "favWtn": {
     "nombre": "Rares Teodor Pieleanu",
@@ -4438,7 +4780,7 @@
    "etapa": "R1",
    "clave": "m-itf-slo-2026-009",
    "v": {
-    "tipo": "mirar",
+    "tipo": "mira",
     "nivel": {
      "p": 0.7568458508129113,
      "soloNivel": 0.7568458508129113,
@@ -4454,8 +4796,7 @@
        "texto": "Δ2.42 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Samuele Pieri [1]",
-     "fuerza": "fuerte"
+     "favorito": "Samuele Pieri [1]"
     },
     "precio": {
      "cuota": 1.3,
@@ -4463,16 +4804,17 @@
      "devig": 0.7045454545454546,
      "discrepancia": 0.05230039626745675,
      "cMinima": 1.3212730160651898,
-     "val": -0.016100393943215274
+     "val": -0.016100393943215274,
+     "valMercado": -0.084090909090909
     },
     "favorito": "Samuele Pieri [1]",
-    "confianza": "media",
+    "alertas": [],
+    "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ2.42 de WTN a favor de Samuele Pieri (4.21 contra 6.63), en R1: la curva del grupo \"buenas\" (n=528) da 76%. El mercado la paga a 1.3 (70% real, sin su margen); nosotros decimos 76%: 5 puntos por encima. A 1.3 sobra -2%, o sea que a ese precio la apuesta pierde plata con nuestra propia probabilidad (haría falta 1.32). El partido es bueno, el precio no.",
+    "razon": "Δ2.42 de WTN a favor de Samuele Pieri (4.21 contra 6.63), en R1: la curva del grupo \"buenas\" (n=528) da 76%. El mercado la paga a 1.3: 70% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p76%",
-     "mercado +5",
-     "cuota corta"
+     "mercado +5"
     ]
    },
    "lados": [
@@ -4499,7 +4841,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "cuota corta",
+   "etiqueta": "mercado +5",
    "ret": false,
    "favWtn": {
     "nombre": "Samuele Pieri",
@@ -4530,7 +4872,7 @@
    "etapa": "R1",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9533342906712922,
      "soloNivel": 0.9533342906712922,
@@ -4546,8 +4888,7 @@
        "texto": "Δ6.43 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Kenny De Schepper [6]",
-     "fuerza": "muy fuerte"
+     "favorito": "Kenny De Schepper [6]"
     },
     "precio": {
      "cuota": 1.19,
@@ -4555,16 +4896,17 @@
      "devig": 0.7729007633587786,
      "discrepancia": 0.1804335273125136,
      "cMinima": 1.0489499955947752,
-     "val": 0.13446780589883756
+     "val": 0.13446780589883756,
+     "valMercado": -0.08024809160305357
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ6.43 de WTN a favor de Kenny De Schepper (5.64 contra 12.07), en R1: la curva del grupo \"buenas\" (n=528) da 95%. El mercado la paga a 1.19 (77% real, sin su margen); nosotros decimos 95%: 18 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Kenny De Schepper [6]",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ6.43 de WTN a favor de Kenny De Schepper (5.64 contra 12.07), en R1: la curva del grupo \"buenas\" (n=528) da 95%. El mercado la paga a 1.19: 77% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p95%",
-     "mercado +18",
-     "trampa: discrepamos con el mercado"
+     "mercado +18"
     ]
    },
    "lados": [
@@ -4591,7 +4933,7 @@
      "llega": "6-0 6-0 · 6-0 6-2"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +18",
    "ret": false,
    "favWtn": {
     "nombre": "Kenny De Schepper",
@@ -4622,12 +4964,13 @@
    "etapa": "R1",
    "clave": "m-itf-fra-2026-025",
    "v": {
-    "tipo": "pasar",
+    "tipo": "fuera",
     "nivel": null,
     "precio": null,
     "favorito": "—",
     "confianza": "baja",
     "mercado": "pasar",
+    "alertas": [],
     "razon": "Falta el WTN de alguno de los dos: no se puede comparar nivel.",
     "banderas": [
      "sin datos de nivel"
@@ -4676,7 +5019,7 @@
    "etapa": "R1",
    "clave": "m-itf-slo-2026-009",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.7761518041604849,
      "soloNivel": 0.7761518041604849,
@@ -4692,8 +5035,7 @@
        "texto": "Δ2.65 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Giuseppe La Vela [5]",
-     "fuerza": "fuerte"
+     "favorito": "Giuseppe La Vela [5]"
     },
     "precio": {
      "cuota": 1.29,
@@ -4701,16 +5043,17 @@
      "devig": 0.7126948775055678,
      "discrepancia": 0.06345692665491709,
      "cMinima": 1.2884077504421159,
-     "val": 0.0012358273670256548
+     "val": 0.0012358273670256548,
+     "valMercado": -0.08062360801781754
     },
     "favorito": "Giuseppe La Vela [5]",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ2.65 de WTN a favor de Giuseppe La Vela (6.25 contra 8.9), en R1: la curva del grupo \"buenas\" (n=528) da 78%. El mercado la paga a 1.29 (71% real, sin su margen); nosotros decimos 78%: 6 puntos por encima. A 1.29 paga sobre la mínima de 1.29: +0% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ2.65 de WTN a favor de Giuseppe La Vela (6.25 contra 8.9), en R1: la curva del grupo \"buenas\" (n=528) da 78%. El mercado la paga a 1.29: 71% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p78%",
-     "mercado +6",
-     "segura"
+     "mercado +6"
     ]
    },
    "lados": [
@@ -4737,7 +5080,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +6",
    "ret": false,
    "favWtn": {
     "nombre": "Giuseppe La Vela",
@@ -4768,7 +5111,7 @@
    "etapa": "R1",
    "clave": "m-itf-ned-2026-006",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.7516276455973372,
      "soloNivel": 0.7516276455973372,
@@ -4784,8 +5127,7 @@
        "texto": "Δ2.36 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Jelle Sels [5]",
-     "fuerza": "fuerte"
+     "favorito": "Jelle Sels [5]"
     },
     "precio": {
      "cuota": 1.83,
@@ -4793,16 +5135,23 @@
      "devig": 0.5,
      "discrepancia": 0.2516276455973372,
      "cMinima": 1.3304460072184747,
-     "val": 0.3754785914431271
+     "val": 0.3754785914431271,
+     "valMercado": -0.08499999999999996
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ2.36 de WTN a favor de Jelle Sels (5.31 contra 7.67), en R1: la curva del grupo \"buenas\" (n=528) da 75%. El mercado la paga a 1.83 (50% real, sin su margen); nosotros decimos 75%: 25 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Jelle Sels [5]",
+    "alertas": [
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.83. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ2.36 de WTN a favor de Jelle Sels (5.31 contra 7.67), en R1: la curva del grupo \"buenas\" (n=528) da 75%. El mercado la paga a 1.83: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +38% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 1.83. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p75%",
      "mercado +25",
-     "trampa: discrepamos con el mercado"
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -4829,7 +5178,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Jelle Sels",
@@ -4860,7 +5209,7 @@
    "etapa": "R1",
    "clave": "m-itf-ned-2026-006",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5374656434077013,
      "soloNivel": 0.5374656434077013,
@@ -4876,16 +5225,36 @@
        "texto": "Δ0.32 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Fons Van Sambeek",
-     "fuerza": "sin lado"
+     "favorito": "Fons Van Sambeek"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ0.32 de WTN a favor de Fons Van Sambeek (7.97 contra 8.29), en R1: la curva del grupo \"buenas\" (n=528) da 54%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 2.07,
+     "cuotaRival": 1.65,
+     "devig": 0.4435483870967742,
+     "discrepancia": 0.09391725631092712,
+     "cMinima": 1.8605840433998446,
+     "val": 0.11255388185394155,
+     "valMercado": -0.08185483870967747
+    },
+    "favorito": "Fons Van Sambeek",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.32: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ0.32 de WTN a favor de Fons Van Sambeek (7.97 contra 8.29), en R1: la curva del grupo \"buenas\" (n=528) da 54%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +11% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.32: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
-     "p54% bajo el piso"
+     "p54%",
+     "mercado +9",
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -4912,7 +5281,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "p54% bajo el piso",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Fons Van Sambeek",
@@ -4943,7 +5312,7 @@
    "etapa": "R1",
    "clave": "m-itf-ned-2026-006",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.710162212661667,
      "soloNivel": 0.710162212661667,
@@ -4959,8 +5328,7 @@
        "texto": "Δ1.91 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Eric Vanshelboim [2]",
-     "fuerza": "claro"
+     "favorito": "Eric Vanshelboim [2]"
     },
     "precio": {
      "cuota": 1.53,
@@ -4968,16 +5336,28 @@
      "devig": 0.6005221932114883,
      "discrepancia": 0.10964001945017876,
      "cMinima": 1.4081289910540713,
-     "val": 0.08654818537235065
+     "val": 0.08654818537235065,
+     "valMercado": -0.08120104438642295
     },
     "favorito": "Eric Vanshelboim [2]",
-    "confianza": "alta",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 1.91: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 1.53. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ1.91 de WTN a favor de Eric Vanshelboim (5.88 contra 7.79), en R1: la curva del grupo \"buenas\" (n=528) da 71%. El mercado la paga a 1.53 (60% real, sin su margen); nosotros decimos 71%: 11 puntos por encima. A 1.53 paga sobre la mínima de 1.41: +9% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ1.91 de WTN a favor de Eric Vanshelboim (5.88 contra 7.79), en R1: la curva del grupo \"buenas\" (n=528) da 71%. El mercado la paga a 1.53: 60% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.91: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.53. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
      "p71%",
      "mercado +11",
-     "segura"
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -5004,7 +5384,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Eric Vanshelboim",
@@ -5035,7 +5415,7 @@
    "etapa": "R1",
    "clave": "m-itf-arg-2026-008",
    "v": {
-    "tipo": "mirar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5802373959164978,
      "soloNivel": 0.5802373959164978,
@@ -5051,8 +5431,7 @@
        "texto": "Δ0.69 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Mateo Del Pino",
-     "fuerza": "claro"
+     "favorito": "Mateo Del Pino"
     },
     "precio": {
      "cuota": 1.3,
@@ -5060,16 +5439,23 @@
      "devig": 0.7045454545454546,
      "discrepancia": -0.12430805862895677,
      "cMinima": 1.7234325244074933,
-     "val": -0.24569138530855283
+     "val": -0.24569138530855283,
+     "valMercado": -0.084090909090909
     },
     "favorito": "Mateo Del Pino",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.69: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     }
+    ],
     "confianza": "media",
     "mercado": "gana",
-    "razon": "Δ0.69 de WTN a favor de Mateo Del Pino (10.51 contra 11.2), en R1: la curva del grupo \"buenas\" (n=528) da 58%. El mercado la paga a 1.3 (70% real, sin su margen); nosotros decimos 58%: 12 puntos por debajo. Hay lado pero no llega a 70%, que es el piso desde el que medimos que rinde.",
+    "razon": "Δ0.69 de WTN a favor de Mateo Del Pino (10.51 contra 11.2), en R1: la curva del grupo \"buenas\" (n=528) da 58%. El mercado la paga a 1.3: 70% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.69: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
     "banderas": [
      "p58%",
-     "mercado -12",
-     "mirar"
+     "mercado −12",
+     "parejo"
     ]
    },
    "lados": [
@@ -5096,7 +5482,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "mirar",
+   "etiqueta": "parejo",
    "ret": false,
    "favWtn": {
     "nombre": "Mateo Del Pino",
@@ -5127,7 +5513,7 @@
    "etapa": "R1",
    "clave": "m-itf-usa-2026-035",
    "v": {
-    "tipo": "segura",
+    "tipo": "mira",
     "nivel": {
      "p": 0.8306988144638421,
      "soloNivel": 0.8306988144638421,
@@ -5143,8 +5529,7 @@
        "texto": "Δ3.39 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Ryan Colby [1]",
-     "fuerza": "fuerte"
+     "favorito": "Ryan Colby [1]"
     },
     "precio": {
      "cuota": 1.27,
@@ -5152,16 +5537,17 @@
      "devig": 0.7221006564551422,
      "discrepancia": 0.10859815800869987,
      "cMinima": 1.2038057387206336,
-     "val": 0.05498749436907957
+     "val": 0.05498749436907957,
+     "valMercado": -0.08293216630196942
     },
     "favorito": "Ryan Colby [1]",
+    "alertas": [],
     "confianza": "alta",
     "mercado": "gana",
-    "razon": "Δ3.39 de WTN a favor de Ryan Colby (6.3 contra 9.69), en R1: la curva del grupo \"buenas\" (n=528) da 83%. El mercado la paga a 1.27 (72% real, sin su margen); nosotros decimos 83%: 11 puntos por encima. A 1.27 paga sobre la mínima de 1.20: +5% de valor. Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.",
+    "razon": "Δ3.39 de WTN a favor de Ryan Colby (6.3 contra 9.69), en R1: la curva del grupo \"buenas\" (n=528) da 83%. El mercado la paga a 1.27: 72% una vez sacado su margen. A esa cuota, la apuesta rinde +5% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p83%",
-     "mercado +11",
-     "segura"
+     "mercado +11"
     ]
    },
    "lados": [
@@ -5188,7 +5574,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "segura",
+   "etiqueta": "mercado +11",
    "ret": false,
    "favWtn": {
     "nombre": "Ryan Colby",
@@ -5219,7 +5605,7 @@
    "etapa": "R1",
    "clave": "m-itf-sui-2026-004",
    "v": {
-    "tipo": "trampa",
+    "tipo": "mira",
     "nivel": {
      "p": 0.9890090143965281,
      "soloNivel": 0.9890090143965281,
@@ -5235,8 +5621,7 @@
        "texto": "Δ9.59 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Noah Karma",
-     "fuerza": "muy fuerte"
+     "favorito": "Noah Karma"
     },
     "precio": {
      "cuota": 1.09,
@@ -5244,16 +5629,17 @@
      "devig": 0.8394698085419735,
      "discrepancia": 0.1495392058545546,
      "cMinima": 1.0111131298537035,
-     "val": 0.07801982569221577
+     "val": 0.07801982569221577,
+     "valMercado": -0.08497790868924882
     },
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ9.59 de WTN a favor de Noah Karma (8.32 contra 17.91), en R1: la curva del grupo \"buenas\" (n=528) da 99%. El mercado la paga a 1.09 (84% real, sin su margen); nosotros decimos 99%: 15 puntos por encima. Esa distancia es la señal más mala que tenemos: cuando le sacamos más de 12 puntos al mercado, el favorito ganó 4 de 13 y la apuesta rindió −57%. El precio sabe algo que nosotros no.",
+    "favorito": "Noah Karma",
+    "alertas": [],
+    "confianza": "alta",
+    "mercado": "gana",
+    "razon": "Δ9.59 de WTN a favor de Noah Karma (8.32 contra 17.91), en R1: la curva del grupo \"buenas\" (n=528) da 99%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −8% si la tiene el mercado.",
     "banderas": [
      "p99%",
-     "mercado +15",
-     "trampa: discrepamos con el mercado"
+     "mercado +15"
     ]
    },
    "lados": [
@@ -5280,7 +5666,7 @@
      "llega": "6-4 2-6 10-4 · 6-0 6-4"
     }
    ],
-   "etiqueta": "trampa: discrepamos con el mercado",
+   "etiqueta": "mercado +15",
    "ret": false,
    "favWtn": {
     "nombre": "Noah Karma",
@@ -5311,7 +5697,7 @@
    "etapa": "R1",
    "clave": "m-itf-sui-2026-004",
    "v": {
-    "tipo": "pasar",
+    "tipo": "flojo",
     "nivel": {
      "p": 0.5187591905654846,
      "soloNivel": 0.5187591905654846,
@@ -5327,16 +5713,36 @@
        "texto": "Δ0.16 de WTN en R1 (grupo \"buenas\", n=528)"
       }
      ],
-     "favorito": "Sam Kydd Baumgartner Q",
-     "fuerza": "sin lado"
+     "favorito": "Sam Kydd Baumgartner Q"
     },
-    "precio": null,
-    "favorito": "—",
-    "confianza": "baja",
-    "mercado": "pasar",
-    "razon": "Δ0.16 de WTN a favor de Sam Kydd Baumgartner (10.17 contra 10.33), en R1: la curva del grupo \"buenas\" (n=528) da 52%. No llega al piso de 58%: acá no hay lado, es el azar con otro nombre.",
+    "precio": {
+     "cuota": 2.42,
+     "cuotaRival": 1.47,
+     "devig": 0.37789203084832906,
+     "discrepancia": 0.14086715971715552,
+     "cMinima": 1.9276766912021905,
+     "val": 0.2553972411684726,
+     "valMercado": -0.08550128534704371
+    },
+    "favorito": "Sam Kydd Baumgartner Q",
+    "alertas": [
+     {
+      "clave": "parejo",
+      "texto": "ΔWTN de 0.16: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+     },
+     {
+      "clave": "favorito-caro",
+      "texto": "El favorito por WTN paga 2.42. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     }
+    ],
+    "confianza": "media",
+    "mercado": "gana",
+    "razon": "Δ0.16 de WTN a favor de Sam Kydd Baumgartner (10.17 contra 10.33), en R1: la curva del grupo \"buenas\" (n=528) da 52%. El mercado la paga a 2.42: 38% una vez sacado su margen. A esa cuota, la apuesta rinde +26% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.16: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.42. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
     "banderas": [
-     "p52% bajo el piso"
+     "p52%",
+     "mercado +14",
+     "parejo",
+     "favorito-caro"
     ]
    },
    "lados": [
@@ -5363,7 +5769,7 @@
      "llega": ""
     }
    ],
-   "etiqueta": "p52% bajo el piso",
+   "etiqueta": "favorito-caro",
    "ret": false,
    "favWtn": {
     "nombre": "Sam Kydd Baumgartner",

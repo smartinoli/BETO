@@ -77,7 +77,7 @@ function vieneDe(l) {
 }
 const pct = v => v == null ? '' : (v * 100).toFixed(0);
 const n2 = v => v == null ? '' : (+v).toFixed(2);
-const TIPO = { segura: 'segura', anomalia: 'anomalía', mirar: 'mirar', pasar: 'pasar', 'sin-precio': 'sin precio' };
+const TIPO = { mira: 'con lado', flojo: 'flojo', fuera: 'fuera', 'sin-precio': 'sin precio' };
 const torneos = [...new Set(filas.map(f => f.torneo))].sort();
 const etapas = [...new Set(filas.map(f => f.etapa))].sort();
 
@@ -180,7 +180,7 @@ td.pos{color:var(--acento);font-weight:600} td.tibio{color:var(--ambar)} td.neg{
 .fl{display:inline-block;font-size:9.5px;padding:1px 5px;border-radius:3px;margin-right:3px;
   background:var(--ambar-suave);color:var(--ambar);font-weight:600}
 td.c-tp{font-family:"IBM Plex Sans",sans-serif;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-.t-segura{color:var(--acento)} .t-anomalia{color:var(--ambar)} .t-mirar{color:var(--tinta2)} .t-pasar{color:var(--tinta3)}
+.t-mira{color:var(--acento)} .t-flojo{color:var(--tinta2)} .t-fuera{color:var(--tinta3)} .t-sin-precio{color:var(--tinta3)}
 .grupos{border-left:2px solid var(--linea);padding-left:14px;margin-left:2px}
 .pie{margin-top:10px;font-size:11px;color:var(--tinta2);line-height:1.6;max-width:130ch}
 .pie code{font-family:"IBM Plex Mono",monospace;color:var(--tinta)}
