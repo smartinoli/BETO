@@ -343,18 +343,29 @@ for (const q of cuotas) {
    ============================================================ */
 const MALAS = new Set(['parejo', 'jr-incognito']);
 
-/* Cada partido puede dar DOS jugadas y hasta ayer el sistema sólo miraba
-   una. Ahora se evalúan las dos y se elige la mejor de cada partido:
+/* EL MANUAL (acordado con Sebastián el 2026-08-26, tras el decantador):
+   por ahora hay UNA casilla que apunta a plata, más la brecha.
 
-   A FAVOR — al favorito por WTN. Sale del modelo: nuestra probabilidad
-   contra la cuota. Es lo que veníamos haciendo.
+   LA CASILLA — el favorito del mercado paga entre 1.20 y 1.39 Y nuestro
+   modelo le da 70% o más. Es la única celda del decantador donde algo
+   manda: 9/9 en el registro, rindiendo +26%. Con el modelo tibio, ese
+   mismo favorito cayó 4 de 7 — se pasa.
 
-   EN CONTRA — al otro, cuando Betano paga a NUESTRO favorito sobre 1.50.
-   No sale del modelo sino de una regla de precio: si el rating dice que
-   A es mejor y el precio lo pone parejo o abajo, el mercado sabe algo que
-   el rating no. Medido, ahí el favorito por WTN pierde 63% (12 de 19) y
-   la contra rindió +11%. Es la única jugada del sistema que paga cuota
-   larga, y es la que Sebastián venía pidiendo. */
+   LA BRECHA — Betano paga 3%+ por encima del precio justo de bet365.
+   No depende de nuestro modelo y vale en cualquier tramo (Wygona, Brown).
+
+   TODO LO DEMÁS SE MIRA, NO SE APUESTA: bajo 1.20 no paga la pena;
+   en 1.40–1.99 ningún criterio separa todavía (y llevarle la contra al
+   precio ahí perdió 5 de 6); sobre 2.00 no sabe nadie. La contra queda
+   en observación en el historial, no en las elegidas. */
+const casillaDe = f => {
+  if (!f.q.g1 || !f.q.g2 || !f.v?.nivel) return null;
+  const ladoFm = f.q.g1 <= f.q.g2 ? 1 : 2;
+  const acuerdo = (f.v.nivel.favorito.startsWith(f.f1.nombre) ? 1 : 2) === ladoFm;
+  return { cFm: ladoFm === 1 ? f.q.g1 : f.q.g2, ladoFm, acuerdo,
+    quien: (ladoFm === 1 ? f.f1 : f.f2).nombre,
+    pFm: acuerdo ? f.v.nivel.p : 1 - f.v.nivel.p };
+};
 const jugadaDe = f => {
   if (!f.v?.precio) return null;
   /* la brecha manda: es la única jugada que no depende de nuestro modelo */
@@ -362,23 +373,31 @@ const jugadaDe = f => {
     return { tipo: 'brecha', quien: f.brecha.mejor.lado, cuota: f.brecha.mejor.cuota,
       rinde: f.brecha.mejor.ev, sharp: f.brecha.mejor.sharp, pSharp: f.brecha.mejor.p };
   const mal = (f.v.alertas || []).some(a => MALAS.has(a.clave));
-  const c = f.v.contra;
-  if (c && c.cuota && c.rinde > 0)
-    return { tipo: 'contra', quien: c.lado, cuota: c.cuota, rinde: c.rinde,
-      rindeMalo: c.rindeMalo, prob: c.pierde, ic: c.ic, n: c.n, tramo: c.nom, contra: c };
-  if (!mal && f.v.precio.val > 0 && (f.v.nivel?.p ?? 0) >= 0.75)
-    return { tipo: 'favor', quien: f.v.nivel.favorito, cuota: f.v.precio.cuota,
-      rinde: f.v.precio.val, rindeMercado: f.v.precio.valMercado, prob: f.v.nivel.p };
+  const k = casillaDe(f);
+  if (!mal && k && k.acuerdo && k.cFm >= 1.20 && k.cFm < 1.40 && k.pFm >= 0.70)
+    return { tipo: 'casilla', quien: k.quien, cuota: k.cFm, prob: k.pFm,
+      rinde: f.v.precio.val, rindeMercado: f.v.precio.valMercado };
   return null;
 };
 for (const f of filas) f.jugada = jugadaDe(f);
-/* las contras primero: son las únicas que pagan cuota larga y las únicas
-   con un mecanismo medido detrás del precio */
+/* las brechas primero; después la casilla, del respaldo más alto para abajo */
 const ELEGIDAS = filas.filter(f => f.jugada)
-  .sort((a, b) => (b.jugada.tipo === 'brecha' ? 2 : b.jugada.tipo === 'contra' ? 1 : 0)
-      - (a.jugada.tipo === 'brecha' ? 2 : a.jugada.tipo === 'contra' ? 1 : 0)
-    || b.jugada.rinde - a.jugada.rinde)
-  .slice(0, 4);
+  .sort((a, b) => (b.jugada.tipo === 'brecha' ? 1 : 0) - (a.jugada.tipo === 'brecha' ? 1 : 0)
+    || (b.jugada.prob ?? b.jugada.rinde) - (a.jugada.prob ?? a.jugada.rinde))
+  .slice(0, 8);
+
+/* el motivo del descarte, en el idioma del manual */
+const motivoDe = f => {
+  const mal = (f.v.alertas || []).filter(a => MALAS.has(a.clave)).map(a => a.clave);
+  if (mal.includes('parejo')) return 'partido parejo: acá no sabe nadie';
+  if (mal.includes('jr-incognito')) return 'el rival es junior y no sé su ranking';
+  const k = casillaDe(f);
+  if (!k) return 'sin cuota de los dos lados';
+  if (k.cFm < 1.20) return 'trámite: gana casi siempre, pero a este precio no paga la pena';
+  if (k.cFm < 1.40) return 'favorito real pero el modelo está tibio (bajo 70%): cayó 4 de 7 así';
+  if (k.cFm < 2.00) return 'zona de análisis: ningún criterio manda todavía — se mira, no se apuesta';
+  return 'sin favorito de verdad (2.00 o más): nadie sabe, nosotros tampoco';
+};
 
 /* Traduce lo que el modelo calculó a una frase que se lee sin saber qué
    es un logit. Cada trozo sale de una señal real, no es adorno. */
@@ -434,6 +453,9 @@ function enSimple(f) {
   const riesgo = `Lo que puede fallar: le damos ${Math.round(n.p * 100)}%, así que pierde 1 de cada `
     + `${Math.round(1 / Math.max(0.01, 1 - n.p))}. Cuando pase no es que nos equivocamos — a esta cuota una `
     + `derrota se lleva ${Math.ceil(1 / (pr.cuota - 1))} aciertos.`;
+  if (j?.tipo === 'casilla') return { fav, razon, cuenta, riesgo,
+    mercado: mercado + ` Es LA CASILLA del manual: favorito del mercado entre 1.20 y 1.39 con respaldo `
+      + `fuerte nuestro — la única celda del decantador que hasta hoy apunta a plata (9/9, rindiendo +26% en el registro).` };
   return { fav, razon, mercado, cuenta, riesgo };
 }
 
@@ -517,7 +539,7 @@ console.log(`\n${cuotas.length} partidos con cuota${bet365 ? ' · fuente bet365 
 
 if (ELEGIDAS.length) {
   console.log('═'.repeat(76));
-  console.log(`  LAS ${ELEGIDAS.length} QUE ELIJO`);
+  console.log(`  DÓNDE PARARSE HOY — ${ELEGIDAS.length} en la casilla`);
   console.log('═'.repeat(76));
   for (const [i, f] of ELEGIDAS.entries()) {
     const s = enSimple(f), j = f.jugada;
@@ -529,21 +551,16 @@ if (ELEGIDAS.length) {
     console.log(`     ${s.riesgo}`);
   }
 } else {
-  console.log('  NO ELIJO NINGUNA HOY.');
-  console.log('  Todas fallan alguno de los tres filtros: el favorito paga caro, el partido');
-  console.log('  es parejo, o la cuota no da ni con nuestra propia probabilidad.');
+  console.log('  HOY NADIE PISA LA CASILLA.');
+  console.log('  Ningún favorito del mercado entre 1.20 y 1.39 con respaldo de 70%+ nuestro,');
+  console.log('  y sin brecha contra bet365. El resto del tablero se mira, no se apuesta.');
 }
 const descartadas = filas.filter(f => f.v?.precio && !ELEGIDAS.includes(f));
 if (descartadas.length) {
   console.log('\n' + '─'.repeat(76));
   console.log(`  LAS OTRAS ${descartadas.length}, y por qué no\n`);
-  for (const f of descartadas.sort((a, b) => (b.v.precio.val ?? -9) - (a.v.precio.val ?? -9))) {
-    const mal = (f.v.alertas || []).filter(a => MALAS.has(a.clave)).map(a => a.clave);
-    const motivo = mal.length ? mal.join(' + ')
-      : f.v.precio.val <= 0 ? 'la cuota no da'
-      : (f.v.nivel?.p ?? 0) < 0.75 ? 'no le damos ni 75%' : 'quedó fuera del corte';
-    console.log(`  ${T(f.v.nivel?.favorito ?? '—', 28)} ${String(f.v.precio.cuota).padStart(5)}  ${motivo}`);
-  }
+  for (const f of descartadas.sort((a, b) => (b.v.precio.val ?? -9) - (a.v.precio.val ?? -9)))
+    console.log(`  ${T(f.v.nivel?.favorito ?? '—', 28)} ${String(f.v.precio.cuota).padStart(5)}  ${motivoDe(f)}`);
 }
 const conRegla = filas.filter(f => f.v?.regla);
 if (conRegla.length) {
@@ -572,7 +589,9 @@ const tarjeta = (f, i) => {
   return `<article class="pick ${j.tipo}">
     <div class="rank">${i + 1}</div>
     <div class="cuerpo">
-      ${j.tipo === 'contra' ? '<div class="sello">en contra del rating</div>' : ''}
+      ${j.tipo === 'contra' ? '<div class="sello">en contra del rating</div>'
+        : j.tipo === 'casilla' ? '<div class="sello">la casilla del manual</div>'
+        : j.tipo === 'brecha' ? '<div class="sello">brecha contra bet365</div>' : ''}
       <h2>${esc(t.fav)} <span class="cuota">a ${j.cuota}</span></h2>
       <div class="donde">contra ${esc(j.tipo === 'contra' ? n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim() : otroNom)} · ${esc(f.t.nombre)} · ${esc(f.etapa)}${f.horario ? ' · ' + esc(f.horario.hora || f.horario.fecha) : ''}</div>
       <p class="porque">${esc(t.razon)}</p>
@@ -602,15 +621,6 @@ const tarjeta = (f, i) => {
 
 const descart = filas.filter(f => f.v?.precio && !ELEGIDAS.includes(f))
   .sort((a, b) => (b.v.precio.val ?? -9) - (a.v.precio.val ?? -9));
-const motivoDe = f => {
-  const mal = (f.v.alertas || []).filter(a => MALAS.has(a.clave)).map(a => a.clave);
-  if (f.v.contra && !(f.v.contra.rinde > 0)) return 'da para la contra pero la cuota del otro no alcanza';
-  if (mal.includes('parejo')) return 'partido parejo: acá no sabe nadie';
-  if (mal.includes('jr-incognito')) return 'el rival es junior y no sé su ranking';
-  if (f.v.precio.val <= 0) return 'la cuota no alcanza ni con nuestra probabilidad';
-  if ((f.v.nivel?.p ?? 0) < 0.75) return 'no le damos ni 75%';
-  return 'sirve pero quedó quinta o más abajo en valor';
-};
 
 const html = `<title>Las que elijo hoy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -710,11 +720,19 @@ footer b{color:var(--ink2)}
 <div class="env">
 <header>
   <div class="kicker">${bet365 ? 'cuotas bet365 vía API · ' + (doc.generado || '').slice(0, 10) : tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados</div>
-  <h1>Las que elijo hoy</h1>
+  <h1>Dónde pararse hoy</h1>
   <p class="bajada">${ELEGIDAS.length
-    ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length}. Las otras están abajo con el motivo por el que no.`
-    : 'Ninguna pasó los filtros. Abajo está cada una con el motivo.'}</p>
+    ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length} pisan la casilla. Las otras están abajo con el motivo por el que no.`
+    : 'Hoy nadie pisa la casilla: se mira, no se apuesta.'}</p>
 </header>
+<div class="nada" style="border-left-color:var(--accent)">
+  <b>El manual, mientras el decantador no diga otra cosa.</b>
+  Se apuesta en dos lugares y nada más: <b>la casilla</b> — el favorito del mercado paga entre 1.20 y 1.39
+  y nuestro modelo le da 70% o más (9/9 en el registro, +26%) — y <b>la brecha</b> — Betano paga 3%+ sobre el
+  precio justo de bet365, en cualquier tramo. Todo lo demás se mira: bajo 1.20 no paga la pena; en 1.40–1.99
+  ningún criterio separa todavía (y llevarle la contra al precio ahí perdió 5 de 6); sobre 2.00 no sabe nadie.
+</div>
+${ELEGIDAS.length ? ELEGIDAS.map(tarjeta).join('') : ''}
 ${''/* función de fila, definida inline */}
 ${(() => { globalThis.filaVeredicto = (v, i) => {
   const hoyV = (historia.dias[HOY] || []).find(x => x.fixtureId && x.fixtureId === v.fixtureId);
@@ -820,11 +838,6 @@ ${(() => {
       el mercado acertó 5 de 6 — la misma lección de Wygona y Brown. Cada día calificado afina estas celdas.</p>
     ${bloques}</section>`;
 })()}
-${ELEGIDAS.length ? ELEGIDAS.map(tarjeta).join('') : `<div class="nada">
-  <b>Hoy no elijo ninguna.</b> Los tres filtros son: que el favorito no pague sobre 1.50 (medido, ahí se cae),
-  que el partido no sea parejo (con menos de 2 puntos de WTN no sabe nadie), y que la cuota deje algo
-  aun con nuestra propia probabilidad. Ninguna de las ${filas.filter(f => f.v?.precio).length} pasó las tres.
-</div>`}
 <div class="resto">
   <h3>Las otras ${descart.length}, y por qué no</h3>
   <table><tbody>
@@ -837,8 +850,9 @@ ${ELEGIDAS.length ? ELEGIDAS.map(tarjeta).join('') : `<div class="nada">
   <p><b>De dónde sale nuestro número.</b> Cuánto mejor es cada uno según el rating WTN de la ITF, si alguno tiene 18 años
   o menos (a esa edad el rating va atrasado), cuántos games cedió cada uno en este mismo cuadro, y hasta dónde llegó cada
   uno la semana pasada. Probado sobre 1243 partidos jugados: acierta 76.5%.</p>
-  <p><b>Y la advertencia de siempre.</b> Sobre los 52 partidos que llevamos con cuota y resultado, el mercado acierta
-  más que nosotros. Estas cuatro son donde más nos separamos de él con el respaldo que tenemos — no son plata segura.</p>
+  <p><b>Y la advertencia de siempre.</b> La casilla lleva 9/9, pero son 9: el decantador de arriba muestra el
+  intervalo real y todavía no separa formalmente. Se juega chico, se anota todo, y cada día calificado dice
+  si el manual aguanta o se corrige.</p>
 </footer>
 </div>`;
 fs.writeFileSync(path.join(DIR, 'itf-informe.html'), html);
