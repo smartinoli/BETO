@@ -32,7 +32,7 @@ jobs:
   correr:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,6 +41,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Chromium para el WAF de la ITF
+        run: |
+          npm i --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Tablas de torneos (cuadros y programación, vía navegador)
+        timeout-minutes: 14
+        run: node vigia/itf-navegador.mjs oop || echo "la ITF no dejó refrescar todo; se sigue con lo que hay"
 
       - name: La rutina del día
         env:
@@ -51,8 +60,7 @@ jobs:
         run: |
           git config user.name "vigia-bot"
           git config user.email "vigia@users.noreply.github.com"
-          git add vigia/itf-informe.html vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json \
-                  vigia/datos/itf/historico-indice.json vigia/datos/itf/veredictos-historia.json
+          git add vigia/itf-informe.html vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json vigia/datos/itf
           git diff --cached --quiet && exit 0
           git commit -q -m "tabla: corrida a pedido $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase origin claude/itf-scrapers-prize-money-7oy59k || true

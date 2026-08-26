@@ -497,6 +497,9 @@ const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
   })();
   return {
     crit,
+    /* la jugada del manual, tal cual la eligió la página (null = se mira) */
+    jugada: f.jugada ? { tipo: f.jugada.tipo, quien: f.jugada.quien,
+      cuota: f.jugada.cuota, prob: f.jugada.prob ?? null } : null,
     fixtureId: f.q.fixtureId ?? null, inicio: f.q.inicio ?? null,
     torneo: f.t.nombre, etapa: f.etapa, p1: f.f1.nombre, p2: f.f2.nombre,
     gana: f.v.nivel.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim(),
@@ -704,6 +707,16 @@ i.dif{font-style:normal;color:var(--ojo);font-weight:700}
 .nada{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--ojo);border-radius:8px;
   padding:20px 22px;font-size:16px;line-height:1.6;color:var(--ink2)}
 .nada b{color:var(--ink)}
+.act{margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.act button{font:600 14px/1 'Bricolage Grotesque',sans-serif;color:var(--panel);background:var(--accent);
+  border:0;border-radius:6px;padding:9px 14px;cursor:pointer}
+.act button:disabled{opacity:.5;cursor:default}
+#act-token{flex-basis:100%;background:var(--sunk);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;max-width:64ch}
+#act-token p{margin:0 0 8px;font-size:13px}
+#act-token input{font:13px 'IBM Plex Mono',monospace;color:var(--ink);background:var(--panel);
+  border:1px solid var(--rule);border-radius:6px;padding:7px 9px;width:min(320px,60%)}
+#act-token button{font-size:13px;padding:7px 11px;margin-left:6px}
+#act-estado{font-size:13px}
 .resto{margin-top:38px}
 .resto h3{font:600 12px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;
   color:var(--ink3);margin:0 0 12px}
@@ -724,6 +737,18 @@ footer b{color:var(--ink2)}
   <p class="bajada">${ELEGIDAS.length
     ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length} pisan la casilla. Las otras están abajo con el motivo por el que no.`
     : 'Hoy nadie pisa la casilla: se mira, no se apuesta.'}</p>
+  <div class="act">
+    <button id="act-btn" type="button">⟳ Actualizar cuotas y tablas</button>
+    <span id="act-estado" class="sec"></span>
+    <div id="act-token" hidden>
+      <p class="sec">Para que el botón funcione hace falta, UNA sola vez, un token de GitHub que queda
+        guardado solo en este navegador. Se crea en
+        <b>github.com → Settings → Developer settings → Fine-grained tokens → Generate new token</b>,
+        dándole acceso únicamente al repositorio <b>BETO</b> con el permiso <b>Actions: Read and write</b>.</p>
+      <input id="act-pat" type="password" placeholder="pega el token acá" autocomplete="off">
+      <button id="act-guardar" type="button">Guardar</button>
+    </div>
+  </div>
 </header>
 <div class="nada" style="border-left-color:var(--accent)">
   <b>El manual, mientras el decantador no diga otra cosa.</b>
@@ -854,6 +879,52 @@ ${(() => {
   intervalo real y todavía no separa formalmente. Se juega chico, se anota todo, y cada día calificado dice
   si el manual aguanta o se corrige.</p>
 </footer>
+<script>
+/* El botón "Actualizar": dispara el workflow tabla.yml por la API de GitHub
+   con un token que vive SOLO en el navegador de Sebastián (localStorage),
+   espera a que termine y recarga. En copias sin red hacia GitHub (p. ej. el
+   artefacto de Claude, que bloquea fetch externo) avisa y no rompe nada. */
+(function(){
+  var REPO='smartinoli/BETO', RAMA='claude/itf-scrapers-prize-money-7oy59k', WF='tabla.yml';
+  var btn=document.getElementById('act-btn'), est=document.getElementById('act-estado'),
+      caja=document.getElementById('act-token'), inp=document.getElementById('act-pat'),
+      gu=document.getElementById('act-guardar');
+  if(!btn) return;
+  function lee(){ try{return localStorage.getItem('tabla-pat')||''}catch(e){return ''} }
+  function guarda(t){ try{localStorage.setItem('tabla-pat',t)}catch(e){} }
+  function borra(){ try{localStorage.removeItem('tabla-pat')}catch(e){} }
+  function api(ruta,opts,tok){
+    opts=opts||{};
+    opts.headers={ 'Authorization':'Bearer '+tok, 'Accept':'application/vnd.github+json' };
+    return fetch('https://api.github.com/repos/'+REPO+ruta,opts);
+  }
+  var desde=0;
+  gu.onclick=function(){ var t=inp.value.trim(); if(!t)return; guarda(t); caja.hidden=true; inp.value=''; correr(); };
+  btn.onclick=function(){ if(!lee()){ caja.hidden=false; inp.focus(); return; } correr(); };
+  function correr(){
+    btn.disabled=true; est.textContent='pidiendo la corrida…'; desde=Date.now()-120000;
+    api('/actions/workflows/'+WF+'/dispatches',{method:'POST',body:JSON.stringify({ref:RAMA})},lee())
+      .then(function(r){
+        if(r.status===204){ est.textContent='corriendo: cuadros ITF + cuotas bet365 + veredictos (2–4 min)…'; setTimeout(mirar,20000); }
+        else if(r.status===401||r.status===403){ borra(); est.textContent='el token no sirvió — pega uno nuevo'; caja.hidden=false; btn.disabled=false; }
+        else { est.textContent='GitHub respondió '+r.status; btn.disabled=false; }
+      })
+      .catch(function(){ est.textContent='desde esta copia no se puede (bloquea la conexión a GitHub) — usa la página online: smartinoli.github.io/BETO'; btn.disabled=false; });
+  }
+  function mirar(){
+    api('/actions/runs?branch='+encodeURIComponent(RAMA)+'&event=workflow_dispatch&per_page=1',{},lee())
+      .then(function(r){return r.json()})
+      .then(function(j){
+        var run=(j.workflow_runs||[])[0];
+        if(run && Date.parse(run.created_at)>=desde && run.status==='completed'){
+          if(run.conclusion==='success'){ est.textContent='listo — recargando…'; setTimeout(function(){location.reload()},4000); }
+          else { est.textContent='la corrida terminó "'+run.conclusion+'" — revisa la pestaña Actions en GitHub'; btn.disabled=false; }
+        } else { est.textContent='corriendo… ('+((run&&run.status)||'en cola')+')'; setTimeout(mirar,15000); }
+      })
+      .catch(function(){ setTimeout(mirar,20000); });
+  }
+})();
+</script>
 </div>`;
 fs.writeFileSync(path.join(DIR, 'itf-informe.html'), html);
 console.log(`\n✓ vigia/itf-informe.html`);

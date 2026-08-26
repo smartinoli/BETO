@@ -40,10 +40,30 @@ async function cosecharUno(clave, meta = {}) {
   return out;
 }
 
+/* semana ISO (2026-W35), la misma clave que usa torneos.json */
+const isoSemana = d => {
+  const x = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  x.setUTCDate(x.getUTCDate() + 4 - (x.getUTCDay() || 7));
+  const y = x.getUTCFullYear();
+  return y + '-W' + String(Math.ceil(((x - Date.UTC(y, 0, 1)) / 864e5 + 1) / 7)).padStart(2, '0');
+};
+
 async function cosechar(args) {
   fs.mkdirSync(DATOS, { recursive: true });
-  let lista;
-  if (args.length && isNaN(+args[0])) {
+  let lista, refrescar = false;
+  if (args[0] === 'hoy') {
+    /* los cuadros de la semana EN CURSO (y la que viene, por las qualis
+       del fin de semana): son los que cambian todos los días, así que
+       acá se re-baja SIEMPRE, sin el atajo de "ya estaba" */
+    refrescar = true;
+    const mapa = JSON.parse(fs.readFileSync(path.join(DATOS, 'torneos.json'), 'utf8'));
+    const ahora = new Date(), prox = new Date(ahora.getTime() + 7 * 864e5);
+    const semanas = [isoSemana(ahora), isoSemana(prox)];
+    lista = semanas.flatMap(s => Object.entries(mapa.semanas?.[s] || {}))
+      .filter(([k]) => k.startsWith('m-itf'))
+      .map(([clave, t]) => ({ clave, nombre: t.nombre }));
+    console.log(`Semanas ${semanas.join(' y ')}: ${lista.length} torneos masculinos por refrescar`);
+  } else if (args.length && isNaN(+args[0])) {
     lista = args.map(clave => ({ clave: clave.toLowerCase() }));
   } else {
     const n = +args[0] || 20;
@@ -59,7 +79,7 @@ async function cosechar(args) {
   let ok = 0, mal = 0;
   for (const t of lista) {
     const destino = path.join(DATOS, t.clave + '.json');
-    if (fs.existsSync(destino)) { console.log(`  = ${t.clave} ya estaba`); ok++; continue; }
+    if (!refrescar && fs.existsSync(destino)) { console.log(`  = ${t.clave} ya estaba`); ok++; continue; }
     try {
       const d = await cosecharUno(t.clave, t);
       fs.writeFileSync(destino, JSON.stringify(d));
