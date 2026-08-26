@@ -732,7 +732,7 @@ footer b{color:var(--ink2)}
 </style>
 <div class="env">
 <header>
-  <div class="kicker">${bet365 ? 'cuotas bet365 vía API · ' + (doc.generado || '').slice(0, 10) : tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados</div>
+  <div class="kicker">${bet365 ? 'cuotas bet365 vía API · ' + (doc.generado || '').slice(0, 10) : tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados · armada ${new Date().toISOString().slice(11, 16)} UTC</div>
   <h1>Dónde pararse hoy</h1>
   <p class="bajada">${ELEGIDAS.length
     ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length} pisan la casilla. Las otras están abajo con el motivo por el que no.`
