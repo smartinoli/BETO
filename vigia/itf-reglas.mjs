@@ -356,7 +356,7 @@ export function analizar(p) {
      paga 1.04/9.00 esta gritando otra cosa (lesion, retiro, categoria) y
      ese promedio no transfiere. La caida solo vale donde el mercado ve un
      partido de verdad: la cuota del otro lado hasta 3.50. */
-  if (dCed != null && dCed <= CED_CAIDA && !primeraRonda(R) && (cRival == null || cRival <= 3.5))
+  if (dCed != null && dCed <= CED_CAIDA && !primeraRonda(R) && (otro.gana == null || otro.gana <= 3.5))
     regla = { clave: 'caida', lado: otro.nombre, cuotaMin: CUOTA_CAIDA,
       texto: `${yo.nombre} tiene mejor WTN pero llega cediendo ${Math.round(-dCed * 100)} puntos más de games `
         + `(${Math.round(yo.cedidos * 100)}% contra ${Math.round(otro.cedidos * 100)}%). Medido, en esa situación y `

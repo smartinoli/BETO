@@ -400,7 +400,7 @@ function enSimple(f) {
       fav: c.lado,
       razon: `El MEJOR POR RATING es ${n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim()} `
         + `pero la casa lo paga a ${c.cuotaFav} — o sea que lo pone parejo o abajo. `
-        + `Acá el FAVORITO DEL MERCADO es el otro. Cuando rating y precio se contradicen, en nuestro registro solía mandar el precio: sabe algo que el `
+        + `Acá el FAVORITO DEL MERCADO es el otro. Por el acuerdo con Sebastián, en la zona 1.40–1.99 el precio NO decide solo: ahí el favorito del mercado gana apenas 67% y hay que mirar el resto: sabe algo que el `
         + `número no ve (una lesión, la superficie, el estilo, la cancha local).`,
       mercado: `Medido sobre nuestros partidos: cuando nuestro favorito paga ${c.nom}, pierde `
         + `${Math.round(c.pierde * 100)} de cada 100 (${c.n} casos).`,
@@ -664,6 +664,9 @@ details[open] summary::before{content:"▾ "}
 .envt tr.det summary{font:500 10.5px "IBM Plex Mono",monospace;color:var(--ink3)}
 .envt tr.det p{margin:6px 0 0;font:13px/1.55 "Source Serif 4",Georgia,serif;color:var(--ink2)}
 .envt tr.tot td{border-top:2px solid var(--rule);border-bottom:0}
+.envt tr.grupo td{background:var(--sunk);padding:10px;white-space:normal;border-bottom:1.5px solid var(--rule)}
+.envt tr.grupo b{font:700 12px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.02em}
+.envt tr.grupo i{font:italic 12px/1.5 "Source Serif 4",Georgia,serif;color:var(--ink2)}
 i.dif{font-style:normal;color:var(--ojo);font-weight:700}
 .notaverd{margin:10px 2px 0;font-size:13.5px;line-height:1.55;color:var(--ink3)}
 .nada{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--ojo);border-radius:8px;
@@ -690,27 +693,51 @@ footer b{color:var(--ink2)}
     ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length}. Las otras están abajo con el motivo por el que no.`
     : 'Ninguna pasó los filtros. Abajo está cada una con el motivo.'}</p>
 </header>
+${''/* función de fila, definida inline */}
+${(() => { globalThis.filaVeredicto = (v, i) => {
+  const hoyV = (historia.dias[HOY] || []).find(x => x.fixtureId && x.fixtureId === v.fixtureId);
+  const res = hoyV?.res;
+  const dif = v.pMercado != null ? v.p - v.pMercado : null;
+  return `<tr class="${res ? (hoyV.acerto ? 'ok' : 'mal') : ''}">
+    <td class="n sec">${i}</td>
+    <td class="quien">${esc(v.gana)}</td>
+    <td class="sec">${esc(v.lado === 1 ? v.p2 : v.p1)}</td>
+    <td class="sec">${esc(v.torneo.replace(/^M\d+\+?H? /, ''))} · ${esc(v.etapa)}</td>
+    <td class="n"><b>${Math.round(v.p * 100)}%</b></td>
+    <td class="n sec">${v.pMercado != null ? Math.round(v.pMercado * 100) + '%' : '—'}${dif != null && Math.abs(dif) >= 0.12 ? ' <i class="dif">±</i>' : ''}</td>
+    <td class="sec">${v.señales.length ? esc(v.señales.join(' ')) : ''}</td>
+    <td>${res ? (hoyV.acerto ? '✓ ' : '✗ ') + esc(res.ganador.split(' ').slice(-1)[0]) + ' ' + esc(res.marcador) : '<i class="sec">por jugar</i>'}</td>
+  </tr>
+  <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>${esc(v.razon)}</p></details></td></tr>`;
+}; return '' })()}
 <section class="verd">
-  <h2 class="vt">Quién gana hoy, según el modelo</h2>
+  <h2 class="vt">Quién gana hoy</h2>
+  <p class="notaverd" style="margin:0 0 12px">Agrupado por el ACUERDO de tramos (2026-08-27): la categoría la fija
+    la cuota del favorito del mercado, y lo que significa cada tramo está medido sobre nuestro registro.</p>
   <div class="envt"><table>
     <thead><tr><th></th><th>gana</th><th>contra</th><th>dónde</th>
       <th class="n">modelo</th><th class="n">mercado</th><th>señales</th><th>resultado</th></tr></thead>
-    <tbody>${[...VEREDICTOS].sort((x, y) => y.p - x.p).map((v, i) => {
-      const hoyV = (historia.dias[HOY] || []).find(x => x.fixtureId && x.fixtureId === v.fixtureId);
-      const res = hoyV?.res;
-      const dif = v.pMercado != null ? v.p - v.pMercado : null;
-      return `<tr class="${res ? (hoyV.acerto ? 'ok' : 'mal') : ''}">
-        <td class="n sec">${i + 1}</td>
-        <td class="quien">${esc(v.gana)}</td>
-        <td class="sec">${esc(v.lado === 1 ? v.p2 : v.p1)}</td>
-        <td class="sec">${esc(v.torneo.replace(/^M\d+\+?H? /, ''))} · ${esc(v.etapa)}</td>
-        <td class="n"><b>${Math.round(v.p * 100)}%</b></td>
-        <td class="n sec">${v.pMercado != null ? Math.round(v.pMercado * 100) + '%' : '—'}${dif != null && Math.abs(dif) >= 0.12 ? ' <i class="dif">±</i>' : ''}</td>
-        <td class="sec">${v.señales.length ? esc(v.señales.join(' ')) : ''}</td>
-        <td>${res ? (hoyV.acerto ? '✓ ' : '✗ ') + esc(res.ganador.split(' ').slice(-1)[0]) + ' ' + esc(res.marcador) : '<i class="sec">por jugar</i>'}</td>
-      </tr>
-      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>${esc(v.razon)}</p></details></td></tr>`;
-    }).join('')}</tbody></table></div>
+    <tbody>${(() => {
+      const cuotaFav = v => { const f = filas.find(x => x.q.fixtureId === v.fixtureId || (x.f1.nombre === v.p1 && x.f2.nombre === v.p2));
+        if (!f?.q.g1 || !f?.q.g2) return null; return Math.min(f.q.g1, f.q.g2); };
+      const tramoDe = c => c == null ? 3 : c < 1.20 ? 0 : c < 1.40 ? 1 : c < 2.00 ? 2 : 3;
+      const TRAMOS = [
+        ['TRÁMITE — favorito bajo 1.20', 'ganó 93% en nuestro registro (14/15). Casi nunca paga la pena apostarlo.'],
+        ['FAVORITOS REALES — 1.20 a 1.39', 'ganó 75% (12/16); cuando el modelo también lo respalda, 83% (10/12). Ojo: a ese precio, apostarlos TODOS rindió −4% — acá se acierta el partido, no necesariamente la plata.'],
+        ['ZONA DE ANÁLISIS — 1.40 a 1.99', 'el favorito del mercado gana solo 67% (14/21): acá el precio NO decide, se mira todo lo demás. (Honesto: nuestro modelo todavía no separa en esta zona — 67% con y sin su respaldo. Es donde el historial diario tiene que enseñarnos.)'],
+        ['PAREJOS Y LARGOS — 2.00 o más', 'no hay favorito de verdad: nadie sabe, nosotros tampoco.'],
+      ];
+      const orden = [...VEREDICTOS].map(v => ({ v, c: cuotaFav(v), t: tramoDe(cuotaFav(v)) }))
+        .sort((x, y) => x.t - y.t || y.v.p - x.v.p);
+      let ultimo = -1, i = 0, out = '';
+      for (const { v, t } of orden) {
+        if (t !== ultimo) { ultimo = t;
+          out += `<tr class="grupo"><td colspan="8"><b>${TRAMOS[t][0]}</b><i> — ${TRAMOS[t][1]}</i></td></tr>`; }
+        out += filaVeredicto(v, ++i);
+      }
+      return out;
+    })()}
+  </tbody></table></div>
   <p class="notaverd">Cuando el modelo dice 90%, gana ~9 de 10: en una tanda como esta lo normal es que
     ${Math.max(1, Math.round(VEREDICTOS.reduce((s, v) => s + (1 - v.p), 0)))} salgan al revés, casi siempre en la mitad de abajo.
     El <i class="dif">±</i> marca donde el modelo y el mercado se separan 12 puntos o más.</p>
