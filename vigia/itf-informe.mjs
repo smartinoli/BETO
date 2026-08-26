@@ -297,235 +297,245 @@ for (const q of cuotas) {
     via: q.via || 'cuadro', v, horario: horarioDe(q.p1, q.p2), res: resultado(t.clave, q.p1, q.p2) });
 }
 
-/* ---------- consola ---------- */
-/* Sin categorías: ordena por cuánto rinde la apuesta SI TENEMOS RAZÓN,
-   que es el único número que depende de nosotros. Al lado va siempre lo
-   que rinde si la tiene el mercado, para que no se lea solo la mitad. */
-const rango = f => f.v?.regla?.paga ? 0 : f.v?.regla ? 1 : 2;
-filas.sort((a, b) => rango(a) - rango(b)
-  || (b.v?.precio?.val ?? -9) - (a.v?.precio?.val ?? -9)
-  || (b.v?.nivel?.p ?? 0) - (a.v?.nivel?.p ?? 0));
-const cuenta = {
-  'con precio': filas.filter(f => f.v?.precio).length,
-  'con alerta': filas.filter(f => f.v?.alertas?.length).length,
-  'sin datos': filas.filter(f => !f.v?.nivel).length,
-};
+/* ============================================================
+   LA ELECCIÓN — 3 o 4 partidos, no 19.
+   Sebastián pidió menos salida y más decisión. Los filtros son duros y
+   son los tres que están medidos: nada con el favorito caro, nada
+   parejo, y la apuesta tiene que dar positiva con nuestra propia
+   probabilidad. Si no quedan cuatro, se muestran los que queden: es
+   mejor entregar dos que rellenar con basura.
+   ============================================================ */
+const MALAS = new Set(['parejo', 'favorito-caro', 'jr-incognito']);
+const elegible = f => f.v?.precio?.val > 0 && (f.v.nivel?.p ?? 0) >= 0.75
+  && !(f.v.alertas || []).some(a => MALAS.has(a.clave));
+const ELEGIDAS = filas.filter(elegible)
+  .sort((a, b) => (b.v.regla?.paga ? 1 : 0) - (a.v.regla?.paga ? 1 : 0)
+    || b.v.precio.val - a.v.precio.val)
+  .slice(0, 4);
 
-console.log(`\n${cuotas.length} partidos con cuota de Betano${tandaDoc ? ` (tanda del ${tandaDoc.generado.slice(0, 16).replace('T', ' ')}, ${tandaDoc.archivos.length} archivos)` : ' — registro completo'} · ${filas.filter(f => f.v).length} analizados`
-  + (sinTorneo.length ? ` · ${sinTorneo.length} sin torneo en el mapa` : ''));
-console.log('  ' + Object.entries(cuenta).map(([k, v]) => `${k} ${v}`).join(' · ') + '\n');
-
-const T = (s, n) => String(s ?? '').slice(0, n).padEnd(n);
-console.log('                                                    nuestra  mercado         rinde si');
-console.log('  torneo               et  favorito                     p       p     cuota  nosotros  mercado  alertas');
-for (const f of filas) {
-  if (soloJugables && !f.v?.precio) continue;
-  const p = f.v?.nivel?.p, pr = f.v?.precio;
-  const cuotaFav = pr?.cuota ?? null;
-  const pc = v => v == null ? '   —' : ((v >= 0 ? '+' : '−') + Math.abs(Math.round(v * 100)) + '%').padStart(6);
-  /* en trampa y pasar, analizar() deja favorito en "—" a proposito (no hay
-     nada que jugar); para leer el informe igual sirve saber a quien apunta
-     el modelo, asi que se muestra el del nivel */
-  const quien = (f.v?.favorito !== '—' && f.v?.favorito) || f.v?.nivel?.favorito || '—';
-  const res = f.res ? (mismoJugador(f.res.ganador, quien) ? ' ✓' : ' ✗') : '';
-  console.log(`  ${T(f.t.nombre, 20)} ${T(f.etapa, 3)} ${T(quien, 27)} `
-    + `${p != null ? String(Math.round(p * 100)).padStart(4) + '%' : '   — '}  `
-    + `${pr?.devig != null ? String(Math.round(pr.devig * 100)).padStart(4) + '%' : '   — '}  `
-    + `${String(cuotaFav ?? '—').padStart(6)}  ${pc(pr?.val)}   ${pc(pr?.valMercado)}  `
-    + `${(f.v?.alertas || []).map(a => a.clave).join(' ')}${res}`);
+/* Traduce lo que el modelo calculó a una frase que se lee sin saber qué
+   es un logit. Cada trozo sale de una señal real, no es adorno. */
+function enSimple(f) {
+  const n = f.v.nivel, pr = f.v.precio;
+  const fav = n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim();
+  const otro = n.favorito.startsWith(f.f1.nombre) ? f.f2 : f.f1;
+  const d = n.d;
+  const cuanto = d >= 6 ? 'mucho mejor jugador' : d >= 3 ? 'claramente mejor jugador'
+    : d >= 1.5 ? 'algo mejor jugador' : 'apenas mejor jugador';
+  const trozos = [`${fav} es ${cuanto} en el rating de la ITF: ${n.d.toFixed(1)} puntos de WTN de diferencia`];
+  for (const x of n.partes) {
+    if (x.nombre === 'sub18' && x.aporte > 0) trozos.push(`y encima tiene 18 años o menos, edad a la que el rating va atrasado`);
+    if (x.nombre === 'sub18' && x.aporte < 0) trozos.push(`aunque ${otro.nombre} tiene 18 años y a esa edad el rating va atrasado`);
+    if (x.nombre === 'forma' && x.aporte > 0) trozos.push(`llega ganando más cómodo que su rival en este mismo cuadro`);
+    if (x.nombre === 'forma' && x.aporte < 0) trozos.push(`aunque su rival llega ganando más cómodo`);
+    if (x.nombre === 'previo' && x.aporte > 0) trozos.push(`y la semana pasada llegó más lejos en su torneo`);
+    if (x.nombre === 'previo' && x.aporte < 0) trozos.push(`aunque su rival llegó más lejos la semana pasada`);
+  }
+  const razon = trozos.join(', ').replace(/, y /g, ' y ') + '.';
+  const mercado = `Betano lo paga a ${pr.cuota}: es como decir que gana ${Math.round(pr.devig * 100)} de cada 100. `
+    + `Nosotros creemos que gana ${Math.round(n.p * 100)}.`;
+  const cuenta = `Si tenemos razón, a la larga esto deja ${Math.round(pr.val * 100)}%. `
+    + `Si la tiene Betano, pierde ${Math.abs(Math.round(pr.valMercado * 100))}%.`;
+  const riesgo = `Lo que puede fallar: le damos ${Math.round(n.p * 100)}%, así que pierde 1 de cada `
+    + `${Math.round(1 / Math.max(0.01, 1 - n.p))}. Cuando pase no es que nos equivocamos — a esta cuota una `
+    + `derrota se lleva ${Math.ceil(1 / (pr.cuota - 1))} aciertos.`;
+  return { fav, razon, mercado, cuenta, riesgo };
 }
-/* Las tres de arriba, con el razonamiento completo. No es una
-   recomendación: son las que más rinden SI nuestro modelo tiene razón. */
-const conRegla = filas.filter(f => f.v?.regla);
-console.log('\n' + '─'.repeat(78));
-if (conRegla.length) {
-  console.log('LAS DOS REGLAS DE PERDEDOR — lo único que apunta a una apuesta concreta\n');
-  for (const f of conRegla) {
-    const r = f.v.regla;
-    console.log(`  ${r.paga ? '►' : '·'} ${r.clave.toUpperCase().padEnd(6)} ${f.t.nombre} · ${f.etapa}`);
-    console.log(`    a favor de ${r.lado} · necesita ${r.cuotaMin.toFixed(2)} · Betano paga `
-      + `${r.cuotaOfrecida ?? '—'}  →  ${r.paga ? 'PAGA' : 'no alcanza'}`);
-    console.log(`    ${r.texto}`);
+
+/* ---------- consola: las elegidas primero, el resto en una línea ---------- */
+const T = (s, n) => String(s ?? '').slice(0, n).padEnd(n);
+console.log(`\n${cuotas.length} partidos con cuota${tandaDoc ? ` · ${tandaDoc.archivos.length} torneos` : ''}`
+  + ` · ${filas.filter(f => f.v?.precio).length} analizados\n`);
+
+if (ELEGIDAS.length) {
+  console.log('═'.repeat(76));
+  console.log(`  LAS ${ELEGIDAS.length} QUE ELIJO`);
+  console.log('═'.repeat(76));
+  for (const [i, f] of ELEGIDAS.entries()) {
+    const s = enSimple(f), pr = f.v.precio;
+    console.log(`\n  ${i + 1}. ${s.fav}  a ${pr.cuota}`);
+    console.log(`     ${f.t.nombre} · ${f.etapa}${f.horario ? ' · ' + (f.horario.hora || f.horario.fecha) : ''}`);
+    console.log(`\n     ${s.razon}`);
+    console.log(`     ${s.mercado}`);
+    console.log(`     ${s.cuenta}`);
+    console.log(`     ${s.riesgo}`);
   }
 } else {
-  console.log('NINGUNA REGLA DE PERDEDOR DISPARA HOY.');
-  console.log('  Las dos necesitan que los DOS jugadores ya hayan jugado en ese cuadro, y');
-  console.log('  la de caída además excluye primera ronda. Con la tanda casi toda en R1,');
-  console.log('  es lo esperable: se activan en Q3, R2 y más adelante.');
+  console.log('  NO ELIJO NINGUNA HOY.');
+  console.log('  Todas fallan alguno de los tres filtros: el favorito paga caro, el partido');
+  console.log('  es parejo, o la cuota no da ni con nuestra propia probabilidad.');
 }
-const arriba = filas.filter(f => f.v?.precio?.val != null).slice(0, 3);
-if (arriba.length) {
-  console.log('\nLAS TRES DE MÁS VALOR — si nuestro modelo tiene razón');
-  for (const f of arriba) {
-    console.log(`\n  ${f.t.nombre} · ${f.etapa} · ${f.v.nivel.favorito} a ${f.v.precio.cuota}`);
-    console.log(`    ${f.v.razon}`);
+const descartadas = filas.filter(f => f.v?.precio && !ELEGIDAS.includes(f));
+if (descartadas.length) {
+  console.log('\n' + '─'.repeat(76));
+  console.log(`  LAS OTRAS ${descartadas.length}, y por qué no\n`);
+  for (const f of descartadas.sort((a, b) => (b.v.precio.val ?? -9) - (a.v.precio.val ?? -9))) {
+    const mal = (f.v.alertas || []).filter(a => MALAS.has(a.clave)).map(a => a.clave);
+    const motivo = mal.length ? mal.join(' + ')
+      : f.v.precio.val <= 0 ? 'la cuota no da'
+      : (f.v.nivel?.p ?? 0) < 0.75 ? 'no le damos ni 75%' : 'quedó fuera del corte';
+    console.log(`  ${T(f.v.nivel?.favorito ?? '—', 28)} ${String(f.v.precio.cuota).padStart(5)}  ${motivo}`);
+  }
+}
+const conRegla = filas.filter(f => f.v?.regla);
+if (conRegla.length) {
+  console.log('\n' + '─'.repeat(76));
+  console.log('  REGLAS DE PERDEDOR QUE DISPARAN\n');
+  for (const f of conRegla) {
+    const r = f.v.regla;
+    console.log(`  ${r.paga ? '►' : '·'} ${f.t.nombre} · ${f.etapa} — a favor de ${r.lado}`);
+    console.log(`    necesita ${r.cuotaMin.toFixed(2)} · Betano paga ${r.cuotaOfrecida ?? '—'} → ${r.paga ? 'PAGA' : 'no alcanza'}`);
   }
 }
 
 /* ---------- HTML ----------
-   Sin categorías. Una fila por partido con los cuatro números que
-   importan —nuestra p, la del mercado, la cuota, y cuánto rinde bajo
-   cada supuesto— y las alertas que sí están medidas. La decisión es
-   de Sebastián, no del script. */
-const num = (v, s = '') => v == null ? '<i>—</i>' : `${v}${s}`;
-const pctN = v => v == null ? '<i>—</i>' : Math.round(v * 100) + '%';
-const rend = v => v == null ? '<i>—</i>'
-  : `<span class="${v >= 0 ? 'pos' : 'neg'}">${v >= 0 ? '+' : '−'}${Math.abs(Math.round(v * 100))}%</span>`;
+   Cuatro elegidas arriba, grandes, con la explicación en castellano.
+   Todo lo demás en una tabla chica al final con el motivo del descarte:
+   está a la vista pero no compite por la atención. */
 const trayHtml = f => f.tray.length
   ? f.tray.map(x => `<i class="${x.gano ? 'g' : 'p'}">${x.etapa}${x.gano ? '✓' : '✗'}</i> `
-    + x.sets.map((s, i) => `${s}-${x.setsRiv[i] ?? ''}`).join(' ')
-    + (x.marcaRival ? ` <i class="vs">v${x.marcaRival}</i>` : '')).join(' · ')
+    + x.sets.map((s, i) => `${s}-${x.setsRiv[i] ?? ''}`).join(' ')).join(' · ')
   : 'debuta';
-const prevHtml = f => f.previo
-  ? `<b>${f.previo.ronda}</b> ${esc(f.previo.torneo.replace(/^M\d+\+?H? /, ''))} <i>${f.previo.gan}/${f.previo.jug}</i>`
-  : '<i>—</i>';
 
-const partido = f => {
-  const n = f.v?.nivel, pr = f.v?.precio;
-  const apunta = (f.v?.favorito !== '—' && f.v?.favorito) || n?.favorito || '';
-  const favEs1 = apunta.startsWith(f.f1.nombre);
-  const lado = (x, cu, fav) => `<div class="jug${fav ? ' fav' : ''}">
-    <div class="nom">${esc(x.nombre)}${x.marca ? ` <b>${esc(x.marca)}</b>` : ''}${x.jr && x.jrRank != null ? ` <b>jr ${x.jrRank}</b>` : ''}
-      ${cu ? `<span class="cu">${cu}</span>` : ''}</div>
-    <div class="dat">WTN ${num(x.wtn)} · ${x.nacido ? 2026 - x.nacido + ' años' : '<i>edad —</i>'} · ATP ${num(x.atp)} · ITF ${num(x.itf)} · nac ${num(x.nac)}</div>
-    <div class="tray">${trayHtml(x)}</div>
-    <div class="dat">viene de ${prevHtml(x)}</div></div>`;
-  return `<article class="p${(f.v?.alertas || []).length ? ' conalerta' : ''}">
-    <div class="cab">
-      <span class="tor">${esc(f.t.nombre)}</span> <span class="et">${esc(f.etapa || '')}</span>
-      ${f.horario ? `<span class="hr">${esc(f.horario.fecha || '')} ${esc(f.horario.hora || '')}</span>` : ''}
-      ${f.fuenteEtapa === 'deducida' ? '<span class="av">etapa deducida: el partido no está en el cuadro que tenemos</span>' : ''}
-      ${f.via === 'lista' ? '<span class="av">verificado contra la entry list, no contra el cuadro</span>' : ''}
-      ${[f.f1, f.f2].filter(x => x.fichaDe).map(x => `<span class="av">${esc(x.nombre)} no está en la entry list de este torneo: su WTN sale de la ficha de ${esc(POR_CLAVE[x.fichaDe]?.nombre || x.fichaDe)}</span>`).join('')}
-      ${f.res ? `<span class="res">${esc(f.res.ganador)} ${esc(f.res.marcador)}</span>` : ''}
-    </div>
-    <div class="duelo">${lado(f.f1, f.q.g1, favEs1)}${lado(f.f2, f.q.g2, !favEs1)}</div>
-    ${n ? `<div class="cifras">
-      <span><label>nuestra p</label>${pctN(n.p)}</span>
-      <span><label>sólo WTN</label><i class="sec">${pctN(n.soloNivel)}</i></span>
-      ${pr?.devig != null ? `<span><label>el mercado</label>${pctN(pr.devig)}</span>` : ''}
-      ${pr ? `<span class="sep"><label>rinde si acertamos</label>${rend(pr.val)}</span>
-      <span><label>si acierta el mercado</label>${rend(pr.valMercado)}</span>` : ''}
-    </div>` : ''}
-    ${f.v?.regla ? `<div class="regla ${f.v.regla.paga ? 'paga' : ''}">
-      <div class="rt">${f.v.regla.clave === 'caida' ? 'Caída' : 'Firme'} · a favor de ${esc(f.v.regla.lado)}</div>
-      <div class="rn"><span>necesita <b>${f.v.regla.cuotaMin.toFixed(2)}</b></span>
-        <span>Betano paga <b>${f.v.regla.cuotaOfrecida ?? '—'}</b></span>
-        <span class="ver">${f.v.regla.paga ? 'paga' : 'no alcanza'}</span></div>
-      <p>${esc(f.v.regla.texto)}</p></div>` : ''}
-    ${(f.v?.alertas || []).filter(a => a.clave !== 'caida' && a.clave !== 'firme').length
-      ? `<ul class="alertas">${f.v.alertas.filter(a => a.clave !== 'caida' && a.clave !== 'firme').map(a => `<li>${esc(a.texto)}</li>`).join('')}</ul>` : ''}
-    <p class="raz">${esc(f.v?.razon || f.motivo || '')}</p></article>`;
+const tarjeta = (f, i) => {
+  const t = enSimple(f), n = f.v.nivel, pr = f.v.precio;
+  const otro = n.favorito.startsWith(f.f1.nombre) ? f.f2 : f.f1;
+  return `<article class="pick">
+    <div class="rank">${i + 1}</div>
+    <div class="cuerpo">
+      <h2>${esc(t.fav)} <span class="cuota">a ${pr.cuota}</span></h2>
+      <div class="donde">contra ${esc(otro.nombre)} · ${esc(f.t.nombre)} · ${esc(f.etapa)}${f.horario ? ' · ' + esc(f.horario.hora || f.horario.fecha) : ''}</div>
+      <p class="porque">${esc(t.razon)}</p>
+      <div class="dosbarras">
+        <div class="bl"><label>nosotros</label><div class="bar"><span style="width:${Math.round(n.p * 100)}%"></span></div><b>${Math.round(n.p * 100)}%</b></div>
+        <div class="bl"><label>Betano</label><div class="bar mkt"><span style="width:${Math.round(pr.devig * 100)}%"></span></div><b>${Math.round(pr.devig * 100)}%</b></div>
+      </div>
+      <p class="cuenta"><b>Si tenemos razón</b>, a la larga esto deja <b class="pos">${Math.round(pr.val * 100)}%</b>.
+        Si la tiene Betano, pierde <b class="neg">${Math.abs(Math.round(pr.valMercado * 100))}%</b>.</p>
+      <p class="riesgo">${esc(t.riesgo)}</p>
+      ${f.v.regla ? `<p class="reglaln"><b>${f.v.regla.clave === 'caida' ? 'Regla de caída' : 'Regla de firme'}:</b>
+        ${esc(f.v.regla.texto)}</p>` : ''}
+      <details><summary>los números crudos</summary>
+        <div class="crudo">
+          <div><b>${esc(f.f1.nombre)}</b> — WTN ${f.f1.wtn ?? '—'} · ${f.f1.nacido ? 2026 - f.f1.nacido + ' años' : 'edad —'} · ATP ${f.f1.atp ?? '—'} · ${trayHtml(f.f1)}</div>
+          <div><b>${esc(f.f2.nombre)}</b> — WTN ${f.f2.wtn ?? '—'} · ${f.f2.nacido ? 2026 - f.f2.nacido + ' años' : 'edad —'} · ATP ${f.f2.atp ?? '—'} · ${trayHtml(f.f2)}</div>
+          <div class="raz">${esc(f.v.razon)}</div>
+        </div></details>
+    </div></article>`;
 };
 
-const html = `<title>Partidos cotizados hoy</title>
+const descart = filas.filter(f => f.v?.precio && !ELEGIDAS.includes(f))
+  .sort((a, b) => (b.v.precio.val ?? -9) - (a.v.precio.val ?? -9));
+const motivoDe = f => {
+  const mal = (f.v.alertas || []).filter(a => MALAS.has(a.clave)).map(a => a.clave);
+  if (mal.includes('favorito-caro') && mal.includes('parejo')) return 'partido parejo y el favorito paga caro';
+  if (mal.includes('favorito-caro')) return 'el favorito paga sobre 1.50 — medido, ahí se cae';
+  if (mal.includes('parejo')) return 'partido parejo: acá no sabe nadie';
+  if (mal.includes('jr-incognito')) return 'el rival es junior y no sé su ranking';
+  if (f.v.precio.val <= 0) return 'la cuota no alcanza ni con nuestra probabilidad';
+  if ((f.v.nivel?.p ?? 0) < 0.75) return 'no le damos ni 75%';
+  return 'quedó quinto o más abajo';
+};
+
+const html = `<title>Las que elijo hoy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 :root{--ground:#F5F7F8;--panel:#FFFFFF;--sunk:#EDF1F3;--ink:#141F28;--ink2:#54687A;--ink3:#8496A5;
-  --rule:#DBE3E8;--rule2:#C3CFD7;--accent:#1B5B70;--accent-soft:#E2EEF2;
-  --pos:#2C7A58;--pos-soft:#DEEDE5;--neg:#9E4C33;--ojo:#856512;--ojo-soft:#F6EEDC}
+  --rule:#DBE3E8;--accent:#1B5B70;--accent-soft:#E2EEF2;--pos:#2C7A58;--pos-soft:#DEEDE5;
+  --neg:#9E4C33;--ojo:#856512;--ojo-soft:#F6EEDC}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --ground:#0D1319;--panel:#141C24;--sunk:#111920;--ink:#DDE6ED;--ink2:#93A5B4;--ink3:#647686;
-  --rule:#222E39;--rule2:#31404C;--accent:#5BA9BF;--accent-soft:#15303A;
-  --pos:#57B98A;--pos-soft:#142C22;--neg:#DE9077;--ojo:#CFA23F;--ojo-soft:#2A2415}}
+  --rule:#222E39;--accent:#5BA9BF;--accent-soft:#15303A;--pos:#57B98A;--pos-soft:#142C22;
+  --neg:#DE9077;--ojo:#CFA23F;--ojo-soft:#2A2415}}
 :root[data-theme="dark"]{--ground:#0D1319;--panel:#141C24;--sunk:#111920;--ink:#DDE6ED;--ink2:#93A5B4;
-  --ink3:#647686;--rule:#222E39;--rule2:#31404C;--accent:#5BA9BF;--accent-soft:#15303A;
-  --pos:#57B98A;--pos-soft:#142C22;--neg:#DE9077;--ojo:#CFA23F;--ojo-soft:#2A2415}
+  --ink3:#647686;--rule:#222E39;--accent:#5BA9BF;--accent-soft:#15303A;--pos:#57B98A;--pos-soft:#142C22;
+  --neg:#DE9077;--ojo:#CFA23F;--ojo-soft:#2A2415}
 *{box-sizing:border-box}
-body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Source Serif 4",Georgia,serif}
-.env{max-width:940px;margin:0 auto;padding:0 18px 80px}
-header{padding:46px 0 24px;border-bottom:2px solid var(--ink);margin-bottom:14px}
-.kicker{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-h1{font:700 clamp(30px,5.5vw,48px)/1.03 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.025em;margin:0 0 12px;text-wrap:balance}
-.bajada{font-size:17.5px;line-height:1.55;color:var(--ink2);max-width:62ch;margin:0}
-.meta{display:flex;flex-wrap:wrap;gap:0 24px;margin-top:18px;font:500 12px/1.8 "IBM Plex Mono",monospace;color:var(--ink3)}
-.meta b{color:var(--ink);font-weight:600}
-.casa{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--ojo);border-radius:6px;
-  padding:14px 16px;margin:22px 0 30px;max-width:70ch;font-size:14.5px;line-height:1.58;color:var(--ink2)}
-.casa b{color:var(--ink)}
-.p{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:13px 15px;margin-bottom:11px}
-.p.conalerta{border-left:3px solid var(--ojo)}
-.cab{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
-.tor{font:600 15px "Bricolage Grotesque",system-ui,sans-serif}
-.et{font:600 11px "IBM Plex Mono",monospace;color:var(--ink2)}
-.hr,.res{font-size:11.5px;color:var(--ink3);font-family:"IBM Plex Mono",monospace}
-.av{font-size:11px;color:var(--ojo);background:var(--ojo-soft);padding:2px 7px;border-radius:3px}
-.res{margin-left:auto}
-.duelo{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-@media(max-width:620px){.duelo{grid-template-columns:1fr}}
-.jug{padding:9px 11px;border-radius:6px;background:var(--sunk)}
-.jug.fav{background:var(--accent-soft)}
-.nom{font:600 14px "Bricolage Grotesque",system-ui,sans-serif}
-.nom b{color:var(--accent);font-size:11px;margin-left:3px}
-.cu{float:right;font:600 14px "IBM Plex Mono",monospace}
-.dat{font:11px/1.5 "IBM Plex Mono",monospace;color:var(--ink2);margin-top:4px}
-.dat i,.tray i.vs{font-style:normal;color:var(--ink3)}
-.tray{font:11px/1.45 "IBM Plex Mono",monospace;color:var(--ink3);margin-top:4px}
-.tray i.g{color:var(--pos);font-weight:600;font-style:normal}
-.tray i.p{color:var(--neg);font-weight:600;font-style:normal}
-.cifras{display:flex;gap:20px;flex-wrap:wrap;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);
-  font:600 16px "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
-.cifras label{display:block;font:600 9.5px/1.4 "IBM Plex Sans","Bricolage Grotesque",sans-serif;
-  text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);white-space:nowrap}
-.cifras .sep{margin-left:auto;padding-left:20px;border-left:1px solid var(--rule)}
-.cifras i.sec{font-style:normal;color:var(--ink3);font-weight:500}
-.pos{color:var(--pos)} .neg{color:var(--neg)}
-.regla{margin-top:11px;padding:11px 13px;border-radius:6px;background:var(--sunk);border:1px solid var(--rule)}
-.regla.paga{background:var(--pos-soft);border-color:var(--pos)}
-.regla .rt{font:600 12px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.02em;margin-bottom:7px}
-.regla.paga .rt{color:var(--pos)}
-.regla .rn{display:flex;gap:18px;flex-wrap:wrap;font:600 13px "IBM Plex Mono",monospace;color:var(--ink2);margin-bottom:7px}
-.regla .rn b{color:var(--ink);font-size:15px}
-.regla .rn .ver{margin-left:auto;text-transform:uppercase;font-size:10px;letter-spacing:.09em;color:var(--ink3)}
-.regla.paga .rn .ver{color:var(--pos)}
-.regla p{margin:0;font-size:13px;line-height:1.55;color:var(--ink2)}
-.alertas{margin:11px 0 0;padding:0 0 0 18px;font-size:13.5px;line-height:1.55;color:var(--ojo)}
-.alertas li{margin-bottom:4px}
-.raz{margin:10px 0 0;font-size:12.5px;line-height:1.55;color:var(--ink3)}
-.vacias{margin-top:34px}
-.vacias h2{font:600 13px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:0 0 10px}
-footer{border-top:1px solid var(--rule);padding-top:20px;margin-top:34px;font-size:13.5px;line-height:1.65;color:var(--ink3);max-width:70ch}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.62 "Source Serif 4",Georgia,serif}
+.env{max-width:760px;margin:0 auto;padding:0 18px 70px}
+header{padding:46px 0 20px}
+.kicker{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:13px}
+h1{font:700 clamp(32px,7vw,52px)/1.02 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.03em;margin:0 0 12px}
+.bajada{font-size:18px;color:var(--ink2);margin:0;max-width:54ch}
+.pick{display:flex;gap:16px;background:var(--panel);border:1px solid var(--rule);border-radius:10px;
+  padding:20px 22px;margin-bottom:14px}
+.rank{font:700 30px/1 "Bricolage Grotesque",system-ui,sans-serif;color:var(--accent);
+  opacity:.32;min-width:34px;padding-top:3px}
+.cuerpo{flex:1;min-width:0}
+.pick h2{font:700 25px/1.15 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 4px;text-wrap:balance}
+.cuota{font:600 19px "IBM Plex Mono",monospace;color:var(--accent);white-space:nowrap}
+.donde{font:500 12.5px "IBM Plex Mono",monospace;color:var(--ink3);margin-bottom:14px}
+.porque{margin:0 0 15px;font-size:17px;line-height:1.6}
+.dosbarras{display:flex;flex-direction:column;gap:7px;margin-bottom:15px;padding:12px 14px;background:var(--sunk);border-radius:7px}
+.bl{display:flex;align-items:center;gap:11px}
+.bl label{font:600 10px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink3);min-width:66px}
+.bl .bar{flex:1;height:9px;background:var(--rule);border-radius:5px;overflow:hidden}
+.bl .bar span{display:block;height:100%;background:var(--accent);border-radius:5px}
+.bl .bar.mkt span{background:var(--ink3)}
+.bl b{font:600 14px "IBM Plex Mono",monospace;min-width:38px;text-align:right;font-variant-numeric:tabular-nums}
+.cuenta{margin:0 0 9px;font-size:15.5px;line-height:1.55}
+.cuenta b{font-weight:600} .pos{color:var(--pos)} .neg{color:var(--neg)}
+.riesgo{margin:0;font-size:14px;line-height:1.55;color:var(--ink2)}
+.reglaln{margin:12px 0 0;padding:11px 13px;background:var(--pos-soft);border-radius:6px;
+  font-size:14px;line-height:1.55;color:var(--ink2)}
+details{margin-top:14px;border-top:1px solid var(--rule);padding-top:11px}
+summary{font:500 12px "IBM Plex Mono",monospace;color:var(--ink3);cursor:pointer;list-style:none}
+summary::before{content:"▸ ";color:var(--accent)}
+details[open] summary::before{content:"▾ "}
+.crudo{margin-top:10px;font:11.5px/1.6 "IBM Plex Mono",monospace;color:var(--ink2);
+  display:flex;flex-direction:column;gap:6px}
+.crudo b{color:var(--ink)} .crudo .g{color:var(--pos);font-style:normal;font-weight:600}
+.crudo .p{color:var(--neg);font-style:normal;font-weight:600}
+.crudo .raz{color:var(--ink3);border-top:1px solid var(--rule);padding-top:7px;margin-top:2px}
+.nada{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--ojo);border-radius:8px;
+  padding:20px 22px;font-size:16px;line-height:1.6;color:var(--ink2)}
+.nada b{color:var(--ink)}
+.resto{margin-top:38px}
+.resto h3{font:600 12px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink3);margin:0 0 12px}
+.resto table{width:100%;border-collapse:collapse;font:13px "IBM Plex Mono",monospace}
+.resto td{padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:baseline}
+.resto td:first-child{font-family:"Source Serif 4",Georgia,serif;font-size:14.5px;color:var(--ink)}
+.resto td.c{text-align:right;white-space:nowrap;color:var(--ink2)}
+.resto td.m{color:var(--ink3);font-family:"Source Serif 4",Georgia,serif;font-size:14px}
+footer{border-top:1px solid var(--rule);padding-top:20px;margin-top:36px;font-size:14px;line-height:1.65;color:var(--ink3)}
 footer b{color:var(--ink2)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:560px){.pick{padding:16px}.rank{font-size:22px;min-width:24px}.pick h2{font-size:21px}}
 </style>
 <div class="env">
 <header>
-  <div class="kicker">${tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'}</div>
-  <h1>Partidos cotizados hoy</h1>
-  <p class="bajada">Los ${cuotas.length} partidos que Betano puso en precio, con todo lo que la ITF sabe de cada jugador encima.
-    Ordenados por cuánto rinde la apuesta si nuestro modelo tiene razón.</p>
-  <div class="meta">
-    <span><b>${filas.filter(f => f.v?.precio).length}</b> con precio</span>
-    <span><b>${filas.filter(f => f.v?.regla?.paga).length}</b> con regla que paga</span>
-    <span><b>${filas.filter(f => f.v?.alertas?.length).length}</b> con alerta</span>
-    <span>generado ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC</span>
-  </div>
+  <div class="kicker">${tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados</div>
+  <h1>Las que elijo hoy</h1>
+  <p class="bajada">${ELEGIDAS.length
+    ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length}. Las otras están abajo con el motivo por el que no.`
+    : 'Ninguna pasó los filtros. Abajo está cada una con el motivo.'}</p>
 </header>
-<div class="casa">
-  <b>La columna que importa es la de la derecha.</b> "Si acierta el mercado" da siempre alrededor de −8%:
-  ese es el margen de la casa, y es lo que se pierde jugando cuando el precio tiene razón.
-  La única forma de ganar plata es estar en lo cierto donde el mercado no lo está — y sobre los 52 partidos
-  que tenemos con precio y resultado, el mercado nos gana. Estos números son para mirar, no son una recomendación.
+${ELEGIDAS.length ? ELEGIDAS.map(tarjeta).join('') : `<div class="nada">
+  <b>Hoy no elijo ninguna.</b> Los tres filtros son: que el favorito no pague sobre 1.50 (medido, ahí se cae),
+  que el partido no sea parejo (con menos de 2 puntos de WTN no sabe nadie), y que la cuota deje algo
+  aun con nuestra propia probabilidad. Ninguna de las ${filas.filter(f => f.v?.precio).length} pasó las tres.
+</div>`}
+<div class="resto">
+  <h3>Las otras ${descart.length}, y por qué no</h3>
+  <table><tbody>
+    ${descart.map(f => `<tr><td>${esc(f.v.nivel?.favorito ?? '—')}</td>
+      <td class="c">${f.v.precio.cuota}</td>
+      <td class="m">${esc(motivoDe(f))}</td></tr>`).join('')}
+  </tbody></table>
 </div>
-${filas.filter(f => f.v?.nivel).map(partido).join('')}
-${filas.filter(f => !f.v?.nivel).length ? `<div class="vacias"><h2>Sin datos de nivel · ${filas.filter(f => !f.v?.nivel).length}</h2>
-  ${filas.filter(f => !f.v?.nivel).map(partido).join('')}</div>` : ''}
 <footer>
-  <p><b>nuestra p</b> — el modelo: ΔWTN por grupo de rondas, escalón sub-19, games cedidos en el cuadro y hasta dónde llegó
-  en su torneo anterior. Validado dejando un torneo afuera sobre 1243 partidos: 76.5% de acierto.</p>
-  <p><b>el mercado</b> — la probabilidad que implica la cuota una vez sacado el margen de la casa.</p>
-  <p><b>las alertas</b> son las tres cosas que están medidas: el favorito por WTN que paga sobre 1.50 (rinde −17% entre
-  1.50 y 2.00, −69% sobre 2.00), el partido parejo con ΔWTN bajo 2 (el precio decía 58% y pasó 43%, n=23), y el rival
-  junior sin ranking conocido. Todo lo demás que uno querría marcar está dentro del ruido con 52 partidos con precio.</p>
+  <p><b>De dónde sale nuestro número.</b> Cuánto mejor es cada uno según el rating WTN de la ITF, si alguno tiene 18 años
+  o menos (a esa edad el rating va atrasado), cuántos games cedió cada uno en este mismo cuadro, y hasta dónde llegó cada
+  uno la semana pasada. Probado sobre 1243 partidos jugados: acierta 76.5%.</p>
+  <p><b>Y la advertencia de siempre.</b> Sobre los 52 partidos que llevamos con cuota y resultado, el mercado acierta
+  más que nosotros. Estas cuatro son donde más nos separamos de él con el respaldo que tenemos — no son plata segura.</p>
 </footer>
 </div>`;
 fs.writeFileSync(path.join(DIR, 'itf-informe.html'), html);
 console.log(`\n✓ vigia/itf-informe.html`);
-if (sinTorneo.length) {
-  console.log(`\n${sinTorneo.length} cuotas sin torneo en el mapa:`);
-  for (const q of sinTorneo.slice(0, 10)) console.log(`  ${q.torneo}: ${q.p1} / ${q.p2}`);
-}
+if (sinTorneo.length) console.log(`  (${sinTorneo.length} cuotas sin torneo en el mapa)`);

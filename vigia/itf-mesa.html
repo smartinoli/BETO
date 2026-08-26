@@ -103,7 +103,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <div class="envoltura">
 <div class="cabecera">
   <h1>Mesa ITF</h1>
-  <span class="edad" id="edad" data-generado="2026-08-26T03:39:43.777Z">datos de hace <b>—</b></span>
+  <span class="edad" id="edad" data-generado="2026-08-26T03:57:55.700Z">datos de hace <b>—</b></span>
   <div class="controles">
     <span class="orden">Ordenar:</span>
     <button id="b-torneo" class="on" onclick="ordenar('torneo')">Campeonato</button>
@@ -116,9 +116,15 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
 <div id="resumen" class="resumen" hidden>
   <h2>Lo que ve el análisis</h2>
   <p class="titular">La probabilidad ya no sale solo del WTN: entran edad, siembra, games cedidos en el cuadro y hasta donde llego en el torneo anterior. Validado dejando un torneo afuera sobre 1243 partidos: log-loss 0.4967 y 75.5% de acierto contra 0.5097 y 74.3% del modelo anterior.</p>
-  <p class="advertencia">⚠ Lo que decide ya no es el valor p x cuota - 1 sino cuanto DISCREPAMOS con el mercado. Medido sobre 50 partidos con cuota y resultado: sacarle mas de 15 puntos al mercado dio 4 aciertos de 13 y -57%. Por eso &quot;trampa&quot; no es una oportunidad, es la casilla que hay que evitar.</p>
-  <p class="resumen-nota">Sobre 234 partidos por jugar, con las reglas medidas en 28 patrones de nuestros propios datos (4077caso puntual, mecanismo claro3094 casos medidos el 2026-08-22 (residuos -0.20 a -0.38), mecanismo derivado del propio R²74474433174419223 entradas con ronda anotada + 31 del registro5584575 partidos históricos). Análisis del 2026-08-26 03:38 UTC.</p>
-  <ol class="mejores"></ol>
+  <p class="advertencia">⚠ NO hay ventaja demostrada sobre el mercado. Medido el 2026-08-26 sobre los 52 partidos con precio y resultado, el mercado le gana al modelo (log-loss 0.5220 contra 0.5485), y el hallazgo del escalon sub-19 resulta que el precio ya lo tenia (decia 64%, paso 67%, nuestra curva vieja decia 83%). Lo unico medido son tres alertas: favorito por WTN sobre cuota 1.50 (-17% y -69%), partido parejo con dWTN bajo 2 (el precio decia 58%, paso 43%), y junior top 60. El resto es ruido con 52 partidos.</p>
+  <p class="resumen-nota">Sobre 234 partidos por jugar, con las reglas medidas en 28 patrones de nuestros propios datos (4077caso puntual, mecanismo claro3094 casos medidos el 2026-08-22 (residuos -0.20 a -0.38), mecanismo derivado del propio R²74474433174419223 entradas con ronda anotada + 31 del registro5584575 partidos históricos). Análisis del 2026-08-26 03:39 UTC.</p>
+  <ol class="mejores"><li><b>Victor Barreira Bonzom</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Cap d'Agde · R1</span><span class="razon">Δ1.61 de WTN a favor de Victor Barreira Bonzom (16.46 contra 18.07), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 68%. Ajustan: Jaume Casas Blasi viene cediendo menos games (32% contra 44%): la forma contradice al nivel (−8 pts). Queda en 60%. El mercado la paga a 2.67: 34% una vez sacado su margen. A esa cuota, la apuesta rinde +61% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.67. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span></li><li><b>Matas Vasiliauskas</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Pecs · R1</span><span class="razon">Δ6.16 de WTN a favor de Matas Vasiliauskas (11.14 contra 17.3), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 95%. Ajustan: Bercel Sandor Takacs tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−17 pts). Queda en 78%. El mercado la paga a 2.05: 45% una vez sacado su margen. A esa cuota, la apuesta rinde +60% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.05. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span></li><li><b>Tobia Costanzo Baragiola Mordini</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Vienna · R1</span><span class="razon">Δ0.33 de WTN a favor de Tobia Costanzo Baragiola Mordini (10.33 contra 10.66), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 54%. El mercado la paga a 2.85: 32% una vez sacado su margen. A esa cuota, la apuesta rinde +54% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.33: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.85. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span></li><li><b>Patrik Homola</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Vienna · R1</span><span class="razon">Δ2.50 de WTN a favor de Patrik Homola (10.71 contra 13.21), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 76%. Ajustan: Tim Vaisman viene cediendo menos games (20% contra 30%): la forma contradice al nivel (−6 pts). Queda en 71%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +46% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span></li><li><b>Pavlos Tsitsipas [8]</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Vienna · R1</span><span class="razon">Δ4.17 de WTN a favor de Pavlos Tsitsipas (8.83 contra 13), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 88%. El mercado la paga a 1.65: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +45% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 1.65. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span></li><li><b>Noel Larwig</b> <span class="mkt">gana</span>
+      <span class="ctx">M15 Vienna · R1</span><span class="razon">Δ0.59 de WTN a favor de Noel Larwig (9.24 contra 9.83), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 57%. El mercado la paga a 2.47: 37% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.59: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.47. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span></li></ol>
   <p class="resumen-nota">16 partidos marcados para pasar (parejos o en la banda de cuota donde el favorito rinde menos de lo que promete).</p>
 </div>
 <div class="tabla-env"><table>
@@ -818,11 +824,11 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">Q1✓</i> 6-0 6-2 · <i class="g">Q2✓</i> 6-4 7-6(3) <i class="vs">v[15]</i></td>
     
-  </tr><tr class="analisis" data-par="M15 Cap d'Agde|1787735700000">
+  </tr><tr class="analisis top" data-par="M15 Cap d'Agde|1787735700000">
     <td colspan="9">
       <span class="conf c-media">media</span>
       <b>Victor Barreira Bonzom</b> <span class="mkt">gana</span>
-      
+      <span class="chip-top">mejor opción</span>
       <span class="razon">Δ1.61 de WTN a favor de Victor Barreira Bonzom (16.46 contra 18.07), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 68%. Ajustan: Jaume Casas Blasi viene cediendo menos games (32% contra 44%): la forma contradice al nivel (−8 pts). Queda en 60%. El mercado la paga a 2.67: 34% una vez sacado su margen. A esa cuota, la apuesta rinde +61% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.67. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span>
       <span class="bandera">p60%</span><span class="bandera">mercado +26</span><span class="bandera">parejo</span><span class="bandera">favorito-caro</span>
     </td>
@@ -3350,11 +3356,11 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><span class="sin">debuta</span></td>
     
-  </tr><tr class="analisis" data-par="M15 Pecs|1787742000000">
+  </tr><tr class="analisis top" data-par="M15 Pecs|1787742000000">
     <td colspan="9">
       <span class="conf c-media">media</span>
       <b>Matas Vasiliauskas</b> <span class="mkt">gana</span>
-      
+      <span class="chip-top">mejor opción</span>
       <span class="razon">Δ6.16 de WTN a favor de Matas Vasiliauskas (11.14 contra 17.3), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 95%. Ajustan: Bercel Sandor Takacs tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−17 pts). Queda en 78%. El mercado la paga a 2.05: 45% una vez sacado su margen. A esa cuota, la apuesta rinde +60% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.05. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span>
       <span class="bandera">p78%</span><span class="bandera">mercado +33</span><span class="bandera">favorito-caro</span>
     </td>
@@ -3584,11 +3590,11 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><i class="g">Q1✓</i> 6-1 6-0 · <i class="g">Q2✓</i> 6-1 6-4 <i class="vs">vWC</i> · <i class="g">Q3✓</i> 6-4 7-6(4) <i class="vs">v[10]</i></td>
     
-  </tr><tr class="analisis" data-par="M15 Vienna|1787731200000">
+  </tr><tr class="analisis top" data-par="M15 Vienna|1787731200000">
     <td colspan="9">
       <span class="conf c-media">media</span>
       <b>Patrik Homola</b> <span class="mkt">gana</span>
-      
+      <span class="chip-top">mejor opción</span>
       <span class="razon">Δ2.50 de WTN a favor de Patrik Homola (10.71 contra 13.21), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 76%. Ajustan: Tim Vaisman viene cediendo menos games (20% contra 30%): la forma contradice al nivel (−6 pts). Queda en 71%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +46% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span>
       <span class="bandera">p71%</span><span class="bandera">mercado +26</span><span class="bandera">favorito-caro</span>
     </td>
@@ -3610,11 +3616,11 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><span class="sin">debuta</span></td>
     
-  </tr><tr class="analisis" data-par="M15 Vienna|1787731200000">
+  </tr><tr class="analisis top" data-par="M15 Vienna|1787731200000">
     <td colspan="9">
       <span class="conf c-media">media</span>
       <b>Pavlos Tsitsipas [8]</b> <span class="mkt">gana</span>
-      
+      <span class="chip-top">mejor opción</span>
       <span class="razon">Δ4.17 de WTN a favor de Pavlos Tsitsipas (8.83 contra 13), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 88%. El mercado la paga a 1.65: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +45% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 1.65. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span>
       <span class="bandera">p88%</span><span class="bandera">mercado +32</span><span class="bandera">favorito-caro</span>
     </td>
@@ -3688,11 +3694,11 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><span class="sin">debuta</span></td>
     
-  </tr><tr class="analisis" data-par="M15 Vienna|1787735700000">
+  </tr><tr class="analisis top" data-par="M15 Vienna|1787735700000">
     <td colspan="9">
       <span class="conf c-media">media</span>
       <b>Tobia Costanzo Baragiola Mordini</b> <span class="mkt">gana</span>
-      
+      <span class="chip-top">mejor opción</span>
       <span class="razon">Δ0.33 de WTN a favor de Tobia Costanzo Baragiola Mordini (10.33 contra 10.66), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 54%. El mercado la paga a 2.85: 32% una vez sacado su margen. A esa cuota, la apuesta rinde +54% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.33: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.85. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span>
       <span class="bandera">p54%</span><span class="bandera">mercado +22</span><span class="bandera">parejo</span><span class="bandera">favorito-caro</span>
     </td>
@@ -3792,11 +3798,11 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
     <td class="c-od mono"><span class="sin">·</span></td>
     <td class="c-llega"><span class="sin">debuta</span></td>
     
-  </tr><tr class="analisis" data-par="M15 Vienna|1787744700000">
+  </tr><tr class="analisis top" data-par="M15 Vienna|1787744700000">
     <td colspan="9">
       <span class="conf c-media">media</span>
       <b>Noel Larwig</b> <span class="mkt">gana</span>
-      
+      <span class="chip-top">mejor opción</span>
       <span class="razon">Δ0.59 de WTN a favor de Noel Larwig (9.24 contra 9.83), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 57%. El mercado la paga a 2.47: 37% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.59: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.47. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</span>
       <span class="bandera">p57%</span><span class="bandera">mercado +20</span><span class="bandera">parejo</span><span class="bandera">favorito-caro</span>
     </td>
@@ -5977,7 +5983,7 @@ a:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
       </tr></tbody>
   </table></div>
 </section>
-<footer>Generado 2026-08-26 03:39 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
+<footer>Generado 2026-08-26 03:57 UTC · manda el order of play oficial de itftennis.com; Betano acompaña vía OddsPapi (Ganador y Ganador 1er set) y su cuota puede abrir en cualquier momento · turno estimado cuando ITF dice "Followed By".</footer>
 </div>
 <script>
 (function(){
