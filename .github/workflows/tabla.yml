@@ -1,0 +1,88 @@
+name: Tabla ITF
+
+# La tabla del día, online y con un botón.
+#
+# Dos maneras de refrescarla:
+#   · BOTÓN — Actions → "Tabla ITF" → Run workflow: corre la rutina completa
+#     (marcadores de ayer, cuotas bet365 vigentes, veredictos y decantador),
+#     guarda los datos en la rama y re-publica la página.
+#   · SOLA — cuando la rutina diaria commitea vigia/itf-informe.html, acá
+#     solo se re-publica la página, sin gastar requests de la API.
+#
+# La página queda en GitHub Pages: https://smartinoli.github.io/BETO/
+# Requisitos (una sola vez): el secret ODDSPAPI_KEY (ya existe, lo usa el
+# workflow Vigía) y Settings → Pages → Source: GitHub Actions.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/itf-scrapers-prize-money-7oy59k]
+    paths: [vigia/itf-informe.html]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: tabla-itf
+  cancel-in-progress: false
+
+jobs:
+  correr:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/itf-scrapers-prize-money-7oy59k
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: La rutina del día
+        env:
+          ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
+        run: node vigia/itf-dia.mjs
+
+      - name: Guardar lo que cambió
+        run: |
+          git config user.name "vigia-bot"
+          git config user.email "vigia@users.noreply.github.com"
+          git add vigia/itf-informe.html vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json \
+                  vigia/datos/itf/historico-indice.json vigia/datos/itf/veredictos-historia.json
+          git diff --cached --quiet && exit 0
+          git commit -q -m "tabla: corrida a pedido $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull -q --rebase origin claude/itf-scrapers-prize-money-7oy59k || true
+          git push -q origin HEAD:claude/itf-scrapers-prize-money-7oy59k
+
+  publicar:
+    needs: correr
+    # en push "correr" queda skipped y acá se publica igual; solo se frena si corrió y falló
+    if: always() && needs.correr.result != 'failure'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/itf-scrapers-prize-money-7oy59k
+
+      - name: Armar el sitio (la tabla es la portada)
+        run: |
+          mkdir -p _sitio
+          cp vigia/itf-informe.html _sitio/index.html
+          cp vigia/itf-auditoria.html _sitio/auditoria.html || true
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _sitio
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
