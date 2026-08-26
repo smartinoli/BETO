@@ -26,6 +26,10 @@ h1{font:700 clamp(32px,7vw,52px)/1.02 "Bricolage Grotesque",system-ui,sans-serif
 .rank{font:700 30px/1 "Bricolage Grotesque",system-ui,sans-serif;color:var(--accent);
   opacity:.32;min-width:34px;padding-top:3px}
 .cuerpo{flex:1;min-width:0}
+.pick.contra{border-color:var(--ojo);border-left:4px solid var(--ojo)}
+.pick.contra .rank{color:var(--ojo)}
+.sello{display:inline-block;font:600 10px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--ojo-soft);color:var(--ojo);padding:3px 8px;border-radius:3px;margin-bottom:8px}
 .pick h2{font:700 25px/1.15 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 4px;text-wrap:balance}
 .cuota{font:600 19px "IBM Plex Mono",monospace;color:var(--accent);white-space:nowrap}
 .donde{font:500 12.5px "IBM Plex Mono",monospace;color:var(--ink3);margin-bottom:14px}
@@ -74,9 +78,73 @@ footer b{color:var(--ink2)}
   <h1>Las que elijo hoy</h1>
   <p class="bajada">4 de 19. Las otras están abajo con el motivo por el que no.</p>
 </header>
-<article class="pick">
+<article class="pick contra">
     <div class="rank">1</div>
     <div class="cuerpo">
+      <div class="sello">en contra del rating</div>
+      <h2>Jan Chlodnicki <span class="cuota">a 1.65</span></h2>
+      <div class="donde">contra Jan Wygona · M25 Poznan · R1 · Starting at 10:00</div>
+      <p class="porque">El rating de la ITF dice que Jan Wygona es el mejor de los dos, pero Betano lo paga a 2.07 — o sea que lo pone parejo o abajo. Cuando el precio le lleva la contra al rating, el precio suele tener razón: sabe algo que el número no ve (una lesión, la superficie, el estilo, la cancha local).</p>
+      <div class="dosbarras">
+        <div class="bl"><label>pierde</label><div class="bar"><span style="width:86%"></span></div><b>86%</b></div>
+        <div class="bl"><label>hace falta</label><div class="bar mkt"><span style="width:61%"></span></div><b>61%</b></div>
+      </div>
+      <p class="cuenta"><b>Si ese 86% es real</b>, esto deja <b class="pos">42%</b>.
+        En el peor borde del margen, pierde <b class="neg">19%</b>.</p>
+      <p class="riesgo">Lo que puede fallar: son sólo 7 partidos. El margen del 86% va de 49% a 97%, y en el peor borde esto pierde 19%. Es para probarla y medirla, no está probada.</p>
+      
+      <details><summary>los números crudos</summary>
+        <div class="crudo">
+          <div><b>Jan Wygona</b> — WTN 14.19 · 19 años · ATP 1899 · debuta</div>
+          <div><b>Jan Chlodnicki</b> — WTN 17.07 · 18 años · ATP 1995 · <i class="g">Q2✓</i> 6-2 6-0 · <i class="g">Q3✓</i> 1-6 6-3 10-7</div>
+          <div class="raz">Δ2.88 de WTN a favor de Jan Wygona (14.19 contra 17.07), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 79%. Ajustan: Jan Chlodnicki tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−36 pts). Queda en 43%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Jan Wygona, paga 2.07: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.</div>
+        </div></details>
+    </div></article><article class="pick contra">
+    <div class="rank">2</div>
+    <div class="cuerpo">
+      <div class="sello">en contra del rating</div>
+      <h2>Jan Hrazdil <span class="cuota">a 1.47</span></h2>
+      <div class="donde">contra Preston Brown · M15 Pecs · R1 · Not Before 14:30</div>
+      <p class="porque">El rating de la ITF dice que Preston Brown es el mejor de los dos, pero Betano lo paga a 2.42 — o sea que lo pone parejo o abajo. Cuando el precio le lleva la contra al rating, el precio suele tener razón: sabe algo que el número no ve (una lesión, la superficie, el estilo, la cancha local).</p>
+      <div class="dosbarras">
+        <div class="bl"><label>pierde</label><div class="bar"><span style="width:86%"></span></div><b>86%</b></div>
+        <div class="bl"><label>hace falta</label><div class="bar mkt"><span style="width:68%"></span></div><b>68%</b></div>
+      </div>
+      <p class="cuenta"><b>Si ese 86% es real</b>, esto deja <b class="pos">26%</b>.
+        En el peor borde del margen, pierde <b class="neg">28%</b>.</p>
+      <p class="riesgo">Lo que puede fallar: son sólo 7 partidos. El margen del 86% va de 49% a 97%, y en el peor borde esto pierde 28%. Es para probarla y medirla, no está probada.</p>
+      
+      <details><summary>los números crudos</summary>
+        <div class="crudo">
+          <div><b>Jan Hrazdil</b> — WTN 10.74 · 21 años · ATP 1317 · debuta</div>
+          <div><b>Preston Brown</b> — WTN 10.06 · 25 años · ATP 1055 · debuta</div>
+          <div class="raz">Δ0.68 de WTN a favor de Preston Brown (10.06 contra 10.74), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 58%. El mercado la paga a 2.42: 38% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.68: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Preston Brown, paga 2.42: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.</div>
+        </div></details>
+    </div></article><article class="pick contra">
+    <div class="rank">3</div>
+    <div class="cuerpo">
+      <div class="sello">en contra del rating</div>
+      <h2>Lenny Petit <span class="cuota">a 2.2</span></h2>
+      <div class="donde">contra Nicolas Robert · M15 Bucharest · R1 · Starting at 9:30</div>
+      <p class="porque">El rating de la ITF dice que Nicolas Robert es el mejor de los dos, pero Betano lo paga a 1.57 — o sea que lo pone parejo o abajo. Cuando el precio le lleva la contra al rating, el precio suele tener razón: sabe algo que el número no ve (una lesión, la superficie, el estilo, la cancha local).</p>
+      <div class="dosbarras">
+        <div class="bl"><label>pierde</label><div class="bar"><span style="width:50%"></span></div><b>50%</b></div>
+        <div class="bl"><label>hace falta</label><div class="bar mkt"><span style="width:45%"></span></div><b>45%</b></div>
+      </div>
+      <p class="cuenta"><b>Si ese 50% es real</b>, esto deja <b class="pos">10%</b>.
+        En el peor borde del margen, pierde <b class="neg">45%</b>.</p>
+      <p class="riesgo">Lo que puede fallar: son sólo 12 partidos. El margen del 50% va de 25% a 75%, y en el peor borde esto pierde 45%. Es para probarla y medirla, no está probada.</p>
+      
+      <details><summary>los números crudos</summary>
+        <div class="crudo">
+          <div><b>Lenny Petit</b> — WTN 14.17 · 18 años · ATP — · <i class="g">Q1✓</i> 6-2 6-1 · <i class="g">Q2✓</i> 6-1 6-3 · <i class="g">Q3✓</i> 6-3 6-2</div>
+          <div><b>Nicolas Robert</b> — WTN 8.38 · 20 años · ATP 849 · debuta</div>
+          <div class="raz">Δ5.79 de WTN a favor de Nicolas Robert (8.38 contra 14.17), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 94%. Ajustan: Lenny Petit tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−19 pts). Queda en 75%. El mercado la paga a 1.57: 58% una vez sacado su margen. A esa cuota, la apuesta rinde +17% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Nicolas Robert, paga 1.57: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.</div>
+        </div></details>
+    </div></article><article class="pick favor">
+    <div class="rank">4</div>
+    <div class="cuerpo">
+      
       <h2>Niklas Guttau <span class="cuota">a 1.17</span></h2>
       <div class="donde">contra Kacper Knitter · M25 Poznan · R1 · Not Before 13:00</div>
       <p class="porque">Niklas Guttau es algo mejor jugador en el rating de la ITF: 2.7 puntos de WTN de diferencia y la semana pasada llegó más lejos en su torneo.</p>
@@ -94,89 +162,29 @@ footer b{color:var(--ink2)}
           <div><b>Kacper Knitter</b> — WTN 10.83 · 19 años · ATP 1312 · debuta</div>
           <div class="raz">Δ2.70 de WTN a favor de Niklas Guttau (8.13 contra 10.83), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 78%. Ajustan: Niklas Guttau llegó más lejos en su torneo anterior (+16 pts). Queda en 94%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −8% si la tiene el mercado.</div>
         </div></details>
-    </div></article><article class="pick">
-    <div class="rank">2</div>
-    <div class="cuerpo">
-      <h2>Daniel Jade <span class="cuota">a 1.15</span></h2>
-      <div class="donde">contra Rahul Dhokia · M15 Monastir · R1 · Starting at 8:00</div>
-      <p class="porque">Daniel Jade es algo mejor jugador en el rating de la ITF: 2.7 puntos de WTN de diferencia y encima tiene 18 años o menos, edad a la que el rating va atrasado.</p>
-      <div class="dosbarras">
-        <div class="bl"><label>nosotros</label><div class="bar"><span style="width:95%"></span></div><b>95%</b></div>
-        <div class="bl"><label>Betano</label><div class="bar mkt"><span style="width:79%"></span></div><b>79%</b></div>
-      </div>
-      <p class="cuenta"><b>Si tenemos razón</b>, a la larga esto deja <b class="pos">9%</b>.
-        Si la tiene Betano, pierde <b class="neg">9%</b>.</p>
-      <p class="riesgo">Lo que puede fallar: le damos 95%, así que pierde 1 de cada 19. Cuando pase no es que nos equivocamos — a esta cuota una derrota se lleva 7 aciertos.</p>
-      
-      <details><summary>los números crudos</summary>
-        <div class="crudo">
-          <div><b>Rahul Dhokia</b> — WTN 10.48 · 26 años · ATP 2237 · debuta</div>
-          <div><b>Daniel Jade</b> — WTN 7.75 · 17 años · ATP 711 · debuta</div>
-          <div class="raz">Δ2.73 de WTN a favor de Daniel Jade (7.75 contra 10.48), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 78%. Ajustan: Daniel Jade tiene 17 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+17 pts). Queda en 95%. El mercado la paga a 1.15: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −9% si la tiene el mercado.</div>
-        </div></details>
-    </div></article><article class="pick">
-    <div class="rank">3</div>
-    <div class="cuerpo">
-      <h2>Daniel Verbeek <span class="cuota">a 1.31</span></h2>
-      <div class="donde">contra Richard Antoni · M25 Oldenzaal · R1 · Starting at 10:00</div>
-      <p class="porque">Daniel Verbeek es algo mejor jugador en el rating de la ITF: 2.8 puntos de WTN de diferencia, llega ganando más cómodo que su rival en este mismo cuadro.</p>
-      <div class="dosbarras">
-        <div class="bl"><label>nosotros</label><div class="bar"><span style="width:83%"></span></div><b>83%</b></div>
-        <div class="bl"><label>Betano</label><div class="bar mkt"><span style="width:70%"></span></div><b>70%</b></div>
-      </div>
-      <p class="cuenta"><b>Si tenemos razón</b>, a la larga esto deja <b class="pos">9%</b>.
-        Si la tiene Betano, pierde <b class="neg">8%</b>.</p>
-      <p class="riesgo">Lo que puede fallar: le damos 83%, así que pierde 1 de cada 6. Cuando pase no es que nos equivocamos — a esta cuota una derrota se lleva 4 aciertos.</p>
-      
-      <details><summary>los números crudos</summary>
-        <div class="crudo">
-          <div><b>Richard Antoni</b> — WTN 11.81 · 21 años · ATP 1362 · <i class="g">Q2✓</i> 6-2 6-2 · <i class="g">Q3✓</i> 6-1 6-4</div>
-          <div><b>Daniel Verbeek</b> — WTN 9.06 · 22 años · ATP 1585 · <i class="g">Q2✓</i> 6-3 6-0 · <i class="g">Q3✓</i> 6-0 6-2</div>
-          <div class="raz">Δ2.75 de WTN a favor de Daniel Verbeek (9.06 contra 11.81), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 78%. Ajustan: Daniel Verbeek viene cediendo menos games (17% contra 27%) (+4 pts). Queda en 83%. El mercado la paga a 1.31: 70% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −8% si la tiene el mercado.</div>
-        </div></details>
-    </div></article><article class="pick">
-    <div class="rank">4</div>
-    <div class="cuerpo">
-      <h2>Adrien Burdet <span class="cuota">a 1.2</span></h2>
-      <div class="donde">contra Mateo Fluri · M25 Lausanne · R1 · Followed By</div>
-      <p class="porque">Adrien Burdet es mucho mejor jugador en el rating de la ITF: 7.8 puntos de WTN de diferencia, aunque Mateo Fluri tiene 18 años y a esa edad el rating va atrasado.</p>
-      <div class="dosbarras">
-        <div class="bl"><label>nosotros</label><div class="bar"><span style="width:88%"></span></div><b>88%</b></div>
-        <div class="bl"><label>Betano</label><div class="bar mkt"><span style="width:76%"></span></div><b>76%</b></div>
-      </div>
-      <p class="cuenta"><b>Si tenemos razón</b>, a la larga esto deja <b class="pos">6%</b>.
-        Si la tiene Betano, pierde <b class="neg">8%</b>.</p>
-      <p class="riesgo">Lo que puede fallar: le damos 88%, así que pierde 1 de cada 9. Cuando pase no es que nos equivocamos — a esta cuota una derrota se lleva 6 aciertos.</p>
-      
-      <details><summary>los números crudos</summary>
-        <div class="crudo">
-          <div><b>Adrien Burdet</b> — WTN 9.25 · 24 años · ATP 1462 · debuta</div>
-          <div><b>Mateo Fluri</b> — WTN 17.02 · 18 años · ATP — · debuta</div>
-          <div class="raz">Δ7.77 de WTN a favor de Adrien Burdet (9.25 contra 17.02), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 97%. Ajustan: Mateo Fluri tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−9 pts). Queda en 88%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −8% si la tiene el mercado.</div>
-        </div></details>
     </div></article>
 <div class="resto">
   <h3>Las otras 15, y por qué no</h3>
   <table><tbody>
-    <tr><td>Preston Brown</td>
-      <td class="c">2.42</td>
-      <td class="m">partido parejo y el favorito paga caro</td></tr><tr><td>Nicolas Robert [8]</td>
-      <td class="c">1.57</td>
-      <td class="m">el favorito paga sobre 1.50 — medido, ahí se cae</td></tr><tr><td>Nicolas Jadoun</td>
+    <tr><td>Daniel Jade</td>
+      <td class="c">1.15</td>
+      <td class="m">sirve pero quedó quinta o más abajo en valor</td></tr><tr><td>Daniel Verbeek [4]</td>
+      <td class="c">1.31</td>
+      <td class="m">sirve pero quedó quinta o más abajo en valor</td></tr><tr><td>Adrien Burdet</td>
+      <td class="c">1.2</td>
+      <td class="m">sirve pero quedó quinta o más abajo en valor</td></tr><tr><td>Nicolas Jadoun</td>
       <td class="c">1.13</td>
-      <td class="m">quedó quinto o más abajo</td></tr><tr><td>Stian Klaassen WC</td>
+      <td class="m">sirve pero quedó quinta o más abajo en valor</td></tr><tr><td>Stian Klaassen WC</td>
       <td class="c">1.1</td>
-      <td class="m">quedó quinto o más abajo</td></tr><tr><td>Eero Vasa [3]</td>
+      <td class="m">sirve pero quedó quinta o más abajo en valor</td></tr><tr><td>Eero Vasa [3]</td>
       <td class="c">1.34</td>
-      <td class="m">quedó quinto o más abajo</td></tr><tr><td>John Sperle [7]</td>
+      <td class="m">sirve pero quedó quinta o más abajo en valor</td></tr><tr><td>John Sperle [7]</td>
       <td class="c">1.47</td>
       <td class="m">partido parejo: acá no sabe nadie</td></tr><tr><td>Nav Dayal</td>
       <td class="c">1.27</td>
       <td class="m">la cuota no alcanza ni con nuestra probabilidad</td></tr><tr><td>Henry Bernet [3]</td>
       <td class="c">1.09</td>
-      <td class="m">la cuota no alcanza ni con nuestra probabilidad</td></tr><tr><td>Jan Wygona WC</td>
-      <td class="c">2.07</td>
-      <td class="m">el favorito paga sobre 1.50 — medido, ahí se cae</td></tr><tr><td>Valentin Basel</td>
+      <td class="m">la cuota no alcanza ni con nuestra probabilidad</td></tr><tr><td>Valentin Basel</td>
       <td class="c">1.4</td>
       <td class="m">partido parejo: acá no sabe nadie</td></tr><tr><td>Johan Nikles [2]</td>
       <td class="c">1.1</td>

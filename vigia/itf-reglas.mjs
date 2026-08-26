@@ -345,6 +345,7 @@ export function analizar(p) {
 
   /* --- alertas: sólo las tres que están medidas --- */
   const alertas = [];
+  let contra = null;
   /* las dos reglas de perdedor, que son lo único que apunta a una apuesta
      concreta y no sólo a "no juegues esto" */
   const dCed = (yo.cedidos != null && otro.cedidos != null) ? otro.cedidos - yo.cedidos : null;
@@ -376,9 +377,47 @@ export function analizar(p) {
       confianza: 'media', mercado: 'sin precio',
       razon: `${razonNivel} Sin cuota todavía.`, banderas: [`p${Math.round(pe * 100)}%`] };
 
-  if (c > CUOTA_CARA) alertas.push({ clave: 'favorito-caro', texto:
-    `El favorito por WTN paga ${c}. Medido, el favorito por WTN sobre ${CUOTA_CARA.toFixed(2)} `
-    + `rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.` });
+  /* LA CONTRA. Durante toda la sesión el sistema calculó el valor de UN
+     lado: el favorito por WTN. El otro nunca se miró, y ahí estaba lo
+     único que se parece a una apuesta de verdad.
+
+     Medido el 2026-08-26 sobre los 52 partidos con precio y resultado,
+     partiendo por lo que Betano le cobra a NUESTRO favorito por WTN:
+
+       el favorito paga   n   pierde   la contra paga   rinde la contra
+       bajo 1.20         14      7%        5.23             −66%
+       1.20 a 1.50       19     26%        3.24             −15%
+       1.50 a 2.00       12     50%        2.08              +4%
+       sobre 2.00         7     86%        1.47             +24%
+       SOBRE 1.50        19     63%        1.86             +11%
+
+     Es monótona de punta a punta y tiene un mecanismo entendible: cuando
+     el WTN dice que A es mejor pero el precio lo pone parejo o abajo, el
+     mercado sabe algo que el rating no — lesión, superficie, estilo,
+     cancha local. Apostarle al otro es ponerse del lado informado.
+
+     Coincide además con lo que ya habíamos medido por otro camino: con
+     ΔWTN bajo 2 el precio decía 58% y pasó 43% (n=23). Son la misma
+     casilla vista de dos formas: casi todos estos partidos son parejos.
+
+     EL LÍMITE, Y ES SERIO: son 19 partidos. El intervalo del 63% va de
+     41% a 81%. Al 63% la contra rinde +11%; al borde malo del intervalo
+     necesitaría cuota 2.44 y paga 1.86, o sea −24%. El punto entusiasma
+     y el intervalo no concluye. Se marca para jugarla hacia adelante y
+     medirla, no porque esté probada. */
+  if (c > CUOTA_CARA) {
+    const cContra = cRival ?? null;
+    alertas.push({ clave: 'favorito-caro', texto:
+      `Nuestro favorito por WTN, ${yo.nombre}, paga ${c}: el precio lo pone parejo o abajo pese a que `
+      + `el rating dice que es mejor. En esa situación el mercado suele tener razón.` });
+    /* el tramo importa: no es lo mismo que pague 1.6 a que pague 2.4 */
+    const tramo = c >= 2.00
+      ? { nom: 'sobre 2.00', pierde: 0.86, ic: [0.49, 0.97], n: 7 }
+      : { nom: 'entre 1.50 y 2.00', pierde: 0.50, ic: [0.25, 0.75], n: 12 };
+    contra = { lado: otro.nombre, cuota: cContra, cuotaFav: c, ...tramo,
+      rinde: cContra ? tramo.pierde * cContra - 1 : null,
+      rindeMalo: cContra ? tramo.ic[0] * cContra - 1 : null };
+  }
 
   const devig = cRival ? (1 / c) / ((1 / c) + (1 / cRival)) : null;
   const discrepancia = devig != null ? pe - devig : null;
@@ -398,7 +437,7 @@ export function analizar(p) {
     regla.cuotaOfrecida = regla.lado === otro.nombre ? (cRival ?? null) : c;
     regla.paga = regla.cuotaOfrecida != null && regla.cuotaOfrecida >= regla.cuotaMin;
   }
-  return { tipo: pe < P_SEGURA ? 'flojo' : 'mira', nivel, precio, favorito: nivel.favorito, alertas, regla,
+  return { tipo: pe < P_SEGURA ? 'flojo' : 'mira', nivel, precio, favorito: nivel.favorito, alertas, regla, contra,
     confianza: alertas.length ? 'media' : 'alta', mercado: 'gana',
     razon: razonNivel + cuentaMercado + (alertas.length ? ' ' + alertas.map(a => a.texto).join(' ') : ''),
     banderas: [`p${Math.round(pe * 100)}%`,

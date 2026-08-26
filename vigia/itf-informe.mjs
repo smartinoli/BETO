@@ -305,18 +305,61 @@ for (const q of cuotas) {
    probabilidad. Si no quedan cuatro, se muestran los que queden: es
    mejor entregar dos que rellenar con basura.
    ============================================================ */
-const MALAS = new Set(['parejo', 'favorito-caro', 'jr-incognito']);
-const elegible = f => f.v?.precio?.val > 0 && (f.v.nivel?.p ?? 0) >= 0.75
-  && !(f.v.alertas || []).some(a => MALAS.has(a.clave));
-const ELEGIDAS = filas.filter(elegible)
-  .sort((a, b) => (b.v.regla?.paga ? 1 : 0) - (a.v.regla?.paga ? 1 : 0)
-    || b.v.precio.val - a.v.precio.val)
+const MALAS = new Set(['parejo', 'jr-incognito']);
+
+/* Cada partido puede dar DOS jugadas y hasta ayer el sistema sólo miraba
+   una. Ahora se evalúan las dos y se elige la mejor de cada partido:
+
+   A FAVOR — al favorito por WTN. Sale del modelo: nuestra probabilidad
+   contra la cuota. Es lo que veníamos haciendo.
+
+   EN CONTRA — al otro, cuando Betano paga a NUESTRO favorito sobre 1.50.
+   No sale del modelo sino de una regla de precio: si el rating dice que
+   A es mejor y el precio lo pone parejo o abajo, el mercado sabe algo que
+   el rating no. Medido, ahí el favorito por WTN pierde 63% (12 de 19) y
+   la contra rindió +11%. Es la única jugada del sistema que paga cuota
+   larga, y es la que Sebastián venía pidiendo. */
+const jugadaDe = f => {
+  if (!f.v?.precio) return null;
+  const mal = (f.v.alertas || []).some(a => MALAS.has(a.clave));
+  const c = f.v.contra;
+  if (c && c.cuota && c.rinde > 0)
+    return { tipo: 'contra', quien: c.lado, cuota: c.cuota, rinde: c.rinde,
+      rindeMalo: c.rindeMalo, prob: c.pierde, ic: c.ic, n: c.n, tramo: c.nom, contra: c };
+  if (!mal && f.v.precio.val > 0 && (f.v.nivel?.p ?? 0) >= 0.75)
+    return { tipo: 'favor', quien: f.v.nivel.favorito, cuota: f.v.precio.cuota,
+      rinde: f.v.precio.val, rindeMercado: f.v.precio.valMercado, prob: f.v.nivel.p };
+  return null;
+};
+for (const f of filas) f.jugada = jugadaDe(f);
+/* las contras primero: son las únicas que pagan cuota larga y las únicas
+   con un mecanismo medido detrás del precio */
+const ELEGIDAS = filas.filter(f => f.jugada)
+  .sort((a, b) => (b.jugada.tipo === 'contra' ? 1 : 0) - (a.jugada.tipo === 'contra' ? 1 : 0)
+    || b.jugada.rinde - a.jugada.rinde)
   .slice(0, 4);
 
 /* Traduce lo que el modelo calculó a una frase que se lee sin saber qué
    es un logit. Cada trozo sale de una señal real, no es adorno. */
 function enSimple(f) {
-  const n = f.v.nivel, pr = f.v.precio;
+  const n = f.v.nivel, pr = f.v.precio, j = f.jugada;
+  if (j?.tipo === 'contra') {
+    const c = j.contra;
+    return {
+      fav: c.lado,
+      razon: `El rating de la ITF dice que ${n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim()} `
+        + `es el mejor de los dos, pero Betano lo paga a ${c.cuotaFav} — o sea que lo pone parejo o abajo. `
+        + `Cuando el precio le lleva la contra al rating, el precio suele tener razón: sabe algo que el `
+        + `número no ve (una lesión, la superficie, el estilo, la cancha local).`,
+      mercado: `Medido sobre nuestros partidos: cuando nuestro favorito paga ${c.nom}, pierde `
+        + `${Math.round(c.pierde * 100)} de cada 100 (${c.n} casos).`,
+      cuenta: `Apostarle a ${c.lado} a ${c.cuota} deja ${Math.round(c.rinde * 100)}% a la larga si ese `
+        + `${Math.round(c.pierde * 100)}% es el número real.`,
+      riesgo: `Lo que puede fallar: son sólo ${c.n} partidos. El margen del ${Math.round(c.pierde * 100)}% `
+        + `va de ${Math.round(c.ic[0] * 100)}% a ${Math.round(c.ic[1] * 100)}%, y en el peor borde esto `
+        + `pierde ${Math.abs(Math.round(c.rindeMalo * 100))}%. Es para probarla y medirla, no está probada.`,
+    };
+  }
   const fav = n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim();
   const otro = n.favorito.startsWith(f.f1.nombre) ? f.f2 : f.f1;
   const d = n.d;
@@ -352,8 +395,8 @@ if (ELEGIDAS.length) {
   console.log(`  LAS ${ELEGIDAS.length} QUE ELIJO`);
   console.log('═'.repeat(76));
   for (const [i, f] of ELEGIDAS.entries()) {
-    const s = enSimple(f), pr = f.v.precio;
-    console.log(`\n  ${i + 1}. ${s.fav}  a ${pr.cuota}`);
+    const s = enSimple(f), j = f.jugada;
+    console.log(`\n  ${i + 1}. ${j.tipo === 'contra' ? 'CONTRA · ' : ''}${s.fav}  a ${j.cuota}`);
     console.log(`     ${f.t.nombre} · ${f.etapa}${f.horario ? ' · ' + (f.horario.hora || f.horario.fecha) : ''}`);
     console.log(`\n     ${s.razon}`);
     console.log(`     ${s.mercado}`);
@@ -398,20 +441,28 @@ const trayHtml = f => f.tray.length
   : 'debuta';
 
 const tarjeta = (f, i) => {
-  const t = enSimple(f), n = f.v.nivel, pr = f.v.precio;
-  const otro = n.favorito.startsWith(f.f1.nombre) ? f.f2 : f.f1;
-  return `<article class="pick">
+  const t = enSimple(f), n = f.v.nivel, pr = f.v.precio, j = f.jugada;
+  const rival = j.tipo === 'contra' ? n.favorito : (n.favorito.startsWith(f.f1.nombre) ? f.f2.nombre : f.f2.nombre);
+  const otroNom = n.favorito.startsWith(f.f1.nombre) ? f.f2.nombre : f.f1.nombre;
+  return `<article class="pick ${j.tipo}">
     <div class="rank">${i + 1}</div>
     <div class="cuerpo">
-      <h2>${esc(t.fav)} <span class="cuota">a ${pr.cuota}</span></h2>
-      <div class="donde">contra ${esc(otro.nombre)} · ${esc(f.t.nombre)} · ${esc(f.etapa)}${f.horario ? ' · ' + esc(f.horario.hora || f.horario.fecha) : ''}</div>
+      ${j.tipo === 'contra' ? '<div class="sello">en contra del rating</div>' : ''}
+      <h2>${esc(t.fav)} <span class="cuota">a ${j.cuota}</span></h2>
+      <div class="donde">contra ${esc(j.tipo === 'contra' ? n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim() : otroNom)} · ${esc(f.t.nombre)} · ${esc(f.etapa)}${f.horario ? ' · ' + esc(f.horario.hora || f.horario.fecha) : ''}</div>
       <p class="porque">${esc(t.razon)}</p>
-      <div class="dosbarras">
+      ${j.tipo === 'contra' ? `<div class="dosbarras">
+        <div class="bl"><label>pierde</label><div class="bar"><span style="width:${Math.round(j.prob * 100)}%"></span></div><b>${Math.round(j.prob * 100)}%</b></div>
+        <div class="bl"><label>hace falta</label><div class="bar mkt"><span style="width:${Math.round(100 / j.cuota)}%"></span></div><b>${Math.round(100 / j.cuota)}%</b></div>
+      </div>
+      <p class="cuenta"><b>Si ese ${Math.round(j.prob * 100)}% es real</b>, esto deja <b class="pos">${Math.round(j.rinde * 100)}%</b>.
+        En el peor borde del margen, pierde <b class="neg">${Math.abs(Math.round(j.rindeMalo * 100))}%</b>.</p>`
+      : `<div class="dosbarras">
         <div class="bl"><label>nosotros</label><div class="bar"><span style="width:${Math.round(n.p * 100)}%"></span></div><b>${Math.round(n.p * 100)}%</b></div>
         <div class="bl"><label>Betano</label><div class="bar mkt"><span style="width:${Math.round(pr.devig * 100)}%"></span></div><b>${Math.round(pr.devig * 100)}%</b></div>
       </div>
       <p class="cuenta"><b>Si tenemos razón</b>, a la larga esto deja <b class="pos">${Math.round(pr.val * 100)}%</b>.
-        Si la tiene Betano, pierde <b class="neg">${Math.abs(Math.round(pr.valMercado * 100))}%</b>.</p>
+        Si la tiene Betano, pierde <b class="neg">${Math.abs(Math.round(pr.valMercado * 100))}%</b>.</p>`}
       <p class="riesgo">${esc(t.riesgo)}</p>
       ${f.v.regla ? `<p class="reglaln"><b>${f.v.regla.clave === 'caida' ? 'Regla de caída' : 'Regla de firme'}:</b>
         ${esc(f.v.regla.texto)}</p>` : ''}
@@ -428,13 +479,12 @@ const descart = filas.filter(f => f.v?.precio && !ELEGIDAS.includes(f))
   .sort((a, b) => (b.v.precio.val ?? -9) - (a.v.precio.val ?? -9));
 const motivoDe = f => {
   const mal = (f.v.alertas || []).filter(a => MALAS.has(a.clave)).map(a => a.clave);
-  if (mal.includes('favorito-caro') && mal.includes('parejo')) return 'partido parejo y el favorito paga caro';
-  if (mal.includes('favorito-caro')) return 'el favorito paga sobre 1.50 — medido, ahí se cae';
+  if (f.v.contra && !(f.v.contra.rinde > 0)) return 'da para la contra pero la cuota del otro no alcanza';
   if (mal.includes('parejo')) return 'partido parejo: acá no sabe nadie';
   if (mal.includes('jr-incognito')) return 'el rival es junior y no sé su ranking';
   if (f.v.precio.val <= 0) return 'la cuota no alcanza ni con nuestra probabilidad';
   if ((f.v.nivel?.p ?? 0) < 0.75) return 'no le damos ni 75%';
-  return 'quedó quinto o más abajo';
+  return 'sirve pero quedó quinta o más abajo en valor';
 };
 
 const html = `<title>Las que elijo hoy</title>
@@ -465,6 +515,10 @@ h1{font:700 clamp(32px,7vw,52px)/1.02 "Bricolage Grotesque",system-ui,sans-serif
 .rank{font:700 30px/1 "Bricolage Grotesque",system-ui,sans-serif;color:var(--accent);
   opacity:.32;min-width:34px;padding-top:3px}
 .cuerpo{flex:1;min-width:0}
+.pick.contra{border-color:var(--ojo);border-left:4px solid var(--ojo)}
+.pick.contra .rank{color:var(--ojo)}
+.sello{display:inline-block;font:600 10px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--ojo-soft);color:var(--ojo);padding:3px 8px;border-radius:3px;margin-bottom:8px}
 .pick h2{font:700 25px/1.15 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 4px;text-wrap:balance}
 .cuota{font:600 19px "IBM Plex Mono",monospace;color:var(--accent);white-space:nowrap}
 .donde{font:500 12.5px "IBM Plex Mono",monospace;color:var(--ink3);margin-bottom:14px}

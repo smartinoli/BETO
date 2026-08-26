@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-26T03:57:56.367Z",
+ "generado": "2026-08-26T04:37:17.497Z",
  "analista": "agente (Claude) — cuotas Betano como universo + cuadros + entry lists + historial por jugador + modelo multi-senal (itf-modelo.mjs) y juicio contra el mercado (itf-reglas.mjs)",
  "titular": "La probabilidad ya no sale solo del WTN: entran edad, siembra, games cedidos en el cuadro y hasta donde llego en el torneo anterior. Validado dejando un torneo afuera sobre 1243 partidos: log-loss 0.4967 y 75.5% de acierto contra 0.5097 y 74.3% del modelo anterior.",
  "advertencia": "NO hay ventaja demostrada sobre el mercado. Medido el 2026-08-26 sobre los 52 partidos con precio y resultado, el mercado le gana al modelo (log-loss 0.5220 contra 0.5485), y el hallazgo del escalon sub-19 resulta que el precio ya lo tenia (decia 64%, paso 67%, nuestra curva vieja decia 83%). Lo unico medido son tres alertas: favorito por WTN sobre cuota 1.50 (-17% y -69%), partido parejo con dWTN bajo 2 (el precio decia 58%, paso 43%), y junior top 60. El resto es ruido con 52 partidos.",
@@ -137,13 +137,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.88. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Luca Castelnuovo, paga 1.88: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Moerani Bouzige",
+    "cuota": 1.8,
+    "cuotaFav": 1.88,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": -0.09999999999999998,
+    "rindeMalo": -0.55
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ1.98 de WTN a favor de Luca Castelnuovo (5.07 contra 7.05), en R1: la curva del grupo \"buenas\" (n=528) da 72%. El mercado la paga a 1.88: 49% una vez sacado su margen. A esa cuota, la apuesta rinde +35% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.98: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.88. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ1.98 de WTN a favor de Luca Castelnuovo (5.07 contra 7.05), en R1: la curva del grupo \"buenas\" (n=528) da 72%. El mercado la paga a 1.88: 49% una vez sacado su margen. A esa cuota, la apuesta rinde +35% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.98: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Luca Castelnuovo, paga 1.88: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p72%",
     "mercado +23",
@@ -221,6 +235,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.54 de WTN a favor de Manish Sureshkumar (6.91 contra 8.45), en R1: la curva del grupo \"buenas\" (n=528) da 67%. El mercado la paga a 1.42: 64% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 1.54: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -399,13 +414,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.98. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Sasikumar Mukund, paga 1.98: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Tai Leonard Sach",
+    "cuota": 1.72,
+    "cuotaFav": 1.98,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": -0.14,
+    "rindeMalo": -0.5700000000000001
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ0.07 de WTN a favor de Sasikumar Mukund (6.47 contra 6.54), en R1: la curva del grupo \"buenas\" (n=528) da 51%. El mercado la paga a 1.98: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.07: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.98. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ0.07 de WTN a favor de Sasikumar Mukund (6.47 contra 6.54), en R1: la curva del grupo \"buenas\" (n=528) da 51%. El mercado la paga a 1.98: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.07: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Sasikumar Mukund, paga 1.98: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p51%",
     "mercado +4",
@@ -449,6 +478,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.50 de WTN a favor de Matthew Dellavedova (4.65 contra 6.15), en R1: la curva del grupo \"buenas\" (n=528) da 67%. El mercado la paga a 1.27: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.50: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -489,6 +519,7 @@
    "favorito": "Kasidit Samrej [6]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.19 de WTN a favor de Kasidit Samrej (4.15 contra 7.34), en R1: la curva del grupo \"buenas\" (n=528) da 82%. El mercado la paga a 1.38: 66% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -626,6 +657,7 @@
    "favorito": "Miles Jones",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.16 de WTN a favor de Miles Jones (6.97 contra 10.13), en R1: la curva del grupo \"buenas\" (n=528) da 81%. El mercado la paga a 1.23: 75% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -670,6 +702,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.84 de WTN a favor de Lingxi Zhao (7.13 contra 8.97), en R1: la curva del grupo \"buenas\" (n=528) da 70%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.84: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -715,6 +748,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ0.13 de WTN a favor de M Rifqi Fitriadi (6.55 contra 6.68), en R1: la curva del grupo \"buenas\" (n=528) da 52%. El mercado la paga a 1.21: 76% una vez sacado su margen. A esa cuota, la apuesta rinde −38% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.13: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -755,6 +789,7 @@
    "favorito": "Enzo Aguiard [4]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ4.83 de WTN a favor de Enzo Aguiard (4.61 contra 9.44), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.25: 73% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −9% si la tiene el mercado.",
@@ -805,6 +840,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.53 de WTN a favor de Reiya Komagata (12.14 contra 13.67), en R1: la curva del grupo \"buenas\" (n=528) da 67%. Ajustan: Reiya Komagata viene cediendo menos games (25% contra 47%) (+12 pts). Queda en 79%. El mercado la paga a 1.33: 69% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.53: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -850,6 +886,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.12 de WTN a favor de Chan-Yeong Oh (7.99 contra 9.11), en R1: la curva del grupo \"buenas\" (n=528) da 63%. El mercado la paga a 1.32: 70% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.12: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -1162,6 +1199,7 @@
    "favorito": "Vadym Ursu [1]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.23 de WTN a favor de Vadym Ursu (5.75 contra 8.98), en R1: la curva del grupo \"buenas\" (n=528) da 82%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -1233,6 +1271,7 @@
    "favorito": "Michal Krajci [5]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ9.39 de WTN a favor de Michal Krajci (6.1 contra 15.49), en R1: la curva del grupo \"buenas\" (n=528) da 99%. Ajustan: Marat Salbiev tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−5 pts). Queda en 94%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -1403,13 +1442,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.7. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Aditya Balsekar, paga 1.7: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Dmitry Bessonov",
+    "cuota": 1.98,
+    "cuotaFav": 1.7,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": -0.010000000000000009,
+    "rindeMalo": -0.505
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ1.25 de WTN a favor de Aditya Balsekar (9.91 contra 11.16), en R1: la curva del grupo \"buenas\" (n=528) da 64%. El mercado la paga a 1.7: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 1.25: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.7. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ1.25 de WTN a favor de Aditya Balsekar (9.91 contra 11.16), en R1: la curva del grupo \"buenas\" (n=528) da 64%. El mercado la paga a 1.7: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 1.25: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Aditya Balsekar, paga 1.7: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p64%",
     "mercado +10",
@@ -1484,13 +1537,27 @@
    "alertas": [
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.65. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Makar Elesin, paga 2.65: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Omar Kandil",
+    "cuota": 1.4,
+    "cuotaFav": 2.65,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.20399999999999996,
+    "rindeMalo": -0.31400000000000006
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ2.66 de WTN a favor de Makar Elesin (14.47 contra 17.13), en R1: la curva del grupo \"buenas\" (n=528) da 78%. Ajustan: Omar Kandil tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts). Queda en 41%. El mercado la paga a 2.65: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.65. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ2.66 de WTN a favor de Makar Elesin (14.47 contra 17.13), en R1: la curva del grupo \"buenas\" (n=528) da 78%. Ajustan: Omar Kandil tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts). Queda en 41%. El mercado la paga a 2.65: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Makar Elesin, paga 2.65: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p41%",
     "mercado +6",
@@ -1571,13 +1638,27 @@
    "alertas": [
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.78. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Jake Fellows, paga 1.78: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Ivan Gretskiy",
+    "cuota": 1.88,
+    "cuotaFav": 1.78,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": -0.06000000000000005,
+    "rindeMalo": -0.53
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ2.73 de WTN a favor de Jake Fellows (9.55 contra 12.28), en R1: la curva del grupo \"buenas\" (n=528) da 78%. El mercado la paga a 1.78: 51% una vez sacado su margen. A esa cuota, la apuesta rinde +39% si tenemos razón nosotros y −9% si la tiene el mercado. El favorito por WTN paga 1.78. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ2.73 de WTN a favor de Jake Fellows (9.55 contra 12.28), en R1: la curva del grupo \"buenas\" (n=528) da 78%. El mercado la paga a 1.78: 51% una vez sacado su margen. A esa cuota, la apuesta rinde +39% si tenemos razón nosotros y −9% si la tiene el mercado. Nuestro favorito por WTN, Jake Fellows, paga 1.78: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p78%",
     "mercado +27",
@@ -1649,6 +1730,7 @@
    "favorito": "Amr Elsayed [2]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.48 de WTN a favor de Amr Elsayed (7.72 contra 10.2), en R1: la curva del grupo \"buenas\" (n=528) da 76%. El mercado la paga a 1.33: 69% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -1688,6 +1770,7 @@
    "favorito": "Nicolo Toffanin",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.43 de WTN a favor de Nicolo Toffanin (10.54 contra 12.97), en R1: la curva del grupo \"buenas\" (n=528) da 76%. El mercado la paga a 1.45: 63% una vez sacado su margen. A esa cuota, la apuesta rinde +10% si tenemos razón nosotros y −9% si la tiene el mercado.",
@@ -1727,6 +1810,7 @@
    "favorito": "Aljaz Jeran",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ4.82 de WTN a favor de Aljaz Jeran (8.43 contra 13.25), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.16: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +5% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -1795,6 +1879,7 @@
    "favorito": "Sebastian Sorger [3]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.27 de WTN a favor de Sebastian Sorger (5.15 contra 8.42), en R1: la curva del grupo \"buenas\" (n=528) da 82%. El mercado la paga a 1.1: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -1868,13 +1953,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.52. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Nik Mikovic, paga 1.52: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Mak Mikovic",
+    "cuota": 2.32,
+    "cuotaFav": 1.52,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": 0.15999999999999992,
+    "rindeMalo": -0.42000000000000004
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ0.83 de WTN a favor de Nik Mikovic (10.04 contra 10.87), en R1: la curva del grupo \"buenas\" (n=528) da 60%. El mercado la paga a 1.52: 60% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.83: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.52. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ0.83 de WTN a favor de Nik Mikovic (10.04 contra 10.87), en R1: la curva del grupo \"buenas\" (n=528) da 60%. El mercado la paga a 1.52: 60% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.83: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Nik Mikovic, paga 1.52: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p60%",
     "mercado −1",
@@ -1972,13 +2071,27 @@
    "alertas": [
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.85. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Karlo Kajin, paga 1.85: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Marko Retelj",
+    "cuota": 1.82,
+    "cuotaFav": 1.85,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": -0.08999999999999997,
+    "rindeMalo": -0.5449999999999999
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ2.05 de WTN a favor de Karlo Kajin (9.3 contra 11.35), en R1: la curva del grupo \"buenas\" (n=528) da 72%. El mercado la paga a 1.85: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +34% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 1.85. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ2.05 de WTN a favor de Karlo Kajin (9.3 contra 11.35), en R1: la curva del grupo \"buenas\" (n=528) da 72%. El mercado la paga a 1.85: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +34% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Karlo Kajin, paga 1.85: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p72%",
     "mercado +23",
@@ -2016,6 +2129,7 @@
    "favorito": "Stefan Popovic [7]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.19 de WTN a favor de Stefan Popovic (7.9 contra 10.09), en R1: la curva del grupo \"buenas\" (n=528) da 74%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −20% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -2089,6 +2203,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ0.12 de WTN a favor de Edoardo Cherie Ligniere (9.37 contra 9.49), en R1: la curva del grupo \"buenas\" (n=528) da 51%. El mercado la paga a 1.3: 70% una vez sacado su margen. A esa cuota, la apuesta rinde −33% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.12: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -2221,6 +2336,7 @@
    "favorito": "Giammarco Gandolfi",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ4.81 de WTN a favor de Giammarco Gandolfi (8.54 contra 13.35), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.42: 65% una vez sacado su margen. A esa cuota, la apuesta rinde +29% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -2265,6 +2381,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.22 de WTN a favor de John Sperle (7.13 contra 8.35), en R1: la curva del grupo \"buenas\" (n=528) da 64%. El mercado la paga a 1.47: 63% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.22: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -2305,6 +2422,7 @@
    "favorito": "Herman Hoeyeraal [3]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ5.40 de WTN a favor de Herman Hoeyeraal (7.61 contra 13.01), en R1: la curva del grupo \"buenas\" (n=528) da 93%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde +11% si tenemos razón nosotros y −9% si la tiene el mercado.",
@@ -2349,13 +2467,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.42. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Preston Brown, paga 2.42: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Jan Hrazdil",
+    "cuota": 1.47,
+    "cuotaFav": 2.42,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.2642,
+    "rindeMalo": -0.27970000000000006
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ0.68 de WTN a favor de Preston Brown (10.06 contra 10.74), en R1: la curva del grupo \"buenas\" (n=528) da 58%. El mercado la paga a 2.42: 38% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.68: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.42. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ0.68 de WTN a favor de Preston Brown (10.06 contra 10.74), en R1: la curva del grupo \"buenas\" (n=528) da 58%. El mercado la paga a 2.42: 38% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.68: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Preston Brown, paga 2.42: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p58%",
     "mercado +20",
@@ -2442,6 +2574,7 @@
    "favorito": "Joao Victor Couto Loureiro [8]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.47 de WTN a favor de Joao Victor Couto Loureiro (9 contra 12.47), en R1: la curva del grupo \"buenas\" (n=528) da 84%. El mercado la paga a 1.23: 75% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -2487,6 +2620,7 @@
    "favorito": "Trisztan Gubi",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ4.89 de WTN a favor de Trisztan Gubi (12.4 contra 17.29), en R1: la curva del grupo \"buenas\" (n=528) da 91%. Ajustan: Rafael Behr tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−25 pts). Queda en 66%. El mercado la paga a 1.08: 85% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -2533,13 +2667,27 @@
    "alertas": [
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.05. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Matas Vasiliauskas, paga 2.05: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Bercel Sandor Takacs",
+    "cuota": 1.67,
+    "cuotaFav": 2.05,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.4361999999999999,
+    "rindeMalo": -0.18170000000000008
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ6.16 de WTN a favor de Matas Vasiliauskas (11.14 contra 17.3), en R1: la curva del grupo \"buenas\" (n=528) da 95%. Ajustan: Bercel Sandor Takacs tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−17 pts). Queda en 78%. El mercado la paga a 2.05: 45% una vez sacado su margen. A esa cuota, la apuesta rinde +60% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.05. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ6.16 de WTN a favor de Matas Vasiliauskas (11.14 contra 17.3), en R1: la curva del grupo \"buenas\" (n=528) da 95%. Ajustan: Bercel Sandor Takacs tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−17 pts). Queda en 78%. El mercado la paga a 2.05: 45% una vez sacado su margen. A esa cuota, la apuesta rinde +60% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Matas Vasiliauskas, paga 2.05: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p78%",
     "mercado +33",
@@ -2743,13 +2891,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.72. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Yaroslav Demin, paga 1.72: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Tristan McCormick",
+    "cuota": 1.98,
+    "cuotaFav": 1.72,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": -0.010000000000000009,
+    "rindeMalo": -0.505
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ0.77 de WTN a favor de Yaroslav Demin (6.21 contra 6.98), en R2: la curva del grupo \"medias\" (n=214) da 56%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.77: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.72. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ0.77 de WTN a favor de Yaroslav Demin (6.21 contra 6.98), en R2: la curva del grupo \"medias\" (n=214) da 56%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.77: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Yaroslav Demin, paga 1.72: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p56%",
     "mercado +2",
@@ -2788,6 +2950,7 @@
    "favorito": "Yanaki Milev",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ5.76 de WTN a favor de Yanaki Milev (6.91 contra 12.67), en R2: la curva del grupo \"medias\" (n=214) da 86%. El mercado la paga a 1.15: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −9% si la tiene el mercado.",
@@ -2827,6 +2990,7 @@
    "favorito": "Ryan Nijboer [6]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.29 de WTN a favor de Ryan Nijboer (4.05 contra 7.34), en R2: la curva del grupo \"medias\" (n=214) da 74%. El mercado la paga a 1.32: 70% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -2871,6 +3035,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.79 de WTN a favor de Sergi Perez Contri (5.43 contra 7.22), en R2: la curva del grupo \"medias\" (n=214) da 64%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −5% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.79: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -2911,6 +3076,7 @@
    "favorito": "Pedro Vives Marcos [5]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.91 de WTN a favor de Pedro Vives Marcos (4.51 contra 7.42), en R2: la curva del grupo \"medias\" (n=214) da 71%. El mercado la paga a 1.44: 64% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -2955,6 +3121,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ0.94 de WTN a favor de Pedro Rodenas (6.68 contra 7.62), en R2: la curva del grupo \"medias\" (n=214) da 57%. El mercado la paga a 1.26: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.94: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -3000,6 +3167,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.99 de WTN a favor de Jeffrey Von Der Schulenburg (7.33 contra 9.32), en R1: la curva del grupo \"buenas\" (n=528) da 72%. El mercado la paga a 1.42: 65% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.99: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -3103,13 +3271,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.75. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Felix Seres, paga 1.75: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Michalis Sakellaridis",
+    "cuota": 1.93,
+    "cuotaFav": 1.75,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": -0.03500000000000003,
+    "rindeMalo": -0.5175000000000001
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ1.30 de WTN a favor de Felix Seres (12.45 contra 13.75), en R1: la curva del grupo \"buenas\" (n=528) da 65%. El mercado la paga a 1.75: 52% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.30: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.75. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ1.30 de WTN a favor de Felix Seres (12.45 contra 13.75), en R1: la curva del grupo \"buenas\" (n=528) da 65%. El mercado la paga a 1.75: 52% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.30: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Felix Seres, paga 1.75: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p65%",
     "mercado +12",
@@ -3183,6 +3365,7 @@
    "favorito": "Adrien Burdet",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ7.77 de WTN a favor de Adrien Burdet (9.25 contra 17.02), en R1: la curva del grupo \"buenas\" (n=528) da 97%. Ajustan: Mateo Fluri tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−9 pts). Queda en 88%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -3369,6 +3552,7 @@
    "favorito": "Ferdinand Livet Novkirichka",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ7.31 de WTN a favor de Ferdinand Livet Novkirichka (9.45 contra 16.76), en R1: la curva del grupo \"buenas\" (n=528) da 97%. El mercado la paga a 1.27: 72% una vez sacado su margen. A esa cuota, la apuesta rinde +23% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -3488,13 +3672,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.67. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Victor Barreira Bonzom, paga 2.67: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Jaume Casas Blasi",
+    "cuota": 1.4,
+    "cuotaFav": 2.67,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.20399999999999996,
+    "rindeMalo": -0.31400000000000006
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ1.61 de WTN a favor de Victor Barreira Bonzom (16.46 contra 18.07), en R1: la curva del grupo \"buenas\" (n=528) da 68%. Ajustan: Jaume Casas Blasi viene cediendo menos games (32% contra 44%): la forma contradice al nivel (−8 pts). Queda en 60%. El mercado la paga a 2.67: 34% una vez sacado su margen. A esa cuota, la apuesta rinde +61% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.67. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ1.61 de WTN a favor de Victor Barreira Bonzom (16.46 contra 18.07), en R1: la curva del grupo \"buenas\" (n=528) da 68%. Ajustan: Jaume Casas Blasi viene cediendo menos games (32% contra 44%): la forma contradice al nivel (−8 pts). Queda en 60%. El mercado la paga a 2.67: 34% una vez sacado su margen. A esa cuota, la apuesta rinde +61% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Victor Barreira Bonzom, paga 2.67: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p60%",
     "mercado +26",
@@ -3598,13 +3796,27 @@
    "alertas": [
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Jan Wygona, paga 2.07: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Jan Chlodnicki",
+    "cuota": 1.65,
+    "cuotaFav": 2.07,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.4189999999999998,
+    "rindeMalo": -0.1915
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ2.88 de WTN a favor de Jan Wygona (14.19 contra 17.07), en R1: la curva del grupo \"buenas\" (n=528) da 79%. Ajustan: Jan Chlodnicki tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−36 pts). Queda en 43%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ2.88 de WTN a favor de Jan Wygona (14.19 contra 17.07), en R1: la curva del grupo \"buenas\" (n=528) da 79%. Ajustan: Jan Chlodnicki tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−36 pts). Queda en 43%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Jan Wygona, paga 2.07: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p43%",
     "mercado −1",
@@ -3676,6 +3888,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.95 de WTN a favor de Vladyslav Orlov (5.5 contra 7.45), en R1: la curva del grupo \"buenas\" (n=528) da 71%. El mercado la paga a 1.23: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.95: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -3721,6 +3934,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ0.59 de WTN a favor de Borys Zgola (14.08 contra 14.67), en R1: la curva del grupo \"buenas\" (n=528) da 57%. El mercado la paga a 1.29: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.59: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -3761,6 +3975,7 @@
    "favorito": "Nikita Mashtakov",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.86 de WTN a favor de Nikita Mashtakov (4.83 contra 7.69), en R1: la curva del grupo \"buenas\" (n=528) da 79%. El mercado la paga a 1.3: 70% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -3834,6 +4049,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ1.11 de WTN a favor de Valentin Basel (8.84 contra 9.95), en R1: la curva del grupo \"buenas\" (n=528) da 63%. El mercado la paga a 1.4: 65% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.11: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -3903,6 +4119,7 @@
    "favorito": "Niklas Guttau",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.70 de WTN a favor de Niklas Guttau (8.13 contra 10.83), en R1: la curva del grupo \"buenas\" (n=528) da 78%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -3983,6 +4200,7 @@
    "favorito": "Tiago Pereira [2]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ4.95 de WTN a favor de Tiago Pereira (3.71 contra 8.66), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.1: 84% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4056,6 +4274,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ2.29 de WTN a favor de Robert Guna (7.72 contra 10.01), en R1: la curva del grupo \"buenas\" (n=528) da 75%. El mercado la paga a 1.18: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado. Daniele Minighini ganó un partido por retiro: llega más fresco.",
@@ -4116,13 +4335,27 @@
    "alertas": [
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Nicolas Robert, paga 1.57: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Lenny Petit",
+    "cuota": 2.2,
+    "cuotaFav": 1.57,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": 0.10000000000000009,
+    "rindeMalo": -0.44999999999999996
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ5.79 de WTN a favor de Nicolas Robert (8.38 contra 14.17), en R1: la curva del grupo \"buenas\" (n=528) da 94%. Ajustan: Lenny Petit tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−19 pts). Queda en 75%. El mercado la paga a 1.57: 58% una vez sacado su margen. A esa cuota, la apuesta rinde +17% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ5.79 de WTN a favor de Nicolas Robert (8.38 contra 14.17), en R1: la curva del grupo \"buenas\" (n=528) da 94%. Ajustan: Lenny Petit tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−19 pts). Queda en 75%. El mercado la paga a 1.57: 58% una vez sacado su margen. A esa cuota, la apuesta rinde +17% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Nicolas Robert, paga 1.57: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p75%",
     "mercado +16",
@@ -4195,6 +4428,7 @@
    "favorito": "Tudor Batin",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ10.02 de WTN a favor de Tudor Batin (9.61 contra 19.63), en R1: la curva del grupo \"buenas\" (n=528) da 99%. Ajustan: Lucian Stefan Andrei tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−4 pts). Queda en 96%. El mercado la paga a 1.08: 85% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4234,6 +4468,7 @@
    "favorito": "Giacomo Crisostomo",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ6.00 de WTN a favor de Giacomo Crisostomo (8.8 contra 14.8), en R1: la curva del grupo \"buenas\" (n=528) da 94%. El mercado la paga a 1.08: 85% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4273,6 +4508,7 @@
    "favorito": "Gabriel Ghetu [6]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ7.84 de WTN a favor de Gabriel Ghetu (5.06 contra 12.9), en R1: la curva del grupo \"buenas\" (n=528) da 98%. El mercado la paga a 1.1: 83% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4312,6 +4548,7 @@
    "favorito": "Giannicola Misasi",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ5.03 de WTN a favor de Giannicola Misasi (8.57 contra 13.6), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −0% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4473,6 +4710,7 @@
    "favorito": "Sander Jong",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.93 de WTN a favor de Sander Jong (5.03 contra 8.96), en R1: la curva del grupo \"buenas\" (n=528) da 86%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde +5% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4634,6 +4872,7 @@
    "favorito": "Stian Klaassen",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ5.62 de WTN a favor de Stian Klaassen (7.21 contra 12.83), en R1: la curva del grupo \"buenas\" (n=528) da 93%. El mercado la paga a 1.1: 84% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4772,6 +5011,7 @@
    "favorito": "Daniel Verbeek",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.75 de WTN a favor de Daniel Verbeek (9.06 contra 11.81), en R1: la curva del grupo \"buenas\" (n=528) da 78%. Ajustan: Daniel Verbeek viene cediendo menos games (17% contra 27%) (+4 pts). Queda en 83%. El mercado la paga a 1.31: 70% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4811,6 +5051,7 @@
    "favorito": "Eero Vasa [3]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.50 de WTN a favor de Eero Vasa (5.17 contra 7.67), en R1: la curva del grupo \"buenas\" (n=528) da 76%. El mercado la paga a 1.34: 68% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4868,13 +5109,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.47. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Noel Larwig, paga 2.47: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Matthias Ujvary",
+    "cuota": 1.45,
+    "cuotaFav": 2.47,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.2469999999999999,
+    "rindeMalo": -0.2895
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ0.59 de WTN a favor de Noel Larwig (9.24 contra 9.83), en R1: la curva del grupo \"buenas\" (n=528) da 57%. El mercado la paga a 2.47: 37% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.59: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.47. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ0.59 de WTN a favor de Noel Larwig (9.24 contra 9.83), en R1: la curva del grupo \"buenas\" (n=528) da 57%. El mercado la paga a 2.47: 37% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.59: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Noel Larwig, paga 2.47: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p57%",
     "mercado +20",
@@ -4955,6 +5210,7 @@
    "favorito": "Alexander Wagner",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.45 de WTN a favor de Alexander Wagner (9.22 contra 12.67), en R1: la curva del grupo \"buenas\" (n=528) da 83%. El mercado la paga a 1.28: 72% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -4999,13 +5255,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.85. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Tobia Costanzo Baragiola Mordini, paga 2.85: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Jonas GUNDACKER",
+    "cuota": 1.35,
+    "cuotaFav": 2.85,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.16100000000000003,
+    "rindeMalo": -0.3385
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ0.33 de WTN a favor de Tobia Costanzo Baragiola Mordini (10.33 contra 10.66), en R1: la curva del grupo \"buenas\" (n=528) da 54%. El mercado la paga a 2.85: 32% una vez sacado su margen. A esa cuota, la apuesta rinde +54% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.33: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.85. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ0.33 de WTN a favor de Tobia Costanzo Baragiola Mordini (10.33 contra 10.66), en R1: la curva del grupo \"buenas\" (n=528) da 54%. El mercado la paga a 2.85: 32% una vez sacado su margen. A esa cuota, la apuesta rinde +54% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.33: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Tobia Costanzo Baragiola Mordini, paga 2.85: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p54%",
     "mercado +22",
@@ -5045,13 +5315,27 @@
    "alertas": [
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.65. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Pavlos Tsitsipas, paga 1.65: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Matyas Kozlovsky",
+    "cuota": 2.07,
+    "cuotaFav": 1.65,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": 0.03499999999999992,
+    "rindeMalo": -0.48250000000000004
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ4.17 de WTN a favor de Pavlos Tsitsipas (8.83 contra 13), en R1: la curva del grupo \"buenas\" (n=528) da 88%. El mercado la paga a 1.65: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +45% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 1.65. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ4.17 de WTN a favor de Pavlos Tsitsipas (8.83 contra 13), en R1: la curva del grupo \"buenas\" (n=528) da 88%. El mercado la paga a 1.65: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +45% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Pavlos Tsitsipas, paga 1.65: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p88%",
     "mercado +32",
@@ -5095,6 +5379,7 @@
    "favorito": "Aleksandr Braynin [5]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ9.94 de WTN a favor de Aleksandr Braynin (8.77 contra 18.71), en R1: la curva del grupo \"buenas\" (n=528) da 99%. Ajustan: Paul Schmid tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−4 pts). Queda en 95%. El mercado la paga a 1.12: 82% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -5134,6 +5419,7 @@
    "favorito": "Alen Mujakic",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ4.02 de WTN a favor de Alen Mujakic (9.13 contra 13.15), en R1: la curva del grupo \"buenas\" (n=528) da 87%. El mercado la paga a 1.36: 68% una vez sacado su margen. A esa cuota, la apuesta rinde +18% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -5180,13 +5466,27 @@
    "alertas": [
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Patrik Homola, paga 2.07: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Tim Vaisman",
+    "cuota": 1.65,
+    "cuotaFav": 2.07,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.4189999999999998,
+    "rindeMalo": -0.1915
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ2.50 de WTN a favor de Patrik Homola (10.71 contra 13.21), en R1: la curva del grupo \"buenas\" (n=528) da 76%. Ajustan: Tim Vaisman viene cediendo menos games (20% contra 30%): la forma contradice al nivel (−6 pts). Queda en 71%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +46% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ2.50 de WTN a favor de Patrik Homola (10.71 contra 13.21), en R1: la curva del grupo \"buenas\" (n=528) da 76%. Ajustan: Tim Vaisman viene cediendo menos games (20% contra 30%): la forma contradice al nivel (−6 pts). Queda en 71%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +46% si tenemos razón nosotros y −8% si la tiene el mercado. Nuestro favorito por WTN, Patrik Homola, paga 2.07: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p71%",
     "mercado +26",
@@ -5224,6 +5524,7 @@
    "favorito": "Juan Ignacio Gallego",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.88 de WTN a favor de Juan Ignacio Gallego (11.66 contra 15.54), en R1: la curva del grupo \"buenas\" (n=528) da 86%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -5298,6 +5599,7 @@
    "favorito": "Branko Djuric [1]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ5.46 de WTN a favor de Branko Djuric (6.39 contra 11.85), en R1: la curva del grupo \"buenas\" (n=528) da 93%. El mercado la paga a 1.1: 83% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -5376,13 +5678,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 2.15. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Cem Christopher Kucukhuseyin, paga 2.15: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Aleksa Oparnica",
+    "cuota": 1.6,
+    "cuotaFav": 2.15,
+    "nom": "sobre 2.00",
+    "pierde": 0.86,
+    "ic": [
+     0.49,
+     0.97
+    ],
+    "n": 7,
+    "rinde": 0.3760000000000001,
+    "rindeMalo": -0.21599999999999997
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ1.03 de WTN a favor de Cem Christopher Kucukhuseyin (14.1 contra 15.13), en R1: la curva del grupo \"buenas\" (n=528) da 62%. El mercado la paga a 2.15: 43% una vez sacado su margen. A esa cuota, la apuesta rinde +33% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.03: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.15. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ1.03 de WTN a favor de Cem Christopher Kucukhuseyin (14.1 contra 15.13), en R1: la curva del grupo \"buenas\" (n=528) da 62%. El mercado la paga a 2.15: 43% una vez sacado su margen. A esa cuota, la apuesta rinde +33% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.03: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Cem Christopher Kucukhuseyin, paga 2.15: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p62%",
     "mercado +19",
@@ -5434,6 +5750,7 @@
    "favorito": "Andrea Motta",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.73 de WTN a favor de Andrea Motta (10.8 contra 13.53), en R1: la curva del grupo \"buenas\" (n=528) da 78%. El mercado la paga a 1.32: 70% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -5473,6 +5790,7 @@
    "favorito": "Leonid Sheyngezikht",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ3.51 de WTN a favor de Leonid Sheyngezikht (9.15 contra 12.66), en R1: la curva del grupo \"buenas\" (n=528) da 84%. El mercado la paga a 1.1: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -5517,13 +5835,27 @@
     },
     {
      "clave": "favorito-caro",
-     "texto": "El favorito por WTN paga 1.75. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo."
+     "texto": "Nuestro favorito por WTN, Alexandre Aubriot, paga 1.75: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón."
     }
    ],
    "regla": null,
+   "contra": {
+    "lado": "Antoni Fabre",
+    "cuota": 1.93,
+    "cuotaFav": 1.75,
+    "nom": "entre 1.50 y 2.00",
+    "pierde": 0.5,
+    "ic": [
+     0.25,
+     0.75
+    ],
+    "n": 12,
+    "rinde": -0.03500000000000003,
+    "rindeMalo": -0.5175000000000001
+   },
    "confianza": "media",
    "mercado": "gana",
-   "razon": "Δ1.68 de WTN a favor de Alexandre Aubriot (7.29 contra 8.97), en R1: la curva del grupo \"buenas\" (n=528) da 69%. El mercado la paga a 1.75: 52% una vez sacado su margen. A esa cuota, la apuesta rinde +20% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.68: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 1.75. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.",
+   "razon": "Δ1.68 de WTN a favor de Alexandre Aubriot (7.29 contra 8.97), en R1: la curva del grupo \"buenas\" (n=528) da 69%. El mercado la paga a 1.75: 52% una vez sacado su margen. A esa cuota, la apuesta rinde +20% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.68: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nuestro favorito por WTN, Alexandre Aubriot, paga 1.75: el precio lo pone parejo o abajo pese a que el rating dice que es mejor. En esa situación el mercado suele tener razón.",
    "banderas": [
     "p69%",
     "mercado +16",
@@ -5771,6 +6103,7 @@
    "favorito": "Daniel Jade [7]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ4.18 de WTN a favor de Daniel Jade (7.75 contra 11.93), en R1: la curva del grupo \"buenas\" (n=528) da 88%. Ajustan: Daniel Jade tiene 17 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+10 pts). Queda en 97%. El mercado la paga a 1.15: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +12% si tenemos razón nosotros y −9% si la tiene el mercado.",
@@ -5815,6 +6148,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ4.93 de WTN a favor de Nicolas Jadoun (8.29 contra 13.22), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.13: 81% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado. Josh Manuel ganó un partido por retiro: llega más fresco.",
@@ -5915,6 +6249,7 @@
    "favorito": "Nav Dayal",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.31 de WTN a favor de Nav Dayal (11.17 contra 13.48), en R1: la curva del grupo \"buenas\" (n=528) da 75%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −5% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -5954,6 +6289,7 @@
    "favorito": "Toufik Sahtali [2]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.21 de WTN a favor de Toufik Sahtali (6.64 contra 8.85), en R1: la curva del grupo \"buenas\" (n=528) da 74%. El mercado la paga a 1.19: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -5993,6 +6329,7 @@
    "favorito": "Marlon Vankan [1]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.68 de WTN a favor de Marlon Vankan (6.61 contra 9.29), en R1: la curva del grupo \"buenas\" (n=528) da 78%. El mercado la paga a 1.19: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -6112,6 +6449,7 @@
    "favorito": "Frederic Schlossmann",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ7.22 de WTN a favor de Frederic Schlossmann (11.22 contra 18.44), en R1: la curva del grupo \"buenas\" (n=528) da 97%. Ajustan: Jonathan Dazert tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−11 pts). Queda en 85%. El mercado la paga a 1.15: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −9% si la tiene el mercado.",
@@ -6185,6 +6523,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ0.69 de WTN a favor de William Rejchtman Vinciguerra (9.14 contra 9.83), en R1: la curva del grupo \"buenas\" (n=528) da 58%. El mercado la paga a 1.29: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.69: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
@@ -6225,6 +6564,7 @@
    "favorito": "Jakub Filip [8]",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ10.10 de WTN a favor de Jakub Filip (7.08 contra 17.18), en R1: la curva del grupo \"buenas\" (n=528) da 99%. El mercado la paga a 1.08: 85% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -6264,6 +6604,7 @@
    "favorito": "Justin Schlageter",
    "alertas": [],
    "regla": null,
+   "contra": null,
    "confianza": "alta",
    "mercado": "gana",
    "razon": "Δ2.13 de WTN a favor de Justin Schlageter (7.76 contra 9.89), en R1: la curva del grupo \"buenas\" (n=528) da 73%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −8% si la tiene el mercado.",
@@ -6350,6 +6691,7 @@
     }
    ],
    "regla": null,
+   "contra": null,
    "confianza": "media",
    "mercado": "gana",
    "razon": "Δ0.76 de WTN a favor de Maximilian Alessandro Erhardt (14.23 contra 14.99), en R1: la curva del grupo \"buenas\" (n=528) da 59%. El mercado la paga a 1.4: 65% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.76: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
