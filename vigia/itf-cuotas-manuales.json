@@ -1368,6 +1368,63 @@
    "g2": 3.4,
    "visto": "2026-08-25T22:38Z",
    "via": "lista"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Hugo Cardinaud",
+   "p2": "Ilya Polonskiy",
+   "g1": 1.44,
+   "g2": 2.52,
+   "visto": "2026-08-26T02:48Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Leo Lagarrigue",
+   "p2": "Johan Nikles",
+   "g1": 5.5,
+   "g2": 1.1,
+   "visto": "2026-08-26T02:48Z",
+   "via": "lista"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Blu Baker",
+   "p2": "Henry Bernet",
+   "g1": 5.8,
+   "g2": 1.09,
+   "visto": "2026-08-26T02:48Z"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Niklas Guttau",
+   "p2": "Kacper Knitter",
+   "g1": 1.17,
+   "g2": 4.3,
+   "visto": "2026-08-26T02:48Z"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Richard Antoni",
+   "p2": "Daniel Verbeek",
+   "g1": 3.05,
+   "g2": 1.31,
+   "visto": "2026-08-26T02:48Z"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Jan Hrazdil",
+   "p2": "Preston Brown",
+   "g1": 1.47,
+   "g2": 2.42,
+   "visto": "2026-08-26T02:48Z"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Lenny Couturier",
+   "p2": "Leo Raquillet",
+   "g1": 5.3,
+   "g2": 1.11,
+   "visto": "2026-08-26T02:48Z"
   }
  ]
 }

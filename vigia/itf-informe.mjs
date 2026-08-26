@@ -34,6 +34,11 @@ const OOP = path.join(DATOS, 'oop');
 const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch { return null } };
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const soloJugables = process.argv.includes('--solo');
+/* Por defecto se informa LA ÚLTIMA TANDA: los partidos que venían en los
+   PDF de la última carga. Es una foto del día, no el registro histórico —
+   el registro acumula cuotas de torneos que ya terminaron y mezclarlas
+   ensucia el informe. Con --todo se muestra el registro completo. */
+const todo = process.argv.includes('--todo');
 
 /* ---------- mapa de torneos ---------- */
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};
@@ -59,6 +64,32 @@ for (const f of fs.readdirSync(DATOS)) {
     if (r != null) { mejorEn(JR_ID, q.id, r); mejorEn(JR_NOM, NORM(q.nombre), r) }
   }
 }
+/* ---------- ficha GLOBAL del jugador ----------
+   La entry list es una foto del torneo tomada días antes: quien entró
+   después (lucky loser, alternate) está en el CUADRO pero no en la lista,
+   y se quedaba sin WTN — 3 de los 21 partidos del 26-08. El WTN, el ATP y
+   el año de nacimiento son del jugador, no del torneo, así que se buscan
+   en la ficha más reciente que tengamos de él en cualquier entry list.
+   Se prefiere siempre la del propio torneo cuando existe. */
+const GLOBAL_ID = new Map(), GLOBAL_NOM = new Map();
+for (const f of fs.readdirSync(DATOS).sort()) {   /* orden alfabético ≈ orden de bajada; gana la última */
+  if (!f.endsWith('.aceptacion.json')) continue;
+  const j = leer(path.join(DATOS, f)); if (!j?.secciones) continue;
+  for (const [sec, arr] of Object.entries(j.secciones)) for (const q of arr) {
+    if (q.wtn == null) continue;
+    const reg = { ...q, sec, deTorneo: f.replace('.aceptacion.json', '') };
+    if (q.id != null) GLOBAL_ID.set(q.id, reg);
+    GLOBAL_NOM.set(NORM(q.nombre), reg);
+  }
+}
+function fichaGlobal(id, nombre) {
+  if (id != null && GLOBAL_ID.has(id)) return GLOBAL_ID.get(id);
+  const k = NORM(nombre);
+  if (GLOBAL_NOM.has(k)) return GLOBAL_NOM.get(k);
+  for (const [kk, v] of GLOBAL_NOM) if (mismoJugador(kk, k)) return v;
+  return null;
+}
+
 function rankJunior(id, nombre) {
   if (id != null && JR_ID.has(id)) return JR_ID.get(id);
   const k = NORM(nombre);
@@ -150,8 +181,9 @@ const trayTexto = t => t.map(x => {
 
 function ficha(clave, nombre) {
   const lista = fichasDe(clave);
-  const nom = elegirNombre(lista.map(q => q.nombre), nombre);
-  const fi = nom ? lista.find(q => q.nombre === nom) : null;
+  const nom0 = elegirNombre(lista.map(q => q.nombre), nombre);
+  let fi = nom0 ? lista.find(q => q.nombre === nom0) : null;
+  let nom = nom0, fuera = null;
   /* el cuadro manda para siembra y forma de entrada */
   let seed = null, entrada = null, id = null;
   for (const m of CUADROS.get(clave) || [])
@@ -162,6 +194,12 @@ function ficha(clave, nombre) {
         if ((l.jugadores || [])[0]?.id != null) id = l.jugadores[0].id;
       }
   if (id == null && fi?.id != null) id = fi.id;
+  if (!fi || fi.wtn == null) {
+    const g = fichaGlobal(id, nom || nombre);
+    if (g) { fuera = g.deTorneo; fi = { ...g, ...(fi || {}), wtn: fi?.wtn ?? g.wtn, atp: fi?.atp ?? g.atp,
+      itf: fi?.itf ?? g.itf, nacional: fi?.nacional ?? g.nacional, nacido: fi?.nacido ?? g.nacido,
+      sec: fi?.sec ?? g.sec }; nom = nom || g.nombre; }
+  }
   const tray = trayectoria(clave, nombre);
   const llega = tray.length ? trayTexto(tray) : null;
   return {
@@ -174,6 +212,8 @@ function ficha(clave, nombre) {
     seed, entrada, marca: [seed ? `[${seed}]` : null, entrada && entrada !== 'DA' ? entrada : null, fi?.sec === 'JR' ? 'JR' : null].filter(Boolean).join(' '),
     tray, llega, cedidos: gamesCedidos(llega),
     previo: id != null ? deDondeViene(id, clave) : null,
+    /* de qué torneo salió la ficha, cuando no es la del propio */
+    fichaDe: fuera,
     enCuadro: (CUADROS.get(clave) || []).some(m => m.lados.some(l => l.nombre && mismoJugador(l.nombre, nombre))),
   };
 }
@@ -231,9 +271,17 @@ function resultado(clave, n1, n2) {
    EL INFORME
    ============================================================ */
 const doc = leer(path.join(DIR, 'itf-cuotas-manuales.json')) || { cuotas: [] };
+const tandaDoc = todo ? null : leer(path.join(DIR, 'itf-cuotas-tanda.json'));
+const enTanda = tandaDoc
+  ? new Set(tandaDoc.partidos.map(x => NORM(x.torneo) + '|' + NORM(x.p1) + '|' + NORM(x.p2)))
+  : null;
+const cuotas = enTanda
+  ? doc.cuotas.filter(q => enTanda.has(NORM(q.torneo) + '|' + NORM(q.p1) + '|' + NORM(q.p2))
+                        || enTanda.has(NORM(q.torneo) + '|' + NORM(q.p2) + '|' + NORM(q.p1)))
+  : doc.cuotas;
 const filas = [];
 const sinTorneo = [];
-for (const q of doc.cuotas) {
+for (const q of cuotas) {
   const t = TORNEO[q.torneo];
   if (!t) { sinTorneo.push(q); continue }
   const f1 = ficha(t.clave, q.p1), f2 = ficha(t.clave, q.p2);
@@ -256,7 +304,7 @@ filas.sort((a, b) => (ORDEN_TIPO[a.v?.tipo] ?? 9) - (ORDEN_TIPO[b.v?.tipo] ?? 9)
 const cuenta = {};
 for (const f of filas) cuenta[f.v?.tipo || 'sin datos'] = (cuenta[f.v?.tipo || 'sin datos'] || 0) + 1;
 
-console.log(`\n${doc.cuotas.length} partidos con cuota de Betano · ${filas.filter(f => f.v).length} analizados`
+console.log(`\n${cuotas.length} partidos con cuota de Betano${tandaDoc ? ` (tanda del ${tandaDoc.generado.slice(0, 16).replace('T', ' ')}, ${tandaDoc.archivos.length} archivos)` : ' — registro completo'} · ${filas.filter(f => f.v).length} analizados`
   + (sinTorneo.length ? ` · ${sinTorneo.length} sin torneo en el mapa` : ''));
 console.log('  ' + Object.entries(cuenta).map(([k, v]) => `${k} ${v}`).join(' · ') + '\n');
 
@@ -266,9 +314,13 @@ for (const f of filas) {
   if (soloJugables && !['segura', 'mirar'].includes(f.v?.tipo)) continue;
   const p = f.v?.nivel?.p, dis = f.v?.precio?.discrepancia;
   const cuotaFav = f.v?.precio?.cuota ?? null;
-  const res = f.res ? (mismoJugador(f.res.ganador, f.v?.favorito || '') ? ' ✓' : ' ✗') : '';
+  /* en trampa y pasar, analizar() deja favorito en "—" a proposito (no hay
+     nada que jugar); para leer el informe igual sirve saber a quien apunta
+     el modelo, asi que se muestra el del nivel */
+  const quien = (f.v?.favorito !== '—' && f.v?.favorito) || f.v?.nivel?.favorito || '—';
+  const res = f.res ? (mismoJugador(f.res.ganador, quien) ? ' ✓' : ' ✗') : '';
   console.log(`${marca[f.v?.tipo] || ' '} ${T(f.v?.tipo, 11)} ${T(f.etapa, 3)} ${T(f.t.nombre, 20)} `
-    + `${T(f.v?.favorito ?? '—', 30)} ${String(cuotaFav ?? '—').padStart(5)}  `
+    + `${T(quien, 30)} ${String(cuotaFav ?? '—').padStart(5)}  `
     + `p=${p != null ? String(Math.round(p * 100)).padStart(3) + '%' : ' — '}  `
     + `mercado ${dis != null ? (dis >= 0 ? '+' : '') + String(Math.round(dis * 100)).padStart(3) : '  —'}  `
     + `valor ${f.v?.precio?.val != null ? (f.v.precio.val >= 0 ? '+' : '') + String(Math.round(f.v.precio.val * 100)).padStart(3) + '%' : '   —'}${res}`);
@@ -302,13 +354,15 @@ const seccion = f => {
     <div class="dat">WTN ${num(x.wtn)} · ATP ${num(x.atp)} · ITF ${num(x.itf)} · nac ${num(x.nac)} · ${x.nacido ? 2026 - x.nacido + ' años' : '<i>edad —</i>'}</div>
     <div class="tray">${trayHtml(x)}</div>
     <div class="dat">viene de ${prevHtml(x)}</div></div>`;
-  const favEs1 = f.v?.favorito?.startsWith(f.f1.nombre);
+  const apunta = (f.v?.favorito !== '—' && f.v?.favorito) || f.v?.nivel?.favorito || '';
+  const favEs1 = apunta.startsWith(f.f1.nombre);
   return `<div class="p ${f.v?.tipo || 'sd'}">
     <div class="cab">${badge(f.v?.tipo || 'sin datos')}
       <span class="tor">${esc(f.t.nombre)}</span> <span class="et">${esc(f.etapa || '')}</span>
       ${f.horario ? `<span class="hr">${esc(f.horario.fecha || '')} ${esc(f.horario.hora || '')}</span>` : ''}
       ${f.fuenteEtapa === 'deducida' ? '<span class="av">etapa deducida: el partido no está en el cuadro que tenemos</span>' : ''}
       ${f.via === 'lista' ? '<span class="av">verificado contra la entry list, no contra el cuadro</span>' : ''}
+      ${[f.f1, f.f2].filter(x => x.fichaDe).map(x => `<span class="av">${esc(x.nombre)} no está en la entry list de este torneo: su WTN sale de la ficha de ${esc(POR_CLAVE[x.fichaDe]?.nombre || x.fichaDe)}</span>`).join('')}
       ${f.res ? `<span class="res">${esc(f.res.ganador)} ${esc(f.res.marcador)}</span>` : ''}
     </div>
     <div class="duelo">${lado(f.f1, f.q.g1, favEs1)}${lado(f.f2, f.q.g2, !favEs1)}</div>
@@ -372,8 +426,8 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--tinta
 </style>
 <div class="env">
 <h1>Informe ITF</h1>
-<div class="gen">${doc.cuotas.length} partidos cotizados por Betano · generado ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC</div>
-<div class="gen">El universo son las cuotas, no el order of play: se analiza todo lo que Betano puso precio, con toda la información de la ITF encima.</div>
+<div class="gen">${cuotas.length} partidos cotizados por Betano${tandaDoc ? ` en ${tandaDoc.archivos.length} torneos` : ''} · generado ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC</div>
+<div class="gen">El universo son las cuotas, no el order of play: se analiza lo que Betano puso precio, con toda la información de la ITF encima.${tandaDoc ? ' Esta es la foto de la última carga de PDF, no el registro histórico.' : ''}</div>
 <div class="resumen">${Object.entries(cuenta).map(([k, v]) => `<b>${k === 'sin-precio' ? 'sin precio' : k} ${v}</b>`).join('')}</div>
 ${['segura', 'mirar', 'trampa', 'sin-precio', 'pasar'].map(t => {
   const g = filas.filter(f => (f.v?.tipo || 'sin datos') === t);

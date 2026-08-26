@@ -1,0 +1,163 @@
+{
+ "generado": "2026-08-26T02:48:55.030Z",
+ "archivos": [
+  "6c445b7e-Apuestas_de_Tu_nez_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf",
+  "bac92545-Apuestas_de_Suiza_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf",
+  "754a0dda-Apuestas_de_Serbia_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf",
+  "d81561d5-Apuestas_de_Rumani_a_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf",
+  "6254bd71-Apuestas_de_Polonia_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf",
+  "91d20515-Apuestas_de_Pai_ses_Bajos_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf",
+  "64470bb4-Apuestas_de_Hungri_a_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf",
+  "4528d6cc-Apuestas_de_Francia_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf",
+  "bd9ecf0c-Apuestas_de_Espan_a_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+ ],
+ "partidos": [
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Stevan Popovic",
+   "p2": "Nav Dayal",
+   "clave": "m-itf-tun-2026-034",
+   "archivo": "6c445b7e-Apuestas_de_Tu_nez_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Nicolas Jadoun",
+   "p2": "Josh Manuel",
+   "clave": "m-itf-tun-2026-034",
+   "archivo": "6c445b7e-Apuestas_de_Tu_nez_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Rahul Dhokia",
+   "p2": "Daniel Jade",
+   "clave": "m-itf-tun-2026-034",
+   "archivo": "6c445b7e-Apuestas_de_Tu_nez_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Skander Nsairi",
+   "p2": "Louis Larue",
+   "clave": "m-itf-tun-2026-034",
+   "archivo": "6c445b7e-Apuestas_de_Tu_nez_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Monastir",
+   "p1": "Hugo Cardinaud",
+   "p2": "Ilya Polonskiy",
+   "clave": "m-itf-tun-2026-034",
+   "archivo": "6c445b7e-Apuestas_de_Tu_nez_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Adrien Burdet",
+   "p2": "Mateo Fluri",
+   "clave": "m-itf-sui-2026-004",
+   "archivo": "bac92545-Apuestas_de_Suiza_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Leo Lagarrigue",
+   "p2": "Johan Nikles",
+   "clave": "m-itf-sui-2026-004",
+   "archivo": "bac92545-Apuestas_de_Suiza_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Blu Baker",
+   "p2": "Henry Bernet",
+   "clave": "m-itf-sui-2026-004",
+   "archivo": "bac92545-Apuestas_de_Suiza_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Marko Nikolic",
+   "p2": "George Lazarov",
+   "clave": "m-itf-srb-2026-016",
+   "archivo": "754a0dda-Apuestas_de_Serbia_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Lenny Petit",
+   "p2": "Nicolas Robert",
+   "clave": "m-itf-rou-2026-013",
+   "archivo": "d81561d5-Apuestas_de_Rumani_a_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Jan Wygona",
+   "p2": "Jan Chlodnicki",
+   "clave": "m-itf-pol-2026-008",
+   "archivo": "6254bd71-Apuestas_de_Polonia_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Alex Finkelstein",
+   "p2": "Valentin Basel",
+   "clave": "m-itf-pol-2026-008",
+   "archivo": "6254bd71-Apuestas_de_Polonia_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Niklas Guttau",
+   "p2": "Kacper Knitter",
+   "clave": "m-itf-pol-2026-008",
+   "archivo": "6254bd71-Apuestas_de_Polonia_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Richard Antoni",
+   "p2": "Daniel Verbeek",
+   "clave": "m-itf-ned-2026-006",
+   "archivo": "91d20515-Apuestas_de_Pai_ses_Bajos_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Iiro Vasa",
+   "p2": "Eero Vasa",
+   "clave": "m-itf-ned-2026-006",
+   "archivo": "91d20515-Apuestas_de_Pai_ses_Bajos_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Stian Klaassen",
+   "p2": "Gray Voelzke",
+   "clave": "m-itf-ned-2026-006",
+   "archivo": "91d20515-Apuestas_de_Pai_ses_Bajos_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Tomas Lanik",
+   "p2": "John Sperle",
+   "clave": "m-itf-hun-2026-004",
+   "archivo": "64470bb4-Apuestas_de_Hungri_a_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Trisztan Gubi",
+   "p2": "Rafael Behr",
+   "clave": "m-itf-hun-2026-004",
+   "archivo": "64470bb4-Apuestas_de_Hungri_a_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "Jan Hrazdil",
+   "p2": "Preston Brown",
+   "clave": "m-itf-hun-2026-004",
+   "archivo": "64470bb4-Apuestas_de_Hungri_a_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M15 Cap d'Agde",
+   "p1": "Lenny Couturier",
+   "p2": "Leo Raquillet",
+   "clave": "m-itf-fra-2026-025",
+   "archivo": "4528d6cc-Apuestas_de_Francia_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  },
+  {
+   "torneo": "M25 Oviedo",
+   "p1": "Pedro Rodenas",
+   "p2": "Alejandro Garcia Carbajal",
+   "clave": "m-itf-esp-2026-044",
+   "archivo": "bd9ecf0c-Apuestas_de_Espan_a_Prono_sticos_de_Tenis_ITF_Hombres___Betano.pdf"
+  }
+ ]
+}

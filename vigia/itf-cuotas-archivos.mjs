@@ -221,6 +221,13 @@ const paisDeNombre = f => {
 const doc = leer(path.join(DIR, 'itf-cuotas-manuales.json')) || { cuotas: [] };
 const yaHay = new Set(doc.cuotas.map(c => norm(c.torneo) + '|' + norm(c.p1) + '|' + norm(c.p2)));
 const visto = new Date().toISOString().slice(0, 16) + 'Z';
+/* LA TANDA: las claves de TODOS los partidos que venian en los archivos de
+   esta corrida, esten o no ya en el registro. Sebastian manda una foto
+   completa del dia (9 PDF, uno por torneo) y quiere ver SOLO eso: sin esta
+   lista, el informe mostraria tambien las cuotas viejas que siguen en el
+   registro y que ya no son las de hoy. Los repetidos tienen que entrar
+   igual — que un partido ya estuviera cargado no lo saca de la foto. */
+const tanda = { generado: new Date().toISOString(), archivos: [], partidos: [] };
 let nuevas = 0, repes = 0;
 const problemas = [];
 
@@ -262,8 +269,10 @@ for (const ruta of pdfs) {
   console.log(`  ${r.partidos.length} partidos leídos · ${ok.length - porLista} verificados en el cuadro`
     + (porLista ? ` · ${porLista} solo en la entry list (cuadro desactualizado)` : '')
     + ` · ${fuera.length} sin verificar`);
+  tanda.archivos.push(base);
   for (const x of ok) {
     const k = norm(t.nombre) + '|' + norm(x.itf1) + '|' + norm(x.itf2);
+    tanda.partidos.push({ torneo: t.nombre, p1: x.itf1, p2: x.itf2, clave: t.k, archivo: base });
     if (yaHay.has(k)) { repes++; continue; }
     yaHay.add(k); nuevas++;
     doc.cuotas.push({ torneo: t.nombre, p1: x.itf1, p2: x.itf2, g1: x.g1, g2: x.g2, visto,
@@ -281,6 +290,10 @@ for (const ruta of pdfs) {
 
 if (problemas.length) { console.log('\nPROBLEMAS'); for (const p of problemas) console.log('  ' + p); }
 console.log(`\n${nuevas} cuotas nuevas · ${repes} ya estaban${ensayo ? ' · ENSAYO: no se escribió nada' : ''}`);
+if (!ensayo) {
+  fs.writeFileSync(path.join(DIR, 'itf-cuotas-tanda.json'), JSON.stringify(tanda, null, 1));
+  console.log(`  tanda: ${tanda.partidos.length} partidos de ${tanda.archivos.length} archivos → vigia/itf-cuotas-tanda.json`);
+}
 if (!ensayo && nuevas) {
   fs.writeFileSync(path.join(DIR, 'itf-cuotas-manuales.json'), JSON.stringify(doc, null, 1));
   console.log('→ vigia/itf-cuotas-manuales.json');
