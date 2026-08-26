@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-25T23:00:27.704Z",
+ "generado": "2026-08-26T03:15:12.225Z",
  "puntos": [
   {
    "clave": "m-itf-ger-2026-015",
@@ -14,7 +14,7 @@
    "rival": "TIM Handel",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.5435126518479717,
+   "nuestra": 0.5481629522841241,
    "jugado": true,
    "gano": true
   },
@@ -31,7 +31,7 @@
    "rival": "Thilo Behrmann",
    "seed": 3,
    "entradaRival": "JR",
-   "nuestra": 0.7905659187546089,
+   "nuestra": 0.8132313580112112,
    "jugado": true,
    "gano": true
   },
@@ -48,7 +48,7 @@
    "rival": "Romain Faucon",
    "seed": 1,
    "entradaRival": "DA",
-   "nuestra": 0.5423423429056884,
+   "nuestra": 0.5468689953604935,
    "jugado": true,
    "gano": false
   },
@@ -65,7 +65,7 @@
    "rival": "Niklas Guttau",
    "seed": 1,
    "entradaRival": "DA",
-   "nuestra": 0.6056721110262995,
+   "nuestra": 0.6166357709443563,
    "jugado": true,
    "gano": false
   },
@@ -82,7 +82,7 @@
    "rival": "Carlos Sanchez Jover",
    "seed": 7,
    "entradaRival": "DA",
-   "nuestra": 0.5137515311216367,
+   "nuestra": 0.5152290380791905,
    "jugado": true,
    "gano": false
   },
@@ -99,7 +99,7 @@
    "rival": "Samuele Seghetti",
    "seed": 3,
    "entradaRival": "WC",
-   "nuestra": 0.7482679674065218,
+   "nuestra": 0.769681383123156,
    "jugado": false,
    "gano": null
   },
@@ -116,7 +116,7 @@
    "rival": "Pierluigi Basile",
    "seed": 7,
    "entradaRival": "DA",
-   "nuestra": 0.5125733487148517,
+   "nuestra": 0.5139243986093321,
    "jugado": false,
    "gano": null
   },
@@ -133,7 +133,7 @@
    "rival": "Michael Agwi",
    "seed": 1,
    "entradaRival": "DA",
-   "nuestra": 0.7078647160015435,
+   "nuestra": 0.7271445260319951,
    "jugado": true,
    "gano": true
   },
@@ -150,7 +150,7 @@
    "rival": "Goncalo Marques",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.5431226015956906,
+   "nuestra": 0.5477317047776389,
    "jugado": false,
    "gano": null
   },
@@ -167,7 +167,7 @@
    "rival": "Matteo Sciahbasi",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5141442252792949,
+   "nuestra": 0.5156638726612689,
    "jugado": true,
    "gano": false
   },
@@ -184,7 +184,7 @@
    "rival": "Marc Ros Mesas",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.9356639345348408,
+   "nuestra": 0.9701434586632337,
    "jugado": true,
    "gano": true
   },
@@ -201,7 +201,7 @@
    "rival": "Jorge Lopez Dominguez",
    "seed": 15,
    "entradaRival": "DA",
-   "nuestra": 0.7367572787406252,
+   "nuestra": 0.792198714893861,
    "jugado": true,
    "gano": true
   },
@@ -218,7 +218,7 @@
    "rival": "Aren Baybars",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5440832397855079,
+   "nuestra": 0.5572182476732219,
    "jugado": true,
    "gano": false
   },
@@ -235,7 +235,7 @@
    "rival": "Javier Gonzalez",
    "seed": 16,
    "entradaRival": "DA",
-   "nuestra": 0.6456174119419277,
+   "nuestra": 0.6856693376934448,
    "jugado": true,
    "gano": true
   },
@@ -252,7 +252,7 @@
    "rival": "Raghav Harsh",
    "seed": 14,
    "entradaRival": "DA",
-   "nuestra": 0.766209819599387,
+   "nuestra": 0.8239700454824529,
    "jugado": true,
    "gano": true
   },
@@ -269,7 +269,7 @@
    "rival": "Atharva Sharma",
    "seed": 9,
    "entradaRival": "DA",
-   "nuestra": 0.7767827157074754,
+   "nuestra": 0.8349984498944834,
    "jugado": true,
    "gano": true
   },
@@ -286,7 +286,7 @@
    "rival": "Aaron Paul Samson",
    "seed": 4,
    "entradaRival": "DA",
-   "nuestra": 0.9214678650049335,
+   "nuestra": 0.9609057149928922,
    "jugado": true,
    "gano": true
   },
@@ -303,7 +303,7 @@
    "rival": "Bernardo Tedesco",
    "seed": 13,
    "entradaRival": "DA",
-   "nuestra": 0.8959556813744174,
+   "nuestra": 0.9426547455975752,
    "jugado": true,
    "gano": true
   },
@@ -320,7 +320,7 @@
    "rival": "Maxi Carrascosa Diaz",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.8812891422242055,
+   "nuestra": 0.9312899377548348,
    "jugado": true,
    "gano": false
   },
@@ -337,7 +337,7 @@
    "rival": "Ian Lucca Cervantes Tomas",
    "seed": 6,
    "entradaRival": "DA",
-   "nuestra": 0.7160599971338313,
+   "nuestra": 0.7690162963801889,
    "jugado": true,
    "gano": true
   },
@@ -354,7 +354,7 @@
    "rival": "Alvaro De Miguel Montero",
    "seed": 7,
    "entradaRival": "DA",
-   "nuestra": 0.8626378389262342,
+   "nuestra": 0.9159931081899336,
    "jugado": true,
    "gano": true
   },
@@ -371,7 +371,7 @@
    "rival": "Arthur Vildeuil",
    "seed": 2,
    "entradaRival": "DA",
-   "nuestra": 0.716904836633638,
+   "nuestra": 0.7481074481725732,
    "jugado": true,
    "gano": true
   },
@@ -388,7 +388,7 @@
    "rival": "Mateo Comamala",
    "seed": 6,
    "entradaRival": "WC",
-   "nuestra": 0.7289367940473677,
+   "nuestra": 0.7611371450604534,
    "jugado": true,
    "gano": true
   },
@@ -405,7 +405,7 @@
    "rival": "Zaccharie Cado",
    "seed": 5,
    "entradaRival": "DA",
-   "nuestra": 0.925196398122069,
+   "nuestra": 0.9501014109282301,
    "jugado": true,
    "gano": false
   },
@@ -422,7 +422,7 @@
    "rival": "Pascal Tylek",
    "seed": 1,
    "entradaRival": "DA",
-   "nuestra": 0.797979704654347,
+   "nuestra": 0.8333219562957411,
    "jugado": true,
    "gano": true
   },
@@ -439,7 +439,7 @@
    "rival": "Amaan Siddiqui",
    "seed": 1,
    "entradaRival": "DA",
-   "nuestra": 0.6016907750731342,
+   "nuestra": 0.6185211554856342,
    "jugado": true,
    "gano": true
   },
@@ -456,7 +456,7 @@
    "rival": "Mario Mansilla Diez",
    "seed": 5,
    "entradaRival": "DA",
-   "nuestra": 0.5240115158709636,
+   "nuestra": 0.5281222890768869,
    "jugado": true,
    "gano": false
   },
@@ -473,7 +473,7 @@
    "rival": "Maxi Carrascosa Diaz",
    "seed": 4,
    "entradaRival": "DA",
-   "nuestra": 0.7542483097239634,
+   "nuestra": 0.7881416597495664,
    "jugado": true,
    "gano": false
   },
@@ -490,7 +490,7 @@
    "rival": "Jose Dominguez Alonso",
    "seed": 6,
    "entradaRival": "DA",
-   "nuestra": 0.709532580686706,
+   "nuestra": 0.7400668428083735,
    "jugado": true,
    "gano": false
   },
@@ -507,7 +507,7 @@
    "rival": "Noah Regas Luis",
    "seed": 8,
    "entradaRival": "DA",
-   "nuestra": 0.6476578894538841,
+   "nuestra": 0.6711043253152847,
    "jugado": true,
    "gano": true
   },
@@ -524,7 +524,7 @@
    "rival": "Xavi Palomar",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.6235467798777813,
+   "nuestra": 0.6436385990817514,
    "jugado": true,
    "gano": false
   },
@@ -541,7 +541,7 @@
    "rival": "Chun-Chien Hou",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.6692688415498829,
+   "nuestra": 0.6954644358845791,
    "jugado": true,
    "gano": true
   },
@@ -558,7 +558,7 @@
    "rival": "Yeongseok Jeong",
    "seed": 11,
    "entradaRival": "DA",
-   "nuestra": 0.6824285498810374,
+   "nuestra": 0.710162212661667,
    "jugado": true,
    "gano": true
   },
@@ -575,7 +575,7 @@
    "rival": "Seongwoo Cho",
    "seed": 12,
    "entradaRival": "DA",
-   "nuestra": 0.6016907750731342,
+   "nuestra": 0.6185211554856342,
    "jugado": true,
    "gano": true
   },
@@ -592,7 +592,7 @@
    "rival": "Hiromasa Koyama",
    "seed": 2,
    "entradaRival": "DA",
-   "nuestra": 0.6476578894538839,
+   "nuestra": 0.6711043253152846,
    "jugado": true,
    "gano": false
   },
@@ -609,7 +609,7 @@
    "rival": "Kristjan Tamm",
    "seed": 7,
    "entradaRival": "DA",
-   "nuestra": 0.642155051514922,
+   "nuestra": 0.6648608607122807,
    "jugado": true,
    "gano": false
   },
@@ -626,7 +626,7 @@
    "rival": "Tomohiro Masabayashi",
    "seed": 5,
    "entradaRival": "DA",
-   "nuestra": 0.6603445448820505,
+   "nuestra": 0.6854369532088256,
    "jugado": true,
    "gano": true
   },
@@ -643,7 +643,7 @@
    "rival": "Chen Hui Ho",
    "seed": 15,
    "entradaRival": "DA",
-   "nuestra": 0.6745660340248459,
+   "nuestra": 0.7013938314683863,
    "jugado": false,
    "gano": null
   },
@@ -660,7 +660,7 @@
    "rival": "Hazem Naw",
    "seed": 2,
    "entradaRival": "DA",
-   "nuestra": 0.6016907750731342,
+   "nuestra": 0.6185211554856342,
    "jugado": true,
    "gano": false
   },
@@ -677,7 +677,7 @@
    "rival": "Thanaphat Boosarawongse",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.571594586456235,
+   "nuestra": 0.5836618498759343,
    "jugado": true,
    "gano": true
   },
@@ -694,7 +694,7 @@
    "rival": "Elias Julian Werner",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.8544837846686227,
+   "nuestra": 0.8883368245541843,
    "jugado": true,
    "gano": true
   },
@@ -711,7 +711,7 @@
    "rival": "Zaccharie Cado",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.9117276987267869,
+   "nuestra": 0.9390855407427727,
    "jugado": true,
    "gano": true
   },
@@ -728,7 +728,7 @@
    "rival": "Matisse MARTIN",
    "seed": 2,
    "entradaRival": "WC",
-   "nuestra": 0.9635993863186844,
+   "nuestra": 0.9789185719775261,
    "jugado": true,
    "gano": true
   },
@@ -745,7 +745,7 @@
    "rival": "Andrea Baudel",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.94919671278667,
+   "nuestra": 0.9686245701939417,
    "jugado": false,
    "gano": null
   },
@@ -762,7 +762,7 @@
    "rival": "Nazim Makhlouf",
    "seed": 8,
    "entradaRival": "DA",
-   "nuestra": 0.5329932379540167,
+   "nuestra": 0.5386318502216632,
    "jugado": true,
    "gano": true
   },
@@ -779,7 +779,7 @@
    "rival": "Pierre Antoine Tailleu",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5010012486616625,
+   "nuestra": 0.5011729978480517,
    "jugado": true,
    "gano": false
   },
@@ -796,7 +796,7 @@
    "rival": "Sergi Fita Juan",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.5399645655191962,
+   "nuestra": 0.5467827584073524,
    "jugado": false,
    "gano": null
   },
@@ -813,7 +813,7 @@
    "rival": "Ignacio Parisca",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.6657132801124476,
+   "nuestra": 0.6914749744374795,
    "jugado": false,
    "gano": null
   },
@@ -830,7 +830,7 @@
    "rival": "Imanol Lopez Morillo",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5030037138653528,
+   "nuestra": 0.5035189418984213,
    "jugado": false,
    "gano": null
   },
@@ -847,7 +847,7 @@
    "rival": "Alejandro Turriziani Alvarez",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.6503947896975641,
+   "nuestra": 0.6742037106910127,
    "jugado": false,
    "gano": null
   },
@@ -864,7 +864,7 @@
    "rival": "Carlos Sanchez Jover",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5250103593865924,
+   "nuestra": 0.5292914219353387,
    "jugado": false,
    "gano": null
   },
@@ -881,7 +881,7 @@
    "rival": "Nicolas Ulrich",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.5568246837537405,
+   "nuestra": 0.5664653034064665,
    "jugado": true,
    "gano": false
   },
@@ -898,7 +898,7 @@
    "rival": "Alessandro Hunziker",
    "seed": 5,
    "entradaRival": "WC",
-   "nuestra": 0.9737249742579818,
+   "nuestra": 0.9856871884159888,
    "jugado": true,
    "gano": false
   },
@@ -915,7 +915,7 @@
    "rival": "Alessandro Battiston",
    "seed": 5,
    "entradaRival": "DA",
-   "nuestra": 0.8361744333693165,
+   "nuestra": 0.8709791478249448,
    "jugado": true,
    "gano": true
   },
@@ -932,7 +932,7 @@
    "rival": "Stefan Ilie Bogdan Petre",
    "seed": 7,
    "entradaRival": "DA",
-   "nuestra": 0.9240801056776373,
+   "nuestra": 0.9492040902935439,
    "jugado": true,
    "gano": true
   },
@@ -949,7 +949,7 @@
    "rival": "Alejandro Mateo Berge Nourescu",
    "seed": null,
    "entradaRival": "JR",
-   "nuestra": 0.9246401503501814,
+   "nuestra": 0.949654643745754,
    "jugado": true,
    "gano": true
   },
@@ -966,7 +966,7 @@
    "rival": "Theodore Dean",
    "seed": 1,
    "entradaRival": "DA",
-   "nuestra": 0.7249620060317316,
+   "nuestra": 0.7568458508129113,
    "jugado": true,
    "gano": true
   },
@@ -983,7 +983,7 @@
    "rival": "Kai-i Wang",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.7497669985409269,
+   "nuestra": 0.7834028699160488,
    "jugado": false,
    "gano": null
   },
@@ -1000,7 +1000,7 @@
    "rival": "Alex Huszar",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.7225598460555022,
+   "nuestra": 0.754246085423613,
    "jugado": false,
    "gano": null
   },
@@ -1017,7 +1017,7 @@
    "rival": "Massimo Pizzigoni",
    "seed": 6,
    "entradaRival": "Q",
-   "nuestra": 0.9292493246271621,
+   "nuestra": 0.9533342906712922,
    "jugado": true,
    "gano": true
   },
@@ -1034,7 +1034,7 @@
    "rival": "Jaume Casas Blasi",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.6558388282648205,
+   "nuestra": 0.6803568015823899,
    "jugado": false,
    "gano": null
   },
@@ -1051,7 +1051,7 @@
    "rival": "Denis Constantin Spiridon",
    "seed": 5,
    "entradaRival": "DA",
-   "nuestra": 0.7429436730900901,
+   "nuestra": 0.7761518041604849,
    "jugado": true,
    "gano": true
   },
@@ -1068,7 +1068,7 @@
    "rival": "Jose Dominguez Alonso",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.685026712454737,
+   "nuestra": 0.7130509085422295,
    "jugado": false,
    "gano": null
   },
@@ -1085,7 +1085,7 @@
    "rival": "Aren Baybars",
    "seed": 5,
    "entradaRival": "Q",
-   "nuestra": 0.9850683807640477,
+   "nuestra": 0.99266570017049,
    "jugado": false,
    "gano": null
   },
@@ -1102,7 +1102,7 @@
    "rival": "Stijn Paardekooper",
    "seed": 5,
    "entradaRival": "DA",
-   "nuestra": 0.7201448047656347,
+   "nuestra": 0.7516276455973372,
    "jugado": true,
    "gano": true
   },
@@ -1119,7 +1119,7 @@
    "rival": "Brian Bozemoj",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5319962172002277,
+   "nuestra": 0.5374656434077013,
    "jugado": true,
    "gano": false
   },
@@ -1136,7 +1136,7 @@
    "rival": "Pranav Karthik",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.8105848719301788,
+   "nuestra": 0.84595169007318,
    "jugado": false,
    "gano": null
   },
@@ -1153,7 +1153,7 @@
    "rival": "Marc Majdandzic",
    "seed": 2,
    "entradaRival": "DA",
-   "nuestra": 0.6824285498810374,
+   "nuestra": 0.710162212661667,
    "jugado": true,
    "gano": true
   },
@@ -1170,7 +1170,7 @@
    "rival": "Felipe De Dios",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5686499251609511,
+   "nuestra": 0.5802373959164978,
    "jugado": true,
    "gano": false
   },
@@ -1187,7 +1187,7 @@
    "rival": "Alejandro Garcia Carbajal",
    "seed": 2,
    "entradaRival": "Q",
-   "nuestra": 0.8166576793726981,
+   "nuestra": 0.8519674323611076,
    "jugado": false,
    "gano": null
   },
@@ -1204,7 +1204,7 @@
    "rival": "Maxi Carrascosa Diaz",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.9536367184231096,
+   "nuestra": 0.9718720386257098,
    "jugado": false,
    "gano": null
   },
@@ -1221,7 +1221,7 @@
    "rival": "Xavi Palomar",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.7414109619041216,
+   "nuestra": 0.7745172023755803,
    "jugado": false,
    "gano": null
   },
@@ -1238,7 +1238,7 @@
    "rival": "Enrique Carrascosa Diaz",
    "seed": 4,
    "entradaRival": "WC",
-   "nuestra": 0.957705975312141,
+   "nuestra": 0.9747921299774226,
    "jugado": false,
    "gano": null
   },
@@ -1255,7 +1255,7 @@
    "rival": "Daniel Bien",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.825482061950657,
+   "nuestra": 0.8606256324608766,
    "jugado": false,
    "gano": null
   },
@@ -1272,7 +1272,7 @@
    "rival": "Matyas Kozlovsky",
    "seed": 8,
    "entradaRival": "Q",
-   "nuestra": 0.8415871535324779,
+   "nuestra": 0.8761606170786437,
    "jugado": false,
    "gano": null
   },
@@ -1289,7 +1289,7 @@
    "rival": "Tim Vaisman",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.7313042725524548,
+   "nuestra": 0.763686851678283,
    "jugado": false,
    "gano": null
   },
@@ -1306,7 +1306,7 @@
    "rival": "Jonas GUNDACKER",
    "seed": null,
    "entradaRival": "SE",
-   "nuestra": 0.5329932379540167,
+   "nuestra": 0.5386318502216632,
    "jugado": false,
    "gano": null
   },
@@ -1323,7 +1323,7 @@
    "rival": "Paul Schmid",
    "seed": 5,
    "entradaRival": "WC",
-   "nuestra": 0.9816745673805314,
+   "nuestra": 0.9906579906829495,
    "jugado": false,
    "gano": null
   },
@@ -1340,7 +1340,7 @@
    "rival": "Adam Soukup",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.7992678999257293,
+   "nuestra": 0.8346212870997216,
    "jugado": false,
    "gano": null
   },
@@ -1357,7 +1357,7 @@
    "rival": "Matthias Ujvary",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5588004092597568,
+   "nuestra": 0.5687683949421328,
    "jugado": false,
    "gano": null
   },
@@ -1374,7 +1374,7 @@
    "rival": "Gonzalo Zeitune",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.6458278756554686,
+   "nuestra": 0.6690297419592209,
    "jugado": false,
    "gano": null
   },
@@ -1391,7 +1391,7 @@
    "rival": "Nikola Djosic",
    "seed": 1,
    "entradaRival": "DA",
-   "nuestra": 0.7953848194237869,
+   "nuestra": 0.8306988144638421,
    "jugado": true,
    "gano": true
   },
@@ -1408,7 +1408,7 @@
    "rival": "Marko Mesarovic",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.5784454356655041,
+   "nuestra": 0.5916203809164748,
    "jugado": false,
    "gano": null
   },
@@ -1425,7 +1425,7 @@
    "rival": "Jeremy Zhang",
    "seed": 8,
    "entradaRival": "WC",
-   "nuestra": 0.7421780608021304,
+   "nuestra": 0.775335559116231,
    "jugado": false,
    "gano": null
   },
@@ -1442,7 +1442,7 @@
    "rival": "Zachary Viiala",
    "seed": 7,
    "entradaRival": "DA",
-   "nuestra": 0.6216646904993863,
+   "nuestra": 0.6414833209188198,
    "jugado": false,
    "gano": null
   },
@@ -1459,7 +1459,7 @@
    "rival": "Sebastian Anthony Vlahos",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.9789750226395044,
+   "nuestra": 0.9890090143965281,
    "jugado": true,
    "gano": true
   },
@@ -1476,7 +1476,7 @@
    "rival": "Tymur Bieldiugin",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5160145204110992,
+   "nuestra": 0.5187591905654846,
    "jugado": true,
    "gano": false
   },
@@ -1493,7 +1493,7 @@
    "rival": "Gheorghe Claudiu Schinteie",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.8823126562512484,
+   "nuestra": 0.9137317964685029,
    "jugado": false,
    "gano": null
   },
@@ -1510,7 +1510,7 @@
    "rival": "Lenny Petit",
    "seed": 8,
    "entradaRival": "Q",
-   "nuestra": 0.9104298717350878,
+   "nuestra": 0.9380030494002402,
    "jugado": false,
    "gano": null
   },
@@ -1527,7 +1527,7 @@
    "rival": "Daniele Minighini",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.7144600228004866,
+   "nuestra": 0.7454456768935971,
    "jugado": false,
    "gano": null
   },
@@ -1544,7 +1544,7 @@
    "rival": "Valentin Vanta",
    "seed": 6,
    "entradaRival": "Q",
-   "nuestra": 0.9585096993065504,
+   "nuestra": 0.9753622230640527,
    "jugado": false,
    "gano": null
   },
@@ -1561,7 +1561,7 @@
    "rival": "Louis Allen",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.9170557826228714,
+   "nuestra": 0.9434916979889827,
    "jugado": false,
    "gano": null
   },
@@ -1578,7 +1578,7 @@
    "rival": "Lucian Stefan Andrei",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.9822421466009097,
+   "nuestra": 0.9909990549204059,
    "jugado": false,
    "gano": null
   },
@@ -1595,7 +1595,7 @@
    "rival": "Niccolo Catini",
    "seed": 2,
    "entradaRival": "DA",
-   "nuestra": 0.8789447513576323,
+   "nuestra": 0.9107266673780051,
    "jugado": false,
    "gano": null
   },
@@ -1612,7 +1612,7 @@
    "rival": "Dominik Kellovsky",
    "seed": 4,
    "entradaRival": "DA",
-   "nuestra": 0.6858902107089934,
+   "nuestra": 0.7140099749507888,
    "jugado": false,
    "gano": null
   },
@@ -1629,7 +1629,7 @@
    "rival": "Dawid Wisniewski",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.5588004092597568,
+   "nuestra": 0.5687683949421328,
    "jugado": false,
    "gano": null
   },
@@ -1646,7 +1646,7 @@
    "rival": "Jan Chlodnicki",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.7601386859585383,
+   "nuestra": 0.794341427572494,
    "jugado": false,
    "gano": null
   },
@@ -1663,7 +1663,7 @@
    "rival": "Tom Zeuch",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.7586751981065891,
+   "nuestra": 0.792804193302683,
    "jugado": false,
    "gano": null
   },
@@ -1680,7 +1680,7 @@
    "rival": "Alex Finkelstein",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.6093438592395451,
+   "nuestra": 0.6273376194593319,
    "jugado": false,
    "gano": null
   },
@@ -1697,7 +1697,7 @@
    "rival": "Iiro Vasa",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.7313042725524548,
+   "nuestra": 0.763686851678283,
    "jugado": false,
    "gano": null
   },
@@ -1714,7 +1714,7 @@
    "rival": "Manvydas Balciunas",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.8283481159552565,
+   "nuestra": 0.8634159051417777,
    "jugado": false,
    "gano": null
   },
@@ -1731,7 +1731,7 @@
    "rival": "Gray Voelzke",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.9047203811388485,
+   "nuestra": 0.9331992232919618,
    "jugado": false,
    "gano": null
   },
@@ -1748,7 +1748,7 @@
    "rival": "Vaal Urankar",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.7257598514720571,
+   "nuestra": 0.7577082796401182,
    "jugado": false,
    "gano": null
   },
@@ -1765,7 +1765,7 @@
    "rival": "Maj Premzl",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.8732947937304903,
+   "nuestra": 0.905641655995897,
    "jugado": false,
    "gano": null
   },
@@ -1782,7 +1782,7 @@
    "rival": "Mak Mikovic",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.582346867258352,
+   "nuestra": 0.5961469204091417,
    "jugado": false,
    "gano": null
   },
@@ -1799,7 +1799,7 @@
    "rival": "Jan Kupcic",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.787452071760234,
+   "nuestra": 0.8226322501170635,
    "jugado": false,
    "gano": null
   },
@@ -1816,7 +1816,7 @@
    "rival": "Ivan Biletic",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5120126878832385,
+   "nuestra": 0.5140722826037545,
    "jugado": false,
    "gano": null
   },
@@ -1833,7 +1833,7 @@
    "rival": "Piotr Galus",
    "seed": 7,
    "entradaRival": "Q",
-   "nuestra": 0.7062198722422618,
+   "nuestra": 0.7364402484151358,
    "jugado": false,
    "gano": null
   },
@@ -1850,7 +1850,7 @@
    "rival": "Marko Retelj",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.6944538758295947,
+   "nuestra": 0.7234940535192907,
    "jugado": false,
    "gano": null
   },
@@ -1867,7 +1867,7 @@
    "rival": "Manuel Lazic",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.8334127747883854,
+   "nuestra": 0.8683198200983082,
    "jugado": false,
    "gano": null
   },
@@ -1884,7 +1884,7 @@
    "rival": "Pijus Vaitiekunas",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.7012097006632894,
+   "nuestra": 0.7309398084504451,
    "jugado": false,
    "gano": null
   },
@@ -1901,7 +1901,7 @@
    "rival": "David Eichenseher",
    "seed": 1,
    "entradaRival": "DA",
-   "nuestra": 0.74523157239733,
+   "nuestra": 0.7785878614974547,
    "jugado": false,
    "gano": null
   },
@@ -1918,7 +1918,7 @@
    "rival": "Jonathan Dazert",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.9474301274659693,
+   "nuestra": 0.9673155079156321,
    "jugado": false,
    "gano": null
   },
@@ -1935,7 +1935,7 @@
    "rival": "Louis Van Herck",
    "seed": 7,
    "entradaRival": "Q",
-   "nuestra": 0.5686499251609511,
+   "nuestra": 0.5802373959164978,
    "jugado": false,
    "gano": null
   },
@@ -1952,7 +1952,7 @@
    "rival": "Max Frohlich",
    "seed": 8,
    "entradaRival": "Q",
-   "nuestra": 0.9827924547776707,
+   "nuestra": 0.9913277763628258,
    "jugado": false,
    "gano": null
   },
@@ -1969,7 +1969,7 @@
    "rival": "Dean Thurner",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.5755128935005319,
+   "nuestra": 0.5882152037432509,
    "jugado": false,
    "gano": null
   },
@@ -1986,7 +1986,7 @@
    "rival": "Tomas Lanik",
    "seed": 7,
    "entradaRival": "DA",
-   "nuestra": 0.6197789292414277,
+   "nuestra": 0.63932231215234,
    "jugado": false,
    "gano": null
   },
@@ -2003,7 +2003,7 @@
    "rival": "Botond Kisantal",
    "seed": 8,
    "entradaRival": "Q",
-   "nuestra": 0.8005499340409751,
+   "nuestra": 0.8359124834848264,
    "jugado": false,
    "gano": null
   },
@@ -2020,7 +2020,7 @@
    "rival": "Filip Drab",
    "seed": 3,
    "entradaRival": "Q",
-   "nuestra": 0.8968495943909167,
+   "nuestra": 0.9264694428125929,
    "jugado": false,
    "gano": null
   },
@@ -2037,7 +2037,7 @@
    "rival": "Kolos Kincses",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.8728509735494204,
+   "nuestra": 0.9052399380130781,
    "jugado": false,
    "gano": null
   },
@@ -2054,7 +2054,7 @@
    "rival": "Rafael Behr",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.8763645672126252,
+   "nuestra": 0.9084111878474594,
    "jugado": false,
    "gano": null
   },
@@ -2071,7 +2071,7 @@
    "rival": "Bercel Sandor Takacs",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.9218015402402774,
+   "nuestra": 0.947363446752715,
    "jugado": false,
    "gano": null
   },
@@ -2088,7 +2088,7 @@
    "rival": "Mateo Fluri",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.9573803362133553,
+   "nuestra": 0.9745605120007412,
    "jugado": false,
    "gano": null
   },
@@ -2105,7 +2105,7 @@
    "rival": "Adrien Berrut",
    "seed": null,
    "entradaRival": "WC",
-   "nuestra": 0.6893313158076334,
+   "nuestra": 0.717826952415781,
    "jugado": false,
    "gano": null
   },
@@ -2122,7 +2122,7 @@
    "rival": "Michalis Sakellaridis",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.6272997454869557,
+   "nuestra": 0.6479316774858924,
    "jugado": false,
    "gano": null
   },
@@ -2139,7 +2139,7 @@
    "rival": "Ethan Cook",
    "seed": null,
    "entradaRival": "Q",
-   "nuestra": 0.6494835795293338,
+   "nuestra": 0.6731722573194139,
    "jugado": false,
    "gano": null
   },
@@ -2156,7 +2156,7 @@
    "rival": "Tai Leonard Sach",
    "seed": null,
    "entradaRival": "DA",
-   "nuestra": 0.5070082909855989,
+   "nuestra": 0.5082102619597505,
    "jugado": false,
    "gano": null
   },
@@ -2173,7 +2173,7 @@
    "rival": "Yuki Mochizuki",
    "seed": 6,
    "entradaRival": "Q",
-   "nuestra": 0.7820401141326364,
+   "nuestra": 0.81708895093212,
    "jugado": false,
    "gano": null
   },
@@ -2190,7 +2190,7 @@
    "rival": "Keisuke Saitoh",
    "seed": 3,
    "entradaRival": "DA",
-   "nuestra": 0.6458278756554686,
+   "nuestra": 0.6690297419592209,
    "jugado": false,
    "gano": null
   },
@@ -2207,7 +2207,92 @@
    "rival": "Moerani Bouzige",
    "seed": 8,
    "entradaRival": "DA",
-   "nuestra": 0.6884729807238684,
+   "nuestra": 0.716875610590808,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-sui-2026-004",
+   "torneo": "M25 Lausanne",
+   "etapa": "R2",
+   "grupo": "medias",
+   "d": 5.07,
+   "mkt": 0.841799709724238,
+   "vig": 0.08984498576399869,
+   "cuota": 1.09,
+   "favorito": "Henry Bernet",
+   "rival": "Blu Baker",
+   "seed": 3,
+   "entradaRival": "DA",
+   "nuestra": 0.8283144148918524,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-pol-2026-008",
+   "torneo": "M25 Poznan",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 2.6999999999999993,
+   "mkt": 0.7861060329067642,
+   "vig": 0.08725899423573846,
+   "cuota": 1.17,
+   "favorito": "Niklas Guttau",
+   "rival": "Kacper Knitter",
+   "seed": null,
+   "entradaRival": "DA",
+   "nuestra": 0.7802013281536986,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-ned-2026-006",
+   "torneo": "M25 Oldenzaal",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 2.75,
+   "mkt": 0.6995412844036698,
+   "vig": 0.09122763108497045,
+   "cuota": 1.31,
+   "favorito": "Daniel Verbeek",
+   "rival": "Richard Antoni",
+   "seed": null,
+   "entradaRival": "Q",
+   "nuestra": 0.784197962961401,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-hun-2026-004",
+   "torneo": "M15 Pecs",
+   "etapa": "R1",
+   "grupo": "buenas",
+   "d": 0.6799999999999997,
+   "mkt": 0.37789203084832906,
+   "vig": 0.09349524933940523,
+   "cuota": 2.42,
+   "favorito": "Preston Brown",
+   "rival": "Jan Hrazdil",
+   "seed": null,
+   "entradaRival": "DA",
+   "nuestra": 0.5790941749032775,
+   "jugado": false,
+   "gano": null
+  },
+  {
+   "clave": "m-itf-fra-2026-025",
+   "torneo": "M15 Cap d'Agde",
+   "etapa": "R2",
+   "grupo": "medias",
+   "d": 4.699999999999999,
+   "mkt": 0.826833073322933,
+   "vig": 0.08958014618391963,
+   "cuota": 1.11,
+   "favorito": "Leo Raquillet",
+   "rival": "Lenny Couturier",
+   "seed": 3,
+   "entradaRival": "WC",
+   "nuestra": 0.8113613139338028,
    "jugado": false,
    "gano": null
   }

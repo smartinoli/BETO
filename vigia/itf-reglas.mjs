@@ -197,7 +197,7 @@ export const esTarde = RONDA_FINAL;
    pero la tabla y la mesa siguen pidiendo "la curva del nivel" a secas. */
 export function pNivel(d, ronda, choque) {
   const r = normRonda(ronda), g = G[r] || 'medias';
-  const eta = MOD.pendiente[g] * d + (choque ? MOD.cedidos * -0.14 : 0);
+  const eta = MOD.pendiente[g] * d + (choque ? MOD.cedidos * -0.14 : 0);   /* -0.14 = diferencia tipica de games cedidos cuando hay choque */
   return { p: 1 / (1 + Math.exp(-eta)), grupo: g, ronda: r, n: NG[g], conocida: !!G[r] };
 }
 export function dMinima(ronda) { return dParaLlegar(P_MIN, normRonda(ronda)) }
@@ -245,14 +245,22 @@ export const pMercadoModelo = d => sig(-0.081 + 0.183 * d);
    TRAMPA, que es lo que la evidencia dice que es.
 
      regla                                    n   acierto    rinde
-     la de hoy: valor ≥ 9%                   15   33% (5/15)   −51%
-     p≥70% y no discrepar más de +12         16  100% (16/16)  +20%
+     la de hoy: valor ≥ 9%                   15   53% (8/15)   −24%
+     p≥70%, no discrepar +12, valor ≥ 0      11  100% (11/11)  +26%
+
+   Remedido el 2026-08-26 con el modelo del escalón sub-18 y el registro
+   ya en 52 partidos. Las BANDAS de discrepancia se movieron bastante
+   entre una medición y otra (el tramo +5/+15 pasó de 89% a 76%, el de
+   ±5 de 86% a 57%): con 7 a 21 partidos por casilla eso es lo esperable
+   y hay que tratarlas como orientación, no como número. Lo que se
+   sostiene entre las dos mediciones es que el criterio viejo pierde
+   plata y que la regla nueva no.
 
    (con el modelo reajustado sin el torneo de cada partido, para que no se
    esté juzgando a sí mismo)
 
-   AVISO HONESTO SOBRE EL 16/16: son 16 partidos y el umbral de +12 lo
-   elegí mirando estos mismos 50. El intervalo de Wilson es 81–100%. Lo
+   AVISO HONESTO SOBRE EL 11/11: son 11 partidos y el umbral de +12 lo
+   elegí mirando este mismo registro. El intervalo de Wilson es 74–100%. Lo
    que la evidencia sostiene es el SIGNO —discrepar a nuestro favor es
    malo, no bueno— y eso además coincide con el residuo de mercado que
    veníamos midiendo aparte. El número exacto hay que volver a medirlo
@@ -270,10 +278,9 @@ const pct = v => `${v >= 0 ? '+' : ''}${Math.round(v * 100)}%`;           /* pis
    achica la muestra:
 
      margen  n   acierto      rinde
-     −5%    13   13/13        +22%
-      0%     5    5/5         +27%
-     +5%     2    2/2         +28%
-     +9%     0    —            —
+     sin      17   17/17       +22%
+      0%      11   11/11       +26%
+     +9%       0    —            —
 
    Se queda en 0: la única condición sensata es que la apuesta no pierda
    plata con nuestra propia probabilidad. */
@@ -387,7 +394,7 @@ export function analizar(p) {
   if (!bloqueo.length)
     return { tipo: 'segura', nivel, precio, favorito: nivel.favorito, confianza: 'alta', mercado: 'gana',
       razon: `${cabeza}${mercadoTxt} A ${c} paga sobre la mínima de ${cMinima.toFixed(2)}: ${pct(val)} de valor. `
-        + `Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 5 de 5 y +27%.`
+        + `Modelo fuerte, mercado de acuerdo y precio que no pierde: esa casilla midió 11 de 11 y +26%.`
         + (avisos.length ? ` (${avisos.join('; ')})` : ''),
       banderas: [...ban, 'segura'] };
 
