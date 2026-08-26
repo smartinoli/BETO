@@ -284,6 +284,35 @@ const cuotas = enTanda
   ? doc.cuotas.filter(q => enTanda.has(NORM(q.torneo) + '|' + NORM(q.p1) + '|' + NORM(q.p2))
                         || enTanda.has(NORM(q.torneo) + '|' + NORM(q.p2) + '|' + NORM(q.p1)))
   : doc.cuotas;
+/* ---------- LA BRECHA: el precio mundial de bet365 al lado del de Betano.
+
+   Descubierto el 2026-08-27 destripando por qué Sebastián le ganó a la
+   regla de la contra apostando a Wygona y Brown: Betano los pagaba 2.07 y
+   2.42 cuando bet365 —el libro afilado— tenía 1.83 (¡empate!) y 2.20.
+   La "contradicción con el rating" que la contra detectaba era un error
+   de Betano a solas, no del mercado, y cuando el libro blando se aparta
+   del afilado el que se equivoca es el blando. Sus apuestas eran +3.5% y
+   +2.4% contra el precio justo de bet365; las contras, −17% y −15%.
+
+   Regla operativa: la probabilidad "real" de cada lado sale de bet365
+   desvigado (itf-cuotas-bet365.json, vía API); el valor de la apuesta se
+   calcula con la cuota de Betano. Brecha = ese valor. */
+const sharpDoc = leer(path.join(DIR, 'itf-cuotas-bet365.json'));
+function brechaDe(n1, n2, g1, g2) {
+  if (!sharpDoc || !g1 || !g2) return null;
+  const q = (sharpDoc.cuotas || []).find(c =>
+    (mismoJugador(c.p1, n1) && mismoJugador(c.p2, n2)) || (mismoJugador(c.p1, n2) && mismoJugador(c.p2, n1)));
+  if (!q) return null;
+  const orden = mismoJugador(q.p1, n1);
+  const s1 = orden ? q.g1 : q.g2, s2 = orden ? q.g2 : q.g1;
+  const sum = 1 / s1 + 1 / s2;
+  const p1 = (1 / s1) / sum, p2 = (1 / s2) / sum;      /* bet365 desvigado */
+  const ev1 = p1 * g1 - 1, ev2 = p2 * g2 - 1;          /* valor a cuota Betano */
+  const mejor = ev1 >= ev2 ? { lado: n1, cuota: g1, sharp: s1, p: p1, ev: ev1 }
+                           : { lado: n2, cuota: g2, sharp: s2, p: p2, ev: ev2 };
+  return { s1, s2, p1, p2, ev1, ev2, mejor };
+}
+
 const filas = [];
 const sinTorneo = [];
 for (const q of cuotas) {
@@ -298,7 +327,8 @@ for (const q of cuotas) {
     llega: f.llega, previo: f.previo,
   }));
   const v = analizar({ lados, ronda: etapa });
-  filas.push({ q, t, f1, f2, etapa, fuenteEtapa: enCuadro ? 'cuadro' : 'deducida',
+  const brecha = bet365 ? null : brechaDe(f1.nombre, f2.nombre, q.g1, q.g2);
+  filas.push({ q, t, f1, f2, etapa, brecha, fuenteEtapa: enCuadro ? 'cuadro' : 'deducida',
     via: q.via || 'cuadro', v, horario: horarioDe(q.p1, q.p2), res: resultado(t.clave, q.p1, q.p2) });
 }
 
@@ -326,6 +356,10 @@ const MALAS = new Set(['parejo', 'jr-incognito']);
    larga, y es la que Sebastián venía pidiendo. */
 const jugadaDe = f => {
   if (!f.v?.precio) return null;
+  /* la brecha manda: es la única jugada que no depende de nuestro modelo */
+  if (f.brecha?.mejor?.ev >= 0.03)
+    return { tipo: 'brecha', quien: f.brecha.mejor.lado, cuota: f.brecha.mejor.cuota,
+      rinde: f.brecha.mejor.ev, sharp: f.brecha.mejor.sharp, pSharp: f.brecha.mejor.p };
   const mal = (f.v.alertas || []).some(a => MALAS.has(a.clave));
   const c = f.v.contra;
   if (c && c.cuota && c.rinde > 0)
@@ -340,7 +374,8 @@ for (const f of filas) f.jugada = jugadaDe(f);
 /* las contras primero: son las únicas que pagan cuota larga y las únicas
    con un mecanismo medido detrás del precio */
 const ELEGIDAS = filas.filter(f => f.jugada)
-  .sort((a, b) => (b.jugada.tipo === 'contra' ? 1 : 0) - (a.jugada.tipo === 'contra' ? 1 : 0)
+  .sort((a, b) => (b.jugada.tipo === 'brecha' ? 2 : b.jugada.tipo === 'contra' ? 1 : 0)
+      - (a.jugada.tipo === 'brecha' ? 2 : a.jugada.tipo === 'contra' ? 1 : 0)
     || b.jugada.rinde - a.jugada.rinde)
   .slice(0, 4);
 
@@ -348,6 +383,17 @@ const ELEGIDAS = filas.filter(f => f.jugada)
    es un logit. Cada trozo sale de una señal real, no es adorno. */
 function enSimple(f) {
   const n = f.v.nivel, pr = f.v.precio, j = f.jugada;
+  if (j?.tipo === 'brecha') {
+    return {
+      fav: j.quien,
+      razon: `Betano paga ${j.cuota} por ${j.quien} cuando bet365 —el libro que fija el precio mundial— lo tiene a ${j.sharp}. `
+        + `Sacando el margen, el precio mundial dice que gana ${Math.round(j.pSharp * 100)} de cada 100. `
+        + `Betano está pagando de más, y cuando el libro blando se aparta del afilado, el que se equivoca es el blando.`,
+      mercado: `Esta jugada no depende de nuestro modelo: es puro precio contra precio.`,
+      cuenta: `Al precio mundial, apostarle a ${j.quien} a ${j.cuota} deja ${j.rinde >= 0 ? '+' : ''}${Math.round(j.rinde * 100)}% a la larga.`,
+      riesgo: `Lo que puede fallar: la cuota de bet365 tiene su hora — si Betano ya la corrigió cuando vayas a apostar, la brecha no está más. Verifica el precio antes de jugarla.`,
+    };
+  }
   if (j?.tipo === 'contra') {
     const c = j.contra;
     return {
