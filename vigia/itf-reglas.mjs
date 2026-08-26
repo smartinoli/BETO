@@ -350,7 +350,13 @@ export function analizar(p) {
      concreta y no sólo a "no juegues esto" */
   const dCed = (yo.cedidos != null && otro.cedidos != null) ? otro.cedidos - yo.cedidos : null;
   let regla = null;
-  if (dCed != null && dCed <= CED_CAIDA && !primeraRonda(R))
+  /* Freno agregado el 2026-08-27: la regla disparo "apostar a Ambarzumjan
+     a 9.00" porque el mejor por WTN llegaba cediendo mas games. El 56% de
+     la regla es un promedio sobre partidos corrientes; cuando el mercado
+     paga 1.04/9.00 esta gritando otra cosa (lesion, retiro, categoria) y
+     ese promedio no transfiere. La caida solo vale donde el mercado ve un
+     partido de verdad: la cuota del otro lado hasta 3.50. */
+  if (dCed != null && dCed <= CED_CAIDA && !primeraRonda(R) && (cRival == null || cRival <= 3.5))
     regla = { clave: 'caida', lado: otro.nombre, cuotaMin: CUOTA_CAIDA,
       texto: `${yo.nombre} tiene mejor WTN pero llega cediendo ${Math.round(-dCed * 100)} puntos más de games `
         + `(${Math.round(yo.cedidos * 100)}% contra ${Math.round(otro.cedidos * 100)}%). Medido, en esa situación y `

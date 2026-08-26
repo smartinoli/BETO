@@ -56,6 +56,24 @@ details[open] summary::before{content:"▾ "}
 .crudo b{color:var(--ink)} .crudo .g{color:var(--pos);font-style:normal;font-weight:600}
 .crudo .p{color:var(--neg);font-style:normal;font-weight:600}
 .crudo .raz{color:var(--ink3);border-top:1px solid var(--rule);padding-top:7px;margin-top:2px}
+.verd{margin-bottom:34px}
+.vt{font:700 20px/1.2 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.015em;margin:0 0 12px}
+.envt{overflow-x:auto;background:var(--panel);border:1px solid var(--rule);border-radius:8px}
+.envt table{width:100%;min-width:640px;border-collapse:collapse;font:13px "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.envt thead th{text-align:left;padding:9px 10px;border-bottom:1.5px solid var(--rule);
+  font:600 10px "IBM Plex Mono",monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
+.envt thead th.n{text-align:right}
+.envt td{padding:7px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.envt td.n{text-align:right} .envt td.sec{color:var(--ink3)}
+.envt td.quien{font:600 14.5px "Bricolage Grotesque",system-ui,sans-serif;white-space:normal}
+.envt tr.ok td.quien{color:var(--pos)} .envt tr.mal td.quien{color:var(--neg)}
+.envt tr.det td{border-bottom:1px solid var(--rule);padding:0 10px 7px;white-space:normal}
+.envt tr.det details{margin:0;border:0;padding:0}
+.envt tr.det summary{font:500 10.5px "IBM Plex Mono",monospace;color:var(--ink3)}
+.envt tr.det p{margin:6px 0 0;font:13px/1.55 "Source Serif 4",Georgia,serif;color:var(--ink2)}
+.envt tr.tot td{border-top:2px solid var(--rule);border-bottom:0}
+i.dif{font-style:normal;color:var(--ojo);font-weight:700}
+.notaverd{margin:10px 2px 0;font-size:13.5px;line-height:1.55;color:var(--ink3)}
 .nada{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--ojo);border-radius:8px;
   padding:20px 22px;font-size:16px;line-height:1.6;color:var(--ink2)}
 .nada b{color:var(--ink)}
@@ -78,6 +96,307 @@ footer b{color:var(--ink2)}
   <h1>Las que elijo hoy</h1>
   <p class="bajada">4 de 29. Las otras están abajo con el motivo por el que no.</p>
 </header>
+<section class="verd">
+  <h2 class="vt">Quién gana hoy, según el modelo</h2>
+  <div class="envt"><table>
+    <thead><tr><th></th><th>gana</th><th>contra</th><th>dónde</th>
+      <th class="n">modelo</th><th class="n">mercado</th><th>señales</th><th>resultado</th></tr></thead>
+    <tbody><tr class="">
+        <td class="n sec">1</td>
+        <td class="quien">Kasidit Samrej</td>
+        <td class="sec">Kai-i Wang</td>
+        <td class="sec">Taipei · R1</td>
+        <td class="n"><b>96%</b></td>
+        <td class="n sec">90%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ6.65 de WTN a favor de Kasidit Samrej (4.15 contra 10.8), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 96%. El mercado la paga a 1.04: 90% una vez sacado su margen. A esa cuota, la apuesta rinde −0% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">2</td>
+        <td class="quien">Carlos Maria Zarate</td>
+        <td class="sec">Manuel Mouilleron Salvo</td>
+        <td class="sec">Mar Del Plata · R1</td>
+        <td class="n"><b>96%</b></td>
+        <td class="n sec">89%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ6.53 de WTN a favor de Carlos Maria Zarate (5.92 contra 12.45), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 96%. El mercado la paga a 1.05: 89% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">3</td>
+        <td class="quien">Elgin Khoeblal</td>
+        <td class="sec">Zian Vanderstappen</td>
+        <td class="sec">Oldenzaal · R1</td>
+        <td class="n"><b>95%</b></td>
+        <td class="n sec">88%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ6.38 de WTN a favor de Elgin Khoeblal (7.16 contra 13.54), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 95%. El mercado la paga a 1.071: 88% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −6% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">4</td>
+        <td class="quien">Ezequiel Monferrer</td>
+        <td class="sec">Felipe Vazquez</td>
+        <td class="sec">Mar Del Plata · R1</td>
+        <td class="n"><b>93%</b></td>
+        <td class="n sec">77% <i class="dif">±</i></td>
+        <td class="sec">sub18</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ9.05 de WTN a favor de Ezequiel Monferrer (9.23 contra 18.28), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 99%. Ajustan: Felipe Vazquez tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−5 pts). Queda en 93%. El mercado la paga a 1.222: 77% una vez sacado su margen. A esa cuota, la apuesta rinde +14% si tenemos razón nosotros y −6% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">5</td>
+        <td class="quien">Enzo Aguiard</td>
+        <td class="sec">Reiya Komagata</td>
+        <td class="sec">Maanshan · R2</td>
+        <td class="n"><b>92%</b></td>
+        <td class="n sec">90%</td>
+        <td class="sec">forma</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ7.53 de WTN a favor de Enzo Aguiard (4.61 contra 12.14), en R2: la curva del grupo &quot;medias&quot; (n=214) da 91%. Ajustan: Enzo Aguiard viene cediendo menos games (35% contra 40%) (+1 pts). Queda en 92%. El mercado la paga a 1.04: 90% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">6</td>
+        <td class="quien">Nathan Ponwith</td>
+        <td class="sec">David Bakonyi</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>91%</b></td>
+        <td class="n sec">66% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ4.99 de WTN a favor de Nathan Ponwith (8.11 contra 13.1), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 91%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde +28% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">7</td>
+        <td class="quien">Hyeon Chung</td>
+        <td class="sec">Ethan Cook</td>
+        <td class="sec">Taipei · R1</td>
+        <td class="n"><b>91%</b></td>
+        <td class="n sec">46% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ4.88 de WTN a favor de Hyeon Chung (3.57 contra 8.45), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 91%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +82% si tenemos razón nosotros y −7% si la tiene el mercado. Hyeon Chung es el MEJOR POR RATING pero la casa lo paga 2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.</p></details></td></tr><tr class="">
+        <td class="n sec">8</td>
+        <td class="quien">Felix Corwin</td>
+        <td class="sec">Colson Wells</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>90%</b></td>
+        <td class="n sec">73% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ4.79 de WTN a favor de Felix Corwin (6.89 contra 11.68), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 90%. El mercado la paga a 1.286: 73% una vez sacado su margen. A esa cuota, la apuesta rinde +16% si tenemos razón nosotros y −6% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">9</td>
+        <td class="quien">Arthur Weber</td>
+        <td class="sec">Kristjan Tamm</td>
+        <td class="sec">Taipei · R1</td>
+        <td class="n"><b>87%</b></td>
+        <td class="n sec">72% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ4.12 de WTN a favor de Arthur Weber (5.28 contra 9.4), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 87%. El mercado la paga a 1.3: 72% una vez sacado su margen. A esa cuota, la apuesta rinde +14% si tenemos razón nosotros y −6% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">10</td>
+        <td class="quien">Sanhui Shin</td>
+        <td class="sec">Yan Cheng CHEN</td>
+        <td class="sec">Taipei · R1</td>
+        <td class="n"><b>87%</b></td>
+        <td class="n sec">89%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ3.99 de WTN a favor de Sanhui Shin (5.36 contra 9.35), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 87%. El mercado la paga a 1.05: 89% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">11</td>
+        <td class="quien">Matthew Dellavedova</td>
+        <td class="sec">Tai Leonard Sach</td>
+        <td class="sec">Taipei · R1</td>
+        <td class="n"><b>85%</b></td>
+        <td class="n sec">71% <i class="dif">±</i></td>
+        <td class="sec">previo</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ1.89 de WTN a favor de Matthew Dellavedova (4.65 contra 6.54), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 71%. Ajustan: Matthew Dellavedova llegó más lejos en su torneo anterior (+14 pts). Queda en 85%. El mercado la paga a 1.333: 71% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −5% si la tiene el mercado. ΔWTN de 1.89: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></details></td></tr><tr class="">
+        <td class="n sec">12</td>
+        <td class="quien">Luca Castelnuovo</td>
+        <td class="sec">Hiromasa Koyama</td>
+        <td class="sec">Taipei · R1</td>
+        <td class="n"><b>83%</b></td>
+        <td class="n sec">73%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ3.38 de WTN a favor de Luca Castelnuovo (5.07 contra 8.45), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 83%. El mercado la paga a 1.286: 73% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −6% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">13</td>
+        <td class="quien">Jack Anthrop</td>
+        <td class="sec">Noah Schachter</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>82%</b></td>
+        <td class="n sec">83%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ3.24 de WTN a favor de Jack Anthrop (6.31 contra 9.55), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 82%. El mercado la paga a 1.125: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">14</td>
+        <td class="quien">Hazem Naw</td>
+        <td class="sec">Edison Ambarzumjan</td>
+        <td class="sec">Allershausen · R2</td>
+        <td class="n"><b>82%</b></td>
+        <td class="n sec">90%</td>
+        <td class="sec">forma</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ5.41 de WTN a favor de Hazem Naw (7.26 contra 12.67), en R2: la curva del grupo &quot;medias&quot; (n=214) da 84%. Ajustan: Edison Ambarzumjan viene cediendo menos games (33% contra 40%): la forma contradice al nivel (−3 pts). Queda en 82%. El mercado la paga a 1.04: 90% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −7% si la tiene el mercado. Hazem Naw tiene mejor WTN pero llega cediendo 7 puntos más de games (40% contra 33%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Edison Ambarzumjan paga desde 2.21 aun tomando el borde malo del intervalo.</p></details></td></tr><tr class="">
+        <td class="n sec">15</td>
+        <td class="quien">Yanki Erel</td>
+        <td class="sec">Hikaru Shiraishi</td>
+        <td class="sec">Taipei · R1</td>
+        <td class="n"><b>81%</b></td>
+        <td class="n sec">52% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ3.05 de WTN a favor de Yanki Erel (3.66 contra 6.71), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 81%. El mercado la paga a 1.8: 51% una vez sacado su margen. A esa cuota, la apuesta rinde +45% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">16</td>
+        <td class="quien">Bryce Nakashima Nakashima</td>
+        <td class="sec">Rocco Piatti</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>79%</b></td>
+        <td class="n sec">79%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ2.88 de WTN a favor de Bryce Nakashima Nakashima (6.55 contra 9.43), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 79%. El mercado la paga a 1.167: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">17</td>
+        <td class="quien">Yusuke Takahashi</td>
+        <td class="sec">Chan-Yeong Oh</td>
+        <td class="sec">Maanshan · R2</td>
+        <td class="n"><b>74%</b></td>
+        <td class="n sec">71%</td>
+        <td class="sec">previo</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ2.50 de WTN a favor de Yusuke Takahashi (5.49 contra 7.99), en R2: la curva del grupo &quot;medias&quot; (n=214) da 68%. Ajustan: Yusuke Takahashi llegó más lejos en su torneo anterior (+6 pts). Queda en 74%. El mercado la paga a 1.333: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −5% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">18</td>
+        <td class="quien">Eric Vanshelboim</td>
+        <td class="sec">Brian Bozemoj</td>
+        <td class="sec">Oldenzaal · R2</td>
+        <td class="n"><b>74%</b></td>
+        <td class="n sec">66%</td>
+        <td class="sec">forma</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ2.41 de WTN a favor de Eric Vanshelboim (5.88 contra 8.29), en R2: la curva del grupo &quot;medias&quot; (n=214) da 68%. Ajustan: Eric Vanshelboim viene cediendo menos games (14% contra 25%) (+6 pts). Queda en 74%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −7% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">19</td>
+        <td class="quien">Jelani Sarr</td>
+        <td class="sec">Tyler Bowers</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>70%</b></td>
+        <td class="n sec">69%</td>
+        <td class="sec">forma</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ2.85 de WTN a favor de Jelani Sarr (8.8 contra 11.65), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 79%. Ajustan: Tyler Bowers viene cediendo menos games (27% contra 45%): la forma contradice al nivel (−9 pts). Queda en 70%. El mercado la paga a 1.364: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −5% si tenemos razón nosotros y −6% si la tiene el mercado.</p></details></td></tr><tr class="">
+        <td class="n sec">20</td>
+        <td class="quien">Jelle Sels</td>
+        <td class="sec">Pieter De Lange</td>
+        <td class="sec">Oldenzaal · R1</td>
+        <td class="n"><b>68%</b></td>
+        <td class="n sec">54% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ1.61 de WTN a favor de Jelle Sels (5.31 contra 6.92), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 68%. El mercado la paga a 1.727: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +17% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></details></td></tr><tr class="">
+        <td class="n sec">21</td>
+        <td class="quien">Rocco Valente</td>
+        <td class="sec">Tomas Jordi Leston</td>
+        <td class="sec">Mar Del Plata · R1</td>
+        <td class="n"><b>63%</b></td>
+        <td class="n sec">42% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ1.13 de WTN a favor de Rocco Valente (10.98 contra 12.11), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 63%. El mercado la paga a 2.2: 42% una vez sacado su margen. A esa cuota, la apuesta rinde +38% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.13: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Rocco Valente es el MEJOR POR RATING pero la casa lo paga 2.2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.</p></details></td></tr><tr class="">
+        <td class="n sec">22</td>
+        <td class="quien">Noa Vukadin</td>
+        <td class="sec">Preston Stearns</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>62%</b></td>
+        <td class="n sec">41% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ1.04 de WTN a favor de Noa Vukadin (5.83 contra 6.87), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 62%. El mercado la paga a 2.25: 41% una vez sacado su margen. A esa cuota, la apuesta rinde +39% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.04: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Noa Vukadin es el MEJOR POR RATING pero la casa lo paga 2.25: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.</p></details></td></tr><tr class="">
+        <td class="n sec">23</td>
+        <td class="quien">Eli Stephenson</td>
+        <td class="sec">Alexander Petrov</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>60%</b></td>
+        <td class="n sec">38% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ0.82 de WTN a favor de Eli Stephenson (7.95 contra 8.77), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 60%. El mercado la paga a 2.5: 38% una vez sacado su margen. A esa cuota, la apuesta rinde +49% si tenemos razón nosotros y −6% si la tiene el mercado. ΔWTN de 0.82: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Eli Stephenson es el MEJOR POR RATING pero la casa lo paga 2.5: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.</p></details></td></tr><tr class="">
+        <td class="n sec">24</td>
+        <td class="quien">Jesse Flores</td>
+        <td class="sec">Oliver OKONKWO</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>59%</b></td>
+        <td class="n sec">52%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ0.80 de WTN a favor de Jesse Flores (7.21 contra 8.01), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 59%. El mercado la paga a 1.8: 51% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.80: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></details></td></tr><tr class="">
+        <td class="n sec">25</td>
+        <td class="quien">Jakub Vrba</td>
+        <td class="sec">Alexander Frusina</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>57%</b></td>
+        <td class="n sec">39% <i class="dif">±</i></td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ0.58 de WTN a favor de Jakub Vrba (6.6 contra 7.18), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 57%. El mercado la paga a 2.375: 39% una vez sacado su margen. A esa cuota, la apuesta rinde +35% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.58: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Jakub Vrba es el MEJOR POR RATING pero la casa lo paga 2.375: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.</p></details></td></tr><tr class="">
+        <td class="n sec">26</td>
+        <td class="quien">Adam Jilly</td>
+        <td class="sec">Joshua Peck</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>53%</b></td>
+        <td class="n sec">58%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ0.23 de WTN a favor de Adam Jilly (9.64 contra 9.87), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 53%. El mercado la paga a 1.615: 58% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.23: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></details></td></tr><tr class="">
+        <td class="n sec">27</td>
+        <td class="quien">Miles Jones</td>
+        <td class="sec">Tianhui Zhang</td>
+        <td class="sec">Maanshan · R2</td>
+        <td class="n"><b>53%</b></td>
+        <td class="n sec">58%</td>
+        <td class="sec">forma</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ0.72 de WTN a favor de Miles Jones (6.97 contra 7.69), en R2: la curva del grupo &quot;medias&quot; (n=214) da 56%. Ajustan: Tianhui Zhang viene cediendo menos games (35% contra 39%): la forma contradice al nivel (−3 pts). Queda en 53%. El mercado la paga a 1.615: 58% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.72: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></details></td></tr><tr class="">
+        <td class="n sec">28</td>
+        <td class="quien">Matisse Farzam</td>
+        <td class="sec">Mikael Arseneault</td>
+        <td class="sec">Champaign, IL · R1</td>
+        <td class="n"><b>52%</b></td>
+        <td class="n sec">49%</td>
+        <td class="sec"></td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ0.16 de WTN a favor de Matisse Farzam (7.77 contra 7.93), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 52%. El mercado la paga a 1.909: 49% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.16: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Matisse Farzam es el MEJOR POR RATING pero la casa lo paga 1.909: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.</p></details></td></tr><tr class="">
+        <td class="n sec">29</td>
+        <td class="quien">M Rifqi Fitriadi</td>
+        <td class="sec">Lingxi Zhao</td>
+        <td class="sec">Maanshan · R2</td>
+        <td class="n"><b>52%</b></td>
+        <td class="n sec">75% <i class="dif">±</i></td>
+        <td class="sec">forma</td>
+        <td><i class="sec">por jugar</i></td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>Δ0.58 de WTN a favor de M Rifqi Fitriadi (6.55 contra 7.13), en R2: la curva del grupo &quot;medias&quot; (n=214) da 54%. Ajustan: Lingxi Zhao viene cediendo menos games (34% contra 38%): la forma contradice al nivel (−3 pts). Queda en 52%. El mercado la paga a 1.25: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −36% si tenemos razón nosotros y −6% si la tiene el mercado. ΔWTN de 0.58: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></details></td></tr></tbody></table></div>
+  <p class="notaverd">Cuando el modelo dice 90%, gana ~9 de 10: en una tanda como esta lo normal es que
+    7 salgan al revés, casi siempre en la mitad de abajo.
+    El <i class="dif">±</i> marca donde el modelo y el mercado se separan 12 puntos o más.</p>
+</section>
+
 <article class="pick contra">
     <div class="rank">1</div>
     <div class="cuerpo">

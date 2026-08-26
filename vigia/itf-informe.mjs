@@ -436,18 +436,57 @@ function enSimple(f) {
   return { fav, razon, mercado, cuenta, riesgo };
 }
 
-/* Volcado de veredictos: quién gana según el modelo, partido por partido.
-   Pedido por Sebastián el 2026-08-27: la pregunta que le importa es QUIÉN
-   GANA con nuestros datos, no cuánto paga el mercado. */
-fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
-  generado: new Date().toISOString(), fuente: bet365 ? 'bet365' : 'betano',
-  partidos: filas.filter(f => f.v?.nivel).map(f => ({
+/* ============================================================
+   VEREDICTOS + HISTORIA — quién gana según el modelo, y cómo nos fue.
+
+   Pedido por Sebastián el 2026-08-27: lo que quiere ver TODOS LOS DÍAS
+   es quién gana con nuestros datos, con su análisis, y la comparación
+   contra lo que pasó de verdad. Cada corrida guarda los veredictos del
+   día en veredictos-historia.json y califica los de días anteriores con
+   los marcadores que trae el índice de OddsPapi (statusId 2 + scores).
+   Así la página siempre abre con la tabla de hoy y el historial de
+   aciertos acumulándose solo. Se califica también al favorito del
+   mercado, para que la comparación modelo-contra-mercado sea con
+   resultados reales y no con teoría.
+   ============================================================ */
+const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
+  const lado = f.v.nivel.favorito.startsWith(f.f1.nombre) ? 1 : 2;
+  const dev = (f.q.g1 && f.q.g2) ? (1 / (lado === 1 ? f.q.g1 : f.q.g2)) / (1 / f.q.g1 + 1 / f.q.g2) : null;
+  return {
+    fixtureId: f.q.fixtureId ?? null, inicio: f.q.inicio ?? null,
     torneo: f.t.nombre, etapa: f.etapa, p1: f.f1.nombre, p2: f.f2.nombre,
-    gana: f.v.nivel.favorito, p: +(f.v.nivel.p).toFixed(3),
+    gana: f.v.nivel.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim(),
+    lado, p: +(f.v.nivel.p).toFixed(3),
+    pMercado: dev != null ? +dev.toFixed(3) : null,
     soloWtn: +(f.v.nivel.soloNivel).toFixed(3),
     señales: (f.v.nivel.partes || []).filter(x => x.nombre !== 'nivel').map(x => x.nombre),
-  })),
-}, null, 1));
+    razon: f.v.razon,
+  };
+});
+fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
+  generado: new Date().toISOString(), fuente: bet365 ? 'bet365' : 'betano', partidos: VEREDICTOS }, null, 1));
+
+const HISTF = path.join(DATOS, 'veredictos-historia.json');
+const HOY = new Date().toISOString().slice(0, 10);
+const historia = leer(HISTF) || { dias: {} };
+/* calificar lo pendiente con los marcadores del índice de OddsPapi */
+const idxHist = leer(path.join(DATOS, 'historico-indice.json')) || { partidos: {} };
+for (const arr of Object.values(historia.dias)) for (const v of arr) {
+  if (v.res || !v.fixtureId) continue;
+  const fx = idxHist.partidos[v.fixtureId];
+  if (!fx || fx.statusId !== 2 || fx.s1 == null || fx.s2 == null || fx.s1 === fx.s2) continue;
+  const ganoLado = fx.s1 > fx.s2 ? 1 : 2;
+  v.res = { ganador: ganoLado === 1 ? fx.p1 : fx.p2, marcador: fx.s1 + '-' + fx.s2 };
+  v.acerto = ganoLado === v.lado;
+  if (v.pMercado != null) v.acertoMercado = (v.pMercado >= 0.5) === (ganoLado === v.lado);
+}
+/* los de hoy (misma corrida repetida = se reemplazan, no se duplican) */
+if (bet365) historia.dias[HOY] = VEREDICTOS.map(v => {
+  const previo = (historia.dias[HOY] || []).find(x => x.fixtureId && x.fixtureId === v.fixtureId);
+  return previo?.res ? { ...v, res: previo.res, acerto: previo.acerto, acertoMercado: previo.acertoMercado } : v;
+});
+historia.actualizado = new Date().toISOString();
+fs.writeFileSync(HISTF, JSON.stringify(historia, null, 1));
 
 /* ---------- consola: las elegidas primero, el resto en una línea ---------- */
 const T = (s, n) => String(s ?? '').slice(0, n).padEnd(n);
@@ -609,6 +648,24 @@ details[open] summary::before{content:"▾ "}
 .crudo b{color:var(--ink)} .crudo .g{color:var(--pos);font-style:normal;font-weight:600}
 .crudo .p{color:var(--neg);font-style:normal;font-weight:600}
 .crudo .raz{color:var(--ink3);border-top:1px solid var(--rule);padding-top:7px;margin-top:2px}
+.verd{margin-bottom:34px}
+.vt{font:700 20px/1.2 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.015em;margin:0 0 12px}
+.envt{overflow-x:auto;background:var(--panel);border:1px solid var(--rule);border-radius:8px}
+.envt table{width:100%;min-width:640px;border-collapse:collapse;font:13px "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.envt thead th{text-align:left;padding:9px 10px;border-bottom:1.5px solid var(--rule);
+  font:600 10px "IBM Plex Mono",monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
+.envt thead th.n{text-align:right}
+.envt td{padding:7px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.envt td.n{text-align:right} .envt td.sec{color:var(--ink3)}
+.envt td.quien{font:600 14.5px "Bricolage Grotesque",system-ui,sans-serif;white-space:normal}
+.envt tr.ok td.quien{color:var(--pos)} .envt tr.mal td.quien{color:var(--neg)}
+.envt tr.det td{border-bottom:1px solid var(--rule);padding:0 10px 7px;white-space:normal}
+.envt tr.det details{margin:0;border:0;padding:0}
+.envt tr.det summary{font:500 10.5px "IBM Plex Mono",monospace;color:var(--ink3)}
+.envt tr.det p{margin:6px 0 0;font:13px/1.55 "Source Serif 4",Georgia,serif;color:var(--ink2)}
+.envt tr.tot td{border-top:2px solid var(--rule);border-bottom:0}
+i.dif{font-style:normal;color:var(--ojo);font-weight:700}
+.notaverd{margin:10px 2px 0;font-size:13.5px;line-height:1.55;color:var(--ink3)}
 .nada{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--ojo);border-radius:8px;
   padding:20px 22px;font-size:16px;line-height:1.6;color:var(--ink2)}
 .nada b{color:var(--ink)}
@@ -633,6 +690,53 @@ footer b{color:var(--ink2)}
     ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length}. Las otras están abajo con el motivo por el que no.`
     : 'Ninguna pasó los filtros. Abajo está cada una con el motivo.'}</p>
 </header>
+<section class="verd">
+  <h2 class="vt">Quién gana hoy, según el modelo</h2>
+  <div class="envt"><table>
+    <thead><tr><th></th><th>gana</th><th>contra</th><th>dónde</th>
+      <th class="n">modelo</th><th class="n">mercado</th><th>señales</th><th>resultado</th></tr></thead>
+    <tbody>${[...VEREDICTOS].sort((x, y) => y.p - x.p).map((v, i) => {
+      const hoyV = (historia.dias[HOY] || []).find(x => x.fixtureId && x.fixtureId === v.fixtureId);
+      const res = hoyV?.res;
+      const dif = v.pMercado != null ? v.p - v.pMercado : null;
+      return `<tr class="${res ? (hoyV.acerto ? 'ok' : 'mal') : ''}">
+        <td class="n sec">${i + 1}</td>
+        <td class="quien">${esc(v.gana)}</td>
+        <td class="sec">${esc(v.lado === 1 ? v.p2 : v.p1)}</td>
+        <td class="sec">${esc(v.torneo.replace(/^M\d+\+?H? /, ''))} · ${esc(v.etapa)}</td>
+        <td class="n"><b>${Math.round(v.p * 100)}%</b></td>
+        <td class="n sec">${v.pMercado != null ? Math.round(v.pMercado * 100) + '%' : '—'}${dif != null && Math.abs(dif) >= 0.12 ? ' <i class="dif">±</i>' : ''}</td>
+        <td class="sec">${v.señales.length ? esc(v.señales.join(' ')) : ''}</td>
+        <td>${res ? (hoyV.acerto ? '✓ ' : '✗ ') + esc(res.ganador.split(' ').slice(-1)[0]) + ' ' + esc(res.marcador) : '<i class="sec">por jugar</i>'}</td>
+      </tr>
+      <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>${esc(v.razon)}</p></details></td></tr>`;
+    }).join('')}</tbody></table></div>
+  <p class="notaverd">Cuando el modelo dice 90%, gana ~9 de 10: en una tanda como esta lo normal es que
+    ${Math.max(1, Math.round(VEREDICTOS.reduce((s, v) => s + (1 - v.p), 0)))} salgan al revés, casi siempre en la mitad de abajo.
+    El <i class="dif">±</i> marca donde el modelo y el mercado se separan 12 puntos o más.</p>
+</section>
+${(() => {
+  const dias = Object.entries(historia.dias).sort((x, y) => y[0].localeCompare(x[0])).slice(0, 10);
+  const conRes = dias.map(([f, arr]) => [f, arr.filter(v => v.res)]).filter(([, a]) => a.length);
+  if (!conRes.length) return '';
+  let tM = 0, tK = 0, tMk = 0, tKk = 0;
+  const filasH = conRes.map(([f, a]) => {
+    const kM = a.filter(v => v.acerto).length, kMk = a.filter(v => v.acertoMercado).length;
+    tM += a.length; tK += kM; tMk += a.filter(v => v.acertoMercado != null).length; tKk += kMk;
+    const fallos = a.filter(v => !v.acerto).map(v => esc(v.gana.split(' ').slice(-1)[0]) + ' cayó con ' + esc((v.lado === 1 ? v.p2 : v.p1).split(' ').slice(-1)[0]));
+    return `<tr><td>${f}</td><td class="n"><b>${kM}/${a.length}</b></td>
+      <td class="n sec">${kMk}/${a.filter(v => v.acertoMercado != null).length}</td>
+      <td class="sec">${fallos.slice(0, 4).join(' · ')}${fallos.length > 4 ? ' · +' + (fallos.length - 4) : ''}</td></tr>`;
+  }).join('');
+  return `<section class="verd">
+    <h2 class="vt">Cómo venimos — modelo contra mercado, con resultados reales</h2>
+    <div class="envt"><table>
+      <thead><tr><th>día</th><th class="n">el modelo acertó</th><th class="n">el mercado</th><th>los que fallamos</th></tr></thead>
+      <tbody>${filasH}
+      <tr class="tot"><td>total</td><td class="n"><b>${tK}/${tM}</b> (${tM ? Math.round(100 * tK / tM) : 0}%)</td>
+        <td class="n sec">${tKk}/${tMk} (${tMk ? Math.round(100 * tKk / tMk) : 0}%)</td><td></td></tr></tbody>
+    </table></div></section>`;
+})()}
 ${ELEGIDAS.length ? ELEGIDAS.map(tarjeta).join('') : `<div class="nada">
   <b>Hoy no elijo ninguna.</b> Los tres filtros son: que el favorito no pague sobre 1.50 (medido, ahí se cae),
   que el partido no sea parejo (con menos de 2 puntos de WTN no sabe nadie), y que la cuota deje algo
