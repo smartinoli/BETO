@@ -59,7 +59,27 @@ const KEY = process.env.ODDSPAPI_KEY;
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > 0 ? process.argv[i + 1] : d };
 const flag = n => process.argv.includes('--' + n);
 const MAX = +arg('max', 200);
-const CASA = arg('casa', 'bet365');
+/* DOS CASAS, y cada una por una razon distinta.
+
+   bet365 es la VARA. Es el libro mas afilado y liquido del circuito, asi
+   que su precio es la mejor estimacion disponible de la probabilidad
+   real. Para preguntar "¿le ganamos al mercado?" hay que preguntarselo al
+   mejor mercado, no al que usamos para apostar.
+
+   betano es DONDE SE APUESTA. Sebastian juega ahi, asi que el precio que
+   importa para la cuenta final es el suyo.
+
+   Y de tener las dos sale lo que puede valer mas que todo el modelo: la
+   BRECHA. Si bet365 pone 1.55 a un jugador y Betano paga 1.75, eso es
+   ventaja sin depender de que nuestra estimacion tenga razon — es el
+   libro afilado diciendo que el blando se equivoco. Es la forma mas
+   confiable de ganar que existe, y no la podiamos ni mirar hasta ahora.
+
+   Sebastian ya habia notado que por la API a Betano le faltaban lineas
+   que el si veia en la web. Bajando las dos, eso deja de ser una duda y
+   pasa a ser un numero medido: cuantas trae cada una. */
+const CASAS = arg('casas', 'bet365,betano').split(',').map(x => x.trim()).filter(Boolean);
+const CASA = CASAS[0];
 const SPORT_TENIS = 12;
 const PAUSA = +arg('pausa', 3000);   /* a 1,2 s la API tira RATE_LIMITED */
 
@@ -132,20 +152,29 @@ async function historia() {
     .sort((a, b) => (b.statusId === 2 ? 1 : 0) - (a.statusId === 2 ? 1 : 0)
       || String(a.startTime).localeCompare(String(b.startTime)));
   console.log(`${todos.length} en el índice · ${pend.length} sin bajar · pido ${Math.min(pend.length, MAX)}`);
-  console.log(`casa ${CASA} · pausa ${PAUSA} ms\n`);
+  console.log(`casas ${CASAS.join(' + ')} · pausa ${PAUSA} ms · ${CASAS.length} llamadas por partido\n`);
   let ok = 0, fallo = 0;
+  const porCasa = Object.fromEntries(CASAS.map(c => [c, 0]));
   for (const p of pend.slice(0, MAX)) {
-    try {
-      const h = await api('historical-odds', { fixtureId: p.fixtureId, bookmaker: CASA });
-      fs.writeFileSync(path.join(CACHE, p.fixtureId + '.json'), JSON.stringify({ fixture: p, hist: h }));
+    const hist = {};
+    for (const casa of CASAS) {
+      try { hist[casa] = await api('historical-odds', { fixtureId: p.fixtureId, bookmaker: casa }); porCasa[casa]++ }
+      catch (e) {
+        /* NOT_FOUND aca no es un error: es que esa casa no cotizo ese
+           partido, y saber cuantas veces pasa es justamente el dato. */
+        if (!/NOT_FOUND/.test(e.message) && fallo++ < 5)
+          console.log(`  x ${p.fixtureId} ${casa}: ${e.message}`);
+      }
+    }
+    if (Object.keys(hist).length) {
+      fs.writeFileSync(path.join(CACHE, p.fixtureId + '.json'),
+        JSON.stringify({ fixture: p, casas: hist, hist: hist[CASA] ?? Object.values(hist)[0] }));
       ok++;
-      if (ok % 25 === 0) console.log(`  ${ok} bajados · ${REQ} requests`);
-    } catch (e) {
-      fallo++;
-      if (fallo <= 5) console.log(`  ✗ ${p.fixtureId} (${p.p1} vs ${p.p2}): ${e.message}`);
+      if (ok % 25 === 0) console.log(`  ${ok} con al menos una casa · ${REQ} requests`);
     }
   }
-  console.log(`\n${ok} bajados · ${fallo} fallaron · ${REQ} requests`);
+  console.log(`\n${ok} partidos guardados · ${REQ} requests`);
+  for (const c of CASAS) console.log(`  ${c}: cotizo ${porCasa[c]} de ${Math.min(pend.length, MAX)}`);
   resumir();
 }
 
@@ -195,6 +224,11 @@ function resumir() {
     const j = leer(path.join(CACHE, f)); if (!j) continue;
     const t = timeline(j.hist, j.fixture?.startTime);
     if (!t) { sinLinea++; continue }
+    const porCasa = {};
+    for (const [casa, h] of Object.entries(j.casas || {})) {
+      const tc = timeline(h, j.fixture?.startTime);
+      if (tc) porCasa[casa] = { ci1: tc[0].cierre, ci2: tc[1].cierre, ap1: tc[0].apertura, ap2: tc[1].apertura };
+    }
     /* el índice puede tener el resultado más fresco que la foto guardada */
     const p = idx.partidos[j.fixture.fixtureId] || j.fixture;
     const gano = (p.s1 != null && p.s2 != null && p.s1 !== p.s2) ? (p.s1 > p.s2 ? 1 : 2) : null;
@@ -206,6 +240,7 @@ function resumir() {
       cambios: t[0].cambios,
       /* cuánto se movió el precio del lado 1, en porcentaje */
       movio: +(((t[0].cierre - t[0].apertura) / t[0].apertura) * 100).toFixed(1),
+      casas: porCasa,
     });
   }
   filas.sort((a, b) => String(a.fecha).localeCompare(String(b.fecha)));
@@ -221,6 +256,20 @@ function resumir() {
     const ka = conRes.filter(f => favAp(f) === f.gano).length;
     console.log(`\n  el favorito AL CIERRE ganó ${k} de ${conRes.length} (${(100 * k / conRes.length).toFixed(0)}%)`);
     console.log(`  el favorito A LA APERTURA ganó ${ka} de ${conRes.length} (${(100 * ka / conRes.length).toFixed(0)}%)`);
+    /* LA BRECHA: dónde Betano paga más que bet365 por el mismo jugador */
+    const dos = filas.filter(f => f.casas?.bet365 && f.casas?.betano);
+    if (dos.length >= 10) {
+      const mejor = dos.map(f => Math.max(
+        f.casas.betano.ci1 / f.casas.bet365.ci1, f.casas.betano.ci2 / f.casas.bet365.ci2));
+      const cuantos = k => mejor.filter(x => x >= k).length;
+      console.log(`\n  BRECHA ENTRE CASAS — ${dos.length} partidos con las dos`);
+      console.log(`    Betano paga 3% o más que bet365 en ${cuantos(1.03)} · 5% o más en ${cuantos(1.05)}`
+        + ` · 10% o más en ${cuantos(1.10)}`);
+      console.log(`    (ahí la ventaja no depende de nuestro modelo: es el libro afilado`);
+      console.log(`     diciendo que el blando se equivocó)`);
+    } else if (dos.length) {
+      console.log(`\n  sólo ${dos.length} partidos con las dos casas: hace falta más para medir la brecha`);
+    }
     const dioVuelta = conRes.filter(f => favAp(f) !== favCi(f));
     console.log(`  ${dioVuelta.length} partidos donde el favorito CAMBIÓ entre apertura y cierre`);
     if (dioVuelta.length >= 8) {
