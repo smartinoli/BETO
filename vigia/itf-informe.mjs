@@ -25,7 +25,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { analizar, elegirNombre, mismoJugador, NORM, gamesCedidos } from './itf-reglas.mjs';
-import { ORDEN_PREVIO } from './itf-modelo.mjs';
+import { ORDEN_PREVIO, GRUPO } from './itf-modelo.mjs';
+import { cargar as cargarDecantador, celdas as celdasDecantador, separa } from './itf-decantador.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const DATOS = path.join(DIR, 'datos', 'itf');
@@ -452,7 +453,28 @@ function enSimple(f) {
 const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
   const lado = f.v.nivel.favorito.startsWith(f.f1.nombre) ? 1 : 2;
   const dev = (f.q.g1 && f.q.g2) ? (1 / (lado === 1 ? f.q.g1 : f.q.g2)) / (1 / f.q.g1 + 1 / f.q.g2) : null;
+  /* crit: los campos que el decantador cruza, orientados al favorito del
+     MERCADO (cuota más baja). Con esto cada día calificado afina solo
+     las celdas de "qué criterios mandan". */
+  const crit = (() => {
+    if (!f.q.g1 || !f.q.g2) return null;
+    const ladoFm = f.q.g1 <= f.q.g2 ? 1 : 2;
+    const acuerdo = ladoFm === lado;
+    const s = acuerdo ? 1 : -1;
+    const fFm = ladoFm === 1 ? f.f1 : f.f2, fRi = ladoFm === 1 ? f.f2 : f.f1;
+    const sg = n => { const x = (f.v.nivel.partes || []).find(p => p.nombre === n); return x ? Math.sign(s * x.aporte) : null };
+    return {
+      cuota: ladoFm === 1 ? f.q.g1 : f.q.g2, ladoFm, acuerdo,
+      pFm: +(acuerdo ? f.v.nivel.p : 1 - f.v.nivel.p).toFixed(3),
+      dW: fFm.wtn != null && fRi.wtn != null ? +(fRi.wtn - fFm.wtn).toFixed(2) : null,
+      forma: sg('forma'), previo: sg('previo'),
+      grupo: GRUPO[f.etapa] ?? null,
+      edadFm: fFm.nacido ? 2026 - fFm.nacido : null,
+      edadRi: fRi.nacido ? 2026 - fRi.nacido : null,
+    };
+  })();
   return {
+    crit,
     fixtureId: f.q.fixtureId ?? null, inicio: f.q.inicio ?? null,
     torneo: f.t.nombre, etapa: f.etapa, p1: f.f1.nombre, p2: f.f2.nombre,
     gana: f.v.nivel.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim(),
@@ -763,6 +785,40 @@ ${(() => {
       <tr class="tot"><td>total</td><td class="n"><b>${tK}/${tM}</b> (${tM ? Math.round(100 * tK / tM) : 0}%)</td>
         <td class="n sec">${tKk}/${tMk} (${tMk ? Math.round(100 * tKk / tMk) : 0}%)</td><td></td></tr></tbody>
     </table></div></section>`;
+})()}
+${(() => {
+  /* EL DECANTADOR — pedido por Sebastián el 2026-08-26: dentro de cada
+     tramo, qué criterios mandan. Cada criterio parte el tramo en dos y
+     se muestra cómo le fue al favorito del mercado por lado, con su
+     intervalo: si los intervalos se pisan, el criterio NO separa
+     todavía. La tabla se recalcula sola con cada día calificado. */
+  const filasD = cargarDecantador();
+  const deDias = filasD.filter(c => c.origen !== 'registro').length;
+  const pc = x => Math.round(100 * x) + '%';
+  const ladoTd = l => l && l.n
+    ? `<td class="n"><b>${l.k}/${l.n}</b> (${pc(l.pct)})</td><td class="n sec">${pc(l.ic[0])}–${pc(l.ic[1])}</td>`
+    : `<td class="n sec">—</td><td class="n sec"></td>`;
+  const bloques = celdasDecantador(filasD).map(t => {
+    if (!t.base.n) return '';
+    const filasT = t.crit.map(c => `<tr${separa(c) ? ' class="ok"' : ''}>
+      <td>${esc(c.texto)}${separa(c) ? ' <b>← separa</b>' : ''}</td>
+      ${ladoTd(c.si)}${ladoTd(c.no)}</tr>`).join('');
+    return `<h3 style="margin:18px 0 6px">${esc(t.texto)} · base: gana ${pc(t.base.k / t.base.n)} (${t.base.k}/${t.base.n})</h3>
+    <div class="envt"><table>
+      <thead><tr><th>criterio (del favorito del mercado)</th><th class="n">con el criterio</th><th class="n">IC 95</th>
+        <th class="n">sin el criterio</th><th class="n">IC 95</th></tr></thead>
+      <tbody>${filasT}</tbody></table></div>`;
+  }).join('');
+  return `<section class="verd">
+    <h2 class="vt">El decantador — qué criterios mandan dentro de cada tramo</h2>
+    <p class="notaverd" style="margin:0 0 4px">Sobre ${filasD.length} partidos calificados (${filasD.length - deDias} del registro
+      + ${deDias} de los días que siguen). Regla de lectura: un criterio manda solo cuando sus dos intervalos NO se tocan —
+      con estos n casi ninguno llega todavía, y eso también es información.</p>
+    <p class="notaverd" style="margin:0 0 12px">Lo que va decantando hasta hoy: en <b>1.20–1.39</b> el candidato más firme es
+      el respaldo fuerte de nuestro modelo (9/9 cuando le da 70%+, 3/7 cuando no — le falta un pelo para separar formalmente).
+      En <b>1.40–1.99</b> ningún criterio manda aún; el dato más incómodo es que cuando ahí el precio contradice al rating,
+      el mercado acertó 5 de 6 — la misma lección de Wygona y Brown. Cada día calificado afina estas celdas.</p>
+    ${bloques}</section>`;
 })()}
 ${ELEGIDAS.length ? ELEGIDAS.map(tarjeta).join('') : `<div class="nada">
   <b>Hoy no elijo ninguna.</b> Los tres filtros son: que el favorito no pague sobre 1.50 (medido, ahí se cae),
