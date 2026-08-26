@@ -53,6 +53,15 @@ h1{font:700 clamp(30px,5.5vw,48px)/1.03 "Bricolage Grotesque",system-ui,sans-ser
 .cifras .sep{margin-left:auto;padding-left:20px;border-left:1px solid var(--rule)}
 .cifras i.sec{font-style:normal;color:var(--ink3);font-weight:500}
 .pos{color:var(--pos)} .neg{color:var(--neg)}
+.regla{margin-top:11px;padding:11px 13px;border-radius:6px;background:var(--sunk);border:1px solid var(--rule)}
+.regla.paga{background:var(--pos-soft);border-color:var(--pos)}
+.regla .rt{font:600 12px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.02em;margin-bottom:7px}
+.regla.paga .rt{color:var(--pos)}
+.regla .rn{display:flex;gap:18px;flex-wrap:wrap;font:600 13px "IBM Plex Mono",monospace;color:var(--ink2);margin-bottom:7px}
+.regla .rn b{color:var(--ink);font-size:15px}
+.regla .rn .ver{margin-left:auto;text-transform:uppercase;font-size:10px;letter-spacing:.09em;color:var(--ink3)}
+.regla.paga .rn .ver{color:var(--pos)}
+.regla p{margin:0;font-size:13px;line-height:1.55;color:var(--ink2)}
 .alertas{margin:11px 0 0;padding:0 0 0 18px;font-size:13.5px;line-height:1.55;color:var(--ojo)}
 .alertas li{margin-bottom:4px}
 .raz{margin:10px 0 0;font-size:12.5px;line-height:1.55;color:var(--ink3)}
@@ -71,8 +80,9 @@ footer b{color:var(--ink2)}
     Ordenados por cuánto rinde la apuesta si nuestro modelo tiene razón.</p>
   <div class="meta">
     <span><b>19</b> con precio</span>
+    <span><b>0</b> con regla que paga</span>
     <span><b>6</b> con alerta</span>
-    <span>generado 2026-08-26 03:39 UTC</span>
+    <span>generado 2026-08-26 03:47 UTC</span>
   </div>
 </header>
 <div class="casa">
@@ -108,6 +118,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="pos">+40%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−9%</span></span>
     </div>
+    
     <ul class="alertas"><li>ΔWTN de 0.68: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</li><li>El favorito por WTN paga 2.42. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</li></ul>
     <p class="raz">Δ0.68 de WTN a favor de Preston Brown (10.06 contra 10.74), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 58%. El mercado la paga a 2.42: 38% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −9% si la tiene el mercado. ΔWTN de 0.68: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. El favorito por WTN paga 2.42. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</p></article><article class="p conalerta">
     <div class="cab">
@@ -136,6 +147,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="pos">+17%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
+    
     <ul class="alertas"><li>El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</li></ul>
     <p class="raz">Δ5.79 de WTN a favor de Nicolas Robert (8.38 contra 14.17), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 94%. Ajustan: Lenny Petit tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−19 pts). Queda en 75%. El mercado la paga a 1.57: 58% una vez sacado su margen. A esa cuota, la apuesta rinde +17% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 1.57. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</p></article><article class="p">
     <div class="cab">
@@ -165,6 +177,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ2.70 de WTN a favor de Niklas Guttau (8.13 contra 10.83), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 78%. Ajustan: Niklas Guttau llegó más lejos en su torneo anterior (+16 pts). Queda en 94%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
       <span class="tor">M15 Monastir</span> <span class="et">R1</span>
@@ -192,6 +205,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="pos">+9%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−9%</span></span>
     </div>
+    
     
     <p class="raz">Δ2.73 de WTN a favor de Daniel Jade (7.75 contra 10.48), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 78%. Ajustan: Daniel Jade tiene 17 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+17 pts). Queda en 95%. El mercado la paga a 1.15: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −9% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
@@ -221,6 +235,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ2.75 de WTN a favor de Daniel Verbeek (9.06 contra 11.81), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 78%. Ajustan: Daniel Verbeek viene cediendo menos games (17% contra 27%) (+4 pts). Queda en 83%. El mercado la paga a 1.31: 70% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
       <span class="tor">M25 Lausanne</span> <span class="et">R1</span>
@@ -248,6 +263,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="pos">+6%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
+    
     
     <p class="raz">Δ7.77 de WTN a favor de Adrien Burdet (9.25 contra 17.02), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 97%. Ajustan: Mateo Fluri tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−9 pts). Queda en 88%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
@@ -277,6 +293,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ4.93 de WTN a favor de Nicolas Jadoun (8.29 contra 13.22), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 91%. El mercado la paga a 1.13: 81% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
       <span class="tor">M25 Oldenzaal</span> <span class="et">R1</span>
@@ -304,6 +321,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="pos">+3%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
+    
     
     <p class="raz">Δ5.62 de WTN a favor de Stian Klaassen (7.21 contra 12.83), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 93%. El mercado la paga a 1.1: 84% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
@@ -333,6 +351,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ2.50 de WTN a favor de Eero Vasa (5.17 contra 7.67), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 76%. El mercado la paga a 1.34: 68% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p conalerta">
     <div class="cab">
       <span class="tor">M15 Pecs</span> <span class="et">R1</span>
@@ -360,6 +379,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="neg">−6%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
+    
     <ul class="alertas"><li>ΔWTN de 1.22: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</li></ul>
     <p class="raz">Δ1.22 de WTN a favor de John Sperle (7.13 contra 8.35), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 64%. El mercado la paga a 1.47: 63% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.22: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></article><article class="p">
     <div class="cab">
@@ -389,6 +409,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ2.31 de WTN a favor de Nav Dayal (11.17 contra 13.48), en Q1: la curva del grupo &quot;Q1&quot; (n=422) da 72%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
       <span class="tor">M25 Lausanne</span> <span class="et">R2</span>
@@ -417,6 +438,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ5.07 de WTN a favor de Henry Bernet (3.58 contra 8.65), en R2: la curva del grupo &quot;medias&quot; (n=214) da 83%. Ajustan: Henry Bernet viene cediendo menos games (41% contra 43%) (+1 pts). Queda en 84%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p conalerta">
     <div class="cab">
       <span class="tor">M25 Poznan</span> <span class="et">R1</span>
@@ -444,6 +466,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="neg">−11%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
+    
     <ul class="alertas"><li>El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</li></ul>
     <p class="raz">Δ2.88 de WTN a favor de Jan Wygona (14.19 contra 17.07), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 79%. Ajustan: Jan Chlodnicki tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−36 pts). Queda en 43%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −8% si la tiene el mercado. El favorito por WTN paga 2.07. Medido, el favorito por WTN sobre 1.50 rinde −17% entre 1.50 y 2.00 (n=12) y −69% sobre 2.00 (n=7): si paga largo, el precio sabe algo.</p></article><article class="p conalerta">
     <div class="cab">
@@ -472,6 +495,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="neg">−12%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
+    
     <ul class="alertas"><li>ΔWTN de 1.11: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</li></ul>
     <p class="raz">Δ1.11 de WTN a favor de Valentin Basel (8.84 contra 9.95), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 63%. El mercado la paga a 1.4: 65% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.11: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></article><article class="p">
     <div class="cab">
@@ -501,6 +525,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ2.85 de WTN a favor de Johan Nikles (5.35 contra 8.2), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 79%. El mercado la paga a 1.1: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −13% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
       <span class="tor">M15 Kursumlijska Banja </span> <span class="et">R1</span>
@@ -529,6 +554,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ2.16 de WTN a favor de George Lazarov (8.79 contra 10.95), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 73%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −20% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p conalerta">
     <div class="cab">
       <span class="tor">M25 Oviedo</span> <span class="et">R1</span>
@@ -556,6 +582,7 @@ footer b{color:var(--ink2)}
       <span class="sep"><label>rinde si acertamos</label><span class="neg">−23%</span></span>
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
+    
     <ul class="alertas"><li>ΔWTN de 0.94: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</li></ul>
     <p class="raz">Δ0.94 de WTN a favor de Pedro Rodenas (6.68 contra 7.62), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 61%. El mercado la paga a 1.26: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.94: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.</p></article><article class="p">
     <div class="cab">
@@ -585,6 +612,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ4.89 de WTN a favor de Trisztan Gubi (12.4 contra 17.29), en R1: la curva del grupo &quot;buenas&quot; (n=528) da 91%. Ajustan: Rafael Behr tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−25 pts). Queda en 66%. El mercado la paga a 1.08: 85% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article><article class="p">
     <div class="cab">
       <span class="tor">M15 Cap d'Agde</span> <span class="et">R2</span>
@@ -613,6 +641,7 @@ footer b{color:var(--ink2)}
       <span><label>si acierta el mercado</label><span class="neg">−8%</span></span>
     </div>
     
+    
     <p class="raz">Δ4.70 de WTN a favor de Leo Raquillet (6.24 contra 10.94), en R2: la curva del grupo &quot;medias&quot; (n=214) da 81%. Ajustan: Lenny Couturier tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−34 pts); Leo Raquillet viene cediendo menos games (14% contra 20%) (+4 pts). Queda en 50%. El mercado la paga a 1.11: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −45% si tenemos razón nosotros y −8% si la tiene el mercado.</p></article>
 <div class="vacias"><h2>Sin datos de nivel · 2</h2>
   <article class="p">
@@ -637,6 +666,7 @@ footer b{color:var(--ink2)}
     <div class="dat">viene de <b>R1</b> Bastad <i>1/2</i></div></div></div>
     
     
+    
     <p class="raz">sin WTN</p></article><article class="p">
     <div class="cab">
       <span class="tor">M15 Monastir</span> <span class="et"></span>
@@ -657,6 +687,7 @@ footer b{color:var(--ink2)}
     <div class="dat">WTN <i>—</i> · <i>edad —</i> · ATP <i>—</i> · ITF <i>—</i> · nac <i>—</i></div>
     <div class="tray">debuta</div>
     <div class="dat">viene de <i>—</i></div></div></div>
+    
     
     
     <p class="raz">sin WTN</p></article></div>

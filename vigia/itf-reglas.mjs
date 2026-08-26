@@ -258,6 +258,51 @@ export const pMercadoModelo = d => sig(-0.081 + 0.183 * d);
 const P_SEGURA = 0.70;
 const CUOTA_CARA = 1.50;   /* sobre esto, el favorito por WTN es una trampa medida */
 
+/* ============================================================
+   LAS DOS REGLAS DE PERDEDOR
+   Medidas el 2026-08-26 sobre los 1252 partidos con WTN en los dos lados,
+   buscando no "quién gana" sino "quién se cae". La diferencia importa
+   porque la plata está en el lado largo: un error de 5 puntos a cuota
+   2.40 vale seis veces lo que el mismo error a 1.10.
+
+   La señal es la FORMA dentro del cuadro: qué fracción de games cedió
+   cada uno en los partidos que ya jugó ahí. Tiene dosis y respuesta, con
+   un umbral limpio en 5 puntos:
+
+     el favorito cedió 10 pts MENOS   el peor WTN gana 20%   la curva decía 31%
+     cedió 5 a 10 menos                                31%              31%
+     parejos, ±5                                       30%              32%
+     el favorito cedió 5 a 10 MÁS                      46%              35%
+     cedió 10 a 20 más                                 48%              33%
+     cedió 20 o más                                    44%              32%
+
+   Y no es un efecto de ronda: controlando por grupo, la brecha es +8 en
+   Q2/R1, +32 en Q3/R2/R3 y +17 de cuartos en adelante. En PRIMERA RONDA
+   casi no sirve (el peor WTN gana 32%, apenas +5) porque ahí la
+   "trayectoria" es sólo la clasificación, que es otra cosa. Por eso la
+   regla excluye la primera ronda del cuadro.
+
+   CAÍDA — el favorito por WTN llega cediendo 5+ puntos más, fuera de
+   primera ronda:
+     el peor WTN gana 56% (n=82), IC 95% 45–66%, la curva le daba 38%.
+     Cuota mínima 1.78; con el borde pesimista del intervalo, 2.21.
+
+   FIRME — el favorito llega cediendo 10+ puntos menos, el rival tiene 19
+   o más y el ΔWTN es 3 o más:
+     el favorito gana 91% (n=55), IC 80–96%, la curva le daba 78%.
+     Cuota mínima 1.10; con el borde pesimista, 1.24.
+
+   LO QUE NO SABEMOS: si el mercado ya cotiza esto. Con 52 partidos con
+   precio sólo hay 6 que caen en CAÍDA, y ahí el precio le daba al peor
+   WTN un 41% contra el 46-56% histórico. La brecha existe pero no se
+   puede medir con 6. Esto se verifica jugando hacia adelante, no
+   mirando para atrás. */
+const CED_CAIDA = -0.05;
+const CED_FIRME = 0.10;
+const CUOTA_CAIDA = 2.21;   /* borde pesimista: desde acá gana aunque la muestra mienta */
+const CUOTA_FIRME = 1.24;
+const primeraRonda = R => R === 'R1' || R === 'Q1';
+
 export function analizar(p) {
   const l = p.lados || [];
   const R = normRonda(p.ronda);
@@ -300,6 +345,22 @@ export function analizar(p) {
 
   /* --- alertas: sólo las tres que están medidas --- */
   const alertas = [];
+  /* las dos reglas de perdedor, que son lo único que apunta a una apuesta
+     concreta y no sólo a "no juegues esto" */
+  const dCed = (yo.cedidos != null && otro.cedidos != null) ? otro.cedidos - yo.cedidos : null;
+  let regla = null;
+  if (dCed != null && dCed <= CED_CAIDA && !primeraRonda(R))
+    regla = { clave: 'caida', lado: otro.nombre, cuotaMin: CUOTA_CAIDA,
+      texto: `${yo.nombre} tiene mejor WTN pero llega cediendo ${Math.round(-dCed * 100)} puntos más de games `
+        + `(${Math.round(yo.cedidos * 100)}% contra ${Math.round(otro.cedidos * 100)}%). Medido, en esa situación y `
+        + `fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. `
+        + `Apostar a ${otro.nombre} paga desde ${CUOTA_CAIDA.toFixed(2)} aun tomando el borde malo del intervalo.` };
+  else if (dCed != null && dCed >= CED_FIRME && (otro.nacido == null || 2026 - otro.nacido >= 19) && d >= 3)
+    regla = { clave: 'firme', lado: yo.nombre, cuotaMin: CUOTA_FIRME,
+      texto: `${yo.nombre} llega cediendo ${Math.round(dCed * 100)} puntos menos de games, el rival no es sub-19 y `
+        + `el ΔWTN es ${d.toFixed(2)}. Medido, esa combinación gana 91% (n=55, IC 80–96) cuando la curva daba 78%. `
+        + `Paga desde ${CUOTA_FIRME.toFixed(2)} tomando el borde malo.` };
+  if (regla) alertas.push(regla);
   if (d < 2) alertas.push({ clave: 'parejo', texto:
     `ΔWTN de ${d.toFixed(2)}: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.` });
   if (esJunior && otro.jrRank == null) alertas.push({ clave: 'jr-incognito', texto:
@@ -332,7 +393,12 @@ export function analizar(p) {
       + `y ${valMercado >= 0 ? '+' : '−'}${Math.abs(Math.round(valMercado * 100))}% si la tiene el mercado.`
     : ` A ${c}, sin la cuota del rival no se puede descontar el margen de la casa.`;
 
-  return { tipo: pe < P_SEGURA ? 'flojo' : 'mira', nivel, precio, favorito: nivel.favorito, alertas,
+  /* si la regla apunta al rival, se anota qué cuota necesita él */
+  if (regla) {
+    regla.cuotaOfrecida = regla.lado === otro.nombre ? (cRival ?? null) : c;
+    regla.paga = regla.cuotaOfrecida != null && regla.cuotaOfrecida >= regla.cuotaMin;
+  }
+  return { tipo: pe < P_SEGURA ? 'flojo' : 'mira', nivel, precio, favorito: nivel.favorito, alertas, regla,
     confianza: alertas.length ? 'media' : 'alta', mercado: 'gana',
     razon: razonNivel + cuentaMercado + (alertas.length ? ' ' + alertas.map(a => a.texto).join(' ') : ''),
     banderas: [`p${Math.round(pe * 100)}%`,

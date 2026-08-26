@@ -301,7 +301,9 @@ for (const q of cuotas) {
 /* Sin categorías: ordena por cuánto rinde la apuesta SI TENEMOS RAZÓN,
    que es el único número que depende de nosotros. Al lado va siempre lo
    que rinde si la tiene el mercado, para que no se lea solo la mitad. */
-filas.sort((a, b) => (b.v?.precio?.val ?? -9) - (a.v?.precio?.val ?? -9)
+const rango = f => f.v?.regla?.paga ? 0 : f.v?.regla ? 1 : 2;
+filas.sort((a, b) => rango(a) - rango(b)
+  || (b.v?.precio?.val ?? -9) - (a.v?.precio?.val ?? -9)
   || (b.v?.nivel?.p ?? 0) - (a.v?.nivel?.p ?? 0));
 const cuenta = {
   'con precio': filas.filter(f => f.v?.precio).length,
@@ -334,6 +336,23 @@ for (const f of filas) {
 }
 /* Las tres de arriba, con el razonamiento completo. No es una
    recomendación: son las que más rinden SI nuestro modelo tiene razón. */
+const conRegla = filas.filter(f => f.v?.regla);
+console.log('\n' + '─'.repeat(78));
+if (conRegla.length) {
+  console.log('LAS DOS REGLAS DE PERDEDOR — lo único que apunta a una apuesta concreta\n');
+  for (const f of conRegla) {
+    const r = f.v.regla;
+    console.log(`  ${r.paga ? '►' : '·'} ${r.clave.toUpperCase().padEnd(6)} ${f.t.nombre} · ${f.etapa}`);
+    console.log(`    a favor de ${r.lado} · necesita ${r.cuotaMin.toFixed(2)} · Betano paga `
+      + `${r.cuotaOfrecida ?? '—'}  →  ${r.paga ? 'PAGA' : 'no alcanza'}`);
+    console.log(`    ${r.texto}`);
+  }
+} else {
+  console.log('NINGUNA REGLA DE PERDEDOR DISPARA HOY.');
+  console.log('  Las dos necesitan que los DOS jugadores ya hayan jugado en ese cuadro, y');
+  console.log('  la de caída además excluye primera ronda. Con la tanda casi toda en R1,');
+  console.log('  es lo esperable: se activan en Q3, R2 y más adelante.');
+}
 const arriba = filas.filter(f => f.v?.precio?.val != null).slice(0, 3);
 if (arriba.length) {
   console.log('\nLAS TRES DE MÁS VALOR — si nuestro modelo tiene razón');
@@ -388,7 +407,14 @@ const partido = f => {
       ${pr ? `<span class="sep"><label>rinde si acertamos</label>${rend(pr.val)}</span>
       <span><label>si acierta el mercado</label>${rend(pr.valMercado)}</span>` : ''}
     </div>` : ''}
-    ${(f.v?.alertas || []).length ? `<ul class="alertas">${f.v.alertas.map(a => `<li>${esc(a.texto)}</li>`).join('')}</ul>` : ''}
+    ${f.v?.regla ? `<div class="regla ${f.v.regla.paga ? 'paga' : ''}">
+      <div class="rt">${f.v.regla.clave === 'caida' ? 'Caída' : 'Firme'} · a favor de ${esc(f.v.regla.lado)}</div>
+      <div class="rn"><span>necesita <b>${f.v.regla.cuotaMin.toFixed(2)}</b></span>
+        <span>Betano paga <b>${f.v.regla.cuotaOfrecida ?? '—'}</b></span>
+        <span class="ver">${f.v.regla.paga ? 'paga' : 'no alcanza'}</span></div>
+      <p>${esc(f.v.regla.texto)}</p></div>` : ''}
+    ${(f.v?.alertas || []).filter(a => a.clave !== 'caida' && a.clave !== 'firme').length
+      ? `<ul class="alertas">${f.v.alertas.filter(a => a.clave !== 'caida' && a.clave !== 'firme').map(a => `<li>${esc(a.texto)}</li>`).join('')}</ul>` : ''}
     <p class="raz">${esc(f.v?.razon || f.motivo || '')}</p></article>`;
 };
 
@@ -447,6 +473,15 @@ h1{font:700 clamp(30px,5.5vw,48px)/1.03 "Bricolage Grotesque",system-ui,sans-ser
 .cifras .sep{margin-left:auto;padding-left:20px;border-left:1px solid var(--rule)}
 .cifras i.sec{font-style:normal;color:var(--ink3);font-weight:500}
 .pos{color:var(--pos)} .neg{color:var(--neg)}
+.regla{margin-top:11px;padding:11px 13px;border-radius:6px;background:var(--sunk);border:1px solid var(--rule)}
+.regla.paga{background:var(--pos-soft);border-color:var(--pos)}
+.regla .rt{font:600 12px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.02em;margin-bottom:7px}
+.regla.paga .rt{color:var(--pos)}
+.regla .rn{display:flex;gap:18px;flex-wrap:wrap;font:600 13px "IBM Plex Mono",monospace;color:var(--ink2);margin-bottom:7px}
+.regla .rn b{color:var(--ink);font-size:15px}
+.regla .rn .ver{margin-left:auto;text-transform:uppercase;font-size:10px;letter-spacing:.09em;color:var(--ink3)}
+.regla.paga .rn .ver{color:var(--pos)}
+.regla p{margin:0;font-size:13px;line-height:1.55;color:var(--ink2)}
 .alertas{margin:11px 0 0;padding:0 0 0 18px;font-size:13.5px;line-height:1.55;color:var(--ojo)}
 .alertas li{margin-bottom:4px}
 .raz{margin:10px 0 0;font-size:12.5px;line-height:1.55;color:var(--ink3)}
@@ -465,6 +500,7 @@ footer b{color:var(--ink2)}
     Ordenados por cuánto rinde la apuesta si nuestro modelo tiene razón.</p>
   <div class="meta">
     <span><b>${filas.filter(f => f.v?.precio).length}</b> con precio</span>
+    <span><b>${filas.filter(f => f.v?.regla?.paga).length}</b> con regla que paga</span>
     <span><b>${filas.filter(f => f.v?.alertas?.length).length}</b> con alerta</span>
     <span>generado ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC</span>
   </div>
