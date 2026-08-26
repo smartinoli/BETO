@@ -711,6 +711,8 @@ i.dif{font-style:normal;color:var(--ojo);font-weight:700}
 .act button{font:600 14px/1 'Bricolage Grotesque',sans-serif;color:var(--panel);background:var(--accent);
   border:0;border-radius:6px;padding:9px 14px;cursor:pointer}
 .act button:disabled{opacity:.5;cursor:default}
+.act button small{font-weight:400;opacity:.75;margin-left:4px}
+.act button.secundario{background:var(--sunk);color:var(--ink2);border:1px solid var(--rule)}
 #act-token{flex-basis:100%;background:var(--sunk);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;max-width:64ch}
 #act-token p{margin:0 0 8px;font-size:13px}
 #act-token input{font:13px 'IBM Plex Mono',monospace;color:var(--ink);background:var(--panel);
@@ -738,7 +740,8 @@ footer b{color:var(--ink2)}
     ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length} pisan la casilla. Las otras están abajo con el motivo por el que no.`
     : 'Hoy nadie pisa la casilla: se mira, no se apuesta.'}</p>
   <div class="act">
-    <button id="act-btn" type="button">⟳ Actualizar cuotas y tablas</button>
+    <button id="act-btn" type="button" data-que="cuotas">⟳ Cuotas y análisis <small>2–3 min</small></button>
+    <button id="act-todo" type="button" data-que="todo" class="secundario">⟳ Torneos completos + cuotas <small>10–15 min</small></button>
     <span id="act-estado" class="sec"></span>
     <div id="act-token" hidden>
       <p class="sec">Para que el botón funcione hace falta, UNA sola vez, un token de GitHub que queda
@@ -886,10 +889,15 @@ ${(() => {
    artefacto de Claude, que bloquea fetch externo) avisa y no rompe nada. */
 (function(){
   var REPO='smartinoli/BETO', RAMA='claude/itf-scrapers-prize-money-7oy59k', WF='tabla.yml';
-  var btn=document.getElementById('act-btn'), est=document.getElementById('act-estado'),
+  var btn=document.getElementById('act-btn'), btnTodo=document.getElementById('act-todo'),
+      est=document.getElementById('act-estado'),
       caja=document.getElementById('act-token'), inp=document.getElementById('act-pat'),
       gu=document.getElementById('act-guardar');
   if(!btn) return;
+  var botones=[btn,btnTodo].filter(Boolean);
+  function traba(si){ botones.forEach(function(b){b.disabled=si}); }
+  var AVISO={ cuotas:'corriendo: marcadores + cuotas bet365 + análisis (2–3 min)…',
+              todo:'corriendo: cuadros ITF por navegador + cuotas + análisis (10–15 min)…' };
   function lee(){ try{return localStorage.getItem('tabla-pat')||''}catch(e){return ''} }
   function guarda(t){ try{localStorage.setItem('tabla-pat',t)}catch(e){} }
   function borra(){ try{localStorage.removeItem('tabla-pat')}catch(e){} }
@@ -898,18 +906,22 @@ ${(() => {
     opts.headers={ 'Authorization':'Bearer '+tok, 'Accept':'application/vnd.github+json' };
     return fetch('https://api.github.com/repos/'+REPO+ruta,opts);
   }
-  var desde=0;
-  gu.onclick=function(){ var t=inp.value.trim(); if(!t)return; guarda(t); caja.hidden=true; inp.value=''; correr(); };
-  btn.onclick=function(){ if(!lee()){ caja.hidden=false; inp.focus(); return; } correr(); };
-  function correr(){
-    btn.disabled=true; est.textContent='pidiendo la corrida…'; desde=Date.now()-120000;
-    api('/actions/workflows/'+WF+'/dispatches',{method:'POST',body:JSON.stringify({ref:RAMA})},lee())
+  var desde=0, pedido='cuotas';
+  gu.onclick=function(){ var t=inp.value.trim(); if(!t)return; guarda(t); caja.hidden=true; inp.value=''; correr(pedido); };
+  botones.forEach(function(b){ b.onclick=function(){
+    pedido=b.getAttribute('data-que')||'cuotas';
+    if(!lee()){ caja.hidden=false; inp.focus(); return; }
+    correr(pedido);
+  }; });
+  function correr(que){
+    traba(true); est.textContent='pidiendo la corrida…'; desde=Date.now()-120000;
+    api('/actions/workflows/'+WF+'/dispatches',{method:'POST',body:JSON.stringify({ref:RAMA,inputs:{que:que}})},lee())
       .then(function(r){
-        if(r.status===204){ est.textContent='corriendo: cuadros ITF + cuotas bet365 + veredictos (2–4 min)…'; setTimeout(mirar,20000); }
-        else if(r.status===401||r.status===403){ borra(); est.textContent='el token no sirvió — pega uno nuevo'; caja.hidden=false; btn.disabled=false; }
-        else { est.textContent='GitHub respondió '+r.status; btn.disabled=false; }
+        if(r.status===204){ est.textContent=AVISO[que]||AVISO.cuotas; setTimeout(mirar,20000); }
+        else if(r.status===401||r.status===403){ borra(); est.textContent='el token no sirvió — pega uno nuevo'; caja.hidden=false; traba(false); }
+        else { est.textContent='GitHub respondió '+r.status; traba(false); }
       })
-      .catch(function(){ est.textContent='desde esta copia no se puede (bloquea la conexión a GitHub) — usa la página online: smartinoli.github.io/BETO'; btn.disabled=false; });
+      .catch(function(){ est.textContent='desde esta copia no se puede (bloquea la conexión a GitHub) — usa la página online: smartinoli.github.io/BETO'; traba(false); });
   }
   function mirar(){
     api('/actions/runs?branch='+encodeURIComponent(RAMA)+'&event=workflow_dispatch&per_page=1',{},lee())
@@ -918,7 +930,7 @@ ${(() => {
         var run=(j.workflow_runs||[])[0];
         if(run && Date.parse(run.created_at)>=desde && run.status==='completed'){
           if(run.conclusion==='success'){ est.textContent='listo — recargando…'; setTimeout(function(){location.reload()},4000); }
-          else { est.textContent='la corrida terminó "'+run.conclusion+'" — revisa la pestaña Actions en GitHub'; btn.disabled=false; }
+          else { est.textContent='la corrida terminó "'+run.conclusion+'" — revisa la pestaña Actions en GitHub'; traba(false); }
         } else { est.textContent='corriendo… ('+((run&&run.status)||'en cola')+')'; setTimeout(mirar,15000); }
       })
       .catch(function(){ setTimeout(mirar,20000); });
