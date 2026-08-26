@@ -408,8 +408,9 @@ export function analizar(p) {
   if (c > CUOTA_CARA) {
     const cContra = cRival ?? null;
     alertas.push({ clave: 'favorito-caro', texto:
-      `Nuestro favorito por WTN, ${yo.nombre}, paga ${c}: el precio lo pone parejo o abajo pese a que `
-      + `el rating dice que es mejor. En esa situación el mercado suele tener razón.` });
+      `${yo.nombre} es el MEJOR POR RATING pero Betano lo paga ${c}: el favorito del mercado es el otro. `
+      + `Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres `
+      + `casos reales salieron para el lado del rating. En observación.` });
     /* el tramo importa: no es lo mismo que pague 1.6 a que pague 2.4 */
     const tramo = c >= 2.00
       ? { nom: 'sobre 2.00', pierde: 0.86, ic: [0.49, 0.97], n: 7 }

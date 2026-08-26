@@ -347,9 +347,9 @@ function enSimple(f) {
     const c = j.contra;
     return {
       fav: c.lado,
-      razon: `El rating de la ITF dice que ${n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim()} `
-        + `es el mejor de los dos, pero Betano lo paga a ${c.cuotaFav} — o sea que lo pone parejo o abajo. `
-        + `Cuando el precio le lleva la contra al rating, el precio suele tener razón: sabe algo que el `
+      razon: `El MEJOR POR RATING es ${n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim()} `
+        + `pero Betano lo paga a ${c.cuotaFav} — o sea que lo pone parejo o abajo. `
+        + `Acá el FAVORITO DEL MERCADO es el otro. Cuando rating y precio se contradicen, en nuestro registro solía mandar el precio: sabe algo que el `
         + `número no ve (una lesión, la superficie, el estilo, la cancha local).`,
       mercado: `Medido sobre nuestros partidos: cuando nuestro favorito paga ${c.nom}, pierde `
         + `${Math.round(c.pierde * 100)} de cada 100 (${c.n} casos).`,
