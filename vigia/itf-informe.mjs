@@ -380,14 +380,19 @@ const jugadaDe = f => {
   return null;
 };
 for (const f of filas) f.jugada = jugadaDe(f);
+/* Un partido que ya arrancó no se ofrece como apuesta (su cuota es la de
+   cierre, ya no está en la casa) — pero su jugada SÍ queda en el registro
+   del día, que es lo que después se califica. */
+const empezo = f => f.q.inicio && Date.parse(f.q.inicio) < Date.now();
 /* las brechas primero; después la casilla, del respaldo más alto para abajo */
-const ELEGIDAS = filas.filter(f => f.jugada)
+const ELEGIDAS = filas.filter(f => f.jugada && !empezo(f))
   .sort((a, b) => (b.jugada.tipo === 'brecha' ? 1 : 0) - (a.jugada.tipo === 'brecha' ? 1 : 0)
     || (b.jugada.prob ?? b.jugada.rinde) - (a.jugada.prob ?? a.jugada.rinde))
   .slice(0, 8);
 
 /* el motivo del descarte, en el idioma del manual */
 const motivoDe = f => {
+  if (f.jugada && empezo(f)) return 'pisaba la casilla pero ya arrancó — queda en el registro del día';
   const mal = (f.v.alertas || []).filter(a => MALAS.has(a.clave)).map(a => a.clave);
   if (mal.includes('parejo')) return 'partido parejo: acá no sabe nadie';
   if (mal.includes('jr-incognito')) return 'el rival es junior y no sé su ranking';
@@ -774,7 +779,9 @@ ${(() => { globalThis.filaVeredicto = (v, i) => {
     <td class="n"><b>${Math.round(v.p * 100)}%</b></td>
     <td class="n sec">${v.pMercado != null ? Math.round(v.pMercado * 100) + '%' : '—'}${dif != null && Math.abs(dif) >= 0.12 ? ' <i class="dif">±</i>' : ''}</td>
     <td class="sec">${v.señales.length ? esc(v.señales.join(' ')) : ''}</td>
-    <td>${res ? (hoyV.acerto ? '✓ ' : '✗ ') + esc(res.ganador.split(' ').slice(-1)[0]) + ' ' + esc(res.marcador) : '<i class="sec">por jugar</i>'}</td>
+    <td>${res ? (hoyV.acerto ? '✓ ' : '✗ ') + esc(res.ganador.split(' ').slice(-1)[0]) + ' ' + esc(res.marcador)
+      : v.inicio && Date.parse(v.inicio) < Date.now() ? '<i class="sec">en juego — cuota de cierre, ya no apostable</i>'
+      : '<i class="sec">por jugar</i>'}</td>
   </tr>
   <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>${esc(v.razon)}</p></details></td></tr>`;
 }; return '' })()}

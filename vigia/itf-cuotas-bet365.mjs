@@ -85,8 +85,14 @@ async function api(ruta, params) {
     return j;
   }
 }
-/* última cotización activa de cada lado (partido pendiente → la vigente) */
-function vigente(hist) {
+/* Última cotización activa de cada lado ANTES del inicio del partido.
+   El corte en startTime es obligatorio: cuando el partido arranca, la
+   línea de tiempo sigue con precios EN VIVO (movidos por el marcador) y
+   termina en 1.00/1.01 de liquidación — nada de eso sirve para decidir
+   una apuesta pre-partido. Para un pendiente el corte no quita nada
+   (todas sus cuotas son anteriores al inicio). */
+function vigente(hist, inicio) {
+  const corte = Date.parse(inicio) || Infinity;
   const casa = Object.values(hist?.bookmakers || {})[0];
   for (const m of Object.values(casa?.markets || {})) {
     const outs = Object.values(m.outcomes || {});
@@ -94,7 +100,8 @@ function vigente(hist) {
     const L = outs.map(o => {
       const s = (o.players || {})['0'];
       if (!Array.isArray(s)) return null;
-      const act = s.filter(x => x.price != null && x.active !== false);
+      const act = s.filter(x => x.price != null && x.active !== false
+        && (Date.parse(x.createdAt) || 0) < corte);
       return act.length ? +act[act.length - 1].price : null;
     });
     if (L[0] != null && L[1] != null) return L;
@@ -127,7 +134,7 @@ for (const p of candidatos) {
     } catch (e) { if (!/NOT_FOUND/.test(e.message)) console.log(`  ✗ ${p.p1} vs ${p.p2}: ${e.message}`); continue }
   } else if (hist) deCache++;
   if (!hist) continue;
-  const v = vigente(hist);
+  const v = vigente(hist, p.startTime);
   if (!v) continue;
   cuotas.push({ torneo: p.t.nombre, p1: p.p1, p2: p.p2, g1: v[0], g2: v[1],
     visto: new Date().toISOString().slice(0, 16) + 'Z', fuente: 'bet365', fixtureId: p.fixtureId,
