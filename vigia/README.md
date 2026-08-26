@@ -55,6 +55,37 @@ señales que Betano ajustó.
 | `TELEGRAM_BOT_TOKEN` | token del bot (de @BotFather) |
 | `TELEGRAM_CHAT_ID` | id numérico de tu chat con el bot |
 
+## Cuotas históricas de ITF (`itf-historico.mjs`)
+
+El cuello de botella del sistema ITF: hay 1252 partidos con resultado y sólo
+52 con precio. Toda pregunta que importa es "precio contra realidad" y se
+está contestando con el 4% de los datos.
+
+OddsPapi tiene endpoint histórico (`/v4/fixtures/odds/historical`), que
+devuelve la línea de tiempo completa de precios de una casa para un partido
+— o sea también la cuota de **apertura**, no sólo la de cierre. Lo que la
+documentación no dice es hasta dónde llega el archivo ni si el plan lo
+incluye. Por eso hay un modo de prueba barato:
+
+```
+ODDSPAPI_KEY=... node vigia/itf-historico.mjs --probar
+```
+
+Gasta 3 o 4 requests y contesta tres cosas: si `/fixtures` acepta fechas
+pasadas, si a 7, 30 y 90 días atrás todavía hay partidos de ITF en el
+índice, y si el histórico de bet365 responde con precios legibles.
+
+Si sirve, la cosecha:
+
+```
+ODDSPAPI_KEY=... node vigia/itf-historico.mjs --dias 30 --max 200
+```
+
+Una llamada por partido, con techo de `--max`. Cada respuesta se cachea en
+`datos/itf/historico/`, así que volver a correrlo no gasta nada y se puede
+ir de a poco. `--resumen` lee lo cacheado sin key ni requests y deja
+`itf-cuotas-historicas.json` con apertura, cierre y ganador de cada uno.
+
 ## Probar a mano
 
 Pestaña **Actions → Vigía → Run workflow**. Sin los secretos de Telegram el ciclo
