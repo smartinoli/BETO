@@ -1,0 +1,805 @@
+<title>Qué sirve y qué no</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#F5F7F8; --panel:#FFFFFF; --sunk:#EDF1F3;
+  --ink:#141F28; --ink2:#54687A; --ink3:#8496A5;
+  --rule:#DBE3E8; --rule2:#C3CFD7;
+  --accent:#1B5B70; --accent-soft:#E2EEF2;
+  --pos:#2C7A58; --pos-soft:#DEEDE5;
+  --neg:#9E4C33; --neg-soft:#F6E5DF;
+  --ojo:#856512;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0D1319; --panel:#141C24; --sunk:#111920;
+  --ink:#DDE6ED; --ink2:#93A5B4; --ink3:#647686;
+  --rule:#222E39; --rule2:#31404C;
+  --accent:#5BA9BF; --accent-soft:#15303A;
+  --pos:#57B98A; --pos-soft:#142C22;
+  --neg:#DE9077; --neg-soft:#2E1B14;
+  --ojo:#CFA23F;
+}}
+:root[data-theme="dark"]{
+  --ground:#0D1319; --panel:#141C24; --sunk:#111920;
+  --ink:#DDE6ED; --ink2:#93A5B4; --ink3:#647686;
+  --rule:#222E39; --rule2:#31404C;
+  --accent:#5BA9BF; --accent-soft:#15303A;
+  --pos:#57B98A; --pos-soft:#142C22;
+  --neg:#DE9077; --neg-soft:#2E1B14;
+  --ojo:#CFA23F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font:400 16px/1.62 "Source Serif 4",Georgia,serif;
+  -webkit-font-smoothing:antialiased}
+.env{max-width:1080px;margin:0 auto;padding:0 20px 96px}
+.prosa{max-width:66ch}
+
+/* --- encabezado --- */
+header{padding:56px 0 30px;border-bottom:2px solid var(--ink);margin-bottom:34px}
+.kicker{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:16px}
+h1{font:700 clamp(34px,6vw,58px)/1.02 "Bricolage Grotesque",system-ui,sans-serif;
+  letter-spacing:-.025em;margin:0 0 14px;text-wrap:balance}
+.bajada{font-size:19px;line-height:1.55;color:var(--ink2);max-width:60ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:0 28px;margin-top:24px;
+  font:500 12px/1.8 "IBM Plex Mono",monospace;color:var(--ink3)}
+.meta b{color:var(--ink);font-weight:600}
+
+/* --- secciones --- */
+section{margin:0 0 68px;scroll-margin-top:20px}
+h2{font:700 clamp(22px,3.4vw,30px)/1.15 "Bricolage Grotesque",system-ui,sans-serif;
+  letter-spacing:-.018em;margin:0 0 6px;text-wrap:balance}
+.h2sub{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink3);margin:0 0 18px}
+h3{font:600 17px/1.3 "Bricolage Grotesque",system-ui,sans-serif;margin:34px 0 10px;letter-spacing:-.01em}
+p{margin:0 0 15px}
+strong{font-weight:600}
+em.q{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.9em;
+  background:var(--sunk);padding:1px 5px;border-radius:3px}
+
+/* --- tablas --- */
+.envt{overflow-x:auto;background:var(--panel);border:1px solid var(--rule);border-radius:8px;margin:18px 0}
+table{border-collapse:collapse;width:100%;min-width:600px;
+  font:500 13.5px/1.4 "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+thead th{position:sticky;top:0;background:var(--panel);text-align:left;padding:11px 12px;
+  border-bottom:1.5px solid var(--rule2);font:600 10px/1.3 "IBM Plex Mono",monospace;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
+thead th.num{text-align:right}
+thead th.bar{text-align:center;min-width:200px}
+tbody th{text-align:left;font-weight:500;padding:8px 12px;border-bottom:1px solid var(--rule);
+  color:var(--ink);white-space:nowrap;font-family:"Source Serif 4",Georgia,serif;font-size:14.5px}
+tbody td{padding:8px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+tbody tr:hover th,tbody tr:hover td{background:var(--sunk)}
+td.num{text-align:right} td.sec{color:var(--ink3)}
+td.pos,.pos{color:var(--pos)} td.neg,.neg{color:var(--neg)}
+td.vacio{color:var(--ink3);font-style:italic}
+tbody tr.destaca th{font-weight:600}
+tbody tr.destaca th::before{content:"";display:inline-block;width:3px;height:13px;
+  background:var(--accent);margin-right:8px;vertical-align:-2px;border-radius:2px}
+
+/* --- la barra divergente --- */
+td.bar{position:relative;min-width:200px;padding:0 12px}
+td.bar .cero{position:absolute;left:50%;top:6px;bottom:6px;width:1px;background:var(--rule2)}
+td.bar .fill{position:absolute;top:11px;height:11px;border-radius:2px}
+td.bar .fill.pos{background:var(--pos)}
+td.bar .fill.neg{background:var(--neg)}
+
+/* --- fichas de veredicto --- */
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:12px;margin:20px 0}
+.ficha{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px 15px}
+.ficha.entra{border-color:var(--pos);background:var(--pos-soft)}
+.ficha .n{font:600 15px/1.25 "Bricolage Grotesque",system-ui,sans-serif;margin-bottom:5px}
+.ficha .d{font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.ficha .c{font:600 11px/1 "IBM Plex Mono",monospace;color:var(--ink3);margin-top:8px;letter-spacing:.04em}
+.chip{display:inline-block;font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;
+  text-transform:uppercase;padding:4px 7px;border-radius:3px;vertical-align:1px}
+.c-eje{background:var(--accent-soft);color:var(--accent)}
+.c-usa{background:var(--pos-soft);color:var(--pos)}
+.c-veto{background:var(--neg-soft);color:var(--neg)}
+.c-no{background:var(--sunk);color:var(--ink3)}
+
+/* --- escalera del modelo --- */
+.escalera{display:grid;gap:2px;margin:20px 0;background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.peld{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:baseline;
+  background:var(--panel);padding:13px 16px}
+.peld:last-child{background:var(--accent-soft)}
+.peld .p{font-size:14.5px}
+.peld .v{font:600 15px "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+.peld .v small{display:block;font:500 9.5px/1.4 "IBM Plex Mono",monospace;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink3)}
+
+/* --- matriz de correlación --- */
+.matriz table{min-width:460px;text-align:center}
+.matriz td{text-align:center}
+.matriz td.alto{background:var(--neg-soft);color:var(--neg);font-weight:600}
+.matriz td.diag{color:var(--ink3)}
+
+/* --- nota al pie de sección --- */
+.nota{border-left:2px solid var(--rule2);padding:2px 0 2px 15px;margin:18px 0 0;
+  font-size:14.5px;line-height:1.6;color:var(--ink2);max-width:64ch}
+.nota b{color:var(--ink)}
+.aviso{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--ojo);
+  border-radius:6px;padding:15px 17px;margin:20px 0;max-width:70ch}
+.aviso .t{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ojo);margin-bottom:9px}
+.aviso p:last-child{margin-bottom:0}
+footer{border-top:1px solid var(--rule);padding-top:22px;margin-top:20px;
+  font-size:13.5px;line-height:1.65;color:var(--ink3);max-width:70ch}
+footer code{font-family:"IBM Plex Mono",monospace;color:var(--ink2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="env">
+<header>
+  <div class="kicker">Auditoría del modelo · 2026-08-26</div>
+  <h1>Qué sirve y qué no</h1>
+  <p class="bajada">Trece campos de datos medidos uno por uno contra 1.252 partidos jugados.
+    Cuatro entran al modelo. Nueve no, y acá está por qué.</p>
+  <div class="meta">
+    <span><b>1.252</b> partidos con WTN en los dos lados</span>
+    <span><b>31</b> torneos</span>
+    <span>validación: <b>dejando un torneo entero afuera</b></span>
+  </div>
+</header>
+
+<section>
+  <h2>El veredicto</h2>
+  <p class="h2sub">qué mira el modelo cuando calcula una probabilidad</p>
+  <div class="rejilla">
+    <div class="ficha entra">
+      <div class="n">WTN</div>
+      <div class="d">Es el eje del modelo. Todo lo demás corrige sobre él.</div>
+      <div class="c">1.252 de 1.252 partidos · 100%</div>
+    </div><div class="ficha entra">
+      <div class="n">edad</div>
+      <div class="d">Un escalón: tiene menos de 19 o no. No es una pendiente.</div>
+      <div class="c">1.252 de 1.252 partidos · 100%</div>
+    </div><div class="ficha entra">
+      <div class="n">games cedidos</div>
+      <div class="d">Sólo existe si los dos ya jugaron en ese cuadro.</div>
+      <div class="c">461 de 1.252 partidos · 37%</div>
+    </div><div class="ficha entra">
+      <div class="n">torneo anterior</div>
+      <div class="d">Sólo si tenemos bajado el cuadro anterior de los dos.</div>
+      <div class="c">164 de 1.252 partidos · 13%</div>
+    </div><div class="ficha entra">
+      <div class="n">ranking junior</div>
+      <div class="d">Top 60 del mundo junior: el partido no se juega.</div>
+      <div class="c">9 de 1.252 partidos · 1%</div>
+    </div>
+  </div>
+  <h3>Lo que se midió y quedó afuera</h3>
+  <div class="rejilla">
+    <div class="ficha">
+      <div class="n">ATP</div>
+      <div class="d">Redundante con el WTN (r=0.58) y con un tercio de los datos.</div>
+      <div class="c">423 partidos · 34%</div>
+    </div><div class="ficha">
+      <div class="n">ranking ITF</div>
+      <div class="d">Coeficiente negativo: ruido.</div>
+      <div class="c">570 partidos · 46%</div>
+    </div><div class="ficha">
+      <div class="n">ranking nacional</div>
+      <div class="d">Coeficiente negativo: ruido.</div>
+      <div class="c">501 partidos · 40%</div>
+    </div><div class="ficha">
+      <div class="n">tipo de entrada</div>
+      <div class="d">El invitado rinde sobre lo esperado, pero no mueve el modelo.</div>
+      <div class="c">253 partidos · 20%</div>
+    </div><div class="ficha">
+      <div class="n">siembra</div>
+      <div class="d">Con el escalón sub-19 adentro deja de aportar.</div>
+      <div class="c">1.252 partidos · 100%</div>
+    </div><div class="ficha">
+      <div class="n">categoría M15/M25</div>
+      <div class="d">Idéntico rendimiento en las dos.</div>
+      <div class="c">1.252 partidos · 100%</div>
+    </div><div class="ficha">
+      <div class="n">superficie</div>
+      <div class="d">Idéntico en tierra y en cemento.</div>
+      <div class="c">1.252 partidos · 100%</div>
+    </div><div class="ficha">
+      <div class="n">mismo país</div>
+      <div class="d">No cambia nada.</div>
+      <div class="c">1.252 partidos · 100%</div>
+    </div><div class="ficha">
+      <div class="n">insignia ProZone</div>
+      <div class="d">Ya se había descartado: no es un corte de nivel.</div>
+      <div class="c">21 partidos · 2%</div>
+    </div>
+  </div>
+  <p class="nota"><b>Cobertura no es lo mismo que utilidad.</b> El ranking ITF está en el 46% de los partidos
+    y no sirve; el torneo anterior está en el 13% y sí. Un dato que falta seguido igual aporta donde existe,
+    porque el modelo sólo lo suma ahí.</p>
+</section>
+
+<section>
+  <h2>Cada señal, medida sola</h2>
+  <p class="h2sub">contra la curva que sólo mira el ΔWTN</p>
+  <p class="prosa">A cada señal se le da su mejor oportunidad: se mide únicamente sobre los partidos donde
+    ese dato existe, y se compara contra la misma curva corriendo sobre esos mismos partidos.
+    La medida es el <em class="q">log-loss</em>, que castiga estar seguro y equivocarse; acá se muestra
+    <strong>cuánto lo mejora</strong>, así que más alto es mejor.</p>
+  <p class="prosa">Las dos columnas del medio son la pregunta entera. <strong>Sola</strong> es cuánto aporta
+    sobre la curva de ΔWTN pelada. <strong>Sobre el núcleo</strong> es cuánto aporta una vez que el escalón
+    sub-19 ya está adentro — y esa es la que decide, porque una señal que sólo repite lo que otra ya dijo
+    no agrega nada aunque por sí sola se vea bien.</p>
+  <div class="envt"><table>
+    <thead><tr><th scope="col">señal</th><th scope="col" class="num">n</th>
+      <th scope="col" class="num">sola</th><th scope="col" class="num">sobre el núcleo</th>
+      <th scope="col" class="num">acierto</th><th scope="col">veredicto</th></tr></thead>
+    <tbody><tr class="destaca"><th scope="row">edad, como escalón sub-19</th>
+        <td class="num">1252</td>
+        <td class="num pos">+0.0326</td>
+        <td class="num pos">+0.0326</td>
+        <td class="num sec">74.0 → 76.1%</td>
+        <td><span class="chip c-usa">entra</span></td></tr><tr class="destaca"><th scope="row">games cedidos</th>
+        <td class="num">461</td>
+        <td class="num pos">+0.0136</td>
+        <td class="num pos">+0.0124</td>
+        <td class="num sec">67.9 → 69.4%</td>
+        <td><span class="chip c-usa">entra</span></td></tr><tr class="destaca"><th scope="row">torneo anterior</th>
+        <td class="num">164</td>
+        <td class="num pos">+0.0200</td>
+        <td class="num pos">+0.0107</td>
+        <td class="num sec">65.2 → 70.1%</td>
+        <td><span class="chip c-usa">entra</span></td></tr><tr class=""><th scope="row">edad, como años de diferencia</th>
+        <td class="num">1252</td>
+        <td class="num pos">+0.0070</td>
+        <td class="num neg">+0.0000</td>
+        <td class="num sec">74.0 → 74.8%</td>
+        <td><span class="chip c-no">redundante</span></td></tr><tr class=""><th scope="row">ranking ITF</th>
+        <td class="num">570</td>
+        <td class="num sec">−0.0002</td>
+        <td class="num neg">+0.0000</td>
+        <td class="num sec">74.4 → 74.2%</td>
+        <td><span class="chip c-no">no</span></td></tr><tr class=""><th scope="row">siembra</th>
+        <td class="num">1252</td>
+        <td class="num sec">+0.0002</td>
+        <td class="num neg">−0.0005</td>
+        <td class="num sec">74.0 → 74.5%</td>
+        <td><span class="chip c-no">no</span></td></tr><tr class=""><th scope="row">ATP</th>
+        <td class="num">423</td>
+        <td class="num pos">+0.0033</td>
+        <td class="num neg">−0.0007</td>
+        <td class="num sec">67.1 → 67.8%</td>
+        <td><span class="chip c-no">redundante</span></td></tr><tr class=""><th scope="row">tipo de entrada</th>
+        <td class="num">1252</td>
+        <td class="num sec">−0.0003</td>
+        <td class="num neg">−0.0008</td>
+        <td class="num sec">74.0 → 74.4%</td>
+        <td><span class="chip c-no">no</span></td></tr><tr class=""><th scope="row">insignia ProZone</th>
+        <td class="num">1252</td>
+        <td class="num sec">−0.0018</td>
+        <td class="num neg">−0.0018</td>
+        <td class="num sec">74.0 → 74.0%</td>
+        <td><span class="chip c-no">no</span></td></tr><tr class=""><th scope="row">ranking nacional</th>
+        <td class="num">501</td>
+        <td class="num sec">−0.0019</td>
+        <td class="num neg">−0.0020</td>
+        <td class="num sec">73.9 → 73.9%</td>
+        <td><span class="chip c-no">no</span></td></tr>
+    </tbody></table></div>
+  <p class="nota"><b>El ATP es el caso interesante.</b> Solo mejora la curva, y por eso durante un tiempo
+    lo tuvimos como candidato. Pero sobre el núcleo no mueve nada: no es que sea malo, es que ya lo
+    habíamos escuchado. La matriz de correlaciones de más abajo dice de quién es el eco.</p>
+  <p class="nota">El coeficiente de los tres rankings sale <b>negativo</b>: el modelo, si los deja entrar,
+    aprende que estar mejor rankeado predice perder. Eso no es una señal invertida, es ruido — la única
+    lectura honesta es que no tienen nada que agregar sobre lo que el WTN ya dice.</p>
+</section>
+
+<section>
+  <h2>La edad</h2>
+  <p class="h2sub">el hallazgo grande, y no era una pendiente</p>
+  <p class="prosa">Veníamos usando la edad como diferencia de años: cuanto más joven el favorito, mejor.
+    Pero al mirar la edad <strong>absoluta</strong> de cada lado aparece otra cosa. Contra un rival
+    de 18 la curva se equivoca casi 15 puntos; contra uno de 19, no se equivoca en nada.
+    El efecto no baja de a poco: se apaga de golpe.</p>
+  <h3>Cuánto se equivoca la curva según la edad del rival</h3>
+  <div class="envt"><table><thead><tr><th scope="col">caso</th><th scope="col" class="num">n</th>
+  <th scope="col" class="num">ganó</th><th scope="col" class="num">esperaba</th>
+  <th scope="col" class="num">error</th><th scope="col" class="bar">−22 · 0 · +22</th>
+  <th scope="col" class="num">IC 95%</th></tr></thead>
+    <tbody><tr><th scope="row">rival de 16 años</th>
+    <td class="num">12</td>
+    <td class="num">66.7%</td>
+    <td class="num sec">86.3%</td>
+    <td class="num neg">−19.7</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:44.70380481543223%"></span></td>
+    <td class="num sec">39–86</td></tr><tr><th scope="row">rival de 17 años</th>
+    <td class="num">42</td>
+    <td class="num">69.0%</td>
+    <td class="num sec">83.2%</td>
+    <td class="num neg">−14.2</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:32.23955811947795%"></span></td>
+    <td class="num sec">54–81</td></tr><tr><th scope="row">rival de 18 años</th>
+    <td class="num">209</td>
+    <td class="num">67.5%</td>
+    <td class="num sec">82.2%</td>
+    <td class="num neg">−14.8</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:33.58876829071708%"></span></td>
+    <td class="num sec">61–73</td></tr><tr><th scope="row">rival de 19 años</th>
+    <td class="num">180</td>
+    <td class="num">76.7%</td>
+    <td class="num sec">76.5%</td>
+    <td class="num pos">+0.2</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:0.3715102256074662%"></span></td>
+    <td class="num sec">70–82</td></tr><tr><th scope="row">rival de 20 años</th>
+    <td class="num">131</td>
+    <td class="num">75.6%</td>
+    <td class="num sec">73.3%</td>
+    <td class="num pos">+2.2</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:5.085993303380003%"></span></td>
+    <td class="num sec">68–82</td></tr><tr><th scope="row">rival de 21 años</th>
+    <td class="num">128</td>
+    <td class="num">76.6%</td>
+    <td class="num sec">71.3%</td>
+    <td class="num pos">+5.3</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:12.02569365383397%"></span></td>
+    <td class="num sec">69–83</td></tr><tr><th scope="row">rival de 22 años</th>
+    <td class="num">101</td>
+    <td class="num">85.1%</td>
+    <td class="num sec">71.5%</td>
+    <td class="num pos">+13.6</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:30.946647952468854%"></span></td>
+    <td class="num sec">77–91</td></tr><tr><th scope="row">rival de 23 años</th>
+    <td class="num">106</td>
+    <td class="num">72.6%</td>
+    <td class="num sec">70.2%</td>
+    <td class="num pos">+2.5</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:5.632291441106234%"></span></td>
+    <td class="num sec">63–80</td></tr><tr><th scope="row">rival de 24 años</th>
+    <td class="num">94</td>
+    <td class="num">70.2%</td>
+    <td class="num sec">66.5%</td>
+    <td class="num pos">+3.8</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:8.539467765915179%"></span></td>
+    <td class="num sec">60–79</td></tr><tr><th scope="row">rival de 25 años</th>
+    <td class="num">72</td>
+    <td class="num">76.4%</td>
+    <td class="num sec">67.8%</td>
+    <td class="num pos">+8.6</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:19.50088560838859%"></span></td>
+    <td class="num sec">65–85</td></tr><tr><th scope="row">rival de 26 años</th>
+    <td class="num">49</td>
+    <td class="num">77.6%</td>
+    <td class="num sec">67.1%</td>
+    <td class="num pos">+10.5</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:23.774665481177177%"></span></td>
+    <td class="num sec">64–87</td></tr></tbody></table></div>
+  <h3>Y según la edad del favorito</h3>
+  <div class="envt"><table><thead><tr><th scope="col">caso</th><th scope="col" class="num">n</th>
+  <th scope="col" class="num">ganó</th><th scope="col" class="num">esperaba</th>
+  <th scope="col" class="num">error</th><th scope="col" class="bar">−22 · 0 · +22</th>
+  <th scope="col" class="num">IC 95%</th></tr></thead>
+    <tbody><tr><th scope="row">favorito de 17 años</th>
+    <td class="num">13</td>
+    <td class="num">92.3%</td>
+    <td class="num sec">69.4%</td>
+    <td class="num pos">+22.9</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:50%"></span></td>
+    <td class="num sec">67–99</td></tr><tr><th scope="row">favorito de 18 años</th>
+    <td class="num">51</td>
+    <td class="num">84.3%</td>
+    <td class="num sec">70.7%</td>
+    <td class="num pos">+13.6</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:30.940152190888842%"></span></td>
+    <td class="num sec">72–92</td></tr><tr><th scope="row">favorito de 19 años</th>
+    <td class="num">125</td>
+    <td class="num">75.2%</td>
+    <td class="num sec">73.9%</td>
+    <td class="num pos">+1.3</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:2.85978246498198%"></span></td>
+    <td class="num sec">67–82</td></tr><tr><th scope="row">favorito de 20 años</th>
+    <td class="num">105</td>
+    <td class="num">72.4%</td>
+    <td class="num sec">75.5%</td>
+    <td class="num neg">−3.1</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:7.1034314288969975%"></span></td>
+    <td class="num sec">63–80</td></tr><tr><th scope="row">favorito de 21 años</th>
+    <td class="num">117</td>
+    <td class="num">77.8%</td>
+    <td class="num sec">71.4%</td>
+    <td class="num pos">+6.4</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:14.584444941057164%"></span></td>
+    <td class="num sec">69–84</td></tr><tr><th scope="row">favorito de 22 años</th>
+    <td class="num">149</td>
+    <td class="num">71.1%</td>
+    <td class="num sec">74.7%</td>
+    <td class="num neg">−3.5</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:8.035857438050813%"></span></td>
+    <td class="num sec">63–78</td></tr><tr><th scope="row">favorito de 23 años</th>
+    <td class="num">159</td>
+    <td class="num">74.2%</td>
+    <td class="num sec">75.5%</td>
+    <td class="num neg">−1.3</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:3.0360257990430015%"></span></td>
+    <td class="num sec">67–80</td></tr><tr><th scope="row">favorito de 24 años</th>
+    <td class="num">139</td>
+    <td class="num">71.9%</td>
+    <td class="num sec">75.1%</td>
+    <td class="num neg">−3.2</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:7.264346591318128%"></span></td>
+    <td class="num sec">64–79</td></tr><tr><th scope="row">favorito de 25 años</th>
+    <td class="num">83</td>
+    <td class="num">69.9%</td>
+    <td class="num sec">72.6%</td>
+    <td class="num neg">−2.8</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:6.274462815600719%"></span></td>
+    <td class="num sec">59–79</td></tr><tr><th scope="row">favorito de 26 años</th>
+    <td class="num">102</td>
+    <td class="num">75.5%</td>
+    <td class="num sec">73.2%</td>
+    <td class="num pos">+2.3</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:5.1905762289419535%"></span></td>
+    <td class="num sec">66–83</td></tr></tbody></table></div>
+  <p class="nota">Es la misma historia leída de los dos lados: <b>al sub-19 lo subestimamos, y a nadie más</b>.
+    Del lado del favorito el efecto es más chico porque para ser favorito por WTN a los 18 hay que ser
+    ya muy bueno, y ahí el rating alcanzó a ponerse al día.</p>
+  <h3>Qué forma darle</h3>
+  <p class="prosa">Se probaron siete formas de meter la edad al modelo, todas antisimétricas —
+    <em class="q">f(favorito) − f(rival)</em> — que es lo único que mantiene la curva pasando por 50%
+    cuando los dos lados son iguales.</p>
+  <div class="envt"><table>
+    <thead><tr><th scope="col">forma</th><th scope="col" class="num">log-loss</th>
+      <th scope="col" class="num">acierto</th><th scope="col" class="num">coeficiente</th>
+      <th scope="col" class="num">sin ningún junior</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">sin edad ninguna</th><td class="num sec">0.5142</td>
+        <td class="num sec">74.0%</td><td class="num sec">—</td>
+        <td class="num sec">0.5060</td></tr>
+      <tr class="destaca"><th scope="row">escalón: 18 o menos</th>
+        <td class="num">0.4815</td><td class="num sec">76.1%</td>
+        <td class="num">+1.695</td>
+        <td class="num sec">0.4798</td></tr><tr class=""><th scope="row">rampa bajo 20</th>
+        <td class="num">0.4822</td><td class="num sec">75.3%</td>
+        <td class="num">+0.714</td>
+        <td class="num sec">0.4786</td></tr><tr class=""><th scope="row">rampa bajo 19</th>
+        <td class="num">0.4872</td><td class="num sec">75.2%</td>
+        <td class="num">+1.033</td>
+        <td class="num sec">0.4830</td></tr><tr class=""><th scope="row">escalón: 19 o menos</th>
+        <td class="num">0.4956</td><td class="num sec">74.7%</td>
+        <td class="num">+0.957</td>
+        <td class="num sec">0.4902</td></tr><tr class=""><th scope="row">escalón: 20 o menos</th>
+        <td class="num">0.5038</td><td class="num sec">74.2%</td>
+        <td class="num">+0.627</td>
+        <td class="num sec">0.4974</td></tr><tr class=""><th scope="row">logaritmo de la edad</th>
+        <td class="num">0.5044</td><td class="num sec">75.2%</td>
+        <td class="num">−1.876</td>
+        <td class="num sec">0.4977</td></tr><tr class=""><th scope="row">años de diferencia</th>
+        <td class="num">0.5072</td><td class="num sec">74.8%</td>
+        <td class="num">−0.067</td>
+        <td class="num sec">0.5002</td></tr>
+    </tbody></table></div>
+  <p class="nota">La última columna contesta la sospecha obvia: <b>no es el efecto junior con otro nombre</b>.
+    Sacando todo partido que tenga un JR en cancha, el escalón sigue valiendo casi lo mismo
+    (0.4798, coeficiente +1.578).
+    Y agregarle una pendiente lineal encima no aporta nada: de los 19 para arriba, la edad deja de decir algo.</p>
+  <h3>Dónde pesa más</h3>
+  <div class="envt"><table>
+    <thead><tr><th scope="col">ronda</th>
+      <th scope="col" class="num">rival sub-19</th><th scope="col" class="num">ninguno sub-19</th><th scope="col" class="num">favorito sub-19</th></tr></thead>
+    <tbody><tr><th scope="row">Q1</th>
+      <td class="num neg">−10.7 <span class="sec">(127)</span></td><td class="num pos">+2.9 <span class="sec">(279)</span></td><td class="num pos">+16.7 <span class="sec">(35)</span></td></tr><tr><th scope="row">buenas</th>
+      <td class="num neg">−12.8 <span class="sec">(103)</span></td><td class="num pos">+3.5 <span class="sec">(411)</span></td><td class="num pos">+16.9 <span class="sec">(25)</span></td></tr><tr><th scope="row">medias</th>
+      <td class="num neg">−30.6 <span class="sec">(33)</span></td><td class="num pos">+6.5 <span class="sec">(180)</span></td><td class="num pos">+9.4 <span class="sec">(6)</span></td></tr><tr><th scope="row">finales</th>
+      <td class="num neg">−41.2 <span class="sec">(8)</span></td><td class="num pos">+2.2 <span class="sec">(76)</span></td><td class="num sec">—</td></tr>
+    </tbody></table></div>
+  <div class="envt"><table>
+    <thead><tr><th scope="col">distancia de WTN</th>
+      <th scope="col" class="num">rival sub-19</th><th scope="col" class="num">ninguno sub-19</th><th scope="col" class="num">favorito sub-19</th></tr></thead>
+    <tbody><tr><th scope="row">Δ menor a 2</th>
+      <td class="num neg">−22.3 <span class="sec">(34)</span></td><td class="num pos">+0.2 <span class="sec">(338)</span></td><td class="num pos">+19.3 <span class="sec">(25)</span></td></tr><tr><th scope="row">Δ de 2 a 5</th>
+      <td class="num neg">−20.1 <span class="sec">(70)</span></td><td class="num pos">+7.3 <span class="sec">(361)</span></td><td class="num pos">+16.6 <span class="sec">(28)</span></td></tr><tr><th scope="row">Δ 5 o más</th>
+      <td class="num neg">−11.1 <span class="sec">(167)</span></td><td class="num pos">+3.7 <span class="sec">(247)</span></td><td class="num pos">+8.9 <span class="sec">(13)</span></td></tr>
+    </tbody></table></div>
+</section>
+
+<section>
+  <h2>Las otras dos que entran</h2>
+  <p class="h2sub">forma dentro del cuadro y de dónde viene</p>
+  <h3>Games cedidos hasta llegar acá</h3>
+  <div class="envt"><table><thead><tr><th scope="col">caso</th><th scope="col" class="num">n</th>
+  <th scope="col" class="num">ganó</th><th scope="col" class="num">esperaba</th>
+  <th scope="col" class="num">error</th><th scope="col" class="bar">−22 · 0 · +22</th>
+  <th scope="col" class="num">IC 95%</th></tr></thead><tbody><tr><th scope="row">el favorito cede 10 pts menos</th>
+    <td class="num">136</td>
+    <td class="num">80.1%</td>
+    <td class="num sec">69.5%</td>
+    <td class="num pos">+10.6</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:24.20074725053168%"></span></td>
+    <td class="num sec">73–86</td></tr><tr><th scope="row">cede algo menos (3 a 10)</th>
+    <td class="num">92</td>
+    <td class="num">67.4%</td>
+    <td class="num sec">67.6%</td>
+    <td class="num neg">−0.2</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:0.39489455284659597%"></span></td>
+    <td class="num sec">57–76</td></tr><tr><th scope="row">parejos (±3)</th>
+    <td class="num">67</td>
+    <td class="num">68.7%</td>
+    <td class="num sec">70.1%</td>
+    <td class="num neg">−1.4</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:3.2142341465123505%"></span></td>
+    <td class="num sec">57–78</td></tr><tr><th scope="row">el rival cede algo menos</th>
+    <td class="num">64</td>
+    <td class="num">64.1%</td>
+    <td class="num sec">66.5%</td>
+    <td class="num neg">−2.5</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:5.578721732746115%"></span></td>
+    <td class="num sec">52–75</td></tr><tr><th scope="row">el rival cede 10 pts menos</th>
+    <td class="num">102</td>
+    <td class="num">53.9%</td>
+    <td class="num sec">67.4%</td>
+    <td class="num neg">−13.5</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:30.6332691611696%"></span></td>
+    <td class="num sec">44–63</td></tr><tr><th scope="row">sin trayectoria en alguno</th>
+    <td class="num">791</td>
+    <td class="num">77.5%</td>
+    <td class="num sec">76.9%</td>
+    <td class="num pos">+0.6</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:1.391317126857255%"></span></td>
+    <td class="num sec">74–80</td></tr></tbody></table></div>
+  <p class="nota">Monótona de punta a punta y con la muestra bien repartida: es la señal más limpia
+    después de la edad. La última fila —los partidos donde alguno de los dos todavía no jugó— confirma
+    que el dato faltante no está sesgado: ahí la curva acierta.</p>
+  <h3>Hasta qué ronda llegó en su torneo anterior</h3>
+  <div class="envt"><table><thead><tr><th scope="col">caso</th><th scope="col" class="num">n</th>
+  <th scope="col" class="num">ganó</th><th scope="col" class="num">esperaba</th>
+  <th scope="col" class="num">error</th><th scope="col" class="bar">−22 · 0 · +22</th>
+  <th scope="col" class="num">IC 95%</th></tr></thead><tbody><tr><th scope="row">el favorito llegó 2 rondas más lejos</th>
+    <td class="num">26</td>
+    <td class="num">80.8%</td>
+    <td class="num sec">67.9%</td>
+    <td class="num pos">+12.9</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:29.24656777391727%"></span></td>
+    <td class="num sec">62–91</td></tr><tr><th scope="row">una ronda más lejos</th>
+    <td class="num">24</td>
+    <td class="num">79.2%</td>
+    <td class="num sec">74.7%</td>
+    <td class="num pos">+4.4</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:10.06343829625591%"></span></td>
+    <td class="num sec">60–91</td></tr><tr><th scope="row">los dos igual</th>
+    <td class="num">95</td>
+    <td class="num">63.2%</td>
+    <td class="num sec">71.1%</td>
+    <td class="num neg">−8.0</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:18.1600468613913%"></span></td>
+    <td class="num sec">53–72</td></tr><tr><th scope="row">el rival llegó más lejos</th>
+    <td class="num">19</td>
+    <td class="num">52.6%</td>
+    <td class="num sec">64.2%</td>
+    <td class="num neg">−11.6</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:26.353525684901236%"></span></td>
+    <td class="num sec">32–73</td></tr><tr><th scope="row">sin dato en alguno</th>
+    <td class="num">1088</td>
+    <td class="num">75.0%</td>
+    <td class="num sec">74.2%</td>
+    <td class="num pos">+0.8</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:1.730244485309335%"></span></td>
+    <td class="num sec">72–77</td></tr></tbody></table></div>
+  <p class="nota">Mismo orden, muestras chicas. Aporta poco y por eso su coeficiente es chico,
+    pero apunta en la dirección correcta en las cuatro bandas.</p>
+</section>
+
+<section>
+  <h2>Las que no sirven, y por qué</h2>
+  <p class="h2sub">nueve campos que miramos y no usamos</p>
+  <h3>Los rankings dicen lo mismo que el WTN</h3>
+  <p class="prosa">La razón no es que sean malos, es que son <strong>redundantes</strong>. El ΔATP
+    correlaciona 0.58 con el ΔWTN sobre los partidos donde los dos existen: mide lo mismo, con un
+    tercio de los datos.</p>
+  <div class="envt matriz"><table>
+    <thead><tr><th scope="col"></th><th scope="col" class="num">ΔWTN</th><th scope="col" class="num">ΔATP</th><th scope="col" class="num">ΔITF</th><th scope="col" class="num">Δnacional</th><th scope="col" class="num">sub-19</th></tr></thead>
+    <tbody><tr><th scope="row">ΔWTN</th>
+      <td class="diag">1.00</td><td class="alto">0.58</td><td class="">0.29</td><td class="">0.10</td><td class="">-0.36</td></tr><tr><th scope="row">ΔATP</th>
+      <td class="alto">0.58</td><td class="diag">1.00</td><td class="">-0.18</td><td class="">0.15</td><td class="">-0.08</td></tr><tr><th scope="row">ΔITF</th>
+      <td class="">0.29</td><td class="">-0.18</td><td class="diag">1.00</td><td class="">-0.01</td><td class="">-0.12</td></tr><tr><th scope="row">Δnacional</th>
+      <td class="">0.10</td><td class="">0.15</td><td class="">-0.01</td><td class="diag">1.00</td><td class="">0.05</td></tr><tr><th scope="row">sub-19</th>
+      <td class="">-0.36</td><td class="">-0.08</td><td class="">-0.12</td><td class="">0.05</td><td class="diag">1.00</td></tr>
+    </tbody></table></div>
+  <p class="nota">Acá hay una <b>corrección a lo que dije ayer</b>: había explicado la caída del ATP diciendo
+    que "estaba diciendo joven que sube, y la edad lo dice mejor". La matriz muestra que no: el ΔATP
+    correlaciona apenas −0.08 con el escalón sub-19. Lo que lo vuelve prescindible es su 0.58 con el WTN,
+    no la edad.</p>
+  <h3>La siembra</h3>
+  <div class="envt"><table><thead><tr><th scope="col">caso</th><th scope="col" class="num">n</th>
+  <th scope="col" class="num">ganó</th><th scope="col" class="num">esperaba</th>
+  <th scope="col" class="num">error</th><th scope="col" class="bar">−22 · 0 · +22</th>
+  <th scope="col" class="num">IC 95%</th></tr></thead><tbody><tr><th scope="row">sólo el favorito sembrado</th>
+    <td class="num">671</td>
+    <td class="num">79.7%</td>
+    <td class="num sec">78.1%</td>
+    <td class="num pos">+1.6</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:3.659262047953587%"></span></td>
+    <td class="num sec">77–83</td></tr><tr><th scope="row">ninguno sembrado</th>
+    <td class="num">369</td>
+    <td class="num">69.6%</td>
+    <td class="num sec">71.7%</td>
+    <td class="num neg">−2.1</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:4.734356185955226%"></span></td>
+    <td class="num sec">65–74</td></tr><tr><th scope="row">los dos sembrados</th>
+    <td class="num">120</td>
+    <td class="num">66.7%</td>
+    <td class="num sec">64.0%</td>
+    <td class="num pos">+2.7</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:6.163550582298933%"></span></td>
+    <td class="num sec">58–74</td></tr><tr><th scope="row">sólo el rival sembrado</th>
+    <td class="num">92</td>
+    <td class="num">58.7%</td>
+    <td class="num sec">62.5%</td>
+    <td class="num neg">−3.8</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:8.581474239479864%"></span></td>
+    <td class="num sec">48–68</td></tr></tbody></table></div>
+  <p class="nota">Ordenada pero floja: el sembrado gana +1.6 puntos sobre lo esperado
+    con 671 partidos. Entraba al modelo con un coeficiente muy chico y, con el escalón
+    sub-19 adentro, dejó de aportar del todo. Salió.</p>
+  <h3>Cómo entró el rival al cuadro</h3>
+  <div class="envt"><table><thead><tr><th scope="col">caso</th><th scope="col" class="num">n</th>
+  <th scope="col" class="num">ganó</th><th scope="col" class="num">esperaba</th>
+  <th scope="col" class="num">error</th><th scope="col" class="bar">−22 · 0 · +22</th>
+  <th scope="col" class="num">IC 95%</th></tr></thead><tbody><tr><th scope="row">el rival entró directo</th>
+    <td class="num">970</td>
+    <td class="num">73.2%</td>
+    <td class="num sec">72.1%</td>
+    <td class="num pos">+1.1</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:2.564378067054961%"></span></td>
+    <td class="num sec">70–76</td></tr><tr><th scope="row">el rival es clasificado</th>
+    <td class="num">123</td>
+    <td class="num">82.9%</td>
+    <td class="num sec">78.3%</td>
+    <td class="num pos">+4.7</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:10.628879150840966%"></span></td>
+    <td class="num sec">75–89</td></tr><tr><th scope="row">el rival es invitado (WC)</th>
+    <td class="num">117</td>
+    <td class="num">76.1%</td>
+    <td class="num sec">81.2%</td>
+    <td class="num neg">−5.2</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:11.718891760674174%"></span></td>
+    <td class="num sec">68–83</td></tr><tr><th scope="row">el rival es alterno</th>
+    <td class="num">12</td>
+    <td class="num">66.7%</td>
+    <td class="num sec">83.1%</td>
+    <td class="num neg">−16.4</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:37.35993731272419%"></span></td>
+    <td class="num sec">39–86</td></tr></tbody></table></div>
+  <p class="nota">El único que dice algo es el <b>invitado</b>: rinde sobre lo que la curva espera, que es
+    lo razonable —los wildcards suelen ser locales jóvenes o promesas cuyo rating va atrás. Pero metido al
+    modelo no mueve el log-loss, así que se queda como dato a la vista y no como término.</p>
+  <h3>El contexto del torneo</h3>
+  <div class="envt"><table><thead><tr><th scope="col">caso</th><th scope="col" class="num">n</th>
+  <th scope="col" class="num">ganó</th><th scope="col" class="num">esperaba</th>
+  <th scope="col" class="num">error</th><th scope="col" class="bar">−22 · 0 · +22</th>
+  <th scope="col" class="num">IC 95%</th></tr></thead><tbody><tr><th scope="row">torneos M15</th>
+    <td class="num">825</td>
+    <td class="num">73.8%</td>
+    <td class="num sec">74.2%</td>
+    <td class="num neg">−0.4</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:0.8498770356683711%"></span></td>
+    <td class="num sec">71–77</td></tr><tr><th scope="row">torneos M25</th>
+    <td class="num">427</td>
+    <td class="num">74.2%</td>
+    <td class="num sec">72.8%</td>
+    <td class="num pos">+1.4</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:3.184230435198009%"></span></td>
+    <td class="num sec">70–78</td></tr><tr><th scope="row">tierra batida</th>
+    <td class="num">987</td>
+    <td class="num">73.9%</td>
+    <td class="num sec">73.4%</td>
+    <td class="num pos">+0.5</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:1.0668653590420212%"></span></td>
+    <td class="num sec">71–77</td></tr><tr><th scope="row">cemento</th>
+    <td class="num">265</td>
+    <td class="num">74.3%</td>
+    <td class="num sec">75.0%</td>
+    <td class="num neg">−0.7</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:1.4885972376281602%"></span></td>
+    <td class="num sec">69–79</td></tr><tr><th scope="row">los dos del mismo país</th>
+    <td class="num">343</td>
+    <td class="num">71.7%</td>
+    <td class="num sec">72.7%</td>
+    <td class="num neg">−1.0</td>
+    <td class="bar"><span class="cero"></span><span class="fill neg" style="right:50%;width:2.3077771054509264%"></span></td>
+    <td class="num sec">67–76</td></tr><tr><th scope="row">países distintos</th>
+    <td class="num">909</td>
+    <td class="num">74.8%</td>
+    <td class="num sec">74.1%</td>
+    <td class="num pos">+0.7</td>
+    <td class="bar"><span class="cero"></span><span class="fill pos" style="left:50%;width:1.5952534527753006%"></span></td>
+    <td class="num sec">72–78</td></tr></tbody></table></div>
+  <p class="nota">Nada. Ni la categoría, ni la superficie, ni que los dos sean del mismo país.
+    Todas las diferencias caben dentro del ruido y ninguna barra se despega del cero.</p>
+</section>
+
+<section>
+  <h2>El modelo que queda</h2>
+  <p class="h2sub">tres peldaños, cada uno validado dejando un torneo afuera</p>
+  <div class="escalera">
+    <div class="peld">
+      <span class="p">sólo ΔWTN, un nivel por ronda</span>
+      <span class="v">0.5097<small>log-loss</small></span>
+      <span class="v">74.3%<small>acierto</small></span></div><div class="peld">
+      <span class="p">más el escalón sub-19</span>
+      <span class="v">0.4801<small>log-loss</small></span>
+      <span class="v">76.2%<small>acierto</small></span></div><div class="peld">
+      <span class="p">más games cedidos y torneo anterior</span>
+      <span class="v">0.4732<small>log-loss</small></span>
+      <span class="v">76.5%<small>acierto</small></span></div>
+  </div>
+  <div class="envt"><table>
+    <thead><tr><th scope="col">término</th><th scope="col" class="num">coeficiente</th>
+      <th scope="col" class="num">n</th><th scope="col">qué mide</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">ΔWTN · Q1</th>
+        <td class="num">+0.4105</td>
+        <td class="num sec">422</td>
+        <td>primera ronda de la clasificación</td></tr><tr><th scope="row">ΔWTN · buenas</th>
+        <td class="num">+0.4692</td>
+        <td class="num sec">528</td>
+        <td>Q2 y R1 — el mejor terreno que tenemos</td></tr><tr><th scope="row">ΔWTN · medias</th>
+        <td class="num">+0.3104</td>
+        <td class="num sec">214</td>
+        <td>Q3, R2 y R3</td></tr><tr><th scope="row">ΔWTN · finales</th>
+        <td class="num">+0.1741</td>
+        <td class="num sec">79</td>
+        <td>cuartos, semis y final</td></tr>
+      <tr class="destaca"><th scope="row">escalón sub-19</th>
+        <td class="num">+1.6273</td>
+        <td class="num sec">266</td>
+        <td>uno tiene 18 o menos y el otro no</td></tr>
+      <tr><th scope="row">games cedidos</th>
+        <td class="num">+2.8432</td>
+        <td class="num sec">454</td>
+        <td>fracción de games cedidos: rival menos favorito</td></tr><tr><th scope="row">torneo anterior</th>
+        <td class="num">+0.2824</td>
+        <td class="num sec">164</td>
+        <td>ronda alcanzada la semana pasada</td></tr>
+    </tbody></table></div>
+  <p class="nota">El escalón sub-19 vale <b>1.63 en escala logit</b>, que es mucho:
+    convierte un 90% en un 65%. Es un solo bit de información —tiene 18 o no— pero es el bit que más
+    corrige al WTN en todo el circuito.</p>
+</section>
+
+<section>
+  <h2>Lo que todavía no sabemos</h2>
+  <p class="h2sub">los límites de esta medición</p>
+  <div class="aviso">
+    <div class="t">Sobre la regla de mercado</div>
+    <p>Todo lo de esta página se midió sobre 1.252 partidos. La regla que
+      decide <em class="q">segura</em> contra <em class="q">trampa</em> —no discrepar más de 12 puntos con
+      el precio— se midió sobre <strong>52</strong>, que son los únicos que tienen cuota y resultado.
+      Entre dos mediciones seguidas, las bandas de discrepancia se movieron harto: el tramo de +5 a +15
+      pasó de 89% a 76% de acierto. Con 7 a 21 partidos por casilla eso es lo esperable.</p>
+    <p>Lo que se sostiene entre las dos mediciones es el <strong>signo</strong>: el criterio viejo
+      (valor ≥ 9%) perdió plata las dos veces, y el nuevo no. El umbral exacto hay que volver a medirlo
+      cuando el registro esté al doble.</p>
+  </div>
+  <div class="aviso">
+    <div class="t">Sobre las muestras chicas</div>
+    <p>El torneo anterior se apoya en 164 partidos y el ranking junior en 9. Los dos entran igual, uno
+      como término chico y el otro como veto, porque apuntan en la dirección correcta en todas sus bandas
+      — pero son las dos primeras piezas que hay que remedir cuando entren datos nuevos.</p>
+  </div>
+  <div class="aviso">
+    <div class="t">Sobre lo que ni siquiera está en la mesa</div>
+    <p>No tenemos historial cara a cara, ni sets ganados y perdidos más allá del torneo en curso, ni nada
+      sobre lesiones, viajes o cambio de superficie entre semanas. Ninguna de esas ausencias está medida:
+      no sé si aportarían. Sé que las que sí pude medir están todas acá.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Todos los números salen de correr <code>node vigia/itf-banco.mjs &amp;&amp; node vigia/itf-auditoria.mjs</code>
+  sobre los cuadros y entry lists que tenemos bajados. Nada está escrito a mano en esta página.</p>
+  <p><strong>Cómo leer la barra:</strong> mide cuántos puntos porcentuales se equivocó la curva de ΔWTN en ese
+  grupo de partidos. A la derecha del cero, el favorito ganó más de lo que la curva esperaba; a la izquierda,
+  menos. Media barra son 22 puntos.</p>
+  <p><strong>Log-loss:</strong> castiga estar seguro y errar. Decir 95% y perder cuesta mucho más que decir 60% y perder.
+  Por eso es mejor medida que el acierto pelado cuando lo que se compara son probabilidades contra un precio.</p>
+</footer>
+</div>
