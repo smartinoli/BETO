@@ -87,6 +87,8 @@ jobs:
           cp vigia/itf-auditoria.html _sitio/auditoria.html || true
 
       - uses: actions/configure-pages@v5
+        with:
+          enablement: enabled
 
       - uses: actions/upload-pages-artifact@v3
         with:
