@@ -405,10 +405,19 @@ export function analizar(p) {
      necesitaría cuota 2.44 y paga 1.86, o sea −24%. El punto entusiasma
      y el intervalo no concluye. Se marca para jugarla hacia adelante y
      medirla, no porque esté probada. */
-  if (c > CUOTA_CARA) {
+  /* Corregido el 2026-08-27, pillado por Sebastian con el caso Petit:
+     la regla disparaba con el puro umbral de precio (mejor por rating
+     paga 1.50+), pero su MECANISMO es "el precio le lleva la contra al
+     rating" — y Robert a 1.57 contra Petit a 2.20 era el favorito del
+     mercado TAMBIEN. Rating y precio de acuerdo, solo que el precio menos
+     entusiasta: ahi no hay contra que valga, y encima el modelo daba 75%
+     a Robert y la regla lo pisaba con un 50% de 12 partidos. Ahora exige
+     ademas que EL OTRO sea el favorito del mercado (cRival < c), que es
+     lo que si pasaba con Wygona/Chlodnicki y Brown/Hrazdil. */
+  if (c > CUOTA_CARA && cRival != null && cRival < c) {
     const cContra = cRival ?? null;
     alertas.push({ clave: 'favorito-caro', texto:
-      `${yo.nombre} es el MEJOR POR RATING pero Betano lo paga ${c}: el favorito del mercado es el otro. `
+      `${yo.nombre} es el MEJOR POR RATING pero la casa lo paga ${c}: el favorito del mercado es el otro. `
       + `Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres `
       + `casos reales salieron para el lado del rating. En observación.` });
     /* el tramo importa: no es lo mismo que pague 1.6 a que pague 2.4 */

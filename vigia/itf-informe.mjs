@@ -39,6 +39,9 @@ const soloJugables = process.argv.includes('--solo');
    el registro acumula cuotas de torneos que ya terminaron y mezclarlas
    ensucia el informe. Con --todo se muestra el registro completo. */
 const todo = process.argv.includes('--todo');
+/* --bet365: la tanda no sale de los PDF de Betano sino de la API de
+   OddsPapi (itf-cuotas-bet365.mjs). Mismo análisis, otra fuente. */
+const bet365 = process.argv.includes('--bet365');
 
 /* ---------- mapa de torneos ---------- */
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};
@@ -270,8 +273,10 @@ function resultado(clave, n1, n2) {
 /* ============================================================
    EL INFORME
    ============================================================ */
-const doc = leer(path.join(DIR, 'itf-cuotas-manuales.json')) || { cuotas: [] };
-const tandaDoc = todo ? null : leer(path.join(DIR, 'itf-cuotas-tanda.json'));
+const doc = bet365
+  ? (leer(path.join(DIR, 'itf-cuotas-bet365.json')) || { cuotas: [] })
+  : (leer(path.join(DIR, 'itf-cuotas-manuales.json')) || { cuotas: [] });
+const tandaDoc = (todo || bet365) ? null : leer(path.join(DIR, 'itf-cuotas-tanda.json'));
 const enTanda = tandaDoc
   ? new Set(tandaDoc.partidos.map(x => NORM(x.torneo) + '|' + NORM(x.p1) + '|' + NORM(x.p2)))
   : null;
@@ -348,7 +353,7 @@ function enSimple(f) {
     return {
       fav: c.lado,
       razon: `El MEJOR POR RATING es ${n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim()} `
-        + `pero Betano lo paga a ${c.cuotaFav} — o sea que lo pone parejo o abajo. `
+        + `pero la casa lo paga a ${c.cuotaFav} — o sea que lo pone parejo o abajo. `
         + `Acá el FAVORITO DEL MERCADO es el otro. Cuando rating y precio se contradicen, en nuestro registro solía mandar el precio: sabe algo que el `
         + `número no ve (una lesión, la superficie, el estilo, la cancha local).`,
       mercado: `Medido sobre nuestros partidos: cuando nuestro favorito paga ${c.nom}, pierde `
@@ -375,7 +380,7 @@ function enSimple(f) {
     if (x.nombre === 'previo' && x.aporte < 0) trozos.push(`aunque su rival llegó más lejos la semana pasada`);
   }
   const razon = trozos.join(', ').replace(/, y /g, ' y ') + '.';
-  const mercado = `Betano lo paga a ${pr.cuota}: es como decir que gana ${Math.round(pr.devig * 100)} de cada 100. `
+  const mercado = `la casa lo paga a ${pr.cuota}: es como decir que gana ${Math.round(pr.devig * 100)} de cada 100. `
     + `Nosotros creemos que gana ${Math.round(n.p * 100)}.`;
   const cuenta = `Si tenemos razón, a la larga esto deja ${Math.round(pr.val * 100)}%. `
     + `Si la tiene Betano, pierde ${Math.abs(Math.round(pr.valMercado * 100))}%.`;
@@ -387,7 +392,7 @@ function enSimple(f) {
 
 /* ---------- consola: las elegidas primero, el resto en una línea ---------- */
 const T = (s, n) => String(s ?? '').slice(0, n).padEnd(n);
-console.log(`\n${cuotas.length} partidos con cuota${tandaDoc ? ` · ${tandaDoc.archivos.length} torneos` : ''}`
+console.log(`\n${cuotas.length} partidos con cuota${bet365 ? ' · fuente bet365 vía API' : ''}${tandaDoc ? ` · ${tandaDoc.archivos.length} torneos` : ''}`
   + ` · ${filas.filter(f => f.v?.precio).length} analizados\n`);
 
 if (ELEGIDAS.length) {
@@ -563,7 +568,7 @@ footer b{color:var(--ink2)}
 </style>
 <div class="env">
 <header>
-  <div class="kicker">${tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados</div>
+  <div class="kicker">${bet365 ? 'cuotas bet365 vía API · ' + (doc.generado || '').slice(0, 10) : tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados</div>
   <h1>Las que elijo hoy</h1>
   <p class="bajada">${ELEGIDAS.length
     ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length}. Las otras están abajo con el motivo por el que no.`

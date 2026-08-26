@@ -1,0 +1,139 @@
+#!/usr/bin/env node
+/* ============================================================
+   ITF-CUOTAS-BET365 — la tanda del día SIN PDF: cuotas por API.
+
+   Hace lo mismo que subir los PDF de Betano, pero desde OddsPapi con
+   bet365: toma los partidos PENDIENTES del índice capturado
+   (itf-historico.mjs --capturar), les pide la cotización vigente, y deja
+   una tanda con el mismo formato que itf-cuotas-archivos, para que
+   itf-informe --bet365 la analice con el modelo completo.
+
+   POR QUÉ HAY QUE MAPEAR CIUDADES. OddsPapi llama a los torneos por la
+   ciudad a secas ("Poznan", "Pecs") y mezcla el circuito masculino con el
+   femenino — "Kursumlijska Banja" tiene M15 y W15 la misma semana. El
+   cruce va por ciudad contra nuestro mapa de torneos ITF y despues exige
+   que LOS DOS jugadores esten en la entry list del torneo masculino: eso
+   filtra a las mujeres y de paso valida el emparejamiento, igual que
+   haciamos con los PDF contra el cuadro.
+
+   El precio es la ultima cotizacion ACTIVA de la linea de tiempo (para un
+   partido pendiente, eso es la cuota vigente). Se cachea igual que la
+   cosecha, en datos/itf/historico/, asi que no se paga dos veces.
+
+   Uso:
+     ODDSPAPI_KEY=... node vigia/itf-cuotas-bet365.mjs --max 40
+     node vigia/itf-informe.mjs --bet365
+   ============================================================ */
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { NORM, mismoJugador } from './itf-reglas.mjs';
+
+const DIR = path.dirname(fileURLToPath(import.meta.url));
+const DATOS = path.join(DIR, 'datos', 'itf');
+const CACHE = path.join(DATOS, 'historico');
+const INDICE = path.join(DATOS, 'historico-indice.json');
+const SALIDA = path.join(DIR, 'itf-cuotas-bet365.json');
+const KEY = process.env.ODDSPAPI_KEY;
+const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > 0 ? process.argv[i + 1] : d };
+const MAX = +arg('max', 40);
+const PAUSA = +arg('pausa', 2600);
+const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch { return null } };
+
+/* ---------- ciudad → torneo masculino nuestro ---------- */
+const mapa = leer(path.join(DATOS, 'torneos.json')) || {};
+const TORNEOS = {};   /* nombre nuestro → clave, solo m-itf */
+for (const sem of Object.values(mapa.semanas || {})) for (const [k, t] of Object.entries(sem))
+  if (k.startsWith('m-itf')) TORNEOS[t.nombre] = k;
+const ciudad = s => NORM(String(s).replace(/^[MW]\d+\+?H?\s*/i, ''));
+function torneoDe(ciudadOdds) {
+  const c = NORM(ciudadOdds);
+  for (const [nom, clave] of Object.entries(TORNEOS))
+    if (ciudad(nom) === c || ciudad(nom).startsWith(c) || c.startsWith(ciudad(nom)))
+      return { nombre: nom, clave };
+  return null;
+}
+/* entry list del torneo, para validar que el partido es del cuadro masculino */
+const FICHAS = new Map();
+function nombresDe(clave) {
+  if (FICHAS.has(clave)) return FICHAS.get(clave);
+  const j = leer(path.join(DATOS, clave + '.aceptacion.json'));
+  const s = j?.secciones ? Object.values(j.secciones).flat().map(p => p.nombre) : [];
+  FICHAS.set(clave, s);
+  return s;
+}
+const estaEn = (clave, nombre) => nombresDe(clave).some(n => mismoJugador(n, nombre));
+
+/* ---------- API (mismo pacing que itf-historico) ---------- */
+let REQ = 0, ULT = 0;
+const espera = ms => new Promise(r => setTimeout(r, ms));
+async function api(ruta, params) {
+  if (!KEY) throw new Error('falta ODDSPAPI_KEY');
+  const u = new URL('https://api.oddspapi.io/v4/' + ruta);
+  Object.entries({ ...params, apiKey: KEY }).forEach(([k, v]) => u.searchParams.set(k, v));
+  for (let i = 0; ; i++) {
+    const f = ULT + PAUSA - Date.now(); if (f > 0) await espera(f);
+    ULT = Date.now();
+    let r = null, err = null;
+    try { r = await fetch(u, { signal: AbortSignal.timeout(30000) }) } catch (e) { err = e }
+    if ((err || r.status === 429 || r.status >= 500) && i < 4) { await espera(2500 * 2 ** i); continue }
+    if (err) throw new Error('red: ' + err.message);
+    const j = await r.json().catch(() => null);
+    if (j?.error) throw new Error(`${j.error.code || ''}`.trim());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    REQ++;
+    return j;
+  }
+}
+/* última cotización activa de cada lado (partido pendiente → la vigente) */
+function vigente(hist) {
+  const casa = Object.values(hist?.bookmakers || {})[0];
+  for (const m of Object.values(casa?.markets || {})) {
+    const outs = Object.values(m.outcomes || {});
+    if (outs.length !== 2) continue;
+    const L = outs.map(o => {
+      const s = (o.players || {})['0'];
+      if (!Array.isArray(s)) return null;
+      const act = s.filter(x => x.price != null && x.active !== false);
+      return act.length ? +act[act.length - 1].price : null;
+    });
+    if (L[0] != null && L[1] != null) return L;
+  }
+  return null;
+}
+
+/* ---------- la tanda ---------- */
+const idx = leer(INDICE);
+if (!idx) { console.error('no hay índice: corre itf-historico.mjs --capturar'); process.exit(1) }
+const ahora = Date.now();
+const candidatos = Object.values(idx.partidos)
+  .filter(p => Date.parse(p.startTime) > ahora - 2 * 3600e3)   /* aún por jugar (o recién) */
+  .map(p => ({ ...p, t: torneoDe(p.torneo) }))
+  .filter(p => p.t && estaEn(p.t.clave, p.p1) && estaEn(p.t.clave, p.p2))
+  .sort((a, b) => String(a.startTime).localeCompare(String(b.startTime)));
+console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.length} pendientes de torneos masculinos con los dos en la entry list`);
+
+const cuotas = [];
+let deCache = 0;
+for (const p of candidatos) {
+  if (cuotas.length >= MAX) break;
+  const fCache = path.join(CACHE, p.fixtureId + '.json');
+  let hist = leer(fCache)?.casas?.bet365 ?? leer(fCache)?.hist;
+  if (!hist && KEY) {
+    try {
+      hist = await api('historical-odds', { fixtureId: p.fixtureId, bookmaker: 'bet365' });
+      fs.mkdirSync(CACHE, { recursive: true });
+      fs.writeFileSync(fCache, JSON.stringify({ fixture: p, casas: { bet365: hist }, hist }));
+    } catch (e) { if (!/NOT_FOUND/.test(e.message)) console.log(`  ✗ ${p.p1} vs ${p.p2}: ${e.message}`); continue }
+  } else if (hist) deCache++;
+  if (!hist) continue;
+  const v = vigente(hist);
+  if (!v) continue;
+  cuotas.push({ torneo: p.t.nombre, p1: p.p1, p2: p.p2, g1: v[0], g2: v[1],
+    visto: new Date().toISOString().slice(0, 16) + 'Z', fuente: 'bet365', fixtureId: p.fixtureId,
+    inicio: p.startTime });
+  console.log(`  + ${p.t.nombre.padEnd(22)} ${p.p1} ${v[0]} / ${p.p2} ${v[1]}`);
+}
+fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: 'bet365', cuotas }, null, 1));
+console.log(`\n${cuotas.length} cuotas (${deCache} de caché, ${REQ} requests) → vigia/itf-cuotas-bet365.json`);
+console.log('ahora: node vigia/itf-informe.mjs --bet365');
