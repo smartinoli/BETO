@@ -1,0 +1,314 @@
+{
+ "generado": "2026-08-26T16:57:02.006Z",
+ "fuente": "bet365",
+ "partidos": [
+  {
+   "torneo": "M25 Oldenzaal",
+   "etapa": "R1",
+   "p1": "Zian Vanderstappen",
+   "p2": "Elgin Khoeblal",
+   "gana": "Elgin Khoeblal",
+   "p": 0.952,
+   "soloWtn": 0.952,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Alexander Frusina",
+   "p2": "Jakub Vrba",
+   "gana": "Jakub Vrba [5]",
+   "p": 0.568,
+   "soloWtn": 0.568,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Preston Stearns",
+   "p2": "Noa Vukadin",
+   "gana": "Noa Vukadin [2]",
+   "p": 0.62,
+   "soloWtn": 0.62,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Matisse Farzam",
+   "p2": "Mikael Arseneault",
+   "gana": "Matisse Farzam [6]",
+   "p": 0.519,
+   "soloWtn": 0.519,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Eli Stephenson",
+   "p2": "Alexander Petrov",
+   "gana": "Eli Stephenson",
+   "p": 0.595,
+   "soloWtn": 0.595,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Mar Del Plata",
+   "etapa": "R1",
+   "p1": "Ezequiel Monferrer",
+   "p2": "Felipe Vazquez",
+   "gana": "Ezequiel Monferrer",
+   "p": 0.932,
+   "soloWtn": 0.986,
+   "señales": [
+    "sub18"
+   ]
+  },
+  {
+   "torneo": "M15 Mar Del Plata",
+   "etapa": "R1",
+   "p1": "Manuel Mouilleron Salvo",
+   "p2": "Carlos Maria Zarate",
+   "gana": "Carlos Maria Zarate [2]",
+   "p": 0.955,
+   "soloWtn": 0.955,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Jesse Flores",
+   "p2": "Oliver OKONKWO",
+   "gana": "Jesse Flores [4]",
+   "p": 0.593,
+   "soloWtn": 0.593,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Noah Schachter",
+   "p2": "Jack Anthrop",
+   "gana": "Jack Anthrop [3]",
+   "p": 0.821,
+   "soloWtn": 0.821,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Bryce Nakashima Nakashima",
+   "p2": "Rocco Piatti",
+   "gana": "Bryce Nakashima Nakashima [5]",
+   "p": 0.794,
+   "soloWtn": 0.794,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Jelani Sarr",
+   "p2": "Tyler Bowers",
+   "gana": "Jelani Sarr [14]",
+   "p": 0.699,
+   "soloWtn": 0.792,
+   "señales": [
+    "forma"
+   ]
+  },
+  {
+   "torneo": "M15 Mar Del Plata",
+   "etapa": "R1",
+   "p1": "Tomas Jordi Leston",
+   "p2": "Rocco Valente",
+   "gana": "Rocco Valente",
+   "p": 0.63,
+   "soloWtn": 0.63,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Colson Wells",
+   "p2": "Felix Corwin",
+   "gana": "Felix Corwin [6]",
+   "p": 0.904,
+   "soloWtn": 0.904,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Nathan Ponwith",
+   "p2": "David Bakonyi",
+   "gana": "Nathan Ponwith [2]",
+   "p": 0.912,
+   "soloWtn": 0.912,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "etapa": "R1",
+   "p1": "Adam Jilly",
+   "p2": "Joshua Peck",
+   "gana": "Adam Jilly",
+   "p": 0.527,
+   "soloWtn": 0.527,
+   "señales": []
+  },
+  {
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "p1": "Tai Leonard Sach",
+   "p2": "Matthew Dellavedova",
+   "gana": "Matthew Dellavedova [3]",
+   "p": 0.85,
+   "soloWtn": 0.708,
+   "señales": [
+    "previo"
+   ]
+  },
+  {
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "p1": "Arthur Weber",
+   "p2": "Kristjan Tamm",
+   "gana": "Arthur Weber [5]",
+   "p": 0.874,
+   "soloWtn": 0.874,
+   "señales": []
+  },
+  {
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "p1": "Hyeon Chung",
+   "p2": "Ethan Cook",
+   "gana": "Hyeon Chung",
+   "p": 0.908,
+   "soloWtn": 0.908,
+   "señales": []
+  },
+  {
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "p1": "Hiromasa Koyama",
+   "p2": "Luca Castelnuovo",
+   "gana": "Luca Castelnuovo [8]",
+   "p": 0.83,
+   "soloWtn": 0.83,
+   "señales": []
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "etapa": "R2",
+   "p1": "Chan-Yeong Oh",
+   "p2": "Yusuke Takahashi",
+   "gana": "Yusuke Takahashi [8]",
+   "p": 0.742,
+   "soloWtn": 0.685,
+   "señales": [
+    "previo"
+   ]
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "etapa": "R2",
+   "p1": "Lingxi Zhao",
+   "p2": "M Rifqi Fitriadi",
+   "gana": "M Rifqi Fitriadi [5]",
+   "p": 0.516,
+   "soloWtn": 0.545,
+   "señales": [
+    "forma"
+   ]
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "etapa": "R2",
+   "p1": "Enzo Aguiard",
+   "p2": "Reiya Komagata",
+   "gana": "Enzo Aguiard [4]",
+   "p": 0.922,
+   "soloWtn": 0.912,
+   "señales": [
+    "forma"
+   ]
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "etapa": "R2",
+   "p1": "Tianhui Zhang",
+   "p2": "Miles Jones",
+   "gana": "Miles Jones",
+   "p": 0.525,
+   "soloWtn": 0.556,
+   "señales": [
+    "forma"
+   ]
+  },
+  {
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "p1": "Kasidit Samrej",
+   "p2": "Kai-i Wang",
+   "gana": "Kasidit Samrej [6]",
+   "p": 0.958,
+   "soloWtn": 0.958,
+   "señales": []
+  },
+  {
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "p1": "Yanki Erel",
+   "p2": "Hikaru Shiraishi",
+   "gana": "Yanki Erel [1]",
+   "p": 0.807,
+   "soloWtn": 0.807,
+   "señales": []
+  },
+  {
+   "torneo": "M25 Taipei",
+   "etapa": "R1",
+   "p1": "Yan Cheng CHEN",
+   "p2": "Sanhui Shin",
+   "gana": "Sanhui Shin",
+   "p": 0.867,
+   "soloWtn": 0.867,
+   "señales": []
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "etapa": "R1",
+   "p1": "Jelle Sels",
+   "p2": "Pieter De Lange",
+   "gana": "Jelle Sels [5]",
+   "p": 0.68,
+   "soloWtn": 0.68,
+   "señales": []
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "etapa": "R2",
+   "p1": "Brian Bozemoj",
+   "p2": "Eric Vanshelboim",
+   "gana": "Eric Vanshelboim [2]",
+   "p": 0.741,
+   "soloWtn": 0.679,
+   "señales": [
+    "forma"
+   ]
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "etapa": "R2",
+   "p1": "Edison Ambarzumjan",
+   "p2": "Hazem Naw",
+   "gana": "Hazem Naw",
+   "p": 0.816,
+   "soloWtn": 0.843,
+   "señales": [
+    "forma"
+   ]
+  }
+ ]
+}

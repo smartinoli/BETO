@@ -436,6 +436,19 @@ function enSimple(f) {
   return { fav, razon, mercado, cuenta, riesgo };
 }
 
+/* Volcado de veredictos: quién gana según el modelo, partido por partido.
+   Pedido por Sebastián el 2026-08-27: la pregunta que le importa es QUIÉN
+   GANA con nuestros datos, no cuánto paga el mercado. */
+fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
+  generado: new Date().toISOString(), fuente: bet365 ? 'bet365' : 'betano',
+  partidos: filas.filter(f => f.v?.nivel).map(f => ({
+    torneo: f.t.nombre, etapa: f.etapa, p1: f.f1.nombre, p2: f.f2.nombre,
+    gana: f.v.nivel.favorito, p: +(f.v.nivel.p).toFixed(3),
+    soloWtn: +(f.v.nivel.soloNivel).toFixed(3),
+    señales: (f.v.nivel.partes || []).filter(x => x.nombre !== 'nivel').map(x => x.nombre),
+  })),
+}, null, 1));
+
 /* ---------- consola: las elegidas primero, el resto en una línea ---------- */
 const T = (s, n) => String(s ?? '').slice(0, n).padEnd(n);
 console.log(`\n${cuotas.length} partidos con cuota${bet365 ? ' · fuente bet365 vía API' : ''}${tandaDoc ? ` · ${tandaDoc.archivos.length} torneos` : ''}`
