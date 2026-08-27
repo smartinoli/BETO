@@ -113,8 +113,14 @@ function vigente(hist, inicio) {
 const idx = leer(INDICE);
 if (!idx) { console.error('no hay índice: corre itf-historico.mjs --capturar'); process.exit(1) }
 const ahora = Date.now();
+/* SOLO partidos por jugar, y con 10 minutos de colchón. El colchón no es
+   adorno: el 2026-08-27 el feed le corrió el startTime a un partido que ya
+   iba un set arriba (decía 12:12, se jugaba desde las 09:00) y la "cuota
+   vigente" capturada 7 minutos antes de ese inicio falso era un 1.004 EN
+   VIVO. Un partido que "empieza" en menos de 10 minutos no se cotiza: su
+   cuota ya no es apostable y puede venir contaminada. */
 const candidatos = Object.values(idx.partidos)
-  .filter(p => Date.parse(p.startTime) > ahora - 2 * 3600e3)   /* aún por jugar (o recién) */
+  .filter(p => Date.parse(p.startTime) > ahora + 10 * 60e3)
   .map(p => ({ ...p, t: torneoDe(p.torneo) }))
   .filter(p => p.t && estaEn(p.t.clave, p.p1) && estaEn(p.t.clave, p.p2))
   .sort((a, b) => String(a.startTime).localeCompare(String(b.startTime)));

@@ -558,8 +558,18 @@ for (const arr of Object.values(historia.dias)) for (const v of arr) {
    calificó); lo que ya no está, se queda como quedó. */
 if (bet365) {
   const previos = historia.dias[HOY] || [];
-  const idsTanda = new Set(VEREDICTOS.map(v => v.fixtureId).filter(Boolean));
-  const nuevos = VEREDICTOS.map(v => {
+  /* un partido = UN registro: si ya quedó anotado en un día anterior (la
+     tanda de la noche alcanza partidos de la madrugada siguiente), no se
+     vuelve a anotar hoy — el registro de la primera foto manda */
+  const enOtroDia = new Set();
+  for (const [d, arr] of Object.entries(historia.dias)) if (d !== HOY)
+    for (const x of arr) if (x.fixtureId) enOtroDia.add(x.fixtureId);
+  /* una entrada en cuarentena (cuota en vivo colada) queda CONGELADA:
+     la tanda no la vuelve a escribir */
+  const congelados = new Set(previos.filter(x => x.cuotaSospechosa && x.fixtureId).map(x => x.fixtureId));
+  const tanda = VEREDICTOS.filter(v => !v.fixtureId || (!enOtroDia.has(v.fixtureId) && !congelados.has(v.fixtureId)));
+  const idsTanda = new Set(tanda.map(v => v.fixtureId).filter(Boolean));
+  const nuevos = tanda.map(v => {
     const p = previos.find(x => x.fixtureId && x.fixtureId === v.fixtureId);
     return p?.res ? { ...v, res: p.res, acerto: p.acerto, acertoMercado: p.acertoMercado } : v;
   });

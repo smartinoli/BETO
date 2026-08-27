@@ -74,8 +74,10 @@ export const wilson = (k, n) => {
 export function cargar() {
   const filas = (leer(BASE)?.partidos || []).map(c => ({ ...c, origen: 'registro' }));
   const hist = leer(path.join(DATOS, 'veredictos-historia.json'));
-  for (const [dia, arr] of Object.entries(hist?.dias || {})) for (const v of arr) {
-    if (!v.crit || !v.res || v.acerto == null) continue;
+  const vistos = new Set();   /* un fixture cuenta UNA vez, aunque figure en dos días */
+  for (const [dia, arr] of Object.entries(hist?.dias || {}).sort()) for (const v of arr) {
+    if (!v.crit || !v.res || v.acerto == null || v.cuotaSospechosa) continue;
+    if (v.fixtureId) { if (vistos.has(v.fixtureId)) continue; vistos.add(v.fixtureId); }
     const ganoLado = v.acerto ? v.lado : 3 - v.lado;
     filas.push({ ...v.crit, gano: v.crit.ladoFm === ganoLado, origen: 'dia ' + dia });
   }
