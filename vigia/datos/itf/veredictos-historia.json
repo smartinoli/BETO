@@ -861,7 +861,14 @@
     "pMercado": 0.485,
     "soloWtn": 0.906,
     "señales": [],
-    "razon": "Δ4.82 de WTN a favor de Manuel Plunger (8.39 contra 13.21), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.909: 49% una vez sacado su margen. A esa cuota, la apuesta rinde +73% si tenemos razón nosotros y −7% si la tiene el mercado. Manuel Plunger es el MEJOR POR RATING pero la casa lo paga 1.909: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ4.82 de WTN a favor de Manuel Plunger (8.39 contra 13.21), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.909: 49% una vez sacado su margen. A esa cuota, la apuesta rinde +73% si tenemos razón nosotros y −7% si la tiene el mercado. Manuel Plunger es el MEJOR POR RATING pero la casa lo paga 1.909: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Manuel Plunger",
+     "marcador": "6-2 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -889,7 +896,14 @@
     "pMercado": 0.625,
     "soloWtn": 0.761,
     "señales": [],
-    "razon": "Δ2.47 de WTN a favor de Aleksandr Braynin (8.77 contra 11.24), en R1: la curva del grupo \"buenas\" (n=528) da 76%. El mercado la paga a 1.5: 63% una vez sacado su margen. A esa cuota, la apuesta rinde +14% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ2.47 de WTN a favor de Aleksandr Braynin (8.77 contra 11.24), en R1: la curva del grupo \"buenas\" (n=528) da 76%. El mercado la paga a 1.5: 63% una vez sacado su margen. A esa cuota, la apuesta rinde +14% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Heorhii Shylov",
+     "marcador": "1-6 7-6(7) 6-0",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -917,7 +931,14 @@
     "pMercado": 0.463,
     "soloWtn": 0.976,
     "señales": [],
-    "razon": "Δ7.88 de WTN a favor de Corentin Denolly (3.78 contra 11.66), en R1: la curva del grupo \"buenas\" (n=528) da 98%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +95% si tenemos razón nosotros y −7% si la tiene el mercado. Corentin Denolly es el MEJOR POR RATING pero la casa lo paga 2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ7.88 de WTN a favor de Corentin Denolly (3.78 contra 11.66), en R1: la curva del grupo \"buenas\" (n=528) da 98%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +95% si tenemos razón nosotros y −7% si la tiene el mercado. Corentin Denolly es el MEJOR POR RATING pero la casa lo paga 2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Juan Ignacio Gallego",
+     "marcador": "6-2 6-1",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1021,7 +1042,14 @@
     "pMercado": 0.915,
     "soloWtn": 0.994,
     "señales": [],
-    "razon": "Δ10.75 de WTN a favor de Daniel Michalski (3.44 contra 14.19), en R1: la curva del grupo \"buenas\" (n=528) da 99%. El mercado la paga a 1.02: 92% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ10.75 de WTN a favor de Daniel Michalski (3.44 contra 14.19), en R1: la curva del grupo \"buenas\" (n=528) da 99%. El mercado la paga a 1.02: 92% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Daniel Michalski",
+     "marcador": "6-2 6-1",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1051,7 +1079,14 @@
     "señales": [
      "previo"
     ],
-    "razon": "Δ1.95 de WTN a favor de Nikita Mashtakov (4.83 contra 6.78), en R1: la curva del grupo \"buenas\" (n=528) da 71%. Ajustan: Nikita Mashtakov llegó más lejos en su torneo anterior (+20 pts). Queda en 91%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +67% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.95: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ1.95 de WTN a favor de Nikita Mashtakov (4.83 contra 6.78), en R1: la curva del grupo \"buenas\" (n=528) da 71%. Ajustan: Nikita Mashtakov llegó más lejos en su torneo anterior (+20 pts). Queda en 91%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +67% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.95: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
+    "res": {
+     "ganador": "Nikita Mashtakov",
+     "marcador": "6(6)-7 7-6(4) 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1079,7 +1114,14 @@
     "pMercado": 0.608,
     "soloWtn": 0.605,
     "señales": [],
-    "razon": "Δ0.91 de WTN a favor de Matyas Cerny (6.05 contra 6.96), en R1: la curva del grupo \"buenas\" (n=528) da 61%. El mercado la paga a 1.533: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.91: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ0.91 de WTN a favor de Matyas Cerny (6.05 contra 6.96), en R1: la curva del grupo \"buenas\" (n=528) da 61%. El mercado la paga a 1.533: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.91: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
+    "res": {
+     "ganador": "Matyas Cerny",
+     "marcador": "6-4 6(9)-7 6-4",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1412,7 +1454,14 @@
     "señales": [
      "previo"
     ],
-    "razon": "Δ1.83 de WTN a favor de Pavlos Tsitsipas (8.83 contra 10.66), en R1: la curva del grupo \"buenas\" (n=528) da 70%. Ajustan: Jonas GUNDACKER llegó más lejos en su torneo anterior (−27 pts). Queda en 43%. El mercado la paga a 2.25: 41% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.83: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Pavlos Tsitsipas es el MEJOR POR RATING pero la casa lo paga 2.25: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ1.83 de WTN a favor de Pavlos Tsitsipas (8.83 contra 10.66), en R1: la curva del grupo \"buenas\" (n=528) da 70%. Ajustan: Jonas GUNDACKER llegó más lejos en su torneo anterior (−27 pts). Queda en 43%. El mercado la paga a 2.25: 41% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.83: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Pavlos Tsitsipas es el MEJOR POR RATING pero la casa lo paga 2.25: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Pavlos Tsitsipas",
+     "marcador": "6-4 3-6 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -1440,7 +1489,14 @@
     "pMercado": 0.515,
     "soloWtn": 0.799,
     "señales": [],
-    "razon": "Δ2.94 de WTN a favor de Marcel Zielinski (6.19 contra 9.13), en R1: la curva del grupo \"buenas\" (n=528) da 80%. El mercado la paga a 1.8: 51% una vez sacado su margen. A esa cuota, la apuesta rinde +44% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ2.94 de WTN a favor de Marcel Zielinski (6.19 contra 9.13), en R1: la curva del grupo \"buenas\" (n=528) da 80%. El mercado la paga a 1.8: 51% una vez sacado su margen. A esa cuota, la apuesta rinde +44% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Marcel Zielinski",
+     "marcador": "6-0 2-6 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1468,7 +1524,14 @@
     "pMercado": 0.814,
     "soloWtn": 0.794,
     "señales": [],
-    "razon": "Δ2.88 de WTN a favor de Giovanni Oradini (6.34 contra 9.22), en R1: la curva del grupo \"buenas\" (n=528) da 79%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ2.88 de WTN a favor de Giovanni Oradini (6.34 contra 9.22), en R1: la curva del grupo \"buenas\" (n=528) da 79%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Giovanni Oradini",
+     "marcador": "6-2 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1570,7 +1633,14 @@
     "pMercado": 0.537,
     "soloWtn": 0.843,
     "señales": [],
-    "razon": "Δ3.58 de WTN a favor de Gerard Campana Lee (5.26 contra 8.84), en R1: la curva del grupo \"buenas\" (n=528) da 84%. El mercado la paga a 1.727: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +46% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ3.58 de WTN a favor de Gerard Campana Lee (5.26 contra 8.84), en R1: la curva del grupo \"buenas\" (n=528) da 84%. El mercado la paga a 1.727: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +46% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Gerard Campana Lee",
+     "marcador": "6-3 6-4",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1598,7 +1668,14 @@
     "pMercado": 0.915,
     "soloWtn": 0.982,
     "señales": [],
-    "razon": "Δ8.58 de WTN a favor de Vladyslav Orlov (5.5 contra 14.08), en R1: la curva del grupo \"buenas\" (n=528) da 98%. El mercado la paga a 1.02: 92% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ8.58 de WTN a favor de Vladyslav Orlov (5.5 contra 14.08), en R1: la curva del grupo \"buenas\" (n=528) da 98%. El mercado la paga a 1.02: 92% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Vladyslav Orlov",
+     "marcador": "6-4 6-4",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1809,7 +1886,14 @@
     "pMercado": 0.794,
     "soloWtn": 0.913,
     "señales": [],
-    "razon": "Δ5.01 de WTN a favor de Andrej Martin (4.18 contra 9.19), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.167: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ5.01 de WTN a favor de Andrej Martin (4.18 contra 9.19), en R1: la curva del grupo \"buenas\" (n=528) da 91%. El mercado la paga a 1.167: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Andrej Martin",
+     "marcador": "0-6 6-0 6-0",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -2369,7 +2453,14 @@
     "pMercado": 0.537,
     "soloWtn": 0.68,
     "señales": [],
-    "razon": "Δ1.61 de WTN a favor de Jelle Sels (5.31 contra 6.92), en R1: la curva del grupo \"buenas\" (n=528) da 68%. El mercado la paga a 1.727: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +17% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ1.61 de WTN a favor de Jelle Sels (5.31 contra 6.92), en R1: la curva del grupo \"buenas\" (n=528) da 68%. El mercado la paga a 1.727: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +17% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
+    "res": {
+     "ganador": "Pieter De Lange",
+     "marcador": "3-6 6-3 6-2",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -2903,7 +2994,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.40 de WTN a favor de Oleg Prihodko (4.22 contra 4.62), en R2: la curva del grupo \"medias\" (n=214) da 53%. Ajustan: Oleg Prihodko viene cediendo menos games (14% contra 37%) (+15 pts). Queda en 68%. El mercado la paga a 1.333: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −5% si la tiene el mercado. ΔWTN de 0.40: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ0.40 de WTN a favor de Oleg Prihodko (4.22 contra 4.62), en R2: la curva del grupo \"medias\" (n=214) da 53%. Ajustan: Oleg Prihodko viene cediendo menos games (14% contra 37%) (+15 pts). Queda en 68%. El mercado la paga a 1.333: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −5% si la tiene el mercado. ΔWTN de 0.40: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
+    "res": {
+     "ganador": "Filip Pieczonka",
+     "marcador": "6-3 0-6 7-5",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -3017,7 +3115,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.56 de WTN a favor de Fryderyk Lechno-Wasiutynski (6.57 contra 8.13), en R2: la curva del grupo \"medias\" (n=214) da 62%. Ajustan: Fryderyk Lechno-Wasiutynski viene cediendo menos games (29% contra 42%) (+8 pts). Queda en 70%. El mercado la paga a 1.667: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +16% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.56: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ1.56 de WTN a favor de Fryderyk Lechno-Wasiutynski (6.57 contra 8.13), en R2: la curva del grupo \"medias\" (n=214) da 62%. Ajustan: Fryderyk Lechno-Wasiutynski viene cediendo menos games (29% contra 42%) (+8 pts). Queda en 70%. El mercado la paga a 1.667: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +16% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.56: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
+    "res": {
+     "ganador": "Niklas Guttau",
+     "marcador": "6-3 7-6(5)",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -3117,7 +3222,14 @@
      "sub18",
      "forma"
     ],
-    "razon": "Δ5.73 de WTN a favor de Niccolo Catini (8.66 contra 14.39), en R2: la curva del grupo \"medias\" (n=214) da 86%. Ajustan: Michael Savano tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts); Michael Savano viene cediendo menos games (23% contra 44%): la forma contradice al nivel (−14 pts). Queda en 39%. El mercado la paga a 2.625: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −7% si la tiene el mercado. Niccolo Catini tiene mejor WTN pero llega cediendo 21 puntos más de games (44% contra 23%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Michael Savano paga desde 2.21 aun tomando el borde malo del intervalo. Niccolo Catini es el MEJOR POR RATING pero la casa lo paga 2.625: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ5.73 de WTN a favor de Niccolo Catini (8.66 contra 14.39), en R2: la curva del grupo \"medias\" (n=214) da 86%. Ajustan: Michael Savano tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts); Michael Savano viene cediendo menos games (23% contra 44%): la forma contradice al nivel (−14 pts). Queda en 39%. El mercado la paga a 2.625: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −7% si la tiene el mercado. Niccolo Catini tiene mejor WTN pero llega cediendo 21 puntos más de games (44% contra 23%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Michael Savano paga desde 2.21 aun tomando el borde malo del intervalo. Niccolo Catini es el MEJOR POR RATING pero la casa lo paga 2.625: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Michael Savano",
+     "marcador": "7-5 6-2",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -3150,7 +3262,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ3.15 de WTN a favor de Lorenzo Rottoli (6.68 contra 9.83), en R2: la curva del grupo \"medias\" (n=214) da 73%. Ajustan: Matthias Ujvary viene cediendo menos games (37% contra 48%): la forma contradice al nivel (−7 pts). Queda en 66%. El mercado la paga a 1.5: 63% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −6% si la tiene el mercado. Lorenzo Rottoli tiene mejor WTN pero llega cediendo 12 puntos más de games (48% contra 37%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Matthias Ujvary paga desde 2.21 aun tomando el borde malo del intervalo."
+    "razon": "Δ3.15 de WTN a favor de Lorenzo Rottoli (6.68 contra 9.83), en R2: la curva del grupo \"medias\" (n=214) da 73%. Ajustan: Matthias Ujvary viene cediendo menos games (37% contra 48%): la forma contradice al nivel (−7 pts). Queda en 66%. El mercado la paga a 1.5: 63% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −6% si la tiene el mercado. Lorenzo Rottoli tiene mejor WTN pero llega cediendo 12 puntos más de games (48% contra 37%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Matthias Ujvary paga desde 2.21 aun tomando el borde malo del intervalo.",
+    "res": {
+     "ganador": "Lorenzo Rottoli",
+     "marcador": "7-5 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -3619,5 +3738,5 @@
    }
   ]
  },
- "actualizado": "2026-08-27T16:31:57.081Z"
+ "actualizado": "2026-08-27T16:55:51.034Z"
 }

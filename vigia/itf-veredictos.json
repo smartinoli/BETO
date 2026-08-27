@@ -1,40 +1,5 @@
 {
- "generado": "2026-08-27T16:31:57.053Z",
+ "generado": "2026-08-27T16:55:51.006Z",
  "fuente": "bet365",
- "partidos": [
-  {
-   "crit": {
-    "cuota": 1.025,
-    "ladoFm": 1,
-    "acuerdo": true,
-    "pFm": 0.901,
-    "dW": 11.78,
-    "forma": 1,
-    "previo": null,
-    "grupo": "medias",
-    "edadFm": 31,
-    "edadRi": 18
-   },
-   "jugada": null,
-   "fixtureId": "pn129043461634882677",
-   "inicio": "2026-08-27T17:00:00.000Z",
-   "torneo": "M15 Mar Del Plata",
-   "pais": "Argentina",
-   "etapa": "R2",
-   "p1": "Gonzalo Villanueva",
-   "p2": "Vito Antonio Darderi",
-   "g1": 1.025,
-   "g2": 10.5,
-   "gana": "Gonzalo Villanueva",
-   "lado": 1,
-   "p": 0.901,
-   "pMercado": 0.911,
-   "soloWtn": 0.975,
-   "señales": [
-    "sub18",
-    "forma"
-   ],
-   "razon": "Δ11.78 de WTN a favor de Gonzalo Villanueva (3.46 contra 15.24), en R2: la curva del grupo \"medias\" (n=214) da 97%. Ajustan: Vito Antonio Darderi tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−8 pts); Gonzalo Villanueva viene cediendo menos games (28% contra 34%) (+2 pts). Queda en 90%. El mercado la paga a 1.025: 91% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −7% si la tiene el mercado."
-  }
- ]
+ "partidos": []
 }
