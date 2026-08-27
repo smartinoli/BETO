@@ -1,138 +1,28 @@
 {
- "generado": "2026-08-27T03:00:01.147Z",
+ "generado": "2026-08-27T05:41:57.098Z",
  "casa": "bet365",
  "cuotas": [
-  {
-   "torneo": "M25 Taipei",
-   "p1": "Hyeon Chung",
-   "p2": "Ethan Cook",
-   "g1": 1.083,
-   "g2": 7,
-   "visto": "2026-08-27T02:54Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042181634801075",
-   "inicio": "2026-08-27T01:41:37.000Z"
-  },
-  {
-   "torneo": "M25 Taipei",
-   "p1": "Tai Leonard Sach",
-   "p2": "Matthew Dellavedova",
-   "g1": 4.333,
-   "g2": 1.2,
-   "visto": "2026-08-27T02:54Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042181634800992",
-   "inicio": "2026-08-27T01:42:54.000Z"
-  },
-  {
-   "torneo": "M25 Taipei",
-   "p1": "Kuan-Shou Chen",
-   "p2": "Omar Jasika",
-   "g1": 4.5,
-   "g2": 1.167,
-   "visto": "2026-08-27T02:54Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042181634865857",
-   "inicio": "2026-08-27T01:43:35.000Z"
-  },
-  {
-   "torneo": "M25 Taipei",
-   "p1": "Hiromasa Koyama",
-   "p2": "Luca Castelnuovo",
-   "g1": 2.625,
-   "g2": 1.444,
-   "visto": "2026-08-27T02:54Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042181634801103",
-   "inicio": "2026-08-27T01:47:15.000Z"
-  },
-  {
-   "torneo": "M25 Taipei",
-   "p1": "Arthur Weber",
-   "p2": "Kristjan Tamm",
-   "g1": 1.286,
-   "g2": 3.5,
-   "visto": "2026-08-27T02:54Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042181634800993",
-   "inicio": "2026-08-27T01:48:10.000Z"
-  },
-  {
-   "torneo": "M15 Maanshan",
-   "p1": "Enzo Aguiard",
-   "p2": "Reiya Komagata",
-   "g1": 1.04,
-   "g2": 9,
-   "visto": "2026-08-27T02:54Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042801634799877",
-   "inicio": "2026-08-27T02:14:20.000Z"
-  },
-  {
-   "torneo": "M15 Maanshan",
-   "p1": "Lingxi Zhao",
-   "p2": "Muhamad Rifqi Fitriadi",
-   "g1": 2.625,
-   "g2": 1.444,
-   "visto": "2026-08-27T02:54Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042801634799876",
-   "inicio": "2026-08-27T02:14:53.000Z"
-  },
-  {
-   "torneo": "M15 Maanshan",
-   "p1": "Chan-Yeong Oh",
-   "p2": "Yusuke Takahashi",
-   "g1": 2.75,
-   "g2": 1.4,
-   "visto": "2026-08-27T02:54Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042801634799875",
-   "inicio": "2026-08-27T02:17:12.000Z"
-  },
-  {
-   "torneo": "M15 Maanshan",
-   "p1": "Tianhui Zhang",
-   "p2": "Miles Jones",
-   "g1": 2.1,
-   "g2": 1.667,
-   "visto": "2026-08-27T02:55Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042801634801028",
-   "inicio": "2026-08-27T02:18:03.000Z"
-  },
-  {
-   "torneo": "M25 Taipei",
-   "p1": "Yan Cheng Chen",
-   "p2": "Sanhui Shin",
-   "g1": 7.5,
-   "g2": 1.071,
-   "visto": "2026-08-27T02:55Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129042181634799822",
-   "inicio": "2026-08-27T02:49:00.000Z"
-  },
   {
    "torneo": "M25 Taipei",
    "p1": "Kasidit Samrej",
    "p2": "Kai-I Wang",
    "g1": 1.04,
    "g2": 9,
-   "visto": "2026-08-27T02:55Z",
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129042181634799802",
-   "inicio": "2026-08-27T02:52:00.000Z"
+   "inicio": "2026-08-27T03:43:40.000Z"
   },
   {
    "torneo": "M25 Taipei",
    "p1": "Yanki Erel",
    "p2": "Hikaru Shiraishi",
-   "g1": 1.222,
-   "g2": 4,
-   "visto": "2026-08-27T02:55Z",
+   "g1": 1.8,
+   "g2": 1.909,
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129042181634799821",
-   "inicio": "2026-08-27T02:55:00.000Z"
+   "inicio": "2026-08-27T03:45:17.000Z"
   },
   {
    "torneo": "M15 Bucharest",
@@ -140,7 +30,7 @@
    "p2": "Rares Teodor Pieleanu",
    "g1": 2,
    "g2": 1.727,
-   "visto": "2026-08-27T02:55Z",
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129034491634789394",
    "inicio": "2026-08-27T07:00:00.000Z"
@@ -151,7 +41,7 @@
    "p2": "Sebastian Gima",
    "g1": 5.5,
    "g2": 1.125,
-   "visto": "2026-08-27T02:55Z",
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129034491634877749",
    "inicio": "2026-08-27T07:00:00.000Z"
@@ -162,7 +52,7 @@
    "p2": "Nicolas Robert",
    "g1": 1.2,
    "g2": 4.333,
-   "visto": "2026-08-27T02:55Z",
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129034491634880722",
    "inicio": "2026-08-27T07:00:00.000Z"
@@ -173,7 +63,7 @@
    "p2": "Anton Arzhankin",
    "g1": 4.333,
    "g2": 1.2,
-   "visto": "2026-08-27T02:55Z",
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129039781634880713",
    "inicio": "2026-08-27T07:30:00.000Z"
@@ -184,7 +74,7 @@
    "p2": "Chris Spyrou",
    "g1": 1.014,
    "g2": 12,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129039781634878126",
    "inicio": "2026-08-27T07:30:00.000Z"
@@ -195,7 +85,7 @@
    "p2": "Leo Raquillet",
    "g1": 6,
    "g2": 1.111,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129054081634753682",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -206,7 +96,7 @@
    "p2": "Giannicola Misasi",
    "g1": 1.25,
    "g2": 3.75,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:36Z",
    "fuente": "bet365",
    "fixtureId": "pn129034491634880720",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -217,7 +107,7 @@
    "p2": "Sergi Perez Contri",
    "g1": 2.625,
    "g2": 1.444,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129036521634880711",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -226,9 +116,9 @@
    "torneo": "M25 Maribor",
    "p1": "Filip Jeff Planinsek",
    "p2": "Maximillian Figl",
-   "g1": 1.071,
-   "g2": 7.5,
-   "visto": "2026-08-27T02:56Z",
+   "g1": 1.1,
+   "g2": 6.5,
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129038831634878119",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -237,9 +127,9 @@
    "torneo": "M25 Maribor",
    "p1": "Nik Mikovic",
    "p2": "Giuseppe La Vela",
-   "g1": 5,
-   "g2": 1.143,
-   "visto": "2026-08-27T02:56Z",
+   "g1": 5.5,
+   "g2": 1.125,
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129038831634878122",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -250,7 +140,7 @@
    "p2": "Nicolo Toffanin",
    "g1": 1.014,
    "g2": 12,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129038831634878123",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -261,7 +151,7 @@
    "p2": "Sebastian Dominko",
    "g1": 3,
    "g2": 1.364,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129038831634880707",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -272,7 +162,7 @@
    "p2": "Tim Vaisman",
    "g1": 1.444,
    "g2": 2.625,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129040881634877754",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -283,7 +173,7 @@
    "p2": "Heorhii Shylov",
    "g1": 1.5,
    "g2": 2.5,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129040881634878138",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -294,7 +184,7 @@
    "p2": "Corentin Denolly",
    "g1": 6.5,
    "g2": 1.1,
-   "visto": "2026-08-27T02:56Z",
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129040881634878140",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -303,9 +193,9 @@
    "torneo": "M15 Cap d'Agde",
    "p1": "Mathieu Scaglia",
    "p2": "Jaume Casas Blasi",
-   "g1": 2,
-   "g2": 1.727,
-   "visto": "2026-08-27T02:57Z",
+   "g1": 1.286,
+   "g2": 3.5,
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129054081634878135",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -316,7 +206,7 @@
    "p2": "Ferdinand Livet Novkirichka",
    "g1": 1.5,
    "g2": 2.5,
-   "visto": "2026-08-27T02:57Z",
+   "visto": "2026-08-27T05:37Z",
    "fuente": "bet365",
    "fixtureId": "pn129054081634880725",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -325,9 +215,9 @@
    "torneo": "M25 Poznan",
    "p1": "Daniel Michalski",
    "p2": "Jan Wygona",
-   "g1": 1.02,
-   "g2": 11,
-   "visto": "2026-08-27T02:57Z",
+   "g1": 1.025,
+   "g2": 10.5,
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129054091634877740",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -336,9 +226,9 @@
    "torneo": "M25 Poznan",
    "p1": "Nikita Mashtakov",
    "p2": "Kirill Kivattsev",
-   "g1": 1.667,
-   "g2": 2.1,
-   "visto": "2026-08-27T02:57Z",
+   "g1": 1.8,
+   "g2": 1.909,
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129054091634878124",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -349,7 +239,7 @@
    "p2": "Karol Filar",
    "g1": 1.533,
    "g2": 2.375,
-   "visto": "2026-08-27T02:57Z",
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129054091634878125",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -360,7 +250,7 @@
    "p2": "John Sperle",
    "g1": 8,
    "g2": 1.062,
-   "visto": "2026-08-27T02:57Z",
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129054111634877787",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -369,9 +259,9 @@
    "torneo": "M15 Pecs",
    "p1": "Botond Kisantal",
    "p2": "Trisztan Gubi",
-   "g1": 1.909,
-   "g2": 1.8,
-   "visto": "2026-08-27T02:57Z",
+   "g1": 2.1,
+   "g2": 1.667,
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129054111634880760",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -382,7 +272,7 @@
    "p2": "Jeremy Gschwendtner",
    "g1": 1.3,
    "g2": 3.4,
-   "visto": "2026-08-27T02:57Z",
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129054111634882629",
    "inicio": "2026-08-27T08:00:00.000Z"
@@ -393,7 +283,7 @@
    "p2": "Frederic Schlossmann",
    "g1": 1.3,
    "g2": 3.4,
-   "visto": "2026-08-27T02:57Z",
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129036491634877753",
    "inicio": "2026-08-27T08:30:00.000Z"
@@ -402,9 +292,9 @@
    "torneo": "M15 Allershausen",
    "p1": "Calvin Mueller",
    "p2": "Maximilian Alessandro Erhardt",
-   "g1": 1.143,
-   "g2": 5,
-   "visto": "2026-08-27T02:58Z",
+   "g1": 1.111,
+   "g2": 6,
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129036491634880726",
    "inicio": "2026-08-27T08:30:00.000Z"
@@ -415,9 +305,20 @@
    "p2": "Filiberto Fumagalli",
    "g1": 1.333,
    "g2": 3.25,
-   "visto": "2026-08-27T02:58Z",
+   "visto": "2026-08-27T05:38Z",
    "fuente": "bet365",
    "fixtureId": "pn129039781634880715",
+   "inicio": "2026-08-27T08:30:00.000Z"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Branko Djuric",
+   "p2": "Mario Arce Fernandez",
+   "g1": 1.1,
+   "g2": 6.5,
+   "visto": "2026-08-27T05:38Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129039781634877744",
    "inicio": "2026-08-27T08:30:00.000Z"
   },
   {
@@ -426,7 +327,7 @@
    "p2": "Tymur Bieldiugin",
    "g1": 1.222,
    "g2": 4,
-   "visto": "2026-08-27T02:58Z",
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129043471634786256",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -437,7 +338,7 @@
    "p2": "Nicolas Ulrich",
    "g1": 1.012,
    "g2": 13,
-   "visto": "2026-08-27T02:58Z",
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129043471634789416",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -446,9 +347,9 @@
    "torneo": "M25 Oldenzaal",
    "p1": "Lucio Ratti",
    "p2": "Alexander Maarten Sander Jong",
-   "g1": 1.533,
-   "g2": 2.375,
-   "visto": "2026-08-27T02:58Z",
+   "g1": 1.571,
+   "g2": 2.25,
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129036371634878115",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -457,9 +358,9 @@
    "torneo": "M25 Oldenzaal",
    "p1": "Daniel Verbeek",
    "p2": "Eero Vasa",
-   "g1": 3.75,
-   "g2": 1.25,
-   "visto": "2026-08-27T02:58Z",
+   "g1": 4.333,
+   "g2": 1.2,
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129036371634880706",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -470,7 +371,7 @@
    "p2": "Dimitar Kuzmanov",
    "g1": 7.5,
    "g2": 1.071,
-   "visto": "2026-08-27T02:58Z",
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129038831634878120",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -479,9 +380,9 @@
    "torneo": "M25 Maribor",
    "p1": "Aljaz Jeran",
    "p2": "Andrea De Marchi",
-   "g1": 3,
-   "g2": 1.364,
-   "visto": "2026-08-27T02:58Z",
+   "g1": 3.25,
+   "g2": 1.333,
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129038831634878121",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -492,7 +393,7 @@
    "p2": "Pavlos Tsitsipas",
    "g1": 1.571,
    "g2": 2.25,
-   "visto": "2026-08-27T02:58Z",
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129040881634877755",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -503,7 +404,7 @@
    "p2": "Marcel Zielinski",
    "g1": 4.5,
    "g2": 1.167,
-   "visto": "2026-08-27T02:58Z",
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129040881634878137",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -514,7 +415,7 @@
    "p2": "Alexander Wagner",
    "g1": 1.143,
    "g2": 5,
-   "visto": "2026-08-27T02:58Z",
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129040881634878139",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -525,7 +426,7 @@
    "p2": "Amaury Raynel",
    "g1": 2.75,
    "g2": 1.4,
-   "visto": "2026-08-27T02:58Z",
+   "visto": "2026-08-27T05:39Z",
    "fuente": "bet365",
    "fixtureId": "pn129054081634877751",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -536,7 +437,7 @@
    "p2": "Daniel Bagnolini",
    "g1": 1.05,
    "g2": 8.5,
-   "visto": "2026-08-27T02:59Z",
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129054081634878134",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -547,7 +448,7 @@
    "p2": "Valentin Basel",
    "g1": 1.071,
    "g2": 7.5,
-   "visto": "2026-08-27T02:59Z",
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129054091634877741",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -558,7 +459,7 @@
    "p2": "Borys Zgola",
    "g1": 1.03,
    "g2": 10,
-   "visto": "2026-08-27T02:59Z",
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129054091634880708",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -569,7 +470,7 @@
    "p2": "Pedro Rodenas",
    "g1": 1.571,
    "g2": 2.25,
-   "visto": "2026-08-27T02:59Z",
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129036521634877792",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -580,7 +481,7 @@
    "p2": "Valerio Aboian",
    "g1": 6,
    "g2": 1.111,
-   "visto": "2026-08-27T02:59Z",
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129038831634877784",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -591,7 +492,7 @@
    "p2": "Miha Vetrih",
    "g1": 1.004,
    "g2": 17,
-   "visto": "2026-08-27T02:59Z",
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129038831634877785",
    "inicio": "2026-08-27T09:00:00.000Z"
@@ -600,31 +501,20 @@
    "torneo": "M25 Poznan",
    "p1": "Filip Pieczonka",
    "p2": "Oleg Prihodko",
-   "g1": 4,
-   "g2": 1.222,
-   "visto": "2026-08-27T02:59Z",
+   "g1": 3.25,
+   "g2": 1.333,
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129054091634882625",
    "inicio": "2026-08-27T09:00:00.000Z"
   },
   {
-   "torneo": "M15 Kursumlijska Banja ",
-   "p1": "Branko Djuric",
-   "p2": "Mario Arce Fernandez",
-   "g1": 1.1,
-   "g2": 6.5,
-   "visto": "2026-08-27T02:59Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129039781634877744",
-   "inicio": "2026-08-27T09:05:00.000Z"
-  },
-  {
    "torneo": "M25 Oviedo",
    "p1": "Alexander Ritschard",
    "p2": "Yaroslav Demin",
-   "g1": 1.143,
-   "g2": 5,
-   "visto": "2026-08-27T02:59Z",
+   "g1": 1.2,
+   "g2": 4.333,
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129036521634880766",
    "inicio": "2026-08-27T09:30:00.000Z"
@@ -635,7 +525,7 @@
    "p2": "Ignacio Monzon",
    "g1": 3.75,
    "g2": 1.25,
-   "visto": "2026-08-27T02:59Z",
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129054111634877788",
    "inicio": "2026-08-27T09:30:00.000Z"
@@ -644,9 +534,9 @@
    "torneo": "M15 Pecs",
    "p1": "Filip Drab",
    "p2": "Preston Brown",
-   "g1": 1.909,
-   "g2": 1.8,
-   "visto": "2026-08-27T02:59Z",
+   "g1": 2.25,
+   "g2": 1.571,
+   "visto": "2026-08-27T05:40Z",
    "fuente": "bet365",
    "fixtureId": "pn129054111634880759",
    "inicio": "2026-08-27T09:30:00.000Z"
@@ -657,10 +547,120 @@
    "p2": "John Hallquist Lithen",
    "g1": 8,
    "g2": 1.062,
-   "visto": "2026-08-27T03:00Z",
+   "visto": "2026-08-27T05:41Z",
    "fuente": "bet365",
    "fixtureId": "pn129054111634882628",
    "inicio": "2026-08-27T09:30:00.000Z"
+  },
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Filip Cristian Jianu",
+   "p2": "Robert Guna",
+   "g1": 1.143,
+   "g2": 5,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034491634880721",
+   "inicio": "2026-08-27T10:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Lorenzo Angelini",
+   "p2": "Steffan Van Weldam",
+   "g1": 1.062,
+   "g2": 8,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129036371634878116",
+   "inicio": "2026-08-27T10:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Jakub Filip",
+   "p2": "Justin Schlageter",
+   "g1": 1.667,
+   "g2": 2.1,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129036491634877752",
+   "inicio": "2026-08-27T10:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Leonid Sheyngezikht",
+   "p2": "Antoni Fabre",
+   "g1": 2.1,
+   "g2": 1.667,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129039781634880712",
+   "inicio": "2026-08-27T10:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Alexander Weis",
+   "p2": "Adrien Burdet",
+   "g1": 1.04,
+   "g2": 9,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129043471634877739",
+   "inicio": "2026-08-27T10:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Niklas Waldner",
+   "p2": "William Rejchtman Vinciguerra",
+   "g1": 3,
+   "g2": 1.364,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129036491634880764",
+   "inicio": "2026-08-27T10:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Thilo Behrmann",
+   "p2": "Nikolai Barsukov",
+   "g1": 1.444,
+   "g2": 2.625,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129036491634882634",
+   "inicio": "2026-08-27T10:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Edison Ambarzumjan",
+   "p2": "Hazem Naw",
+   "g1": 9,
+   "g2": 1.04,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129036491634785750",
+   "inicio": "2026-08-27T11:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Matthias Ujvary",
+   "p2": "Lorenzo Rottoli",
+   "g1": 2.75,
+   "g2": 1.4,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129040881634877756",
+   "inicio": "2026-08-27T11:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Andrej Martin",
+   "p2": "Leyton Rivera",
+   "g1": 1.167,
+   "g2": 4.5,
+   "visto": "2026-08-27T05:41Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129040881634880727",
+   "inicio": "2026-08-27T11:00:00.000Z"
   }
  ]
 }
