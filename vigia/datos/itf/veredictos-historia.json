@@ -948,7 +948,14 @@
      "sub18",
      "forma"
     ],
-    "razon": "Δ9.58 de WTN a favor de Mathieu Scaglia (8.49 contra 18.07), en R2: la curva del grupo \"medias\" (n=214) da 95%. Ajustan: Jaume Casas Blasi tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−18 pts); Jaume Casas Blasi viene cediendo menos games (31% contra 38%): la forma contradice al nivel (−3 pts). Queda en 76%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +53% si tenemos razón nosotros y −7% si la tiene el mercado. Mathieu Scaglia tiene mejor WTN pero llega cediendo 6 puntos más de games (38% contra 31%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Jaume Casas Blasi paga desde 2.21 aun tomando el borde malo del intervalo. Mathieu Scaglia es el MEJOR POR RATING pero la casa lo paga 2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ9.58 de WTN a favor de Mathieu Scaglia (8.49 contra 18.07), en R2: la curva del grupo \"medias\" (n=214) da 95%. Ajustan: Jaume Casas Blasi tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−18 pts); Jaume Casas Blasi viene cediendo menos games (31% contra 38%): la forma contradice al nivel (−3 pts). Queda en 76%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +53% si tenemos razón nosotros y −7% si la tiene el mercado. Mathieu Scaglia tiene mejor WTN pero llega cediendo 6 puntos más de games (38% contra 31%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Jaume Casas Blasi paga desde 2.21 aun tomando el borde malo del intervalo. Mathieu Scaglia es el MEJOR POR RATING pero la casa lo paga 2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Mathieu Scaglia",
+     "marcador": "6(5)-7 6-3 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -979,7 +986,14 @@
      "sub18",
      "forma"
     ],
-    "razon": "Δ1.84 de WTN a favor de Oscar Jose Gutierrez (7.61 contra 9.45), en R2: la curva del grupo \"medias\" (n=214) da 64%. Ajustan: Ferdinand Livet Novkirichka tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts); Oscar Jose Gutierrez viene cediendo menos games (25% contra 46%) (+13 pts). Queda en 39%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.84: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ1.84 de WTN a favor de Oscar Jose Gutierrez (7.61 contra 9.45), en R2: la curva del grupo \"medias\" (n=214) da 64%. Ajustan: Ferdinand Livet Novkirichka tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts); Oscar Jose Gutierrez viene cediendo menos games (25% contra 46%) (+13 pts). Queda en 39%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.84: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
+    "res": {
+     "ganador": "Ferdinand Livet Novkirichka",
+     "marcador": "7-6(5) 6-3",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -1192,7 +1206,14 @@
     "pMercado": 0.766,
     "soloWtn": 0.832,
     "señales": [],
-    "razon": "Δ5.15 de WTN a favor de Andrey Chepelev (5.18 contra 10.33), en R2: la curva del grupo \"medias\" (n=214) da 83%. El mercado la paga a 1.222: 77% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ5.15 de WTN a favor de Andrey Chepelev (5.18 contra 10.33), en R2: la curva del grupo \"medias\" (n=214) da 83%. El mercado la paga a 1.222: 77% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Andrey Chepelev",
+     "marcador": "6-0 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1222,7 +1243,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ9.31 de WTN a favor de Lorenzo Carboni (3.59 contra 12.9), en R2: la curva del grupo \"medias\" (n=214) da 95%. Ajustan: Lorenzo Carboni viene cediendo menos games (35% contra 39%) (+1 pts). Queda en 95%. El mercado la paga a 1.012: 93% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ9.31 de WTN a favor de Lorenzo Carboni (3.59 contra 12.9), en R2: la curva del grupo \"medias\" (n=214) da 95%. Ajustan: Lorenzo Carboni viene cediendo menos games (35% contra 39%) (+1 pts). Queda en 95%. El mercado la paga a 1.012: 93% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Lorenzo Carboni",
+     "marcador": "6-2 6-1",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1252,7 +1280,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.31 de WTN a favor de Lucio Ratti (4.72 contra 5.03), en R2: la curva del grupo \"medias\" (n=214) da 52%. Ajustan: Lucio Ratti viene cediendo menos games (8% contra 25%) (+12 pts). Queda en 64%. El mercado la paga a 1.667: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.31: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ0.31 de WTN a favor de Lucio Ratti (4.72 contra 5.03), en R2: la curva del grupo \"medias\" (n=214) da 52%. Ajustan: Lucio Ratti viene cediendo menos games (8% contra 25%) (+12 pts). Queda en 64%. El mercado la paga a 1.667: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.31: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
+    "res": {
+     "ganador": "Sander Jong",
+     "marcador": "6-2 6-0",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -1282,7 +1317,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ3.89 de WTN a favor de Eero Vasa (5.17 contra 9.06), en R2: la curva del grupo \"medias\" (n=214) da 77%. Ajustan: Daniel Verbeek viene cediendo menos games (30% contra 45%): la forma contradice al nivel (−8 pts). Queda en 69%. El mercado la paga a 1.25: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ3.89 de WTN a favor de Eero Vasa (5.17 contra 9.06), en R2: la curva del grupo \"medias\" (n=214) da 77%. Ajustan: Daniel Verbeek viene cediendo menos games (30% contra 45%): la forma contradice al nivel (−8 pts). Queda en 69%. El mercado la paga a 1.25: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Daniel Verbeek",
+     "marcador": "7-5 7-6(3)",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -1456,7 +1498,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.04 de WTN a favor de Pierre Antoine Tailleu (8.49 contra 9.53), en R2: la curva del grupo \"medias\" (n=214) da 58%. Ajustan: Amaury Raynel viene cediendo menos games (29% contra 40%): la forma contradice al nivel (−7 pts). Queda en 51%. El mercado la paga a 2.75: 34% una vez sacado su margen. A esa cuota, la apuesta rinde +39% si tenemos razón nosotros y −7% si la tiene el mercado. Pierre Antoine Tailleu tiene mejor WTN pero llega cediendo 11 puntos más de games (40% contra 29%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Amaury Raynel paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 1.04: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Pierre Antoine Tailleu es el MEJOR POR RATING pero la casa lo paga 2.75: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ1.04 de WTN a favor de Pierre Antoine Tailleu (8.49 contra 9.53), en R2: la curva del grupo \"medias\" (n=214) da 58%. Ajustan: Amaury Raynel viene cediendo menos games (29% contra 40%): la forma contradice al nivel (−7 pts). Queda en 51%. El mercado la paga a 2.75: 34% una vez sacado su margen. A esa cuota, la apuesta rinde +39% si tenemos razón nosotros y −7% si la tiene el mercado. Pierre Antoine Tailleu tiene mejor WTN pero llega cediendo 11 puntos más de games (40% contra 29%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Amaury Raynel paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 1.04: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Pierre Antoine Tailleu es el MEJOR POR RATING pero la casa lo paga 2.75: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Pierre Antoine Tailleu",
+     "marcador": "6-2 6-4",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -1486,7 +1535,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ2.65 de WTN a favor de Maxime Chazal (5.69 contra 8.34), en R2: la curva del grupo \"medias\" (n=214) da 69%. Ajustan: Daniel Bagnolini viene cediendo menos games (25% contra 33%): la forma contradice al nivel (−5 pts). Queda en 64%. El mercado la paga a 1.909: 49% una vez sacado su margen. A esa cuota, la apuesta rinde +23% si tenemos razón nosotros y −7% si la tiene el mercado. Maxime Chazal tiene mejor WTN pero llega cediendo 8 puntos más de games (33% contra 25%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Daniel Bagnolini paga desde 2.21 aun tomando el borde malo del intervalo. Maxime Chazal es el MEJOR POR RATING pero la casa lo paga 1.909: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ2.65 de WTN a favor de Maxime Chazal (5.69 contra 8.34), en R2: la curva del grupo \"medias\" (n=214) da 69%. Ajustan: Daniel Bagnolini viene cediendo menos games (25% contra 33%): la forma contradice al nivel (−5 pts). Queda en 64%. El mercado la paga a 1.909: 49% una vez sacado su margen. A esa cuota, la apuesta rinde +23% si tenemos razón nosotros y −7% si la tiene el mercado. Maxime Chazal tiene mejor WTN pero llega cediendo 8 puntos más de games (33% contra 25%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Daniel Bagnolini paga desde 2.21 aun tomando el borde malo del intervalo. Maxime Chazal es el MEJOR POR RATING pero la casa lo paga 1.909: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Maxime Chazal",
+     "marcador": "6-4 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -1630,7 +1686,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ6.21 de WTN a favor de Lorenzo Angelini (5.35 contra 11.56), en R2: la curva del grupo \"medias\" (n=214) da 87%. Ajustan: Steffan Van Weldam viene cediendo menos games (37% contra 43%): la forma contradice al nivel (−2 pts). Queda en 85%. El mercado la paga a 1.062: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ6.21 de WTN a favor de Lorenzo Angelini (5.35 contra 11.56), en R2: la curva del grupo \"medias\" (n=214) da 87%. Ajustan: Steffan Van Weldam viene cediendo menos games (37% contra 43%): la forma contradice al nivel (−2 pts). Queda en 85%. El mercado la paga a 1.062: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Lorenzo Angelini",
+     "marcador": "6-1 0-6 6-4",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1776,7 +1839,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.10 de WTN a favor de Nino Ehrenschneider (7.23 contra 7.33), en R2: la curva del grupo \"medias\" (n=214) da 51%. Ajustan: Jeffrey Von Der Schulenburg viene cediendo menos games (48% contra 50%): la forma contradice al nivel (−1 pts). Queda en 49%. El mercado la paga a 2.1: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.10: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nino Ehrenschneider es el MEJOR POR RATING pero la casa lo paga 2.1: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ0.10 de WTN a favor de Nino Ehrenschneider (7.23 contra 7.33), en R2: la curva del grupo \"medias\" (n=214) da 51%. Ajustan: Jeffrey Von Der Schulenburg viene cediendo menos games (48% contra 50%): la forma contradice al nivel (−1 pts). Queda en 49%. El mercado la paga a 2.1: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.10: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nino Ehrenschneider es el MEJOR POR RATING pero la casa lo paga 2.1: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Nino Ehrenschneider",
+     "marcador": "6-4 2-6 7-6(5)",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -1806,7 +1876,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ4.70 de WTN a favor de Kenny De Schepper (5.64 contra 10.34), en R2: la curva del grupo \"medias\" (n=214) da 81%. Ajustan: Kenny De Schepper viene cediendo menos games (38% contra 47%) (+3 pts). Queda en 85%. El mercado la paga a 1.444: 65% una vez sacado su margen. A esa cuota, la apuesta rinde +22% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ4.70 de WTN a favor de Kenny De Schepper (5.64 contra 10.34), en R2: la curva del grupo \"medias\" (n=214) da 81%. Ajustan: Kenny De Schepper viene cediendo menos games (38% contra 47%) (+3 pts). Queda en 85%. El mercado la paga a 1.444: 65% una vez sacado su margen. A esa cuota, la apuesta rinde +22% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Kenny De Schepper",
+     "marcador": "5-7 7-5 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -1836,7 +1913,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.55 de WTN a favor de Pierre Delage (6.53 contra 8.08), en R2: la curva del grupo \"medias\" (n=214) da 62%. Ajustan: Pierre Delage viene cediendo menos games (33% contra 45%) (+8 pts). Queda en 69%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +27% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.55: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ1.55 de WTN a favor de Pierre Delage (6.53 contra 8.08), en R2: la curva del grupo \"medias\" (n=214) da 62%. Ajustan: Pierre Delage viene cediendo menos games (33% contra 45%) (+8 pts). Queda en 69%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +27% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.55: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie.",
+    "res": {
+     "ganador": "Pierre Delage",
+     "marcador": "6-4 7-6(7)",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -2348,7 +2432,14 @@
      "sub18",
      "forma"
     ],
-    "razon": "Δ4.70 de WTN a favor de Leo Raquillet (6.24 contra 10.94), en R2: la curva del grupo \"medias\" (n=214) da 81%. Ajustan: Lenny Couturier tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−34 pts); Leo Raquillet viene cediendo menos games (14% contra 20%) (+4 pts). Queda en 50%. El mercado la paga a 1.111: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −45% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ4.70 de WTN a favor de Leo Raquillet (6.24 contra 10.94), en R2: la curva del grupo \"medias\" (n=214) da 81%. Ajustan: Lenny Couturier tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−34 pts); Leo Raquillet viene cediendo menos games (14% contra 20%) (+4 pts). Queda en 50%. El mercado la paga a 1.111: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −45% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Lenny Couturier",
+     "marcador": "6-3 4-6 6-4",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -2638,7 +2729,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ4.56 de WTN a favor de Alexander Weis (4.69 contra 9.25), en R2: la curva del grupo \"medias\" (n=214) da 80%. Ajustan: Alexander Weis viene cediendo menos games (20% contra 43%) (+8 pts). Queda en 89%. El mercado la paga a 1.04: 90% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −7% si la tiene el mercado. Alexander Weis llega cediendo 23 puntos menos de games, el rival no es sub-19 y el ΔWTN es 4.56. Medido, esa combinación gana 91% (n=55, IC 80–96) cuando la curva daba 78%. Paga desde 1.24 tomando el borde malo."
+    "razon": "Δ4.56 de WTN a favor de Alexander Weis (4.69 contra 9.25), en R2: la curva del grupo \"medias\" (n=214) da 80%. Ajustan: Alexander Weis viene cediendo menos games (20% contra 43%) (+8 pts). Queda en 89%. El mercado la paga a 1.04: 90% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −7% si la tiene el mercado. Alexander Weis llega cediendo 23 puntos menos de games, el rival no es sub-19 y el ΔWTN es 4.56. Medido, esa combinación gana 91% (n=55, IC 80–96) cuando la curva daba 78%. Paga desde 1.24 tomando el borde malo.",
+    "res": {
+     "ganador": "Adrien Burdet",
+     "marcador": "6-1 4-1",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -2839,7 +2937,14 @@
      "sub18",
      "forma"
     ],
-    "razon": "Δ7.64 de WTN a favor de Noah Karma (8.32 contra 15.96), en R2: la curva del grupo \"medias\" (n=214) da 91%. Ajustan: Alessandro Hunziker tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−17 pts); Noah Karma viene cediendo menos games (20% contra 38%) (+10 pts). Queda en 78%. El mercado la paga a 2.2: 42% una vez sacado su margen. A esa cuota, la apuesta rinde +71% si tenemos razón nosotros y −7% si la tiene el mercado. Noah Karma es el MEJOR POR RATING pero la casa lo paga 2.2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ7.64 de WTN a favor de Noah Karma (8.32 contra 15.96), en R2: la curva del grupo \"medias\" (n=214) da 91%. Ajustan: Alessandro Hunziker tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−17 pts); Noah Karma viene cediendo menos games (20% contra 38%) (+10 pts). Queda en 78%. El mercado la paga a 2.2: 42% una vez sacado su margen. A esa cuota, la apuesta rinde +71% si tenemos razón nosotros y −7% si la tiene el mercado. Noah Karma es el MEJOR POR RATING pero la casa lo paga 2.2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Noah Karma",
+     "marcador": "6-3 5-7 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -2872,7 +2977,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ5.07 de WTN a favor de Henry Bernet (3.58 contra 8.65), en R2: la curva del grupo \"medias\" (n=214) da 83%. Ajustan: Henry Bernet viene cediendo menos games (41% contra 43%) (+1 pts). Queda en 84%. El mercado la paga a 1.083: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ5.07 de WTN a favor de Henry Bernet (3.58 contra 8.65), en R2: la curva del grupo \"medias\" (n=214) da 83%. Ajustan: Henry Bernet viene cediendo menos games (41% contra 43%) (+1 pts). Queda en 84%. El mercado la paga a 1.083: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Henry Bernet",
+     "marcador": "6-3 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -3507,5 +3619,5 @@
    }
   ]
  },
- "actualizado": "2026-08-27T13:29:58.208Z"
+ "actualizado": "2026-08-27T16:31:57.081Z"
 }
