@@ -3867,7 +3867,7 @@
    },
    {
     "crit": {
-     "cuota": 1.071,
+     "cuota": 1.111,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.627,
@@ -3886,18 +3886,18 @@
     "etapa": "QF",
     "p1": "Hyeon Chung",
     "p2": "Kuan-Shou Chen",
-    "g1": 1.071,
-    "g2": 7.5,
+    "g1": 1.111,
+    "g2": 6,
     "gana": "Hyeon Chung",
     "lado": 1,
     "p": 0.627,
-    "pMercado": 0.875,
+    "pMercado": 0.844,
     "soloWtn": 0.866,
     "señales": [
      "sub18",
      "previo"
     ],
-    "razon": "Δ10.72 de WTN a favor de Hyeon Chung (3.57 contra 14.29), en QF: la curva del grupo \"finales\" (n=79) da 87%. Ajustan: Kuan-Shou Chen tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−27 pts); Hyeon Chung llegó más lejos en su torneo anterior (+7 pts). Queda en 63%. El mercado la paga a 1.071: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −33% si tenemos razón nosotros y −6% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ10.72 de WTN a favor de Hyeon Chung (3.57 contra 14.29), en QF: la curva del grupo \"finales\" (n=79) da 87%. Ajustan: Kuan-Shou Chen tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−27 pts); Hyeon Chung llegó más lejos en su torneo anterior (+7 pts). Queda en 63%. El mercado la paga a 1.111: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −30% si tenemos razón nosotros y −6% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
    },
    {
     "crit": {
@@ -3934,7 +3934,7 @@
    },
    {
     "crit": {
-     "cuota": 1.083,
+     "cuota": 1.125,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.67,
@@ -3953,17 +3953,17 @@
     "etapa": "QF",
     "p1": "Kasidit Samrej",
     "p2": "Yan Cheng CHEN",
-    "g1": 1.083,
-    "g2": 7,
+    "g1": 1.125,
+    "g2": 5.5,
     "gana": "Kasidit Samrej",
     "lado": 1,
     "p": 0.67,
-    "pMercado": 0.866,
+    "pMercado": 0.83,
     "soloWtn": 0.712,
     "señales": [
      "forma"
     ],
-    "razon": "Δ5.20 de WTN a favor de Kasidit Samrej (4.15 contra 9.35), en QF: la curva del grupo \"finales\" (n=79) da 71%. Ajustan: Yan Cheng CHEN viene cediendo menos games (31% contra 38%): la forma contradice al nivel (−4 pts). Queda en 67%. El mercado la paga a 1.083: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −6% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ5.20 de WTN a favor de Kasidit Samrej (4.15 contra 9.35), en QF: la curva del grupo \"finales\" (n=79) da 71%. Ajustan: Yan Cheng CHEN viene cediendo menos games (31% contra 38%): la forma contradice al nivel (−4 pts). Queda en 67%. El mercado la paga a 1.125: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −7% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
    },
    {
     "crit": {
@@ -4161,5 +4161,5 @@
    }
   ]
  },
- "actualizado": "2026-08-27T20:15:52.517Z"
+ "actualizado": "2026-08-27T21:53:19.358Z"
 }
