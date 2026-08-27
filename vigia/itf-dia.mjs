@@ -6,10 +6,12 @@
    modelo, con su análisis, y la comparación contra lo que pasó. Esto
    encadena las tres piezas que lo producen:
 
-     1. itf-historico --capturar    el índice del día en OddsPapi — y de
-                                    paso refresca los MARCADORES de ayer,
-                                    que es con lo que se califican los
-                                    veredictos pendientes
+     1. itf-historico --capturar    el índice del día en OddsPapi (los
+                                    fixtures y sus cuotas; OJO: medido el
+                                    2026-08-27, OddsPapi NO trae marcadores
+                                    de ITF — los veredictos se califican
+                                    con el CUADRO oficial, que refresca
+                                    itf-navegador oop)
      2. itf-cuotas-bet365           las cuotas vigentes de los partidos
                                     por jugar (1 request por partido)
      3. itf-informe --bet365        la página: tabla de veredictos,

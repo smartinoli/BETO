@@ -521,22 +521,49 @@ fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
 const HISTF = path.join(DATOS, 'veredictos-historia.json');
 const HOY = new Date().toISOString().slice(0, 10);
 const historia = leer(HISTF) || { dias: {} };
-/* calificar lo pendiente con los marcadores del índice de OddsPapi */
+/* Calificar lo pendiente. Medido el 2026-08-27: OddsPapi NO trae
+   marcadores de ITF (statusId siempre null, /v4/scores responde 404 para
+   estos partidos), así que la fuente real de resultados es EL CUADRO
+   OFICIAL de la ITF — el mismo de donde salen etapa y forma, refrescado
+   por itf-navegador oop. El índice se mira primero por si algún día la
+   API empieza a mandarlos. */
 const idxHist = leer(path.join(DATOS, 'historico-indice.json')) || { partidos: {} };
-for (const arr of Object.values(historia.dias)) for (const v of arr) {
-  if (v.res || !v.fixtureId) continue;
-  const fx = idxHist.partidos[v.fixtureId];
-  if (!fx || fx.statusId !== 2 || fx.s1 == null || fx.s2 == null || fx.s1 === fx.s2) continue;
-  const ganoLado = fx.s1 > fx.s2 ? 1 : 2;
-  v.res = { ganador: ganoLado === 1 ? fx.p1 : fx.p2, marcador: fx.s1 + '-' + fx.s2 };
+const califica = (v, ganoLado, ganador, marcador, via) => {
+  v.res = { ganador, marcador, via };
   v.acerto = ganoLado === v.lado;
   if (v.pMercado != null) v.acertoMercado = (v.pMercado >= 0.5) === (ganoLado === v.lado);
+};
+for (const arr of Object.values(historia.dias)) for (const v of arr) {
+  if (v.res) continue;
+  const fx = v.fixtureId ? idxHist.partidos[v.fixtureId] : null;
+  if (fx && fx.statusId === 2 && fx.s1 != null && fx.s2 != null && fx.s1 !== fx.s2) {
+    const ganoLado = fx.s1 > fx.s2 ? 1 : 2;
+    califica(v, ganoLado, ganoLado === 1 ? fx.p1 : fx.p2, fx.s1 + '-' + fx.s2, 'oddspapi');
+    continue;
+  }
+  const t = TORNEO[v.torneo];
+  if (!t) continue;
+  const r = resultado(t.clave, v.p1, v.p2);
+  if (!r) continue;
+  const ganoLado = mismoJugador(r.ganador, v.p1) ? 1 : mismoJugador(r.ganador, v.p2) ? 2 : null;
+  if (!ganoLado) continue;
+  califica(v, ganoLado, r.ganador, r.marcador, 'cuadro');
 }
-/* los de hoy (misma corrida repetida = se reemplazan, no se duplican) */
-if (bet365) historia.dias[HOY] = VEREDICTOS.map(v => {
-  const previo = (historia.dias[HOY] || []).find(x => x.fixtureId && x.fixtureId === v.fixtureId);
-  return previo?.res ? { ...v, res: previo.res, acerto: previo.acerto, acertoMercado: previo.acertoMercado } : v;
-});
+/* Los de hoy se FUSIONAN, no se reemplazan. Con varias corridas al día
+   (el botón), la tanda vigente de la tarde ya no trae los partidos de la
+   mañana: reemplazar el día entero los borraba justo cuando estaban por
+   calificarse (así se perdieron los R1 del 26-08, recuperados de git).
+   Regla: lo que está en la tanda se actualiza (conservando res si ya se
+   calificó); lo que ya no está, se queda como quedó. */
+if (bet365) {
+  const previos = historia.dias[HOY] || [];
+  const idsTanda = new Set(VEREDICTOS.map(v => v.fixtureId).filter(Boolean));
+  const nuevos = VEREDICTOS.map(v => {
+    const p = previos.find(x => x.fixtureId && x.fixtureId === v.fixtureId);
+    return p?.res ? { ...v, res: p.res, acerto: p.acerto, acertoMercado: p.acertoMercado } : v;
+  });
+  historia.dias[HOY] = [...previos.filter(x => !idsTanda.has(x.fixtureId)), ...nuevos];
+}
 historia.actualizado = new Date().toISOString();
 fs.writeFileSync(HISTF, JSON.stringify(historia, null, 1));
 
