@@ -506,7 +506,8 @@ const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
     jugada: f.jugada ? { tipo: f.jugada.tipo, quien: f.jugada.quien,
       cuota: f.jugada.cuota, prob: f.jugada.prob ?? null } : null,
     fixtureId: f.q.fixtureId ?? null, inicio: f.q.inicio ?? null,
-    torneo: f.t.nombre, etapa: f.etapa, p1: f.f1.nombre, p2: f.f2.nombre,
+    torneo: f.t.nombre, pais: f.t.pais ?? null, etapa: f.etapa,
+    p1: f.f1.nombre, p2: f.f2.nombre, g1: f.q.g1 ?? null, g2: f.q.g2 ?? null,
     gana: f.v.nivel.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim(),
     lado, p: +(f.v.nivel.p).toFixed(3),
     pMercado: dev != null ? +dev.toFixed(3) : null,
@@ -628,7 +629,7 @@ const tarjeta = (f, i) => {
         : j.tipo === 'casilla' ? '<div class="sello">la casilla del manual</div>'
         : j.tipo === 'brecha' ? '<div class="sello">brecha contra bet365</div>' : ''}
       <h2>${esc(t.fav)} <span class="cuota">a ${j.cuota}</span></h2>
-      <div class="donde">contra ${esc(j.tipo === 'contra' ? n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim() : otroNom)} · ${esc(f.t.nombre)} · ${esc(f.etapa)}${f.horario ? ' · ' + esc(f.horario.hora || f.horario.fecha) : ''}</div>
+      <div class="donde">contra ${esc(j.tipo === 'contra' ? n.favorito.replace(/\s*\[\d+\]|\s*(WC|Q|LL|A|SE|PR)$/g, '').trim() : otroNom)} · ${esc(f.t.nombre)}${f.t.pais ? ', ' + esc(f.t.pais) : ''} · ${esc(f.etapa)}${f.horario ? ' · ' + esc(f.horario.hora || f.horario.fecha) : ''}</div>
       <p class="porque">${esc(t.razon)}</p>
       ${j.tipo === 'contra' ? `<div class="dosbarras">
         <div class="bl"><label>pierde</label><div class="bar"><span style="width:${Math.round(j.prob * 100)}%"></span></div><b>${Math.round(j.prob * 100)}%</b></div>
@@ -647,8 +648,8 @@ const tarjeta = (f, i) => {
         ${esc(f.v.regla.texto)}</p>` : ''}
       <details><summary>los números crudos</summary>
         <div class="crudo">
-          <div><b>${esc(f.f1.nombre)}</b> — WTN ${f.f1.wtn ?? '—'} · ${f.f1.nacido ? 2026 - f.f1.nacido + ' años' : 'edad —'} · ATP ${f.f1.atp ?? '—'} · ${trayHtml(f.f1)}</div>
-          <div><b>${esc(f.f2.nombre)}</b> — WTN ${f.f2.wtn ?? '—'} · ${f.f2.nacido ? 2026 - f.f2.nacido + ' años' : 'edad —'} · ATP ${f.f2.atp ?? '—'} · ${trayHtml(f.f2)}</div>
+          <div><b>${esc(f.f1.nombre)}</b>${f.q.g1 ? ` <span class="cq">a ${f.q.g1}</span>` : ''} — WTN ${f.f1.wtn ?? '—'} · ${f.f1.nacido ? 2026 - f.f1.nacido + ' años' : 'edad —'} · ATP ${f.f1.atp ?? '—'} · ${trayHtml(f.f1)}</div>
+          <div><b>${esc(f.f2.nombre)}</b>${f.q.g2 ? ` <span class="cq">a ${f.q.g2}</span>` : ''} — WTN ${f.f2.wtn ?? '—'} · ${f.f2.nacido ? 2026 - f.f2.nacido + ' años' : 'edad —'} · ATP ${f.f2.atp ?? '—'} · ${trayHtml(f.f2)}</div>
           <div class="raz">${esc(f.v.razon)}</div>
         </div></details>
     </div></article>`;
@@ -675,7 +676,7 @@ const html = `<title>Las que elijo hoy</title>
   --neg:#DE9077;--ojo:#CFA23F;--ojo-soft:#2A2415}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.62 "Source Serif 4",Georgia,serif}
-.env{max-width:760px;margin:0 auto;padding:0 18px 70px}
+.env{max-width:1260px;margin:0 auto;padding:0 22px 70px}
 header{padding:46px 0 20px}
 .kicker{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:13px}
 h1{font:700 clamp(32px,7vw,52px)/1.02 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.03em;margin:0 0 12px}
@@ -719,10 +720,10 @@ details[open] summary::before{content:"▾ "}
 .vt{font:700 20px/1.2 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.015em;margin:0 0 12px}
 .envt{overflow-x:auto;background:var(--panel);border:1px solid var(--rule);border-radius:8px}
 .envt table{width:100%;min-width:640px;border-collapse:collapse;font:13px "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
-.envt thead th{text-align:left;padding:9px 10px;border-bottom:1.5px solid var(--rule);
+.envt thead th{text-align:left;padding:9px 8px;border-bottom:1.5px solid var(--rule);
   font:600 10px "IBM Plex Mono",monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);white-space:nowrap}
 .envt thead th.n{text-align:right}
-.envt td{padding:7px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.envt td{padding:7px 8px;border-bottom:1px solid var(--rule);white-space:nowrap}
 .envt td.n{text-align:right} .envt td.sec{color:var(--ink3)}
 .envt td.quien{font:600 14.5px "Bricolage Grotesque",system-ui,sans-serif;white-space:normal}
 .envt tr.ok td.quien{color:var(--pos)} .envt tr.mal td.quien{color:var(--neg)}
@@ -730,6 +731,9 @@ details[open] summary::before{content:"▾ "}
 .envt tr.det details{margin:0;border:0;padding:0}
 .envt tr.det summary{font:500 10.5px "IBM Plex Mono",monospace;color:var(--ink3)}
 .envt tr.det p{margin:6px 0 0;font:13px/1.55 "Source Serif 4",Georgia,serif;color:var(--ink2)}
+.envt tr.det .crudo{margin:6px 0 0;font:12px/1.7 "IBM Plex Mono",monospace;color:var(--ink2)}
+.envt tr.det .crudo b{color:var(--ink)}
+.cq{font:500 12px "IBM Plex Mono",monospace;color:var(--accent);margin-left:6px;white-space:nowrap}
 .envt tr.tot td{border-top:2px solid var(--rule);border-bottom:0}
 .envt tr.grupo td{background:var(--sunk);padding:10px;white-space:normal;border-bottom:1.5px solid var(--rule)}
 .envt tr.grupo b{font:700 12px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.02em}
@@ -769,8 +773,8 @@ footer b{color:var(--ink2)}
   <div class="kicker">${bet365 ? 'cuotas bet365 vía API · ' + (doc.generado || '').slice(0, 10) : tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados · armada ${new Date().toISOString().slice(11, 16)} UTC</div>
   <h1>Dónde pararse hoy</h1>
   <p class="bajada">${ELEGIDAS.length
-    ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length} pisan la casilla. Las otras están abajo con el motivo por el que no.`
-    : 'Hoy nadie pisa la casilla: se mira, no se apuesta.'}</p>
+    ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length} pisan la casilla. El resto está en la tabla, agrupado por tramo.`
+    : 'Hoy nadie pisa la casilla: se mira, no se apuesta. La tabla completa está abajo, por tramo.'}</p>
   <div class="act">
     <button id="act-btn" type="button" data-que="cuotas">⟳ Cuotas y análisis <small>2–3 min</small></button>
     <button id="act-todo" type="button" data-que="todo" class="secundario">⟳ Torneos completos + cuotas <small>10–15 min</small></button>
@@ -798,19 +802,28 @@ ${(() => { globalThis.filaVeredicto = (v, i) => {
   const hoyV = (historia.dias[HOY] || []).find(x => x.fixtureId && x.fixtureId === v.fixtureId);
   const res = hoyV?.res;
   const dif = v.pMercado != null ? v.p - v.pMercado : null;
+  const cGana = v.lado === 1 ? v.g1 : v.g2, cOtro = v.lado === 1 ? v.g2 : v.g1;
+  /* la ficha completa del partido, para los crudos del desplegable */
+  const f = filas.find(x => (x.q.fixtureId && x.q.fixtureId === v.fixtureId) || (x.f1.nombre === v.p1 && x.f2.nombre === v.p2));
+  const cr = f ? [f.f1, f.f2].map((j, k) => {
+    const c = k === 0 ? v.g1 : v.g2;
+    return `<div><b>${esc(j.nombre)}</b>${c ? ` <span class="cq">a ${c}</span>` : ''} — WTN ${j.wtn ?? '—'} · ${j.nacido ? 2026 - j.nacido + ' años' : 'edad —'} · ATP ${j.atp ?? '—'} · ${trayHtml(j)}</div>`;
+  }).join('') : '';
   return `<tr class="${res ? (hoyV.acerto ? 'ok' : 'mal') : ''}">
     <td class="n sec">${i}</td>
-    <td class="quien">${esc(v.gana)}</td>
-    <td class="sec">${esc(v.lado === 1 ? v.p2 : v.p1)}</td>
-    <td class="sec">${esc(v.torneo.replace(/^M\d+\+?H? /, ''))} · ${esc(v.etapa)}</td>
+    <td class="quien">${esc(v.gana)}${cGana ? `<span class="cq">a ${cGana}</span>` : ''}</td>
+    <td class="sec">${esc(v.lado === 1 ? v.p2 : v.p1)}${cOtro ? `<span class="cq">a ${cOtro}</span>` : ''}</td>
+    <td class="sec">${esc(v.torneo.replace(/^M\d+\+?H? /, ''))}${v.pais ? ', ' + esc(v.pais) : ''} · ${esc(v.etapa)}</td>
     <td class="n"><b>${Math.round(v.p * 100)}%</b></td>
     <td class="n sec">${v.pMercado != null ? Math.round(v.pMercado * 100) + '%' : '—'}${dif != null && Math.abs(dif) >= 0.12 ? ' <i class="dif">±</i>' : ''}</td>
     <td class="sec">${v.señales.length ? esc(v.señales.join(' ')) : ''}</td>
     <td>${res ? (hoyV.acerto ? '✓ ' : '✗ ') + esc(res.ganador.split(' ').slice(-1)[0]) + ' ' + esc(res.marcador)
-      : v.inicio && Date.parse(v.inicio) < Date.now() ? '<i class="sec">en juego — cuota de cierre, ya no apostable</i>'
+      : v.inicio && Date.parse(v.inicio) < Date.now() ? '<i class="sec" title="ya arrancó: la cuota mostrada es la de cierre, ya no apostable">en juego · cierre</i>'
       : '<i class="sec">por jugar</i>'}</td>
   </tr>
-  <tr class="det"><td></td><td colspan="7"><details><summary>análisis</summary><p>${esc(v.razon)}</p></details></td></tr>`;
+  <tr class="det"><td></td><td colspan="7"><details><summary>análisis y datos crudos</summary>
+    <div class="crudo">${cr}</div>
+    <p>${esc(v.razon)}</p></details></td></tr>`;
 }; return '' })()}
 <section class="verd">
   <h2 class="vt">Quién gana hoy</h2>
@@ -900,14 +913,6 @@ ${(() => {
       el mercado acertó 5 de 6 — la misma lección de Wygona y Brown. Cada día calificado afina estas celdas.</p>
     ${bloques}</section>`;
 })()}
-<div class="resto">
-  <h3>Las otras ${descart.length}, y por qué no</h3>
-  <table><tbody>
-    ${descart.map(f => `<tr><td>${esc(f.v.nivel?.favorito ?? '—')}</td>
-      <td class="c">${f.v.precio.cuota}</td>
-      <td class="m">${esc(motivoDe(f))}</td></tr>`).join('')}
-  </tbody></table>
-</div>
 <footer>
   <p><b>De dónde sale nuestro número.</b> Cuánto mejor es cada uno según el rating WTN de la ITF, si alguno tiene 18 años
   o menos (a esa edad el rating va atrasado), cuántos games cedió cada uno en este mismo cuadro, y hasta dónde llegó cada
