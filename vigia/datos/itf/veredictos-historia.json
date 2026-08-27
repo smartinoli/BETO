@@ -3586,39 +3586,6 @@
    },
    {
     "crit": {
-     "cuota": 1.2,
-     "ladoFm": 1,
-     "acuerdo": true,
-     "pFm": 0.589,
-     "dW": 2.96,
-     "forma": -1,
-     "previo": null,
-     "grupo": "finales",
-     "edadFm": 32,
-     "edadRi": 21
-    },
-    "jugada": null,
-    "fixtureId": "pn129036521634880766",
-    "inicio": "2026-08-27T10:08:00.000Z",
-    "torneo": "M25 Oviedo",
-    "pais": "Spain",
-    "etapa": "QF",
-    "p1": "Alexander Ritschard",
-    "p2": "Yaroslav Demin",
-    "g1": 1.2,
-    "g2": 4.333,
-    "gana": "Alexander Ritschard",
-    "lado": 1,
-    "p": 0.589,
-    "pMercado": 0.783,
-    "soloWtn": 0.626,
-    "señales": [
-     "forma"
-    ],
-    "razon": "Δ2.96 de WTN a favor de Alexander Ritschard (3.25 contra 6.21), en QF: la curva del grupo \"finales\" (n=79) da 63%. Ajustan: Yaroslav Demin viene cediendo menos games (33% contra 38%): la forma contradice al nivel (−4 pts). Queda en 59%. El mercado la paga a 1.2: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −6% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
-   },
-   {
-    "crit": {
      "cuota": 1.062,
      "ladoFm": 1,
      "acuerdo": true,
@@ -3818,39 +3785,6 @@
    },
    {
     "crit": {
-     "cuota": 1.5,
-     "ladoFm": 2,
-     "acuerdo": true,
-     "pFm": 0.656,
-     "dW": 3.15,
-     "forma": -1,
-     "previo": null,
-     "grupo": "medias",
-     "edadFm": 24,
-     "edadRi": 22
-    },
-    "jugada": null,
-    "fixtureId": "pn129040881634877756",
-    "inicio": "2026-08-27T11:00:00.000Z",
-    "torneo": "M15 Vienna",
-    "pais": "Austria",
-    "etapa": "R2",
-    "p1": "Matthias Ujvary",
-    "p2": "Lorenzo Rottoli",
-    "g1": 2.5,
-    "g2": 1.5,
-    "gana": "Lorenzo Rottoli",
-    "lado": 2,
-    "p": 0.656,
-    "pMercado": 0.625,
-    "soloWtn": 0.727,
-    "señales": [
-     "forma"
-    ],
-    "razon": "Δ3.15 de WTN a favor de Lorenzo Rottoli (6.68 contra 9.83), en R2: la curva del grupo \"medias\" (n=214) da 73%. Ajustan: Matthias Ujvary viene cediendo menos games (37% contra 48%): la forma contradice al nivel (−7 pts). Queda en 66%. El mercado la paga a 1.5: 63% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −6% si la tiene el mercado. Lorenzo Rottoli tiene mejor WTN pero llega cediendo 12 puntos más de games (48% contra 37%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Matthias Ujvary paga desde 2.21 aun tomando el borde malo del intervalo."
-   },
-   {
-    "crit": {
      "cuota": 1.333,
      "ladoFm": 2,
      "acuerdo": true,
@@ -4011,39 +3945,6 @@
      "forma"
     ],
     "razon": "Δ0.10 de WTN a favor de Nino Ehrenschneider (7.23 contra 7.33), en R2: la curva del grupo \"medias\" (n=214) da 51%. Ajustan: Jeffrey Von Der Schulenburg viene cediendo menos games (48% contra 50%): la forma contradice al nivel (−1 pts). Queda en 49%. El mercado la paga a 1.909: 49% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.10: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Nino Ehrenschneider es el MEJOR POR RATING pero la casa lo paga 1.909: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
-   },
-   {
-    "crit": {
-     "cuota": 1.571,
-     "ladoFm": 1,
-     "acuerdo": true,
-     "pFm": 0.699,
-     "dW": 1.56,
-     "forma": 1,
-     "previo": null,
-     "grupo": "medias",
-     "edadFm": 21,
-     "edadRi": 26
-    },
-    "jugada": null,
-    "fixtureId": "pn129054091634877783",
-    "inicio": "2026-08-27T11:16:00.000Z",
-    "torneo": "M25 Poznan",
-    "pais": "Poland",
-    "etapa": "R2",
-    "p1": "Fryderyk Lechno-Wasiutynski",
-    "p2": "Niklas Guttau",
-    "g1": 1.571,
-    "g2": 2.25,
-    "gana": "Fryderyk Lechno-Wasiutynski",
-    "lado": 1,
-    "p": 0.699,
-    "pMercado": 0.589,
-    "soloWtn": 0.619,
-    "señales": [
-     "forma"
-    ],
-    "razon": "Δ1.56 de WTN a favor de Fryderyk Lechno-Wasiutynski (6.57 contra 8.13), en R2: la curva del grupo \"medias\" (n=214) da 62%. Ajustan: Fryderyk Lechno-Wasiutynski viene cediendo menos games (29% contra 42%) (+8 pts). Queda en 70%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde +10% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.56: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
    },
    {
     "crit": {
@@ -4243,39 +4144,6 @@
    },
    {
     "crit": {
-     "cuota": 1.111,
-     "ladoFm": 2,
-     "acuerdo": true,
-     "pFm": 0.461,
-     "dW": 2.07,
-     "forma": -1,
-     "previo": null,
-     "grupo": "medias",
-     "edadFm": 20,
-     "edadRi": 23
-    },
-    "jugada": null,
-    "fixtureId": "pn129034491634878133",
-    "inicio": "2026-08-27T11:46:00.000Z",
-    "torneo": "M15 Bucharest",
-    "pais": "Romania",
-    "etapa": "R2",
-    "p1": "Giacomo Crisostomo",
-    "p2": "Radu David Turcanu",
-    "g1": 6,
-    "g2": 1.111,
-    "gana": "Radu David Turcanu",
-    "lado": 2,
-    "p": 0.461,
-    "pMercado": 0.844,
-    "soloWtn": 0.655,
-    "señales": [
-     "forma"
-    ],
-    "razon": "Δ2.07 de WTN a favor de Radu David Turcanu (6.73 contra 8.8), en R2: la curva del grupo \"medias\" (n=214) da 66%. Ajustan: Giacomo Crisostomo viene cediendo menos games (10% contra 38%): la forma contradice al nivel (−19 pts). Queda en 46%. El mercado la paga a 1.111: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −49% si tenemos razón nosotros y −6% si la tiene el mercado. Giacomo Crisostomo ganó un partido por retiro: llega más fresco."
-   },
-   {
-    "crit": {
      "cuota": 1.1,
      "ladoFm": 2,
      "acuerdo": true,
@@ -4408,6 +4276,205 @@
    },
    {
     "crit": {
+     "cuota": 1.083,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.838,
+     "dW": 5.07,
+     "forma": 1,
+     "previo": null,
+     "grupo": "medias",
+     "edadFm": 19,
+     "edadRi": 25
+    },
+    "jugada": null,
+    "fixtureId": "pn129043471634785720",
+    "inicio": "2026-08-27T12:11:57.000Z",
+    "torneo": "M25 Lausanne",
+    "pais": "Switzerland",
+    "etapa": "R2",
+    "p1": "Blu Baker",
+    "p2": "Henry Bernet",
+    "g1": 7,
+    "g2": 1.083,
+    "gana": "Henry Bernet",
+    "lado": 2,
+    "p": 0.838,
+    "pMercado": 0.866,
+    "soloWtn": 0.828,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ5.07 de WTN a favor de Henry Bernet (3.58 contra 8.65), en R2: la curva del grupo \"medias\" (n=214) da 83%. Ajustan: Henry Bernet viene cediendo menos games (41% contra 43%) (+1 pts). Queda en 84%. El mercado la paga a 1.083: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −6% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.8,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.589,
+     "dW": 1.61,
+     "forma": -1,
+     "previo": null,
+     "grupo": "medias",
+     "edadFm": 31,
+     "edadRi": 20
+    },
+    "jugada": null,
+    "fixtureId": "pn129036371634786296",
+    "inicio": "2026-08-27T12:14:27.000Z",
+    "torneo": "M25 Oldenzaal",
+    "pais": "Netherlands",
+    "etapa": "R2",
+    "p1": "Jelle Sels",
+    "p2": "Pieter De Lange",
+    "g1": 1.8,
+    "g2": 1.909,
+    "gana": "Jelle Sels",
+    "lado": 1,
+    "p": 0.589,
+    "pMercado": 0.515,
+    "soloWtn": 0.622,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ1.61 de WTN a favor de Jelle Sels (5.31 contra 6.92), en R2: la curva del grupo \"medias\" (n=214) da 62%. Ajustan: Pieter De Lange viene cediendo menos games (41% contra 46%): la forma contradice al nivel (−3 pts). Queda en 59%. El mercado la paga a 1.8: 51% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+   },
+   {
+    "crit": {
+     "cuota": 1.667,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.699,
+     "dW": 1.56,
+     "forma": 1,
+     "previo": null,
+     "grupo": "medias",
+     "edadFm": 21,
+     "edadRi": 26
+    },
+    "jugada": null,
+    "fixtureId": "pn129054091634877783",
+    "inicio": "2026-08-27T12:23:13.000Z",
+    "torneo": "M25 Poznan",
+    "pais": "Poland",
+    "etapa": "R2",
+    "p1": "Fryderyk Lechno-Wasiutynski",
+    "p2": "Niklas Guttau",
+    "g1": 1.667,
+    "g2": 2.1,
+    "gana": "Fryderyk Lechno-Wasiutynski",
+    "lado": 1,
+    "p": 0.699,
+    "pMercado": 0.557,
+    "soloWtn": 0.619,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ1.56 de WTN a favor de Fryderyk Lechno-Wasiutynski (6.57 contra 8.13), en R2: la curva del grupo \"medias\" (n=214) da 62%. Ajustan: Fryderyk Lechno-Wasiutynski viene cediendo menos games (29% contra 42%) (+8 pts). Queda en 70%. El mercado la paga a 1.667: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +16% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.56: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+   },
+   {
+    "crit": {
+     "cuota": 1.111,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.461,
+     "dW": 2.07,
+     "forma": -1,
+     "previo": null,
+     "grupo": "medias",
+     "edadFm": 20,
+     "edadRi": 23
+    },
+    "jugada": null,
+    "fixtureId": "pn129034491634878133",
+    "inicio": "2026-08-27T12:33:25.000Z",
+    "torneo": "M15 Bucharest",
+    "pais": "Romania",
+    "etapa": "R2",
+    "p1": "Giacomo Crisostomo",
+    "p2": "Radu David Turcanu",
+    "g1": 6,
+    "g2": 1.111,
+    "gana": "Radu David Turcanu",
+    "lado": 2,
+    "p": 0.461,
+    "pMercado": 0.844,
+    "soloWtn": 0.655,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ2.07 de WTN a favor de Radu David Turcanu (6.73 contra 8.8), en R2: la curva del grupo \"medias\" (n=214) da 66%. Ajustan: Giacomo Crisostomo viene cediendo menos games (10% contra 38%): la forma contradice al nivel (−19 pts). Queda en 46%. El mercado la paga a 1.111: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −49% si tenemos razón nosotros y −6% si la tiene el mercado. Giacomo Crisostomo ganó un partido por retiro: llega más fresco."
+   },
+   {
+    "crit": {
+     "cuota": 1.25,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.589,
+     "dW": 2.96,
+     "forma": -1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 32,
+     "edadRi": 21
+    },
+    "jugada": null,
+    "fixtureId": "pn129036521634880766",
+    "inicio": "2026-08-27T12:42:51.000Z",
+    "torneo": "M25 Oviedo",
+    "pais": "Spain",
+    "etapa": "QF",
+    "p1": "Alexander Ritschard",
+    "p2": "Yaroslav Demin",
+    "g1": 1.25,
+    "g2": 3.75,
+    "gana": "Alexander Ritschard",
+    "lado": 1,
+    "p": 0.589,
+    "pMercado": 0.75,
+    "soloWtn": 0.626,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ2.96 de WTN a favor de Alexander Ritschard (3.25 contra 6.21), en QF: la curva del grupo \"finales\" (n=79) da 63%. Ajustan: Yaroslav Demin viene cediendo menos games (33% contra 38%): la forma contradice al nivel (−4 pts). Queda en 59%. El mercado la paga a 1.25: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −6% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+   },
+   {
+    "crit": {
+     "cuota": 1.444,
+     "ladoFm": 1,
+     "acuerdo": false,
+     "pFm": 0.607,
+     "dW": -5.73,
+     "forma": 1,
+     "previo": null,
+     "grupo": "medias",
+     "edadFm": 18,
+     "edadRi": 29
+    },
+    "jugada": null,
+    "fixtureId": "pn129054091634880709",
+    "inicio": "2026-08-27T12:44:00.000Z",
+    "torneo": "M25 Poznan",
+    "pais": "Poland",
+    "etapa": "R2",
+    "p1": "Michael Savano",
+    "p2": "Niccolo Catini",
+    "g1": 1.444,
+    "g2": 2.625,
+    "gana": "Niccolo Catini",
+    "lado": 2,
+    "p": 0.393,
+    "pMercado": 0.355,
+    "soloWtn": 0.856,
+    "señales": [
+     "sub18",
+     "forma"
+    ],
+    "razon": "Δ5.73 de WTN a favor de Niccolo Catini (8.66 contra 14.39), en R2: la curva del grupo \"medias\" (n=214) da 86%. Ajustan: Michael Savano tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts); Michael Savano viene cediendo menos games (23% contra 44%): la forma contradice al nivel (−14 pts). Queda en 39%. El mercado la paga a 2.625: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −7% si la tiene el mercado. Niccolo Catini tiene mejor WTN pero llega cediendo 21 puntos más de games (44% contra 23%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Michael Savano paga desde 2.21 aun tomando el borde malo del intervalo. Niccolo Catini es el MEJOR POR RATING pero la casa lo paga 2.625: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+   },
+   {
+    "crit": {
      "cuota": 1.004,
      "ladoFm": 1,
      "acuerdo": true,
@@ -4421,7 +4488,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129043471634882925",
-    "inicio": "2026-08-27T12:12:00.000Z",
+    "inicio": "2026-08-27T12:45:00.000Z",
     "torneo": "M25 Lausanne",
     "pais": "Switzerland",
     "etapa": "R2",
@@ -4441,37 +4508,36 @@
    },
    {
     "crit": {
-     "cuota": 1.444,
-     "ladoFm": 1,
-     "acuerdo": false,
-     "pFm": 0.607,
-     "dW": -5.73,
-     "forma": 1,
+     "cuota": 1.5,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.656,
+     "dW": 3.15,
+     "forma": -1,
      "previo": null,
      "grupo": "medias",
-     "edadFm": 18,
-     "edadRi": 29
+     "edadFm": 24,
+     "edadRi": 22
     },
     "jugada": null,
-    "fixtureId": "pn129054091634880709",
-    "inicio": "2026-08-27T12:27:00.000Z",
-    "torneo": "M25 Poznan",
-    "pais": "Poland",
+    "fixtureId": "pn129040881634877756",
+    "inicio": "2026-08-27T12:47:13.000Z",
+    "torneo": "M15 Vienna",
+    "pais": "Austria",
     "etapa": "R2",
-    "p1": "Michael Savano",
-    "p2": "Niccolo Catini",
-    "g1": 1.444,
-    "g2": 2.625,
-    "gana": "Niccolo Catini",
+    "p1": "Matthias Ujvary",
+    "p2": "Lorenzo Rottoli",
+    "g1": 2.5,
+    "g2": 1.5,
+    "gana": "Lorenzo Rottoli",
     "lado": 2,
-    "p": 0.393,
-    "pMercado": 0.355,
-    "soloWtn": 0.856,
+    "p": 0.656,
+    "pMercado": 0.625,
+    "soloWtn": 0.727,
     "señales": [
-     "sub18",
      "forma"
     ],
-    "razon": "Δ5.73 de WTN a favor de Niccolo Catini (8.66 contra 14.39), en R2: la curva del grupo \"medias\" (n=214) da 86%. Ajustan: Michael Savano tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts); Michael Savano viene cediendo menos games (23% contra 44%): la forma contradice al nivel (−14 pts). Queda en 39%. El mercado la paga a 2.625: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −7% si la tiene el mercado. Niccolo Catini tiene mejor WTN pero llega cediendo 21 puntos más de games (44% contra 23%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Michael Savano paga desde 2.21 aun tomando el borde malo del intervalo. Niccolo Catini es el MEJOR POR RATING pero la casa lo paga 2.625: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ3.15 de WTN a favor de Lorenzo Rottoli (6.68 contra 9.83), en R2: la curva del grupo \"medias\" (n=214) da 73%. Ajustan: Matthias Ujvary viene cediendo menos games (37% contra 48%): la forma contradice al nivel (−7 pts). Queda en 66%. El mercado la paga a 1.5: 63% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −6% si la tiene el mercado. Lorenzo Rottoli tiene mejor WTN pero llega cediendo 12 puntos más de games (48% contra 37%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Matthias Ujvary paga desde 2.21 aun tomando el borde malo del intervalo."
    },
    {
     "crit": {
@@ -4505,106 +4571,6 @@
      "forma"
     ],
     "razon": "Δ4.70 de WTN a favor de Kenny De Schepper (5.64 contra 10.34), en R2: la curva del grupo \"medias\" (n=214) da 81%. Ajustan: Kenny De Schepper viene cediendo menos games (38% contra 47%) (+3 pts). Queda en 85%. El mercado la paga a 1.727: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +46% si tenemos razón nosotros y −7% si la tiene el mercado."
-   },
-   {
-    "crit": {
-     "cuota": 1.727,
-     "ladoFm": 2,
-     "acuerdo": false,
-     "pFm": 0.411,
-     "dW": -1.61,
-     "forma": 1,
-     "previo": null,
-     "grupo": "medias",
-     "edadFm": 20,
-     "edadRi": 31
-    },
-    "jugada": null,
-    "fixtureId": "pn129036371634786296",
-    "inicio": "2026-08-27T13:00:00.000Z",
-    "torneo": "M25 Oldenzaal",
-    "pais": "Netherlands",
-    "etapa": "R2",
-    "p1": "Jelle Sels",
-    "p2": "Pieter De Lange",
-    "g1": 2,
-    "g2": 1.727,
-    "gana": "Jelle Sels",
-    "lado": 1,
-    "p": 0.589,
-    "pMercado": 0.463,
-    "soloWtn": 0.622,
-    "señales": [
-     "forma"
-    ],
-    "razon": "Δ1.61 de WTN a favor de Jelle Sels (5.31 contra 6.92), en R2: la curva del grupo \"medias\" (n=214) da 62%. Ajustan: Pieter De Lange viene cediendo menos games (41% contra 46%): la forma contradice al nivel (−3 pts). Queda en 59%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +18% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.61: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Jelle Sels es el MEJOR POR RATING pero la casa lo paga 2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
-   },
-   {
-    "crit": {
-     "cuota": 1.143,
-     "ladoFm": 2,
-     "acuerdo": true,
-     "pFm": 0.838,
-     "dW": 5.07,
-     "forma": 1,
-     "previo": null,
-     "grupo": "medias",
-     "edadFm": 19,
-     "edadRi": 25
-    },
-    "jugada": null,
-    "fixtureId": "pn129043471634785720",
-    "inicio": "2026-08-27T13:00:00.000Z",
-    "torneo": "M25 Lausanne",
-    "pais": "Switzerland",
-    "etapa": "R2",
-    "p1": "Blu Baker",
-    "p2": "Henry Bernet",
-    "g1": 5,
-    "g2": 1.143,
-    "gana": "Henry Bernet",
-    "lado": 2,
-    "p": 0.838,
-    "pMercado": 0.814,
-    "soloWtn": 0.828,
-    "señales": [
-     "forma"
-    ],
-    "razon": "Δ5.07 de WTN a favor de Henry Bernet (3.58 contra 8.65), en R2: la curva del grupo \"medias\" (n=214) da 83%. Ajustan: Henry Bernet viene cediendo menos games (41% contra 43%) (+1 pts). Queda en 84%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −7% si la tiene el mercado."
-   },
-   {
-    "crit": {
-     "cuota": 1.04,
-     "ladoFm": 2,
-     "acuerdo": true,
-     "pFm": 0.744,
-     "dW": 8.19,
-     "forma": 1,
-     "previo": null,
-     "grupo": "medias",
-     "edadFm": 28,
-     "edadRi": 17
-    },
-    "jugada": null,
-    "fixtureId": "pn129036371634878117",
-    "inicio": "2026-08-27T13:00:00.000Z",
-    "torneo": "M25 Oldenzaal",
-    "pais": "Netherlands",
-    "etapa": "R2",
-    "p1": "Sebastian Heinrich",
-    "p2": "Luca Wiedenmann",
-    "g1": 9,
-    "g2": 1.04,
-    "gana": "Luca Wiedenmann",
-    "lado": 2,
-    "p": 0.744,
-    "pMercado": 0.896,
-    "soloWtn": 0.927,
-    "señales": [
-     "sub18",
-     "forma"
-    ],
-    "razon": "Δ8.19 de WTN a favor de Luca Wiedenmann (6.08 contra 14.27), en R2: la curva del grupo \"medias\" (n=214) da 93%. Ajustan: Sebastian Heinrich tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−19 pts); Luca Wiedenmann viene cediendo menos games (40% contra 45%) (+3 pts). Queda en 74%. El mercado la paga a 1.04: 90% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
@@ -4738,6 +4704,40 @@
      "forma"
     ],
     "razon": "Δ0.89 de WTN a favor de Tomas Martinez (8.34 contra 9.23), en R2: la curva del grupo \"medias\" (n=214) da 57%. Ajustan: Tomas Martinez viene cediendo menos games (29% contra 33%) (+3 pts). Queda en 60%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.89: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+   },
+   {
+    "crit": {
+     "cuota": 1.04,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.744,
+     "dW": 8.19,
+     "forma": 1,
+     "previo": null,
+     "grupo": "medias",
+     "edadFm": 28,
+     "edadRi": 17
+    },
+    "jugada": null,
+    "fixtureId": "pn129036371634878117",
+    "inicio": "2026-08-27T14:15:00.000Z",
+    "torneo": "M25 Oldenzaal",
+    "pais": "Netherlands",
+    "etapa": "R2",
+    "p1": "Sebastian Heinrich",
+    "p2": "Luca Wiedenmann",
+    "g1": 9,
+    "g2": 1.04,
+    "gana": "Luca Wiedenmann",
+    "lado": 2,
+    "p": 0.744,
+    "pMercado": 0.896,
+    "soloWtn": 0.927,
+    "señales": [
+     "sub18",
+     "forma"
+    ],
+    "razon": "Δ8.19 de WTN a favor de Luca Wiedenmann (6.08 contra 14.27), en R2: la curva del grupo \"medias\" (n=214) da 93%. Ajustan: Sebastian Heinrich tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−19 pts); Luca Wiedenmann viene cediendo menos games (40% contra 45%) (+3 pts). Queda en 74%. El mercado la paga a 1.04: 90% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
@@ -4943,16 +4943,16 @@
    },
    {
     "crit": {
-     "cuota": 1.571,
-     "ladoFm": 1,
-     "acuerdo": true,
-     "pFm": 0.459,
-     "dW": 0.3,
-     "forma": -1,
+     "cuota": 1.727,
+     "ladoFm": 2,
+     "acuerdo": false,
+     "pFm": 0.541,
+     "dW": -0.3,
+     "forma": 1,
      "previo": null,
      "grupo": "medias",
-     "edadFm": 23,
-     "edadRi": 21
+     "edadFm": 21,
+     "edadRi": 23
     },
     "jugada": null,
     "fixtureId": "pn129035661634882683",
@@ -4962,17 +4962,17 @@
     "etapa": "R2",
     "p1": "Ryan Colby",
     "p2": "Jakub Vrba",
-    "g1": 1.571,
-    "g2": 2.25,
+    "g1": 2,
+    "g2": 1.727,
     "gana": "Ryan Colby",
     "lado": 1,
     "p": 0.459,
-    "pMercado": 0.589,
+    "pMercado": 0.463,
     "soloWtn": 0.523,
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.30 de WTN a favor de Ryan Colby (6.3 contra 6.6), en R2: la curva del grupo \"medias\" (n=214) da 52%. Ajustan: Jakub Vrba viene cediendo menos games (33% contra 42%): la forma contradice al nivel (−6 pts). Queda en 46%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −7% si la tiene el mercado. Ryan Colby tiene mejor WTN pero llega cediendo 9 puntos más de games (42% contra 33%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Jakub Vrba paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.30: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ0.30 de WTN a favor de Ryan Colby (6.3 contra 6.6), en R2: la curva del grupo \"medias\" (n=214) da 52%. Ajustan: Jakub Vrba viene cediendo menos games (33% contra 42%): la forma contradice al nivel (−6 pts). Queda en 46%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −7% si la tiene el mercado. Ryan Colby tiene mejor WTN pero llega cediendo 9 puntos más de games (42% contra 33%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Jakub Vrba paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.30: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Ryan Colby es el MEJOR POR RATING pero la casa lo paga 2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
    },
    {
     "crit": {
@@ -5072,5 +5072,5 @@
    }
   ]
  },
- "actualizado": "2026-08-27T12:37:25.851Z"
+ "actualizado": "2026-08-27T12:45:58.594Z"
 }
