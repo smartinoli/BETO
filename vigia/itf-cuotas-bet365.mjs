@@ -79,6 +79,8 @@ async function api(ruta, params) {
     if ((err || r.status === 429 || r.status >= 500) && i < 4) { await espera(2500 * 2 ** i); continue }
     if (err) throw new Error('red: ' + err.message);
     const j = await r.json().catch(() => null);
+    /* el RATE_LIMITED viene como 200 con error en el json: se espera y reintenta */
+    if (j?.error?.code === 'RATE_LIMITED' && i < 4) { await espera(3000 * 2 ** i); continue }
     if (j?.error) throw new Error(`${j.error.code || ''}`.trim());
     if (!r.ok) throw new Error('HTTP ' + r.status);
     REQ++;
@@ -90,10 +92,9 @@ async function api(ruta, params) {
    línea de tiempo sigue con precios EN VIVO (movidos por el marcador) y
    termina en 1.00/1.01 de liquidación — nada de eso sirve para decidir
    una apuesta pre-partido. Para un pendiente el corte no quita nada
-   (todas sus cuotas son anteriores al inicio). */
-function vigente(hist, inicio) {
+   (todas sus cuotas son anteriores al inicio). Recibe UNA casa. */
+function vigente(casa, inicio) {
   const corte = Date.parse(inicio) || Infinity;
-  const casa = Object.values(hist?.bookmakers || {})[0];
   for (const m of Object.values(casa?.markets || {})) {
     const outs = Object.values(m.outcomes || {});
     if (outs.length !== 2) continue;
@@ -126,30 +127,38 @@ const candidatos = Object.values(idx.partidos)
   .sort((a, b) => String(a.startTime).localeCompare(String(b.startTime)));
 console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.length} pendientes de torneos masculinos con los dos en la entry list`);
 
-/* bet365 manda, pero Betano suele cotizar ANTES (medido el 2026-08-27:
-   la madrugada asiática del día siguiente estaba en Betano horas antes
-   de aparecer en bet365). Se prueba en orden y se anota la fuente. */
-const CASAS = ['bet365', 'betano'];
+/* UN request por partido, SIN filtrar casa: la API devuelve todas las que
+   tengan precio (medido el 2026-08-27: pedir casa por casa duplicaba
+   requests, chocaba con el rate limit y perdía partidos que sí estaban
+   cotizados). Después se elige por prioridad: bet365 manda, Betano suele
+   cotizar antes, y si solo hay otra casa, se usa esa anotando la fuente. */
+const PRIORIDAD = ['bet365', 'betano', 'pinnacle'];
 const cuotas = [];
 let deCache = 0;
 for (const p of candidatos) {
   if (cuotas.length >= MAX) break;
   const fCache = path.join(CACHE, p.fixtureId + '.json');
   const cacheado = leer(fCache);
-  let hist = null, casa = null;
-  for (const c of CASAS) if (cacheado?.casas?.[c]) { hist = cacheado.casas[c]; casa = c; deCache++; break }
-  if (!hist && KEY) for (const c of CASAS) {
+  let todas = cacheado?.todas?.bookmakers ?? cacheado?.casas ?? null;
+  if (todas && Object.keys(todas).length) deCache++;
+  else if (KEY) {
     try {
-      hist = await api('historical-odds', { fixtureId: p.fixtureId, bookmaker: c });
-      casa = c;
+      const j = await api('historical-odds', { fixtureId: p.fixtureId });
+      todas = j?.bookmakers || {};
       fs.mkdirSync(CACHE, { recursive: true });
-      fs.writeFileSync(fCache, JSON.stringify({ fixture: p, casas: { [c]: hist }, hist }));
-      break;
-    } catch (e) { hist = null; if (!/NOT_FOUND/.test(e.message)) console.log(`  ✗ ${p.p1} vs ${p.p2} (${c}): ${e.message || 'error sin mensaje'}`) }
+      fs.writeFileSync(fCache, JSON.stringify({ fixture: p, todas: j, casas: todas }));
+    } catch (e) { todas = null; if (!/NOT_FOUND/.test(e.message)) console.log(`  ✗ ${p.p1} vs ${p.p2}: ${e.message || 'error sin mensaje'}`) }
   }
-  if (!hist) { console.log(`  · ${p.p1} vs ${p.p2}: sin cuota todavía en ${CASAS.join('/')}`); continue }
-  const v = vigente(hist, p.startTime);
-  if (!v) continue;
+  if (!todas || !Object.keys(todas).length) { console.log(`  · ${p.p1} vs ${p.p2}: ninguna casa lo cotiza todavía`); continue }
+  /* la mejor casa disponible que tenga cotización pre-partido válida */
+  const orden = [...PRIORIDAD.filter(c => todas[c]), ...Object.keys(todas).filter(c => !PRIORIDAD.includes(c))];
+  let v = null, casa = null;
+  for (const c of orden) {
+    /* caché viejo guardaba la respuesta completa por casa; el nuevo, la casa pelada */
+    const obj = todas[c]?.markets ? todas[c] : Object.values(todas[c]?.bookmakers || {})[0];
+    v = vigente(obj, p.startTime); if (v) { casa = c; break }
+  }
+  if (!v) { console.log(`  · ${p.p1} vs ${p.p2}: cotizado (${Object.keys(todas).join(',')}) pero sin línea válida pre-partido`); continue }
   cuotas.push({ torneo: p.t.nombre, p1: p.p1, p2: p.p2, g1: v[0], g2: v[1],
     visto: new Date().toISOString().slice(0, 16) + 'Z', fuente: casa, fixtureId: p.fixtureId,
     inicio: p.startTime });
