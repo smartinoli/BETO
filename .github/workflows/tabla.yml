@@ -21,8 +21,8 @@ on:
         type: choice
         default: cuotas
         options: [cuotas, todo]   # cuotas = bet365 + análisis (rápido); todo = además scrape de cuadros ITF (lento)
-  schedule:
-    - cron: '45 4 * * *'          # la corrida completa de cada mañana (= todo): cuadros con resultados, cuotas, veredictos calificados
+  # Sin schedule a pedido de Sebastián (2026-08-27): todo manual, él actualiza
+  # con los botones de la página (o desde esta pestaña de Actions).
   push:
     branches: [claude/itf-scrapers-prize-money-7oy59k]
     paths: [vigia/itf-informe.html]
@@ -51,13 +51,13 @@ jobs:
           node-version: 22
 
       - name: Chromium para el WAF de la ITF
-        if: inputs.que == 'todo' || github.event_name == 'schedule'
+        if: inputs.que == 'todo'
         run: |
           npm i --no-save playwright
           npx playwright install --with-deps chromium
 
       - name: Tablas de torneos (cuadros y programación, vía navegador)
-        if: inputs.que == 'todo' || github.event_name == 'schedule'
+        if: inputs.que == 'todo'
         timeout-minutes: 14
         run: node vigia/itf-navegador.mjs oop || echo "la ITF no dejó refrescar todo; se sigue con lo que hay"
 
