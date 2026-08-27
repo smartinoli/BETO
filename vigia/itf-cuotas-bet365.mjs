@@ -126,26 +126,34 @@ const candidatos = Object.values(idx.partidos)
   .sort((a, b) => String(a.startTime).localeCompare(String(b.startTime)));
 console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.length} pendientes de torneos masculinos con los dos en la entry list`);
 
+/* bet365 manda, pero Betano suele cotizar ANTES (medido el 2026-08-27:
+   la madrugada asiática del día siguiente estaba en Betano horas antes
+   de aparecer en bet365). Se prueba en orden y se anota la fuente. */
+const CASAS = ['bet365', 'betano'];
 const cuotas = [];
 let deCache = 0;
 for (const p of candidatos) {
   if (cuotas.length >= MAX) break;
   const fCache = path.join(CACHE, p.fixtureId + '.json');
-  let hist = leer(fCache)?.casas?.bet365 ?? leer(fCache)?.hist;
-  if (!hist && KEY) {
+  const cacheado = leer(fCache);
+  let hist = null, casa = null;
+  for (const c of CASAS) if (cacheado?.casas?.[c]) { hist = cacheado.casas[c]; casa = c; deCache++; break }
+  if (!hist && KEY) for (const c of CASAS) {
     try {
-      hist = await api('historical-odds', { fixtureId: p.fixtureId, bookmaker: 'bet365' });
+      hist = await api('historical-odds', { fixtureId: p.fixtureId, bookmaker: c });
+      casa = c;
       fs.mkdirSync(CACHE, { recursive: true });
-      fs.writeFileSync(fCache, JSON.stringify({ fixture: p, casas: { bet365: hist }, hist }));
-    } catch (e) { if (!/NOT_FOUND/.test(e.message)) console.log(`  ✗ ${p.p1} vs ${p.p2}: ${e.message}`); continue }
-  } else if (hist) deCache++;
-  if (!hist) continue;
+      fs.writeFileSync(fCache, JSON.stringify({ fixture: p, casas: { [c]: hist }, hist }));
+      break;
+    } catch (e) { hist = null; if (!/NOT_FOUND/.test(e.message)) console.log(`  ✗ ${p.p1} vs ${p.p2} (${c}): ${e.message || 'error sin mensaje'}`) }
+  }
+  if (!hist) { console.log(`  · ${p.p1} vs ${p.p2}: sin cuota todavía en ${CASAS.join('/')}`); continue }
   const v = vigente(hist, p.startTime);
   if (!v) continue;
   cuotas.push({ torneo: p.t.nombre, p1: p.p1, p2: p.p2, g1: v[0], g2: v[1],
-    visto: new Date().toISOString().slice(0, 16) + 'Z', fuente: 'bet365', fixtureId: p.fixtureId,
+    visto: new Date().toISOString().slice(0, 16) + 'Z', fuente: casa, fixtureId: p.fixtureId,
     inicio: p.startTime });
-  console.log(`  + ${p.t.nombre.padEnd(22)} ${p.p1} ${v[0]} / ${p.p2} ${v[1]}`);
+  console.log(`  + ${p.t.nombre.padEnd(22)} ${p.p1} ${v[0]} / ${p.p2} ${v[1]}  [${casa}]`);
 }
 fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: 'bet365', cuotas }, null, 1));
 console.log(`\n${cuotas.length} cuotas (${deCache} de caché, ${REQ} requests) → vigia/itf-cuotas-bet365.json`);

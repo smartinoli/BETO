@@ -780,7 +780,7 @@ footer b{color:var(--ink2)}
 </style>
 <div class="env">
 <header>
-  <div class="kicker">${bet365 ? 'cuotas bet365 vía API · ' + (doc.generado || '').slice(0, 10) : tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados · armada ${new Date().toISOString().slice(11, 16)} UTC</div>
+  <div class="kicker">${bet365 ? 'cuotas por API (bet365, y Betano si cotiza antes) · ' + (doc.generado || '').slice(0, 10) : tandaDoc ? `${tandaDoc.archivos.length} torneos · ${tandaDoc.generado.slice(0, 10)}` : 'registro completo'} · ${cuotas.length} partidos mirados · armada ${new Date().toISOString().slice(11, 16)} UTC</div>
   <h1>Dónde pararse hoy</h1>
   <p class="bajada">${ELEGIDAS.length
     ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length} pisan la casilla. El resto está en la tabla, agrupado por tramo.`

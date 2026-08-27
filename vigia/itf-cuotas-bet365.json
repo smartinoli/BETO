@@ -1,5 +1,83 @@
 {
- "generado": "2026-08-27T19:31:38.195Z",
+ "generado": "2026-08-27T19:43:06.288Z",
  "casa": "bet365",
- "cuotas": []
+ "cuotas": [
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Kristjan Tamm",
+   "p2": "Matthew Dellavedova",
+   "g1": 4.5,
+   "g2": 1.15,
+   "visto": "2026-08-27T19:41Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042181634896889",
+   "inicio": "2026-08-28T02:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Yanki Erel",
+   "p2": "Luca Castelnuovo",
+   "g1": 1.25,
+   "g2": 3.4,
+   "visto": "2026-08-27T19:41Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042181634922445",
+   "inicio": "2026-08-28T02:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Taipei",
+   "p1": "Kasidit Samrej",
+   "p2": "Yan Cheng Chen",
+   "g1": 1.08,
+   "g2": 6,
+   "visto": "2026-08-27T19:41Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042181634922448",
+   "inicio": "2026-08-28T02:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Enzo Aguiard",
+   "p2": "Yusuke Takahashi",
+   "g1": 1.6,
+   "g2": 2.15,
+   "visto": "2026-08-27T19:41Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042801634917262",
+   "inicio": "2026-08-28T02:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Joshua Charlton",
+   "p2": "Rigele Te",
+   "g1": 2.25,
+   "g2": 1.55,
+   "visto": "2026-08-27T19:42Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042801634922446",
+   "inicio": "2026-08-28T02:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Chase Ferguson",
+   "p2": "Fumin Jiang",
+   "g1": 1.16,
+   "g2": 4.45,
+   "visto": "2026-08-27T19:42Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042801634896890",
+   "inicio": "2026-08-28T03:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Tianhui Zhang",
+   "p2": "Lingxi Zhao",
+   "g1": 1.83,
+   "g2": 1.83,
+   "visto": "2026-08-27T19:42Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042801634922447",
+   "inicio": "2026-08-28T03:00:00.000Z"
+  }
+ ]
 }
