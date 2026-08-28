@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-28T19:17:30.756Z",
+ "generado": "2026-08-28T19:32:02.456Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -441,11 +441,11 @@
     "cuota": 1.167,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.768,
+    "pFm": 0.667,
     "dW": 1.39,
     "forma": 1,
     "previo": null,
-    "grupo": "buenas",
+    "grupo": "finales",
     "edadFm": 26,
     "edadRi": 27
    },
@@ -454,21 +454,21 @@
    "inicio": "2026-08-29T09:00:00.000Z",
    "torneo": "M25 Poznan",
    "pais": "Poland",
-   "etapa": "R1",
+   "etapa": "SF",
    "p1": "Daniel Michalski",
    "p2": "Nikita Mashtakov",
    "g1": 1.167,
    "g2": 4.5,
    "gana": "Daniel Michalski",
    "lado": 1,
-   "p": 0.768,
+   "p": 0.667,
    "pMercado": 0.794,
-   "soloWtn": 0.66,
+   "soloWtn": 0.56,
    "señales": [
     "forma",
     "local"
    ],
-   "razon": "Δ1.39 de WTN a favor de Daniel Michalski (3.44 contra 4.83), en R1: la curva del grupo \"buenas\" (n=528) da 66%. Ajustan: Daniel Michalski viene cediendo menos games (31% contra 40%) (+6 pts); Daniel Michalski juega en su país (POL): la localía vale ~0.5 pts de WTN (+5 pts). Queda en 77%. El mercado la paga a 1.167: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.39: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+   "razon": "Δ1.39 de WTN a favor de Daniel Michalski (3.44 contra 4.83), en SF: la curva del grupo \"finales\" (n=79) da 56%. Ajustan: Daniel Michalski viene cediendo menos games (30% contra 37%) (+5 pts); Daniel Michalski juega en su país (POL): la localía vale ~0.5 pts de WTN (+6 pts). Queda en 67%. El mercado la paga a 1.167: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −22% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.39: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. SF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1."
   },
   {
    "crit": {
