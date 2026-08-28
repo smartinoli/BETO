@@ -74,9 +74,29 @@
   .pill.gano{color:var(--gano)} .pill.perdio{color:var(--perdio)} .pill.nula{color:var(--nula)}
   .pill.fria-p{color:var(--muted)}
 
+  .controles{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .buscar{flex:1 1 210px;min-width:0;font:inherit;font-size:13.5px;color:var(--ink);
+          background:var(--surface);border:1px solid var(--line-fuerte);border-radius:3px;
+          padding:7px 11px}
+  .buscar::placeholder{color:var(--muted)}
+  .buscar:focus-visible,.banda:focus-visible,th.orden:focus-visible{outline:2px solid var(--acento);outline-offset:1px}
+  .conteo{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  th.orden{cursor:pointer;user-select:none}
+  th.orden:hover{color:var(--ink)}
+  th.orden::after{content:"";display:inline-block;width:0;height:0;margin-left:6px;
+                  border-left:3.5px solid transparent;border-right:3.5px solid transparent;
+                  opacity:.28;border-bottom:4.5px solid currentColor;vertical-align:middle}
+  th.orden[aria-sort="ascending"]::after{opacity:1;border-bottom:4.5px solid var(--acento);border-top:0}
+  th.orden[aria-sort="descending"]::after{opacity:1;border-top:4.5px solid var(--acento);border-bottom:0}
+  tr[hidden]{display:none}
+  .vacio{padding:22px 14px;text-align:center;color:var(--muted);font-size:13.5px}
   .bandas{display:flex;flex-wrap:wrap;gap:8px}
   .banda{display:flex;align-items:baseline;gap:7px;border:1px solid var(--line-fuerte);
-         border-radius:2px;padding:6px 11px;background:var(--surface)}
+         border-radius:2px;padding:6px 11px;background:var(--surface);cursor:pointer;
+         font:inherit;color:inherit;transition:border-color .12s,background .12s}
+  .banda:hover{border-color:var(--acento)}
+  .banda[aria-pressed="true"]{border-color:var(--acento);background:var(--acento-tenue)}
+  @media (prefers-reduced-motion:reduce){.banda{transition:none}}
   .banda .n{font-family:var(--mono);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums}
   .banda .e{font-size:12px;color:var(--muted)}
   .banda.alta .n{color:var(--gano)} .banda.peor .n{color:var(--perdio)} .banda.roja .n{color:var(--nula)}
@@ -105,447 +125,461 @@
       <div class="tile"><span class="k">Unidades</span><span class="val gano">+4.74</span><span class="note">suma de retornos</span></div>
       <div class="tile"><span class="k">ROI por unidad</span><span class="val gano">+33.9%</span><span class="note">cada apuesta pesa igual</span></div>
     </div>
-    <div class="scroll"><table>
-      <thead><tr><th>Fecha</th><th>Apuesta</th><th>Liga</th><th class="num">Cuota</th><th class="num">vs justo</th><th>Resultado</th><th class="num">Unid.</th></tr></thead>
-      <tbody><tr>
-  <td class="c-hora"><span class="d">20-ago</span></td>
-  <td class="c-part"><span class="eq">Al Rayyan SC -0.5</span><span class="sub">Al Rayyan SC vs Lusail SC</span></td>
-  <td class="c-liga">Stars League</td>
-  <td class="num">1.70</td>
-  <td class="num v alta">+1.7%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.70</td>
+    <div class="tabla" data-tabla="historico">
+      <div class="controles">
+        <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar el histórico por equipo o liga">
+        <span class="conteo"></span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th class="orden" data-tipo="num" data-inicial="asc">Fecha</th><th class="orden" data-tipo="txt">Apuesta</th><th class="orden" data-tipo="txt">Liga</th><th class="orden num" data-tipo="num">Cuota</th><th class="orden num" data-tipo="num">vs justo</th><th class="orden" data-tipo="txt">Resultado</th><th class="orden num" data-tipo="num">Unid.</th></tr></thead>
+        <tbody><tr data-buscar="al rayyan sc -0.5 al rayyan sc vs lusail sc stars league" data-banda="alta">
+  <td class="c-hora" data-v="1787243400000"><span class="d">20-ago</span> <span class="h">12:30</span></td>
+  <td class="c-part" data-v="al rayyan sc -0.5"><span class="eq">Al Rayyan SC -0.5</span><span class="sub">Al Rayyan SC vs Lusail SC</span></td>
+  <td class="c-liga" data-v="stars league">Stars League</td>
+  <td class="num" data-v="1.7">1.70</td>
+  <td class="num v alta" data-v="0.0167">+1.7%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.7">+0.70</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">20-ago</span></td>
-  <td class="c-part"><span class="eq">Al Hilal SFC -0.5</span><span class="sub">Al-Fayha FC vs Al Hilal SFC</span></td>
-  <td class="c-liga">Saudi Pro League</td>
-  <td class="num">1.70</td>
-  <td class="num v alta">+4.5%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.70</td>
+<tr data-buscar="al hilal sfc -0.5 al-fayha fc vs al hilal sfc saudi pro league" data-banda="alta">
+  <td class="c-hora" data-v="1787248800000"><span class="d">20-ago</span> <span class="h">14:00</span></td>
+  <td class="c-part" data-v="al hilal sfc -0.5"><span class="eq">Al Hilal SFC -0.5</span><span class="sub">Al-Fayha FC vs Al Hilal SFC</span></td>
+  <td class="c-liga" data-v="saudi pro league">Saudi Pro League</td>
+  <td class="num" data-v="1.7">1.70</td>
+  <td class="num v alta" data-v="0.0448">+4.5%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.7">+0.70</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">21-ago</span></td>
-  <td class="c-part"><span class="eq">Arsenal FC -0.5</span><span class="sub">Arsenal FC vs Coventry City</span></td>
-  <td class="c-liga">Premier League</td>
-  <td class="num">1.62</td>
-  <td class="num v alta">+2.9%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.62</td>
+<tr data-buscar="arsenal fc -0.5 arsenal fc vs coventry city premier league" data-banda="alta">
+  <td class="c-hora" data-v="1787338800000"><span class="d">21-ago</span> <span class="h">15:00</span></td>
+  <td class="c-part" data-v="arsenal fc -0.5"><span class="eq">Arsenal FC -0.5</span><span class="sub">Arsenal FC vs Coventry City</span></td>
+  <td class="c-liga" data-v="premier league">Premier League</td>
+  <td class="num" data-v="1.62">1.62</td>
+  <td class="num v alta" data-v="0.0292">+2.9%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.6200000000000001">+0.62</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">Shabab Al Ahli Dubai -0.5</span><span class="sub">Shabab Al Ahli Dubai vs Al Dhafra SSC</span></td>
-  <td class="c-liga">Arabian Gulf League</td>
-  <td class="num">1.65</td>
-  <td class="num v alta">+1.7%</td>
-  <td><span class="pill perdio">Perdida</span></td>
-  <td class="num u perdio">−1.00</td>
+<tr data-buscar="shabab al ahli dubai -0.5 shabab al ahli dubai vs al dhafra ssc arabian gulf league" data-banda="alta">
+  <td class="c-hora" data-v="1787407200000"><span class="d">22-ago</span> <span class="h">10:00</span></td>
+  <td class="c-part" data-v="shabab al ahli dubai -0.5"><span class="eq">Shabab Al Ahli Dubai -0.5</span><span class="sub">Shabab Al Ahli Dubai vs Al Dhafra SSC</span></td>
+  <td class="c-liga" data-v="arabian gulf league">Arabian Gulf League</td>
+  <td class="num" data-v="1.65">1.65</td>
+  <td class="num v alta" data-v="0.0169">+1.7%</td>
+  <td data-v="Perdida"><span class="pill perdio">Perdida</span></td>
+  <td class="num u perdio" data-v="-1">−1.00</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">Maccabi Haifa -0.5</span><span class="sub">Maccabi Haifa vs Hapoel Raanana</span></td>
-  <td class="c-liga">U19 Premier League</td>
-  <td class="num">1.85</td>
-  <td class="num v alta">+8.6%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.85</td>
+<tr data-buscar="maccabi haifa -0.5 maccabi haifa vs hapoel raanana u19 premier league" data-banda="alta">
+  <td class="c-hora" data-v="1787408400000"><span class="d">22-ago</span> <span class="h">10:20</span></td>
+  <td class="c-part" data-v="maccabi haifa -0.5"><span class="eq">Maccabi Haifa -0.5</span><span class="sub">Maccabi Haifa vs Hapoel Raanana</span></td>
+  <td class="c-liga" data-v="u19 premier league">U19 Premier League</td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num v alta" data-v="0.0855">+8.6%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.8500000000000001">+0.85</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">Ofk-Sim Raslavice -0.5</span><span class="sub">Ofk-Sim Raslavice vs MFK Kezmarok</span></td>
-  <td class="c-liga">3. Liga</td>
-  <td class="num">1.78</td>
-  <td class="num v alta">+9.7%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.78</td>
+<tr data-buscar="ofk-sim raslavice -0.5 ofk-sim raslavice vs mfk kezmarok 3. liga" data-banda="alta">
+  <td class="c-hora" data-v="1787409000000"><span class="d">22-ago</span> <span class="h">10:30</span></td>
+  <td class="c-part" data-v="ofk-sim raslavice -0.5"><span class="eq">Ofk-Sim Raslavice -0.5</span><span class="sub">Ofk-Sim Raslavice vs MFK Kezmarok</span></td>
+  <td class="c-liga" data-v="3. liga">3. Liga</td>
+  <td class="num" data-v="1.78">1.78</td>
+  <td class="num v alta" data-v="0.0967">+9.7%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.78">+0.78</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">Al Ain FC -0.5</span><span class="sub">Al Ain FC vs Khor Fakkan Club</span></td>
-  <td class="c-liga">Arabian Gulf League</td>
-  <td class="num">1.62</td>
-  <td class="num v alta">+2.1%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.62</td>
+<tr data-buscar="al ain fc -0.5 al ain fc vs khor fakkan club arabian gulf league" data-banda="alta">
+  <td class="c-hora" data-v="1787416500000"><span class="d">22-ago</span> <span class="h">12:35</span></td>
+  <td class="c-part" data-v="al ain fc -0.5"><span class="eq">Al Ain FC -0.5</span><span class="sub">Al Ain FC vs Khor Fakkan Club</span></td>
+  <td class="c-liga" data-v="arabian gulf league">Arabian Gulf League</td>
+  <td class="num" data-v="1.62">1.62</td>
+  <td class="num v alta" data-v="0.0215">+2.1%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.6200000000000001">+0.62</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">AEK Athens -0.5</span><span class="sub">AEK Athens vs POT Iraklis</span></td>
-  <td class="c-liga">Super League</td>
-  <td class="num">1.62</td>
-  <td class="num v alta">+1.7%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.62</td>
+<tr data-buscar="aek athens -0.5 aek athens vs pot iraklis super league" data-banda="alta">
+  <td class="c-hora" data-v="1787418000000"><span class="d">22-ago</span> <span class="h">13:00</span></td>
+  <td class="c-part" data-v="aek athens -0.5"><span class="eq">AEK Athens -0.5</span><span class="sub">AEK Athens vs POT Iraklis</span></td>
+  <td class="c-liga" data-v="super league">Super League</td>
+  <td class="num" data-v="1.62">1.62</td>
+  <td class="num v alta" data-v="0.0172">+1.7%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.6200000000000001">+0.62</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">Slavia Prague -0.5</span><span class="sub">Slavia Prague vs Bohemians Prague 1905</span></td>
-  <td class="c-liga">1. Liga</td>
-  <td class="num">1.70</td>
-  <td class="num v alta">+2.1%</td>
-  <td><span class="pill perdio">Perdida</span></td>
-  <td class="num u perdio">−1.00</td>
+<tr data-buscar="slavia prague -0.5 slavia prague vs bohemians prague 1905 1. liga" data-banda="alta">
+  <td class="c-hora" data-v="1787421600000"><span class="d">22-ago</span> <span class="h">14:00</span></td>
+  <td class="c-part" data-v="slavia prague -0.5"><span class="eq">Slavia Prague -0.5</span><span class="sub">Slavia Prague vs Bohemians Prague 1905</span></td>
+  <td class="c-liga" data-v="1. liga">1. Liga</td>
+  <td class="num" data-v="1.7">1.70</td>
+  <td class="num v alta" data-v="0.0206">+2.1%</td>
+  <td data-v="Perdida"><span class="pill perdio">Perdida</span></td>
+  <td class="num u perdio" data-v="-1">−1.00</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">Al Ahli Saudi FC -0.5</span><span class="sub">Al Ahli Saudi FC vs Abha Club</span></td>
-  <td class="c-liga">Saudi Pro League</td>
-  <td class="num">1.65</td>
-  <td class="num v alta">+1.7%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.65</td>
+<tr data-buscar="al ahli saudi fc -0.5 al ahli saudi fc vs abha club saudi pro league" data-banda="alta">
+  <td class="c-hora" data-v="1787421600000"><span class="d">22-ago</span> <span class="h">14:00</span></td>
+  <td class="c-part" data-v="al ahli saudi fc -0.5"><span class="eq">Al Ahli Saudi FC -0.5</span><span class="sub">Al Ahli Saudi FC vs Abha Club</span></td>
+  <td class="c-liga" data-v="saudi pro league">Saudi Pro League</td>
+  <td class="num" data-v="1.65">1.65</td>
+  <td class="num v alta" data-v="0.0169">+1.7%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.6499999999999999">+0.65</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">Olympiacos Piraeus -0.5</span><span class="sub">Olympiacos Piraeus vs Atromitos Athinon</span></td>
-  <td class="c-liga">Super League</td>
-  <td class="num">1.75</td>
-  <td class="num v alta">+2.6%</td>
-  <td><span class="pill perdio">Perdida</span></td>
-  <td class="num u perdio">−1.00</td>
+<tr data-buscar="olympiacos piraeus -0.5 olympiacos piraeus vs atromitos athinon super league" data-banda="alta">
+  <td class="c-hora" data-v="1787423400000"><span class="d">22-ago</span> <span class="h">14:30</span></td>
+  <td class="c-part" data-v="olympiacos piraeus -0.5"><span class="eq">Olympiacos Piraeus -0.5</span><span class="sub">Olympiacos Piraeus vs Atromitos Athinon</span></td>
+  <td class="c-liga" data-v="super league">Super League</td>
+  <td class="num" data-v="1.75">1.75</td>
+  <td class="num v alta" data-v="0.0265">+2.6%</td>
+  <td data-v="Perdida"><span class="pill perdio">Perdida</span></td>
+  <td class="num u perdio" data-v="-1">−1.00</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">22-ago</span></td>
-  <td class="c-part"><span class="eq">Sporting CP -0.5</span><span class="sub">Sporting CP vs FC Alverca SAD</span></td>
-  <td class="c-liga">Liga Portugal</td>
-  <td class="num">1.65</td>
-  <td class="num v alta">+1.7%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.65</td>
+<tr data-buscar="sporting cp -0.5 sporting cp vs fc alverca sad liga portugal" data-banda="alta">
+  <td class="c-hora" data-v="1787427000000"><span class="d">22-ago</span> <span class="h">15:30</span></td>
+  <td class="c-part" data-v="sporting cp -0.5"><span class="eq">Sporting CP -0.5</span><span class="sub">Sporting CP vs FC Alverca SAD</span></td>
+  <td class="c-liga" data-v="liga portugal">Liga Portugal</td>
+  <td class="num" data-v="1.65">1.65</td>
+  <td class="num v alta" data-v="0.0169">+1.7%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.6499999999999999">+0.65</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">23-ago</span></td>
-  <td class="c-part"><span class="eq">FC Sheriff Tiraspol -0.5</span><span class="sub">FC Sheriff Tiraspol vs FC Politehnica Chisinau</span></td>
-  <td class="c-liga">Super Liga</td>
-  <td class="num">1.75</td>
-  <td class="num v alta">+2.5%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.75</td>
+<tr data-buscar="fc sheriff tiraspol -0.5 fc sheriff tiraspol vs fc politehnica chisinau super liga" data-banda="alta">
+  <td class="c-hora" data-v="1787504400000"><span class="d">23-ago</span> <span class="h">13:00</span></td>
+  <td class="c-part" data-v="fc sheriff tiraspol -0.5"><span class="eq">FC Sheriff Tiraspol -0.5</span><span class="sub">FC Sheriff Tiraspol vs FC Politehnica Chisinau</span></td>
+  <td class="c-liga" data-v="super liga">Super Liga</td>
+  <td class="num" data-v="1.75">1.75</td>
+  <td class="num v alta" data-v="0.0245">+2.5%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.75">+0.75</td>
 </tr>
-<tr>
-  <td class="c-hora"><span class="d">23-ago</span></td>
-  <td class="c-part"><span class="eq">Club Bolivar -0.5</span><span class="sub">Cdt Real Oruro vs Club Bolivar</span></td>
-  <td class="c-liga">Division Profesional</td>
-  <td class="num">1.80</td>
-  <td class="num v alta">+1.7%</td>
-  <td><span class="pill gano">Ganada</span></td>
-  <td class="num u gano">+0.80</td>
+<tr data-buscar="club bolivar -0.5 cdt real oruro vs club bolivar division profesional" data-banda="alta">
+  <td class="c-hora" data-v="1787511600000"><span class="d">23-ago</span> <span class="h">15:00</span></td>
+  <td class="c-part" data-v="club bolivar -0.5"><span class="eq">Club Bolivar -0.5</span><span class="sub">Cdt Real Oruro vs Club Bolivar</span></td>
+  <td class="c-liga" data-v="division profesional">Division Profesional</td>
+  <td class="num" data-v="1.8">1.80</td>
+  <td class="num v alta" data-v="0.0173">+1.7%</td>
+  <td data-v="Ganada"><span class="pill gano">Ganada</span></td>
+  <td class="num u gano" data-v="0.8">+0.80</td>
 </tr>
-<tr class="fria">
-  <td class="c-hora"><span class="d">25-ago</span></td>
-  <td class="c-part"><span class="eq">Al Nassr Club -0.5</span><span class="sub">Al-Ittifaq FC vs Al Nassr Club</span></td>
-  <td class="c-liga">Saudi Pro League</td>
-  <td class="num">1.72</td>
-  <td class="num v alta">+2.5%</td>
-  <td><span class="pill perdio">Perdida</span><span class="pill fria-p">congelada</span></td>
-  <td class="num u perdio">−1.00</td>
+<tr class="fria" data-buscar="al nassr club -0.5 al-ittifaq fc vs al nassr club saudi pro league" data-banda="alta">
+  <td class="c-hora" data-v="1787680800000"><span class="d">25-ago</span> <span class="h">14:00</span></td>
+  <td class="c-part" data-v="al nassr club -0.5"><span class="eq">Al Nassr Club -0.5</span><span class="sub">Al-Ittifaq FC vs Al Nassr Club</span></td>
+  <td class="c-liga" data-v="saudi pro league">Saudi Pro League</td>
+  <td class="num" data-v="1.72">1.72</td>
+  <td class="num v alta" data-v="0.0246">+2.5%</td>
+  <td data-v="Perdida"><span class="pill perdio">Perdida</span><span class="pill fria-p">congelada</span></td>
+  <td class="num u perdio" data-v="-1">−1.00</td>
 </tr>
-<tr class="fria">
-  <td class="c-hora"><span class="d">25-ago</span></td>
-  <td class="c-part"><span class="eq">East Kilbride FC -0.5</span><span class="sub">Cowdenbeath FC vs East Kilbride FC</span></td>
-  <td class="c-liga">Challenge Cup</td>
-  <td class="num">1.82</td>
-  <td class="num v alta">+6.4%</td>
-  <td><span class="pill perdio">Perdida</span><span class="pill fria-p">congelada</span></td>
-  <td class="num u perdio">−1.00</td>
+<tr class="fria" data-buscar="east kilbride fc -0.5 cowdenbeath fc vs east kilbride fc challenge cup" data-banda="alta">
+  <td class="c-hora" data-v="1787683500000"><span class="d">25-ago</span> <span class="h">14:45</span></td>
+  <td class="c-part" data-v="east kilbride fc -0.5"><span class="eq">East Kilbride FC -0.5</span><span class="sub">Cowdenbeath FC vs East Kilbride FC</span></td>
+  <td class="c-liga" data-v="challenge cup">Challenge Cup</td>
+  <td class="num" data-v="1.82">1.82</td>
+  <td class="num v alta" data-v="0.0639">+6.4%</td>
+  <td data-v="Perdida"><span class="pill perdio">Perdida</span><span class="pill fria-p">congelada</span></td>
+  <td class="num u perdio" data-v="-1">−1.00</td>
 </tr></tbody>
-    </table></div>
+      </table></div>
+      <p class="vacio" hidden>Ninguna apuesta calza con ese filtro.</p>
+    </div>
   </section>
 
   <section>
     <h2>Última corrida — todos los partidos del rango</h2>
     <p class="lead">Sin filtro de valor: entran todos los partidos que ofrecen la línea dentro del rango de cuota, ordenados de mayor a menor ventaja. Las de ventaja negativa significan que Betano paga bajo el justo de Cloudbet — se listan como dato, no como recomendación.</p>
-    <div class="bandas">
-      <div class="banda alta"><span class="n">3</span><span class="e">≥ +1,5%</span></div>
-      <div class="banda leve"><span class="n">6</span><span class="e">0 a +1,5%</span></div>
-      <div class="banda roja"><span class="n">6</span><span class="e">−2% a 0</span></div>
-      <div class="banda peor"><span class="n">20</span><span class="e">peor que −2%</span></div>
-    </div>
-    <div class="scroll"><table>
-      <thead><tr><th>Apuesta</th><th>Liga</th><th>Comienza</th><th class="num">Cuota</th><th class="num">Justo</th><th class="num">Ventaja</th></tr></thead>
-      <tbody><tr>
-  <td class="c-part"><span class="eq">Sporting CP -0.5</span><span class="sub">Rio Ave FC vs Sporting CP</span></td>
-  <td class="c-liga">Liga Portugal</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">15:15</span></td>
-  <td class="num">1.90</td>
-  <td class="num sec">1.84</td>
-  <td class="num v alta">+3.5%</td>
+    <div class="tabla" data-tabla="corrida">
+      <div class="controles">
+        <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar la corrida por equipo o liga">
+        <span class="conteo"></span>
+      </div>
+      <div class="bandas">
+        <button type="button" class="banda alta" data-filtro="alta" aria-pressed="false"><span class="n">3</span><span class="e">≥ +1,5%</span></button>
+        <button type="button" class="banda leve" data-filtro="leve" aria-pressed="false"><span class="n">6</span><span class="e">0 a +1,5%</span></button>
+        <button type="button" class="banda roja" data-filtro="roja" aria-pressed="false"><span class="n">6</span><span class="e">−2% a 0</span></button>
+        <button type="button" class="banda peor" data-filtro="peor" aria-pressed="false"><span class="n">20</span><span class="e">peor que −2%</span></button>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th class="orden" data-tipo="txt">Apuesta</th><th class="orden" data-tipo="txt">Liga</th><th class="orden" data-tipo="num">Comienza</th><th class="orden num" data-tipo="num">Cuota</th><th class="num">Justo</th><th class="orden num" data-tipo="num" data-inicial="desc">Ventaja</th></tr></thead>
+        <tbody><tr data-buscar="sporting cp -0.5 rio ave fc vs sporting cp liga portugal" data-banda="alta">
+  <td class="c-part" data-v="sporting cp -0.5"><span class="eq">Sporting CP -0.5</span><span class="sub">Rio Ave FC vs Sporting CP</span></td>
+  <td class="c-liga" data-v="liga portugal">Liga Portugal</td>
+  <td class="c-hora" data-v="1787944500000"><span class="d">28-ago</span> <span class="h">15:15</span></td>
+  <td class="num" data-v="1.9">1.90</td>
+  <td class="num sec" data-v="1.836">1.84</td>
+  <td class="num v alta" data-v="0.035">+3.5%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Celtic Glasgow -0.5</span><span class="sub">Celtic Glasgow vs Falkirk FC</span></td>
-  <td class="c-liga">Premiership</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">10:00</span></td>
-  <td class="num">1.62</td>
-  <td class="num sec">1.57</td>
-  <td class="num v alta">+3.2%</td>
+<tr data-buscar="celtic glasgow -0.5 celtic glasgow vs falkirk fc premiership" data-banda="alta">
+  <td class="c-part" data-v="celtic glasgow -0.5"><span class="eq">Celtic Glasgow -0.5</span><span class="sub">Celtic Glasgow vs Falkirk FC</span></td>
+  <td class="c-liga" data-v="premiership">Premiership</td>
+  <td class="c-hora" data-v="1788012000000"><span class="d">29-ago</span> <span class="h">10:00</span></td>
+  <td class="num" data-v="1.62">1.62</td>
+  <td class="num sec" data-v="1.57">1.57</td>
+  <td class="num v alta" data-v="0.032">+3.2%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Partick Thistle FC -0.5</span><span class="sub">Partick Thistle FC vs Queens Park FC</span></td>
-  <td class="c-liga">Championship</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">10:00</span></td>
-  <td class="num">1.85</td>
-  <td class="num sec">1.82</td>
-  <td class="num v alta">+1.7%</td>
+<tr data-buscar="partick thistle fc -0.5 partick thistle fc vs queens park fc championship" data-banda="alta">
+  <td class="c-part" data-v="partick thistle fc -0.5"><span class="eq">Partick Thistle FC -0.5</span><span class="sub">Partick Thistle FC vs Queens Park FC</span></td>
+  <td class="c-liga" data-v="championship">Championship</td>
+  <td class="c-hora" data-v="1788012000000"><span class="d">29-ago</span> <span class="h">10:00</span></td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num sec" data-v="1.819">1.82</td>
+  <td class="num v alta" data-v="0.0172">+1.7%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Caernarfon Town FC -0.5</span><span class="sub">Holywell Town vs Caernarfon Town FC</span></td>
-  <td class="c-liga">Cymru Premier</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
-  <td class="num">1.62</td>
-  <td class="num sec">1.60</td>
-  <td class="num v leve">+1.3%</td>
+<tr data-buscar="caernarfon town fc -0.5 holywell town vs caernarfon town fc cymru premier" data-banda="leve">
+  <td class="c-part" data-v="caernarfon town fc -0.5"><span class="eq">Caernarfon Town FC -0.5</span><span class="sub">Holywell Town vs Caernarfon Town FC</span></td>
+  <td class="c-liga" data-v="cymru premier">Cymru Premier</td>
+  <td class="c-hora" data-v="1787942700000"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num" data-v="1.62">1.62</td>
+  <td class="num sec" data-v="1.599">1.60</td>
+  <td class="num v leve" data-v="0.013">+1.3%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">AZ Alkmaar -0.5</span><span class="sub">AZ Alkmaar vs Go Ahead Eagles</span></td>
-  <td class="c-liga">Eredivisie</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">12:45</span></td>
-  <td class="num">1.87</td>
-  <td class="num sec">1.85</td>
-  <td class="num v leve">+1.1%</td>
+<tr data-buscar="az alkmaar -0.5 az alkmaar vs go ahead eagles eredivisie" data-banda="leve">
+  <td class="c-part" data-v="az alkmaar -0.5"><span class="eq">AZ Alkmaar -0.5</span><span class="sub">AZ Alkmaar vs Go Ahead Eagles</span></td>
+  <td class="c-liga" data-v="eredivisie">Eredivisie</td>
+  <td class="c-hora" data-v="1788021900000"><span class="d">29-ago</span> <span class="h">12:45</span></td>
+  <td class="num" data-v="1.87">1.87</td>
+  <td class="num sec" data-v="1.85">1.85</td>
+  <td class="num v leve" data-v="0.0111">+1.1%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Cork City FC -0.5</span><span class="sub">Cork City FC vs Wexford FC</span></td>
-  <td class="c-liga">First Division</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
-  <td class="num">1.78</td>
-  <td class="num sec">1.76</td>
-  <td class="num v leve">+1.1%</td>
+<tr data-buscar="cork city fc -0.5 cork city fc vs wexford fc first division" data-banda="leve">
+  <td class="c-part" data-v="cork city fc -0.5"><span class="eq">Cork City FC -0.5</span><span class="sub">Cork City FC vs Wexford FC</span></td>
+  <td class="c-liga" data-v="first division">First Division</td>
+  <td class="c-hora" data-v="1787942700000"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num" data-v="1.78">1.78</td>
+  <td class="num sec" data-v="1.761">1.76</td>
+  <td class="num v leve" data-v="0.011">+1.1%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">FC Porto -0.5</span><span class="sub">Academico de Viseu FC vs FC Porto</span></td>
-  <td class="c-liga">Liga Portugal</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">13:00</span></td>
-  <td class="num">1.85</td>
-  <td class="num sec">1.83</td>
-  <td class="num v leve">+0.8%</td>
+<tr data-buscar="fc porto -0.5 academico de viseu fc vs fc porto liga portugal" data-banda="leve">
+  <td class="c-part" data-v="fc porto -0.5"><span class="eq">FC Porto -0.5</span><span class="sub">Academico de Viseu FC vs FC Porto</span></td>
+  <td class="c-liga" data-v="liga portugal">Liga Portugal</td>
+  <td class="c-hora" data-v="1788022800000"><span class="d">29-ago</span> <span class="h">13:00</span></td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num sec" data-v="1.835">1.83</td>
+  <td class="num v leve" data-v="0.0079">+0.8%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Al Ahli Saudi FC -0.5</span><span class="sub">Al-Kholood vs Al Ahli Saudi FC</span></td>
-  <td class="c-liga">Saudi Pro League</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">12:05</span></td>
-  <td class="num">1.90</td>
-  <td class="num sec">1.89</td>
-  <td class="num v leve">+0.4%</td>
+<tr data-buscar="al ahli saudi fc -0.5 al-kholood vs al ahli saudi fc saudi pro league" data-banda="leve">
+  <td class="c-part" data-v="al ahli saudi fc -0.5"><span class="eq">Al Ahli Saudi FC -0.5</span><span class="sub">Al-Kholood vs Al Ahli Saudi FC</span></td>
+  <td class="c-liga" data-v="saudi pro league">Saudi Pro League</td>
+  <td class="c-hora" data-v="1788019500000"><span class="d">29-ago</span> <span class="h">12:05</span></td>
+  <td class="num" data-v="1.9">1.90</td>
+  <td class="num sec" data-v="1.892">1.89</td>
+  <td class="num v leve" data-v="0.004">+0.4%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Heidelberg United FC -0.5</span><span class="sub">Heidelberg United FC vs Bentleigh Greens</span></td>
-  <td class="c-liga">Victoria, NPL</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">01:00</span></td>
-  <td class="num">1.87</td>
-  <td class="num sec">1.87</td>
-  <td class="num v leve">+0.0%</td>
+<tr data-buscar="heidelberg united fc -0.5 heidelberg united fc vs bentleigh greens victoria, npl" data-banda="leve">
+  <td class="c-part" data-v="heidelberg united fc -0.5"><span class="eq">Heidelberg United FC -0.5</span><span class="sub">Heidelberg United FC vs Bentleigh Greens</span></td>
+  <td class="c-liga" data-v="victoria, npl">Victoria, NPL</td>
+  <td class="c-hora" data-v="1787979600000"><span class="d">29-ago</span> <span class="h">01:00</span></td>
+  <td class="num" data-v="1.87">1.87</td>
+  <td class="num sec" data-v="1.869">1.87</td>
+  <td class="num v leve" data-v="0.0004">+0.0%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Chengdu Rongcheng -0.5</span><span class="sub">Chengdu Rongcheng vs Liaoning Tieren FC</span></td>
-  <td class="c-liga">Chinese Super League</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">07:35</span></td>
-  <td class="num">1.75</td>
-  <td class="num sec">1.75</td>
-  <td class="num v roja">−0.3%</td>
+<tr data-buscar="chengdu rongcheng -0.5 chengdu rongcheng vs liaoning tieren fc chinese super league" data-banda="roja">
+  <td class="c-part" data-v="chengdu rongcheng -0.5"><span class="eq">Chengdu Rongcheng -0.5</span><span class="sub">Chengdu Rongcheng vs Liaoning Tieren FC</span></td>
+  <td class="c-liga" data-v="chinese super league">Chinese Super League</td>
+  <td class="c-hora" data-v="1788003300000"><span class="d">29-ago</span> <span class="h">07:35</span></td>
+  <td class="num" data-v="1.75">1.75</td>
+  <td class="num sec" data-v="1.755">1.75</td>
+  <td class="num v roja" data-v="-0.0027">−0.3%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Al Ain FC -0.5</span><span class="sub">Al Ain FC vs Al-Nasr Dubai CSC</span></td>
-  <td class="c-liga">Arabian Gulf League</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">12:30</span></td>
-  <td class="num">1.83</td>
-  <td class="num sec">1.84</td>
-  <td class="num v roja">−0.5%</td>
+<tr data-buscar="al ain fc -0.5 al ain fc vs al-nasr dubai csc arabian gulf league" data-banda="roja">
+  <td class="c-part" data-v="al ain fc -0.5"><span class="eq">Al Ain FC -0.5</span><span class="sub">Al Ain FC vs Al-Nasr Dubai CSC</span></td>
+  <td class="c-liga" data-v="arabian gulf league">Arabian Gulf League</td>
+  <td class="c-hora" data-v="1788021000000"><span class="d">29-ago</span> <span class="h">12:30</span></td>
+  <td class="num" data-v="1.83">1.83</td>
+  <td class="num sec" data-v="1.839">1.84</td>
+  <td class="num v roja" data-v="-0.0051">−0.5%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">The New Saints FC -0.5</span><span class="sub">The New Saints FC vs Colwyn Bay</span></td>
-  <td class="c-liga">Cymru Premier</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
-  <td class="num">1.72</td>
-  <td class="num sec">1.73</td>
-  <td class="num v roja">−0.5%</td>
+<tr data-buscar="the new saints fc -0.5 the new saints fc vs colwyn bay cymru premier" data-banda="roja">
+  <td class="c-part" data-v="the new saints fc -0.5"><span class="eq">The New Saints FC -0.5</span><span class="sub">The New Saints FC vs Colwyn Bay</span></td>
+  <td class="c-liga" data-v="cymru premier">Cymru Premier</td>
+  <td class="c-hora" data-v="1787942700000"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num" data-v="1.72">1.72</td>
+  <td class="num sec" data-v="1.729">1.73</td>
+  <td class="num v roja" data-v="-0.0054">−0.5%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Saint Patrick´s Athletic FC -0.5</span><span class="sub">Saint Patrick´s Athletic FC vs Waterford FC</span></td>
-  <td class="c-liga">Premier Division</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
-  <td class="num">1.85</td>
-  <td class="num sec">1.87</td>
-  <td class="num v roja">−0.8%</td>
+<tr data-buscar="saint patrick´s athletic fc -0.5 saint patrick´s athletic fc vs waterford fc premier division" data-banda="roja">
+  <td class="c-part" data-v="saint patrick´s athletic fc -0.5"><span class="eq">Saint Patrick´s Athletic FC -0.5</span><span class="sub">Saint Patrick´s Athletic FC vs Waterford FC</span></td>
+  <td class="c-liga" data-v="premier division">Premier Division</td>
+  <td class="c-hora" data-v="1787942700000"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num sec" data-v="1.866">1.87</td>
+  <td class="num v roja" data-v="-0.0084">−0.8%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">ST Albans Saints Dinamo SC -0.5</span><span class="sub">ST Albans Saints Dinamo SC vs Dandenong Thunder</span></td>
-  <td class="c-liga">Victoria, NPL</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">01:00</span></td>
-  <td class="num">1.62</td>
-  <td class="num sec">1.64</td>
-  <td class="num v roja">−1.1%</td>
+<tr data-buscar="st albans saints dinamo sc -0.5 st albans saints dinamo sc vs dandenong thunder victoria, npl" data-banda="roja">
+  <td class="c-part" data-v="st albans saints dinamo sc -0.5"><span class="eq">ST Albans Saints Dinamo SC -0.5</span><span class="sub">ST Albans Saints Dinamo SC vs Dandenong Thunder</span></td>
+  <td class="c-liga" data-v="victoria, npl">Victoria, NPL</td>
+  <td class="c-hora" data-v="1787979600000"><span class="d">29-ago</span> <span class="h">01:00</span></td>
+  <td class="num" data-v="1.62">1.62</td>
+  <td class="num sec" data-v="1.639">1.64</td>
+  <td class="num v roja" data-v="-0.0115">−1.1%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Bohemians Dublin FC -0.5</span><span class="sub">Bohemians Dublin FC vs Sligo Rovers FC</span></td>
-  <td class="c-liga">Premier Division</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
-  <td class="num">1.70</td>
-  <td class="num sec">1.73</td>
-  <td class="num v roja">−1.7%</td>
+<tr data-buscar="bohemians dublin fc -0.5 bohemians dublin fc vs sligo rovers fc premier division" data-banda="roja">
+  <td class="c-part" data-v="bohemians dublin fc -0.5"><span class="eq">Bohemians Dublin FC -0.5</span><span class="sub">Bohemians Dublin FC vs Sligo Rovers FC</span></td>
+  <td class="c-liga" data-v="premier division">Premier Division</td>
+  <td class="c-hora" data-v="1787942700000"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num" data-v="1.7">1.70</td>
+  <td class="num sec" data-v="1.73">1.73</td>
+  <td class="num v roja" data-v="-0.0171">−1.7%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Borussia Dortmund -0.5</span><span class="sub">Borussia Dortmund vs Hamburger SV</span></td>
-  <td class="c-liga">Bundesliga</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">12:30</span></td>
-  <td class="num">1.80</td>
-  <td class="num sec">1.84</td>
-  <td class="num v peor">−2.0%</td>
+<tr data-buscar="borussia dortmund -0.5 borussia dortmund vs hamburger sv bundesliga" data-banda="peor">
+  <td class="c-part" data-v="borussia dortmund -0.5"><span class="eq">Borussia Dortmund -0.5</span><span class="sub">Borussia Dortmund vs Hamburger SV</span></td>
+  <td class="c-liga" data-v="bundesliga">Bundesliga</td>
+  <td class="c-hora" data-v="1788021000000"><span class="d">29-ago</span> <span class="h">12:30</span></td>
+  <td class="num" data-v="1.8">1.80</td>
+  <td class="num sec" data-v="1.838">1.84</td>
+  <td class="num v peor" data-v="-0.0204">−2.0%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Eastern Suburbs AFC -0.5</span><span class="sub">Eastern Suburbs AFC vs Auckland FC Reserves</span></td>
-  <td class="c-liga">National League</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">23:00</span></td>
-  <td class="num">1.83</td>
-  <td class="num sec">1.88</td>
-  <td class="num v peor">−2.6%</td>
+<tr data-buscar="eastern suburbs afc -0.5 eastern suburbs afc vs auckland fc reserves national league" data-banda="peor">
+  <td class="c-part" data-v="eastern suburbs afc -0.5"><span class="eq">Eastern Suburbs AFC -0.5</span><span class="sub">Eastern Suburbs AFC vs Auckland FC Reserves</span></td>
+  <td class="c-liga" data-v="national league">National League</td>
+  <td class="c-hora" data-v="1787972400000"><span class="d">28-ago</span> <span class="h">23:00</span></td>
+  <td class="num" data-v="1.83">1.83</td>
+  <td class="num sec" data-v="1.878">1.88</td>
+  <td class="num v peor" data-v="-0.0256">−2.6%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">FC Ordabasy -0.5</span><span class="sub">FC Ordabasy vs FC Kyzylzhar SK</span></td>
-  <td class="c-liga">Premier League</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">11:00</span></td>
-  <td class="num">1.85</td>
-  <td class="num sec">1.90</td>
-  <td class="num v peor">−2.6%</td>
+<tr data-buscar="fc ordabasy -0.5 fc ordabasy vs fc kyzylzhar sk premier league" data-banda="peor">
+  <td class="c-part" data-v="fc ordabasy -0.5"><span class="eq">FC Ordabasy -0.5</span><span class="sub">FC Ordabasy vs FC Kyzylzhar SK</span></td>
+  <td class="c-liga" data-v="premier league">Premier League</td>
+  <td class="c-hora" data-v="1788015600000"><span class="d">29-ago</span> <span class="h">11:00</span></td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num sec" data-v="1.899">1.90</td>
+  <td class="num v peor" data-v="-0.0259">−2.6%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Grotta -0.5</span><span class="sub">Grotta vs UMF Selfoss</span></td>
-  <td class="c-liga">1. deild, Women</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">10:00</span></td>
-  <td class="num">1.67</td>
-  <td class="num sec">1.73</td>
-  <td class="num v peor">−3.4%</td>
+<tr data-buscar="grotta -0.5 grotta vs umf selfoss 1. deild, women" data-banda="peor">
+  <td class="c-part" data-v="grotta -0.5"><span class="eq">Grotta -0.5</span><span class="sub">Grotta vs UMF Selfoss</span></td>
+  <td class="c-liga" data-v="1. deild, women">1. deild, Women</td>
+  <td class="c-hora" data-v="1788012000000"><span class="d">29-ago</span> <span class="h">10:00</span></td>
+  <td class="num" data-v="1.67">1.67</td>
+  <td class="num sec" data-v="1.728">1.73</td>
+  <td class="num v peor" data-v="-0.0336">−3.4%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">FK Mlada Boleslav B -0.5</span><span class="sub">FK Velke Hamry vs FK Mlada Boleslav B</span></td>
-  <td class="c-liga">CFL</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">04:30</span></td>
-  <td class="num">1.85</td>
-  <td class="num sec">1.95</td>
-  <td class="num v peor">−4.9%</td>
+<tr data-buscar="fk mlada boleslav b -0.5 fk velke hamry vs fk mlada boleslav b cfl" data-banda="peor">
+  <td class="c-part" data-v="fk mlada boleslav b -0.5"><span class="eq">FK Mlada Boleslav B -0.5</span><span class="sub">FK Velke Hamry vs FK Mlada Boleslav B</span></td>
+  <td class="c-liga" data-v="cfl">CFL</td>
+  <td class="c-hora" data-v="1787992200000"><span class="d">29-ago</span> <span class="h">04:30</span></td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num sec" data-v="1.945">1.95</td>
+  <td class="num v peor" data-v="-0.0487">−4.9%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Enfield Town -0.5</span><span class="sub">Enfield Town vs Whitehawk FC</span></td>
-  <td class="c-liga">Isthmian League, Pr. Div</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">10:00</span></td>
-  <td class="num">1.90</td>
-  <td class="num sec">2.00</td>
-  <td class="num v peor">−5.0%</td>
+<tr data-buscar="enfield town -0.5 enfield town vs whitehawk fc isthmian league, pr. div" data-banda="peor">
+  <td class="c-part" data-v="enfield town -0.5"><span class="eq">Enfield Town -0.5</span><span class="sub">Enfield Town vs Whitehawk FC</span></td>
+  <td class="c-liga" data-v="isthmian league, pr. div">Isthmian League, Pr. Div</td>
+  <td class="c-hora" data-v="1788012000000"><span class="d">29-ago</span> <span class="h">10:00</span></td>
+  <td class="num" data-v="1.9">1.90</td>
+  <td class="num sec" data-v="2">2.00</td>
+  <td class="num v peor" data-v="-0.05">−5.0%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Newtown AFC -0.5</span><span class="sub">Newtown AFC vs Llanuwchllyn</span></td>
-  <td class="c-liga">Cymru Championship, North</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
-  <td class="num">1.75</td>
-  <td class="num sec">1.85</td>
-  <td class="num v peor">−5.2%</td>
+<tr data-buscar="newtown afc -0.5 newtown afc vs llanuwchllyn cymru championship, north" data-banda="peor">
+  <td class="c-part" data-v="newtown afc -0.5"><span class="eq">Newtown AFC -0.5</span><span class="sub">Newtown AFC vs Llanuwchllyn</span></td>
+  <td class="c-liga" data-v="cymru championship, north">Cymru Championship, North</td>
+  <td class="c-hora" data-v="1787942700000"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num" data-v="1.75">1.75</td>
+  <td class="num sec" data-v="1.846">1.85</td>
+  <td class="num v peor" data-v="-0.0518">−5.2%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Saint Louis City SC 2 -0.5</span><span class="sub">Saint Louis City SC 2 vs North Texas SC</span></td>
-  <td class="c-liga">MLS Next Pro</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">20:00</span></td>
-  <td class="num">1.83</td>
-  <td class="num sec">1.94</td>
-  <td class="num v peor">−5.4%</td>
+<tr data-buscar="saint louis city sc 2 -0.5 saint louis city sc 2 vs north texas sc mls next pro" data-banda="peor">
+  <td class="c-part" data-v="saint louis city sc 2 -0.5"><span class="eq">Saint Louis City SC 2 -0.5</span><span class="sub">Saint Louis City SC 2 vs North Texas SC</span></td>
+  <td class="c-liga" data-v="mls next pro">MLS Next Pro</td>
+  <td class="c-hora" data-v="1787961600000"><span class="d">28-ago</span> <span class="h">20:00</span></td>
+  <td class="num" data-v="1.83">1.83</td>
+  <td class="num sec" data-v="1.935">1.94</td>
+  <td class="num v peor" data-v="-0.0541">−5.4%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">UMF Selfoss -0.5</span><span class="sub">UMF Selfoss vs IF Magni Grenivik</span></td>
-  <td class="c-liga">2. deild</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">10:00</span></td>
-  <td class="num">1.80</td>
-  <td class="num sec">1.90</td>
-  <td class="num v peor">−5.5%</td>
+<tr data-buscar="umf selfoss -0.5 umf selfoss vs if magni grenivik 2. deild" data-banda="peor">
+  <td class="c-part" data-v="umf selfoss -0.5"><span class="eq">UMF Selfoss -0.5</span><span class="sub">UMF Selfoss vs IF Magni Grenivik</span></td>
+  <td class="c-liga" data-v="2. deild">2. deild</td>
+  <td class="c-hora" data-v="1788012000000"><span class="d">29-ago</span> <span class="h">10:00</span></td>
+  <td class="num" data-v="1.8">1.80</td>
+  <td class="num sec" data-v="1.904">1.90</td>
+  <td class="num v peor" data-v="-0.0547">−5.5%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Fylkir Reykjavik -0.5</span><span class="sub">Fylkir Reykjavik vs Grotta</span></td>
-  <td class="c-liga">1. deild</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">15:15</span></td>
-  <td class="num">1.85</td>
-  <td class="num sec">1.96</td>
-  <td class="num v peor">−5.6%</td>
+<tr data-buscar="fylkir reykjavik -0.5 fylkir reykjavik vs grotta 1. deild" data-banda="peor">
+  <td class="c-part" data-v="fylkir reykjavik -0.5"><span class="eq">Fylkir Reykjavik -0.5</span><span class="sub">Fylkir Reykjavik vs Grotta</span></td>
+  <td class="c-liga" data-v="1. deild">1. deild</td>
+  <td class="c-hora" data-v="1787944500000"><span class="d">28-ago</span> <span class="h">15:15</span></td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num sec" data-v="1.96">1.96</td>
+  <td class="num v peor" data-v="-0.0562">−5.6%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">SK Artis B -0.5</span><span class="sub">FK Blansko vs SK Artis B</span></td>
-  <td class="c-liga">MSFL</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">10:00</span></td>
-  <td class="num">1.90</td>
-  <td class="num sec">2.02</td>
-  <td class="num v peor">−5.9%</td>
+<tr data-buscar="sk artis b -0.5 fk blansko vs sk artis b msfl" data-banda="peor">
+  <td class="c-part" data-v="sk artis b -0.5"><span class="eq">SK Artis B -0.5</span><span class="sub">FK Blansko vs SK Artis B</span></td>
+  <td class="c-liga" data-v="msfl">MSFL</td>
+  <td class="c-hora" data-v="1788012000000"><span class="d">29-ago</span> <span class="h">10:00</span></td>
+  <td class="num" data-v="1.9">1.90</td>
+  <td class="num sec" data-v="2.019">2.02</td>
+  <td class="num v peor" data-v="-0.059">−5.9%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">FK Auda Riga -0.5</span><span class="sub">FK Auda Riga vs SK Super Nova</span></td>
-  <td class="c-liga">Virsliga</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">12:00</span></td>
-  <td class="num">1.88</td>
-  <td class="num sec">2.01</td>
-  <td class="num v peor">−6.6%</td>
+<tr data-buscar="fk auda riga -0.5 fk auda riga vs sk super nova virsliga" data-banda="peor">
+  <td class="c-part" data-v="fk auda riga -0.5"><span class="eq">FK Auda Riga -0.5</span><span class="sub">FK Auda Riga vs SK Super Nova</span></td>
+  <td class="c-liga" data-v="virsliga">Virsliga</td>
+  <td class="c-hora" data-v="1788019200000"><span class="d">29-ago</span> <span class="h">12:00</span></td>
+  <td class="num" data-v="1.88">1.88</td>
+  <td class="num sec" data-v="2.012">2.01</td>
+  <td class="num v peor" data-v="-0.0657">−6.6%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">FC Midtjylland -0.5</span><span class="sub">Odense Q vs FC Midtjylland</span></td>
-  <td class="c-liga">Kvindeligaen, Women</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">07:00</span></td>
-  <td class="num">1.88</td>
-  <td class="num sec">2.01</td>
-  <td class="num v peor">−6.6%</td>
+<tr data-buscar="fc midtjylland -0.5 odense q vs fc midtjylland kvindeligaen, women" data-banda="peor">
+  <td class="c-part" data-v="fc midtjylland -0.5"><span class="eq">FC Midtjylland -0.5</span><span class="sub">Odense Q vs FC Midtjylland</span></td>
+  <td class="c-liga" data-v="kvindeligaen, women">Kvindeligaen, Women</td>
+  <td class="c-hora" data-v="1788001200000"><span class="d">29-ago</span> <span class="h">07:00</span></td>
+  <td class="num" data-v="1.88">1.88</td>
+  <td class="num sec" data-v="2.013">2.01</td>
+  <td class="num v peor" data-v="-0.0659">−6.6%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Kari -0.5</span><span class="sub">Kari vs Throttur Vogum</span></td>
-  <td class="c-liga">2. deild</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">15:15</span></td>
-  <td class="num">1.90</td>
-  <td class="num sec">2.04</td>
-  <td class="num v peor">−6.7%</td>
+<tr data-buscar="kari -0.5 kari vs throttur vogum 2. deild" data-banda="peor">
+  <td class="c-part" data-v="kari -0.5"><span class="eq">Kari -0.5</span><span class="sub">Kari vs Throttur Vogum</span></td>
+  <td class="c-liga" data-v="2. deild">2. deild</td>
+  <td class="c-hora" data-v="1787944500000"><span class="d">28-ago</span> <span class="h">15:15</span></td>
+  <td class="num" data-v="1.9">1.90</td>
+  <td class="num sec" data-v="2.037">2.04</td>
+  <td class="num v peor" data-v="-0.0671">−6.7%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Coleraine FC -0.5</span><span class="sub">Portadown FC vs Coleraine FC</span></td>
-  <td class="c-liga">Premiership</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
-  <td class="num">1.78</td>
-  <td class="num sec">1.91</td>
-  <td class="num v peor">−6.9%</td>
+<tr data-buscar="coleraine fc -0.5 portadown fc vs coleraine fc premiership" data-banda="peor">
+  <td class="c-part" data-v="coleraine fc -0.5"><span class="eq">Coleraine FC -0.5</span><span class="sub">Portadown FC vs Coleraine FC</span></td>
+  <td class="c-liga" data-v="premiership">Premiership</td>
+  <td class="c-hora" data-v="1787942700000"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num" data-v="1.78">1.78</td>
+  <td class="num sec" data-v="1.912">1.91</td>
+  <td class="num v peor" data-v="-0.0689">−6.9%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">VfB Stuttgart -0.5</span><span class="sub">VfB Stuttgart vs Hamburger SV</span></td>
-  <td class="c-liga">Women Bundesliga</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">08:00</span></td>
-  <td class="num">1.85</td>
-  <td class="num sec">2.00</td>
-  <td class="num v peor">−7.5%</td>
+<tr data-buscar="vfb stuttgart -0.5 vfb stuttgart vs hamburger sv women bundesliga" data-banda="peor">
+  <td class="c-part" data-v="vfb stuttgart -0.5"><span class="eq">VfB Stuttgart -0.5</span><span class="sub">VfB Stuttgart vs Hamburger SV</span></td>
+  <td class="c-liga" data-v="women bundesliga">Women Bundesliga</td>
+  <td class="c-hora" data-v="1788004800000"><span class="d">29-ago</span> <span class="h">08:00</span></td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num sec" data-v="2">2.00</td>
+  <td class="num v peor" data-v="-0.075">−7.5%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Deportivo Toluca FC -0.5</span><span class="sub">Deportivo Toluca FC vs Club Leon</span></td>
-  <td class="c-liga">Liga MX, Women</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">20:00</span></td>
-  <td class="num">1.80</td>
-  <td class="num sec">1.95</td>
-  <td class="num v peor">−7.8%</td>
+<tr data-buscar="deportivo toluca fc -0.5 deportivo toluca fc vs club leon liga mx, women" data-banda="peor">
+  <td class="c-part" data-v="deportivo toluca fc -0.5"><span class="eq">Deportivo Toluca FC -0.5</span><span class="sub">Deportivo Toluca FC vs Club Leon</span></td>
+  <td class="c-liga" data-v="liga mx, women">Liga MX, Women</td>
+  <td class="c-hora" data-v="1787961600000"><span class="d">28-ago</span> <span class="h">20:00</span></td>
+  <td class="num" data-v="1.8">1.80</td>
+  <td class="num sec" data-v="1.952">1.95</td>
+  <td class="num v peor" data-v="-0.0781">−7.8%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">FC Jazz -0.5</span><span class="sub">FC Jazz vs FC Inter Turku 2</span></td>
-  <td class="c-liga">Ykkonen</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">07:00</span></td>
-  <td class="num">1.85</td>
-  <td class="num sec">2.02</td>
-  <td class="num v peor">−8.3%</td>
+<tr data-buscar="fc jazz -0.5 fc jazz vs fc inter turku 2 ykkonen" data-banda="peor">
+  <td class="c-part" data-v="fc jazz -0.5"><span class="eq">FC Jazz -0.5</span><span class="sub">FC Jazz vs FC Inter Turku 2</span></td>
+  <td class="c-liga" data-v="ykkonen">Ykkonen</td>
+  <td class="c-hora" data-v="1788001200000"><span class="d">29-ago</span> <span class="h">07:00</span></td>
+  <td class="num" data-v="1.85">1.85</td>
+  <td class="num sec" data-v="2.018">2.02</td>
+  <td class="num v peor" data-v="-0.0834">−8.3%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Dulwich Hill -0.5</span><span class="sub">Rydalmere Lions FC vs Dulwich Hill</span></td>
-  <td class="c-liga">U20 NSW League One</td>
-  <td class="c-hora"><span class="d">29-ago</span> <span class="h">02:30</span></td>
-  <td class="num">1.70</td>
-  <td class="num sec">1.88</td>
-  <td class="num v peor">−9.7%</td>
+<tr data-buscar="dulwich hill -0.5 rydalmere lions fc vs dulwich hill u20 nsw league one" data-banda="peor">
+  <td class="c-part" data-v="dulwich hill -0.5"><span class="eq">Dulwich Hill -0.5</span><span class="sub">Rydalmere Lions FC vs Dulwich Hill</span></td>
+  <td class="c-liga" data-v="u20 nsw league one">U20 NSW League One</td>
+  <td class="c-hora" data-v="1787985000000"><span class="d">29-ago</span> <span class="h">02:30</span></td>
+  <td class="num" data-v="1.7">1.70</td>
+  <td class="num sec" data-v="1.883">1.88</td>
+  <td class="num v peor" data-v="-0.0972">−9.7%</td>
 </tr>
-<tr>
-  <td class="c-part"><span class="eq">Aberystwyth Town FC -0.5</span><span class="sub">Aberystwyth Town FC vs Pontardawe Town FC</span></td>
-  <td class="c-liga">Cymru Championship South</td>
-  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
-  <td class="num">1.88</td>
-  <td class="num sec">2.10</td>
-  <td class="num v peor">−10.3%</td>
+<tr data-buscar="aberystwyth town fc -0.5 aberystwyth town fc vs pontardawe town fc cymru championship south" data-banda="peor">
+  <td class="c-part" data-v="aberystwyth town fc -0.5"><span class="eq">Aberystwyth Town FC -0.5</span><span class="sub">Aberystwyth Town FC vs Pontardawe Town FC</span></td>
+  <td class="c-liga" data-v="cymru championship south">Cymru Championship South</td>
+  <td class="c-hora" data-v="1787942700000"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num" data-v="1.88">1.88</td>
+  <td class="num sec" data-v="2.096">2.10</td>
+  <td class="num v peor" data-v="-0.1032">−10.3%</td>
 </tr></tbody>
-    </table></div>
+      </table></div>
+      <p class="vacio" hidden>Ningún partido calza con ese filtro.</p>
+    </div>
   </section>
 
   <section>
@@ -557,6 +591,75 @@
       <p><strong>La muestra es corta.</strong> Con estas cantidades, diferencias de unos puntos entre bandas no significan nada. Lo que hace falta es volumen, no más filtros.</p>
     </div>
   </section>
+
+  <script>
+  /* Ordenar y filtrar sin librerías: cada celda lleva su valor ordenable en
+     data-v, así el orden no depende de cómo se ve el texto (una fecha
+     "28-ago" ordena por su timestamp, no alfabéticamente). */
+  for (const tabla of document.querySelectorAll('.tabla')) {
+    const cuerpo = tabla.querySelector('tbody');
+    const filas = [...cuerpo.rows];
+    const buscar = tabla.querySelector('.buscar');
+    const conteo = tabla.querySelector('.conteo');
+    const vacio = tabla.querySelector('.vacio');
+    const bandas = [...tabla.querySelectorAll('.banda')];
+    let bandaActiva = null;
+
+    const aplicar = () => {
+      const q = (buscar.value || '').trim().toLowerCase();
+      let visibles = 0;
+      for (const fila of filas) {
+        const okTexto = !q || fila.dataset.buscar.includes(q);
+        const okBanda = !bandaActiva || fila.dataset.banda === bandaActiva;
+        fila.hidden = !(okTexto && okBanda);
+        if (!fila.hidden) visibles++;
+      }
+      conteo.textContent = visibles === filas.length
+        ? filas.length + (filas.length === 1 ? ' apuesta' : ' apuestas')
+        : visibles + ' de ' + filas.length;
+      vacio.hidden = visibles > 0;
+    };
+
+    const ordenar = (th) => {
+      const i = [...th.parentNode.children].indexOf(th);
+      const num = th.dataset.tipo === 'num';
+      const previo = th.getAttribute('aria-sort');
+      const dir = previo === 'ascending' ? 'descending'
+        : previo === 'descending' ? 'ascending'
+        : (th.dataset.inicial === 'asc' ? 'ascending' : 'descending');
+      for (const otro of th.parentNode.children) otro.removeAttribute('aria-sort');
+      th.setAttribute('aria-sort', dir);
+      const signo = dir === 'ascending' ? 1 : -1;
+      const valor = (fila) => {
+        const celda = fila.cells[i];
+        const v = celda.dataset.v ?? celda.textContent.trim();
+        return num ? parseFloat(v) || 0 : String(v);
+      };
+      filas.sort((a, b) => {
+        const va = valor(a), vb = valor(b);
+        return signo * (num ? va - vb : va.localeCompare(vb, 'es'));
+      });
+      for (const fila of filas) cuerpo.appendChild(fila);
+    };
+
+    for (const th of tabla.querySelectorAll('th.orden')) {
+      th.tabIndex = 0;
+      th.addEventListener('click', () => ordenar(th));
+      th.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); ordenar(th); }
+      });
+    }
+    for (const b of bandas) {
+      b.addEventListener('click', () => {
+        bandaActiva = bandaActiva === b.dataset.filtro ? null : b.dataset.filtro;
+        for (const otra of bandas) otra.setAttribute('aria-pressed', String(otra.dataset.filtro === bandaActiva));
+        aplicar();
+      });
+    }
+    buscar.addEventListener('input', aplicar);
+    aplicar();
+  }
+  </script>
 
   <footer>
     Generado por <code>vigia/bitacora.mjs</code> desde <code>registro.json</code> y la corrida del barrido.

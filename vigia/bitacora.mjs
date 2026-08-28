@@ -64,25 +64,25 @@ for (const e of vivas) rec[e.estado]++;
 const senales = (corrida.senales || []).slice().sort((a, b) => b.vent - a.vent);
 const porBanda = BANDAS.map(b => ({ ...b, n: senales.filter(s => b.test(s.vent)).length }));
 
-const filaCorrida = s => `<tr>
-  <td class="c-part"><span class="eq">${esc(s.lado)}</span><span class="sub">${esc(s.partido)}</span></td>
-  <td class="c-liga">${esc(s.liga)}</td>
-  <td class="c-hora"><span class="d">${fechaCorta(s.inicio)}</span> <span class="h">${horaCorta(s.inicio)}</span></td>
-  <td class="num">${s.cuota.toFixed(2)}</td>
-  <td class="num sec">${s.justo.toFixed(2)}</td>
-  <td class="num v ${bandaDe(s.vent).id}">${pct(s.vent)}</td>
+const filaCorrida = s => `<tr data-buscar="${esc((s.lado + ' ' + s.partido + ' ' + s.liga).toLowerCase())}" data-banda="${bandaDe(s.vent).id}">
+  <td class="c-part" data-v="${esc(s.lado.toLowerCase())}"><span class="eq">${esc(s.lado)}</span><span class="sub">${esc(s.partido)}</span></td>
+  <td class="c-liga" data-v="${esc(s.liga.toLowerCase())}">${esc(s.liga)}</td>
+  <td class="c-hora" data-v="${new Date(s.inicio).getTime() || 0}"><span class="d">${fechaCorta(s.inicio)}</span> <span class="h">${horaCorta(s.inicio)}</span></td>
+  <td class="num" data-v="${s.cuota}">${s.cuota.toFixed(2)}</td>
+  <td class="num sec" data-v="${s.justo}">${s.justo.toFixed(2)}</td>
+  <td class="num v ${bandaDe(s.vent).id}" data-v="${s.vent}">${pct(s.vent)}</td>
 </tr>`;
 
 const RES = { G: ['gano', 'Ganada'], P: ['perdio', 'Perdida'], E: ['nula', 'Empate'],
               MG: ['gano', 'Media G'], MP: ['perdio', 'Media P'] };
-const filaHist = e => `<tr${e.congelada ? ' class="fria"' : ''}>
-  <td class="c-hora"><span class="d">${fechaCorta(e.inicio)}</span></td>
-  <td class="c-part"><span class="eq">${esc(e.lado)}</span><span class="sub">${esc(e.partido)}</span></td>
-  <td class="c-liga">${esc(e.liga)}</td>
-  <td class="num">${e.cuota.toFixed(2)}</td>
-  <td class="num v ${bandaDe(e.vent).id}">${pct(e.vent)}</td>
-  <td><span class="pill ${RES[e.estado][0]}">${RES[e.estado][1]}</span>${e.congelada ? '<span class="pill fria-p">congelada</span>' : ''}</td>
-  <td class="num u ${uni(e) > 0 ? 'gano' : uni(e) < 0 ? 'perdio' : 'nula'}">${uni(e) >= 0 ? '+' : '−'}${Math.abs(uni(e)).toFixed(2)}</td>
+const filaHist = e => `<tr${e.congelada ? ' class="fria"' : ''} data-buscar="${esc((e.lado + ' ' + e.partido + ' ' + e.liga).toLowerCase())}" data-banda="${bandaDe(e.vent).id}">
+  <td class="c-hora" data-v="${new Date(e.inicio).getTime() || 0}"><span class="d">${fechaCorta(e.inicio)}</span> <span class="h">${horaCorta(e.inicio)}</span></td>
+  <td class="c-part" data-v="${esc(e.lado.toLowerCase())}"><span class="eq">${esc(e.lado)}</span><span class="sub">${esc(e.partido)}</span></td>
+  <td class="c-liga" data-v="${esc(e.liga.toLowerCase())}">${esc(e.liga)}</td>
+  <td class="num" data-v="${e.cuota}">${e.cuota.toFixed(2)}</td>
+  <td class="num v ${bandaDe(e.vent).id}" data-v="${e.vent}">${pct(e.vent)}</td>
+  <td data-v="${esc(RES[e.estado][1])}"><span class="pill ${RES[e.estado][0]}">${RES[e.estado][1]}</span>${e.congelada ? '<span class="pill fria-p">congelada</span>' : ''}</td>
+  <td class="num u ${uni(e) > 0 ? 'gano' : uni(e) < 0 ? 'perdio' : 'nula'}" data-v="${uni(e)}">${uni(e) >= 0 ? '+' : '−'}${Math.abs(uni(e)).toFixed(2)}</td>
 </tr>`;
 
 const html = `<title>Bitácora AH Primer Tiempo</title>
@@ -161,9 +161,29 @@ const html = `<title>Bitácora AH Primer Tiempo</title>
   .pill.gano{color:var(--gano)} .pill.perdio{color:var(--perdio)} .pill.nula{color:var(--nula)}
   .pill.fria-p{color:var(--muted)}
 
+  .controles{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .buscar{flex:1 1 210px;min-width:0;font:inherit;font-size:13.5px;color:var(--ink);
+          background:var(--surface);border:1px solid var(--line-fuerte);border-radius:3px;
+          padding:7px 11px}
+  .buscar::placeholder{color:var(--muted)}
+  .buscar:focus-visible,.banda:focus-visible,th.orden:focus-visible{outline:2px solid var(--acento);outline-offset:1px}
+  .conteo{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  th.orden{cursor:pointer;user-select:none}
+  th.orden:hover{color:var(--ink)}
+  th.orden::after{content:"";display:inline-block;width:0;height:0;margin-left:6px;
+                  border-left:3.5px solid transparent;border-right:3.5px solid transparent;
+                  opacity:.28;border-bottom:4.5px solid currentColor;vertical-align:middle}
+  th.orden[aria-sort="ascending"]::after{opacity:1;border-bottom:4.5px solid var(--acento);border-top:0}
+  th.orden[aria-sort="descending"]::after{opacity:1;border-top:4.5px solid var(--acento);border-bottom:0}
+  tr[hidden]{display:none}
+  .vacio{padding:22px 14px;text-align:center;color:var(--muted);font-size:13.5px}
   .bandas{display:flex;flex-wrap:wrap;gap:8px}
   .banda{display:flex;align-items:baseline;gap:7px;border:1px solid var(--line-fuerte);
-         border-radius:2px;padding:6px 11px;background:var(--surface)}
+         border-radius:2px;padding:6px 11px;background:var(--surface);cursor:pointer;
+         font:inherit;color:inherit;transition:border-color .12s,background .12s}
+  .banda:hover{border-color:var(--acento)}
+  .banda[aria-pressed="true"]{border-color:var(--acento);background:var(--acento-tenue)}
+  @media (prefers-reduced-motion:reduce){.banda{transition:none}}
   .banda .n{font-family:var(--mono);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums}
   .banda .e{font-size:12px;color:var(--muted)}
   .banda.alta .n{color:var(--gano)} .banda.peor .n{color:var(--perdio)} .banda.roja .n{color:var(--nula)}
@@ -192,22 +212,36 @@ const html = `<title>Bitácora AH Primer Tiempo</title>
       <div class="tile"><span class="k">Unidades</span><span class="val ${unidades >= 0 ? 'gano' : 'perdio'}">${unidades >= 0 ? '+' : '−'}${Math.abs(unidades).toFixed(2)}</span><span class="note">suma de retornos</span></div>
       <div class="tile"><span class="k">ROI por unidad</span><span class="val ${roiVivas >= 0 ? 'gano' : 'perdio'}">${roiVivas >= 0 ? '+' : '−'}${Math.abs(roiVivas).toFixed(1)}%</span><span class="note">cada apuesta pesa igual</span></div>
     </div>
-    <div class="scroll"><table>
-      <thead><tr><th>Fecha</th><th>Apuesta</th><th>Liga</th><th class="num">Cuota</th><th class="num">vs justo</th><th>Resultado</th><th class="num">Unid.</th></tr></thead>
-      <tbody>${hist.map(filaHist).join('\n')}</tbody>
-    </table></div>
+    <div class="tabla" data-tabla="historico">
+      <div class="controles">
+        <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar el histórico por equipo o liga">
+        <span class="conteo"></span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th class="orden" data-tipo="num" data-inicial="asc">Fecha</th><th class="orden" data-tipo="txt">Apuesta</th><th class="orden" data-tipo="txt">Liga</th><th class="orden num" data-tipo="num">Cuota</th><th class="orden num" data-tipo="num">vs justo</th><th class="orden" data-tipo="txt">Resultado</th><th class="orden num" data-tipo="num">Unid.</th></tr></thead>
+        <tbody>${hist.map(filaHist).join('\n')}</tbody>
+      </table></div>
+      <p class="vacio" hidden>Ninguna apuesta calza con ese filtro.</p>
+    </div>
   </section>
 
   <section>
     <h2>Última corrida — todos los partidos del rango</h2>
     <p class="lead">Sin filtro de valor: entran todos los partidos que ofrecen la línea dentro del rango de cuota, ordenados de mayor a menor ventaja. Las de ventaja negativa significan que Betano paga bajo el justo de Cloudbet — se listan como dato, no como recomendación.</p>
-    <div class="bandas">
-      ${porBanda.map(b => `<div class="banda ${b.id}"><span class="n">${b.n}</span><span class="e">${b.etiqueta}</span></div>`).join('\n      ')}
+    <div class="tabla" data-tabla="corrida">
+      <div class="controles">
+        <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar la corrida por equipo o liga">
+        <span class="conteo"></span>
+      </div>
+      <div class="bandas">
+        ${porBanda.map(b => `<button type="button" class="banda ${b.id}" data-filtro="${b.id}" aria-pressed="false"><span class="n">${b.n}</span><span class="e">${b.etiqueta}</span></button>`).join('\n        ')}
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th class="orden" data-tipo="txt">Apuesta</th><th class="orden" data-tipo="txt">Liga</th><th class="orden" data-tipo="num">Comienza</th><th class="orden num" data-tipo="num">Cuota</th><th class="num">Justo</th><th class="orden num" data-tipo="num" data-inicial="desc">Ventaja</th></tr></thead>
+        <tbody>${senales.map(filaCorrida).join('\n')}</tbody>
+      </table></div>
+      <p class="vacio" hidden>Ningún partido calza con ese filtro.</p>
     </div>
-    <div class="scroll"><table>
-      <thead><tr><th>Apuesta</th><th>Liga</th><th>Comienza</th><th class="num">Cuota</th><th class="num">Justo</th><th class="num">Ventaja</th></tr></thead>
-      <tbody>${senales.map(filaCorrida).join('\n')}</tbody>
-    </table></div>
   </section>
 
   <section>
@@ -219,6 +253,75 @@ const html = `<title>Bitácora AH Primer Tiempo</title>
       <p><strong>La muestra es corta.</strong> Con estas cantidades, diferencias de unos puntos entre bandas no significan nada. Lo que hace falta es volumen, no más filtros.</p>
     </div>
   </section>
+
+  <script>
+  /* Ordenar y filtrar sin librerías: cada celda lleva su valor ordenable en
+     data-v, así el orden no depende de cómo se ve el texto (una fecha
+     "28-ago" ordena por su timestamp, no alfabéticamente). */
+  for (const tabla of document.querySelectorAll('.tabla')) {
+    const cuerpo = tabla.querySelector('tbody');
+    const filas = [...cuerpo.rows];
+    const buscar = tabla.querySelector('.buscar');
+    const conteo = tabla.querySelector('.conteo');
+    const vacio = tabla.querySelector('.vacio');
+    const bandas = [...tabla.querySelectorAll('.banda')];
+    let bandaActiva = null;
+
+    const aplicar = () => {
+      const q = (buscar.value || '').trim().toLowerCase();
+      let visibles = 0;
+      for (const fila of filas) {
+        const okTexto = !q || fila.dataset.buscar.includes(q);
+        const okBanda = !bandaActiva || fila.dataset.banda === bandaActiva;
+        fila.hidden = !(okTexto && okBanda);
+        if (!fila.hidden) visibles++;
+      }
+      conteo.textContent = visibles === filas.length
+        ? filas.length + (filas.length === 1 ? ' apuesta' : ' apuestas')
+        : visibles + ' de ' + filas.length;
+      vacio.hidden = visibles > 0;
+    };
+
+    const ordenar = (th) => {
+      const i = [...th.parentNode.children].indexOf(th);
+      const num = th.dataset.tipo === 'num';
+      const previo = th.getAttribute('aria-sort');
+      const dir = previo === 'ascending' ? 'descending'
+        : previo === 'descending' ? 'ascending'
+        : (th.dataset.inicial === 'asc' ? 'ascending' : 'descending');
+      for (const otro of th.parentNode.children) otro.removeAttribute('aria-sort');
+      th.setAttribute('aria-sort', dir);
+      const signo = dir === 'ascending' ? 1 : -1;
+      const valor = (fila) => {
+        const celda = fila.cells[i];
+        const v = celda.dataset.v ?? celda.textContent.trim();
+        return num ? parseFloat(v) || 0 : String(v);
+      };
+      filas.sort((a, b) => {
+        const va = valor(a), vb = valor(b);
+        return signo * (num ? va - vb : va.localeCompare(vb, 'es'));
+      });
+      for (const fila of filas) cuerpo.appendChild(fila);
+    };
+
+    for (const th of tabla.querySelectorAll('th.orden')) {
+      th.tabIndex = 0;
+      th.addEventListener('click', () => ordenar(th));
+      th.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); ordenar(th); }
+      });
+    }
+    for (const b of bandas) {
+      b.addEventListener('click', () => {
+        bandaActiva = bandaActiva === b.dataset.filtro ? null : b.dataset.filtro;
+        for (const otra of bandas) otra.setAttribute('aria-pressed', String(otra.dataset.filtro === bandaActiva));
+        aplicar();
+      });
+    }
+    buscar.addEventListener('input', aplicar);
+    aplicar();
+  }
+  </script>
 
   <footer>
     Generado por <code>vigia/bitacora.mjs</code> desde <code>registro.json</code> y la corrida del barrido.
