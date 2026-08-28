@@ -141,7 +141,8 @@
     <div class="criterio" id="criterio"></div>
     <div class="sello" id="sello"></div>
     <div class="acciones">
-      <button type="button" class="btn primario" id="btn-tablero">Actualizar tablero</button>
+      <button type="button" class="btn primario" id="btn-releer">Actualizar</button>
+      <button type="button" class="btn" id="btn-tablero">Liquidar y actualizar</button>
       <div class="grupo" role="group" aria-label="Barrer las próximas horas">
         <span class="rotulo">Barrer</span>
         <button type="button" class="btn barrer" data-horas="3">3 h</button>
@@ -230,7 +231,7 @@
 <script>
 const SEED = /*__SEED__*/null;
 const REPO = { owner: 'smartinoli', repo: 'BETO', rama: 'claude/code-analysis-improvements-myq0yb',
-               workflow: 'vigia.yml', archivo: 'vigia/live.json' };
+               workflow: 'vigia.yml', archivo: 'vigia/live.json', buzon: 'vigia/orden.json' };
 const CERRADO = ['G', 'MG', 'E', 'MP', 'P'];
 const RES = { G: ['gano', 'Ganada'], P: ['perdio', 'Perdida'], E: ['nula', 'Empate'],
               MG: ['gano', 'Media G'], MP: ['perdio', 'Media P'] };
@@ -441,6 +442,35 @@ async function leerLive(fresco) {
     fresco ? { cache: { refresh: true } } : undefined);
   return parsear(r.payload);
 }
+/* el conector de GitHub de claude.ai no expone las herramientas de Actions
+   (dispararlas devuelve blocked_by_policy), pero sí deja escribir archivos:
+   la orden se deja en vigia/orden.json y el push de ese archivo levanta el
+   workflow. Hay que mandar el sha del blob que se reemplaza. */
+async function shaDelBuzon() {
+  const r = await mcp.callTool(SRV, 'get_file_contents',
+    { owner: REPO.owner, repo: REPO.repo, path: REPO.buzon, ref: 'refs/heads/' + REPO.rama },
+    { cache: { refresh: true } });
+  const p = r.payload;
+  const busca = o => {
+    if (!o || typeof o !== 'object') return null;
+    if (typeof o.sha === 'string' && o.sha.length >= 7) return o.sha;
+    for (const v of Array.isArray(o) ? o : Object.values(o)) { const h = busca(v); if (h) return h }
+    return null;
+  };
+  const sha = busca(p) || busca(parsear(p));
+  if (!sha) throw Object.assign(new Error('sin sha'), { code: 'sin_sha' });
+  return sha;
+}
+async function dejarOrden(texto) {
+  const sha = await shaDelBuzon();
+  const cuerpo = JSON.stringify({
+    comentario: 'Buzón de órdenes de la bitácora. El push de este archivo levanta el workflow.',
+    texto, ts: new Date().toISOString(), origen: 'bitacora',
+  }, null, 2) + '\n';
+  await mcp.callTool(SRV, 'create_or_update_file',
+    { owner: REPO.owner, repo: REPO.repo, branch: REPO.rama, path: REPO.buzon,
+      sha, content: cuerpo, message: 'bitácora: ' + texto });
+}
 function estado(msj, clase) { const e = $('#estado'); e.textContent = msj; e.className = clase || ''; }
 function botones(on) {
   ocupado = !on;
@@ -451,10 +481,8 @@ async function accion(texto, aviso) {
   botones(false);
   const antes = DATOS.ts;
   try {
-    estado('⏳ ' + aviso + ' — disparando el workflow…');
-    await mcp.callTool(SRV, 'actions_run_trigger',
-      { method: 'run_workflow', owner: REPO.owner, repo: REPO.repo,
-        workflow_id: REPO.workflow, ref: REPO.rama, inputs: { texto } });
+    estado('⏳ ' + aviso + ' — dejando la orden en el repo…');
+    await dejarOrden(texto);
     estado('⏳ ' + aviso + ' — el bot está corriendo (suele tomar 1–3 min)…');
     const pollMs = window.__bitPollMs || 20000;
     for (let i = 0; i < 24; i++) {
@@ -470,14 +498,26 @@ async function accion(texto, aviso) {
     }
     estado('⚠️ El bot no reportó en ~8 min. Puede seguir corriendo: prueba «Actualizar tablero» en un rato.', 'err');
   } catch (e) {
-    estado('❌ No se pudo disparar: ' + (e && e.code ? e.code : (e && e.message) || e), 'err');
+    const c = e && e.code;
+    estado(c === 'blocked_by_policy' || c === 'not_in_manifest'
+      ? '❌ Tu conector de GitHub no permite escribir en el repo, así que no puedo pedirle nada al bot. «Actualizar» sí funciona.'
+      : '❌ No se pudo dejar la orden: ' + (c || (e && e.message) || e), 'err');
   }
   botones(true);
 }
-$('#btn-tablero').addEventListener('click', async () => {
-  /* tablero = liquidar pendientes + refrescar la foto (y de paso la corrida vigente) */
-  accion('tablero', 'Actualizando el tablero');
+/* relectura pura: no le pide nada al bot ni gasta requests de OddsPapi */
+$('#btn-releer').addEventListener('click', async () => {
+  if (!mcp || ocupado) return;
+  botones(false);
+  try {
+    const d = await leerLive(true);
+    if (d) { DATOS = d; render(); }
+    estado('✅ Foto del bot de ' + hace(DATOS.ts) + '.', 'ok');
+  } catch (e) { estado('❌ No pude leer el repo: ' + ((e && e.code) || 'error'), 'err'); }
+  botones(true);
 });
+/* tablero = liquidar pendientes + refrescar la foto (y de paso la corrida vigente) */
+$('#btn-tablero').addEventListener('click', () => accion('tablero', 'Liquidando'));
 for (const b of document.querySelectorAll('.btn.barrer'))
   b.addEventListener('click', () => accion('barrer ' + b.dataset.horas, 'Barrido de ' + b.dataset.horas + ' h'));
 

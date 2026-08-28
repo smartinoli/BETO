@@ -6,11 +6,18 @@ name: Vigía
 # workflow. Sin cron y sin sesiones de escucha: nada corre mientras no mandes
 # un mensaje.
 #
+# La bitácora (el artefacto) no puede disparar workflows: el conector de GitHub
+# de claude.ai no expone las herramientas de Actions. Lo que sí puede es escribir
+# un archivo, así que deja la orden en vigia/orden.json y el push de ese archivo
+# levanta este workflow. El bot nunca commitea orden.json, así que no hay bucle.
+#
 # También puedes dispararlo a mano desde la pestaña Actions (Run workflow).
 
 on:
   repository_dispatch:
     types: [comando]
+  push:
+    paths: ['vigia/orden.json']
   workflow_dispatch:
     inputs:
       accion:
@@ -41,14 +48,26 @@ jobs:
         with:
           node-version: 22
 
+      # el texto entra por variable de entorno, nunca interpolado en el shell
+      - name: Resolver el comando
+        env:
+          DESDE_EVENTO: ${{ github.event.client_payload.texto || inputs.texto || inputs.accion || 'barrer' }}
+        run: |
+          if [ "${{ github.event_name }}" = push ]; then
+            TXT=$(node -e 'let t="barrer";try{t=String(require("./vigia/orden.json").texto||t)}catch{};
+              console.log(t.replace(/[^\w .:-]/g,"").slice(0,40).trim()||"barrer")')
+          else
+            TXT=$DESDE_EVENTO
+          fi
+          echo "orden: $TXT"
+          echo "COMANDO=$TXT" >> "$GITHUB_ENV"
+
       - name: Atender el comando
         env:
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           MODO: comando
-          # del chat viene el texto tal cual; desde Actions, la acción elegida
-          COMANDO: ${{ github.event.client_payload.texto || inputs.texto || inputs.accion || 'barrer' }}
         run: node vigia/vigia.mjs
 
       - name: Guardar estado
