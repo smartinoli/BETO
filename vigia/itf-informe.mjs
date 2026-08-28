@@ -238,6 +238,15 @@ function etapaPartido(clave, n1, n2) {
 function etapaDeducida(f1, f2) {
   const q = x => x.seccion === 'Q' || x.entrada === 'Q';
   const ganoQuali = x => x.tray.some(t => t.esQ && t.gano);
+  /* Si alguno ya ganó rondas del cuadro principal, este cruce es la
+     SIGUIENTE a la más alta ganada (main de 32: tras R2 viene QF).
+     Medido el 2026-08-29: el "R1" a ciegas le regalaba la curva empinada
+     de rondas tempranas a un cuartos de final (Castelnuovo–Chen, 89%
+     donde la curva de finales daba mucho menos). */
+  const ORD = { R1: 1, R2: 2, R3: 3, QF: 4, SF: 5, F: 6 };
+  const SIG = { 1: 'R2', 2: 'QF', 3: 'QF', 4: 'SF', 5: 'F', 6: 'F' };
+  const max = Math.max(0, ...[f1, f2].flatMap(x => (x.tray || []).filter(t => !t.esQ && t.gano).map(t => ORD[t.etapa] || 0)));
+  if (max > 0) return SIG[max] || 'F';
   if (q(f1) && q(f2) && !ganoQuali(f1) && !ganoQuali(f2)) return 'Q1';
   return 'R1';
 }
