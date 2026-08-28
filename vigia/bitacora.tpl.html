@@ -53,11 +53,19 @@
   .btn:focus-visible,.buscar:focus-visible,.banda:focus-visible,th.orden:focus-visible{outline:2px solid var(--acento);outline-offset:1px}
   #estado{font-size:13px;color:var(--muted);min-height:1.4em}
   #estado.ok{color:var(--gano)} #estado.err{color:var(--perdio)}
-  .sin-mcp .acciones .btn{display:none}
+  .sin-mcp .acciones .btn,.sin-mcp .acciones .grupo{display:none}
+  /* los botones de orden solo existen en modo directo (archivo local + token) */
+  body:not(.modo-rest) .acciones .grupo,body:not(.modo-rest) #btn-tablero{display:none}
+  #token-ui{display:none;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+  body.pide-token #token-ui{display:flex}
+  #token-ui input{font:inherit;font-family:var(--mono);font-size:12.5px;color:var(--ink);
+    background:var(--surface);border:1px solid var(--line-fuerte);border-radius:3px;
+    padding:7px 10px;min-width:260px}
+  #token-ui input:focus-visible{outline:2px solid var(--acento);outline-offset:1px}
   .nota-live{display:none;font-size:13px;color:var(--muted);margin:0;max-width:60ch}
   .nota-live code{font-family:var(--mono);font-size:12px;background:var(--frio);
                   padding:1px 5px;border-radius:4px}
-  body:not(.sin-mcp) .nota-live{display:block}
+  body.modo-mcp .nota-live{display:block}
   .aviso-mcp{display:none;font-size:13px;color:var(--muted);border:1px dashed var(--line-fuerte);
              border-radius:3px;padding:8px 12px}
   .sin-mcp .aviso-mcp{display:block}
@@ -148,11 +156,25 @@
     <div class="sello" id="sello"></div>
     <div class="acciones">
       <button type="button" class="btn primario" id="btn-releer">Actualizar</button>
+      <div class="grupo" role="group" aria-label="Barrer las próximas horas">
+        <span class="rotulo">Barrer</span>
+        <button type="button" class="btn barrer" data-horas="3">3 h</button>
+        <button type="button" class="btn barrer" data-horas="6">6 h</button>
+        <button type="button" class="btn barrer" data-horas="12">12 h</button>
+        <button type="button" class="btn barrer" data-horas="24">24 h</button>
+      </div>
+      <button type="button" class="btn" id="btn-tablero">Liquidar</button>
       <p class="nota-live">Los barridos se le piden al bot por Telegram
         (<code>barrer 24</code>, <code>tablero</code>); acá aparece el resultado.
         La página se refresca sola cada 5 minutos.</p>
       <p class="aviso-mcp">Sin el conector de GitHub de tu cuenta claude.ai esta página
         muestra la última foto publicada, sin actualizarse.</p>
+    </div>
+    <div id="token-ui">
+      <span>Token de GitHub (con permiso de Actions en el repo):</span>
+      <input type="password" id="token-in" autocomplete="off" spellcheck="false"
+             placeholder="github_pat_…">
+      <button type="button" class="btn" id="token-ok">Conectar</button>
     </div>
     <p id="estado" role="status"></p>
   </header>
@@ -435,67 +457,162 @@ $('#bandas').addEventListener('click', ev => {
   render();
 });
 
-/* ---------- capa live: leer live.json y disparar el workflow ---------- */
+/* ---------- capa live ----------
+   Dos caminos, según dónde viva la página:
+   · ARTEFACTO (claude.ai): window.claude existe. El conector de GitHub de la
+     cuenta es de solo lectura (Actions da blocked_by_policy, escribir da 403),
+     así que solo relee live.json; los barridos salen por Telegram.
+   · ARCHIVO LOCAL: no hay window.claude. Se habla directo con api.github.com
+     con un token tuyo (queda en localStorage de tu navegador, no viaja a
+     ningún otro lado) y ahí sí funcionan Barrer y Liquidar: el token dispara
+     el workflow_dispatch del vigia.yml. */
 function parsear(payload) {
   if (payload && typeof payload === 'object') return payload;
   const s = String(payload ?? ''); const i = s.indexOf('{');
   if (i < 0) return null;
   try { return JSON.parse(s.slice(i)) } catch { return null }
 }
-async function leerLive(fresco) {
-  const r = await mcp.callTool(SRV, 'get_file_contents',
-    { owner: REPO.owner, repo: REPO.repo, path: REPO.archivo, ref: 'refs/heads/' + REPO.rama },
-    fresco ? { cache: { refresh: true } } : undefined);
-  return parsear(r.payload);
+let vive = null;   /* { leer(fresco), ordenar(texto)|null } */
+
+function viaMcp() {
+  return { ordenar: null, async leer(fresco) {
+    const r = await mcp.callTool(SRV, 'get_file_contents',
+      { owner: REPO.owner, repo: REPO.repo, path: REPO.archivo, ref: 'refs/heads/' + REPO.rama },
+      fresco ? { cache: { refresh: true } } : undefined);
+    return parsear(r.payload);
+  } };
 }
-/* Este conector es de solo lectura: escribir vigia/orden.json y crear issues
-   devuelven 403 (Resource not accessible by integration), y las herramientas de
-   Actions dan blocked_by_policy. O sea, la página puede LEER la foto del bot pero
-   no darle órdenes; los barridos siguen saliendo por Telegram. */
+const guardaToken = t => { try { localStorage.setItem('vigia_token', t) } catch {} };
+const sacaToken = () => { try { return localStorage.getItem('vigia_token') || '' } catch { return '' } };
+function viaRest(token) {
+  const api = 'https://api.github.com/repos/' + REPO.owner + '/' + REPO.repo;
+  const cab = { Authorization: 'Bearer ' + token, 'X-GitHub-Api-Version': '2022-11-28' };
+  return {
+    async leer() {
+      const r = await fetch(api + '/contents/' + REPO.archivo + '?ref=' + encodeURIComponent(REPO.rama),
+        { cache: 'no-store', headers: { ...cab, Accept: 'application/vnd.github.raw+json' } });
+      if (!r.ok) throw Object.assign(new Error('HTTP ' + r.status), { code: 'http_' + r.status });
+      return parsear(await r.text());
+    },
+    async ordenar(texto) {
+      const r = await fetch(api + '/actions/workflows/' + REPO.workflow + '/dispatches',
+        { method: 'POST', headers: { ...cab, Accept: 'application/vnd.github+json' },
+          body: JSON.stringify({ ref: REPO.rama, inputs: { texto } }) });
+      if (r.status !== 204) throw Object.assign(new Error('HTTP ' + r.status), { code: 'http_' + r.status });
+    },
+  };
+}
+
 function estado(msj, clase) { const e = $('#estado'); e.textContent = msj; e.className = clase || ''; }
 function botones(on) {
   ocupado = !on;
   for (const b of document.querySelectorAll('.acciones .btn')) b.disabled = !on;
 }
+async function refrescar(aviso) {
+  const d = await vive.leer(true);
+  if (d && d.ts !== DATOS.ts) { DATOS = d; render(); }
+  if (aviso) estado('✅ Foto del bot de ' + sello(DATOS.ts) + '.', 'ok');
+}
 /* relectura pura: no le pide nada al bot ni gasta requests de OddsPapi */
 $('#btn-releer').addEventListener('click', async () => {
-  if (!mcp || ocupado) return;
+  if (!vive || ocupado) return;
   botones(false);
-  try {
-    const d = await leerLive(true);
-    if (d) { DATOS = d; render(); }
-    estado('✅ Foto del bot de ' + sello(DATOS.ts) + '.', 'ok');
-  } catch (e) { estado('❌ No pude leer el repo: ' + ((e && e.code) || 'error'), 'err'); }
+  try { await refrescar(true) }
+  catch (e) { estado('❌ No pude leer el repo: ' + ((e && e.code) || 'error'), 'err'); }
   botones(true);
 });
+/* orden al bot (solo modo directo): disparar y esperar la foto nueva */
+async function accion(texto, aviso) {
+  if (!vive || !vive.ordenar || ocupado) return;
+  botones(false);
+  const antes = DATOS.ts;
+  try {
+    estado('⏳ ' + aviso + ' — disparando el workflow…');
+    await vive.ordenar(texto);
+    estado('⏳ ' + aviso + ' — el bot está corriendo (suele tomar 1–3 min)…');
+    const pollMs = window.__bitPollMs || 20000;
+    for (let i = 0; i < 24; i++) {
+      await new Promise(r => setTimeout(r, pollMs));
+      try {
+        const d = await vive.leer(true);
+        if (d && d.ts !== antes) {
+          DATOS = d; render();
+          estado('✅ Listo — foto del bot de ' + sello(d.ts) + '.', 'ok');
+          botones(true); return;
+        }
+      } catch {}
+    }
+    estado('⚠️ El bot no reportó en ~8 min. Puede seguir corriendo: prueba «Actualizar» en un rato.', 'err');
+  } catch (e) {
+    const c = e && e.code;
+    estado(c === 'http_401' || c === 'http_403'
+      ? '❌ El token no sirve para esto (' + c.slice(5) + '). Necesita permiso de Actions (lectura y escritura) sobre ' + REPO.owner + '/' + REPO.repo + '.'
+      : '❌ No se pudo disparar: ' + (c || (e && e.message) || e), 'err');
+  }
+  botones(true);
+}
+for (const b of document.querySelectorAll('.btn.barrer'))
+  b.addEventListener('click', () => accion('barrer ' + b.dataset.horas, 'Barrido de ' + b.dataset.horas + ' h'));
+$('#btn-tablero').addEventListener('click', () => accion('tablero', 'Liquidando pendientes'));
 
-/* arranque: pinta el seed al tiro; la capa live se enciende si el viewer la da */
+/* arranque: pinta el seed al tiro y decide el camino live */
 render();
 document.body.classList.add('sin-mcp');
+async function conectarRest(token) {
+  vive = viaRest(token);
+  try {
+    await refrescar(false);
+    guardaToken(token);
+    document.body.classList.remove('sin-mcp');
+    document.body.classList.remove('pide-token');
+    document.body.classList.add('modo-rest');
+    estado('Conectado directo a GitHub · foto del bot de ' + sello(DATOS.ts) + '.', 'ok');
+  } catch (e) {
+    vive = null;
+    document.body.classList.add('pide-token');
+    const c = (e && e.code) || '';
+    estado(c === 'http_401' ? '❌ Token rechazado (401): revísalo o crea uno nuevo.'
+      : c === 'http_404' ? '❌ El token no ve el repo ' + REPO.owner + '/' + REPO.repo + ' (404): dale acceso a ese repositorio.'
+      : '❌ No pude conectar: ' + (c || 'error de red'), 'err');
+  }
+}
 (async () => {
+  if (typeof window.claude === 'undefined') {
+    /* archivo local: camino directo con token */
+    const t = sacaToken();
+    if (t) await conectarRest(t);
+    else { document.body.classList.add('pide-token');
+           estado('Pega un token de GitHub para encender los botones; mientras, esta es la última foto publicada.'); }
+    $('#token-ok').addEventListener('click', () => {
+      const t2 = $('#token-in').value.trim();
+      if (t2) conectarRest(t2);
+    });
+    $('#token-in').addEventListener('keydown', ev => { if (ev.key === 'Enter') $('#token-ok').click() });
+    return;
+  }
+  /* artefacto: conector de la cuenta (solo lectura) */
   try { mcp = await claude.use('mcp') } catch { mcp = null }
-  if (!mcp) return;                       /* sin conector: la página queda estática */
-  /* el manifiesto declara 'github' y 'GitHub'; el viewer tiene uno de los dos
-     conectado y listTools() dice cuál (y si trae herramientas de verdad) */
+  if (!mcp) return;                       /* sin capability: foto fija */
   try {
     const lt = await mcp.listTools();
     const vivo = (lt.servers || []).find(x => /github/i.test(x.server) && (x.tools || []).length);
     if (vivo) SRV = vivo.server;
     else { estado('El conector de GitHub no está conectado en esta cuenta: la página queda como foto fija.', 'err'); return; }
   } catch (e) { /* shell viejo sin listTools: seguimos con el nombre por defecto */ }
+  vive = viaMcp();
   document.body.classList.remove('sin-mcp');
+  document.body.classList.add('modo-mcp');
   try {
-    const d = await leerLive(false);      /* al abrir, trae la foto más nueva del repo */
+    const d = await vive.leer(false);      /* al abrir, trae la foto más nueva del repo */
     if (d && d.ts !== DATOS.ts) { DATOS = d; render(); }
     estado('Conectado a GitHub · foto del bot de ' + sello(DATOS.ts) + '.', 'ok');
   } catch (e) { estado('No pude leer el repo: ' + (e && e.code || 'error'), 'err'); }
 })();
 /* cada minuto: re-evaluar qué partidos ya comenzaron y las marcas de "hace X" */
 setInterval(render, 60000);
-/* y cada 5 minutos, una sola llamada al conector para traer la foto nueva */
+/* y cada 5 minutos, una llamada para traer la foto nueva */
 setInterval(async () => {
-  if (!mcp || ocupado) return;
-  try { const d = await leerLive(true); if (d && d.ts !== DATOS.ts) { DATOS = d; render();
-    estado('✅ Foto del bot de ' + sello(DATOS.ts) + '.', 'ok'); } } catch {}
+  if (!vive || ocupado) return;
+  try { await refrescar(false) } catch {}
 }, 300000);
 </script>
