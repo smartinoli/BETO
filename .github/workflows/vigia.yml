@@ -73,12 +73,17 @@ jobs:
           MODO: comando
         run: node vigia/vigia.mjs
 
+      - name: Regenerar la bitácora con la foto nueva
+        if: always()
+        run: node vigia/bitacora.mjs || true
+
       - name: Guardar estado
         if: always()
         run: |
           git config user.name "vigia-bot"
           git config user.email "vigia@users.noreply.github.com"
           git add vigia/estado.json
+          [ -f vigia/bitacora.html ] && git add vigia/bitacora.html || true
           [ -f vigia/registro.json ] && git add vigia/registro.json || true
           [ -f vigia/mesa.json ] && git add vigia/mesa.json || true
           [ -f vigia/itf.json ] && git add vigia/itf.json || true

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vigía — Tablero</title>
+<!-- ============================================================
+     LANZADOR — este archivo no cambia nunca.
+     Al abrirlo baja la última vigia/bitacora.html del repo (con tu
+     token de GitHub, el mismo que usan los botones) y la muestra.
+     Así siempre corres el código más nuevo con la foto más nueva,
+     sin volver a descargar nada.
+     ============================================================ -->
+<style>
+  :root{color-scheme:light dark}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;
+       font:15px/1.5 -apple-system,"Segoe UI",Roboto,sans-serif;
+       background:#f4f6f8;color:#101820}
+  @media (prefers-color-scheme:dark){body{background:#0e1318;color:#e7edf3}}
+  .caja{max-width:420px;padding:32px;text-align:center}
+  h1{font-size:20px;margin:0 0 6px}
+  p{color:#61707f;margin:0 0 18px}
+  input{font:inherit;font-family:ui-monospace,monospace;font-size:13px;width:100%;
+        box-sizing:border-box;padding:10px 12px;border:1px solid #ccd5dd;border-radius:4px;
+        background:transparent;color:inherit;margin-bottom:10px}
+  button{font:inherit;font-weight:600;padding:10px 22px;border:none;border-radius:4px;
+         background:#2d6a8f;color:#fff;cursor:pointer}
+  button:disabled{opacity:.5}
+  #msj{margin-top:14px;font-size:13px;color:#a83f2e;min-height:1.2em}
+  .giro{margin-top:10px;font-size:13px;color:#61707f}
+</style>
+</head>
+<body>
+<div class="caja">
+  <h1>⚽📋 Vigía — Tablero</h1>
+  <p>Baja la última versión de la bitácora directo del repo.</p>
+  <div id="form" hidden>
+    <input type="password" id="tk" placeholder="Token de GitHub (github_pat_…)"
+           autocomplete="off" spellcheck="false">
+    <button id="ir">Entrar</button>
+  </div>
+  <div class="giro" id="giro">Cargando…</div>
+  <div id="msj"></div>
+</div>
+<script>
+/* todo dentro de una IIFE: la bitácora que se inyecta con document.write
+   comparte el ámbito global de este script, así que acá no puede quedar
+   declarado ningún const/let (chocaría con los suyos, p. ej. REPO) */
+(() => {
+const REPO = { owner: 'smartinoli', repo: 'BETO',
+               rama: 'claude/tablero-optimizacion-enfoque-9m20f3',
+               archivo: 'vigia/bitacora.html' };
+const $ = s => document.querySelector(s);
+const lee = () => { try { return localStorage.getItem('vigia_token') || '' } catch { return '' } };
+const guarda = t => { try { localStorage.setItem('vigia_token', t) } catch {} };
+
+async function cargar(token) {
+  $('#giro').textContent = 'Bajando la última bitácora…'; $('#msj').textContent = '';
+  const u = 'https://api.github.com/repos/' + REPO.owner + '/' + REPO.repo +
+    '/contents/' + REPO.archivo + '?ref=' + encodeURIComponent(REPO.rama);
+  const r = await fetch(u, { cache: 'no-store', headers: {
+    Authorization: 'Bearer ' + token,
+    Accept: 'application/vnd.github.raw+json',
+    'X-GitHub-Api-Version': '2022-11-28' } });
+  if (!r.ok) throw r.status;
+  const html = await r.text();
+  guarda(token);                     /* la bitácora usa la misma llave */
+  document.open(); document.write(html); document.close();
+}
+function pedir(msj) {
+  $('#form').hidden = false; $('#giro').textContent = '';
+  if (msj) $('#msj').textContent = msj;
+}
+$('#ir').addEventListener('click', async () => {
+  const t = $('#tk').value.trim(); if (!t) return;
+  $('#ir').disabled = true;
+  try { await cargar(t) }
+  catch (e) { $('#ir').disabled = false;
+    pedir(e === 401 ? 'Token rechazado (401): revísalo.' :
+          e === 404 ? 'El token no ve el repo (404): dale acceso a ' + REPO.owner + '/' + REPO.repo + '.' :
+          'No pude bajar la página (' + e + ').'); }
+});
+$('#tk').addEventListener('keydown', ev => { if (ev.key === 'Enter') $('#ir').click() });
+(async () => {
+  const t = lee();
+  if (!t) return pedir();
+  try { await cargar(t) } catch (e) { pedir('No pude bajar la página (' + e + '). Revisa el token.'); }
+})();
+})();
+</script>
+</body>
+</html>
