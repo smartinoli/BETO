@@ -334,8 +334,12 @@ function rangoRoi(us) {
 }
 
 function renderTiles(todasHist) {
-  /* el balance replica la regla del tablero: precio vivo y ventaja >= 0 */
+  /* el balance replica la regla del tablero: precio vivo y ventaja >= 0.
+     Las señales con ventaja negativa (la recolección "poner todo") se
+     muestran aparte: son datos para medir si el vent predice, no apuestas
+     del criterio, y mezclarlas ensuciaría el filo medido. */
   const vivas = todasHist.filter(e => !e.congelada && e.vent >= Math.max(DATOS.criterios.ventajaMinima, 0));
+  const sinValor = todasHist.filter(e => !e.congelada && e.vent < Math.max(DATOS.criterios.ventajaMinima, 0) && CERRADO.includes(e.estado));
   const rec = { G: 0, P: 0, E: 0, MG: 0, MP: 0 };
   for (const e of vivas) rec[e.estado]++;
   const unidades = vivas.reduce((s, e) => s + e.u, 0);
@@ -356,6 +360,16 @@ function renderTiles(todasHist) {
       return '<div class="tile"><span class="k">Cuánto creerle</span><span class="val rango">' +
         sig(r.bajo) + ' a ' + sig(r.alto) + '</span><span class="note">rango 90% · ' +
         Math.round(r.pRojo * 100) + '% de que el filo real sea negativo</span></div>';
+    })() +
+    (() => {
+      if (!sinValor.length) return '';
+      const g = sinValor.filter(e => e.estado === 'G' || e.estado === 'MG').length;
+      const pp = sinValor.filter(e => e.estado === 'P' || e.estado === 'MP').length;
+      const un = sinValor.reduce((t, e) => t + e.u, 0);
+      const roi2 = 100 * un / sinValor.length;
+      return '<div class="tile"><span class="k">Sin valor (solo datos)</span><span class="val">' +
+        g + '<small>G</small> ' + pp + '<small>P</small></span><span class="note">ventaja negativa · ROI ' +
+        (roi2 >= 0 ? '+' : '−') + Math.abs(roi2).toFixed(1) + '% · fuera del balance</span></div>';
     })();
 }
 
