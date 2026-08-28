@@ -189,7 +189,7 @@
       ventaja negativa se listan pero quedan fuera.</p>
     <div class="rotulo-tiles">Balance del criterio · ventaja ≥ 0</div>
     <div class="tiles" id="tiles"></div>
-    <div class="rotulo-tiles" id="rot-sv" hidden>Todo el histórico −0.5 · nuevas y antiguas · cualquier cuota y ventaja</div>
+    <div class="rotulo-tiles" id="rot-sv" hidden></div>
     <div class="tiles" id="tiles-sv"></div>
     <div class="tabla" id="t-hist">
       <div class="controles">
@@ -367,10 +367,13 @@ function renderTiles(todasHist) {
   const piso = Math.max(DATOS.criterios.ventajaMinima, 0);
   const vivas = todasHist.filter(e => !e.congelada && e.vent >= piso);
   const todas05 = (DATOS.historico || [])
-    .filter(e => CERRADO.includes(e.estado) && enFoco(e))
+    .filter(e => CERRADO.includes(e.estado) && enFoco(e)
+      && e.cuota >= DATOS.criterios.cuotaMinima && e.cuota <= DATOS.criterios.cuotaMaxima)
     .map(e => ({ ...e, u: uni(e) }));
   $('#tiles').innerHTML = filaTiles(vivas, 'vivas · ventaja ≥ 0 · cuota ' +
     DATOS.criterios.cuotaMinima.toFixed(2) + '–' + DATOS.criterios.cuotaMaxima.toFixed(2));
+  $('#rot-sv').textContent = 'Todas las −0.5 en cuota ' + DATOS.criterios.cuotaMinima.toFixed(2) +
+    '–' + DATOS.criterios.cuotaMaxima.toFixed(2) + ' · nuevas y antiguas, con y sin valor';
   $('#rot-sv').hidden = !todas05.length;
   $('#tiles-sv').innerHTML = todas05.length ? filaTiles(todas05, 'todas las −0.5 cerradas') : '';
 }
