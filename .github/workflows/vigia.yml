@@ -85,6 +85,6 @@ jobs:
           [ -f vigia/corrida.json ] && git add vigia/corrida.json || true
           [ -f vigia/live.json ] && git add vigia/live.json || true
           git diff --cached --quiet && exit 0
-          git commit -q -m "vigia: estado $(date -u +%H:%M)"
+          git commit -q -m "vigia: estado $(TZ=America/Santiago date +'%d-%m %H:%M') (Chile)"
           git pull -q --rebase origin "$GITHUB_REF_NAME" || true
           git push -q origin "HEAD:$GITHUB_REF_NAME" || echo "push del estado falló"

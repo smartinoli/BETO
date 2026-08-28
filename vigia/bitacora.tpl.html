@@ -108,6 +108,8 @@
   .c-liga{color:var(--muted);font-size:13px}
   .c-hora{white-space:nowrap;font-family:var(--mono);font-size:13px}
   .c-hora .h{color:var(--muted)}
+  .huso{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.06em;
+        border:1px solid var(--line-fuerte);border-radius:3px;padding:0 3px;margin-left:3px}
   .v{font-weight:600}
   .v.alta{color:var(--gano)} .v.leve{color:var(--ink)} .v.roja{color:var(--nula)} .v.peor{color:var(--perdio)}
   .u.gano{color:var(--gano)} .u.perdio{color:var(--perdio)} .u.nula{color:var(--muted)}
@@ -168,7 +170,7 @@
       </div>
       <div class="scroll"><table>
         <thead><tr>
-          <th class="orden" data-col="ts" data-num="1" data-inicial="asc">Fecha</th>
+          <th class="orden" data-col="ts" data-num="1" data-inicial="asc">Fecha <span class="huso">CL</span></th>
           <th class="orden" data-col="lado">Apuesta</th>
           <th class="orden" data-col="liga">Liga</th>
           <th class="orden num" data-col="cuota" data-num="1">Cuota</th>
@@ -198,7 +200,7 @@
         <thead><tr>
           <th class="orden" data-col="lado">Apuesta</th>
           <th class="orden" data-col="liga">Liga</th>
-          <th class="orden" data-col="ts" data-num="1" data-inicial="asc">Comienza</th>
+          <th class="orden" data-col="ts" data-num="1" data-inicial="asc">Comienza <span class="huso">CL</span></th>
           <th class="orden num" data-col="cuota" data-num="1">Cuota</th>
           <th class="num">Justo</th>
           <th class="orden num" data-col="vent" data-num="1">Ventaja</th>
@@ -258,6 +260,11 @@ const fechaCorta = iso => { const d = new Date(iso); return isNaN(d) ? '—' : f
 const horaCorta = iso => { const d = new Date(iso); return isNaN(d) ? '' : fmtH.format(d); };
 const hace = iso => { const m = Math.round((Date.now() - Date.parse(iso)) / 60e3);
   return m < 1 ? 'recién' : m < 60 ? 'hace ' + m + ' min' : 'hace ' + (m / 60).toFixed(1) + ' h'; };
+/* todo lo que se muestra va en hora de Chile, sin importar dónde se abra la página */
+const relojCL = iso => { const d = new Date(iso); if (isNaN(d)) return '—';
+  const hoy = fmtF.format(new Date()) === fmtF.format(d);
+  return (hoy ? 'hoy' : fmtF.format(d)) + ' ' + fmtH.format(d); };
+const sello = iso => relojCL(iso) + ' (' + hace(iso) + ')';
 
 /* estado de cada tabla: orden + filtros. El render parte SIEMPRE de los datos,
    nunca del DOM, así refrescar no pierde lo que el usuario tenía puesto. */
@@ -386,9 +393,9 @@ function render() {
   $('#criterio').textContent = 'hándicap asiático ' + linea + ' · primer tiempo · cuota ' +
     cr.cuotaMinima.toFixed(2) + '–' + cr.cuotaMaxima.toFixed(2) + ' · fútbol';
   const c = DATOS.corrida;
-  $('#sello').textContent = 'Foto del bot: ' + hace(DATOS.ts) +
-    (c ? ' · corrida de ' + (c.horas || '?') + ' h (' + hace(c.ts) + '): ' +
-      c.partidos + ' partidos, ' + c.requests + ' requests' : '');
+  $('#sello').textContent = 'Foto del bot: ' + sello(DATOS.ts) +
+    (c ? ' · corrida de ' + (c.horas || '?') + ' h ' + sello(c.ts) + ': ' +
+      c.partidos + ' partidos, ' + c.requests + ' requests' : '') + ' · hora de Chile';
   $('#pie').textContent = 'Generada desde vigia/live.json (rama ' + REPO.rama + '). Espejo 1X2: ' +
     ((c && c.espejo) || 0) + ' señal(es) en esta corrida, medidas aparte.';
   renderHist();
@@ -457,7 +464,7 @@ $('#btn-releer').addEventListener('click', async () => {
   try {
     const d = await leerLive(true);
     if (d) { DATOS = d; render(); }
-    estado('✅ Foto del bot de ' + hace(DATOS.ts) + '.', 'ok');
+    estado('✅ Foto del bot de ' + sello(DATOS.ts) + '.', 'ok');
   } catch (e) { estado('❌ No pude leer el repo: ' + ((e && e.code) || 'error'), 'err'); }
   botones(true);
 });
@@ -480,7 +487,7 @@ document.body.classList.add('sin-mcp');
   try {
     const d = await leerLive(false);      /* al abrir, trae la foto más nueva del repo */
     if (d && d.ts !== DATOS.ts) { DATOS = d; render(); }
-    estado('Conectado a GitHub · foto del bot de ' + hace(DATOS.ts) + '.', 'ok');
+    estado('Conectado a GitHub · foto del bot de ' + sello(DATOS.ts) + '.', 'ok');
   } catch (e) { estado('No pude leer el repo: ' + (e && e.code || 'error'), 'err'); }
 })();
 /* cada minuto: re-evaluar qué partidos ya comenzaron y las marcas de "hace X" */
@@ -489,6 +496,6 @@ setInterval(render, 60000);
 setInterval(async () => {
   if (!mcp || ocupado) return;
   try { const d = await leerLive(true); if (d && d.ts !== DATOS.ts) { DATOS = d; render();
-    estado('✅ Foto del bot de ' + hace(DATOS.ts) + '.', 'ok'); } } catch {}
+    estado('✅ Foto del bot de ' + sello(DATOS.ts) + '.', 'ok'); } } catch {}
 }, 300000);
 </script>
