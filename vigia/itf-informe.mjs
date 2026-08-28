@@ -491,7 +491,7 @@ function enSimple(f) {
    ============================================================ */
 /* el Elo propio, para el criterio del decantador (null si falta jugador) */
 const ELO = (() => { const j = leer(path.join(DATOS, 'rating.json')); const m = new Map();
-  for (const x of j?.jugadores || []) m.set(x.id, x.elo); return m })();
+  for (const x of j?.jugadores || []) m.set(x.id, x); return m })();
 const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
   const lado = f.v.nivel.favorito.startsWith(f.f1.nombre) ? 1 : 2;
   const dev = (f.q.g1 && f.q.g2) ? (1 / (lado === 1 ? f.q.g1 : f.q.g2)) / (1 / f.q.g1 + 1 / f.q.g2) : null;
@@ -513,8 +513,8 @@ const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
       grupo: GRUPO[f.etapa] ?? null,
       edadFm: fFm.nacido ? 2026 - fFm.nacido : null,
       edadRi: fRi.nacido ? 2026 - fRi.nacido : null,
-      dElo: (ELO.get(fFm.id) != null && ELO.get(fRi.id) != null)
-        ? Math.round(ELO.get(fFm.id) - ELO.get(fRi.id)) : null,
+      dElo: (ELO.get(fFm.id)?.elo != null && ELO.get(fRi.id)?.elo != null)
+        ? Math.round(ELO.get(fFm.id).elo - ELO.get(fRi.id).elo) : null,
     };
   })();
   return {
@@ -530,7 +530,7 @@ const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
     pMercado: dev != null ? +dev.toFixed(3) : null,
     soloWtn: +(f.v.nivel.soloNivel).toFixed(3),
     señales: (f.v.nivel.partes || []).filter(x => x.nombre !== 'nivel').map(x => x.nombre),
-    razon: f.v.razon,
+    razon: f.v.razonCorta || f.v.razon,
   };
 });
 fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
@@ -761,6 +761,9 @@ details[open] summary::before{content:"▾ "}
 .envt tr.det .crudo{margin:6px 0 0;font:12px/1.7 "IBM Plex Mono",monospace;color:var(--ink2)}
 .envt tr.det .crudo b{color:var(--ink)}
 .cq{font:500 12px "IBM Plex Mono",monospace;color:var(--accent);margin-left:6px;white-space:nowrap}
+.eloq{color:var(--ojo)}
+.tresop{margin:8px 0 2px;font:500 12.5px "IBM Plex Mono",monospace;color:var(--ink3)}
+.tresop b{color:var(--ink);font-weight:600}
 .envt tr.tot td{border-top:2px solid var(--rule);border-bottom:0}
 .envt tr.grupo td{background:var(--sunk);padding:10px;white-space:normal;border-bottom:1.5px solid var(--rule)}
 .envt tr.grupo b{font:700 12px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.02em}
@@ -834,8 +837,17 @@ ${(() => { globalThis.filaVeredicto = (v, i) => {
   const f = filas.find(x => (x.q.fixtureId && x.q.fixtureId === v.fixtureId) || (x.f1.nombre === v.p1 && x.f2.nombre === v.p2));
   const cr = f ? [f.f1, f.f2].map((j, k) => {
     const c = k === 0 ? v.g1 : v.g2;
-    return `<div><b>${esc(j.nombre)}</b>${c ? ` <span class="cq">a ${c}</span>` : ''} — WTN ${j.wtn ?? '—'} · ${j.nacido ? 2026 - j.nacido + ' años' : 'edad —'} · ATP ${j.atp ?? '—'} · ${trayHtml(j)}</div>`;
+    const r = ELO.get(j.id);
+    const eloTx = r ? ` · <span class="eloq">juega como ${r.wtnImplicito} (elo ${Math.round(r.elo)}, ${r.partidos}pj)</span>` : '';
+    return `<div><b>${esc(j.nombre)}</b>${c ? ` <span class="cq">a ${c}</span>` : ''} — WTN ${j.wtn ?? '—'}${eloTx} · ${j.nacido ? 2026 - j.nacido + ' años' : 'edad —'} · ATP ${j.atp ?? '—'} · ${trayHtml(j)}</div>`;
   }).join('') : '';
+  /* las tres opiniones frente a frente, para comparar de un vistazo */
+  const pEloGana = v.crit?.dElo != null
+    ? 1 / (1 + Math.pow(10, -((v.lado === v.crit.ladoFm ? v.crit.dElo : -v.crit.dElo)) / 400)) : null;
+  const opiniones = `<div class="tresop">gana ${esc(v.gana.split(' ').slice(-1)[0])} según:
+    <b>modelo ${Math.round(v.p * 100)}%</b>
+    ${pEloGana != null ? `· <b>nuestro elo ${Math.round(pEloGana * 100)}%</b>` : ''}
+    ${v.pMercado != null ? `· <b>mercado ${Math.round(v.pMercado * 100)}%</b>` : ''}</div>`;
   return `<tr class="${res ? (hoyV.acerto ? 'ok' : 'mal') : ''}">
     <td class="n sec">${i}</td>
     <td class="quien">${esc(v.gana)}${cGana ? `<span class="cq">a ${cGana}</span>` : ''}</td>
@@ -849,6 +861,7 @@ ${(() => { globalThis.filaVeredicto = (v, i) => {
       : '<i class="sec">por jugar</i>'}</td>
   </tr>
   <tr class="det"><td></td><td colspan="7"><details><summary>análisis y datos crudos</summary>
+    ${opiniones}
     <div class="crudo">${cr}</div>
     <p>${esc(v.razon)}</p></details></td></tr>`;
 }; return '' })()}

@@ -456,6 +456,7 @@ export function analizar(p) {
   return { tipo: pe < P_SEGURA ? 'flojo' : 'mira', nivel, precio, favorito: nivel.favorito, alertas, regla, contra,
     confianza: alertas.length ? 'media' : 'alta', mercado: 'gana',
     razon: razonNivel + cuentaMercado + (alertas.length ? ' ' + alertas.map(a => a.texto).join(' ') : ''),
+    razonCorta: razonNivel + cuentaMercado,
     banderas: [`p${Math.round(pe * 100)}%`,
       ...(discrepancia != null ? [`mercado ${discrepancia >= 0 ? '+' : '−'}${Math.abs(Math.round(discrepancia * 100))}`] : []),
       ...alertas.map(a => a.clave)] };
