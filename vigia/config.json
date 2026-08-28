@@ -8,7 +8,7 @@
   "kellyDivisor": 4,
   "topePctBanca": 0.05,
   "montoMinimo": 5000,
-  "cuotaMaxima": 3.0,
+  "cuotaMaxima": 1.90,
   "anticipacionMin": 15,
   "horizonteHoras": 24,
   "margenLocal": 0.0,
@@ -23,7 +23,7 @@
     "10": "^AH 1er tiempo · .+ -\\d+(\\.\\d+)?$"
   },
   "barridoDeportes": ["10"],
-  "cuotaMinima": 1.6,
+  "cuotaMinima": 1.55,
   "usarCongeladas": false,
   "comentarioCongeladas": "acepta cuotas con active:false (feed detenido). Cada señal avisa cuántas horas tiene: hay que verificarla en pantalla",
   "sombras": false,

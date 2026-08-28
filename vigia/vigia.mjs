@@ -1039,8 +1039,13 @@ const fila = (nombre, arr) => `· ${escHtml(nombre)} — ${arr.length} ap · cuo
 async function cmdTableroFoco(liq) {
   const todas = Object.values(REG);
   const reFoco = CFG.foco?.['10'] ? new RegExp(CFG.foco['10']) : /^AH/;
-  const delFoco = e => e.sid === '10' && !e.sombra
+  const delFoco = e => e.sid === '10' && !e.sombra && !e.congelada
     && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado);
+  /* las de precio congelado quedan fuera del balance: se midieron contra un
+     precio que ya no existía, así que no son comparables con las vivas */
+  const congeladas = todas.filter(e => e.congelada && CERRADO.includes(e.estado)
+    && e.sid === '10' && !e.sombra
+    && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado)).length;
   const okHoy = e => e.cuota >= (CFG.cuotaMinima ?? 0) && e.cuota <= CFG.cuotaMaxima
     && e.vent >= CFG.ventajaMinima['10'];
   const cerradas = todas.filter(e => CERRADO.includes(e.estado) && delFoco(e) && okHoy(e));
@@ -1069,6 +1074,7 @@ async function cmdTableroFoco(liq) {
     + (liq.porMarcador ? ` · ${liq.porMarcador} por marcador` : '')
     + (liq.consultados ? ` · ${liq.consultados} requests` : '')
     + (viejas ? ` · ${viejas} liquidada(s) viejas fuera de tus criterios actuales` : '')
+    + (congeladas ? ` · ${congeladas} de cuota congelada, fuera del balance` : '')
     + ' · <code>/tablero todo</code> = historial completo</i>');
   await telegram(lineas.join('\n'));
 }
