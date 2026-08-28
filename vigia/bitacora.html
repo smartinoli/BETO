@@ -54,6 +54,10 @@
   #estado{font-size:13px;color:var(--muted);min-height:1.4em}
   #estado.ok{color:var(--gano)} #estado.err{color:var(--perdio)}
   .sin-mcp .acciones .btn{display:none}
+  .nota-live{display:none;font-size:13px;color:var(--muted);margin:0;max-width:60ch}
+  .nota-live code{font-family:var(--mono);font-size:12px;background:var(--frio);
+                  padding:1px 5px;border-radius:4px}
+  body:not(.sin-mcp) .nota-live{display:block}
   .aviso-mcp{display:none;font-size:13px;color:var(--muted);border:1px dashed var(--line-fuerte);
              border-radius:3px;padding:8px 12px}
   .sin-mcp .aviso-mcp{display:block}
@@ -142,16 +146,11 @@
     <div class="sello" id="sello"></div>
     <div class="acciones">
       <button type="button" class="btn primario" id="btn-releer">Actualizar</button>
-      <button type="button" class="btn" id="btn-tablero">Liquidar y actualizar</button>
-      <div class="grupo" role="group" aria-label="Barrer las próximas horas">
-        <span class="rotulo">Barrer</span>
-        <button type="button" class="btn barrer" data-horas="3">3 h</button>
-        <button type="button" class="btn barrer" data-horas="6">6 h</button>
-        <button type="button" class="btn barrer" data-horas="12">12 h</button>
-        <button type="button" class="btn barrer" data-horas="24">24 h</button>
-      </div>
-      <p class="aviso-mcp">Los botones necesitan el conector de GitHub de tu cuenta claude.ai.
-        Sin él la página muestra la última foto publicada por el bot.</p>
+      <p class="nota-live">Los barridos se le piden al bot por Telegram
+        (<code>barrer 24</code>, <code>tablero</code>); acá aparece el resultado.
+        La página se refresca sola cada 5 minutos.</p>
+      <p class="aviso-mcp">Sin el conector de GitHub de tu cuenta claude.ai esta página
+        muestra la última foto publicada, sin actualizarse.</p>
     </div>
     <p id="estado" role="status"></p>
   </header>
@@ -442,68 +441,14 @@ async function leerLive(fresco) {
     fresco ? { cache: { refresh: true } } : undefined);
   return parsear(r.payload);
 }
-/* el conector de GitHub de claude.ai no expone las herramientas de Actions
-   (dispararlas devuelve blocked_by_policy), pero sí deja escribir archivos:
-   la orden se deja en vigia/orden.json y el push de ese archivo levanta el
-   workflow. Hay que mandar el sha del blob que se reemplaza. */
-async function shaDelBuzon() {
-  const r = await mcp.callTool(SRV, 'get_file_contents',
-    { owner: REPO.owner, repo: REPO.repo, path: REPO.buzon, ref: 'refs/heads/' + REPO.rama },
-    { cache: { refresh: true } });
-  const p = r.payload;
-  const busca = o => {
-    if (!o || typeof o !== 'object') return null;
-    if (typeof o.sha === 'string' && o.sha.length >= 7) return o.sha;
-    for (const v of Array.isArray(o) ? o : Object.values(o)) { const h = busca(v); if (h) return h }
-    return null;
-  };
-  const sha = busca(p) || busca(parsear(p));
-  if (!sha) throw Object.assign(new Error('sin sha'), { code: 'sin_sha' });
-  return sha;
-}
-async function dejarOrden(texto) {
-  const sha = await shaDelBuzon();
-  const cuerpo = JSON.stringify({
-    comentario: 'Buzón de órdenes de la bitácora. El push de este archivo levanta el workflow.',
-    texto, ts: new Date().toISOString(), origen: 'bitacora',
-  }, null, 2) + '\n';
-  await mcp.callTool(SRV, 'create_or_update_file',
-    { owner: REPO.owner, repo: REPO.repo, branch: REPO.rama, path: REPO.buzon,
-      sha, content: cuerpo, message: 'bitácora: ' + texto });
-}
+/* Este conector es de solo lectura: escribir vigia/orden.json y crear issues
+   devuelven 403 (Resource not accessible by integration), y las herramientas de
+   Actions dan blocked_by_policy. O sea, la página puede LEER la foto del bot pero
+   no darle órdenes; los barridos siguen saliendo por Telegram. */
 function estado(msj, clase) { const e = $('#estado'); e.textContent = msj; e.className = clase || ''; }
 function botones(on) {
   ocupado = !on;
   for (const b of document.querySelectorAll('.acciones .btn')) b.disabled = !on;
-}
-async function accion(texto, aviso) {
-  if (!mcp || ocupado) return;
-  botones(false);
-  const antes = DATOS.ts;
-  try {
-    estado('⏳ ' + aviso + ' — dejando la orden en el repo…');
-    await dejarOrden(texto);
-    estado('⏳ ' + aviso + ' — el bot está corriendo (suele tomar 1–3 min)…');
-    const pollMs = window.__bitPollMs || 20000;
-    for (let i = 0; i < 24; i++) {
-      await new Promise(r => setTimeout(r, pollMs));
-      try {
-        const d = await leerLive(true);
-        if (d && d.ts !== antes) {
-          DATOS = d; render();
-          estado('✅ Listo — foto del bot de ' + hace(d.ts) + '.', 'ok');
-          botones(true); return;
-        }
-      } catch {}
-    }
-    estado('⚠️ El bot no reportó en ~8 min. Puede seguir corriendo: prueba «Actualizar tablero» en un rato.', 'err');
-  } catch (e) {
-    const c = e && e.code;
-    estado(c === 'blocked_by_policy' || c === 'not_in_manifest'
-      ? '❌ Tu conector de GitHub no permite escribir en el repo, así que no puedo pedirle nada al bot. «Actualizar» sí funciona.'
-      : '❌ No se pudo dejar la orden: ' + (c || (e && e.message) || e), 'err');
-  }
-  botones(true);
 }
 /* relectura pura: no le pide nada al bot ni gasta requests de OddsPapi */
 $('#btn-releer').addEventListener('click', async () => {
@@ -516,10 +461,6 @@ $('#btn-releer').addEventListener('click', async () => {
   } catch (e) { estado('❌ No pude leer el repo: ' + ((e && e.code) || 'error'), 'err'); }
   botones(true);
 });
-/* tablero = liquidar pendientes + refrescar la foto (y de paso la corrida vigente) */
-$('#btn-tablero').addEventListener('click', () => accion('tablero', 'Liquidando'));
-for (const b of document.querySelectorAll('.btn.barrer'))
-  b.addEventListener('click', () => accion('barrer ' + b.dataset.horas, 'Barrido de ' + b.dataset.horas + ' h'));
 
 /* arranque: pinta el seed al tiro; la capa live se enciende si el viewer la da */
 render();
@@ -544,4 +485,10 @@ document.body.classList.add('sin-mcp');
 })();
 /* cada minuto: re-evaluar qué partidos ya comenzaron y las marcas de "hace X" */
 setInterval(render, 60000);
+/* y cada 5 minutos, una sola llamada al conector para traer la foto nueva */
+setInterval(async () => {
+  if (!mcp || ocupado) return;
+  try { const d = await leerLive(true); if (d && d.ts !== DATOS.ts) { DATOS = d; render();
+    estado('✅ Foto del bot de ' + hace(DATOS.ts) + '.', 'ok'); } } catch {}
+}, 300000);
 </script>

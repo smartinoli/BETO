@@ -6,10 +6,13 @@ name: Vigía
 # workflow. Sin cron y sin sesiones de escucha: nada corre mientras no mandes
 # un mensaje.
 #
-# La bitácora (el artefacto) no puede disparar workflows: el conector de GitHub
-# de claude.ai no expone las herramientas de Actions. Lo que sí puede es escribir
-# un archivo, así que deja la orden en vigia/orden.json y el push de ese archivo
-# levanta este workflow. El bot nunca commitea orden.json, así que no hay bucle.
+# Tercera vía sin Telegram: editar vigia/orden.json (por ejemplo desde la web de
+# GitHub) y commitear. El push de esa ruta levanta este workflow y corre el texto
+# que traiga el archivo. El bot nunca commitea orden.json, así que no hay bucle.
+#
+# (La bitácora NO usa este camino: el conector de GitHub de claude.ai es de solo
+# lectura — escribir archivos y crear issues dan 403, y las herramientas de
+# Actions dan blocked_by_policy. La página solo lee vigia/live.json.)
 #
 # También puedes dispararlo a mano desde la pestaña Actions (Run workflow).
 
