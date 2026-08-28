@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-28T21:24:06.368Z",
+ "generado": "2026-08-28T21:35:31.900Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -40,9 +40,9 @@
     "cuota": 1.364,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.623,
+    "pFm": 0.696,
     "dW": 2.55,
-    "forma": -1,
+    "forma": 1,
     "previo": null,
     "grupo": "finales",
     "edadFm": 19,
@@ -60,25 +60,25 @@
    "g2": 1.364,
    "gana": "Henry Bernet",
    "lado": 2,
-   "p": 0.623,
+   "p": 0.696,
    "pMercado": 0.687,
    "soloWtn": 0.61,
    "señales": [
     "forma",
     "local"
    ],
-   "razon": "Δ2.55 de WTN a favor de Henry Bernet (3.58 contra 6.13), en QF: la curva del grupo \"finales\" (n=79) da 61%. Ajustan: Oleksandr Ovcharenko viene cediendo menos games (29% contra 36%): la forma contradice al nivel (−4 pts); Henry Bernet juega en su país (SUI): la localía vale ~0.5 pts de WTN (+6 pts). Queda en 62%. El mercado la paga a 1.364: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −6% si la tiene el mercado. Henry Bernet tiene mejor WTN pero llega cediendo 6 puntos más de games (36% contra 29%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Oleksandr Ovcharenko paga desde 2.21 aun tomando el borde malo del intervalo. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1."
+   "razon": "Δ2.55 de WTN a favor de Henry Bernet (3.58 contra 6.13), en QF: la curva del grupo \"finales\" (n=79) da 61%. Ajustan: Henry Bernet viene cediendo menos games (38% contra 43%) (+3 pts); Henry Bernet juega en su país (SUI): la localía vale ~0.5 pts de WTN (+5 pts). Queda en 70%. El mercado la paga a 1.364: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −5% si tenemos razón nosotros y −6% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1."
   },
   {
    "crit": {
     "cuota": 1.833,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.492,
+    "pFm": 0.463,
     "dW": 0.67,
     "forma": -1,
     "previo": null,
-    "grupo": "medias",
+    "grupo": "finales",
     "edadFm": 21,
     "edadRi": 21
    },
@@ -87,31 +87,31 @@
    "inicio": "2026-08-28T17:30:00.000Z",
    "torneo": "M15 Champaign, IL",
    "pais": "USA",
-   "etapa": "R2",
+   "etapa": "QF",
    "p1": "Jakub Vrba",
    "p2": "Ofek Shimanov",
    "g1": 1.833,
    "g2": 1.833,
    "gana": "Jakub Vrba",
    "lado": 1,
-   "p": 0.492,
+   "p": 0.463,
    "pMercado": 0.5,
-   "soloWtn": 0.553,
+   "soloWtn": 0.529,
    "señales": [
     "forma"
    ],
-   "razon": "Δ0.67 de WTN a favor de Jakub Vrba (6.6 contra 7.27), en R2: la curva del grupo \"medias\" (n=214) da 55%. Ajustan: Ofek Shimanov viene cediendo menos games (25% contra 33%): la forma contradice al nivel (−6 pts). Queda en 49%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −8% si la tiene el mercado. Jakub Vrba tiene mejor WTN pero llega cediendo 8 puntos más de games (33% contra 25%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Ofek Shimanov paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.67: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+   "razon": "Δ0.67 de WTN a favor de Jakub Vrba (6.6 contra 7.27), en QF: la curva del grupo \"finales\" (n=79) da 53%. Ajustan: Ofek Shimanov viene cediendo menos games (28% contra 37%): la forma contradice al nivel (−7 pts). Queda en 46%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado. Jakub Vrba tiene mejor WTN pero llega cediendo 9 puntos más de games (37% contra 28%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Ofek Shimanov paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.67: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1."
   },
   {
    "crit": {
     "cuota": 1.571,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.705,
+    "pFm": 0.646,
     "dW": 1.88,
     "forma": 1,
     "previo": null,
-    "grupo": "medias",
+    "grupo": "finales",
     "edadFm": 22,
     "edadRi": 22
    },
@@ -120,27 +120,27 @@
    "inicio": "2026-08-28T18:30:00.000Z",
    "torneo": "M15 Champaign, IL",
    "pais": "USA",
-   "etapa": "R2",
+   "etapa": "QF",
    "p1": "Marko Mesarovic",
    "p2": "Preston Stearns",
    "g1": 2.25,
    "g2": 1.571,
    "gana": "Preston Stearns",
    "lado": 2,
-   "p": 0.705,
+   "p": 0.646,
    "pMercado": 0.589,
-   "soloWtn": 0.645,
+   "soloWtn": 0.581,
    "señales": [
     "forma"
    ],
-   "razon": "Δ1.88 de WTN a favor de Preston Stearns (6.87 contra 8.75), en R2: la curva del grupo \"medias\" (n=214) da 64%. Ajustan: Preston Stearns viene cediendo menos games (31% contra 41%) (+6 pts). Queda en 70%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde +11% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.88: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+   "razon": "Δ1.88 de WTN a favor de Preston Stearns (6.87 contra 8.75), en QF: la curva del grupo \"finales\" (n=79) da 58%. Ajustan: Preston Stearns viene cediendo menos games (33% contra 42%) (+6 pts). Queda en 65%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.88: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1."
   },
   {
    "crit": {
     "cuota": 1.667,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.333,
+    "pFm": 0.337,
     "dW": 9.22,
     "forma": -1,
     "previo": null,
@@ -153,14 +153,14 @@
    "inicio": "2026-08-29T02:00:00.000Z",
    "torneo": "M25 Taipei",
    "pais": "Chinese Taipei",
-   "etapa": "QF",
+   "etapa": "SF",
    "p1": "Luca Castelnuovo",
    "p2": "Kuan-Shou Chen",
    "g1": 1.667,
    "g2": 2.1,
    "gana": "Luca Castelnuovo",
    "lado": 1,
-   "p": 0.333,
+   "p": 0.337,
    "pMercado": 0.557,
    "soloWtn": 0.833,
    "señales": [
@@ -168,14 +168,14 @@
     "forma",
     "local"
    ],
-   "razon": "Δ9.22 de WTN a favor de Luca Castelnuovo (5.07 contra 14.29), en QF: la curva del grupo \"finales\" (n=79) da 83%. Ajustan: Kuan-Shou Chen tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−38 pts); Kuan-Shou Chen viene cediendo menos games (29% contra 44%): la forma contradice al nivel (−10 pts); Kuan-Shou Chen juega en su país (TPE): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 33%. El mercado la paga a 1.667: 56% una vez sacado su margen. A esa cuota, la apuesta rinde −45% si tenemos razón nosotros y −7% si la tiene el mercado. Luca Castelnuovo tiene mejor WTN pero llega cediendo 15 puntos más de games (44% contra 29%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Kuan-Shou Chen paga desde 2.21 aun tomando el borde malo del intervalo. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1."
+   "razon": "Δ9.22 de WTN a favor de Luca Castelnuovo (5.07 contra 14.29), en SF: la curva del grupo \"finales\" (n=79) da 83%. Ajustan: Kuan-Shou Chen tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−38 pts); Kuan-Shou Chen viene cediendo menos games (29% contra 43%): la forma contradice al nivel (−10 pts); Kuan-Shou Chen juega en su país (TPE): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 34%. El mercado la paga a 1.667: 56% una vez sacado su margen. A esa cuota, la apuesta rinde −44% si tenemos razón nosotros y −7% si la tiene el mercado. Luca Castelnuovo tiene mejor WTN pero llega cediendo 14 puntos más de games (43% contra 29%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Kuan-Shou Chen paga desde 2.21 aun tomando el borde malo del intervalo. SF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1."
   },
   {
    "crit": {
     "cuota": 1.444,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.586,
+    "pFm": 0.549,
     "dW": -0.5,
     "forma": 1,
     "previo": null,
@@ -188,20 +188,20 @@
    "inicio": "2026-08-29T02:00:00.000Z",
    "torneo": "M25 Taipei",
    "pais": "Chinese Taipei",
-   "etapa": "QF",
+   "etapa": "SF",
    "p1": "Matthew Dellavedova",
    "p2": "Kasidit Samrej",
    "g1": 1.444,
    "g2": 2.625,
    "gana": "Kasidit Samrej",
    "lado": 2,
-   "p": 0.414,
+   "p": 0.451,
    "pMercado": 0.355,
    "soloWtn": 0.522,
    "señales": [
     "forma"
    ],
-   "razon": "Δ0.50 de WTN a favor de Kasidit Samrej (4.15 contra 4.65), en QF: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Matthew Dellavedova viene cediendo menos games (23% contra 38%): la forma contradice al nivel (−11 pts). Queda en 41%. El mercado la paga a 2.625: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −7% si la tiene el mercado. Kasidit Samrej tiene mejor WTN pero llega cediendo 15 puntos más de games (38% contra 23%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Matthew Dellavedova paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.50: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1. Kasidit Samrej es el MEJOR POR RATING pero la casa lo paga 2.625: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+   "razon": "Δ0.50 de WTN a favor de Kasidit Samrej (4.15 contra 4.65), en SF: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Matthew Dellavedova viene cediendo menos games (27% contra 36%): la forma contradice al nivel (−7 pts). Queda en 45%. El mercado la paga a 2.625: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +18% si tenemos razón nosotros y −7% si la tiene el mercado. Kasidit Samrej tiene mejor WTN pero llega cediendo 10 puntos más de games (36% contra 27%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Matthew Dellavedova paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.50: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. SF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1746 contra 0.4782 en R1. Kasidit Samrej es el MEJOR POR RATING pero la casa lo paga 2.625: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
   },
   {
    "crit": {
