@@ -56,6 +56,18 @@ jobs:
           npm i --no-save playwright
           npx playwright install --with-deps chromium
 
+      - name: Calendario y mapa (así aparecen las semanas nuevas)
+        if: inputs.que == 'todo'
+        timeout-minutes: 6
+        run: |
+          node vigia/itf-navegador.mjs calendario || echo "calendario no refrescó; se sigue con el caché"
+          node vigia/itf-mapa.mjs
+
+      - name: Entry lists de torneos vivos y próximos (la foto antes de que ITF la borre)
+        if: inputs.que == 'todo'
+        timeout-minutes: 10
+        run: node vigia/itf-navegador.mjs cosecha || echo "cosecha parcial; se sigue"
+
       - name: Tablas de torneos (cuadros y programación, vía navegador)
         if: inputs.que == 'todo'
         timeout-minutes: 14
@@ -70,7 +82,7 @@ jobs:
         run: |
           git config user.name "vigia-bot"
           git config user.email "vigia@users.noreply.github.com"
-          git add vigia/itf-informe.html vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json vigia/datos/itf
+          git add vigia/itf-informe.html vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json vigia/itf-calendario.json vigia/datos/itf
           git diff --cached --quiet && exit 0
           git commit -q -m "tabla: corrida a pedido $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase origin claude/itf-scrapers-prize-money-7oy59k || true

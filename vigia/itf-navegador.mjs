@@ -272,7 +272,9 @@ try {
          su entry list antes de que ITF la borre. */
       const hoy = new Date().toISOString().slice(0, 10);
       const cache = JSON.parse(fs.readFileSync(CACHE_CALENDARIO, 'utf8'));
-      claves = cache.torneos.filter(t => t.hasta >= hoy).sort((a, b) => a.desde.localeCompare(b.desde)).map(t => t.clave);
+      /* solo masculino (decisión 2026-08-22): el modelo y las cuotas son m-itf */
+      claves = cache.torneos.filter(t => t.hasta >= hoy && t.clave.startsWith('m-itf'))
+        .sort((a, b) => a.desde.localeCompare(b.desde)).map(t => t.clave);
     }
     console.log(`Bajando acceptance list de ${claves.length} torneos…`);
     for (const clave of claves) {
