@@ -5256,7 +5256,109 @@
     ],
     "razon": "Δ0.64 de WTN a favor de Filip Pieczonka (4.62 contra 5.26), en QF: la curva del grupo \"finales\" (n=79) da 53%. Ajustan: Gerard Campana Lee viene cediendo menos games (37% contra 46%): la forma contradice al nivel (−6 pts). Queda en 47%. El mercado la paga a 3.45: 27% una vez sacado su margen. A esa cuota, la apuesta rinde +61% si tenemos razón nosotros y −8% si la tiene el mercado. Filip Pieczonka tiene mejor WTN pero llega cediendo 8 puntos más de games (46% contra 37%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Gerard Campana Lee paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.64: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Filip Pieczonka es el MEJOR POR RATING pero la casa lo paga 3.45: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
    }
+  ],
+  "2026-08-28": [
+   {
+    "crit": {
+     "cuota": 1.727,
+     "ladoFm": 2,
+     "acuerdo": false,
+     "pFm": 0.283,
+     "dW": -1.25,
+     "forma": 1,
+     "previo": -1,
+     "grupo": "finales",
+     "edadFm": 22,
+     "edadRi": 28
+    },
+    "jugada": null,
+    "fixtureId": "pn129036521634936153",
+    "inicio": "2026-08-28T09:00:00.000Z",
+    "torneo": "M25 Oviedo",
+    "pais": "Spain",
+    "etapa": "SF",
+    "p1": "Sergi Perez Contri",
+    "p2": "Pedro Rodenas",
+    "g1": 2,
+    "g2": 1.727,
+    "gana": "Sergi Perez Contri",
+    "lado": 1,
+    "p": 0.717,
+    "pMercado": 0.463,
+    "soloWtn": 0.554,
+    "señales": [
+     "forma",
+     "previo"
+    ],
+    "razon": "Δ1.25 de WTN a favor de Sergi Perez Contri (5.43 contra 6.68), en SF: la curva del grupo \"finales\" (n=79) da 55%. Ajustan: Pedro Rodenas viene cediendo menos games (36% contra 41%): la forma contradice al nivel (−3 pts); Sergi Perez Contri llegó más lejos en su torneo anterior (+20 pts). Queda en 72%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +43% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.25: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. SF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Sergi Perez Contri es el MEJOR POR RATING pero la casa lo paga 2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+   },
+   {
+    "crit": {
+     "cuota": 1.071,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.876,
+     "dW": 3.88,
+     "forma": 1,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 25,
+     "edadRi": 21
+    },
+    "jugada": null,
+    "fixtureId": "pn129054111634936127",
+    "inicio": "2026-08-28T09:30:00.000Z",
+    "torneo": "M15 Pecs",
+    "pais": "Hungary",
+    "etapa": "R1",
+    "p1": "Trisztan Gubi",
+    "p2": "John Hallquist Lithen",
+    "g1": 7.5,
+    "g2": 1.071,
+    "gana": "John Hallquist Lithen",
+    "lado": 2,
+    "p": 0.876,
+    "pMercado": 0.875,
+    "soloWtn": 0.861,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ3.88 de WTN a favor de John Hallquist Lithen (8.52 contra 12.4), en R1: la curva del grupo \"buenas\" (n=528) da 86%. Ajustan: John Hallquist Lithen viene cediendo menos games (39% contra 44%) (+2 pts). Queda en 88%. El mercado la paga a 1.071: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −6% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.6,
+     "ladoFm": 2,
+     "acuerdo": false,
+     "pFm": 0.525,
+     "dW": -0.21,
+     "forma": 1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 24,
+     "edadRi": 24
+    },
+    "jugada": null,
+    "fixtureId": "pn129043471634945547",
+    "inicio": "2026-08-28T10:00:00.000Z",
+    "torneo": "M25 Lausanne",
+    "pais": "Switzerland",
+    "etapa": "QF",
+    "p1": "Adrien Burdet",
+    "p2": "Florent Lagarrigue",
+    "g1": 2.15,
+    "g2": 1.6,
+    "gana": "Adrien Burdet",
+    "lado": 1,
+    "p": 0.475,
+    "pMercado": 0.427,
+    "soloWtn": 0.509,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ0.21 de WTN a favor de Adrien Burdet (9.25 contra 9.46), en QF: la curva del grupo \"finales\" (n=79) da 51%. Ajustan: Florent Lagarrigue viene cediendo menos games (30% contra 35%): la forma contradice al nivel (−3 pts). Queda en 47%. El mercado la paga a 2.15: 43% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.21: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Adrien Burdet es el MEJOR POR RATING pero la casa lo paga 2.15: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+   }
   ]
  },
- "actualizado": "2026-08-27T22:46:24.576Z"
+ "actualizado": "2026-08-28T01:39:39.221Z"
 }
