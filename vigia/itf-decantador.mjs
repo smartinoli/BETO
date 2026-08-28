@@ -50,6 +50,11 @@ export const CRITERIOS = [
     si: c => c.pFm >= 0.70, no: c => c.pFm < 0.70 },
   { clave: 'acuerdo', texto: 'rating y precio de acuerdo (también es mejor por WTN)',
     si: c => c.acuerdo, no: c => !c.acuerdo },
+  /* El Elo propio (itf-rating). OJO: solo se llena desde los días vivos —
+     para el registro viejo sería mirar la respuesta (el Elo de hoy ya vio
+     esos resultados), así que ahí queda vacío y las celdas crecen solas. */
+  { clave: 'elo', texto: 'nuestro ranking (Elo) también lo da favorito',
+    si: c => c.dElo != null && c.dElo > 0, no: c => c.dElo != null && c.dElo < 0 },
   { clave: 'wtn2', texto: 'ventaja WTN de 2 o más',
     si: c => c.dW != null && c.dW >= 2, no: c => c.dW != null && c.dW < 2 },
   { clave: 'forma', texto: 'forma conocida y a favor (games cedidos en este cuadro)',

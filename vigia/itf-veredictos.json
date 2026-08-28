@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-28T21:36:07.077Z",
+ "generado": "2026-08-28T21:39:57.419Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -13,7 +13,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 25,
-    "edadRi": 22
+    "edadRi": 22,
+    "dElo": 275
    },
    "jugada": null,
    "fixtureId": "pn129036371634986659",
@@ -47,7 +48,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 29,
-    "edadRi": 18
+    "edadRi": 18,
+    "dElo": 642
    },
    "jugada": null,
    "fixtureId": "pn129042181634962566",
@@ -82,7 +84,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 26,
-    "edadRi": 25
+    "edadRi": 25,
+    "dElo": 7
    },
    "jugada": null,
    "fixtureId": "pn129042181634971799",
@@ -115,7 +118,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 29,
-    "edadRi": 27
+    "edadRi": 27,
+    "dElo": -77
    },
    "jugada": null,
    "fixtureId": "pn129042801634992052",
@@ -149,7 +153,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 24,
-    "edadRi": 20
+    "edadRi": 20,
+    "dElo": 181
    },
    "jugada": null,
    "fixtureId": "pn129042801634986622",
@@ -183,7 +188,8 @@
     "previo": null,
     "grupo": "buenas",
     "edadFm": 24,
-    "edadRi": 26
+    "edadRi": 26,
+    "dElo": -102
    },
    "jugada": null,
    "fixtureId": "pn129043431634986654",
@@ -214,7 +220,8 @@
     "previo": null,
     "grupo": "buenas",
     "edadFm": 29,
-    "edadRi": 20
+    "edadRi": 20,
+    "dElo": 176
    },
    "jugada": null,
    "fixtureId": "pn129043431634992089",
@@ -245,7 +252,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 20,
-    "edadRi": 23
+    "edadRi": 23,
+    "dElo": 23
    },
    "jugada": null,
    "fixtureId": "pn129034491634986668",
@@ -278,7 +286,8 @@
     "previo": 1,
     "grupo": "finales",
     "edadFm": 19,
-    "edadRi": 20
+    "edadRi": 20,
+    "dElo": 59
    },
    "jugada": null,
    "fixtureId": "pn129034491634986667",
@@ -313,7 +322,8 @@
     "previo": 1,
     "grupo": "finales",
     "edadFm": 21,
-    "edadRi": 24
+    "edadRi": 24,
+    "dElo": 29
    },
    "jugada": null,
    "fixtureId": "pn129038831634971880",
@@ -347,7 +357,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 23,
-    "edadRi": 25
+    "edadRi": 25,
+    "dElo": 66
    },
    "jugada": null,
    "fixtureId": "pn129038831634992091",
@@ -380,7 +391,8 @@
     "previo": 1,
     "grupo": "medias",
     "edadFm": 25,
-    "edadRi": 28
+    "edadRi": 28,
+    "dElo": 47
    },
    "jugada": null,
    "fixtureId": "pn129054111634986669",
@@ -414,7 +426,8 @@
     "previo": null,
     "grupo": "medias",
     "edadFm": 24,
-    "edadRi": 23
+    "edadRi": 23,
+    "dElo": 104
    },
    "jugada": null,
    "fixtureId": "pn129054111634992097",
@@ -447,7 +460,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 26,
-    "edadRi": 27
+    "edadRi": 27,
+    "dElo": 103
    },
    "jugada": null,
    "fixtureId": "pn129054091634971881",
@@ -481,7 +495,8 @@
     "previo": null,
     "grupo": "finales",
     "edadFm": 28,
-    "edadRi": 28
+    "edadRi": 28,
+    "dElo": 54
    },
    "jugada": null,
    "fixtureId": "pn129036371634986640",

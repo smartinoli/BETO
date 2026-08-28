@@ -489,6 +489,9 @@ function enSimple(f) {
    mercado, para que la comparación modelo-contra-mercado sea con
    resultados reales y no con teoría.
    ============================================================ */
+/* el Elo propio, para el criterio del decantador (null si falta jugador) */
+const ELO = (() => { const j = leer(path.join(DATOS, 'rating.json')); const m = new Map();
+  for (const x of j?.jugadores || []) m.set(x.id, x.elo); return m })();
 const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
   const lado = f.v.nivel.favorito.startsWith(f.f1.nombre) ? 1 : 2;
   const dev = (f.q.g1 && f.q.g2) ? (1 / (lado === 1 ? f.q.g1 : f.q.g2)) / (1 / f.q.g1 + 1 / f.q.g2) : null;
@@ -510,6 +513,8 @@ const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
       grupo: GRUPO[f.etapa] ?? null,
       edadFm: fFm.nacido ? 2026 - fFm.nacido : null,
       edadRi: fRi.nacido ? 2026 - fRi.nacido : null,
+      dElo: (ELO.get(fFm.id) != null && ELO.get(fRi.id) != null)
+        ? Math.round(ELO.get(fFm.id) - ELO.get(fRi.id)) : null,
     };
   })();
   return {
