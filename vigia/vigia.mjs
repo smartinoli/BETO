@@ -227,6 +227,63 @@ function desvigar(pA, pB) {
   const S = 1 / pA + 1 / pB;
   return [S * pA, S * pB];
 }
+/* des-vigado de N vías por potencia: mismo método que desvigar() pero para
+   mercados de 3 resultados. Busca k tal que Σ(1/pᵢ)^k = 1 y devuelve los
+   justos. Con 2 precios da exactamente lo mismo que desvigar. */
+function desvigarN(precios) {
+  const q = precios.map(x => 1 / x);
+  const S = q.reduce((a, b) => a + b, 0);
+  if (S <= 1) return precios.map(x => x * S);
+  let lo = 1, hi = 4;
+  for (let i = 0; i < 60; i++) {
+    const k = (lo + hi) / 2;
+    (q.reduce((a, x) => a + x ** k, 0) > 1) ? lo = k : hi = k;
+  }
+  const k = (lo + hi) / 2;
+  return q.map(x => 1 / x ** k);
+}
+
+/* ---------- ESPEJO: la misma apuesta, leída del 1X2 de primer tiempo ----------
+   AH −0.5 1T ≡ "gana el primer tiempo" ≡ el lado 1 o 2 del 1X2 de primer
+   tiempo. Donde Betano no cotiza hándicap al 1T, el 1X2 sí trae la apuesta.
+   Viaja en el MISMO request del barrido, así que no cuesta ni un request
+   extra. Corre en paralelo y NO escribe al registro: es para medir si vale
+   la pena antes de mezclarlo con el foco. */
+function procesarEspejo(info, bet, cb, metas, salida) {
+  if (!CFG.espejo1X2) return;
+  for (const mid of Object.keys(bet.markets || {})) {
+    const meta = metas[mid];
+    if (!meta || meta.len !== 3 || !/^first half result$/i.test(meta.n || '')) continue;
+    const oB = bet.markets[mid].outcomes || {}, oC = (cb.markets || {})[mid]?.outcomes || {};
+    const ids = Object.keys(oB);
+    if (ids.length !== 3) continue;
+    const pB = {}, pC = {}; let ok = true;
+    for (const oid of ids) {
+      const b0 = (oB[oid].players || {})['0'], c0 = ((oC[oid] || {}).players || {})['0'];
+      if (!b0?.active || !(b0.price > 1) || !c0?.active || !(c0.price > 1)) { ok = false; break; }
+      pB[oid] = b0.price; pC[oid] = c0.price;
+    }
+    if (!ok) continue;
+    /* el lado que nos interesa es el FAVORITO del primer tiempo: el 1 o el 2
+       más corto. La X no es nuestra apuesta (con AH −0.5 el empate pierde). */
+    const lados = ids.filter(o => /^1$|^2$|home|away/i.test((meta.outs || {})[o] || ''));
+    if (lados.length !== 2) continue;
+    const fav = lados.reduce((a, b) => (pB[a] <= pB[b] ? a : b));
+    const cuota = pB[fav];
+    if (cuota < (CFG.cuotaMinima ?? 0) || cuota > CFG.cuotaMaxima) continue;
+    const justos = desvigarN(ids.map(o => pC[o]));
+    const justo = justos[ids.indexOf(fav)];
+    const vent = cuota / justo - 1;
+    if (vent < CFG.ventajaMinima[info.sid]) continue;
+    const esLocal = /^1$|home/i.test((meta.outs || {})[fav] || '');
+    (salida.espejo ||= []).push({
+      fix: info.fixtureId, partido: info.p1 + ' vs ' + info.p2, liga: info.liga,
+      inicio: info.startTime, lado: (esLocal ? info.p1 : info.p2) + ' gana el 1T',
+      cuota: +cuota.toFixed(3), justo: +justo.toFixed(3), vent: +vent.toFixed(4),
+    });
+  }
+}
+
 function montoDe(cuota, vent) {
   const f = Math.max(0, vent) / (cuota - 1) / CFG.kellyDivisor;
   const m = Math.min(CFG.banca * CFG.topePctBanca, CFG.banca * f);
@@ -664,6 +721,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       info.bookmakerFixtureId = b.bookmakerFixtureId || null;
       procesarSync(info, b, c, metas, salida);
       procesarProps(info, b, c, metas, salida);
+      procesarEspejo(info, b, c, metas, salida);
     }
   }
   salida.segundos = Math.round((Date.now() - t0) / 1000);
@@ -834,6 +892,30 @@ async function reportar(r, titulo) {
   const trozos = [];
   orden.forEach((s, i) => trozos.push(bloqueSenal(s, i + 1)));
   await telegram(trozos.join('\n\n'));
+  await reportarEspejo(r);
+}
+
+/* El espejo se reporta APARTE y nunca se mezcla con el foco: son la misma
+   apuesta pero leída de otro mercado, y hasta no medirlas por separado no
+   se sabe si rinden igual. */
+async function reportarEspejo(r) {
+  const esp = r.espejo || [];
+  if (!esp.length) return;
+  const conAH = new Set((r.senales || []).map(s => s.fix));
+  const nuevas = esp.filter(e => !conAH.has(e.fix));
+  esp.sort((a, b) => b.vent - a.vent);
+  await telegram([
+    '<b>🪞 Espejo · la misma apuesta desde el 1X2 de primer tiempo</b>',
+    `<i>${esp.length} señal(es) · ${nuevas.length} en partidos que el foco NO cubre`
+      + ` · no se anotan al tablero</i>`,
+    '',
+    ...esp.slice(0, 12).map((e, i) =>
+      `${i + 1}. ${conAH.has(e.fix) ? '🔁' : '🆕'} <b>${escHtml(e.lado)}</b> @${e.cuota.toFixed(2)}`
+      + ` vs justo ${e.justo.toFixed(2)} → <b>+${(e.vent * 100).toFixed(1)}%</b>\n`
+      + `   ${escHtml(e.partido)} · ${escHtml(e.liga)} · ${horaTxt(e.inicio)}`),
+    '',
+    '<i>🆕 = partido sin hándicap al 1T en Betano, o sea cobertura nueva · 🔁 = el foco ya lo tiene por AH</i>',
+  ].join('\n'));
 }
 
 /* ---------- tablero simulado: liquidación y balance ---------- */

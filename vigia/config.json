@@ -22,6 +22,8 @@
   "foco": {
     "10": "^AH 1er tiempo · .+ -\\d+(\\.\\d+)?$"
   },
+  "espejo1X2": true,
+  "comentarioEspejo": "lee la misma apuesta desde el 1X2 de primer tiempo y la reporta APARTE; no escribe al registro",
   "barridoDeportes": ["10"],
   "cuotaMinima": 1.55,
   "usarCongeladas": false,
