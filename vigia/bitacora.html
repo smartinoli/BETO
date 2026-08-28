@@ -1,0 +1,539 @@
+<title>Bitácora AH Primer Tiempo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f4f6f8; --surface:#ffffff; --ink:#101820; --muted:#61707f;
+    --line:#e2e7ec; --line-fuerte:#ccd5dd;
+    --acento:#2d6a8f; --acento-tenue:#e8f1f6;
+    --gano:#17795e; --perdio:#a83f2e; --nula:#8b7a4f;
+    --frio:#f0f3f6;
+    --sans:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+    --disp:"Archivo",ui-sans-serif,system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#0e1318; --surface:#161d24; --ink:#e7edf3; --muted:#93a3b2;
+    --line:#242e38; --line-fuerte:#33404c;
+    --acento:#7cb8dc; --acento-tenue:#17242e;
+    --gano:#3fbd93; --perdio:#e37f6c; --nula:#c2ab77;
+    --frio:#131b22;
+  }}
+  :root[data-theme="dark"]{
+    --paper:#0e1318; --surface:#161d24; --ink:#e7edf3; --muted:#93a3b2;
+    --line:#242e38; --line-fuerte:#33404c;
+    --acento:#7cb8dc; --acento-tenue:#17242e;
+    --gano:#3fbd93; --perdio:#e37f6c; --nula:#c2ab77;
+    --frio:#131b22;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:40px 24px 80px;display:flex;flex-direction:column;gap:44px}
+
+  header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--line-fuerte);padding-bottom:22px}
+  h1{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.1;
+     letter-spacing:-.02em;margin:0;text-wrap:balance}
+  .criterio{font-family:var(--mono);font-size:13px;color:var(--acento);letter-spacing:.01em}
+  .sello{font-size:13px;color:var(--muted)}
+
+  section{display:flex;flex-direction:column;gap:16px}
+  h2{font-family:var(--disp);font-weight:600;font-size:19px;margin:0;letter-spacing:-.01em}
+  .lead{margin:0;color:var(--muted);font-size:14px;max-width:66ch}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+         background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .tile{background:var(--surface);padding:15px 17px;display:flex;flex-direction:column;gap:5px}
+  .tile .k{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+  .tile .val{font-family:var(--mono);font-size:25px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+  .tile .note{font-size:12px;color:var(--muted)}
+  .val.gano{color:var(--gano)} .val.perdio{color:var(--perdio)}
+
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--surface)}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:660px}
+  thead th{font-family:var(--disp);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+           font-weight:600;color:var(--muted);text-align:left;padding:11px 13px;
+           border-bottom:1px solid var(--line-fuerte);white-space:nowrap;background:var(--surface)}
+  thead th.num{text-align:right}
+  tbody td{padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.fria{background:var(--frio)}
+  .num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sec{color:var(--muted)}
+  .c-part .eq{display:block;font-weight:600}
+  .c-part .sub{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
+  .c-liga{color:var(--muted);font-size:13px}
+  .c-hora{white-space:nowrap;font-family:var(--mono);font-size:13px}
+  .c-hora .h{color:var(--muted)}
+  .v{font-weight:600}
+  .v.alta{color:var(--gano)} .v.leve{color:var(--ink)} .v.roja{color:var(--nula)} .v.peor{color:var(--perdio)}
+  .u.gano{color:var(--gano)} .u.perdio{color:var(--perdio)} .u.nula{color:var(--muted)}
+
+  .pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.03em;
+        padding:2px 8px;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
+  .pill+.pill{margin-left:5px}
+  .pill.gano{color:var(--gano)} .pill.perdio{color:var(--perdio)} .pill.nula{color:var(--nula)}
+  .pill.fria-p{color:var(--muted)}
+
+  .bandas{display:flex;flex-wrap:wrap;gap:8px}
+  .banda{display:flex;align-items:baseline;gap:7px;border:1px solid var(--line-fuerte);
+         border-radius:2px;padding:6px 11px;background:var(--surface)}
+  .banda .n{font-family:var(--mono);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums}
+  .banda .e{font-size:12px;color:var(--muted)}
+  .banda.alta .n{color:var(--gano)} .banda.peor .n{color:var(--perdio)} .banda.roja .n{color:var(--nula)}
+
+  .nota{border-left:2px solid var(--acento);background:var(--acento-tenue);
+        padding:13px 16px;border-radius:0 3px 3px 0;font-size:13.5px;color:var(--ink)}
+  .nota p{margin:0 0 8px} .nota p:last-child{margin:0}
+  .nota strong{font-weight:600}
+  footer{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;color:var(--muted)}
+  code{font-family:var(--mono);font-size:.92em;background:var(--acento-tenue);padding:1px 5px;border-radius:2px}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Bitácora AH Primer Tiempo</h1>
+    <div class="criterio">hándicap asiático −(x) · primer tiempo · cuota 1.55–1.90 · fútbol</div>
+    <div class="sello">Última corrida: 28-08-2026, 1:44:41 p. m. · 795 partidos barridos · 78 requests</div>
+  </header>
+
+  <section>
+    <h2>Histórico liquidado</h2>
+    <p class="lead">Apuestas del foco ya cerradas dentro del rango de cuota vigente. Solo las de precio vivo cuentan en el balance; las que se generaron con el feed congelado van marcadas y quedan fuera.</p>
+    <div class="tiles">
+      <div class="tile"><span class="k">Apuestas</span><span class="val">20</span><span class="note">precio vivo</span></div>
+      <div class="tile"><span class="k">Récord</span><span class="val">14<span style="font-size:15px;color:var(--muted)">G</span> 3<span style="font-size:15px;color:var(--muted)">P</span> 3<span style="font-size:15px;color:var(--muted)">E</span></span><span class="note">ganadas · perdidas · nulas</span></div>
+      <div class="tile"><span class="k">Unidades</span><span class="val gano">+7.19</span><span class="note">suma de retornos</span></div>
+      <div class="tile"><span class="k">ROI por unidad</span><span class="val gano">+36.0%</span><span class="note">cada apuesta pesa igual</span></div>
+    </div>
+    <div class="scroll"><table>
+      <thead><tr><th>Fecha</th><th>Apuesta</th><th>Liga</th><th class="num">Cuota</th><th class="num">vs justo</th><th>Resultado</th><th class="num">Unid.</th></tr></thead>
+      <tbody><tr>
+  <td class="c-hora"><span class="d">19-ago</span></td>
+  <td class="c-part"><span class="eq">Vaalerenga Oslo -1</span><span class="sub">Vaalerenga Oslo vs Hoenefoss BK</span></td>
+  <td class="c-liga">Toppserien, Women</td>
+  <td class="num">1.85</td>
+  <td class="num v alta">+4.8%</td>
+  <td><span class="pill nula">Empate</span></td>
+  <td class="num u nula">+0.00</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">19-ago</span></td>
+  <td class="c-part"><span class="eq">FC Barcelona -1</span><span class="sub">FC Barcelona vs AL Ahly SC (EGY)</span></td>
+  <td class="c-liga">Club Friendly Games</td>
+  <td class="num">1.75</td>
+  <td class="num v alta">+6.4%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.75</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">20-ago</span></td>
+  <td class="c-part"><span class="eq">Al Rayyan SC -0.5</span><span class="sub">Al Rayyan SC vs Lusail SC</span></td>
+  <td class="c-liga">Stars League</td>
+  <td class="num">1.70</td>
+  <td class="num v alta">+1.7%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.70</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">20-ago</span></td>
+  <td class="c-part"><span class="eq">Al Hilal SFC -0.5</span><span class="sub">Al-Fayha FC vs Al Hilal SFC</span></td>
+  <td class="c-liga">Saudi Pro League</td>
+  <td class="num">1.70</td>
+  <td class="num v alta">+4.5%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.70</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">20-ago</span></td>
+  <td class="c-part"><span class="eq">Always Ready -1</span><span class="sub">Always Ready vs Cdt Real Oruro</span></td>
+  <td class="c-liga">Copa Bolivia</td>
+  <td class="num">1.90</td>
+  <td class="num v alta">+3.9%</td>
+  <td><span class="pill nula">Empate</span></td>
+  <td class="num u nula">+0.00</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">21-ago</span></td>
+  <td class="c-part"><span class="eq">Arsenal FC -0.5</span><span class="sub">Arsenal FC vs Coventry City</span></td>
+  <td class="c-liga">Premier League</td>
+  <td class="num">1.62</td>
+  <td class="num v alta">+2.9%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.62</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Monaro Panthers FC -1</span><span class="sub">Canberra White Eagles FC vs Monaro Panthers FC</span></td>
+  <td class="c-liga">Capital NPL 1</td>
+  <td class="num">1.88</td>
+  <td class="num v alta">+2.2%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.88</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">TSG Hoffenheim -1</span><span class="sub">Erzgebirge Aue vs TSG Hoffenheim</span></td>
+  <td class="c-liga">DFB Pokal</td>
+  <td class="num">1.82</td>
+  <td class="num v alta">+6.0%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.82</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Shabab Al Ahli Dubai -0.5</span><span class="sub">Shabab Al Ahli Dubai vs Al Dhafra SSC</span></td>
+  <td class="c-liga">Arabian Gulf League</td>
+  <td class="num">1.65</td>
+  <td class="num v alta">+1.7%</td>
+  <td><span class="pill perdio">Perdida</span></td>
+  <td class="num u perdio">−1.00</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Maccabi Haifa -0.5</span><span class="sub">Maccabi Haifa vs Hapoel Raanana</span></td>
+  <td class="c-liga">U19 Premier League</td>
+  <td class="num">1.85</td>
+  <td class="num v alta">+8.6%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.85</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Ofk-Sim Raslavice -0.5</span><span class="sub">Ofk-Sim Raslavice vs MFK Kezmarok</span></td>
+  <td class="c-liga">3. Liga</td>
+  <td class="num">1.78</td>
+  <td class="num v alta">+9.7%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.78</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Al Ain FC -0.5</span><span class="sub">Al Ain FC vs Khor Fakkan Club</span></td>
+  <td class="c-liga">Arabian Gulf League</td>
+  <td class="num">1.62</td>
+  <td class="num v alta">+2.1%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.62</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">AEK Athens -0.5</span><span class="sub">AEK Athens vs POT Iraklis</span></td>
+  <td class="c-liga">Super League</td>
+  <td class="num">1.62</td>
+  <td class="num v alta">+1.7%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.62</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Slavia Prague -0.5</span><span class="sub">Slavia Prague vs Bohemians Prague 1905</span></td>
+  <td class="c-liga">1. Liga</td>
+  <td class="num">1.70</td>
+  <td class="num v alta">+2.1%</td>
+  <td><span class="pill perdio">Perdida</span></td>
+  <td class="num u perdio">−1.00</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Al Ahli Saudi FC -0.5</span><span class="sub">Al Ahli Saudi FC vs Abha Club</span></td>
+  <td class="c-liga">Saudi Pro League</td>
+  <td class="num">1.65</td>
+  <td class="num v alta">+1.7%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.65</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Olympiacos Piraeus -0.5</span><span class="sub">Olympiacos Piraeus vs Atromitos Athinon</span></td>
+  <td class="c-liga">Super League</td>
+  <td class="num">1.75</td>
+  <td class="num v alta">+2.6%</td>
+  <td><span class="pill perdio">Perdida</span></td>
+  <td class="num u perdio">−1.00</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">22-ago</span></td>
+  <td class="c-part"><span class="eq">Sporting CP -0.5</span><span class="sub">Sporting CP vs FC Alverca SAD</span></td>
+  <td class="c-liga">Liga Portugal</td>
+  <td class="num">1.65</td>
+  <td class="num v alta">+1.7%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.65</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">23-ago</span></td>
+  <td class="c-part"><span class="eq">SC Paderborn 07 -1</span><span class="sub">1. FC Phonix Lubeck vs SC Paderborn 07</span></td>
+  <td class="c-liga">DFB Pokal</td>
+  <td class="num">1.87</td>
+  <td class="num v alta">+4.2%</td>
+  <td><span class="pill nula">Empate</span></td>
+  <td class="num u nula">+0.00</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">23-ago</span></td>
+  <td class="c-part"><span class="eq">FC Sheriff Tiraspol -0.5</span><span class="sub">FC Sheriff Tiraspol vs FC Politehnica Chisinau</span></td>
+  <td class="c-liga">Super Liga</td>
+  <td class="num">1.75</td>
+  <td class="num v alta">+2.5%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.75</td>
+</tr>
+<tr>
+  <td class="c-hora"><span class="d">23-ago</span></td>
+  <td class="c-part"><span class="eq">Club Bolivar -0.5</span><span class="sub">Cdt Real Oruro vs Club Bolivar</span></td>
+  <td class="c-liga">Division Profesional</td>
+  <td class="num">1.80</td>
+  <td class="num v alta">+1.7%</td>
+  <td><span class="pill gano">Ganada</span></td>
+  <td class="num u gano">+0.80</td>
+</tr>
+<tr class="fria">
+  <td class="c-hora"><span class="d">25-ago</span></td>
+  <td class="c-part"><span class="eq">Al Nassr Club -0.5</span><span class="sub">Al-Ittifaq FC vs Al Nassr Club</span></td>
+  <td class="c-liga">Saudi Pro League</td>
+  <td class="num">1.72</td>
+  <td class="num v alta">+2.5%</td>
+  <td><span class="pill perdio">Perdida</span><span class="pill fria-p">congelada</span></td>
+  <td class="num u perdio">−1.00</td>
+</tr>
+<tr class="fria">
+  <td class="c-hora"><span class="d">25-ago</span></td>
+  <td class="c-part"><span class="eq">East Kilbride FC -0.5</span><span class="sub">Cowdenbeath FC vs East Kilbride FC</span></td>
+  <td class="c-liga">Challenge Cup</td>
+  <td class="num">1.82</td>
+  <td class="num v alta">+6.4%</td>
+  <td><span class="pill perdio">Perdida</span><span class="pill fria-p">congelada</span></td>
+  <td class="num u perdio">−1.00</td>
+</tr></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Última corrida — todos los partidos del rango</h2>
+    <p class="lead">Sin filtro de valor: entran todos los partidos que ofrecen la línea dentro del rango de cuota, ordenados de mayor a menor ventaja. Las de ventaja negativa significan que Betano paga bajo el justo de Cloudbet — se listan como dato, no como recomendación.</p>
+    <div class="bandas">
+      <div class="banda alta"><span class="n">2</span><span class="e">≥ +1,5%</span></div>
+      <div class="banda leve"><span class="n">3</span><span class="e">0 a +1,5%</span></div>
+      <div class="banda roja"><span class="n">5</span><span class="e">−2% a 0</span></div>
+      <div class="banda peor"><span class="n">15</span><span class="e">peor que −2%</span></div>
+    </div>
+    <div class="scroll"><table>
+      <thead><tr><th>Apuesta</th><th>Liga</th><th>Comienza</th><th class="num">Cuota</th><th class="num">Justo</th><th class="num">Ventaja</th></tr></thead>
+      <tbody><tr>
+  <td class="c-part"><span class="eq">Celtic Glasgow -0.5</span><span class="sub">Celtic Glasgow vs Falkirk FC</span></td>
+  <td class="c-liga">Premiership</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">10:00</span></td>
+  <td class="num">1.62</td>
+  <td class="num sec">1.57</td>
+  <td class="num v alta">+3.2%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Partick Thistle FC -0.5</span><span class="sub">Partick Thistle FC vs Queens Park FC</span></td>
+  <td class="c-liga">Championship</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">10:00</span></td>
+  <td class="num">1.85</td>
+  <td class="num sec">1.82</td>
+  <td class="num v alta">+1.7%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Caernarfon Town FC -0.5</span><span class="sub">Holywell Town vs Caernarfon Town FC</span></td>
+  <td class="c-liga">Cymru Premier</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num">1.67</td>
+  <td class="num sec">1.65</td>
+  <td class="num v leve">+1.4%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Sporting CP -0.5</span><span class="sub">Rio Ave FC vs Sporting CP</span></td>
+  <td class="c-liga">Liga Portugal</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">15:15</span></td>
+  <td class="num">1.90</td>
+  <td class="num sec">1.88</td>
+  <td class="num v leve">+1.4%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">FC Porto -0.5</span><span class="sub">Academico de Viseu FC vs FC Porto</span></td>
+  <td class="c-liga">Liga Portugal</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">13:00</span></td>
+  <td class="num">1.85</td>
+  <td class="num sec">1.84</td>
+  <td class="num v leve">+0.6%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Chengdu Rongcheng -0.5</span><span class="sub">Chengdu Rongcheng vs Liaoning Tieren FC</span></td>
+  <td class="c-liga">Chinese Super League</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">07:35</span></td>
+  <td class="num">1.75</td>
+  <td class="num sec">1.75</td>
+  <td class="num v roja">−0.3%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Al Ain FC -0.5</span><span class="sub">Al Ain FC vs Al-Nasr Dubai CSC</span></td>
+  <td class="c-liga">Arabian Gulf League</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">12:30</span></td>
+  <td class="num">1.83</td>
+  <td class="num sec">1.84</td>
+  <td class="num v roja">−0.5%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Heidelberg United FC -0.5</span><span class="sub">Heidelberg United FC vs Bentleigh Greens</span></td>
+  <td class="c-liga">Victoria, NPL</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">01:00</span></td>
+  <td class="num">1.87</td>
+  <td class="num sec">1.88</td>
+  <td class="num v roja">−0.5%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">ST Albans Saints Dinamo SC -0.5</span><span class="sub">ST Albans Saints Dinamo SC vs Dandenong Thunder</span></td>
+  <td class="c-liga">Victoria, NPL</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">01:00</span></td>
+  <td class="num">1.62</td>
+  <td class="num sec">1.64</td>
+  <td class="num v roja">−1.1%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">The New Saints FC -0.5</span><span class="sub">The New Saints FC vs Colwyn Bay</span></td>
+  <td class="c-liga">Cymru Premier</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num">1.72</td>
+  <td class="num sec">1.75</td>
+  <td class="num v roja">−1.6%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Bohemians Dublin FC -0.5</span><span class="sub">Bohemians Dublin FC vs Sligo Rovers FC</span></td>
+  <td class="c-liga">Premier Division</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num">1.65</td>
+  <td class="num sec">1.69</td>
+  <td class="num v peor">−2.1%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Cork City FC -0.5</span><span class="sub">Cork City FC vs Wexford FC</span></td>
+  <td class="c-liga">First Division</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num">1.80</td>
+  <td class="num sec">1.84</td>
+  <td class="num v peor">−2.3%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Eastern Suburbs AFC -0.5</span><span class="sub">Eastern Suburbs AFC vs Auckland FC Reserves</span></td>
+  <td class="c-liga">National League</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">23:00</span></td>
+  <td class="num">1.83</td>
+  <td class="num sec">1.88</td>
+  <td class="num v peor">−2.6%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">FC Ordabasy -0.5</span><span class="sub">FC Ordabasy vs FC Kyzylzhar SK</span></td>
+  <td class="c-liga">Premier League</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">11:00</span></td>
+  <td class="num">1.85</td>
+  <td class="num sec">1.90</td>
+  <td class="num v peor">−2.6%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Coleraine FC -0.5</span><span class="sub">Portadown FC vs Coleraine FC</span></td>
+  <td class="c-liga">Premiership</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num">1.78</td>
+  <td class="num sec">1.85</td>
+  <td class="num v peor">−3.8%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">FK Mlada Boleslav B -0.5</span><span class="sub">FK Velke Hamry vs FK Mlada Boleslav B</span></td>
+  <td class="c-liga">CFL</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">04:30</span></td>
+  <td class="num">1.85</td>
+  <td class="num sec">1.95</td>
+  <td class="num v peor">−4.9%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Newtown AFC -0.5</span><span class="sub">Newtown AFC vs Llanuwchllyn</span></td>
+  <td class="c-liga">Cymru Championship, North</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">14:45</span></td>
+  <td class="num">1.75</td>
+  <td class="num sec">1.85</td>
+  <td class="num v peor">−5.2%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Saint Louis City SC 2 -0.5</span><span class="sub">Saint Louis City SC 2 vs North Texas SC</span></td>
+  <td class="c-liga">MLS Next Pro</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">20:00</span></td>
+  <td class="num">1.83</td>
+  <td class="num sec">1.94</td>
+  <td class="num v peor">−5.4%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Fylkir Reykjavik -0.5</span><span class="sub">Fylkir Reykjavik vs Grotta</span></td>
+  <td class="c-liga">1. deild</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">15:15</span></td>
+  <td class="num">1.85</td>
+  <td class="num sec">1.97</td>
+  <td class="num v peor">−6.2%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Deportivo Toluca FC -0.5</span><span class="sub">Deportivo Toluca FC vs Club Leon</span></td>
+  <td class="c-liga">Liga MX, Women</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">20:00</span></td>
+  <td class="num">1.80</td>
+  <td class="num sec">1.92</td>
+  <td class="num v peor">−6.5%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">FK Auda Riga -0.5</span><span class="sub">FK Auda Riga vs SK Super Nova</span></td>
+  <td class="c-liga">Virsliga</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">12:00</span></td>
+  <td class="num">1.88</td>
+  <td class="num sec">2.01</td>
+  <td class="num v peor">−6.6%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Kari -0.5</span><span class="sub">Kari vs Throttur Vogum</span></td>
+  <td class="c-liga">2. deild</td>
+  <td class="c-hora"><span class="d">28-ago</span> <span class="h">15:15</span></td>
+  <td class="num">1.90</td>
+  <td class="num sec">2.04</td>
+  <td class="num v peor">−6.7%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">VfB Stuttgart -0.5</span><span class="sub">VfB Stuttgart vs Hamburger SV</span></td>
+  <td class="c-liga">Women Bundesliga</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">08:00</span></td>
+  <td class="num">1.85</td>
+  <td class="num sec">2.00</td>
+  <td class="num v peor">−7.5%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">FC Jazz -0.5</span><span class="sub">FC Jazz vs FC Inter Turku 2</span></td>
+  <td class="c-liga">Ykkonen</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">07:00</span></td>
+  <td class="num">1.85</td>
+  <td class="num sec">2.02</td>
+  <td class="num v peor">−8.3%</td>
+</tr>
+<tr>
+  <td class="c-part"><span class="eq">Dulwich Hill -0.5</span><span class="sub">Rydalmere Lions FC vs Dulwich Hill</span></td>
+  <td class="c-liga">U20 NSW League One</td>
+  <td class="c-hora"><span class="d">29-ago</span> <span class="h">02:30</span></td>
+  <td class="num">1.70</td>
+  <td class="num sec">1.88</td>
+  <td class="num v peor">−9.7%</td>
+</tr></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Cómo leer esto</h2>
+    <div class="nota">
+      <p><strong>La ventaja es contra Cloudbet, no una verdad.</strong> El «justo» sale de des-vigar la cuota de Cloudbet; que Betano pague más no garantiza nada, solo dice que las dos casas discrepan.</p>
+      <p><strong>AH −0.5 de primer tiempo ≡ «gana el primer tiempo».</strong> Empate al descanso = apuesta perdida. La línea −1 exige ganar por dos al descanso y devuelve la plata si gana por uno exacto.</p>
+      <p><strong>El ROI por unidad trata todas las apuestas por igual.</strong> Es la medida del filo. El resultado del banco depende además del monto Kelly, que apuesta más donde ve más ventaja.</p>
+      <p><strong>La muestra es corta.</strong> Con estas cantidades, diferencias de unos puntos entre bandas no significan nada. Lo que hace falta es volumen, no más filtros.</p>
+    </div>
+  </section>
+
+  <footer>
+    Generado por <code>vigia/bitacora.mjs</code> desde <code>registro.json</code> y la corrida del barrido.
+    Espejo del 1X2 de primer tiempo: 23 señal(es) en esta corrida, medidas aparte.
+  </footer>
+</div>
