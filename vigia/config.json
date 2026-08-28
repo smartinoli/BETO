@@ -38,8 +38,9 @@
   "maxAlertasPorCiclo": 8,
   "avisarVentana": true,
   "avisarMuerte": true,
+  "comentarioVentaja": "10 en 0 = sin filtro de valor: entran todos los partidos del rango de cuota, ordenados por ventaja. Sube el umbral para volver a filtrar",
   "ventajaMinima": {
-    "10": 0.015,
+    "10": 0,
     "11": 0.015,
     "12": 0.025,
     "13": 0.02
