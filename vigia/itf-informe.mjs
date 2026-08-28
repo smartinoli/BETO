@@ -327,7 +327,8 @@ for (const q of cuotas) {
     ...f, gana: i === 0 ? q.g1 : q.g2,
     llega: f.llega, previo: f.previo,
   }));
-  const v = analizar({ lados, ronda: etapa });
+  const paisTorneo = (t.clave.match(/^m-itf-([a-z]+)-/) || [])[1]?.toUpperCase() || null;
+  const v = analizar({ lados, ronda: etapa, paisTorneo });
   const brecha = bet365 ? null : brechaDe(f1.nombre, f2.nombre, q.g1, q.g2);
   filas.push({ q, t, f1, f2, etapa, brecha, fuenteEtapa: enCuadro ? 'cuadro' : 'deducida',
     via: q.via || 'cuadro', v, horario: horarioDe(q.p1, q.p2), res: resultado(t.clave, q.p1, q.p2) });
@@ -449,6 +450,8 @@ function enSimple(f) {
     if (x.nombre === 'forma' && x.aporte < 0) trozos.push(`aunque su rival llega ganando más cómodo`);
     if (x.nombre === 'previo' && x.aporte > 0) trozos.push(`y la semana pasada llegó más lejos en su torneo`);
     if (x.nombre === 'previo' && x.aporte < 0) trozos.push(`aunque su rival llegó más lejos la semana pasada`);
+    if (x.nombre === 'local' && x.aporte > 0) trozos.push(`y juega en su país (la localía vale medio punto de WTN)`);
+    if (x.nombre === 'local' && x.aporte < 0) trozos.push(`aunque el rival juega de local, que vale medio punto de WTN`);
   }
   const razon = trozos.join(', ').replace(/, y /g, ' y ') + '.';
   const mercado = `la casa lo paga a ${pr.cuota}: es como decir que gana ${Math.round(pr.devig * 100)} de cada 100. `

@@ -67,10 +67,14 @@ export const GRUPO = {
 export const EDAD_CRIA = 18;
 
 export const MODELO = {
-  pendiente: { Q1: 0.4105, buenas: 0.4692, medias: 0.3104, finales: 0.1741 },
-  sub18: +1.6273,       /* uno de los dos tiene 18 o menos y el otro no */
-  cedidos: +2.8432,     /* fracción de games cedidos en el cuadro: rival menos favorito */
-  previo: +0.2824,      /* ronda alcanzada en el torneo anterior, favorito menos rival */
+  /* Refit 2026-08-28 al sumar la señal LOCAL (jugar en tu país vale ~0.5
+     puntos de WTN; LOTO mejora de 0.4801 a 0.4787). El resto casi no se
+     movió, señal de que "local" es información nueva y no un reacomodo. */
+  pendiente: { Q1: 0.4157, buenas: 0.4782, medias: 0.3166, finales: 0.1746 },
+  sub18: +1.6256,       /* uno de los dos tiene 18 o menos y el otro no */
+  cedidos: +2.9242,     /* fracción de games cedidos en el cuadro: rival menos favorito */
+  previo: +0.2774,      /* ronda alcanzada en el torneo anterior, favorito menos rival */
+  local: +0.2460,       /* jugar en tu propio país (40% de los partidos son local-visita) */
 };
 
 export const N_GRUPO = { Q1: 422, buenas: 528, medias: 214, finales: 79 };
@@ -92,7 +96,7 @@ export function numPrevio(previo) {
 /* fav y riv son fichas ya orientadas: fav es el de MEJOR WTN.
    Devuelve la probabilidad de que gane fav y el desglose de cuánto aportó
    cada señal, que es lo que después se muestra y se audita. */
-export function probabilidad(fav, riv, ronda) {
+export function probabilidad(fav, riv, ronda, paisTorneo) {
   const grupo = GRUPO[ronda] || 'medias';
   const dW = riv.wtn - fav.wtn;
   const partes = [];
@@ -124,6 +128,17 @@ export function probabilidad(fav, riv, ronda) {
   if (pF != null && pR != null)
     suma('previo', pF - pR, MODELO.previo,
       pF > pR ? `${fav.nombre} llegó más lejos en su torneo anterior` : `${riv.nombre} llegó más lejos en su torneo anterior`);
+
+  /* Jugar en casa, medido el 2026-08-28: vale ~0.5 puntos de WTN (un
+     local apenas mejor en rating gana 74% donde un favorito parejo
+     cualquiera gana 59%). El "viajero de otro continente" no suma nada
+     encima: ya está contado dentro de esta señal. */
+  if (paisTorneo && fav.pais && riv.pais) {
+    const d = (fav.pais === paisTorneo ? 1 : 0) - (riv.pais === paisTorneo ? 1 : 0);
+    suma('local', d, MODELO.local, d > 0
+      ? `${fav.nombre} juega en su país (${fav.pais}): la localía vale ~0.5 pts de WTN`
+      : `${riv.nombre} juega en su país (${riv.pais}): la localía le suma ~0.5 pts de WTN`);
+  }
 
   return { p: sig(eta), eta, grupo, dW, partes, n: N_GRUPO[grupo] };
 }

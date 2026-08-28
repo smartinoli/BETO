@@ -327,7 +327,7 @@ export function analizar(p) {
       + `el mejor WTN acierta 22% (2 de 9, esperaba 6.6).`, ['veto: junior de élite']);
 
   /* --- la probabilidad, con todas las señales --- */
-  const est = probabilidad(yo, otro, R);
+  const est = probabilidad(yo, otro, R, p.paisTorneo || null);
   const pe = est.p;
   const soloNivel = 1 / (1 + Math.exp(-MOD.pendiente[est.grupo] * est.dW));
   const conocida = !!G[R];
