@@ -27,10 +27,17 @@ const uni = e => e.estado === 'G' ? e.cuota - 1 : e.estado === 'MG' ? (e.cuota -
 const lineaDe = e => parseFloat((String(e.lado).match(/(-?\d+(?:\.\d+)?)\s*$/) || [])[1]);
 
 const MIN = CFG.cuotaMinima, MAX = CFG.cuotaMaxima;
+/* el filtro sale del FOCO del config, no de una copia local: si el foco
+   cambia (de -(x) a solo -0.5, por ejemplo), la bitácora sigue sola en vez
+   de mostrar apuestas que ya no jugamos */
+const reFoco = new RegExp(CFG.foco['10']);
+const enFoco = e => reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado);
 const hist = Object.values(REG)
-  .filter(e => e.sid === '10' && !e.sombra && /^AH 1er tiempo/.test(e.familia)
-    && lineaDe(e) < 0 && e.cuota >= MIN && e.cuota <= MAX && CERRADO.includes(e.estado))
+  .filter(e => e.sid === '10' && !e.sombra && enFoco(e)
+    && e.cuota >= MIN && e.cuota <= MAX && CERRADO.includes(e.estado))
   .sort((a, b) => (a.inicio < b.inicio ? -1 : 1));
+/* etiqueta legible del foco, derivada del propio regex */
+const lineasFoco = CFG.foco['10'].includes('-0\\.5') ? '−0.5' : '−(x)';
 const vivas = hist.filter(e => !e.congelada);
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -172,7 +179,7 @@ const html = `<title>Bitácora AH Primer Tiempo</title>
 <div class="wrap">
   <header>
     <h1>Bitácora AH Primer Tiempo</h1>
-    <div class="criterio">hándicap asiático −(x) · primer tiempo · cuota ${MIN.toFixed(2)}–${MAX.toFixed(2)} · fútbol</div>
+    <div class="criterio">hándicap asiático ${lineasFoco} · primer tiempo · cuota ${MIN.toFixed(2)}–${MAX.toFixed(2)} · fútbol</div>
     <div class="sello">Última corrida: ${new Date(corrida.ts).toLocaleString('es-CL', { timeZone: 'America/Santiago' })} · ${corrida.partidos} partidos barridos · ${corrida.requests} requests</div>
   </header>
 

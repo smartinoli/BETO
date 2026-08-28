@@ -20,7 +20,7 @@
   "umbralCastigado": 0.035,
   "devig": "pow",
   "foco": {
-    "10": "^AH 1er tiempo · .+ -\\d+(\\.\\d+)?$"
+    "10": "^AH 1er tiempo · .+ -0\\.5$"
   },
   "espejo1X2": true,
   "comentarioEspejo": "lee la misma apuesta desde el 1X2 de primer tiempo y la reporta APARTE; no escribe al registro",
