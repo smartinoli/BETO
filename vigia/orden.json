@@ -1,6 +1,6 @@
 {
   "comentario": "Buzón de órdenes de la bitácora. El push de este archivo levanta el workflow. El bot NUNCA commitea este archivo.",
   "texto": "tablero",
-  "ts": "2026-08-28T22:17:43.000Z",
+  "ts": "2026-08-28T23:14:01.000Z",
   "origen": "sesion"
 }
