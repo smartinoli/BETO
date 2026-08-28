@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-28T22:02:07.662Z",
+ "generado": "2026-08-28T23:09:26.134Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -112,7 +112,7 @@
     "cuota": 1.533,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.629,
+    "pFm": 0.625,
     "dW": -0.02,
     "forma": 1,
     "previo": null,
@@ -133,21 +133,21 @@
    "g2": 2.375,
    "gana": "Chase Ferguson",
    "lado": 2,
-   "p": 0.371,
+   "p": 0.375,
    "pMercado": 0.392,
    "soloWtn": 0.501,
    "señales": [
     "forma",
     "local"
    ],
-   "razon": "Δ0.02 de WTN a favor de Chase Ferguson (6.83 contra 6.85), en SF: la curva del grupo \"finales\" (n=79) da 50%. Ajustan: Rigele Te viene cediendo menos games (30% contra 40%): la forma contradice al nivel (−7 pts); Rigele Te juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 37%. El mercado la paga a 2.375: 39% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ0.02 de WTN a favor de Chase Ferguson (6.83 contra 6.85), en SF: la curva del grupo \"finales\" (n=79) da 50%. Ajustan: Rigele Te viene cediendo menos games (31% contra 40%): la forma contradice al nivel (−7 pts); Rigele Te juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 37%. El mercado la paga a 2.375: 39% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.4,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.596,
+    "pFm": 0.602,
     "dW": 3.08,
     "forma": 1,
     "previo": null,
@@ -168,14 +168,14 @@
    "g2": 1.4,
    "gana": "Enzo Aguiard",
    "lado": 2,
-   "p": 0.596,
+   "p": 0.602,
    "pMercado": 0.663,
    "soloWtn": 0.631,
    "señales": [
     "forma",
     "local"
    ],
-   "razon": "Δ3.08 de WTN a favor de Enzo Aguiard (4.61 contra 7.69), en SF: la curva del grupo \"finales\" (n=79) da 63%. Ajustan: Enzo Aguiard viene cediendo menos games (36% contra 40%) (+2 pts); Tianhui Zhang juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 60%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ3.08 de WTN a favor de Enzo Aguiard (4.61 contra 7.69), en SF: la curva del grupo \"finales\" (n=79) da 63%. Ajustan: Enzo Aguiard viene cediendo menos games (37% contra 41%) (+3 pts); Tianhui Zhang juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 60%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −16% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
@@ -246,7 +246,7 @@
     "cuota": 1.533,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.459,
+    "pFm": 0.488,
     "dW": 1.39,
     "forma": -1,
     "previo": null,
@@ -267,20 +267,20 @@
    "g2": 1.533,
    "gana": "Radu David Turcanu",
    "lado": 2,
-   "p": 0.459,
+   "p": 0.488,
    "pMercado": 0.608,
    "soloWtn": 0.56,
    "señales": [
     "forma"
    ],
-   "razon": "Δ1.39 de WTN a favor de Radu David Turcanu (6.73 contra 8.12), en SF: la curva del grupo \"finales\" (n=79) da 56%. Ajustan: Vlad Cristian Breazu viene cediendo menos games (25% contra 39%): la forma contradice al nivel (−10 pts). Queda en 46%. El mercado la paga a 1.533: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −30% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ1.39 de WTN a favor de Radu David Turcanu (6.73 contra 8.12), en SF: la curva del grupo \"finales\" (n=79) da 56%. Ajustan: Vlad Cristian Breazu viene cediendo menos games (29% contra 39%): la forma contradice al nivel (−7 pts). Queda en 49%. El mercado la paga a 1.533: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.4,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.86,
+    "pFm": 0.844,
     "dW": 2.25,
     "forma": 1,
     "previo": 1,
@@ -301,7 +301,7 @@
    "g2": 2.75,
    "gana": "Gabriel Ghetu",
    "lado": 1,
-   "p": 0.86,
+   "p": 0.844,
    "pMercado": 0.663,
    "soloWtn": 0.597,
    "señales": [
@@ -309,7 +309,7 @@
     "previo",
     "local"
    ],
-   "razon": "Δ2.25 de WTN a favor de Gabriel Ghetu (5.06 contra 7.31), en SF: la curva del grupo \"finales\" (n=79) da 60%. Ajustan: Gabriel Ghetu viene cediendo menos games (28% contra 40%) (+5 pts); Gabriel Ghetu llegó más lejos en su torneo anterior (+13 pts); Gabriel Ghetu juega en su país (ROU): la localía vale ~0.5 pts de WTN (+3 pts). Queda en 86%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde +20% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ2.25 de WTN a favor de Gabriel Ghetu (5.06 contra 7.31), en SF: la curva del grupo \"finales\" (n=79) da 60%. Ajustan: Gabriel Ghetu viene cediendo menos games (33% contra 41%) (+3 pts); Gabriel Ghetu llegó más lejos en su torneo anterior (+14 pts); Gabriel Ghetu juega en su país (ROU): la localía vale ~0.5 pts de WTN (+4 pts). Queda en 84%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde +18% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {

@@ -33,7 +33,7 @@ const CACHE_CALENDARIO = path.join(DIR, 'itf-calendario.json');
 /* ---------- cosecha ---------- */
 async function cosecharUno(clave, meta = {}) {
   const ev = await eventos(clave);
-  const out = { clave: ev.clave, tournamentId: ev.tournamentId, ...meta, cuadros: {} };
+  const out = { clave: ev.clave, tournamentId: ev.tournamentId, ...meta, bajado: new Date().toISOString(), cuadros: {} };
   for (const c of ev.cuadros.filter(c => c.tipo === 'S')) {
     out.cuadros[c.evento] = await cuadro({ tournamentId: ev.tournamentId, tourType: ev.tourType, evento: c.evento, tipo: 'S' });
   }

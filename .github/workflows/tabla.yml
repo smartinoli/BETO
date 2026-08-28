@@ -77,6 +77,11 @@ jobs:
         if: inputs.que == 'todo'
         run: node vigia/itf-rating.mjs
 
+      - name: Cuadros al día por la vía barata (sin navegador; si el WAF corta, se sigue)
+        if: inputs.que != 'todo'
+        timeout-minutes: 5
+        run: node vigia/itf-cosecha.mjs cosechar hoy || echo "WAF cerrado; las fases vendrán de la última foto"
+
       - name: La rutina del día
         env:
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}

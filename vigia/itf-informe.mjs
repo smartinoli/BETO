@@ -109,12 +109,25 @@ const etapaDe = (ev, ronda) => (/^q/i.test(ev) ? ORD_Q[ronda] : ORD_M[ronda]) ||
 
 const CUADROS = new Map();               /* clave → [{etapa, ordEv, ord, lados}] */
 const HIST = new Map();                  /* playerId → Map(clave → mejor etapa ganada) */
+/* UNA sola versión por torneo: la más fresca (la que tiene más partidos
+   jugados; empate lo gana vivo/). Antes se MEZCLABAN datos/ y vivo/ del
+   mismo cuadro, y una copia vieja con el cruce "pendiente" podía taparle
+   la fase real a la nueva — por eso semifinales salían como R1/R2. */
+const FUENTES = new Map();
 for (const dir of [DATOS, VIVO]) {
   let ff = []; try { ff = fs.readdirSync(dir) } catch { continue }
   for (const f of ff) {
     if (!f.startsWith('m-itf') || !f.endsWith('.json') || f.includes('aceptacion')) continue;
     const clave = f.replace('.json', '');
     const j = leer(path.join(dir, f)); if (!j?.cuadros) continue;
+    const jug = Object.values(j.cuadros).flatMap(c => (c.rondas || []).flatMap(r => r.partidos || []))
+      .filter(m => m.estado === 'jugado').length;
+    const prev = FUENTES.get(clave);
+    if (!prev || jug >= prev.jug) FUENTES.set(clave, { j, jug });
+  }
+}
+{
+  for (const [clave, { j }] of FUENTES) {
     const lista = CUADROS.get(clave) || [];
     for (const [ev, c] of Object.entries(j.cuadros)) {
       if (!c?.rondas) continue;
@@ -138,6 +151,7 @@ for (const dir of [DATOS, VIVO]) {
     if (j.bajado) (CUADROS.get(clave)).bajado = j.bajado;
   }
 }
+
 const NOMBRE_ETAPA = ['R1', 'R2', 'R3', 'QF', 'SF', 'campeón'];
 function deDondeViene(id, clave) {
   const h = HIST.get(id); if (!h) return null;
