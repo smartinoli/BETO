@@ -189,7 +189,7 @@
       ventaja negativa se listan pero quedan fuera.</p>
     <div class="rotulo-tiles">Balance del criterio · ventaja ≥ 0</div>
     <div class="tiles" id="tiles"></div>
-    <div class="rotulo-tiles" id="rot-sv" hidden>Sin valor · como si las jugáramos igual (solo datos)</div>
+    <div class="rotulo-tiles" id="rot-sv" hidden>Todo el histórico −0.5 · nuevas y antiguas · cualquier cuota y ventaja</div>
     <div class="tiles" id="tiles-sv"></div>
     <div class="tabla" id="t-hist">
       <div class="controles">
@@ -359,15 +359,20 @@ function filaTiles(pobla, notaApuestas) {
       Math.round(r.pRojo * 100) + '% de que el filo real sea negativo</span></div>' : '');
 }
 function renderTiles(todasHist) {
-  /* dos poblaciones, mismas métricas: el balance del criterio (ventaja >= 0,
-     la regla del tablero) y la recolección sin valor, medida aparte como si
-     esas apuestas también se jugaran — así se compara si el vent predice. */
+  /* dos filas, mismas métricas. Arriba el balance del criterio (rango de
+     cuota vigente, precio vivo, ventaja >= 0: la regla del tablero). Abajo
+     TODA la historia -0.5 de primer tiempo — vieja y nueva, cualquier cuota
+     y ventaja, congeladas incluidas — como si se jugara cada una: el techo
+     de datos que tenemos para esta apuesta. */
   const piso = Math.max(DATOS.criterios.ventajaMinima, 0);
   const vivas = todasHist.filter(e => !e.congelada && e.vent >= piso);
-  const sinValor = todasHist.filter(e => !e.congelada && e.vent < piso && CERRADO.includes(e.estado));
-  $('#tiles').innerHTML = filaTiles(vivas, 'vivas · ventaja ≥ 0');
-  $('#rot-sv').hidden = !sinValor.length;
-  $('#tiles-sv').innerHTML = sinValor.length ? filaTiles(sinValor, 'cerradas · ventaja negativa') : '';
+  const todas05 = (DATOS.historico || [])
+    .filter(e => CERRADO.includes(e.estado) && enFoco(e))
+    .map(e => ({ ...e, u: uni(e) }));
+  $('#tiles').innerHTML = filaTiles(vivas, 'vivas · ventaja ≥ 0 · cuota ' +
+    DATOS.criterios.cuotaMinima.toFixed(2) + '–' + DATOS.criterios.cuotaMaxima.toFixed(2));
+  $('#rot-sv').hidden = !todas05.length;
+  $('#tiles-sv').innerHTML = todas05.length ? filaTiles(todas05, 'todas las −0.5 cerradas') : '';
 }
 
 function renderHist() {
