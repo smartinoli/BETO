@@ -56,6 +56,29 @@ let REG = {};
 try { REG = JSON.parse(fs.readFileSync(REGISTRO_PATH, 'utf8')) } catch {}
 const guardarRegistro = () => fs.writeFileSync(REGISTRO_PATH, JSON.stringify(REG));
 
+/* ---------- corrida.json + live.json: lo que consume la bitácora ----------
+   corrida.json es la foto del último barrido (señales con su link).
+   live.json es la foto COMPLETA para el artefacto: criterios vigentes,
+   la corrida y el histórico del foco. Chico a propósito (~50 KB) para que
+   la página lo lea con un solo fetch vía el conector de GitHub. */
+const CORRIDA_PATH = path.join(DIR, 'corrida.json');
+const LIVE_PATH = path.join(DIR, 'live.json');
+function guardarLive() {
+  let corrida = null;
+  try { corrida = JSON.parse(fs.readFileSync(CORRIDA_PATH, 'utf8')) } catch {}
+  const historico = Object.values(REG)
+    .filter(e => e.sid === '10' && !e.sombra && /^AH 1er tiempo/.test(e.familia))
+    .map(e => ({ inicio: e.inicio, partido: e.partido, liga: e.liga, lado: e.lado,
+                 cuota: e.cuota, justo: e.justo, vent: e.vent, estado: e.estado,
+                 ...(e.congelada ? { congelada: e.congelada } : {}) }));
+  fs.writeFileSync(LIVE_PATH, JSON.stringify({
+    ts: new Date().toISOString(),
+    criterios: { cuotaMinima: CFG.cuotaMinima ?? 0, cuotaMaxima: CFG.cuotaMaxima,
+                 foco: (CFG.foco || {})['10'] || '', ventajaMinima: CFG.ventajaMinima['10'] },
+    corrida, historico,
+  }));
+}
+
 /* ---------- API OddsPapi: pacing, timeout y reintentos ---------- */
 let REQ = 0, ULTIMO = 0;
 const espera = ms => new Promise(r => setTimeout(r, ms));
@@ -227,6 +250,63 @@ function desvigar(pA, pB) {
   const S = 1 / pA + 1 / pB;
   return [S * pA, S * pB];
 }
+/* des-vigado de N vías por potencia: mismo método que desvigar() pero para
+   mercados de 3 resultados. Busca k tal que Σ(1/pᵢ)^k = 1 y devuelve los
+   justos. Con 2 precios da exactamente lo mismo que desvigar. */
+function desvigarN(precios) {
+  const q = precios.map(x => 1 / x);
+  const S = q.reduce((a, b) => a + b, 0);
+  if (S <= 1) return precios.map(x => x * S);
+  let lo = 1, hi = 4;
+  for (let i = 0; i < 60; i++) {
+    const k = (lo + hi) / 2;
+    (q.reduce((a, x) => a + x ** k, 0) > 1) ? lo = k : hi = k;
+  }
+  const k = (lo + hi) / 2;
+  return q.map(x => 1 / x ** k);
+}
+
+/* ---------- ESPEJO: la misma apuesta, leída del 1X2 de primer tiempo ----------
+   AH −0.5 1T ≡ "gana el primer tiempo" ≡ el lado 1 o 2 del 1X2 de primer
+   tiempo. Donde Betano no cotiza hándicap al 1T, el 1X2 sí trae la apuesta.
+   Viaja en el MISMO request del barrido, así que no cuesta ni un request
+   extra. Corre en paralelo y NO escribe al registro: es para medir si vale
+   la pena antes de mezclarlo con el foco. */
+function procesarEspejo(info, bet, cb, metas, salida) {
+  if (!CFG.espejo1X2) return;
+  for (const mid of Object.keys(bet.markets || {})) {
+    const meta = metas[mid];
+    if (!meta || meta.len !== 3 || !/^first half result$/i.test(meta.n || '')) continue;
+    const oB = bet.markets[mid].outcomes || {}, oC = (cb.markets || {})[mid]?.outcomes || {};
+    const ids = Object.keys(oB);
+    if (ids.length !== 3) continue;
+    const pB = {}, pC = {}; let ok = true;
+    for (const oid of ids) {
+      const b0 = (oB[oid].players || {})['0'], c0 = ((oC[oid] || {}).players || {})['0'];
+      if (!b0?.active || !(b0.price > 1) || !c0?.active || !(c0.price > 1)) { ok = false; break; }
+      pB[oid] = b0.price; pC[oid] = c0.price;
+    }
+    if (!ok) continue;
+    /* el lado que nos interesa es el FAVORITO del primer tiempo: el 1 o el 2
+       más corto. La X no es nuestra apuesta (con AH −0.5 el empate pierde). */
+    const lados = ids.filter(o => /^1$|^2$|home|away/i.test((meta.outs || {})[o] || ''));
+    if (lados.length !== 2) continue;
+    const fav = lados.reduce((a, b) => (pB[a] <= pB[b] ? a : b));
+    const cuota = pB[fav];
+    if (cuota < (CFG.cuotaMinima ?? 0) || cuota > CFG.cuotaMaxima) continue;
+    const justos = desvigarN(ids.map(o => pC[o]));
+    const justo = justos[ids.indexOf(fav)];
+    const vent = cuota / justo - 1;
+    if (vent < CFG.ventajaMinima[info.sid]) continue;
+    const esLocal = /^1$|home/i.test((meta.outs || {})[fav] || '');
+    (salida.espejo ||= []).push({
+      fix: info.fixtureId, partido: info.p1 + ' vs ' + info.p2, liga: info.liga,
+      inicio: info.startTime, lado: (esLocal ? info.p1 : info.p2) + ' gana el 1T',
+      cuota: +cuota.toFixed(3), justo: +justo.toFixed(3), vent: +vent.toFixed(4),
+    });
+  }
+}
+
 function montoDe(cuota, vent) {
   const f = Math.max(0, vent) / (cuota - 1) / CFG.kellyDivisor;
   const m = Math.min(CFG.banca * CFG.topePctBanca, CFG.banca * f);
@@ -414,7 +494,13 @@ function procesarSync(info, bet, cb, metas, salida) {
     const bmid = bet.markets[mid].bookmakerMarketId || null;
     const [jA, jB] = desvigar(pC[oids[0]], pC[oids[1]]);
     const justos = { [oids[0]]: jA, [oids[1]]: jB };
-    const umbral = Math.max(CFG.ventajaMinima[info.sid], fam.castigada ? (CFG.umbralCastigado ?? 0.05) : 0);
+    /* OJO: antes esto era Math.max(ventajaMinima, 0), o sea que el umbral
+       efectivo nunca bajaba de 0 por más que se configurara negativo — y las
+       señales de ventaja negativa quedaban invisibles. Ahora el umbral base
+       manda; solo las familias castigadas conservan su piso propio. */
+    const umbral = fam.castigada
+      ? Math.max(CFG.ventajaMinima[info.sid], CFG.umbralCastigado ?? 0.05)
+      : CFG.ventajaMinima[info.sid];
     const famLabel = fam.fam + (fam.eq ? ' · ' + (fam.eq === 1 ? info.p1 : info.p2) : '');
     /* la llave de "una por familia" usa el grupo: AH y DNB compiten juntas */
     const famKey = (fam.grupo || fam.fam) + (fam.eq ? '·' + fam.eq : '');
@@ -664,6 +750,7 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       info.bookmakerFixtureId = b.bookmakerFixtureId || null;
       procesarSync(info, b, c, metas, salida);
       procesarProps(info, b, c, metas, salida);
+      procesarEspejo(info, b, c, metas, salida);
     }
   }
   salida.segundos = Math.round((Date.now() - t0) / 1000);
@@ -733,6 +820,16 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     salida.registradasSombra++;
   }
   if (salida.registradas || salida.registradasSombra) guardarRegistro();
+  try {
+    fs.writeFileSync(CORRIDA_PATH, JSON.stringify({
+      ts: new Date().toISOString(), horas: horasMax ?? CFG.horizonteHoras,
+      partidos: salida.partidos, ligas: salida.ligas, requests: REQ,
+      senales: salida.senales.map(s => ({ partido: s.partido, liga: s.liga, inicio: s.inicio,
+        lado: s.lado, cuota: s.cuota, justo: s.justo, vent: s.vent, link: s.link || '' })),
+      espejo: (salida.espejo || []).length,
+    }));
+    guardarLive();
+  } catch (e) { console.error('corrida/live no se pudo guardar:', e.message); }
   return salida;
 }
 
@@ -834,6 +931,30 @@ async function reportar(r, titulo) {
   const trozos = [];
   orden.forEach((s, i) => trozos.push(bloqueSenal(s, i + 1)));
   await telegram(trozos.join('\n\n'));
+  await reportarEspejo(r);
+}
+
+/* El espejo se reporta APARTE y nunca se mezcla con el foco: son la misma
+   apuesta pero leída de otro mercado, y hasta no medirlas por separado no
+   se sabe si rinden igual. */
+async function reportarEspejo(r) {
+  const esp = r.espejo || [];
+  if (!esp.length) return;
+  const conAH = new Set((r.senales || []).map(s => s.fix));
+  const nuevas = esp.filter(e => !conAH.has(e.fix));
+  esp.sort((a, b) => b.vent - a.vent);
+  await telegram([
+    '<b>🪞 Espejo · la misma apuesta desde el 1X2 de primer tiempo</b>',
+    `<i>${esp.length} señal(es) · ${nuevas.length} en partidos que el foco NO cubre`
+      + ` · no se anotan al tablero</i>`,
+    '',
+    ...esp.slice(0, 12).map((e, i) =>
+      `${i + 1}. ${conAH.has(e.fix) ? '🔁' : '🆕'} <b>${escHtml(e.lado)}</b> @${e.cuota.toFixed(2)}`
+      + ` vs justo ${e.justo.toFixed(2)} → <b>+${(e.vent * 100).toFixed(1)}%</b>\n`
+      + `   ${escHtml(e.partido)} · ${escHtml(e.liga)} · ${horaTxt(e.inicio)}`),
+    '',
+    '<i>🆕 = partido sin hándicap al 1T en Betano, o sea cobertura nueva · 🔁 = el foco ya lo tiene por AH</i>',
+  ].join('\n'));
 }
 
 /* ---------- tablero simulado: liquidación y balance ---------- */
@@ -1039,14 +1160,31 @@ const fila = (nombre, arr) => `· ${escHtml(nombre)} — ${arr.length} ap · cuo
 async function cmdTableroFoco(liq) {
   const todas = Object.values(REG);
   const reFoco = CFG.foco?.['10'] ? new RegExp(CFG.foco['10']) : /^AH/;
-  const delFoco = e => e.sid === '10' && !e.sombra
+  const delFoco = e => e.sid === '10' && !e.sombra && !e.congelada
     && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado);
+  /* las de precio congelado quedan fuera del balance: se midieron contra un
+     precio que ya no existía, así que no son comparables con las vivas */
+  const congeladas = todas.filter(e => e.congelada && CERRADO.includes(e.estado)
+    && e.sid === '10' && !e.sombra
+    && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado)).length;
+  /* recolectadas con ventaja negativa: cuentan como dato, nunca en el balance */
+  const negativas = todas.filter(e => CERRADO.includes(e.estado) && e.vent < 0
+    && e.sid === '10' && !e.sombra && !e.congelada
+    && e.cuota >= (CFG.cuotaMinima ?? 0) && e.cuota <= CFG.cuotaMaxima
+    && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado)).length;
+  /* el balance solo cuenta ventaja POSITIVA aunque el umbral configurado sea
+     negativo: con umbral negativo se recolecta para medir, no para apostar.
+     Una apuesta con ventaja negativa pierde por construcción, no por azar. */
   const okHoy = e => e.cuota >= (CFG.cuotaMinima ?? 0) && e.cuota <= CFG.cuotaMaxima
-    && e.vent >= CFG.ventajaMinima['10'];
+    && e.vent >= Math.max(CFG.ventajaMinima['10'], 0);
   const cerradas = todas.filter(e => CERRADO.includes(e.estado) && delFoco(e) && okHoy(e));
   const pend = todas.filter(e => e.estado === 'pendiente' && delFoco(e) && okHoy(e)).length;
   const viejas = todas.filter(e => CERRADO.includes(e.estado) && delFoco(e) && !okHoy(e)).length;
-  const criterios = `cuota ${CFG.cuotaMinima ?? '—'}–${CFG.cuotaMaxima} · ventaja ≥ ${(CFG.ventajaMinima['10'] * 100).toFixed(1)}%`;
+  /* el encabezado nombra el umbral del BALANCE, no el de recolección: si el
+     configurado es negativo se está juntando dato, no apostando bajo cero */
+  const uBal = Math.max(CFG.ventajaMinima['10'], 0);
+  const criterios = `cuota ${CFG.cuotaMinima ?? '—'}–${CFG.cuotaMaxima} · ventaja ≥ ${(uBal * 100).toFixed(1)}%`
+    + (CFG.ventajaMinima['10'] < 0 ? ' · recolectando también las negativas' : '');
   const lineas = [
     '<b>📒 Tablero · 🎯 AH −(x) primer tiempo</b>',
     `<i>${criterios}</i>`,
@@ -1069,6 +1207,8 @@ async function cmdTableroFoco(liq) {
     + (liq.porMarcador ? ` · ${liq.porMarcador} por marcador` : '')
     + (liq.consultados ? ` · ${liq.consultados} requests` : '')
     + (viejas ? ` · ${viejas} liquidada(s) viejas fuera de tus criterios actuales` : '')
+    + (congeladas ? ` · ${congeladas} de cuota congelada, fuera del balance` : '')
+    + (negativas ? ` · ${negativas} de ventaja negativa, recolectadas como dato` : '')
     + ' · <code>/tablero todo</code> = historial completo</i>');
   await telegram(lineas.join('\n'));
 }
@@ -1078,6 +1218,7 @@ async function cmdTablero(sids, { foco = false } = {}) {
     e.estado === 'pendiente' && !(CFG.sombras === false && e.sombra)).length;
   if (pendAntes) await telegram(`📒 Liquidando pendientes (${pendAntes})…`);
   const liq = await liquidar();
+  try { guardarLive() } catch {}
   if (foco) return cmdTableroFoco(liq);
   const todas = Object.values(REG);
   /* con deporte ("/tablero futbol") se filtra la vista y se agrega el

@@ -8,7 +8,7 @@
   "kellyDivisor": 4,
   "topePctBanca": 0.05,
   "montoMinimo": 5000,
-  "cuotaMaxima": 3.0,
+  "cuotaMaxima": 1.90,
   "anticipacionMin": 15,
   "horizonteHoras": 24,
   "margenLocal": 0.0,
@@ -20,11 +20,13 @@
   "umbralCastigado": 0.035,
   "devig": "pow",
   "foco": {
-    "10": "^AH 1er tiempo · .+ -\\d+(\\.\\d+)?$"
+    "10": "^AH 1er tiempo · .+ -0\\.5$"
   },
+  "espejo1X2": true,
+  "comentarioEspejo": "lee la misma apuesta desde el 1X2 de primer tiempo y la reporta APARTE; no escribe al registro",
   "barridoDeportes": ["10"],
-  "cuotaMinima": 1.6,
-  "usarCongeladas": true,
+  "cuotaMinima": 1.55,
+  "usarCongeladas": false,
   "comentarioCongeladas": "acepta cuotas con active:false (feed detenido). Cada señal avisa cuántas horas tiene: hay que verificarla en pantalla",
   "sombras": false,
   "propsPrueba": false,
@@ -38,8 +40,9 @@
   "maxAlertasPorCiclo": 8,
   "avisarVentana": true,
   "avisarMuerte": true,
+  "comentarioVentaja": "10 en -1 = recolecta TODO, incluidas ventajas negativas, para medir si el vent predice. El balance del tablero igual solo cuenta ventaja positiva: las negativas pierden por construcción",
   "ventajaMinima": {
-    "10": 0.015,
+    "10": -1,
     "11": 0.015,
     "12": 0.025,
     "13": 0.02

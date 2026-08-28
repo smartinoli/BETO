@@ -1,0 +1,471 @@
+<title>Bitácora AH Primer Tiempo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f4f6f8; --surface:#ffffff; --ink:#101820; --muted:#61707f;
+    --line:#e2e7ec; --line-fuerte:#ccd5dd;
+    --acento:#2d6a8f; --acento-tenue:#e8f1f6;
+    --gano:#17795e; --perdio:#a83f2e; --nula:#8b7a4f;
+    --frio:#f0f3f6;
+    --sans:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+    --disp:"Archivo",ui-sans-serif,system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#0e1318; --surface:#161d24; --ink:#e7edf3; --muted:#93a3b2;
+    --line:#242e38; --line-fuerte:#33404c;
+    --acento:#7cb8dc; --acento-tenue:#17242e;
+    --gano:#3fbd93; --perdio:#e37f6c; --nula:#c2ab77;
+    --frio:#131b22;
+  }}
+  :root[data-theme="dark"]{
+    --paper:#0e1318; --surface:#161d24; --ink:#e7edf3; --muted:#93a3b2;
+    --line:#242e38; --line-fuerte:#33404c;
+    --acento:#7cb8dc; --acento-tenue:#17242e;
+    --gano:#3fbd93; --perdio:#e37f6c; --nula:#c2ab77;
+    --frio:#131b22;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:36px 24px 80px;display:flex;flex-direction:column;gap:40px}
+
+  header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--line-fuerte);padding-bottom:20px}
+  h1{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.1;
+     letter-spacing:-.02em;margin:0;text-wrap:balance}
+  .criterio{font-family:var(--mono);font-size:13px;color:var(--acento);letter-spacing:.01em}
+  .sello{font-size:13px;color:var(--muted)}
+
+  .acciones{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .btn{font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);background:var(--surface);
+       border:1px solid var(--line-fuerte);border-radius:3px;padding:8px 14px;cursor:pointer;
+       transition:border-color .12s,background .12s}
+  .btn:hover:not(:disabled){border-color:var(--acento)}
+  .btn:disabled{opacity:.45;cursor:default}
+  .btn.primario{background:var(--acento);border-color:var(--acento);color:#fff}
+  :root[data-theme="dark"] .btn.primario{color:#0e1318}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primario{color:#0e1318}}
+  .grupo{display:flex;align-items:center;border:1px solid var(--line-fuerte);border-radius:3px;overflow:hidden}
+  .grupo .rotulo{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;
+                 color:var(--muted);padding:0 10px;border-right:1px solid var(--line)}
+  .grupo .btn{border:none;border-radius:0;border-left:1px solid var(--line)}
+  .grupo .btn:first-of-type{border-left:none}
+  .btn:focus-visible,.buscar:focus-visible,.banda:focus-visible,th.orden:focus-visible{outline:2px solid var(--acento);outline-offset:1px}
+  #estado{font-size:13px;color:var(--muted);min-height:1.4em}
+  #estado.ok{color:var(--gano)} #estado.err{color:var(--perdio)}
+  .sin-mcp .acciones .btn{display:none}
+  .aviso-mcp{display:none;font-size:13px;color:var(--muted);border:1px dashed var(--line-fuerte);
+             border-radius:3px;padding:8px 12px}
+  .sin-mcp .aviso-mcp{display:block}
+  @media (prefers-reduced-motion:reduce){.btn,.banda{transition:none}}
+
+  section{display:flex;flex-direction:column;gap:16px}
+  h2{font-family:var(--disp);font-weight:600;font-size:19px;margin:0;letter-spacing:-.01em}
+  .lead{margin:0;color:var(--muted);font-size:14px;max-width:66ch}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+         background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .tile{background:var(--surface);padding:15px 17px;display:flex;flex-direction:column;gap:5px}
+  .tile .k{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+  .tile .val{font-family:var(--mono);font-size:25px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+  .tile .val small{font-size:15px;color:var(--muted);font-weight:600}
+  .tile .note{font-size:12px;color:var(--muted)}
+  .val.gano{color:var(--gano)} .val.perdio{color:var(--perdio)}
+
+  .controles{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .buscar{flex:1 1 210px;min-width:0;font:inherit;font-size:13.5px;color:var(--ink);
+          background:var(--surface);border:1px solid var(--line-fuerte);border-radius:3px;
+          padding:7px 11px}
+  .buscar::placeholder{color:var(--muted)}
+  .conteo{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  .partieron{font-size:12.5px;color:var(--muted)}
+
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--surface)}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
+  thead th{font-family:var(--disp);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+           font-weight:600;color:var(--muted);text-align:left;padding:11px 13px;
+           border-bottom:1px solid var(--line-fuerte);white-space:nowrap;background:var(--surface)}
+  thead th.num{text-align:right}
+  th.orden{cursor:pointer;user-select:none}
+  th.orden:hover{color:var(--ink)}
+  th.orden::after{content:"";display:inline-block;width:0;height:0;margin-left:6px;
+                  border-left:3.5px solid transparent;border-right:3.5px solid transparent;
+                  opacity:.28;border-bottom:4.5px solid currentColor;vertical-align:middle}
+  th.orden[aria-sort="ascending"]::after{opacity:1;border-bottom:4.5px solid var(--acento);border-top:0}
+  th.orden[aria-sort="descending"]::after{opacity:1;border-top:4.5px solid var(--acento);border-bottom:0}
+  tbody td{padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.fria{background:var(--frio)}
+  .num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sec{color:var(--muted)}
+  .c-part .eq{display:block;font-weight:600}
+  .c-part .sub{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
+  .c-liga{color:var(--muted);font-size:13px}
+  .c-hora{white-space:nowrap;font-family:var(--mono);font-size:13px}
+  .c-hora .h{color:var(--muted)}
+  .v{font-weight:600}
+  .v.alta{color:var(--gano)} .v.leve{color:var(--ink)} .v.roja{color:var(--nula)} .v.peor{color:var(--perdio)}
+  .u.gano{color:var(--gano)} .u.perdio{color:var(--perdio)} .u.nula{color:var(--muted)}
+  a.abrir{color:var(--acento);font-weight:600;text-decoration:none;white-space:nowrap}
+  a.abrir:hover{text-decoration:underline}
+
+  .pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.03em;
+        padding:2px 8px;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
+  .pill+.pill{margin-left:5px}
+  .pill.gano{color:var(--gano)} .pill.perdio{color:var(--perdio)} .pill.nula{color:var(--nula)}
+  .pill.fria-p{color:var(--muted)}
+
+  .bandas{display:flex;flex-wrap:wrap;gap:8px}
+  .banda{display:flex;align-items:baseline;gap:7px;border:1px solid var(--line-fuerte);
+         border-radius:2px;padding:6px 11px;background:var(--surface);cursor:pointer;
+         font:inherit;color:inherit;transition:border-color .12s,background .12s}
+  .banda:hover{border-color:var(--acento)}
+  .banda[aria-pressed="true"]{border-color:var(--acento);background:var(--acento-tenue)}
+  .banda .n{font-family:var(--mono);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums}
+  .banda .e{font-size:12px;color:var(--muted)}
+  .banda.alta .n{color:var(--gano)} .banda.peor .n{color:var(--perdio)} .banda.roja .n{color:var(--nula)}
+
+  .vacio{padding:22px 14px;text-align:center;color:var(--muted);font-size:13.5px}
+  .nota{border-left:2px solid var(--acento);background:var(--acento-tenue);
+        padding:13px 16px;border-radius:0 3px 3px 0;font-size:13.5px;color:var(--ink)}
+  .nota p{margin:0 0 8px} .nota p:last-child{margin:0}
+  .nota strong{font-weight:600}
+  footer{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;color:var(--muted)}
+  code{font-family:var(--mono);font-size:.92em;background:var(--acento-tenue);padding:1px 5px;border-radius:2px}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Bitácora AH Primer Tiempo</h1>
+    <div class="criterio" id="criterio"></div>
+    <div class="sello" id="sello"></div>
+    <div class="acciones">
+      <button type="button" class="btn primario" id="btn-tablero">Actualizar tablero</button>
+      <div class="grupo" role="group" aria-label="Barrer las próximas horas">
+        <span class="rotulo">Barrer</span>
+        <button type="button" class="btn barrer" data-horas="3">3 h</button>
+        <button type="button" class="btn barrer" data-horas="6">6 h</button>
+        <button type="button" class="btn barrer" data-horas="12">12 h</button>
+        <button type="button" class="btn barrer" data-horas="24">24 h</button>
+      </div>
+      <p class="aviso-mcp">Los botones necesitan el conector de GitHub de tu cuenta claude.ai.
+        Sin él la página muestra la última foto publicada por el bot.</p>
+    </div>
+    <p id="estado" role="status"></p>
+  </header>
+
+  <section>
+    <h2>Histórico liquidado</h2>
+    <p class="lead">Apuestas del foco ya cerradas dentro del rango de cuota vigente. El balance
+      cuenta solo las de precio vivo y ventaja positiva; las congeladas y las recolectadas con
+      ventaja negativa se listan pero quedan fuera.</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="tabla" id="t-hist">
+      <div class="controles">
+        <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar el histórico por equipo o liga">
+        <span class="conteo"></span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr>
+          <th class="orden" data-col="ts" data-num="1" data-inicial="asc">Fecha</th>
+          <th class="orden" data-col="lado">Apuesta</th>
+          <th class="orden" data-col="liga">Liga</th>
+          <th class="orden num" data-col="cuota" data-num="1">Cuota</th>
+          <th class="orden num" data-col="vent" data-num="1">Ventaja</th>
+          <th class="orden" data-col="estado">Resultado</th>
+          <th class="orden num" data-col="u" data-num="1">Unid.</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="vacio" hidden>Ninguna apuesta calza con ese filtro.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Última corrida — todos los partidos del rango</h2>
+    <p class="lead">Sin filtro de valor: todos los partidos que ofrecen la línea dentro del rango,
+      ordenados por ventaja. Las negativas son dato, no recomendación. Los partidos que ya
+      comenzaron salen solos de la lista.</p>
+    <div class="tabla" id="t-corr">
+      <div class="bandas" id="bandas"></div>
+      <div class="controles">
+        <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar la corrida por equipo o liga">
+        <span class="conteo"></span>
+        <span class="partieron" id="partieron"></span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr>
+          <th class="orden" data-col="lado">Apuesta</th>
+          <th class="orden" data-col="liga">Liga</th>
+          <th class="orden" data-col="ts" data-num="1" data-inicial="asc">Comienza</th>
+          <th class="orden num" data-col="cuota" data-num="1">Cuota</th>
+          <th class="num">Justo</th>
+          <th class="orden num" data-col="vent" data-num="1">Ventaja</th>
+          <th>Betano</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="vacio" hidden>Ningún partido calza con ese filtro.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cómo leer esto</h2>
+    <div class="nota">
+      <p><strong>La ventaja es contra Cloudbet, no una verdad.</strong> El «justo» sale de des-vigar
+        la cuota de Cloudbet; que Betano pague más solo dice que las dos casas discrepan.</p>
+      <p><strong>Verifica la cuota en pantalla antes de apostar.</strong> El link abre el partido en
+        lat.betano.com; si el precio ya no es el de la lista, la ventaja calculada no existe.</p>
+      <p><strong>AH −0.5 de primer tiempo ≡ «gana el primer tiempo».</strong> Empate al descanso =
+        apuesta perdida.</p>
+      <p><strong>El ROI por unidad trata todas las apuestas por igual.</strong> Es la medida del filo;
+        el resultado del banco depende además del monto Kelly.</p>
+    </div>
+  </section>
+
+  <footer id="pie"></footer>
+</div>
+
+<script>
+const SEED = {"ts":"2026-08-28T19:11:19.230Z","criterios":{"cuotaMinima":1.55,"cuotaMaxima":1.9,"foco":"^AH 1er tiempo · .+ -0\\.5$","ventajaMinima":-1},"corrida":{"ts":"2026-08-28T18:31:33.700Z","partidos":779,"ligas":218,"candidatas":18478,"requests":88,"senales":[{"partido":"Bohemians Dublin FC vs Sligo Rovers FC","liga":"Premier Division","inicio":"2026-08-28T18:45:00.000Z","lado":"Bohemians Dublin FC -0.5","cuota":1.7,"justo":1.73,"vent":-0.0171},{"partido":"Saint Patrick´s Athletic FC vs Waterford FC","liga":"Premier Division","inicio":"2026-08-28T18:45:00.000Z","lado":"Saint Patrick´s Athletic FC -0.5","cuota":1.85,"justo":1.866,"vent":-0.0084},{"partido":"Cork City FC vs Wexford FC","liga":"First Division","inicio":"2026-08-28T18:45:00.000Z","lado":"Cork City FC -0.5","cuota":1.78,"justo":1.761,"vent":0.011},{"partido":"Portadown FC vs Coleraine FC","liga":"Premiership","inicio":"2026-08-28T18:45:00.000Z","lado":"Coleraine FC -0.5","cuota":1.78,"justo":1.912,"vent":-0.0689},{"partido":"Holywell Town vs Caernarfon Town FC","liga":"Cymru Premier","inicio":"2026-08-28T18:45:00.000Z","lado":"Caernarfon Town FC -0.5","cuota":1.62,"justo":1.599,"vent":0.013},{"partido":"The New Saints FC vs Colwyn Bay","liga":"Cymru Premier","inicio":"2026-08-28T18:45:00.000Z","lado":"The New Saints FC -0.5","cuota":1.72,"justo":1.729,"vent":-0.0054},{"partido":"Aberystwyth Town FC vs Pontardawe Town FC","liga":"Cymru Championship South","inicio":"2026-08-28T18:45:00.000Z","lado":"Aberystwyth Town FC -0.5","cuota":1.88,"justo":2.096,"vent":-0.1032},{"partido":"Enfield Town vs Whitehawk FC","liga":"Isthmian League, Pr. Div","inicio":"2026-08-29T14:00:00.000Z","lado":"Enfield Town -0.5","cuota":1.9,"justo":2,"vent":-0.05},{"partido":"Newtown AFC vs Llanuwchllyn","liga":"Cymru Championship, North","inicio":"2026-08-28T18:45:00.000Z","lado":"Newtown AFC -0.5","cuota":1.75,"justo":1.846,"vent":-0.0518},{"partido":"Rio Ave FC vs Sporting CP","liga":"Liga Portugal","inicio":"2026-08-28T19:15:00.000Z","lado":"Sporting CP -0.5","cuota":1.9,"justo":1.836,"vent":0.035},{"partido":"Fylkir Reykjavik vs Grotta","liga":"1. deild","inicio":"2026-08-28T19:15:00.000Z","lado":"Fylkir Reykjavik -0.5","cuota":1.85,"justo":1.96,"vent":-0.0562},{"partido":"Kari vs Throttur Vogum","liga":"2. deild","inicio":"2026-08-28T19:15:00.000Z","lado":"Kari -0.5","cuota":1.9,"justo":2.037,"vent":-0.0671},{"partido":"UMF Selfoss vs IF Magni Grenivik","liga":"2. deild","inicio":"2026-08-29T14:00:00.000Z","lado":"UMF Selfoss -0.5","cuota":1.8,"justo":1.904,"vent":-0.0547},{"partido":"Academico de Viseu FC vs FC Porto","liga":"Liga Portugal","inicio":"2026-08-29T17:00:00.000Z","lado":"FC Porto -0.5","cuota":1.85,"justo":1.835,"vent":0.0079},{"partido":"Grotta vs UMF Selfoss","liga":"1. deild, Women","inicio":"2026-08-29T14:00:00.000Z","lado":"Grotta -0.5","cuota":1.67,"justo":1.728,"vent":-0.0336},{"partido":"Saint Louis City SC 2 vs North Texas SC","liga":"MLS Next Pro","inicio":"2026-08-29T00:00:00.000Z","lado":"Saint Louis City SC 2 -0.5","cuota":1.83,"justo":1.935,"vent":-0.0541},{"partido":"Deportivo Toluca FC vs Club Leon","liga":"Liga MX, Women","inicio":"2026-08-29T00:00:00.000Z","lado":"Deportivo Toluca FC -0.5","cuota":1.8,"justo":1.952,"vent":-0.0781},{"partido":"Eastern Suburbs AFC vs Auckland FC Reserves","liga":"National League","inicio":"2026-08-29T03:00:00.000Z","lado":"Eastern Suburbs AFC -0.5","cuota":1.83,"justo":1.878,"vent":-0.0256},{"partido":"Heidelberg United FC vs Bentleigh Greens","liga":"Victoria, NPL","inicio":"2026-08-29T05:00:00.000Z","lado":"Heidelberg United FC -0.5","cuota":1.87,"justo":1.869,"vent":0.0004},{"partido":"ST Albans Saints Dinamo SC vs Dandenong Thunder","liga":"Victoria, NPL","inicio":"2026-08-29T05:00:00.000Z","lado":"ST Albans Saints Dinamo SC -0.5","cuota":1.62,"justo":1.639,"vent":-0.0115},{"partido":"Rydalmere Lions FC vs Dulwich Hill","liga":"U20 NSW League One","inicio":"2026-08-29T06:30:00.000Z","lado":"Dulwich Hill -0.5","cuota":1.7,"justo":1.883,"vent":-0.0972},{"partido":"FK Velke Hamry vs FK Mlada Boleslav B","liga":"CFL","inicio":"2026-08-29T08:30:00.000Z","lado":"FK Mlada Boleslav B -0.5","cuota":1.85,"justo":1.945,"vent":-0.0487},{"partido":"Chengdu Rongcheng vs Liaoning Tieren FC","liga":"Chinese Super League","inicio":"2026-08-29T11:35:00.000Z","lado":"Chengdu Rongcheng -0.5","cuota":1.75,"justo":1.755,"vent":-0.0027},{"partido":"VfB Stuttgart vs Hamburger SV","liga":"Women Bundesliga","inicio":"2026-08-29T12:00:00.000Z","lado":"VfB Stuttgart -0.5","cuota":1.85,"justo":2,"vent":-0.075},{"partido":"Odense Q vs FC Midtjylland","liga":"Kvindeligaen, Women","inicio":"2026-08-29T11:00:00.000Z","lado":"FC Midtjylland -0.5","cuota":1.88,"justo":2.013,"vent":-0.0659},{"partido":"FC Jazz vs FC Inter Turku 2","liga":"Ykkonen","inicio":"2026-08-29T11:00:00.000Z","lado":"FC Jazz -0.5","cuota":1.85,"justo":2.018,"vent":-0.0834},{"partido":"FK Auda Riga vs SK Super Nova","liga":"Virsliga","inicio":"2026-08-29T16:00:00.000Z","lado":"FK Auda Riga -0.5","cuota":1.88,"justo":2.012,"vent":-0.0657},{"partido":"FC Ordabasy vs FC Kyzylzhar SK","liga":"Premier League","inicio":"2026-08-29T15:00:00.000Z","lado":"FC Ordabasy -0.5","cuota":1.85,"justo":1.899,"vent":-0.0259},{"partido":"Borussia Dortmund vs Hamburger SV","liga":"Bundesliga","inicio":"2026-08-29T16:30:00.000Z","lado":"Borussia Dortmund -0.5","cuota":1.8,"justo":1.838,"vent":-0.0204},{"partido":"Celtic Glasgow vs Falkirk FC","liga":"Premiership","inicio":"2026-08-29T14:00:00.000Z","lado":"Celtic Glasgow -0.5","cuota":1.62,"justo":1.57,"vent":0.032},{"partido":"Al Ain FC vs Al-Nasr Dubai CSC","liga":"Arabian Gulf League","inicio":"2026-08-29T16:30:00.000Z","lado":"Al Ain FC -0.5","cuota":1.83,"justo":1.839,"vent":-0.0051},{"partido":"Partick Thistle FC vs Queens Park FC","liga":"Championship","inicio":"2026-08-29T14:00:00.000Z","lado":"Partick Thistle FC -0.5","cuota":1.85,"justo":1.819,"vent":0.0172},{"partido":"FK Blansko vs SK Artis B","liga":"MSFL","inicio":"2026-08-29T14:00:00.000Z","lado":"SK Artis B -0.5","cuota":1.9,"justo":2.019,"vent":-0.059},{"partido":"AZ Alkmaar vs Go Ahead Eagles","liga":"Eredivisie","inicio":"2026-08-29T16:45:00.000Z","lado":"AZ Alkmaar -0.5","cuota":1.87,"justo":1.85,"vent":0.0111},{"partido":"Al-Kholood vs Al Ahli Saudi FC","liga":"Saudi Pro League","inicio":"2026-08-29T16:05:00.000Z","lado":"Al Ahli Saudi FC -0.5","cuota":1.9,"justo":1.892,"vent":0.004}],"espejo":[{"partido":"Bohemians Dublin FC vs Sligo Rovers FC","lado":"Bohemians Dublin FC gana el 1T","cuota":1.67,"vent":-0.0325},{"partido":"Saint Patrick´s Athletic FC vs Waterford FC","lado":"Saint Patrick´s Athletic FC gana el 1T","cuota":1.85,"vent":0.0008},{"partido":"Cork City FC vs Wexford FC","lado":"Cork City FC gana el 1T","cuota":1.78,"vent":0.0152},{"partido":"University College Dublin vs Finn Harps FC","lado":"University College Dublin gana el 1T","cuota":1.6,"vent":-0.0051},{"partido":"Portadown FC vs Coleraine FC","lado":"Coleraine FC gana el 1T","cuota":1.8,"vent":-0.0543},{"partido":"Holywell Town vs Caernarfon Town FC","lado":"Caernarfon Town FC gana el 1T","cuota":1.6,"vent":-0.0057},{"partido":"The New Saints FC vs Colwyn Bay","lado":"The New Saints FC gana el 1T","cuota":1.7,"vent":-0.0184},{"partido":"Glentoran FC vs Crusaders FC","lado":"Glentoran FC gana el 1T","cuota":1.67,"vent":-0.025},{"partido":"Newtown AFC vs Llanuwchllyn","lado":"Newtown AFC gana el 1T","cuota":1.8,"vent":-0.0429},{"partido":"Rio Ave FC vs Sporting CP","lado":"Sporting CP gana el 1T","cuota":1.87,"vent":0.0255},{"partido":"Fylkir Reykjavik vs Grotta","lado":"Fylkir Reykjavik gana el 1T","cuota":1.87,"vent":-0.0449},{"partido":"Afturelding vs IF Vestri","lado":"Afturelding gana el 1T","cuota":1.67,"vent":0.0113},{"partido":"Academico de Viseu FC vs FC Porto","lado":"FC Porto gana el 1T","cuota":1.83,"vent":0.0035},{"partido":"Saint Louis City SC 2 vs North Texas SC","lado":"Saint Louis City SC 2 gana el 1T","cuota":1.9,"vent":-0.0271},{"partido":"Deportivo Toluca FC vs Club Leon","lado":"Deportivo Toluca FC gana el 1T","cuota":1.87,"vent":-0.0407},{"partido":"Melville United AFC vs Auckland City FC","lado":"Auckland City FC gana el 1T","cuota":1.62,"vent":-0.0106},{"partido":"Rydalmere Lions FC vs Dulwich Hill","lado":"Dulwich Hill gana el 1T","cuota":1.78,"vent":-0.0427},{"partido":"Canterbury Bankstown Berries vs Macarthur Rams FC","lado":"Macarthur Rams FC gana el 1T","cuota":1.72,"vent":-0.0469},{"partido":"Chengdu Rongcheng vs Liaoning Tieren FC","lado":"Chengdu Rongcheng gana el 1T","cuota":1.72,"vent":-0.0166},{"partido":"JJK Jyvaskyla vs KPV Kokkola","lado":"JJK Jyvaskyla gana el 1T","cuota":1.62,"vent":-0.013},{"partido":"FC Ordabasy vs FC Kyzylzhar SK","lado":"FC Ordabasy gana el 1T","cuota":1.87,"vent":-0.0031},{"partido":"Borussia Dortmund vs Hamburger SV","lado":"Borussia Dortmund gana el 1T","cuota":1.78,"vent":-0.0244},{"partido":"Celtic Glasgow vs Falkirk FC","lado":"Celtic Glasgow gana el 1T","cuota":1.6,"vent":0.0244},{"partido":"Al Ain FC vs Al-Nasr Dubai CSC","lado":"Al Ain FC gana el 1T","cuota":1.82,"vent":0.0018},{"partido":"Partick Thistle FC vs Queens Park FC","lado":"Partick Thistle FC gana el 1T","cuota":1.82,"vent":0.0079},{"partido":"AZ Alkmaar vs Go Ahead Eagles","lado":"AZ Alkmaar gana el 1T","cuota":1.85,"vent":0.0093},{"partido":"Al-Kholood vs Al Ahli Saudi FC","lado":"Al Ahli Saudi FC gana el 1T","cuota":1.88,"vent":0.0017}]},"historico":[{"inicio":"2026-08-18T14:30:00.000Z","partido":"Scm Ramnicu Valcea vs AFC Chindia Targoviste","liga":"Romania Cup","lado":"AFC Chindia Targoviste 0.0","cuota":1.52,"justo":1.493,"vent":0.0184,"estado":"G"},{"inicio":"2026-08-18T19:00:00.000Z","partido":"San Antonio Bulo Bulo vs Club Aurora","liga":"Copa Bolivia","lado":"Club Aurora 0.0","cuota":1.67,"justo":1.613,"vent":0.0355,"estado":"E"},{"inicio":"2026-08-19T16:15:00.000Z","partido":"Damac FC vs Al-Taawoun FC","liga":"Kings Cup","lado":"Al-Taawoun FC 0.0","cuota":1.5,"justo":1.457,"vent":0.0298,"estado":"G"},{"inicio":"2026-08-19T17:00:00.000Z","partido":"Dbk Fortuna Hjoerring vs AGF Aarhus","liga":"Kvindeligaen, Women","lado":"Dbk Fortuna Hjoerring -0.5","cuota":1.72,"justo":1.671,"vent":0.0295,"estado":"X"},{"inicio":"2026-08-19T22:00:00.000Z","partido":"Cerro Porteno vs SE Palmeiras SP","liga":"Copa Libertadores","lado":"SE Palmeiras SP 0.0","cuota":1.4,"justo":1.35,"vent":0.0368,"estado":"G"},{"inicio":"2026-08-19T23:00:00.000Z","partido":"Forge FC Hamilton vs FC Supra Du Quebec","liga":"Canadian Premier League","lado":"Forge FC Hamilton 0.0","cuota":1.39,"justo":1.364,"vent":0.0188,"estado":"E"},{"inicio":"2026-08-20T01:30:00.000Z","partido":"Real Salt Lake vs FC Dallas","liga":"MLS","lado":"Real Salt Lake 0.0","cuota":1.55,"justo":1.525,"vent":0.0162,"estado":"P"},{"inicio":"2026-08-19T13:00:00.000Z","partido":"FC Altai Oskemen vs FC Ordabasy","liga":"Kazakhstan Cup","lado":"FC Ordabasy -0.5","cuota":1.88,"justo":1.85,"vent":0.0161,"estado":"X"},{"inicio":"2026-08-19T16:00:00.000Z","partido":"Vaalerenga Oslo vs Hoenefoss BK","liga":"Toppserien, Women","lado":"Vaalerenga Oslo -1","cuota":1.85,"justo":1.766,"vent":0.0477,"estado":"E"},{"inicio":"2026-08-19T18:00:00.000Z","partido":"FC Barcelona vs AL Ahly SC (EGY)","liga":"Club Friendly Games","lado":"FC Barcelona -1","cuota":1.75,"justo":1.645,"vent":0.0637,"estado":"G"},{"inicio":"2026-08-19T20:00:00.000Z","partido":"Aragua FC vs Barquisimeto SC","liga":"Copa Venezuela","lado":"Aragua FC 0.0","cuota":1.9,"justo":1.833,"vent":0.0367,"estado":"E"},{"inicio":"2026-08-20T00:30:00.000Z","partido":"Minnesota United FC vs Atlanta United FC","liga":"MLS","lado":"Minnesota United FC 0.0","cuota":1.47,"justo":1.412,"vent":0.0412,"estado":"P"},{"inicio":"2026-08-20T00:30:00.000Z","partido":"CR Flamengo RJ vs Cruzeiro EC MG","liga":"Copa Libertadores","lado":"CR Flamengo RJ 0.0","cuota":1.37,"justo":1.347,"vent":0.017,"estado":"G"},{"inicio":"2026-08-19T23:30:00.000Z","partido":"Cuiaba EC MT vs Operario Ferroviario EC PR","liga":"Brasileiro Serie B","lado":"Cuiaba EC MT 0.0","cuota":1.52,"justo":1.479,"vent":0.0281,"estado":"E"},{"inicio":"2026-08-20T16:30:00.000Z","partido":"Al Rayyan SC vs Lusail SC","liga":"Stars League","lado":"Al Rayyan SC -0.5","cuota":1.7,"justo":1.672,"vent":0.0167,"estado":"G"},{"inicio":"2026-08-20T17:00:00.000Z","partido":"Trabzonspor vs Ferencvarosi Budapest","liga":"UEFA Europa League","lado":"Trabzonspor 0.0","cuota":1.37,"justo":1.336,"vent":0.0258,"estado":"P"},{"inicio":"2026-08-20T18:00:00.000Z","partido":"St. Truidense VV vs AC Omonia Nicosia","liga":"UEFA Europa League","lado":"St. Truidense VV 0.0","cuota":1.5,"justo":1.451,"vent":0.0339,"estado":"E"},{"inicio":"2026-08-20T17:45:00.000Z","partido":"PAOK Thessaloniki vs SK Brann","liga":"UEFA Conference League","lado":"PAOK Thessaloniki 0.0","cuota":1.38,"justo":1.336,"vent":0.0333,"estado":"E"},{"inicio":"2026-08-20T18:30:00.000Z","partido":"KAA Gent vs Hibernian FC","liga":"UEFA Conference League","lado":"KAA Gent 0.0","cuota":1.33,"justo":1.269,"vent":0.0481,"estado":"E"},{"inicio":"2026-08-20T18:30:00.000Z","partido":"FC Lugano vs Maccabi Tel Aviv FC","liga":"UEFA Conference League","lado":"FC Lugano 0.0","cuota":1.6,"justo":1.572,"vent":0.0176,"estado":"G"},{"inicio":"2026-08-20T18:00:00.000Z","partido":"Al-Fayha FC vs Al Hilal SFC","liga":"Saudi Pro League","lado":"Al Hilal SFC -0.5","cuota":1.7,"justo":1.627,"vent":0.0448,"estado":"G"},{"inicio":"2026-08-20T19:00:00.000Z","partido":"Always Ready vs Cdt Real Oruro","liga":"Copa Bolivia","lado":"Always Ready -1","cuota":1.9,"justo":1.828,"vent":0.0392,"estado":"E"},{"inicio":"2026-08-21T19:00:00.000Z","partido":"Arsenal FC vs Coventry City","liga":"Premier League","lado":"Arsenal FC -0.5","cuota":1.62,"justo":1.574,"vent":0.0292,"estado":"G"},{"inicio":"2026-08-21T18:45:00.000Z","partido":"Hansa Rostock vs VfB Stuttgart","liga":"DFB Pokal","lado":"VfB Stuttgart -1","cuota":2.42,"justo":2.308,"vent":0.0484,"estado":"G"},{"inicio":"2026-08-22T05:00:00.000Z","partido":"Canberra White Eagles FC vs Monaro Panthers FC","liga":"Capital NPL 1","lado":"Monaro Panthers FC -1","cuota":1.88,"justo":1.839,"vent":0.0221,"estado":"G"},{"inicio":"2026-08-22T15:30:00.000Z","partido":"Schwarz-Weiss Bregenz vs SK Sturm Graz II","liga":"2. Liga","lado":"Schwarz-Weiss Bregenz 0.0","cuota":1.62,"justo":1.576,"vent":0.0276,"estado":"G"},{"inicio":"2026-08-22T13:30:00.000Z","partido":"Erzgebirge Aue vs TSG Hoffenheim","liga":"DFB Pokal","lado":"TSG Hoffenheim -1","cuota":1.82,"justo":1.717,"vent":0.06,"estado":"G"},{"inicio":"2026-08-22T16:45:00.000Z","partido":"Dundee United vs Dundee FC","liga":"Premiership","lado":"Dundee United 0.0","cuota":1.65,"justo":1.619,"vent":0.0194,"estado":"P"},{"inicio":"2026-08-22T14:00:00.000Z","partido":"Shabab Al Ahli Dubai vs Al Dhafra SSC","liga":"Arabian Gulf League","lado":"Shabab Al Ahli Dubai -0.5","cuota":1.65,"justo":1.623,"vent":0.0169,"estado":"P"},{"inicio":"2026-08-22T16:35:00.000Z","partido":"Al Ain FC vs Khor Fakkan Club","liga":"Arabian Gulf League","lado":"Al Ain FC -0.5","cuota":1.62,"justo":1.586,"vent":0.0215,"estado":"G"},{"inicio":"2026-08-22T14:00:00.000Z","partido":"Basingstoke Town FC vs Bath City FC","liga":"Southern League Premier South","lado":"Bath City FC 0.0","cuota":1.7,"justo":1.603,"vent":0.0607,"estado":"pendiente"},{"inicio":"2026-08-22T14:20:00.000Z","partido":"Maccabi Haifa vs Hapoel Raanana","liga":"U19 Premier League","lado":"Maccabi Haifa -0.5","cuota":1.85,"justo":1.704,"vent":0.0855,"estado":"G"},{"inicio":"2026-08-22T19:30:00.000Z","partido":"Sporting CP vs FC Alverca SAD","liga":"Liga Portugal","lado":"Sporting CP -0.5","cuota":1.65,"justo":1.623,"vent":0.0169,"estado":"G"},{"inicio":"2026-08-22T14:30:00.000Z","partido":"Ofk-Sim Raslavice vs MFK Kezmarok","liga":"3. Liga","lado":"Ofk-Sim Raslavice -0.5","cuota":1.78,"justo":1.623,"vent":0.0967,"estado":"G"},{"inicio":"2026-08-22T18:00:00.000Z","partido":"Slavia Prague vs Bohemians Prague 1905","liga":"1. Liga","lado":"Slavia Prague -0.5","cuota":1.7,"justo":1.666,"vent":0.0206,"estado":"P"},{"inicio":"2026-08-22T16:00:00.000Z","partido":"AS Cittadella vs US Pergolettese Crema","liga":"Serie C, Group A","lado":"AS Cittadella -0.5","cuota":2.27,"justo":2.206,"vent":0.0289,"estado":"G"},{"inicio":"2026-08-22T17:00:00.000Z","partido":"AEK Athens vs POT Iraklis","liga":"Super League","lado":"AEK Athens -0.5","cuota":1.62,"justo":1.593,"vent":0.0172,"estado":"G"},{"inicio":"2026-08-22T18:30:00.000Z","partido":"Olympiacos Piraeus vs Atromitos Athinon","liga":"Super League","lado":"Olympiacos Piraeus -0.5","cuota":1.75,"justo":1.705,"vent":0.0265,"estado":"P"},{"inicio":"2026-08-22T16:35:00.000Z","partido":"Al Ain FC vs Khor Fakkan Club","liga":"Arabian Gulf League","lado":"Al Ain FC -1","cuota":2.55,"justo":2.382,"vent":0.0703,"estado":"G"},{"inicio":"2026-08-22T18:00:00.000Z","partido":"Al Ahli Saudi FC vs Abha Club","liga":"Saudi Pro League","lado":"Al Ahli Saudi FC -0.5","cuota":1.65,"justo":1.623,"vent":0.0169,"estado":"G"},{"inicio":"2026-08-23T16:00:00.000Z","partido":"1. FC Phonix Lubeck vs SC Paderborn 07","liga":"DFB Pokal","lado":"SC Paderborn 07 -1","cuota":1.87,"justo":1.794,"vent":0.0422,"estado":"E"},{"inicio":"2026-08-23T12:00:00.000Z","partido":"Young Boys Bern vs FC Vaduz","liga":"Super League","lado":"Young Boys Bern -1","cuota":2.47,"justo":2.376,"vent":0.0395,"estado":"P"},{"inicio":"2026-08-23T16:30:00.000Z","partido":"Club Brugge vs Cercle Brugge","liga":"Pro League","lado":"Club Brugge -1","cuota":2.55,"justo":2.432,"vent":0.0486,"estado":"E"},{"inicio":"2026-08-23T17:00:00.000Z","partido":"IA Akranes vs FH Hafnarfjordur","liga":"Besta deild","lado":"IA Akranes 0.0","cuota":1.65,"justo":1.609,"vent":0.0252,"estado":"P"},{"inicio":"2026-08-23T18:15:00.000Z","partido":"NK Maribor vs Bravo Ljubljana","liga":"PrvaLiga","lado":"NK Maribor -0.5","cuota":2.25,"justo":2.177,"vent":0.0337,"estado":"P"},{"inicio":"2026-08-23T17:00:00.000Z","partido":"FC Sheriff Tiraspol vs FC Politehnica Chisinau","liga":"Super Liga","lado":"FC Sheriff Tiraspol -0.5","cuota":1.75,"justo":1.708,"vent":0.0245,"estado":"G"},{"inicio":"2026-08-23T17:00:00.000Z","partido":"FK Crvena Zvezda Belgrade vs FK Cukaricki Belgrade","liga":"Superliga","lado":"FK Crvena Zvezda Belgrade -1","cuota":2.47,"justo":2.36,"vent":0.0468,"estado":"E"},{"inicio":"2026-08-23T18:30:00.000Z","partido":"Independiente de Chivilcoy vs Club Tucuman Central Deportes","liga":"Torneo Federal A","lado":"Independiente de Chivilcoy -0.5","cuota":1.91,"justo":1.857,"vent":0.0288,"estado":"G"},{"inicio":"2026-08-23T19:00:00.000Z","partido":"HNK Hajduk Split vs NK Osijek","liga":"HNL","lado":"NK Osijek 0.0","cuota":2.22,"justo":2.16,"vent":0.0278,"estado":"P"},{"inicio":"2026-08-23T19:00:00.000Z","partido":"Cdt Real Oruro vs Club Bolivar","liga":"Division Profesional","lado":"Club Bolivar -0.5","cuota":1.8,"justo":1.769,"vent":0.0173,"estado":"G"},{"inicio":"2026-08-24T21:30:00.000Z","partido":"Libertad Asuncion vs Sportivo San Lorenzo","liga":"Division de Honor, Apertura","lado":"Libertad Asuncion -0.5","cuota":1.91,"justo":1.876,"vent":0.0182,"estado":"P","congelada":19.4},{"inicio":"2026-08-25T00:45:00.000Z","partido":"Internacional FC De Palmira vs Barranquilla FC","liga":"Primera B","lado":"Internacional FC De Palmira -0.5","cuota":1.98,"justo":1.944,"vent":0.0186,"estado":"G","congelada":19.4},{"inicio":"2026-08-25T18:00:00.000Z","partido":"Al-Ittifaq FC vs Al Nassr Club","liga":"Saudi Pro League","lado":"Al Nassr Club -0.5","cuota":1.72,"justo":1.679,"vent":0.0246,"estado":"P","congelada":19.4},{"inicio":"2026-08-25T18:45:00.000Z","partido":"Ipswich Town vs Leicester City","liga":"EFL Cup","lado":"Ipswich Town -0.5","cuota":2.15,"justo":2.117,"vent":0.0155,"estado":"P","congelada":19.4},{"inicio":"2026-08-25T18:45:00.000Z","partido":"Cowdenbeath FC vs East Kilbride FC","liga":"Challenge Cup","lado":"East Kilbride FC -0.5","cuota":1.82,"justo":1.711,"vent":0.0639,"estado":"P","congelada":19.4},{"inicio":"2026-08-26T18:00:00.000Z","partido":"Al Ahli Saudi FC vs Auckland FC","liga":"FIFA Intercontinental Cup","lado":"Al Ahli Saudi FC -1","cuota":2.22,"justo":2.037,"vent":0.0897,"estado":"P"},{"inicio":"2026-08-28T18:00:00.000Z","partido":"Al-Khaleej Club vs Al Hilal SFC","liga":"Saudi Pro League","lado":"Al Hilal SFC -0.5","cuota":1.7,"justo":1.653,"vent":0.0282,"estado":"pendiente"},{"inicio":"2026-08-28T18:00:00.000Z","partido":"Al Nassr Club vs Al-Taawoun FC","liga":"Saudi Pro League","lado":"Al Nassr Club -0.5","cuota":1.7,"justo":1.653,"vent":0.0282,"estado":"pendiente"},{"inicio":"2026-08-28T18:30:00.000Z","partido":"Bayern Munich vs VfB Stuttgart","liga":"Bundesliga","lado":"Bayern Munich -0.5","cuota":1.57,"justo":1.532,"vent":0.0249,"estado":"pendiente"},{"inicio":"2026-08-29T14:00:00.000Z","partido":"Partick Thistle FC vs Queens Park FC","liga":"Championship","lado":"Partick Thistle FC -0.5","cuota":1.85,"justo":1.819,"vent":0.0172,"estado":"pendiente"},{"inicio":"2026-08-28T18:45:00.000Z","partido":"Holywell Town vs Caernarfon Town FC","liga":"Cymru Premier","lado":"Caernarfon Town FC -0.5","cuota":1.7,"justo":1.647,"vent":0.0322,"estado":"pendiente"},{"inicio":"2026-08-29T14:00:00.000Z","partido":"Celtic Glasgow vs Falkirk FC","liga":"Premiership","lado":"Celtic Glasgow -0.5","cuota":1.62,"justo":1.57,"vent":0.032,"estado":"pendiente"},{"inicio":"2026-08-29T16:45:00.000Z","partido":"AZ Alkmaar vs Go Ahead Eagles","liga":"Eredivisie","lado":"AZ Alkmaar -0.5","cuota":1.87,"justo":1.85,"vent":0.0111,"estado":"pendiente"},{"inicio":"2026-08-29T16:05:00.000Z","partido":"Al-Kholood vs Al Ahli Saudi FC","liga":"Saudi Pro League","lado":"Al Ahli Saudi FC -0.5","cuota":1.9,"justo":1.892,"vent":0.004,"estado":"pendiente"},{"inicio":"2026-08-28T19:15:00.000Z","partido":"Rio Ave FC vs Sporting CP","liga":"Liga Portugal","lado":"Sporting CP -0.5","cuota":1.85,"justo":1.838,"vent":0.0068,"estado":"pendiente"},{"inicio":"2026-08-29T17:00:00.000Z","partido":"Academico de Viseu FC vs FC Porto","liga":"Liga Portugal","lado":"FC Porto -0.5","cuota":1.85,"justo":1.839,"vent":0.0057,"estado":"pendiente"},{"inicio":"2026-08-28T18:45:00.000Z","partido":"Bohemians Dublin FC vs Sligo Rovers FC","liga":"Premier Division","lado":"Bohemians Dublin FC -0.5","cuota":1.7,"justo":1.73,"vent":-0.0171,"estado":"pendiente"},{"inicio":"2026-08-28T18:45:00.000Z","partido":"Saint Patrick´s Athletic FC vs Waterford FC","liga":"Premier Division","lado":"Saint Patrick´s Athletic FC -0.5","cuota":1.85,"justo":1.866,"vent":-0.0084,"estado":"pendiente"},{"inicio":"2026-08-28T18:45:00.000Z","partido":"Cork City FC vs Wexford FC","liga":"First Division","lado":"Cork City FC -0.5","cuota":1.78,"justo":1.761,"vent":0.011,"estado":"pendiente"},{"inicio":"2026-08-28T18:45:00.000Z","partido":"Portadown FC vs Coleraine FC","liga":"Premiership","lado":"Coleraine FC -0.5","cuota":1.78,"justo":1.912,"vent":-0.0689,"estado":"pendiente"},{"inicio":"2026-08-28T18:45:00.000Z","partido":"The New Saints FC vs Colwyn Bay","liga":"Cymru Premier","lado":"The New Saints FC -0.5","cuota":1.72,"justo":1.748,"vent":-0.0161,"estado":"pendiente"},{"inicio":"2026-08-28T18:45:00.000Z","partido":"Aberystwyth Town FC vs Pontardawe Town FC","liga":"Cymru Championship South","lado":"Aberystwyth Town FC -0.5","cuota":1.88,"justo":2.096,"vent":-0.1032,"estado":"pendiente"},{"inicio":"2026-08-29T14:00:00.000Z","partido":"Enfield Town vs Whitehawk FC","liga":"Isthmian League, Pr. Div","lado":"Enfield Town -0.5","cuota":1.9,"justo":2,"vent":-0.05,"estado":"pendiente"},{"inicio":"2026-08-28T18:45:00.000Z","partido":"Newtown AFC vs Llanuwchllyn","liga":"Cymru Championship, North","lado":"Newtown AFC -0.5","cuota":1.75,"justo":1.846,"vent":-0.0518,"estado":"pendiente"},{"inicio":"2026-08-28T19:15:00.000Z","partido":"Fylkir Reykjavik vs Grotta","liga":"1. deild","lado":"Fylkir Reykjavik -0.5","cuota":1.85,"justo":1.971,"vent":-0.0616,"estado":"pendiente"},{"inicio":"2026-08-28T19:15:00.000Z","partido":"Kari vs Throttur Vogum","liga":"2. deild","lado":"Kari -0.5","cuota":1.9,"justo":2.037,"vent":-0.0671,"estado":"pendiente"},{"inicio":"2026-08-29T14:00:00.000Z","partido":"UMF Selfoss vs IF Magni Grenivik","liga":"2. deild","lado":"UMF Selfoss -0.5","cuota":1.8,"justo":1.904,"vent":-0.0547,"estado":"pendiente"},{"inicio":"2026-08-29T14:00:00.000Z","partido":"Grotta vs UMF Selfoss","liga":"1. deild, Women","lado":"Grotta -0.5","cuota":1.67,"justo":1.728,"vent":-0.0336,"estado":"pendiente"},{"inicio":"2026-08-29T00:00:00.000Z","partido":"Saint Louis City SC 2 vs North Texas SC","liga":"MLS Next Pro","lado":"Saint Louis City SC 2 -0.5","cuota":1.83,"justo":1.935,"vent":-0.0541,"estado":"pendiente"},{"inicio":"2026-08-29T00:00:00.000Z","partido":"Deportivo Toluca FC vs Club Leon","liga":"Liga MX, Women","lado":"Deportivo Toluca FC -0.5","cuota":1.8,"justo":1.924,"vent":-0.0646,"estado":"pendiente"},{"inicio":"2026-08-29T03:00:00.000Z","partido":"Eastern Suburbs AFC vs Auckland FC Reserves","liga":"National League","lado":"Eastern Suburbs AFC -0.5","cuota":1.83,"justo":1.878,"vent":-0.0256,"estado":"pendiente"},{"inicio":"2026-08-29T05:00:00.000Z","partido":"Heidelberg United FC vs Bentleigh Greens","liga":"Victoria, NPL","lado":"Heidelberg United FC -0.5","cuota":1.87,"justo":1.869,"vent":0.0004,"estado":"pendiente"},{"inicio":"2026-08-29T05:00:00.000Z","partido":"ST Albans Saints Dinamo SC vs Dandenong Thunder","liga":"Victoria, NPL","lado":"ST Albans Saints Dinamo SC -0.5","cuota":1.62,"justo":1.639,"vent":-0.0115,"estado":"pendiente"},{"inicio":"2026-08-29T06:30:00.000Z","partido":"Rydalmere Lions FC vs Dulwich Hill","liga":"U20 NSW League One","lado":"Dulwich Hill -0.5","cuota":1.7,"justo":1.883,"vent":-0.0972,"estado":"pendiente"},{"inicio":"2026-08-29T08:30:00.000Z","partido":"FK Velke Hamry vs FK Mlada Boleslav B","liga":"CFL","lado":"FK Mlada Boleslav B -0.5","cuota":1.85,"justo":1.945,"vent":-0.0487,"estado":"pendiente"},{"inicio":"2026-08-29T11:35:00.000Z","partido":"Chengdu Rongcheng vs Liaoning Tieren FC","liga":"Chinese Super League","lado":"Chengdu Rongcheng -0.5","cuota":1.75,"justo":1.755,"vent":-0.0027,"estado":"pendiente"},{"inicio":"2026-08-29T12:00:00.000Z","partido":"VfB Stuttgart vs Hamburger SV","liga":"Women Bundesliga","lado":"VfB Stuttgart -0.5","cuota":1.85,"justo":2,"vent":-0.075,"estado":"pendiente"},{"inicio":"2026-08-29T11:00:00.000Z","partido":"Odense Q vs FC Midtjylland","liga":"Kvindeligaen, Women","lado":"FC Midtjylland -0.5","cuota":1.88,"justo":2.013,"vent":-0.0659,"estado":"pendiente"},{"inicio":"2026-08-29T11:00:00.000Z","partido":"FC Jazz vs FC Inter Turku 2","liga":"Ykkonen","lado":"FC Jazz -0.5","cuota":1.85,"justo":2.018,"vent":-0.0834,"estado":"pendiente"},{"inicio":"2026-08-29T15:00:00.000Z","partido":"FC Ordabasy vs FC Kyzylzhar SK","liga":"Premier League","lado":"FC Ordabasy -0.5","cuota":1.85,"justo":1.899,"vent":-0.0259,"estado":"pendiente"},{"inicio":"2026-08-29T16:00:00.000Z","partido":"FK Auda Riga vs SK Super Nova","liga":"Virsliga","lado":"FK Auda Riga -0.5","cuota":1.88,"justo":2.012,"vent":-0.0657,"estado":"pendiente"},{"inicio":"2026-08-29T16:30:00.000Z","partido":"Borussia Dortmund vs Hamburger SV","liga":"Bundesliga","lado":"Borussia Dortmund -0.5","cuota":1.8,"justo":1.838,"vent":-0.0204,"estado":"pendiente"},{"inicio":"2026-08-29T16:30:00.000Z","partido":"Al Ain FC vs Al-Nasr Dubai CSC","liga":"Arabian Gulf League","lado":"Al Ain FC -0.5","cuota":1.83,"justo":1.839,"vent":-0.0051,"estado":"pendiente"},{"inicio":"2026-08-29T14:00:00.000Z","partido":"FK Blansko vs SK Artis B","liga":"MSFL","lado":"SK Artis B -0.5","cuota":1.9,"justo":2.019,"vent":-0.059,"estado":"pendiente"}]};
+const REPO = { owner: 'smartinoli', repo: 'BETO', rama: 'claude/code-analysis-improvements-myq0yb',
+               workflow: 'vigia.yml', archivo: 'vigia/live.json' };
+const CERRADO = ['G', 'MG', 'E', 'MP', 'P'];
+const RES = { G: ['gano', 'Ganada'], P: ['perdio', 'Perdida'], E: ['nula', 'Empate'],
+              MG: ['gano', 'Media G'], MP: ['perdio', 'Media P'] };
+const BANDAS = [
+  { id: 'alta', test: v => v >= 0.015, etiqueta: '≥ +1,5%' },
+  { id: 'leve', test: v => v >= 0 && v < 0.015, etiqueta: '0 a +1,5%' },
+  { id: 'roja', test: v => v >= -0.02 && v < 0, etiqueta: '−2% a 0' },
+  { id: 'peor', test: v => v < -0.02, etiqueta: 'peor que −2%' },
+];
+const bandaDe = v => BANDAS.find(b => b.test(v)) || BANDAS[3];
+const uni = e => e.estado === 'G' ? e.cuota - 1 : e.estado === 'MG' ? (e.cuota - 1) / 2
+  : e.estado === 'E' ? 0 : e.estado === 'MP' ? -0.5 : -1;
+
+let DATOS = SEED;      /* la foto vigente (seed embebido; se pisa al refrescar) */
+let mcp = null;        /* capability — null hasta que el viewer la resuelva */
+let ocupado = false;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const pct = v => (v >= 0 ? '+' : '−') + Math.abs(v * 100).toFixed(1) + '%';
+const fmtF = new Intl.DateTimeFormat('es-CL', { day: '2-digit', month: 'short', timeZone: 'America/Santiago' });
+const fmtH = new Intl.DateTimeFormat('es-CL', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Santiago' });
+const fechaCorta = iso => { const d = new Date(iso); return isNaN(d) ? '—' : fmtF.format(d); };
+const horaCorta = iso => { const d = new Date(iso); return isNaN(d) ? '' : fmtH.format(d); };
+const hace = iso => { const m = Math.round((Date.now() - Date.parse(iso)) / 60e3);
+  return m < 1 ? 'recién' : m < 60 ? 'hace ' + m + ' min' : 'hace ' + (m / 60).toFixed(1) + ' h'; };
+
+/* estado de cada tabla: orden + filtros. El render parte SIEMPRE de los datos,
+   nunca del DOM, así refrescar no pierde lo que el usuario tenía puesto. */
+const st = {
+  hist: { col: 'ts', dir: 1, num: true, q: '' },
+  corr: { col: 'vent', dir: -1, num: true, q: '', banda: null },
+};
+
+function focoRe() { try { return new RegExp(DATOS.criterios.foco) } catch { return /^AH 1er tiempo/ } }
+const enFoco = e => focoRe().test('AH 1er tiempo · ' + e.lado);
+
+function filasHist() {
+  const c = DATOS.criterios;
+  return (DATOS.historico || [])
+    .filter(e => CERRADO.includes(e.estado) && enFoco(e)
+      && e.cuota >= c.cuotaMinima && e.cuota <= c.cuotaMaxima)
+    .map(e => ({ ...e, ts: Date.parse(e.inicio) || 0, u: uni(e) }));
+}
+
+function ordenar(arr, s) {
+  const f = s.dir;
+  return arr.slice().sort((a, b) => {
+    const va = a[s.col], vb = b[s.col];
+    return f * (s.num ? (va - vb) : String(va).localeCompare(String(vb), 'es'));
+  });
+}
+const calza = (e, q) => !q || (e.lado + ' ' + (e.partido || '') + ' ' + e.liga).toLowerCase().includes(q);
+
+function renderTiles(todasHist) {
+  /* el balance replica la regla del tablero: precio vivo y ventaja >= 0 */
+  const vivas = todasHist.filter(e => !e.congelada && e.vent >= Math.max(DATOS.criterios.ventajaMinima, 0));
+  const rec = { G: 0, P: 0, E: 0, MG: 0, MP: 0 };
+  for (const e of vivas) rec[e.estado]++;
+  const unidades = vivas.reduce((s, e) => s + e.u, 0);
+  const roi = vivas.length ? unidades / vivas.length * 100 : 0;
+  $('#tiles').innerHTML =
+    '<div class="tile"><span class="k">Apuestas</span><span class="val">' + vivas.length +
+      '</span><span class="note">vivas · ventaja ≥ 0</span></div>' +
+    '<div class="tile"><span class="k">Récord</span><span class="val">' + rec.G + '<small>G</small> ' +
+      rec.P + '<small>P</small> ' + rec.E + '<small>E</small></span><span class="note">ganadas · perdidas · nulas</span></div>' +
+    '<div class="tile"><span class="k">Unidades</span><span class="val ' + (unidades >= 0 ? 'gano' : 'perdio') + '">' +
+      (unidades >= 0 ? '+' : '−') + Math.abs(unidades).toFixed(2) + '</span><span class="note">suma de retornos</span></div>' +
+    '<div class="tile"><span class="k">ROI por unidad</span><span class="val ' + (roi >= 0 ? 'gano' : 'perdio') + '">' +
+      (roi >= 0 ? '+' : '−') + Math.abs(roi).toFixed(1) + '%</span><span class="note">cada apuesta pesa igual</span></div>';
+}
+
+function renderHist() {
+  const todas = filasHist();
+  renderTiles(todas);
+  const s = st.hist, q = s.q.trim().toLowerCase();
+  const vis = ordenar(todas.filter(e => calza(e, q)), s);
+  $('#t-hist tbody').innerHTML = vis.map(e =>
+    '<tr' + (e.congelada ? ' class="fria"' : '') + '>' +
+    '<td class="c-hora"><span class="d">' + fechaCorta(e.inicio) + '</span> <span class="h">' + horaCorta(e.inicio) + '</span></td>' +
+    '<td class="c-part"><span class="eq">' + esc(e.lado) + '</span><span class="sub">' + esc(e.partido) + '</span></td>' +
+    '<td class="c-liga">' + esc(e.liga) + '</td>' +
+    '<td class="num">' + e.cuota.toFixed(2) + '</td>' +
+    '<td class="num v ' + bandaDe(e.vent).id + '">' + pct(e.vent) + '</td>' +
+    '<td><span class="pill ' + RES[e.estado][0] + '">' + RES[e.estado][1] + '</span>' +
+      (e.congelada ? '<span class="pill fria-p">congelada</span>' : '') +
+      (!e.congelada && e.vent < 0 ? '<span class="pill fria-p">dato</span>' : '') + '</td>' +
+    '<td class="num u ' + (e.u > 0 ? 'gano' : e.u < 0 ? 'perdio' : 'nula') + '">' +
+      (e.u >= 0 ? '+' : '−') + Math.abs(e.u).toFixed(2) + '</td></tr>').join('');
+  $('#t-hist .conteo').textContent = vis.length === todas.length
+    ? todas.length + ' apuestas' : vis.length + ' de ' + todas.length;
+  $('#t-hist .vacio').hidden = vis.length > 0;
+}
+
+function renderCorrida() {
+  const c = DATOS.corrida || { senales: [] };
+  const todas = (c.senales || []).map(x => ({ ...x, ts: Date.parse(x.inicio) || 0 }));
+  /* los que ya partieron salen de la lista visible: su cuota prematch ya no existe */
+  const futuras = todas.filter(x => x.ts > Date.now());
+  $('#partieron').textContent = todas.length - futuras.length
+    ? (todas.length - futuras.length) + ' ya comenzaron y salieron de la lista' : '';
+  const s = st.corr, q = s.q.trim().toLowerCase();
+  const vis = ordenar(futuras.filter(x => calza(x, q) && (!s.banda || bandaDe(x.vent).id === s.banda)), s);
+  $('#bandas').innerHTML = BANDAS.map(b => {
+    const n = futuras.filter(x => b.test(x.vent)).length;
+    return '<button type="button" class="banda ' + b.id + '" data-filtro="' + b.id +
+      '" aria-pressed="' + (s.banda === b.id) + '"><span class="n">' + n +
+      '</span><span class="e">' + b.etiqueta + '</span></button>';
+  }).join('');
+  $('#t-corr tbody').innerHTML = vis.map(x =>
+    '<tr><td class="c-part"><span class="eq">' + esc(x.lado) + '</span><span class="sub">' + esc(x.partido) + '</span></td>' +
+    '<td class="c-liga">' + esc(x.liga) + '</td>' +
+    '<td class="c-hora"><span class="d">' + fechaCorta(x.inicio) + '</span> <span class="h">' + horaCorta(x.inicio) + '</span></td>' +
+    '<td class="num">' + x.cuota.toFixed(2) + '</td>' +
+    '<td class="num sec">' + x.justo.toFixed(2) + '</td>' +
+    '<td class="num v ' + bandaDe(x.vent).id + '">' + pct(x.vent) + '</td>' +
+    '<td>' + (x.link ? '<a class="abrir" target="_blank" rel="noopener" href="' + esc(x.link) + '">Abrir ↗</a>' : '<span class="sec">—</span>') + '</td></tr>').join('');
+  $('#t-corr .conteo').textContent = vis.length === futuras.length
+    ? futuras.length + ' partidos' : vis.length + ' de ' + futuras.length;
+  $('#t-corr .vacio').hidden = vis.length > 0;
+}
+
+function render() {
+  const cr = DATOS.criterios;
+  const linea = /-0\\.5/.test(cr.foco) ? '−0.5' : '−(x)';
+  $('#criterio').textContent = 'hándicap asiático ' + linea + ' · primer tiempo · cuota ' +
+    cr.cuotaMinima.toFixed(2) + '–' + cr.cuotaMaxima.toFixed(2) + ' · fútbol';
+  const c = DATOS.corrida;
+  $('#sello').textContent = 'Foto del bot: ' + hace(DATOS.ts) +
+    (c ? ' · corrida de ' + (c.horas || '?') + ' h (' + hace(c.ts) + '): ' +
+      c.partidos + ' partidos, ' + c.requests + ' requests' : '');
+  $('#pie').textContent = 'Generada desde vigia/live.json (rama ' + REPO.rama + '). Espejo 1X2: ' +
+    ((c && c.espejo) || 0) + ' señal(es) en esta corrida, medidas aparte.';
+  renderHist();
+  renderCorrida();
+  aplicarOrdenVisual();
+}
+
+function aplicarOrdenVisual() {
+  for (const [id, s] of [['#t-hist', st.hist], ['#t-corr', st.corr]]) {
+    for (const th of document.querySelectorAll(id + ' th.orden')) {
+      if (th.dataset.col === s.col) th.setAttribute('aria-sort', s.dir === 1 ? 'ascending' : 'descending');
+      else th.removeAttribute('aria-sort');
+    }
+  }
+}
+
+/* ---------- interacción ---------- */
+function armarTabla(id, s) {
+  for (const th of document.querySelectorAll(id + ' th.orden')) {
+    th.tabIndex = 0;
+    const activar = () => {
+      if (s.col === th.dataset.col) s.dir = -s.dir;
+      else { s.col = th.dataset.col; s.num = !!th.dataset.num;
+             s.dir = th.dataset.inicial === 'asc' ? 1 : -1; }
+      render();
+    };
+    th.addEventListener('click', activar);
+    th.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activar(); } });
+  }
+  $(id + ' .buscar').addEventListener('input', ev => { s.q = ev.target.value; render(); });
+}
+armarTabla('#t-hist', st.hist);
+armarTabla('#t-corr', st.corr);
+$('#bandas').addEventListener('click', ev => {
+  const b = ev.target.closest('.banda'); if (!b) return;
+  st.corr.banda = st.corr.banda === b.dataset.filtro ? null : b.dataset.filtro;
+  render();
+});
+
+/* ---------- capa live: leer live.json y disparar el workflow ---------- */
+function parsear(payload) {
+  if (payload && typeof payload === 'object') return payload;
+  const s = String(payload ?? ''); const i = s.indexOf('{');
+  if (i < 0) return null;
+  try { return JSON.parse(s.slice(i)) } catch { return null }
+}
+async function leerLive(fresco) {
+  const r = await mcp.callTool('github', 'get_file_contents',
+    { owner: REPO.owner, repo: REPO.repo, path: REPO.archivo, ref: 'refs/heads/' + REPO.rama },
+    fresco ? { cache: { refresh: true } } : undefined);
+  return parsear(r.payload);
+}
+function estado(msj, clase) { const e = $('#estado'); e.textContent = msj; e.className = clase || ''; }
+function botones(on) {
+  ocupado = !on;
+  for (const b of document.querySelectorAll('.acciones .btn')) b.disabled = !on;
+}
+async function accion(texto, aviso) {
+  if (!mcp || ocupado) return;
+  botones(false);
+  const antes = DATOS.ts;
+  try {
+    estado('⏳ ' + aviso + ' — disparando el workflow…');
+    await mcp.callTool('github', 'actions_run_trigger',
+      { method: 'run_workflow', owner: REPO.owner, repo: REPO.repo,
+        workflow_id: REPO.workflow, ref: REPO.rama, inputs: { texto } });
+    estado('⏳ ' + aviso + ' — el bot está corriendo (suele tomar 1–3 min)…');
+    const pollMs = window.__bitPollMs || 20000;
+    for (let i = 0; i < 24; i++) {
+      await new Promise(r => setTimeout(r, pollMs));
+      try {
+        const d = await leerLive(true);
+        if (d && d.ts !== antes) {
+          DATOS = d; render();
+          estado('✅ Listo — foto del bot de ' + hace(d.ts) + '.', 'ok');
+          botones(true); return;
+        }
+      } catch {}
+    }
+    estado('⚠️ El bot no reportó en ~8 min. Puede seguir corriendo: prueba «Actualizar tablero» en un rato.', 'err');
+  } catch (e) {
+    estado('❌ No se pudo disparar: ' + (e && e.code ? e.code : (e && e.message) || e), 'err');
+  }
+  botones(true);
+}
+$('#btn-tablero').addEventListener('click', async () => {
+  /* tablero = liquidar pendientes + refrescar la foto (y de paso la corrida vigente) */
+  accion('tablero', 'Actualizando el tablero');
+});
+for (const b of document.querySelectorAll('.btn.barrer'))
+  b.addEventListener('click', () => accion('barrer ' + b.dataset.horas, 'Barrido de ' + b.dataset.horas + ' h'));
+
+/* arranque: pinta el seed al tiro; la capa live se enciende si el viewer la da */
+render();
+document.body.classList.add('sin-mcp');
+(async () => {
+  try { mcp = await claude.use('mcp') } catch { mcp = null }
+  if (!mcp) return;                       /* sin conector: la página queda estática */
+  document.body.classList.remove('sin-mcp');
+  try {
+    const d = await leerLive(false);      /* al abrir, trae la foto más nueva del repo */
+    if (d && d.ts !== DATOS.ts) { DATOS = d; render(); }
+    estado('Conectado a GitHub · foto del bot de ' + hace(DATOS.ts) + '.', 'ok');
+  } catch (e) { estado('No pude leer el repo: ' + (e && e.code || 'error'), 'err'); }
+})();
+/* cada minuto: re-evaluar qué partidos ya comenzaron y las marcas de "hace X" */
+setInterval(render, 60000);
+</script>
