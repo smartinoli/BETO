@@ -2560,7 +2560,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ2.41 de WTN a favor de Eric Vanshelboim (5.88 contra 8.29), en R2: la curva del grupo \"medias\" (n=214) da 68%. Ajustan: Eric Vanshelboim viene cediendo menos games (14% contra 25%) (+6 pts). Queda en 74%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ2.41 de WTN a favor de Eric Vanshelboim (5.88 contra 8.29), en R2: la curva del grupo \"medias\" (n=214) da 68%. Ajustan: Eric Vanshelboim viene cediendo menos games (14% contra 25%) (+6 pts). Queda en 74%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Eric Vanshelboim",
+     "marcador": "6-3 4-6 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    }
   ],
   "2026-08-27": [
@@ -3424,7 +3431,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ4.87 de WTN a favor de Santiago De la fuente (7.24 contra 12.11), en R2: la curva del grupo \"medias\" (n=214) da 82%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ4.87 de WTN a favor de Santiago De la fuente (7.24 contra 12.11), en R2: la curva del grupo \"medias\" (n=214) da 82%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Santiago De la fuente",
+     "marcador": "6-3 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -3996,7 +4010,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.88 de WTN a favor de Enzo Aguiard (4.61 contra 5.49), en QF: la curva del grupo \"finales\" (n=79) da 54%. Ajustan: Yusuke Takahashi viene cediendo menos games (25% contra 36%): la forma contradice al nivel (−8 pts). Queda en 46%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −8% si la tiene el mercado. Enzo Aguiard tiene mejor WTN pero llega cediendo 11 puntos más de games (36% contra 25%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Yusuke Takahashi paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.88: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ0.88 de WTN a favor de Enzo Aguiard (4.61 contra 5.49), en QF: la curva del grupo \"finales\" (n=79) da 54%. Ajustan: Yusuke Takahashi viene cediendo menos games (25% contra 36%): la forma contradice al nivel (−8 pts). Queda en 46%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −8% si la tiene el mercado. Enzo Aguiard tiene mejor WTN pero llega cediendo 11 puntos más de games (36% contra 25%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Yusuke Takahashi paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.88: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Enzo Aguiard",
+     "marcador": "6-3 7-5",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -4029,7 +4050,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.52 de WTN a favor de Rigele Te (6.85 contra 7.37), en QF: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Rigele Te viene cediendo menos games (28% contra 44%) (+11 pts). Queda en 63%. El mercado la paga a 1.55: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.52: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Joshua Charlton ganó un partido por retiro: llega más fresco."
+    "razon": "Δ0.52 de WTN a favor de Rigele Te (6.85 contra 7.37), en QF: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Rigele Te viene cediendo menos games (28% contra 44%) (+11 pts). Queda en 63%. El mercado la paga a 1.55: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.52: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Joshua Charlton ganó un partido por retiro: llega más fresco.",
+    "res": {
+     "ganador": "Rigele Te",
+     "marcador": "6-4 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -4062,7 +4090,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ4.54 de WTN a favor de Chase Ferguson (6.83 contra 11.37), en QF: la curva del grupo \"finales\" (n=79) da 69%. Ajustan: Chase Ferguson viene cediendo menos games (38% contra 43%) (+3 pts). Queda en 72%. El mercado la paga a 1.16: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −8% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ4.54 de WTN a favor de Chase Ferguson (6.83 contra 11.37), en QF: la curva del grupo \"finales\" (n=79) da 69%. Ajustan: Chase Ferguson viene cediendo menos games (38% contra 43%) (+3 pts). Queda en 72%. El mercado la paga a 1.16: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −8% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Chase Ferguson",
+     "marcador": "5-7 6-4 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -4095,7 +4130,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.56 de WTN a favor de Lingxi Zhao (7.13 contra 7.69), en QF: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Lingxi Zhao viene cediendo menos games (33% contra 37%) (+3 pts). Queda en 55%. El mercado la paga a 1.83: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.56: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ0.56 de WTN a favor de Lingxi Zhao (7.13 contra 7.69), en QF: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Lingxi Zhao viene cediendo menos games (33% contra 37%) (+3 pts). Queda en 55%. El mercado la paga a 1.83: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.56: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Tianhui Zhang",
+     "marcador": "6-4 4-6 6-3",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -4453,7 +4495,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.48 de WTN a favor de Louis Wessels (5.84 contra 6.32), en QF: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Emilien Demanet viene cediendo menos games (33% contra 39%): la forma contradice al nivel (−4 pts). Queda en 48%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −8% si la tiene el mercado. Louis Wessels tiene mejor WTN pero llega cediendo 6 puntos más de games (39% contra 33%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Emilien Demanet paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.48: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Louis Wessels es el MEJOR POR RATING pero la casa lo paga 2.07: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ0.48 de WTN a favor de Louis Wessels (5.84 contra 6.32), en QF: la curva del grupo \"finales\" (n=79) da 52%. Ajustan: Emilien Demanet viene cediendo menos games (33% contra 39%): la forma contradice al nivel (−4 pts). Queda en 48%. El mercado la paga a 2.07: 44% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −8% si la tiene el mercado. Louis Wessels tiene mejor WTN pero llega cediendo 6 puntos más de games (39% contra 33%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Emilien Demanet paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.48: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Louis Wessels es el MEJOR POR RATING pero la casa lo paga 2.07: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación.",
+    "res": {
+     "ganador": "Louis Wessels",
+     "marcador": "6-3 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -4486,7 +4535,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ3.71 de WTN a favor de Lorenzo Angelini (5.35 contra 9.06), en QF: la curva del grupo \"finales\" (n=79) da 66%. Ajustan: Daniel Verbeek viene cediendo menos games (35% contra 46%): la forma contradice al nivel (−7 pts). Queda en 58%. El mercado la paga a 1.25: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado. Lorenzo Angelini tiene mejor WTN pero llega cediendo 11 puntos más de games (46% contra 35%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Daniel Verbeek paga desde 2.21 aun tomando el borde malo del intervalo. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ3.71 de WTN a favor de Lorenzo Angelini (5.35 contra 9.06), en QF: la curva del grupo \"finales\" (n=79) da 66%. Ajustan: Daniel Verbeek viene cediendo menos games (35% contra 46%): la forma contradice al nivel (−7 pts). Queda en 58%. El mercado la paga a 1.25: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado. Lorenzo Angelini tiene mejor WTN pero llega cediendo 11 puntos más de games (46% contra 35%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Daniel Verbeek paga desde 2.21 aun tomando el borde malo del intervalo. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Daniel Verbeek",
+     "marcador": "0-6 6-0 6-2",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -4519,7 +4575,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.05 de WTN a favor de Sander Jong (5.03 contra 6.08), en QF: la curva del grupo \"finales\" (n=79) da 55%. Ajustan: Sander Jong viene cediendo menos games (20% contra 42%) (+15 pts). Queda en 69%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde +11% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.05: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ1.05 de WTN a favor de Sander Jong (5.03 contra 6.08), en QF: la curva del grupo \"finales\" (n=79) da 55%. Ajustan: Sander Jong viene cediendo menos games (20% contra 42%) (+15 pts). Queda en 69%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde +11% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 1.05: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Luca Wiedenmann",
+     "marcador": "4-6 7-6(4) 6-3",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -4719,7 +4782,14 @@
      "forma",
      "previo"
     ],
-    "razon": "Δ2.49 de WTN a favor de Giovanni Oradini (6.34 contra 8.83), en QF: la curva del grupo \"finales\" (n=79) da 61%. Ajustan: Giovanni Oradini viene cediendo menos games (23% contra 46%) (+13 pts); Giovanni Oradini llegó más lejos en su torneo anterior (+5 pts). Queda en 80%. El mercado la paga a 1.15: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −9% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ2.49 de WTN a favor de Giovanni Oradini (6.34 contra 8.83), en QF: la curva del grupo \"finales\" (n=79) da 61%. Ajustan: Giovanni Oradini viene cediendo menos games (23% contra 46%) (+13 pts); Giovanni Oradini llegó más lejos en su torneo anterior (+5 pts). Queda en 80%. El mercado la paga a 1.15: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −9% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Giovanni Oradini",
+     "marcador": "7-6(5) 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -4758,7 +4828,14 @@
      "forma",
      "previo"
     ],
-    "razon": "Δ5.05 de WTN a favor de Marcel Zielinski (6.19 contra 11.24), en QF: la curva del grupo \"finales\" (n=79) da 71%. Ajustan: Marcel Zielinski viene cediendo menos games (28% contra 44%) (+5 pts); Marcel Zielinski llegó más lejos en su torneo anterior (+11 pts). Queda en 90%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −8% si la tiene el mercado. Marcel Zielinski llega cediendo 16 puntos menos de games, el rival no es sub-19 y el ΔWTN es 5.05. Medido, esa combinación gana 91% (n=55, IC 80–96) cuando la curva daba 78%. Paga desde 1.24 tomando el borde malo. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ5.05 de WTN a favor de Marcel Zielinski (6.19 contra 11.24), en QF: la curva del grupo \"finales\" (n=79) da 71%. Ajustan: Marcel Zielinski viene cediendo menos games (28% contra 44%) (+5 pts); Marcel Zielinski llegó más lejos en su torneo anterior (+11 pts). Queda en 90%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −8% si la tiene el mercado. Marcel Zielinski llega cediendo 16 puntos menos de games, el rival no es sub-19 y el ΔWTN es 5.05. Medido, esa combinación gana 91% (n=55, IC 80–96) cuando la curva daba 78%. Paga desde 1.24 tomando el borde malo. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Heorhii Shylov",
+     "marcador": "6-3 6-2",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -5056,7 +5133,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ3.27 de WTN a favor de Manuel Plunger (8.39 contra 11.66), en QF: la curva del grupo \"finales\" (n=79) da 64%. Ajustan: Juan Ignacio Gallego viene cediendo menos games (20% contra 31%): la forma contradice al nivel (−7 pts). Queda en 57%. El mercado la paga a 1.4: 65% una vez sacado su margen. A esa cuota, la apuesta rinde −21% si tenemos razón nosotros y −8% si la tiene el mercado. Manuel Plunger tiene mejor WTN pero llega cediendo 11 puntos más de games (31% contra 20%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Juan Ignacio Gallego paga desde 2.21 aun tomando el borde malo del intervalo. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ3.27 de WTN a favor de Manuel Plunger (8.39 contra 11.66), en QF: la curva del grupo \"finales\" (n=79) da 64%. Ajustan: Juan Ignacio Gallego viene cediendo menos games (20% contra 31%): la forma contradice al nivel (−7 pts). Queda en 57%. El mercado la paga a 1.4: 65% una vez sacado su margen. A esa cuota, la apuesta rinde −21% si tenemos razón nosotros y −8% si la tiene el mercado. Manuel Plunger tiene mejor WTN pero llega cediendo 11 puntos más de games (31% contra 20%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Juan Ignacio Gallego paga desde 2.21 aun tomando el borde malo del intervalo. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Manuel Plunger",
+     "marcador": "6-2 6-4",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -5089,7 +5173,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ2.50 de WTN a favor de Andrej Martin (4.18 contra 6.68), en QF: la curva del grupo \"finales\" (n=79) da 61%. Ajustan: Andrej Martin viene cediendo menos games (35% contra 44%) (+6 pts). Queda en 67%. El mercado la paga a 1.28: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −8% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
+    "razon": "Δ2.50 de WTN a favor de Andrej Martin (4.18 contra 6.68), en QF: la curva del grupo \"finales\" (n=79) da 61%. Ajustan: Andrej Martin viene cediendo menos games (35% contra 44%) (+6 pts). Queda en 67%. El mercado la paga a 1.28: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −8% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1.",
+    "res": {
+     "ganador": "Andrej Martin",
+     "marcador": "6-3 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -5503,38 +5594,33 @@
      "cuota": 1.2,
      "ladoFm": 2,
      "acuerdo": true,
-     "pFm": 0.716,
+     "pFm": 0.507,
      "dW": 2.42,
      "forma": -1,
      "previo": null,
-     "grupo": "buenas",
+     "grupo": "finales",
      "edadFm": 21,
      "edadRi": 23
     },
-    "jugada": {
-     "tipo": "casilla",
-     "quien": "Carlos Maria Zarate",
-     "cuota": 1.2,
-     "prob": 0.7158980380688857
-    },
+    "jugada": null,
     "fixtureId": "pn129043461634962533",
-    "inicio": "2026-08-28T15:00:00.000Z",
+    "inicio": "2026-08-28T16:15:00.000Z",
     "torneo": "M15 Mar Del Plata",
     "pais": "Argentina",
-    "etapa": "R1",
+    "etapa": "QF",
     "p1": "Tomas Martinez",
     "p2": "Carlos Maria Zarate",
     "g1": 4.333,
     "g2": 1.2,
     "gana": "Carlos Maria Zarate",
     "lado": 2,
-    "p": 0.716,
+    "p": 0.507,
     "pMercado": 0.783,
-    "soloWtn": 0.757,
+    "soloWtn": 0.604,
     "señales": [
      "forma"
     ],
-    "razon": "Δ2.42 de WTN a favor de Carlos Maria Zarate (5.92 contra 8.34), en R1: la curva del grupo \"buenas\" (n=528) da 76%. Ajustan: Tomas Martinez viene cediendo menos games (29% contra 37%): la forma contradice al nivel (−4 pts). Queda en 72%. El mercado la paga a 1.2: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ2.42 de WTN a favor de Carlos Maria Zarate (5.92 contra 8.34), en QF: la curva del grupo \"finales\" (n=79) da 60%. Ajustan: Tomas Martinez viene cediendo menos games (23% contra 37%): la forma contradice al nivel (−10 pts). Queda en 51%. El mercado la paga a 1.2: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −39% si tenemos razón nosotros y −6% si la tiene el mercado. QF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
    },
    {
     "crit": {
@@ -5571,7 +5657,7 @@
    },
    {
     "crit": {
-     "cuota": 1.4,
+     "cuota": 1.571,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.76,
@@ -5590,21 +5676,21 @@
     "etapa": "R1",
     "p1": "Marko Mesarovic",
     "p2": "Preston Stearns",
-    "g1": 2.75,
-    "g2": 1.4,
+    "g1": 2.25,
+    "g2": 1.571,
     "gana": "Preston Stearns",
     "lado": 2,
     "p": 0.76,
-    "pMercado": 0.663,
+    "pMercado": 0.589,
     "soloWtn": 0.707,
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.88 de WTN a favor de Preston Stearns (6.87 contra 8.75), en R1: la curva del grupo \"buenas\" (n=528) da 71%. Ajustan: Preston Stearns viene cediendo menos games (31% contra 41%) (+5 pts). Queda en 76%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.88: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
+    "razon": "Δ1.88 de WTN a favor de Preston Stearns (6.87 contra 8.75), en R1: la curva del grupo \"buenas\" (n=528) da 71%. Ajustan: Preston Stearns viene cediendo menos games (31% contra 41%) (+5 pts). Queda en 76%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde +19% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 1.88: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie."
    },
    {
     "crit": {
-     "cuota": 1.42,
+     "cuota": 1.667,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.907,
@@ -5623,22 +5709,22 @@
     "etapa": "R1",
     "p1": "Luca Castelnuovo",
     "p2": "Kuan-Shou Chen",
-    "g1": 1.42,
-    "g2": 2.57,
+    "g1": 1.667,
+    "g2": 2.1,
     "gana": "Luca Castelnuovo",
     "lado": 1,
     "p": 0.907,
-    "pMercado": 0.644,
+    "pMercado": 0.557,
     "soloWtn": 0.987,
     "señales": [
      "sub18",
      "forma"
     ],
-    "razon": "Δ9.22 de WTN a favor de Luca Castelnuovo (5.07 contra 14.29), en R1: la curva del grupo \"buenas\" (n=528) da 99%. Ajustan: Kuan-Shou Chen tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−7 pts); Kuan-Shou Chen viene cediendo menos games (29% contra 44%): la forma contradice al nivel (−3 pts). Queda en 91%. El mercado la paga a 1.42: 64% una vez sacado su margen. A esa cuota, la apuesta rinde +29% si tenemos razón nosotros y −9% si la tiene el mercado."
+    "razon": "Δ9.22 de WTN a favor de Luca Castelnuovo (5.07 contra 14.29), en R1: la curva del grupo \"buenas\" (n=528) da 99%. Ajustan: Kuan-Shou Chen tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−7 pts); Kuan-Shou Chen viene cediendo menos games (29% contra 44%): la forma contradice al nivel (−3 pts). Queda en 91%. El mercado la paga a 1.667: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +51% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.57,
+     "cuota": 1.444,
      "ladoFm": 1,
      "acuerdo": false,
      "pFm": 0.547,
@@ -5657,19 +5743,85 @@
     "etapa": "R1",
     "p1": "Matthew Dellavedova",
     "p2": "Kasidit Samrej",
-    "g1": 1.57,
-    "g2": 2.2,
+    "g1": 1.444,
+    "g2": 2.625,
     "gana": "Kasidit Samrej",
     "lado": 2,
     "p": 0.453,
-    "pMercado": 0.416,
+    "pMercado": 0.355,
     "soloWtn": 0.558,
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.50 de WTN a favor de Kasidit Samrej (4.15 contra 4.65), en R1: la curva del grupo \"buenas\" (n=528) da 56%. Ajustan: Matthew Dellavedova viene cediendo menos games (23% contra 38%): la forma contradice al nivel (−11 pts). Queda en 45%. El mercado la paga a 2.2: 42% una vez sacado su margen. A esa cuota, la apuesta rinde −0% si tenemos razón nosotros y −8% si la tiene el mercado. ΔWTN de 0.50: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Kasidit Samrej es el MEJOR POR RATING pero la casa lo paga 2.2: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+    "razon": "Δ0.50 de WTN a favor de Kasidit Samrej (4.15 contra 4.65), en R1: la curva del grupo \"buenas\" (n=528) da 56%. Ajustan: Matthew Dellavedova viene cediendo menos games (23% contra 38%): la forma contradice al nivel (−11 pts). Queda en 45%. El mercado la paga a 2.625: 35% una vez sacado su margen. A esa cuota, la apuesta rinde +19% si tenemos razón nosotros y −7% si la tiene el mercado. ΔWTN de 0.50: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. Kasidit Samrej es el MEJOR POR RATING pero la casa lo paga 2.625: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+   },
+   {
+    "crit": {
+     "cuota": 1.53,
+     "ladoFm": 1,
+     "acuerdo": false,
+     "pFm": 0.568,
+     "dW": -0.02,
+     "forma": 1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 29,
+     "edadRi": 27
+    },
+    "jugada": null,
+    "fixtureId": "pn129042801634992052",
+    "inicio": "2026-08-29T03:00:00.000Z",
+    "torneo": "M15 Maanshan",
+    "pais": "China, P.R.",
+    "etapa": "SF",
+    "p1": "Rigele Te",
+    "p2": "Chase Ferguson",
+    "g1": 1.53,
+    "g2": 2.3,
+    "gana": "Chase Ferguson",
+    "lado": 2,
+    "p": 0.432,
+    "pMercado": 0.399,
+    "soloWtn": 0.501,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ0.02 de WTN a favor de Chase Ferguson (6.83 contra 6.85), en SF: la curva del grupo \"finales\" (n=79) da 50%. Ajustan: Rigele Te viene cediendo menos games (30% contra 40%): la forma contradice al nivel (−7 pts). Queda en 43%. El mercado la paga a 2.3: 40% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −8% si la tiene el mercado. Chase Ferguson tiene mejor WTN pero llega cediendo 10 puntos más de games (40% contra 30%). Medido, en esa situación y fuera de primera ronda el PEOR WTN gana 56% (n=82, IC 45–66) cuando la curva le daba 38%. Apostar a Rigele Te paga desde 2.21 aun tomando el borde malo del intervalo. ΔWTN de 0.02: partido parejo. En esa casilla el precio decía 58% y pasó 43% (n=23): acá no sabe nadie. SF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1. Chase Ferguson es el MEJOR POR RATING pero la casa lo paga 2.3: el favorito del mercado es el otro. Rating y precio se contradicen; en el registro (19 casos) mandaba el precio, pero el 26-08 los tres casos reales salieron para el lado del rating. En observación."
+   },
+   {
+    "crit": {
+     "cuota": 1.25,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.653,
+     "dW": 3.08,
+     "forma": 1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 24,
+     "edadRi": 20
+    },
+    "jugada": null,
+    "fixtureId": "pn129042801634986622",
+    "inicio": "2026-08-29T04:00:00.000Z",
+    "torneo": "M15 Maanshan",
+    "pais": "China, P.R.",
+    "etapa": "SF",
+    "p1": "Tianhui Zhang",
+    "p2": "Enzo Aguiard",
+    "g1": 3.45,
+    "g2": 1.25,
+    "gana": "Enzo Aguiard",
+    "lado": 2,
+    "p": 0.653,
+    "pMercado": 0.734,
+    "soloWtn": 0.631,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ3.08 de WTN a favor de Enzo Aguiard (4.61 contra 7.69), en SF: la curva del grupo \"finales\" (n=79) da 63%. Ajustan: Enzo Aguiard viene cediendo menos games (36% contra 40%) (+2 pts). Queda en 65%. El mercado la paga a 1.25: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −8% si la tiene el mercado. SF: el cuadro ya filtró y el nivel discrimina menos — la pendiente cae a 0.1741 contra 0.4692 en R1."
    }
   ]
  },
- "actualizado": "2026-08-28T11:36:21.940Z"
+ "actualizado": "2026-08-28T15:24:22.893Z"
 }

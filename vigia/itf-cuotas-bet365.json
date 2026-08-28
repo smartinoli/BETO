@@ -1,17 +1,17 @@
 {
- "generado": "2026-08-28T11:36:21.521Z",
+ "generado": "2026-08-28T15:24:22.590Z",
  "casa": "bet365",
  "cuotas": [
   {
-   "torneo": "M25 Poznan",
-   "p1": "Gerard Campana Lee",
-   "p2": "Filip Pieczonka",
-   "g1": 1.4,
-   "g2": 2.75,
-   "visto": "2026-08-28T11:35Z",
+   "torneo": "M15 Mar Del Plata",
+   "p1": "Tomas Martinez",
+   "p2": "Carlos Maria Zarate",
+   "g1": 4.333,
+   "g2": 1.2,
+   "visto": "2026-08-28T15:23Z",
    "fuente": "bet365",
-   "fixtureId": "pn129054091634936117",
-   "inicio": "2026-08-28T11:59:00.000Z"
+   "fixtureId": "pn129043461634962533",
+   "inicio": "2026-08-28T16:15:00.000Z"
   },
   {
    "torneo": "M25 Lausanne",
@@ -19,65 +19,10 @@
    "p2": "Henry Bernet",
    "g1": 3,
    "g2": 1.364,
-   "visto": "2026-08-28T11:35Z",
+   "visto": "2026-08-28T15:23Z",
    "fuente": "bet365",
    "fixtureId": "pn129043471634936116",
-   "inicio": "2026-08-28T13:30:00.000Z"
-  },
-  {
-   "torneo": "M15 Mar Del Plata",
-   "p1": "Joaquin Aguilar Cardozo",
-   "p2": "Lorenzo Gagliardo",
-   "g1": 1.143,
-   "g2": 5,
-   "visto": "2026-08-28T11:35Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129043461634961323",
-   "inicio": "2026-08-28T14:00:00.000Z"
-  },
-  {
-   "torneo": "M15 Mar Del Plata",
-   "p1": "Gonzalo Villanueva",
-   "p2": "Santiago De La Fuente",
-   "g1": 1.2,
-   "g2": 4.333,
-   "visto": "2026-08-28T11:35Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129043461634962526",
-   "inicio": "2026-08-28T14:00:00.000Z"
-  },
-  {
-   "torneo": "M15 Champaign, IL",
-   "p1": "Oliver Okonkwo",
-   "p2": "Felix Corwin",
-   "g1": 1.833,
-   "g2": 1.833,
-   "visto": "2026-08-28T11:35Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129035661634945588",
-   "inicio": "2026-08-28T15:00:00.000Z"
-  },
-  {
-   "torneo": "M15 Champaign, IL",
-   "p1": "Bryce Nakashima",
-   "p2": "Jack Anthrop",
-   "g1": 2.1,
-   "g2": 1.667,
-   "visto": "2026-08-28T11:35Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129035661634945589",
-   "inicio": "2026-08-28T15:00:00.000Z"
-  },
-  {
-   "torneo": "M15 Mar Del Plata",
-   "p1": "Tomas Martinez",
-   "p2": "Carlos Maria Zarate",
-   "g1": 4.333,
-   "g2": 1.2,
-   "visto": "2026-08-28T11:36Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129043461634962533",
-   "inicio": "2026-08-28T15:00:00.000Z"
+   "inicio": "2026-08-28T17:00:00.000Z"
   },
   {
    "torneo": "M15 Champaign, IL",
@@ -85,7 +30,7 @@
    "p2": "Ofek Shimanov",
    "g1": 1.833,
    "g2": 1.833,
-   "visto": "2026-08-28T11:36Z",
+   "visto": "2026-08-28T15:23Z",
    "fuente": "bet365",
    "fixtureId": "pn129035661634962537",
    "inicio": "2026-08-28T17:30:00.000Z"
@@ -94,9 +39,9 @@
    "torneo": "M15 Champaign, IL",
    "p1": "Marko Mesarovic",
    "p2": "Preston Stearns",
-   "g1": 2.75,
-   "g2": 1.4,
-   "visto": "2026-08-28T11:36Z",
+   "g1": 2.25,
+   "g2": 1.571,
+   "visto": "2026-08-28T15:23Z",
    "fuente": "bet365",
    "fixtureId": "pn129035661634961338",
    "inicio": "2026-08-28T18:30:00.000Z"
@@ -105,10 +50,10 @@
    "torneo": "M25 Taipei",
    "p1": "Luca Castelnuovo",
    "p2": "Kuan-Shou Chen",
-   "g1": 1.42,
-   "g2": 2.57,
-   "visto": "2026-08-28T11:36Z",
-   "fuente": "betano",
+   "g1": 1.667,
+   "g2": 2.1,
+   "visto": "2026-08-28T15:24Z",
+   "fuente": "bet365",
    "fixtureId": "pn129042181634962566",
    "inicio": "2026-08-29T02:00:00.000Z"
   },
@@ -116,12 +61,34 @@
    "torneo": "M25 Taipei",
    "p1": "Matthew Dellavedova",
    "p2": "Kasidit Samrej",
-   "g1": 1.57,
-   "g2": 2.2,
-   "visto": "2026-08-28T11:36Z",
-   "fuente": "cloudbet",
+   "g1": 1.444,
+   "g2": 2.625,
+   "visto": "2026-08-28T15:24Z",
+   "fuente": "bet365",
    "fixtureId": "pn129042181634971799",
    "inicio": "2026-08-29T02:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Rigele Te",
+   "p2": "Chase Ferguson",
+   "g1": 1.53,
+   "g2": 2.3,
+   "visto": "2026-08-28T15:24Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042801634992052",
+   "inicio": "2026-08-29T03:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Maanshan",
+   "p1": "Tianhui Zhang",
+   "p2": "Enzo Aguiard",
+   "g1": 3.45,
+   "g2": 1.25,
+   "visto": "2026-08-28T15:24Z",
+   "fuente": "betano",
+   "fixtureId": "pn129042801634986622",
+   "inicio": "2026-08-29T04:00:00.000Z"
   }
  ]
 }
