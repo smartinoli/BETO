@@ -107,8 +107,11 @@ const sig = x => 1 / (1 + Math.exp(-x));
 
 /* evaluación honesta: predicción ANTES de actualizar */
 const evalua = [];
+const previos = [];        /* Elo PRE-partido, para auditar señales sin lookahead */
 for (const m of partidos) {
   const ra = rating(m.ida), rb = rating(m.idb);
+  previos.push({ clave: m.clave, ida: m.ida, idb: m.idb, eloA: +ra.toFixed(1), eloB: +rb.toFixed(1),
+    nA: nPJ.get(m.ida) || 0, nB: nPJ.get(m.idb) || 0 });
   const pa = pElo(ra - rb);
   const na = nPJ.get(m.ida) || 0, nb = nPJ.get(m.idb) || 0;
   if (na >= 3 && nb >= 3 && WTN.has(m.ida) && WTN.has(m.idb) && !m.wo) {
@@ -136,6 +139,9 @@ const tabla = [...elo.entries()].map(([id, e]) => ({
   wtn: WTN.get(id) ?? null,
   wtnImplicito: +(MEDIA_WTN - (e - 1500) / ESCALA).toFixed(2),
 })).sort((a, b) => b.elo - a.elo);
+fs.writeFileSync(path.join(DATOS, 'elo-previo.json'), JSON.stringify({
+  nota: 'Elo de cada lado ANTES de cada partido (sin lookahead), para auditar la señal.',
+  partidos: previos }));
 fs.writeFileSync(path.join(DATOS, 'rating.json'), JSON.stringify({
   nota: 'Rating propio del Vigía: Elo anclado en WTN, movido por nuestros cuadros. itf-rating.mjs lo reconstruye.',
   generado: new Date().toISOString(), escala: ESCALA, mediaWtn: +MEDIA_WTN.toFixed(2),
