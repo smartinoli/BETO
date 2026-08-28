@@ -1,0 +1,471 @@
+<title>Bitácora AH Primer Tiempo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f4f6f8; --surface:#ffffff; --ink:#101820; --muted:#61707f;
+    --line:#e2e7ec; --line-fuerte:#ccd5dd;
+    --acento:#2d6a8f; --acento-tenue:#e8f1f6;
+    --gano:#17795e; --perdio:#a83f2e; --nula:#8b7a4f;
+    --frio:#f0f3f6;
+    --sans:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+    --disp:"Archivo",ui-sans-serif,system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --paper:#0e1318; --surface:#161d24; --ink:#e7edf3; --muted:#93a3b2;
+    --line:#242e38; --line-fuerte:#33404c;
+    --acento:#7cb8dc; --acento-tenue:#17242e;
+    --gano:#3fbd93; --perdio:#e37f6c; --nula:#c2ab77;
+    --frio:#131b22;
+  }}
+  :root[data-theme="dark"]{
+    --paper:#0e1318; --surface:#161d24; --ink:#e7edf3; --muted:#93a3b2;
+    --line:#242e38; --line-fuerte:#33404c;
+    --acento:#7cb8dc; --acento-tenue:#17242e;
+    --gano:#3fbd93; --perdio:#e37f6c; --nula:#c2ab77;
+    --frio:#131b22;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:36px 24px 80px;display:flex;flex-direction:column;gap:40px}
+
+  header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--line-fuerte);padding-bottom:20px}
+  h1{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.1;
+     letter-spacing:-.02em;margin:0;text-wrap:balance}
+  .criterio{font-family:var(--mono);font-size:13px;color:var(--acento);letter-spacing:.01em}
+  .sello{font-size:13px;color:var(--muted)}
+
+  .acciones{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .btn{font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);background:var(--surface);
+       border:1px solid var(--line-fuerte);border-radius:3px;padding:8px 14px;cursor:pointer;
+       transition:border-color .12s,background .12s}
+  .btn:hover:not(:disabled){border-color:var(--acento)}
+  .btn:disabled{opacity:.45;cursor:default}
+  .btn.primario{background:var(--acento);border-color:var(--acento);color:#fff}
+  :root[data-theme="dark"] .btn.primario{color:#0e1318}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.primario{color:#0e1318}}
+  .grupo{display:flex;align-items:center;border:1px solid var(--line-fuerte);border-radius:3px;overflow:hidden}
+  .grupo .rotulo{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;
+                 color:var(--muted);padding:0 10px;border-right:1px solid var(--line)}
+  .grupo .btn{border:none;border-radius:0;border-left:1px solid var(--line)}
+  .grupo .btn:first-of-type{border-left:none}
+  .btn:focus-visible,.buscar:focus-visible,.banda:focus-visible,th.orden:focus-visible{outline:2px solid var(--acento);outline-offset:1px}
+  #estado{font-size:13px;color:var(--muted);min-height:1.4em}
+  #estado.ok{color:var(--gano)} #estado.err{color:var(--perdio)}
+  .sin-mcp .acciones .btn{display:none}
+  .aviso-mcp{display:none;font-size:13px;color:var(--muted);border:1px dashed var(--line-fuerte);
+             border-radius:3px;padding:8px 12px}
+  .sin-mcp .aviso-mcp{display:block}
+  @media (prefers-reduced-motion:reduce){.btn,.banda{transition:none}}
+
+  section{display:flex;flex-direction:column;gap:16px}
+  h2{font-family:var(--disp);font-weight:600;font-size:19px;margin:0;letter-spacing:-.01em}
+  .lead{margin:0;color:var(--muted);font-size:14px;max-width:66ch}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+         background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .tile{background:var(--surface);padding:15px 17px;display:flex;flex-direction:column;gap:5px}
+  .tile .k{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+  .tile .val{font-family:var(--mono);font-size:25px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+  .tile .val small{font-size:15px;color:var(--muted);font-weight:600}
+  .tile .note{font-size:12px;color:var(--muted)}
+  .val.gano{color:var(--gano)} .val.perdio{color:var(--perdio)}
+
+  .controles{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .buscar{flex:1 1 210px;min-width:0;font:inherit;font-size:13.5px;color:var(--ink);
+          background:var(--surface);border:1px solid var(--line-fuerte);border-radius:3px;
+          padding:7px 11px}
+  .buscar::placeholder{color:var(--muted)}
+  .conteo{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  .partieron{font-size:12.5px;color:var(--muted)}
+
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--surface)}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
+  thead th{font-family:var(--disp);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+           font-weight:600;color:var(--muted);text-align:left;padding:11px 13px;
+           border-bottom:1px solid var(--line-fuerte);white-space:nowrap;background:var(--surface)}
+  thead th.num{text-align:right}
+  th.orden{cursor:pointer;user-select:none}
+  th.orden:hover{color:var(--ink)}
+  th.orden::after{content:"";display:inline-block;width:0;height:0;margin-left:6px;
+                  border-left:3.5px solid transparent;border-right:3.5px solid transparent;
+                  opacity:.28;border-bottom:4.5px solid currentColor;vertical-align:middle}
+  th.orden[aria-sort="ascending"]::after{opacity:1;border-bottom:4.5px solid var(--acento);border-top:0}
+  th.orden[aria-sort="descending"]::after{opacity:1;border-top:4.5px solid var(--acento);border-bottom:0}
+  tbody td{padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.fria{background:var(--frio)}
+  .num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sec{color:var(--muted)}
+  .c-part .eq{display:block;font-weight:600}
+  .c-part .sub{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
+  .c-liga{color:var(--muted);font-size:13px}
+  .c-hora{white-space:nowrap;font-family:var(--mono);font-size:13px}
+  .c-hora .h{color:var(--muted)}
+  .v{font-weight:600}
+  .v.alta{color:var(--gano)} .v.leve{color:var(--ink)} .v.roja{color:var(--nula)} .v.peor{color:var(--perdio)}
+  .u.gano{color:var(--gano)} .u.perdio{color:var(--perdio)} .u.nula{color:var(--muted)}
+  a.abrir{color:var(--acento);font-weight:600;text-decoration:none;white-space:nowrap}
+  a.abrir:hover{text-decoration:underline}
+
+  .pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.03em;
+        padding:2px 8px;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
+  .pill+.pill{margin-left:5px}
+  .pill.gano{color:var(--gano)} .pill.perdio{color:var(--perdio)} .pill.nula{color:var(--nula)}
+  .pill.fria-p{color:var(--muted)}
+
+  .bandas{display:flex;flex-wrap:wrap;gap:8px}
+  .banda{display:flex;align-items:baseline;gap:7px;border:1px solid var(--line-fuerte);
+         border-radius:2px;padding:6px 11px;background:var(--surface);cursor:pointer;
+         font:inherit;color:inherit;transition:border-color .12s,background .12s}
+  .banda:hover{border-color:var(--acento)}
+  .banda[aria-pressed="true"]{border-color:var(--acento);background:var(--acento-tenue)}
+  .banda .n{font-family:var(--mono);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums}
+  .banda .e{font-size:12px;color:var(--muted)}
+  .banda.alta .n{color:var(--gano)} .banda.peor .n{color:var(--perdio)} .banda.roja .n{color:var(--nula)}
+
+  .vacio{padding:22px 14px;text-align:center;color:var(--muted);font-size:13.5px}
+  .nota{border-left:2px solid var(--acento);background:var(--acento-tenue);
+        padding:13px 16px;border-radius:0 3px 3px 0;font-size:13.5px;color:var(--ink)}
+  .nota p{margin:0 0 8px} .nota p:last-child{margin:0}
+  .nota strong{font-weight:600}
+  footer{border-top:1px solid var(--line);padding-top:18px;font-size:12.5px;color:var(--muted)}
+  code{font-family:var(--mono);font-size:.92em;background:var(--acento-tenue);padding:1px 5px;border-radius:2px}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Bitácora AH Primer Tiempo</h1>
+    <div class="criterio" id="criterio"></div>
+    <div class="sello" id="sello"></div>
+    <div class="acciones">
+      <button type="button" class="btn primario" id="btn-tablero">Actualizar tablero</button>
+      <div class="grupo" role="group" aria-label="Barrer las próximas horas">
+        <span class="rotulo">Barrer</span>
+        <button type="button" class="btn barrer" data-horas="3">3 h</button>
+        <button type="button" class="btn barrer" data-horas="6">6 h</button>
+        <button type="button" class="btn barrer" data-horas="12">12 h</button>
+        <button type="button" class="btn barrer" data-horas="24">24 h</button>
+      </div>
+      <p class="aviso-mcp">Los botones necesitan el conector de GitHub de tu cuenta claude.ai.
+        Sin él la página muestra la última foto publicada por el bot.</p>
+    </div>
+    <p id="estado" role="status"></p>
+  </header>
+
+  <section>
+    <h2>Histórico liquidado</h2>
+    <p class="lead">Apuestas del foco ya cerradas dentro del rango de cuota vigente. El balance
+      cuenta solo las de precio vivo y ventaja positiva; las congeladas y las recolectadas con
+      ventaja negativa se listan pero quedan fuera.</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="tabla" id="t-hist">
+      <div class="controles">
+        <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar el histórico por equipo o liga">
+        <span class="conteo"></span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr>
+          <th class="orden" data-col="ts" data-num="1" data-inicial="asc">Fecha</th>
+          <th class="orden" data-col="lado">Apuesta</th>
+          <th class="orden" data-col="liga">Liga</th>
+          <th class="orden num" data-col="cuota" data-num="1">Cuota</th>
+          <th class="orden num" data-col="vent" data-num="1">Ventaja</th>
+          <th class="orden" data-col="estado">Resultado</th>
+          <th class="orden num" data-col="u" data-num="1">Unid.</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="vacio" hidden>Ninguna apuesta calza con ese filtro.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Última corrida — todos los partidos del rango</h2>
+    <p class="lead">Sin filtro de valor: todos los partidos que ofrecen la línea dentro del rango,
+      ordenados por ventaja. Las negativas son dato, no recomendación. Los partidos que ya
+      comenzaron salen solos de la lista.</p>
+    <div class="tabla" id="t-corr">
+      <div class="bandas" id="bandas"></div>
+      <div class="controles">
+        <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar la corrida por equipo o liga">
+        <span class="conteo"></span>
+        <span class="partieron" id="partieron"></span>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr>
+          <th class="orden" data-col="lado">Apuesta</th>
+          <th class="orden" data-col="liga">Liga</th>
+          <th class="orden" data-col="ts" data-num="1" data-inicial="asc">Comienza</th>
+          <th class="orden num" data-col="cuota" data-num="1">Cuota</th>
+          <th class="num">Justo</th>
+          <th class="orden num" data-col="vent" data-num="1">Ventaja</th>
+          <th>Betano</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="vacio" hidden>Ningún partido calza con ese filtro.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cómo leer esto</h2>
+    <div class="nota">
+      <p><strong>La ventaja es contra Cloudbet, no una verdad.</strong> El «justo» sale de des-vigar
+        la cuota de Cloudbet; que Betano pague más solo dice que las dos casas discrepan.</p>
+      <p><strong>Verifica la cuota en pantalla antes de apostar.</strong> El link abre el partido en
+        lat.betano.com; si el precio ya no es el de la lista, la ventaja calculada no existe.</p>
+      <p><strong>AH −0.5 de primer tiempo ≡ «gana el primer tiempo».</strong> Empate al descanso =
+        apuesta perdida.</p>
+      <p><strong>El ROI por unidad trata todas las apuestas por igual.</strong> Es la medida del filo;
+        el resultado del banco depende además del monto Kelly.</p>
+    </div>
+  </section>
+
+  <footer id="pie"></footer>
+</div>
+
+<script>
+const SEED = /*__SEED__*/null;
+const REPO = { owner: 'smartinoli', repo: 'BETO', rama: 'claude/code-analysis-improvements-myq0yb',
+               workflow: 'vigia.yml', archivo: 'vigia/live.json' };
+const CERRADO = ['G', 'MG', 'E', 'MP', 'P'];
+const RES = { G: ['gano', 'Ganada'], P: ['perdio', 'Perdida'], E: ['nula', 'Empate'],
+              MG: ['gano', 'Media G'], MP: ['perdio', 'Media P'] };
+const BANDAS = [
+  { id: 'alta', test: v => v >= 0.015, etiqueta: '≥ +1,5%' },
+  { id: 'leve', test: v => v >= 0 && v < 0.015, etiqueta: '0 a +1,5%' },
+  { id: 'roja', test: v => v >= -0.02 && v < 0, etiqueta: '−2% a 0' },
+  { id: 'peor', test: v => v < -0.02, etiqueta: 'peor que −2%' },
+];
+const bandaDe = v => BANDAS.find(b => b.test(v)) || BANDAS[3];
+const uni = e => e.estado === 'G' ? e.cuota - 1 : e.estado === 'MG' ? (e.cuota - 1) / 2
+  : e.estado === 'E' ? 0 : e.estado === 'MP' ? -0.5 : -1;
+
+let DATOS = SEED;      /* la foto vigente (seed embebido; se pisa al refrescar) */
+let mcp = null;        /* capability — null hasta que el viewer la resuelva */
+let ocupado = false;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const pct = v => (v >= 0 ? '+' : '−') + Math.abs(v * 100).toFixed(1) + '%';
+const fmtF = new Intl.DateTimeFormat('es-CL', { day: '2-digit', month: 'short', timeZone: 'America/Santiago' });
+const fmtH = new Intl.DateTimeFormat('es-CL', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'America/Santiago' });
+const fechaCorta = iso => { const d = new Date(iso); return isNaN(d) ? '—' : fmtF.format(d); };
+const horaCorta = iso => { const d = new Date(iso); return isNaN(d) ? '' : fmtH.format(d); };
+const hace = iso => { const m = Math.round((Date.now() - Date.parse(iso)) / 60e3);
+  return m < 1 ? 'recién' : m < 60 ? 'hace ' + m + ' min' : 'hace ' + (m / 60).toFixed(1) + ' h'; };
+
+/* estado de cada tabla: orden + filtros. El render parte SIEMPRE de los datos,
+   nunca del DOM, así refrescar no pierde lo que el usuario tenía puesto. */
+const st = {
+  hist: { col: 'ts', dir: 1, num: true, q: '' },
+  corr: { col: 'vent', dir: -1, num: true, q: '', banda: null },
+};
+
+function focoRe() { try { return new RegExp(DATOS.criterios.foco) } catch { return /^AH 1er tiempo/ } }
+const enFoco = e => focoRe().test('AH 1er tiempo · ' + e.lado);
+
+function filasHist() {
+  const c = DATOS.criterios;
+  return (DATOS.historico || [])
+    .filter(e => CERRADO.includes(e.estado) && enFoco(e)
+      && e.cuota >= c.cuotaMinima && e.cuota <= c.cuotaMaxima)
+    .map(e => ({ ...e, ts: Date.parse(e.inicio) || 0, u: uni(e) }));
+}
+
+function ordenar(arr, s) {
+  const f = s.dir;
+  return arr.slice().sort((a, b) => {
+    const va = a[s.col], vb = b[s.col];
+    return f * (s.num ? (va - vb) : String(va).localeCompare(String(vb), 'es'));
+  });
+}
+const calza = (e, q) => !q || (e.lado + ' ' + (e.partido || '') + ' ' + e.liga).toLowerCase().includes(q);
+
+function renderTiles(todasHist) {
+  /* el balance replica la regla del tablero: precio vivo y ventaja >= 0 */
+  const vivas = todasHist.filter(e => !e.congelada && e.vent >= Math.max(DATOS.criterios.ventajaMinima, 0));
+  const rec = { G: 0, P: 0, E: 0, MG: 0, MP: 0 };
+  for (const e of vivas) rec[e.estado]++;
+  const unidades = vivas.reduce((s, e) => s + e.u, 0);
+  const roi = vivas.length ? unidades / vivas.length * 100 : 0;
+  $('#tiles').innerHTML =
+    '<div class="tile"><span class="k">Apuestas</span><span class="val">' + vivas.length +
+      '</span><span class="note">vivas · ventaja ≥ 0</span></div>' +
+    '<div class="tile"><span class="k">Récord</span><span class="val">' + rec.G + '<small>G</small> ' +
+      rec.P + '<small>P</small> ' + rec.E + '<small>E</small></span><span class="note">ganadas · perdidas · nulas</span></div>' +
+    '<div class="tile"><span class="k">Unidades</span><span class="val ' + (unidades >= 0 ? 'gano' : 'perdio') + '">' +
+      (unidades >= 0 ? '+' : '−') + Math.abs(unidades).toFixed(2) + '</span><span class="note">suma de retornos</span></div>' +
+    '<div class="tile"><span class="k">ROI por unidad</span><span class="val ' + (roi >= 0 ? 'gano' : 'perdio') + '">' +
+      (roi >= 0 ? '+' : '−') + Math.abs(roi).toFixed(1) + '%</span><span class="note">cada apuesta pesa igual</span></div>';
+}
+
+function renderHist() {
+  const todas = filasHist();
+  renderTiles(todas);
+  const s = st.hist, q = s.q.trim().toLowerCase();
+  const vis = ordenar(todas.filter(e => calza(e, q)), s);
+  $('#t-hist tbody').innerHTML = vis.map(e =>
+    '<tr' + (e.congelada ? ' class="fria"' : '') + '>' +
+    '<td class="c-hora"><span class="d">' + fechaCorta(e.inicio) + '</span> <span class="h">' + horaCorta(e.inicio) + '</span></td>' +
+    '<td class="c-part"><span class="eq">' + esc(e.lado) + '</span><span class="sub">' + esc(e.partido) + '</span></td>' +
+    '<td class="c-liga">' + esc(e.liga) + '</td>' +
+    '<td class="num">' + e.cuota.toFixed(2) + '</td>' +
+    '<td class="num v ' + bandaDe(e.vent).id + '">' + pct(e.vent) + '</td>' +
+    '<td><span class="pill ' + RES[e.estado][0] + '">' + RES[e.estado][1] + '</span>' +
+      (e.congelada ? '<span class="pill fria-p">congelada</span>' : '') +
+      (!e.congelada && e.vent < 0 ? '<span class="pill fria-p">dato</span>' : '') + '</td>' +
+    '<td class="num u ' + (e.u > 0 ? 'gano' : e.u < 0 ? 'perdio' : 'nula') + '">' +
+      (e.u >= 0 ? '+' : '−') + Math.abs(e.u).toFixed(2) + '</td></tr>').join('');
+  $('#t-hist .conteo').textContent = vis.length === todas.length
+    ? todas.length + ' apuestas' : vis.length + ' de ' + todas.length;
+  $('#t-hist .vacio').hidden = vis.length > 0;
+}
+
+function renderCorrida() {
+  const c = DATOS.corrida || { senales: [] };
+  const todas = (c.senales || []).map(x => ({ ...x, ts: Date.parse(x.inicio) || 0 }));
+  /* los que ya partieron salen de la lista visible: su cuota prematch ya no existe */
+  const futuras = todas.filter(x => x.ts > Date.now());
+  $('#partieron').textContent = todas.length - futuras.length
+    ? (todas.length - futuras.length) + ' ya comenzaron y salieron de la lista' : '';
+  const s = st.corr, q = s.q.trim().toLowerCase();
+  const vis = ordenar(futuras.filter(x => calza(x, q) && (!s.banda || bandaDe(x.vent).id === s.banda)), s);
+  $('#bandas').innerHTML = BANDAS.map(b => {
+    const n = futuras.filter(x => b.test(x.vent)).length;
+    return '<button type="button" class="banda ' + b.id + '" data-filtro="' + b.id +
+      '" aria-pressed="' + (s.banda === b.id) + '"><span class="n">' + n +
+      '</span><span class="e">' + b.etiqueta + '</span></button>';
+  }).join('');
+  $('#t-corr tbody').innerHTML = vis.map(x =>
+    '<tr><td class="c-part"><span class="eq">' + esc(x.lado) + '</span><span class="sub">' + esc(x.partido) + '</span></td>' +
+    '<td class="c-liga">' + esc(x.liga) + '</td>' +
+    '<td class="c-hora"><span class="d">' + fechaCorta(x.inicio) + '</span> <span class="h">' + horaCorta(x.inicio) + '</span></td>' +
+    '<td class="num">' + x.cuota.toFixed(2) + '</td>' +
+    '<td class="num sec">' + x.justo.toFixed(2) + '</td>' +
+    '<td class="num v ' + bandaDe(x.vent).id + '">' + pct(x.vent) + '</td>' +
+    '<td>' + (x.link ? '<a class="abrir" target="_blank" rel="noopener" href="' + esc(x.link) + '">Abrir ↗</a>' : '<span class="sec">—</span>') + '</td></tr>').join('');
+  $('#t-corr .conteo').textContent = vis.length === futuras.length
+    ? futuras.length + ' partidos' : vis.length + ' de ' + futuras.length;
+  $('#t-corr .vacio').hidden = vis.length > 0;
+}
+
+function render() {
+  const cr = DATOS.criterios;
+  const linea = /-0\\.5/.test(cr.foco) ? '−0.5' : '−(x)';
+  $('#criterio').textContent = 'hándicap asiático ' + linea + ' · primer tiempo · cuota ' +
+    cr.cuotaMinima.toFixed(2) + '–' + cr.cuotaMaxima.toFixed(2) + ' · fútbol';
+  const c = DATOS.corrida;
+  $('#sello').textContent = 'Foto del bot: ' + hace(DATOS.ts) +
+    (c ? ' · corrida de ' + (c.horas || '?') + ' h (' + hace(c.ts) + '): ' +
+      c.partidos + ' partidos, ' + c.requests + ' requests' : '');
+  $('#pie').textContent = 'Generada desde vigia/live.json (rama ' + REPO.rama + '). Espejo 1X2: ' +
+    ((c && c.espejo) || 0) + ' señal(es) en esta corrida, medidas aparte.';
+  renderHist();
+  renderCorrida();
+  aplicarOrdenVisual();
+}
+
+function aplicarOrdenVisual() {
+  for (const [id, s] of [['#t-hist', st.hist], ['#t-corr', st.corr]]) {
+    for (const th of document.querySelectorAll(id + ' th.orden')) {
+      if (th.dataset.col === s.col) th.setAttribute('aria-sort', s.dir === 1 ? 'ascending' : 'descending');
+      else th.removeAttribute('aria-sort');
+    }
+  }
+}
+
+/* ---------- interacción ---------- */
+function armarTabla(id, s) {
+  for (const th of document.querySelectorAll(id + ' th.orden')) {
+    th.tabIndex = 0;
+    const activar = () => {
+      if (s.col === th.dataset.col) s.dir = -s.dir;
+      else { s.col = th.dataset.col; s.num = !!th.dataset.num;
+             s.dir = th.dataset.inicial === 'asc' ? 1 : -1; }
+      render();
+    };
+    th.addEventListener('click', activar);
+    th.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activar(); } });
+  }
+  $(id + ' .buscar').addEventListener('input', ev => { s.q = ev.target.value; render(); });
+}
+armarTabla('#t-hist', st.hist);
+armarTabla('#t-corr', st.corr);
+$('#bandas').addEventListener('click', ev => {
+  const b = ev.target.closest('.banda'); if (!b) return;
+  st.corr.banda = st.corr.banda === b.dataset.filtro ? null : b.dataset.filtro;
+  render();
+});
+
+/* ---------- capa live: leer live.json y disparar el workflow ---------- */
+function parsear(payload) {
+  if (payload && typeof payload === 'object') return payload;
+  const s = String(payload ?? ''); const i = s.indexOf('{');
+  if (i < 0) return null;
+  try { return JSON.parse(s.slice(i)) } catch { return null }
+}
+async function leerLive(fresco) {
+  const r = await mcp.callTool('github', 'get_file_contents',
+    { owner: REPO.owner, repo: REPO.repo, path: REPO.archivo, ref: 'refs/heads/' + REPO.rama },
+    fresco ? { cache: { refresh: true } } : undefined);
+  return parsear(r.payload);
+}
+function estado(msj, clase) { const e = $('#estado'); e.textContent = msj; e.className = clase || ''; }
+function botones(on) {
+  ocupado = !on;
+  for (const b of document.querySelectorAll('.acciones .btn')) b.disabled = !on;
+}
+async function accion(texto, aviso) {
+  if (!mcp || ocupado) return;
+  botones(false);
+  const antes = DATOS.ts;
+  try {
+    estado('⏳ ' + aviso + ' — disparando el workflow…');
+    await mcp.callTool('github', 'actions_run_trigger',
+      { method: 'run_workflow', owner: REPO.owner, repo: REPO.repo,
+        workflow_id: REPO.workflow, ref: REPO.rama, inputs: { texto } });
+    estado('⏳ ' + aviso + ' — el bot está corriendo (suele tomar 1–3 min)…');
+    const pollMs = window.__bitPollMs || 20000;
+    for (let i = 0; i < 24; i++) {
+      await new Promise(r => setTimeout(r, pollMs));
+      try {
+        const d = await leerLive(true);
+        if (d && d.ts !== antes) {
+          DATOS = d; render();
+          estado('✅ Listo — foto del bot de ' + hace(d.ts) + '.', 'ok');
+          botones(true); return;
+        }
+      } catch {}
+    }
+    estado('⚠️ El bot no reportó en ~8 min. Puede seguir corriendo: prueba «Actualizar tablero» en un rato.', 'err');
+  } catch (e) {
+    estado('❌ No se pudo disparar: ' + (e && e.code ? e.code : (e && e.message) || e), 'err');
+  }
+  botones(true);
+}
+$('#btn-tablero').addEventListener('click', async () => {
+  /* tablero = liquidar pendientes + refrescar la foto (y de paso la corrida vigente) */
+  accion('tablero', 'Actualizando el tablero');
+});
+for (const b of document.querySelectorAll('.btn.barrer'))
+  b.addEventListener('click', () => accion('barrer ' + b.dataset.horas, 'Barrido de ' + b.dataset.horas + ' h'));
+
+/* arranque: pinta el seed al tiro; la capa live se enciende si el viewer la da */
+render();
+document.body.classList.add('sin-mcp');
+(async () => {
+  try { mcp = await claude.use('mcp') } catch { mcp = null }
+  if (!mcp) return;                       /* sin conector: la página queda estática */
+  document.body.classList.remove('sin-mcp');
+  try {
+    const d = await leerLive(false);      /* al abrir, trae la foto más nueva del repo */
+    if (d && d.ts !== DATOS.ts) { DATOS = d; render(); }
+    estado('Conectado a GitHub · foto del bot de ' + hace(DATOS.ts) + '.', 'ok');
+  } catch (e) { estado('No pude leer el repo: ' + (e && e.code || 'error'), 'err'); }
+})();
+/* cada minuto: re-evaluar qué partidos ya comenzaron y las marcas de "hace X" */
+setInterval(render, 60000);
+</script>

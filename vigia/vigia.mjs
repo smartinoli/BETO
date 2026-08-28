@@ -56,6 +56,29 @@ let REG = {};
 try { REG = JSON.parse(fs.readFileSync(REGISTRO_PATH, 'utf8')) } catch {}
 const guardarRegistro = () => fs.writeFileSync(REGISTRO_PATH, JSON.stringify(REG));
 
+/* ---------- corrida.json + live.json: lo que consume la bitácora ----------
+   corrida.json es la foto del último barrido (señales con su link).
+   live.json es la foto COMPLETA para el artefacto: criterios vigentes,
+   la corrida y el histórico del foco. Chico a propósito (~50 KB) para que
+   la página lo lea con un solo fetch vía el conector de GitHub. */
+const CORRIDA_PATH = path.join(DIR, 'corrida.json');
+const LIVE_PATH = path.join(DIR, 'live.json');
+function guardarLive() {
+  let corrida = null;
+  try { corrida = JSON.parse(fs.readFileSync(CORRIDA_PATH, 'utf8')) } catch {}
+  const historico = Object.values(REG)
+    .filter(e => e.sid === '10' && !e.sombra && /^AH 1er tiempo/.test(e.familia))
+    .map(e => ({ inicio: e.inicio, partido: e.partido, liga: e.liga, lado: e.lado,
+                 cuota: e.cuota, justo: e.justo, vent: e.vent, estado: e.estado,
+                 ...(e.congelada ? { congelada: e.congelada } : {}) }));
+  fs.writeFileSync(LIVE_PATH, JSON.stringify({
+    ts: new Date().toISOString(),
+    criterios: { cuotaMinima: CFG.cuotaMinima ?? 0, cuotaMaxima: CFG.cuotaMaxima,
+                 foco: (CFG.foco || {})['10'] || '', ventajaMinima: CFG.ventajaMinima['10'] },
+    corrida, historico,
+  }));
+}
+
 /* ---------- API OddsPapi: pacing, timeout y reintentos ---------- */
 let REQ = 0, ULTIMO = 0;
 const espera = ms => new Promise(r => setTimeout(r, ms));
@@ -797,6 +820,16 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
     salida.registradasSombra++;
   }
   if (salida.registradas || salida.registradasSombra) guardarRegistro();
+  try {
+    fs.writeFileSync(CORRIDA_PATH, JSON.stringify({
+      ts: new Date().toISOString(), horas: horasMax ?? CFG.horizonteHoras,
+      partidos: salida.partidos, ligas: salida.ligas, requests: REQ,
+      senales: salida.senales.map(s => ({ partido: s.partido, liga: s.liga, inicio: s.inicio,
+        lado: s.lado, cuota: s.cuota, justo: s.justo, vent: s.vent, link: s.link || '' })),
+      espejo: (salida.espejo || []).length,
+    }));
+    guardarLive();
+  } catch (e) { console.error('corrida/live no se pudo guardar:', e.message); }
   return salida;
 }
 
@@ -1185,6 +1218,7 @@ async function cmdTablero(sids, { foco = false } = {}) {
     e.estado === 'pendiente' && !(CFG.sombras === false && e.sombra)).length;
   if (pendAntes) await telegram(`📒 Liquidando pendientes (${pendAntes})…`);
   const liq = await liquidar();
+  try { guardarLive() } catch {}
   if (foco) return cmdTableroFoco(liq);
   const todas = Object.values(REG);
   /* con deporte ("/tablero futbol") se filtra la vista y se agrega el
