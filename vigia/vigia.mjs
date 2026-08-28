@@ -471,7 +471,13 @@ function procesarSync(info, bet, cb, metas, salida) {
     const bmid = bet.markets[mid].bookmakerMarketId || null;
     const [jA, jB] = desvigar(pC[oids[0]], pC[oids[1]]);
     const justos = { [oids[0]]: jA, [oids[1]]: jB };
-    const umbral = Math.max(CFG.ventajaMinima[info.sid], fam.castigada ? (CFG.umbralCastigado ?? 0.05) : 0);
+    /* OJO: antes esto era Math.max(ventajaMinima, 0), o sea que el umbral
+       efectivo nunca bajaba de 0 por más que se configurara negativo — y las
+       señales de ventaja negativa quedaban invisibles. Ahora el umbral base
+       manda; solo las familias castigadas conservan su piso propio. */
+    const umbral = fam.castigada
+      ? Math.max(CFG.ventajaMinima[info.sid], CFG.umbralCastigado ?? 0.05)
+      : CFG.ventajaMinima[info.sid];
     const famLabel = fam.fam + (fam.eq ? ' · ' + (fam.eq === 1 ? info.p1 : info.p2) : '');
     /* la llave de "una por familia" usa el grupo: AH y DNB compiten juntas */
     const famKey = (fam.grupo || fam.fam) + (fam.eq ? '·' + fam.eq : '');
@@ -1128,12 +1134,24 @@ async function cmdTableroFoco(liq) {
   const congeladas = todas.filter(e => e.congelada && CERRADO.includes(e.estado)
     && e.sid === '10' && !e.sombra
     && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado)).length;
+  /* recolectadas con ventaja negativa: cuentan como dato, nunca en el balance */
+  const negativas = todas.filter(e => CERRADO.includes(e.estado) && e.vent < 0
+    && e.sid === '10' && !e.sombra && !e.congelada
+    && e.cuota >= (CFG.cuotaMinima ?? 0) && e.cuota <= CFG.cuotaMaxima
+    && reFoco.test(e.familia.split(' · ')[0] + ' · ' + e.lado)).length;
+  /* el balance solo cuenta ventaja POSITIVA aunque el umbral configurado sea
+     negativo: con umbral negativo se recolecta para medir, no para apostar.
+     Una apuesta con ventaja negativa pierde por construcción, no por azar. */
   const okHoy = e => e.cuota >= (CFG.cuotaMinima ?? 0) && e.cuota <= CFG.cuotaMaxima
-    && e.vent >= CFG.ventajaMinima['10'];
+    && e.vent >= Math.max(CFG.ventajaMinima['10'], 0);
   const cerradas = todas.filter(e => CERRADO.includes(e.estado) && delFoco(e) && okHoy(e));
   const pend = todas.filter(e => e.estado === 'pendiente' && delFoco(e) && okHoy(e)).length;
   const viejas = todas.filter(e => CERRADO.includes(e.estado) && delFoco(e) && !okHoy(e)).length;
-  const criterios = `cuota ${CFG.cuotaMinima ?? '—'}–${CFG.cuotaMaxima} · ventaja ≥ ${(CFG.ventajaMinima['10'] * 100).toFixed(1)}%`;
+  /* el encabezado nombra el umbral del BALANCE, no el de recolección: si el
+     configurado es negativo se está juntando dato, no apostando bajo cero */
+  const uBal = Math.max(CFG.ventajaMinima['10'], 0);
+  const criterios = `cuota ${CFG.cuotaMinima ?? '—'}–${CFG.cuotaMaxima} · ventaja ≥ ${(uBal * 100).toFixed(1)}%`
+    + (CFG.ventajaMinima['10'] < 0 ? ' · recolectando también las negativas' : '');
   const lineas = [
     '<b>📒 Tablero · 🎯 AH −(x) primer tiempo</b>',
     `<i>${criterios}</i>`,
@@ -1157,6 +1175,7 @@ async function cmdTableroFoco(liq) {
     + (liq.consultados ? ` · ${liq.consultados} requests` : '')
     + (viejas ? ` · ${viejas} liquidada(s) viejas fuera de tus criterios actuales` : '')
     + (congeladas ? ` · ${congeladas} de cuota congelada, fuera del balance` : '')
+    + (negativas ? ` · ${negativas} de ventaja negativa, recolectadas como dato` : '')
     + ' · <code>/tablero todo</code> = historial completo</i>');
   await telegram(lineas.join('\n'));
 }
