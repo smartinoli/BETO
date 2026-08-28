@@ -42,9 +42,20 @@ const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch 
 
 /* ---------- ciudad → torneo masculino nuestro ---------- */
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};
-const TORNEOS = {};   /* nombre nuestro → clave, solo m-itf */
-for (const sem of Object.values(mapa.semanas || {})) for (const [k, t] of Object.entries(sem))
-  if (k.startsWith('m-itf')) TORNEOS[t.nombre] = k;
+const TORNEOS = {};   /* nombre nuestro → clave, solo m-itf; gana la edición EN JUEGO */
+const HOY_F = new Date().toISOString().slice(0, 10);
+const prioridadEd = t => {
+  const ini = t.fechas?.quali || t.fechas?.main, fin = t.fechas?.final;
+  if (!ini) return 0;
+  if (ini <= HOY_F && (!fin || fin >= HOY_F)) return 3;
+  if (ini > HOY_F) return 2;
+  return 1;
+};
+const _prio = {};
+for (const sem of Object.values(mapa.semanas || {})) for (const [k, t] of Object.entries(sem)) {
+  if (!k.startsWith('m-itf')) continue;
+  if (!(t.nombre in TORNEOS) || prioridadEd(t) >= _prio[t.nombre]) { TORNEOS[t.nombre] = k; _prio[t.nombre] = prioridadEd(t) }
+}
 const ciudad = s => NORM(String(s).replace(/^[MW]\d+\+?H?\s*/i, ''));
 function torneoDe(ciudadOdds) {
   const c = NORM(ciudadOdds);

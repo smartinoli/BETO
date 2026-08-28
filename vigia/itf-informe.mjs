@@ -48,8 +48,25 @@ const bet365 = process.argv.includes('--bet365');
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};
 const TORNEO = {};                       /* nombre → {clave, ...} */
 const POR_CLAVE = {};
-for (const sem of Object.values(mapa.semanas || {})) for (const [k, t] of Object.entries(sem)) { TORNEO[t.nombre] = { clave: k, ...t }; POR_CLAVE[k] = t }
-for (const [k, t] of Object.entries(mapa.torneos || {})) { TORNEO[t.nombre] = { clave: k, ...t }; POR_CLAVE[k] = t }
+/* El mismo nombre se repite entre semanas ("M15 Hurghada" de esta semana
+   Y de la próxima): gana la edición EN JUEGO hoy; si ninguna, la próxima
+   más cercana. Sin esto, la tanda se mapeaba a la edición sin cuadro y
+   las fases salían R1 con trayectoria vacía (medido 2026-08-29). */
+const HOY_F = new Date().toISOString().slice(0, 10);
+const prioridadEd = t => {
+  const ini = t.fechas?.quali || t.fechas?.main, fin = t.fechas?.final;
+  if (!ini) return 0;
+  if (ini <= HOY_F && (!fin || fin >= HOY_F)) return 3;          /* en juego */
+  if (ini > HOY_F) return 2;                                     /* próximo */
+  return 1;                                                      /* pasado */
+};
+const anota = (k, t) => {
+  POR_CLAVE[k] = t;
+  const ya = TORNEO[t.nombre];
+  if (!ya || prioridadEd(t) >= prioridadEd(ya)) TORNEO[t.nombre] = { clave: k, ...t };
+};
+for (const sem of Object.values(mapa.semanas || {})) for (const [k, t] of Object.entries(sem)) anota(k, t);
+for (const [k, t] of Object.entries(mapa.torneos || {})) anota(k, t);
 const fechaIni = k => POR_CLAVE[k]?.fechas?.main || POR_CLAVE[k]?.fechas?.quali || null;
 const fechaFin = k => POR_CLAVE[k]?.fechas?.final || null;
 

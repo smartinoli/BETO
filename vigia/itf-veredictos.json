@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-28T23:09:26.134Z",
+ "generado": "2026-08-28T23:32:10.816Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -182,64 +182,68 @@
     "cuota": 1.3,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.546,
-    "dW": 0.39,
-    "forma": null,
+    "pFm": 0.43,
+    "dW": 0.25,
+    "forma": -1,
     "previo": null,
-    "grupo": "buenas",
+    "grupo": "finales",
     "edadFm": 24,
     "edadRi": 26,
-    "dElo": -102
+    "dElo": -78
    },
    "jugada": null,
    "fixtureId": "pn129043431634986654",
    "inicio": "2026-08-29T06:00:00.000Z",
    "torneo": "M15 Hurghada",
    "pais": "Egypt",
-   "etapa": "R1",
+   "etapa": "SF",
    "p1": "Dev Javia",
    "p2": "Yassine Smiej",
    "g1": 1.3,
    "g2": 3.4,
    "gana": "Dev Javia",
    "lado": 1,
-   "p": 0.546,
+   "p": 0.43,
    "pMercado": 0.723,
-   "soloWtn": 0.546,
-   "señales": [],
-   "razon": "Δ0.39 de WTN a favor de Dev Javia (6.26 contra 6.65), en R1: la curva del grupo \"buenas\" (n=528) da 55%. El mercado la paga a 1.3: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −6% si la tiene el mercado."
+   "soloWtn": 0.511,
+   "señales": [
+    "forma"
+   ],
+   "razon": "Δ0.25 de WTN a favor de Dev Javia (8.98 contra 9.23), en SF: la curva del grupo \"finales\" (n=79) da 51%. Ajustan: Yassine Smiej viene cediendo menos games (29% contra 40%): la forma contradice al nivel (−8 pts). Queda en 43%. El mercado la paga a 1.3: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −44% si tenemos razón nosotros y −6% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.833,
     "ladoFm": 1,
-    "acuerdo": false,
-    "pFm": 0.488,
-    "dW": -0.1,
-    "forma": null,
+    "acuerdo": true,
+    "pFm": 0.528,
+    "dW": 1.07,
+    "forma": -1,
     "previo": null,
-    "grupo": "buenas",
+    "grupo": "finales",
     "edadFm": 29,
     "edadRi": 20,
-    "dElo": 176
+    "dElo": 155
    },
    "jugada": null,
    "fixtureId": "pn129043431634992089",
    "inicio": "2026-08-29T06:00:00.000Z",
    "torneo": "M15 Hurghada",
    "pais": "Egypt",
-   "etapa": "R1",
+   "etapa": "SF",
    "p1": "Aleksandre Bakshi",
    "p2": "Aaron Funk",
    "g1": 1.833,
    "g2": 1.833,
-   "gana": "Aaron Funk",
-   "lado": 2,
-   "p": 0.512,
+   "gana": "Aleksandre Bakshi",
+   "lado": 1,
+   "p": 0.528,
    "pMercado": 0.5,
-   "soloWtn": 0.512,
-   "señales": [],
-   "razon": "Δ0.10 de WTN a favor de Aaron Funk (6.18 contra 6.28), en R1: la curva del grupo \"buenas\" (n=528) da 51%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "soloWtn": 0.547,
+   "señales": [
+    "forma"
+   ],
+   "razon": "Δ1.07 de WTN a favor de Aleksandre Bakshi (7.58 contra 8.65), en SF: la curva del grupo \"finales\" (n=79) da 55%. Ajustan: Aaron Funk viene cediendo menos games (40% contra 43%): la forma contradice al nivel (−2 pts). Queda en 53%. El mercado la paga a 1.833: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
@@ -316,7 +320,7 @@
     "cuota": 1.4,
     "ladoFm": 2,
     "acuerdo": false,
-    "pFm": 0.801,
+    "pFm": 0.747,
     "dW": -0.94,
     "forma": 1,
     "previo": 1,
@@ -330,28 +334,28 @@
    "inicio": "2026-08-29T08:00:00.000Z",
    "torneo": "M25 Maribor",
    "pais": "Slovenia",
-   "etapa": "QF",
+   "etapa": "SF",
    "p1": "Samuele Pieri",
    "p2": "Sebastian Sorger",
    "g1": 2.75,
    "g2": 1.4,
    "gana": "Samuele Pieri",
    "lado": 1,
-   "p": 0.199,
+   "p": 0.253,
    "pMercado": 0.337,
    "soloWtn": 0.541,
    "señales": [
     "forma",
     "previo"
    ],
-   "razon": "Δ0.94 de WTN a favor de Samuele Pieri (4.21 contra 5.15), en QF: la curva del grupo \"finales\" (n=79) da 54%. Ajustan: Sebastian Sorger viene cediendo menos games (11% contra 26%): la forma contradice al nivel (−8 pts); Sebastian Sorger llegó más lejos en su torneo anterior (−23 pts). Queda en 20%. El mercado la paga a 2.75: 34% una vez sacado su margen. A esa cuota, la apuesta rinde −45% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ0.94 de WTN a favor de Samuele Pieri (4.21 contra 5.15), en SF: la curva del grupo \"finales\" (n=79) da 54%. Ajustan: Sebastian Sorger viene cediendo menos games (18% contra 23%): la forma contradice al nivel (−3 pts); Sebastian Sorger llegó más lejos en su torneo anterior (−25 pts). Queda en 25%. El mercado la paga a 2.75: 34% una vez sacado su margen. A esa cuota, la apuesta rinde −30% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.727,
     "ladoFm": 2,
     "acuerdo": false,
-    "pFm": 0.585,
+    "pFm": 0.545,
     "dW": -0.12,
     "forma": 1,
     "previo": null,
@@ -365,31 +369,31 @@
    "inicio": "2026-08-29T08:00:00.000Z",
    "torneo": "M25 Maribor",
    "pais": "Slovenia",
-   "etapa": "QF",
+   "etapa": "SF",
    "p1": "Filip Jeff Planinsek",
    "p2": "Sebastian Dominko",
    "g1": 2,
    "g2": 1.727,
    "gana": "Filip Jeff Planinsek",
    "lado": 1,
-   "p": 0.415,
+   "p": 0.455,
    "pMercado": 0.463,
    "soloWtn": 0.505,
    "señales": [
     "forma"
    ],
-   "razon": "Δ0.12 de WTN a favor de Filip Jeff Planinsek (4.76 contra 4.88), en QF: la curva del grupo \"finales\" (n=79) da 51%. Ajustan: Sebastian Dominko viene cediendo menos games (20% contra 32%): la forma contradice al nivel (−9 pts). Queda en 42%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ0.12 de WTN a favor de Filip Jeff Planinsek (4.76 contra 4.88), en SF: la curva del grupo \"finales\" (n=79) da 51%. Ajustan: Sebastian Dominko viene cediendo menos games (31% contra 38%): la forma contradice al nivel (−5 pts). Queda en 45%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.4,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.5,
+    "pFm": 0.585,
     "dW": -0.7,
     "forma": -1,
     "previo": 1,
-    "grupo": "medias",
+    "grupo": "finales",
     "edadFm": 25,
     "edadRi": 28,
     "dElo": 47
@@ -399,32 +403,32 @@
    "inicio": "2026-08-29T08:00:00.000Z",
    "torneo": "M15 Pecs",
    "pais": "Hungary",
-   "etapa": "R2",
+   "etapa": "SF",
    "p1": "John Hallquist Lithen",
    "p2": "Ignacio Monzon",
    "g1": 1.4,
    "g2": 2.75,
    "gana": "Ignacio Monzon",
    "lado": 2,
-   "p": 0.5,
+   "p": 0.415,
    "pMercado": 0.337,
-   "soloWtn": 0.555,
+   "soloWtn": 0.531,
    "señales": [
     "forma",
     "previo"
    ],
-   "razon": "Δ0.70 de WTN a favor de Ignacio Monzon (7.82 contra 8.52), en R2: la curva del grupo \"medias\" (n=214) da 56%. Ajustan: Ignacio Monzon viene cediendo menos games (28% contra 39%) (+8 pts); John Hallquist Lithen llegó más lejos en su torneo anterior (−14 pts). Queda en 50%. El mercado la paga a 2.75: 34% una vez sacado su margen. A esa cuota, la apuesta rinde +37% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ0.70 de WTN a favor de Ignacio Monzon (7.82 contra 8.52), en SF: la curva del grupo \"finales\" (n=79) da 53%. Ajustan: Ignacio Monzon viene cediendo menos games (34% contra 38%) (+2 pts); John Hallquist Lithen llegó más lejos en su torneo anterior (−14 pts). Queda en 41%. El mercado la paga a 2.75: 34% una vez sacado su margen. A esa cuota, la apuesta rinde +14% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.4,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.606,
+    "pFm": 0.521,
     "dW": 1.33,
-    "forma": 1,
+    "forma": -1,
     "previo": null,
-    "grupo": "medias",
+    "grupo": "finales",
     "edadFm": 24,
     "edadRi": 23,
     "dElo": 104
@@ -434,20 +438,20 @@
    "inicio": "2026-08-29T08:00:00.000Z",
    "torneo": "M15 Pecs",
    "pais": "Hungary",
-   "etapa": "R2",
+   "etapa": "SF",
    "p1": "John Sperle",
    "p2": "Stepan Baum",
    "g1": 1.4,
    "g2": 2.75,
    "gana": "John Sperle",
    "lado": 1,
-   "p": 0.606,
+   "p": 0.521,
    "pMercado": 0.663,
-   "soloWtn": 0.604,
+   "soloWtn": 0.558,
    "señales": [
     "forma"
    ],
-   "razon": "Δ1.33 de WTN a favor de John Sperle (7.13 contra 8.46), en R2: la curva del grupo \"medias\" (n=214) da 60%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ1.33 de WTN a favor de John Sperle (7.13 contra 8.46), en SF: la curva del grupo \"finales\" (n=79) da 56%. Ajustan: Stepan Baum viene cediendo menos games (29% contra 34%): la forma contradice al nivel (−4 pts). Queda en 52%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
