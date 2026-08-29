@@ -102,6 +102,18 @@
   .mandos input.ancho{width:96px}
   .mandos .peso{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-right:-3px}
   .letra-chica{font-size:12.5px;color:var(--muted);margin:10px 0 0;max-width:72ch}
+  .desplegable{margin-top:26px}
+  .desplegable>summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:9px;
+    padding:9px 0;border-top:1px solid var(--line);font-family:var(--disp);font-weight:600;
+    font-size:14px;color:var(--muted)}
+  .desplegable>summary::-webkit-details-marker{display:none}
+  .desplegable>summary:hover{color:var(--ink)}
+  .desplegable>summary:focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+  .desplegable .flecha{font-size:11px;color:var(--acento);transition:transform .15s}
+  .desplegable[open] .flecha{transform:rotate(90deg);display:inline-block}
+  .desplegable .cuantas{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted)}
+  .desplegable[open]>summary{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){.desplegable .flecha{transition:none}}
   .mandos select{font-family:var(--sans);padding-right:4px}
   .mandos input:focus-visible,.mandos select:focus-visible,.mandos button:focus-visible{
     outline:2px solid var(--acento);outline-offset:1px}
@@ -253,6 +265,10 @@
     </div>
     <div class="tiles" id="tiles-pr"></div>
     <p class="letra-chica" id="pr-aviso"></p>
+    <details class="desplegable" id="det-hist">
+      <summary><span class="flecha" aria-hidden="true">▸</span>
+        <span class="rotulo">Ver las apuestas una por una</span>
+        <span class="cuantas" id="hist-cuantas"></span></summary>
     <div class="tabla" id="t-hist">
       <div class="controles">
         <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar el histórico por equipo o liga">
@@ -272,13 +288,18 @@
       </table></div>
       <p class="vacio" hidden>Ninguna apuesta calza con ese filtro.</p>
     </div>
-  </section>
+    </details>
+</section>
 
   <section>
     <h2>Última corrida — todos los partidos del rango</h2>
     <p class="lead">Sin filtro de valor: todos los partidos que ofrecen la línea dentro del rango,
       ordenados por ventaja. Las negativas son dato, no recomendación. Los partidos que ya
       comenzaron salen solos de la lista.</p>
+    <details class="desplegable" id="det-corr" open>
+      <summary><span class="flecha" aria-hidden="true">▸</span>
+        <span class="rotulo">Ver los partidos</span>
+        <span class="cuantas" id="corr-cuantas"></span></summary>
     <div class="tabla" id="t-corr">
       <div class="bandas" id="bandas"></div>
       <div class="controles">
@@ -300,7 +321,8 @@
       </table></div>
       <p class="vacio" hidden>Ningún partido calza con ese filtro.</p>
     </div>
-  </section>
+    </details>
+</section>
 
   <section>
     <h2>Cómo leer esto</h2>
@@ -608,6 +630,10 @@ function renderHist() {
       (e.u >= 0 ? '+' : '−') + Math.abs(e.u).toFixed(2) + '</td></tr>').join('');
   $('#t-hist .conteo').textContent = vis.length === todas.length
     ? todas.length + ' apuestas' : vis.length + ' de ' + todas.length;
+  /* el resumen del desplegable lleva la cuenta, para no tener que abrirlo */
+  $('#hist-cuantas').textContent = vis.length === todas.length
+    ? todas.length + (todas.length === 1 ? ' apuesta' : ' apuestas')
+    : vis.length + ' de ' + todas.length + ' · filtro activo';
   $('#t-hist .vacio').hidden = vis.length > 0;
 }
 
@@ -636,6 +662,7 @@ function renderCorrida() {
     '<td>' + (x.link ? '<a class="abrir" target="_blank" rel="noopener" href="' + esc(x.link) + '">Abrir ↗</a>' : '<span class="sec">—</span>') + '</td></tr>').join('');
   $('#t-corr .conteo').textContent = vis.length === futuras.length
     ? futuras.length + ' partidos' : vis.length + ' de ' + futuras.length;
+  $('#corr-cuantas').textContent = futuras.length + (futuras.length === 1 ? ' por jugar' : ' por jugar');
   $('#t-corr .vacio').hidden = vis.length > 0;
 }
 
