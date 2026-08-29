@@ -99,6 +99,9 @@
     color:var(--ink);background:var(--surface);border:1px solid var(--line-fuerte);
     border-radius:3px;padding:4px 7px;font-variant-numeric:tabular-nums}
   .mandos input{width:66px;text-align:center}
+  .mandos input.ancho{width:96px}
+  .mandos .peso{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-right:-3px}
+  .letra-chica{font-size:12.5px;color:var(--muted);margin:10px 0 0;max-width:72ch}
   .mandos select{font-family:var(--sans);padding-right:4px}
   .mandos input:focus-visible,.mandos select:focus-visible,.mandos button:focus-visible{
     outline:2px solid var(--acento);outline-offset:1px}
@@ -236,6 +239,20 @@
       </span>
     </div>
     <div class="tiles" id="tiles-ex"></div>
+
+    <div class="rotulo-tiles explorador">
+      <span>Proyección — sobre el segmento de arriba</span>
+      <span class="mandos">
+        <label for="pr-monto">apuesto</label>
+        <span class="peso">$</span><input type="number" id="pr-monto" step="1000" min="0" class="ancho">
+        <label for="pr-n">en</label>
+        <input type="number" id="pr-n" step="1" min="1" max="5000">
+        <span class="a">apuestas · meta</span>
+        <span class="peso">$</span><input type="number" id="pr-meta" step="10000" min="0" class="ancho">
+      </span>
+    </div>
+    <div class="tiles" id="tiles-pr"></div>
+    <p class="letra-chica" id="pr-aviso"></p>
     <div class="tabla" id="t-hist">
       <div class="controles">
         <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar el histórico por equipo o liga">
@@ -459,6 +476,7 @@ function renderEx() {
     : '<div class="tile vacio-ex"><span class="k">Sin apuestas</span>' +
       '<span class="val rango">—</span><span class="note">nada cerrado en ' + nota + '</span></div>';
   $('#ex-reset').hidden = x.min === b.min && x.max === b.max && x.pob === 'todas';
+  renderPr();
 }
 /* los mandos son estáticos: si render() los reconstruyera, el foco se perdería
    a media escritura. Solo se sincronizan al cambiar de pestaña. */
@@ -478,6 +496,76 @@ function tomarEx() {
   if (min > max) [min, max] = [max, min];        /* invertidos: se ordenan solos */
   st.ex[st.linea] = { min, max, pob: $('#ex-pob').value };
   renderEx();
+}
+
+/* PROYECCIÓN. No usa el ROI como si fuera una tasa fija: remuestrea los
+   resultados reales del segmento elegido, N apuestas por corrida, 4.000
+   corridas. Así el rango sale del mismo azar que produjo el histórico, y
+   se puede además medir la peor caída del camino, que es lo que de verdad
+   define cuánta banca necesitas para aguantar. */
+function simular(us, n, monto) {
+  if (!us.length || !(n > 0)) return null;
+  let z = 20260829 >>> 0;
+  const rnd = () => (z = (z * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const N = 4000, fin = new Float64Array(N), caida = new Float64Array(N);
+  const m = us.length, mundo = new Float64Array(m);
+  let rojos = 0;
+  for (let i = 0; i < N; i++) {
+    /* remuestreo ANIDADO: cada corrida se juega en un "mundo" sorteado a
+       partir del histórico, no en el histórico exacto. Sin esto, 10 apuestas
+       con 8 ganadas se tratarían como un 80% garantizado y el rango saldría
+       ridículamente angosto (el clásico "0% de terminar en rojo"). */
+    for (let k = 0; k < m; k++) mundo[k] = us[(rnd() * m) | 0];
+    let acum = 0, techo = 0, peor = 0;
+    for (let j = 0; j < n; j++) {
+      acum += mundo[(rnd() * m) | 0];
+      if (acum > techo) techo = acum;
+      if (techo - acum > peor) peor = techo - acum;
+    }
+    fin[i] = acum * monto; caida[i] = peor * monto;
+    if (acum < 0) rojos++;
+  }
+  fin.sort(); caida.sort();
+  const q = (a, p) => a[Math.min(a.length - 1, Math.floor(p * N))];
+  return { mediana: q(fin, 0.5), p5: q(fin, 0.05), p95: q(fin, 0.95),
+           pRojo: rojos / N, caida90: q(caida, 0.90) };
+}
+const plata = v => (v < 0 ? '−$' : '$') + Math.round(Math.abs(v)).toLocaleString('es-CL');
+function renderPr() {
+  const x = exDe();
+  const pobla = poblacion(x.min, x.max, x.pob);
+  const us = pobla.map(e => e.u);
+  const monto = Math.max(0, parseFloat($('#pr-monto').value) || 0);
+  const n = Math.max(1, Math.min(5000, parseInt($('#pr-n').value, 10) || 1));
+  const meta = Math.max(0, parseFloat($('#pr-meta').value) || 0);
+  const sim = simular(us, n, monto);
+  if (!sim) { $('#tiles-pr').innerHTML = ''; $('#pr-aviso').textContent =
+    'Elige un segmento con apuestas cerradas para proyectar.'; return; }
+  const roi = us.reduce((a, b) => a + b, 0) / us.length;   /* por unidad apostada */
+  const dec = pobla.filter(e => e.estado !== 'E').length;
+  const tile = (k, v, clase, nota) => '<div class="tile"><span class="k">' + k +
+    '</span><span class="val ' + (clase || '') + '">' + v + '</span><span class="note">' + nota + '</span></div>';
+  /* cuánto habría que apostar por partido para que la MEDIANA llegue a la meta */
+  const porUnidad = sim.mediana / (monto || 1);
+  const necesita = meta > 0 && porUnidad > 0 ? meta / porUnidad : null;
+
+  $('#tiles-pr').innerHTML =
+    tile('Ganancia típica', plata(sim.mediana), sim.mediana >= 0 ? 'gano' : 'perdio',
+      'la mitad de las veces sale más, la mitad menos') +
+    tile('Rango 90%', plata(sim.p5) + ' a ' + plata(sim.p95), 'rango',
+      'entre estos dos valores caen 9 de cada 10 corridas') +
+    tile('Terminar en rojo', Math.round(sim.pRojo * 100) + '%',
+      sim.pRojo > 0.25 ? 'perdio' : '', 'de las corridas cierran perdiendo plata') +
+    tile('Banca para aguantar', plata(sim.caida90), 'rango',
+      'la peor caída del camino en 9 de cada 10 corridas') +
+    (necesita ? tile('Para ganar ' + plata(meta), plata(necesita), '',
+        'por apuesta, en ' + n + ' apuestas') : '');
+
+  $('#pr-aviso').textContent = '↑ Simulado remuestreando las ' + pobla.length +
+    ' apuestas del segmento (' + dec + ' decididas), ' + n + ' por corrida, 4.000 corridas. ' +
+    'Supone que el filo medido de ' + (roi >= 0 ? '+' : '−') + Math.abs(roi * 100).toFixed(1) +
+    '% por unidad es real y se mantiene' +
+    (dec < 30 ? ' — con ' + dec + ' apuestas decididas eso todavía es mucho suponer.' : '.');
 }
 
 function renderTiles(todasHist) {
@@ -591,8 +679,11 @@ function armarTabla(id, s) {
   }
   $(id + ' .buscar').addEventListener('input', ev => { s.q = ev.target.value; render(); });
 }
+$('#pr-monto').value = 20000; $('#pr-n').value = 50; $('#pr-meta').value = 500000;
 for (const id of ['#ex-min', '#ex-max', '#ex-pob'])
   $(id).addEventListener('input', tomarEx);
+for (const id of ['#pr-monto', '#pr-n', '#pr-meta'])
+  $(id).addEventListener('input', renderPr);
 $('#ex-reset').addEventListener('click', () => {
   delete st.ex[st.linea];
   exPintada = null;                 /* fuerza a repintar los mandos */
