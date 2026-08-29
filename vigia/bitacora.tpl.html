@@ -331,7 +331,7 @@ function filasHist() {
   const c = DATOS.criterios;
   return (DATOS.historico || [])
     .filter(e => CERRADO.includes(e.estado) && enFoco(e) && esLinea(e)
-      && e.cuota >= c.cuotaMinima && e.cuota <= c.cuotaMaxima)
+      && e.cuota >= banda().min && e.cuota <= banda().max)
     .map(e => ({ ...e, ts: Date.parse(e.inicio) || 0, u: uni(e) }));
 }
 
@@ -389,6 +389,12 @@ function filaTiles(pobla, notaApuestas) {
       '</span></div>' : '');
 }
 const etiqueta = () => (PESTANAS.find(p => p.id === st.linea) || PESTANAS[0]).et;
+/* cada línea puede tener su banda de precio propia (la -1 se paga 2,3-3,3) */
+function banda() {
+  const c = DATOS.criterios || {};
+  const r = (c.cuotaPorLinea || {})['AH1T|' + st.linea];
+  return { min: r ? r.min : (c.cuotaMinima ?? 0), max: r ? r.max : c.cuotaMaxima };
+}
 function renderPestanas() {
   const hist = DATOS.historico || [], sen = (DATOS.corrida || {}).senales || [];
   $('#pestanas').innerHTML = PESTANAS.map(p => {
@@ -411,12 +417,12 @@ function renderTiles(todasHist) {
   const vivas = todasHist.filter(e => !e.congelada && e.vent >= piso);
   const todas05 = (DATOS.historico || [])
     .filter(e => CERRADO.includes(e.estado) && enFoco(e) && esLinea(e)
-      && e.cuota >= DATOS.criterios.cuotaMinima && e.cuota <= DATOS.criterios.cuotaMaxima)
+      && e.cuota >= banda().min && e.cuota <= banda().max)
     .map(e => ({ ...e, u: uni(e) }));
   $('#tiles').innerHTML = filaTiles(vivas, 'vivas · ventaja ≥ 0 · cuota ' +
-    DATOS.criterios.cuotaMinima.toFixed(2) + '–' + DATOS.criterios.cuotaMaxima.toFixed(2));
-  $('#rot-sv').textContent = 'Todas las ' + etiqueta() + ' en cuota ' + DATOS.criterios.cuotaMinima.toFixed(2) +
-    '–' + DATOS.criterios.cuotaMaxima.toFixed(2) + ' · nuevas y antiguas, con y sin valor';
+    banda().min.toFixed(2) + '–' + banda().max.toFixed(2));
+  $('#rot-sv').textContent = 'Todas las ' + etiqueta() + ' en cuota ' + banda().min.toFixed(2) +
+    '–' + banda().max.toFixed(2) + ' · nuevas y antiguas, con y sin valor';
   $('#rot-sv').hidden = !todas05.length;
   $('#tiles-sv').innerHTML = todas05.length ? filaTiles(todas05, 'todas las ' + etiqueta() + ' cerradas') : '';
 }
@@ -474,7 +480,7 @@ function renderCorrida() {
 function render() {
   const cr = DATOS.criterios;
   $('#criterio').textContent = 'hándicap asiático ' + etiqueta() + ' · primer tiempo · cuota ' +
-    cr.cuotaMinima.toFixed(2) + '–' + cr.cuotaMaxima.toFixed(2) + ' · fútbol';
+    banda().min.toFixed(2) + '–' + banda().max.toFixed(2) + ' · fútbol';
   const c = DATOS.corrida;
   $('#sello').textContent = 'Foto del bot: ' + sello(DATOS.ts) +
     (c ? ' · corrida de ' + (c.horas || '?') + ' h ' + sello(c.ts) + ': ' +

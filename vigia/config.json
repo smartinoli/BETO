@@ -28,6 +28,13 @@
     "10"
   ],
   "cuotaMinima": 1.55,
+  "cuotaPorLinea": {
+    "AH1T|-1": {
+      "min": 1.55,
+      "max": 3.3
+    }
+  },
+  "comentarioCuotaPorLinea": "banda de precio propia por línea. La -1 de 1er tiempo se paga 2,3-3,3 en partidos normales: con el techo de la -0.5 (1,90) no entraba casi ninguna. Clave = grupo|hándicap del lado apostado",
   "usarCongeladas": false,
   "comentarioCongeladas": "acepta cuotas con active:false (feed detenido). Cada señal avisa cuántas horas tiene: hay que verificarla en pantalla",
   "sombras": false,

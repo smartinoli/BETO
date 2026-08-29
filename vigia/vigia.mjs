@@ -74,6 +74,7 @@ function guardarLive() {
   fs.writeFileSync(LIVE_PATH, JSON.stringify({
     ts: new Date().toISOString(),
     criterios: { cuotaMinima: CFG.cuotaMinima ?? 0, cuotaMaxima: CFG.cuotaMaxima,
+                 cuotaPorLinea: CFG.cuotaPorLinea || {},
                  foco: (CFG.foco || {})['10'] || '', ventajaMinima: CFG.ventajaMinima['10'] },
     corrida, historico,
   }));
@@ -537,9 +538,15 @@ function procesarSync(info, bet, cb, metas, salida) {
         lado = (/^1$|home/i.test(crudo) ? info.p1 : info.p2) + ' ' + (hs > 0 ? '+' : '') + (hs === 0 ? '0.0' : hs);
       } else if (fam.lado === 'yn') lado = /yes/i.test(crudo) ? 'Sí' : 'No';
       else lado = /^1$|home/i.test(crudo) ? info.p1 : info.p2;
-      if (cuota > CFG.cuotaMaxima || cuota < (CFG.cuotaMinima ?? 0) || vent < umbral) {
-        if (cuota > CFG.cuotaMaxima) E.cuotaAlta++;
-        else if (cuota < (CFG.cuotaMinima ?? 0)) E.cuotaBaja++;
+      /* banda de precio: por defecto la global, pero una línea puede tener la
+         suya. La -1 de 1er tiempo se paga 2,3-3,3 y con el techo de la -0.5
+         no entraba casi ninguna: son apuestas distintas con precios distintos. */
+      const rango = hs != null ? (CFG.cuotaPorLinea || {})[(fam.grupo || fam.fam) + '|' + hs] : null;
+      const cMin = rango ? rango.min : (CFG.cuotaMinima ?? 0);
+      const cMax = rango ? rango.max : CFG.cuotaMaxima;
+      if (cuota > cMax || cuota < cMin || vent < umbral) {
+        if (cuota > cMax) E.cuotaAlta++;
+        else if (cuota < cMin) E.cuotaBaja++;
         else if (vent > 0) E.ventajaBaja++;
         else E.sinVentaja++;
         /* SOMBRA: no pasa tus umbrales pero tiene ventaja positiva → va al
