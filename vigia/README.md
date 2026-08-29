@@ -65,6 +65,14 @@ partido, gana la de mayor ventaja). Eso es a propósito: reproduce exactamente
 la selección que produjo el +36,9% medido. Filtrar antes recuperaría señales
 que perdieron esa competencia — más volumen, pero de menor ventaja y sin medir.
 
+**Excepción medida a propósito: la −1 de primer tiempo.** Corre una segunda
+competencia en paralelo donde la −1 compite solo contra sí misma, así que se
+recolecta en TODO partido que califique, gane o no la competencia general. Sin
+eso, la −1 solo aparecía cuando le ganaba a la −0.5 (13% de los partidos) y la
+muestra quedaba sesgada a su favor por construcción. La competencia general no
+se toca: la serie de la −0.5 es exactamente la misma de antes, señal por señal.
+Las dos líneas se miden en pestañas separadas de la bitácora y nunca se suman.
+
 **Advertencia honesta:** son 6 días de datos y 21 de las 28 apuestas vienen de
 los últimos dos. La dirección del hallazgo es sólida; la magnitud no. Un +37%
 sostenido no existe — el filo real es bastante menor. Volumen esperado: ~6

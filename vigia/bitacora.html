@@ -321,7 +321,7 @@ const lineaDe = e => (String(e.lado).match(/(-?[\d.]+)\s*$/) || [])[1] || '?';
 const esLinea = e => lineaDe(e) === st.linea;
 const PESTANAS = [
   { id: '-0.5', et: '−0.5', sub: 'gana el 1er tiempo' },
-  { id: '-1',   et: '−1',   sub: 'en pruebas · gana por 2+' },
+  { id: '-1',   et: '−1',   sub: 'en pruebas · gana por 2+ al descanso' },
 ];
 
 function focoRe() { try { return new RegExp(DATOS.criterios.foco) } catch { return /^AH 1er tiempo/ } }

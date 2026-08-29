@@ -376,6 +376,13 @@ async function oddsBatch(tids, casa) {
 function procesarSync(info, bet, cb, metas, salida) {
   const porFam = new Map();
   const porFamSombra = new Map();
+  /* COMPETENCIA PARALELA de la -1 de primer tiempo. La competencia normal
+     deja UNA señal por partido (la de más ventaja del grupo AH1T), así que
+     la -1 solo aparecía cuando le ganaba a la -0.5: muestra sesgada. Esta
+     segunda vuelta la hace competir solo contra sí misma, de modo que la -1
+     se recolecta en TODO partido que califique. La competencia normal no se
+     toca, así que la serie de la -0.5 sigue siendo exactamente la misma. */
+  const porFamPar = new Map();
   const cand = [];
   const E = salida.embudo;
   for (const mid of Object.keys(bet.markets || {})) {
@@ -523,10 +530,10 @@ function procesarSync(info, bet, cb, metas, salida) {
         (salida.foto ||= {})[kFoto] = { b: pB[oid], c: pC[oid], ts: Date.now() };
       }
       const crudo = meta.outs[oid] || oid;
-      let lado;
+      let lado, hs = null;   /* hs = el hándicap visto desde el lado apostado */
       if (fam.lado === 'ou') lado = (/over/i.test(crudo) ? 'Más de ' : 'Menos de ') + meta.h;
       else if (fam.lado === 'ah') {
-        const hs = /^1$|home/i.test(crudo) ? meta.h : -meta.h;
+        hs = /^1$|home/i.test(crudo) ? meta.h : -meta.h;
         lado = (/^1$|home/i.test(crudo) ? info.p1 : info.p2) + ' ' + (hs > 0 ? '+' : '') + (hs === 0 ? '0.0' : hs);
       } else if (fam.lado === 'yn') lado = /yes/i.test(crudo) ? 'Sí' : 'No';
       else lado = /^1$|home/i.test(crudo) ? info.p1 : info.p2;
@@ -562,6 +569,12 @@ function procesarSync(info, bet, cb, metas, salida) {
         congelada: congelada || null,
         sospechosa: vent > CFG.umbralSospechosa,
       };
+      /* la -1 de 1er tiempo entra además a su propia liga */
+      if (fam.grupo === 'AH1T' && fam.lado === 'ah' && hs === -1) {
+        const kPar = famKey + '|-1';
+        const mejorPar = porFamPar.get(kPar);
+        if (!mejorPar || s.vent > mejorPar.vent) porFamPar.set(kPar, s);
+      }
       const mejor = porFam.get(famKey);
       if (mejor) {
         E.hermanas++;   /* otra línea de la misma familia con menos ventaja */
@@ -575,6 +588,10 @@ function procesarSync(info, bet, cb, metas, salida) {
     }
   }
   for (const s of porFam.values()) salida.senales.push(s);
+  /* y las -1 que la competencia normal había tapado (sin duplicar la que ya
+     ganó por sí misma) */
+  const yaVan = new Set([...porFam.values()].map(s => s.sig));
+  for (const s of porFamPar.values()) if (!yaVan.has(s.sig)) { s.paralela = true; salida.senales.push(s); }
   /* si la familia produjo señal real, su sombra sobra (el dato bueno ya está) */
   for (const [k, sm] of porFamSombra) if (!porFam.has(k)) salida.sombras.push(sm);
 }
