@@ -92,6 +92,19 @@
   .rotulo-tiles{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;
     color:var(--muted);margin:14px 0 6px}
   .rotulo-tiles:first-of-type{margin-top:0}
+  .explorador{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+  .mandos{display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0}
+  .mandos label,.mandos .a{font-size:12px;font-weight:400;color:var(--muted)}
+  .mandos input,.mandos select{font:inherit;font-family:var(--mono);font-size:12.5px;font-weight:500;
+    color:var(--ink);background:var(--surface);border:1px solid var(--line-fuerte);
+    border-radius:3px;padding:4px 7px;font-variant-numeric:tabular-nums}
+  .mandos input{width:66px;text-align:center}
+  .mandos select{font-family:var(--sans);padding-right:4px}
+  .mandos input:focus-visible,.mandos select:focus-visible,.mandos button:focus-visible{
+    outline:2px solid var(--acento);outline-offset:1px}
+  .mandos button{font:inherit;font-size:12px;font-weight:600;color:var(--acento);
+    background:none;border:none;padding:4px 2px;cursor:pointer;text-decoration:underline;
+    text-underline-offset:2px;text-transform:none;letter-spacing:0}
   .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
          background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
   .tile{background:var(--surface);padding:15px 17px;display:flex;flex-direction:column;gap:5px}
@@ -206,6 +219,23 @@
     <div class="tiles" id="tiles"></div>
     <div class="rotulo-tiles" id="rot-sv" hidden></div>
     <div class="tiles" id="tiles-sv"></div>
+
+    <div class="rotulo-tiles explorador">
+      <span>Explorador — corta por cuota tú mismo</span>
+      <span class="mandos">
+        <label for="ex-min">cuota</label>
+        <input type="number" id="ex-min" step="0.01" min="1" max="20" inputmode="decimal">
+        <span class="a">a</span>
+        <input type="number" id="ex-max" step="0.01" min="1" max="20" inputmode="decimal">
+        <select id="ex-pob" aria-label="Qué apuestas contar">
+          <option value="todas">todas</option>
+          <option value="pos">ventaja ≥ 0</option>
+          <option value="neg">ventaja &lt; 0</option>
+        </select>
+        <button type="button" id="ex-reset" hidden>volver al rango</button>
+      </span>
+    </div>
+    <div class="tiles" id="tiles-ex"></div>
     <div class="tabla" id="t-hist">
       <div class="controles">
         <input type="search" class="buscar" placeholder="Filtrar por equipo o liga…" aria-label="Filtrar el histórico por equipo o liga">
@@ -313,6 +343,7 @@ const sello = iso => relojCL(iso) + ' (' + hace(iso) + ')';
    nunca del DOM, así refrescar no pierde lo que el usuario tenía puesto. */
 const st = {
   linea: '-0.5',        /* pestaña activa: las dos líneas nunca se mezclan */
+  ex: {},               /* explorador: {min, max, pob} por línea; vacío = la banda */
   hist: { col: 'ts', dir: 1, num: true, q: '' },
   corr: { col: 'vent', dir: -1, num: true, q: '', banda: null },
 };
@@ -384,7 +415,8 @@ function filaTiles(pobla, notaApuestas) {
       /* con pocas decididas el remuestreo no puede sacar una derrota que nunca
          pasó: el rango sale falsamente optimista. Mejor decirlo que esconderlo. */
       (dec < 15
-        ? '⚠ solo ' + dec + ' decididas (' + (pobla.length - dec) + ' nulas): el rango todavía no significa nada'
+        ? '⚠ solo ' + dec + ' decididas' + (pobla.length - dec ? ' (' + (pobla.length - dec) + ' nulas)' : '') +
+          ': el rango todavía no significa nada'
         : 'rango 90% · ' + Math.round(r.pRojo * 100) + '% de que el filo real sea negativo') +
       '</span></div>' : '');
 }
@@ -407,6 +439,47 @@ function renderPestanas() {
       '<span class="cuenta">' + n + ' / ' + cerradas + '</span></button>';
   }).join('');
 }
+/* EXPLORADOR: la misma fila de recuadros, pero con el rango de cuota que
+   ponga el usuario. Cada pestaña guarda el suyo, así se puede comparar la
+   -0.5 en 1,80-1,90 contra la -1 en 2,5-3,3 sin perder ninguno de los dos. */
+const exDe = () => st.ex[st.linea] || { ...banda(), pob: 'todas' };
+function poblacion(min, max, pob) {
+  return (DATOS.historico || [])
+    .filter(e => CERRADO.includes(e.estado) && enFoco(e) && esLinea(e)
+      && e.cuota >= min && e.cuota <= max
+      && (pob === 'todas' || (pob === 'pos' ? e.vent >= 0 : e.vent < 0)))
+    .map(e => ({ ...e, u: uni(e) }));
+}
+function renderEx() {
+  const x = exDe(), b = banda();
+  const nota = 'cuota ' + x.min.toFixed(2) + '–' + x.max.toFixed(2) +
+    (x.pob === 'pos' ? ' · ventaja ≥ 0' : x.pob === 'neg' ? ' · ventaja < 0' : '');
+  const pobla = poblacion(x.min, x.max, x.pob);
+  $('#tiles-ex').innerHTML = pobla.length ? filaTiles(pobla, nota)
+    : '<div class="tile vacio-ex"><span class="k">Sin apuestas</span>' +
+      '<span class="val rango">—</span><span class="note">nada cerrado en ' + nota + '</span></div>';
+  $('#ex-reset').hidden = x.min === b.min && x.max === b.max && x.pob === 'todas';
+}
+/* los mandos son estáticos: si render() los reconstruyera, el foco se perdería
+   a media escritura. Solo se sincronizan al cambiar de pestaña. */
+let exPintada = null;
+function sincronizarEx() {
+  if (exPintada !== st.linea) {
+    const x = exDe();
+    $('#ex-min').value = x.min; $('#ex-max').value = x.max; $('#ex-pob').value = x.pob;
+    exPintada = st.linea;
+  }
+  renderEx();
+}
+function tomarEx() {
+  const b = banda();
+  const num = (el, porDefecto) => { const v = parseFloat(el.value); return Number.isFinite(v) && v > 0 ? v : porDefecto; };
+  let min = num($('#ex-min'), b.min), max = num($('#ex-max'), b.max);
+  if (min > max) [min, max] = [max, min];        /* invertidos: se ordenan solos */
+  st.ex[st.linea] = { min, max, pob: $('#ex-pob').value };
+  renderEx();
+}
+
 function renderTiles(todasHist) {
   /* dos filas, mismas métricas. Arriba el balance del criterio (rango de
      cuota vigente, precio vivo, ventaja >= 0: la regla del tablero). Abajo
@@ -425,6 +498,7 @@ function renderTiles(todasHist) {
     '–' + banda().max.toFixed(2) + ' · nuevas y antiguas, con y sin valor';
   $('#rot-sv').hidden = !todas05.length;
   $('#tiles-sv').innerHTML = todas05.length ? filaTiles(todas05, 'todas las ' + etiqueta() + ' cerradas') : '';
+  sincronizarEx();
 }
 
 function renderHist() {
@@ -517,6 +591,13 @@ function armarTabla(id, s) {
   }
   $(id + ' .buscar').addEventListener('input', ev => { s.q = ev.target.value; render(); });
 }
+for (const id of ['#ex-min', '#ex-max', '#ex-pob'])
+  $(id).addEventListener('input', tomarEx);
+$('#ex-reset').addEventListener('click', () => {
+  delete st.ex[st.linea];
+  exPintada = null;                 /* fuerza a repintar los mandos */
+  sincronizarEx();
+});
 $('#pestanas').addEventListener('click', ev => {
   const b = ev.target.closest('.pest'); if (!b || b.dataset.linea === st.linea) return;
   st.linea = b.dataset.linea;
