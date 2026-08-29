@@ -577,11 +577,17 @@ function procesarSync(info, bet, cb, metas, salida) {
         sospechosa: vent > CFG.umbralSospechosa,
       };
       /* la -1 de 1er tiempo entra además a su propia liga */
-      if (fam.grupo === 'AH1T' && fam.lado === 'ah' && hs === -1) {
+      const esUno = fam.grupo === 'AH1T' && fam.lado === 'ah' && hs === -1;
+      if (esUno) {
         const kPar = famKey + '|-1';
         const mejorPar = porFamPar.get(kPar);
         if (!mejorPar || s.vent > mejorPar.vent) porFamPar.set(kPar, s);
       }
+      /* una -1 que solo existe gracias a su banda propia (más cara que el
+         techo global) NO puede competir con la -0.5: si compitiera, podría
+         taparla y cambiaríamos la serie que llevamos midiendo. Vive nada más
+         que en su liga aparte. */
+      if (esUno && (cuota > CFG.cuotaMaxima || cuota < (CFG.cuotaMinima ?? 0))) continue;
       const mejor = porFam.get(famKey);
       if (mejor) {
         E.hermanas++;   /* otra línea de la misma familia con menos ventaja */
@@ -849,7 +855,8 @@ async function barrer({ completo = true, horasMax = null, sids = null } = {}) {
       ts: new Date().toISOString(), horas: horasMax ?? CFG.horizonteHoras,
       partidos: salida.partidos, ligas: salida.ligas, requests: REQ,
       senales: salida.senales.map(s => ({ partido: s.partido, liga: s.liga, inicio: s.inicio,
-        lado: s.lado, cuota: s.cuota, justo: s.justo, vent: s.vent, link: s.link || '' })),
+        lado: s.lado, cuota: s.cuota, justo: s.justo, vent: s.vent, link: s.link || '',
+        ...(s.paralela ? { paralela: true } : {}) })),
       espejo: (salida.espejo || []).length,
     }));
     guardarLive();
