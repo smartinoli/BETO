@@ -8,7 +8,7 @@
   "kellyDivisor": 4,
   "topePctBanca": 0.05,
   "montoMinimo": 5000,
-  "cuotaMaxima": 1.90,
+  "cuotaMaxima": 1.9,
   "anticipacionMin": 15,
   "horizonteHoras": 24,
   "margenLocal": 0.0,
@@ -20,11 +20,13 @@
   "umbralCastigado": 0.035,
   "devig": "pow",
   "foco": {
-    "10": "^AH 1er tiempo · .+ -0\\.5$"
+    "10": "^AH 1er tiempo · .+ -(0\\.5|1)$"
   },
   "espejo1X2": true,
   "comentarioEspejo": "lee la misma apuesta desde el 1X2 de primer tiempo y la reporta APARTE; no escribe al registro",
-  "barridoDeportes": ["10"],
+  "barridoDeportes": [
+    "10"
+  ],
   "cuotaMinima": 1.55,
   "usarCongeladas": false,
   "comentarioCongeladas": "acepta cuotas con active:false (feed detenido). Cada señal avisa cuántas horas tiene: hay que verificarla en pantalla",
@@ -52,5 +54,6 @@
     "11": "Básquet",
     "12": "Tenis",
     "13": "Béisbol"
-  }
+  },
+  "comentarioFoco": "dos líneas en paralelo: -0.5 (la que jugamos) y -1 (en pruebas, solo recolectar). La bitácora las mide en pestañas separadas y nunca las mezcla"
 }

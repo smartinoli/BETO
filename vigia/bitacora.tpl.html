@@ -78,6 +78,17 @@
   h2{font-family:var(--disp);font-weight:600;font-size:19px;margin:0;letter-spacing:-.01em}
   .lead{margin:0;color:var(--muted);font-size:14px;max-width:66ch}
 
+  .pestanas{display:flex;gap:2px;margin-top:20px;border-bottom:2px solid var(--line-fuerte)}
+  .pest{font:inherit;font-family:var(--disp);font-weight:600;font-size:15px;color:var(--muted);
+    background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;
+    padding:9px 16px;cursor:pointer;display:flex;align-items:baseline;gap:7px;white-space:nowrap}
+  .pest:hover{color:var(--ink)}
+  .pest[aria-selected="true"]{color:var(--acento);border-bottom-color:var(--acento)}
+  .pest .sub{font-family:var(--sans);font-weight:400;font-size:11.5px;color:var(--muted)}
+  .pest .cuenta{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted);
+    background:var(--frio);border-radius:9px;padding:1px 7px}
+  .pest[aria-selected="true"] .cuenta{background:var(--acento-tenue);color:var(--acento)}
+  .pest:focus-visible{outline:2px solid var(--acento);outline-offset:-2px}
   .rotulo-tiles{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;
     color:var(--muted);margin:14px 0 6px}
   .rotulo-tiles:first-of-type{margin-top:0}
@@ -183,6 +194,7 @@
       <button type="button" class="btn" id="token-ok">Conectar</button>
     </div>
     <p id="estado" role="status"></p>
+    <div class="pestanas" id="pestanas" role="tablist" aria-label="Línea del hándicap"></div>
   </header>
 
   <section>
@@ -300,9 +312,17 @@ const sello = iso => relojCL(iso) + ' (' + hace(iso) + ')';
 /* estado de cada tabla: orden + filtros. El render parte SIEMPRE de los datos,
    nunca del DOM, así refrescar no pierde lo que el usuario tenía puesto. */
 const st = {
+  linea: '-0.5',        /* pestaña activa: las dos líneas nunca se mezclan */
   hist: { col: 'ts', dir: 1, num: true, q: '' },
   corr: { col: 'vent', dir: -1, num: true, q: '', banda: null },
 };
+/* la línea sale del final del lado ("Betis -0.5" -> "-0.5") */
+const lineaDe = e => (String(e.lado).match(/(-?[\d.]+)\s*$/) || [])[1] || '?';
+const esLinea = e => lineaDe(e) === st.linea;
+const PESTANAS = [
+  { id: '-0.5', et: '−0.5', sub: 'gana el 1er tiempo' },
+  { id: '-1',   et: '−1',   sub: 'en pruebas · gana por 2+' },
+];
 
 function focoRe() { try { return new RegExp(DATOS.criterios.foco) } catch { return /^AH 1er tiempo/ } }
 const enFoco = e => focoRe().test('AH 1er tiempo · ' + e.lado);
@@ -310,7 +330,7 @@ const enFoco = e => focoRe().test('AH 1er tiempo · ' + e.lado);
 function filasHist() {
   const c = DATOS.criterios;
   return (DATOS.historico || [])
-    .filter(e => CERRADO.includes(e.estado) && enFoco(e)
+    .filter(e => CERRADO.includes(e.estado) && enFoco(e) && esLinea(e)
       && e.cuota >= c.cuotaMinima && e.cuota <= c.cuotaMaxima)
     .map(e => ({ ...e, ts: Date.parse(e.inicio) || 0, u: uni(e) }));
 }
@@ -348,9 +368,11 @@ function filaTiles(pobla, notaApuestas) {
   const unidades = pobla.reduce((s, e) => s + e.u, 0);
   const roi = pobla.length ? unidades / pobla.length * 100 : 0;
   const r = rangoRoi(pobla.map(e => e.u));
+  const dec = pobla.filter(e => e.estado !== 'E').length;   /* las nulas no informan */
   const sig = v => (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(0) + '%';
   return '<div class="tile"><span class="k">Apuestas</span><span class="val">' + pobla.length +
-      '</span><span class="note">' + notaApuestas + '</span></div>' +
+      '</span><span class="note">' + notaApuestas +
+      (pobla.length - dec ? ' · ' + dec + ' decididas' : '') + '</span></div>' +
     '<div class="tile"><span class="k">Récord</span><span class="val">' + (rec.G + rec.MG) + '<small>G</small> ' +
       (rec.P + rec.MP) + '<small>P</small> ' + rec.E + '<small>E</small></span><span class="note">ganadas · perdidas · nulas</span></div>' +
     '<div class="tile"><span class="k">Unidades</span><span class="val ' + (unidades >= 0 ? 'gano' : 'perdio') + '">' +
@@ -358,8 +380,26 @@ function filaTiles(pobla, notaApuestas) {
     '<div class="tile"><span class="k">ROI por unidad</span><span class="val ' + (roi >= 0 ? 'gano' : 'perdio') + '">' +
       (roi >= 0 ? '+' : '−') + Math.abs(roi).toFixed(1) + '%</span><span class="note">cada apuesta pesa igual</span></div>' +
     (r ? '<div class="tile"><span class="k">Cuánto creerle</span><span class="val rango">' +
-      sig(r.bajo) + ' a ' + sig(r.alto) + '</span><span class="note">rango 90% · ' +
-      Math.round(r.pRojo * 100) + '% de que el filo real sea negativo</span></div>' : '');
+      sig(r.bajo) + ' a ' + sig(r.alto) + '</span><span class="note">' +
+      /* con pocas decididas el remuestreo no puede sacar una derrota que nunca
+         pasó: el rango sale falsamente optimista. Mejor decirlo que esconderlo. */
+      (dec < 15
+        ? '⚠ solo ' + dec + ' decididas (' + (pobla.length - dec) + ' nulas): el rango todavía no significa nada'
+        : 'rango 90% · ' + Math.round(r.pRojo * 100) + '% de que el filo real sea negativo') +
+      '</span></div>' : '');
+}
+const etiqueta = () => (PESTANAS.find(p => p.id === st.linea) || PESTANAS[0]).et;
+function renderPestanas() {
+  const hist = DATOS.historico || [], sen = (DATOS.corrida || {}).senales || [];
+  $('#pestanas').innerHTML = PESTANAS.map(p => {
+    /* la cuenta es lo vivo: señales de la corrida que aún no empiezan */
+    const n = sen.filter(x => lineaDe(x) === p.id && (Date.parse(x.inicio) || 0) > Date.now()).length;
+    const cerradas = hist.filter(e => CERRADO.includes(e.estado) && lineaDe(e) === p.id).length;
+    return '<button type="button" role="tab" class="pest" data-linea="' + p.id +
+      '" aria-selected="' + (st.linea === p.id) + '">' + p.et +
+      '<span class="sub">' + p.sub + '</span>' +
+      '<span class="cuenta">' + n + ' / ' + cerradas + '</span></button>';
+  }).join('');
 }
 function renderTiles(todasHist) {
   /* dos filas, mismas métricas. Arriba el balance del criterio (rango de
@@ -370,15 +410,15 @@ function renderTiles(todasHist) {
   const piso = Math.max(DATOS.criterios.ventajaMinima, 0);
   const vivas = todasHist.filter(e => !e.congelada && e.vent >= piso);
   const todas05 = (DATOS.historico || [])
-    .filter(e => CERRADO.includes(e.estado) && enFoco(e)
+    .filter(e => CERRADO.includes(e.estado) && enFoco(e) && esLinea(e)
       && e.cuota >= DATOS.criterios.cuotaMinima && e.cuota <= DATOS.criterios.cuotaMaxima)
     .map(e => ({ ...e, u: uni(e) }));
   $('#tiles').innerHTML = filaTiles(vivas, 'vivas · ventaja ≥ 0 · cuota ' +
     DATOS.criterios.cuotaMinima.toFixed(2) + '–' + DATOS.criterios.cuotaMaxima.toFixed(2));
-  $('#rot-sv').textContent = 'Todas las −0.5 en cuota ' + DATOS.criterios.cuotaMinima.toFixed(2) +
+  $('#rot-sv').textContent = 'Todas las ' + etiqueta() + ' en cuota ' + DATOS.criterios.cuotaMinima.toFixed(2) +
     '–' + DATOS.criterios.cuotaMaxima.toFixed(2) + ' · nuevas y antiguas, con y sin valor';
   $('#rot-sv').hidden = !todas05.length;
-  $('#tiles-sv').innerHTML = todas05.length ? filaTiles(todas05, 'todas las −0.5 cerradas') : '';
+  $('#tiles-sv').innerHTML = todas05.length ? filaTiles(todas05, 'todas las ' + etiqueta() + ' cerradas') : '';
 }
 
 function renderHist() {
@@ -405,7 +445,7 @@ function renderHist() {
 
 function renderCorrida() {
   const c = DATOS.corrida || { senales: [] };
-  const todas = (c.senales || []).map(x => ({ ...x, ts: Date.parse(x.inicio) || 0 }));
+  const todas = (c.senales || []).filter(esLinea).map(x => ({ ...x, ts: Date.parse(x.inicio) || 0 }));
   /* los que ya partieron salen de la lista visible: su cuota prematch ya no existe */
   const futuras = todas.filter(x => x.ts > Date.now());
   $('#partieron').textContent = todas.length - futuras.length
@@ -433,8 +473,7 @@ function renderCorrida() {
 
 function render() {
   const cr = DATOS.criterios;
-  const linea = /-0\\.5/.test(cr.foco) ? '−0.5' : '−(x)';
-  $('#criterio').textContent = 'hándicap asiático ' + linea + ' · primer tiempo · cuota ' +
+  $('#criterio').textContent = 'hándicap asiático ' + etiqueta() + ' · primer tiempo · cuota ' +
     cr.cuotaMinima.toFixed(2) + '–' + cr.cuotaMaxima.toFixed(2) + ' · fútbol';
   const c = DATOS.corrida;
   $('#sello').textContent = 'Foto del bot: ' + sello(DATOS.ts) +
@@ -442,6 +481,7 @@ function render() {
       c.partidos + ' partidos, ' + c.requests + ' requests' : '') + ' · hora de Chile';
   $('#pie').textContent = 'Generada desde vigia/live.json (rama ' + REPO.rama + '). Espejo 1X2: ' +
     ((c && c.espejo) || 0) + ' señal(es) en esta corrida, medidas aparte.';
+  renderPestanas();
   renderHist();
   renderCorrida();
   aplicarOrdenVisual();
@@ -471,6 +511,12 @@ function armarTabla(id, s) {
   }
   $(id + ' .buscar').addEventListener('input', ev => { s.q = ev.target.value; render(); });
 }
+$('#pestanas').addEventListener('click', ev => {
+  const b = ev.target.closest('.pest'); if (!b || b.dataset.linea === st.linea) return;
+  st.linea = b.dataset.linea;
+  st.corr.banda = null;            /* el filtro de banda no cruza de línea */
+  render();
+});
 armarTabla('#t-hist', st.hist);
 armarTabla('#t-corr', st.corr);
 $('#bandas').addEventListener('click', ev => {
