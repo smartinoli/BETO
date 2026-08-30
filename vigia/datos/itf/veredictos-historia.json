@@ -7332,7 +7332,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.04 de WTN a favor de Louis Wessels (5.84 contra 5.88), en F: la curva del grupo \"finales\" (n=79) da 50%. Ajustan: Eric Vanshelboim viene cediendo menos games (33% contra 39%): la forma contradice al nivel (−5 pts). Queda en 45%. El mercado la paga a 1.8: 51% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ0.04 de WTN a favor de Louis Wessels (5.84 contra 5.88), en F: la curva del grupo \"finales\" (n=79) da 50%. Ajustan: Eric Vanshelboim viene cediendo menos games (33% contra 39%): la forma contradice al nivel (−5 pts). Queda en 45%. El mercado la paga a 1.8: 51% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Louis Wessels",
+     "marcador": "7-5 6-1",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -7371,5 +7378,5 @@
    }
   ]
  },
- "actualizado": "2026-08-30T16:29:04.459Z"
+ "actualizado": "2026-08-30T18:32:08.641Z"
 }
