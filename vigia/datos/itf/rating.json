@@ -1,9 +1,9 @@
 {
  "nota": "Rating propio del Vigía: Elo anclado en WTN, movido por nuestros cuadros. itf-rating.mjs lo reconstruye.",
- "generado": "2026-08-30T15:13:02.274Z",
+ "generado": "2026-08-30T16:24:02.730Z",
  "escala": 81.5,
  "mediaWtn": 13.96,
- "partidosUsados": 3136,
+ "partidosUsados": 3141,
  "jugadores": [
   {
    "id": 800311444,
@@ -24,10 +24,10 @@
   {
    "id": 800376698,
    "nombre": "Daniel Michalski",
-   "elo": 2416.4,
-   "partidos": 9,
+   "elo": 2417,
+   "partidos": 10,
    "wtn": 3.45,
-   "wtnImplicito": 2.72
+   "wtnImplicito": 2.71
   },
   {
    "id": 800437424,
@@ -102,6 +102,14 @@
    "wtnImplicito": 3.55
   },
   {
+   "id": 800252366,
+   "nombre": "Andrej Martin",
+   "elo": 2342.9,
+   "partidos": 5,
+   "wtn": 4.18,
+   "wtnImplicito": 3.62
+  },
+  {
    "id": 800311347,
    "nombre": "Daniel Masur",
    "elo": 2341.5,
@@ -148,22 +156,6 @@
    "partidos": 2,
    "wtn": 3.41,
    "wtnImplicito": 3.7
-  },
-  {
-   "id": 800252366,
-   "nombre": "Andrej Martin",
-   "elo": 2333.4,
-   "partidos": 4,
-   "wtn": 4.18,
-   "wtnImplicito": 3.74
-  },
-  {
-   "id": 800330677,
-   "nombre": "Dmitry Popko",
-   "elo": 2321,
-   "partidos": 7,
-   "wtn": 3.66,
-   "wtnImplicito": 3.89
   },
   {
    "id": 800394740,
@@ -244,6 +236,14 @@
    "partidos": 1,
    "wtn": 3.43,
    "wtnImplicito": 4.08
+  },
+  {
+   "id": 800330677,
+   "nombre": "Dmitry Popko",
+   "elo": 2302.6,
+   "partidos": 8,
+   "wtn": 3.66,
+   "wtnImplicito": 4.12
   },
   {
    "id": 800455936,
@@ -454,14 +454,6 @@
    "wtnImplicito": 4.71
   },
   {
-   "id": 800564491,
-   "nombre": "Gabriel Ghetu",
-   "elo": 2253.5,
-   "partidos": 8,
-   "wtn": 5.06,
-   "wtnImplicito": 4.72
-  },
-  {
    "id": 800514263,
    "nombre": "Enzo Aguiard",
    "elo": 2252.9,
@@ -555,6 +547,14 @@
    "elo": 2235.3,
    "partidos": 3,
    "wtn": 4.57,
+   "wtnImplicito": 4.94
+  },
+  {
+   "id": 800564491,
+   "nombre": "Gabriel Ghetu",
+   "elo": 2235.2,
+   "partidos": 9,
+   "wtn": 5.06,
    "wtnImplicito": 4.94
   },
   {
@@ -830,6 +830,14 @@
    "wtnImplicito": 5.61
   },
   {
+   "id": 800527714,
+   "nombre": "Radu David Turcanu",
+   "elo": 2180,
+   "partidos": 6,
+   "wtn": 6.73,
+   "wtnImplicito": 5.62
+  },
+  {
    "id": 800361373,
    "nombre": "Yusuke Takahashi",
    "elo": 2179.6,
@@ -1094,14 +1102,6 @@
    "wtnImplicito": 6.07
   },
   {
-   "id": 800527714,
-   "nombre": "Radu David Turcanu",
-   "elo": 2143.4,
-   "partidos": 5,
-   "wtn": 6.73,
-   "wtnImplicito": 6.07
-  },
-  {
    "id": 800367967,
    "nombre": "Vladyslav Orlov",
    "elo": 2142.4,
@@ -1212,6 +1212,14 @@
    "partidos": 9,
    "wtn": 5.65,
    "wtnImplicito": 6.18
+  },
+  {
+   "id": 800482991,
+   "nombre": "Branko Djuric",
+   "elo": 2133.9,
+   "partidos": 12,
+   "wtn": 6.69,
+   "wtnImplicito": 6.19
   },
   {
    "id": 800512746,
@@ -1404,14 +1412,6 @@
    "partidos": 1,
    "wtn": 5.78,
    "wtnImplicito": 6.4
-  },
-  {
-   "id": 800482991,
-   "nombre": "Branko Djuric",
-   "elo": 2115.6,
-   "partidos": 11,
-   "wtn": 6.69,
-   "wtnImplicito": 6.41
   },
   {
    "id": 800485850,
@@ -2078,6 +2078,14 @@
    "wtnImplicito": 6.92
   },
   {
+   "id": 800454364,
+   "nombre": "John Sperle",
+   "elo": 2074.1,
+   "partidos": 9,
+   "wtn": 7.13,
+   "wtnImplicito": 6.92
+  },
+  {
    "id": 800520779,
    "nombre": "Fryderyk Lechno-Wasiutynski",
    "elo": 2073.7,
@@ -2100,14 +2108,6 @@
    "partidos": 4,
    "wtn": 6.32,
    "wtnImplicito": 6.95
-  },
-  {
-   "id": 800431935,
-   "nombre": "Ignacio Monzon",
-   "elo": 2071.1,
-   "partidos": 9,
-   "wtn": 7.82,
-   "wtnImplicito": 6.96
   },
   {
    "id": 800412442,
@@ -2214,14 +2214,6 @@
    "wtnImplicito": 7.08
   },
   {
-   "id": 800454364,
-   "nombre": "John Sperle",
-   "elo": 2060.8,
-   "partidos": 8,
-   "wtn": 7.13,
-   "wtnImplicito": 7.08
-  },
-  {
    "id": 800511379,
    "nombre": "Ofek Shimanov",
    "elo": 2060.8,
@@ -2283,6 +2275,14 @@
    "elo": 2058,
    "partidos": 4,
    "wtn": 7.08,
+   "wtnImplicito": 7.12
+  },
+  {
+   "id": 800431935,
+   "nombre": "Ignacio Monzon",
+   "elo": 2057.8,
+   "partidos": 10,
+   "wtn": 7.82,
    "wtnImplicito": 7.12
   },
   {
@@ -2686,14 +2686,6 @@
    "wtnImplicito": 7.47
   },
   {
-   "id": 800465978,
-   "nombre": "Manuel Plunger",
-   "elo": 2029.3,
-   "partidos": 5,
-   "wtn": 8.39,
-   "wtnImplicito": 7.47
-  },
-  {
    "id": 800396686,
    "nombre": "Wojciech Marek",
    "elo": 2029,
@@ -2796,6 +2788,14 @@
    "partidos": 3,
    "wtn": 6.42,
    "wtnImplicito": 7.58
+  },
+  {
+   "id": 800465978,
+   "nombre": "Manuel Plunger",
+   "elo": 2019.8,
+   "partidos": 6,
+   "wtn": 8.39,
+   "wtnImplicito": 7.59
   },
   {
    "id": 800413223,
@@ -6232,10 +6232,10 @@
   {
    "id": 800595243,
    "nombre": "Michael Savano",
-   "elo": 1734.1,
-   "partidos": 6,
+   "elo": 1733.5,
+   "partidos": 7,
    "wtn": 14.93,
-   "wtnImplicito": 11.09
+   "wtnImplicito": 11.1
   },
   {
    "id": 800522153,

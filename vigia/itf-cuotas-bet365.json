@@ -1,5 +1,127 @@
 {
- "generado": "2026-08-30T15:13:03.007Z",
+ "generado": "2026-08-30T04:56:24.260Z",
  "casa": "bet365",
- "cuotas": []
+ "cuotas": [
+  {
+   "torneo": "M15 Bucharest",
+   "p1": "Radu David Turcanu",
+   "p2": "Gabriel Ghetu",
+   "g1": 2.25,
+   "g2": 1.571,
+   "visto": "2026-08-30T04:55Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034491635126684",
+   "inicio": "2026-08-30T08:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Maribor",
+   "p1": "Samuele Pieri",
+   "p2": "Sebastian Dominko",
+   "g1": 1.833,
+   "g2": 1.833,
+   "visto": "2026-08-30T04:55Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129038831635113803",
+   "inicio": "2026-08-30T08:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Pecs",
+   "p1": "John Sperle",
+   "p2": "Ignacio Monzon",
+   "g1": 1.364,
+   "g2": 3,
+   "visto": "2026-08-30T04:55Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129054111635113916",
+   "inicio": "2026-08-30T08:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Vienna",
+   "p1": "Andrej Martin",
+   "p2": "Manuel Plunger",
+   "g1": 1.2,
+   "g2": 4.333,
+   "visto": "2026-08-30T04:55Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129040881635126685",
+   "inicio": "2026-08-30T09:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Dev Javia",
+   "p2": "Aaron Funk",
+   "g1": 1.833,
+   "g2": 1.833,
+   "visto": "2026-08-30T04:55Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129043431635103296",
+   "inicio": "2026-08-30T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Lausanne",
+   "p1": "Andrey Chepelev",
+   "p2": "Henry Bernet",
+   "g1": 4.333,
+   "g2": 1.2,
+   "visto": "2026-08-30T04:55Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129043471635127046",
+   "inicio": "2026-08-30T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Poznan",
+   "p1": "Daniel Michalski",
+   "p2": "Michael Savano",
+   "g1": 1.071,
+   "g2": 7.5,
+   "visto": "2026-08-30T04:56Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129054091635126709",
+   "inicio": "2026-08-30T09:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Kursumlijska Banja ",
+   "p1": "Branko Djuric",
+   "p2": "Dmitry Popko",
+   "g1": 1.667,
+   "g2": 2.1,
+   "visto": "2026-08-30T04:56Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129039781635137528",
+   "inicio": "2026-08-30T09:30:00.000Z"
+  },
+  {
+   "torneo": "M15 Allershausen",
+   "p1": "Jannik Maute",
+   "p2": "Calvin Mueller",
+   "g1": 2.25,
+   "g2": 1.571,
+   "visto": "2026-08-30T04:56Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129036491635126712",
+   "inicio": "2026-08-30T11:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Oldenzaal",
+   "p1": "Louis Wessels",
+   "p2": "Eric Vanshelboim",
+   "g1": 1.8,
+   "g2": 1.909,
+   "visto": "2026-08-30T04:56Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129036371635137491",
+   "inicio": "2026-08-30T13:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Champaign, IL",
+   "p1": "Jakub Vrba",
+   "p2": "Bryce Nakashima",
+   "g1": 3.35,
+   "g2": 1.26,
+   "visto": "2026-08-30T04:56Z",
+   "fuente": "betano",
+   "fixtureId": "pn129035661635137553",
+   "inicio": "2026-08-30T15:00:00.000Z"
+  }
+ ]
 }

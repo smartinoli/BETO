@@ -407,21 +407,23 @@ for (const q of cuotas) {
    ============================================================ */
 const MALAS = new Set(['parejo', 'jr-incognito']);
 
-/* EL MANUAL (acordado con Sebastián el 2026-08-26, tras el decantador):
-   por ahora hay UNA casilla que apunta a plata, más la brecha.
+/* EL MANUAL (acordado el 2026-08-26; re-evaluado el 2026-08-30 con 234
+   partidos calificados): UNA casilla que apunta a plata, más la brecha.
 
-   LA CASILLA — el favorito del mercado paga entre 1.20 y 1.39 Y nuestro
-   modelo le da 70% o más. Es la única celda del decantador donde algo
-   manda: 9/9 en el registro, rindiendo +26%. Con el modelo tibio, ese
-   mismo favorito cayó 4 de 7 — se pasa.
+   LA CASILLA — el favorito del mercado paga entre 1.20 y 1.99 Y nuestro
+   modelo le da 80% o más. Es donde la escalera de calibración dice que
+   el modelo SUBESTIMA (dice 85, cumple 94): medido 23/25, rindiendo
+   +27%. El umbral viejo (70%) diluía la celda: rendía +12% porque la
+   banda 70–79 cumple 73% — acierta el partido, no la plata.
 
    LA BRECHA — Betano paga 3%+ por encima del precio justo de bet365.
    No depende de nuestro modelo y vale en cualquier tramo (Wygona, Brown).
 
-   TODO LO DEMÁS SE MIRA, NO SE APUESTA: bajo 1.20 no paga la pena;
-   en 1.40–1.99 ningún criterio separa todavía (y llevarle la contra al
-   precio ahí perdió 5 de 6); sobre 2.00 no sabe nadie. La contra queda
-   en observación en el historial, no en las elegidas. */
+   TODO LO DEMÁS SE MIRA, NO SE APUESTA: bajo 1.20 no paga la pena
+   (gana 91% pero el precio lo come); 70–79 va calibrado pero sin valor
+   (rinde −1%); bajo 70 el modelo SOBRESTIMA (dice 65, cumple 58);
+   sobre 2.00 no sabe nadie. La contra queda en observación en el
+   historial, no en las elegidas. */
 const casillaDe = f => {
   if (!f.q.g1 || !f.q.g2 || !f.v?.nivel) return null;
   const ladoFm = f.q.g1 <= f.q.g2 ? 1 : 2;
@@ -438,7 +440,7 @@ const jugadaDe = f => {
       rinde: f.brecha.mejor.ev, sharp: f.brecha.mejor.sharp, pSharp: f.brecha.mejor.p };
   const mal = (f.v.alertas || []).some(a => MALAS.has(a.clave));
   const k = casillaDe(f);
-  if (!mal && k && k.acuerdo && k.cFm >= 1.20 && k.cFm < 1.40 && k.pFm >= 0.70)
+  if (!mal && k && k.acuerdo && k.cFm >= 1.20 && k.cFm < 2.00 && k.pFm >= 0.80)
     return { tipo: 'casilla', quien: k.quien, cuota: k.cFm, prob: k.pFm,
       rinde: f.v.precio.val, rindeMercado: f.v.precio.valMercado };
   return null;
@@ -462,9 +464,10 @@ const motivoDe = f => {
   if (mal.includes('jr-incognito')) return 'el rival es junior y no sé su ranking';
   const k = casillaDe(f);
   if (!k) return 'sin cuota de los dos lados';
-  if (k.cFm < 1.20) return 'trámite: gana casi siempre, pero a este precio no paga la pena';
-  if (k.cFm < 1.40) return 'favorito real pero el modelo está tibio (bajo 70%): cayó 4 de 7 así';
-  if (k.cFm < 2.00) return 'zona de análisis: ningún criterio manda todavía — se mira, no se apuesta';
+  if (k.cFm < 1.20) return 'trámite: gana casi siempre (91% medido), pero a este precio no paga la pena';
+  if (k.cFm < 2.00) return k.pFm >= 0.70
+    ? 'el modelo va en 70–79: esa banda cumple lo que dice (73%) pero rinde −1% — se acierta el partido, no la plata'
+    : 'el modelo está bajo 70: esa banda SOBRESTIMA (dice 65, cumple 58) — se mira, no se apuesta';
   return 'sin favorito de verdad (2.00 o más): nadie sabe, nosotros tampoco';
 };
 
@@ -525,8 +528,8 @@ function enSimple(f) {
     + `${Math.round(1 / Math.max(0.01, 1 - n.p))}. Cuando pase no es que nos equivocamos — a esta cuota una `
     + `derrota se lleva ${Math.ceil(1 / (pr.cuota - 1))} aciertos.`;
   if (j?.tipo === 'casilla') return { fav, razon, cuenta, riesgo,
-    mercado: mercado + ` Es LA CASILLA del manual: favorito del mercado entre 1.20 y 1.39 con respaldo `
-      + `fuerte nuestro — la única celda del decantador que hasta hoy apunta a plata (9/9, rindiendo +26% en el registro).` };
+    mercado: mercado + ` Es LA CASILLA del manual: favorito del mercado entre 1.20 y 1.99 con nuestro modelo en `
+      + `80% o más — la banda donde el modelo SUBESTIMA (dice 85, cumple 94): 23/25 medido, rindiendo +27%.` };
   return { fav, razon, mercado, cuenta, riesgo };
 }
 
@@ -674,7 +677,7 @@ if (ELEGIDAS.length) {
   }
 } else {
   console.log('  HOY NADIE PISA LA CASILLA.');
-  console.log('  Ningún favorito del mercado entre 1.20 y 1.39 con respaldo de 70%+ nuestro,');
+  console.log('  Ningún favorito del mercado entre 1.20 y 1.99 con nuestro modelo en 80%+,');
   console.log('  y sin brecha contra bet365. El resto del tablero se mira, no se apuesta.');
 }
 const descartadas = filas.filter(f => f.v?.precio && !ELEGIDAS.includes(f));
@@ -823,6 +826,25 @@ details[open] summary::before{content:"▾ "}
 .eloq{color:var(--ojo)}
 .tresop{margin:8px 0 2px;font:500 12.5px "IBM Plex Mono",monospace;color:var(--ink3)}
 .tresop b{color:var(--ink);font-weight:600}
+/* el veredicto con su etiqueta de confianza (bandas de la escalera medida) */
+.vered{margin-top:3px;font:600 11.5px "IBM Plex Mono",monospace;display:inline-block;
+  padding:1px 7px;border-radius:9px;border:1px solid transparent}
+.b-firme{color:var(--pos);background:var(--pos-soft);border-color:var(--pos)}
+.b-probable{color:var(--ink2);background:var(--sunk);border-color:var(--rule)}
+.b-fragil{color:var(--ojo);background:var(--ojo-soft);border-color:var(--ojo)}
+.b-abierto{color:var(--ink3);background:var(--sunk);border-color:var(--rule)}
+.ops{font:500 12.5px "IBM Plex Mono",monospace;white-space:nowrap}
+.ops .op.disc{color:var(--neg);font-weight:700}
+/* la barra de filtros de la tabla */
+.fbar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0 0 12px;
+  padding:10px 12px;background:var(--panel);border:1px solid var(--rule);border-radius:10px}
+.fbar .fgrp{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
+.fbar .fgrp i{font:600 11px system-ui;color:var(--ink3);margin-right:3px;text-transform:uppercase;letter-spacing:.04em}
+.fbar button{font:500 12px "IBM Plex Mono",monospace;padding:3px 9px;border-radius:8px;
+  border:1px solid var(--rule);background:transparent;color:var(--ink2);cursor:pointer}
+.fbar button.activo{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+#fcuenta{font:500 12px "IBM Plex Mono",monospace;color:var(--ink3);margin-left:auto}
+tr[hidden],tr.det[hidden]{display:none}
 .envt tr.tot td{border-top:2px solid var(--rule);border-bottom:0}
 .envt tr.grupo td{background:var(--sunk);padding:10px;white-space:normal;border-bottom:1.5px solid var(--rule)}
 .envt tr.grupo b{font:700 12px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.02em}
@@ -879,11 +901,12 @@ footer b{color:var(--ink2)}
   </div>
 </header>
 <div class="nada" style="border-left-color:var(--accent)">
-  <b>El manual, mientras el decantador no diga otra cosa.</b>
-  Se apuesta en dos lugares y nada más: <b>la casilla</b> — el favorito del mercado paga entre 1.20 y 1.39
-  y nuestro modelo le da 70% o más (9/9 en el registro, +26%) — y <b>la brecha</b> — Betano paga 3%+ sobre el
-  precio justo de bet365, en cualquier tramo. Todo lo demás se mira: bajo 1.20 no paga la pena; en 1.40–1.99
-  ningún criterio separa todavía (y llevarle la contra al precio ahí perdió 5 de 6); sobre 2.00 no sabe nadie.
+  <b>El manual (re-evaluado el 30-08 con 234 partidos calificados).</b>
+  Se apuesta en dos lugares y nada más: <b>la casilla</b> — el favorito del mercado paga entre 1.20 y 1.99
+  y nuestro modelo le da <b>80% o más</b> (medido 23/25, rindiendo +27%: en esa banda el modelo dice 85 y cumple 94) —
+  y <b>la brecha</b> — Betano paga 3%+ sobre el precio justo de bet365, en cualquier tramo.
+  Todo lo demás se mira: bajo 1.20 gana 91% pero el precio lo come; con el modelo en 70–79 se acierta el
+  partido (cumple 73%) pero no la plata (rinde −1%); bajo 70 el modelo sobrestima; sobre 2.00 no sabe nadie.
 </div>
 ${ELEGIDAS.length ? ELEGIDAS.map(tarjeta).join('') : ''}
 ${''/* función de fila, definida inline */}
@@ -900,45 +923,65 @@ ${(() => { globalThis.filaVeredicto = (v, i) => {
     const eloTx = r ? ` · <span class="eloq">juega como ${r.wtnImplicito} (elo ${Math.round(r.elo)}, ${r.partidos}pj)</span>` : '';
     return `<div><b>${esc(j.nombre)}</b>${c ? ` <span class="cq">a ${c}</span>` : ''} — WTN ${j.wtn ?? '—'}${eloTx} · ${j.nacido ? 2026 - j.nacido + ' años' : 'edad —'} · ATP ${j.atp ?? '—'} · ${trayHtml(j)}</div>`;
   }).join('') : '';
-  /* las tres opiniones frente a frente, para comparar de un vistazo */
+  /* las tres opiniones frente a frente; .disc = esa opinión ve ganador al OTRO */
   const pEloGana = v.crit?.dElo != null
     ? 1 / (1 + Math.pow(10, -((v.lado === v.crit.ladoFm ? v.crit.dElo : -v.crit.dElo)) / 400)) : null;
-  const opiniones = `<div class="tresop">gana ${esc(v.gana.split(' ').slice(-1)[0])} según:
-    <b>modelo ${Math.round(v.p * 100)}%</b>
-    ${pEloGana != null ? `· <b>nuestro elo ${Math.round(pEloGana * 100)}%</b>` : ''}
-    ${v.pMercado != null ? `· <b>mercado ${Math.round(v.pMercado * 100)}%</b>` : ''}</div>`;
-  return `<tr class="${res ? (hoyV.acerto ? 'ok' : 'mal') : ''}">
+  const ops = [['modelo', 'M', v.p], ['nuestro elo', 'E', pEloGana], ['mercado', '$', v.pMercado]]
+    .filter(x => x[2] != null);
+  const acuerdo = ops.length >= 2 && ops.every(x => x[2] >= 0.5);
+  const opsHtml = ops.map(([nom, sig, p]) =>
+    `<span class="op${p < .5 ? ' disc' : ''}" title="${nom}: ${p < .5 ? 've ganador al OTRO' : 'de acuerdo'}">${sig} ${Math.round(p * 100)}</span>`)
+    .join('<span class="sec"> · </span>');
+  /* la etiqueta de confianza sale de la ESCALERA DE CALIBRACIÓN medida
+     (234 calificados al 30-08), no del número pelado */
+  const banda = v.p >= .80 ? ['firme', 'banda 80%+: el modelo dice 85 y cumple 94 (33/35 medido)']
+    : v.p >= .70 ? ['probable', 'banda 70–79: cumple lo que dice (73%) pero a precio de mercado rinde −1%']
+    : v.p >= .60 ? ['frágil', 'banda 60–69: dice 65 y cumple 58 — el modelo sobrestima acá']
+    : ['abierto', 'bajo 60%: favorito nuestro de puro trámite, acá no sabe nadie'];
+  const cFav = v.crit?.cuota ?? (v.g1 && v.g2 ? Math.min(v.g1, v.g2) : null);
+  return `<tr class="${res ? (hoyV.acerto ? 'ok' : 'mal') : ''}" data-fila
+    data-p="${Math.round(v.p * 100)}" data-cf="${cFav ?? ''}"
+    data-et="${/^Q/i.test(v.etapa) ? 'q' : /^R/i.test(v.etapa) ? 't' : 'f'}"
+    data-ac="${acuerdo ? 1 : 0}" data-ju="${v.jugada ? 1 : 0}">
     <td class="n sec">${i}</td>
-    <td class="quien">${esc(v.gana)}${cGana ? `<span class="cq">a ${cGana}</span>` : ''}</td>
+    <td class="quien">${esc(v.gana)}${cGana ? `<span class="cq">a ${cGana}</span>` : ''}
+      <div class="vered b-${banda[0] === 'frágil' ? 'fragil' : banda[0]}" title="${banda[1]}"><b>${Math.round(v.p * 100)}%</b> ${banda[0]}${v.jugada ? ' · ★' : ''}</div></td>
     <td class="sec">${esc(v.lado === 1 ? v.p2 : v.p1)}${cOtro ? `<span class="cq">a ${cOtro}</span>` : ''}</td>
     <td class="sec">${esc(v.torneo.replace(/^M\d+\+?H? /, ''))}${v.pais ? ', ' + esc(v.pais) : ''} · ${esc(v.etapa)}</td>
-    <td class="n"><b>${Math.round(v.p * 100)}%</b></td>
-    <td class="n sec">${v.pMercado != null ? Math.round(v.pMercado * 100) + '%' : '—'}${dif != null && Math.abs(dif) >= 0.12 ? ' <i class="dif">±</i>' : ''}</td>
+    <td class="ops">${opsHtml}${dif != null && Math.abs(dif) >= 0.12 ? ' <i class="dif" title="modelo y mercado separados 12+ puntos">±</i>' : ''}</td>
     <td class="sec">${v.señales.length ? esc(v.señales.join(' ')) : ''}</td>
     <td>${res ? (hoyV.acerto ? '✓ ' : '✗ ') + esc(res.ganador.split(' ').slice(-1)[0]) + ' ' + esc(res.marcador)
       : v.inicio && Date.parse(v.inicio) < Date.now() ? '<i class="sec" title="ya arrancó: la cuota mostrada es la de cierre, ya no apostable">en juego · cierre</i>'
       : '<i class="sec">por jugar</i>'}</td>
   </tr>
-  <tr class="det"><td></td><td colspan="7"><details><summary>análisis y datos crudos</summary>
-    ${opiniones}
+  <tr class="det"><td></td><td colspan="6"><details><summary>análisis y datos crudos</summary>
     <div class="crudo">${cr}</div>
     <p>${esc(v.razon)}</p></details></td></tr>`;
 }; return '' })()}
 <section class="verd">
   <h2 class="vt">Quién gana hoy</h2>
-  <p class="notaverd" style="margin:0 0 12px">Agrupado por el ACUERDO de tramos (2026-08-27): la categoría la fija
-    la cuota del favorito del mercado, y lo que significa cada tramo está medido sobre nuestro registro.</p>
+  <p class="notaverd" style="margin:0 0 12px">La etiqueta de cada veredicto (firme / probable / frágil / abierto)
+    sale de la escalera de calibración medida sobre 234 partidos calificados, no del número pelado.
+    En <b>opiniones</b>: M = nuestro modelo, E = nuestro Elo, $ = el mercado; en rojo la que ve ganador al otro.
+    La ★ marca lo jugable según el manual.</p>
+  <div class="fbar" id="fbar">
+    <span class="fgrp" data-dim="p"><i>modelo</i><button data-v="80">80%+</button><button data-v="70">70–79</button><button data-v="60">60–69</button><button data-v="0">&lt;60</button></span>
+    <span class="fgrp" data-dim="cf"><i>cuota fav.</i><button data-v="a">&lt;1.20</button><button data-v="b">1.20–1.39</button><button data-v="c">1.40–1.99</button><button data-v="d">2.00+</button></span>
+    <span class="fgrp" data-dim="et"><i>etapa</i><button data-v="q">qualy</button><button data-v="t">R1–R3</button><button data-v="f">QF+</button></span>
+    <span class="fgrp" data-dim="solo"><i>solo</i><button data-v="ac">las 3 de acuerdo</button><button data-v="ju">jugables ★</button></span>
+    <span id="fcuenta" class="sec"></span>
+  </div>
   <div class="envt"><table>
     <thead><tr><th></th><th>gana</th><th>contra</th><th>dónde</th>
-      <th class="n">modelo</th><th class="n">mercado</th><th>señales</th><th>resultado</th></tr></thead>
+      <th>opiniones</th><th>señales</th><th>resultado</th></tr></thead>
     <tbody>${(() => {
       const cuotaFav = v => { const f = filas.find(x => x.q.fixtureId === v.fixtureId || (x.f1.nombre === v.p1 && x.f2.nombre === v.p2));
         if (!f?.q.g1 || !f?.q.g2) return null; return Math.min(f.q.g1, f.q.g2); };
       const tramoDe = c => c == null ? 3 : c < 1.20 ? 0 : c < 1.40 ? 1 : c < 2.00 ? 2 : 3;
       const TRAMOS = [
-        ['TRÁMITE — favorito bajo 1.20', 'ganó 93% en nuestro registro (14/15). Casi nunca paga la pena apostarlo.'],
-        ['FAVORITOS REALES — 1.20 a 1.39', 'ganó 75% (12/16); cuando el modelo también lo respalda, 83% (10/12). Ojo: a ese precio, apostarlos TODOS rindió −4% — acá se acierta el partido, no necesariamente la plata.'],
-        ['ZONA DE ANÁLISIS — 1.40 a 1.99', 'el favorito del mercado gana solo 67% (14/21): acá el precio NO decide, se mira todo lo demás. (Honesto: nuestro modelo todavía no separa en esta zona — 67% con y sin su respaldo. Es donde el historial diario tiene que enseñarnos.)'],
+        ['TRÁMITE — favorito bajo 1.20', 'gana 91% (59/65 medido). Casi nunca paga la pena apostarlo.'],
+        ['FAVORITOS REALES — 1.20 a 1.39', 'gana 69% (38/55). Con el modelo en 80%+ es LA CASILLA (jugable); en 70–79 se acierta el partido pero no la plata.'],
+        ['ZONA DE ANÁLISIS — 1.40 a 1.99', 'el favorito del mercado gana solo 51% (58/114): el precio acá NO decide. Nuestro modelo sí separa ya: con 70%+ el favorito gana 71% (20/28), sin respaldo cae a 44% — y con 80%+ entra a la casilla.'],
         ['PAREJOS Y LARGOS — 2.00 o más', 'no hay favorito de verdad: nadie sabe, nosotros tampoco.'],
       ];
       const orden = [...VEREDICTOS].map(v => ({ v, c: cuotaFav(v), t: tramoDe(cuotaFav(v)) }))
@@ -946,7 +989,7 @@ ${(() => { globalThis.filaVeredicto = (v, i) => {
       let ultimo = -1, i = 0, out = '';
       for (const { v, t } of orden) {
         if (t !== ultimo) { ultimo = t;
-          out += `<tr class="grupo"><td colspan="8"><b>${TRAMOS[t][0]}</b><i> — ${TRAMOS[t][1]}</i></td></tr>`; }
+          out += `<tr class="grupo"><td colspan="7"><b>${TRAMOS[t][0]}</b><i> — ${TRAMOS[t][1]}</i></td></tr>`; }
         out += filaVeredicto(v, ++i);
       }
       return out;
@@ -956,6 +999,52 @@ ${(() => { globalThis.filaVeredicto = (v, i) => {
     ${Math.max(1, Math.round(VEREDICTOS.reduce((s, v) => s + (1 - v.p), 0)))} salgan al revés, casi siempre en la mitad de abajo.
     El <i class="dif">±</i> marca donde el modelo y el mercado se separan 12 puntos o más.</p>
 </section>
+<script>
+/* Filtros de la tabla: dentro de una dimensión los botones se suman (O);
+   entre dimensiones se cruzan (Y). Un encabezado de tramo sin filas
+   visibles debajo se esconde solo. */
+(() => {
+  const bar = document.getElementById('fbar'); if (!bar) return;
+  const cuerpo = bar.parentElement.querySelector('tbody');
+  const sel = { p: new Set(), cf: new Set(), et: new Set(), solo: new Set() };
+  const bandaP = p => p >= 80 ? '80' : p >= 70 ? '70' : p >= 60 ? '60' : '0';
+  const bandaC = c => !c ? null : c < 1.2 ? 'a' : c < 1.4 ? 'b' : c < 2 ? 'c' : 'd';
+  const aplica = () => {
+    let visto = 0, total = 0;
+    for (const tr of cuerpo.querySelectorAll('tr[data-fila]')) {
+      total++;
+      const ok = (!sel.p.size || sel.p.has(bandaP(+tr.dataset.p)))
+        && (!sel.cf.size || sel.cf.has(bandaC(parseFloat(tr.dataset.cf))))
+        && (!sel.et.size || sel.et.has(tr.dataset.et))
+        && (!sel.solo.has('ac') || tr.dataset.ac === '1')
+        && (!sel.solo.has('ju') || tr.dataset.ju === '1');
+      tr.hidden = !ok;
+      const det = tr.nextElementSibling;
+      if (det && det.classList.contains('det')) det.hidden = !ok;
+      if (ok) visto++;
+    }
+    const trs = [...cuerpo.rows];
+    for (let i = 0; i < trs.length; i++) {
+      if (!trs[i].classList.contains('grupo')) continue;
+      let alguna = false;
+      for (let j = i + 1; j < trs.length && !trs[j].classList.contains('grupo'); j++)
+        if (trs[j].hasAttribute('data-fila') && !trs[j].hidden) { alguna = true; break }
+      trs[i].hidden = !alguna;
+    }
+    const hayFiltro = sel.p.size || sel.cf.size || sel.et.size || sel.solo.size;
+    document.getElementById('fcuenta').textContent =
+      hayFiltro ? 'mostrando ' + visto + ' de ' + total : total + ' partidos';
+  };
+  bar.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    b.classList.toggle('activo');
+    const dim = b.closest('.fgrp').dataset.dim;
+    sel[dim][b.classList.contains('activo') ? 'add' : 'delete'](b.dataset.v);
+    aplica();
+  });
+  aplica();
+})();
+</script>
 ${(() => {
   const dias = Object.entries(historia.dias).sort((x, y) => y[0].localeCompare(x[0])).slice(0, 10);
   const conRes = dias.map(([f, arr]) => [f, arr.filter(v => v.res)]).filter(([, a]) => a.length);
@@ -1006,10 +1095,11 @@ ${(() => {
     <p class="notaverd" style="margin:0 0 4px">Sobre ${filasD.length} partidos calificados (${filasD.length - deDias} del registro
       + ${deDias} de los días que siguen). Regla de lectura: un criterio manda solo cuando sus dos intervalos NO se tocan —
       con estos n casi ninguno llega todavía, y eso también es información.</p>
-    <p class="notaverd" style="margin:0 0 12px">Lo que va decantando hasta hoy: en <b>1.20–1.39</b> el candidato más firme es
-      el respaldo fuerte de nuestro modelo (9/9 cuando le da 70%+, 3/7 cuando no — le falta un pelo para separar formalmente).
-      En <b>1.40–1.99</b> ningún criterio manda aún; el dato más incómodo es que cuando ahí el precio contradice al rating,
-      el mercado acertó 5 de 6 — la misma lección de Wygona y Brown. Cada día calificado afina estas celdas.</p>
+    <p class="notaverd" style="margin:0 0 12px">Lo que va decantando hasta hoy (re-evaluado el 30-08): el criterio que más
+      cerca está de mandar es el respaldo de nuestro modelo — en <b>1.20–1.39</b> el favorito con 70%+ ganó 88% (21/24) contra
+      55% sin él, y en <b>1.40–1.99</b> ganó 71% (20/28) contra 44% (los intervalos aún se rozan: formalmente no separa, pero
+      es el mismo patrón en los dos tramos). La escalera de calibración dice dónde está la plata: en la banda <b>80%+</b> el
+      modelo SUBESTIMA (dice 85, cumple 94) — por eso la casilla del manual pide 80, no 70. Cada día calificado afina estas celdas.</p>
     ${bloques}</section>`;
 })()}
 <footer>
