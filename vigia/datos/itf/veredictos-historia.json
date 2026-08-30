@@ -6970,7 +6970,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.67 de WTN a favor de Gabriel Ghetu (5.06 contra 6.73), en F: la curva del grupo \"finales\" (n=79) da 57%. Ajustan: Gabriel Ghetu viene cediendo menos games (38% contra 39%) (+1 pts). Queda en 58%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ1.67 de WTN a favor de Gabriel Ghetu (5.06 contra 6.73), en F: la curva del grupo \"finales\" (n=79) da 57%. Ajustan: Gabriel Ghetu viene cediendo menos games (38% contra 39%) (+1 pts). Queda en 58%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Radu David Turcanu",
+     "marcador": "6-2 6-3",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -7041,7 +7048,14 @@
      "forma",
      "previo"
     ],
-    "razon": "Δ0.69 de WTN a favor de John Sperle (7.13 contra 7.82), en F: la curva del grupo \"finales\" (n=79) da 53%. Ajustan: John Sperle viene cediendo menos games (31% contra 37%) (+4 pts); Ignacio Monzon llegó más lejos en su torneo anterior (−7 pts). Queda en 50%. El mercado la paga a 1.364: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −31% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ0.69 de WTN a favor de John Sperle (7.13 contra 7.82), en F: la curva del grupo \"finales\" (n=79) da 53%. Ajustan: John Sperle viene cediendo menos games (31% contra 37%) (+4 pts); Ignacio Monzon llegó más lejos en su torneo anterior (−7 pts). Queda en 50%. El mercado la paga a 1.364: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −31% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "John Sperle",
+     "marcador": "4-6 6-2 6-3",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -7075,7 +7089,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ4.21 de WTN a favor de Andrej Martin (4.18 contra 8.39), en F: la curva del grupo \"finales\" (n=79) da 68%. Ajustan: Manuel Plunger viene cediendo menos games (33% contra 38%): la forma contradice al nivel (−4 pts). Queda en 64%. El mercado la paga a 1.2: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ4.21 de WTN a favor de Andrej Martin (4.18 contra 8.39), en F: la curva del grupo \"finales\" (n=79) da 68%. Ajustan: Manuel Plunger viene cediendo menos games (33% contra 38%): la forma contradice al nivel (−4 pts). Queda en 64%. El mercado la paga a 1.2: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Andrej Martin",
+     "marcador": "6-0 6-1",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -7187,7 +7208,14 @@
      "forma",
      "local"
     ],
-    "razon": "Δ10.95 de WTN a favor de Daniel Michalski (3.44 contra 14.39), en F: la curva del grupo \"finales\" (n=79) da 87%. Ajustan: Michael Savano tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−26 pts); Daniel Michalski viene cediendo menos games (33% contra 34%) (+1 pts); Daniel Michalski juega en su país (POL): la localía vale ~0.5 pts de WTN (+6 pts). Queda en 64%. El mercado la paga a 1.071: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −32% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ10.95 de WTN a favor de Daniel Michalski (3.44 contra 14.39), en F: la curva del grupo \"finales\" (n=79) da 87%. Ajustan: Michael Savano tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−26 pts); Daniel Michalski viene cediendo menos games (33% contra 34%) (+1 pts); Daniel Michalski juega en su país (POL): la localía vale ~0.5 pts de WTN (+6 pts). Queda en 64%. El mercado la paga a 1.071: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −32% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Daniel Michalski",
+     "marcador": "6-2 6-1",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -7222,7 +7250,14 @@
      "forma",
      "local"
     ],
-    "razon": "Δ2.73 de WTN a favor de Dmitry Popko (3.66 contra 6.39), en F: la curva del grupo \"finales\" (n=79) da 62%. Ajustan: Branko Djuric viene cediendo menos games (31% contra 39%): la forma contradice al nivel (−6 pts); Branko Djuric juega en su país (SRB): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 50%. El mercado la paga a 2.1: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ2.73 de WTN a favor de Dmitry Popko (3.66 contra 6.39), en F: la curva del grupo \"finales\" (n=79) da 62%. Ajustan: Branko Djuric viene cediendo menos games (31% contra 39%): la forma contradice al nivel (−6 pts); Branko Djuric juega en su país (SRB): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 50%. El mercado la paga a 2.1: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Branko Djuric",
+     "marcador": "6-2 6(4)-7 6-3",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -7336,5 +7371,5 @@
    }
   ]
  },
- "actualizado": "2026-08-30T15:13:03.194Z"
+ "actualizado": "2026-08-30T15:19:42.986Z"
 }
