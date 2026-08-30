@@ -56,9 +56,14 @@ jobs:
           npm i --no-save playwright
           npx playwright install --with-deps chromium
 
+      # Los pasos de scrape son MEJOR ESFUERZO: el || echo cubre el error del
+      # comando, pero si el paso muere por timeout el || nunca corre y el job
+      # entero caía (pasó el 2026-08-29, dos corridas del botón). El
+      # continue-on-error cubre ese caso: con lo que se alcanzó a bajar, se sigue.
       - name: Calendario y mapa (así aparecen las semanas nuevas)
         if: inputs.que == 'todo'
         timeout-minutes: 6
+        continue-on-error: true
         run: |
           node vigia/itf-navegador.mjs calendario || echo "calendario no refrescó; se sigue con el caché"
           node vigia/itf-mapa.mjs
@@ -66,11 +71,13 @@ jobs:
       - name: Entry lists de torneos vivos y próximos (la foto antes de que ITF la borre)
         if: inputs.que == 'todo'
         timeout-minutes: 10
+        continue-on-error: true
         run: node vigia/itf-navegador.mjs cosecha || echo "cosecha parcial; se sigue"
 
       - name: Tablas de torneos (cuadros y programación, vía navegador)
         if: inputs.que == 'todo'
         timeout-minutes: 14
+        continue-on-error: true
         run: node vigia/itf-navegador.mjs oop || echo "la ITF no dejó refrescar todo; se sigue con lo que hay"
 
       - name: El rating propio (Elo) se reconstruye con los cuadros frescos
@@ -80,6 +87,7 @@ jobs:
       - name: Cuadros al día por la vía barata (sin navegador; si el WAF corta, se sigue)
         if: inputs.que != 'todo'
         timeout-minutes: 5
+        continue-on-error: true
         run: node vigia/itf-cosecha.mjs cosechar hoy || echo "WAF cerrado; las fases vendrán de la última foto"
 
       - name: La rutina del día
