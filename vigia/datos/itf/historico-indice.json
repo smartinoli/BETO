@@ -4162,7 +4162,7 @@
   },
   "pn129042181634962566": {
    "fixtureId": "pn129042181634962566",
-   "startTime": "2026-08-29T02:00:00.000Z",
+   "startTime": "2026-08-29T02:15:23.000Z",
    "statusId": null,
    "torneo": "Taipei",
    "categoria": "ITF Men",
@@ -4171,11 +4171,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129042181634971799": {
    "fixtureId": "pn129042181634971799",
-   "startTime": "2026-08-29T02:00:00.000Z",
+   "startTime": "2026-08-29T02:16:16.000Z",
    "statusId": null,
    "torneo": "Taipei",
    "categoria": "ITF Men",
@@ -4184,7 +4184,7 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129054081634971840": {
    "fixtureId": "pn129054081634971840",
@@ -4214,7 +4214,7 @@
   },
   "pn129036371634986640": {
    "fixtureId": "pn129036371634986640",
-   "startTime": "2026-08-29T10:30:00.000Z",
+   "startTime": "2026-08-29T12:13:02.000Z",
    "statusId": null,
    "torneo": "Oldenzaal",
    "categoria": "ITF Men",
@@ -4223,11 +4223,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129042801634992052": {
    "fixtureId": "pn129042801634992052",
-   "startTime": "2026-08-29T03:00:00.000Z",
+   "startTime": "2026-08-29T03:56:53.000Z",
    "statusId": null,
    "torneo": "Maanshan",
    "categoria": "ITF Men",
@@ -4236,11 +4236,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129053031634971852": {
    "fixtureId": "pn129053031634971852",
-   "startTime": "2026-08-29T03:00:00.000Z",
+   "startTime": "2026-08-29T03:15:18.000Z",
    "statusId": null,
    "torneo": "Tianjin",
    "categoria": "ITF Women",
@@ -4249,11 +4249,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129042801634986622": {
    "fixtureId": "pn129042801634986622",
-   "startTime": "2026-08-29T04:00:00.000Z",
+   "startTime": "2026-08-29T05:38:55.000Z",
    "statusId": null,
    "torneo": "Maanshan",
    "categoria": "ITF Men",
@@ -4262,11 +4262,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129036251634986639": {
    "fixtureId": "pn129036251634986639",
-   "startTime": "2026-08-29T10:30:00.000Z",
+   "startTime": "2026-08-29T10:43:06.000Z",
    "statusId": null,
    "torneo": "Oldenzaal",
    "categoria": "ITF Women",
@@ -4275,11 +4275,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129036371634986659": {
    "fixtureId": "pn129036371634986659",
-   "startTime": "2026-08-28T22:00:00.000Z",
+   "startTime": "2026-08-29T13:51:28.000Z",
    "statusId": null,
    "torneo": "Oldenzaal",
    "categoria": "ITF Men",
@@ -4288,11 +4288,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129053031634992122": {
    "fixtureId": "pn129053031634992122",
-   "startTime": "2026-08-29T03:00:00.000Z",
+   "startTime": "2026-08-29T03:17:23.000Z",
    "statusId": null,
    "torneo": "Tianjin",
    "categoria": "ITF Women",
@@ -4301,11 +4301,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129043431634986654": {
    "fixtureId": "pn129043431634986654",
-   "startTime": "2026-08-29T06:00:00.000Z",
+   "startTime": "2026-08-29T06:18:38.000Z",
    "statusId": null,
    "torneo": "Hurghada",
    "categoria": "ITF Men",
@@ -4314,7 +4314,7 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129043431634992089": {
    "fixtureId": "pn129043431634992089",
@@ -4327,11 +4327,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129043481634986655": {
    "fixtureId": "pn129043481634986655",
-   "startTime": "2026-08-29T06:00:00.000Z",
+   "startTime": "2026-08-29T06:19:52.000Z",
    "statusId": null,
    "torneo": "Hurghada",
    "categoria": "ITF Women",
@@ -4340,11 +4340,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129043481635002926": {
    "fixtureId": "pn129043481635002926",
-   "startTime": "2026-08-29T06:00:00.000Z",
+   "startTime": "2026-08-29T06:14:53.000Z",
    "statusId": null,
    "torneo": "Hurghada",
    "categoria": "ITF Women",
@@ -4353,11 +4353,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129034491634986668": {
    "fixtureId": "pn129034491634986668",
-   "startTime": "2026-08-29T07:00:00.000Z",
+   "startTime": "2026-08-29T07:15:43.000Z",
    "statusId": null,
    "torneo": "Bucharest",
    "categoria": "ITF Men",
@@ -4366,11 +4366,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129037901634992121": {
    "fixtureId": "pn129037901634992121",
-   "startTime": "2026-08-29T07:30:00.000Z",
+   "startTime": "2026-08-29T07:40:26.000Z",
    "statusId": null,
    "torneo": "Brasov",
    "categoria": "ITF Women",
@@ -4379,11 +4379,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129034491634986667": {
    "fixtureId": "pn129034491634986667",
-   "startTime": "2026-08-29T08:00:00.000Z",
+   "startTime": "2026-08-29T09:23:39.000Z",
    "statusId": null,
    "torneo": "Bucharest",
    "categoria": "ITF Men",
@@ -4392,11 +4392,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129038831634971880": {
    "fixtureId": "pn129038831634971880",
-   "startTime": "2026-08-29T08:00:00.000Z",
+   "startTime": "2026-08-29T08:20:58.000Z",
    "statusId": null,
    "torneo": "Maribor",
    "categoria": "ITF Men",
@@ -4405,11 +4405,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129038831634992091": {
    "fixtureId": "pn129038831634992091",
-   "startTime": "2026-08-29T08:00:00.000Z",
+   "startTime": "2026-08-29T08:18:47.000Z",
    "statusId": null,
    "torneo": "Maribor",
    "categoria": "ITF Men",
@@ -4418,11 +4418,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129039821635002921": {
    "fixtureId": "pn129039821635002921",
-   "startTime": "2026-08-29T08:00:00.000Z",
+   "startTime": "2026-08-29T08:13:55.000Z",
    "statusId": null,
    "torneo": "Kursumlijska Banja",
    "categoria": "ITF Women",
@@ -4431,11 +4431,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129045321634986693": {
    "fixtureId": "pn129045321634986693",
-   "startTime": "2026-08-29T08:00:00.000Z",
+   "startTime": "2026-08-29T08:13:05.000Z",
    "statusId": null,
    "torneo": "Torello",
    "categoria": "ITF Women",
@@ -4444,11 +4444,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129054111634986669": {
    "fixtureId": "pn129054111634986669",
-   "startTime": "2026-08-29T08:00:00.000Z",
+   "startTime": "2026-08-29T08:16:57.000Z",
    "statusId": null,
    "torneo": "Pecs",
    "categoria": "ITF Men",
@@ -4457,11 +4457,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129054111634992097": {
    "fixtureId": "pn129054111634992097",
-   "startTime": "2026-08-29T08:00:00.000Z",
+   "startTime": "2026-08-29T08:13:30.000Z",
    "statusId": null,
    "torneo": "Pecs",
    "categoria": "ITF Men",
@@ -4470,11 +4470,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129034011635002923": {
    "fixtureId": "pn129034011635002923",
-   "startTime": "2026-08-29T08:30:00.000Z",
+   "startTime": "2026-08-29T08:41:22.000Z",
    "statusId": null,
    "torneo": "Verbier",
    "categoria": "ITF Women",
@@ -4482,12 +4482,12 @@
    "p2": "Anastasija Cvetkovic",
    "s1": null,
    "s2": null,
-   "hasOdds": false,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129037901635002924": {
    "fixtureId": "pn129037901635002924",
-   "startTime": "2026-08-29T08:30:00.000Z",
+   "startTime": "2026-08-29T10:14:09.000Z",
    "statusId": null,
    "torneo": "Brasov",
    "categoria": "ITF Women",
@@ -4496,11 +4496,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129033941635002919": {
    "fixtureId": "pn129033941635002919",
-   "startTime": "2026-08-29T09:00:00.000Z",
+   "startTime": "2026-08-29T09:29:44.000Z",
    "statusId": null,
    "torneo": "Bytom",
    "categoria": "ITF Women",
@@ -4509,11 +4509,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129054091634971881": {
    "fixtureId": "pn129054091634971881",
-   "startTime": "2026-08-29T09:00:00.000Z",
+   "startTime": "2026-08-29T10:43:23.000Z",
    "statusId": null,
    "torneo": "Poznan",
    "categoria": "ITF Men",
@@ -4522,11 +4522,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129034011634992120": {
    "fixtureId": "pn129034011634992120",
-   "startTime": "2026-08-29T09:30:00.000Z",
+   "startTime": "2026-08-29T10:21:18.000Z",
    "statusId": null,
    "torneo": "Verbier",
    "categoria": "ITF Women",
@@ -4534,12 +4534,12 @@
    "p2": "Angella Okutoyi",
    "s1": null,
    "s2": null,
-   "hasOdds": false,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129034031634986692": {
    "fixtureId": "pn129034031634986692",
-   "startTime": "2026-08-29T09:30:00.000Z",
+   "startTime": "2026-08-29T09:45:06.000Z",
    "statusId": null,
    "torneo": "Trieste",
    "categoria": "ITF Women",
@@ -4547,12 +4547,12 @@
    "p2": "Pia Lovric",
    "s1": null,
    "s2": null,
-   "hasOdds": false,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129036251635002920": {
    "fixtureId": "pn129036251635002920",
-   "startTime": "2026-08-29T09:30:00.000Z",
+   "startTime": "2026-08-29T09:44:53.000Z",
    "statusId": null,
    "torneo": "Oldenzaal",
    "categoria": "ITF Women",
@@ -4561,11 +4561,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129039821635002922": {
    "fixtureId": "pn129039821635002922",
-   "startTime": "2026-08-29T09:30:00.000Z",
+   "startTime": "2026-08-29T10:35:54.000Z",
    "statusId": null,
    "torneo": "Kursumlijska Banja",
    "categoria": "ITF Women",
@@ -4573,12 +4573,12 @@
    "p2": "Anja Stankovic",
    "s1": null,
    "s2": null,
-   "hasOdds": false,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129033941634992119": {
    "fixtureId": "pn129033941634992119",
-   "startTime": "2026-08-29T10:00:00.000Z",
+   "startTime": "2026-08-29T11:21:24.000Z",
    "statusId": null,
    "torneo": "Bytom",
    "categoria": "ITF Women",
@@ -4587,11 +4587,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129036491634992116": {
    "fixtureId": "pn129036491634992116",
-   "startTime": "2026-08-29T10:00:00.000Z",
+   "startTime": "2026-08-29T10:21:38.000Z",
    "statusId": null,
    "torneo": "Allershausen",
    "categoria": "ITF Men",
@@ -4600,11 +4600,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129054091634986660": {
    "fixtureId": "pn129054091634986660",
-   "startTime": "2026-08-29T10:00:00.000Z",
+   "startTime": "2026-08-29T13:27:36.000Z",
    "statusId": null,
    "torneo": "Poznan",
    "categoria": "ITF Men",
@@ -4613,11 +4613,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129045321635002925": {
    "fixtureId": "pn129045321635002925",
-   "startTime": "2026-08-29T10:15:00.000Z",
+   "startTime": "2026-08-29T10:26:03.000Z",
    "statusId": null,
    "torneo": "Torello",
    "categoria": "ITF Women",
@@ -4626,11 +4626,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129036491634992117": {
    "fixtureId": "pn129036491634992117",
-   "startTime": "2026-08-29T11:00:00.000Z",
+   "startTime": "2026-08-29T12:29:42.000Z",
    "statusId": null,
    "torneo": "Allershausen",
    "categoria": "ITF Men",
@@ -4638,12 +4638,12 @@
    "p2": "Thiago Cigarran",
    "s1": null,
    "s2": null,
-   "hasOdds": false,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
   },
   "pn129040881634992118": {
    "fixtureId": "pn129040881634992118",
-   "startTime": "2026-08-29T09:00:00.000Z",
+   "startTime": "2026-08-29T09:12:59.000Z",
    "statusId": null,
    "torneo": "Vienna",
    "categoria": "ITF Men",
@@ -4651,9 +4651,529 @@
    "p2": "Giovanni Oradini",
    "s1": null,
    "s2": null,
-   "hasOdds": false,
-   "visto": "2026-08-28T19:39:22.843Z"
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129034551635002945": {
+   "fixtureId": "pn129034551635002945",
+   "startTime": "2026-08-29T08:00:00.000Z",
+   "statusId": null,
+   "torneo": "Monastir",
+   "categoria": "ITF Men",
+   "p1": "Nicolas Jadoun",
+   "p2": "Toufik Sahtali",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129033691635032978": {
+   "fixtureId": "pn129033691635032978",
+   "startTime": "2026-08-29T08:11:12.000Z",
+   "statusId": null,
+   "torneo": "Monastir",
+   "categoria": "ITF Women",
+   "p1": "Alexandra Vagramov",
+   "p2": "Sofia Camila Rojas",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129054081635002944": {
+   "fixtureId": "pn129054081635002944",
+   "startTime": "2026-08-29T08:15:25.000Z",
+   "statusId": null,
+   "torneo": "Cap D`Agde",
+   "categoria": "ITF Men",
+   "p1": "Maxime Chazal",
+   "p2": "Kenny De Schepper",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129033691635032979": {
+   "fixtureId": "pn129033691635032979",
+   "startTime": "2026-08-29T08:17:24.000Z",
+   "statusId": null,
+   "torneo": "Monastir",
+   "categoria": "ITF Women",
+   "p1": "Riko Kikawada",
+   "p2": "Clarissa Blomqvist",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129034551634986714": {
+   "fixtureId": "pn129034551634986714",
+   "startTime": "2026-08-29T08:18:17.000Z",
+   "statusId": null,
+   "torneo": "Monastir",
+   "categoria": "ITF Men",
+   "p1": "Mathys Domenc",
+   "p2": "Daniel Jade",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129036521634986712": {
+   "fixtureId": "pn129036521634986712",
+   "startTime": "2026-08-29T10:08:32.000Z",
+   "statusId": null,
+   "torneo": "Oviedo",
+   "categoria": "ITF Men",
+   "p1": "Alexander Ritschard",
+   "p2": "Sergi Perez Contri",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129043471635032975": {
+   "fixtureId": "pn129043471635032975",
+   "startTime": "2026-08-29T10:41:12.000Z",
+   "statusId": null,
+   "torneo": "Lausanne",
+   "categoria": "ITF Men",
+   "p1": "Andrey Chepelev",
+   "p2": "Lorenzo Carboni",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129040881635002946": {
+   "fixtureId": "pn129040881635002946",
+   "startTime": "2026-08-29T11:33:07.000Z",
+   "statusId": null,
+   "torneo": "Vienna",
+   "categoria": "ITF Men",
+   "p1": "Heorhii Shylov",
+   "p2": "Manuel Plunger",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129039781634986713": {
+   "fixtureId": "pn129039781634986713",
+   "startTime": "2026-08-29T12:13:44.000Z",
+   "statusId": null,
+   "torneo": "Kursumlijska Banja",
+   "categoria": "ITF Men",
+   "p1": "Branko Djuric",
+   "p2": "Andrea Motta",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129043471635032976": {
+   "fixtureId": "pn129043471635032976",
+   "startTime": "2026-08-29T12:27:03.000Z",
+   "statusId": null,
+   "torneo": "Lausanne",
+   "categoria": "ITF Men",
+   "p1": "Henry Bernet",
+   "p2": "Adrien Burdet",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129039781635032977": {
+   "fixtureId": "pn129039781635032977",
+   "startTime": "2026-08-29T14:41:55.000Z",
+   "statusId": null,
+   "torneo": "Kursumlijska Banja",
+   "categoria": "ITF Men",
+   "p1": "Kristijan Juhas",
+   "p2": "Dmitry Popko",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129035661635002966": {
+   "fixtureId": "pn129035661635002966",
+   "startTime": "2026-08-29T14:57:03.000Z",
+   "statusId": null,
+   "torneo": "Champaign",
+   "categoria": "ITF Men",
+   "p1": "Bryce Nakashima",
+   "p2": "Preston Stearns",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129054121635002947": {
+   "fixtureId": "pn129054121635002947",
+   "startTime": "2026-08-29T15:09:47.000Z",
+   "statusId": null,
+   "torneo": "Barueri",
+   "categoria": "ITF Women",
+   "p1": "Lan Mi",
+   "p2": "Ana Sofia Sanchez",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129035661635032995": {
+   "fixtureId": "pn129035661635032995",
+   "startTime": "2026-08-29T15:11:40.000Z",
+   "statusId": null,
+   "torneo": "Champaign",
+   "categoria": "ITF Men",
+   "p1": "Jakub Vrba",
+   "p2": "Oliver Okonkwo",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129054121635002964": {
+   "fixtureId": "pn129054121635002964",
+   "startTime": "2026-08-29T17:19:25.000Z",
+   "statusId": null,
+   "torneo": "Barueri",
+   "categoria": "ITF Women",
+   "p1": "Nauhany Vitoria Leme Da Silva",
+   "p2": "Cadence Brace",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129043461635032997": {
+   "fixtureId": "pn129043461635032997",
+   "startTime": "2026-08-29T18:01:47.000Z",
+   "statusId": null,
+   "torneo": "Mar Del Plata",
+   "categoria": "ITF Men",
+   "p1": "Bastian Malla",
+   "p2": "Carlos Maria Zarate",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129042181635126686": {
+   "fixtureId": "pn129042181635126686",
+   "startTime": "2026-08-30T02:11:22.000Z",
+   "statusId": null,
+   "torneo": "Taipei",
+   "categoria": "ITF Men",
+   "p1": "Kuan-Shou Chen",
+   "p2": "Matthew Dellavedova",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129042801635126687": {
+   "fixtureId": "pn129042801635126687",
+   "startTime": "2026-08-30T02:46:16.000Z",
+   "statusId": null,
+   "torneo": "Maanshan",
+   "categoria": "ITF Men",
+   "p1": "Tianhui Zhang",
+   "p2": "Rigele Te",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129053031635132188": {
+   "fixtureId": "pn129053031635132188",
+   "startTime": "2026-08-30T03:14:44.000Z",
+   "statusId": null,
+   "torneo": "Tianjin",
+   "categoria": "ITF Women",
+   "p1": "Han Shi",
+   "p2": "Jiangxue Han",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129033691635132187": {
+   "fixtureId": "pn129033691635132187",
+   "startTime": "2026-08-30T07:30:00.000Z",
+   "statusId": null,
+   "torneo": "Monastir",
+   "categoria": "ITF Women",
+   "p1": "Sofia Camila Rojas",
+   "p2": "Riko Kikawada",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129034551635126683": {
+   "fixtureId": "pn129034551635126683",
+   "startTime": "2026-08-30T07:30:00.000Z",
+   "statusId": null,
+   "torneo": "Monastir",
+   "categoria": "ITF Men",
+   "p1": "Daniel Jade",
+   "p2": "Nicolas Jadoun",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129037901635119344": {
+   "fixtureId": "pn129037901635119344",
+   "startTime": "2026-08-30T07:30:00.000Z",
+   "statusId": null,
+   "torneo": "Brasov",
+   "categoria": "ITF Women",
+   "p1": "Ilinca Dalina Amariei",
+   "p2": "Ashley Lahey",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129034491635126684": {
+   "fixtureId": "pn129034491635126684",
+   "startTime": "2026-08-30T08:00:00.000Z",
+   "statusId": null,
+   "torneo": "Bucharest",
+   "categoria": "ITF Men",
+   "p1": "Radu David Turcanu",
+   "p2": "Gabriel Ghetu",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129038831635113803": {
+   "fixtureId": "pn129038831635113803",
+   "startTime": "2026-08-30T08:00:00.000Z",
+   "statusId": null,
+   "torneo": "Maribor",
+   "categoria": "ITF Men",
+   "p1": "Samuele Pieri",
+   "p2": "Sebastian Dominko",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129039821635113806": {
+   "fixtureId": "pn129039821635113806",
+   "startTime": "2026-08-30T08:00:00.000Z",
+   "statusId": null,
+   "torneo": "Kursumlijska Banja",
+   "categoria": "ITF Women",
+   "p1": "Anja Stankovic",
+   "p2": "Samira De Stefano",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129054111635113916": {
+   "fixtureId": "pn129054111635113916",
+   "startTime": "2026-08-30T08:00:00.000Z",
+   "statusId": null,
+   "torneo": "Pecs",
+   "categoria": "ITF Men",
+   "p1": "John Sperle",
+   "p2": "Ignacio Monzon",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129034011635113915": {
+   "fixtureId": "pn129034011635113915",
+   "startTime": "2026-08-30T08:30:00.000Z",
+   "statusId": null,
+   "torneo": "Verbier",
+   "categoria": "ITF Women",
+   "p1": "Angella Okutoyi",
+   "p2": "Anastasija Cvetkovic",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129045321635119343": {
+   "fixtureId": "pn129045321635119343",
+   "startTime": "2026-08-30T08:30:00.000Z",
+   "statusId": null,
+   "torneo": "Torello",
+   "categoria": "ITF Women",
+   "p1": "Anne-Christine Lutkemeyer",
+   "p2": "Celia Cervino Ruiz",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129033941635127045": {
+   "fixtureId": "pn129033941635127045",
+   "startTime": "2026-08-30T09:00:00.000Z",
+   "statusId": null,
+   "torneo": "Bytom",
+   "categoria": "ITF Women",
+   "p1": "Barbora Palicova",
+   "p2": "Denisa Zoldakova",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129040881635126685": {
+   "fixtureId": "pn129040881635126685",
+   "startTime": "2026-08-30T09:00:00.000Z",
+   "statusId": null,
+   "torneo": "Vienna",
+   "categoria": "ITF Men",
+   "p1": "Andrej Martin",
+   "p2": "Manuel Plunger",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129043431635103296": {
+   "fixtureId": "pn129043431635103296",
+   "startTime": "2026-08-30T09:00:00.000Z",
+   "statusId": null,
+   "torneo": "Hurghada",
+   "categoria": "ITF Men",
+   "p1": "Dev Javia",
+   "p2": "Aaron Funk",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129043471635127046": {
+   "fixtureId": "pn129043471635127046",
+   "startTime": "2026-08-30T09:00:00.000Z",
+   "statusId": null,
+   "torneo": "Lausanne",
+   "categoria": "ITF Men",
+   "p1": "Andrey Chepelev",
+   "p2": "Henry Bernet",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129054091635126709": {
+   "fixtureId": "pn129054091635126709",
+   "startTime": "2026-08-30T09:00:00.000Z",
+   "statusId": null,
+   "torneo": "Poznan",
+   "categoria": "ITF Men",
+   "p1": "Daniel Michalski",
+   "p2": "Michael Savano",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129039781635137528": {
+   "fixtureId": "pn129039781635137528",
+   "startTime": "2026-08-30T09:30:00.000Z",
+   "statusId": null,
+   "torneo": "Kursumlijska Banja",
+   "categoria": "ITF Men",
+   "p1": "Branko Djuric",
+   "p2": "Dmitry Popko",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129036251635127043": {
+   "fixtureId": "pn129036251635127043",
+   "startTime": "2026-08-30T11:00:00.000Z",
+   "statusId": null,
+   "torneo": "Oldenzaal",
+   "categoria": "ITF Women",
+   "p1": "Francesca Pace",
+   "p2": "Nastasja Schunk",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129036491635126712": {
+   "fixtureId": "pn129036491635126712",
+   "startTime": "2026-08-30T11:00:00.000Z",
+   "statusId": null,
+   "torneo": "Allershausen",
+   "categoria": "ITF Men",
+   "p1": "Jannik Maute",
+   "p2": "Calvin Mueller",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129036371635137491": {
+   "fixtureId": "pn129036371635137491",
+   "startTime": "2026-08-30T13:00:00.000Z",
+   "statusId": null,
+   "torneo": "Oldenzaal",
+   "categoria": "ITF Men",
+   "p1": "Louis Wessels",
+   "p2": "Eric Vanshelboim",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129043481635119340": {
+   "fixtureId": "pn129043481635119340",
+   "startTime": "2026-08-30T14:00:00.000Z",
+   "statusId": null,
+   "torneo": "Hurghada",
+   "categoria": "ITF Women",
+   "p1": "Dune Vaissaud",
+   "p2": "Emilia Brune",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129054121635137552": {
+   "fixtureId": "pn129054121635137552",
+   "startTime": "2026-08-30T14:00:00.000Z",
+   "statusId": null,
+   "torneo": "Barueri",
+   "categoria": "ITF Women",
+   "p1": "Cadence Brace",
+   "p2": "Lan Mi",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
+  },
+  "pn129035661635137553": {
+   "fixtureId": "pn129035661635137553",
+   "startTime": "2026-08-30T15:00:00.000Z",
+   "statusId": null,
+   "torneo": "Champaign",
+   "categoria": "ITF Men",
+   "p1": "Jakub Vrba",
+   "p2": "Bryce Nakashima",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-08-30T04:55:31.207Z"
   }
  },
- "actualizado": "2026-08-28T19:39:22.843Z"
+ "actualizado": "2026-08-30T04:55:31.207Z"
 }
