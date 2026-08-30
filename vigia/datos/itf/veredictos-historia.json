@@ -6470,7 +6470,14 @@
      "forma",
      "local"
     ],
-    "razon": "Δ0.02 de WTN a favor de Chase Ferguson (6.83 contra 6.85), en SF: la curva del grupo \"finales\" (n=79) da 50%. Ajustan: Rigele Te viene cediendo menos games (31% contra 40%): la forma contradice al nivel (−7 pts); Rigele Te juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 37%. El mercado la paga a 2.375: 39% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ0.02 de WTN a favor de Chase Ferguson (6.83 contra 6.85), en SF: la curva del grupo \"finales\" (n=79) da 50%. Ajustan: Rigele Te viene cediendo menos games (31% contra 40%): la forma contradice al nivel (−7 pts); Rigele Te juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 37%. El mercado la paga a 2.375: 39% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Rigele Te",
+     "marcador": "6-1 6-4",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -6505,7 +6512,14 @@
      "forma",
      "local"
     ],
-    "razon": "Δ3.08 de WTN a favor de Enzo Aguiard (4.61 contra 7.69), en SF: la curva del grupo \"finales\" (n=79) da 63%. Ajustan: Enzo Aguiard viene cediendo menos games (37% contra 41%) (+3 pts); Tianhui Zhang juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 60%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −16% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ3.08 de WTN a favor de Enzo Aguiard (4.61 contra 7.69), en SF: la curva del grupo \"finales\" (n=79) da 63%. Ajustan: Enzo Aguiard viene cediendo menos games (37% contra 41%) (+3 pts); Tianhui Zhang juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 60%. El mercado la paga a 1.4: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −16% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Tianhui Zhang",
+     "marcador": "6-2 6-4",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -7130,7 +7144,14 @@
      "forma",
      "local"
     ],
-    "razon": "Δ1.60 de WTN a favor de Henry Bernet (3.58 contra 5.18), en F: la curva del grupo \"finales\" (n=79) da 57%. Ajustan: Andrey Chepelev viene cediendo menos games (30% contra 37%): la forma contradice al nivel (−5 pts); Henry Bernet juega en su país (SUI): la localía vale ~0.5 pts de WTN (+6 pts). Queda en 58%. El mercado la paga a 1.2: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −30% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ1.60 de WTN a favor de Henry Bernet (3.58 contra 5.18), en F: la curva del grupo \"finales\" (n=79) da 57%. Ajustan: Andrey Chepelev viene cediendo menos games (30% contra 37%): la forma contradice al nivel (−5 pts); Henry Bernet juega en su país (SUI): la localía vale ~0.5 pts de WTN (+6 pts). Queda en 58%. El mercado la paga a 1.2: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −30% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Henry Bernet",
+     "marcador": "6-4 6-2",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -7235,7 +7256,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ2.92 de WTN a favor de Calvin Mueller (7.76 contra 10.68), en F: la curva del grupo \"finales\" (n=79) da 62%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ2.92 de WTN a favor de Calvin Mueller (7.76 contra 10.68), en F: la curva del grupo \"finales\" (n=79) da 62%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Jannik Maute",
+     "marcador": "6-2 7-6(4)",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -7308,5 +7336,5 @@
    }
   ]
  },
- "actualizado": "2026-08-30T05:02:47.803Z"
+ "actualizado": "2026-08-30T15:13:03.194Z"
 }
