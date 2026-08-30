@@ -114,12 +114,19 @@ const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch 
 
 /* ---------- 1. CAPTURAR: el índice de ITF de la ventana viva ----------
    Barato y hay que correrlo TODOS los días: lo que no se capture hoy se
-   pierde, porque el índice purga los partidos con cuotas al poco tiempo. */
+   pierde, porque el índice purga los partidos con cuotas al poco tiempo.
+
+   LA VENTANA VA A 7 DÍAS, no a 3 (medido el 2026-08-30). El feed publica
+   y DESPUBLICA: el partido de mañana en Buzau estaba a las 19:10, no
+   estaba a las 22:22 —la corrida del botón lo perdió— y volvió a las
+   22:35. Como el índice solo suma (nunca borra), mirar más lejos hace
+   que un fixture se guarde la primera vez que asoma, aunque después
+   desaparezca del feed un rato. Cuesta el mismo request: 1. */
 async function capturar() {
   fs.mkdirSync(DATOS, { recursive: true });
   const previo = leer(INDICE) || { partidos: {} };
   const antes = Object.keys(previo.partidos).length;
-  const fx = lista(await api('fixtures', { sportId: SPORT_TENIS, from: dia(1), to: dia(-3) }, 1500));
+  const fx = lista(await api('fixtures', { sportId: SPORT_TENIS, from: dia(1), to: dia(-7) }, 1500));
   const itf = fx.filter(x => ES_ITF((x.tournamentName || '') + ' ' + (x.categoryName || ''))
     && !ES_DOBLES(x.participant1Name, x.participant2Name));
   for (const x of itf) {
