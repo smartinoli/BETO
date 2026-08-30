@@ -46,12 +46,16 @@ const bet365 = process.argv.includes('--bet365');
 
 /* ---------- mapa de torneos ---------- */
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};
-const TORNEO = {};                       /* nombre → {clave, ...} */
 const POR_CLAVE = {};
 /* El mismo nombre se repite entre semanas ("M15 Hurghada" de esta semana
    Y de la próxima): gana la edición EN JUEGO hoy; si ninguna, la próxima
    más cercana. Sin esto, la tanda se mapeaba a la edición sin cuadro y
-   las fases salían R1 con trayectoria vacía (medido 2026-08-29). */
+   las fases salían R1 con trayectoria vacía (medido 2026-08-29).
+   OJO: el fin de semana de traslape hay DOS ediciones en juego a la vez
+   (la final de esta semana y la quali de la próxima, medido 2026-08-30) —
+   por eso EDICIONES guarda todas las candidatas y el partido elige la
+   suya más abajo. */
+const EDICIONES = {};                    /* nombre → [candidatas] */
 const HOY_F = new Date().toISOString().slice(0, 10);
 const prioridadEd = t => {
   const ini = t.fechas?.quali || t.fechas?.main, fin = t.fechas?.final;
@@ -62,11 +66,12 @@ const prioridadEd = t => {
 };
 const anota = (k, t) => {
   POR_CLAVE[k] = t;
-  const ya = TORNEO[t.nombre];
-  if (!ya || prioridadEd(t) >= prioridadEd(ya)) TORNEO[t.nombre] = { clave: k, ...t };
+  const eds = (EDICIONES[t.nombre] ||= []);
+  if (!eds.some(e => e.clave === k)) eds.push({ clave: k, ...t });
 };
 for (const sem of Object.values(mapa.semanas || {})) for (const [k, t] of Object.entries(sem)) anota(k, t);
 for (const [k, t] of Object.entries(mapa.torneos || {})) anota(k, t);
+for (const eds of Object.values(EDICIONES)) eds.sort((a, b) => prioridadEd(b) - prioridadEd(a));
 const fechaIni = k => POR_CLAVE[k]?.fechas?.main || POR_CLAVE[k]?.fechas?.quali || null;
 const fechaFin = k => POR_CLAVE[k]?.fechas?.final || null;
 
@@ -354,10 +359,28 @@ function brechaDe(n1, n2, g1, g2) {
   return { s1, s2, p1, p2, ev1, ev2, mejor };
 }
 
+/* La edición se elige POR PARTIDO, no por nombre: el domingo de traslape
+   "M15 Hurghada" es a la vez la final de esta semana y la quali de la
+   próxima. Manda la edición que tiene el cruce en su cuadro; si ninguna,
+   la que conoce la trayectoria de los jugadores; al final, la prioridad
+   de edición. Sin esto, la final de Javia–Funk salía R1 (2026-08-30). */
+function torneoDelPartido(q) {
+  const cands = EDICIONES[q.torneo] || [];
+  if (cands.length < 2) return cands[0] || null;
+  let mejor = null, nota = -1;
+  for (const c of cands) {
+    const enC = etapaPartido(c.clave, q.p1, q.p2) ? 1 : 0;
+    const tray = trayectoria(c.clave, q.p1).length + trayectoria(c.clave, q.p2).length;
+    const n = enC * 1000 + Math.min(tray, 90) * 10 + prioridadEd(c);
+    if (n > nota) { nota = n; mejor = c }
+  }
+  return mejor;
+}
+
 const filas = [];
 const sinTorneo = [];
 for (const q of cuotas) {
-  const t = TORNEO[q.torneo];
+  const t = torneoDelPartido(q);
   if (!t) { sinTorneo.push(q); continue }
   const f1 = ficha(t.clave, q.p1), f2 = ficha(t.clave, q.p2);
   if (f1.wtn == null || f2.wtn == null) { filas.push({ q, t, f1, f2, v: null, motivo: 'sin WTN' }); continue }
@@ -582,7 +605,7 @@ const califica = (v, ganoLado, ganador, marcador, via) => {
   v.acerto = ganoLado === v.lado;
   if (v.pMercado != null) v.acertoMercado = (v.pMercado >= 0.5) === (ganoLado === v.lado);
 };
-for (const arr of Object.values(historia.dias)) for (const v of arr) {
+for (const [diaV, arr] of Object.entries(historia.dias)) for (const v of arr) {
   if (v.res) continue;
   const fx = v.fixtureId ? idxHist.partidos[v.fixtureId] : null;
   if (fx && fx.statusId === 2 && fx.s1 != null && fx.s2 != null && fx.s1 !== fx.s2) {
@@ -590,9 +613,14 @@ for (const arr of Object.values(historia.dias)) for (const v of arr) {
     califica(v, ganoLado, ganoLado === 1 ? fx.p1 : fx.p2, fx.s1 + '-' + fx.s2, 'oddspapi');
     continue;
   }
-  const t = TORNEO[v.torneo];
-  if (!t) continue;
-  const r = resultado(t.clave, v.p1, v.p2);
+  /* con el nombre repetido entre semanas, se busca el resultado en TODAS
+     las ediciones, primero en la que estaba en juego el día del veredicto
+     (dos jugadores SÍ pueden cruzarse otra vez la semana siguiente) */
+  const vigenteEse = c => { const ini = c.fechas?.quali || c.fechas?.main, fin = c.fechas?.final;
+    return ini && ini <= diaV && (!fin || fin >= diaV) ? 0 : 1 };
+  const eds = [...(EDICIONES[v.torneo] || [])].sort((a, b) => vigenteEse(a) - vigenteEse(b));
+  let r = null;
+  for (const c of eds) { r = resultado(c.clave, v.p1, v.p2); if (r) break }
   if (!r) continue;
   const ganoLado = mismoJugador(r.ganador, v.p1) ? 1 : mismoJugador(r.ganador, v.p2) ? 2 : null;
   if (!ganoLado) continue;

@@ -42,7 +42,12 @@ const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch 
 
 /* ---------- ciudad → torneo masculino nuestro ---------- */
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};
-const TORNEOS = {};   /* nombre nuestro → clave, solo m-itf; gana la edición EN JUEGO */
+/* nombre nuestro → TODAS sus ediciones (claves), solo m-itf, la edición
+   en juego primero. El mismo nombre vive en varias semanas, y el fin de
+   semana de traslape hay DOS en juego a la vez (la final de esta semana y
+   la quali de la próxima, medido 2026-08-30): el partido valida contra la
+   entry list de CUALQUIERA de ellas. */
+const TORNEOS = {};
 const HOY_F = new Date().toISOString().slice(0, 10);
 const prioridadEd = t => {
   const ini = t.fechas?.quali || t.fechas?.main, fin = t.fechas?.final;
@@ -51,17 +56,18 @@ const prioridadEd = t => {
   if (ini > HOY_F) return 2;
   return 1;
 };
-const _prio = {};
 for (const sem of Object.values(mapa.semanas || {})) for (const [k, t] of Object.entries(sem)) {
   if (!k.startsWith('m-itf')) continue;
-  if (!(t.nombre in TORNEOS) || prioridadEd(t) >= _prio[t.nombre]) { TORNEOS[t.nombre] = k; _prio[t.nombre] = prioridadEd(t) }
+  const eds = (TORNEOS[t.nombre] ||= []);
+  if (!eds.some(e => e.clave === k)) eds.push({ clave: k, prio: prioridadEd(t) });
 }
+for (const eds of Object.values(TORNEOS)) eds.sort((a, b) => b.prio - a.prio);
 const ciudad = s => NORM(String(s).replace(/^[MW]\d+\+?H?\s*/i, ''));
 function torneoDe(ciudadOdds) {
   const c = NORM(ciudadOdds);
-  for (const [nom, clave] of Object.entries(TORNEOS))
+  for (const [nom, eds] of Object.entries(TORNEOS))
     if (ciudad(nom) === c || ciudad(nom).startsWith(c) || c.startsWith(ciudad(nom)))
-      return { nombre: nom, clave };
+      return { nombre: nom, claves: eds.map(e => e.clave) };
   return null;
 }
 /* entry list del torneo, para validar que el partido es del cuadro masculino */
@@ -134,7 +140,11 @@ const ahora = Date.now();
 const candidatos = Object.values(idx.partidos)
   .filter(p => Date.parse(p.startTime) > ahora + 10 * 60e3)
   .map(p => ({ ...p, t: torneoDe(p.torneo) }))
-  .filter(p => p.t && estaEn(p.t.clave, p.p1) && estaEn(p.t.clave, p.p2))
+  /* vale si los DOS están en la entry list de alguna edición del nombre */
+  .map(p => { if (!p.t) return p;
+    const clave = p.t.claves.find(c => estaEn(c, p.p1) && estaEn(c, p.p2));
+    return { ...p, t: clave ? { nombre: p.t.nombre, clave } : null } })
+  .filter(p => p.t)
   .sort((a, b) => String(a.startTime).localeCompare(String(b.startTime)));
 console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.length} pendientes de torneos masculinos con los dos en la entry list`);
 
