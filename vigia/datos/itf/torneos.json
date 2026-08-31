@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-31T12:59:19.298Z",
+ "actualizado": "2026-08-31T23:07:06.373Z",
  "nota": "registro maestro de torneos ITF, solo hombres singles (M15/M25)",
  "semanas": {
   "2026-W32": {
@@ -1475,9 +1475,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:22.680Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
+     "cuadroM": "2026-08-31T13:00:46.060Z",
+     "cuadroQ": "2026-08-31T13:00:46.060Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T13:00:37.812Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1497,9 +1499,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:45.021Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
+     "cuadroM": "2026-08-31T13:01:07.924Z",
+     "cuadroQ": "2026-08-31T13:01:07.924Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T13:00:52.429Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1521,7 +1525,9 @@
      "aceptacion": "2026-08-25T22:14:27.375Z",
      "cuadroM": null,
      "cuadroQ": null,
-     "oop": {}
+     "oop": {
+      "2026-08-31": "2026-08-31T13:01:14.511Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1607,9 +1613,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:17.576Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
+     "cuadroM": "2026-08-31T13:02:03.925Z",
+     "cuadroQ": "2026-08-31T13:02:03.925Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T13:01:51.767Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1629,9 +1637,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T14:01:11.469Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
+     "cuadroM": "2026-08-31T13:02:27.072Z",
+     "cuadroQ": "2026-08-31T13:02:27.072Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T13:02:10.536Z"
+     }
     },
     "pendientesDeCierre": 2
    },
@@ -1653,7 +1663,9 @@
      "aceptacion": "2026-08-25T22:14:05.494Z",
      "cuadroM": "historico",
      "cuadroQ": "historico",
-     "oop": {}
+     "oop": {
+      "2026-08-31": "2026-08-31T13:02:33.617Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1717,9 +1729,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:10.284Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
+     "cuadroM": "2026-08-31T13:03:21.453Z",
+     "cuadroQ": "2026-08-31T13:03:21.453Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T13:03:07.109Z",
+      "2026-09-01": "2026-08-31T13:03:03.942Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1739,9 +1754,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:15:02.392Z",
-     "cuadroM": "2026-08-30T22:44:25.442Z",
-     "cuadroQ": "2026-08-30T22:44:25.442Z",
-     "oop": {}
+     "cuadroM": "2026-08-31T13:03:44.913Z",
+     "cuadroQ": "2026-08-31T13:03:44.913Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T13:03:31.119Z",
+      "2026-09-01": "2026-08-31T13:03:28.043Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1763,7 +1781,9 @@
      "aceptacion": "2026-08-25T14:01:14.189Z",
      "cuadroM": "historico",
      "cuadroQ": "historico",
-     "oop": {}
+     "oop": {
+      "2026-08-31": "2026-08-31T13:03:51.423Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1807,7 +1827,9 @@
      "aceptacion": "2026-08-25T22:14:54.749Z",
      "cuadroM": null,
      "cuadroQ": null,
-     "oop": {}
+     "oop": {
+      "2026-08-31": "2026-08-31T13:04:18.306Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -2248,7 +2270,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T12:59:45.724Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2270,7 +2292,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T12:59:49.623Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2292,7 +2314,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T12:59:55.151Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2314,7 +2336,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T13:00:01.522Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2336,7 +2358,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T13:00:05.568Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2358,7 +2380,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T13:00:09.583Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2380,7 +2402,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T13:00:13.772Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2402,7 +2424,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T13:00:18.014Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2424,7 +2446,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T13:00:22.061Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}
@@ -2446,7 +2468,7 @@
     },
     "archivado": false,
     "frescura": {
-     "aceptacion": null,
+     "aceptacion": "2026-08-31T13:00:26.234Z",
      "cuadroM": null,
      "cuadroQ": null,
      "oop": {}

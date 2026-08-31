@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-31T23:08:48.766Z",
+ "generado": "2026-08-31T23:23:51.924Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -103,11 +103,11 @@
     "cuota": 1.5,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.594,
+    "pFm": 0.608,
     "dW": 0.92,
     "forma": null,
     "previo": null,
-    "grupo": "Q1",
+    "grupo": "buenas",
     "edadFm": 23,
     "edadRi": 25,
     "dElo": null
@@ -117,18 +117,18 @@
    "inicio": "2026-09-01T01:00:00.000Z",
    "torneo": "M25 Urayasu",
    "pais": "Japan",
-   "etapa": "Q1",
+   "etapa": "R1",
    "p1": "Riku Takahata",
    "p2": "Noritaka Koizumi",
    "g1": 2.5,
    "g2": 1.5,
    "gana": "Noritaka Koizumi",
    "lado": 2,
-   "p": 0.594,
+   "p": 0.608,
    "pMercado": 0.625,
-   "soloWtn": 0.594,
+   "soloWtn": 0.608,
    "señales": [],
-   "razon": "Δ0.92 de WTN a favor de Noritaka Koizumi (7.94 contra 8.86), en Q1: la curva del grupo \"Q1\" (n=422) da 59%. El mercado la paga a 1.5: 63% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −6% si la tiene el mercado."
+   "razon": "Δ0.92 de WTN a favor de Noritaka Koizumi (7.94 contra 8.86), en R1: la curva del grupo \"buenas\" (n=528) da 61%. El mercado la paga a 1.5: 63% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −6% si la tiene el mercado."
   },
   {
    "crit": {
@@ -304,11 +304,11 @@
     "cuota": 1.25,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.706,
+    "pFm": 0.733,
     "dW": 2.11,
     "forma": null,
     "previo": null,
-    "grupo": "Q1",
+    "grupo": "buenas",
     "edadFm": 33,
     "edadRi": 21,
     "dElo": 174
@@ -318,29 +318,29 @@
    "inicio": "2026-09-01T02:00:00.000Z",
    "torneo": "M25 Urayasu",
    "pais": "Japan",
-   "etapa": "Q1",
+   "etapa": "R1",
    "p1": "Yuto Oki",
    "p2": "Shintaro Imai",
    "g1": 3.75,
    "g2": 1.25,
    "gana": "Shintaro Imai",
    "lado": 2,
-   "p": 0.706,
+   "p": 0.733,
    "pMercado": 0.75,
-   "soloWtn": 0.706,
+   "soloWtn": 0.733,
    "señales": [],
-   "razon": "Δ2.11 de WTN a favor de Shintaro Imai (5.78 contra 7.89), en Q1: la curva del grupo \"Q1\" (n=422) da 71%. El mercado la paga a 1.25: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −6% si la tiene el mercado."
+   "razon": "Δ2.11 de WTN a favor de Shintaro Imai (5.78 contra 7.89), en R1: la curva del grupo \"buenas\" (n=528) da 73%. El mercado la paga a 1.25: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −6% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.571,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.583,
+    "pFm": 0.797,
     "dW": 0.81,
-    "forma": null,
+    "forma": 1,
     "previo": null,
-    "grupo": "Q1",
+    "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 23,
     "dElo": null
@@ -350,18 +350,20 @@
    "inicio": "2026-09-01T02:00:00.000Z",
    "torneo": "M25 Urayasu",
    "pais": "Japan",
-   "etapa": "Q1",
+   "etapa": "R1",
    "p1": "Makoto Ochi",
    "p2": "Yu Tanaka",
    "g1": 1.571,
    "g2": 2.25,
    "gana": "Makoto Ochi",
    "lado": 1,
-   "p": 0.583,
+   "p": 0.797,
    "pMercado": 0.589,
-   "soloWtn": 0.583,
-   "señales": [],
-   "razon": "Δ0.81 de WTN a favor de Makoto Ochi (8.48 contra 9.29), en Q1: la curva del grupo \"Q1\" (n=422) da 58%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "soloWtn": 0.596,
+   "señales": [
+    "forma"
+   ],
+   "razon": "Δ0.81 de WTN a favor de Makoto Ochi (8.48 contra 9.29), en R1: la curva del grupo \"buenas\" (n=528) da 60%. Ajustan: Makoto Ochi viene cediendo menos games (8% contra 41%) (+20 pts). Queda en 80%. El mercado la paga a 1.571: 59% una vez sacado su margen. A esa cuota, la apuesta rinde +25% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
