@@ -1,40 +1,5 @@
 {
- "generado": "2026-08-31T06:58:52.735Z",
+ "generado": "2026-08-31T10:31:39.409Z",
  "fuente": "bet365",
- "partidos": [
-  {
-   "crit": {
-    "cuota": 1.727,
-    "ladoFm": 2,
-    "acuerdo": false,
-    "pFm": 0.333,
-    "dW": -0.87,
-    "forma": null,
-    "previo": -1,
-    "grupo": "buenas",
-    "edadFm": 25,
-    "edadRi": 29,
-    "dElo": -49
-   },
-   "jugada": null,
-   "fixtureId": "pn129043411635221934",
-   "inicio": "2026-08-31T09:00:00.000Z",
-   "torneo": "M15 Buzau",
-   "pais": "Romania",
-   "etapa": "R1",
-   "p1": "Fermin Tenti",
-   "p2": "Jan Kupcic",
-   "g1": 2,
-   "g2": 1.727,
-   "gana": "Fermin Tenti",
-   "lado": 1,
-   "p": 0.667,
-   "pMercado": 0.463,
-   "soloWtn": 0.603,
-   "señales": [
-    "previo"
-   ],
-   "razon": "Δ0.87 de WTN a favor de Fermin Tenti (7.55 contra 8.42), en R1: la curva del grupo \"buenas\" (n=528) da 60%. Ajustan: Fermin Tenti llegó más lejos en su torneo anterior (+6 pts). Queda en 67%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +33% si tenemos razón nosotros y −7% si la tiene el mercado."
-  }
- ]
+ "partidos": []
 }
