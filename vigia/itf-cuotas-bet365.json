@@ -1,5 +1,17 @@
 {
- "generado": "2026-08-30T22:22:51.862Z",
+ "generado": "2026-08-31T01:20:30.609Z",
  "casa": "bet365",
- "cuotas": []
+ "cuotas": [
+  {
+   "torneo": "M15 Buzau",
+   "p1": "Fermin Tenti",
+   "p2": "Jan Kupcic",
+   "g1": 2.1,
+   "g2": 1.667,
+   "visto": "2026-08-31T01:20Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129043411635221934",
+   "inicio": "2026-08-31T09:00:00.000Z"
+  }
+ ]
 }
