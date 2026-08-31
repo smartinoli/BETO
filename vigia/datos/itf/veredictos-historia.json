@@ -7495,7 +7495,7 @@
      "grupo": "buenas",
      "edadFm": 31,
      "edadRi": 28,
-     "dElo": -31
+     "dElo": -11
     },
     "jugada": null,
     "fixtureId": "pn129054301635255632",
@@ -7527,7 +7527,7 @@
      "grupo": "buenas",
      "edadFm": 23,
      "edadRi": 25,
-     "dElo": null
+     "dElo": -100
     },
     "jugada": null,
     "fixtureId": "pn129054301635255633",
@@ -7728,7 +7728,7 @@
      "grupo": "buenas",
      "edadFm": 33,
      "edadRi": 21,
-     "dElo": 174
+     "dElo": 171
     },
     "jugada": null,
     "fixtureId": "pn129054301635255631",
@@ -7760,7 +7760,7 @@
      "grupo": "buenas",
      "edadFm": 30,
      "edadRi": 23,
-     "dElo": null
+     "dElo": -210
     },
     "jugada": null,
     "fixtureId": "pn129054301635255635",
@@ -7794,7 +7794,7 @@
      "grupo": "buenas",
      "edadFm": 24,
      "edadRi": 26,
-     "dElo": -66
+     "dElo": -49
     },
     "jugada": null,
     "fixtureId": "pn129054301635255939",
@@ -8504,7 +8504,7 @@
      "grupo": "buenas",
      "edadFm": 20,
      "edadRi": 30,
-     "dElo": null
+     "dElo": 246
     },
     "jugada": null,
     "fixtureId": "pn129054301635256688",
@@ -9294,5 +9294,5 @@
    }
   ]
  },
- "actualizado": "2026-08-31T23:23:51.932Z"
+ "actualizado": "2026-08-31T23:35:00.944Z"
 }
