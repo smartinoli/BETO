@@ -7380,7 +7380,7 @@
   "2026-08-31": [
    {
     "crit": {
-     "cuota": 1.667,
+     "cuota": 1.727,
      "ladoFm": 2,
      "acuerdo": false,
      "pFm": 0.333,
@@ -7400,19 +7400,19 @@
     "etapa": "R1",
     "p1": "Fermin Tenti",
     "p2": "Jan Kupcic",
-    "g1": 2.1,
-    "g2": 1.667,
+    "g1": 2,
+    "g2": 1.727,
     "gana": "Fermin Tenti",
     "lado": 1,
     "p": 0.667,
-    "pMercado": 0.443,
+    "pMercado": 0.463,
     "soloWtn": 0.603,
     "señales": [
      "previo"
     ],
-    "razon": "Δ0.87 de WTN a favor de Fermin Tenti (7.55 contra 8.42), en R1: la curva del grupo \"buenas\" (n=528) da 60%. Ajustan: Fermin Tenti llegó más lejos en su torneo anterior (+6 pts). Queda en 67%. El mercado la paga a 2.1: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +40% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ0.87 de WTN a favor de Fermin Tenti (7.55 contra 8.42), en R1: la curva del grupo \"buenas\" (n=528) da 60%. Ajustan: Fermin Tenti llegó más lejos en su torneo anterior (+6 pts). Queda en 67%. El mercado la paga a 2: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +33% si tenemos razón nosotros y −7% si la tiene el mercado."
    }
   ]
  },
- "actualizado": "2026-08-31T01:20:30.837Z"
+ "actualizado": "2026-08-31T02:11:39.141Z"
 }
