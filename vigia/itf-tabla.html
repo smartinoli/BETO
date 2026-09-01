@@ -16,6 +16,8 @@ h1{font-size:21px;margin:0 0 2px} .sub{color:var(--ink3);font-size:13px;margin:0
 .barra label{font:600 11px system-ui;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em}
 .barra input[type=text]{font:400 13px system-ui;padding:5px 9px;border:1px solid var(--rule);
   border-radius:7px;background:var(--sunk);color:var(--ink);min-width:150px}
+.barra select{font:400 13px system-ui;padding:5px 8px;border:1px solid var(--rule);
+  border-radius:7px;background:var(--sunk);color:var(--ink);max-width:210px}
 .barra input[type=number]{width:66px;font:400 13px system-ui;padding:5px 7px;border:1px solid var(--rule);
   border-radius:7px;background:var(--sunk);color:var(--ink)}
 .barra button{font:500 12px system-ui;padding:4px 10px;border-radius:7px;border:1px solid var(--rule);
@@ -35,6 +37,9 @@ tr:hover td{background:var(--sunk)}
 .nom a:hover{color:var(--accent);border-color:var(--accent)}
 .sec{color:var(--ink2)} .cq{color:var(--ink3);font-size:11.5px}
 .cuota{font-weight:600}
+/* el mismo dato del rival, debajo y apagado: sirve para comparar de un
+   vistazo sin competirle al del jugador de la fila */
+.rv{display:block;font-style:normal;font-size:11px;color:var(--ink3);opacity:.75;margin-top:1px}
 .pb{padding:1px 6px;border-radius:8px;font-weight:600}
 .pb.alta{background:var(--pos-soft);color:var(--pos)}
 .pb.media{background:var(--ojo-soft);color:var(--ojo)}
@@ -45,12 +50,13 @@ tr[hidden]{display:none}
 </style>
 <div class="env">
 <h1>Tabla ITF — todos los jugadores cotizados</h1>
-<p class="sub">112 jugadores · 7 torneos · armada 02:36 UTC.
+<p class="sub">112 jugadores · 7 torneos · armada 02:45 UTC.
   Clic en cualquier encabezado para ordenar; el nombre abre la búsqueda en Betano. La ★ y el borde verde marcan lo que pisa la casilla del manual.
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
 
 <div class="barra">
-  <label>buscar</label><input type="text" id="q" placeholder="jugador, rival o torneo">
+  <label>buscar</label><input type="text" id="q" placeholder="jugador o rival">
+  <label>torneo</label><select id="tor"><option value="">todos</option><option value="m15 bali">M15 Bali</option><option value="m15 hurghada">M15 Hurghada</option><option value="m15 monastir">M15 Monastir</option><option value="m15 nonthaburi">M15 Nonthaburi</option><option value="m15 porto velho">M15 Porto Velho</option><option value="m15 wuning">M15 Wuning</option><option value="m25 urayasu">M25 Urayasu</option></select>
   <label>cuota</label><input type="number" id="cmin" step="0.01" placeholder="min"><input type="number" id="cmax" step="0.01" placeholder="max">
   <label>% modelo</label><input type="number" id="pmin" placeholder="min"><input type="number" id="pmax" placeholder="max">
   <label>edad</label><input type="number" id="emin" placeholder="min"><input type="number" id="emax" placeholder="max">
@@ -70,16 +76,16 @@ tr[hidden]{display:none}
   data-rival="leo borg" data-torneo="m15 bali"
   data-etapa="R1" data-edad="23" data-wtn="7.67"
   data-itf="1768" data-atp="1180" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Alexander%20Chang" target="_blank" rel="noopener">Alexander Chang</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Alexander%20Chang" target="_blank" rel="noopener">Alexander Chang</a></td>
   <td class="n cuota">2.2</td>
   <td class="n"><span class="pb ">35%</span></td>
   <td class="sec">Leo Borg <span class="cq">1.615</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">23</td>
-  <td class="n">7.67</td>
-  <td class="n sec">1768</td>
-  <td class="n sec">1180</td>
+  <td class="n">23<i class="rv">23</i></td>
+  <td class="n">7.67<i class="rv">6.34</i></td>
+  <td class="n sec">1768<i class="rv">—</i></td>
+  <td class="n sec">1180<i class="rv">541</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -88,16 +94,16 @@ tr[hidden]{display:none}
   data-rival="alexander chang" data-torneo="m15 bali"
   data-etapa="R1" data-edad="23" data-wtn="6.34"
   data-itf="" data-atp="541" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Leo%20Borg" target="_blank" rel="noopener">Leo Borg</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Leo%20Borg" target="_blank" rel="noopener">Leo Borg</a></td>
   <td class="n cuota">1.615</td>
   <td class="n"><span class="pb ">65%</span></td>
   <td class="sec">Alexander Chang <span class="cq">2.2</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">23</td>
-  <td class="n">6.34</td>
-  <td class="n sec">—</td>
-  <td class="n sec">541</td>
+  <td class="n">23<i class="rv">23</i></td>
+  <td class="n">6.34<i class="rv">7.67</i></td>
+  <td class="n sec">—<i class="rv">1768</i></td>
+  <td class="n sec">541<i class="rv">1180</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -106,16 +112,16 @@ tr[hidden]{display:none}
   data-rival="digvijay pratap singh" data-torneo="m15 bali"
   data-etapa="R1" data-edad="23" data-wtn="10.44"
   data-itf="738" data-atp="1521" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Azuma%20Visaya" target="_blank" rel="noopener">Azuma Visaya</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Azuma%20Visaya" target="_blank" rel="noopener">Azuma Visaya</a></td>
   <td class="n cuota">2.75</td>
   <td class="n"><span class="pb ">22%</span></td>
   <td class="sec">Digvijay Pratap Singh <span class="cq">1.4</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">23</td>
-  <td class="n">10.44</td>
-  <td class="n sec">738</td>
-  <td class="n sec">1521</td>
+  <td class="n">23<i class="rv">26</i></td>
+  <td class="n">10.44<i class="rv">7.83</i></td>
+  <td class="n sec">738<i class="rv">1768</i></td>
+  <td class="n sec">1521<i class="rv">540</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -124,16 +130,16 @@ tr[hidden]{display:none}
   data-rival="azuma visaya" data-torneo="m15 bali"
   data-etapa="R1" data-edad="26" data-wtn="7.83"
   data-itf="1768" data-atp="540" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Digvijay%20Pratap%20Singh" target="_blank" rel="noopener">Digvijay Pratap Singh</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Digvijay%20Pratap%20Singh" target="_blank" rel="noopener">Digvijay Pratap Singh</a></td>
   <td class="n cuota">1.4</td>
   <td class="n"><span class="pb media">78%</span></td>
   <td class="sec">Azuma Visaya <span class="cq">2.75</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">26</td>
-  <td class="n">7.83</td>
-  <td class="n sec">1768</td>
-  <td class="n sec">540</td>
+  <td class="n">26<i class="rv">23</i></td>
+  <td class="n">7.83<i class="rv">10.44</i></td>
+  <td class="n sec">1768<i class="rv">738</i></td>
+  <td class="n sec">540<i class="rv">1521</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -142,16 +148,16 @@ tr[hidden]{display:none}
   data-rival="yuta kawahashi" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="31" data-wtn="8.06"
   data-itf="143" data-atp="1301" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Ryota%20Tanuma" target="_blank" rel="noopener">Ryota Tanuma</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Ryota%20Tanuma" target="_blank" rel="noopener">Ryota Tanuma</a></td>
   <td class="n cuota">1.571</td>
   <td class="n"><span class="pb ">49%</span></td>
   <td class="sec">Yuta Kawahashi <span class="cq">2.25</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">31</td>
-  <td class="n">8.06</td>
-  <td class="n sec">143</td>
-  <td class="n sec">1301</td>
+  <td class="n">31<i class="rv">28</i></td>
+  <td class="n">8.06<i class="rv">7.96</i></td>
+  <td class="n sec">143<i class="rv">—</i></td>
+  <td class="n sec">1301<i class="rv">667</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -160,16 +166,16 @@ tr[hidden]{display:none}
   data-rival="ryota tanuma" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="28" data-wtn="7.96"
   data-itf="" data-atp="667" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yuta%20Kawahashi" target="_blank" rel="noopener">Yuta Kawahashi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yuta%20Kawahashi" target="_blank" rel="noopener">Yuta Kawahashi</a></td>
   <td class="n cuota">2.25</td>
   <td class="n"><span class="pb ">51%</span></td>
   <td class="sec">Ryota Tanuma <span class="cq">1.571</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">28</td>
-  <td class="n">7.96</td>
-  <td class="n sec">—</td>
-  <td class="n sec">667</td>
+  <td class="n">28<i class="rv">31</i></td>
+  <td class="n">7.96<i class="rv">8.06</i></td>
+  <td class="n sec">—<i class="rv">143</i></td>
+  <td class="n sec">667<i class="rv">1301</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -178,16 +184,16 @@ tr[hidden]{display:none}
   data-rival="noritaka koizumi" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="25" data-wtn="8.86"
   data-itf="154" data-atp="1414" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Riku%20Takahata" target="_blank" rel="noopener">Riku Takahata</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Riku%20Takahata" target="_blank" rel="noopener">Riku Takahata</a></td>
   <td class="n cuota">2.5</td>
   <td class="n"><span class="pb ">39%</span></td>
   <td class="sec">Noritaka Koizumi <span class="cq">1.5</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">25</td>
-  <td class="n">8.86</td>
-  <td class="n sec">154</td>
-  <td class="n sec">1414</td>
+  <td class="n">25<i class="rv">23</i></td>
+  <td class="n">8.86<i class="rv">7.94</i></td>
+  <td class="n sec">154<i class="rv">645</i></td>
+  <td class="n sec">1414<i class="rv">940</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -196,16 +202,16 @@ tr[hidden]{display:none}
   data-rival="riku takahata" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="23" data-wtn="7.94"
   data-itf="645" data-atp="940" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Noritaka%20Koizumi" target="_blank" rel="noopener">Noritaka Koizumi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Noritaka%20Koizumi" target="_blank" rel="noopener">Noritaka Koizumi</a></td>
   <td class="n cuota">1.5</td>
   <td class="n"><span class="pb ">61%</span></td>
   <td class="sec">Riku Takahata <span class="cq">2.5</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">23</td>
-  <td class="n">7.94</td>
-  <td class="n sec">645</td>
-  <td class="n sec">940</td>
+  <td class="n">23<i class="rv">25</i></td>
+  <td class="n">7.94<i class="rv">8.86</i></td>
+  <td class="n sec">645<i class="rv">154</i></td>
+  <td class="n sec">940<i class="rv">1414</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -214,16 +220,16 @@ tr[hidden]{display:none}
   data-rival="sena okabe" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="25" data-wtn="6.23"
   data-itf="" data-atp="681" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Keisuke%20Saitoh" target="_blank" rel="noopener">Keisuke Saitoh</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Keisuke%20Saitoh" target="_blank" rel="noopener">Keisuke Saitoh</a></td>
   <td class="n cuota">1.02</td>
   <td class="n"><span class="pb alta">99%</span></td>
   <td class="sec">Sena Okabe <span class="cq">11</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">25</td>
-  <td class="n">6.23</td>
-  <td class="n sec">—</td>
-  <td class="n sec">681</td>
+  <td class="n">25<i class="rv">17</i></td>
+  <td class="n">6.23<i class="rv">18.36</i></td>
+  <td class="n sec">—<i class="rv">2605</i></td>
+  <td class="n sec">681<i class="rv">—</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -232,16 +238,16 @@ tr[hidden]{display:none}
   data-rival="keisuke saitoh" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="17" data-wtn="18.36"
   data-itf="2605" data-atp="" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Sena%20Okabe" target="_blank" rel="noopener">Sena Okabe</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Sena%20Okabe" target="_blank" rel="noopener">Sena Okabe</a></td>
   <td class="n cuota">11</td>
   <td class="n"><span class="pb ">2%</span></td>
   <td class="sec">Keisuke Saitoh <span class="cq">1.02</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">17</td>
-  <td class="n">18.36</td>
-  <td class="n sec">2605</td>
-  <td class="n sec">—</td>
+  <td class="n">17<i class="rv">25</i></td>
+  <td class="n">18.36<i class="rv">6.23</i></td>
+  <td class="n sec">2605<i class="rv">—</i></td>
+  <td class="n sec">—<i class="rv">681</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -250,16 +256,16 @@ tr[hidden]{display:none}
   data-rival="shunsuke nakagawa" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="24" data-wtn="4.27"
   data-itf="" data-atp="652" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Shunsuke%20Mitsui" target="_blank" rel="noopener">Shunsuke Mitsui</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Shunsuke%20Mitsui" target="_blank" rel="noopener">Shunsuke Mitsui</a></td>
   <td class="n cuota">1.143</td>
   <td class="n"><span class="pb media">78%</span></td>
   <td class="sec">Shunsuke Nakagawa <span class="cq">5</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">24</td>
-  <td class="n">4.27</td>
-  <td class="n sec">—</td>
-  <td class="n sec">652</td>
+  <td class="n">24<i class="rv">26</i></td>
+  <td class="n">4.27<i class="rv">6.88</i></td>
+  <td class="n sec">—<i class="rv">539</i></td>
+  <td class="n sec">652<i class="rv">942</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -268,16 +274,16 @@ tr[hidden]{display:none}
   data-rival="shunsuke mitsui" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="26" data-wtn="6.88"
   data-itf="539" data-atp="942" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Shunsuke%20Nakagawa" target="_blank" rel="noopener">Shunsuke Nakagawa</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Shunsuke%20Nakagawa" target="_blank" rel="noopener">Shunsuke Nakagawa</a></td>
   <td class="n cuota">5</td>
   <td class="n"><span class="pb ">22%</span></td>
   <td class="sec">Shunsuke Mitsui <span class="cq">1.143</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">26</td>
-  <td class="n">6.88</td>
-  <td class="n sec">539</td>
-  <td class="n sec">942</td>
+  <td class="n">26<i class="rv">24</i></td>
+  <td class="n">6.88<i class="rv">4.27</i></td>
+  <td class="n sec">539<i class="rv">—</i></td>
+  <td class="n sec">942<i class="rv">652</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -286,16 +292,16 @@ tr[hidden]{display:none}
   data-rival="jake dembo" data-torneo="m15 bali"
   data-etapa="R1" data-edad="29" data-wtn="10.43"
   data-itf="15" data-atp="1490" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Arjun%20Mehrotra" target="_blank" rel="noopener">Arjun Mehrotra</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Arjun%20Mehrotra" target="_blank" rel="noopener">Arjun Mehrotra</a></td>
   <td class="n cuota">1.667</td>
   <td class="n"><span class="pb ">59%</span></td>
   <td class="sec">Jake Dembo <span class="cq">2.1</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">29</td>
-  <td class="n">10.43</td>
-  <td class="n sec">15</td>
-  <td class="n sec">1490</td>
+  <td class="n">29<i class="rv">18</i></td>
+  <td class="n">10.43<i class="rv">14.56</i></td>
+  <td class="n sec">15<i class="rv">1407</i></td>
+  <td class="n sec">1490<i class="rv">1464</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -304,16 +310,16 @@ tr[hidden]{display:none}
   data-rival="arjun mehrotra" data-torneo="m15 bali"
   data-etapa="R1" data-edad="18" data-wtn="14.56"
   data-itf="1407" data-atp="1464" data-jr="1" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Jake%20Dembo" target="_blank" rel="noopener">Jake Dembo</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Jake%20Dembo" target="_blank" rel="noopener">Jake Dembo</a></td>
   <td class="n cuota">2.1</td>
   <td class="n"><span class="pb ">41%</span></td>
   <td class="sec">Arjun Mehrotra <span class="cq">1.667</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">18</td>
-  <td class="n">14.56</td>
-  <td class="n sec">1407</td>
-  <td class="n sec">1464</td>
+  <td class="n">18<i class="rv">29</i></td>
+  <td class="n">14.56<i class="rv">10.43</i></td>
+  <td class="n sec">1407<i class="rv">15</i></td>
+  <td class="n sec">1464<i class="rv">1490</i></td>
   <td class="n">sí</td>
   <td class="n"></td>
 </tr>
@@ -322,16 +328,16 @@ tr[hidden]{display:none}
   data-rival="eric ahren moonga" data-torneo="m15 bali"
   data-etapa="R1" data-edad="28" data-wtn="8.63"
   data-itf="1287" data-atp="888" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Sam%20Ryan%20Ziegann" target="_blank" rel="noopener">Sam Ryan Ziegann</a> <b class="est" title="pisa la casilla del manual">★</b></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Sam%20Ryan%20Ziegann" target="_blank" rel="noopener">Sam Ryan Ziegann</a> <b class="est" title="pisa la casilla del manual">★</b></td>
   <td class="n cuota">1.286</td>
   <td class="n"><span class="pb alta">85%</span></td>
   <td class="sec">Eric Ahren Moonga <span class="cq">3.5</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">28</td>
-  <td class="n">8.63</td>
-  <td class="n sec">1287</td>
-  <td class="n sec">888</td>
+  <td class="n">28<i class="rv">31</i></td>
+  <td class="n">8.63<i class="rv">12.23</i></td>
+  <td class="n sec">1287<i class="rv">947</i></td>
+  <td class="n sec">888<i class="rv">1995</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -340,16 +346,16 @@ tr[hidden]{display:none}
   data-rival="sam ryan ziegann" data-torneo="m15 bali"
   data-etapa="R1" data-edad="31" data-wtn="12.23"
   data-itf="947" data-atp="1995" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Eric%20Ahren%20Moonga" target="_blank" rel="noopener">Eric Ahren Moonga</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Eric%20Ahren%20Moonga" target="_blank" rel="noopener">Eric Ahren Moonga</a></td>
   <td class="n cuota">3.5</td>
   <td class="n"><span class="pb ">15%</span></td>
   <td class="sec">Sam Ryan Ziegann <span class="cq">1.286</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">31</td>
-  <td class="n">12.23</td>
-  <td class="n sec">947</td>
-  <td class="n sec">1995</td>
+  <td class="n">31<i class="rv">28</i></td>
+  <td class="n">12.23<i class="rv">8.63</i></td>
+  <td class="n sec">947<i class="rv">1287</i></td>
+  <td class="n sec">1995<i class="rv">888</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -358,16 +364,16 @@ tr[hidden]{display:none}
   data-rival="arjun rathi" data-torneo="m15 bali"
   data-etapa="R1" data-edad="23" data-wtn="11.12"
   data-itf="1137" data-atp="" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Thomas%20Patton" target="_blank" rel="noopener">Thomas Patton</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Thomas%20Patton" target="_blank" rel="noopener">Thomas Patton</a></td>
   <td class="n cuota">2.1</td>
   <td class="n"><span class="pb ">49%</span></td>
   <td class="sec">Arjun Rathi <span class="cq">1.667</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">23</td>
-  <td class="n">11.12</td>
-  <td class="n sec">1137</td>
-  <td class="n sec">—</td>
+  <td class="n">23<i class="rv">19</i></td>
+  <td class="n">11.12<i class="rv">11.03</i></td>
+  <td class="n sec">1137<i class="rv">468</i></td>
+  <td class="n sec">—<i class="rv">1210</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -376,16 +382,16 @@ tr[hidden]{display:none}
   data-rival="thomas patton" data-torneo="m15 bali"
   data-etapa="R1" data-edad="19" data-wtn="11.03"
   data-itf="468" data-atp="1210" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Arjun%20Rathi" target="_blank" rel="noopener">Arjun Rathi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Arjun%20Rathi" target="_blank" rel="noopener">Arjun Rathi</a></td>
   <td class="n cuota">1.667</td>
   <td class="n"><span class="pb ">51%</span></td>
   <td class="sec">Thomas Patton <span class="cq">2.1</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">19</td>
-  <td class="n">11.03</td>
-  <td class="n sec">468</td>
-  <td class="n sec">1210</td>
+  <td class="n">19<i class="rv">23</i></td>
+  <td class="n">11.03<i class="rv">11.12</i></td>
+  <td class="n sec">468<i class="rv">1137</i></td>
+  <td class="n sec">1210<i class="rv">—</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -394,16 +400,16 @@ tr[hidden]{display:none}
   data-rival="shintaro imai" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="21" data-wtn="7.89"
   data-itf="172" data-atp="1099" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yuto%20Oki" target="_blank" rel="noopener">Yuto Oki</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yuto%20Oki" target="_blank" rel="noopener">Yuto Oki</a></td>
   <td class="n cuota">3.75</td>
   <td class="n"><span class="pb ">27%</span></td>
   <td class="sec">Shintaro Imai <span class="cq">1.25</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">21</td>
-  <td class="n">7.89</td>
-  <td class="n sec">172</td>
-  <td class="n sec">1099</td>
+  <td class="n">21<i class="rv">33</i></td>
+  <td class="n">7.89<i class="rv">5.78</i></td>
+  <td class="n sec">172<i class="rv">—</i></td>
+  <td class="n sec">1099<i class="rv">1065</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -412,16 +418,16 @@ tr[hidden]{display:none}
   data-rival="yuto oki" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="33" data-wtn="5.78"
   data-itf="" data-atp="1065" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Shintaro%20Imai" target="_blank" rel="noopener">Shintaro Imai</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Shintaro%20Imai" target="_blank" rel="noopener">Shintaro Imai</a></td>
   <td class="n cuota">1.25</td>
   <td class="n"><span class="pb media">73%</span></td>
   <td class="sec">Yuto Oki <span class="cq">3.75</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">33</td>
-  <td class="n">5.78</td>
-  <td class="n sec">—</td>
-  <td class="n sec">1065</td>
+  <td class="n">33<i class="rv">21</i></td>
+  <td class="n">5.78<i class="rv">7.89</i></td>
+  <td class="n sec">—<i class="rv">172</i></td>
+  <td class="n sec">1065<i class="rv">1099</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -430,16 +436,16 @@ tr[hidden]{display:none}
   data-rival="yu tanaka" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="30" data-wtn="8.48"
   data-itf="40" data-atp="1144" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Makoto%20Ochi" target="_blank" rel="noopener">Makoto Ochi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Makoto%20Ochi" target="_blank" rel="noopener">Makoto Ochi</a></td>
   <td class="n cuota">1.571</td>
   <td class="n"><span class="pb alta">80%</span></td>
   <td class="sec">Yu Tanaka <span class="cq">2.25</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">30</td>
-  <td class="n">8.48</td>
-  <td class="n sec">40</td>
-  <td class="n sec">1144</td>
+  <td class="n">30<i class="rv">23</i></td>
+  <td class="n">8.48<i class="rv">9.29</i></td>
+  <td class="n sec">40<i class="rv">1308</i></td>
+  <td class="n sec">1144<i class="rv">—</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -448,16 +454,16 @@ tr[hidden]{display:none}
   data-rival="makoto ochi" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="23" data-wtn="9.29"
   data-itf="1308" data-atp="" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yu%20Tanaka" target="_blank" rel="noopener">Yu Tanaka</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yu%20Tanaka" target="_blank" rel="noopener">Yu Tanaka</a></td>
   <td class="n cuota">2.25</td>
   <td class="n"><span class="pb ">20%</span></td>
   <td class="sec">Makoto Ochi <span class="cq">1.571</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">23</td>
-  <td class="n">9.29</td>
-  <td class="n sec">1308</td>
-  <td class="n sec">—</td>
+  <td class="n">23<i class="rv">30</i></td>
+  <td class="n">9.29<i class="rv">8.48</i></td>
+  <td class="n sec">1308<i class="rv">40</i></td>
+  <td class="n sec">—<i class="rv">1144</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -466,16 +472,16 @@ tr[hidden]{display:none}
   data-rival="jerry roddick" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="26" data-wtn="7.07"
   data-itf="608" data-atp="781" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Taisei%20Ichikawa" target="_blank" rel="noopener">Taisei Ichikawa</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Taisei%20Ichikawa" target="_blank" rel="noopener">Taisei Ichikawa</a></td>
   <td class="n cuota">2.25</td>
   <td class="n"><span class="pb ">63%</span></td>
   <td class="sec">Jerry Roddick <span class="cq">1.571</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">26</td>
-  <td class="n">7.07</td>
-  <td class="n sec">608</td>
-  <td class="n sec">781</td>
+  <td class="n">26<i class="rv">24</i></td>
+  <td class="n">7.07<i class="rv">7.65</i></td>
+  <td class="n sec">608<i class="rv">397</i></td>
+  <td class="n sec">781<i class="rv">1130</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -484,16 +490,16 @@ tr[hidden]{display:none}
   data-rival="taisei ichikawa" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="24" data-wtn="7.65"
   data-itf="397" data-atp="1130" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Jerry%20Roddick" target="_blank" rel="noopener">Jerry Roddick</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Jerry%20Roddick" target="_blank" rel="noopener">Jerry Roddick</a></td>
   <td class="n cuota">1.571</td>
   <td class="n"><span class="pb ">37%</span></td>
   <td class="sec">Taisei Ichikawa <span class="cq">2.25</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">24</td>
-  <td class="n">7.65</td>
-  <td class="n sec">397</td>
-  <td class="n sec">1130</td>
+  <td class="n">24<i class="rv">26</i></td>
+  <td class="n">7.65<i class="rv">7.07</i></td>
+  <td class="n sec">397<i class="rv">608</i></td>
+  <td class="n sec">1130<i class="rv">781</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -502,16 +508,16 @@ tr[hidden]{display:none}
   data-rival="sho katayama" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="30" data-wtn="5.58"
   data-itf="" data-atp="588" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Kuan-Yi%20Lee" target="_blank" rel="noopener">Kuan-Yi Lee</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Kuan-Yi%20Lee" target="_blank" rel="noopener">Kuan-Yi Lee</a></td>
   <td class="n cuota">1.5</td>
   <td class="n"><span class="pb ">30%</span></td>
   <td class="sec">Sho Katayama <span class="cq">2.35</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">30</td>
-  <td class="n">5.58</td>
-  <td class="n sec">—</td>
-  <td class="n sec">588</td>
+  <td class="n">30<i class="rv">37</i></td>
+  <td class="n">5.58<i class="rv">4.35</i></td>
+  <td class="n sec">—<i class="rv">1042</i></td>
+  <td class="n sec">588<i class="rv">1512</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -520,16 +526,16 @@ tr[hidden]{display:none}
   data-rival="kuan-yi lee" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="37" data-wtn="4.35"
   data-itf="1042" data-atp="1512" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Sho%20Katayama" target="_blank" rel="noopener">Sho Katayama</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Sho%20Katayama" target="_blank" rel="noopener">Sho Katayama</a></td>
   <td class="n cuota">2.35</td>
   <td class="n"><span class="pb media">70%</span></td>
   <td class="sec">Kuan-Yi Lee <span class="cq">1.5</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">37</td>
-  <td class="n">4.35</td>
-  <td class="n sec">1042</td>
-  <td class="n sec">1512</td>
+  <td class="n">37<i class="rv">30</i></td>
+  <td class="n">4.35<i class="rv">5.58</i></td>
+  <td class="n sec">1042<i class="rv">—</i></td>
+  <td class="n sec">1512<i class="rv">588</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -538,16 +544,16 @@ tr[hidden]{display:none}
   data-rival="tomohiro masabayashi" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="27" data-wtn="6.9"
   data-itf="" data-atp="868" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Thanapet%20Chanta" target="_blank" rel="noopener">Thanapet Chanta</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Thanapet%20Chanta" target="_blank" rel="noopener">Thanapet Chanta</a></td>
   <td class="n cuota">1.167</td>
   <td class="n"><span class="pb alta">80%</span></td>
   <td class="sec">Tomohiro Masabayashi <span class="cq">4.5</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 03:00</span></td>
-  <td class="n">27</td>
-  <td class="n">6.9</td>
-  <td class="n sec">—</td>
-  <td class="n sec">868</td>
+  <td class="n">27<i class="rv">28</i></td>
+  <td class="n">6.9<i class="rv">9.29</i></td>
+  <td class="n sec">—<i class="rv">558</i></td>
+  <td class="n sec">868<i class="rv">1368</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -556,16 +562,16 @@ tr[hidden]{display:none}
   data-rival="thanapet chanta" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="28" data-wtn="9.29"
   data-itf="558" data-atp="1368" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Tomohiro%20Masabayashi" target="_blank" rel="noopener">Tomohiro Masabayashi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Tomohiro%20Masabayashi" target="_blank" rel="noopener">Tomohiro Masabayashi</a></td>
   <td class="n cuota">4.5</td>
   <td class="n"><span class="pb ">20%</span></td>
   <td class="sec">Thanapet Chanta <span class="cq">1.167</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 03:00</span></td>
-  <td class="n">28</td>
-  <td class="n">9.29</td>
-  <td class="n sec">558</td>
-  <td class="n sec">1368</td>
+  <td class="n">28<i class="rv">27</i></td>
+  <td class="n">9.29<i class="rv">6.9</i></td>
+  <td class="n sec">558<i class="rv">—</i></td>
+  <td class="n sec">1368<i class="rv">868</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -574,16 +580,16 @@ tr[hidden]{display:none}
   data-rival="keerthivassan suresh" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="27" data-wtn="7.89"
   data-itf="530" data-atp="956" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Benjamin%20O'Connell" target="_blank" rel="noopener">Benjamin O'Connell</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Benjamin%20O'Connell" target="_blank" rel="noopener">Benjamin O'Connell</a></td>
   <td class="n cuota">1.1</td>
   <td class="n"><span class="pb alta">96%</span></td>
   <td class="sec">Keerthivassan Suresh <span class="cq">6.5</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 03:00</span></td>
-  <td class="n">27</td>
-  <td class="n">7.89</td>
-  <td class="n sec">530</td>
-  <td class="n sec">956</td>
+  <td class="n">27<i class="rv">21</i></td>
+  <td class="n">7.89<i class="rv">14.32</i></td>
+  <td class="n sec">530<i class="rv">1376</i></td>
+  <td class="n sec">956<i class="rv">—</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -592,16 +598,16 @@ tr[hidden]{display:none}
   data-rival="benjamin o'connell" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="21" data-wtn="14.32"
   data-itf="1376" data-atp="" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Keerthivassan%20Suresh" target="_blank" rel="noopener">Keerthivassan Suresh</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Keerthivassan%20Suresh" target="_blank" rel="noopener">Keerthivassan Suresh</a></td>
   <td class="n cuota">6.5</td>
   <td class="n"><span class="pb ">4%</span></td>
   <td class="sec">Benjamin O'Connell <span class="cq">1.1</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 03:00</span></td>
-  <td class="n">21</td>
-  <td class="n">14.32</td>
-  <td class="n sec">1376</td>
-  <td class="n sec">—</td>
+  <td class="n">21<i class="rv">27</i></td>
+  <td class="n">14.32<i class="rv">7.89</i></td>
+  <td class="n sec">1376<i class="rv">530</i></td>
+  <td class="n sec">—<i class="rv">956</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -610,16 +616,16 @@ tr[hidden]{display:none}
   data-rival="reece falck" data-torneo="m15 bali"
   data-etapa="R1" data-edad="27" data-wtn="4.54"
   data-itf="" data-atp="465" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Blake%20Ellis" target="_blank" rel="noopener">Blake Ellis</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Blake%20Ellis" target="_blank" rel="noopener">Blake Ellis</a></td>
   <td class="n cuota">1.167</td>
   <td class="n"><span class="pb alta">90%</span></td>
   <td class="sec">Reece Falck <span class="cq">4.5</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 03:30</span></td>
-  <td class="n">27</td>
-  <td class="n">4.54</td>
-  <td class="n sec">—</td>
-  <td class="n sec">465</td>
+  <td class="n">27<i class="rv">24</i></td>
+  <td class="n">4.54<i class="rv">9.16</i></td>
+  <td class="n sec">—<i class="rv">22</i></td>
+  <td class="n sec">465<i class="rv">1222</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -628,16 +634,16 @@ tr[hidden]{display:none}
   data-rival="blake ellis" data-torneo="m15 bali"
   data-etapa="R1" data-edad="24" data-wtn="9.16"
   data-itf="22" data-atp="1222" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Reece%20Falck" target="_blank" rel="noopener">Reece Falck</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Reece%20Falck" target="_blank" rel="noopener">Reece Falck</a></td>
   <td class="n cuota">4.5</td>
   <td class="n"><span class="pb ">10%</span></td>
   <td class="sec">Blake Ellis <span class="cq">1.167</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 03:30</span></td>
-  <td class="n">24</td>
-  <td class="n">9.16</td>
-  <td class="n sec">22</td>
-  <td class="n sec">1222</td>
+  <td class="n">24<i class="rv">27</i></td>
+  <td class="n">9.16<i class="rv">4.54</i></td>
+  <td class="n sec">22<i class="rv">—</i></td>
+  <td class="n sec">1222<i class="rv">465</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -646,16 +652,16 @@ tr[hidden]{display:none}
   data-rival="aniketh venkataraman" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="27" data-wtn="6.52"
   data-itf="" data-atp="473" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Moerani%20Bouzige" target="_blank" rel="noopener">Moerani Bouzige</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Moerani%20Bouzige" target="_blank" rel="noopener">Moerani Bouzige</a></td>
   <td class="n cuota">1.02</td>
   <td class="n"><span class="pb alta">97%</span></td>
   <td class="sec">Aniketh Venkataraman <span class="cq">11</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 04:00</span></td>
-  <td class="n">27</td>
-  <td class="n">6.52</td>
-  <td class="n sec">—</td>
-  <td class="n sec">473</td>
+  <td class="n">27<i class="rv">20</i></td>
+  <td class="n">6.52<i class="rv">13.44</i></td>
+  <td class="n sec">—<i class="rv">187</i></td>
+  <td class="n sec">473<i class="rv">—</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -664,16 +670,16 @@ tr[hidden]{display:none}
   data-rival="moerani bouzige" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="20" data-wtn="13.44"
   data-itf="187" data-atp="" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Aniketh%20Venkataraman" target="_blank" rel="noopener">Aniketh Venkataraman</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Aniketh%20Venkataraman" target="_blank" rel="noopener">Aniketh Venkataraman</a></td>
   <td class="n cuota">11</td>
   <td class="n"><span class="pb ">4%</span></td>
   <td class="sec">Moerani Bouzige <span class="cq">1.02</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 04:00</span></td>
-  <td class="n">20</td>
-  <td class="n">13.44</td>
-  <td class="n sec">187</td>
-  <td class="n sec">—</td>
+  <td class="n">20<i class="rv">27</i></td>
+  <td class="n">13.44<i class="rv">6.52</i></td>
+  <td class="n sec">187<i class="rv">—</i></td>
+  <td class="n sec">—<i class="rv">473</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -682,16 +688,16 @@ tr[hidden]{display:none}
   data-rival="manish sureshkumar" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="23" data-wtn="9.81"
   data-itf="642" data-atp="1092" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=James%20Van%20Herzeele" target="_blank" rel="noopener">James Van Herzeele</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=James%20Van%20Herzeele" target="_blank" rel="noopener">James Van Herzeele</a></td>
   <td class="n cuota">2.25</td>
   <td class="n"><span class="pb ">29%</span></td>
   <td class="sec">Manish Sureshkumar <span class="cq">1.571</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 04:00</span></td>
-  <td class="n">23</td>
-  <td class="n">9.81</td>
-  <td class="n sec">642</td>
-  <td class="n sec">1092</td>
+  <td class="n">23<i class="rv">27</i></td>
+  <td class="n">9.81<i class="rv">7.41</i></td>
+  <td class="n sec">642<i class="rv">1042</i></td>
+  <td class="n sec">1092<i class="rv">727</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -700,16 +706,16 @@ tr[hidden]{display:none}
   data-rival="james van herzeele" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="27" data-wtn="7.41"
   data-itf="1042" data-atp="727" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Manish%20Sureshkumar" target="_blank" rel="noopener">Manish Sureshkumar</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Manish%20Sureshkumar" target="_blank" rel="noopener">Manish Sureshkumar</a></td>
   <td class="n cuota">1.571</td>
   <td class="n"><span class="pb media">71%</span></td>
   <td class="sec">James Van Herzeele <span class="cq">2.25</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 04:00</span></td>
-  <td class="n">27</td>
-  <td class="n">7.41</td>
-  <td class="n sec">1042</td>
-  <td class="n sec">727</td>
+  <td class="n">27<i class="rv">23</i></td>
+  <td class="n">7.41<i class="rv">9.81</i></td>
+  <td class="n sec">1042<i class="rv">642</i></td>
+  <td class="n sec">727<i class="rv">1092</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -718,16 +724,16 @@ tr[hidden]{display:none}
   data-rival="marvin spiering" data-torneo="m15 porto velho"
   data-etapa="R1" data-edad="21" data-wtn="10.47"
   data-itf="352" data-atp="1146" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Victor%20Pagotto" target="_blank" rel="noopener">Victor Pagotto</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Victor%20Pagotto" target="_blank" rel="noopener">Victor Pagotto</a></td>
   <td class="n cuota">1.667</td>
   <td class="n"><span class="pb ">61%</span></td>
   <td class="sec">Marvin Spiering <span class="cq">2.1</span></td>
   <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
   <td class="sec">R1<span class="cq"> 14:00</span></td>
-  <td class="n">21</td>
-  <td class="n">10.47</td>
-  <td class="n sec">352</td>
-  <td class="n sec">1146</td>
+  <td class="n">21<i class="rv">29</i></td>
+  <td class="n">10.47<i class="rv">11.36</i></td>
+  <td class="n sec">352<i class="rv">195</i></td>
+  <td class="n sec">1146<i class="rv">1860</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -736,16 +742,16 @@ tr[hidden]{display:none}
   data-rival="victor pagotto" data-torneo="m15 porto velho"
   data-etapa="R1" data-edad="29" data-wtn="11.36"
   data-itf="195" data-atp="1860" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Marvin%20Spiering" target="_blank" rel="noopener">Marvin Spiering</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Marvin%20Spiering" target="_blank" rel="noopener">Marvin Spiering</a></td>
   <td class="n cuota">2.1</td>
   <td class="n"><span class="pb ">40%</span></td>
   <td class="sec">Victor Pagotto <span class="cq">1.667</span></td>
   <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
   <td class="sec">R1<span class="cq"> 14:00</span></td>
-  <td class="n">29</td>
-  <td class="n">11.36</td>
-  <td class="n sec">195</td>
-  <td class="n sec">1860</td>
+  <td class="n">29<i class="rv">21</i></td>
+  <td class="n">11.36<i class="rv">10.47</i></td>
+  <td class="n sec">195<i class="rv">352</i></td>
+  <td class="n sec">1860<i class="rv">1146</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -754,16 +760,16 @@ tr[hidden]{display:none}
   data-rival="joao eduardo schiessl" data-torneo="m15 porto velho"
   data-etapa="R1" data-edad="25" data-wtn="16.51"
   data-itf="1002" data-atp="1995" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Franco%20Marini" target="_blank" rel="noopener">Franco Marini</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Franco%20Marini" target="_blank" rel="noopener">Franco Marini</a></td>
   <td class="n cuota">15</td>
   <td class="n"><span class="pb ">0%</span></td>
   <td class="sec">Joao Eduardo Schiessl <span class="cq">1.01</span></td>
   <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
   <td class="sec">R1<span class="cq"> 14:00</span></td>
-  <td class="n">25</td>
-  <td class="n">16.51</td>
-  <td class="n sec">1002</td>
-  <td class="n sec">1995</td>
+  <td class="n">25<i class="rv">22</i></td>
+  <td class="n">16.51<i class="rv">5.69</i></td>
+  <td class="n sec">1002<i class="rv">—</i></td>
+  <td class="n sec">1995<i class="rv">532</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -772,16 +778,16 @@ tr[hidden]{display:none}
   data-rival="franco marini" data-torneo="m15 porto velho"
   data-etapa="R1" data-edad="22" data-wtn="5.69"
   data-itf="" data-atp="532" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Joao%20Eduardo%20Schiessl" target="_blank" rel="noopener">Joao Eduardo Schiessl</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Joao%20Eduardo%20Schiessl" target="_blank" rel="noopener">Joao Eduardo Schiessl</a></td>
   <td class="n cuota">1.01</td>
   <td class="n"><span class="pb alta">100%</span></td>
   <td class="sec">Franco Marini <span class="cq">15</span></td>
   <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
   <td class="sec">R1<span class="cq"> 14:00</span></td>
-  <td class="n">22</td>
-  <td class="n">5.69</td>
-  <td class="n sec">—</td>
-  <td class="n sec">532</td>
+  <td class="n">22<i class="rv">25</i></td>
+  <td class="n">5.69<i class="rv">16.51</i></td>
+  <td class="n sec">—<i class="rv">1002</i></td>
+  <td class="n sec">532<i class="rv">1995</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -790,16 +796,16 @@ tr[hidden]{display:none}
   data-rival="kaua lorenzo santos gava" data-torneo="m15 porto velho"
   data-etapa="R1" data-edad="23" data-wtn="11.31"
   data-itf="1320" data-atp="1426" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Lucca%20Pinto" target="_blank" rel="noopener">Lucca Pinto</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Lucca%20Pinto" target="_blank" rel="noopener">Lucca Pinto</a></td>
   <td class="n cuota">3</td>
   <td class="n"><span class="pb ">27%</span></td>
   <td class="sec">Kaua Lorenzo Santos Gava <span class="cq">1.364</span></td>
   <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
   <td class="sec">R1<span class="cq"> 14:00</span></td>
-  <td class="n">23</td>
-  <td class="n">11.31</td>
-  <td class="n sec">1320</td>
-  <td class="n sec">1426</td>
+  <td class="n">23<i class="rv">23</i></td>
+  <td class="n">11.31<i class="rv">9.22</i></td>
+  <td class="n sec">1320<i class="rv">1497</i></td>
+  <td class="n sec">1426<i class="rv">1793</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -808,16 +814,16 @@ tr[hidden]{display:none}
   data-rival="lucca pinto" data-torneo="m15 porto velho"
   data-etapa="R1" data-edad="23" data-wtn="9.22"
   data-itf="1497" data-atp="1793" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Kaua%20Lorenzo%20Santos%20Gava" target="_blank" rel="noopener">Kaua Lorenzo Santos Gava</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Kaua%20Lorenzo%20Santos%20Gava" target="_blank" rel="noopener">Kaua Lorenzo Santos Gava</a></td>
   <td class="n cuota">1.364</td>
   <td class="n"><span class="pb media">73%</span></td>
   <td class="sec">Lucca Pinto <span class="cq">3</span></td>
   <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
   <td class="sec">R1<span class="cq"> 14:00</span></td>
-  <td class="n">23</td>
-  <td class="n">9.22</td>
-  <td class="n sec">1497</td>
-  <td class="n sec">1793</td>
+  <td class="n">23<i class="rv">23</i></td>
+  <td class="n">9.22<i class="rv">11.31</i></td>
+  <td class="n sec">1497<i class="rv">1320</i></td>
+  <td class="n sec">1793<i class="rv">1426</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -826,16 +832,16 @@ tr[hidden]{display:none}
   data-rival="victor braga" data-torneo="m15 porto velho"
   data-etapa="R1" data-edad="23" data-wtn="10.86"
   data-itf="174" data-atp="1147" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Enzo%20Lima" target="_blank" rel="noopener">Enzo Lima</a> <b class="est" title="pisa la casilla del manual">★</b></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Enzo%20Lima" target="_blank" rel="noopener">Enzo Lima</a> <b class="est" title="pisa la casilla del manual">★</b></td>
   <td class="n cuota">1.222</td>
   <td class="n"><span class="pb alta">88%</span></td>
   <td class="sec">Victor Braga <span class="cq">4</span></td>
   <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
   <td class="sec">R1<span class="cq"> 16:30</span></td>
-  <td class="n">23</td>
-  <td class="n">10.86</td>
-  <td class="n sec">174</td>
-  <td class="n sec">1147</td>
+  <td class="n">23<i class="rv">21</i></td>
+  <td class="n">10.86<i class="rv">15.05</i></td>
+  <td class="n sec">174<i class="rv">448</i></td>
+  <td class="n sec">1147<i class="rv">1420</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -844,16 +850,16 @@ tr[hidden]{display:none}
   data-rival="enzo lima" data-torneo="m15 porto velho"
   data-etapa="R1" data-edad="21" data-wtn="15.05"
   data-itf="448" data-atp="1420" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Victor%20Braga" target="_blank" rel="noopener">Victor Braga</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Victor%20Braga" target="_blank" rel="noopener">Victor Braga</a></td>
   <td class="n cuota">4</td>
   <td class="n"><span class="pb ">12%</span></td>
   <td class="sec">Enzo Lima <span class="cq">1.222</span></td>
   <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
   <td class="sec">R1<span class="cq"> 16:30</span></td>
-  <td class="n">21</td>
-  <td class="n">15.05</td>
-  <td class="n sec">448</td>
-  <td class="n sec">1420</td>
+  <td class="n">21<i class="rv">23</i></td>
+  <td class="n">15.05<i class="rv">10.86</i></td>
+  <td class="n sec">448<i class="rv">174</i></td>
+  <td class="n sec">1420<i class="rv">1147</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -862,16 +868,16 @@ tr[hidden]{display:none}
   data-rival="amr elsayed" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="22" data-wtn="10.61"
   data-itf="418" data-atp="1262" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Chirag%20Duhan" target="_blank" rel="noopener">Chirag Duhan</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Chirag%20Duhan" target="_blank" rel="noopener">Chirag Duhan</a></td>
   <td class="n cuota">3.2</td>
   <td class="n"><span class="pb ">16%</span></td>
   <td class="sec">Amr Elsayed <span class="cq">1.28</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 21:00</span></td>
-  <td class="n">22</td>
-  <td class="n">10.61</td>
-  <td class="n sec">418</td>
-  <td class="n sec">1262</td>
+  <td class="n">22<i class="rv">27</i></td>
+  <td class="n">10.61<i class="rv">7.72</i></td>
+  <td class="n sec">418<i class="rv">—</i></td>
+  <td class="n sec">1262<i class="rv">587</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -880,16 +886,16 @@ tr[hidden]{display:none}
   data-rival="chirag duhan" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="27" data-wtn="7.72"
   data-itf="" data-atp="587" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Amr%20Elsayed" target="_blank" rel="noopener">Amr Elsayed</a> <b class="est" title="pisa la casilla del manual">★</b></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Amr%20Elsayed" target="_blank" rel="noopener">Amr Elsayed</a> <b class="est" title="pisa la casilla del manual">★</b></td>
   <td class="n cuota">1.28</td>
   <td class="n"><span class="pb alta">84%</span></td>
   <td class="sec">Chirag Duhan <span class="cq">3.2</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 21:00</span></td>
-  <td class="n">27</td>
-  <td class="n">7.72</td>
-  <td class="n sec">—</td>
-  <td class="n sec">587</td>
+  <td class="n">27<i class="rv">22</i></td>
+  <td class="n">7.72<i class="rv">10.61</i></td>
+  <td class="n sec">—<i class="rv">418</i></td>
+  <td class="n sec">587<i class="rv">1262</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -898,16 +904,16 @@ tr[hidden]{display:none}
   data-rival="marat salbiev" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="19" data-wtn="9.17"
   data-itf="1210" data-atp="955" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Kerem%20Yilmaz" target="_blank" rel="noopener">Kerem Yilmaz</a> <b class="est" title="pisa la casilla del manual">★</b></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Kerem%20Yilmaz" target="_blank" rel="noopener">Kerem Yilmaz</a> <b class="est" title="pisa la casilla del manual">★</b></td>
   <td class="n cuota">1.32</td>
   <td class="n"><span class="pb alta">80%</span></td>
   <td class="sec">Marat Salbiev <span class="cq">3</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 21:00</span></td>
-  <td class="n">19</td>
-  <td class="n">9.17</td>
-  <td class="n sec">1210</td>
-  <td class="n sec">955</td>
+  <td class="n">19<i class="rv">18</i></td>
+  <td class="n">9.17<i class="rv">15.49</i></td>
+  <td class="n sec">1210<i class="rv">—</i></td>
+  <td class="n sec">955<i class="rv">—</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -916,16 +922,16 @@ tr[hidden]{display:none}
   data-rival="kerem yilmaz" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="18" data-wtn="15.49"
   data-itf="" data-atp="" data-jr="1" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Marat%20Salbiev" target="_blank" rel="noopener">Marat Salbiev</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Marat%20Salbiev" target="_blank" rel="noopener">Marat Salbiev</a></td>
   <td class="n cuota">3</td>
   <td class="n"><span class="pb ">20%</span></td>
   <td class="sec">Kerem Yilmaz <span class="cq">1.32</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 21:00</span></td>
-  <td class="n">18</td>
-  <td class="n">15.49</td>
-  <td class="n sec">—</td>
-  <td class="n sec">—</td>
+  <td class="n">18<i class="rv">19</i></td>
+  <td class="n">15.49<i class="rv">9.17</i></td>
+  <td class="n sec">—<i class="rv">1210</i></td>
+  <td class="n sec">—<i class="rv">955</i></td>
   <td class="n">sí</td>
   <td class="n"></td>
 </tr>
@@ -934,16 +940,16 @@ tr[hidden]{display:none}
   data-rival="udit kamboj" data-torneo="m15 bali"
   data-etapa="R1" data-edad="26" data-wtn="7.17"
   data-itf="292" data-atp="872" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Isaac%20Becroft" target="_blank" rel="noopener">Isaac Becroft</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Isaac%20Becroft" target="_blank" rel="noopener">Isaac Becroft</a></td>
   <td class="n cuota">1.083</td>
   <td class="n"><span class="pb alta">87%</span></td>
   <td class="sec">Udit Kamboj <span class="cq">7</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">26</td>
-  <td class="n">7.17</td>
-  <td class="n sec">292</td>
-  <td class="n sec">872</td>
+  <td class="n">26<i class="rv">25</i></td>
+  <td class="n">7.17<i class="rv">11.15</i></td>
+  <td class="n sec">292<i class="rv">121</i></td>
+  <td class="n sec">872<i class="rv">1189</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -952,16 +958,16 @@ tr[hidden]{display:none}
   data-rival="isaac becroft" data-torneo="m15 bali"
   data-etapa="R1" data-edad="25" data-wtn="11.15"
   data-itf="121" data-atp="1189" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Udit%20Kamboj" target="_blank" rel="noopener">Udit Kamboj</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Udit%20Kamboj" target="_blank" rel="noopener">Udit Kamboj</a></td>
   <td class="n cuota">7</td>
   <td class="n"><span class="pb ">13%</span></td>
   <td class="sec">Isaac Becroft <span class="cq">1.083</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">25</td>
-  <td class="n">11.15</td>
-  <td class="n sec">121</td>
-  <td class="n sec">1189</td>
+  <td class="n">25<i class="rv">26</i></td>
+  <td class="n">11.15<i class="rv">7.17</i></td>
+  <td class="n sec">121<i class="rv">292</i></td>
+  <td class="n sec">1189<i class="rv">872</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -970,16 +976,16 @@ tr[hidden]{display:none}
   data-rival="ryotaro taguchi" data-torneo="m15 bali"
   data-etapa="R1" data-edad="24" data-wtn="13.93"
   data-itf="656" data-atp="" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Nick%20Beamish" target="_blank" rel="noopener">Nick Beamish</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Nick%20Beamish" target="_blank" rel="noopener">Nick Beamish</a></td>
   <td class="n cuota">7.5</td>
   <td class="n"><span class="pb ">4%</span></td>
   <td class="sec">Ryotaro Taguchi <span class="cq">1.071</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">24</td>
-  <td class="n">13.93</td>
-  <td class="n sec">656</td>
-  <td class="n sec">—</td>
+  <td class="n">24<i class="rv">26</i></td>
+  <td class="n">13.93<i class="rv">7.37</i></td>
+  <td class="n sec">656<i class="rv">343</i></td>
+  <td class="n sec">—<i class="rv">949</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -988,16 +994,16 @@ tr[hidden]{display:none}
   data-rival="nick beamish" data-torneo="m15 bali"
   data-etapa="R1" data-edad="26" data-wtn="7.37"
   data-itf="343" data-atp="949" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Ryotaro%20Taguchi" target="_blank" rel="noopener">Ryotaro Taguchi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Ryotaro%20Taguchi" target="_blank" rel="noopener">Ryotaro Taguchi</a></td>
   <td class="n cuota">1.071</td>
   <td class="n"><span class="pb alta">96%</span></td>
   <td class="sec">Nick Beamish <span class="cq">7.5</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">26</td>
-  <td class="n">7.37</td>
-  <td class="n sec">343</td>
-  <td class="n sec">949</td>
+  <td class="n">26<i class="rv">24</i></td>
+  <td class="n">7.37<i class="rv">13.93</i></td>
+  <td class="n sec">343<i class="rv">656</i></td>
+  <td class="n sec">949<i class="rv">—</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1006,16 +1012,16 @@ tr[hidden]{display:none}
   data-rival="hitesh chauhan" data-torneo="m15 bali"
   data-etapa="R1" data-edad="29" data-wtn="11.47"
   data-itf="320" data-atp="1907" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Anthony%20Susanto" target="_blank" rel="noopener">Anthony Susanto</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Anthony%20Susanto" target="_blank" rel="noopener">Anthony Susanto</a></td>
   <td class="n cuota">1.833</td>
   <td class="n"><span class="pb ">58%</span></td>
   <td class="sec">Hitesh Chauhan <span class="cq">1.833</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">29</td>
-  <td class="n">11.47</td>
-  <td class="n sec">320</td>
-  <td class="n sec">1907</td>
+  <td class="n">29<i class="rv">19</i></td>
+  <td class="n">11.47<i class="rv">11.6</i></td>
+  <td class="n sec">320<i class="rv">701</i></td>
+  <td class="n sec">1907<i class="rv">1494</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1024,16 +1030,16 @@ tr[hidden]{display:none}
   data-rival="anthony susanto" data-torneo="m15 bali"
   data-etapa="R1" data-edad="19" data-wtn="11.6"
   data-itf="701" data-atp="1494" data-jr="1" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Hitesh%20Chauhan" target="_blank" rel="noopener">Hitesh Chauhan</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hitesh%20Chauhan" target="_blank" rel="noopener">Hitesh Chauhan</a></td>
   <td class="n cuota">1.833</td>
   <td class="n"><span class="pb ">42%</span></td>
   <td class="sec">Anthony Susanto <span class="cq">1.833</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">19</td>
-  <td class="n">11.6</td>
-  <td class="n sec">701</td>
-  <td class="n sec">1494</td>
+  <td class="n">19<i class="rv">29</i></td>
+  <td class="n">11.6<i class="rv">11.47</i></td>
+  <td class="n sec">701<i class="rv">320</i></td>
+  <td class="n sec">1494<i class="rv">1907</i></td>
   <td class="n">sí</td>
   <td class="n"></td>
 </tr>
@@ -1042,16 +1048,16 @@ tr[hidden]{display:none}
   data-rival="shanker heisnam" data-torneo="m15 bali"
   data-etapa="R1" data-edad="16" data-wtn="16.93"
   data-itf="1768" data-atp="1910" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Rafalentino%20Ali%20Da%20Costa" target="_blank" rel="noopener">Rafalentino Ali Da Costa</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Rafalentino%20Ali%20Da%20Costa" target="_blank" rel="noopener">Rafalentino Ali Da Costa</a></td>
   <td class="n cuota">1.571</td>
   <td class="n"><span class="pb ">51%</span></td>
   <td class="sec">Shanker Heisnam <span class="cq">2.25</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">16</td>
-  <td class="n">16.93</td>
-  <td class="n sec">1768</td>
-  <td class="n sec">1910</td>
+  <td class="n">16<i class="rv">19</i></td>
+  <td class="n">16.93<i class="rv">13.12</i></td>
+  <td class="n sec">1768<i class="rv">511</i></td>
+  <td class="n sec">1910<i class="rv">1656</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1060,16 +1066,16 @@ tr[hidden]{display:none}
   data-rival="rafalentino ali da costa" data-torneo="m15 bali"
   data-etapa="R1" data-edad="19" data-wtn="13.12"
   data-itf="511" data-atp="1656" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Shanker%20Heisnam" target="_blank" rel="noopener">Shanker Heisnam</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Shanker%20Heisnam" target="_blank" rel="noopener">Shanker Heisnam</a></td>
   <td class="n cuota">2.25</td>
   <td class="n"><span class="pb ">49%</span></td>
   <td class="sec">Rafalentino Ali Da Costa <span class="cq">1.571</span></td>
   <td class="sec">M15 Bali <span class="cq">INA</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">19</td>
-  <td class="n">13.12</td>
-  <td class="n sec">511</td>
-  <td class="n sec">1656</td>
+  <td class="n">19<i class="rv">16</i></td>
+  <td class="n">13.12<i class="rv">16.93</i></td>
+  <td class="n sec">511<i class="rv">1768</i></td>
+  <td class="n sec">1656<i class="rv">1910</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1078,16 +1084,16 @@ tr[hidden]{display:none}
   data-rival="hyeon chung" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="27" data-wtn="7.69"
   data-itf="" data-atp="806" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Ryuki%20Matsuda" target="_blank" rel="noopener">Ryuki Matsuda</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Ryuki%20Matsuda" target="_blank" rel="noopener">Ryuki Matsuda</a></td>
   <td class="n cuota">5</td>
   <td class="n"><span class="pb ">15%</span></td>
   <td class="sec">Hyeon Chung <span class="cq">1.143</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">27</td>
-  <td class="n">7.69</td>
-  <td class="n sec">—</td>
-  <td class="n sec">806</td>
+  <td class="n">27<i class="rv">30</i></td>
+  <td class="n">7.69<i class="rv">3.57</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">806<i class="rv">575</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1096,16 +1102,16 @@ tr[hidden]{display:none}
   data-rival="ryuki matsuda" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="30" data-wtn="3.57"
   data-itf="" data-atp="575" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Hyeon%20Chung" target="_blank" rel="noopener">Hyeon Chung</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hyeon%20Chung" target="_blank" rel="noopener">Hyeon Chung</a></td>
   <td class="n cuota">1.143</td>
   <td class="n"><span class="pb alta">85%</span></td>
   <td class="sec">Ryuki Matsuda <span class="cq">5</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">30</td>
-  <td class="n">3.57</td>
-  <td class="n sec">—</td>
-  <td class="n sec">575</td>
+  <td class="n">30<i class="rv">27</i></td>
+  <td class="n">3.57<i class="rv">7.69</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">575<i class="rv">806</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1114,16 +1120,16 @@ tr[hidden]{display:none}
   data-rival="philip sekulic" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="28" data-wtn="4.66"
   data-itf="1407" data-atp="1085" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yun%20Seong%20Chung" target="_blank" rel="noopener">Yun Seong Chung</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yun%20Seong%20Chung" target="_blank" rel="noopener">Yun Seong Chung</a></td>
   <td class="n cuota">2.25</td>
   <td class="n"><span class="pb ">38%</span></td>
   <td class="sec">Philip Sekulic <span class="cq">1.571</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">28</td>
-  <td class="n">4.66</td>
-  <td class="n sec">1407</td>
-  <td class="n sec">1085</td>
+  <td class="n">28<i class="rv">23</i></td>
+  <td class="n">4.66<i class="rv">3.62</i></td>
+  <td class="n sec">1407<i class="rv">—</i></td>
+  <td class="n sec">1085<i class="rv">304</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1132,16 +1138,16 @@ tr[hidden]{display:none}
   data-rival="yun seong chung" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="23" data-wtn="3.62"
   data-itf="" data-atp="304" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Philip%20Sekulic" target="_blank" rel="noopener">Philip Sekulic</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Philip%20Sekulic" target="_blank" rel="noopener">Philip Sekulic</a></td>
   <td class="n cuota">1.571</td>
   <td class="n"><span class="pb ">62%</span></td>
   <td class="sec">Yun Seong Chung <span class="cq">2.25</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">23</td>
-  <td class="n">3.62</td>
-  <td class="n sec">—</td>
-  <td class="n sec">304</td>
+  <td class="n">23<i class="rv">28</i></td>
+  <td class="n">3.62<i class="rv">4.66</i></td>
+  <td class="n sec">—<i class="rv">1407</i></td>
+  <td class="n sec">304<i class="rv">1085</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1150,16 +1156,16 @@ tr[hidden]{display:none}
   data-rival="yua taka" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="30" data-wtn="5.7"
   data-itf="" data-atp="739" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Naoki%20Nakagawa" target="_blank" rel="noopener">Naoki Nakagawa</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Naoki%20Nakagawa" target="_blank" rel="noopener">Naoki Nakagawa</a></td>
   <td class="n cuota">1.125</td>
   <td class="n"><span class="pb alta">82%</span></td>
   <td class="sec">Yua Taka <span class="cq">5.5</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">30</td>
-  <td class="n">5.7</td>
-  <td class="n sec">—</td>
-  <td class="n sec">739</td>
+  <td class="n">30<i class="rv">23</i></td>
+  <td class="n">5.7<i class="rv">8.84</i></td>
+  <td class="n sec">—<i class="rv">108</i></td>
+  <td class="n sec">739<i class="rv">1555</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1168,16 +1174,16 @@ tr[hidden]{display:none}
   data-rival="naoki nakagawa" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="23" data-wtn="8.84"
   data-itf="108" data-atp="1555" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yua%20Taka" target="_blank" rel="noopener">Yua Taka</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yua%20Taka" target="_blank" rel="noopener">Yua Taka</a></td>
   <td class="n cuota">5.5</td>
   <td class="n"><span class="pb ">18%</span></td>
   <td class="sec">Naoki Nakagawa <span class="cq">1.125</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">23</td>
-  <td class="n">8.84</td>
-  <td class="n sec">108</td>
-  <td class="n sec">1555</td>
+  <td class="n">23<i class="rv">30</i></td>
+  <td class="n">8.84<i class="rv">5.7</i></td>
+  <td class="n sec">108<i class="rv">—</i></td>
+  <td class="n sec">1555<i class="rv">739</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1186,16 +1192,16 @@ tr[hidden]{display:none}
   data-rival="kosuke ogura" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="26" data-wtn="3.66"
   data-itf="" data-atp="280" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yanki%20Erel" target="_blank" rel="noopener">Yanki Erel</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yanki%20Erel" target="_blank" rel="noopener">Yanki Erel</a></td>
   <td class="n cuota">1.071</td>
   <td class="n"><span class="pb alta">84%</span></td>
   <td class="sec">Kosuke Ogura <span class="cq">7.5</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">26</td>
-  <td class="n">3.66</td>
-  <td class="n sec">—</td>
-  <td class="n sec">280</td>
+  <td class="n">26<i class="rv">30</i></td>
+  <td class="n">3.66<i class="rv">7.63</i></td>
+  <td class="n sec">—<i class="rv">707</i></td>
+  <td class="n sec">280<i class="rv">861</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1204,16 +1210,16 @@ tr[hidden]{display:none}
   data-rival="yanki erel" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="30" data-wtn="7.63"
   data-itf="707" data-atp="861" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Kosuke%20Ogura" target="_blank" rel="noopener">Kosuke Ogura</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Kosuke%20Ogura" target="_blank" rel="noopener">Kosuke Ogura</a></td>
   <td class="n cuota">7.5</td>
   <td class="n"><span class="pb ">16%</span></td>
   <td class="sec">Yanki Erel <span class="cq">1.071</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">30</td>
-  <td class="n">7.63</td>
-  <td class="n sec">707</td>
-  <td class="n sec">861</td>
+  <td class="n">30<i class="rv">26</i></td>
+  <td class="n">7.63<i class="rv">3.66</i></td>
+  <td class="n sec">707<i class="rv">—</i></td>
+  <td class="n sec">861<i class="rv">280</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1222,16 +1228,16 @@ tr[hidden]{display:none}
   data-rival="seiya nakanishi" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="20" data-wtn="6.51"
   data-itf="340" data-atp="660" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Naoya%20Honda" target="_blank" rel="noopener">Naoya Honda</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Naoya%20Honda" target="_blank" rel="noopener">Naoya Honda</a></td>
   <td class="n cuota">1.02</td>
   <td class="n"><span class="pb alta">99%</span></td>
   <td class="sec">Seiya Nakanishi <span class="cq">11</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">20</td>
-  <td class="n">6.51</td>
-  <td class="n sec">340</td>
-  <td class="n sec">660</td>
+  <td class="n">20<i class="rv">30</i></td>
+  <td class="n">6.51<i class="rv">15.33</i></td>
+  <td class="n sec">340<i class="rv">1175</i></td>
+  <td class="n sec">660<i class="rv">1995</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1240,16 +1246,16 @@ tr[hidden]{display:none}
   data-rival="naoya honda" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="30" data-wtn="15.33"
   data-itf="1175" data-atp="1995" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Seiya%20Nakanishi" target="_blank" rel="noopener">Seiya Nakanishi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Seiya%20Nakanishi" target="_blank" rel="noopener">Seiya Nakanishi</a></td>
   <td class="n cuota">11</td>
   <td class="n"><span class="pb ">2%</span></td>
   <td class="sec">Naoya Honda <span class="cq">1.02</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">30</td>
-  <td class="n">15.33</td>
-  <td class="n sec">1175</td>
-  <td class="n sec">1995</td>
+  <td class="n">30<i class="rv">20</i></td>
+  <td class="n">15.33<i class="rv">6.51</i></td>
+  <td class="n sec">1175<i class="rv">340</i></td>
+  <td class="n sec">1995<i class="rv">660</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1258,16 +1264,16 @@ tr[hidden]{display:none}
   data-rival="chase ferguson" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="29" data-wtn="5.89"
   data-itf="" data-atp="682" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yusuke%20Takahashi" target="_blank" rel="noopener">Yusuke Takahashi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yusuke%20Takahashi" target="_blank" rel="noopener">Yusuke Takahashi</a></td>
   <td class="n cuota">1.4</td>
   <td class="n"><span class="pb ">53%</span></td>
   <td class="sec">Chase Ferguson <span class="cq">2.75</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">29</td>
-  <td class="n">5.89</td>
-  <td class="n sec">—</td>
-  <td class="n sec">682</td>
+  <td class="n">29<i class="rv">27</i></td>
+  <td class="n">5.89<i class="rv">6.82</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">682<i class="rv">641</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1276,16 +1282,16 @@ tr[hidden]{display:none}
   data-rival="yusuke takahashi" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="27" data-wtn="6.82"
   data-itf="" data-atp="641" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Chase%20Ferguson" target="_blank" rel="noopener">Chase Ferguson</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Chase%20Ferguson" target="_blank" rel="noopener">Chase Ferguson</a></td>
   <td class="n cuota">2.75</td>
   <td class="n"><span class="pb ">47%</span></td>
   <td class="sec">Yusuke Takahashi <span class="cq">1.4</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">27</td>
-  <td class="n">6.82</td>
-  <td class="n sec">—</td>
-  <td class="n sec">641</td>
+  <td class="n">27<i class="rv">29</i></td>
+  <td class="n">6.82<i class="rv">5.89</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">641<i class="rv">682</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1294,16 +1300,16 @@ tr[hidden]{display:none}
   data-rival="hikaru shiraishi" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="22" data-wtn="8.65"
   data-itf="643" data-atp="1823" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Saki%20TANGE" target="_blank" rel="noopener">Saki TANGE</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Saki%20TANGE" target="_blank" rel="noopener">Saki TANGE</a></td>
   <td class="n cuota">4.5</td>
   <td class="n"><span class="pb ">31%</span></td>
   <td class="sec">Hikaru Shiraishi <span class="cq">1.167</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">22</td>
-  <td class="n">8.65</td>
-  <td class="n sec">643</td>
-  <td class="n sec">1823</td>
+  <td class="n">22<i class="rv">26</i></td>
+  <td class="n">8.65<i class="rv">6.99</i></td>
+  <td class="n sec">643<i class="rv">—</i></td>
+  <td class="n sec">1823<i class="rv">506</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1312,16 +1318,16 @@ tr[hidden]{display:none}
   data-rival="saki tange" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="26" data-wtn="6.99"
   data-itf="" data-atp="506" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Hikaru%20Shiraishi" target="_blank" rel="noopener">Hikaru Shiraishi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hikaru%20Shiraishi" target="_blank" rel="noopener">Hikaru Shiraishi</a></td>
   <td class="n cuota">1.167</td>
   <td class="n"><span class="pb ">69%</span></td>
   <td class="sec">Saki TANGE <span class="cq">4.5</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">26</td>
-  <td class="n">6.99</td>
-  <td class="n sec">—</td>
-  <td class="n sec">506</td>
+  <td class="n">26<i class="rv">22</i></td>
+  <td class="n">6.99<i class="rv">8.65</i></td>
+  <td class="n sec">—<i class="rv">643</i></td>
+  <td class="n sec">506<i class="rv">1823</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1330,16 +1336,16 @@ tr[hidden]{display:none}
   data-rival="sora fukuda" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="29" data-wtn="7.56"
   data-itf="" data-atp="839" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yusuke%20Kusuhara" target="_blank" rel="noopener">Yusuke Kusuhara</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yusuke%20Kusuhara" target="_blank" rel="noopener">Yusuke Kusuhara</a></td>
   <td class="n cuota">3.25</td>
   <td class="n"><span class="pb ">30%</span></td>
   <td class="sec">Sora Fukuda <span class="cq">1.333</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">29</td>
-  <td class="n">7.56</td>
-  <td class="n sec">—</td>
-  <td class="n sec">839</td>
+  <td class="n">29<i class="rv">29</i></td>
+  <td class="n">7.56<i class="rv">5.79</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">839<i class="rv">779</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1348,16 +1354,16 @@ tr[hidden]{display:none}
   data-rival="yusuke kusuhara" data-torneo="m25 urayasu"
   data-etapa="R1" data-edad="29" data-wtn="5.79"
   data-itf="" data-atp="779" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Sora%20Fukuda" target="_blank" rel="noopener">Sora Fukuda</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Sora%20Fukuda" target="_blank" rel="noopener">Sora Fukuda</a></td>
   <td class="n cuota">1.333</td>
   <td class="n"><span class="pb media">70%</span></td>
   <td class="sec">Yusuke Kusuhara <span class="cq">3.25</span></td>
   <td class="sec">M25 Urayasu <span class="cq">JPN</span></td>
   <td class="sec">R1<span class="cq"> 01:00</span></td>
-  <td class="n">29</td>
-  <td class="n">5.79</td>
-  <td class="n sec">—</td>
-  <td class="n sec">779</td>
+  <td class="n">29<i class="rv">29</i></td>
+  <td class="n">5.79<i class="rv">7.56</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">779<i class="rv">839</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1366,16 +1372,16 @@ tr[hidden]{display:none}
   data-rival="maxim shin" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="26" data-wtn="6.97"
   data-itf="1407" data-atp="869" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Miles%20Jones" target="_blank" rel="noopener">Miles Jones</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Miles%20Jones" target="_blank" rel="noopener">Miles Jones</a></td>
   <td class="n cuota">1.1</td>
   <td class="n"><span class="pb alta">85%</span></td>
   <td class="sec">Maxim Shin <span class="cq">6.5</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">26</td>
-  <td class="n">6.97</td>
-  <td class="n sec">1407</td>
-  <td class="n sec">869</td>
+  <td class="n">26<i class="rv">23</i></td>
+  <td class="n">6.97<i class="rv">10.51</i></td>
+  <td class="n sec">1407<i class="rv">552</i></td>
+  <td class="n sec">869<i class="rv">1225</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1384,16 +1390,16 @@ tr[hidden]{display:none}
   data-rival="miles jones" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="23" data-wtn="10.51"
   data-itf="552" data-atp="1225" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Maxim%20Shin" target="_blank" rel="noopener">Maxim Shin</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Maxim%20Shin" target="_blank" rel="noopener">Maxim Shin</a></td>
   <td class="n cuota">6.5</td>
   <td class="n"><span class="pb ">16%</span></td>
   <td class="sec">Miles Jones <span class="cq">1.1</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">23</td>
-  <td class="n">10.51</td>
-  <td class="n sec">552</td>
-  <td class="n sec">1225</td>
+  <td class="n">23<i class="rv">26</i></td>
+  <td class="n">10.51<i class="rv">6.97</i></td>
+  <td class="n sec">552<i class="rv">1407</i></td>
+  <td class="n sec">1225<i class="rv">869</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1402,16 +1408,16 @@ tr[hidden]{display:none}
   data-rival="qian sun" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="29" data-wtn="9.19"
   data-itf="295" data-atp="1053" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Ammar%20Faleh%20Alhogbani" target="_blank" rel="noopener">Ammar Faleh Alhogbani</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Ammar%20Faleh%20Alhogbani" target="_blank" rel="noopener">Ammar Faleh Alhogbani</a></td>
   <td class="n cuota">2.25</td>
   <td class="n"><span class="pb ">35%</span></td>
   <td class="sec">Qian Sun <span class="cq">1.571</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">29</td>
-  <td class="n">9.19</td>
-  <td class="n sec">295</td>
-  <td class="n sec">1053</td>
+  <td class="n">29<i class="rv">25</i></td>
+  <td class="n">9.19<i class="rv">8.45</i></td>
+  <td class="n sec">295<i class="rv">1287</i></td>
+  <td class="n sec">1053<i class="rv">930</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1420,16 +1426,16 @@ tr[hidden]{display:none}
   data-rival="ammar faleh alhogbani" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="25" data-wtn="8.45"
   data-itf="1287" data-atp="930" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Qian%20Sun" target="_blank" rel="noopener">Qian Sun</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Qian%20Sun" target="_blank" rel="noopener">Qian Sun</a></td>
   <td class="n cuota">1.571</td>
   <td class="n"><span class="pb ">65%</span></td>
   <td class="sec">Ammar Faleh Alhogbani <span class="cq">2.25</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">25</td>
-  <td class="n">8.45</td>
-  <td class="n sec">1287</td>
-  <td class="n sec">930</td>
+  <td class="n">25<i class="rv">29</i></td>
+  <td class="n">8.45<i class="rv">9.19</i></td>
+  <td class="n sec">1287<i class="rv">295</i></td>
+  <td class="n sec">930<i class="rv">1053</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1438,16 +1444,16 @@ tr[hidden]{display:none}
   data-rival="weiwen pan" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="20" data-wtn="8.8"
   data-itf="102" data-atp="982" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yuta%20Tomida" target="_blank" rel="noopener">Yuta Tomida</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yuta%20Tomida" target="_blank" rel="noopener">Yuta Tomida</a></td>
   <td class="n cuota">1.111</td>
   <td class="n"><span class="pb media">79%</span></td>
   <td class="sec">Weiwen Pan <span class="cq">6</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">20</td>
-  <td class="n">8.8</td>
-  <td class="n sec">102</td>
-  <td class="n sec">982</td>
+  <td class="n">20<i class="rv">21</i></td>
+  <td class="n">8.8<i class="rv">12.11</i></td>
+  <td class="n sec">102<i class="rv">1012</i></td>
+  <td class="n sec">982<i class="rv">1417</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1456,16 +1462,16 @@ tr[hidden]{display:none}
   data-rival="yuta tomida" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="21" data-wtn="12.11"
   data-itf="1012" data-atp="1417" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Weiwen%20Pan" target="_blank" rel="noopener">Weiwen Pan</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Weiwen%20Pan" target="_blank" rel="noopener">Weiwen Pan</a></td>
   <td class="n cuota">6</td>
   <td class="n"><span class="pb ">21%</span></td>
   <td class="sec">Yuta Tomida <span class="cq">1.111</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">21</td>
-  <td class="n">12.11</td>
-  <td class="n sec">1012</td>
-  <td class="n sec">1417</td>
+  <td class="n">21<i class="rv">20</i></td>
+  <td class="n">12.11<i class="rv">8.8</i></td>
+  <td class="n sec">1012<i class="rv">102</i></td>
+  <td class="n sec">1417<i class="rv">982</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1474,16 +1480,16 @@ tr[hidden]{display:none}
   data-rival="zaharije-zak talic" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="28" data-wtn="8.79"
   data-itf="1407" data-atp="1034" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Stefan%20Vujic" target="_blank" rel="noopener">Stefan Vujic</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Stefan%20Vujic" target="_blank" rel="noopener">Stefan Vujic</a></td>
   <td class="n cuota">1.03</td>
   <td class="n"><span class="pb alta">93%</span></td>
   <td class="sec">Zaharije-Zak Talic <span class="cq">10</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">28</td>
-  <td class="n">8.79</td>
-  <td class="n sec">1407</td>
-  <td class="n sec">1034</td>
+  <td class="n">28<i class="rv">28</i></td>
+  <td class="n">8.79<i class="rv">14.31</i></td>
+  <td class="n sec">1407<i class="rv">—</i></td>
+  <td class="n sec">1034<i class="rv">1281</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1492,16 +1498,16 @@ tr[hidden]{display:none}
   data-rival="stefan vujic" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="28" data-wtn="14.31"
   data-itf="" data-atp="1281" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Zaharije-Zak%20Talic" target="_blank" rel="noopener">Zaharije-Zak Talic</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Zaharije-Zak%20Talic" target="_blank" rel="noopener">Zaharije-Zak Talic</a></td>
   <td class="n cuota">10</td>
   <td class="n"><span class="pb ">7%</span></td>
   <td class="sec">Stefan Vujic <span class="cq">1.03</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">28</td>
-  <td class="n">14.31</td>
-  <td class="n sec">—</td>
-  <td class="n sec">1281</td>
+  <td class="n">28<i class="rv">28</i></td>
+  <td class="n">14.31<i class="rv">8.79</i></td>
+  <td class="n sec">—<i class="rv">1407</i></td>
+  <td class="n sec">1281<i class="rv">1034</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1510,16 +1516,16 @@ tr[hidden]{display:none}
   data-rival="xirui han" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="22" data-wtn="9.8"
   data-itf="565" data-atp="1316" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Xing%20Dao%20Chen" target="_blank" rel="noopener">Xing Dao Chen</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Xing%20Dao%20Chen" target="_blank" rel="noopener">Xing Dao Chen</a></td>
   <td class="n cuota">2</td>
   <td class="n"><span class="pb ">60%</span></td>
   <td class="sec">Xirui Han <span class="cq">1.727</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">22</td>
-  <td class="n">9.8</td>
-  <td class="n sec">565</td>
-  <td class="n sec">1316</td>
+  <td class="n">22<i class="rv">20</i></td>
+  <td class="n">9.8<i class="rv">10.67</i></td>
+  <td class="n sec">565<i class="rv">215</i></td>
+  <td class="n sec">1316<i class="rv">1446</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1528,16 +1534,16 @@ tr[hidden]{display:none}
   data-rival="xing dao chen" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="20" data-wtn="10.67"
   data-itf="215" data-atp="1446" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Xirui%20Han" target="_blank" rel="noopener">Xirui Han</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Xirui%20Han" target="_blank" rel="noopener">Xirui Han</a></td>
   <td class="n cuota">1.727</td>
   <td class="n"><span class="pb ">40%</span></td>
   <td class="sec">Xing Dao Chen <span class="cq">2</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">20</td>
-  <td class="n">10.67</td>
-  <td class="n sec">215</td>
-  <td class="n sec">1446</td>
+  <td class="n">20<i class="rv">22</i></td>
+  <td class="n">10.67<i class="rv">9.8</i></td>
+  <td class="n sec">215<i class="rv">565</i></td>
+  <td class="n sec">1446<i class="rv">1316</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1546,16 +1552,16 @@ tr[hidden]{display:none}
   data-rival="linang xiao" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="32" data-wtn="6.64"
   data-itf="" data-atp="503" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Colin%20Sinclair" target="_blank" rel="noopener">Colin Sinclair</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Colin%20Sinclair" target="_blank" rel="noopener">Colin Sinclair</a></td>
   <td class="n cuota">1.3</td>
   <td class="n"><span class="pb ">44%</span></td>
   <td class="sec">Linang Xiao <span class="cq">3.4</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">32</td>
-  <td class="n">6.64</td>
-  <td class="n sec">—</td>
-  <td class="n sec">503</td>
+  <td class="n">32<i class="rv">26</i></td>
+  <td class="n">6.64<i class="rv">6.68</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">503<i class="rv">1113</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1564,16 +1570,16 @@ tr[hidden]{display:none}
   data-rival="colin sinclair" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="26" data-wtn="6.68"
   data-itf="" data-atp="1113" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Linang%20Xiao" target="_blank" rel="noopener">Linang Xiao</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Linang%20Xiao" target="_blank" rel="noopener">Linang Xiao</a></td>
   <td class="n cuota">3.4</td>
   <td class="n"><span class="pb ">56%</span></td>
   <td class="sec">Colin Sinclair <span class="cq">1.3</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">26</td>
-  <td class="n">6.68</td>
-  <td class="n sec">—</td>
-  <td class="n sec">1113</td>
+  <td class="n">26<i class="rv">32</i></td>
+  <td class="n">6.68<i class="rv">6.64</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">1113<i class="rv">503</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1582,16 +1588,16 @@ tr[hidden]{display:none}
   data-rival="jaesung choe" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="25" data-wtn="7.34"
   data-itf="816" data-atp="1047" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Geun%20Jun%20Kim" target="_blank" rel="noopener">Geun Jun Kim</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Geun%20Jun%20Kim" target="_blank" rel="noopener">Geun Jun Kim</a></td>
   <td class="n cuota">1.727</td>
   <td class="n"><span class="pb ">68%</span></td>
   <td class="sec">Jaesung Choe <span class="cq">2</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">25</td>
-  <td class="n">7.34</td>
-  <td class="n sec">816</td>
-  <td class="n sec">1047</td>
+  <td class="n">25<i class="rv">27</i></td>
+  <td class="n">7.34<i class="rv">8.94</i></td>
+  <td class="n sec">816<i class="rv">356</i></td>
+  <td class="n sec">1047<i class="rv">1207</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1600,16 +1606,16 @@ tr[hidden]{display:none}
   data-rival="geun jun kim" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="27" data-wtn="8.94"
   data-itf="356" data-atp="1207" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Jaesung%20Choe" target="_blank" rel="noopener">Jaesung Choe</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Jaesung%20Choe" target="_blank" rel="noopener">Jaesung Choe</a></td>
   <td class="n cuota">2</td>
   <td class="n"><span class="pb ">32%</span></td>
   <td class="sec">Geun Jun Kim <span class="cq">1.727</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">27</td>
-  <td class="n">8.94</td>
-  <td class="n sec">356</td>
-  <td class="n sec">1207</td>
+  <td class="n">27<i class="rv">25</i></td>
+  <td class="n">8.94<i class="rv">7.34</i></td>
+  <td class="n sec">356<i class="rv">816</i></td>
+  <td class="n sec">1207<i class="rv">1047</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1618,16 +1624,16 @@ tr[hidden]{display:none}
   data-rival="xiaoyin yang" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="26" data-wtn="10.86"
   data-itf="2018" data-atp="1422" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yuquan%20Jin" target="_blank" rel="noopener">Yuquan Jin</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yuquan%20Jin" target="_blank" rel="noopener">Yuquan Jin</a></td>
   <td class="n cuota">1.727</td>
   <td class="n"><span class="pb ">45%</span></td>
   <td class="sec">XIAOYIN YANG <span class="cq">2</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">26</td>
-  <td class="n">10.86</td>
-  <td class="n sec">2018</td>
-  <td class="n sec">1422</td>
+  <td class="n">26<i class="rv">22</i></td>
+  <td class="n">10.86<i class="rv">10.44</i></td>
+  <td class="n sec">2018<i class="rv">85</i></td>
+  <td class="n sec">1422<i class="rv">1429</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1636,16 +1642,16 @@ tr[hidden]{display:none}
   data-rival="yuquan jin" data-torneo="m15 wuning"
   data-etapa="R1" data-edad="22" data-wtn="10.44"
   data-itf="85" data-atp="1429" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=XIAOYIN%20YANG" target="_blank" rel="noopener">XIAOYIN YANG</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=XIAOYIN%20YANG" target="_blank" rel="noopener">XIAOYIN YANG</a></td>
   <td class="n cuota">2</td>
   <td class="n"><span class="pb ">55%</span></td>
   <td class="sec">Yuquan Jin <span class="cq">1.727</span></td>
   <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
   <td class="sec">R1<span class="cq"> 02:00</span></td>
-  <td class="n">22</td>
-  <td class="n">10.44</td>
-  <td class="n sec">85</td>
-  <td class="n sec">1429</td>
+  <td class="n">22<i class="rv">26</i></td>
+  <td class="n">10.44<i class="rv">10.86</i></td>
+  <td class="n sec">85<i class="rv">2018</i></td>
+  <td class="n sec">1429<i class="rv">1422</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1654,16 +1660,16 @@ tr[hidden]{display:none}
   data-rival="yuttana charoenphon" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="27" data-wtn="9.14"
   data-itf="272" data-atp="1155" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Jordan%20Hasson" target="_blank" rel="noopener">Jordan Hasson</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Jordan%20Hasson" target="_blank" rel="noopener">Jordan Hasson</a></td>
   <td class="n cuota">1.444</td>
   <td class="n"><span class="pb ">46%</span></td>
   <td class="sec">Yuttana Charoenphon <span class="cq">2.625</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 03:00</span></td>
-  <td class="n">27</td>
-  <td class="n">9.14</td>
-  <td class="n sec">272</td>
-  <td class="n sec">1155</td>
+  <td class="n">27<i class="rv">26</i></td>
+  <td class="n">9.14<i class="rv">9.33</i></td>
+  <td class="n sec">272<i class="rv">634</i></td>
+  <td class="n sec">1155<i class="rv">1407</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1672,16 +1678,16 @@ tr[hidden]{display:none}
   data-rival="jordan hasson" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="26" data-wtn="9.33"
   data-itf="634" data-atp="1407" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Yuttana%20Charoenphon" target="_blank" rel="noopener">Yuttana Charoenphon</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yuttana%20Charoenphon" target="_blank" rel="noopener">Yuttana Charoenphon</a></td>
   <td class="n cuota">2.625</td>
   <td class="n"><span class="pb ">54%</span></td>
   <td class="sec">Jordan Hasson <span class="cq">1.444</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 03:00</span></td>
-  <td class="n">26</td>
-  <td class="n">9.33</td>
-  <td class="n sec">634</td>
-  <td class="n sec">1407</td>
+  <td class="n">26<i class="rv">27</i></td>
+  <td class="n">9.33<i class="rv">9.14</i></td>
+  <td class="n sec">634<i class="rv">272</i></td>
+  <td class="n sec">1407<i class="rv">1155</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1690,16 +1696,16 @@ tr[hidden]{display:none}
   data-rival="hugo hashimoto" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="20" data-wtn="10.17"
   data-itf="281" data-atp="1340" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Shu%20Muto" target="_blank" rel="noopener">Shu Muto</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Shu%20Muto" target="_blank" rel="noopener">Shu Muto</a></td>
   <td class="n cuota">3.25</td>
   <td class="n"><span class="pb ">35%</span></td>
   <td class="sec">Hugo Hashimoto <span class="cq">1.333</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 03:00</span></td>
-  <td class="n">20</td>
-  <td class="n">10.17</td>
-  <td class="n sec">281</td>
-  <td class="n sec">1340</td>
+  <td class="n">20<i class="rv">23</i></td>
+  <td class="n">10.17<i class="rv">8.86</i></td>
+  <td class="n sec">281<i class="rv">198</i></td>
+  <td class="n sec">1340<i class="rv">1677</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1708,16 +1714,16 @@ tr[hidden]{display:none}
   data-rival="shu muto" data-torneo="m15 nonthaburi"
   data-etapa="R1" data-edad="23" data-wtn="8.86"
   data-itf="198" data-atp="1677" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Hugo%20Hashimoto" target="_blank" rel="noopener">Hugo Hashimoto</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hugo%20Hashimoto" target="_blank" rel="noopener">Hugo Hashimoto</a></td>
   <td class="n cuota">1.333</td>
   <td class="n"><span class="pb ">65%</span></td>
   <td class="sec">Shu Muto <span class="cq">3.25</span></td>
   <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
   <td class="sec">R1<span class="cq"> 03:00</span></td>
-  <td class="n">23</td>
-  <td class="n">8.86</td>
-  <td class="n sec">198</td>
-  <td class="n sec">1677</td>
+  <td class="n">23<i class="rv">20</i></td>
+  <td class="n">8.86<i class="rv">10.17</i></td>
+  <td class="n sec">198<i class="rv">281</i></td>
+  <td class="n sec">1677<i class="rv">1340</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1726,16 +1732,16 @@ tr[hidden]{display:none}
   data-rival="saveliy ivanov" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="24" data-wtn="8.98"
   data-itf="888" data-atp="981" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Dev%20Javia" target="_blank" rel="noopener">Dev Javia</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Dev%20Javia" target="_blank" rel="noopener">Dev Javia</a></td>
   <td class="n cuota">1.286</td>
   <td class="n"><span class="pb alta">80%</span></td>
   <td class="sec">Saveliy Ivanov <span class="cq">3.5</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">24</td>
-  <td class="n">8.98</td>
-  <td class="n sec">888</td>
-  <td class="n sec">981</td>
+  <td class="n">24<i class="rv">22</i></td>
+  <td class="n">8.98<i class="rv">9.56</i></td>
+  <td class="n sec">888<i class="rv">357</i></td>
+  <td class="n sec">981<i class="rv">1148</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1744,16 +1750,16 @@ tr[hidden]{display:none}
   data-rival="dev javia" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="22" data-wtn="9.56"
   data-itf="357" data-atp="1148" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Saveliy%20Ivanov" target="_blank" rel="noopener">Saveliy Ivanov</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Saveliy%20Ivanov" target="_blank" rel="noopener">Saveliy Ivanov</a></td>
   <td class="n cuota">3.5</td>
   <td class="n"><span class="pb ">20%</span></td>
   <td class="sec">Dev Javia <span class="cq">1.286</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">22</td>
-  <td class="n">9.56</td>
-  <td class="n sec">357</td>
-  <td class="n sec">1148</td>
+  <td class="n">22<i class="rv">24</i></td>
+  <td class="n">9.56<i class="rv">8.98</i></td>
+  <td class="n sec">357<i class="rv">888</i></td>
+  <td class="n sec">1148<i class="rv">981</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1762,16 +1768,16 @@ tr[hidden]{display:none}
   data-rival="karim mabrouk" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="18" data-wtn="5"
   data-itf="" data-atp="483" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Thijs%20Boogaard" target="_blank" rel="noopener">Thijs Boogaard</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Thijs%20Boogaard" target="_blank" rel="noopener">Thijs Boogaard</a></td>
   <td class="n cuota">1.03</td>
   <td class="n"><span class="pb alta">99%</span></td>
   <td class="sec">Karim Mabrouk <span class="cq">10</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">18</td>
-  <td class="n">5</td>
-  <td class="n sec">—</td>
-  <td class="n sec">483</td>
+  <td class="n">18<i class="rv">19</i></td>
+  <td class="n">5<i class="rv">11.68</i></td>
+  <td class="n sec">—<i class="rv">264</i></td>
+  <td class="n sec">483<i class="rv">1495</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1780,16 +1786,16 @@ tr[hidden]{display:none}
   data-rival="thijs boogaard" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="19" data-wtn="11.68"
   data-itf="264" data-atp="1495" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Karim%20Mabrouk" target="_blank" rel="noopener">Karim Mabrouk</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Karim%20Mabrouk" target="_blank" rel="noopener">Karim Mabrouk</a></td>
   <td class="n cuota">10</td>
   <td class="n"><span class="pb ">1%</span></td>
   <td class="sec">Thijs Boogaard <span class="cq">1.03</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">19</td>
-  <td class="n">11.68</td>
-  <td class="n sec">264</td>
-  <td class="n sec">1495</td>
+  <td class="n">19<i class="rv">18</i></td>
+  <td class="n">11.68<i class="rv">5</i></td>
+  <td class="n sec">264<i class="rv">—</i></td>
+  <td class="n sec">1495<i class="rv">483</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1798,16 +1804,16 @@ tr[hidden]{display:none}
   data-rival="aleksandre bakshi" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="20" data-wtn="10.66"
   data-itf="29" data-atp="1259" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Luke%20Hooper" target="_blank" rel="noopener">Luke Hooper</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Luke%20Hooper" target="_blank" rel="noopener">Luke Hooper</a></td>
   <td class="n cuota">4</td>
   <td class="n"><span class="pb ">25%</span></td>
   <td class="sec">Aleksandre Bakshi <span class="cq">1.222</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">20</td>
-  <td class="n">10.66</td>
-  <td class="n sec">29</td>
-  <td class="n sec">1259</td>
+  <td class="n">20<i class="rv">29</i></td>
+  <td class="n">10.66<i class="rv">8.33</i></td>
+  <td class="n sec">29<i class="rv">—</i></td>
+  <td class="n sec">1259<i class="rv">730</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1816,16 +1822,16 @@ tr[hidden]{display:none}
   data-rival="luke hooper" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="29" data-wtn="8.33"
   data-itf="" data-atp="730" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Aleksandre%20Bakshi" target="_blank" rel="noopener">Aleksandre Bakshi</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Aleksandre%20Bakshi" target="_blank" rel="noopener">Aleksandre Bakshi</a></td>
   <td class="n cuota">1.222</td>
   <td class="n"><span class="pb media">75%</span></td>
   <td class="sec">Luke Hooper <span class="cq">4</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">29</td>
-  <td class="n">8.33</td>
-  <td class="n sec">—</td>
-  <td class="n sec">730</td>
+  <td class="n">29<i class="rv">20</i></td>
+  <td class="n">8.33<i class="rv">10.66</i></td>
+  <td class="n sec">—<i class="rv">29</i></td>
+  <td class="n sec">730<i class="rv">1259</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1834,16 +1840,16 @@ tr[hidden]{display:none}
   data-rival="michal krajci" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="20" data-wtn="11.79"
   data-itf="275" data-atp="1267" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Ivan%20Gretskiy" target="_blank" rel="noopener">Ivan Gretskiy</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Ivan%20Gretskiy" target="_blank" rel="noopener">Ivan Gretskiy</a></td>
   <td class="n cuota">7</td>
   <td class="n"><span class="pb ">5%</span></td>
   <td class="sec">Michal Krajci <span class="cq">1.083</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">20</td>
-  <td class="n">11.79</td>
-  <td class="n sec">275</td>
-  <td class="n sec">1267</td>
+  <td class="n">20<i class="rv">21</i></td>
+  <td class="n">11.79<i class="rv">6.1</i></td>
+  <td class="n sec">275<i class="rv">—</i></td>
+  <td class="n sec">1267<i class="rv">747</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1852,16 +1858,16 @@ tr[hidden]{display:none}
   data-rival="ivan gretskiy" data-torneo="m15 hurghada"
   data-etapa="R1" data-edad="21" data-wtn="6.1"
   data-itf="" data-atp="747" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Michal%20Krajci" target="_blank" rel="noopener">Michal Krajci</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Michal%20Krajci" target="_blank" rel="noopener">Michal Krajci</a></td>
   <td class="n cuota">1.083</td>
   <td class="n"><span class="pb alta">95%</span></td>
   <td class="sec">Ivan Gretskiy <span class="cq">7</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">21</td>
-  <td class="n">6.1</td>
-  <td class="n sec">—</td>
-  <td class="n sec">747</td>
+  <td class="n">21<i class="rv">20</i></td>
+  <td class="n">6.1<i class="rv">11.79</i></td>
+  <td class="n sec">—<i class="rv">275</i></td>
+  <td class="n sec">747<i class="rv">1267</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1870,16 +1876,16 @@ tr[hidden]{display:none}
   data-rival="thando longwe-smit" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="30" data-wtn="12.38"
   data-itf="851" data-atp="1219" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Edison%20Ambarzumjan" target="_blank" rel="noopener">Edison Ambarzumjan</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Edison%20Ambarzumjan" target="_blank" rel="noopener">Edison Ambarzumjan</a></td>
   <td class="n cuota">2.625</td>
   <td class="n"><span class="pb ">16%</span></td>
   <td class="sec">Thando Longwe-Smit <span class="cq">1.444</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">30</td>
-  <td class="n">12.38</td>
-  <td class="n sec">851</td>
-  <td class="n sec">1219</td>
+  <td class="n">30<i class="rv">25</i></td>
+  <td class="n">12.38<i class="rv">8.85</i></td>
+  <td class="n sec">851<i class="rv">1210</i></td>
+  <td class="n sec">1219<i class="rv">1187</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1888,16 +1894,16 @@ tr[hidden]{display:none}
   data-rival="edison ambarzumjan" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="25" data-wtn="8.85"
   data-itf="1210" data-atp="1187" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Thando%20Longwe-Smit" target="_blank" rel="noopener">Thando Longwe-Smit</a> <b class="est" title="pisa la casilla del manual">★</b></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Thando%20Longwe-Smit" target="_blank" rel="noopener">Thando Longwe-Smit</a> <b class="est" title="pisa la casilla del manual">★</b></td>
   <td class="n cuota">1.444</td>
   <td class="n"><span class="pb alta">84%</span></td>
   <td class="sec">Edison Ambarzumjan <span class="cq">2.625</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">25</td>
-  <td class="n">8.85</td>
-  <td class="n sec">1210</td>
-  <td class="n sec">1187</td>
+  <td class="n">25<i class="rv">30</i></td>
+  <td class="n">8.85<i class="rv">12.38</i></td>
+  <td class="n sec">1210<i class="rv">851</i></td>
+  <td class="n sec">1187<i class="rv">1219</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1906,16 +1912,16 @@ tr[hidden]{display:none}
   data-rival="oscar brown" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="24" data-wtn="11.9"
   data-itf="246" data-atp="1459" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Ammar%20Elamin" target="_blank" rel="noopener">Ammar Elamin</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Ammar%20Elamin" target="_blank" rel="noopener">Ammar Elamin</a></td>
   <td class="n cuota">3.25</td>
   <td class="n"><span class="pb ">18%</span></td>
   <td class="sec">Oscar Brown <span class="cq">1.333</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">24</td>
-  <td class="n">11.9</td>
-  <td class="n sec">246</td>
-  <td class="n sec">1459</td>
+  <td class="n">24<i class="rv">24</i></td>
+  <td class="n">11.9<i class="rv">8.74</i></td>
+  <td class="n sec">246<i class="rv">95</i></td>
+  <td class="n sec">1459<i class="rv">1347</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1924,16 +1930,16 @@ tr[hidden]{display:none}
   data-rival="ammar elamin" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="24" data-wtn="8.74"
   data-itf="95" data-atp="1347" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Oscar%20Brown" target="_blank" rel="noopener">Oscar Brown</a> <b class="est" title="pisa la casilla del manual">★</b></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Oscar%20Brown" target="_blank" rel="noopener">Oscar Brown</a> <b class="est" title="pisa la casilla del manual">★</b></td>
   <td class="n cuota">1.333</td>
   <td class="n"><span class="pb alta">82%</span></td>
   <td class="sec">Ammar Elamin <span class="cq">3.25</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">24</td>
-  <td class="n">8.74</td>
-  <td class="n sec">95</td>
-  <td class="n sec">1347</td>
+  <td class="n">24<i class="rv">24</i></td>
+  <td class="n">8.74<i class="rv">11.9</i></td>
+  <td class="n sec">95<i class="rv">246</i></td>
+  <td class="n sec">1347<i class="rv">1459</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1942,16 +1948,16 @@ tr[hidden]{display:none}
   data-rival="mahmoud chetouane" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="24" data-wtn="8.29"
   data-itf="1091" data-atp="815" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Nicolas%20Jadoun" target="_blank" rel="noopener">Nicolas Jadoun</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Nicolas%20Jadoun" target="_blank" rel="noopener">Nicolas Jadoun</a></td>
   <td class="n cuota">1.03</td>
   <td class="n"><span class="pb alta">99%</span></td>
   <td class="sec">Mahmoud chetouane <span class="cq">10</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">24</td>
-  <td class="n">8.29</td>
-  <td class="n sec">1091</td>
-  <td class="n sec">815</td>
+  <td class="n">24<i class="rv">18</i></td>
+  <td class="n">8.29<i class="rv">18.82</i></td>
+  <td class="n sec">1091<i class="rv">1989</i></td>
+  <td class="n sec">815<i class="rv">1669</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1960,16 +1966,16 @@ tr[hidden]{display:none}
   data-rival="nicolas jadoun" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="18" data-wtn="18.82"
   data-itf="1989" data-atp="1669" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Mahmoud%20chetouane" target="_blank" rel="noopener">Mahmoud chetouane</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Mahmoud%20chetouane" target="_blank" rel="noopener">Mahmoud chetouane</a></td>
   <td class="n cuota">10</td>
   <td class="n"><span class="pb ">1%</span></td>
   <td class="sec">Nicolas Jadoun <span class="cq">1.03</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">18</td>
-  <td class="n">18.82</td>
-  <td class="n sec">1989</td>
-  <td class="n sec">1669</td>
+  <td class="n">18<i class="rv">24</i></td>
+  <td class="n">18.82<i class="rv">8.29</i></td>
+  <td class="n sec">1989<i class="rv">1091</i></td>
+  <td class="n sec">1669<i class="rv">815</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -1978,16 +1984,16 @@ tr[hidden]{display:none}
   data-rival="kris van wyk" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="24" data-wtn="7.01"
   data-itf="1210" data-atp="1154" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Hugo%20Car" target="_blank" rel="noopener">Hugo Car</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hugo%20Car" target="_blank" rel="noopener">Hugo Car</a></td>
   <td class="n cuota">1.25</td>
   <td class="n"><span class="pb media">77%</span></td>
   <td class="sec">Kris van Wyk <span class="cq">3.75</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">24</td>
-  <td class="n">7.01</td>
-  <td class="n sec">1210</td>
-  <td class="n sec">1154</td>
+  <td class="n">24<i class="rv">30</i></td>
+  <td class="n">7.01<i class="rv">9.51</i></td>
+  <td class="n sec">1210<i class="rv">—</i></td>
+  <td class="n sec">1154<i class="rv">967</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -1996,16 +2002,16 @@ tr[hidden]{display:none}
   data-rival="hugo car" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="30" data-wtn="9.51"
   data-itf="" data-atp="967" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Kris%20van%20Wyk" target="_blank" rel="noopener">Kris van Wyk</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Kris%20van%20Wyk" target="_blank" rel="noopener">Kris van Wyk</a></td>
   <td class="n cuota">3.75</td>
   <td class="n"><span class="pb ">23%</span></td>
   <td class="sec">Hugo Car <span class="cq">1.25</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">30</td>
-  <td class="n">9.51</td>
-  <td class="n sec">—</td>
-  <td class="n sec">967</td>
+  <td class="n">30<i class="rv">24</i></td>
+  <td class="n">9.51<i class="rv">7.01</i></td>
+  <td class="n sec">—<i class="rv">1210</i></td>
+  <td class="n sec">967<i class="rv">1154</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -2014,16 +2020,16 @@ tr[hidden]{display:none}
   data-rival="aziz dougaz" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="22" data-wtn="15.92"
   data-itf="" data-atp="" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Daniele%20Augenti" target="_blank" rel="noopener">Daniele Augenti</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Daniele%20Augenti" target="_blank" rel="noopener">Daniele Augenti</a></td>
   <td class="n cuota">26</td>
   <td class="n"><span class="pb ">0%</span></td>
   <td class="sec">Aziz Dougaz <span class="cq">1</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">22</td>
-  <td class="n">15.92</td>
-  <td class="n sec">—</td>
-  <td class="n sec">—</td>
+  <td class="n">22<i class="rv">29</i></td>
+  <td class="n">15.92<i class="rv">3.51</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">—<i class="rv">690</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -2032,16 +2038,16 @@ tr[hidden]{display:none}
   data-rival="daniele augenti" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="29" data-wtn="3.51"
   data-itf="" data-atp="690" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Aziz%20Dougaz" target="_blank" rel="noopener">Aziz Dougaz</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Aziz%20Dougaz" target="_blank" rel="noopener">Aziz Dougaz</a></td>
   <td class="n cuota">1</td>
   <td class="n"><span class="pb alta">100%</span></td>
   <td class="sec">Daniele Augenti <span class="cq">26</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">29</td>
-  <td class="n">3.51</td>
-  <td class="n sec">—</td>
-  <td class="n sec">690</td>
+  <td class="n">29<i class="rv">22</i></td>
+  <td class="n">3.51<i class="rv">15.92</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">690<i class="rv">—</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
@@ -2050,16 +2056,16 @@ tr[hidden]{display:none}
   data-rival="nazim makhlouf" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="22" data-wtn="6.08"
   data-itf="" data-atp="505" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Cesar%20Bouchelaghem" target="_blank" rel="noopener">Cesar Bouchelaghem</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Cesar%20Bouchelaghem" target="_blank" rel="noopener">Cesar Bouchelaghem</a></td>
   <td class="n cuota">1.111</td>
   <td class="n"><span class="pb alta">80%</span></td>
   <td class="sec">Nazim Makhlouf <span class="cq">6</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">22</td>
-  <td class="n">6.08</td>
-  <td class="n sec">—</td>
-  <td class="n sec">505</td>
+  <td class="n">22<i class="rv">30</i></td>
+  <td class="n">6.08<i class="rv">9.02</i></td>
+  <td class="n sec">—<i class="rv">1315</i></td>
+  <td class="n sec">505<i class="rv">1121</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -2068,16 +2074,16 @@ tr[hidden]{display:none}
   data-rival="cesar bouchelaghem" data-torneo="m15 monastir"
   data-etapa="R1" data-edad="30" data-wtn="9.02"
   data-itf="1315" data-atp="1121" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://www.betano.cl/search/?query=Nazim%20Makhlouf" target="_blank" rel="noopener">Nazim Makhlouf</a></td>
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Nazim%20Makhlouf" target="_blank" rel="noopener">Nazim Makhlouf</a></td>
   <td class="n cuota">6</td>
   <td class="n"><span class="pb ">20%</span></td>
   <td class="sec">Cesar Bouchelaghem <span class="cq">1.111</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">30</td>
-  <td class="n">9.02</td>
-  <td class="n sec">1315</td>
-  <td class="n sec">1121</td>
+  <td class="n">30<i class="rv">22</i></td>
+  <td class="n">9.02<i class="rv">6.08</i></td>
+  <td class="n sec">1315<i class="rv">—</i></td>
+  <td class="n sec">1121<i class="rv">505</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
@@ -2087,7 +2093,9 @@ tr[hidden]{display:none}
   Verde desde 80%, ámbar entre 70 y 79 — y ojo, medido sobre 899 partidos jugados esa banda de 80 promete 85% y cumple 79%,
   así que a cuotas bajo 1.30 el margen se come solo. <b>WTN</b> es el rating de la ITF (más bajo es mejor);
   la ITF lo recalibró entre el 25 y el 28 de agosto, así que no se comparan números de torneos con listas de semanas distintas.
-  <b>local</b> es que juega en su país, lo que vale ~0.5 puntos de WTN. Los rankings ITF y ATP van vacíos cuando el jugador no tiene.</p>
+  <b>local</b> es que juega en su país, lo que vale ~0.5 puntos de WTN. Los rankings ITF y ATP van vacíos cuando el jugador no tiene.
+  En edad, WTN, ITF y ATP el <span style="color:var(--ink3)">número chico de abajo</span> es el mismo dato del RIVAL, para comparar sin cambiar de fila.
+  El nombre abre el buscador de Betano: la API de cuotas no entrega la URL del partido, así que es búsqueda por nombre, no enlace directo.</p>
 </div>
 <script>
 (() => {
@@ -2101,13 +2109,15 @@ tr[hidden]{display:none}
     if (b!=null && (x==null||x>b)) return false; return true };
   function aplica(){
     const q = g('q').value.trim().toLowerCase();
+    const tor = g('tor').value;
     const cmin=num(g('cmin').value), cmax=num(g('cmax').value);
     const pmin=num(g('pmin').value), pmax=num(g('pmax').value);
     const emin=num(g('emin').value), emax=num(g('emax').value);
     const wmin=num(g('wmin').value), wmax=num(g('wmax').value);
     let v=0;
     for (const tr of filas){
-      const ok = (!q || val(tr,'jugador').includes(q) || val(tr,'rival').includes(q) || val(tr,'torneo').includes(q))
+      const ok = (!q || val(tr,'jugador').includes(q) || val(tr,'rival').includes(q))
+        && (!tor || val(tr,'torneo') === tor)
         && rango(val(tr,'cuota'),cmin,cmax)
         && rango(String(Math.round((num(val(tr,'prob'))||0)*100)),pmin,pmax)
         && rango(val(tr,'edad'),emin,emax)
@@ -2144,8 +2154,10 @@ tr[hidden]{display:none}
   });
   for (const id of ['q','cmin','cmax','pmin','pmax','emin','emax','wmin','wmax'])
     g(id).addEventListener('input', aplica);
+  g('tor').addEventListener('change', aplica);
   g('limpiar').addEventListener('click', () => {
     for (const id of ['q','cmin','cmax','pmin','pmax','emin','emax','wmin','wmax']) g(id).value='';
+    g('tor').value='';
     for (const k in S) S[k]=false;
     for (const b of document.querySelectorAll('.barra button[data-f]')) b.classList.remove('on');
     aplica();

@@ -23,9 +23,12 @@ const DIR = path.dirname(fileURLToPath(import.meta.url));
 const datos = JSON.parse(fs.readFileSync(path.join(DIR, 'itf-tabla.json'), 'utf8'));
 const J = datos.jugadores || [];
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-/* Búsqueda en Betano por el nombre del jugador: es un enlace, nada más
-   — no se consulta ni se scrapea el sitio desde acá. */
-const betano = n => 'https://www.betano.cl/search/?query=' + encodeURIComponent(n);
+/* Búsqueda en Betano LatAm por el nombre del jugador. Es un enlace y
+   nada más: no se consulta ni se scrapea el sitio desde acá. La API de
+   cuotas NO devuelve la URL del partido en cada casa (revisado el
+   2026-09-01: el caché no trae ningún campo de link), así que lo honesto
+   es abrir su buscador con el nombre, no inventar una URL de evento. */
+const betano = n => 'https://lat.betano.com/search/?query=' + encodeURIComponent(n);
 const hhmm = s => { if (!s) return ''; const d = new Date(s); return isNaN(d) ? '' : d.toISOString().slice(11, 16) };
 
 const COLS = [
@@ -55,10 +58,10 @@ const filas = J.map(j => `<tr${j.jugable ? ' class="ju"' : ''}
   <td class="sec">${esc(j.rival)} <span class="cq">${j.cuotaRival ?? ''}</span></td>
   <td class="sec">${esc(j.torneo)}${j.pais ? ' <span class="cq">' + esc(j.pais) + '</span>' : ''}</td>
   <td class="sec">${esc(j.etapa || '')}<span class="cq"> ${hhmm(j.inicio)}</span></td>
-  <td class="n">${j.edad ?? '—'}</td>
-  <td class="n">${j.wtn ?? '—'}</td>
-  <td class="n sec">${j.itf ?? '—'}</td>
-  <td class="n sec">${j.atp ?? '—'}</td>
+  <td class="n">${j.edad ?? '—'}<i class="rv">${j.edadRival ?? '—'}</i></td>
+  <td class="n">${j.wtn ?? '—'}<i class="rv">${j.wtnRival ?? '—'}</i></td>
+  <td class="n sec">${j.itf ?? '—'}<i class="rv">${j.itfRival ?? '—'}</i></td>
+  <td class="n sec">${j.atp ?? '—'}<i class="rv">${j.atpRival ?? '—'}</i></td>
   <td class="n">${j.jr ? 'sí' : ''}</td>
   <td class="n">${j.local ? 'sí' : ''}</td>
 </tr>`).join('\n');
@@ -81,6 +84,8 @@ h1{font-size:21px;margin:0 0 2px} .sub{color:var(--ink3);font-size:13px;margin:0
 .barra label{font:600 11px system-ui;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em}
 .barra input[type=text]{font:400 13px system-ui;padding:5px 9px;border:1px solid var(--rule);
   border-radius:7px;background:var(--sunk);color:var(--ink);min-width:150px}
+.barra select{font:400 13px system-ui;padding:5px 8px;border:1px solid var(--rule);
+  border-radius:7px;background:var(--sunk);color:var(--ink);max-width:210px}
 .barra input[type=number]{width:66px;font:400 13px system-ui;padding:5px 7px;border:1px solid var(--rule);
   border-radius:7px;background:var(--sunk);color:var(--ink)}
 .barra button{font:500 12px system-ui;padding:4px 10px;border-radius:7px;border:1px solid var(--rule);
@@ -100,6 +105,9 @@ tr:hover td{background:var(--sunk)}
 .nom a:hover{color:var(--accent);border-color:var(--accent)}
 .sec{color:var(--ink2)} .cq{color:var(--ink3);font-size:11.5px}
 .cuota{font-weight:600}
+/* el mismo dato del rival, debajo y apagado: sirve para comparar de un
+   vistazo sin competirle al del jugador de la fila */
+.rv{display:block;font-style:normal;font-size:11px;color:var(--ink3);opacity:.75;margin-top:1px}
 .pb{padding:1px 6px;border-radius:8px;font-weight:600}
 .pb.alta{background:var(--pos-soft);color:var(--pos)}
 .pb.media{background:var(--ojo-soft);color:var(--ojo)}
@@ -115,7 +123,10 @@ tr[hidden]{display:none}
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
 
 <div class="barra">
-  <label>buscar</label><input type="text" id="q" placeholder="jugador, rival o torneo">
+  <label>buscar</label><input type="text" id="q" placeholder="jugador o rival">
+  <label>torneo</label><select id="tor"><option value="">todos</option>${
+    [...new Set(J.map(j => j.torneo))].sort().map(t => `<option value="${esc(t.toLowerCase())}">${esc(t)}</option>`).join('')
+  }</select>
   <label>cuota</label><input type="number" id="cmin" step="0.01" placeholder="min"><input type="number" id="cmax" step="0.01" placeholder="max">
   <label>% modelo</label><input type="number" id="pmin" placeholder="min"><input type="number" id="pmax" placeholder="max">
   <label>edad</label><input type="number" id="emin" placeholder="min"><input type="number" id="emax" placeholder="max">
@@ -137,7 +148,9 @@ ${filas}
   Verde desde 80%, ámbar entre 70 y 79 — y ojo, medido sobre 899 partidos jugados esa banda de 80 promete 85% y cumple 79%,
   así que a cuotas bajo 1.30 el margen se come solo. <b>WTN</b> es el rating de la ITF (más bajo es mejor);
   la ITF lo recalibró entre el 25 y el 28 de agosto, así que no se comparan números de torneos con listas de semanas distintas.
-  <b>local</b> es que juega en su país, lo que vale ~0.5 puntos de WTN. Los rankings ITF y ATP van vacíos cuando el jugador no tiene.</p>
+  <b>local</b> es que juega en su país, lo que vale ~0.5 puntos de WTN. Los rankings ITF y ATP van vacíos cuando el jugador no tiene.
+  En edad, WTN, ITF y ATP el <span style="color:var(--ink3)">número chico de abajo</span> es el mismo dato del RIVAL, para comparar sin cambiar de fila.
+  El nombre abre el buscador de Betano: la API de cuotas no entrega la URL del partido, así que es búsqueda por nombre, no enlace directo.</p>
 </div>
 <script>
 (() => {
@@ -151,13 +164,15 @@ ${filas}
     if (b!=null && (x==null||x>b)) return false; return true };
   function aplica(){
     const q = g('q').value.trim().toLowerCase();
+    const tor = g('tor').value;
     const cmin=num(g('cmin').value), cmax=num(g('cmax').value);
     const pmin=num(g('pmin').value), pmax=num(g('pmax').value);
     const emin=num(g('emin').value), emax=num(g('emax').value);
     const wmin=num(g('wmin').value), wmax=num(g('wmax').value);
     let v=0;
     for (const tr of filas){
-      const ok = (!q || val(tr,'jugador').includes(q) || val(tr,'rival').includes(q) || val(tr,'torneo').includes(q))
+      const ok = (!q || val(tr,'jugador').includes(q) || val(tr,'rival').includes(q))
+        && (!tor || val(tr,'torneo') === tor)
         && rango(val(tr,'cuota'),cmin,cmax)
         && rango(String(Math.round((num(val(tr,'prob'))||0)*100)),pmin,pmax)
         && rango(val(tr,'edad'),emin,emax)
@@ -194,8 +209,10 @@ ${filas}
   });
   for (const id of ['q','cmin','cmax','pmin','pmax','emin','emax','wmin','wmax'])
     g(id).addEventListener('input', aplica);
+  g('tor').addEventListener('change', aplica);
   g('limpiar').addEventListener('click', () => {
     for (const id of ['q','cmin','cmax','pmin','pmax','emin','emax','wmin','wmax']) g(id).value='';
+    g('tor').value='';
     for (const k in S) S[k]=false;
     for (const b of document.querySelectorAll('.barra button[data-f]')) b.classList.remove('on');
     aplica();

@@ -616,6 +616,9 @@ fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
       jugadores.push({
         jugador: j.nombre, cuota, prob: +pDe(lado).toFixed(3),
         rival: riv.nombre, cuotaRival: cRiv,
+        /* los mismos datos del rival, para comparar en la misma fila */
+        edadRival: riv.nacido ? anio - riv.nacido : null,
+        wtnRival: riv.wtn ?? null, itfRival: riv.itf ?? null, atpRival: riv.atp ?? null,
         torneo: f.t.nombre, pais: paisT, etapa: f.etapa,
         edad: j.nacido ? anio - j.nacido : null,
         wtn: j.wtn ?? null, itf: j.itf ?? null, atp: j.atp ?? null,
