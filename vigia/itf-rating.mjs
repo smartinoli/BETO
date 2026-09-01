@@ -44,16 +44,55 @@ const ORD_Q = { '1st Round': 'Q1', '2nd Round': 'Q2', '3rd Round': 'Q3' };
 const GRUPO = { Q1: 'Q1', Q2: 'buenas', R1: 'buenas', Q3: 'medias', R2: 'medias', R3: 'medias', QF: 'finales', SF: 'finales', F: 'finales' };
 const PEND = { Q1: 0.4105, buenas: 0.4692, medias: 0.3104, finales: 0.1741 };  /* curvas WTN del modelo */
 
-/* ---------- WTN por jugador (la foto más reciente de las entry lists) ---------- */
-const WTN = new Map(), NOMBRE = new Map();
-for (const f of fs.readdirSync(DATOS).sort()) {
+/* ---------- WTN por jugador (la foto más reciente, y en UNA sola escala) ----------
+   OJO, medido el 2026-09-01: entre el 25 y el 28 de agosto la ITF
+   RECALIBRÓ el World Tennis Number. La mediana de las entry lists pasó
+   de ~13.9 a ~8.1 y las diferencias entre jugadores se comprimieron.
+
+   Antes esto se leía con readdirSync().sort() —orden ALFABÉTICO, no
+   cronológico, pese a lo que decía el comentario— así que a cada jugador
+   le tocaba una foto cualquiera y la media salía híbrida. El daño no era
+   teórico: Marat Salbiev tomó su WTN de una foto nueva (7.4) contra esa
+   media mezclada y arrancó en 1991 de Elo, "jugando como 7.62" con UN
+   partido. Puro artefacto de escala.
+
+   Arreglo: la foto más reciente POR FECHA, y cada era se lleva a la
+   escala de referencia (la vieja, que es la del modelo y la del banco)
+   por posición relativa —z-score dentro de su era—, que no depende de
+   ninguna regresión entre escalas. */
+const CORTE_ESCALA = '2026-08-26';
+const crudas = new Map();                 /* id → {wtn, era, bajado} más reciente */
+const listas = [];
+for (const f of fs.readdirSync(DATOS)) {
   if (!f.startsWith('m-itf') || !f.endsWith('.aceptacion.json')) continue;
-  const j = leer(path.join(DATOS, f));
-  for (const p of Object.values(j?.secciones || {}).flat())
-    if (p.id != null) { if (p.wtn != null) WTN.set(p.id, p.wtn); if (p.nombre) NOMBRE.set(p.id, p.nombre); }
+  const j = leer(path.join(DATOS, f)); if (!j) continue;
+  listas.push({ bajado: j.bajado || '', j });
 }
-const wtns = [...WTN.values()];
-const MEDIA_WTN = wtns.reduce((a, b) => a + b, 0) / wtns.length;
+listas.sort((a, b) => String(a.bajado).localeCompare(String(b.bajado)));
+const NOMBRE = new Map();
+for (const { bajado, j } of listas) {
+  const era = String(bajado) < CORTE_ESCALA ? 'vieja' : 'nueva';
+  for (const p of Object.values(j?.secciones || {}).flat())
+    if (p.id != null) {
+      if (p.wtn != null) crudas.set(p.id, { wtn: p.wtn, era, bajado });
+      if (p.nombre) NOMBRE.set(p.id, p.nombre);
+    }
+}
+const stats = era => {
+  const v = [...crudas.values()].filter(x => x.era === era).map(x => x.wtn);
+  const m = v.reduce((a, b) => a + b, 0) / (v.length || 1);
+  const sd = Math.sqrt(v.reduce((s, x) => s + (x - m) ** 2, 0) / (v.length || 1)) || 1;
+  return { n: v.length, m, sd };
+};
+const EV = stats('vieja'), EN = stats('nueva');
+const REF = EV.n >= 200 ? EV : EN;        /* la escala del modelo si la hay */
+const WTN = new Map();
+for (const [id, x] of crudas) {
+  const e = x.era === 'vieja' ? EV : EN;
+  WTN.set(id, e === REF || e.n < 50 ? x.wtn : +(REF.m + (x.wtn - e.m) * (REF.sd / e.sd)).toFixed(2));
+}
+const MEDIA_WTN = REF.m;
+console.log(`escalas del WTN · vieja: n=${EV.n} media ${EV.m.toFixed(2)} sd ${EV.sd.toFixed(2)} · nueva: n=${EN.n} media ${EN.m.toFixed(2)} sd ${EN.sd.toFixed(2)} → todo a la escala ${REF === EV ? 'vieja' : 'nueva'}`);
 
 /* ---------- todos los partidos, en orden cronológico ---------- */
 const mapa = leer(path.join(DATOS, 'torneos.json')) || {};

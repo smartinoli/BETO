@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-31T23:35:00.924Z",
+ "generado": "2026-09-01T02:07:31.837Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -78,7 +78,7 @@
     "grupo": "buenas",
     "edadFm": 31,
     "edadRi": 28,
-    "dElo": -11
+    "dElo": 127
    },
    "jugada": null,
    "fixtureId": "pn129054301635255632",
@@ -110,7 +110,7 @@
     "grupo": "buenas",
     "edadFm": 23,
     "edadRi": 25,
-    "dElo": -100
+    "dElo": 29
    },
    "jugada": null,
    "fixtureId": "pn129054301635255633",
@@ -242,7 +242,7 @@
     "grupo": "buenas",
     "edadFm": 28,
     "edadRi": 31,
-    "dElo": 146
+    "dElo": -302
    },
    "jugada": {
     "tipo": "casilla",
@@ -311,7 +311,7 @@
     "grupo": "buenas",
     "edadFm": 33,
     "edadRi": 21,
-    "dElo": 171
+    "dElo": 44
    },
    "jugada": null,
    "fixtureId": "pn129054301635255631",
@@ -343,7 +343,7 @@
     "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 23,
-    "dElo": -210
+    "dElo": -77
    },
    "jugada": null,
    "fixtureId": "pn129054301635255635",
@@ -377,7 +377,7 @@
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 26,
-    "dElo": -49
+    "dElo": 104
    },
    "jugada": null,
    "fixtureId": "pn129054301635255939",
@@ -543,7 +543,7 @@
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 20,
-    "dElo": 531
+    "dElo": 147
    },
    "jugada": null,
    "fixtureId": "pn129042861635254784",
@@ -575,7 +575,7 @@
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 23,
-    "dElo": 126
+    "dElo": 108
    },
    "jugada": null,
    "fixtureId": "pn129042861635254878",
@@ -744,7 +744,7 @@
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 22,
-    "dElo": 74
+    "dElo": 97
    },
    "jugada": {
     "tipo": "casilla",
@@ -955,7 +955,7 @@
     "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 27,
-    "dElo": 230
+    "dElo": 65
    },
    "jugada": null,
    "fixtureId": "pn129054301635255634",
@@ -1021,7 +1021,7 @@
     "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 23,
-    "dElo": 221
+    "dElo": 47
    },
    "jugada": null,
    "fixtureId": "pn129054301635255940",
@@ -1053,7 +1053,7 @@
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 30,
-    "dElo": 237
+    "dElo": 107
    },
    "jugada": null,
    "fixtureId": "pn129054301635255942",
@@ -1087,7 +1087,7 @@
     "grupo": "buenas",
     "edadFm": 20,
     "edadRi": 30,
-    "dElo": 246
+    "dElo": 433
    },
    "jugada": null,
    "fixtureId": "pn129054301635256688",
@@ -1119,7 +1119,7 @@
     "grupo": "buenas",
     "edadFm": 29,
     "edadRi": 27,
-    "dElo": 25
+    "dElo": 50
    },
    "jugada": null,
    "fixtureId": "pn129054301635256690",
@@ -1250,7 +1250,7 @@
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 29,
-    "dElo": 117
+    "dElo": 67
    },
    "jugada": null,
    "fixtureId": "pn129049801635255644",
@@ -1350,7 +1350,7 @@
     "grupo": "buenas",
     "edadFm": 20,
     "edadRi": 22,
-    "dElo": 39
+    "dElo": 36
    },
    "jugada": null,
    "fixtureId": "pn129049801635256696",
@@ -1416,7 +1416,7 @@
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 27,
-    "dElo": -105
+    "dElo": -34
    },
    "jugada": null,
    "fixtureId": "pn129049801635256698",
@@ -1448,7 +1448,7 @@
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 22,
-    "dElo": 19
+    "dElo": 36
    },
    "jugada": null,
    "fixtureId": "pn129049801635256700",
@@ -1514,7 +1514,7 @@
     "grupo": "buenas",
     "edadFm": 23,
     "edadRi": 20,
-    "dElo": 148
+    "dElo": 77
    },
    "jugada": null,
    "fixtureId": "pn129042861635256659",
@@ -1546,7 +1546,7 @@
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 22,
-    "dElo": -47
+    "dElo": 160
    },
    "jugada": null,
    "fixtureId": "pn129043431635254785",
@@ -1615,7 +1615,7 @@
     "grupo": "buenas",
     "edadFm": 29,
     "edadRi": 20,
-    "dElo": 91
+    "dElo": 99
    },
    "jugada": null,
    "fixtureId": "pn129043431635255581",
@@ -1647,7 +1647,7 @@
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 20,
-    "dElo": 126
+    "dElo": 182
    },
    "jugada": null,
    "fixtureId": "pn129043431635256646",
@@ -1679,7 +1679,7 @@
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 30,
-    "dElo": 51
+    "dElo": 75
    },
    "jugada": {
     "tipo": "casilla",
@@ -1716,7 +1716,7 @@
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 24,
-    "dElo": 123
+    "dElo": 171
    },
    "jugada": {
     "tipo": "casilla",
@@ -1753,7 +1753,7 @@
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 18,
-    "dElo": 1076
+    "dElo": 817
    },
    "jugada": null,
    "fixtureId": "pn129034551635263665",
