@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-08-31T23:07:06.373Z",
+ "actualizado": "2026-09-01T23:44:59.308Z",
  "nota": "registro maestro de torneos ITF, solo hombres singles (M15/M25)",
  "semanas": {
   "2026-W32": {
@@ -19,8 +19,8 @@
     "archivado": true,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-09-01T02:15:42.077Z",
+     "cuadroQ": "2026-09-01T02:15:42.077Z",
      "oop": {}
     },
     "pendientesDeCierre": 0
@@ -129,8 +129,8 @@
     "archivado": true,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-09-01T02:18:47.604Z",
+     "cuadroQ": "2026-09-01T02:18:47.604Z",
      "oop": {}
     },
     "pendientesDeCierre": 0
@@ -151,8 +151,8 @@
     "archivado": true,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-09-01T02:19:20.575Z",
+     "cuadroQ": "2026-09-01T02:19:20.575Z",
      "oop": {}
     },
     "pendientesDeCierre": 0
@@ -195,8 +195,8 @@
     "archivado": true,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-09-01T02:19:41.597Z",
+     "cuadroQ": "2026-09-01T02:19:41.597Z",
      "oop": {}
     },
     "pendientesDeCierre": 0
@@ -261,8 +261,8 @@
     "archivado": true,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-09-01T02:17:21.861Z",
+     "cuadroQ": "2026-09-01T02:17:21.861Z",
      "oop": {}
     },
     "pendientesDeCierre": 0
@@ -283,8 +283,8 @@
     "archivado": true,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-09-01T02:17:51.478Z",
+     "cuadroQ": "2026-09-01T02:17:51.478Z",
      "oop": {}
     },
     "pendientesDeCierre": 0
@@ -527,8 +527,8 @@
     "archivado": true,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-09-01T02:20:09.370Z",
+     "cuadroQ": "2026-09-01T02:20:09.370Z",
      "oop": {}
     },
     "pendientesDeCierre": 0
@@ -1475,10 +1475,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:22.680Z",
-     "cuadroM": "2026-08-31T13:00:46.060Z",
-     "cuadroQ": "2026-08-31T13:00:46.060Z",
+     "cuadroM": "2026-08-31T23:18:23.193Z",
+     "cuadroQ": "2026-08-31T23:18:23.193Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:00:37.812Z"
+      "2026-08-31": "2026-08-31T23:18:11.198Z",
+      "2026-09-01": "2026-08-31T23:18:07.944Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1499,10 +1500,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:45.021Z",
-     "cuadroM": "2026-08-31T13:01:07.924Z",
-     "cuadroQ": "2026-08-31T13:01:07.924Z",
+     "cuadroM": "2026-08-31T23:18:46.359Z",
+     "cuadroQ": "2026-08-31T23:18:46.359Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:00:52.429Z"
+      "2026-08-31": "2026-08-31T23:18:34.726Z",
+      "2026-09-01": "2026-08-31T23:18:30.414Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1523,10 +1525,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:27.375Z",
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-08-31T23:19:08.746Z",
+     "cuadroQ": "2026-08-31T23:19:08.746Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:01:14.511Z"
+      "2026-08-31": "2026-08-31T23:18:57.029Z",
+      "2026-09-01": "2026-08-31T23:18:53.126Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1547,9 +1550,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:40.882Z",
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
+     "cuadroM": "2026-08-31T23:19:31.358Z",
+     "cuadroQ": "2026-08-31T23:19:31.358Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T23:19:19.969Z",
+      "2026-09-01": "2026-08-31T23:19:15.980Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1569,9 +1575,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:32.117Z",
-     "cuadroM": "2026-08-30T22:44:10.086Z",
-     "cuadroQ": "2026-08-30T22:44:10.086Z",
-     "oop": {}
+     "cuadroM": "2026-08-31T23:19:52.645Z",
+     "cuadroQ": "2026-08-31T23:19:52.645Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T23:19:41.315Z",
+      "2026-09-01": "2026-08-31T23:19:38.368Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1591,9 +1600,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:50.149Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
+     "cuadroM": "2026-08-31T23:20:16.467Z",
+     "cuadroQ": "2026-08-31T23:20:16.467Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T23:20:03.839Z",
+      "2026-09-01": "2026-08-31T23:19:59.722Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1613,10 +1625,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:17.576Z",
-     "cuadroM": "2026-08-31T13:02:03.925Z",
-     "cuadroQ": "2026-08-31T13:02:03.925Z",
+     "cuadroM": "2026-08-31T23:20:35.981Z",
+     "cuadroQ": "2026-08-31T23:20:35.981Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:01:51.767Z"
+      "2026-08-31": "2026-08-31T23:20:26.763Z",
+      "2026-09-01": "2026-08-31T23:20:23.501Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1637,10 +1650,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T14:01:11.469Z",
-     "cuadroM": "2026-08-31T13:02:27.072Z",
-     "cuadroQ": "2026-08-31T13:02:27.072Z",
+     "cuadroM": "2026-08-31T23:20:59.199Z",
+     "cuadroQ": "2026-08-31T23:20:59.199Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:02:10.536Z"
+      "2026-08-31": "2026-08-31T23:20:47.589Z",
+      "2026-09-01": "2026-08-31T23:20:42.667Z"
      }
     },
     "pendientesDeCierre": 2
@@ -1661,10 +1675,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:05.494Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
+     "cuadroM": "2026-08-31T23:21:22.522Z",
+     "cuadroQ": "2026-08-31T23:21:22.522Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:02:33.617Z"
+      "2026-08-31": "2026-08-31T23:21:11.488Z",
+      "2026-09-01": "2026-08-31T23:21:06.041Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1685,9 +1700,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:01.724Z",
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
+     "cuadroM": "2026-08-31T23:21:40.652Z",
+     "cuadroQ": "2026-08-31T23:21:40.652Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T23:21:29.649Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1707,9 +1724,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:13.603Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
-     "oop": {}
+     "cuadroM": "2026-08-31T23:22:00.970Z",
+     "cuadroQ": "2026-08-31T23:22:00.970Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T23:21:50.515Z",
+      "2026-09-01": "2026-08-31T23:21:47.419Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1729,11 +1749,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:10.284Z",
-     "cuadroM": "2026-08-31T13:03:21.453Z",
-     "cuadroQ": "2026-08-31T13:03:21.453Z",
+     "cuadroM": "2026-08-31T23:22:19.677Z",
+     "cuadroQ": "2026-08-31T23:22:19.677Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:03:07.109Z",
-      "2026-09-01": "2026-08-31T13:03:03.942Z"
+      "2026-08-31": "2026-08-31T23:22:10.731Z",
+      "2026-09-01": "2026-08-31T23:22:07.731Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1754,11 +1774,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:15:02.392Z",
-     "cuadroM": "2026-08-31T13:03:44.913Z",
-     "cuadroQ": "2026-08-31T13:03:44.913Z",
+     "cuadroM": "2026-08-31T23:22:43.327Z",
+     "cuadroQ": "2026-08-31T23:22:43.327Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:03:31.119Z",
-      "2026-09-01": "2026-08-31T13:03:28.043Z"
+      "2026-08-31": "2026-08-31T23:22:30.101Z",
+      "2026-09-01": "2026-08-31T23:22:26.666Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1779,10 +1799,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T14:01:14.189Z",
-     "cuadroM": "historico",
-     "cuadroQ": "historico",
+     "cuadroM": "2026-08-31T23:23:06.627Z",
+     "cuadroQ": "2026-08-31T23:23:06.627Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:03:51.423Z"
+      "2026-08-31": "2026-08-31T23:22:54.876Z",
+      "2026-09-01": "2026-08-31T23:22:49.855Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1803,9 +1824,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:58.626Z",
-     "cuadroM": "2026-08-30T22:44:54.431Z",
-     "cuadroQ": "2026-08-30T22:44:54.431Z",
-     "oop": {}
+     "cuadroM": "2026-08-31T23:23:29.302Z",
+     "cuadroQ": "2026-08-31T23:23:29.302Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T23:23:16.998Z",
+      "2026-09-01": "2026-08-31T23:23:13.461Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1825,10 +1849,11 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:54.749Z",
-     "cuadroM": null,
-     "cuadroQ": null,
+     "cuadroM": "2026-08-31T23:23:48.002Z",
+     "cuadroQ": "2026-08-31T23:23:48.002Z",
      "oop": {
-      "2026-08-31": "2026-08-31T13:04:18.306Z"
+      "2026-08-31": "2026-08-31T23:23:38.608Z",
+      "2026-09-01": "2026-08-31T23:23:35.707Z"
      }
     },
     "pendientesDeCierre": 0
@@ -1849,9 +1874,12 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-25T22:14:37.556Z",
-     "cuadroM": null,
-     "cuadroQ": null,
-     "oop": {}
+     "cuadroM": "2026-08-31T23:24:10.708Z",
+     "cuadroQ": "2026-08-31T23:24:10.708Z",
+     "oop": {
+      "2026-08-31": "2026-08-31T23:24:00.283Z",
+      "2026-09-01": "2026-08-31T23:23:56.041Z"
+     }
     },
     "pendientesDeCierre": 0
    },
@@ -1871,7 +1899,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -1895,7 +1923,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:44:55.050Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -1917,7 +1945,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:44:58.352Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -1939,7 +1967,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:04.589Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -1961,7 +1989,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:09.913Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -1983,7 +2011,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:15.203Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2005,7 +2033,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:20.782Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2027,7 +2055,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:30.373Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2049,7 +2077,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-27T19:38:55.132Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2071,7 +2099,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:34.657Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2093,7 +2121,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:37.896Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2115,7 +2143,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:24.751Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2137,7 +2165,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:42.194Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2159,7 +2187,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:46.470Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2181,7 +2209,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": "2026-08-28T15:45:51.077Z",
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2203,7 +2231,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2225,7 +2253,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
@@ -2247,7 +2275,7 @@
     "archivado": false,
     "frescura": {
      "aceptacion": null,
-     "cuadroM": null,
+     "cuadroM": "historico",
      "cuadroQ": null,
      "oop": {}
     },
