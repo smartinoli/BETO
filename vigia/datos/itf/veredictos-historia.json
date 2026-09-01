@@ -9497,7 +9497,7 @@
    },
    {
     "crit": {
-     "cuota": 1.7,
+     "cuota": 1.67,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.125,
@@ -9517,18 +9517,18 @@
     "etapa": "R1",
     "p1": "Matei Florin Breazu",
     "p2": "Giannicola Misasi",
-    "g1": 2,
-    "g2": 1.7,
+    "g1": 2.02,
+    "g2": 1.67,
     "gana": "Giannicola Misasi",
     "lado": 2,
     "p": 0.125,
-    "pMercado": 0.541,
+    "pMercado": 0.547,
     "soloWtn": 0.507,
     "señales": [
      "sub18",
      "local"
     ],
-    "razon": "Δ0.06 de WTN a favor de Giannicola Misasi (8.57 contra 8.63), en R1: la curva del grupo \"buenas\" (n=1337) da 51%. Ajustan: Matei Florin Breazu tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−31 pts); Matei Florin Breazu juega en su país (ROU): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 12%. El mercado la paga a 1.7: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −79% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.06 de WTN a favor de Giannicola Misasi (8.57 contra 8.63), en R1: la curva del grupo \"buenas\" (n=1337) da 51%. Ajustan: Matei Florin Breazu tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−31 pts); Matei Florin Breazu juega en su país (ROU): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 12%. El mercado la paga a 1.67: 55% una vez sacado su margen. A esa cuota, la apuesta rinde −79% si tenemos razón nosotros y −9% si la tiene el mercado."
    },
    {
     "crit": {
@@ -9803,7 +9803,7 @@
    },
    {
     "crit": {
-     "cuota": 1.11,
+     "cuota": 1.08,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.95,
@@ -9823,15 +9823,15 @@
     "etapa": "R1",
     "p1": "Alejandro Turriziani Alvarez",
     "p2": "Daniel Lara Salmeron",
-    "g1": 1.11,
-    "g2": 5.4,
+    "g1": 1.08,
+    "g2": 6.2,
     "gana": "Alejandro Turriziani Alvarez",
     "lado": 1,
     "p": 0.95,
-    "pMercado": 0.829,
+    "pMercado": 0.852,
     "soloWtn": 0.95,
     "señales": [],
-    "razon": "Δ6.51 de WTN a favor de Alejandro Turriziani Alvarez (8.04 contra 14.55), en R1: la curva del grupo \"buenas\" (n=1337) da 95%. El mercado la paga a 1.11: 83% una vez sacado su margen. A esa cuota, la apuesta rinde +5% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ6.51 de WTN a favor de Alejandro Turriziani Alvarez (8.04 contra 14.55), en R1: la curva del grupo \"buenas\" (n=1337) da 95%. El mercado la paga a 1.08: 85% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado."
    },
    {
     "crit": {
@@ -9933,7 +9933,7 @@
    },
    {
     "crit": {
-     "cuota": 1.65,
+     "cuota": 1.6,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.608,
@@ -9953,17 +9953,17 @@
     "etapa": "R1",
     "p1": "Mihai Alexandru Coman",
     "p2": "Preston Brown",
-    "g1": 1.65,
-    "g2": 2.07,
+    "g1": 1.6,
+    "g2": 2.15,
     "gana": "Mihai Alexandru Coman",
     "lado": 1,
     "p": 0.608,
-    "pMercado": 0.556,
+    "pMercado": 0.573,
     "soloWtn": 0.534,
     "señales": [
      "local"
     ],
-    "razon": "Δ0.30 de WTN a favor de Mihai Alexandru Coman (9.96 contra 10.26), en R1: la curva del grupo \"buenas\" (n=1337) da 53%. Ajustan: Mihai Alexandru Coman juega en su país (ROU): la localía vale ~0.5 pts de WTN (+7 pts). Queda en 61%. El mercado la paga a 1.65: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.30 de WTN a favor de Mihai Alexandru Coman (9.96 contra 10.26), en R1: la curva del grupo \"buenas\" (n=1337) da 53%. Ajustan: Mihai Alexandru Coman juega en su país (ROU): la localía vale ~0.5 pts de WTN (+7 pts). Queda en 61%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −8% si la tiene el mercado."
    },
    {
     "crit": {
@@ -10070,5 +10070,5 @@
    }
   ]
  },
- "actualizado": "2026-09-01T04:23:06.102Z"
+ "actualizado": "2026-09-01T04:56:45.298Z"
 }

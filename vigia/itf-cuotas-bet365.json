@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-01T04:23:05.392Z",
+ "generado": "2026-09-01T04:56:44.589Z",
  "casa": "betano",
  "soloCasa": "betano",
  "cuotas": [
@@ -9,18 +9,18 @@
    "p2": "Reece Falck",
    "g1": 1.18,
    "g2": 4.1,
-   "visto": "2026-09-01T04:16Z",
+   "visto": "2026-09-01T04:49Z",
    "fuente": "betano",
    "fixtureId": "pn129042321635254885",
-   "inicio": "2026-09-01T05:10:00.000Z"
+   "inicio": "2026-09-01T05:46:00.000Z"
   },
   {
    "torneo": "M15 Buzau",
    "p1": "Matei Florin Breazu",
    "p2": "Giannicola Misasi",
-   "g1": 2,
-   "g2": 1.7,
-   "visto": "2026-09-01T04:17Z",
+   "g1": 2.02,
+   "g2": 1.67,
+   "visto": "2026-09-01T04:49Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635267559",
    "inicio": "2026-09-01T06:00:00.000Z"
@@ -31,7 +31,7 @@
    "p2": "Ignacio Monzon",
    "g1": 2.9,
    "g2": 1.34,
-   "visto": "2026-09-01T04:17Z",
+   "visto": "2026-09-01T04:49Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635268456",
    "inicio": "2026-09-01T06:00:00.000Z"
@@ -42,7 +42,7 @@
    "p2": "Tudor Batin",
    "g1": 3.35,
    "g2": 1.27,
-   "visto": "2026-09-01T04:17Z",
+   "visto": "2026-09-01T04:49Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635268457",
    "inicio": "2026-09-01T07:30:00.000Z"
@@ -53,7 +53,7 @@
    "p2": "Marc Majdandzic",
    "g1": 1.93,
    "g2": 1.75,
-   "visto": "2026-09-01T04:17Z",
+   "visto": "2026-09-01T04:50Z",
    "fuente": "betano",
    "fixtureId": "pn129035291635268467",
    "inicio": "2026-09-01T09:00:00.000Z"
@@ -64,7 +64,7 @@
    "p2": "Aleksandr Braynin",
    "g1": 1.55,
    "g2": 2.25,
-   "visto": "2026-09-01T04:17Z",
+   "visto": "2026-09-01T04:50Z",
    "fuente": "betano",
    "fixtureId": "pn129035291635268469",
    "inicio": "2026-09-01T09:00:00.000Z"
@@ -75,7 +75,7 @@
    "p2": "Gheorghe Claudiu Schinteie",
    "g1": 1.34,
    "g2": 2.9,
-   "visto": "2026-09-01T04:18Z",
+   "visto": "2026-09-01T04:50Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635268450",
    "inicio": "2026-09-01T09:00:00.000Z"
@@ -86,7 +86,7 @@
    "p2": "Alexandru Toubi Hebhang Balan",
    "g1": 3.25,
    "g2": 1.28,
-   "visto": "2026-09-01T04:18Z",
+   "visto": "2026-09-01T04:50Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635268452",
    "inicio": "2026-09-01T09:00:00.000Z"
@@ -97,7 +97,7 @@
    "p2": "Christian Djonov",
    "g1": 1.44,
    "g2": 2.52,
-   "visto": "2026-09-01T04:18Z",
+   "visto": "2026-09-01T04:50Z",
    "fuente": "betano",
    "fixtureId": "pn129035291635280199",
    "inicio": "2026-09-01T10:00:00.000Z"
@@ -108,7 +108,7 @@
    "p2": "Linus Lagerbohm",
    "g1": 3.45,
    "g2": 1.25,
-   "visto": "2026-09-01T04:18Z",
+   "visto": "2026-09-01T04:51Z",
    "fuente": "betano",
    "fixtureId": "pn129043421635267588",
    "inicio": "2026-09-01T10:00:00.000Z"
@@ -117,9 +117,9 @@
    "torneo": "M15 Madrid",
    "p1": "Alejandro Turriziani Alvarez",
    "p2": "Daniel Lara Salmeron",
-   "g1": 1.11,
-   "g2": 5.4,
-   "visto": "2026-09-01T04:18Z",
+   "g1": 1.08,
+   "g2": 6.2,
+   "visto": "2026-09-01T04:51Z",
    "fuente": "betano",
    "fixtureId": "pn129034891635268483",
    "inicio": "2026-09-01T10:15:00.000Z"
@@ -130,7 +130,7 @@
    "p2": "Nicola Rispoli",
    "g1": 1.47,
    "g2": 2.42,
-   "visto": "2026-09-01T04:18Z",
+   "visto": "2026-09-01T04:51Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635263725",
    "inicio": "2026-09-01T10:30:00.000Z"
@@ -141,7 +141,7 @@
    "p2": "Valentin Vanta",
    "g1": 1.13,
    "g2": 4.9,
-   "visto": "2026-09-01T04:18Z",
+   "visto": "2026-09-01T04:51Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635267556",
    "inicio": "2026-09-01T10:30:00.000Z"
@@ -152,7 +152,7 @@
    "p2": "Sebastian Gima",
    "g1": 1.93,
    "g2": 1.75,
-   "visto": "2026-09-01T04:18Z",
+   "visto": "2026-09-01T04:51Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635267557",
    "inicio": "2026-09-01T10:30:00.000Z"
@@ -161,9 +161,9 @@
    "torneo": "M15 Buzau",
    "p1": "Mihai Alexandru Coman",
    "p2": "Preston Brown",
-   "g1": 1.65,
-   "g2": 2.07,
-   "visto": "2026-09-01T04:18Z",
+   "g1": 1.6,
+   "g2": 2.15,
+   "visto": "2026-09-01T04:51Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635267562",
    "inicio": "2026-09-01T10:30:00.000Z"
@@ -174,7 +174,7 @@
    "p2": "Rares Teodor Pieleanu",
    "g1": 5.8,
    "g2": 1.09,
-   "visto": "2026-09-01T04:19Z",
+   "visto": "2026-09-01T04:51Z",
    "fuente": "betano",
    "fixtureId": "pn129043411635268454",
    "inicio": "2026-09-01T12:00:00.000Z"
@@ -185,7 +185,7 @@
    "p2": "Manuel Mazza",
    "g1": 5.2,
    "g2": 1.12,
-   "visto": "2026-09-01T04:19Z",
+   "visto": "2026-09-01T04:51Z",
    "fuente": "betano",
    "fixtureId": "pn129043401635263678",
    "inicio": "2026-09-01T15:00:00.000Z"
@@ -196,7 +196,7 @@
    "p2": "Victor Braga",
    "g1": 1.22,
    "g2": 3.7,
-   "visto": "2026-09-01T04:19Z",
+   "visto": "2026-09-01T04:52Z",
    "fuente": "betano",
    "fixtureId": "pn129054311635255949",
    "inicio": "2026-09-01T16:30:00.000Z"
@@ -207,7 +207,7 @@
    "p2": "Jacopo Bilardo",
    "g1": 3.65,
    "g2": 1.23,
-   "visto": "2026-09-01T04:19Z",
+   "visto": "2026-09-01T04:52Z",
    "fuente": "betano",
    "fixtureId": "pn129043401635268424",
    "inicio": "2026-09-01T17:00:00.000Z"
