@@ -140,8 +140,9 @@ tr[hidden]{display:none}
 .pie{color:var(--ink3);font-size:12px;margin-top:14px;line-height:1.6}
 </style>
 <div class="env">
-<h1>Tabla ITF — todos los jugadores cotizados</h1>
+<h1>Tabla ITF — lo apostable de ahora</h1>
 <p class="sub">${J.length} jugadores · ${new Set(J.map(j => j.torneo)).size} torneos · armada ${new Date().toISOString().slice(11, 16)} UTC.
+  Solo partidos que <b>todavía no empiezan</b> y tienen cuota de los dos lados: lo que ya arrancó no se puede apostar y sale de la tabla.
   Clic en cualquier encabezado para ordenar; el nombre abre la búsqueda en Betano. La ★ y el borde verde marcan lo que pisa la casilla del manual.
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
 

@@ -593,51 +593,7 @@ const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
 fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
   generado: new Date().toISOString(), fuente: bet365 ? 'bet365' : 'betano', partidos: VEREDICTOS }, null, 1));
 
-/* ---------- LA TABLA CRUDA: una fila POR JUGADOR ----------
-   Pedida por Sebastián el 2026-09-01: la página de veredictos se le hizo
-   confusa y quiere lo de siempre pero plano y ordenable — cada jugador
-   con su cuota, lo que le da el modelo, su rival, torneo, edad, WTN,
-   rankings, si es junior y si juega en casa. Sale del mismo análisis, no
-   se recalcula nada: es otra vista de las mismas filas. */
-{
-  const anio = new Date().getFullYear();
-  const jugadores = [];
-  for (const f of filas) {
-    if (!f.v || !f.q.g1 || !f.q.g2) continue;
-    const elo = j => { const r = ELO.get(j.id); return r ? { elo: Math.round(r.elo), pj: r.partidos, juega: r.wtnImplicito } : null };
-    const pDe = lado => {                       /* prob del modelo para ESE jugador */
-      const favEs1 = f.v.nivel.favorito.startsWith(f.f1.nombre);
-      return lado === 1 ? (favEs1 ? f.v.nivel.p : 1 - f.v.nivel.p) : (favEs1 ? 1 - f.v.nivel.p : f.v.nivel.p);
-    };
-    for (const [lado, j, riv] of [[1, f.f1, f.f2], [2, f.f2, f.f1]]) {
-      const cuota = lado === 1 ? f.q.g1 : f.q.g2, cRiv = lado === 1 ? f.q.g2 : f.q.g1;
-      const paisT = (f.t.clave.match(/^m-itf-([a-z]+)-/) || [])[1]?.toUpperCase() || null;
-      const e = elo(j);
-      jugadores.push({
-        jugador: j.nombre, cuota, prob: +pDe(lado).toFixed(3),
-        /* siembra y forma de entrada (Q clasificacion, WC invitacion, LL
-           lucky loser, PR ranking protegido, A alternate, SE exento).
-           DA es el acceso directo, o sea lo normal: no se muestra. */
-        seed: j.seed ?? null, entrada: j.entrada && j.entrada !== 'DA' ? j.entrada : null,
-        rival: riv.nombre, cuotaRival: cRiv,
-        seedRival: riv.seed ?? null, entradaRival: riv.entrada && riv.entrada !== 'DA' ? riv.entrada : null,
-        /* los mismos datos del rival, para comparar en la misma fila */
-        edadRival: riv.nacido ? anio - riv.nacido : null,
-        wtnRival: riv.wtn ?? null, itfRival: riv.itf ?? null, atpRival: riv.atp ?? null,
-        torneo: f.t.nombre, pais: paisT, etapa: f.etapa,
-        edad: j.nacido ? anio - j.nacido : null,
-        wtn: j.wtn ?? null, itf: j.itf ?? null, atp: j.atp ?? null,
-        jr: !!j.jr, local: !!(paisT && j.pais === paisT),
-        elo: e?.elo ?? null, eloPj: e?.pj ?? null,
-        jugable: !!(f.jugada && (f.jugada.quien === j.nombre || String(f.jugada.quien).includes(j.nombre.split(' ').slice(-1)[0]))),
-        inicio: f.q.inicio || null, fixtureId: f.q.fixtureId || null,
-      });
-    }
-  }
-  fs.writeFileSync(path.join(DIR, 'itf-tabla.json'), JSON.stringify({
-    generado: new Date().toISOString(), jugadores }, null, 1));
-  console.log(`→ vigia/itf-tabla.json (${jugadores.length} jugadores)`);
-}
+
 
 const HISTF = path.join(DATOS, 'veredictos-historia.json');
 const HOY = new Date().toISOString().slice(0, 10);
@@ -702,6 +658,76 @@ if (bet365) {
 }
 historia.actualizado = new Date().toISOString();
 fs.writeFileSync(HISTF, JSON.stringify(historia, null, 1));
+
+/* ---------- LA TABLA CRUDA: una fila POR JUGADOR ----------
+   Pedida por Sebastián el 2026-09-01. REGLA, decidida por él ese mismo
+   día: la tabla muestra SOLO lo apostable — partidos que todavía no
+   empiezan y que tienen cuota de los dos lados. Un partido que ya
+   arrancó no se puede apostar y su cuota ya no es la que está en la
+   casa, así que sale de la tabla en vez de ensuciarla.
+
+   Se juntan igual dos fuentes (la tanda vigente y el registro del día)
+   porque entre que se piden las cuotas y se arma la página pasan
+   minutos, y así ninguna de las dos se pierde un partido que la otra
+   tenga. El corte por hora de inicio se aplica al final, a los dos. */
+{
+  const anio = new Date().getFullYear();
+  const ahora = Date.now();
+  const jugadores = [];
+  const vistos = new Set();
+  const eloDe = j => { const r = ELO.get(j.id); return r ? { elo: Math.round(r.elo), pj: r.partidos } : null };
+
+  const mete = (t, f1, f2, g1, g2, prob1, etapa, inicio, fixtureId, jugada, res, acerto, lado) => {
+    const k = fixtureId || [t?.nombre, f1.nombre, f2.nombre].join('|');
+    if (vistos.has(k)) return; vistos.add(k);
+    const paisT = t?.clave ? ((t.clave.match(/^m-itf-([a-z]+)-/) || [])[1]?.toUpperCase() || null) : null;
+    /* ya arrancó o ya se jugó: no es apostable, no entra */
+    if (res || (inicio && Date.parse(inicio) < ahora)) return;
+    for (const [lg, j, riv] of [[1, f1, f2], [2, f2, f1]]) {
+      const cuota = lg === 1 ? g1 : g2, cRiv = lg === 1 ? g2 : g1;
+      const prob = lg === 1 ? prob1 : (prob1 != null ? 1 - prob1 : null);
+      const e = eloDe(j);
+      /* estado: lo que hay que saber de un vistazo sin abrir nada */
+      jugadores.push({
+        jugador: j.nombre, cuota, prob: prob != null ? +prob.toFixed(3) : null,
+        seed: j.seed ?? null, entrada: j.entrada && j.entrada !== 'DA' ? j.entrada : null,
+        rival: riv.nombre, cuotaRival: cRiv,
+        seedRival: riv.seed ?? null, entradaRival: riv.entrada && riv.entrada !== 'DA' ? riv.entrada : null,
+        edadRival: riv.nacido ? anio - riv.nacido : null,
+        wtnRival: riv.wtn ?? null, itfRival: riv.itf ?? null, atpRival: riv.atp ?? null,
+        torneo: t?.nombre || '—', pais: paisT, etapa,
+        edad: j.nacido ? anio - j.nacido : null,
+        wtn: j.wtn ?? null, itf: j.itf ?? null, atp: j.atp ?? null,
+        jr: !!j.jr, local: !!(paisT && j.pais === paisT),
+        elo: e?.elo ?? null, eloPj: e?.pj ?? null,
+        jugable: !!(jugada && (jugada.quien === j.nombre || String(jugada.quien).includes(String(j.nombre).split(' ').slice(-1)[0]))),
+        inicio: inicio || null, fixtureId: fixtureId || null,
+      });
+    }
+  };
+
+  /* 1. la tanda vigente, con todo ya calculado */
+  for (const f of filas) {
+    if (!f.v || !f.q.g1 || !f.q.g2) continue;
+    const favEs1 = f.v.nivel.favorito.startsWith(f.f1.nombre);
+    const p1 = favEs1 ? f.v.nivel.p : 1 - f.v.nivel.p;
+    mete(f.t, f.f1, f.f2, f.q.g1, f.q.g2, p1, f.etapa, f.q.inicio, f.q.fixtureId, f.jugada, f.res, null, null);
+  }
+  /* 2. lo que tuvo cuota HOY y ya no está en la tanda: los que arrancaron
+        mientras mirábamos, y los que ya terminaron con su marcador */
+  for (const v of (historia.dias[HOY] || [])) {
+    if (v.cuotaSospechosa || !v.g1 || !v.g2) continue;
+    const t = EDICIONES[v.torneo]?.[0] ? { nombre: v.torneo, clave: EDICIONES[v.torneo][0].clave } : null;
+    if (!t) continue;
+    const f1 = ficha(t.clave, v.p1), f2 = ficha(t.clave, v.p2);
+    const p1 = v.p != null ? (v.lado === 1 ? v.p : 1 - v.p) : null;
+    mete(t, f1, f2, v.g1, v.g2, p1, v.etapa, v.inicio, v.fixtureId, null, v.res, v.acerto, v.lado);
+  }
+  fs.writeFileSync(path.join(DIR, 'itf-tabla.json'), JSON.stringify({
+    generado: new Date().toISOString(), jugadores }, null, 1));
+  console.log(`→ vigia/itf-tabla.json (${jugadores.length} jugadores por jugar y con cuota)`);
+}
+
 
 /* ---------- consola: las elegidas primero, el resto en una línea ---------- */
 const T = (s, n) => String(s ?? '').slice(0, n).padEnd(n);
