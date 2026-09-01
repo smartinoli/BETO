@@ -84,11 +84,12 @@ jobs:
         if: inputs.que == 'todo'
         run: node vigia/itf-rating.mjs
 
-      - name: Cuadros al día por la vía barata (sin navegador; si el WAF corta, se sigue)
-        if: inputs.que != 'todo'
-        timeout-minutes: 5
-        continue-on-error: true
-        run: node vigia/itf-cosecha.mjs cosechar hoy || echo "WAF cerrado; las fases vendrán de la última foto"
+      # NO se refrescan cuadros en el camino de cuotas (quitado el 2026-09-01).
+      # Lo habiamos metido para mantener las fases al dia, pero recorre 35
+      # torneos con pausas y el WAF lo hace tardar: a Sebastian le tomo 5m13s
+      # un boton que promete 2-3 minutos, y ya habia tumbado dos corridas por
+      # timeout. Las fases salen del boton "Torneos y cuadros", que es
+      # exactamente para eso. El de cuotas hace lo suyo: API, partidos, tabla.
 
       # El modelo aprende: reajusta sus constantes con el banco al día y las
       # aplica SOLO si le ganan a las anteriores en la validación. Si no
