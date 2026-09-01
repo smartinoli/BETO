@@ -326,9 +326,16 @@ try {
     fs.mkdirSync(path.join(DATOS, 'vivo'), { recursive: true });
     const hoy = new Date().toISOString().slice(0, 10);
     const cache = JSON.parse(fs.readFileSync(CACHE_CALENDARIO, 'utf8'));
-    const activos = cache.torneos.filter(t => t.desde <= hoy && t.hasta >= hoy && t.enlace);
+    /* SOLO HOMBRES (decisión del 2026-08-22, verificada el 2026-09-01):
+       el pase recorría 36 torneos, 18 de ellos femeninos que ningún
+       consumidor usa — el rating y el informe filtran m-itf. Era la mitad
+       del tiempo y la mitad de la exposición al WAF tirada a la basura, y
+       encima los fallos por bloqueo se repartían entre torneos que sí
+       importan y torneos que no. */
+    const activos = cache.torneos.filter(t => t.desde <= hoy && t.hasta >= hoy && t.enlace
+      && t.clave.startsWith('m-itf'));
     const api = 'https://www.itftennis.com/tennis/api/TournamentApi/';
-    console.log(`Programación de ${activos.length} torneos en juego…`);
+    console.log(`Programación de ${activos.length} torneos masculinos en juego…`);
     let ok = 0, mal = 0;
     for (const t of activos) {
       try { await cosecharTorneo(page, t, hoy); ok++; }
