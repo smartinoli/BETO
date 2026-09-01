@@ -50,5 +50,6 @@ if (KEY) {
 } else {
   console.log('Sin ODDSPAPI_KEY: solo se rearma la página con lo que hay en disco.');
 }
-paso(KEY ? '3/3 la página del día' : 'la página del día', 'itf-informe.mjs', ['--bet365']);
+paso(KEY ? '3/4 la página del día' : 'la página del día', 'itf-informe.mjs', ['--bet365']);
+paso('4/4 la tabla plana (ordenable y filtrable)', 'itf-tabla.mjs', []);
 console.log('\n→ vigia/itf-informe.html (tabla de veredictos + historial) · vigia/itf-veredictos.json');

@@ -25,7 +25,7 @@ on:
   # con los botones de la página (o desde esta pestaña de Actions).
   push:
     branches: [claude/itf-scrapers-prize-money-7oy59k]
-    paths: [vigia/itf-informe.html]
+    paths: [vigia/itf-informe.html, vigia/itf-tabla.html]
 
 permissions:
   contents: write
@@ -99,7 +99,7 @@ jobs:
         run: |
           git config user.name "vigia-bot"
           git config user.email "vigia@users.noreply.github.com"
-          git add vigia/itf-informe.html vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json vigia/itf-calendario.json vigia/datos/itf
+          git add vigia/itf-informe.html vigia/itf-tabla.html vigia/itf-tabla.json vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json vigia/itf-calendario.json vigia/datos/itf
           git diff --cached --quiet && exit 0
           git commit -q -m "tabla: corrida a pedido $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase origin claude/itf-scrapers-prize-money-7oy59k || true
@@ -123,6 +123,7 @@ jobs:
         run: |
           mkdir -p _sitio
           cp vigia/itf-informe.html _sitio/index.html
+          cp vigia/itf-tabla.html _sitio/tabla.html || true
           cp vigia/itf-auditoria.html _sitio/auditoria.html || true
 
       - uses: actions/configure-pages@v5

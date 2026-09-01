@@ -593,6 +593,44 @@ const VEREDICTOS = filas.filter(f => f.v?.nivel).map(f => {
 fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
   generado: new Date().toISOString(), fuente: bet365 ? 'bet365' : 'betano', partidos: VEREDICTOS }, null, 1));
 
+/* ---------- LA TABLA CRUDA: una fila POR JUGADOR ----------
+   Pedida por Sebastián el 2026-09-01: la página de veredictos se le hizo
+   confusa y quiere lo de siempre pero plano y ordenable — cada jugador
+   con su cuota, lo que le da el modelo, su rival, torneo, edad, WTN,
+   rankings, si es junior y si juega en casa. Sale del mismo análisis, no
+   se recalcula nada: es otra vista de las mismas filas. */
+{
+  const anio = new Date().getFullYear();
+  const jugadores = [];
+  for (const f of filas) {
+    if (!f.v || !f.q.g1 || !f.q.g2) continue;
+    const elo = j => { const r = ELO.get(j.id); return r ? { elo: Math.round(r.elo), pj: r.partidos, juega: r.wtnImplicito } : null };
+    const pDe = lado => {                       /* prob del modelo para ESE jugador */
+      const favEs1 = f.v.nivel.favorito.startsWith(f.f1.nombre);
+      return lado === 1 ? (favEs1 ? f.v.nivel.p : 1 - f.v.nivel.p) : (favEs1 ? 1 - f.v.nivel.p : f.v.nivel.p);
+    };
+    for (const [lado, j, riv] of [[1, f.f1, f.f2], [2, f.f2, f.f1]]) {
+      const cuota = lado === 1 ? f.q.g1 : f.q.g2, cRiv = lado === 1 ? f.q.g2 : f.q.g1;
+      const paisT = (f.t.clave.match(/^m-itf-([a-z]+)-/) || [])[1]?.toUpperCase() || null;
+      const e = elo(j);
+      jugadores.push({
+        jugador: j.nombre, cuota, prob: +pDe(lado).toFixed(3),
+        rival: riv.nombre, cuotaRival: cRiv,
+        torneo: f.t.nombre, pais: paisT, etapa: f.etapa,
+        edad: j.nacido ? anio - j.nacido : null,
+        wtn: j.wtn ?? null, itf: j.itf ?? null, atp: j.atp ?? null,
+        jr: !!j.jr, local: !!(paisT && j.pais === paisT),
+        elo: e?.elo ?? null, eloPj: e?.pj ?? null,
+        jugable: !!(f.jugada && (f.jugada.quien === j.nombre || String(f.jugada.quien).includes(j.nombre.split(' ').slice(-1)[0]))),
+        inicio: f.q.inicio || null, fixtureId: f.q.fixtureId || null,
+      });
+    }
+  }
+  fs.writeFileSync(path.join(DIR, 'itf-tabla.json'), JSON.stringify({
+    generado: new Date().toISOString(), jugadores }, null, 1));
+  console.log(`→ vigia/itf-tabla.json (${jugadores.length} jugadores)`);
+}
+
 const HISTF = path.join(DATOS, 'veredictos-historia.json');
 const HOY = new Date().toISOString().slice(0, 10);
 const historia = leer(HISTF) || { dias: {} };
@@ -959,7 +997,7 @@ ${(() => { globalThis.filaVeredicto = (v, i) => {
     <p>${esc(v.razon)}</p></details></td></tr>`;
 }; return '' })()}
 <section class="verd">
-  <h2 class="vt">Quién gana hoy</h2>
+  <h2 class="vt">Quién gana hoy <a href="./tabla.html" style="font:400 13px system-ui;color:var(--accent);text-decoration:none;margin-left:10px">tabla plana, ordenable →</a></h2>
   <p class="notaverd" style="margin:0 0 12px">La etiqueta de cada veredicto (firme / probable / frágil / abierto)
     sale de la escalera de calibración medida sobre 234 partidos calificados, no del número pelado.
     En <b>opiniones</b>: M = nuestro modelo, E = nuestro Elo, $ = el mercado; en rojo la que ve ganador al otro.
