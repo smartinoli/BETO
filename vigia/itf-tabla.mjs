@@ -23,6 +23,7 @@ const DIR = path.dirname(fileURLToPath(import.meta.url));
 const datos = JSON.parse(fs.readFileSync(path.join(DIR, 'itf-tabla.json'), 'utf8'));
 const M = await import('./itf-modelo.mjs');
 const O = M.MODELO_ORIGEN;
+const CASA = (() => { try { return JSON.parse(fs.readFileSync(path.join(DIR, 'itf-cuotas-bet365.json'), 'utf8')).soloCasa || null } catch { return null } })();
 const J = datos.jugadores || [];
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 /* Búsqueda en Betano LatAm por el nombre del jugador. Es un enlace y
@@ -148,10 +149,11 @@ tr[hidden]{display:none}
 
 <div class="act">
   <button id="b-cuotas" data-que="cuotas">⟳ Cuotas y partidos <small>~3 min</small></button>
+  <button id="b-betano" data-que="betano" class="sec2">⟳ Cuotas solo Betano <small>~3 min</small></button>
   <button id="b-todo" data-que="todo" class="sec2">⟳ Torneos y cuadros <small>10–15 min</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
-  <span class="mod">modelo ${O.de === 'aprendido' ? 'aprendido' : 'de fábrica'} ·
+  <span class="mod">${CASA ? 'cuotas solo de ' + esc(CASA) + ' · ' : ''}modelo ${O.de === 'aprendido' ? 'aprendido' : 'de fábrica'} ·
     ${O.partidos} partidos · ${O.fecha ? String(O.fecha).slice(0, 10) : ''}</span>
   <div id="act-token" hidden>
     <p>Una sola vez: un token de GitHub que queda guardado solo en este navegador.
@@ -271,9 +273,10 @@ ${filas}
   var est=document.getElementById('act-estado'),
       caja=document.getElementById('act-token'), inp=document.getElementById('act-pat'),
       gu=document.getElementById('act-guardar');
-  var botones=['b-cuotas','b-todo','b-modelo'].map(function(i){return document.getElementById(i)}).filter(Boolean);
+  var botones=['b-cuotas','b-betano','b-todo','b-modelo'].map(function(i){return document.getElementById(i)}).filter(Boolean);
   if(!botones.length) return;
   var AVISO={ cuotas:'corriendo: índice + cuotas + análisis (~3 min)…',
+              betano:'corriendo: solo precios de Betano, los que puedes jugar (~3 min)…',
               todo:'corriendo: cuadros ITF por navegador + cuotas (10–15 min)…',
               modelo:'corriendo: el modelo se reajusta con los resultados y se queda con lo mejor (5–10 min)…' };
   function traba(si){ botones.forEach(function(b){b.disabled=si}); }

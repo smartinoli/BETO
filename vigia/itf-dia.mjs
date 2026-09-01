@@ -46,7 +46,11 @@ const paso = (nombre, archivo, args = []) => {
 
 if (KEY) {
   paso('1/3 capturar índice y marcadores', 'itf-historico.mjs', ['--capturar']);
-  paso('2/3 cuotas bet365 de los pendientes', 'itf-cuotas-bet365.mjs', ['--max', MAX]);
+  /* --casa se pasa tal cual: con 'betano' la tanda queda solo con sus
+     precios, que son los que Sebastián puede jugar de verdad. */
+  const CASA = arg('casa', null);
+  paso(CASA ? `2/3 cuotas de ${CASA} de los pendientes` : '2/3 cuotas bet365 de los pendientes',
+    'itf-cuotas-bet365.mjs', ['--max', MAX, ...(CASA ? ['--casa', CASA] : [])]);
 } else {
   console.log('Sin ODDSPAPI_KEY: solo se rearma la página con lo que hay en disco.');
 }

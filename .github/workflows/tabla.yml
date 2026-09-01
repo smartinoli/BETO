@@ -20,7 +20,11 @@ on:
         description: 'Qué refrescar'
         type: choice
         default: cuotas
-        options: [cuotas, todo, modelo]   # cuotas = bet365 + análisis (rápido); todo = además scrape de cuadros ITF (lento); modelo = reajusta las constantes con los resultados acumulados
+        # cuotas = mejor casa disponible (bet365 > betano > …), sirve para medir el mercado
+        # betano = SOLO precios de Betano, que son los que Sebastián puede jugar
+        # todo   = además scrape de cuadros ITF (lento)
+        # modelo = reajusta las constantes con los resultados acumulados
+        options: [cuotas, betano, todo, modelo]
   # Sin schedule a pedido de Sebastián (2026-08-27): todo manual, él actualiza
   # con los botones de la página (o desde esta pestaña de Actions).
   push:
@@ -102,7 +106,14 @@ jobs:
       - name: La rutina del día
         env:
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
-        run: node vigia/itf-dia.mjs
+        # con 'betano' la tanda se arma solo con sus precios; en el resto
+        # manda la prioridad de casas de siempre
+        run: |
+          if [ "${{ inputs.que }}" = "betano" ]; then
+            node vigia/itf-dia.mjs --casa betano
+          else
+            node vigia/itf-dia.mjs
+          fi
 
       - name: Guardar lo que cambió
         run: |

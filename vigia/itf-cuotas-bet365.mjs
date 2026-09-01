@@ -37,6 +37,12 @@ const SALIDA = path.join(DIR, 'itf-cuotas-bet365.json');
 const KEY = process.env.ODDSPAPI_KEY;
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > 0 ? process.argv[i + 1] : d };
 const MAX = +arg('max', 40);
+/* --casa <slug>: cotiza SOLO esa casa, sin fallback. Pedido por Sebastián
+   el 2026-09-01 para Betano, que es donde él apuesta: la cuota de otra
+   casa le sirve de referencia pero no es la que va a pagar. Sin este
+   flag manda la prioridad de siempre (bet365 > betano > pinnacle > la
+   que haya), que es lo mejor para MEDIR el mercado. */
+const SOLO = arg('casa', null);
 const PAUSA = +arg('pausa', 2600);
 const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch { return null } };
 
@@ -153,7 +159,7 @@ console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.l
    requests, chocaba con el rate limit y perdía partidos que sí estaban
    cotizados). Después se elige por prioridad: bet365 manda, Betano suele
    cotizar antes, y si solo hay otra casa, se usa esa anotando la fuente. */
-const PRIORIDAD = ['bet365', 'betano', 'pinnacle'];
+const PRIORIDAD = SOLO ? [SOLO] : ['bet365', 'betano', 'pinnacle'];
 const cuotas = [];
 let deCache = 0;
 for (const p of candidatos) {
@@ -172,7 +178,9 @@ for (const p of candidatos) {
   }
   if (!todas || !Object.keys(todas).length) { console.log(`  · ${p.p1} vs ${p.p2}: ninguna casa lo cotiza todavía`); continue }
   /* la mejor casa disponible que tenga cotización pre-partido válida */
-  const orden = [...PRIORIDAD.filter(c => todas[c]), ...Object.keys(todas).filter(c => !PRIORIDAD.includes(c))];
+  const orden = SOLO ? (todas[SOLO] ? [SOLO] : [])
+    : [...PRIORIDAD.filter(c => todas[c]), ...Object.keys(todas).filter(c => !PRIORIDAD.includes(c))];
+  if (SOLO && !orden.length) { console.log(`  · ${p.p1} vs ${p.p2}: ${SOLO} no lo cotiza (sí ${Object.keys(todas).join(',')})`); continue }
   let v = null, casa = null;
   for (const c of orden) {
     /* caché viejo guardaba la respuesta completa por casa; el nuevo, la casa pelada */
@@ -185,6 +193,6 @@ for (const p of candidatos) {
     inicio: p.startTime });
   console.log(`  + ${p.t.nombre.padEnd(22)} ${p.p1} ${v[0]} / ${p.p2} ${v[1]}  [${casa}]`);
 }
-fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: 'bet365', cuotas }, null, 1));
+fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: SOLO || 'bet365', soloCasa: SOLO || null, cuotas }, null, 1));
 console.log(`\n${cuotas.length} cuotas (${deCache} de caché, ${REQ} requests) → vigia/itf-cuotas-bet365.json`);
 console.log('ahora: node vigia/itf-informe.mjs --bet365');
