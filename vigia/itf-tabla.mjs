@@ -30,6 +30,14 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
    es abrir su buscador con el nombre, no inventar una URL de evento. */
 const betano = n => 'https://lat.betano.com/search/?query=' + encodeURIComponent(n);
 const hhmm = s => { if (!s) return ''; const d = new Date(s); return isNaN(d) ? '' : d.toISOString().slice(11, 16) };
+/* "(4)" sembrado cuarto · "(Q)" salió de la clasificación · "(WC)"
+   invitación de la organización · LL lucky loser, PR ranking protegido,
+   A alternate, SE exento. Se junta en un solo paréntesis: "(4, WC)". */
+const MOTE = { Q: 'Q', WC: 'WC', LL: 'LL', PR: 'PR', A: 'Alt', SE: 'SE', JR: 'JR' };
+const marca = (seed, entrada) => {
+  const p = [seed != null ? seed : null, entrada ? (MOTE[entrada] || entrada) : null].filter(x => x != null);
+  return p.length ? ` (${p.join(', ')})` : '';
+};
 
 const COLS = [
   { k: 'jugador', t: 'jugador', tipo: 'txt' },
@@ -51,11 +59,11 @@ const filas = J.map(j => `<tr${j.jugable ? ' class="ju"' : ''}
   data-rival="${esc(String(j.rival).toLowerCase())}" data-torneo="${esc(j.torneo.toLowerCase())}"
   data-etapa="${esc(j.etapa || '')}" data-edad="${j.edad ?? ''}" data-wtn="${j.wtn ?? ''}"
   data-itf="${j.itf ?? ''}" data-atp="${j.atp ?? ''}" data-jr="${j.jr ? 1 : 0}" data-local="${j.local ? 1 : 0}">
-  <td class="nom"><a href="${betano(j.jugador)}" target="_blank" rel="noopener">${esc(j.jugador)}</a>${j.jugable ? ' <b class="est" title="pisa la casilla del manual">★</b>' : ''}</td>
+  <td class="nom"><a href="${betano(j.jugador)}" target="_blank" rel="noopener">${esc(j.jugador)}</a><span class="mk">${esc(marca(j.seed, j.entrada))}</span>${j.jugable ? ' <b class="est" title="pisa la casilla del manual">★</b>' : ''}</td>
   <td class="n cuota">${j.cuota ?? '—'}</td>
   <td class="n">${(() => { const pc = j.prob != null ? Math.round(j.prob * 100) : null;
     return `<span class="pb ${pc >= 80 ? 'alta' : pc >= 70 ? 'media' : ''}">${pc != null ? pc + '%' : '—'}</span>` })()}</td>
-  <td class="sec">${esc(j.rival)} <span class="cq">${j.cuotaRival ?? ''}</span></td>
+  <td class="sec">${esc(j.rival)}<span class="mk">${esc(marca(j.seedRival, j.entradaRival))}</span> <span class="cq">${j.cuotaRival ?? ''}</span></td>
   <td class="sec">${esc(j.torneo)}${j.pais ? ' <span class="cq">' + esc(j.pais) + '</span>' : ''}</td>
   <td class="sec">${esc(j.etapa || '')}<span class="cq"> ${hhmm(j.inicio)}</span></td>
   <td class="n">${j.edad ?? '—'}<i class="rv">${j.edadRival ?? '—'}</i></td>
@@ -105,6 +113,7 @@ tr:hover td{background:var(--sunk)}
 .nom a:hover{color:var(--accent);border-color:var(--accent)}
 .sec{color:var(--ink2)} .cq{color:var(--ink3);font-size:11.5px}
 .cuota{font-weight:600}
+.mk{color:var(--ink3);font-weight:400;font-size:11.5px}
 /* el mismo dato del rival, debajo y apagado: sirve para comparar de un
    vistazo sin competirle al del jugador de la fila */
 .rv{display:block;font-style:normal;font-size:11px;color:var(--ink3);opacity:.75;margin-top:1px}
@@ -150,7 +159,9 @@ ${filas}
   la ITF lo recalibró entre el 25 y el 28 de agosto, así que no se comparan números de torneos con listas de semanas distintas.
   <b>local</b> es que juega en su país, lo que vale ~0.5 puntos de WTN. Los rankings ITF y ATP van vacíos cuando el jugador no tiene.
   En edad, WTN, ITF y ATP el <span style="color:var(--ink3)">número chico de abajo</span> es el mismo dato del RIVAL, para comparar sin cambiar de fila.
-  El nombre abre el buscador de Betano: la API de cuotas no entrega la URL del partido, así que es búsqueda por nombre, no enlace directo.</p>
+  El nombre abre el buscador de Betano: la API de cuotas no entrega la URL del partido, así que es búsqueda por nombre, no enlace directo.
+  El paréntesis junto al nombre es cómo entró: un número es su siembra, <b>Q</b> salió de la clasificación, <b>WC</b> invitación de la
+  organización, <b>LL</b> lucky loser, <b>PR</b> ranking protegido, <b>Alt</b> alternate, <b>SE</b> exento. Sin paréntesis entró directo por ranking.</p>
 </div>
 <script>
 (() => {

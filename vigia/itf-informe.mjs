@@ -615,7 +615,12 @@ fs.writeFileSync(path.join(DIR, 'itf-veredictos.json'), JSON.stringify({
       const e = elo(j);
       jugadores.push({
         jugador: j.nombre, cuota, prob: +pDe(lado).toFixed(3),
+        /* siembra y forma de entrada (Q clasificacion, WC invitacion, LL
+           lucky loser, PR ranking protegido, A alternate, SE exento).
+           DA es el acceso directo, o sea lo normal: no se muestra. */
+        seed: j.seed ?? null, entrada: j.entrada && j.entrada !== 'DA' ? j.entrada : null,
         rival: riv.nombre, cuotaRival: cRiv,
+        seedRival: riv.seed ?? null, entradaRival: riv.entrada && riv.entrada !== 'DA' ? riv.entrada : null,
         /* los mismos datos del rival, para comparar en la misma fila */
         edadRival: riv.nacido ? anio - riv.nacido : null,
         wtnRival: riv.wtn ?? null, itfRival: riv.itf ?? null, atpRival: riv.atp ?? null,
