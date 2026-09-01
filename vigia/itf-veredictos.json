@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-01T02:07:31.837Z",
+ "generado": "2026-09-01T02:20:44.858Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -78,7 +78,7 @@
     "grupo": "buenas",
     "edadFm": 31,
     "edadRi": 28,
-    "dElo": 127
+    "dElo": 125
    },
    "jugada": null,
    "fixtureId": "pn129054301635255632",
@@ -110,7 +110,7 @@
     "grupo": "buenas",
     "edadFm": 23,
     "edadRi": 25,
-    "dElo": 29
+    "dElo": 31
    },
    "jugada": null,
    "fixtureId": "pn129054301635255633",
@@ -311,7 +311,7 @@
     "grupo": "buenas",
     "edadFm": 33,
     "edadRi": 21,
-    "dElo": 44
+    "dElo": 52
    },
    "jugada": null,
    "fixtureId": "pn129054301635255631",
@@ -343,7 +343,7 @@
     "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 23,
-    "dElo": -77
+    "dElo": -120
    },
    "jugada": null,
    "fixtureId": "pn129054301635255635",
@@ -377,7 +377,7 @@
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 26,
-    "dElo": 104
+    "dElo": 105
    },
    "jugada": null,
    "fixtureId": "pn129054301635255939",
@@ -543,7 +543,7 @@
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 20,
-    "dElo": 147
+    "dElo": 152
    },
    "jugada": null,
    "fixtureId": "pn129042861635254784",
@@ -575,7 +575,7 @@
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 23,
-    "dElo": 108
+    "dElo": 128
    },
    "jugada": null,
    "fixtureId": "pn129042861635254878",
@@ -744,7 +744,7 @@
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 22,
-    "dElo": 97
+    "dElo": 135
    },
    "jugada": {
     "tipo": "casilla",
@@ -783,7 +783,7 @@
     "grupo": "buenas",
     "edadFm": 19,
     "edadRi": 18,
-    "dElo": null
+    "dElo": 134
    },
    "jugada": {
     "tipo": "casilla",
@@ -854,7 +854,7 @@
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 24,
-    "dElo": null
+    "dElo": 195
    },
    "jugada": null,
    "fixtureId": "pn129042321635256656",
@@ -955,7 +955,7 @@
     "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 27,
-    "dElo": 65
+    "dElo": 64
    },
    "jugada": null,
    "fixtureId": "pn129054301635255634",
@@ -1021,7 +1021,7 @@
     "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 23,
-    "dElo": 47
+    "dElo": 51
    },
    "jugada": null,
    "fixtureId": "pn129054301635255940",
@@ -1053,7 +1053,7 @@
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 30,
-    "dElo": 107
+    "dElo": 109
    },
    "jugada": null,
    "fixtureId": "pn129054301635255942",
@@ -1154,7 +1154,7 @@
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 22,
-    "dElo": null
+    "dElo": 100
    },
    "jugada": null,
    "fixtureId": "pn129054301635256691",
@@ -1250,7 +1250,7 @@
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 29,
-    "dElo": 67
+    "dElo": 58
    },
    "jugada": null,
    "fixtureId": "pn129049801635255644",
@@ -1416,7 +1416,7 @@
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 27,
-    "dElo": -34
+    "dElo": -11
    },
    "jugada": null,
    "fixtureId": "pn129049801635256698",
@@ -1448,7 +1448,7 @@
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 22,
-    "dElo": 36
+    "dElo": 35
    },
    "jugada": null,
    "fixtureId": "pn129049801635256700",
@@ -1514,7 +1514,7 @@
     "grupo": "buenas",
     "edadFm": 23,
     "edadRi": 20,
-    "dElo": 77
+    "dElo": 81
    },
    "jugada": null,
    "fixtureId": "pn129042861635256659",
@@ -1546,7 +1546,7 @@
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 22,
-    "dElo": 160
+    "dElo": 180
    },
    "jugada": null,
    "fixtureId": "pn129043431635254785",
@@ -1615,7 +1615,7 @@
     "grupo": "buenas",
     "edadFm": 29,
     "edadRi": 20,
-    "dElo": 99
+    "dElo": 74
    },
    "jugada": null,
    "fixtureId": "pn129043431635255581",
@@ -1640,14 +1640,14 @@
     "cuota": 1.083,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.938,
+    "pFm": 0.952,
     "dW": 5.69,
     "forma": null,
-    "previo": null,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 20,
-    "dElo": 182
+    "dElo": 136
    },
    "jugada": null,
    "fixtureId": "pn129043431635256646",
@@ -1661,11 +1661,13 @@
    "g2": 1.083,
    "gana": "Michal Krajci",
    "lado": 2,
-   "p": 0.938,
+   "p": 0.952,
    "pMercado": 0.866,
    "soloWtn": 0.938,
-   "señales": [],
-   "razon": "Δ5.69 de WTN a favor de Michal Krajci (6.1 contra 11.79), en R1: la curva del grupo \"buenas\" (n=528) da 94%. El mercado la paga a 1.083: 87% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −6% si la tiene el mercado."
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ5.69 de WTN a favor de Michal Krajci (6.1 contra 11.79), en R1: la curva del grupo \"buenas\" (n=528) da 94%. Ajustan: Michal Krajci llegó más lejos en su torneo anterior (+1 pts). Queda en 95%. El mercado la paga a 1.083: 87% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −6% si la tiene el mercado."
   },
   {
    "crit": {
@@ -1716,7 +1718,7 @@
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 24,
-    "dElo": 171
+    "dElo": 189
    },
    "jugada": {
     "tipo": "casilla",
@@ -1753,7 +1755,7 @@
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 18,
-    "dElo": 817
+    "dElo": 814
    },
    "jugada": null,
    "fixtureId": "pn129034551635263665",
