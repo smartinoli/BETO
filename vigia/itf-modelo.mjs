@@ -1,3 +1,8 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const DIR = path.dirname(fileURLToPath(import.meta.url));
+
 /* ============================================================
    ITF-MODELO — la probabilidad, con las señales que MIDIERON servir.
 
@@ -66,18 +71,42 @@ export const GRUPO = {
    respecto de lo que juega hoy; 19 en adelante, la curva ya no se equivoca. */
 export const EDAD_CRIA = 18;
 
-export const MODELO = {
-  /* Refit 2026-08-28 al sumar la señal LOCAL (jugar en tu país vale ~0.5
-     puntos de WTN; LOTO mejora de 0.4801 a 0.4787). El resto casi no se
-     movió, señal de que "local" es información nueva y no un reacomodo. */
+/* Las constantes DE FÁBRICA: el refit del 2026-08-28 al sumar la señal
+   LOCAL (jugar en tu país vale ~0.5 puntos de WTN; LOTO 0.4801 → 0.4787).
+   Son el piso: si el aprendizaje nunca corrió, o si su resultado no
+   superó la validación, el modelo juega con estas. */
+const FABRICA = {
   pendiente: { Q1: 0.4157, buenas: 0.4782, medias: 0.3166, finales: 0.1746 },
   sub18: +1.6256,       /* uno de los dos tiene 18 o menos y el otro no */
   cedidos: +2.9242,     /* fracción de games cedidos en el cuadro: rival menos favorito */
   previo: +0.2774,      /* ronda alcanzada en el torneo anterior, favorito menos rival */
   local: +0.2460,       /* jugar en tu propio país (40% de los partidos son local-visita) */
 };
+const N_FABRICA = { Q1: 422, buenas: 528, medias: 214, finales: 79 };
 
-export const N_GRUPO = { Q1: 422, buenas: 528, medias: 214, finales: 79 };
+/* EL MODELO APRENDE (2026-09-01). Antes estas constantes estaban clavadas
+   en el código: entraban partidos nuevos todas las semanas y el modelo
+   seguía igual. Ahora itf-aprender.mjs las reajusta con el banco al día y
+   deja el resultado en datos/itf/modelo-aprendido.json — pero SOLO si le
+   gana a las de fábrica en una validación dejando torneos afuera. Si el
+   archivo no está o viene mal, se sigue con las de fábrica: el modelo
+   nunca se queda sin constantes por un archivo roto. */
+const _leerAprendido = () => {
+  try {
+    const j = JSON.parse(fs.readFileSync(path.join(DIR, 'datos', 'itf', 'modelo-aprendido.json'), 'utf8'));
+    const c = j?.constantes;
+    if (!c?.pendiente || !['Q1', 'buenas', 'medias', 'finales'].every(g => Number.isFinite(c.pendiente[g]))) return null;
+    for (const k of ['sub18', 'cedidos', 'previo', 'local']) if (!Number.isFinite(c[k])) return null;
+    return j;
+  } catch { return null }
+};
+const APRENDIDO = _leerAprendido();
+export const MODELO = APRENDIDO ? APRENDIDO.constantes : FABRICA;
+export const MODELO_ORIGEN = APRENDIDO
+  ? { de: 'aprendido', fecha: APRENDIDO.generado, partidos: APRENDIDO.partidos, loto: APRENDIDO.loto }
+  : { de: 'fábrica', fecha: '2026-08-28', partidos: 1243, loto: 0.4787 };
+
+export const N_GRUPO = APRENDIDO?.nGrupo || N_FABRICA;
 export const N_COND = { cedidos: 454, previo: 164 };
 
 const sig = x => 1 / (1 + Math.exp(-x));

@@ -20,7 +20,7 @@ on:
         description: 'Qué refrescar'
         type: choice
         default: cuotas
-        options: [cuotas, todo]   # cuotas = bet365 + análisis (rápido); todo = además scrape de cuadros ITF (lento)
+        options: [cuotas, todo, modelo]   # cuotas = bet365 + análisis (rápido); todo = además scrape de cuadros ITF (lento); modelo = reajusta las constantes con los resultados acumulados
   # Sin schedule a pedido de Sebastián (2026-08-27): todo manual, él actualiza
   # con los botones de la página (o desde esta pestaña de Actions).
   push:
@@ -90,6 +90,14 @@ jobs:
         continue-on-error: true
         run: node vigia/itf-cosecha.mjs cosechar hoy || echo "WAF cerrado; las fases vendrán de la última foto"
 
+      # El modelo aprende: reajusta sus constantes con el banco al día y las
+      # aplica SOLO si le ganan a las anteriores en la validación. Si no
+      # mejora, el script lo dice y no escribe nada.
+      - name: El modelo aprende de los resultados
+        if: inputs.que == 'modelo'
+        timeout-minutes: 15
+        run: node vigia/itf-aprender.mjs
+
       - name: La rutina del día
         env:
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
@@ -99,7 +107,7 @@ jobs:
         run: |
           git config user.name "vigia-bot"
           git config user.email "vigia@users.noreply.github.com"
-          git add vigia/itf-informe.html vigia/itf-tabla.html vigia/itf-tabla.json vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json vigia/itf-calendario.json vigia/datos/itf
+          git add vigia/itf-informe.html vigia/itf-tabla.html vigia/itf-tabla.json vigia/datos/itf/modelo-aprendido.json vigia/itf-veredictos.json vigia/itf-cuotas-bet365.json vigia/itf-calendario.json vigia/datos/itf
           git diff --cached --quiet && exit 0
           git commit -q -m "tabla: corrida a pedido $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull -q --rebase origin claude/itf-scrapers-prize-money-7oy59k || true

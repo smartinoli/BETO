@@ -1,10 +1,10 @@
 {
- "generado": "2026-09-01T02:52:01.764Z",
+ "generado": "2026-09-01T03:00:16.621Z",
  "jugadores": [
   {
    "jugador": "Alexander Chang",
    "cuota": 2.2,
-   "prob": 0.346,
+   "prob": 0.354,
    "seed": null,
    "entrada": null,
    "rival": "Leo Borg",
@@ -33,7 +33,7 @@
   {
    "jugador": "Leo Borg",
    "cuota": 1.615,
-   "prob": 0.654,
+   "prob": 0.646,
    "seed": 3,
    "entrada": null,
    "rival": "Alexander Chang",
@@ -62,7 +62,7 @@
   {
    "jugador": "Azuma Visaya",
    "cuota": 2.75,
-   "prob": 0.223,
+   "prob": 0.236,
    "seed": 11,
    "entrada": null,
    "rival": "Digvijay Pratap Singh",
@@ -91,7 +91,7 @@
   {
    "jugador": "Digvijay Pratap Singh",
    "cuota": 1.4,
-   "prob": 0.777,
+   "prob": 0.764,
    "seed": 2,
    "entrada": null,
    "rival": "Azuma Visaya",
@@ -120,7 +120,7 @@
   {
    "jugador": "Ryota Tanuma",
    "cuota": 1.571,
-   "prob": 0.488,
+   "prob": 0.489,
    "seed": 6,
    "entrada": null,
    "rival": "Yuta Kawahashi",
@@ -149,7 +149,7 @@
   {
    "jugador": "Yuta Kawahashi",
    "cuota": 2.25,
-   "prob": 0.512,
+   "prob": 0.511,
    "seed": null,
    "entrada": null,
    "rival": "Ryota Tanuma",
@@ -178,7 +178,7 @@
   {
    "jugador": "Riku Takahata",
    "cuota": 2.5,
-   "prob": 0.392,
+   "prob": 0.398,
    "seed": 8,
    "entrada": null,
    "rival": "Noritaka Koizumi",
@@ -207,7 +207,7 @@
   {
    "jugador": "Noritaka Koizumi",
    "cuota": 1.5,
-   "prob": 0.608,
+   "prob": 0.602,
    "seed": null,
    "entrada": null,
    "rival": "Riku Takahata",
@@ -236,7 +236,7 @@
   {
    "jugador": "Keisuke Saitoh",
    "cuota": 1.02,
-   "prob": 0.985,
+   "prob": 0.978,
    "seed": null,
    "entrada": null,
    "rival": "Sena Okabe",
@@ -265,7 +265,7 @@
   {
    "jugador": "Sena Okabe",
    "cuota": 11,
-   "prob": 0.015,
+   "prob": 0.022,
    "seed": null,
    "entrada": "WC",
    "rival": "Keisuke Saitoh",
@@ -294,7 +294,7 @@
   {
    "jugador": "Shunsuke Mitsui",
    "cuota": 1.143,
-   "prob": 0.777,
+   "prob": 0.764,
    "seed": 4,
    "entrada": null,
    "rival": "Shunsuke Nakagawa",
@@ -323,7 +323,7 @@
   {
    "jugador": "Shunsuke Nakagawa",
    "cuota": 5,
-   "prob": 0.223,
+   "prob": 0.236,
    "seed": null,
    "entrada": null,
    "rival": "Shunsuke Mitsui",
@@ -352,7 +352,7 @@
   {
    "jugador": "Arjun Mehrotra",
    "cuota": 1.667,
-   "prob": 0.586,
+   "prob": 0.547,
    "seed": null,
    "entrada": null,
    "rival": "Jake Dembo",
@@ -381,7 +381,7 @@
   {
    "jugador": "Jake Dembo",
    "cuota": 2.1,
-   "prob": 0.414,
+   "prob": 0.453,
    "seed": null,
    "entrada": "JR",
    "rival": "Arjun Mehrotra",
@@ -410,7 +410,7 @@
   {
    "jugador": "Sam Ryan Ziegann",
    "cuota": 1.286,
-   "prob": 0.848,
+   "prob": 0.835,
    "seed": 6,
    "entrada": null,
    "rival": "Eric Ahren Moonga",
@@ -439,7 +439,7 @@
   {
    "jugador": "Eric Ahren Moonga",
    "cuota": 3.5,
-   "prob": 0.152,
+   "prob": 0.165,
    "seed": 8,
    "entrada": null,
    "rival": "Sam Ryan Ziegann",
@@ -468,7 +468,7 @@
   {
    "jugador": "Thomas Patton",
    "cuota": 2.1,
-   "prob": 0.489,
+   "prob": 0.49,
    "seed": 14,
    "entrada": null,
    "rival": "Arjun Rathi",
@@ -497,7 +497,7 @@
   {
    "jugador": "Arjun Rathi",
    "cuota": 1.667,
-   "prob": 0.511,
+   "prob": 0.51,
    "seed": null,
    "entrada": null,
    "rival": "Thomas Patton",
@@ -526,7 +526,7 @@
   {
    "jugador": "Yuto Oki",
    "cuota": 3.75,
-   "prob": 0.267,
+   "prob": 0.279,
    "seed": 5,
    "entrada": null,
    "rival": "Shintaro Imai",
@@ -555,7 +555,7 @@
   {
    "jugador": "Shintaro Imai",
    "cuota": 1.25,
-   "prob": 0.733,
+   "prob": 0.721,
    "seed": null,
    "entrada": null,
    "rival": "Yuto Oki",
@@ -584,7 +584,7 @@
   {
    "jugador": "Makoto Ochi",
    "cuota": 1.571,
-   "prob": 0.797,
+   "prob": 0.746,
    "seed": 4,
    "entrada": null,
    "rival": "Yu Tanaka",
@@ -613,7 +613,7 @@
   {
    "jugador": "Yu Tanaka",
    "cuota": 2.25,
-   "prob": 0.203,
+   "prob": 0.254,
    "seed": 14,
    "entrada": null,
    "rival": "Makoto Ochi",
@@ -642,7 +642,7 @@
   {
    "jugador": "Taisei Ichikawa",
    "cuota": 2.25,
-   "prob": 0.628,
+   "prob": 0.638,
    "seed": null,
    "entrada": null,
    "rival": "Jerry Roddick",
@@ -671,7 +671,7 @@
   {
    "jugador": "Jerry Roddick",
    "cuota": 1.571,
-   "prob": 0.372,
+   "prob": 0.362,
    "seed": 3,
    "entrada": null,
    "rival": "Taisei Ichikawa",
@@ -700,7 +700,7 @@
   {
    "jugador": "Kuan-Yi Lee",
    "cuota": 1.5,
-   "prob": 0.303,
+   "prob": 0.298,
    "seed": 6,
    "entrada": null,
    "rival": "Sho Katayama",
@@ -729,7 +729,7 @@
   {
    "jugador": "Sho Katayama",
    "cuota": 2.35,
-   "prob": 0.697,
+   "prob": 0.702,
    "seed": null,
    "entrada": "WC",
    "rival": "Kuan-Yi Lee",
@@ -758,7 +758,7 @@
   {
    "jugador": "Thanapet Chanta",
    "cuota": 1.167,
-   "prob": 0.8,
+   "prob": 0.799,
    "seed": 8,
    "entrada": null,
    "rival": "Tomohiro Masabayashi",
@@ -787,7 +787,7 @@
   {
    "jugador": "Tomohiro Masabayashi",
    "cuota": 4.5,
-   "prob": 0.2,
+   "prob": 0.201,
    "seed": null,
    "entrada": null,
    "rival": "Thanapet Chanta",
@@ -816,7 +816,7 @@
   {
    "jugador": "Benjamin O'Connell",
    "cuota": 1.1,
-   "prob": 0.956,
+   "prob": 0.948,
    "seed": null,
    "entrada": null,
    "rival": "Keerthivassan Suresh",
@@ -845,7 +845,7 @@
   {
    "jugador": "Keerthivassan Suresh",
    "cuota": 6.5,
-   "prob": 0.044,
+   "prob": 0.052,
    "seed": null,
    "entrada": null,
    "rival": "Benjamin O'Connell",
@@ -874,7 +874,7 @@
   {
    "jugador": "Blake Ellis",
    "cuota": 1.167,
-   "prob": 0.901,
+   "prob": 0.889,
    "seed": 1,
    "entrada": null,
    "rival": "Reece Falck",
@@ -903,7 +903,7 @@
   {
    "jugador": "Reece Falck",
    "cuota": 4.5,
-   "prob": 0.099,
+   "prob": 0.111,
    "seed": null,
    "entrada": null,
    "rival": "Blake Ellis",
@@ -932,7 +932,7 @@
   {
    "jugador": "Moerani Bouzige",
    "cuota": 1.02,
-   "prob": 0.965,
+   "prob": 0.958,
    "seed": 3,
    "entrada": null,
    "rival": "Aniketh Venkataraman",
@@ -961,7 +961,7 @@
   {
    "jugador": "Aniketh Venkataraman",
    "cuota": 11,
-   "prob": 0.035,
+   "prob": 0.042,
    "seed": 7,
    "entrada": null,
    "rival": "Moerani Bouzige",
@@ -990,7 +990,7 @@
   {
    "jugador": "James Van Herzeele",
    "cuota": 2.25,
-   "prob": 0.289,
+   "prob": 0.315,
    "seed": null,
    "entrada": null,
    "rival": "Manish Sureshkumar",
@@ -1019,7 +1019,7 @@
   {
    "jugador": "Manish Sureshkumar",
    "cuota": 1.571,
-   "prob": 0.711,
+   "prob": 0.685,
    "seed": 6,
    "entrada": null,
    "rival": "James Van Herzeele",
@@ -1048,7 +1048,7 @@
   {
    "jugador": "Victor Pagotto",
    "cuota": 1.667,
-   "prob": 0.605,
+   "prob": 0.599,
    "seed": 7,
    "entrada": null,
    "rival": "Marvin Spiering",
@@ -1077,7 +1077,7 @@
   {
    "jugador": "Marvin Spiering",
    "cuota": 2.1,
-   "prob": 0.395,
+   "prob": 0.401,
    "seed": null,
    "entrada": null,
    "rival": "Victor Pagotto",
@@ -1106,7 +1106,7 @@
   {
    "jugador": "Franco Marini",
    "cuota": 15,
-   "prob": 0.004,
+   "prob": 0.006,
    "seed": null,
    "entrada": null,
    "rival": "Joao Eduardo Schiessl",
@@ -1135,7 +1135,7 @@
   {
    "jugador": "Joao Eduardo Schiessl",
    "cuota": 1.01,
-   "prob": 0.996,
+   "prob": 0.994,
    "seed": 2,
    "entrada": null,
    "rival": "Franco Marini",
@@ -1164,7 +1164,7 @@
   {
    "jugador": "Lucca Pinto",
    "cuota": 3,
-   "prob": 0.269,
+   "prob": 0.28,
    "seed": null,
    "entrada": null,
    "rival": "Kaua Lorenzo Santos Gava",
@@ -1193,7 +1193,7 @@
   {
    "jugador": "Kaua Lorenzo Santos Gava",
    "cuota": 1.364,
-   "prob": 0.731,
+   "prob": 0.72,
    "seed": null,
    "entrada": null,
    "rival": "Lucca Pinto",
@@ -1222,7 +1222,7 @@
   {
    "jugador": "Enzo Lima",
    "cuota": 1.222,
-   "prob": 0.881,
+   "prob": 0.869,
    "seed": 6,
    "entrada": null,
    "rival": "Victor Braga",
@@ -1251,7 +1251,7 @@
   {
    "jugador": "Victor Braga",
    "cuota": 4,
-   "prob": 0.119,
+   "prob": 0.131,
    "seed": null,
    "entrada": null,
    "rival": "Enzo Lima",
@@ -1280,7 +1280,7 @@
   {
    "jugador": "Chirag Duhan",
    "cuota": 3.2,
-   "prob": 0.164,
+   "prob": 0.167,
    "seed": null,
    "entrada": null,
    "rival": "Amr Elsayed",
@@ -1309,7 +1309,7 @@
   {
    "jugador": "Amr Elsayed",
    "cuota": 1.28,
-   "prob": 0.836,
+   "prob": 0.833,
    "seed": 2,
    "entrada": null,
    "rival": "Chirag Duhan",
@@ -1338,7 +1338,7 @@
   {
    "jugador": "Kerem Yilmaz",
    "cuota": 1.32,
-   "prob": 0.802,
+   "prob": 0.765,
    "seed": 8,
    "entrada": null,
    "rival": "Marat Salbiev",
@@ -1360,14 +1360,14 @@
    "local": false,
    "elo": 1963,
    "eloPj": 1,
-   "jugable": true,
+   "jugable": false,
    "inicio": "2026-09-01T21:00:00.000Z",
    "fixtureId": "pn129043431635254881"
   },
   {
    "jugador": "Marat Salbiev",
    "cuota": 3,
-   "prob": 0.198,
+   "prob": 0.235,
    "seed": null,
    "entrada": "JR",
    "rival": "Kerem Yilmaz",
@@ -1396,7 +1396,7 @@
   {
    "jugador": "Isaac Becroft",
    "cuota": 1.083,
-   "prob": 0.87,
+   "prob": 0.858,
    "seed": 5,
    "entrada": null,
    "rival": "Udit Kamboj",
@@ -1425,7 +1425,7 @@
   {
    "jugador": "Udit Kamboj",
    "cuota": 7,
-   "prob": 0.13,
+   "prob": 0.142,
    "seed": null,
    "entrada": null,
    "rival": "Isaac Becroft",
@@ -1454,7 +1454,7 @@
   {
    "jugador": "Nick Beamish",
    "cuota": 7.5,
-   "prob": 0.042,
+   "prob": 0.049,
    "seed": 10,
    "entrada": null,
    "rival": "Ryotaro Taguchi",
@@ -1483,7 +1483,7 @@
   {
    "jugador": "Ryotaro Taguchi",
    "cuota": 1.071,
-   "prob": 0.958,
+   "prob": 0.951,
    "seed": 7,
    "entrada": null,
    "rival": "Nick Beamish",
@@ -1512,7 +1512,7 @@
   {
    "jugador": "Anthony Susanto",
    "cuota": 1.833,
-   "prob": 0.576,
+   "prob": 0.59,
    "seed": null,
    "entrada": "WC",
    "rival": "Hitesh Chauhan",
@@ -1541,7 +1541,7 @@
   {
    "jugador": "Hitesh Chauhan",
    "cuota": 1.833,
-   "prob": 0.424,
+   "prob": 0.41,
    "seed": null,
    "entrada": "JR",
    "rival": "Anthony Susanto",
@@ -1570,7 +1570,7 @@
   {
    "jugador": "Rafalentino Ali Da Costa",
    "cuota": 1.571,
-   "prob": 0.512,
+   "prob": 0.564,
    "seed": null,
    "entrada": "WC",
    "rival": "Shanker Heisnam",
@@ -1599,7 +1599,7 @@
   {
    "jugador": "Shanker Heisnam",
    "cuota": 2.25,
-   "prob": 0.488,
+   "prob": 0.436,
    "seed": 3,
    "entrada": null,
    "rival": "Rafalentino Ali Da Costa",
@@ -1628,7 +1628,7 @@
   {
    "jugador": "Ryuki Matsuda",
    "cuota": 5,
-   "prob": 0.151,
+   "prob": 0.174,
    "seed": null,
    "entrada": null,
    "rival": "Hyeon Chung",
@@ -1657,7 +1657,7 @@
   {
    "jugador": "Hyeon Chung",
    "cuota": 1.143,
-   "prob": 0.849,
+   "prob": 0.826,
    "seed": 5,
    "entrada": null,
    "rival": "Ryuki Matsuda",
@@ -1686,7 +1686,7 @@
   {
    "jugador": "Yun Seong Chung",
    "cuota": 2.25,
-   "prob": 0.378,
+   "prob": 0.385,
    "seed": 1,
    "entrada": null,
    "rival": "Philip Sekulic",
@@ -1715,7 +1715,7 @@
   {
    "jugador": "Philip Sekulic",
    "cuota": 1.571,
-   "prob": 0.622,
+   "prob": 0.615,
    "seed": 2,
    "entrada": null,
    "rival": "Yun Seong Chung",
@@ -1744,7 +1744,7 @@
   {
    "jugador": "Naoki Nakagawa",
    "cuota": 1.125,
-   "prob": 0.818,
+   "prob": 0.805,
    "seed": null,
    "entrada": null,
    "rival": "Yua Taka",
@@ -1773,7 +1773,7 @@
   {
    "jugador": "Yua Taka",
    "cuota": 5.5,
-   "prob": 0.182,
+   "prob": 0.195,
    "seed": null,
    "entrada": "WC",
    "rival": "Naoki Nakagawa",
@@ -1802,7 +1802,7 @@
   {
    "jugador": "Yanki Erel",
    "cuota": 1.071,
-   "prob": 0.839,
+   "prob": 0.816,
    "seed": 1,
    "entrada": null,
    "rival": "Kosuke Ogura",
@@ -1831,7 +1831,7 @@
   {
    "jugador": "Kosuke Ogura",
    "cuota": 7.5,
-   "prob": 0.161,
+   "prob": 0.184,
    "seed": null,
    "entrada": null,
    "rival": "Yanki Erel",
@@ -1860,7 +1860,7 @@
   {
    "jugador": "Naoya Honda",
    "cuota": 1.02,
-   "prob": 0.985,
+   "prob": 0.982,
    "seed": 8,
    "entrada": null,
    "rival": "Seiya Nakanishi",
@@ -1889,7 +1889,7 @@
   {
    "jugador": "Seiya Nakanishi",
    "cuota": 11,
-   "prob": 0.015,
+   "prob": 0.018,
    "seed": 11,
    "entrada": null,
    "rival": "Naoya Honda",
@@ -1918,7 +1918,7 @@
   {
    "jugador": "Yusuke Takahashi",
    "cuota": 1.4,
-   "prob": 0.534,
+   "prob": 0.604,
    "seed": null,
    "entrada": null,
    "rival": "Chase Ferguson",
@@ -1947,7 +1947,7 @@
   {
    "jugador": "Chase Ferguson",
    "cuota": 2.75,
-   "prob": 0.466,
+   "prob": 0.396,
    "seed": 7,
    "entrada": null,
    "rival": "Yusuke Takahashi",
@@ -1976,7 +1976,7 @@
   {
    "jugador": "Saki TANGE",
    "cuota": 4.5,
-   "prob": 0.311,
+   "prob": 0.321,
    "seed": null,
    "entrada": "WC",
    "rival": "Hikaru Shiraishi",
@@ -2005,7 +2005,7 @@
   {
    "jugador": "Hikaru Shiraishi",
    "cuota": 1.167,
-   "prob": 0.689,
+   "prob": 0.679,
    "seed": 3,
    "entrada": null,
    "rival": "Saki TANGE",
@@ -2034,7 +2034,7 @@
   {
    "jugador": "Yusuke Kusuhara",
    "cuota": 3.25,
-   "prob": 0.3,
+   "prob": 0.31,
    "seed": null,
    "entrada": null,
    "rival": "Sora Fukuda",
@@ -2063,7 +2063,7 @@
   {
    "jugador": "Sora Fukuda",
    "cuota": 1.333,
-   "prob": 0.7,
+   "prob": 0.69,
    "seed": null,
    "entrada": null,
    "rival": "Yusuke Kusuhara",
@@ -2092,7 +2092,7 @@
   {
    "jugador": "Miles Jones",
    "cuota": 1.1,
-   "prob": 0.845,
+   "prob": 0.832,
    "seed": 3,
    "entrada": null,
    "rival": "Maxim Shin",
@@ -2121,7 +2121,7 @@
   {
    "jugador": "Maxim Shin",
    "cuota": 6.5,
-   "prob": 0.155,
+   "prob": 0.168,
    "seed": null,
    "entrada": null,
    "rival": "Miles Jones",
@@ -2150,7 +2150,7 @@
   {
    "jugador": "Ammar Faleh Alhogbani",
    "cuota": 2.25,
-   "prob": 0.354,
+   "prob": 0.346,
    "seed": null,
    "entrada": null,
    "rival": "Qian Sun",
@@ -2179,7 +2179,7 @@
   {
    "jugador": "Qian Sun",
    "cuota": 1.571,
-   "prob": 0.646,
+   "prob": 0.654,
    "seed": 8,
    "entrada": null,
    "rival": "Ammar Faleh Alhogbani",
@@ -2208,7 +2208,7 @@
   {
    "jugador": "Yuta Tomida",
    "cuota": 1.111,
-   "prob": 0.792,
+   "prob": 0.767,
    "seed": 6,
    "entrada": null,
    "rival": "Weiwen Pan",
@@ -2237,7 +2237,7 @@
   {
    "jugador": "Weiwen Pan",
    "cuota": 6,
-   "prob": 0.208,
+   "prob": 0.233,
    "seed": null,
    "entrada": null,
    "rival": "Yuta Tomida",
@@ -2266,7 +2266,7 @@
   {
    "jugador": "Stefan Vujic",
    "cuota": 1.03,
-   "prob": 0.933,
+   "prob": 0.923,
    "seed": null,
    "entrada": null,
    "rival": "Zaharije-Zak Talic",
@@ -2295,7 +2295,7 @@
   {
    "jugador": "Zaharije-Zak Talic",
    "cuota": 10,
-   "prob": 0.067,
+   "prob": 0.077,
    "seed": null,
    "entrada": "PR",
    "rival": "Stefan Vujic",
@@ -2324,7 +2324,7 @@
   {
    "jugador": "Xing Dao Chen",
    "cuota": 2,
-   "prob": 0.603,
+   "prob": 0.597,
    "seed": null,
    "entrada": null,
    "rival": "Xirui Han",
@@ -2353,7 +2353,7 @@
   {
    "jugador": "Xirui Han",
    "cuota": 1.727,
-   "prob": 0.397,
+   "prob": 0.403,
    "seed": null,
    "entrada": null,
    "rival": "Xing Dao Chen",
@@ -2382,7 +2382,7 @@
   {
    "jugador": "Colin Sinclair",
    "cuota": 1.3,
-   "prob": 0.444,
+   "prob": 0.429,
    "seed": 1,
    "entrada": null,
    "rival": "Linang Xiao",
@@ -2411,7 +2411,7 @@
   {
    "jugador": "Linang Xiao",
    "cuota": 3.4,
-   "prob": 0.556,
+   "prob": 0.571,
    "seed": null,
    "entrada": null,
    "rival": "Colin Sinclair",
@@ -2440,7 +2440,7 @@
   {
    "jugador": "Geun Jun Kim",
    "cuota": 1.727,
-   "prob": 0.682,
+   "prob": 0.673,
    "seed": 7,
    "entrada": null,
    "rival": "Jaesung Choe",
@@ -2469,7 +2469,7 @@
   {
    "jugador": "Jaesung Choe",
    "cuota": 2,
-   "prob": 0.318,
+   "prob": 0.327,
    "seed": null,
    "entrada": null,
    "rival": "Geun Jun Kim",
@@ -2498,7 +2498,7 @@
   {
    "jugador": "Yuquan Jin",
    "cuota": 1.727,
-   "prob": 0.45,
+   "prob": 0.453,
    "seed": null,
    "entrada": null,
    "rival": "XIAOYIN YANG",
@@ -2527,7 +2527,7 @@
   {
    "jugador": "XIAOYIN YANG",
    "cuota": 2,
-   "prob": 0.55,
+   "prob": 0.547,
    "seed": null,
    "entrada": null,
    "rival": "Yuquan Jin",
@@ -2556,7 +2556,7 @@
   {
    "jugador": "Jordan Hasson",
    "cuota": 1.444,
-   "prob": 0.461,
+   "prob": 0.446,
    "seed": null,
    "entrada": null,
    "rival": "Yuttana Charoenphon",
@@ -2585,7 +2585,7 @@
   {
    "jugador": "Yuttana Charoenphon",
    "cuota": 2.625,
-   "prob": 0.539,
+   "prob": 0.554,
    "seed": null,
    "entrada": null,
    "rival": "Jordan Hasson",
@@ -2614,7 +2614,7 @@
   {
    "jugador": "Shu Muto",
    "cuota": 3.25,
-   "prob": 0.348,
+   "prob": 0.356,
    "seed": null,
    "entrada": null,
    "rival": "Hugo Hashimoto",
@@ -2643,7 +2643,7 @@
   {
    "jugador": "Hugo Hashimoto",
    "cuota": 1.333,
-   "prob": 0.652,
+   "prob": 0.644,
    "seed": 3,
    "entrada": null,
    "rival": "Shu Muto",
@@ -2672,7 +2672,7 @@
   {
    "jugador": "Dev Javia",
    "cuota": 1.286,
-   "prob": 0.8,
+   "prob": 0.704,
    "seed": null,
    "entrada": null,
    "rival": "Saveliy Ivanov",
@@ -2701,7 +2701,7 @@
   {
    "jugador": "Saveliy Ivanov",
    "cuota": 3.5,
-   "prob": 0.2,
+   "prob": 0.296,
    "seed": null,
    "entrada": null,
    "rival": "Dev Javia",
@@ -2730,7 +2730,7 @@
   {
    "jugador": "Thijs Boogaard",
    "cuota": 1.03,
-   "prob": 0.99,
+   "prob": 0.988,
    "seed": 1,
    "entrada": null,
    "rival": "Karim Mabrouk",
@@ -2759,7 +2759,7 @@
   {
    "jugador": "Karim Mabrouk",
    "cuota": 10,
-   "prob": 0.01,
+   "prob": 0.012,
    "seed": null,
    "entrada": "WC",
    "rival": "Thijs Boogaard",
@@ -2788,7 +2788,7 @@
   {
    "jugador": "Luke Hooper",
    "cuota": 4,
-   "prob": 0.247,
+   "prob": 0.259,
    "seed": null,
    "entrada": null,
    "rival": "Aleksandre Bakshi",
@@ -2817,7 +2817,7 @@
   {
    "jugador": "Aleksandre Bakshi",
    "cuota": 1.222,
-   "prob": 0.753,
+   "prob": 0.741,
    "seed": 4,
    "entrada": null,
    "rival": "Luke Hooper",
@@ -2846,7 +2846,7 @@
   {
    "jugador": "Ivan Gretskiy",
    "cuota": 7,
-   "prob": 0.048,
+   "prob": 0.062,
    "seed": null,
    "entrada": "WC",
    "rival": "Michal Krajci",
@@ -2875,7 +2875,7 @@
   {
    "jugador": "Michal Krajci",
    "cuota": 1.083,
-   "prob": 0.952,
+   "prob": 0.938,
    "seed": 5,
    "entrada": null,
    "rival": "Ivan Gretskiy",
@@ -2904,7 +2904,7 @@
   {
    "jugador": "Edison Ambarzumjan",
    "cuota": 2.625,
-   "prob": 0.156,
+   "prob": 0.169,
    "seed": null,
    "entrada": null,
    "rival": "Thando Longwe-Smit",
@@ -2933,7 +2933,7 @@
   {
    "jugador": "Thando Longwe-Smit",
    "cuota": 1.444,
-   "prob": 0.844,
+   "prob": 0.831,
    "seed": null,
    "entrada": null,
    "rival": "Edison Ambarzumjan",
@@ -2962,7 +2962,7 @@
   {
    "jugador": "Ammar Elamin",
    "cuota": 3.25,
-   "prob": 0.181,
+   "prob": 0.194,
    "seed": null,
    "entrada": null,
    "rival": "Oscar Brown",
@@ -2991,7 +2991,7 @@
   {
    "jugador": "Oscar Brown",
    "cuota": 1.333,
-   "prob": 0.819,
+   "prob": 0.806,
    "seed": null,
    "entrada": null,
    "rival": "Ammar Elamin",
@@ -3020,7 +3020,7 @@
   {
    "jugador": "Nicolas Jadoun",
    "cuota": 1.03,
-   "prob": 0.99,
+   "prob": 0.971,
    "seed": 6,
    "entrada": null,
    "rival": "Mahmoud chetouane",
@@ -3049,7 +3049,7 @@
   {
    "jugador": "Mahmoud chetouane",
    "cuota": 10,
-   "prob": 0.01,
+   "prob": 0.029,
    "seed": null,
    "entrada": "WC",
    "rival": "Nicolas Jadoun",
@@ -3078,7 +3078,7 @@
   {
    "jugador": "Hugo Car",
    "cuota": 1.25,
-   "prob": 0.768,
+   "prob": 0.755,
    "seed": null,
    "entrada": null,
    "rival": "Kris van Wyk",
@@ -3107,7 +3107,7 @@
   {
    "jugador": "Kris van Wyk",
    "cuota": 3.75,
-   "prob": 0.232,
+   "prob": 0.245,
    "seed": 7,
    "entrada": null,
    "rival": "Hugo Car",
@@ -3136,7 +3136,7 @@
   {
    "jugador": "Daniele Augenti",
    "cuota": 26,
-   "prob": 0.002,
+   "prob": 0.003,
    "seed": null,
    "entrada": "WC",
    "rival": "Aziz Dougaz",
@@ -3165,7 +3165,7 @@
   {
    "jugador": "Aziz Dougaz",
    "cuota": 1,
-   "prob": 0.998,
+   "prob": 0.997,
    "seed": 2,
    "entrada": null,
    "rival": "Daniele Augenti",
@@ -3194,7 +3194,7 @@
   {
    "jugador": "Cesar Bouchelaghem",
    "cuota": 1.111,
-   "prob": 0.803,
+   "prob": 0.79,
    "seed": 1,
    "entrada": null,
    "rival": "Nazim Makhlouf",
@@ -3223,7 +3223,7 @@
   {
    "jugador": "Nazim Makhlouf",
    "cuota": 6,
-   "prob": 0.197,
+   "prob": 0.21,
    "seed": null,
    "entrada": null,
    "rival": "Cesar Bouchelaghem",

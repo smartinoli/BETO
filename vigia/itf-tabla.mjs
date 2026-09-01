@@ -21,6 +21,8 @@ import { fileURLToPath } from 'node:url';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const datos = JSON.parse(fs.readFileSync(path.join(DIR, 'itf-tabla.json'), 'utf8'));
+const M = await import('./itf-modelo.mjs');
+const O = M.MODELO_ORIGEN;
 const J = datos.jugadores || [];
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 /* Búsqueda en Betano LatAm por el nombre del jugador. Es un enlace y
@@ -87,6 +89,18 @@ const html = `<title>Tabla ITF</title>
 body{margin:0;background:var(--ground);color:var(--ink);font:400 15px/1.5 system-ui,-apple-system,sans-serif}
 .env{max-width:1500px;margin:0 auto;padding:20px 16px 60px}
 h1{font-size:21px;margin:0 0 2px} .sub{color:var(--ink3);font-size:13px;margin:0 0 16px}
+.act{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-bottom:10px}
+.act button{font:600 13px system-ui;padding:7px 13px;border-radius:8px;border:1px solid var(--accent);
+  background:var(--accent);color:var(--panel);cursor:pointer}
+.act button.sec2{background:transparent;color:var(--accent)}
+.act button:disabled{opacity:.5;cursor:default}
+.act button small{font-weight:400;opacity:.75;margin-left:5px}
+#act-estado{font:500 12.5px system-ui;color:var(--ink2)}
+.act .mod{margin-left:auto;font:500 11.5px system-ui;color:var(--ink3)}
+#act-token{flex-basis:100%;background:var(--panel);border:1px solid var(--rule);border-radius:9px;padding:11px 13px}
+#act-token p{margin:0 0 8px;font-size:12.5px;color:var(--ink2);line-height:1.5}
+#act-token input{font:400 13px system-ui;padding:6px 9px;border:1px solid var(--rule);border-radius:7px;
+  background:var(--sunk);color:var(--ink);width:330px;max-width:100%}
 .barra{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:var(--panel);
   border:1px solid var(--rule);border-radius:10px;padding:10px 12px;margin-bottom:12px}
 .barra label{font:600 11px system-ui;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em}
@@ -130,6 +144,22 @@ tr[hidden]{display:none}
 <p class="sub">${J.length} jugadores · ${new Set(J.map(j => j.torneo)).size} torneos · armada ${new Date().toISOString().slice(11, 16)} UTC.
   Clic en cualquier encabezado para ordenar; el nombre abre la búsqueda en Betano. La ★ y el borde verde marcan lo que pisa la casilla del manual.
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
+
+<div class="act">
+  <button id="b-cuotas" data-que="cuotas">⟳ Cuotas y partidos <small>2–3 min</small></button>
+  <button id="b-todo" data-que="todo" class="sec2">⟳ Torneos y cuadros <small>10–15 min</small></button>
+  <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
+  <span id="act-estado"></span>
+  <span class="mod">modelo ${O.de === 'aprendido' ? 'aprendido' : 'de fábrica'} ·
+    ${O.partidos} partidos · ${O.fecha ? String(O.fecha).slice(0, 10) : ''}</span>
+  <div id="act-token" hidden>
+    <p>Una sola vez: un token de GitHub que queda guardado solo en este navegador.
+      Se crea en <b>github.com → Settings → Developer settings → Fine-grained tokens</b>,
+      dándole acceso solo al repositorio <b>BETO</b> con permiso <b>Actions: Read and write</b>.</p>
+    <input id="act-pat" type="password" placeholder="pega el token acá" autocomplete="off">
+    <button id="act-guardar" type="button">Guardar</button>
+  </div>
+</div>
 
 <div class="barra">
   <label>buscar</label><input type="text" id="q" placeholder="jugador o rival">
@@ -229,6 +259,60 @@ ${filas}
     aplica();
   });
   aplica();
+})();
+
+/* Los tres botones disparan el mismo workflow con distinto "qué":
+   cuotas (rápido), todo (cuadros por navegador) y modelo (reajusta las
+   constantes con los resultados y las aplica solo si mejoran). El token
+   vive únicamente en este navegador, nunca en el repo. */
+(() => {
+  var REPO='smartinoli/BETO', RAMA='claude/itf-scrapers-prize-money-7oy59k', WF='tabla.yml';
+  var est=document.getElementById('act-estado'),
+      caja=document.getElementById('act-token'), inp=document.getElementById('act-pat'),
+      gu=document.getElementById('act-guardar');
+  var botones=['b-cuotas','b-todo','b-modelo'].map(function(i){return document.getElementById(i)}).filter(Boolean);
+  if(!botones.length) return;
+  var AVISO={ cuotas:'corriendo: marcadores + cuotas + análisis (2–3 min)…',
+              todo:'corriendo: cuadros ITF por navegador + cuotas (10–15 min)…',
+              modelo:'corriendo: el modelo se reajusta con los resultados y se queda con lo mejor (5–10 min)…' };
+  function traba(si){ botones.forEach(function(b){b.disabled=si}); }
+  function lee(){ try{return localStorage.getItem('tabla-pat')||''}catch(e){return ''} }
+  function guarda(t){ try{localStorage.setItem('tabla-pat',t)}catch(e){} }
+  function borra(){ try{localStorage.removeItem('tabla-pat')}catch(e){} }
+  function api(ruta,opts,tok){
+    opts=opts||{};
+    opts.headers={ 'Authorization':'Bearer '+tok, 'Accept':'application/vnd.github+json' };
+    return fetch('https://api.github.com/repos/'+REPO+ruta,opts);
+  }
+  var desde=0, pedido='cuotas';
+  gu.onclick=function(){ var t=inp.value.trim(); if(!t)return; guarda(t); caja.hidden=true; inp.value=''; correr(pedido); };
+  botones.forEach(function(b){ b.onclick=function(){
+    pedido=b.getAttribute('data-que')||'cuotas';
+    if(!lee()){ caja.hidden=false; inp.focus(); return; }
+    correr(pedido);
+  }; });
+  function correr(que){
+    traba(true); est.textContent='pidiendo la corrida…'; desde=Date.now()-120000;
+    api('/actions/workflows/'+WF+'/dispatches',{method:'POST',body:JSON.stringify({ref:RAMA,inputs:{que:que}})},lee())
+      .then(function(r){
+        if(r.status===204){ est.textContent=AVISO[que]||AVISO.cuotas; setTimeout(mirar,20000); }
+        else if(r.status===401||r.status===403){ borra(); est.textContent='el token no sirvió — pega uno nuevo'; caja.hidden=false; traba(false); }
+        else { est.textContent='GitHub respondió '+r.status; traba(false); }
+      })
+      .catch(function(){ est.textContent='desde esta copia no se puede — usa la página online: smartinoli.github.io/BETO/tabla.html'; traba(false); });
+  }
+  function mirar(){
+    api('/actions/runs?branch='+encodeURIComponent(RAMA)+'&event=workflow_dispatch&per_page=1',{},lee())
+      .then(function(r){return r.json()})
+      .then(function(j){
+        var run=(j.workflow_runs||[])[0];
+        if(run && Date.parse(run.created_at)>=desde && run.status==='completed'){
+          if(run.conclusion==='success'){ est.textContent='listo — recargando…'; setTimeout(function(){location.reload()},4000); }
+          else { est.textContent='la corrida terminó "'+run.conclusion+'" — revisa Actions en GitHub'; traba(false); }
+        } else { est.textContent='corriendo… ('+((run&&run.status)||'en cola')+')'; setTimeout(mirar,15000); }
+      })
+      .catch(function(){ setTimeout(mirar,20000); });
+  }
 })();
 </script>`;
 
