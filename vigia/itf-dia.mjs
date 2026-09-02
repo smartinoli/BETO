@@ -38,7 +38,10 @@ const paso = (nombre, archivo, args = []) => {
   console.log(`\n━━ ${nombre} ━━`);
   try {
     console.log(execFileSync('node', [path.join(DIR, archivo), ...args],
-      { encoding: 'utf8', timeout: 15 * 60e3, env: process.env }).trim());
+      { encoding: 'utf8', timeout: 35 * 60e3, env: process.env }).trim());
+    /* 35 min, no 15 (2026-09-02): un martes son ~150 partidos a 3 s cada
+       uno mas los reintentos del rate limit — el tope de 15 mato el paso
+       de cuotas de Betano a los 15:00 exactos y se perdio todo. */
     return true;
   } catch (e) {
     console.log(`✗ ${nombre} falló: ${(e.stdout || '') + (e.stderr || e.message)}`.trim().slice(0, 600));

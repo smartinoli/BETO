@@ -708,7 +708,7 @@ fs.writeFileSync(HISTF, JSON.stringify(historia, null, 1));
 
   /* 1. la tanda vigente, con todo ya calculado */
   for (const f of filas) {
-    if (!f.v || !f.q.g1 || !f.q.g2) continue;
+    if (!f.v?.nivel?.favorito || !f.q.g1 || !f.q.g2) continue;   /* sin nivel (p.ej. sin WTN) no hay fila */
     const favEs1 = f.v.nivel.favorito.startsWith(f.f1.nombre);
     const p1 = favEs1 ? f.v.nivel.p : 1 - f.v.nivel.p;
     mete(f.t, f.f1, f.f2, f.q.g1, f.q.g2, p1, f.etapa, f.q.inicio, f.q.fixtureId, f.jugada, f.res, null, null);

@@ -241,9 +241,13 @@ for (const p of candidatos) {
   cuotas.push({ torneo: p.t.nombre, p1: p.p1, p2: p.p2, g1: v[0], g2: v[1],
     visto: new Date().toISOString().slice(0, 16) + 'Z', fuente: casa, fixtureId: p.fixtureId,
     inicio: p.startTime });
+  /* se guarda A CADA cuota encontrada, no al final: si el proceso muere
+     por tiempo (paso el 2026-09-02, 15 min y 4 cuotas de Betano perdidas)
+     lo que ya se consiguio queda escrito y la pagina se arma con eso */
+  fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: SOLO || 'bet365', soloCasa: SOLO || null, parcial: true, cuotas }, null, 1));
   console.log(`  + ${p.t.nombre.padEnd(22)} ${p.p1} ${v[0]} / ${p.p2} ${v[1]}  [${casa}]`);
 }
-fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: SOLO || 'bet365', soloCasa: SOLO || null, cuotas }, null, 1));
+fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: SOLO || 'bet365', soloCasa: SOLO || null, parcial: false, cuotas }, null, 1));
 console.log(`\n${cuotas.length} cuotas (${deCache} de caché, ${REQ} requests)`
   + (noPreguntados ? ` · ${noPreguntados} quedaron sin consultar por límite de la API` : '')
   + ' → vigia/itf-cuotas-bet365.json');
