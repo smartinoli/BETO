@@ -8984,7 +8984,14 @@
     "pMercado": 0.537,
     "soloWtn": 0.682,
     "señales": [],
-    "razon": "Δ1.60 de WTN a favor de Geun Jun Kim (7.34 contra 8.94), en R1: la curva del grupo \"buenas\" (n=528) da 68%. El mercado la paga a 1.727: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +18% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ1.60 de WTN a favor de Geun Jun Kim (7.34 contra 8.94), en R1: la curva del grupo \"buenas\" (n=528) da 68%. El mercado la paga a 1.727: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +18% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Geun Jun Kim",
+     "marcador": "6-4 6-4",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -10656,7 +10663,14 @@
     "pMercado": 0.866,
     "soloWtn": 0.933,
     "señales": [],
-    "razon": "Δ5.84 de WTN a favor de M Rifqi Fitriadi (6.55 contra 12.39), en R1: la curva del grupo \"buenas\" (n=1337) da 93%. El mercado la paga a 1.083: 87% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ5.84 de WTN a favor de M Rifqi Fitriadi (6.55 contra 12.39), en R1: la curva del grupo \"buenas\" (n=1337) da 93%. El mercado la paga a 1.083: 87% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Harrison Satara",
+     "marcador": "6-4 6-4",
+     "via": "cuadro"
+    },
+    "acerto": false,
+    "acertoMercado": false
    },
    {
     "crit": {
@@ -10690,7 +10704,14 @@
     "señales": [
      "local"
     ],
-    "razon": "Δ2.82 de WTN a favor de Wishaya Trongcharoenchaikul (8.97 contra 11.79), en R1: la curva del grupo \"buenas\" (n=1337) da 78%. Ajustan: ZHENGYU SUN juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 72%. El mercado la paga a 1.222: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ2.82 de WTN a favor de Wishaya Trongcharoenchaikul (8.97 contra 11.79), en R1: la curva del grupo \"buenas\" (n=1337) da 78%. Ajustan: ZHENGYU SUN juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 72%. El mercado la paga a 1.222: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −6% si la tiene el mercado.",
+    "res": {
+     "ganador": "Wishaya Trongcharoenchaikul",
+     "marcador": "6-2 7-6(3)",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -13919,5 +13940,5 @@
    }
   ]
  },
- "actualizado": "2026-09-02T09:08:01.474Z"
+ "actualizado": "2026-09-02T09:13:32.833Z"
 }
