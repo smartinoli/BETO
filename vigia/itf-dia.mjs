@@ -29,7 +29,12 @@ import { fileURLToPath } from 'node:url';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > 0 ? process.argv[i + 1] : d };
-const MAX = arg('max', '60');
+/* 120, no 60 (2026-09-02). Con el caché arreglado ya no se reusan fotos
+   viejas, así que el tope es lo único que decide cuántos partidos entran:
+   con 60 se cortaban ~100 candidatos válidos y Sebastián veía media
+   tanda. Van ordenados por hora de inicio, así que si igual se corta, lo
+   que se pierde es lo más lejano. */
+const MAX = arg('max', '120');
 const KEY = process.env.ODDSPAPI_KEY;
 
 const paso = (nombre, archivo, args = []) => {

@@ -148,8 +148,8 @@ tr[hidden]{display:none}
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
 
 <div class="act">
-  <button id="b-cuotas" data-que="cuotas">⟳ Cuotas y partidos <small>~3 min</small></button>
-  <button id="b-betano" data-que="betano" class="sec2">⟳ Cuotas solo Betano <small>~3 min</small></button>
+  <button id="b-cuotas" data-que="cuotas">⟳ Cuotas y partidos <small>~7 min</small></button>
+  <button id="b-betano" data-que="betano" class="sec2">⟳ Cuotas solo Betano <small>~7 min</small></button>
   <button id="b-todo" data-que="todo" class="sec2">⟳ Torneos y cuadros <small>10–15 min</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
@@ -275,8 +275,8 @@ ${filas}
       gu=document.getElementById('act-guardar');
   var botones=['b-cuotas','b-betano','b-todo','b-modelo'].map(function(i){return document.getElementById(i)}).filter(Boolean);
   if(!botones.length) return;
-  var AVISO={ cuotas:'corriendo: índice + cuotas + análisis (~3 min)…',
-              betano:'corriendo: solo precios de Betano, los que puedes jugar (~3 min)…',
+  var AVISO={ cuotas:'corriendo: índice + cuotas + análisis (~7 min)…',
+              betano:'corriendo: solo precios de Betano, los que puedes jugar (~7 min)…',
               todo:'corriendo: cuadros ITF por navegador + cuotas (10–15 min)…',
               modelo:'corriendo: el modelo se reajusta con los resultados y se queda con lo mejor (5–10 min)…' };
   function traba(si){ botones.forEach(function(b){b.disabled=si}); }

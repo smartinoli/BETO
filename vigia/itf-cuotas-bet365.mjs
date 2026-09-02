@@ -43,7 +43,10 @@ const MAX = +arg('max', 40);
    flag manda la prioridad de siempre (bet365 > betano > pinnacle > la
    que haya), que es lo mejor para MEDIR el mercado. */
 const SOLO = arg('casa', null);
-const PAUSA = +arg('pausa', 2600);
+/* 3.2s entre llamadas = ~18/min. Con 2.6s (~23/min) la API empezó a
+   devolver RATE_LIMITED en cuanto dejamos de reusar caché viejo y el
+   volumen de pedidos subió: se perdían partidos. */
+const PAUSA = +arg('pausa', 3200);
 const leer = f => { try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch { return null } };
 
 /* ---------- ciudad → torneo masculino nuestro ---------- */
@@ -103,7 +106,9 @@ async function api(ruta, params) {
     if (err) throw new Error('red: ' + err.message);
     const j = await r.json().catch(() => null);
     /* el RATE_LIMITED viene como 200 con error en el json: se espera y reintenta */
-    if (j?.error?.code === 'RATE_LIMITED' && i < 4) { await espera(3000 * 2 ** i); continue }
+    /* el RATE_LIMITED aguanta más reintentos que un error normal: no es
+       un fallo, es la API pidiendo que esperemos */
+    if (j?.error?.code === 'RATE_LIMITED' && i < 7) { await espera(4000 * 1.7 ** i); continue }
     if (j?.error) throw new Error(`${j.error.code || ''}`.trim());
     if (!r.ok) throw new Error('HTTP ' + r.status);
     REQ++;
@@ -161,12 +166,27 @@ console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.l
    cotizar antes, y si solo hay otra casa, se usa esa anotando la fuente. */
 const PRIORIDAD = SOLO ? [SOLO] : ['bet365', 'betano', 'pinnacle'];
 const cuotas = [];
-let deCache = 0;
+let deCache = 0, noPreguntados = 0;
 for (const p of candidatos) {
   if (cuotas.length >= MAX) break;
+  let fallo = null;
   const fCache = path.join(CACHE, p.fixtureId + '.json');
   const cacheado = leer(fCache);
-  let todas = cacheado?.todas?.bookmakers ?? cacheado?.casas ?? null;
+  /* EL CACHÉ NO VALE PARA UN PARTIDO QUE TODAVÍA NO EMPIEZA (2026-09-02).
+     Hasta hoy se reusaba siempre, y como estos fixtures se cachean días
+     antes, la "cuota vigente" que mostrábamos tenía 25 horas de vieja:
+     medido, los 42 cachés de partidos pendientes promediaban 25.3 h.
+     Peor todavía para la vista de Betano — una casa que empieza a cotizar
+     DESPUÉS de la primera consulta no aparecía nunca, porque ya había
+     caché. Ahora el caché solo se aprovecha cuando ya no puede cambiar:
+     el partido arrancó (su línea pre-partido quedó cerrada) o la foto es
+     de hace menos de FRESCO minutos. */
+  const FRESCO = 15 * 60e3;
+  const arrancado = Date.parse(p.startTime) <= Date.now();
+  let edad = Infinity;
+  try { edad = Date.now() - fs.statSync(fCache).mtimeMs } catch {}
+  const sirve = arrancado || edad < FRESCO;
+  let todas = sirve ? (cacheado?.todas?.bookmakers ?? cacheado?.casas ?? null) : null;
   if (todas && Object.keys(todas).length) deCache++;
   else if (KEY) {
     try {
@@ -174,9 +194,17 @@ for (const p of candidatos) {
       todas = j?.bookmakers || {};
       fs.mkdirSync(CACHE, { recursive: true });
       fs.writeFileSync(fCache, JSON.stringify({ fixture: p, todas: j, casas: todas }));
-    } catch (e) { todas = null; if (!/NOT_FOUND/.test(e.message)) console.log(`  ✗ ${p.p1} vs ${p.p2}: ${e.message || 'error sin mensaje'}`) }
+    } catch (e) { todas = null; fallo = e.message || 'error sin mensaje';
+      if (!/NOT_FOUND/.test(fallo)) console.log(`  ✗ ${p.p1} vs ${p.p2}: ${fallo}`) }
   }
-  if (!todas || !Object.keys(todas).length) { console.log(`  · ${p.p1} vs ${p.p2}: ninguna casa lo cotiza todavía`); continue }
+  /* NO mentir: si la consulta falló, el partido no es "sin cuota", es
+     "no pudimos preguntar". Antes los dos casos decían lo mismo y un
+     rate limit se leía como que las casas no lo cotizaban. */
+  if (!todas || !Object.keys(todas).length) {
+    if (fallo) { noPreguntados++; console.log(`  ? ${p.p1} vs ${p.p2}: no se pudo consultar (${fallo})`) }
+    else console.log(`  · ${p.p1} vs ${p.p2}: ninguna casa lo cotiza todavía`);
+    continue;
+  }
   /* la mejor casa disponible que tenga cotización pre-partido válida */
   const orden = SOLO ? (todas[SOLO] ? [SOLO] : [])
     : [...PRIORIDAD.filter(c => todas[c]), ...Object.keys(todas).filter(c => !PRIORIDAD.includes(c))];
@@ -194,5 +222,7 @@ for (const p of candidatos) {
   console.log(`  + ${p.t.nombre.padEnd(22)} ${p.p1} ${v[0]} / ${p.p2} ${v[1]}  [${casa}]`);
 }
 fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: SOLO || 'bet365', soloCasa: SOLO || null, cuotas }, null, 1));
-console.log(`\n${cuotas.length} cuotas (${deCache} de caché, ${REQ} requests) → vigia/itf-cuotas-bet365.json`);
+console.log(`\n${cuotas.length} cuotas (${deCache} de caché, ${REQ} requests)`
+  + (noPreguntados ? ` · ${noPreguntados} quedaron sin consultar por límite de la API` : '')
+  + ' → vigia/itf-cuotas-bet365.json');
 console.log('ahora: node vigia/itf-informe.mjs --bet365');
