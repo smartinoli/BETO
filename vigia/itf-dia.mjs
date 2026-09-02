@@ -29,12 +29,9 @@ import { fileURLToPath } from 'node:url';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > 0 ? process.argv[i + 1] : d };
-/* 120, no 60 (2026-09-02). Con el caché arreglado ya no se reusan fotos
-   viejas, así que el tope es lo único que decide cuántos partidos entran:
-   con 60 se cortaban ~100 candidatos válidos y Sebastián veía media
-   tanda. Van ordenados por hora de inicio, así que si igual se corta, lo
-   que se pierde es lo más lejano. */
-const MAX = arg('max', '120');
+/* Sin tope por cantidad: manda la ventana de horas (ver itf-cuotas). */
+const MAX = arg('max', null);
+const HORAS = arg('horas', '14');
 const KEY = process.env.ODDSPAPI_KEY;
 
 const paso = (nombre, archivo, args = []) => {
@@ -55,7 +52,7 @@ if (KEY) {
      precios, que son los que Sebastián puede jugar de verdad. */
   const CASA = arg('casa', null);
   paso(CASA ? `2/3 cuotas de ${CASA} de los pendientes` : '2/3 cuotas bet365 de los pendientes',
-    'itf-cuotas-bet365.mjs', ['--max', MAX, ...(CASA ? ['--casa', CASA] : [])]);
+    'itf-cuotas-bet365.mjs', ['--horas', HORAS, ...(MAX ? ['--max', MAX] : []), ...(CASA ? ['--casa', CASA] : [])]);
 } else {
   console.log('Sin ODDSPAPI_KEY: solo se rearma la página con lo que hay en disco.');
 }

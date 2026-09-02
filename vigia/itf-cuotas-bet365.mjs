@@ -36,7 +36,13 @@ const INDICE = path.join(DATOS, 'historico-indice.json');
 const SALIDA = path.join(DIR, 'itf-cuotas-bet365.json');
 const KEY = process.env.ODDSPAPI_KEY;
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > 0 ? process.argv[i + 1] : d };
-const MAX = +arg('max', 40);
+/* SIN TOPE NUMÉRICO (2026-09-02, pedido de Sebastián: 'porque le pones
+   límite a los partidos válidos, así cortas opciones'). Lo que acota es
+   la VENTANA DE HORAS: los partidos de hoy, no los de pasado mañana. Un
+   tope por cantidad cortaba a ciegas; uno por horas corta lo que todavía
+   no importa. --max sigue existiendo solo para pruebas. */
+const MAX = +arg('max', Infinity);
+const HORAS = +arg('horas', 14);
 /* --casa <slug>: cotiza SOLO esa casa, sin fallback. Pedido por Sebastián
    el 2026-09-01 para Betano, que es donde él apuesta: la cuota de otra
    casa le sirve de referencia pero no es la que va a pagar. Sin este
@@ -149,7 +155,7 @@ const ahora = Date.now();
    VIVO. Un partido que "empieza" en menos de 10 minutos no se cotiza: su
    cuota ya no es apostable y puede venir contaminada. */
 const candidatos = Object.values(idx.partidos)
-  .filter(p => Date.parse(p.startTime) > ahora + 10 * 60e3)
+  .filter(p => Date.parse(p.startTime) > ahora + 10 * 60e3 && Date.parse(p.startTime) < ahora + HORAS * 36e5)
   .map(p => ({ ...p, t: torneoDe(p.torneo) }))
   /* vale si los DOS están en la entry list de alguna edición del nombre */
   .map(p => { if (!p.t) return p;
@@ -157,7 +163,8 @@ const candidatos = Object.values(idx.partidos)
     return { ...p, t: clave ? { nombre: p.t.nombre, clave } : null } })
   .filter(p => p.t)
   .sort((a, b) => String(a.startTime).localeCompare(String(b.startTime)));
-console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.length} pendientes de torneos masculinos con los dos en la entry list`);
+console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.length} pendientes en las próximas ${HORAS} h, de torneos masculinos y con los dos en la entry list`
+  + ` · ~${Math.ceil(candidatos.length * PAUSA / 60000)} min si hay que pedirlos todos`);
 
 /* UN request por partido, SIN filtrar casa: la API devuelve todas las que
    tengan precio (medido el 2026-08-27: pedir casa por casa duplicaba
@@ -181,7 +188,9 @@ for (const p of candidatos) {
      caché. Ahora el caché solo se aprovecha cuando ya no puede cambiar:
      el partido arrancó (su línea pre-partido quedó cerrada) o la foto es
      de hace menos de FRESCO minutos. */
-  const FRESCO = 15 * 60e3;
+  /* 30 minutos: si se aprieta el botón dos veces seguidas, la segunda
+     no vuelve a pagar los 3 segundos por partido */
+  const FRESCO = 30 * 60e3;
   const arrancado = Date.parse(p.startTime) <= Date.now();
   let edad = Infinity;
   try { edad = Date.now() - fs.statSync(fCache).mtimeMs } catch {}
