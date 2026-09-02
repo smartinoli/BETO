@@ -32,7 +32,14 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
    2026-09-01: el caché no trae ningún campo de link), así que lo honesto
    es abrir su buscador con el nombre, no inventar una URL de evento. */
 const betano = n => 'https://lat.betano.com/search/?query=' + encodeURIComponent(n);
-const hhmm = s => { if (!s) return ''; const d = new Date(s); return isNaN(d) ? '' : d.toISOString().slice(11, 16) };
+/* HORA DE CHILE en todo lo que se muestra (pedido de Sebastian, 2026-09-02).
+   America/Santiago via Intl: el cambio de horario del sabado lo aplica
+   solo. Los datos internos (registro, claves por dia) siguen en UTC. */
+const CL_HORA = d => { const x = new Date(d); return isNaN(x) ? '' :
+  x.toLocaleTimeString('es-CL', { timeZone: 'America/Santiago', hour: '2-digit', minute: '2-digit', hour12: false }) };
+const CL_DIA = d => { const x = new Date(d); return isNaN(x) ? '' :
+  x.toLocaleDateString('es-CL', { timeZone: 'America/Santiago', day: '2-digit', month: '2-digit' }) };
+const hhmm = s => s ? CL_HORA(s) : '';
 /* "(4)" sembrado cuarto · "(Q)" salió de la clasificación · "(WC)"
    invitación de la organización · LL lucky loser, PR ranking protegido,
    A alternate, SE exento. Se junta en un solo paréntesis: "(4, WC)". */
@@ -48,7 +55,7 @@ const COLS = [
   { k: 'prob', t: '% modelo', tipo: 'num' },
   { k: 'rival', t: 'rival', tipo: 'txt' },
   { k: 'torneo', t: 'torneo', tipo: 'txt' },
-  { k: 'etapa', t: 'ronda', tipo: 'txt' },
+  { k: 'etapa', t: 'ronda · hora CL', tipo: 'txt' },
   { k: 'edad', t: 'edad', tipo: 'num' },
   { k: 'wtn', t: 'WTN', tipo: 'num' },
   { k: 'itf', t: 'ITF', tipo: 'num' },
@@ -142,7 +149,7 @@ tr[hidden]{display:none}
 </style>
 <div class="env">
 <h1>Tabla ITF — lo apostable de ahora</h1>
-<p class="sub">${J.length} jugadores · ${new Set(J.map(j => j.torneo)).size} torneos · armada ${new Date().toISOString().slice(11, 16)} UTC.
+<p class="sub">${J.length} jugadores · ${new Set(J.map(j => j.torneo)).size} torneos · armada ${CL_HORA(new Date())} hora de Chile. Las horas de cada partido también van en hora de Chile.
   Solo partidos que <b>todavía no empiezan</b> y tienen cuota de los dos lados: lo que ya arrancó no se puede apostar y sale de la tabla.
   Clic en cualquier encabezado para ordenar; el nombre abre la búsqueda en Betano. La ★ y el borde verde marcan lo que pisa la casilla del manual.
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
