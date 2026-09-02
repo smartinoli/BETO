@@ -959,7 +959,7 @@ footer b{color:var(--ink2)}
     ? `${ELEGIDAS.length} de ${filas.filter(f => f.v?.precio).length} pisan la casilla. El resto está en la tabla, agrupado por tramo.`
     : 'Hoy nadie pisa la casilla: se mira, no se apuesta. La tabla completa está abajo, por tramo.'}</p>
   <div class="act">
-    <button id="act-btn" type="button" data-que="cuotas">⟳ Cuotas y análisis <small>hoy · 3–5 min</small></button>
+    <button id="act-btn" type="button" data-que="cuotas">⟳ Cuotas y análisis <small>hoy · 2–8 min</small></button>
     <button id="act-todo" type="button" data-que="todo" class="secundario">⟳ Torneos completos + cuotas <small>10–15 min</small></button>
     <span id="act-estado" class="sec"></span>
     <div id="act-token" hidden>

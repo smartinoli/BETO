@@ -148,8 +148,8 @@ tr[hidden]{display:none}
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
 
 <div class="act">
-  <button id="b-cuotas" data-que="cuotas">⟳ Cuotas y partidos <small>hoy · 3–5 min</small></button>
-  <button id="b-betano" data-que="betano" class="sec2">⟳ Cuotas solo Betano <small>hoy · 3–5 min</small></button>
+  <button id="b-cuotas" data-que="cuotas">⟳ Cuotas y partidos <small>hoy · 2–8 min según cuántos haya</small></button>
+  <button id="b-betano" data-que="betano" class="sec2">⟳ Cuotas solo Betano <small>hoy · 2–8 min</small></button>
   <button id="b-todo" data-que="todo" class="sec2">⟳ Torneos y cuadros <small>10–15 min</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
@@ -275,8 +275,8 @@ ${filas}
       gu=document.getElementById('act-guardar');
   var botones=['b-cuotas','b-betano','b-todo','b-modelo'].map(function(i){return document.getElementById(i)}).filter(Boolean);
   if(!botones.length) return;
-  var AVISO={ cuotas:'pidiendo las cuotas de hoy, partido por partido (la API no deja pedirlas juntas) — 3–5 min…',
-              betano:'pidiendo los precios de Betano de hoy, partido por partido — 3–5 min…',
+  var AVISO={ cuotas:'pidiendo las cuotas de hoy, partido por partido (la API no deja pedirlas juntas): 3 seg por partido, un martes cargado son ~8 min…',
+              betano:'pidiendo los precios de Betano de hoy, partido por partido: 3 seg cada uno…',
               todo:'corriendo: cuadros ITF por navegador + cuotas (10–15 min)…',
               modelo:'corriendo: el modelo se reajusta con los resultados y se queda con lo mejor (5–10 min)…' };
   function traba(si){ botones.forEach(function(b){b.disabled=si}); }
