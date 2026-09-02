@@ -199,7 +199,15 @@ for (const p of candidatos) {
   const arrancado = Date.parse(p.startTime) <= Date.now();
   let edad = Infinity;
   try { edad = Date.now() - fs.statSync(fCache).mtimeMs } catch {}
-  const sirve = arrancado || edad < FRESCO;
+  /* Con --casa, una copia que NO trae esa casa no sirve aunque sea
+     fresca: es exactamente el caso de hoy — los partidos se guardaron a
+     las 23:57 por la corrida normal, ANTES de que Betano publicara, y el
+     botón de Betano se los creía y no volvía a preguntar. Se re-pide
+     solo ESO (las copias sin la casa pedida), no todo. Con 20 min de
+     gracia para no martillar la API si de verdad no la cotiza. */
+  const bk = cacheado?.todas?.bookmakers ?? cacheado?.casas ?? {};
+  const traeLaCasa = !SOLO || !!bk[SOLO];
+  const sirve = arrancado || (edad < FRESCO && traeLaCasa) || edad < 20 * 60e3;
   let todas = sirve ? (cacheado?.todas?.bookmakers ?? cacheado?.casas ?? null) : null;
   if (todas && Object.keys(todas).length) deCache++;
   else if (KEY) {
