@@ -20,11 +20,12 @@ on:
         description: 'Qué refrescar'
         type: choice
         default: cuotas
-        # cuotas = mejor casa disponible (bet365 > betano > …), sirve para medir el mercado
-        # betano = SOLO precios de Betano, que son los que Sebastián puede jugar
-        # todo   = además scrape de cuadros ITF (lento)
-        # modelo = reajusta las constantes con los resultados acumulados
-        options: [cuotas, betano, todo, modelo]
+        # betano        = SOLO Betano, SOLO los torneos que juegan en las próximas 8 h (el botón del día a día)
+        # cuadros-ahora = refresca los cuadros de esos mismos torneos (antes de pedir cuotas)
+        # cuotas        = mejor casa disponible (bet365 > betano > …), toda la ventana: para medir el mercado
+        # todo          = calendario + listas + los 17 cuadros + rating (una vez al día)
+        # modelo        = reajusta las constantes con los resultados acumulados
+        options: [betano, cuadros-ahora, cuotas, todo, modelo]
   # Sin schedule a pedido de Sebastián (2026-08-27): todo manual, él actualiza
   # con los botones de la página (o desde esta pestaña de Actions).
   push:
@@ -55,7 +56,7 @@ jobs:
           node-version: 22
 
       - name: Chromium para el WAF de la ITF
-        if: inputs.que == 'todo'
+        if: inputs.que == 'todo' || inputs.que == 'cuadros-ahora'
         run: |
           npm i --no-save playwright
           npx playwright install --with-deps chromium
@@ -88,6 +89,14 @@ jobs:
         if: inputs.que == 'todo'
         run: node vigia/itf-rating.mjs
 
+      # Solo los cuadros de los torneos que juegan pronto, con un reintento.
+      # Es el paso 1 del dia a dia: cuadros al dia, y DESPUES el boton de Betano.
+      - name: Cuadros de los torneos que juegan ahora
+        if: inputs.que == 'cuadros-ahora'
+        timeout-minutes: 12
+        continue-on-error: true
+        run: node vigia/itf-cuadros.mjs --ahora 8
+
       # NO se refrescan cuadros en el camino de cuotas (quitado el 2026-09-01).
       # Lo habiamos metido para mantener las fases al dia, pero recorre 35
       # torneos con pausas y el WAF lo hace tardar: a Sebastian le tomo 5m13s
@@ -108,12 +117,13 @@ jobs:
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
         # con 'betano' la tanda se arma solo con sus precios; en el resto
         # manda la prioridad de casas de siempre
+        # cuadros-ahora no pide cuotas: rearma la pagina con lo que hay
         run: |
-          if [ "${{ inputs.que }}" = "betano" ]; then
-            node vigia/itf-dia.mjs --casa betano
-          else
-            node vigia/itf-dia.mjs
-          fi
+          case "${{ inputs.que }}" in
+            betano)        node vigia/itf-dia.mjs --casa betano --ahora 8 ;;
+            cuadros-ahora) node vigia/itf-informe.mjs --bet365 && node vigia/itf-tabla.mjs ;;
+            *)             node vigia/itf-dia.mjs ;;
+          esac
 
       - name: Guardar lo que cambió
         run: |

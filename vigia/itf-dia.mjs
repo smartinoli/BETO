@@ -54,8 +54,18 @@ if (KEY) {
   /* --casa se pasa tal cual: con 'betano' la tanda queda solo con sus
      precios, que son los que Sebastián puede jugar de verdad. */
   const CASA = arg('casa', null);
+  /* --ahora N: solo los torneos con partidos en las próximas N horas (lo
+     que funcionó el 2026-09-02: mirar lo que juega ahora, no la semana). */
+  const AHORA = arg('ahora', null);
+  let torneos = [];
+  if (AHORA != null) {
+    const { torneosAhora, ciudadCorta } = await import('./itf-ahora.mjs');
+    torneos = torneosAhora(+AHORA).map(x => ciudadCorta(x.nombre));
+    console.log(`   torneos de las próximas ${AHORA} h: ${torneos.join(', ') || 'ninguno'}`);
+  }
   paso(CASA ? `2/3 cuotas de ${CASA} de los pendientes` : '2/3 cuotas bet365 de los pendientes',
-    'itf-cuotas-bet365.mjs', ['--horas', HORAS, ...(MAX ? ['--max', MAX] : []), ...(CASA ? ['--casa', CASA] : [])]);
+    'itf-cuotas-bet365.mjs', ['--horas', AHORA != null ? AHORA : HORAS, ...(MAX ? ['--max', MAX] : []),
+      ...(CASA ? ['--casa', CASA] : []), ...(torneos.length ? ['--torneos', torneos.join(',')] : [])]);
 } else {
   console.log('Sin ODDSPAPI_KEY: solo se rearma la página con lo que hay en disco.');
 }
