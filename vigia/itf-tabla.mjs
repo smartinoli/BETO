@@ -148,8 +148,8 @@ tr[hidden]{display:none}
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
 
 <div class="act">
-  <button id="b-cuotas" data-que="cuotas">⟳ Cuotas y partidos <small>hoy · 2–8 min según cuántos haya</small></button>
-  <button id="b-betano" data-que="betano" class="sec2">⟳ Cuotas solo Betano <small>hoy · 2–8 min</small></button>
+  <button id="b-cuotas" data-que="cuotas">⟳ Cuotas y partidos <small>la 1ª del día tarda, las siguientes no</small></button>
+  <button id="b-betano" data-que="betano" class="sec2">⟳ Cuotas solo Betano <small>rápido si ya corrió la normal</small></button>
   <button id="b-todo" data-que="todo" class="sec2">⟳ Torneos y cuadros <small>10–15 min</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>

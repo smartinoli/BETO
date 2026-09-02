@@ -188,9 +188,14 @@ for (const p of candidatos) {
      caché. Ahora el caché solo se aprovecha cuando ya no puede cambiar:
      el partido arrancó (su línea pre-partido quedó cerrada) o la foto es
      de hace menos de FRESCO minutos. */
-  /* 30 minutos: si se aprieta el botón dos veces seguidas, la segunda
-     no vuelve a pagar los 3 segundos por partido */
-  const FRESCO = 30 * 60e3;
+  /* 3 HORAS (2026-09-02). Con 15-30 min me pasé para el otro lado: cada
+     botón volvía a pedir los 150 partidos de un martes y tardaba 8 min.
+     Ayer 'funcionaba bien' porque las corridas siguientes reusaban las
+     cuotas de la primera — eso estaba bien, lo que estaba mal era que
+     las reusara 25 horas. Tres horas es el punto medio: la primera
+     corrida del día paga los 3 segundos por partido, las siguientes son
+     casi instantáneas, y una cuota nunca tiene más de 3 h. */
+  const FRESCO = 3 * 3600e3;
   const arrancado = Date.parse(p.startTime) <= Date.now();
   let edad = Infinity;
   try { edad = Date.now() - fs.statSync(fCache).mtimeMs } catch {}
