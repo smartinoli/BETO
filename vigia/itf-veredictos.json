@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-01T23:57:43.394Z",
+ "generado": "2026-09-02T00:14:42.592Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -71,7 +71,7 @@
   },
   {
    "crit": {
-    "cuota": 1.143,
+    "cuota": 1.222,
     "ladoFm": 2,
     "acuerdo": true,
     "pFm": 0.826,
@@ -83,7 +83,12 @@
     "edadRi": 27,
     "dElo": 64
    },
-   "jugada": null,
+   "jugada": {
+    "tipo": "casilla",
+    "quien": "Hyeon Chung",
+    "cuota": 1.222,
+    "prob": 0.8255800020406151
+   },
    "fixtureId": "pn129054301635255634",
    "inicio": "2026-09-02T01:00:00.000Z",
    "torneo": "M25 Urayasu",
@@ -91,17 +96,17 @@
    "etapa": "R1",
    "p1": "Ryuki Matsuda",
    "p2": "Hyeon Chung",
-   "g1": 5,
-   "g2": 1.143,
+   "g1": 4,
+   "g2": 1.222,
    "gana": "Hyeon Chung",
    "lado": 2,
    "p": 0.826,
-   "pMercado": 0.814,
+   "pMercado": 0.766,
    "soloWtn": 0.865,
    "señales": [
     "local"
    ],
-   "razon": "Δ4.12 de WTN a favor de Hyeon Chung (3.57 contra 7.69), en R1: la curva del grupo \"buenas\" (n=1337) da 87%. Ajustan: Ryuki Matsuda juega en su país (JPN): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 83%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ4.12 de WTN a favor de Hyeon Chung (3.57 contra 7.69), en R1: la curva del grupo \"buenas\" (n=1337) da 87%. Ajustan: Ryuki Matsuda juega en su país (JPN): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 83%. El mercado la paga a 1.222: 77% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −6% si la tiene el mercado."
   },
   {
    "crit": {
