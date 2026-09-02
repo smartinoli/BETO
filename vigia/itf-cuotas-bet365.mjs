@@ -43,6 +43,9 @@ const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > 0 ?
    no importa. --max sigue existiendo solo para pruebas. */
 const MAX = +arg('max', Infinity);
 const HORAS = +arg('horas', 14);
+/* --torneos a,b,c: solo esos torneos (por trozo del nombre). Para
+   actualizar rapido un grupo — p.ej. los asiaticos de la manana. */
+const SOLO_TORNEOS = (arg('torneos', '') || '').split(',').map(x => NORM(x)).filter(Boolean);
 /* --casa <slug>: cotiza SOLO esa casa, sin fallback. Pedido por Sebastián
    el 2026-09-01 para Betano, que es donde él apuesta: la cuota de otra
    casa le sirve de referencia pero no es la que va a pagar. Sin este
@@ -162,6 +165,7 @@ const candidatos = Object.values(idx.partidos)
     const clave = p.t.claves.find(c => estaEn(c, p.p1) && estaEn(c, p.p2));
     return { ...p, t: clave ? { nombre: p.t.nombre, clave } : null } })
   .filter(p => p.t)
+  .filter(p => !SOLO_TORNEOS.length || SOLO_TORNEOS.some(x => NORM(p.t.nombre).includes(x)))
   .sort((a, b) => String(a.startTime).localeCompare(String(b.startTime)));
 console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.length} pendientes en las próximas ${HORAS} h, de torneos masculinos y con los dos en la entry list`
   + ` · ~${Math.ceil(candidatos.length * PAUSA / 60000)} min si hay que pedirlos todos`);
