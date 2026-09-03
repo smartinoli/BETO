@@ -1,9 +1,9 @@
 {
  "nota": "Rating propio del Vigía: Elo anclado en WTN, movido por nuestros cuadros. itf-rating.mjs lo reconstruye.",
- "generado": "2026-09-02T19:40:43.135Z",
+ "generado": "2026-09-03T20:19:21.892Z",
  "escala": 81.5,
  "mediaWtn": 15.59,
- "partidosUsados": 4358,
+ "partidosUsados": 4513,
  "jugadores": [
   {
    "id": 800724217,
@@ -70,6 +70,14 @@
    "wtnImplicito": 3.53
   },
   {
+   "id": 800361369,
+   "nombre": "Florent Bax",
+   "elo": 2473.6,
+   "partidos": 2,
+   "wtn": 3.71,
+   "wtnImplicito": 3.64
+  },
+  {
    "id": 800370883,
    "nombre": "Gonzalo Villanueva",
    "elo": 2466.7,
@@ -104,8 +112,8 @@
   {
    "id": 800358608,
    "nombre": "Dan Added",
-   "elo": 2456.3,
-   "partidos": 6,
+   "elo": 2456.9,
+   "partidos": 7,
    "wtn": 3.83,
    "wtnImplicito": 3.85
   },
@@ -566,6 +574,14 @@
    "wtnImplicito": 6.67
   },
   {
+   "id": 800509459,
+   "nombre": "Max Houkes",
+   "elo": 2220.3,
+   "partidos": 2,
+   "wtn": 7.03,
+   "wtnImplicito": 6.75
+  },
+  {
    "id": 800516476,
    "nombre": "Santiago De la fuente",
    "elo": 2219.5,
@@ -614,12 +630,12 @@
    "wtnImplicito": 6.85
   },
   {
-   "id": 800509459,
-   "nombre": "Max Houkes",
-   "elo": 2210,
-   "partidos": 1,
-   "wtn": 7.03,
-   "wtnImplicito": 6.88
+   "id": 800420023,
+   "nombre": "Deney Wassermann",
+   "elo": 2209,
+   "partidos": 7,
+   "wtn": 7.01,
+   "wtnImplicito": 6.89
   },
   {
    "id": 800491015,
@@ -702,11 +718,19 @@
    "wtnImplicito": 7.13
   },
   {
-   "id": 800420023,
-   "nombre": "Deney Wassermann",
-   "elo": 2186.6,
-   "partidos": 5,
-   "wtn": 7.01,
+   "id": 800365245,
+   "nombre": "Aziz Dougaz",
+   "elo": 2188.3,
+   "partidos": 2,
+   "wtn": 7.27,
+   "wtnImplicito": 7.14
+  },
+  {
+   "id": 800348229,
+   "nombre": "Dragos Nicolae Madaras",
+   "elo": 2186.8,
+   "partidos": 14,
+   "wtn": 8.08,
    "wtnImplicito": 7.16
   },
   {
@@ -734,6 +758,14 @@
    "wtnImplicito": 7.21
   },
   {
+   "id": 800419884,
+   "nombre": "Lilian Marmousez",
+   "elo": 2182.7,
+   "partidos": 2,
+   "wtn": 6.92,
+   "wtnImplicito": 7.21
+  },
+  {
    "id": 800412442,
    "nombre": "John Hallquist Lithen",
    "elo": 2181.1,
@@ -756,14 +788,6 @@
    "partidos": 7,
    "wtn": 7.28,
    "wtnImplicito": 7.24
-  },
-  {
-   "id": 800348229,
-   "nombre": "Dragos Nicolae Madaras",
-   "elo": 2179.7,
-   "partidos": 13,
-   "wtn": 8.08,
-   "wtnImplicito": 7.25
   },
   {
    "id": 800456083,
@@ -814,6 +838,14 @@
    "wtnImplicito": 7.41
   },
   {
+   "id": 800575096,
+   "nombre": "Thijs Boogaard",
+   "elo": 2166.4,
+   "partidos": 2,
+   "wtn": 7.55,
+   "wtnImplicito": 7.41
+  },
+  {
    "id": 800547232,
    "nombre": "Mae Malige",
    "elo": 2165.5,
@@ -828,6 +860,14 @@
    "partidos": 5,
    "wtn": 7.75,
    "wtnImplicito": 7.46
+  },
+  {
+   "id": 800397293,
+   "nombre": "Stefan Adrian Andreescu",
+   "elo": 2160.2,
+   "partidos": 8,
+   "wtn": 7.58,
+   "wtnImplicito": 7.49
   },
   {
    "id": 800273335,
@@ -870,11 +910,35 @@
    "wtnImplicito": 7.51
   },
   {
+   "id": 800486293,
+   "nombre": "Arthur Nagel",
+   "elo": 2157.2,
+   "partidos": 11,
+   "wtn": 8.5,
+   "wtnImplicito": 7.52
+  },
+  {
+   "id": 800564392,
+   "nombre": "Pieter De Lange",
+   "elo": 2157,
+   "partidos": 8,
+   "wtn": 6.92,
+   "wtnImplicito": 7.53
+  },
+  {
    "id": 800336997,
    "nombre": "Karl Friberg",
    "elo": 2154.4,
    "partidos": 7,
    "wtn": 8.84,
+   "wtnImplicito": 7.56
+  },
+  {
+   "id": 800556802,
+   "nombre": "Karim Bennani",
+   "elo": 2154.1,
+   "partidos": 4,
+   "wtn": 8.08,
    "wtnImplicito": 7.56
   },
   {
@@ -886,52 +950,12 @@
    "wtnImplicito": 7.59
   },
   {
-   "id": 800486293,
-   "nombre": "Arthur Nagel",
-   "elo": 2149.9,
-   "partidos": 10,
-   "wtn": 8.5,
-   "wtnImplicito": 7.61
-  },
-  {
-   "id": 800397032,
-   "nombre": "Hady Habib",
-   "elo": 2149.8,
-   "partidos": 1,
-   "wtn": 7.69,
-   "wtnImplicito": 7.61
-  },
-  {
-   "id": 800460832,
-   "nombre": "Tristan McCormick",
-   "elo": 2148.4,
-   "partidos": 10,
-   "wtn": 8.96,
-   "wtnImplicito": 7.63
-  },
-  {
    "id": 800336833,
    "nombre": "Hyeon Chung",
    "elo": 2147.7,
    "partidos": 6,
    "wtn": 7.73,
    "wtnImplicito": 7.64
-  },
-  {
-   "id": 800397293,
-   "nombre": "Stefan Adrian Andreescu",
-   "elo": 2147.1,
-   "partidos": 7,
-   "wtn": 7.58,
-   "wtnImplicito": 7.65
-  },
-  {
-   "id": 800564392,
-   "nombre": "Pieter De Lange",
-   "elo": 2145.7,
-   "partidos": 6,
-   "wtn": 6.92,
-   "wtnImplicito": 7.66
   },
   {
    "id": 800491179,
@@ -982,6 +1006,30 @@
    "wtnImplicito": 7.69
   },
   {
+   "id": 800497659,
+   "nombre": "Martin VAN DER MEERSCHEN",
+   "elo": 2141.5,
+   "partidos": 12,
+   "wtn": 8.83,
+   "wtnImplicito": 7.72
+  },
+  {
+   "id": 800469371,
+   "nombre": "Fares Zakaria",
+   "elo": 2140.7,
+   "partidos": 6,
+   "wtn": 8.09,
+   "wtnImplicito": 7.73
+  },
+  {
+   "id": 800371027,
+   "nombre": "Sander Jong",
+   "elo": 2140.5,
+   "partidos": 5,
+   "wtn": 8.44,
+   "wtnImplicito": 7.73
+  },
+  {
    "id": 800394740,
    "nombre": "Filip Cristian Jianu",
    "elo": 2137.3,
@@ -1016,10 +1064,42 @@
   {
    "id": 800476250,
    "nombre": "Jack Loge",
-   "elo": 2133,
-   "partidos": 9,
+   "elo": 2134,
+   "partidos": 10,
    "wtn": 8.33,
+   "wtnImplicito": 7.81
+  },
+  {
+   "id": 800391412,
+   "nombre": "Ryan Nijboer",
+   "elo": 2132.8,
+   "partidos": 4,
+   "wtn": 8.03,
    "wtnImplicito": 7.82
+  },
+  {
+   "id": 800459962,
+   "nombre": "Manish Sureshkumar",
+   "elo": 2131.5,
+   "partidos": 5,
+   "wtn": 7.41,
+   "wtnImplicito": 7.84
+  },
+  {
+   "id": 800480283,
+   "nombre": "Pedro Rodenas",
+   "elo": 2131.5,
+   "partidos": 8,
+   "wtn": 8.84,
+   "wtnImplicito": 7.84
+  },
+  {
+   "id": 800460832,
+   "nombre": "Tristan McCormick",
+   "elo": 2130.7,
+   "partidos": 11,
+   "wtn": 8.96,
+   "wtnImplicito": 7.85
   },
   {
    "id": 800330677,
@@ -1054,36 +1134,12 @@
    "wtnImplicito": 7.89
   },
   {
-   "id": 800371027,
-   "nombre": "Sander Jong",
-   "elo": 2126.4,
-   "partidos": 3,
-   "wtn": 8.44,
-   "wtnImplicito": 7.9
-  },
-  {
    "id": 800541408,
    "nombre": "Daniele Rapagnetta",
    "elo": 2126.1,
    "partidos": 3,
    "wtn": 8.41,
    "wtnImplicito": 7.9
-  },
-  {
-   "id": 800497659,
-   "nombre": "Martin VAN DER MEERSCHEN",
-   "elo": 2125.7,
-   "partidos": 10,
-   "wtn": 8.83,
-   "wtnImplicito": 7.91
-  },
-  {
-   "id": 800264394,
-   "nombre": "Kenny De Schepper",
-   "elo": 2125,
-   "partidos": 6,
-   "wtn": 9.04,
-   "wtnImplicito": 7.92
   },
   {
    "id": 800652401,
@@ -1198,6 +1254,22 @@
    "wtnImplicito": 8.01
   },
   {
+   "id": 800451453,
+   "nombre": "Dev Javia",
+   "elo": 2117,
+   "partidos": 6,
+   "wtn": 9.7,
+   "wtnImplicito": 8.02
+  },
+  {
+   "id": 800501286,
+   "nombre": "Yaroslav Demin",
+   "elo": 2116.4,
+   "partidos": 6,
+   "wtn": 8.95,
+   "wtnImplicito": 8.02
+  },
+  {
    "id": 800437469,
    "nombre": "Uisung Park",
    "elo": 2115.5,
@@ -1206,35 +1278,19 @@
    "wtnImplicito": 8.04
   },
   {
-   "id": 800480283,
-   "nombre": "Pedro Rodenas",
-   "elo": 2114.5,
-   "partidos": 6,
-   "wtn": 8.84,
-   "wtnImplicito": 8.05
-  },
-  {
-   "id": 800534774,
-   "nombre": "Rares Teodor Pieleanu",
-   "elo": 2113.8,
-   "partidos": 9,
-   "wtn": 9.08,
-   "wtnImplicito": 8.06
-  },
-  {
-   "id": 800459962,
-   "nombre": "Manish Sureshkumar",
-   "elo": 2113.1,
-   "partidos": 4,
-   "wtn": 7.41,
-   "wtnImplicito": 8.06
-  },
-  {
    "id": 800579895,
    "nombre": "Ziga Sesko",
    "elo": 2112.2,
    "partidos": 8,
    "wtn": 9.32,
+   "wtnImplicito": 8.08
+  },
+  {
+   "id": 800397032,
+   "nombre": "Hady Habib",
+   "elo": 2111.7,
+   "partidos": 2,
+   "wtn": 7.69,
    "wtnImplicito": 8.08
   },
   {
@@ -1286,12 +1342,28 @@
    "wtnImplicito": 8.12
   },
   {
-   "id": 800556802,
-   "nombre": "Karim Bennani",
-   "elo": 2106,
+   "id": 800264394,
+   "nombre": "Kenny De Schepper",
+   "elo": 2107.8,
+   "partidos": 7,
+   "wtn": 9.04,
+   "wtnImplicito": 8.13
+  },
+  {
+   "id": 800343296,
+   "nombre": "Arthur Weber",
+   "elo": 2107.7,
+   "partidos": 4,
+   "wtn": 8.23,
+   "wtnImplicito": 8.13
+  },
+  {
+   "id": 800530644,
+   "nombre": "Yassine Dlimi",
+   "elo": 2107.4,
    "partidos": 2,
-   "wtn": 8.08,
-   "wtnImplicito": 8.15
+   "wtn": 8.59,
+   "wtnImplicito": 8.13
   },
   {
    "id": 800375314,
@@ -1308,6 +1380,14 @@
    "partidos": 5,
    "wtn": 7.76,
    "wtnImplicito": 8.16
+  },
+  {
+   "id": 800498597,
+   "nombre": "Nicolas Jadoun",
+   "elo": 2104.9,
+   "partidos": 9,
+   "wtn": 9.43,
+   "wtnImplicito": 8.17
   },
   {
    "id": 800375999,
@@ -1350,14 +1430,6 @@
    "wtnImplicito": 8.19
   },
   {
-   "id": 800469371,
-   "nombre": "Fares Zakaria",
-   "elo": 2102.5,
-   "partidos": 5,
-   "wtn": 8.09,
-   "wtnImplicito": 8.19
-  },
-  {
    "id": 800484994,
    "nombre": "Walid Ahouda",
    "elo": 2102.3,
@@ -1374,12 +1446,12 @@
    "wtnImplicito": 8.2
   },
   {
-   "id": 800391412,
-   "nombre": "Ryan Nijboer",
-   "elo": 2101.5,
-   "partidos": 2,
-   "wtn": 8.03,
-   "wtnImplicito": 8.21
+   "id": 800534774,
+   "nombre": "Rares Teodor Pieleanu",
+   "elo": 2100.8,
+   "partidos": 10,
+   "wtn": 9.08,
+   "wtnImplicito": 8.22
   },
   {
    "id": 800449757,
@@ -1396,22 +1468,6 @@
    "partidos": 2,
    "wtn": 7.95,
    "wtnImplicito": 8.23
-  },
-  {
-   "id": 800498597,
-   "nombre": "Nicolas Jadoun",
-   "elo": 2099.4,
-   "partidos": 7,
-   "wtn": 9.43,
-   "wtnImplicito": 8.23
-  },
-  {
-   "id": 800501286,
-   "nombre": "Yaroslav Demin",
-   "elo": 2098.6,
-   "partidos": 5,
-   "wtn": 8.95,
-   "wtnImplicito": 8.24
   },
   {
    "id": 800305678,
@@ -1459,6 +1515,14 @@
    "elo": 2095.6,
    "partidos": 4,
    "wtn": 8.65,
+   "wtnImplicito": 8.28
+  },
+  {
+   "id": 800410577,
+   "nombre": "Alex Knaff",
+   "elo": 2095.6,
+   "partidos": 2,
+   "wtn": 8.89,
    "wtnImplicito": 8.28
   },
   {
@@ -1518,22 +1582,6 @@
    "wtnImplicito": 8.31
   },
   {
-   "id": 800512320,
-   "nombre": "Emilien Demanet",
-   "elo": 2092.2,
-   "partidos": 3,
-   "wtn": 8.6,
-   "wtnImplicito": 8.32
-  },
-  {
-   "id": 800451453,
-   "nombre": "Dev Javia",
-   "elo": 2092.1,
-   "partidos": 4,
-   "wtn": 9.7,
-   "wtnImplicito": 8.32
-  },
-  {
    "id": 800724214,
    "nombre": "Federico Aguilar Cardozo",
    "elo": 2091.3,
@@ -1556,6 +1604,14 @@
    "partidos": 1,
    "wtn": 7.93,
    "wtnImplicito": 8.36
+  },
+  {
+   "id": 800427136,
+   "nombre": "John Echeverria",
+   "elo": 2088.2,
+   "partidos": 2,
+   "wtn": 8.66,
+   "wtnImplicito": 8.37
   },
   {
    "id": 800567492,
@@ -1582,6 +1638,22 @@
    "wtnImplicito": 8.4
   },
   {
+   "id": 800477933,
+   "nombre": "Cesar Bouchelaghem",
+   "elo": 2085.3,
+   "partidos": 2,
+   "wtn": 8.78,
+   "wtnImplicito": 8.41
+  },
+  {
+   "id": 800571599,
+   "nombre": "Alejandro Manzanera Pertusa",
+   "elo": 2085.2,
+   "partidos": 2,
+   "wtn": 9.02,
+   "wtnImplicito": 8.41
+  },
+  {
    "id": 800413520,
    "nombre": "Jeffrey Von Der Schulenburg",
    "elo": 2084.8,
@@ -1603,14 +1675,6 @@
    "elo": 2084,
    "partidos": 11,
    "wtn": 10.09,
-   "wtnImplicito": 8.42
-  },
-  {
-   "id": 800343296,
-   "nombre": "Arthur Weber",
-   "elo": 2084,
-   "partidos": 2,
-   "wtn": 8.23,
    "wtnImplicito": 8.42
   },
   {
@@ -1670,6 +1734,14 @@
    "wtnImplicito": 8.45
   },
   {
+   "id": 800336641,
+   "nombre": "Kristjan Tamm",
+   "elo": 2081.9,
+   "partidos": 13,
+   "wtn": 9.93,
+   "wtnImplicito": 8.45
+  },
+  {
    "id": 800595243,
    "nombre": "Michael Savano",
    "elo": 2081.1,
@@ -1702,6 +1774,14 @@
    "wtnImplicito": 8.49
   },
   {
+   "id": 800475496,
+   "nombre": "Robin Bertrand",
+   "elo": 2078.1,
+   "partidos": 9,
+   "wtn": 8.47,
+   "wtnImplicito": 8.49
+  },
+  {
    "id": 800338365,
    "nombre": "Corentin Denolly",
    "elo": 2078.1,
@@ -1710,11 +1790,11 @@
    "wtnImplicito": 8.49
   },
   {
-   "id": 800336641,
-   "nombre": "Kristjan Tamm",
-   "elo": 2077.7,
-   "partidos": 12,
-   "wtn": 9.93,
+   "id": 800514241,
+   "nombre": "Thiago Cigarran",
+   "elo": 2077.3,
+   "partidos": 8,
+   "wtn": 9.25,
    "wtnImplicito": 8.5
   },
   {
@@ -1750,19 +1830,27 @@
    "wtnImplicito": 8.55
   },
   {
-   "id": 800514241,
-   "nombre": "Thiago Cigarran",
-   "elo": 2073.2,
-   "partidos": 7,
-   "wtn": 9.25,
+   "id": 800532285,
+   "nombre": "Michal Krajci",
+   "elo": 2073.7,
+   "partidos": 5,
+   "wtn": 8.84,
    "wtnImplicito": 8.55
   },
   {
-   "id": 800427136,
-   "nombre": "John Echeverria",
-   "elo": 2071.5,
-   "partidos": 1,
-   "wtn": 8.66,
+   "id": 800365219,
+   "nombre": "Alexandre Reco",
+   "elo": 2073.2,
+   "partidos": 2,
+   "wtn": 9.37,
+   "wtnImplicito": 8.56
+  },
+  {
+   "id": 800582785,
+   "nombre": "Bernardo Munk Mesa",
+   "elo": 2071.2,
+   "partidos": 9,
+   "wtn": 9.37,
    "wtnImplicito": 8.58
   },
   {
@@ -1771,14 +1859,6 @@
    "elo": 2071.1,
    "partidos": 12,
    "wtn": 10.69,
-   "wtnImplicito": 8.58
-  },
-  {
-   "id": 800410577,
-   "nombre": "Alex Knaff",
-   "elo": 2070.9,
-   "partidos": 1,
-   "wtn": 8.89,
    "wtnImplicito": 8.58
   },
   {
@@ -1795,6 +1875,14 @@
    "elo": 2067.9,
    "partidos": 7,
    "wtn": 9.08,
+   "wtnImplicito": 8.62
+  },
+  {
+   "id": 800409629,
+   "nombre": "Pierre Delage",
+   "elo": 2067.5,
+   "partidos": 10,
+   "wtn": 8.66,
    "wtnImplicito": 8.62
   },
   {
@@ -1832,17 +1920,17 @@
   {
    "id": 800476346,
    "nombre": "Carles Hernandez",
-   "elo": 2065.2,
-   "partidos": 5,
+   "elo": 2065.4,
+   "partidos": 7,
    "wtn": 9.05,
    "wtnImplicito": 8.65
   },
   {
-   "id": 800562309,
-   "nombre": "Aaron Funk",
-   "elo": 2064.7,
-   "partidos": 8,
-   "wtn": 9.58,
+   "id": 800357828,
+   "nombre": "Aziz Ouakaa",
+   "elo": 2064.5,
+   "partidos": 2,
+   "wtn": 9.11,
    "wtnImplicito": 8.66
   },
   {
@@ -1854,12 +1942,12 @@
    "wtnImplicito": 8.66
   },
   {
-   "id": 800582798,
-   "nombre": "Hiromasa Koyama",
-   "elo": 2064.2,
-   "partidos": 8,
-   "wtn": 9.57,
-   "wtnImplicito": 8.67
+   "id": 800512320,
+   "nombre": "Emilien Demanet",
+   "elo": 2063.4,
+   "partidos": 4,
+   "wtn": 8.6,
+   "wtnImplicito": 8.68
   },
   {
    "id": 800367967,
@@ -1870,6 +1958,14 @@
    "wtnImplicito": 8.68
   },
   {
+   "id": 800357203,
+   "nombre": "Colin Sinclair",
+   "elo": 2062.4,
+   "partidos": 2,
+   "wtn": 9.08,
+   "wtnImplicito": 8.69
+  },
+  {
    "id": 800431935,
    "nombre": "Ignacio Monzon",
    "elo": 2062.3,
@@ -1878,19 +1974,19 @@
    "wtnImplicito": 8.69
   },
   {
+   "id": 800484574,
+   "nombre": "Roan Jones",
+   "elo": 2061.5,
+   "partidos": 7,
+   "wtn": 9.35,
+   "wtnImplicito": 8.7
+  },
+  {
    "id": 800398232,
    "nombre": "Kristijan Juhas",
    "elo": 2060.9,
    "partidos": 16,
    "wtn": 9.22,
-   "wtnImplicito": 8.71
-  },
-  {
-   "id": 800475496,
-   "nombre": "Robin Bertrand",
-   "elo": 2060.9,
-   "partidos": 8,
-   "wtn": 8.47,
    "wtnImplicito": 8.71
   },
   {
@@ -1926,22 +2022,6 @@
    "wtnImplicito": 8.75
   },
   {
-   "id": 800676565,
-   "nombre": "Iannis Miletich",
-   "elo": 2057.3,
-   "partidos": 8,
-   "wtn": 9.81,
-   "wtnImplicito": 8.75
-  },
-  {
-   "id": 800535030,
-   "nombre": "Brian Bozemoj",
-   "elo": 2057.3,
-   "partidos": 6,
-   "wtn": 8.34,
-   "wtnImplicito": 8.75
-  },
-  {
    "id": 800572549,
    "nombre": "Santiago Giamichelle",
    "elo": 2056.7,
@@ -1950,12 +2030,12 @@
    "wtnImplicito": 8.76
   },
   {
-   "id": 800409629,
-   "nombre": "Pierre Delage",
-   "elo": 2056,
-   "partidos": 9,
-   "wtn": 8.66,
-   "wtnImplicito": 8.77
+   "id": 800478802,
+   "nombre": "Thanapet Chanta",
+   "elo": 2055.1,
+   "partidos": 2,
+   "wtn": 9.32,
+   "wtnImplicito": 8.78
   },
   {
    "id": 800328388,
@@ -1963,6 +2043,14 @@
    "elo": 2053.3,
    "partidos": 5,
    "wtn": 8.9,
+   "wtnImplicito": 8.8
+  },
+  {
+   "id": 800582798,
+   "nombre": "Hiromasa Koyama",
+   "elo": 2053,
+   "partidos": 10,
+   "wtn": 9.57,
    "wtnImplicito": 8.8
   },
   {
@@ -1982,27 +2070,11 @@
    "wtnImplicito": 8.82
   },
   {
-   "id": 800485850,
-   "nombre": "Benjamin Pietri",
-   "elo": 2051.2,
-   "partidos": 7,
-   "wtn": 9.19,
-   "wtnImplicito": 8.82
-  },
-  {
    "id": 800427144,
    "nombre": "Marcello Serafini",
    "elo": 2051,
    "partidos": 5,
    "wtn": 9.13,
-   "wtnImplicito": 8.83
-  },
-  {
-   "id": 800495710,
-   "nombre": "Daniel Verbeek",
-   "elo": 2050.9,
-   "partidos": 14,
-   "wtn": 9.02,
    "wtnImplicito": 8.83
   },
   {
@@ -2014,11 +2086,11 @@
    "wtnImplicito": 8.83
   },
   {
-   "id": 800582785,
-   "nombre": "Bernardo Munk Mesa",
-   "elo": 2050.3,
-   "partidos": 7,
-   "wtn": 9.37,
+   "id": 800439752,
+   "nombre": "Elgin Khoeblal",
+   "elo": 2050.1,
+   "partidos": 12,
+   "wtn": 9.26,
    "wtnImplicito": 8.84
   },
   {
@@ -2030,20 +2102,20 @@
    "wtnImplicito": 8.84
   },
   {
+   "id": 800708045,
+   "nombre": "Hugo Car",
+   "elo": 2050,
+   "partidos": 2,
+   "wtn": 9.28,
+   "wtnImplicito": 8.84
+  },
+  {
    "id": 800336642,
    "nombre": "Ergi Kirkin",
    "elo": 2049.6,
    "partidos": 2,
    "wtn": 8.69,
    "wtnImplicito": 8.84
-  },
-  {
-   "id": 800509388,
-   "nombre": "Liam Branger",
-   "elo": 2048.5,
-   "partidos": 6,
-   "wtn": 9.34,
-   "wtnImplicito": 8.86
   },
   {
    "id": 800523264,
@@ -2070,6 +2142,14 @@
    "wtnImplicito": 8.86
   },
   {
+   "id": 800341740,
+   "nombre": "Nicola Rispoli",
+   "elo": 2047.7,
+   "partidos": 11,
+   "wtn": 9.61,
+   "wtnImplicito": 8.87
+  },
+  {
    "id": 800398183,
    "nombre": "Felix Corwin",
    "elo": 2047.7,
@@ -2086,19 +2166,19 @@
    "wtnImplicito": 8.87
   },
   {
+   "id": 800508298,
+   "nombre": "Stijn Paardekooper",
+   "elo": 2047.2,
+   "partidos": 6,
+   "wtn": 9.25,
+   "wtnImplicito": 8.87
+  },
+  {
    "id": 800506085,
    "nombre": "Jakub Filip",
    "elo": 2047.2,
    "partidos": 4,
    "wtn": 9.28,
-   "wtnImplicito": 8.87
-  },
-  {
-   "id": 800532285,
-   "nombre": "Michal Krajci",
-   "elo": 2047.2,
-   "partidos": 3,
-   "wtn": 8.84,
    "wtnImplicito": 8.87
   },
   {
@@ -2110,6 +2190,14 @@
    "wtnImplicito": 8.88
   },
   {
+   "id": 800427061,
+   "nombre": "Alejandro Garcia Carbajal",
+   "elo": 2046.5,
+   "partidos": 7,
+   "wtn": 9.37,
+   "wtnImplicito": 8.88
+  },
+  {
    "id": 800557885,
    "nombre": "Jonah Braswell",
    "elo": 2045.8,
@@ -2118,11 +2206,11 @@
    "wtnImplicito": 8.89
   },
   {
-   "id": 800365219,
-   "nombre": "Alexandre Reco",
+   "id": 800676565,
+   "nombre": "Iannis Miletich",
    "elo": 2045.5,
-   "partidos": 1,
-   "wtn": 9.37,
+   "partidos": 9,
+   "wtn": 9.81,
    "wtnImplicito": 8.89
   },
   {
@@ -2131,14 +2219,6 @@
    "elo": 2045.3,
    "partidos": 8,
    "wtn": 9.46,
-   "wtnImplicito": 8.9
-  },
-  {
-   "id": 800603434,
-   "nombre": "Carles Cordoba",
-   "elo": 2045.2,
-   "partidos": 3,
-   "wtn": 9.1,
    "wtnImplicito": 8.9
   },
   {
@@ -2174,14 +2254,6 @@
    "wtnImplicito": 8.9
   },
   {
-   "id": 800562544,
-   "nombre": "Tudor Batin",
-   "elo": 2044.7,
-   "partidos": 7,
-   "wtn": 9.34,
-   "wtnImplicito": 8.9
-  },
-  {
    "id": 800467682,
    "nombre": "Lars Goran Verwerft",
    "elo": 2044.6,
@@ -2195,6 +2267,14 @@
    "elo": 2042.5,
    "partidos": 4,
    "wtn": 9.08,
+   "wtnImplicito": 8.93
+  },
+  {
+   "id": 800535030,
+   "nombre": "Brian Bozemoj",
+   "elo": 2042.3,
+   "partidos": 7,
+   "wtn": 8.34,
    "wtnImplicito": 8.93
   },
   {
@@ -2246,12 +2326,12 @@
    "wtnImplicito": 8.96
   },
   {
-   "id": 800406140,
-   "nombre": "Toufik Sahtali",
-   "elo": 2039.8,
-   "partidos": 4,
-   "wtn": 8.99,
-   "wtnImplicito": 8.96
+   "id": 800562309,
+   "nombre": "Aaron Funk",
+   "elo": 2039.4,
+   "partidos": 9,
+   "wtn": 9.58,
+   "wtnImplicito": 8.97
   },
   {
    "id": 800329863,
@@ -2286,6 +2366,14 @@
    "wtnImplicito": 8.99
   },
   {
+   "id": 800485850,
+   "nombre": "Benjamin Pietri",
+   "elo": 2037.4,
+   "partidos": 8,
+   "wtn": 9.19,
+   "wtnImplicito": 8.99
+  },
+  {
    "id": 800568574,
    "nombre": "Alan Wazny",
    "elo": 2037.4,
@@ -2294,11 +2382,11 @@
    "wtnImplicito": 8.99
   },
   {
-   "id": 800439752,
-   "nombre": "Elgin Khoeblal",
-   "elo": 2037.2,
-   "partidos": 10,
-   "wtn": 9.26,
+   "id": 800432898,
+   "nombre": "Conor Gannon",
+   "elo": 2036.9,
+   "partidos": 3,
+   "wtn": 9.16,
    "wtnImplicito": 9
   },
   {
@@ -2342,14 +2430,6 @@
    "wtnImplicito": 9.02
   },
   {
-   "id": 800492715,
-   "nombre": "Julien Penzlin",
-   "elo": 2035.4,
-   "partidos": 4,
-   "wtn": 9.63,
-   "wtnImplicito": 9.02
-  },
-  {
    "id": 800396686,
    "nombre": "Wojciech Marek",
    "elo": 2035.4,
@@ -2358,27 +2438,11 @@
    "wtnImplicito": 9.02
   },
   {
-   "id": 800341740,
-   "nombre": "Nicola Rispoli",
-   "elo": 2035.3,
-   "partidos": 10,
-   "wtn": 9.61,
-   "wtnImplicito": 9.02
-  },
-  {
    "id": 800515809,
    "nombre": "Jelani Sarr",
    "elo": 2035,
    "partidos": 6,
    "wtn": 8.8,
-   "wtnImplicito": 9.02
-  },
-  {
-   "id": 800460603,
-   "nombre": "Guillaume Dalmasso",
-   "elo": 2034.9,
-   "partidos": 1,
-   "wtn": 9.32,
    "wtnImplicito": 9.02
   },
   {
@@ -2411,6 +2475,14 @@
    "elo": 2033.6,
    "partidos": 4,
    "wtn": 9.32,
+   "wtnImplicito": 9.04
+  },
+  {
+   "id": 800495710,
+   "nombre": "Daniel Verbeek",
+   "elo": 2033.5,
+   "partidos": 15,
+   "wtn": 9.02,
    "wtnImplicito": 9.04
   },
   {
@@ -2454,19 +2526,11 @@
    "wtnImplicito": 9.05
   },
   {
-   "id": 800478802,
-   "nombre": "Thanapet Chanta",
+   "id": 800562544,
+   "nombre": "Tudor Batin",
    "elo": 2032.4,
-   "partidos": 1,
-   "wtn": 9.32,
-   "wtnImplicito": 9.05
-  },
-  {
-   "id": 800397665,
-   "nombre": "Pietro Marino",
-   "elo": 2032.3,
-   "partidos": 2,
-   "wtn": 9.41,
+   "partidos": 8,
+   "wtn": 9.34,
    "wtnImplicito": 9.06
   },
   {
@@ -2475,6 +2539,22 @@
    "elo": 2032.2,
    "partidos": 2,
    "wtn": 8.67,
+   "wtnImplicito": 9.06
+  },
+  {
+   "id": 800349357,
+   "nombre": "Michiel De Krom",
+   "elo": 2032,
+   "partidos": 5,
+   "wtn": 9.07,
+   "wtnImplicito": 9.06
+  },
+  {
+   "id": 800492715,
+   "nombre": "Julien Penzlin",
+   "elo": 2031.9,
+   "partidos": 6,
+   "wtn": 9.63,
    "wtnImplicito": 9.06
   },
   {
@@ -2534,14 +2614,6 @@
    "wtnImplicito": 9.08
   },
   {
-   "id": 800530359,
-   "nombre": "Karim Ibrahim",
-   "elo": 2030.1,
-   "partidos": 1,
-   "wtn": 8.56,
-   "wtnImplicito": 9.08
-  },
-  {
    "id": 800439806,
    "nombre": "Matisse Bobichon",
    "elo": 2030.1,
@@ -2566,6 +2638,14 @@
    "wtnImplicito": 9.1
   },
   {
+   "id": 800482139,
+   "nombre": "Thantub Suksumrarn",
+   "elo": 2028.2,
+   "partidos": 2,
+   "wtn": 9.81,
+   "wtnImplicito": 9.11
+  },
+  {
    "id": 800476657,
    "nombre": "Pablo Trochu",
    "elo": 2028.1,
@@ -2582,11 +2662,11 @@
    "wtnImplicito": 9.12
   },
   {
-   "id": 800590041,
-   "nombre": "Matei Florin Breazu",
-   "elo": 2026.7,
-   "partidos": 5,
-   "wtn": 8.63,
+   "id": 800509388,
+   "nombre": "Liam Branger",
+   "elo": 2026,
+   "partidos": 7,
+   "wtn": 9.34,
    "wtnImplicito": 9.13
   },
   {
@@ -2622,14 +2702,6 @@
    "wtnImplicito": 9.15
   },
   {
-   "id": 800484574,
-   "nombre": "Roan Jones",
-   "elo": 2024,
-   "partidos": 5,
-   "wtn": 9.35,
-   "wtnImplicito": 9.16
-  },
-  {
    "id": 800371292,
    "nombre": "Filippo Moroni",
    "elo": 2023.7,
@@ -2646,36 +2718,12 @@
    "wtnImplicito": 9.17
   },
   {
-   "id": 800508298,
-   "nombre": "Stijn Paardekooper",
-   "elo": 2023.1,
-   "partidos": 4,
-   "wtn": 9.25,
-   "wtnImplicito": 9.17
-  },
-  {
-   "id": 800453011,
-   "nombre": "Hazem Naw",
-   "elo": 2023.1,
-   "partidos": 3,
-   "wtn": 9.26,
-   "wtnImplicito": 9.17
-  },
-  {
    "id": 800540733,
    "nombre": "Adrien Berrut",
    "elo": 2023,
    "partidos": 5,
    "wtn": 9.32,
    "wtnImplicito": 9.17
-  },
-  {
-   "id": 800646474,
-   "nombre": "Theodore Dean",
-   "elo": 2022,
-   "partidos": 4,
-   "wtn": 9.08,
-   "wtnImplicito": 9.18
   },
   {
    "id": 800484362,
@@ -2718,12 +2766,12 @@
    "wtnImplicito": 9.21
   },
   {
-   "id": 800603057,
-   "nombre": "Sergi Fita Juan",
-   "elo": 2019.3,
+   "id": 800603434,
+   "nombre": "Carles Cordoba",
+   "elo": 2019.7,
    "partidos": 4,
-   "wtn": 9.17,
-   "wtnImplicito": 9.22
+   "wtn": 9.1,
+   "wtnImplicito": 9.21
   },
   {
    "id": 800441300,
@@ -2732,14 +2780,6 @@
    "partidos": 6,
    "wtn": 9.43,
    "wtnImplicito": 9.22
-  },
-  {
-   "id": 800427061,
-   "nombre": "Alejandro Garcia Carbajal",
-   "elo": 2017.9,
-   "partidos": 5,
-   "wtn": 9.37,
-   "wtnImplicito": 9.23
   },
   {
    "id": 800526296,
@@ -2780,6 +2820,14 @@
    "partidos": 2,
    "wtn": 9.17,
    "wtnImplicito": 9.26
+  },
+  {
+   "id": 800453011,
+   "nombre": "Hazem Naw",
+   "elo": 2015.3,
+   "partidos": 5,
+   "wtn": 9.26,
+   "wtnImplicito": 9.27
   },
   {
    "id": 800449365,
@@ -2838,6 +2886,14 @@
    "wtnImplicito": 9.29
   },
   {
+   "id": 800590041,
+   "nombre": "Matei Florin Breazu",
+   "elo": 2012.4,
+   "partidos": 6,
+   "wtn": 8.63,
+   "wtnImplicito": 9.3
+  },
+  {
    "id": 800523058,
    "nombre": "Pierre Antoine Tailleu",
    "elo": 2011.8,
@@ -2862,6 +2918,14 @@
    "wtnImplicito": 9.31
   },
   {
+   "id": 800602175,
+   "nombre": "Yuta Tomida",
+   "elo": 2011.3,
+   "partidos": 2,
+   "wtn": 9.81,
+   "wtnImplicito": 9.31
+  },
+  {
    "id": 800443778,
    "nombre": "Isaac Becroft",
    "elo": 2010.7,
@@ -2875,6 +2939,14 @@
    "elo": 2010.3,
    "partidos": 5,
    "wtn": 10.15,
+   "wtnImplicito": 9.33
+  },
+  {
+   "id": 800460603,
+   "nombre": "Guillaume Dalmasso",
+   "elo": 2010.3,
+   "partidos": 2,
+   "wtn": 9.32,
    "wtnImplicito": 9.33
   },
   {
@@ -2894,22 +2966,6 @@
    "wtnImplicito": 9.34
   },
   {
-   "id": 800696186,
-   "nombre": "Maan Kesharwani",
-   "elo": 2008.9,
-   "partidos": 6,
-   "wtn": 10.14,
-   "wtnImplicito": 9.34
-  },
-  {
-   "id": 800432898,
-   "nombre": "Conor Gannon",
-   "elo": 2008.3,
-   "partidos": 1,
-   "wtn": 9.16,
-   "wtnImplicito": 9.35
-  },
-  {
    "id": 800478624,
    "nombre": "Jacopo Bilardo",
    "elo": 2007.7,
@@ -2926,6 +2982,14 @@
    "wtnImplicito": 9.36
   },
   {
+   "id": 800696186,
+   "nombre": "Maan Kesharwani",
+   "elo": 2007,
+   "partidos": 7,
+   "wtn": 10.14,
+   "wtnImplicito": 9.37
+  },
+  {
    "id": 800485882,
    "nombre": "Hanyi Liu",
    "elo": 2006.5,
@@ -2934,11 +2998,35 @@
    "wtnImplicito": 9.37
   },
   {
+   "id": 800564256,
+   "nombre": "Jacob Bradshaw",
+   "elo": 2006.4,
+   "partidos": 1,
+   "wtn": 8.86,
+   "wtnImplicito": 9.37
+  },
+  {
+   "id": 800335268,
+   "nombre": "Jeremy Gschwendtner",
+   "elo": 2006.1,
+   "partidos": 8,
+   "wtn": 9.76,
+   "wtnImplicito": 9.38
+  },
+  {
    "id": 800594501,
    "nombre": "Ferdinand Livet Novkirichka",
    "elo": 2005.8,
    "partidos": 3,
    "wtn": 9.46,
+   "wtnImplicito": 9.38
+  },
+  {
+   "id": 800486626,
+   "nombre": "Maximilian Figl",
+   "elo": 2005.7,
+   "partidos": 11,
+   "wtn": 9.78,
    "wtnImplicito": 9.38
   },
   {
@@ -2958,6 +3046,14 @@
    "wtnImplicito": 9.39
   },
   {
+   "id": 800424398,
+   "nombre": "Dax Donders",
+   "elo": 2005.2,
+   "partidos": 5,
+   "wtn": 8.89,
+   "wtnImplicito": 9.39
+  },
+  {
    "id": 800510058,
    "nombre": "Amir Omarkhanov",
    "elo": 2004.9,
@@ -2971,6 +3067,14 @@
    "elo": 2004.9,
    "partidos": 5,
    "wtn": 10.41,
+   "wtnImplicito": 9.39
+  },
+  {
+   "id": 800397665,
+   "nombre": "Pietro Marino",
+   "elo": 2004.9,
+   "partidos": 3,
+   "wtn": 9.41,
    "wtnImplicito": 9.39
   },
   {
@@ -3006,20 +3110,20 @@
    "wtnImplicito": 9.4
   },
   {
-   "id": 800483074,
-   "nombre": "Noah Perfetti",
-   "elo": 2003.9,
-   "partidos": 2,
-   "wtn": 9.51,
-   "wtnImplicito": 9.4
-  },
-  {
    "id": 800514432,
    "nombre": "Vuk Radjenovic",
    "elo": 2003.1,
    "partidos": 8,
    "wtn": 9.9,
    "wtnImplicito": 9.41
+  },
+  {
+   "id": 800646474,
+   "nombre": "Theodore Dean",
+   "elo": 2002.7,
+   "partidos": 5,
+   "wtn": 9.08,
+   "wtnImplicito": 9.42
   },
   {
    "id": 800424734,
@@ -3054,19 +3158,11 @@
    "wtnImplicito": 9.43
   },
   {
-   "id": 800441229,
-   "nombre": "Vasco Leote Prata",
-   "elo": 2001.3,
-   "partidos": 6,
-   "wtn": 9.63,
-   "wtnImplicito": 9.44
-  },
-  {
-   "id": 800486626,
-   "nombre": "Maximilian Figl",
-   "elo": 2001.2,
-   "partidos": 9,
-   "wtn": 9.78,
+   "id": 800406140,
+   "nombre": "Toufik Sahtali",
+   "elo": 2001.4,
+   "partidos": 5,
+   "wtn": 8.99,
    "wtnImplicito": 9.44
   },
   {
@@ -3126,6 +3222,14 @@
    "wtnImplicito": 9.47
   },
   {
+   "id": 800530359,
+   "nombre": "Karim Ibrahim",
+   "elo": 1998.7,
+   "partidos": 2,
+   "wtn": 8.56,
+   "wtnImplicito": 9.47
+  },
+  {
    "id": 800683060,
    "nombre": "Edoardo Cherie Ligniere",
    "elo": 1998.6,
@@ -3142,12 +3246,12 @@
    "wtnImplicito": 9.48
   },
   {
-   "id": 800462095,
-   "nombre": "Linang Xiao",
-   "elo": 1997.2,
-   "partidos": 1,
-   "wtn": 9.26,
-   "wtnImplicito": 9.49
+   "id": 800603057,
+   "nombre": "Sergi Fita Juan",
+   "elo": 1998.2,
+   "partidos": 5,
+   "wtn": 9.17,
+   "wtnImplicito": 9.47
   },
   {
    "id": 800412194,
@@ -3166,12 +3270,12 @@
    "wtnImplicito": 9.5
   },
   {
-   "id": 800341872,
-   "nombre": "Stefan Vujic",
-   "elo": 1994.4,
-   "partidos": 4,
-   "wtn": 9.46,
-   "wtnImplicito": 9.52
+   "id": 800698197,
+   "nombre": "Enrique Carrascosa Diaz",
+   "elo": 1995.6,
+   "partidos": 3,
+   "wtn": 10.38,
+   "wtnImplicito": 9.51
   },
   {
    "id": 800562263,
@@ -3187,6 +3291,14 @@
    "elo": 1994.4,
    "partidos": 2,
    "wtn": 9.7,
+   "wtnImplicito": 9.52
+  },
+  {
+   "id": 800338328,
+   "nombre": "Sasikumar Mukund",
+   "elo": 1994.2,
+   "partidos": 7,
+   "wtn": 9.08,
    "wtnImplicito": 9.52
   },
   {
@@ -3238,27 +3350,11 @@
    "wtnImplicito": 9.53
   },
   {
-   "id": 800335268,
-   "nombre": "Jeremy Gschwendtner",
-   "elo": 1992.4,
-   "partidos": 7,
-   "wtn": 9.76,
-   "wtnImplicito": 9.55
-  },
-  {
    "id": 800462779,
    "nombre": "Keisuke Saitoh",
    "elo": 1992.4,
    "partidos": 3,
    "wtn": 9.01,
-   "wtnImplicito": 9.55
-  },
-  {
-   "id": 800603729,
-   "nombre": "Amr Elsayed",
-   "elo": 1992.4,
-   "partidos": 2,
-   "wtn": 9.35,
    "wtnImplicito": 9.55
   },
   {
@@ -3292,6 +3388,14 @@
    "partidos": 4,
    "wtn": 9.19,
    "wtnImplicito": 9.57
+  },
+  {
+   "id": 800441229,
+   "nombre": "Vasco Leote Prata",
+   "elo": 1989.9,
+   "partidos": 7,
+   "wtn": 9.63,
+   "wtnImplicito": 9.58
   },
   {
    "id": 800639022,
@@ -3334,11 +3438,11 @@
    "wtnImplicito": 9.6
   },
   {
-   "id": 800643472,
-   "nombre": "Oscar Brown",
-   "elo": 1987.5,
-   "partidos": 10,
-   "wtn": 9.61,
+   "id": 800435571,
+   "nombre": "Fons Van Sambeek",
+   "elo": 1987.4,
+   "partidos": 5,
+   "wtn": 9.43,
    "wtnImplicito": 9.61
   },
   {
@@ -3347,14 +3451,6 @@
    "elo": 1987,
    "partidos": 5,
    "wtn": 8.83,
-   "wtnImplicito": 9.61
-  },
-  {
-   "id": 800401680,
-   "nombre": "Pawit Sornlaksup",
-   "elo": 1986.9,
-   "partidos": 2,
-   "wtn": 9.57,
    "wtnImplicito": 9.61
   },
   {
@@ -3372,14 +3468,6 @@
    "partidos": 3,
    "wtn": 9.14,
    "wtnImplicito": 9.61
-  },
-  {
-   "id": 800424398,
-   "nombre": "Dax Donders",
-   "elo": 1986.4,
-   "partidos": 3,
-   "wtn": 8.89,
-   "wtnImplicito": 9.62
   },
   {
    "id": 800558394,
@@ -3422,14 +3510,6 @@
    "wtnImplicito": 9.64
   },
   {
-   "id": 800338328,
-   "nombre": "Sasikumar Mukund",
-   "elo": 1984.8,
-   "partidos": 5,
-   "wtn": 9.08,
-   "wtnImplicito": 9.64
-  },
-  {
    "id": 800544279,
    "nombre": "Alessandro Bellifemine",
    "elo": 1984.5,
@@ -3438,27 +3518,11 @@
    "wtnImplicito": 9.64
   },
   {
-   "id": 800512750,
-   "nombre": "Tanapatt Nirundorn",
-   "elo": 1984.3,
-   "partidos": 1,
-   "wtn": 10.12,
-   "wtnImplicito": 9.65
-  },
-  {
    "id": 800490313,
    "nombre": "Rodrigo Alujas",
    "elo": 1984.1,
    "partidos": 4,
    "wtn": 9.76,
-   "wtnImplicito": 9.65
-  },
-  {
-   "id": 800650699,
-   "nombre": "Pablo Aunion",
-   "elo": 1984.1,
-   "partidos": 9,
-   "wtn": 9.87,
    "wtnImplicito": 9.65
   },
   {
@@ -3470,27 +3534,11 @@
    "wtnImplicito": 9.65
   },
   {
-   "id": 800349357,
-   "nombre": "Michiel De Krom",
-   "elo": 1984,
-   "partidos": 3,
-   "wtn": 9.07,
-   "wtnImplicito": 9.65
-  },
-  {
    "id": 800352189,
    "nombre": "Petros Tsitsipas",
    "elo": 1984,
    "partidos": 1,
    "wtn": 9.43,
-   "wtnImplicito": 9.65
-  },
-  {
-   "id": 800471098,
-   "nombre": "Benjamin O'Connell",
-   "elo": 1983.6,
-   "partidos": 1,
-   "wtn": 9.78,
    "wtnImplicito": 9.65
   },
   {
@@ -3598,19 +3646,19 @@
    "wtnImplicito": 9.7
   },
   {
+   "id": 800466571,
+   "nombre": "Qian Sun",
+   "elo": 1978.9,
+   "partidos": 9,
+   "wtn": 9.61,
+   "wtnImplicito": 9.71
+  },
+  {
    "id": 800440074,
    "nombre": "Damien Salvestre",
    "elo": 1978.6,
    "partidos": 2,
    "wtn": 9.63,
-   "wtnImplicito": 9.72
-  },
-  {
-   "id": 800375446,
-   "nombre": "Younes Lalami",
-   "elo": 1978.1,
-   "partidos": 1,
-   "wtn": 9.43,
    "wtnImplicito": 9.72
   },
   {
@@ -3638,6 +3686,14 @@
    "wtnImplicito": 9.74
   },
   {
+   "id": 800508728,
+   "nombre": "Jake Fellows",
+   "elo": 1976.9,
+   "partidos": 16,
+   "wtn": 10.44,
+   "wtnImplicito": 9.74
+  },
+  {
    "id": 800649944,
    "nombre": "Arthur Bonnaud",
    "elo": 1976.7,
@@ -3662,6 +3718,14 @@
    "wtnImplicito": 9.74
   },
   {
+   "id": 800483074,
+   "nombre": "Noah Perfetti",
+   "elo": 1975.8,
+   "partidos": 3,
+   "wtn": 9.51,
+   "wtnImplicito": 9.75
+  },
+  {
    "id": 800441778,
    "nombre": "Tomas Lanik",
    "elo": 1975.7,
@@ -3678,19 +3742,19 @@
    "wtnImplicito": 9.76
   },
   {
-   "id": 800484178,
-   "nombre": "Diogo Morais",
-   "elo": 1975,
-   "partidos": 7,
-   "wtn": 9.79,
-   "wtnImplicito": 9.76
-  },
-  {
    "id": 800544637,
    "nombre": "Filiberto Fumagalli",
    "elo": 1975,
    "partidos": 3,
    "wtn": 9.35,
+   "wtnImplicito": 9.76
+  },
+  {
+   "id": 800452012,
+   "nombre": "Geun Jun Kim",
+   "elo": 1974.8,
+   "partidos": 7,
+   "wtn": 9.76,
    "wtnImplicito": 9.76
   },
   {
@@ -3718,6 +3782,14 @@
    "wtnImplicito": 9.77
   },
   {
+   "id": 800462095,
+   "nombre": "Linang Xiao",
+   "elo": 1974.1,
+   "partidos": 2,
+   "wtn": 9.26,
+   "wtnImplicito": 9.77
+  },
+  {
    "id": 800583844,
    "nombre": "Ryo Tabata",
    "elo": 1973.3,
@@ -3739,6 +3811,14 @@
    "elo": 1972.4,
    "partidos": 2,
    "wtn": 9.25,
+   "wtnImplicito": 9.79
+  },
+  {
+   "id": 800490587,
+   "nombre": "Karim Al-Amin",
+   "elo": 1972.1,
+   "partidos": 8,
+   "wtn": 10.56,
    "wtnImplicito": 9.79
   },
   {
@@ -3774,6 +3854,14 @@
    "wtnImplicito": 9.8
   },
   {
+   "id": 800466883,
+   "nombre": "Aditya Balsekar",
+   "elo": 1971.3,
+   "partidos": 3,
+   "wtn": 10.23,
+   "wtnImplicito": 9.8
+  },
+  {
    "id": 800693525,
    "nombre": "Ryan Dickerson",
    "elo": 1971.2,
@@ -3806,6 +3894,22 @@
    "wtnImplicito": 9.82
   },
   {
+   "id": 800329291,
+   "nombre": "Aleksandre Bakshi",
+   "elo": 1969.9,
+   "partidos": 7,
+   "wtn": 9.76,
+   "wtnImplicito": 9.82
+  },
+  {
+   "id": 800650699,
+   "nombre": "Pablo Aunion",
+   "elo": 1969.7,
+   "partidos": 10,
+   "wtn": 9.87,
+   "wtnImplicito": 9.82
+  },
+  {
    "id": 800571016,
    "nombre": "Alexander Chang",
    "elo": 1969.4,
@@ -3819,14 +3923,6 @@
    "elo": 1969.3,
    "partidos": 3,
    "wtn": 9.44,
-   "wtnImplicito": 9.83
-  },
-  {
-   "id": 800538074,
-   "nombre": "Hugo Hashimoto",
-   "elo": 1969,
-   "partidos": 4,
-   "wtn": 9.79,
    "wtnImplicito": 9.83
   },
   {
@@ -3854,6 +3950,14 @@
    "wtnImplicito": 9.84
   },
   {
+   "id": 800643472,
+   "nombre": "Oscar Brown",
+   "elo": 1968.2,
+   "partidos": 11,
+   "wtn": 9.61,
+   "wtnImplicito": 9.84
+  },
+  {
    "id": 800592729,
    "nombre": "Heorhii Shylov",
    "elo": 1968,
@@ -3862,11 +3966,11 @@
    "wtnImplicito": 9.84
   },
   {
-   "id": 800490587,
-   "nombre": "Karim Al-Amin",
-   "elo": 1967.8,
-   "partidos": 6,
-   "wtn": 10.56,
+   "id": 800484178,
+   "nombre": "Diogo Morais",
+   "elo": 1967.7,
+   "partidos": 8,
+   "wtn": 9.79,
    "wtnImplicito": 9.85
   },
   {
@@ -3918,14 +4022,6 @@
    "wtnImplicito": 9.86
   },
   {
-   "id": 800442900,
-   "nombre": "Jesse De Jager",
-   "elo": 1966.4,
-   "partidos": 4,
-   "wtn": 9.82,
-   "wtnImplicito": 9.87
-  },
-  {
    "id": 800652190,
    "nombre": "Sam Landau",
    "elo": 1966.2,
@@ -3934,19 +4030,19 @@
    "wtnImplicito": 9.87
   },
   {
-   "id": 800429704,
-   "nombre": "Alejandro Turriziani Alvarez",
+   "id": 800538074,
+   "nombre": "Hugo Hashimoto",
    "elo": 1966.2,
-   "partidos": 4,
-   "wtn": 9.72,
+   "partidos": 6,
+   "wtn": 9.79,
    "wtnImplicito": 9.87
   },
   {
-   "id": 800329291,
-   "nombre": "Aleksandre Bakshi",
-   "elo": 1964.8,
-   "partidos": 5,
-   "wtn": 9.76,
+   "id": 800348648,
+   "nombre": "Niklas Schell",
+   "elo": 1965.3,
+   "partidos": 7,
+   "wtn": 9.57,
    "wtnImplicito": 9.88
   },
   {
@@ -3974,14 +4070,6 @@
    "wtnImplicito": 9.9
   },
   {
-   "id": 800537984,
-   "nombre": "Mario Arce Fernandez",
-   "elo": 1963.7,
-   "partidos": 12,
-   "wtn": 10.05,
-   "wtnImplicito": 9.9
-  },
-  {
    "id": 800337484,
    "nombre": "Peter Bertran",
    "elo": 1963.2,
@@ -3990,27 +4078,19 @@
    "wtnImplicito": 9.9
   },
   {
-   "id": 800558849,
-   "nombre": "Kerem Yilmaz",
-   "elo": 1963.1,
-   "partidos": 1,
-   "wtn": 9.46,
-   "wtnImplicito": 9.9
-  },
-  {
-   "id": 800452012,
-   "nombre": "Geun Jun Kim",
-   "elo": 1962.7,
-   "partidos": 6,
-   "wtn": 9.76,
-   "wtnImplicito": 9.91
-  },
-  {
    "id": 800533376,
    "nombre": "Giovanni Branchetti",
    "elo": 1962.6,
    "partidos": 11,
    "wtn": 10.98,
+   "wtnImplicito": 9.91
+  },
+  {
+   "id": 800398044,
+   "nombre": "Jordan Hasson",
+   "elo": 1962.4,
+   "partidos": 2,
+   "wtn": 9.97,
    "wtnImplicito": 9.91
   },
   {
@@ -4030,14 +4110,6 @@
    "wtnImplicito": 9.92
   },
   {
-   "id": 800873354,
-   "nombre": "Luke Bollinger",
-   "elo": 1961.3,
-   "partidos": 6,
-   "wtn": 10.35,
-   "wtnImplicito": 9.93
-  },
-  {
    "id": 800366130,
    "nombre": "Leonid Sheyngezikht",
    "elo": 1961.3,
@@ -4052,6 +4124,22 @@
    "partidos": 13,
    "wtn": 10.36,
    "wtnImplicito": 9.93
+  },
+  {
+   "id": 800471098,
+   "nombre": "Benjamin O'Connell",
+   "elo": 1961,
+   "partidos": 2,
+   "wtn": 9.78,
+   "wtnImplicito": 9.93
+  },
+  {
+   "id": 800601282,
+   "nombre": "Joao Victor Couto Loureiro",
+   "elo": 1960.3,
+   "partidos": 6,
+   "wtn": 9.94,
+   "wtnImplicito": 9.94
   },
   {
    "id": 800333858,
@@ -4118,11 +4206,35 @@
    "wtnImplicito": 9.96
   },
   {
+   "id": 800397200,
+   "nombre": "Moerani Bouzige",
+   "elo": 1958.4,
+   "partidos": 4,
+   "wtn": 10.11,
+   "wtnImplicito": 9.96
+  },
+  {
+   "id": 800375446,
+   "nombre": "Younes Lalami",
+   "elo": 1957.9,
+   "partidos": 2,
+   "wtn": 9.43,
+   "wtnImplicito": 9.97
+  },
+  {
    "id": 800392990,
    "nombre": "Mihai Razvan Marinescu",
    "elo": 1957.2,
    "partidos": 4,
    "wtn": 9.43,
+   "wtnImplicito": 9.98
+  },
+  {
+   "id": 800603729,
+   "nombre": "Amr Elsayed",
+   "elo": 1956.9,
+   "partidos": 3,
+   "wtn": 9.35,
    "wtnImplicito": 9.98
   },
   {
@@ -4150,6 +4262,22 @@
    "wtnImplicito": 10
   },
   {
+   "id": 800537984,
+   "nombre": "Mario Arce Fernandez",
+   "elo": 1955.7,
+   "partidos": 13,
+   "wtn": 10.05,
+   "wtnImplicito": 10
+  },
+  {
+   "id": 800485838,
+   "nombre": "Maxence Rivet",
+   "elo": 1955.5,
+   "partidos": 3,
+   "wtn": 9.6,
+   "wtnImplicito": 10
+  },
+  {
    "id": 800432948,
    "nombre": "Seonyong Han",
    "elo": 1955.4,
@@ -4174,11 +4302,11 @@
    "wtnImplicito": 10
   },
   {
-   "id": 800509374,
-   "nombre": "Jaden Weekes",
-   "elo": 1954.6,
-   "partidos": 6,
-   "wtn": 9.87,
+   "id": 800401680,
+   "nombre": "Pawit Sornlaksup",
+   "elo": 1954.7,
+   "partidos": 3,
+   "wtn": 9.57,
    "wtnImplicito": 10.01
   },
   {
@@ -4235,14 +4363,6 @@
    "elo": 1953.3,
    "partidos": 1,
    "wtn": 9.6,
-   "wtnImplicito": 10.03
-  },
-  {
-   "id": 800348648,
-   "nombre": "Niklas Schell",
-   "elo": 1953.2,
-   "partidos": 5,
-   "wtn": 9.57,
    "wtnImplicito": 10.03
   },
   {
@@ -4310,14 +4430,6 @@
    "wtnImplicito": 10.04
   },
   {
-   "id": 800466571,
-   "nombre": "Qian Sun",
-   "elo": 1951.4,
-   "partidos": 7,
-   "wtn": 9.61,
-   "wtnImplicito": 10.05
-  },
-  {
    "id": 800563716,
    "nombre": "Leo Lagarrigue",
    "elo": 1951.3,
@@ -4340,6 +4452,14 @@
    "partidos": 3,
    "wtn": 10.23,
    "wtnImplicito": 10.05
+  },
+  {
+   "id": 800341872,
+   "nombre": "Stefan Vujic",
+   "elo": 1950.8,
+   "partidos": 5,
+   "wtn": 9.46,
+   "wtnImplicito": 10.06
   },
   {
    "id": 800516515,
@@ -4398,12 +4518,12 @@
    "wtnImplicito": 10.09
   },
   {
-   "id": 800508728,
-   "nombre": "Jake Fellows",
-   "elo": 1947.6,
-   "partidos": 14,
-   "wtn": 10.44,
-   "wtnImplicito": 10.1
+   "id": 800530693,
+   "nombre": "Youssef Kadiri Hassani",
+   "elo": 1947.8,
+   "partidos": 1,
+   "wtn": 9.7,
+   "wtnImplicito": 10.09
   },
   {
    "id": 800587876,
@@ -4411,6 +4531,14 @@
    "elo": 1947.4,
    "partidos": 2,
    "wtn": 10.32,
+   "wtnImplicito": 10.1
+  },
+  {
+   "id": 800873354,
+   "nombre": "Luke Bollinger",
+   "elo": 1947.3,
+   "partidos": 7,
+   "wtn": 10.35,
    "wtnImplicito": 10.1
   },
   {
@@ -4438,6 +4566,14 @@
    "wtnImplicito": 10.11
   },
   {
+   "id": 800510429,
+   "nombre": "Chen Dong",
+   "elo": 1946.2,
+   "partidos": 2,
+   "wtn": 10.11,
+   "wtnImplicito": 10.11
+  },
+  {
    "id": 800460113,
    "nombre": "Giacomo Crisostomo",
    "elo": 1945.8,
@@ -4454,6 +4590,14 @@
    "wtnImplicito": 10.12
   },
   {
+   "id": 800427204,
+   "nombre": "Jorge Plans",
+   "elo": 1945.5,
+   "partidos": 7,
+   "wtn": 9.84,
+   "wtnImplicito": 10.12
+  },
+  {
    "id": 800473084,
    "nombre": "Pablo Perez Ramos",
    "elo": 1945.2,
@@ -4462,20 +4606,12 @@
    "wtnImplicito": 10.12
   },
   {
-   "id": 800696885,
-   "nombre": "Amine Jamji",
-   "elo": 1945.1,
-   "partidos": 1,
-   "wtn": 10.17,
-   "wtnImplicito": 10.13
-  },
-  {
-   "id": 800394105,
-   "nombre": "Nikita Ianin",
-   "elo": 1944.8,
+   "id": 800442900,
+   "nombre": "Jesse De Jager",
+   "elo": 1945.2,
    "partidos": 5,
-   "wtn": 10.33,
-   "wtnImplicito": 10.13
+   "wtn": 9.82,
+   "wtnImplicito": 10.12
   },
   {
    "id": 800457247,
@@ -4484,6 +4620,14 @@
    "partidos": 3,
    "wtn": 9.27,
    "wtnImplicito": 10.13
+  },
+  {
+   "id": 800429704,
+   "nombre": "Alejandro Turriziani Alvarez",
+   "elo": 1944.3,
+   "partidos": 5,
+   "wtn": 9.72,
+   "wtnImplicito": 10.14
   },
   {
    "id": 800400214,
@@ -4518,6 +4662,30 @@
    "wtnImplicito": 10.15
   },
   {
+   "id": 800509374,
+   "nombre": "Jaden Weekes",
+   "elo": 1943.5,
+   "partidos": 7,
+   "wtn": 9.87,
+   "wtnImplicito": 10.15
+  },
+  {
+   "id": 800512750,
+   "nombre": "Tanapatt Nirundorn",
+   "elo": 1942.8,
+   "partidos": 2,
+   "wtn": 10.12,
+   "wtnImplicito": 10.15
+  },
+  {
+   "id": 800476353,
+   "nombre": "Miles Jones",
+   "elo": 1942.6,
+   "partidos": 8,
+   "wtn": 10.77,
+   "wtnImplicito": 10.16
+  },
+  {
    "id": 800332365,
    "nombre": "Marcus Walters",
    "elo": 1942.3,
@@ -4534,22 +4702,6 @@
    "wtnImplicito": 10.16
   },
   {
-   "id": 800480387,
-   "nombre": "Giulio Perego",
-   "elo": 1941.9,
-   "partidos": 1,
-   "wtn": 9.49,
-   "wtnImplicito": 10.17
-  },
-  {
-   "id": 800427011,
-   "nombre": "Axel Garcian",
-   "elo": 1941.7,
-   "partidos": 4,
-   "wtn": 9.64,
-   "wtnImplicito": 10.17
-  },
-  {
    "id": 800391163,
    "nombre": "Leyton Rivera",
    "elo": 1941.3,
@@ -4563,14 +4715,6 @@
    "elo": 1941,
    "partidos": 5,
    "wtn": 10.27,
-   "wtnImplicito": 10.18
-  },
-  {
-   "id": 800485838,
-   "nombre": "Maxence Rivet",
-   "elo": 1940.5,
-   "partidos": 1,
-   "wtn": 9.6,
    "wtnImplicito": 10.18
   },
   {
@@ -4646,14 +4790,6 @@
    "wtnImplicito": 10.24
   },
   {
-   "id": 800416195,
-   "nombre": "Jim Hendrikx",
-   "elo": 1935.3,
-   "partidos": 14,
-   "wtn": 11.28,
-   "wtnImplicito": 10.25
-  },
-  {
    "id": 800581794,
    "nombre": "Victor Pagotto",
    "elo": 1935.1,
@@ -4678,11 +4814,11 @@
    "wtnImplicito": 10.25
   },
   {
-   "id": 800367151,
-   "nombre": "Lorenzo Lorusso",
-   "elo": 1934.6,
-   "partidos": 5,
-   "wtn": 10.26,
+   "id": 800696885,
+   "nombre": "Amine Jamji",
+   "elo": 1934.8,
+   "partidos": 2,
+   "wtn": 10.17,
    "wtnImplicito": 10.25
   },
   {
@@ -4702,6 +4838,14 @@
    "wtnImplicito": 10.27
   },
   {
+   "id": 800530850,
+   "nombre": "Theo Herrmann",
+   "elo": 1933.6,
+   "partidos": 1,
+   "wtn": 9.99,
+   "wtnImplicito": 10.27
+  },
+  {
    "id": 800533257,
    "nombre": "Ivan Dreycopp",
    "elo": 1933.4,
@@ -4710,28 +4854,12 @@
    "wtnImplicito": 10.27
   },
   {
-   "id": 800397200,
-   "nombre": "Moerani Bouzige",
-   "elo": 1932.4,
-   "partidos": 3,
-   "wtn": 10.11,
+   "id": 800660694,
+   "nombre": "Juan Ignacio Gallego",
+   "elo": 1933,
+   "partidos": 6,
+   "wtn": 10.62,
    "wtnImplicito": 10.28
-  },
-  {
-   "id": 800435571,
-   "nombre": "Fons Van Sambeek",
-   "elo": 1932.1,
-   "partidos": 3,
-   "wtn": 9.43,
-   "wtnImplicito": 10.29
-  },
-  {
-   "id": 800671618,
-   "nombre": "Markus Malaszszak",
-   "elo": 1932,
-   "partidos": 1,
-   "wtn": 10.03,
-   "wtnImplicito": 10.29
   },
   {
    "id": 800555121,
@@ -4750,22 +4878,6 @@
    "wtnImplicito": 10.29
   },
   {
-   "id": 800411531,
-   "nombre": "Thando Longwe-Smit",
-   "elo": 1931.8,
-   "partidos": 1,
-   "wtn": 10.02,
-   "wtnImplicito": 10.29
-  },
-  {
-   "id": 800740260,
-   "nombre": "Xirui Han",
-   "elo": 1931.7,
-   "partidos": 12,
-   "wtn": 10.56,
-   "wtnImplicito": 10.29
-  },
-  {
    "id": 800330366,
    "nombre": "Makoto Ochi",
    "elo": 1930.6,
@@ -4780,6 +4892,14 @@
    "partidos": 5,
    "wtn": 9.9,
    "wtnImplicito": 10.32
+  },
+  {
+   "id": 800449104,
+   "nombre": "Valentin Lapalu",
+   "elo": 1928.4,
+   "partidos": 5,
+   "wtn": 9.99,
+   "wtnImplicito": 10.33
   },
   {
    "id": 800395556,
@@ -4854,11 +4974,27 @@
    "wtnImplicito": 10.35
   },
   {
+   "id": 800480387,
+   "nombre": "Giulio Perego",
+   "elo": 1926.4,
+   "partidos": 3,
+   "wtn": 9.49,
+   "wtnImplicito": 10.36
+  },
+  {
    "id": 800441501,
    "nombre": "Yuta Kikuchi",
    "elo": 1926.1,
    "partidos": 2,
    "wtn": 9.76,
+   "wtnImplicito": 10.36
+  },
+  {
+   "id": 800558849,
+   "nombre": "Kerem Yilmaz",
+   "elo": 1925.9,
+   "partidos": 2,
+   "wtn": 9.46,
    "wtnImplicito": 10.36
   },
   {
@@ -4884,6 +5020,22 @@
    "partidos": 1,
    "wtn": 10.09,
    "wtnImplicito": 10.37
+  },
+  {
+   "id": 800427011,
+   "nombre": "Axel Garcian",
+   "elo": 1925.1,
+   "partidos": 5,
+   "wtn": 9.64,
+   "wtnImplicito": 10.37
+  },
+  {
+   "id": 800671618,
+   "nombre": "Markus Malaszszak",
+   "elo": 1924.7,
+   "partidos": 3,
+   "wtn": 10.03,
+   "wtnImplicito": 10.38
   },
   {
    "id": 800474044,
@@ -4934,27 +5086,19 @@
    "wtnImplicito": 10.4
   },
   {
-   "id": 800650224,
-   "nombre": "Nikola Djukic Valera",
-   "elo": 1922.5,
-   "partidos": 3,
-   "wtn": 10.96,
-   "wtnImplicito": 10.4
-  },
-  {
-   "id": 800698197,
-   "nombre": "Enrique Carrascosa Diaz",
-   "elo": 1921.5,
-   "partidos": 1,
-   "wtn": 10.38,
-   "wtnImplicito": 10.42
-  },
-  {
    "id": 800586446,
    "nombre": "Timeo Trufelli",
    "elo": 1921.4,
    "partidos": 4,
    "wtn": 9.84,
+   "wtnImplicito": 10.42
+  },
+  {
+   "id": 800441452,
+   "nombre": "Ali Habib",
+   "elo": 1921.4,
+   "partidos": 1,
+   "wtn": 9.96,
    "wtnImplicito": 10.42
   },
   {
@@ -4966,11 +5110,19 @@
    "wtnImplicito": 10.43
   },
   {
-   "id": 800660694,
-   "nombre": "Juan Ignacio Gallego",
+   "id": 800416195,
+   "nombre": "Jim Hendrikx",
    "elo": 1920.4,
+   "partidos": 15,
+   "wtn": 11.28,
+   "wtnImplicito": 10.43
+  },
+  {
+   "id": 800672613,
+   "nombre": "Harrison Satara",
+   "elo": 1920.2,
    "partidos": 4,
-   "wtn": 10.62,
+   "wtn": 11.37,
    "wtnImplicito": 10.43
   },
   {
@@ -4979,6 +5131,14 @@
    "elo": 1920.1,
    "partidos": 3,
    "wtn": 9.29,
+   "wtnImplicito": 10.43
+  },
+  {
+   "id": 800480055,
+   "nombre": "Rafael De Alba",
+   "elo": 1920,
+   "partidos": 2,
+   "wtn": 10.62,
    "wtnImplicito": 10.43
   },
   {
@@ -5006,20 +5166,20 @@
    "wtnImplicito": 10.45
   },
   {
-   "id": 800390916,
-   "nombre": "Mohamed Ali Abibsi",
-   "elo": 1918.4,
-   "partidos": 2,
-   "wtn": 10.35,
+   "id": 800650224,
+   "nombre": "Nikola Djukic Valera",
+   "elo": 1918.7,
+   "partidos": 5,
+   "wtn": 10.96,
    "wtnImplicito": 10.45
   },
   {
-   "id": 800476353,
-   "nombre": "Miles Jones",
-   "elo": 1918.2,
-   "partidos": 6,
-   "wtn": 10.77,
-   "wtnImplicito": 10.46
+   "id": 800683936,
+   "nombre": "Kris van Wyk",
+   "elo": 1918.7,
+   "partidos": 1,
+   "wtn": 10.17,
+   "wtnImplicito": 10.45
   },
   {
    "id": 800589798,
@@ -5070,19 +5230,11 @@
    "wtnImplicito": 10.5
   },
   {
-   "id": 800601282,
-   "nombre": "Joao Victor Couto Loureiro",
-   "elo": 1914.8,
-   "partidos": 4,
-   "wtn": 9.94,
-   "wtnImplicito": 10.5
-  },
-  {
-   "id": 800551506,
-   "nombre": "Mateo Luis Alvarez Sarmiento",
-   "elo": 1914.3,
-   "partidos": 5,
-   "wtn": 10.17,
+   "id": 800740260,
+   "nombre": "Xirui Han",
+   "elo": 1914.6,
+   "partidos": 13,
+   "wtn": 10.56,
    "wtnImplicito": 10.5
   },
   {
@@ -5115,6 +5267,14 @@
    "elo": 1913.6,
    "partidos": 12,
    "wtn": 10.69,
+   "wtnImplicito": 10.51
+  },
+  {
+   "id": 800394105,
+   "nombre": "Nikita Ianin",
+   "elo": 1913.6,
+   "partidos": 6,
+   "wtn": 10.33,
    "wtnImplicito": 10.51
   },
   {
@@ -5166,14 +5326,6 @@
    "wtnImplicito": 10.53
   },
   {
-   "id": 800561766,
-   "nombre": "Saveliy Ivanov",
-   "elo": 1912.1,
-   "partidos": 4,
-   "wtn": 10.11,
-   "wtnImplicito": 10.53
-  },
-  {
    "id": 800485608,
    "nombre": "Giammarco Gandolfi",
    "elo": 1912.1,
@@ -5182,12 +5334,12 @@
    "wtnImplicito": 10.53
   },
   {
-   "id": 800552230,
-   "nombre": "Ivan Gretskiy",
-   "elo": 1911.2,
-   "partidos": 8,
-   "wtn": 10.56,
-   "wtnImplicito": 10.54
+   "id": 800421363,
+   "nombre": "Maxim Shin",
+   "elo": 1910.8,
+   "partidos": 1,
+   "wtn": 10.2,
+   "wtnImplicito": 10.55
   },
   {
    "id": 800750845,
@@ -5206,14 +5358,6 @@
    "wtnImplicito": 10.57
   },
   {
-   "id": 800516562,
-   "nombre": "Louis Larue",
-   "elo": 1909,
-   "partidos": 7,
-   "wtn": 9.91,
-   "wtnImplicito": 10.57
-  },
-  {
    "id": 800544340,
    "nombre": "Aleksandar Mitric",
    "elo": 1908.3,
@@ -5222,19 +5366,19 @@
    "wtnImplicito": 10.58
   },
   {
+   "id": 800556879,
+   "nombre": "Gabrielius Guzauskas",
+   "elo": 1908.2,
+   "partidos": 4,
+   "wtn": 10.68,
+   "wtnImplicito": 10.58
+  },
+  {
    "id": 800520283,
    "nombre": "Tanguy Genier",
    "elo": 1908,
    "partidos": 4,
    "wtn": 9.6,
-   "wtnImplicito": 10.58
-  },
-  {
-   "id": 800556879,
-   "nombre": "Gabrielius Guzauskas",
-   "elo": 1907.8,
-   "partidos": 2,
-   "wtn": 10.68,
    "wtnImplicito": 10.58
   },
   {
@@ -5262,14 +5406,6 @@
    "wtnImplicito": 10.59
   },
   {
-   "id": 800353743,
-   "nombre": "Samuel De Felipe Garcia",
-   "elo": 1907.3,
-   "partidos": 7,
-   "wtn": 10.78,
-   "wtnImplicito": 10.59
-  },
-  {
    "id": 800397386,
    "nombre": "Matic Dimic",
    "elo": 1906.6,
@@ -5286,12 +5422,12 @@
    "wtnImplicito": 10.6
   },
   {
-   "id": 800427204,
-   "nombre": "Jorge Plans",
-   "elo": 1905.9,
-   "partidos": 5,
-   "wtn": 9.84,
-   "wtnImplicito": 10.61
+   "id": 800581465,
+   "nombre": "Xing Dao Chen",
+   "elo": 1905.2,
+   "partidos": 6,
+   "wtn": 10.17,
+   "wtnImplicito": 10.62
   },
   {
    "id": 800590813,
@@ -5302,11 +5438,11 @@
    "wtnImplicito": 10.62
   },
   {
-   "id": 800466883,
-   "nombre": "Aditya Balsekar",
-   "elo": 1904.7,
-   "partidos": 1,
-   "wtn": 10.23,
+   "id": 800383415,
+   "nombre": "Bora Sengul",
+   "elo": 1905,
+   "partidos": 2,
+   "wtn": 10.53,
    "wtnImplicito": 10.62
   },
   {
@@ -5315,14 +5451,6 @@
    "elo": 1904.5,
    "partidos": 1,
    "wtn": 9.88,
-   "wtnImplicito": 10.62
-  },
-  {
-   "id": 800489956,
-   "nombre": "Richard Zusman",
-   "elo": 1904.5,
-   "partidos": 3,
-   "wtn": 10.72,
    "wtnImplicito": 10.62
   },
   {
@@ -5342,20 +5470,12 @@
    "wtnImplicito": 10.63
   },
   {
-   "id": 800262809,
-   "nombre": "Ko Suzuki",
-   "elo": 1904.3,
-   "partidos": 2,
-   "wtn": 10.87,
-   "wtnImplicito": 10.63
-  },
-  {
-   "id": 800377891,
-   "nombre": "Rahul Dhokia",
-   "elo": 1903.8,
-   "partidos": 5,
-   "wtn": 10.65,
-   "wtnImplicito": 10.63
+   "id": 800552230,
+   "nombre": "Ivan Gretskiy",
+   "elo": 1903.5,
+   "partidos": 9,
+   "wtn": 10.56,
+   "wtnImplicito": 10.64
   },
   {
    "id": 800528437,
@@ -5382,20 +5502,20 @@
    "wtnImplicito": 10.65
   },
   {
+   "id": 800262809,
+   "nombre": "Ko Suzuki",
+   "elo": 1902.3,
+   "partidos": 3,
+   "wtn": 10.87,
+   "wtnImplicito": 10.65
+  },
+  {
    "id": 800432107,
    "nombre": "Mario Mansilla Diez",
    "elo": 1902.1,
    "partidos": 3,
    "wtn": 10.73,
    "wtnImplicito": 10.65
-  },
-  {
-   "id": 800563726,
-   "nombre": "Pranav Karthik",
-   "elo": 1901.6,
-   "partidos": 1,
-   "wtn": 10.53,
-   "wtnImplicito": 10.66
   },
   {
    "id": 800596354,
@@ -5414,6 +5534,14 @@
    "wtnImplicito": 10.67
   },
   {
+   "id": 800553156,
+   "nombre": "Chirag Duhan",
+   "elo": 1900.4,
+   "partidos": 6,
+   "wtn": 10.48,
+   "wtnImplicito": 10.68
+  },
+  {
    "id": 800532970,
    "nombre": "Agustin Eduardo Cuellar Lorberg",
    "elo": 1900.4,
@@ -5430,14 +5558,6 @@
    "wtnImplicito": 10.68
   },
   {
-   "id": 800567874,
-   "nombre": "Xavi Palomar",
-   "elo": 1899.8,
-   "partidos": 6,
-   "wtn": 10.56,
-   "wtnImplicito": 10.68
-  },
-  {
    "id": 800548036,
    "nombre": "Ivan Biletic",
    "elo": 1899.5,
@@ -5446,28 +5566,36 @@
    "wtnImplicito": 10.69
   },
   {
-   "id": 800672613,
-   "nombre": "Harrison Satara",
-   "elo": 1899.3,
-   "partidos": 3,
-   "wtn": 11.37,
-   "wtnImplicito": 10.69
-  },
-  {
-   "id": 800344184,
-   "nombre": "Nazim Makhlouf",
-   "elo": 1898.9,
-   "partidos": 2,
-   "wtn": 10.23,
-   "wtnImplicito": 10.69
-  },
-  {
-   "id": 800372427,
-   "nombre": "Amadatus Admiraal",
-   "elo": 1898.3,
+   "id": 800551506,
+   "nombre": "Mateo Luis Alvarez Sarmiento",
+   "elo": 1899,
    "partidos": 6,
-   "wtn": 11.16,
-   "wtnImplicito": 10.7
+   "wtn": 10.17,
+   "wtnImplicito": 10.69
+  },
+  {
+   "id": 800411531,
+   "nombre": "Thando Longwe-Smit",
+   "elo": 1898.8,
+   "partidos": 2,
+   "wtn": 10.02,
+   "wtnImplicito": 10.69
+  },
+  {
+   "id": 800561766,
+   "nombre": "Saveliy Ivanov",
+   "elo": 1897.9,
+   "partidos": 5,
+   "wtn": 10.11,
+   "wtnImplicito": 10.71
+  },
+  {
+   "id": 800441518,
+   "nombre": "Yuttana Charoenphon",
+   "elo": 1897.9,
+   "partidos": 1,
+   "wtn": 10.39,
+   "wtnImplicito": 10.71
   },
   {
    "id": 800340254,
@@ -5484,22 +5612,6 @@
    "partidos": 6,
    "wtn": 10.92,
    "wtnImplicito": 10.72
-  },
-  {
-   "id": 800430090,
-   "nombre": "Amaury Raynel",
-   "elo": 1896,
-   "partidos": 4,
-   "wtn": 9.87,
-   "wtnImplicito": 10.73
-  },
-  {
-   "id": 800581465,
-   "nombre": "Xing Dao Chen",
-   "elo": 1896,
-   "partidos": 4,
-   "wtn": 10.17,
-   "wtnImplicito": 10.73
   },
   {
    "id": 800677688,
@@ -5534,19 +5646,19 @@
    "wtnImplicito": 10.73
   },
   {
-   "id": 800476351,
-   "nombre": "Alex Jones",
-   "elo": 1895.5,
-   "partidos": 9,
-   "wtn": 10.24,
-   "wtnImplicito": 10.73
-  },
-  {
    "id": 800689065,
    "nombre": "Zachary Fuchs",
    "elo": 1895.4,
    "partidos": 2,
    "wtn": 10.41,
+   "wtnImplicito": 10.74
+  },
+  {
+   "id": 800367151,
+   "nombre": "Lorenzo Lorusso",
+   "elo": 1895.2,
+   "partidos": 6,
+   "wtn": 10.26,
    "wtnImplicito": 10.74
   },
   {
@@ -5582,6 +5694,14 @@
    "wtnImplicito": 10.75
   },
   {
+   "id": 800372427,
+   "nombre": "Amadatus Admiraal",
+   "elo": 1894.2,
+   "partidos": 7,
+   "wtn": 11.16,
+   "wtnImplicito": 10.75
+  },
+  {
    "id": 800640233,
    "nombre": "Alvaro Peiro Serrano",
    "elo": 1894,
@@ -5598,19 +5718,19 @@
    "wtnImplicito": 10.76
   },
   {
-   "id": 800686699,
-   "nombre": "Ammar Faleh Alhogbani",
-   "elo": 1893.7,
-   "partidos": 3,
-   "wtn": 9.91,
-   "wtnImplicito": 10.76
-  },
-  {
    "id": 800534466,
    "nombre": "Vid Mohar",
    "elo": 1893.7,
    "partidos": 3,
    "wtn": 10.77,
+   "wtnImplicito": 10.76
+  },
+  {
+   "id": 800353743,
+   "nombre": "Samuel De Felipe Garcia",
+   "elo": 1893.6,
+   "partidos": 8,
+   "wtn": 10.78,
    "wtnImplicito": 10.76
   },
   {
@@ -5638,11 +5758,19 @@
    "wtnImplicito": 10.78
   },
   {
-   "id": 800561232,
-   "nombre": "Luke Hooper",
-   "elo": 1891.1,
+   "id": 800390916,
+   "nombre": "Mohamed Ali Abibsi",
+   "elo": 1891.7,
    "partidos": 3,
-   "wtn": 10.3,
+   "wtn": 10.35,
+   "wtnImplicito": 10.78
+  },
+  {
+   "id": 800567874,
+   "nombre": "Xavi Palomar",
+   "elo": 1890.9,
+   "partidos": 7,
+   "wtn": 10.56,
    "wtnImplicito": 10.79
   },
   {
@@ -5694,6 +5822,14 @@
    "wtnImplicito": 10.82
   },
   {
+   "id": 800563726,
+   "nombre": "Pranav Karthik",
+   "elo": 1888.8,
+   "partidos": 2,
+   "wtn": 10.53,
+   "wtnImplicito": 10.82
+  },
+  {
    "id": 800156702,
    "nombre": "Toby Martin",
    "elo": 1888.7,
@@ -5707,14 +5843,6 @@
    "elo": 1888.7,
    "partidos": 12,
    "wtn": 11.37,
-   "wtnImplicito": 10.82
-  },
-  {
-   "id": 800541004,
-   "nombre": "Shu Muto",
-   "elo": 1888.2,
-   "partidos": 6,
-   "wtn": 10.6,
    "wtnImplicito": 10.82
   },
   {
@@ -5740,6 +5868,14 @@
    "partidos": 1,
    "wtn": 10.59,
    "wtnImplicito": 10.84
+  },
+  {
+   "id": 800377891,
+   "nombre": "Rahul Dhokia",
+   "elo": 1886.4,
+   "partidos": 6,
+   "wtn": 10.65,
+   "wtnImplicito": 10.85
   },
   {
    "id": 800525193,
@@ -5782,6 +5918,14 @@
    "wtnImplicito": 10.86
   },
   {
+   "id": 800516562,
+   "nombre": "Louis Larue",
+   "elo": 1885.6,
+   "partidos": 8,
+   "wtn": 9.91,
+   "wtnImplicito": 10.86
+  },
+  {
    "id": 800464579,
    "nombre": "Alex Kobelt",
    "elo": 1884.7,
@@ -5798,28 +5942,20 @@
    "wtnImplicito": 10.88
   },
   {
-   "id": 800698105,
-   "nombre": "Maxi Carrascosa Diaz",
-   "elo": 1882.6,
-   "partidos": 4,
-   "wtn": 11.34,
-   "wtnImplicito": 10.89
+   "id": 800476351,
+   "nombre": "Alex Jones",
+   "elo": 1883.6,
+   "partidos": 11,
+   "wtn": 10.24,
+   "wtnImplicito": 10.88
   },
   {
-   "id": 800534511,
-   "nombre": "Gawad El Feky",
-   "elo": 1882.3,
+   "id": 800406606,
+   "nombre": "Rafael Giotis",
+   "elo": 1882.7,
    "partidos": 6,
-   "wtn": 11.29,
-   "wtnImplicito": 10.9
-  },
-  {
-   "id": 800475816,
-   "nombre": "Sam Kydd Baumgartner",
-   "elo": 1882.2,
-   "partidos": 5,
-   "wtn": 11.11,
-   "wtnImplicito": 10.9
+   "wtn": 11.2,
+   "wtnImplicito": 10.89
   },
   {
    "id": 800391178,
@@ -5830,20 +5966,20 @@
    "wtnImplicito": 10.9
   },
   {
-   "id": 800406606,
-   "nombre": "Rafael Giotis",
-   "elo": 1881.1,
-   "partidos": 4,
-   "wtn": 11.2,
-   "wtnImplicito": 10.91
+   "id": 800344184,
+   "nombre": "Nazim Makhlouf",
+   "elo": 1881.7,
+   "partidos": 3,
+   "wtn": 10.23,
+   "wtnImplicito": 10.9
   },
   {
-   "id": 800297597,
-   "nombre": "Wishaya Trongcharoenchaikul",
-   "elo": 1880.2,
-   "partidos": 5,
-   "wtn": 9.79,
-   "wtnImplicito": 10.92
+   "id": 800382439,
+   "nombre": "Edison Ambarzumjan",
+   "elo": 1881,
+   "partidos": 4,
+   "wtn": 11.07,
+   "wtnImplicito": 10.91
   },
   {
    "id": 800533421,
@@ -5910,14 +6046,6 @@
    "wtnImplicito": 10.95
   },
   {
-   "id": 800478510,
-   "nombre": "Hugo Cardinaud",
-   "elo": 1877.8,
-   "partidos": 4,
-   "wtn": 10.93,
-   "wtnImplicito": 10.95
-  },
-  {
    "id": 800443555,
    "nombre": "William Nolan",
    "elo": 1877.2,
@@ -5932,6 +6060,30 @@
    "partidos": 9,
    "wtn": 10.48,
    "wtnImplicito": 10.96
+  },
+  {
+   "id": 800541004,
+   "nombre": "Shu Muto",
+   "elo": 1877.1,
+   "partidos": 7,
+   "wtn": 10.6,
+   "wtnImplicito": 10.96
+  },
+  {
+   "id": 800573442,
+   "nombre": "Marat Salbiev",
+   "elo": 1876.6,
+   "partidos": 3,
+   "wtn": 11.41,
+   "wtnImplicito": 10.97
+  },
+  {
+   "id": 800489956,
+   "nombre": "Richard Zusman",
+   "elo": 1876.5,
+   "partidos": 4,
+   "wtn": 10.72,
+   "wtnImplicito": 10.97
   },
   {
    "id": 800477551,
@@ -5958,12 +6110,12 @@
    "wtnImplicito": 10.97
   },
   {
-   "id": 800449104,
-   "nombre": "Valentin Lapalu",
-   "elo": 1875.5,
-   "partidos": 3,
-   "wtn": 9.99,
-   "wtnImplicito": 10.98
+   "id": 800626211,
+   "nombre": "Roberto Perez socas",
+   "elo": 1876.1,
+   "partidos": 7,
+   "wtn": 11.29,
+   "wtnImplicito": 10.97
   },
   {
    "id": 800587195,
@@ -6022,12 +6174,28 @@
    "wtnImplicito": 11
   },
   {
+   "id": 800534511,
+   "nombre": "Gawad El Feky",
+   "elo": 1873.6,
+   "partidos": 7,
+   "wtn": 11.29,
+   "wtnImplicito": 11
+  },
+  {
    "id": 800452009,
    "nombre": "Dong Ju Kim",
    "elo": 1873.5,
    "partidos": 4,
    "wtn": 9.72,
    "wtnImplicito": 11.01
+  },
+  {
+   "id": 800686699,
+   "nombre": "Ammar Faleh Alhogbani",
+   "elo": 1872.5,
+   "partidos": 4,
+   "wtn": 9.91,
+   "wtnImplicito": 11.02
   },
   {
    "id": 800428948,
@@ -6054,11 +6222,35 @@
    "wtnImplicito": 11.06
   },
   {
+   "id": 800478510,
+   "nombre": "Hugo Cardinaud",
+   "elo": 1868.7,
+   "partidos": 6,
+   "wtn": 10.93,
+   "wtnImplicito": 11.06
+  },
+  {
    "id": 800477193,
    "nombre": "Sheng Tang",
    "elo": 1868.5,
    "partidos": 3,
    "wtn": 10.27,
+   "wtnImplicito": 11.07
+  },
+  {
+   "id": 800561232,
+   "nombre": "Luke Hooper",
+   "elo": 1868.3,
+   "partidos": 4,
+   "wtn": 10.3,
+   "wtnImplicito": 11.07
+  },
+  {
+   "id": 800698105,
+   "nombre": "Maxi Carrascosa Diaz",
+   "elo": 1868.1,
+   "partidos": 5,
+   "wtn": 11.34,
    "wtnImplicito": 11.07
   },
   {
@@ -6182,6 +6374,14 @@
    "wtnImplicito": 11.16
   },
   {
+   "id": 800475816,
+   "nombre": "Sam Kydd Baumgartner",
+   "elo": 1861.2,
+   "partidos": 6,
+   "wtn": 11.11,
+   "wtnImplicito": 11.16
+  },
+  {
    "id": 800493665,
    "nombre": "Jan Hrazdil",
    "elo": 1860.8,
@@ -6214,27 +6414,11 @@
    "wtnImplicito": 11.17
   },
   {
-   "id": 800569412,
-   "nombre": "Ian Lucca Cervantes Tomas",
-   "elo": 1859.5,
-   "partidos": 8,
-   "wtn": 11.34,
-   "wtnImplicito": 11.18
-  },
-  {
    "id": 800565960,
    "nombre": "Marko Retelj",
    "elo": 1859.1,
    "partidos": 2,
    "wtn": 10.96,
-   "wtnImplicito": 11.18
-  },
-  {
-   "id": 800568405,
-   "nombre": "Josh Manuel",
-   "elo": 1858.9,
-   "partidos": 7,
-   "wtn": 11.8,
    "wtnImplicito": 11.18
   },
   {
@@ -6262,22 +6446,6 @@
    "wtnImplicito": 11.19
   },
   {
-   "id": 800626211,
-   "nombre": "Roberto Perez socas",
-   "elo": 1858.2,
-   "partidos": 5,
-   "wtn": 11.29,
-   "wtnImplicito": 11.19
-  },
-  {
-   "id": 800553156,
-   "nombre": "Chirag Duhan",
-   "elo": 1857.7,
-   "partidos": 4,
-   "wtn": 10.48,
-   "wtnImplicito": 11.2
-  },
-  {
    "id": 800599675,
    "nombre": "Odysseas Geladaris",
    "elo": 1857.7,
@@ -6302,27 +6470,11 @@
    "wtnImplicito": 11.2
   },
   {
-   "id": 800775480,
-   "nombre": "Mac Visser",
-   "elo": 1857,
-   "partidos": 6,
-   "wtn": 9.87,
-   "wtnImplicito": 11.21
-  },
-  {
    "id": 800265376,
    "nombre": "Lucas Renard",
    "elo": 1857,
    "partidos": 4,
    "wtn": 11.29,
-   "wtnImplicito": 11.21
-  },
-  {
-   "id": 800382439,
-   "nombre": "Edison Ambarzumjan",
-   "elo": 1856.4,
-   "partidos": 2,
-   "wtn": 11.07,
    "wtnImplicito": 11.21
   },
   {
@@ -6339,6 +6491,14 @@
    "elo": 1856,
    "partidos": 5,
    "wtn": 11.29,
+   "wtnImplicito": 11.22
+  },
+  {
+   "id": 800568405,
+   "nombre": "Josh Manuel",
+   "elo": 1855.6,
+   "partidos": 9,
+   "wtn": 11.8,
    "wtnImplicito": 11.22
   },
   {
@@ -6430,6 +6590,14 @@
    "wtnImplicito": 11.28
   },
   {
+   "id": 800297597,
+   "nombre": "Wishaya Trongcharoenchaikul",
+   "elo": 1850.4,
+   "partidos": 6,
+   "wtn": 9.79,
+   "wtnImplicito": 11.29
+  },
+  {
    "id": 800639348,
    "nombre": "Mateja Stanisavljevic",
    "elo": 1850.4,
@@ -6454,6 +6622,14 @@
    "wtnImplicito": 11.31
   },
   {
+   "id": 800775480,
+   "nombre": "Mac Visser",
+   "elo": 1848.5,
+   "partidos": 7,
+   "wtn": 9.87,
+   "wtnImplicito": 11.31
+  },
+  {
    "id": 800523227,
    "nombre": "Sergej Zivkovic",
    "elo": 1848.4,
@@ -6475,6 +6651,14 @@
    "elo": 1847.8,
    "partidos": 2,
    "wtn": 11.43,
+   "wtnImplicito": 11.32
+  },
+  {
+   "id": 800430090,
+   "nombre": "Amaury Raynel",
+   "elo": 1847.7,
+   "partidos": 5,
+   "wtn": 9.87,
    "wtnImplicito": 11.32
   },
   {
@@ -6508,6 +6692,14 @@
    "partidos": 7,
    "wtn": 10.75,
    "wtnImplicito": 11.34
+  },
+  {
+   "id": 800569412,
+   "nombre": "Ian Lucca Cervantes Tomas",
+   "elo": 1845.6,
+   "partidos": 9,
+   "wtn": 11.34,
+   "wtnImplicito": 11.35
   },
   {
    "id": 800458284,
@@ -6598,6 +6790,14 @@
    "wtnImplicito": 11.43
   },
   {
+   "id": 800393787,
+   "nombre": "Daisuke Sumizawa",
+   "elo": 1838.4,
+   "partidos": 5,
+   "wtn": 10.35,
+   "wtnImplicito": 11.44
+  },
+  {
    "id": 800462924,
    "nombre": "Vesa Ahti",
    "elo": 1838.1,
@@ -6630,14 +6830,6 @@
    "wtnImplicito": 11.45
   },
   {
-   "id": 800508240,
-   "nombre": "Steffan Van Weldam",
-   "elo": 1836.8,
-   "partidos": 10,
-   "wtn": 12.25,
-   "wtnImplicito": 11.45
-  },
-  {
    "id": 800492793,
    "nombre": "Matteo Fondriest",
    "elo": 1835.7,
@@ -6652,6 +6844,14 @@
    "partidos": 8,
    "wtn": 10.9,
    "wtnImplicito": 11.48
+  },
+  {
+   "id": 800508240,
+   "nombre": "Steffan Van Weldam",
+   "elo": 1833.6,
+   "partidos": 11,
+   "wtn": 12.25,
+   "wtnImplicito": 11.49
   },
   {
    "id": 800540938,
@@ -6694,11 +6894,11 @@
    "wtnImplicito": 11.51
   },
   {
-   "id": 800393787,
-   "nombre": "Daisuke Sumizawa",
+   "id": 800449054,
+   "nombre": "Ammar Elamin",
    "elo": 1830.6,
-   "partidos": 3,
-   "wtn": 10.35,
+   "partidos": 7,
+   "wtn": 10.66,
    "wtnImplicito": 11.53
   },
   {
@@ -6707,6 +6907,14 @@
    "elo": 1829.9,
    "partidos": 5,
    "wtn": 10.42,
+   "wtnImplicito": 11.54
+  },
+  {
+   "id": 800708219,
+   "nombre": "Marwan Ehab",
+   "elo": 1829.6,
+   "partidos": 7,
+   "wtn": 12.13,
    "wtnImplicito": 11.54
   },
   {
@@ -6724,30 +6932,6 @@
    "partidos": 5,
    "wtn": 11.31,
    "wtnImplicito": 11.55
-  },
-  {
-   "id": 800653454,
-   "nombre": "Lachlan Vickery",
-   "elo": 1829,
-   "partidos": 4,
-   "wtn": 11.44,
-   "wtnImplicito": 11.55
-  },
-  {
-   "id": 800451717,
-   "nombre": "Yuquan Jin",
-   "elo": 1828.8,
-   "partidos": 6,
-   "wtn": 10.74,
-   "wtnImplicito": 11.55
-  },
-  {
-   "id": 800573442,
-   "nombre": "Marat Salbiev",
-   "elo": 1828.7,
-   "partidos": 1,
-   "wtn": 11.41,
-   "wtnImplicito": 11.56
   },
   {
    "id": 800459867,
@@ -6774,12 +6958,12 @@
    "wtnImplicito": 11.56
   },
   {
-   "id": 800680782,
-   "nombre": "Boxiong Zhang",
-   "elo": 1827.1,
-   "partidos": 4,
-   "wtn": 11.02,
-   "wtnImplicito": 11.57
+   "id": 800477198,
+   "nombre": "Zijiang Yang",
+   "elo": 1826.8,
+   "partidos": 10,
+   "wtn": 11.68,
+   "wtnImplicito": 11.58
   },
   {
    "id": 800588853,
@@ -6918,6 +7102,14 @@
    "wtnImplicito": 11.66
   },
   {
+   "id": 800541826,
+   "nombre": "Makar Krivoshchekov",
+   "elo": 1820.1,
+   "partidos": 10,
+   "wtn": 11.25,
+   "wtnImplicito": 11.66
+  },
+  {
    "id": 800442054,
    "nombre": "Barney Fitzpatrick",
    "elo": 1819.9,
@@ -6932,6 +7124,14 @@
    "partidos": 3,
    "wtn": 10.68,
    "wtnImplicito": 11.67
+  },
+  {
+   "id": 800680782,
+   "nombre": "Boxiong Zhang",
+   "elo": 1818.7,
+   "partidos": 6,
+   "wtn": 11.02,
+   "wtnImplicito": 11.68
   },
   {
    "id": 800368374,
@@ -6955,6 +7155,14 @@
    "elo": 1817.6,
    "partidos": 3,
    "wtn": 11.16,
+   "wtnImplicito": 11.69
+  },
+  {
+   "id": 800653454,
+   "nombre": "Lachlan Vickery",
+   "elo": 1817.6,
+   "partidos": 5,
+   "wtn": 11.44,
    "wtnImplicito": 11.69
   },
   {
@@ -7006,20 +7214,20 @@
    "wtnImplicito": 11.71
   },
   {
-   "id": 800582341,
-   "nombre": "Karim Mabrouk",
-   "elo": 1815,
-   "partidos": 2,
-   "wtn": 11.68,
+   "id": 800361862,
+   "nombre": "Julien De Cuyper",
+   "elo": 1815.2,
+   "partidos": 6,
+   "wtn": 11.44,
    "wtnImplicito": 11.72
   },
   {
-   "id": 800565501,
-   "nombre": "Kylian Collignon",
-   "elo": 1814,
-   "partidos": 8,
-   "wtn": 11.47,
-   "wtnImplicito": 11.73
+   "id": 800451717,
+   "nombre": "Yuquan Jin",
+   "elo": 1815,
+   "partidos": 7,
+   "wtn": 10.74,
+   "wtnImplicito": 11.72
   },
   {
    "id": 800404663,
@@ -7070,14 +7278,6 @@
    "wtnImplicito": 11.75
   },
   {
-   "id": 800496049,
-   "nombre": "Adrian Arcon",
-   "elo": 1812.4,
-   "partidos": 10,
-   "wtn": 11.77,
-   "wtnImplicito": 11.75
-  },
-  {
    "id": 800432862,
    "nombre": "Stijn Pel",
    "elo": 1811.3,
@@ -7118,6 +7318,14 @@
    "wtnImplicito": 11.8
   },
   {
+   "id": 800582341,
+   "nombre": "Karim Mabrouk",
+   "elo": 1808.1,
+   "partidos": 3,
+   "wtn": 11.68,
+   "wtnImplicito": 11.81
+  },
+  {
    "id": 800523280,
    "nombre": "Alberto Odiseo Alvarado Berrospi",
    "elo": 1807.4,
@@ -7150,14 +7358,6 @@
    "wtnImplicito": 11.82
   },
   {
-   "id": 800541826,
-   "nombre": "Makar Krivoshchekov",
-   "elo": 1807,
-   "partidos": 8,
-   "wtn": 11.25,
-   "wtnImplicito": 11.82
-  },
-  {
    "id": 800328936,
    "nombre": "Congsup Congcar",
    "elo": 1807,
@@ -7187,6 +7387,14 @@
    "elo": 1805.9,
    "partidos": 8,
    "wtn": 12.1,
+   "wtnImplicito": 11.83
+  },
+  {
+   "id": 800398890,
+   "nombre": "Niels Peter Van Noord",
+   "elo": 1805.9,
+   "partidos": 1,
+   "wtn": 11.26,
    "wtnImplicito": 11.83
   },
   {
@@ -7246,12 +7454,20 @@
    "wtnImplicito": 11.87
   },
   {
-   "id": 800473822,
-   "nombre": "Stevan Popovic",
-   "elo": 1801.6,
-   "partidos": 6,
-   "wtn": 11.68,
-   "wtnImplicito": 11.89
+   "id": 800496049,
+   "nombre": "Adrian Arcon",
+   "elo": 1803.3,
+   "partidos": 11,
+   "wtn": 11.77,
+   "wtnImplicito": 11.87
+  },
+  {
+   "id": 800565501,
+   "nombre": "Kylian Collignon",
+   "elo": 1803,
+   "partidos": 9,
+   "wtn": 11.47,
+   "wtnImplicito": 11.87
   },
   {
    "id": 800690720,
@@ -7302,6 +7518,14 @@
    "wtnImplicito": 11.91
   },
   {
+   "id": 800587683,
+   "nombre": "XIAOYIN YANG",
+   "elo": 1800,
+   "partidos": 4,
+   "wtn": 10.69,
+   "wtnImplicito": 11.91
+  },
+  {
    "id": 800638381,
    "nombre": "Sebastian Heinrich",
    "elo": 1799.8,
@@ -7310,9 +7534,9 @@
    "wtnImplicito": 11.91
   },
   {
-   "id": 800477198,
-   "nombre": "Zijiang Yang",
-   "elo": 1799.6,
+   "id": 800473822,
+   "nombre": "Stevan Popovic",
+   "elo": 1799.7,
    "partidos": 8,
    "wtn": 11.68,
    "wtnImplicito": 11.91
@@ -7342,28 +7566,12 @@
    "wtnImplicito": 11.92
   },
   {
-   "id": 800449054,
-   "nombre": "Ammar Elamin",
-   "elo": 1798.5,
-   "partidos": 5,
-   "wtn": 10.66,
-   "wtnImplicito": 11.92
-  },
-  {
    "id": 800397641,
    "nombre": "Felix Romeo",
    "elo": 1798.4,
    "partidos": 6,
    "wtn": 10.9,
    "wtnImplicito": 11.93
-  },
-  {
-   "id": 800464258,
-   "nombre": "Elias Julian Werner",
-   "elo": 1796.6,
-   "partidos": 3,
-   "wtn": 11.49,
-   "wtnImplicito": 11.95
   },
   {
    "id": 800561348,
@@ -7446,19 +7654,11 @@
    "wtnImplicito": 11.99
   },
   {
-   "id": 800587683,
-   "nombre": "XIAOYIN YANG",
-   "elo": 1793.4,
-   "partidos": 2,
-   "wtn": 10.69,
-   "wtnImplicito": 11.99
-  },
-  {
-   "id": 800708219,
-   "nombre": "Marwan Ehab",
-   "elo": 1793.1,
-   "partidos": 5,
-   "wtn": 12.13,
+   "id": 800297486,
+   "nombre": "Krittin Koaykul",
+   "elo": 1793.3,
+   "partidos": 1,
+   "wtn": 11.76,
    "wtnImplicito": 11.99
   },
   {
@@ -7662,14 +7862,6 @@
    "wtnImplicito": 12.11
   },
   {
-   "id": 800732086,
-   "nombre": "Weiwen Pan",
-   "elo": 1783.5,
-   "partidos": 2,
-   "wtn": 11.35,
-   "wtnImplicito": 12.11
-  },
-  {
    "id": 800374235,
    "nombre": "Maximilian Todorov",
    "elo": 1783.3,
@@ -7683,14 +7875,6 @@
    "elo": 1782.7,
    "partidos": 10,
    "wtn": 13.52,
-   "wtnImplicito": 12.12
-  },
-  {
-   "id": 800466266,
-   "nombre": "Shaoyun Liu",
-   "elo": 1782.7,
-   "partidos": 8,
-   "wtn": 11.98,
    "wtnImplicito": 12.12
   },
   {
@@ -7710,12 +7894,28 @@
    "wtnImplicito": 12.13
   },
   {
+   "id": 800412461,
+   "nombre": "Raphael Perot",
+   "elo": 1781.4,
+   "partidos": 7,
+   "wtn": null,
+   "wtnImplicito": 12.13
+  },
+  {
    "id": 800793183,
    "nombre": "Francisco Gay",
    "elo": 1780.9,
    "partidos": 2,
    "wtn": 11.67,
    "wtnImplicito": 12.14
+  },
+  {
+   "id": 800464258,
+   "nombre": "Elias Julian Werner",
+   "elo": 1780.4,
+   "partidos": 4,
+   "wtn": 11.49,
+   "wtnImplicito": 12.15
   },
   {
    "id": 800755825,
@@ -7750,12 +7950,28 @@
    "wtnImplicito": 12.16
   },
   {
+   "id": 800466266,
+   "nombre": "Shaoyun Liu",
+   "elo": 1779.3,
+   "partidos": 10,
+   "wtn": 11.98,
+   "wtnImplicito": 12.16
+  },
+  {
    "id": 800427467,
    "nombre": "Laurens Harnoth Manrubia",
    "elo": 1779.3,
    "partidos": 3,
    "wtn": 12.83,
    "wtnImplicito": 12.16
+  },
+  {
+   "id": 800631785,
+   "nombre": "Omar Kandil",
+   "elo": 1778.1,
+   "partidos": 6,
+   "wtn": 12.99,
+   "wtnImplicito": 12.17
   },
   {
    "id": 800558343,
@@ -7790,14 +8006,6 @@
    "wtnImplicito": 12.21
   },
   {
-   "id": 800733145,
-   "nombre": "Philippe Renard",
-   "elo": 1775.3,
-   "partidos": 4,
-   "wtn": 12.49,
-   "wtnImplicito": 12.21
-  },
-  {
    "id": 800543357,
    "nombre": "Kolos Kincses",
    "elo": 1775.3,
@@ -7814,19 +8022,19 @@
    "wtnImplicito": 12.22
   },
   {
+   "id": 800733145,
+   "nombre": "Philippe Renard",
+   "elo": 1774.3,
+   "partidos": 5,
+   "wtn": 12.49,
+   "wtnImplicito": 12.22
+  },
+  {
    "id": 800493129,
    "nombre": "Georg Eduard Israelan",
    "elo": 1773.9,
    "partidos": 3,
    "wtn": 12.48,
-   "wtnImplicito": 12.23
-  },
-  {
-   "id": 800361862,
-   "nombre": "Julien De Cuyper",
-   "elo": 1773.4,
-   "partidos": 4,
-   "wtn": 11.44,
    "wtnImplicito": 12.23
   },
   {
@@ -7878,14 +8086,6 @@
    "wtnImplicito": 12.29
   },
   {
-   "id": 800752920,
-   "nombre": "Yue Xia",
-   "elo": 1768.6,
-   "partidos": 9,
-   "wtn": 11.07,
-   "wtnImplicito": 12.29
-  },
-  {
    "id": 800477809,
    "nombre": "Karim El Feky",
    "elo": 1768.5,
@@ -7899,6 +8099,14 @@
    "elo": 1768,
    "partidos": 3,
    "wtn": 11.94,
+   "wtnImplicito": 12.3
+  },
+  {
+   "id": 800732086,
+   "nombre": "Weiwen Pan",
+   "elo": 1768,
+   "partidos": 3,
+   "wtn": 11.35,
    "wtnImplicito": 12.3
   },
   {
@@ -7998,6 +8206,14 @@
    "wtnImplicito": 12.35
   },
   {
+   "id": 800407332,
+   "nombre": "Zaharije-Zak Talic",
+   "elo": 1763.2,
+   "partidos": 2,
+   "wtn": 12.79,
+   "wtnImplicito": 12.36
+  },
+  {
    "id": 800473601,
    "nombre": "Gokberk Saritas",
    "elo": 1762.6,
@@ -8046,27 +8262,11 @@
    "wtnImplicito": 12.39
   },
   {
-   "id": 800497294,
-   "nombre": "Chikaya Sato",
-   "elo": 1760.7,
-   "partidos": 2,
-   "wtn": 13.26,
-   "wtnImplicito": 12.39
-  },
-  {
    "id": 800542325,
    "nombre": "Nikola Jovic",
    "elo": 1760.5,
    "partidos": 4,
    "wtn": 12.08,
-   "wtnImplicito": 12.39
-  },
-  {
-   "id": 800493697,
-   "nombre": "Idriss Haddouch",
-   "elo": 1760.3,
-   "partidos": 8,
-   "wtn": 11.74,
    "wtnImplicito": 12.39
   },
   {
@@ -8110,14 +8310,6 @@
    "wtnImplicito": 12.41
   },
   {
-   "id": 800412461,
-   "nombre": "Raphael Perot",
-   "elo": 1759,
-   "partidos": 6,
-   "wtn": null,
-   "wtnImplicito": 12.41
-  },
-  {
    "id": 800416606,
    "nombre": "Matas Vasiliauskas",
    "elo": 1757.1,
@@ -8155,6 +8347,22 @@
    "elo": 1756.4,
    "partidos": 5,
    "wtn": 12.88,
+   "wtnImplicito": 12.44
+  },
+  {
+   "id": 800752920,
+   "nombre": "Yue Xia",
+   "elo": 1756.3,
+   "partidos": 10,
+   "wtn": 11.07,
+   "wtnImplicito": 12.44
+  },
+  {
+   "id": 800493697,
+   "nombre": "Idriss Haddouch",
+   "elo": 1756.2,
+   "partidos": 9,
+   "wtn": 11.74,
    "wtnImplicito": 12.44
   },
   {
@@ -8220,14 +8428,6 @@
    "partidos": 8,
    "wtn": 12.91,
    "wtnImplicito": 12.51
-  },
-  {
-   "id": 800631785,
-   "nombre": "Omar Kandil",
-   "elo": 1750,
-   "partidos": 4,
-   "wtn": 12.99,
-   "wtnImplicito": 12.52
   },
   {
    "id": 800452143,
@@ -8342,6 +8542,14 @@
    "wtnImplicito": 12.6
   },
   {
+   "id": 800525909,
+   "nombre": "Kael Shalin Shah",
+   "elo": 1743.9,
+   "partidos": 5,
+   "wtn": 13.68,
+   "wtnImplicito": 12.59
+  },
+  {
    "id": 800601011,
    "nombre": "Shu Matsuoka",
    "elo": 1743.8,
@@ -8395,6 +8603,14 @@
    "elo": 1741.8,
    "partidos": 7,
    "wtn": 11.8,
+   "wtnImplicito": 12.62
+  },
+  {
+   "id": 800504359,
+   "nombre": "Milledge Galphin Cossu",
+   "elo": 1741.6,
+   "partidos": 1,
+   "wtn": 12.42,
    "wtnImplicito": 12.62
   },
   {
@@ -8454,14 +8670,6 @@
    "wtnImplicito": 12.65
   },
   {
-   "id": 800519495,
-   "nombre": "Lars Wagenaar",
-   "elo": 1738.9,
-   "partidos": 5,
-   "wtn": 12.44,
-   "wtnImplicito": 12.66
-  },
-  {
    "id": 800660317,
    "nombre": "Jules Fabre",
    "elo": 1738.4,
@@ -8516,6 +8724,14 @@
    "partidos": 8,
    "wtn": 12.29,
    "wtnImplicito": 12.7
+  },
+  {
+   "id": 800497294,
+   "nombre": "Chikaya Sato",
+   "elo": 1734.9,
+   "partidos": 3,
+   "wtn": 13.26,
+   "wtnImplicito": 12.71
   },
   {
    "id": 800575142,
@@ -8614,6 +8830,22 @@
    "wtnImplicito": 12.79
   },
   {
+   "id": 800519495,
+   "nombre": "Lars Wagenaar",
+   "elo": 1728,
+   "partidos": 6,
+   "wtn": 12.44,
+   "wtnImplicito": 12.79
+  },
+  {
+   "id": 800577203,
+   "nombre": "Zian Vanderstappen",
+   "elo": 1727.8,
+   "partidos": 10,
+   "wtn": 13.54,
+   "wtnImplicito": 12.79
+  },
+  {
    "id": 800589891,
    "nombre": "Egor Shcherbakov",
    "elo": 1727.3,
@@ -8668,14 +8900,6 @@
    "partidos": 4,
    "wtn": 12.51,
    "wtnImplicito": 12.84
-  },
-  {
-   "id": 800577203,
-   "nombre": "Zian Vanderstappen",
-   "elo": 1723.1,
-   "partidos": 8,
-   "wtn": 13.54,
-   "wtnImplicito": 12.85
   },
   {
    "id": 800500077,
@@ -8838,14 +9062,6 @@
    "wtnImplicito": 12.98
   },
   {
-   "id": 800525909,
-   "nombre": "Kael Shalin Shah",
-   "elo": 1711.7,
-   "partidos": 3,
-   "wtn": 13.68,
-   "wtnImplicito": 12.99
-  },
-  {
    "id": 800495931,
    "nombre": "Yannick Baluska",
    "elo": 1710.6,
@@ -8947,14 +9163,6 @@
    "elo": 1702.8,
    "partidos": 6,
    "wtn": 13.47,
-   "wtnImplicito": 13.1
-  },
-  {
-   "id": 800580199,
-   "nombre": "James McGloughlin",
-   "elo": 1702.6,
-   "partidos": 2,
-   "wtn": 13.74,
    "wtnImplicito": 13.1
   },
   {
@@ -9182,6 +9390,14 @@
    "wtnImplicito": 13.24
   },
   {
+   "id": 800580199,
+   "nombre": "James McGloughlin",
+   "elo": 1690.7,
+   "partidos": 3,
+   "wtn": 13.74,
+   "wtnImplicito": 13.25
+  },
+  {
    "id": 800408506,
    "nombre": "Jeffrey Hsu",
    "elo": 1690.6,
@@ -9219,14 +9435,6 @@
    "elo": 1689.4,
    "partidos": 2,
    "wtn": 12.94,
-   "wtnImplicito": 13.26
-  },
-  {
-   "id": 800632039,
-   "nombre": "ARADHYA KSHITIJ",
-   "elo": 1689.3,
-   "partidos": 3,
-   "wtn": 14.17,
    "wtnImplicito": 13.26
   },
   {
@@ -9342,6 +9550,14 @@
    "wtnImplicito": 13.33
   },
   {
+   "id": 800546013,
+   "nombre": "Sam Bakker",
+   "elo": 1682.9,
+   "partidos": 6,
+   "wtn": 14.01,
+   "wtnImplicito": 13.34
+  },
+  {
    "id": 800674090,
    "nombre": "Dino Molokova Ferreira",
    "elo": 1682.6,
@@ -9430,6 +9646,14 @@
    "wtnImplicito": 13.4
   },
   {
+   "id": 800632039,
+   "nombre": "ARADHYA KSHITIJ",
+   "elo": 1677.6,
+   "partidos": 4,
+   "wtn": 14.17,
+   "wtnImplicito": 13.41
+  },
+  {
    "id": 800373063,
    "nombre": "Tyler Mercier",
    "elo": 1677.3,
@@ -9452,14 +9676,6 @@
    "partidos": 4,
    "wtn": 13.73,
    "wtnImplicito": 13.43
-  },
-  {
-   "id": 800656484,
-   "nombre": "Aleksandre Shvangiradze",
-   "elo": 1675.3,
-   "partidos": 5,
-   "wtn": 13.29,
-   "wtnImplicito": 13.44
   },
   {
    "id": 800452834,
@@ -9886,14 +10102,6 @@
    "wtnImplicito": 13.82
   },
   {
-   "id": 800555210,
-   "nombre": "Asier Meneses Perny",
-   "elo": 1643.2,
-   "partidos": 2,
-   "wtn": 13.57,
-   "wtnImplicito": 13.83
-  },
-  {
    "id": 800437748,
    "nombre": "Kiyan Santino Kasemi",
    "elo": 1643,
@@ -9923,14 +10131,6 @@
    "elo": 1642.8,
    "partidos": 7,
    "wtn": 16.91,
-   "wtnImplicito": 13.84
-  },
-  {
-   "id": 800546013,
-   "nombre": "Sam Bakker",
-   "elo": 1642.6,
-   "partidos": 4,
-   "wtn": 14.01,
    "wtnImplicito": 13.84
   },
   {
@@ -10038,6 +10238,14 @@
    "wtnImplicito": 13.91
   },
   {
+   "id": 800656484,
+   "nombre": "Aleksandre Shvangiradze",
+   "elo": 1635.6,
+   "partidos": 6,
+   "wtn": 13.29,
+   "wtnImplicito": 13.92
+  },
+  {
    "id": 800550779,
    "nombre": "Luc Ananda Ceuca",
    "elo": 1635.2,
@@ -10052,6 +10260,14 @@
    "partidos": 2,
    "wtn": 13.15,
    "wtnImplicito": 13.93
+  },
+  {
+   "id": 800555210,
+   "nombre": "Asier Meneses Perny",
+   "elo": 1634.2,
+   "partidos": 3,
+   "wtn": 13.57,
+   "wtnImplicito": 13.94
   },
   {
    "id": 800513529,
@@ -10214,14 +10430,6 @@
    "wtnImplicito": 14.14
   },
   {
-   "id": 800520124,
-   "nombre": "Ryuichiro Nakano",
-   "elo": 1618,
-   "partidos": 6,
-   "wtn": 14.85,
-   "wtnImplicito": 14.14
-  },
-  {
    "id": 800516675,
    "nombre": "Massimo Giunta",
    "elo": 1617.4,
@@ -10323,6 +10531,14 @@
    "elo": 1612.2,
    "partidos": 2,
    "wtn": 13.98,
+   "wtnImplicito": 14.21
+  },
+  {
+   "id": 800520124,
+   "nombre": "Ryuichiro Nakano",
+   "elo": 1611.9,
+   "partidos": 7,
+   "wtn": 14.85,
    "wtnImplicito": 14.21
   },
   {
@@ -10502,14 +10718,6 @@
    "wtnImplicito": 14.43
   },
   {
-   "id": 800712497,
-   "nombre": "Sebastian Bozemoj",
-   "elo": 1594.5,
-   "partidos": 1,
-   "wtn": 13.92,
-   "wtnImplicito": 14.43
-  },
-  {
    "id": 800517285,
    "nombre": "Sam Ryan Ziegann",
    "elo": 1593.3,
@@ -10534,14 +10742,6 @@
    "wtnImplicito": 14.46
   },
   {
-   "id": 800512901,
-   "nombre": "Daniele Augenti",
-   "elo": 1590.9,
-   "partidos": 2,
-   "wtn": 14.55,
-   "wtnImplicito": 14.47
-  },
-  {
    "id": 800335620,
    "nombre": "Christopher Patzanovsky",
    "elo": 1590.8,
@@ -10558,6 +10758,14 @@
    "wtnImplicito": 14.48
   },
   {
+   "id": 800712497,
+   "nombre": "Sebastian Bozemoj",
+   "elo": 1590.1,
+   "partidos": 2,
+   "wtn": 13.92,
+   "wtnImplicito": 14.48
+  },
+  {
    "id": 800576199,
    "nombre": "Maurice-Noel Kaserer",
    "elo": 1589.3,
@@ -10571,6 +10779,14 @@
    "elo": 1588.8,
    "partidos": 1,
    "wtn": 14.31,
+   "wtnImplicito": 14.5
+  },
+  {
+   "id": 800512901,
+   "nombre": "Daniele Augenti",
+   "elo": 1588.8,
+   "partidos": 3,
+   "wtn": 14.55,
    "wtnImplicito": 14.5
   },
   {
@@ -10678,6 +10894,14 @@
    "wtnImplicito": 14.54
   },
   {
+   "id": 800582275,
+   "nombre": "Brian Dal Zilio",
+   "elo": 1583.6,
+   "partidos": 6,
+   "wtn": 14.39,
+   "wtnImplicito": 14.56
+  },
+  {
    "id": 800708556,
    "nombre": "Kai-An Wu",
    "elo": 1583.5,
@@ -10726,14 +10950,6 @@
    "wtnImplicito": 14.61
   },
   {
-   "id": 800519589,
-   "nombre": "Julian DeSousa",
-   "elo": 1579.6,
-   "partidos": 8,
-   "wtn": 14.22,
-   "wtnImplicito": 14.61
-  },
-  {
    "id": 800702547,
    "nombre": "Maxime Rochat",
    "elo": 1579.6,
@@ -10763,6 +10979,14 @@
    "elo": 1579.2,
    "partidos": 2,
    "wtn": 14.17,
+   "wtnImplicito": 14.62
+  },
+  {
+   "id": 800519589,
+   "nombre": "Julian DeSousa",
+   "elo": 1578.6,
+   "partidos": 9,
+   "wtn": 14.22,
    "wtnImplicito": 14.62
   },
   {
@@ -10854,14 +11078,6 @@
    "wtnImplicito": 14.74
   },
   {
-   "id": 800687305,
-   "nombre": "REDA EL AOUNI",
-   "elo": 1568.4,
-   "partidos": 1,
-   "wtn": 15.26,
-   "wtnImplicito": 14.75
-  },
-  {
    "id": 800430100,
    "nombre": "Evgeny Philippov",
    "elo": 1567.9,
@@ -10899,6 +11115,14 @@
    "elo": 1566.8,
    "partidos": 5,
    "wtn": 15.11,
+   "wtnImplicito": 14.77
+  },
+  {
+   "id": 800687305,
+   "nombre": "REDA EL AOUNI",
+   "elo": 1566.4,
+   "partidos": 2,
+   "wtn": 15.26,
    "wtnImplicito": 14.77
   },
   {
@@ -11110,22 +11334,6 @@
    "wtnImplicito": 14.91
   },
   {
-   "id": 800707169,
-   "nombre": "Veerawit Kamput",
-   "elo": 1555,
-   "partidos": 2,
-   "wtn": null,
-   "wtnImplicito": 14.91
-  },
-  {
-   "id": 800582275,
-   "nombre": "Brian Dal Zilio",
-   "elo": 1554.5,
-   "partidos": 4,
-   "wtn": 14.39,
-   "wtnImplicito": 14.92
-  },
-  {
    "id": 800544630,
    "nombre": "Balthazar Huss",
    "elo": 1554.1,
@@ -11142,18 +11350,18 @@
    "wtnImplicito": 14.93
   },
   {
-   "id": 800573015,
-   "nombre": "Svarmanyu Singh",
-   "elo": 1553.2,
-   "partidos": 3,
-   "wtn": 15.8,
-   "wtnImplicito": 14.93
-  },
-  {
    "id": 800535720,
    "nombre": "Marko Maksimovic",
    "elo": 1553,
    "partidos": 5,
+   "wtn": null,
+   "wtnImplicito": 14.94
+  },
+  {
+   "id": 800707169,
+   "nombre": "Veerawit Kamput",
+   "elo": 1552.6,
+   "partidos": 3,
    "wtn": null,
    "wtnImplicito": 14.94
   },
@@ -11187,6 +11395,14 @@
    "elo": 1546.2,
    "partidos": 5,
    "wtn": 14.69,
+   "wtnImplicito": 15.02
+  },
+  {
+   "id": 800458749,
+   "nombre": "Rohan Mehra",
+   "elo": 1546.2,
+   "partidos": 3,
+   "wtn": 15.47,
    "wtnImplicito": 15.02
   },
   {
@@ -11294,6 +11510,14 @@
    "wtnImplicito": 15.1
   },
   {
+   "id": 800573015,
+   "nombre": "Svarmanyu Singh",
+   "elo": 1539.3,
+   "partidos": 4,
+   "wtn": 15.8,
+   "wtnImplicito": 15.11
+  },
+  {
    "id": 800331791,
    "nombre": "Ilya Polonskiy",
    "elo": 1538.7,
@@ -11331,6 +11555,14 @@
    "elo": 1537.6,
    "partidos": 1,
    "wtn": 15.06,
+   "wtnImplicito": 15.13
+  },
+  {
+   "id": 800700203,
+   "nombre": "Jayson Blando",
+   "elo": 1537.5,
+   "partidos": 6,
+   "wtn": null,
    "wtnImplicito": 15.13
   },
   {
@@ -11646,14 +11878,6 @@
    "wtnImplicito": 15.34
   },
   {
-   "id": 800700203,
-   "nombre": "Jayson Blando",
-   "elo": 1519.7,
-   "partidos": 4,
-   "wtn": null,
-   "wtnImplicito": 15.35
-  },
-  {
    "id": 800355296,
    "nombre": "Lucas Ernst",
    "elo": 1519.4,
@@ -11707,14 +11931,6 @@
    "elo": 1516.4,
    "partidos": 3,
    "wtn": null,
-   "wtnImplicito": 15.39
-  },
-  {
-   "id": 800701620,
-   "nombre": "Nav Dayal",
-   "elo": 1516.1,
-   "partidos": 5,
-   "wtn": 17.07,
    "wtnImplicito": 15.39
   },
   {
@@ -11902,11 +12118,27 @@
    "wtnImplicito": 15.46
   },
   {
+   "id": 800656311,
+   "nombre": "Stan Put",
+   "elo": 1509.8,
+   "partidos": 3,
+   "wtn": 16.02,
+   "wtnImplicito": 15.47
+  },
+  {
    "id": 800662278,
    "nombre": "Francisco Crosio",
    "elo": 1509.5,
    "partidos": 2,
    "wtn": 15.24,
+   "wtnImplicito": 15.47
+  },
+  {
+   "id": 800701620,
+   "nombre": "Nav Dayal",
+   "elo": 1509.4,
+   "partidos": 6,
+   "wtn": 17.07,
    "wtnImplicito": 15.47
   },
   {
@@ -12067,14 +12299,6 @@
    "elo": 1503.1,
    "partidos": 2,
    "wtn": null,
-   "wtnImplicito": 15.55
-  },
-  {
-   "id": 800458749,
-   "nombre": "Rohan Mehra",
-   "elo": 1502.9,
-   "partidos": 1,
-   "wtn": 15.47,
    "wtnImplicito": 15.55
   },
   {
@@ -12844,14 +13068,6 @@
    "partidos": 3,
    "wtn": 15.86,
    "wtnImplicito": 16.01
-  },
-  {
-   "id": 800656311,
-   "nombre": "Stan Put",
-   "elo": 1464.4,
-   "partidos": 1,
-   "wtn": 16.02,
-   "wtnImplicito": 16.02
   },
   {
    "id": 800629135,
@@ -13838,6 +14054,14 @@
    "wtnImplicito": 16.17
   },
   {
+   "id": 800643082,
+   "nombre": "Ahmed Darmoul",
+   "elo": 1452.6,
+   "partidos": 1,
+   "wtn": null,
+   "wtnImplicito": 16.17
+  },
+  {
    "id": 800702428,
    "nombre": "Norbert Zielinski",
    "elo": 1452.5,
@@ -14721,6 +14945,14 @@
    "id": 800516900,
    "nombre": "Denis Maijorov",
    "elo": 1438.9,
+   "partidos": 1,
+   "wtn": null,
+   "wtnImplicito": 16.34
+  },
+  {
+   "id": 800426607,
+   "nombre": "Boas Ole Deden",
+   "elo": 1438.6,
    "partidos": 1,
    "wtn": null,
    "wtnImplicito": 16.34
@@ -16664,8 +16896,8 @@
   {
    "id": 800670178,
    "nombre": "Mahmoud chetouane",
-   "elo": 1285,
-   "partidos": 2,
+   "elo": 1284.4,
+   "partidos": 3,
    "wtn": 18.82,
    "wtnImplicito": 18.23
   },
@@ -17140,6 +17372,14 @@
    "partidos": 1,
    "wtn": 19.1,
    "wtnImplicito": 19.12
+  },
+  {
+   "id": 800740719,
+   "nombre": "Zicong Wang",
+   "elo": 1211.6,
+   "partidos": 1,
+   "wtn": 19.1,
+   "wtnImplicito": 19.13
   },
   {
    "id": 800741402,
@@ -18006,6 +18246,14 @@
    "wtnImplicito": 20.78
   },
   {
+   "id": 800688308,
+   "nombre": "Tri Srisen",
+   "elo": 1076.5,
+   "partidos": 1,
+   "wtn": 20.78,
+   "wtnImplicito": 20.78
+  },
+  {
    "id": 800647956,
    "nombre": "Lion Roehm",
    "elo": 1076.3,
@@ -18192,10 +18440,10 @@
   {
    "id": 800680467,
    "nombre": "Xin Zhou",
-   "elo": 1026.8,
-   "partidos": 13,
+   "elo": 1026.7,
+   "partidos": 14,
    "wtn": 25.66,
-   "wtnImplicito": 21.39
+   "wtnImplicito": 21.4
   },
   {
    "id": 800653622,
@@ -18763,6 +19011,14 @@
    "elo": 896.7,
    "partidos": 2,
    "wtn": 22.75,
+   "wtnImplicito": 22.99
+  },
+  {
+   "id": 800660642,
+   "nombre": "Napat Pattanalertphan",
+   "elo": 896.3,
+   "partidos": 1,
+   "wtn": 22.99,
    "wtnImplicito": 22.99
   },
   {
