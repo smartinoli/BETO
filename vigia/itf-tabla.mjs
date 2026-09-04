@@ -173,7 +173,7 @@ tr[hidden]{display:none}
 
 <div class="act">
   <button id="b-cuadros" data-que="cuadros-ahora" class="sec2">1 · Cuadros de ahora <small>2–4 min</small></button>
-  <button id="b-betano" data-que="betano">2 · Betano ahora <small>solo Betano, lo que juega en 8 h</small></button>
+  <button id="b-betano" data-que="betano">2 · Betano ahora <small>todos los torneos de la semana, 2–3 min</small></button>
   <button id="b-cuotas" data-que="cuotas" class="sec2">Todas las casas <small>medir el mercado</small></button>
   <button id="b-todo" data-que="todo" class="sec2">Semana completa <small>una vez al día</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
@@ -315,9 +315,9 @@ ${filas}
       gu=document.getElementById('act-guardar');
   var botones=['b-cuadros','b-betano','b-cuotas','b-todo','b-modelo'].map(function(i){return document.getElementById(i)}).filter(Boolean);
   if(!botones.length) return;
-  var AVISO={ 'cuadros-ahora':'bajando los cuadros de los torneos que juegan en las próximas 8 h (2–4 min)…',
+  var AVISO={ 'cuadros-ahora':'bajando los cuadros de todos los torneos que juegan en las próximas 36 h (3–5 min)…',
               cuotas:'pidiendo las cuotas de hoy, partido por partido (la API no deja pedirlas juntas): 3 seg por partido, un martes cargado son ~8 min…',
-              betano:'pidiendo a Betano los partidos de las próximas 8 h, partido por partido…',
+              betano:'pidiendo las cuotas de todos los partidos pendientes de la semana, partido por partido (3 seg cada uno)…',
               todo:'corriendo: cuadros ITF por navegador + cuotas (10–15 min)…',
               modelo:'corriendo: el modelo se reajusta con los resultados y se queda con lo mejor (5–10 min)…' };
   function traba(si){ botones.forEach(function(b){b.disabled=si}); }
