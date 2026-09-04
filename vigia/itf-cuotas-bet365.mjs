@@ -46,11 +46,16 @@ const HORAS = +arg('horas', 14);
 /* --torneos a,b,c: solo esos torneos (por trozo del nombre). Para
    actualizar rapido un grupo — p.ej. los asiaticos de la manana. */
 const SOLO_TORNEOS = (arg('torneos', '') || '').split(',').map(x => NORM(x)).filter(Boolean);
-/* --casa <slug>: cotiza SOLO esa casa, sin fallback. Pedido por Sebastián
-   el 2026-09-01 para Betano, que es donde él apuesta: la cuota de otra
-   casa le sirve de referencia pero no es la que va a pagar. Sin este
-   flag manda la prioridad de siempre (bet365 > betano > pinnacle > la
-   que haya), que es lo mejor para MEDIR el mercado. */
+/* --casa <slug>: esa casa manda. Pedido por Sebastián el 2026-09-01
+   para Betano, que es donde él apuesta: la cuota de otra casa le sirve
+   de referencia pero no es la que va a pagar. Sin este flag manda la
+   prioridad de siempre (bet365 > betano > pinnacle > la que haya), que
+   es lo mejor para MEDIR el mercado.
+   CON RESPALDO desde el 2026-09-04: ese día la API no traía ni Betano
+   ni bet365 para NINGÚN ITF ni Challenger (sí para el US Open), y el
+   botón devolvía 0 partidos con Betano lleno. Si la casa pedida no
+   está, el partido sale igual con la mejor otra casa, marcando la
+   fuente en cada fila: sin partido no hay nada que mirar. */
 const SOLO = arg('casa', null);
 /* 3.2s entre llamadas = ~18/min. Con 2.6s (~23/min) la API empezó a
    devolver RATE_LIMITED en cuanto dejamos de reusar caché viejo y el
@@ -177,7 +182,7 @@ console.log(`${Object.keys(idx.partidos).length} en el índice · ${candidatos.l
    cotizar antes, y si solo hay otra casa, se usa esa anotando la fuente. */
 const PRIORIDAD = SOLO ? [SOLO] : ['bet365', 'betano', 'pinnacle'];
 const cuotas = [];
-let deCache = 0, noPreguntados = 0;
+let deCache = 0, noPreguntados = 0, deOtraCasa = 0, sinCuotaApi = 0;
 for (const p of candidatos) {
   if (cuotas.length >= MAX) break;
   let fallo = null;
@@ -227,14 +232,18 @@ for (const p of candidatos) {
      "no pudimos preguntar". Antes los dos casos decían lo mismo y un
      rate limit se leía como que las casas no lo cotizaban. */
   if (!todas || !Object.keys(todas).length) {
-    if (fallo) { noPreguntados++; console.log(`  ? ${p.p1} vs ${p.p2}: no se pudo consultar (${fallo})`) }
+    /* NOT_FOUND no es un fallo nuestro ni un límite: la API todavía no
+       tiene cuota de nadie para ese partido (va de la mano con hasOdds
+       false en el índice; medido el 2026-09-04, 17 de 17). */
+    if (/NOT_FOUND/.test(fallo || '')) { sinCuotaApi++; console.log(`  · ${p.p1} vs ${p.p2}: la API no tiene cuota todavía`) }
+    else if (fallo) { noPreguntados++; console.log(`  ? ${p.p1} vs ${p.p2}: no se pudo consultar (${fallo})`) }
     else console.log(`  · ${p.p1} vs ${p.p2}: ninguna casa lo cotiza todavía`);
     continue;
   }
   /* la mejor casa disponible que tenga cotización pre-partido válida */
-  const orden = SOLO ? (todas[SOLO] ? [SOLO] : [])
-    : [...PRIORIDAD.filter(c => todas[c]), ...Object.keys(todas).filter(c => !PRIORIDAD.includes(c))];
-  if (SOLO && !orden.length) { console.log(`  · ${p.p1} vs ${p.p2}: ${SOLO} no lo cotiza (sí ${Object.keys(todas).join(',')})`); continue }
+  const RESPALDO = [SOLO, 'bet365', 'betano', 'pinnacle'].filter(Boolean);
+  const orden = [...RESPALDO.filter(c => todas[c]), ...Object.keys(todas).filter(c => !RESPALDO.includes(c))];
+  if (SOLO && !todas[SOLO]) { deOtraCasa++; console.log(`  · ${p.p1} vs ${p.p2}: ${SOLO} no lo cotiza → se usa ${orden[0]}`) }
   let v = null, casa = null;
   for (const c of orden) {
     /* caché viejo guardaba la respuesta completa por casa; el nuevo, la casa pelada */
@@ -253,6 +262,8 @@ for (const p of candidatos) {
 }
 fs.writeFileSync(SALIDA, JSON.stringify({ generado: new Date().toISOString(), casa: SOLO || 'bet365', soloCasa: SOLO || null, parcial: false, cuotas }, null, 1));
 console.log(`\n${cuotas.length} cuotas (${deCache} de caché, ${REQ} requests)`
+  + (deOtraCasa ? ` · ${deOtraCasa} sin ${SOLO}, con otra casa` : '')
+  + (sinCuotaApi ? ` · ${sinCuotaApi} sin cuota de nadie en la API todavía` : '')
   + (noPreguntados ? ` · ${noPreguntados} quedaron sin consultar por límite de la API` : '')
   + ' → vigia/itf-cuotas-bet365.json');
 console.log('ahora: node vigia/itf-informe.mjs --bet365');

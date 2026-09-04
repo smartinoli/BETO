@@ -677,7 +677,7 @@ fs.writeFileSync(HISTF, JSON.stringify(historia, null, 1));
   const vistos = new Set();
   const eloDe = j => { const r = ELO.get(j.id); return r ? { elo: Math.round(r.elo), pj: r.partidos } : null };
 
-  const mete = (t, f1, f2, g1, g2, prob1, etapa, inicio, fixtureId, jugada, res, acerto, lado) => {
+  const mete = (t, f1, f2, g1, g2, prob1, etapa, inicio, fixtureId, jugada, res, acerto, lado, casa) => {
     const k = fixtureId || [t?.nombre, f1.nombre, f2.nombre].join('|');
     if (vistos.has(k)) return; vistos.add(k);
     const paisT = t?.clave ? ((t.clave.match(/^m-itf-([a-z]+)-/) || [])[1]?.toUpperCase() || null) : null;
@@ -701,7 +701,7 @@ fs.writeFileSync(HISTF, JSON.stringify(historia, null, 1));
         jr: !!j.jr, local: !!(paisT && j.pais === paisT),
         elo: e?.elo ?? null, eloPj: e?.pj ?? null,
         jugable: !!(jugada && (jugada.quien === j.nombre || String(jugada.quien).includes(String(j.nombre).split(' ').slice(-1)[0]))),
-        inicio: inicio || null, fixtureId: fixtureId || null,
+        inicio: inicio || null, fixtureId: fixtureId || null, casa: casa || null,
       });
     }
   };
@@ -711,7 +711,7 @@ fs.writeFileSync(HISTF, JSON.stringify(historia, null, 1));
     if (!f.v?.nivel?.favorito || !f.q.g1 || !f.q.g2) continue;   /* sin nivel (p.ej. sin WTN) no hay fila */
     const favEs1 = f.v.nivel.favorito.startsWith(f.f1.nombre);
     const p1 = favEs1 ? f.v.nivel.p : 1 - f.v.nivel.p;
-    mete(f.t, f.f1, f.f2, f.q.g1, f.q.g2, p1, f.etapa, f.q.inicio, f.q.fixtureId, f.jugada, f.res, null, null);
+    mete(f.t, f.f1, f.f2, f.q.g1, f.q.g2, p1, f.etapa, f.q.inicio, f.q.fixtureId, f.jugada, f.res, null, null, f.q.fuente);
   }
   /* 2. lo que tuvo cuota HOY y ya no está en la tanda: los que arrancaron
         mientras mirábamos, y los que ya terminaron con su marcador */
@@ -721,7 +721,7 @@ fs.writeFileSync(HISTF, JSON.stringify(historia, null, 1));
     if (!t) continue;
     const f1 = ficha(t.clave, v.p1), f2 = ficha(t.clave, v.p2);
     const p1 = v.p != null ? (v.lado === 1 ? v.p : 1 - v.p) : null;
-    mete(t, f1, f2, v.g1, v.g2, p1, v.etapa, v.inicio, v.fixtureId, null, v.res, v.acerto, v.lado);
+    mete(t, f1, f2, v.g1, v.g2, p1, v.etapa, v.inicio, v.fixtureId, null, v.res, v.acerto, v.lado, v.fuente);
   }
   fs.writeFileSync(path.join(DIR, 'itf-tabla.json'), JSON.stringify({
     generado: new Date().toISOString(), jugadores }, null, 1));

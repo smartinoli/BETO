@@ -16929,7 +16929,146 @@
     "razon": "Δ1.57 de WTN a favor de Sasikumar Mukund (6.98 contra 8.55), en QF: la curva del grupo \"finales\" (n=258) da 60%. Ajustan: Sasikumar Mukund viene cediendo menos games (25% contra 29%) (+2 pts); Thantub Suksumrarn juega en su país (THA): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 55%. El mercado la paga a 1.405: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −22% si tenemos razón nosotros y −8% si la tiene el mercado."
    }
   ],
-  "2026-09-04": []
+  "2026-09-04": [
+   {
+    "crit": {
+     "cuota": 1.736,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.643,
+     "dW": 2.88,
+     "forma": -1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 21,
+     "edadRi": 24,
+     "dElo": -43
+    },
+    "jugada": null,
+    "fixtureId": "pn129043431635458236",
+    "inicio": "2026-09-04T06:00:00.000Z",
+    "torneo": "M15 Hurghada",
+    "pais": "Egypt",
+    "etapa": "QF",
+    "p1": "Dev Javia",
+    "p2": "Michal Krajci",
+    "g1": 2.001,
+    "g2": 1.736,
+    "gana": "Michal Krajci",
+    "lado": 2,
+    "p": 0.643,
+    "pMercado": 0.535,
+    "soloWtn": 0.683,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ2.88 de WTN a favor de Michal Krajci (6.1 contra 8.98), en QF: la curva del grupo \"finales\" (n=258) da 68%. Ajustan: Dev Javia viene cediendo menos games (40% contra 48%): la forma contradice al nivel (−4 pts). Queda en 64%. El mercado la paga a 1.736: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +12% si tenemos razón nosotros y −7% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.724,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.374,
+     "dW": 4.88,
+     "forma": -1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 22,
+     "edadRi": 18,
+     "dElo": 24
+    },
+    "jugada": null,
+    "fixtureId": "pn129043431635472462",
+    "inicio": "2026-09-04T06:00:00.000Z",
+    "torneo": "M15 Hurghada",
+    "pais": "Egypt",
+    "etapa": "QF",
+    "p1": "Marat Salbiev",
+    "p2": "Chirag Duhan",
+    "g1": 2.011,
+    "g2": 1.724,
+    "gana": "Chirag Duhan",
+    "lado": 2,
+    "p": 0.374,
+    "pMercado": 0.538,
+    "soloWtn": 0.787,
+    "señales": [
+     "sub18",
+     "forma"
+    ],
+    "razon": "Δ4.88 de WTN a favor de Chirag Duhan (10.61 contra 15.49), en QF: la curva del grupo \"finales\" (n=258) da 79%. Ajustan: Marat Salbiev tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−38 pts); Marat Salbiev viene cediendo menos games (34% contra 42%): la forma contradice al nivel (−4 pts). Queda en 37%. El mercado la paga a 1.724: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −36% si tenemos razón nosotros y −7% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.186,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.916,
+     "dW": 2.18,
+     "forma": 1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 18,
+     "edadRi": 24,
+     "dElo": 130
+    },
+    "jugada": null,
+    "fixtureId": "pn129043431635472463",
+    "inicio": "2026-09-04T06:00:00.000Z",
+    "torneo": "M15 Hurghada",
+    "pais": "Egypt",
+    "etapa": "QF",
+    "p1": "Thijs Boogaard",
+    "p2": "Conor Gannon",
+    "g1": 1.186,
+    "g2": 4.269,
+    "gana": "Thijs Boogaard",
+    "lado": 1,
+    "p": 0.916,
+    "pMercado": 0.783,
+    "soloWtn": 0.642,
+    "señales": [
+     "sub18",
+     "forma"
+    ],
+    "razon": "Δ2.18 de WTN a favor de Thijs Boogaard (5 contra 7.18), en QF: la curva del grupo \"finales\" (n=258) da 64%. Ajustan: Thijs Boogaard tiene 18 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+24 pts); Thijs Boogaard viene cediendo menos games (27% contra 34%) (+1 pts). Queda en 92%. El mercado la paga a 1.186: 78% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −7% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.672,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.49,
+     "dW": 0.24,
+     "forma": -1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 24,
+     "edadRi": 24,
+     "dElo": 6
+    },
+    "jugada": null,
+    "fixtureId": "pn129043431635472464",
+    "inicio": "2026-09-04T06:00:00.000Z",
+    "torneo": "M15 Hurghada",
+    "pais": "Egypt",
+    "etapa": "QF",
+    "p1": "Jake Fellows",
+    "p2": "Aditya Balsekar",
+    "g1": 1.672,
+    "g2": 2.09,
+    "gana": "Jake Fellows",
+    "lado": 1,
+    "p": 0.49,
+    "pMercado": 0.556,
+    "soloWtn": 0.516,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ0.24 de WTN a favor de Jake Fellows (9.55 contra 9.79), en QF: la curva del grupo \"finales\" (n=258) da 52%. Ajustan: Aditya Balsekar viene cediendo menos games (25% contra 30%): la forma contradice al nivel (−3 pts). Queda en 49%. El mercado la paga a 1.672: 56% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −7% si la tiene el mercado."
+   }
+  ]
  },
- "actualizado": "2026-09-04T00:42:37.712Z"
+ "actualizado": "2026-09-04T00:51:37.408Z"
 }

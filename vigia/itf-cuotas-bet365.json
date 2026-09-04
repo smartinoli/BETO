@@ -1,7 +1,52 @@
 {
- "generado": "2026-09-04T00:42:37.439Z",
+ "generado": "2026-09-04T00:51:33.845Z",
  "casa": "betano",
  "soloCasa": "betano",
  "parcial": false,
- "cuotas": []
+ "cuotas": [
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Dev Javia",
+   "p2": "Michal Krajci",
+   "g1": 2.001,
+   "g2": 1.736,
+   "visto": "2026-09-04T00:50Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129043431635458236",
+   "inicio": "2026-09-04T06:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Marat Salbiev",
+   "p2": "Chirag Duhan",
+   "g1": 2.011,
+   "g2": 1.724,
+   "visto": "2026-09-04T00:50Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129043431635472462",
+   "inicio": "2026-09-04T06:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Thijs Boogaard",
+   "p2": "Conor Gannon",
+   "g1": 1.186,
+   "g2": 4.269,
+   "visto": "2026-09-04T00:50Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129043431635472463",
+   "inicio": "2026-09-04T06:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Hurghada",
+   "p1": "Jake Fellows",
+   "p2": "Aditya Vishal Balsekar",
+   "g1": 1.672,
+   "g2": 2.09,
+   "visto": "2026-09-04T00:50Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129043431635472464",
+   "inicio": "2026-09-04T06:00:00.000Z"
+  }
+ ]
 }

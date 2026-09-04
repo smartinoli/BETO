@@ -72,7 +72,7 @@ const filas = J.map(j => `<tr${j.jugable ? ' class="ju"' : ''}
   data-etapa="${esc(j.etapa || '')}" data-edad="${j.edad ?? ''}" data-wtn="${j.wtn ?? ''}"
   data-itf="${j.itf ?? ''}" data-atp="${j.atp ?? ''}" data-jr="${j.jr ? 1 : 0}" data-local="${j.local ? 1 : 0}">
   <td class="nom"><a href="${betano(j.jugador)}" target="_blank" rel="noopener">${esc(j.jugador)}</a><span class="mk">${esc(marca(j.seed, j.entrada))}</span>${j.jugable ? ' <b class="est" title="pisa la casilla del manual">★</b>' : ''}</td>
-  <td class="n cuota">${j.cuota ?? '—'}</td>
+  <td class="n cuota">${j.cuota ?? '—'}${j.casa && CASA && j.casa !== CASA ? ` <small class="cs" title="${esc(CASA)} no cotiza este partido en la API; cuota de ${esc(j.casa)}">${esc(j.casa)}</small>` : ''}</td>
   <td class="n">${(() => { const pc = j.prob != null ? Math.round(j.prob * 100) : null;
     return `<span class="pb ${pc >= 80 ? 'alta' : pc >= 70 ? 'media' : ''}">${pc != null ? pc + '%' : '—'}</span>` })()}</td>
   ${(() => { const v = j.prob != null && j.cuota ? j.prob * j.cuota : null;
@@ -148,6 +148,7 @@ tr:hover td{background:var(--sunk)}
 .sec{color:var(--ink2)} .cq{color:var(--ink3);font-size:11.5px}
 .cuota{font-weight:600}
 .mk{color:var(--ink3);font-weight:400;font-size:11.5px}
+.cs{color:var(--ink3);font-weight:400;font-size:10.5px}
 /* el mismo dato del rival, debajo y apagado: sirve para comparar de un
    vistazo sin competirle al del jugador de la fila */
 .rv{display:block;font-style:normal;font-size:11px;color:var(--ink3);opacity:.75;margin-top:1px}
@@ -177,7 +178,9 @@ tr[hidden]{display:none}
   <button id="b-todo" data-que="todo" class="sec2">Semana completa <small>una vez al día</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
-  <span class="mod">${CASA ? 'cuotas solo de ' + esc(CASA) + ' · ' : ''}modelo ${O.de === 'aprendido' ? 'aprendido' : 'de fábrica'} ·
+  <span class="mod">${CASA ? (() => { const n = J.filter(j => j.casa === CASA).length / 2, o = J.filter(j => j.casa && j.casa !== CASA).length / 2;
+    return (n ? `cuotas de ${esc(CASA)} (${n} partidos)` : `${esc(CASA)} no está en la API ahora`)
+      + (o ? ` · ${o} partidos con la cuota de otra casa` : '') + ' · ' })() : ''}modelo ${O.de === 'aprendido' ? 'aprendido' : 'de fábrica'} ·
     ${O.partidos} partidos · ${O.fecha ? String(O.fecha).slice(0, 10) : ''}</span>
   <div id="act-token" hidden>
     <p>Una sola vez: un token de GitHub que queda guardado solo en este navegador.

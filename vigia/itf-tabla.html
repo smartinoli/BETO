@@ -50,6 +50,7 @@ tr:hover td{background:var(--sunk)}
 .sec{color:var(--ink2)} .cq{color:var(--ink3);font-size:11.5px}
 .cuota{font-weight:600}
 .mk{color:var(--ink3);font-weight:400;font-size:11.5px}
+.cs{color:var(--ink3);font-weight:400;font-size:10.5px}
 /* el mismo dato del rival, debajo y apagado: sirve para comparar de un
    vistazo sin competirle al del jugador de la fila */
 .rv{display:block;font-style:normal;font-size:11px;color:var(--ink3);opacity:.75;margin-top:1px}
@@ -67,7 +68,7 @@ tr[hidden]{display:none}
 </style>
 <div class="env">
 <h1>Tabla ITF — lo apostable de ahora</h1>
-<p class="sub">0 jugadores · 0 torneos · armada 20:42 hora de Chile. Las horas de cada partido también van en hora de Chile.
+<p class="sub">6 jugadores · 1 torneos · armada 20:52 hora de Chile. Las horas de cada partido también van en hora de Chile.
   Solo partidos que <b>todavía no empiezan</b> y tienen cuota de los dos lados: lo que ya arrancó no se puede apostar y sale de la tabla.
   Clic en cualquier encabezado para ordenar; el nombre abre la búsqueda en Betano. La ★ y el borde verde marcan lo que pisa la casilla del manual.
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
@@ -79,7 +80,7 @@ tr[hidden]{display:none}
   <button id="b-todo" data-que="todo" class="sec2">Semana completa <small>una vez al día</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
-  <span class="mod">cuotas solo de betano · modelo aprendido ·
+  <span class="mod">betano no está en la API ahora · 3 partidos con la cuota de otra casa · modelo aprendido ·
     3164 partidos · 2026-09-02</span>
   <div id="act-token" hidden>
     <p>Una sola vez: un token de GitHub que queda guardado solo en este navegador.
@@ -92,7 +93,7 @@ tr[hidden]{display:none}
 
 <div class="barra">
   <label>buscar</label><input type="text" id="q" placeholder="jugador o rival">
-  <label>torneo</label><select id="tor"><option value="">todos</option></select>
+  <label>torneo</label><select id="tor"><option value="">todos</option><option value="m15 hurghada">M15 Hurghada</option></select>
   <label>cuota</label><input type="number" id="cmin" step="0.01" placeholder="min"><input type="number" id="cmax" step="0.01" placeholder="max">
   <label>% modelo</label><input type="number" id="pmin" placeholder="min"><input type="number" id="pmax" placeholder="max">
   <label>edad</label><input type="number" id="emin" placeholder="min"><input type="number" id="emax" placeholder="max">
@@ -110,7 +111,126 @@ tr[hidden]{display:none}
 <div class="caja"><table id="t">
 <thead><tr><th data-k="jugador" data-tipo="txt">jugador <span class="fl"></span></th><th data-k="cuota" data-tipo="num">cuota <span class="fl"></span></th><th data-k="prob" data-tipo="num">% modelo <span class="fl"></span></th><th data-k="valor" data-tipo="num">valor <span class="fl"></span></th><th data-k="rival" data-tipo="txt">rival <span class="fl"></span></th><th data-k="torneo" data-tipo="txt">torneo <span class="fl"></span></th><th data-k="etapa" data-tipo="txt">ronda · hora CL <span class="fl"></span></th><th data-k="edad" data-tipo="num">edad <span class="fl"></span></th><th data-k="wtn" data-tipo="num">WTN <span class="fl"></span></th><th data-k="itf" data-tipo="num">ITF <span class="fl"></span></th><th data-k="atp" data-tipo="num">ATP <span class="fl"></span></th><th data-k="jr" data-tipo="bool">jr <span class="fl"></span></th><th data-k="local" data-tipo="bool">local <span class="fl"></span></th></tr></thead>
 <tbody>
-
+<tr
+  data-jugador="marat salbiev" data-cuota="2.011" data-prob="0.626"
+  data-valor="1.26"
+  data-rival="chirag duhan" data-torneo="m15 hurghada"
+  data-etapa="QF" data-edad="18" data-wtn="15.49"
+  data-itf="" data-atp="" data-jr="1" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Marat%20Salbiev" target="_blank" rel="noopener">Marat Salbiev</a><span class="mk"> (JR)</span></td>
+  <td class="n cuota">2.011 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n"><span class="pb ">63%</span></td>
+  <td class="n"><span class="val malo">1.26</span></td>
+  <td class="sec">Chirag Duhan<span class="mk"></span> <span class="cq">1.724</span></td>
+  <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
+  <td class="sec">QF<span class="cq"> 02:00</span></td>
+  <td class="n">18<i class="rv">22</i></td>
+  <td class="n">15.49<i class="rv">10.61</i></td>
+  <td class="n sec">—<i class="rv">418</i></td>
+  <td class="n sec">—<i class="rv">1262</i></td>
+  <td class="n">sí</td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="chirag duhan" data-cuota="1.724" data-prob="0.374"
+  data-valor="0.64"
+  data-rival="marat salbiev" data-torneo="m15 hurghada"
+  data-etapa="QF" data-edad="22" data-wtn="10.61"
+  data-itf="418" data-atp="1262" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Chirag%20Duhan" target="_blank" rel="noopener">Chirag Duhan</a><span class="mk"></span></td>
+  <td class="n cuota">1.724 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n"><span class="pb ">37%</span></td>
+  <td class="n"><span class="val malo">0.64</span></td>
+  <td class="sec">Marat Salbiev<span class="mk"> (JR)</span> <span class="cq">2.011</span></td>
+  <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
+  <td class="sec">QF<span class="cq"> 02:00</span></td>
+  <td class="n">22<i class="rv">18</i></td>
+  <td class="n">10.61<i class="rv">15.49</i></td>
+  <td class="n sec">418<i class="rv">—</i></td>
+  <td class="n sec">1262<i class="rv">—</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="thijs boogaard" data-cuota="1.186" data-prob="0.916"
+  data-valor="1.09"
+  data-rival="conor gannon" data-torneo="m15 hurghada"
+  data-etapa="QF" data-edad="18" data-wtn="5"
+  data-itf="" data-atp="483" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Thijs%20Boogaard" target="_blank" rel="noopener">Thijs Boogaard</a><span class="mk"> (1)</span></td>
+  <td class="n cuota">1.186 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n"><span class="pb alta">92%</span></td>
+  <td class="n"><span class="val bueno">1.09</span></td>
+  <td class="sec">Conor Gannon<span class="mk"> (6)</span> <span class="cq">4.269</span></td>
+  <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
+  <td class="sec">QF<span class="cq"> 02:00</span></td>
+  <td class="n">18<i class="rv">24</i></td>
+  <td class="n">5<i class="rv">7.18</i></td>
+  <td class="n sec">—<i class="rv">63</i></td>
+  <td class="n sec">483<i class="rv">1015</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="conor gannon" data-cuota="4.269" data-prob="0.084"
+  data-valor="0.36"
+  data-rival="thijs boogaard" data-torneo="m15 hurghada"
+  data-etapa="QF" data-edad="24" data-wtn="7.18"
+  data-itf="63" data-atp="1015" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Conor%20Gannon" target="_blank" rel="noopener">Conor Gannon</a><span class="mk"> (6)</span></td>
+  <td class="n cuota">4.269 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n"><span class="pb ">8%</span></td>
+  <td class="n"><span class="val malo">0.36</span></td>
+  <td class="sec">Thijs Boogaard<span class="mk"> (1)</span> <span class="cq">1.186</span></td>
+  <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
+  <td class="sec">QF<span class="cq"> 02:00</span></td>
+  <td class="n">24<i class="rv">18</i></td>
+  <td class="n">7.18<i class="rv">5</i></td>
+  <td class="n sec">63<i class="rv">—</i></td>
+  <td class="n sec">1015<i class="rv">483</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="jake fellows" data-cuota="1.672" data-prob="0.49"
+  data-valor="0.82"
+  data-rival="aditya balsekar" data-torneo="m15 hurghada"
+  data-etapa="QF" data-edad="24" data-wtn="9.55"
+  data-itf="1904" data-atp="" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Jake%20Fellows" target="_blank" rel="noopener">Jake Fellows</a><span class="mk"> (16)</span></td>
+  <td class="n cuota">1.672 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n"><span class="pb ">49%</span></td>
+  <td class="n"><span class="val malo">0.82</span></td>
+  <td class="sec">Aditya Balsekar<span class="mk"></span> <span class="cq">2.09</span></td>
+  <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
+  <td class="sec">QF<span class="cq"> 02:00</span></td>
+  <td class="n">24<i class="rv">24</i></td>
+  <td class="n">9.55<i class="rv">9.79</i></td>
+  <td class="n sec">1904<i class="rv">191</i></td>
+  <td class="n sec">—<i class="rv">1002</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="aditya balsekar" data-cuota="2.09" data-prob="0.51"
+  data-valor="1.07"
+  data-rival="jake fellows" data-torneo="m15 hurghada"
+  data-etapa="QF" data-edad="24" data-wtn="9.79"
+  data-itf="191" data-atp="1002" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Aditya%20Balsekar" target="_blank" rel="noopener">Aditya Balsekar</a><span class="mk"></span></td>
+  <td class="n cuota">2.09 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n"><span class="pb ">51%</span></td>
+  <td class="n"><span class="val malo">1.07</span></td>
+  <td class="sec">Jake Fellows<span class="mk"> (16)</span> <span class="cq">1.672</span></td>
+  <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
+  <td class="sec">QF<span class="cq"> 02:00</span></td>
+  <td class="n">24<i class="rv">24</i></td>
+  <td class="n">9.79<i class="rv">9.55</i></td>
+  <td class="n sec">191<i class="rv">1904</i></td>
+  <td class="n sec">1002<i class="rv">—</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
 </tbody></table></div>
 
 <p class="pie"><b>Valor</b> = % del modelo × cuota. Es la regla de "alta probabilidad CON cuota buena", y el verde exige <b>las dos</b>:
