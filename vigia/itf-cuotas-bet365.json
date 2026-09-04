@@ -1,16 +1,93 @@
 {
- "generado": "2026-09-04T00:51:33.845Z",
+ "generado": "2026-09-04T00:55:29.534Z",
  "casa": "betano",
  "soloCasa": "betano",
  "parcial": false,
  "cuotas": [
+  {
+   "torneo": "M15 Wuning",
+   "p1": "Miles Jones",
+   "p2": "Qian Sun",
+   "g1": 1.633,
+   "g2": 2.218,
+   "visto": "2026-09-04T00:52Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129049801635455503",
+   "inicio": "2026-09-04T02:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Wuning",
+   "p1": "Colin Sinclair",
+   "p2": "Zijiang Yang",
+   "g1": 1.016,
+   "g2": 23.319,
+   "visto": "2026-09-04T00:53Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129049801635458244",
+   "inicio": "2026-09-04T02:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Wuning",
+   "p1": "Yuta Tomida",
+   "p2": "Kristjan Tamm",
+   "g1": 2.425,
+   "g2": 1.538,
+   "visto": "2026-09-04T00:53Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129049801635472457",
+   "inicio": "2026-09-04T02:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Wuning",
+   "p1": "Geun Jun Kim",
+   "p2": "Harrison Satara",
+   "g1": 1.35,
+   "g2": 3.095,
+   "visto": "2026-09-04T00:53Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129049801635472465",
+   "inicio": "2026-09-04T02:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Nonthaburi",
+   "p1": "Florent Bax",
+   "p2": "Manish Sureshkumar",
+   "g1": 1.286,
+   "g2": 3.434,
+   "visto": "2026-09-04T00:53Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129042861635455602",
+   "inicio": "2026-09-04T03:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Nonthaburi",
+   "p1": "Thanapet Chanta",
+   "p2": "Arthur Weber",
+   "g1": 2.502,
+   "g2": 1.497,
+   "visto": "2026-09-04T00:53Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129042861635455604",
+   "inicio": "2026-09-04T03:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Nonthaburi",
+   "p1": "Thantub Suksumrarn",
+   "p2": "Mukund Sasikumar",
+   "g1": 2.727,
+   "g2": 1.424,
+   "visto": "2026-09-04T00:53Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129042861635455603",
+   "inicio": "2026-09-04T04:00:00.000Z"
+  },
   {
    "torneo": "M15 Hurghada",
    "p1": "Dev Javia",
    "p2": "Michal Krajci",
    "g1": 2.001,
    "g2": 1.736,
-   "visto": "2026-09-04T00:50Z",
+   "visto": "2026-09-04T00:53Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129043431635458236",
    "inicio": "2026-09-04T06:00:00.000Z"
@@ -21,7 +98,7 @@
    "p2": "Chirag Duhan",
    "g1": 2.011,
    "g2": 1.724,
-   "visto": "2026-09-04T00:50Z",
+   "visto": "2026-09-04T00:54Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129043431635472462",
    "inicio": "2026-09-04T06:00:00.000Z"
@@ -32,7 +109,7 @@
    "p2": "Conor Gannon",
    "g1": 1.186,
    "g2": 4.269,
-   "visto": "2026-09-04T00:50Z",
+   "visto": "2026-09-04T00:54Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129043431635472463",
    "inicio": "2026-09-04T06:00:00.000Z"
@@ -43,7 +120,7 @@
    "p2": "Aditya Vishal Balsekar",
    "g1": 1.672,
    "g2": 2.09,
-   "visto": "2026-09-04T00:50Z",
+   "visto": "2026-09-04T00:54Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129043431635472464",
    "inicio": "2026-09-04T06:00:00.000Z"
