@@ -79,7 +79,12 @@ const filas = J.map(j => `<tr${j.jugable ? ' class="ju"' : ''}
     /* VALOR = % del modelo x cuota. Sobre 1 hay margen teorico; sobre 1.08
        hay margen con colchon para el error del modelo. Es la regla de
        'alta % CON cuota buena': una sola de las dos no sirve. */
-    return `<td class="n"><span class="val ${v == null ? '' : v >= 1.08 ? 'bueno' : v >= 1 ? 'justo' : 'malo'}">${v != null ? v.toFixed(2) : '—'}</span></td>` })()}
+    /* El verde exige LAS DOS mitades de la regla: modelo 80%+ Y valor 1.08+.
+       Un 36% a 4.85 tambien da 1.75, pero eso es llevarle la contra al
+       mercado, que medido pierde (5 de 6). Sin el 80 arriba, el numero se
+       muestra apagado: es informacion, no una señal. */
+    const cl = v == null ? '' : (j.prob >= 0.8 && v >= 1.08) ? 'bueno' : (j.prob >= 0.7 && v >= 1) ? 'justo' : 'malo';
+    return `<td class="n"><span class="val ${cl}">${v != null ? v.toFixed(2) : '—'}</span></td>` })()}
   <td class="sec">${esc(j.rival)}<span class="mk">${esc(marca(j.seedRival, j.entradaRival))}</span> <span class="cq">${j.cuotaRival ?? ''}</span></td>
   <td class="sec">${esc(j.torneo)}${j.pais ? ' <span class="cq">' + esc(j.pais) + '</span>' : ''}</td>
   <td class="sec">${esc(j.etapa || '')}<span class="cq"> ${hhmm(j.inicio)}</span></td>
@@ -208,8 +213,9 @@ tr[hidden]{display:none}
 ${filas}
 </tbody></table></div>
 
-<p class="pie"><b>Valor</b> = % del modelo × cuota. Es la regla de "alta probabilidad CON cuota buena": una sola de las dos no sirve.
-  Sobre 1.00 hay margen teórico; en verde desde <b>1.08</b>, que deja colchón para el error del modelo. Ordena por esa columna y lo que hay que mirar queda arriba.
+<p class="pie"><b>Valor</b> = % del modelo × cuota. Es la regla de "alta probabilidad CON cuota buena", y el verde exige <b>las dos</b>:
+  modelo 80%+ y valor 1.08+. Un no favorito a cuota alta también da un valor grande, pero eso es llevarle la contra al mercado, que medido pierde — por eso sale apagado.
+  Lo práctico: filtra "% modelo" desde 80 y ordena por valor.
   Y ojo con la ronda: medido sobre 408 partidos con cuota, en R1 solo pagó el modelo de 90%+, en R2 el de 80%+ fue la mejor celda de todas (10/10), y en cuartos, semis y finales el modelo pierde contra el mercado.
   <br><b>Qué es cada cosa.</b> <b>% modelo</b> es lo que nuestro modelo le da a ESE jugador (los dos lados suman 100).
   Verde desde 80%, ámbar entre 70 y 79 — y ojo, medido sobre 899 partidos jugados esa banda de 80 promete 85% y cumple 79%,
