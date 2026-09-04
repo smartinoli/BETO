@@ -17104,7 +17104,7 @@
    },
    {
     "crit": {
-     "cuota": 1.736,
+     "cuota": 1.755,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.643,
@@ -17124,17 +17124,17 @@
     "etapa": "QF",
     "p1": "Dev Javia",
     "p2": "Michal Krajci",
-    "g1": 2.001,
-    "g2": 1.736,
+    "g1": 2.029,
+    "g2": 1.755,
     "gana": "Michal Krajci",
     "lado": 2,
     "p": 0.643,
-    "pMercado": 0.535,
+    "pMercado": 0.536,
     "soloWtn": 0.683,
     "señales": [
      "forma"
     ],
-    "razon": "Δ2.88 de WTN a favor de Michal Krajci (6.1 contra 8.98), en QF: la curva del grupo \"finales\" (n=258) da 68%. Ajustan: Dev Javia viene cediendo menos games (40% contra 48%): la forma contradice al nivel (−4 pts). Queda en 64%. El mercado la paga a 1.736: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +12% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "razon": "Δ2.88 de WTN a favor de Michal Krajci (6.1 contra 8.98), en QF: la curva del grupo \"finales\" (n=258) da 68%. Ajustan: Dev Javia viene cediendo menos games (40% contra 48%): la forma contradice al nivel (−4 pts). Queda en 64%. El mercado la paga a 1.755: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −6% si la tiene el mercado.",
     "res": {
      "ganador": "Dev Javia",
      "marcador": "6-3 6-2",
@@ -17145,7 +17145,7 @@
    },
    {
     "crit": {
-     "cuota": 1.724,
+     "cuota": 1.749,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.374,
@@ -17165,8 +17165,8 @@
     "etapa": "QF",
     "p1": "Marat Salbiev",
     "p2": "Chirag Duhan",
-    "g1": 2.011,
-    "g2": 1.724,
+    "g1": 2.04,
+    "g2": 1.749,
     "gana": "Chirag Duhan",
     "lado": 2,
     "p": 0.374,
@@ -17176,11 +17176,11 @@
      "sub18",
      "forma"
     ],
-    "razon": "Δ4.88 de WTN a favor de Chirag Duhan (10.61 contra 15.49), en QF: la curva del grupo \"finales\" (n=258) da 79%. Ajustan: Marat Salbiev tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−38 pts); Marat Salbiev viene cediendo menos games (34% contra 42%): la forma contradice al nivel (−4 pts). Queda en 37%. El mercado la paga a 1.724: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −36% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ4.88 de WTN a favor de Chirag Duhan (10.61 contra 15.49), en QF: la curva del grupo \"finales\" (n=258) da 79%. Ajustan: Marat Salbiev tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−38 pts); Marat Salbiev viene cediendo menos games (34% contra 42%): la forma contradice al nivel (−4 pts). Queda en 37%. El mercado la paga a 1.749: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −35% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.186,
+     "cuota": 1.197,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.916,
@@ -17200,22 +17200,22 @@
     "etapa": "QF",
     "p1": "Thijs Boogaard",
     "p2": "Conor Gannon",
-    "g1": 1.186,
-    "g2": 4.269,
+    "g1": 1.197,
+    "g2": 4.377,
     "gana": "Thijs Boogaard",
     "lado": 1,
     "p": 0.916,
-    "pMercado": 0.783,
+    "pMercado": 0.785,
     "soloWtn": 0.642,
     "señales": [
      "sub18",
      "forma"
     ],
-    "razon": "Δ2.18 de WTN a favor de Thijs Boogaard (5 contra 7.18), en QF: la curva del grupo \"finales\" (n=258) da 64%. Ajustan: Thijs Boogaard tiene 18 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+24 pts); Thijs Boogaard viene cediendo menos games (27% contra 34%) (+1 pts). Queda en 92%. El mercado la paga a 1.186: 78% una vez sacado su margen. A esa cuota, la apuesta rinde +9% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ2.18 de WTN a favor de Thijs Boogaard (5 contra 7.18), en QF: la curva del grupo \"finales\" (n=258) da 64%. Ajustan: Thijs Boogaard tiene 18 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+24 pts); Thijs Boogaard viene cediendo menos games (27% contra 34%) (+1 pts). Queda en 92%. El mercado la paga a 1.197: 79% una vez sacado su margen. A esa cuota, la apuesta rinde +10% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.672,
+     "cuota": 1.694,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.49,
@@ -17235,8 +17235,8 @@
     "etapa": "QF",
     "p1": "Jake Fellows",
     "p2": "Aditya Balsekar",
-    "g1": 1.672,
-    "g2": 2.09,
+    "g1": 1.694,
+    "g2": 2.119,
     "gana": "Jake Fellows",
     "lado": 1,
     "p": 0.49,
@@ -17245,11 +17245,11 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.24 de WTN a favor de Jake Fellows (9.55 contra 9.79), en QF: la curva del grupo \"finales\" (n=258) da 52%. Ajustan: Aditya Balsekar viene cediendo menos games (25% contra 30%): la forma contradice al nivel (−3 pts). Queda en 49%. El mercado la paga a 1.672: 56% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ0.24 de WTN a favor de Jake Fellows (9.55 contra 9.79), en QF: la curva del grupo \"finales\" (n=258) da 52%. Ajustan: Aditya Balsekar viene cediendo menos games (25% contra 30%): la forma contradice al nivel (−3 pts). Queda en 49%. El mercado la paga a 1.694: 56% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.798,
+     "cuota": 1.82,
      "ladoFm": 2,
      "acuerdo": false,
      "pFm": 0.516,
@@ -17269,21 +17269,21 @@
     "etapa": "SF",
     "p1": "Jeremy Gschwendtner",
     "p2": "Nicola Rispoli",
-    "g1": 1.924,
-    "g2": 1.798,
+    "g1": 1.942,
+    "g2": 1.82,
     "gana": "Jeremy Gschwendtner",
     "lado": 1,
     "p": 0.484,
-    "pMercado": 0.483,
+    "pMercado": 0.484,
     "soloWtn": 0.545,
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.68 de WTN a favor de Jeremy Gschwendtner (8.5 contra 9.18), en SF: la curva del grupo \"finales\" (n=258) da 55%. Ajustan: Nicola Rispoli viene cediendo menos games (29% contra 41%): la forma contradice al nivel (−6 pts). Queda en 48%. El mercado la paga a 1.924: 48% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ0.68 de WTN a favor de Jeremy Gschwendtner (8.5 contra 9.18), en SF: la curva del grupo \"finales\" (n=258) da 55%. Ajustan: Nicola Rispoli viene cediendo menos games (29% contra 41%): la forma contradice al nivel (−6 pts). Queda en 48%. El mercado la paga a 1.942: 48% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.364,
+     "cuota": 1.411,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.621,
@@ -17303,22 +17303,22 @@
     "etapa": "SF",
     "p1": "Dragos Nicolae Madaras",
     "p2": "Stefan Adrian Andreescu",
-    "g1": 1.364,
-    "g2": 2.905,
+    "g1": 1.411,
+    "g2": 2.786,
     "gana": "Dragos Nicolae Madaras",
     "lado": 1,
     "p": 0.621,
-    "pMercado": 0.68,
+    "pMercado": 0.664,
     "soloWtn": 0.717,
     "señales": [
      "forma",
      "local"
     ],
-    "razon": "Δ3.48 de WTN a favor de Dragos Nicolae Madaras (4.1 contra 7.58), en SF: la curva del grupo \"finales\" (n=258) da 72%. Ajustan: Stefan Adrian Andreescu viene cediendo menos games (24% contra 30%): la forma contradice al nivel (−3 pts); Stefan Adrian Andreescu juega en su país (ROU): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 62%. El mercado la paga a 1.364: 68% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ3.48 de WTN a favor de Dragos Nicolae Madaras (4.1 contra 7.58), en SF: la curva del grupo \"finales\" (n=258) da 72%. Ajustan: Stefan Adrian Andreescu viene cediendo menos games (24% contra 30%): la forma contradice al nivel (−3 pts); Stefan Adrian Andreescu juega en su país (ROU): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 62%. El mercado la paga a 1.411: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.066,
+     "cuota": 1.091,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.798,
@@ -17338,22 +17338,22 @@
     "etapa": "QF",
     "p1": "Nicolas Jadoun",
     "p2": "Aziz Dougaz",
-    "g1": 8.234,
-    "g2": 1.066,
+    "g1": 6.731,
+    "g2": 1.091,
     "gana": "Aziz Dougaz",
     "lado": 2,
     "p": 0.798,
-    "pMercado": 0.885,
+    "pMercado": 0.861,
     "soloWtn": 0.782,
     "señales": [
      "forma",
      "local"
     ],
-    "razon": "Δ4.78 de WTN a favor de Aziz Dougaz (3.51 contra 8.29), en QF: la curva del grupo \"finales\" (n=258) da 78%. Ajustan: Nicolas Jadoun viene cediendo menos games (18% contra 27%): la forma contradice al nivel (−3 pts); Aziz Dougaz juega en su país (TUN): la localía vale ~0.5 pts de WTN (+5 pts). Queda en 80%. El mercado la paga a 1.066: 89% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ4.78 de WTN a favor de Aziz Dougaz (3.51 contra 8.29), en QF: la curva del grupo \"finales\" (n=258) da 78%. Ajustan: Nicolas Jadoun viene cediendo menos games (18% contra 27%): la forma contradice al nivel (−3 pts); Aziz Dougaz juega en su país (TUN): la localía vale ~0.5 pts de WTN (+5 pts). Queda en 80%. El mercado la paga a 1.091: 86% una vez sacado su margen. A esa cuota, la apuesta rinde −13% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.18,
+     "cuota": 1.193,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.644,
@@ -17373,21 +17373,21 @@
     "etapa": "QF",
     "p1": "Valentin Lapalu",
     "p2": "Roan Jones",
-    "g1": 4.171,
-    "g2": 1.18,
+    "g1": 4.347,
+    "g2": 1.193,
     "gana": "Roan Jones",
     "lado": 2,
     "p": 0.644,
-    "pMercado": 0.779,
+    "pMercado": 0.785,
     "soloWtn": 0.562,
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.94 de WTN a favor de Roan Jones (7.74 contra 8.68), en QF: la curva del grupo \"finales\" (n=258) da 56%. Ajustan: Roan Jones viene cediendo menos games (25% contra 41%) (+8 pts). Queda en 64%. El mercado la paga a 1.18: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.94 de WTN a favor de Roan Jones (7.74 contra 8.68), en QF: la curva del grupo \"finales\" (n=258) da 56%. Ajustan: Roan Jones viene cediendo menos games (25% contra 41%) (+8 pts). Queda en 64%. El mercado la paga a 1.193: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.785,
+     "cuota": 1.856,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.54,
@@ -17407,22 +17407,22 @@
     "etapa": "QF",
     "p1": "Michiel De Krom",
     "p2": "Martin VAN DER MEERSCHEN",
-    "g1": 1.907,
-    "g2": 1.785,
+    "g1": 1.888,
+    "g2": 1.856,
     "gana": "Martin VAN DER MEERSCHEN",
     "lado": 2,
     "p": 0.54,
-    "pMercado": 0.517,
+    "pMercado": 0.504,
     "soloWtn": 0.538,
     "señales": [
      "forma",
      "previo"
     ],
-    "razon": "Δ0.57 de WTN a favor de Martin VAN DER MEERSCHEN (6.5 contra 7.07), en QF: la curva del grupo \"finales\" (n=258) da 54%. Ajustan: Michiel De Krom viene cediendo menos games (17% contra 37%): la forma contradice al nivel (−10 pts); Martin VAN DER MEERSCHEN llegó más lejos en su torneo anterior (+11 pts). Queda en 54%. El mercado la paga a 1.785: 52% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.57 de WTN a favor de Martin VAN DER MEERSCHEN (6.5 contra 7.07), en QF: la curva del grupo \"finales\" (n=258) da 54%. Ajustan: Michiel De Krom viene cediendo menos games (17% contra 37%): la forma contradice al nivel (−10 pts); Martin VAN DER MEERSCHEN llegó más lejos en su torneo anterior (+11 pts). Queda en 54%. El mercado la paga a 1.856: 50% una vez sacado su margen. A esa cuota, la apuesta rinde +0% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.372,
+     "cuota": 1.387,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.439,
@@ -17442,22 +17442,22 @@
     "etapa": "QF",
     "p1": "Alejandro Manzanera Pertusa",
     "p2": "Enrique Carrascosa Diaz",
-    "g1": 1.372,
-    "g2": 2.797,
+    "g1": 1.387,
+    "g2": 2.875,
     "gana": "Alejandro Manzanera Pertusa",
     "lado": 1,
     "p": 0.439,
-    "pMercado": 0.671,
+    "pMercado": 0.675,
     "soloWtn": 0.833,
     "señales": [
      "sub18",
      "forma"
     ],
-    "razon": "Δ6.02 de WTN a favor de Alejandro Manzanera Pertusa (5.91 contra 11.93), en QF: la curva del grupo \"finales\" (n=258) da 83%. Ajustan: Enrique Carrascosa Diaz tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts); Enrique Carrascosa Diaz viene cediendo menos games (21% contra 31%): la forma contradice al nivel (−5 pts). Queda en 44%. El mercado la paga a 1.372: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −40% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ6.02 de WTN a favor de Alejandro Manzanera Pertusa (5.91 contra 11.93), en QF: la curva del grupo \"finales\" (n=258) da 83%. Ajustan: Enrique Carrascosa Diaz tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts); Enrique Carrascosa Diaz viene cediendo menos games (21% contra 31%): la forma contradice al nivel (−5 pts). Queda en 44%. El mercado la paga a 1.387: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −39% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.237,
+     "cuota": 1.262,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.662,
@@ -17477,32 +17477,32 @@
     "etapa": "QF",
     "p1": "Ryan Nijboer",
     "p2": "Bernardo Munk Mesa",
-    "g1": 1.237,
-    "g2": 3.592,
+    "g1": 1.262,
+    "g2": 3.611,
     "gana": "Ryan Nijboer",
     "lado": 1,
     "p": 0.662,
-    "pMercado": 0.744,
+    "pMercado": 0.741,
     "soloWtn": 0.718,
     "señales": [
      "forma",
      "local"
     ],
-    "razon": "Δ3.50 de WTN a favor de Ryan Nijboer (4.05 contra 7.55), en QF: la curva del grupo \"finales\" (n=258) da 72%. Ajustan: Ryan Nijboer viene cediendo menos games (38% contra 40%) (+1 pts); Bernardo Munk Mesa juega en su país (ESP): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 66%. El mercado la paga a 1.237: 74% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ3.50 de WTN a favor de Ryan Nijboer (4.05 contra 7.55), en QF: la curva del grupo \"finales\" (n=258) da 72%. Ajustan: Ryan Nijboer viene cediendo menos games (38% contra 40%) (+1 pts); Bernardo Munk Mesa juega en su país (ESP): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 66%. El mercado la paga a 1.262: 74% una vez sacado su margen. A esa cuota, la apuesta rinde −16% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.792,
-     "ladoFm": 1,
-     "acuerdo": false,
-     "pFm": 0.446,
-     "dW": -0.48,
-     "forma": 1,
-     "previo": 1,
+     "cuota": 1.791,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.554,
+     "dW": 0.48,
+     "forma": -1,
+     "previo": -1,
      "grupo": "finales",
-     "edadFm": 26,
-     "edadRi": 32,
-     "dElo": -134
+     "edadFm": 32,
+     "edadRi": 26,
+     "dElo": 134
     },
     "jugada": null,
     "fixtureId": "pn129043421635479076",
@@ -17512,23 +17512,23 @@
     "etapa": "QF",
     "p1": "Calvin Mueller",
     "p2": "Pawel Juszczak",
-    "g1": 1.792,
-    "g2": 1.898,
+    "g1": 1.962,
+    "g2": 1.791,
     "gana": "Pawel Juszczak",
     "lado": 2,
     "p": 0.554,
-    "pMercado": 0.486,
+    "pMercado": 0.523,
     "soloWtn": 0.532,
     "señales": [
      "forma",
      "previo",
      "local"
     ],
-    "razon": "Δ0.48 de WTN a favor de Pawel Juszczak (7.28 contra 7.76), en QF: la curva del grupo \"finales\" (n=258) da 53%. Ajustan: Calvin Mueller viene cediendo menos games (31% contra 35%): la forma contradice al nivel (−2 pts); Calvin Mueller llegó más lejos en su torneo anterior (−3 pts); Pawel Juszczak juega en su país (POL): la localía vale ~0.5 pts de WTN (+7 pts). Queda en 55%. El mercado la paga a 1.898: 49% una vez sacado su margen. A esa cuota, la apuesta rinde +5% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.48 de WTN a favor de Pawel Juszczak (7.28 contra 7.76), en QF: la curva del grupo \"finales\" (n=258) da 53%. Ajustan: Calvin Mueller viene cediendo menos games (31% contra 35%): la forma contradice al nivel (−2 pts); Calvin Mueller llegó más lejos en su torneo anterior (−3 pts); Pawel Juszczak juega en su país (POL): la localía vale ~0.5 pts de WTN (+7 pts). Queda en 55%. El mercado la paga a 1.791: 52% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.143,
+     "cuota": 1.187,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.576,
@@ -17548,21 +17548,21 @@
     "etapa": "QF",
     "p1": "David Eichenseher",
     "p2": "John Hallquist Lithen",
-    "g1": 4.731,
-    "g2": 1.143,
+    "g1": 4.425,
+    "g2": 1.187,
     "gana": "John Hallquist Lithen",
     "lado": 2,
     "p": 0.576,
-    "pMercado": 0.805,
+    "pMercado": 0.788,
     "soloWtn": 0.596,
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.45 de WTN a favor de John Hallquist Lithen (8.2 contra 9.65), en QF: la curva del grupo \"finales\" (n=258) da 60%. Ajustan: David Eichenseher viene cediendo menos games (39% contra 43%): la forma contradice al nivel (−2 pts). Queda en 58%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −34% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ1.45 de WTN a favor de John Hallquist Lithen (8.2 contra 9.65), en QF: la curva del grupo \"finales\" (n=258) da 60%. Ajustan: David Eichenseher viene cediendo menos games (39% contra 43%): la forma contradice al nivel (−2 pts). Queda en 58%. El mercado la paga a 1.187: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −32% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.239,
+     "cuota": 1.297,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.685,
@@ -17582,22 +17582,22 @@
     "etapa": "QF",
     "p1": "Alejandro Garcia Carbajal",
     "p2": "Pedro Rodenas",
-    "g1": 3.572,
-    "g2": 1.239,
+    "g1": 3.365,
+    "g2": 1.297,
     "gana": "Pedro Rodenas",
     "lado": 2,
     "p": 0.685,
-    "pMercado": 0.742,
+    "pMercado": 0.722,
     "soloWtn": 0.578,
     "señales": [
      "forma",
      "previo"
     ],
-    "razon": "Δ1.18 de WTN a favor de Pedro Rodenas (6.44 contra 7.62), en QF: la curva del grupo \"finales\" (n=258) da 58%. Ajustan: Pedro Rodenas viene cediendo menos games (34% contra 36%) (+1 pts); Pedro Rodenas llegó más lejos en su torneo anterior (+10 pts). Queda en 69%. El mercado la paga a 1.239: 74% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ1.18 de WTN a favor de Pedro Rodenas (6.44 contra 7.62), en QF: la curva del grupo \"finales\" (n=258) da 58%. Ajustan: Pedro Rodenas viene cediendo menos games (34% contra 36%) (+1 pts); Pedro Rodenas llegó más lejos en su torneo anterior (+10 pts). Queda en 69%. El mercado la paga a 1.297: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.23,
+     "cuota": 1.265,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.528,
@@ -17617,23 +17617,23 @@
     "etapa": "QF",
     "p1": "Jan Chlodnicki",
     "p2": "Linus Lagerbohm",
-    "g1": 3.641,
-    "g2": 1.23,
+    "g1": 3.591,
+    "g2": 1.265,
     "gana": "Linus Lagerbohm",
     "lado": 2,
     "p": 0.528,
-    "pMercado": 0.747,
+    "pMercado": 0.739,
     "soloWtn": 0.914,
     "señales": [
      "sub18",
      "forma",
      "local"
     ],
-    "razon": "Δ8.84 de WTN a favor de Linus Lagerbohm (8.23 contra 17.07), en QF: la curva del grupo \"finales\" (n=258) da 91%. Ajustan: Jan Chlodnicki tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−33 pts); Jan Chlodnicki viene cediendo menos games (26% contra 40%): la forma contradice al nivel (−7 pts); Jan Chlodnicki juega en su país (POL): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 53%. El mercado la paga a 1.23: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −35% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ8.84 de WTN a favor de Linus Lagerbohm (8.23 contra 17.07), en QF: la curva del grupo \"finales\" (n=258) da 91%. Ajustan: Jan Chlodnicki tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−33 pts); Jan Chlodnicki viene cediendo menos games (26% contra 40%): la forma contradice al nivel (−7 pts); Jan Chlodnicki juega en su país (POL): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 53%. El mercado la paga a 1.265: 74% una vez sacado su margen. A esa cuota, la apuesta rinde −33% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.38,
+     "cuota": 1.396,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.597,
@@ -17653,21 +17653,21 @@
     "etapa": "QF",
     "p1": "Cesar Bouchelaghem",
     "p2": "Hugo Car",
-    "g1": 1.38,
-    "g2": 2.768,
+    "g1": 1.396,
+    "g2": 2.835,
     "gana": "Cesar Bouchelaghem",
     "lado": 1,
     "p": 0.597,
-    "pMercado": 0.667,
+    "pMercado": 0.67,
     "soloWtn": 0.562,
     "señales": [
      "forma"
     ],
-    "razon": "Δ0.93 de WTN a favor de Cesar Bouchelaghem (6.08 contra 7.01), en QF: la curva del grupo \"finales\" (n=258) da 56%. Ajustan: Cesar Bouchelaghem viene cediendo menos games (23% contra 29%) (+4 pts). Queda en 60%. El mercado la paga a 1.38: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.93 de WTN a favor de Cesar Bouchelaghem (6.08 contra 7.01), en QF: la curva del grupo \"finales\" (n=258) da 56%. Ajustan: Cesar Bouchelaghem viene cediendo menos games (23% contra 29%) (+4 pts). Queda en 60%. El mercado la paga a 1.396: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.28,
+     "cuota": 1.354,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.722,
@@ -17687,22 +17687,22 @@
     "etapa": "QF",
     "p1": "Jorge Plans",
     "p2": "Aziz Ouakaa",
-    "g1": 3.268,
-    "g2": 1.28,
+    "g1": 3.032,
+    "g2": 1.354,
     "gana": "Aziz Ouakaa",
     "lado": 2,
     "p": 0.722,
-    "pMercado": 0.719,
+    "pMercado": 0.691,
     "soloWtn": 0.642,
     "señales": [
      "forma",
      "local"
     ],
-    "razon": "Δ2.18 de WTN a favor de Aziz Ouakaa (7.1 contra 9.28), en QF: la curva del grupo \"finales\" (n=258) da 64%. Ajustan: Aziz Ouakaa viene cediendo menos games (31% contra 35%) (+1 pts); Aziz Ouakaa juega en su país (TUN): la localía vale ~0.5 pts de WTN (+6 pts). Queda en 72%. El mercado la paga a 1.28: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ2.18 de WTN a favor de Aziz Ouakaa (7.1 contra 9.28), en QF: la curva del grupo \"finales\" (n=258) da 64%. Ajustan: Aziz Ouakaa viene cediendo menos games (31% contra 35%) (+1 pts); Aziz Ouakaa juega en su país (TUN): la localía vale ~0.5 pts de WTN (+6 pts). Queda en 72%. El mercado la paga a 1.354: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −2% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.52,
+     "cuota": 1.541,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.581,
@@ -17722,23 +17722,23 @@
     "etapa": "QF",
     "p1": "Nino Ehrenschneider",
     "p2": "Eero Vasa",
-    "g1": 2.336,
-    "g2": 1.52,
+    "g1": 2.394,
+    "g2": 1.541,
     "gana": "Eero Vasa",
     "lado": 2,
     "p": 0.581,
-    "pMercado": 0.606,
+    "pMercado": 0.608,
     "soloWtn": 0.647,
     "señales": [
      "forma",
      "previo",
      "local"
     ],
-    "razon": "Δ2.26 de WTN a favor de Eero Vasa (4.97 contra 7.23), en QF: la curva del grupo \"finales\" (n=258) da 65%. Ajustan: Eero Vasa viene cediendo menos games (22% contra 29%) (+4 pts); Nino Ehrenschneider llegó más lejos en su torneo anterior (−3 pts); Nino Ehrenschneider juega en su país (GER): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 58%. El mercado la paga a 1.52: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ2.26 de WTN a favor de Eero Vasa (4.97 contra 7.23), en QF: la curva del grupo \"finales\" (n=258) da 65%. Ajustan: Eero Vasa viene cediendo menos games (22% contra 29%) (+4 pts); Nino Ehrenschneider llegó más lejos en su torneo anterior (−3 pts); Nino Ehrenschneider juega en su país (GER): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 58%. El mercado la paga a 1.541: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.576,
+     "cuota": 1.597,
      "ladoFm": 1,
      "acuerdo": false,
      "pFm": 0.521,
@@ -17758,22 +17758,22 @@
     "etapa": "QF",
     "p1": "Dimitris Sakellaridis",
     "p2": "Bruno Fernandez",
-    "g1": 1.576,
-    "g2": 2.218,
+    "g1": 1.597,
+    "g2": 2.266,
     "gana": "Bruno Fernandez",
     "lado": 2,
     "p": 0.479,
-    "pMercado": 0.415,
+    "pMercado": 0.413,
     "soloWtn": 0.547,
     "señales": [
      "forma",
      "previo"
     ],
-    "razon": "Δ0.71 de WTN a favor de Bruno Fernandez (6.23 contra 6.94), en QF: la curva del grupo \"finales\" (n=258) da 55%. Ajustan: Dimitris Sakellaridis viene cediendo menos games (37% contra 43%): la forma contradice al nivel (−3 pts); Dimitris Sakellaridis llegó más lejos en su torneo anterior (−4 pts). Queda en 48%. El mercado la paga a 2.218: 42% una vez sacado su margen. A esa cuota, la apuesta rinde +6% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.71 de WTN a favor de Bruno Fernandez (6.23 contra 6.94), en QF: la curva del grupo \"finales\" (n=258) da 55%. Ajustan: Dimitris Sakellaridis viene cediendo menos games (37% contra 43%): la forma contradice al nivel (−3 pts); Dimitris Sakellaridis llegó más lejos en su torneo anterior (−4 pts). Queda en 48%. El mercado la paga a 2.266: 41% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.173,
+     "cuota": 1.179,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.704,
@@ -17793,21 +17793,21 @@
     "etapa": "QF",
     "p1": "Max Houkes",
     "p2": "Pierre Delage",
-    "g1": 1.173,
-    "g2": 4.269,
+    "g1": 1.179,
+    "g2": 4.357,
     "gana": "Max Houkes",
     "lado": 1,
     "p": 0.704,
-    "pMercado": 0.784,
+    "pMercado": 0.787,
     "soloWtn": 0.667,
     "señales": [
      "forma"
     ],
-    "razon": "Δ2.60 de WTN a favor de Max Houkes (3.3 contra 5.9), en QF: la curva del grupo \"finales\" (n=258) da 67%. Ajustan: Max Houkes viene cediendo menos games (34% contra 42%) (+4 pts). Queda en 70%. El mercado la paga a 1.173: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ2.60 de WTN a favor de Max Houkes (3.3 contra 5.9), en QF: la curva del grupo \"finales\" (n=258) da 67%. Ajustan: Max Houkes viene cediendo menos games (34% contra 42%) (+4 pts). Queda en 70%. El mercado la paga a 1.179: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −17% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.682,
+     "cuota": 1.614,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.667,
@@ -17827,22 +17827,22 @@
     "etapa": "QF",
     "p1": "Jack Loge",
     "p2": "Yaroslav Demin",
-    "g1": 1.682,
-    "g2": 2.041,
+    "g1": 1.614,
+    "g2": 2.188,
     "gana": "Jack Loge",
     "lado": 1,
     "p": 0.667,
-    "pMercado": 0.548,
+    "pMercado": 0.575,
     "soloWtn": 0.555,
     "señales": [
      "forma",
      "previo"
     ],
-    "razon": "Δ0.82 de WTN a favor de Jack Loge (5.39 contra 6.21), en QF: la curva del grupo \"finales\" (n=258) da 55%. Ajustan: Jack Loge viene cediendo menos games (37% contra 39%) (+1 pts); Jack Loge llegó más lejos en su torneo anterior (+10 pts). Queda en 67%. El mercado la paga a 1.682: 55% una vez sacado su margen. A esa cuota, la apuesta rinde +12% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.82 de WTN a favor de Jack Loge (5.39 contra 6.21), en QF: la curva del grupo \"finales\" (n=258) da 55%. Ajustan: Jack Loge viene cediendo menos games (37% contra 39%) (+1 pts); Jack Loge llegó más lejos en su torneo anterior (+10 pts). Queda en 67%. El mercado la paga a 1.614: 58% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.179,
+     "cuota": 1.206,
      "ladoFm": 2,
      "acuerdo": false,
      "pFm": 0.658,
@@ -17862,22 +17862,22 @@
     "etapa": "QF",
     "p1": "Daniel Salazar",
     "p2": "Michael Agwi",
-    "g1": 4.181,
-    "g2": 1.179,
+    "g1": 4.033,
+    "g2": 1.206,
     "gana": "Daniel Salazar",
     "lado": 1,
     "p": 0.342,
-    "pMercado": 0.22,
+    "pMercado": 0.23,
     "soloWtn": 0.554,
     "señales": [
      "forma",
      "previo"
     ],
-    "razon": "Δ0.81 de WTN a favor de Daniel Salazar (7.99 contra 8.8), en QF: la curva del grupo \"finales\" (n=258) da 55%. Ajustan: Michael Agwi viene cediendo menos games (27% contra 42%): la forma contradice al nivel (−7 pts); Michael Agwi llegó más lejos en su torneo anterior (−14 pts). Queda en 34%. El mercado la paga a 4.181: 22% una vez sacado su margen. A esa cuota, la apuesta rinde +43% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.81 de WTN a favor de Daniel Salazar (7.99 contra 8.8), en QF: la curva del grupo \"finales\" (n=258) da 55%. Ajustan: Michael Agwi viene cediendo menos games (27% contra 42%): la forma contradice al nivel (−7 pts); Michael Agwi llegó más lejos en su torneo anterior (−14 pts). Queda en 34%. El mercado la paga a 4.033: 23% una vez sacado su margen. A esa cuota, la apuesta rinde +38% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.279,
+     "cuota": 1.286,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.591,
@@ -17897,22 +17897,22 @@
     "etapa": "QF",
     "p1": "Lucio Ratti",
     "p2": "Adrian Oetzbach",
-    "g1": 1.279,
-    "g2": 3.278,
+    "g1": 1.286,
+    "g2": 3.327,
     "gana": "Lucio Ratti",
     "lado": 1,
     "p": 0.591,
-    "pMercado": 0.719,
+    "pMercado": 0.721,
     "soloWtn": 0.603,
     "señales": [
      "forma",
      "local"
     ],
-    "razon": "Δ1.57 de WTN a favor de Lucio Ratti (4.72 contra 6.29), en QF: la curva del grupo \"finales\" (n=258) da 60%. Ajustan: Lucio Ratti viene cediendo menos games (23% contra 34%) (+6 pts); Adrian Oetzbach juega en su país (GER): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 59%. El mercado la paga a 1.279: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ1.57 de WTN a favor de Lucio Ratti (4.72 contra 6.29), en QF: la curva del grupo \"finales\" (n=258) da 60%. Ajustan: Lucio Ratti viene cediendo menos games (23% contra 34%) (+6 pts); Adrian Oetzbach juega en su país (GER): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 59%. El mercado la paga a 1.286: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.772,
+     "cuota": 1.766,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.608,
@@ -17932,21 +17932,21 @@
     "etapa": "QF",
     "p1": "Alex Knaff",
     "p2": "Fares Zakaria",
-    "g1": 1.772,
-    "g2": 1.916,
+    "g1": 1.766,
+    "g2": 1.962,
     "gana": "Alex Knaff",
     "lado": 1,
     "p": 0.608,
-    "pMercado": 0.52,
+    "pMercado": 0.526,
     "soloWtn": 0.611,
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.69 de WTN a favor de Alex Knaff (6.4 contra 8.09), en QF: la curva del grupo \"finales\" (n=258) da 61%. El mercado la paga a 1.772: 52% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ1.69 de WTN a favor de Alex Knaff (6.4 contra 8.09), en QF: la curva del grupo \"finales\" (n=258) da 61%. El mercado la paga a 1.766: 53% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.387,
+     "cuota": 1.398,
      "ladoFm": 2,
      "acuerdo": true,
      "pFm": 0.621,
@@ -17966,17 +17966,17 @@
     "etapa": "QF",
     "p1": "Leonardo Primucci",
     "p2": "Gabriele Crivellaro",
-    "g1": 2.728,
-    "g2": 1.387,
+    "g1": 2.767,
+    "g2": 1.398,
     "gana": "Gabriele Crivellaro",
     "lado": 2,
     "p": 0.621,
-    "pMercado": 0.663,
+    "pMercado": 0.664,
     "soloWtn": 0.606,
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.61 de WTN a favor de Gabriele Crivellaro (8.75 contra 10.36), en QF: la curva del grupo \"finales\" (n=258) da 61%. Ajustan: Gabriele Crivellaro viene cediendo menos games (42% contra 45%) (+2 pts). Queda en 62%. El mercado la paga a 1.387: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ1.61 de WTN a favor de Gabriele Crivellaro (8.75 contra 10.36), en QF: la curva del grupo \"finales\" (n=258) da 61%. Ajustan: Gabriele Crivellaro viene cediendo menos games (42% contra 45%) (+2 pts). Queda en 62%. El mercado la paga a 1.398: 66% una vez sacado su margen. A esa cuota, la apuesta rinde −13% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
@@ -18326,5 +18326,5 @@
    }
   ]
  },
- "actualizado": "2026-09-04T01:24:14.732Z"
+ "actualizado": "2026-09-04T05:10:28.773Z"
 }

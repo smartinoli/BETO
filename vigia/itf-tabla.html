@@ -68,7 +68,7 @@ tr[hidden]{display:none}
 </style>
 <div class="env">
 <h1>Tabla ITF — lo apostable de ahora</h1>
-<p class="sub">84 jugadores · 12 torneos · armada 21:24 hora de Chile. Las horas de cada partido también van en hora de Chile.
+<p class="sub">68 jugadores · 10 torneos · armada 01:10 hora de Chile. Las horas de cada partido también van en hora de Chile.
   Solo partidos que <b>todavía no empiezan</b> y tienen cuota de los dos lados: lo que ya arrancó no se puede apostar y sale de la tabla.
   Clic en cualquier encabezado para ordenar; el nombre abre la búsqueda en Betano. La ★ y el borde verde marcan lo que pisa la casilla del manual.
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
@@ -80,7 +80,7 @@ tr[hidden]{display:none}
   <button id="b-todo" data-que="todo" class="sec2">Semana completa <small>una vez al día</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
-  <span class="mod">betano no está en la API ahora · 42 partidos con la cuota de otra casa · modelo aprendido ·
+  <span class="mod">betano no está en la API ahora · 34 partidos con la cuota de otra casa · modelo aprendido ·
     3164 partidos · 2026-09-02</span>
   <div id="act-token" hidden>
     <p>Una sola vez: un token de GitHub que queda guardado solo en este navegador.
@@ -93,7 +93,7 @@ tr[hidden]{display:none}
 
 <div class="barra">
   <label>buscar</label><input type="text" id="q" placeholder="jugador o rival">
-  <label>torneo</label><select id="tor"><option value="">todos</option><option value="m15 bologna">M15 Bologna</option><option value="m15 buzau">M15 Buzau</option><option value="m15 haren">M15 Haren</option><option value="m15 hurghada">M15 Hurghada</option><option value="m15 madrid">M15 Madrid</option><option value="m15 monastir">M15 Monastir</option><option value="m15 nonthaburi">M15 Nonthaburi</option><option value="m15 szczawno">M15 Szczawno</option><option value="m15 wuning">M15 Wuning</option><option value="m25 casablanca">M25 Casablanca</option><option value="m25 meerbusch">M25 Meerbusch</option><option value="m25+h bagnères-de-bigorre">M25+H Bagnères-de-Bigorre</option></select>
+  <label>torneo</label><select id="tor"><option value="">todos</option><option value="m15 bologna">M15 Bologna</option><option value="m15 buzau">M15 Buzau</option><option value="m15 haren">M15 Haren</option><option value="m15 hurghada">M15 Hurghada</option><option value="m15 madrid">M15 Madrid</option><option value="m15 monastir">M15 Monastir</option><option value="m15 szczawno">M15 Szczawno</option><option value="m25 casablanca">M25 Casablanca</option><option value="m25 meerbusch">M25 Meerbusch</option><option value="m25+h bagnères-de-bigorre">M25+H Bagnères-de-Bigorre</option></select>
   <label>cuota</label><input type="number" id="cmin" step="0.01" placeholder="min"><input type="number" id="cmax" step="0.01" placeholder="max">
   <label>% modelo</label><input type="number" id="pmin" placeholder="min"><input type="number" id="pmax" placeholder="max">
   <label>edad</label><input type="number" id="emin" placeholder="min"><input type="number" id="emax" placeholder="max">
@@ -112,336 +112,16 @@ tr[hidden]{display:none}
 <thead><tr><th data-k="jugador" data-tipo="txt">jugador <span class="fl"></span></th><th data-k="cuota" data-tipo="num">cuota <span class="fl"></span></th><th data-k="prob" data-tipo="num">% modelo <span class="fl"></span></th><th data-k="valor" data-tipo="num">valor <span class="fl"></span></th><th data-k="rival" data-tipo="txt">rival <span class="fl"></span></th><th data-k="torneo" data-tipo="txt">torneo <span class="fl"></span></th><th data-k="etapa" data-tipo="txt">ronda · hora CL <span class="fl"></span></th><th data-k="edad" data-tipo="num">edad <span class="fl"></span></th><th data-k="wtn" data-tipo="num">WTN <span class="fl"></span></th><th data-k="itf" data-tipo="num">ITF <span class="fl"></span></th><th data-k="atp" data-tipo="num">ATP <span class="fl"></span></th><th data-k="jr" data-tipo="bool">jr <span class="fl"></span></th><th data-k="local" data-tipo="bool">local <span class="fl"></span></th></tr></thead>
 <tbody>
 <tr
-  data-jugador="miles jones" data-cuota="1.633" data-prob="0.539"
-  data-valor="0.88"
-  data-rival="qian sun" data-torneo="m15 wuning"
-  data-etapa="QF" data-edad="26" data-wtn="6.97"
-  data-itf="1407" data-atp="869" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Miles%20Jones" target="_blank" rel="noopener">Miles Jones</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">1.633 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">54%</span></td>
-  <td class="n"><span class="val malo">0.88</span></td>
-  <td class="sec">Qian Sun<span class="mk"> (8)</span> <span class="cq">2.218</span></td>
-  <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
-  <td class="sec">QF<span class="cq"> 22:00</span></td>
-  <td class="n">26<i class="rv">25</i></td>
-  <td class="n">6.97<i class="rv">8.45</i></td>
-  <td class="n sec">1407<i class="rv">1287</i></td>
-  <td class="n sec">869<i class="rv">930</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="qian sun" data-cuota="2.218" data-prob="0.461"
-  data-valor="1.02"
-  data-rival="miles jones" data-torneo="m15 wuning"
-  data-etapa="QF" data-edad="25" data-wtn="8.45"
-  data-itf="1287" data-atp="930" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Qian%20Sun" target="_blank" rel="noopener">Qian Sun</a><span class="mk"> (8)</span></td>
-  <td class="n cuota">2.218 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">46%</span></td>
-  <td class="n"><span class="val malo">1.02</span></td>
-  <td class="sec">Miles Jones<span class="mk"> (3)</span> <span class="cq">1.633</span></td>
-  <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
-  <td class="sec">QF<span class="cq"> 22:00</span></td>
-  <td class="n">25<i class="rv">26</i></td>
-  <td class="n">8.45<i class="rv">6.97</i></td>
-  <td class="n sec">1287<i class="rv">1407</i></td>
-  <td class="n sec">930<i class="rv">869</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="colin sinclair" data-cuota="1.016" data-prob="0.788"
-  data-valor="0.80"
-  data-rival="zijiang yang" data-torneo="m15 wuning"
-  data-etapa="QF" data-edad="32" data-wtn="6.64"
-  data-itf="" data-atp="503" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Colin%20Sinclair" target="_blank" rel="noopener">Colin Sinclair</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.016 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb media">79%</span></td>
-  <td class="n"><span class="val malo">0.80</span></td>
-  <td class="sec">Zijiang Yang<span class="mk"> (12)</span> <span class="cq">23.319</span></td>
-  <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
-  <td class="sec">QF<span class="cq"> 22:00</span></td>
-  <td class="n">32<i class="rv">26</i></td>
-  <td class="n">6.64<i class="rv">12.6</i></td>
-  <td class="n sec">—<i class="rv">525</i></td>
-  <td class="n sec">503<i class="rv">—</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="zijiang yang" data-cuota="23.319" data-prob="0.212"
-  data-valor="4.94"
-  data-rival="colin sinclair" data-torneo="m15 wuning"
-  data-etapa="QF" data-edad="26" data-wtn="12.6"
-  data-itf="525" data-atp="" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Zijiang%20Yang" target="_blank" rel="noopener">Zijiang Yang</a><span class="mk"> (12)</span></td>
-  <td class="n cuota">23.319 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">21%</span></td>
-  <td class="n"><span class="val malo">4.94</span></td>
-  <td class="sec">Colin Sinclair<span class="mk"> (1)</span> <span class="cq">1.016</span></td>
-  <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
-  <td class="sec">QF<span class="cq"> 22:00</span></td>
-  <td class="n">26<i class="rv">32</i></td>
-  <td class="n">12.6<i class="rv">6.64</i></td>
-  <td class="n sec">525<i class="rv">—</i></td>
-  <td class="n sec">—<i class="rv">503</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="yuta tomida" data-cuota="2.435" data-prob="0.655"
-  data-valor="1.59"
-  data-rival="kristjan tamm" data-torneo="m15 wuning"
-  data-etapa="QF" data-edad="20" data-wtn="8.8"
-  data-itf="102" data-atp="982" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Yuta%20Tomida" target="_blank" rel="noopener">Yuta Tomida</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">2.435 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">66%</span></td>
-  <td class="n"><span class="val malo">1.59</span></td>
-  <td class="sec">Kristjan Tamm<span class="mk"></span> <span class="cq">1.533</span></td>
-  <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
-  <td class="sec">QF<span class="cq"> 22:00</span></td>
-  <td class="n">20<i class="rv">28</i></td>
-  <td class="n">8.8<i class="rv">9.4</i></td>
-  <td class="n sec">102<i class="rv">—</i></td>
-  <td class="n sec">982<i class="rv">1165</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="kristjan tamm" data-cuota="1.533" data-prob="0.345"
-  data-valor="0.53"
-  data-rival="yuta tomida" data-torneo="m15 wuning"
-  data-etapa="QF" data-edad="28" data-wtn="9.4"
-  data-itf="" data-atp="1165" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Kristjan%20Tamm" target="_blank" rel="noopener">Kristjan Tamm</a><span class="mk"></span></td>
-  <td class="n cuota">1.533 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">35%</span></td>
-  <td class="n"><span class="val malo">0.53</span></td>
-  <td class="sec">Yuta Tomida<span class="mk"> (6)</span> <span class="cq">2.435</span></td>
-  <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
-  <td class="sec">QF<span class="cq"> 22:00</span></td>
-  <td class="n">28<i class="rv">20</i></td>
-  <td class="n">9.4<i class="rv">8.8</i></td>
-  <td class="n sec">—<i class="rv">102</i></td>
-  <td class="n sec">1165<i class="rv">982</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="geun jun kim" data-cuota="1.35" data-prob="0.784"
-  data-valor="1.06"
-  data-rival="harrison satara" data-torneo="m15 wuning"
-  data-etapa="QF" data-edad="25" data-wtn="7.34"
-  data-itf="816" data-atp="1047" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Geun%20Jun%20Kim" target="_blank" rel="noopener">Geun Jun Kim</a><span class="mk"> (7)</span></td>
-  <td class="n cuota">1.35 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb media">78%</span></td>
-  <td class="n"><span class="val justo">1.06</span></td>
-  <td class="sec">Harrison Satara<span class="mk"> (2)</span> <span class="cq">3.095</span></td>
-  <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
-  <td class="sec">QF<span class="cq"> 22:00</span></td>
-  <td class="n">25<i class="rv">19</i></td>
-  <td class="n">7.34<i class="rv">12.39</i></td>
-  <td class="n sec">816<i class="rv">831</i></td>
-  <td class="n sec">1047<i class="rv">1610</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="harrison satara" data-cuota="3.095" data-prob="0.216"
-  data-valor="0.67"
-  data-rival="geun jun kim" data-torneo="m15 wuning"
-  data-etapa="QF" data-edad="19" data-wtn="12.39"
-  data-itf="831" data-atp="1610" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Harrison%20Satara" target="_blank" rel="noopener">Harrison Satara</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">3.095 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">22%</span></td>
-  <td class="n"><span class="val malo">0.67</span></td>
-  <td class="sec">Geun Jun Kim<span class="mk"> (7)</span> <span class="cq">1.35</span></td>
-  <td class="sec">M15 Wuning <span class="cq">CHN</span></td>
-  <td class="sec">QF<span class="cq"> 22:00</span></td>
-  <td class="n">19<i class="rv">25</i></td>
-  <td class="n">12.39<i class="rv">7.34</i></td>
-  <td class="n sec">831<i class="rv">816</i></td>
-  <td class="n sec">1610<i class="rv">1047</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="florent bax" data-cuota="1.292" data-prob="0.703"
-  data-valor="0.91"
-  data-rival="manish sureshkumar" data-torneo="m15 nonthaburi"
-  data-etapa="QF" data-edad="27" data-wtn="3.71"
-  data-itf="" data-atp="247" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Florent%20Bax" target="_blank" rel="noopener">Florent Bax</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.292 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb media">70%</span></td>
-  <td class="n"><span class="val malo">0.91</span></td>
-  <td class="sec">Manish Sureshkumar<span class="mk"> (6)</span> <span class="cq">3.45</span></td>
-  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
-  <td class="sec">QF<span class="cq"> 23:00</span></td>
-  <td class="n">27<i class="rv">27</i></td>
-  <td class="n">3.71<i class="rv">7.41</i></td>
-  <td class="n sec">—<i class="rv">1042</i></td>
-  <td class="n sec">247<i class="rv">727</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="manish sureshkumar" data-cuota="3.45" data-prob="0.297"
-  data-valor="1.02"
-  data-rival="florent bax" data-torneo="m15 nonthaburi"
-  data-etapa="QF" data-edad="27" data-wtn="7.41"
-  data-itf="1042" data-atp="727" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Manish%20Sureshkumar" target="_blank" rel="noopener">Manish Sureshkumar</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">3.45 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">30%</span></td>
-  <td class="n"><span class="val malo">1.02</span></td>
-  <td class="sec">Florent Bax<span class="mk"> (1)</span> <span class="cq">1.292</span></td>
-  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
-  <td class="sec">QF<span class="cq"> 23:00</span></td>
-  <td class="n">27<i class="rv">27</i></td>
-  <td class="n">7.41<i class="rv">3.71</i></td>
-  <td class="n sec">1042<i class="rv">—</i></td>
-  <td class="n sec">727<i class="rv">247</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="thanapet chanta" data-cuota="2.513" data-prob="0.46"
-  data-valor="1.16"
-  data-rival="arthur weber" data-torneo="m15 nonthaburi"
-  data-etapa="QF" data-edad="27" data-wtn="6.9"
-  data-itf="" data-atp="868" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Thanapet%20Chanta" target="_blank" rel="noopener">Thanapet Chanta</a><span class="mk"> (8)</span></td>
-  <td class="n cuota">2.513 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">46%</span></td>
-  <td class="n"><span class="val malo">1.16</span></td>
-  <td class="sec">Arthur Weber<span class="mk"> (2)</span> <span class="cq">1.504</span></td>
-  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
-  <td class="sec">QF<span class="cq"> 23:00</span></td>
-  <td class="n">27<i class="rv">34</i></td>
-  <td class="n">6.9<i class="rv">5.28</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">868<i class="rv">398</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="arthur weber" data-cuota="1.504" data-prob="0.54"
-  data-valor="0.81"
-  data-rival="thanapet chanta" data-torneo="m15 nonthaburi"
-  data-etapa="QF" data-edad="34" data-wtn="5.28"
-  data-itf="" data-atp="398" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Arthur%20Weber" target="_blank" rel="noopener">Arthur Weber</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.504 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">54%</span></td>
-  <td class="n"><span class="val malo">0.81</span></td>
-  <td class="sec">Thanapet Chanta<span class="mk"> (8)</span> <span class="cq">2.513</span></td>
-  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
-  <td class="sec">QF<span class="cq"> 23:00</span></td>
-  <td class="n">34<i class="rv">27</i></td>
-  <td class="n">5.28<i class="rv">6.9</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">398<i class="rv">868</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="thantub suksumrarn" data-cuota="2.727" data-prob="0.447"
-  data-valor="1.22"
-  data-rival="sasikumar mukund" data-torneo="m15 nonthaburi"
-  data-etapa="QF" data-edad="25" data-wtn="8.55"
-  data-itf="474" data-atp="1072" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Thantub%20Suksumrarn" target="_blank" rel="noopener">Thantub Suksumrarn</a><span class="mk"></span></td>
-  <td class="n cuota">2.727 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">45%</span></td>
-  <td class="n"><span class="val malo">1.22</span></td>
-  <td class="sec">Sasikumar Mukund<span class="mk"> (4)</span> <span class="cq">1.424</span></td>
-  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
-  <td class="sec">QF<span class="cq"> 00:00</span></td>
-  <td class="n">25<i class="rv">29</i></td>
-  <td class="n">8.55<i class="rv">6.98</i></td>
-  <td class="n sec">474<i class="rv">—</i></td>
-  <td class="n sec">1072<i class="rv">578</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="sasikumar mukund" data-cuota="1.424" data-prob="0.553"
-  data-valor="0.79"
-  data-rival="thantub suksumrarn" data-torneo="m15 nonthaburi"
-  data-etapa="QF" data-edad="29" data-wtn="6.98"
-  data-itf="" data-atp="578" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Sasikumar%20Mukund" target="_blank" rel="noopener">Sasikumar Mukund</a><span class="mk"> (4)</span></td>
-  <td class="n cuota">1.424 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">55%</span></td>
-  <td class="n"><span class="val malo">0.79</span></td>
-  <td class="sec">Thantub Suksumrarn<span class="mk"></span> <span class="cq">2.727</span></td>
-  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
-  <td class="sec">QF<span class="cq"> 00:00</span></td>
-  <td class="n">29<i class="rv">25</i></td>
-  <td class="n">6.98<i class="rv">8.55</i></td>
-  <td class="n sec">—<i class="rv">474</i></td>
-  <td class="n sec">578<i class="rv">1072</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="moerani bouzige" data-cuota="1.031" data-prob="0.68"
-  data-valor="0.70"
-  data-rival="julien de cuyper" data-torneo="m15 nonthaburi"
-  data-etapa="QF" data-edad="27" data-wtn="6.52"
-  data-itf="" data-atp="473" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Moerani%20Bouzige" target="_blank" rel="noopener">Moerani Bouzige</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">1.031 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">68%</span></td>
-  <td class="n"><span class="val malo">0.70</span></td>
-  <td class="sec">Julien De Cuyper<span class="mk"> (2)</span> <span class="cq">15.607</span></td>
-  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
-  <td class="sec">QF<span class="cq"> 00:00</span></td>
-  <td class="n">27<i class="rv">27</i></td>
-  <td class="n">6.52<i class="rv">10.59</i></td>
-  <td class="n sec">—<i class="rv">1137</i></td>
-  <td class="n sec">473<i class="rv">1623</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="julien de cuyper" data-cuota="15.607" data-prob="0.32"
-  data-valor="4.99"
-  data-rival="moerani bouzige" data-torneo="m15 nonthaburi"
-  data-etapa="QF" data-edad="27" data-wtn="10.59"
-  data-itf="1137" data-atp="1623" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Julien%20De%20Cuyper" target="_blank" rel="noopener">Julien De Cuyper</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">15.607 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
-  <td class="n"><span class="pb ">32%</span></td>
-  <td class="n"><span class="val malo">4.99</span></td>
-  <td class="sec">Moerani Bouzige<span class="mk"> (3)</span> <span class="cq">1.031</span></td>
-  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
-  <td class="sec">QF<span class="cq"> 00:00</span></td>
-  <td class="n">27<i class="rv">27</i></td>
-  <td class="n">10.59<i class="rv">6.52</i></td>
-  <td class="n sec">1137<i class="rv">—</i></td>
-  <td class="n sec">1623<i class="rv">473</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="marat salbiev" data-cuota="2.011" data-prob="0.626"
-  data-valor="1.26"
+  data-jugador="marat salbiev" data-cuota="2.04" data-prob="0.626"
+  data-valor="1.28"
   data-rival="chirag duhan" data-torneo="m15 hurghada"
   data-etapa="QF" data-edad="18" data-wtn="15.49"
   data-itf="" data-atp="" data-jr="1" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Marat%20Salbiev" target="_blank" rel="noopener">Marat Salbiev</a><span class="mk"> (JR)</span></td>
-  <td class="n cuota">2.011 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.04 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">63%</span></td>
-  <td class="n"><span class="val malo">1.26</span></td>
-  <td class="sec">Chirag Duhan<span class="mk"></span> <span class="cq">1.724</span></td>
+  <td class="n"><span class="val malo">1.28</span></td>
+  <td class="sec">Chirag Duhan<span class="mk"></span> <span class="cq">1.749</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">QF<span class="cq"> 02:00</span></td>
   <td class="n">18<i class="rv">22</i></td>
@@ -452,16 +132,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="chirag duhan" data-cuota="1.724" data-prob="0.374"
-  data-valor="0.64"
+  data-jugador="chirag duhan" data-cuota="1.749" data-prob="0.374"
+  data-valor="0.65"
   data-rival="marat salbiev" data-torneo="m15 hurghada"
   data-etapa="QF" data-edad="22" data-wtn="10.61"
   data-itf="418" data-atp="1262" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Chirag%20Duhan" target="_blank" rel="noopener">Chirag Duhan</a><span class="mk"></span></td>
-  <td class="n cuota">1.724 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.749 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">37%</span></td>
-  <td class="n"><span class="val malo">0.64</span></td>
-  <td class="sec">Marat Salbiev<span class="mk"> (JR)</span> <span class="cq">2.011</span></td>
+  <td class="n"><span class="val malo">0.65</span></td>
+  <td class="sec">Marat Salbiev<span class="mk"> (JR)</span> <span class="cq">2.04</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">QF<span class="cq"> 02:00</span></td>
   <td class="n">22<i class="rv">18</i></td>
@@ -472,16 +152,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="thijs boogaard" data-cuota="1.186" data-prob="0.916"
-  data-valor="1.09"
+  data-jugador="thijs boogaard" data-cuota="1.197" data-prob="0.916"
+  data-valor="1.10"
   data-rival="conor gannon" data-torneo="m15 hurghada"
   data-etapa="QF" data-edad="18" data-wtn="5"
   data-itf="" data-atp="483" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Thijs%20Boogaard" target="_blank" rel="noopener">Thijs Boogaard</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.186 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.197 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb alta">92%</span></td>
-  <td class="n"><span class="val bueno">1.09</span></td>
-  <td class="sec">Conor Gannon<span class="mk"> (6)</span> <span class="cq">4.269</span></td>
+  <td class="n"><span class="val bueno">1.10</span></td>
+  <td class="sec">Conor Gannon<span class="mk"> (6)</span> <span class="cq">4.377</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">QF<span class="cq"> 02:00</span></td>
   <td class="n">18<i class="rv">24</i></td>
@@ -492,16 +172,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="conor gannon" data-cuota="4.269" data-prob="0.084"
-  data-valor="0.36"
+  data-jugador="conor gannon" data-cuota="4.377" data-prob="0.084"
+  data-valor="0.37"
   data-rival="thijs boogaard" data-torneo="m15 hurghada"
   data-etapa="QF" data-edad="24" data-wtn="7.18"
   data-itf="63" data-atp="1015" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Conor%20Gannon" target="_blank" rel="noopener">Conor Gannon</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">4.269 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">4.377 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">8%</span></td>
-  <td class="n"><span class="val malo">0.36</span></td>
-  <td class="sec">Thijs Boogaard<span class="mk"> (1)</span> <span class="cq">1.186</span></td>
+  <td class="n"><span class="val malo">0.37</span></td>
+  <td class="sec">Thijs Boogaard<span class="mk"> (1)</span> <span class="cq">1.197</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">QF<span class="cq"> 02:00</span></td>
   <td class="n">24<i class="rv">18</i></td>
@@ -512,16 +192,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="jake fellows" data-cuota="1.672" data-prob="0.49"
-  data-valor="0.82"
+  data-jugador="jake fellows" data-cuota="1.694" data-prob="0.49"
+  data-valor="0.83"
   data-rival="aditya balsekar" data-torneo="m15 hurghada"
   data-etapa="QF" data-edad="24" data-wtn="9.55"
   data-itf="1904" data-atp="" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Jake%20Fellows" target="_blank" rel="noopener">Jake Fellows</a><span class="mk"> (16)</span></td>
-  <td class="n cuota">1.672 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.694 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">49%</span></td>
-  <td class="n"><span class="val malo">0.82</span></td>
-  <td class="sec">Aditya Balsekar<span class="mk"></span> <span class="cq">2.09</span></td>
+  <td class="n"><span class="val malo">0.83</span></td>
+  <td class="sec">Aditya Balsekar<span class="mk"></span> <span class="cq">2.119</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">QF<span class="cq"> 02:00</span></td>
   <td class="n">24<i class="rv">24</i></td>
@@ -532,16 +212,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="aditya balsekar" data-cuota="2.09" data-prob="0.51"
-  data-valor="1.07"
+  data-jugador="aditya balsekar" data-cuota="2.119" data-prob="0.51"
+  data-valor="1.08"
   data-rival="jake fellows" data-torneo="m15 hurghada"
   data-etapa="QF" data-edad="24" data-wtn="9.79"
   data-itf="191" data-atp="1002" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Aditya%20Balsekar" target="_blank" rel="noopener">Aditya Balsekar</a><span class="mk"></span></td>
-  <td class="n cuota">2.09 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.119 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">51%</span></td>
-  <td class="n"><span class="val malo">1.07</span></td>
-  <td class="sec">Jake Fellows<span class="mk"> (16)</span> <span class="cq">1.672</span></td>
+  <td class="n"><span class="val malo">1.08</span></td>
+  <td class="sec">Jake Fellows<span class="mk"> (16)</span> <span class="cq">1.694</span></td>
   <td class="sec">M15 Hurghada <span class="cq">EGY</span></td>
   <td class="sec">QF<span class="cq"> 02:00</span></td>
   <td class="n">24<i class="rv">24</i></td>
@@ -552,16 +232,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="jeremy gschwendtner" data-cuota="1.924" data-prob="0.484"
-  data-valor="0.93"
+  data-jugador="jeremy gschwendtner" data-cuota="1.942" data-prob="0.484"
+  data-valor="0.94"
   data-rival="nicola rispoli" data-torneo="m15 buzau"
   data-etapa="SF" data-edad="28" data-wtn="8.5"
   data-itf="" data-atp="1008" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Jeremy%20Gschwendtner" target="_blank" rel="noopener">Jeremy Gschwendtner</a><span class="mk"></span></td>
-  <td class="n cuota">1.924 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.942 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">48%</span></td>
-  <td class="n"><span class="val malo">0.93</span></td>
-  <td class="sec">Nicola Rispoli<span class="mk"> (4)</span> <span class="cq">1.798</span></td>
+  <td class="n"><span class="val malo">0.94</span></td>
+  <td class="sec">Nicola Rispoli<span class="mk"> (4)</span> <span class="cq">1.82</span></td>
   <td class="sec">M15 Buzau <span class="cq">ROU</span></td>
   <td class="sec">SF<span class="cq"> 03:00</span></td>
   <td class="n">28<i class="rv">29</i></td>
@@ -572,16 +252,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="nicola rispoli" data-cuota="1.798" data-prob="0.516"
-  data-valor="0.93"
+  data-jugador="nicola rispoli" data-cuota="1.82" data-prob="0.516"
+  data-valor="0.94"
   data-rival="jeremy gschwendtner" data-torneo="m15 buzau"
   data-etapa="SF" data-edad="29" data-wtn="9.18"
   data-itf="414" data-atp="1544" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Nicola%20Rispoli" target="_blank" rel="noopener">Nicola Rispoli</a><span class="mk"> (4)</span></td>
-  <td class="n cuota">1.798 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.82 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">52%</span></td>
-  <td class="n"><span class="val malo">0.93</span></td>
-  <td class="sec">Jeremy Gschwendtner<span class="mk"></span> <span class="cq">1.924</span></td>
+  <td class="n"><span class="val malo">0.94</span></td>
+  <td class="sec">Jeremy Gschwendtner<span class="mk"></span> <span class="cq">1.942</span></td>
   <td class="sec">M15 Buzau <span class="cq">ROU</span></td>
   <td class="sec">SF<span class="cq"> 03:00</span></td>
   <td class="n">29<i class="rv">28</i></td>
@@ -592,16 +272,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="dragos nicolae madaras" data-cuota="1.364" data-prob="0.621"
-  data-valor="0.85"
+  data-jugador="dragos nicolae madaras" data-cuota="1.411" data-prob="0.621"
+  data-valor="0.88"
   data-rival="stefan adrian andreescu" data-torneo="m15 buzau"
   data-etapa="SF" data-edad="29" data-wtn="4.1"
   data-itf="798" data-atp="593" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Dragos%20Nicolae%20Madaras" target="_blank" rel="noopener">Dragos Nicolae Madaras</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.364 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.411 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">62%</span></td>
-  <td class="n"><span class="val malo">0.85</span></td>
-  <td class="sec">Stefan Adrian Andreescu<span class="mk"> (3)</span> <span class="cq">2.905</span></td>
+  <td class="n"><span class="val malo">0.88</span></td>
+  <td class="sec">Stefan Adrian Andreescu<span class="mk"> (3)</span> <span class="cq">2.786</span></td>
   <td class="sec">M15 Buzau <span class="cq">ROU</span></td>
   <td class="sec">SF<span class="cq"> 03:00</span></td>
   <td class="n">29<i class="rv">25</i></td>
@@ -612,16 +292,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="stefan adrian andreescu" data-cuota="2.905" data-prob="0.379"
-  data-valor="1.10"
+  data-jugador="stefan adrian andreescu" data-cuota="2.786" data-prob="0.379"
+  data-valor="1.06"
   data-rival="dragos nicolae madaras" data-torneo="m15 buzau"
   data-etapa="SF" data-edad="25" data-wtn="7.58"
   data-itf="" data-atp="649" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Stefan%20Adrian%20Andreescu" target="_blank" rel="noopener">Stefan Adrian Andreescu</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">2.905 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.786 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">38%</span></td>
-  <td class="n"><span class="val malo">1.10</span></td>
-  <td class="sec">Dragos Nicolae Madaras<span class="mk"> (1)</span> <span class="cq">1.364</span></td>
+  <td class="n"><span class="val malo">1.06</span></td>
+  <td class="sec">Dragos Nicolae Madaras<span class="mk"> (1)</span> <span class="cq">1.411</span></td>
   <td class="sec">M15 Buzau <span class="cq">ROU</span></td>
   <td class="sec">SF<span class="cq"> 03:00</span></td>
   <td class="n">25<i class="rv">29</i></td>
@@ -632,16 +312,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="nicolas jadoun" data-cuota="8.234" data-prob="0.202"
-  data-valor="1.66"
+  data-jugador="nicolas jadoun" data-cuota="6.731" data-prob="0.202"
+  data-valor="1.36"
   data-rival="aziz dougaz" data-torneo="m15 monastir"
   data-etapa="QF" data-edad="24" data-wtn="8.29"
   data-itf="1091" data-atp="815" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Nicolas%20Jadoun" target="_blank" rel="noopener">Nicolas Jadoun</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">8.234 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">6.731 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">20%</span></td>
-  <td class="n"><span class="val malo">1.66</span></td>
-  <td class="sec">Aziz Dougaz<span class="mk"> (2)</span> <span class="cq">1.066</span></td>
+  <td class="n"><span class="val malo">1.36</span></td>
+  <td class="sec">Aziz Dougaz<span class="mk"> (2)</span> <span class="cq">1.091</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">QF<span class="cq"> 04:00</span></td>
   <td class="n">24<i class="rv">29</i></td>
@@ -652,16 +332,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="aziz dougaz" data-cuota="1.066" data-prob="0.798"
-  data-valor="0.85"
+  data-jugador="aziz dougaz" data-cuota="1.091" data-prob="0.798"
+  data-valor="0.87"
   data-rival="nicolas jadoun" data-torneo="m15 monastir"
   data-etapa="QF" data-edad="29" data-wtn="3.51"
   data-itf="" data-atp="690" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Aziz%20Dougaz" target="_blank" rel="noopener">Aziz Dougaz</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.066 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.091 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb alta">80%</span></td>
-  <td class="n"><span class="val malo">0.85</span></td>
-  <td class="sec">Nicolas Jadoun<span class="mk"> (6)</span> <span class="cq">8.234</span></td>
+  <td class="n"><span class="val malo">0.87</span></td>
+  <td class="sec">Nicolas Jadoun<span class="mk"> (6)</span> <span class="cq">6.731</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">QF<span class="cq"> 04:00</span></td>
   <td class="n">29<i class="rv">24</i></td>
@@ -672,16 +352,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="valentin lapalu" data-cuota="4.171" data-prob="0.356"
-  data-valor="1.48"
+  data-jugador="valentin lapalu" data-cuota="4.347" data-prob="0.356"
+  data-valor="1.55"
   data-rival="roan jones" data-torneo="m15 monastir"
   data-etapa="QF" data-edad="24" data-wtn="8.68"
   data-itf="831" data-atp="1221" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Valentin%20Lapalu" target="_blank" rel="noopener">Valentin Lapalu</a><span class="mk"></span></td>
-  <td class="n cuota">4.171 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">4.347 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">36%</span></td>
-  <td class="n"><span class="val malo">1.48</span></td>
-  <td class="sec">Roan Jones<span class="mk"></span> <span class="cq">1.18</span></td>
+  <td class="n"><span class="val malo">1.55</span></td>
+  <td class="sec">Roan Jones<span class="mk"></span> <span class="cq">1.193</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">QF<span class="cq"> 04:00</span></td>
   <td class="n">24<i class="rv">23</i></td>
@@ -692,16 +372,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="roan jones" data-cuota="1.18" data-prob="0.644"
-  data-valor="0.76"
+  data-jugador="roan jones" data-cuota="1.193" data-prob="0.644"
+  data-valor="0.77"
   data-rival="valentin lapalu" data-torneo="m15 monastir"
   data-etapa="QF" data-edad="23" data-wtn="7.74"
   data-itf="343" data-atp="1331" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Roan%20Jones" target="_blank" rel="noopener">Roan Jones</a><span class="mk"></span></td>
-  <td class="n cuota">1.18 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.193 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">64%</span></td>
-  <td class="n"><span class="val malo">0.76</span></td>
-  <td class="sec">Valentin Lapalu<span class="mk"></span> <span class="cq">4.171</span></td>
+  <td class="n"><span class="val malo">0.77</span></td>
+  <td class="sec">Valentin Lapalu<span class="mk"></span> <span class="cq">4.347</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">QF<span class="cq"> 04:00</span></td>
   <td class="n">23<i class="rv">24</i></td>
@@ -712,16 +392,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="michiel de krom" data-cuota="1.907" data-prob="0.46"
-  data-valor="0.88"
+  data-jugador="michiel de krom" data-cuota="1.888" data-prob="0.46"
+  data-valor="0.87"
   data-rival="martin van der meerschen" data-torneo="m15 madrid"
   data-etapa="QF" data-edad="28" data-wtn="7.07"
   data-itf="1497" data-atp="742" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Michiel%20De%20Krom" target="_blank" rel="noopener">Michiel De Krom</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">1.907 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.888 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">46%</span></td>
-  <td class="n"><span class="val malo">0.88</span></td>
-  <td class="sec">Martin VAN DER MEERSCHEN<span class="mk"> (2)</span> <span class="cq">1.785</span></td>
+  <td class="n"><span class="val malo">0.87</span></td>
+  <td class="sec">Martin VAN DER MEERSCHEN<span class="mk"> (2)</span> <span class="cq">1.856</span></td>
   <td class="sec">M15 Madrid <span class="cq">ESP</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">28<i class="rv">26</i></td>
@@ -732,16 +412,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="martin van der meerschen" data-cuota="1.785" data-prob="0.54"
-  data-valor="0.96"
+  data-jugador="martin van der meerschen" data-cuota="1.856" data-prob="0.54"
+  data-valor="1.00"
   data-rival="michiel de krom" data-torneo="m15 madrid"
   data-etapa="QF" data-edad="26" data-wtn="6.5"
   data-itf="1407" data-atp="694" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Martin%20VAN%20DER%20MEERSCHEN" target="_blank" rel="noopener">Martin VAN DER MEERSCHEN</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.785 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.856 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">54%</span></td>
-  <td class="n"><span class="val malo">0.96</span></td>
-  <td class="sec">Michiel De Krom<span class="mk"> (6)</span> <span class="cq">1.907</span></td>
+  <td class="n"><span class="val malo">1.00</span></td>
+  <td class="sec">Michiel De Krom<span class="mk"> (6)</span> <span class="cq">1.888</span></td>
   <td class="sec">M15 Madrid <span class="cq">ESP</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">26<i class="rv">28</i></td>
@@ -752,16 +432,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="alejandro manzanera pertusa" data-cuota="1.372" data-prob="0.439"
-  data-valor="0.60"
+  data-jugador="alejandro manzanera pertusa" data-cuota="1.387" data-prob="0.439"
+  data-valor="0.61"
   data-rival="enrique carrascosa diaz" data-torneo="m15 madrid"
   data-etapa="QF" data-edad="23" data-wtn="5.91"
   data-itf="" data-atp="891" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Alejandro%20Manzanera%20Pertusa" target="_blank" rel="noopener">Alejandro Manzanera Pertusa</a><span class="mk"></span></td>
-  <td class="n cuota">1.372 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.387 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">44%</span></td>
-  <td class="n"><span class="val malo">0.60</span></td>
-  <td class="sec">Enrique Carrascosa Diaz<span class="mk"></span> <span class="cq">2.797</span></td>
+  <td class="n"><span class="val malo">0.61</span></td>
+  <td class="sec">Enrique Carrascosa Diaz<span class="mk"></span> <span class="cq">2.875</span></td>
   <td class="sec">M15 Madrid <span class="cq">ESP</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">23<i class="rv">18</i></td>
@@ -772,16 +452,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="enrique carrascosa diaz" data-cuota="2.797" data-prob="0.561"
-  data-valor="1.57"
+  data-jugador="enrique carrascosa diaz" data-cuota="2.875" data-prob="0.561"
+  data-valor="1.61"
   data-rival="alejandro manzanera pertusa" data-torneo="m15 madrid"
   data-etapa="QF" data-edad="18" data-wtn="11.93"
   data-itf="2391" data-atp="1215" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Enrique%20Carrascosa%20Diaz" target="_blank" rel="noopener">Enrique Carrascosa Diaz</a><span class="mk"></span></td>
-  <td class="n cuota">2.797 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.875 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">56%</span></td>
-  <td class="n"><span class="val malo">1.57</span></td>
-  <td class="sec">Alejandro Manzanera Pertusa<span class="mk"></span> <span class="cq">1.372</span></td>
+  <td class="n"><span class="val malo">1.61</span></td>
+  <td class="sec">Alejandro Manzanera Pertusa<span class="mk"></span> <span class="cq">1.387</span></td>
   <td class="sec">M15 Madrid <span class="cq">ESP</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">18<i class="rv">23</i></td>
@@ -792,16 +472,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="ryan nijboer" data-cuota="1.237" data-prob="0.662"
-  data-valor="0.82"
+  data-jugador="ryan nijboer" data-cuota="1.262" data-prob="0.662"
+  data-valor="0.84"
   data-rival="bernardo munk mesa" data-torneo="m15 madrid"
   data-etapa="QF" data-edad="27" data-wtn="4.05"
   data-itf="" data-atp="504" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Ryan%20Nijboer" target="_blank" rel="noopener">Ryan Nijboer</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.237 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.262 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">66%</span></td>
-  <td class="n"><span class="val malo">0.82</span></td>
-  <td class="sec">Bernardo Munk Mesa<span class="mk"></span> <span class="cq">3.592</span></td>
+  <td class="n"><span class="val malo">0.84</span></td>
+  <td class="sec">Bernardo Munk Mesa<span class="mk"></span> <span class="cq">3.611</span></td>
   <td class="sec">M15 Madrid <span class="cq">ESP</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">27<i class="rv">20</i></td>
@@ -812,16 +492,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="bernardo munk mesa" data-cuota="3.592" data-prob="0.338"
-  data-valor="1.21"
+  data-jugador="bernardo munk mesa" data-cuota="3.611" data-prob="0.338"
+  data-valor="1.22"
   data-rival="ryan nijboer" data-torneo="m15 madrid"
   data-etapa="QF" data-edad="20" data-wtn="7.55"
   data-itf="1849" data-atp="1340" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Bernardo%20Munk%20Mesa" target="_blank" rel="noopener">Bernardo Munk Mesa</a><span class="mk"></span></td>
-  <td class="n cuota">3.592 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">3.611 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">34%</span></td>
-  <td class="n"><span class="val malo">1.21</span></td>
-  <td class="sec">Ryan Nijboer<span class="mk"> (1)</span> <span class="cq">1.237</span></td>
+  <td class="n"><span class="val malo">1.22</span></td>
+  <td class="sec">Ryan Nijboer<span class="mk"> (1)</span> <span class="cq">1.262</span></td>
   <td class="sec">M15 Madrid <span class="cq">ESP</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">20<i class="rv">27</i></td>
@@ -832,16 +512,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="calvin mueller" data-cuota="1.792" data-prob="0.446"
-  data-valor="0.80"
+  data-jugador="calvin mueller" data-cuota="1.962" data-prob="0.446"
+  data-valor="0.88"
   data-rival="pawel juszczak" data-torneo="m15 szczawno"
   data-etapa="QF" data-edad="26" data-wtn="7.76"
   data-itf="616" data-atp="831" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Calvin%20Mueller" target="_blank" rel="noopener">Calvin Mueller</a><span class="mk"> (5)</span></td>
-  <td class="n cuota">1.792 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.962 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">45%</span></td>
-  <td class="n"><span class="val malo">0.80</span></td>
-  <td class="sec">Pawel Juszczak<span class="mk"></span> <span class="cq">1.898</span></td>
+  <td class="n"><span class="val malo">0.88</span></td>
+  <td class="sec">Pawel Juszczak<span class="mk"></span> <span class="cq">1.791</span></td>
   <td class="sec">M15 Szczawno <span class="cq">POL</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">26<i class="rv">32</i></td>
@@ -852,16 +532,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="pawel juszczak" data-cuota="1.898" data-prob="0.554"
-  data-valor="1.05"
+  data-jugador="pawel juszczak" data-cuota="1.791" data-prob="0.554"
+  data-valor="0.99"
   data-rival="calvin mueller" data-torneo="m15 szczawno"
   data-etapa="QF" data-edad="32" data-wtn="7.28"
   data-itf="1407" data-atp="1508" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Pawel%20Juszczak" target="_blank" rel="noopener">Pawel Juszczak</a><span class="mk"></span></td>
-  <td class="n cuota">1.898 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.791 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">55%</span></td>
-  <td class="n"><span class="val malo">1.05</span></td>
-  <td class="sec">Calvin Mueller<span class="mk"> (5)</span> <span class="cq">1.792</span></td>
+  <td class="n"><span class="val malo">0.99</span></td>
+  <td class="sec">Calvin Mueller<span class="mk"> (5)</span> <span class="cq">1.962</span></td>
   <td class="sec">M15 Szczawno <span class="cq">POL</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">32<i class="rv">26</i></td>
@@ -872,16 +552,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="david eichenseher" data-cuota="4.731" data-prob="0.424"
-  data-valor="2.01"
+  data-jugador="david eichenseher" data-cuota="4.425" data-prob="0.424"
+  data-valor="1.88"
   data-rival="john hallquist lithen" data-torneo="m15 szczawno"
   data-etapa="QF" data-edad="21" data-wtn="9.65"
   data-itf="103" data-atp="1005" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=David%20Eichenseher" target="_blank" rel="noopener">David Eichenseher</a><span class="mk"> (8)</span></td>
-  <td class="n cuota">4.731 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">4.425 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">42%</span></td>
-  <td class="n"><span class="val malo">2.01</span></td>
-  <td class="sec">John Hallquist Lithen<span class="mk"> (2)</span> <span class="cq">1.143</span></td>
+  <td class="n"><span class="val malo">1.88</span></td>
+  <td class="sec">John Hallquist Lithen<span class="mk"> (2)</span> <span class="cq">1.187</span></td>
   <td class="sec">M15 Szczawno <span class="cq">POL</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">21<i class="rv">25</i></td>
@@ -892,16 +572,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="john hallquist lithen" data-cuota="1.143" data-prob="0.576"
-  data-valor="0.66"
+  data-jugador="john hallquist lithen" data-cuota="1.187" data-prob="0.576"
+  data-valor="0.68"
   data-rival="david eichenseher" data-torneo="m15 szczawno"
   data-etapa="QF" data-edad="25" data-wtn="8.2"
   data-itf="306" data-atp="758" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=John%20Hallquist%20Lithen" target="_blank" rel="noopener">John Hallquist Lithen</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.143 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.187 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">58%</span></td>
-  <td class="n"><span class="val malo">0.66</span></td>
-  <td class="sec">David Eichenseher<span class="mk"> (8)</span> <span class="cq">4.731</span></td>
+  <td class="n"><span class="val malo">0.68</span></td>
+  <td class="sec">David Eichenseher<span class="mk"> (8)</span> <span class="cq">4.425</span></td>
   <td class="sec">M15 Szczawno <span class="cq">POL</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">25<i class="rv">21</i></td>
@@ -912,16 +592,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="alejandro garcia carbajal" data-cuota="3.572" data-prob="0.315"
-  data-valor="1.13"
+  data-jugador="alejandro garcia carbajal" data-cuota="3.365" data-prob="0.315"
+  data-valor="1.06"
   data-rival="pedro rodenas" data-torneo="m15 madrid"
   data-etapa="QF" data-edad="25" data-wtn="7.62"
   data-itf="616" data-atp="1436" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Alejandro%20Garcia%20Carbajal" target="_blank" rel="noopener">Alejandro Garcia Carbajal</a><span class="mk"></span></td>
-  <td class="n cuota">3.572 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">3.365 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">32%</span></td>
-  <td class="n"><span class="val malo">1.13</span></td>
-  <td class="sec">Pedro Rodenas<span class="mk"> (3)</span> <span class="cq">1.239</span></td>
+  <td class="n"><span class="val malo">1.06</span></td>
+  <td class="sec">Pedro Rodenas<span class="mk"> (3)</span> <span class="cq">1.297</span></td>
   <td class="sec">M15 Madrid <span class="cq">ESP</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">25<i class="rv">22</i></td>
@@ -932,16 +612,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="pedro rodenas" data-cuota="1.239" data-prob="0.685"
-  data-valor="0.85"
+  data-jugador="pedro rodenas" data-cuota="1.297" data-prob="0.685"
+  data-valor="0.89"
   data-rival="alejandro garcia carbajal" data-torneo="m15 madrid"
   data-etapa="QF" data-edad="22" data-wtn="6.44"
   data-itf="1849" data-atp="675" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Pedro%20Rodenas" target="_blank" rel="noopener">Pedro Rodenas</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">1.239 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.297 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">69%</span></td>
-  <td class="n"><span class="val malo">0.85</span></td>
-  <td class="sec">Alejandro Garcia Carbajal<span class="mk"></span> <span class="cq">3.572</span></td>
+  <td class="n"><span class="val malo">0.89</span></td>
+  <td class="sec">Alejandro Garcia Carbajal<span class="mk"></span> <span class="cq">3.365</span></td>
   <td class="sec">M15 Madrid <span class="cq">ESP</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">22<i class="rv">25</i></td>
@@ -952,16 +632,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="jan chlodnicki" data-cuota="3.641" data-prob="0.472"
-  data-valor="1.72"
+  data-jugador="jan chlodnicki" data-cuota="3.591" data-prob="0.472"
+  data-valor="1.69"
   data-rival="linus lagerbohm" data-torneo="m15 szczawno"
   data-etapa="QF" data-edad="18" data-wtn="17.07"
   data-itf="" data-atp="1995" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Jan%20Chlodnicki" target="_blank" rel="noopener">Jan Chlodnicki</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">3.641 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">3.591 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">47%</span></td>
-  <td class="n"><span class="val malo">1.72</span></td>
-  <td class="sec">Linus Lagerbohm<span class="mk"> (7)</span> <span class="cq">1.23</span></td>
+  <td class="n"><span class="val malo">1.69</span></td>
+  <td class="sec">Linus Lagerbohm<span class="mk"> (7)</span> <span class="cq">1.265</span></td>
   <td class="sec">M15 Szczawno <span class="cq">POL</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">18<i class="rv">19</i></td>
@@ -972,16 +652,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="linus lagerbohm" data-cuota="1.23" data-prob="0.528"
-  data-valor="0.65"
+  data-jugador="linus lagerbohm" data-cuota="1.265" data-prob="0.528"
+  data-valor="0.67"
   data-rival="jan chlodnicki" data-torneo="m15 szczawno"
   data-etapa="QF" data-edad="19" data-wtn="8.23"
   data-itf="" data-atp="973" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Linus%20Lagerbohm" target="_blank" rel="noopener">Linus Lagerbohm</a><span class="mk"> (7)</span></td>
-  <td class="n cuota">1.23 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.265 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">53%</span></td>
-  <td class="n"><span class="val malo">0.65</span></td>
-  <td class="sec">Jan Chlodnicki<span class="mk"> (3)</span> <span class="cq">3.641</span></td>
+  <td class="n"><span class="val malo">0.67</span></td>
+  <td class="sec">Jan Chlodnicki<span class="mk"> (3)</span> <span class="cq">3.591</span></td>
   <td class="sec">M15 Szczawno <span class="cq">POL</span></td>
   <td class="sec">QF<span class="cq"> 04:30</span></td>
   <td class="n">19<i class="rv">18</i></td>
@@ -992,16 +672,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="cesar bouchelaghem" data-cuota="1.38" data-prob="0.597"
-  data-valor="0.82"
+  data-jugador="cesar bouchelaghem" data-cuota="1.396" data-prob="0.597"
+  data-valor="0.83"
   data-rival="hugo car" data-torneo="m15 monastir"
   data-etapa="QF" data-edad="22" data-wtn="6.08"
   data-itf="" data-atp="505" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Cesar%20Bouchelaghem" target="_blank" rel="noopener">Cesar Bouchelaghem</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.38 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.396 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">60%</span></td>
-  <td class="n"><span class="val malo">0.82</span></td>
-  <td class="sec">Hugo Car<span class="mk"></span> <span class="cq">2.768</span></td>
+  <td class="n"><span class="val malo">0.83</span></td>
+  <td class="sec">Hugo Car<span class="mk"></span> <span class="cq">2.835</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">QF<span class="cq"> 05:00</span></td>
   <td class="n">22<i class="rv">24</i></td>
@@ -1012,16 +692,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="hugo car" data-cuota="2.768" data-prob="0.403"
-  data-valor="1.12"
+  data-jugador="hugo car" data-cuota="2.835" data-prob="0.403"
+  data-valor="1.14"
   data-rival="cesar bouchelaghem" data-torneo="m15 monastir"
   data-etapa="QF" data-edad="24" data-wtn="7.01"
   data-itf="1210" data-atp="1154" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Hugo%20Car" target="_blank" rel="noopener">Hugo Car</a><span class="mk"></span></td>
-  <td class="n cuota">2.768 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.835 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">40%</span></td>
-  <td class="n"><span class="val malo">1.12</span></td>
-  <td class="sec">Cesar Bouchelaghem<span class="mk"> (1)</span> <span class="cq">1.38</span></td>
+  <td class="n"><span class="val malo">1.14</span></td>
+  <td class="sec">Cesar Bouchelaghem<span class="mk"> (1)</span> <span class="cq">1.396</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">QF<span class="cq"> 05:00</span></td>
   <td class="n">24<i class="rv">22</i></td>
@@ -1032,16 +712,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="jorge plans" data-cuota="3.268" data-prob="0.278"
-  data-valor="0.91"
+  data-jugador="jorge plans" data-cuota="3.032" data-prob="0.278"
+  data-valor="0.84"
   data-rival="aziz ouakaa" data-torneo="m15 monastir"
   data-etapa="QF" data-edad="24" data-wtn="9.28"
   data-itf="921" data-atp="832" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Jorge%20Plans" target="_blank" rel="noopener">Jorge Plans</a><span class="mk"> (5)</span></td>
-  <td class="n cuota">3.268 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">3.032 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">28%</span></td>
-  <td class="n"><span class="val malo">0.91</span></td>
-  <td class="sec">Aziz Ouakaa<span class="mk"> (3)</span> <span class="cq">1.28</span></td>
+  <td class="n"><span class="val malo">0.84</span></td>
+  <td class="sec">Aziz Ouakaa<span class="mk"> (3)</span> <span class="cq">1.354</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">QF<span class="cq"> 05:00</span></td>
   <td class="n">24<i class="rv">27</i></td>
@@ -1052,16 +732,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="aziz ouakaa" data-cuota="1.28" data-prob="0.722"
-  data-valor="0.92"
+  data-jugador="aziz ouakaa" data-cuota="1.354" data-prob="0.722"
+  data-valor="0.98"
   data-rival="jorge plans" data-torneo="m15 monastir"
   data-etapa="QF" data-edad="27" data-wtn="7.1"
   data-itf="" data-atp="494" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Aziz%20Ouakaa" target="_blank" rel="noopener">Aziz Ouakaa</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">1.28 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.354 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb media">72%</span></td>
-  <td class="n"><span class="val malo">0.92</span></td>
-  <td class="sec">Jorge Plans<span class="mk"> (5)</span> <span class="cq">3.268</span></td>
+  <td class="n"><span class="val malo">0.98</span></td>
+  <td class="sec">Jorge Plans<span class="mk"> (5)</span> <span class="cq">3.032</span></td>
   <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
   <td class="sec">QF<span class="cq"> 05:00</span></td>
   <td class="n">27<i class="rv">24</i></td>
@@ -1072,16 +752,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="nino ehrenschneider" data-cuota="2.336" data-prob="0.419"
-  data-valor="0.98"
+  data-jugador="nino ehrenschneider" data-cuota="2.394" data-prob="0.419"
+  data-valor="1.00"
   data-rival="eero vasa" data-torneo="m25 meerbusch"
   data-etapa="QF" data-edad="25" data-wtn="7.23"
   data-itf="" data-atp="599" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Nino%20Ehrenschneider" target="_blank" rel="noopener">Nino Ehrenschneider</a><span class="mk"> (5)</span></td>
-  <td class="n cuota">2.336 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.394 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">42%</span></td>
-  <td class="n"><span class="val malo">0.98</span></td>
-  <td class="sec">Eero Vasa<span class="mk"> (2)</span> <span class="cq">1.52</span></td>
+  <td class="n"><span class="val malo">1.00</span></td>
+  <td class="sec">Eero Vasa<span class="mk"> (2)</span> <span class="cq">1.541</span></td>
   <td class="sec">M25 Meerbusch <span class="cq">GER</span></td>
   <td class="sec">QF<span class="cq"> 05:00</span></td>
   <td class="n">25<i class="rv">29</i></td>
@@ -1092,16 +772,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="eero vasa" data-cuota="1.52" data-prob="0.581"
-  data-valor="0.88"
+  data-jugador="eero vasa" data-cuota="1.541" data-prob="0.581"
+  data-valor="0.90"
   data-rival="nino ehrenschneider" data-torneo="m25 meerbusch"
   data-etapa="QF" data-edad="29" data-wtn="4.97"
   data-itf="" data-atp="480" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Eero%20Vasa" target="_blank" rel="noopener">Eero Vasa</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.52 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.541 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">58%</span></td>
-  <td class="n"><span class="val malo">0.88</span></td>
-  <td class="sec">Nino Ehrenschneider<span class="mk"> (5)</span> <span class="cq">2.336</span></td>
+  <td class="n"><span class="val malo">0.90</span></td>
+  <td class="sec">Nino Ehrenschneider<span class="mk"> (5)</span> <span class="cq">2.394</span></td>
   <td class="sec">M25 Meerbusch <span class="cq">GER</span></td>
   <td class="sec">QF<span class="cq"> 05:00</span></td>
   <td class="n">29<i class="rv">25</i></td>
@@ -1112,16 +792,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="dimitris sakellaridis" data-cuota="1.576" data-prob="0.521"
-  data-valor="0.82"
+  data-jugador="dimitris sakellaridis" data-cuota="1.597" data-prob="0.521"
+  data-valor="0.83"
   data-rival="bruno fernandez" data-torneo="m25 meerbusch"
   data-etapa="QF" data-edad="20" data-wtn="6.94"
   data-itf="" data-atp="556" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Dimitris%20Sakellaridis" target="_blank" rel="noopener">Dimitris Sakellaridis</a><span class="mk"> (4)</span></td>
-  <td class="n cuota">1.576 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.597 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">52%</span></td>
-  <td class="n"><span class="val malo">0.82</span></td>
-  <td class="sec">Bruno Fernandez<span class="mk"> (8)</span> <span class="cq">2.218</span></td>
+  <td class="n"><span class="val malo">0.83</span></td>
+  <td class="sec">Bruno Fernandez<span class="mk"> (8)</span> <span class="cq">2.266</span></td>
   <td class="sec">M25 Meerbusch <span class="cq">GER</span></td>
   <td class="sec">QF<span class="cq"> 05:00</span></td>
   <td class="n">20<i class="rv">22</i></td>
@@ -1132,16 +812,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="bruno fernandez" data-cuota="2.218" data-prob="0.479"
-  data-valor="1.06"
+  data-jugador="bruno fernandez" data-cuota="2.266" data-prob="0.479"
+  data-valor="1.09"
   data-rival="dimitris sakellaridis" data-torneo="m25 meerbusch"
   data-etapa="QF" data-edad="22" data-wtn="6.23"
   data-itf="457" data-atp="642" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Bruno%20Fernandez" target="_blank" rel="noopener">Bruno Fernandez</a><span class="mk"> (8)</span></td>
-  <td class="n cuota">2.218 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.266 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">48%</span></td>
-  <td class="n"><span class="val malo">1.06</span></td>
-  <td class="sec">Dimitris Sakellaridis<span class="mk"> (4)</span> <span class="cq">1.576</span></td>
+  <td class="n"><span class="val malo">1.09</span></td>
+  <td class="sec">Dimitris Sakellaridis<span class="mk"> (4)</span> <span class="cq">1.597</span></td>
   <td class="sec">M25 Meerbusch <span class="cq">GER</span></td>
   <td class="sec">QF<span class="cq"> 05:00</span></td>
   <td class="n">22<i class="rv">20</i></td>
@@ -1152,16 +832,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="max houkes" data-cuota="1.173" data-prob="0.704"
+  data-jugador="max houkes" data-cuota="1.179" data-prob="0.704"
   data-valor="0.83"
   data-rival="pierre delage" data-torneo="m25 casablanca"
   data-etapa="QF" data-edad="26" data-wtn="3.3"
   data-itf="" data-atp="242" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Max%20Houkes" target="_blank" rel="noopener">Max Houkes</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.173 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.179 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb media">70%</span></td>
   <td class="n"><span class="val malo">0.83</span></td>
-  <td class="sec">Pierre Delage<span class="mk"> (6)</span> <span class="cq">4.269</span></td>
+  <td class="sec">Pierre Delage<span class="mk"> (6)</span> <span class="cq">4.357</span></td>
   <td class="sec">M25 Casablanca <span class="cq">MAR</span></td>
   <td class="sec">QF<span class="cq"> 05:30</span></td>
   <td class="n">26<i class="rv">25</i></td>
@@ -1172,16 +852,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="pierre delage" data-cuota="4.269" data-prob="0.296"
-  data-valor="1.26"
+  data-jugador="pierre delage" data-cuota="4.357" data-prob="0.296"
+  data-valor="1.29"
   data-rival="max houkes" data-torneo="m25 casablanca"
   data-etapa="QF" data-edad="25" data-wtn="5.9"
   data-itf="1407" data-atp="680" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Pierre%20Delage" target="_blank" rel="noopener">Pierre Delage</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">4.269 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">4.357 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">30%</span></td>
-  <td class="n"><span class="val malo">1.26</span></td>
-  <td class="sec">Max Houkes<span class="mk"> (1)</span> <span class="cq">1.173</span></td>
+  <td class="n"><span class="val malo">1.29</span></td>
+  <td class="sec">Max Houkes<span class="mk"> (1)</span> <span class="cq">1.179</span></td>
   <td class="sec">M25 Casablanca <span class="cq">MAR</span></td>
   <td class="sec">QF<span class="cq"> 05:30</span></td>
   <td class="n">25<i class="rv">26</i></td>
@@ -1192,16 +872,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="jack loge" data-cuota="1.682" data-prob="0.667"
-  data-valor="1.12"
+  data-jugador="jack loge" data-cuota="1.614" data-prob="0.667"
+  data-valor="1.08"
   data-rival="yaroslav demin" data-torneo="m25 casablanca"
   data-etapa="QF" data-edad="22" data-wtn="5.39"
   data-itf="" data-atp="485" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Jack%20Loge" target="_blank" rel="noopener">Jack Loge</a><span class="mk"> (4)</span></td>
-  <td class="n cuota">1.682 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.614 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">67%</span></td>
-  <td class="n"><span class="val malo">1.12</span></td>
-  <td class="sec">Yaroslav Demin<span class="mk"> (8)</span> <span class="cq">2.041</span></td>
+  <td class="n"><span class="val malo">1.08</span></td>
+  <td class="sec">Yaroslav Demin<span class="mk"> (8)</span> <span class="cq">2.188</span></td>
   <td class="sec">M25 Casablanca <span class="cq">MAR</span></td>
   <td class="sec">QF<span class="cq"> 05:30</span></td>
   <td class="n">22<i class="rv">21</i></td>
@@ -1212,16 +892,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="yaroslav demin" data-cuota="2.041" data-prob="0.333"
-  data-valor="0.68"
+  data-jugador="yaroslav demin" data-cuota="2.188" data-prob="0.333"
+  data-valor="0.73"
   data-rival="jack loge" data-torneo="m25 casablanca"
   data-etapa="QF" data-edad="21" data-wtn="6.21"
   data-itf="1091" data-atp="668" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Yaroslav%20Demin" target="_blank" rel="noopener">Yaroslav Demin</a><span class="mk"> (8)</span></td>
-  <td class="n cuota">2.041 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.188 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">33%</span></td>
-  <td class="n"><span class="val malo">0.68</span></td>
-  <td class="sec">Jack Loge<span class="mk"> (4)</span> <span class="cq">1.682</span></td>
+  <td class="n"><span class="val malo">0.73</span></td>
+  <td class="sec">Jack Loge<span class="mk"> (4)</span> <span class="cq">1.614</span></td>
   <td class="sec">M25 Casablanca <span class="cq">MAR</span></td>
   <td class="sec">QF<span class="cq"> 05:30</span></td>
   <td class="n">21<i class="rv">22</i></td>
@@ -1232,16 +912,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="daniel salazar" data-cuota="4.181" data-prob="0.342"
-  data-valor="1.43"
+  data-jugador="daniel salazar" data-cuota="4.033" data-prob="0.342"
+  data-valor="1.38"
   data-rival="michael agwi" data-torneo="m15 szczawno"
   data-etapa="QF" data-edad="25" data-wtn="7.99"
   data-itf="476" data-atp="774" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Daniel%20Salazar" target="_blank" rel="noopener">Daniel Salazar</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">4.181 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">4.033 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">34%</span></td>
-  <td class="n"><span class="val malo">1.43</span></td>
-  <td class="sec">Michael Agwi<span class="mk"> (6)</span> <span class="cq">1.179</span></td>
+  <td class="n"><span class="val malo">1.38</span></td>
+  <td class="sec">Michael Agwi<span class="mk"> (6)</span> <span class="cq">1.206</span></td>
   <td class="sec">M15 Szczawno <span class="cq">POL</span></td>
   <td class="sec">QF<span class="cq"> 05:30</span></td>
   <td class="n">25<i class="rv">23</i></td>
@@ -1252,16 +932,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="michael agwi" data-cuota="1.179" data-prob="0.658"
-  data-valor="0.78"
+  data-jugador="michael agwi" data-cuota="1.206" data-prob="0.658"
+  data-valor="0.79"
   data-rival="daniel salazar" data-torneo="m15 szczawno"
   data-etapa="QF" data-edad="23" data-wtn="8.8"
   data-itf="" data-atp="788" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Michael%20Agwi" target="_blank" rel="noopener">Michael Agwi</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">1.179 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.206 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">66%</span></td>
-  <td class="n"><span class="val malo">0.78</span></td>
-  <td class="sec">Daniel Salazar<span class="mk"> (3)</span> <span class="cq">4.181</span></td>
+  <td class="n"><span class="val malo">0.79</span></td>
+  <td class="sec">Daniel Salazar<span class="mk"> (3)</span> <span class="cq">4.033</span></td>
   <td class="sec">M15 Szczawno <span class="cq">POL</span></td>
   <td class="sec">QF<span class="cq"> 05:30</span></td>
   <td class="n">23<i class="rv">25</i></td>
@@ -1272,16 +952,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="lucio ratti" data-cuota="1.279" data-prob="0.591"
+  data-jugador="lucio ratti" data-cuota="1.286" data-prob="0.591"
   data-valor="0.76"
   data-rival="adrian oetzbach" data-torneo="m25 meerbusch"
   data-etapa="QF" data-edad="22" data-wtn="4.72"
   data-itf="1407" data-atp="380" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Lucio%20Ratti" target="_blank" rel="noopener">Lucio Ratti</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.279 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.286 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">59%</span></td>
   <td class="n"><span class="val malo">0.76</span></td>
-  <td class="sec">Adrian Oetzbach<span class="mk"> (7)</span> <span class="cq">3.278</span></td>
+  <td class="sec">Adrian Oetzbach<span class="mk"> (7)</span> <span class="cq">3.327</span></td>
   <td class="sec">M25 Meerbusch <span class="cq">GER</span></td>
   <td class="sec">QF<span class="cq"> 06:00</span></td>
   <td class="n">22<i class="rv">29</i></td>
@@ -1292,16 +972,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="adrian oetzbach" data-cuota="3.278" data-prob="0.409"
-  data-valor="1.34"
+  data-jugador="adrian oetzbach" data-cuota="3.327" data-prob="0.409"
+  data-valor="1.36"
   data-rival="lucio ratti" data-torneo="m25 meerbusch"
   data-etapa="QF" data-edad="29" data-wtn="6.29"
   data-itf="" data-atp="568" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Adrian%20Oetzbach" target="_blank" rel="noopener">Adrian Oetzbach</a><span class="mk"> (7)</span></td>
-  <td class="n cuota">3.278 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">3.327 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">41%</span></td>
-  <td class="n"><span class="val malo">1.34</span></td>
-  <td class="sec">Lucio Ratti<span class="mk"> (1)</span> <span class="cq">1.279</span></td>
+  <td class="n"><span class="val malo">1.36</span></td>
+  <td class="sec">Lucio Ratti<span class="mk"> (1)</span> <span class="cq">1.286</span></td>
   <td class="sec">M25 Meerbusch <span class="cq">GER</span></td>
   <td class="sec">QF<span class="cq"> 06:00</span></td>
   <td class="n">29<i class="rv">22</i></td>
@@ -1312,16 +992,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="alex knaff" data-cuota="1.772" data-prob="0.608"
-  data-valor="1.08"
+  data-jugador="alex knaff" data-cuota="1.766" data-prob="0.608"
+  data-valor="1.07"
   data-rival="fares zakaria" data-torneo="m25+h bagnères-de-bigorre"
   data-etapa="QF" data-edad="29" data-wtn="6.4"
   data-itf="" data-atp="828" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Alex%20Knaff" target="_blank" rel="noopener">Alex Knaff</a><span class="mk"></span></td>
-  <td class="n cuota">1.772 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.766 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">61%</span></td>
-  <td class="n"><span class="val malo">1.08</span></td>
-  <td class="sec">Fares Zakaria<span class="mk"> (4)</span> <span class="cq">1.916</span></td>
+  <td class="n"><span class="val malo">1.07</span></td>
+  <td class="sec">Fares Zakaria<span class="mk"> (4)</span> <span class="cq">1.962</span></td>
   <td class="sec">M25+H Bagnères-de-Bigorre <span class="cq">FRA</span></td>
   <td class="sec">QF<span class="cq"> 06:00</span></td>
   <td class="n">29<i class="rv">25</i></td>
@@ -1332,16 +1012,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="fares zakaria" data-cuota="1.916" data-prob="0.392"
-  data-valor="0.75"
+  data-jugador="fares zakaria" data-cuota="1.962" data-prob="0.392"
+  data-valor="0.77"
   data-rival="alex knaff" data-torneo="m25+h bagnères-de-bigorre"
   data-etapa="QF" data-edad="25" data-wtn="8.09"
   data-itf="" data-atp="514" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Fares%20Zakaria" target="_blank" rel="noopener">Fares Zakaria</a><span class="mk"> (4)</span></td>
-  <td class="n cuota">1.916 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.962 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">39%</span></td>
-  <td class="n"><span class="val malo">0.75</span></td>
-  <td class="sec">Alex Knaff<span class="mk"></span> <span class="cq">1.772</span></td>
+  <td class="n"><span class="val malo">0.77</span></td>
+  <td class="sec">Alex Knaff<span class="mk"></span> <span class="cq">1.766</span></td>
   <td class="sec">M25+H Bagnères-de-Bigorre <span class="cq">FRA</span></td>
   <td class="sec">QF<span class="cq"> 06:00</span></td>
   <td class="n">25<i class="rv">29</i></td>
@@ -1352,16 +1032,16 @@ tr[hidden]{display:none}
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="leonardo primucci" data-cuota="2.728" data-prob="0.379"
-  data-valor="1.03"
+  data-jugador="leonardo primucci" data-cuota="2.767" data-prob="0.379"
+  data-valor="1.05"
   data-rival="gabriele crivellaro" data-torneo="m15 bologna"
   data-etapa="QF" data-edad="23" data-wtn="10.36"
   data-itf="421" data-atp="1173" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Leonardo%20Primucci" target="_blank" rel="noopener">Leonardo Primucci</a><span class="mk"></span></td>
-  <td class="n cuota">2.728 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">2.767 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">38%</span></td>
-  <td class="n"><span class="val malo">1.03</span></td>
-  <td class="sec">Gabriele Crivellaro<span class="mk"></span> <span class="cq">1.387</span></td>
+  <td class="n"><span class="val malo">1.05</span></td>
+  <td class="sec">Gabriele Crivellaro<span class="mk"></span> <span class="cq">1.398</span></td>
   <td class="sec">M15 Bologna <span class="cq">ITA</span></td>
   <td class="sec">QF<span class="cq"> 07:00</span></td>
   <td class="n">23<i class="rv">19</i></td>
@@ -1372,16 +1052,16 @@ tr[hidden]{display:none}
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="gabriele crivellaro" data-cuota="1.387" data-prob="0.621"
-  data-valor="0.86"
+  data-jugador="gabriele crivellaro" data-cuota="1.398" data-prob="0.621"
+  data-valor="0.87"
   data-rival="leonardo primucci" data-torneo="m15 bologna"
   data-etapa="QF" data-edad="19" data-wtn="8.75"
   data-itf="823" data-atp="1359" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Gabriele%20Crivellaro" target="_blank" rel="noopener">Gabriele Crivellaro</a><span class="mk"></span></td>
-  <td class="n cuota">1.387 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
+  <td class="n cuota">1.398 <small class="cs" title="betano no cotiza este partido en la API; cuota de cloudbet">cloudbet</small></td>
   <td class="n"><span class="pb ">62%</span></td>
-  <td class="n"><span class="val malo">0.86</span></td>
-  <td class="sec">Leonardo Primucci<span class="mk"></span> <span class="cq">2.728</span></td>
+  <td class="n"><span class="val malo">0.87</span></td>
+  <td class="sec">Leonardo Primucci<span class="mk"></span> <span class="cq">2.767</span></td>
   <td class="sec">M15 Bologna <span class="cq">ITA</span></td>
   <td class="sec">QF<span class="cq"> 07:00</span></td>
   <td class="n">19<i class="rv">23</i></td>
