@@ -53,6 +53,7 @@ const COLS = [
   { k: 'jugador', t: 'jugador', tipo: 'txt' },
   { k: 'cuota', t: 'cuota', tipo: 'num' },
   { k: 'prob', t: '% modelo', tipo: 'num' },
+  { k: 'valor', t: 'valor', tipo: 'num' },
   { k: 'rival', t: 'rival', tipo: 'txt' },
   { k: 'torneo', t: 'torneo', tipo: 'txt' },
   { k: 'etapa', t: 'ronda · hora CL', tipo: 'txt' },
@@ -66,6 +67,7 @@ const COLS = [
 
 const filas = J.map(j => `<tr${j.jugable ? ' class="ju"' : ''}
   data-jugador="${esc(j.jugador.toLowerCase())}" data-cuota="${j.cuota ?? ''}" data-prob="${j.prob ?? ''}"
+  data-valor="${j.prob != null && j.cuota ? (j.prob * j.cuota).toFixed(2) : ''}"
   data-rival="${esc(String(j.rival).toLowerCase())}" data-torneo="${esc(j.torneo.toLowerCase())}"
   data-etapa="${esc(j.etapa || '')}" data-edad="${j.edad ?? ''}" data-wtn="${j.wtn ?? ''}"
   data-itf="${j.itf ?? ''}" data-atp="${j.atp ?? ''}" data-jr="${j.jr ? 1 : 0}" data-local="${j.local ? 1 : 0}">
@@ -73,6 +75,11 @@ const filas = J.map(j => `<tr${j.jugable ? ' class="ju"' : ''}
   <td class="n cuota">${j.cuota ?? '—'}</td>
   <td class="n">${(() => { const pc = j.prob != null ? Math.round(j.prob * 100) : null;
     return `<span class="pb ${pc >= 80 ? 'alta' : pc >= 70 ? 'media' : ''}">${pc != null ? pc + '%' : '—'}</span>` })()}</td>
+  ${(() => { const v = j.prob != null && j.cuota ? j.prob * j.cuota : null;
+    /* VALOR = % del modelo x cuota. Sobre 1 hay margen teorico; sobre 1.08
+       hay margen con colchon para el error del modelo. Es la regla de
+       'alta % CON cuota buena': una sola de las dos no sirve. */
+    return `<td class="n"><span class="val ${v == null ? '' : v >= 1.08 ? 'bueno' : v >= 1 ? 'justo' : 'malo'}">${v != null ? v.toFixed(2) : '—'}</span></td>` })()}
   <td class="sec">${esc(j.rival)}<span class="mk">${esc(marca(j.seedRival, j.entradaRival))}</span> <span class="cq">${j.cuotaRival ?? ''}</span></td>
   <td class="sec">${esc(j.torneo)}${j.pais ? ' <span class="cq">' + esc(j.pais) + '</span>' : ''}</td>
   <td class="sec">${esc(j.etapa || '')}<span class="cq"> ${hhmm(j.inicio)}</span></td>
@@ -142,6 +149,10 @@ tr:hover td{background:var(--sunk)}
 .pb{padding:1px 6px;border-radius:8px;font-weight:600}
 .pb.alta{background:var(--pos-soft);color:var(--pos)}
 .pb.media{background:var(--ojo-soft);color:var(--ojo)}
+.val{font-weight:600;padding:1px 6px;border-radius:8px}
+.val.bueno{background:var(--pos-soft);color:var(--pos)}
+.val.justo{color:var(--ink2)}
+.val.malo{color:var(--ink3)}
 tr.ju td:first-child{box-shadow:inset 3px 0 0 var(--pos)}
 .est{color:var(--pos)}
 tr[hidden]{display:none}
@@ -181,6 +192,9 @@ tr[hidden]{display:none}
   <label>% modelo</label><input type="number" id="pmin" placeholder="min"><input type="number" id="pmax" placeholder="max">
   <label>edad</label><input type="number" id="emin" placeholder="min"><input type="number" id="emax" placeholder="max">
   <label>WTN</label><input type="number" id="wmin" step="0.1" placeholder="min"><input type="number" id="wmax" step="0.1" placeholder="max">
+  <label>ronda</label>
+  <button data-r="Q">qualy</button><button data-r="R1">R1</button><button data-r="R2">R2</button><button data-r="F">QF · SF · F</button>
+  <label>solo</label>
   <button data-f="jr">junior</button>
   <button data-f="local">local</button>
   <button data-f="ju">jugables ★</button>
@@ -194,7 +208,10 @@ tr[hidden]{display:none}
 ${filas}
 </tbody></table></div>
 
-<p class="pie"><b>Qué es cada cosa.</b> <b>% modelo</b> es lo que nuestro modelo le da a ESE jugador (los dos lados suman 100).
+<p class="pie"><b>Valor</b> = % del modelo × cuota. Es la regla de "alta probabilidad CON cuota buena": una sola de las dos no sirve.
+  Sobre 1.00 hay margen teórico; en verde desde <b>1.08</b>, que deja colchón para el error del modelo. Ordena por esa columna y lo que hay que mirar queda arriba.
+  Y ojo con la ronda: medido sobre 408 partidos con cuota, en R1 solo pagó el modelo de 90%+, en R2 el de 80%+ fue la mejor celda de todas (10/10), y en cuartos, semis y finales el modelo pierde contra el mercado.
+  <br><b>Qué es cada cosa.</b> <b>% modelo</b> es lo que nuestro modelo le da a ESE jugador (los dos lados suman 100).
   Verde desde 80%, ámbar entre 70 y 79 — y ojo, medido sobre 899 partidos jugados esa banda de 80 promete 85% y cumple 79%,
   así que a cuotas bajo 1.30 el margen se come solo. <b>WTN</b> es el rating de la ITF (más bajo es mejor);
   la ITF lo recalibró entre el 25 y el 28 de agosto, así que no se comparan números de torneos con listas de semanas distintas.
@@ -209,6 +226,8 @@ ${filas}
   const tb = document.querySelector('#t tbody');
   const filas = [...tb.rows];
   const S = { jr:false, local:false, ju:false };
+  const RS = new Set();   /* rondas elegidas: Q, R1, R2, F(=QF/SF/F) */
+  const rondaDe = e => /^Q/.test(e) ? 'Q' : e === 'R1' ? 'R1' : e === 'R2' ? 'R2' : 'F';
   const val = (tr,k) => tr.dataset[k];
   const num = v => { const x = parseFloat(v); return isNaN(x) ? null : x };
   const g = id => document.getElementById(id);
@@ -229,6 +248,7 @@ ${filas}
         && rango(String(Math.round((num(val(tr,'prob'))||0)*100)),pmin,pmax)
         && rango(val(tr,'edad'),emin,emax)
         && rango(val(tr,'wtn'),wmin,wmax)
+        && (!RS.size || RS.has(rondaDe(val(tr,'etapa'))))
         && (!S.jr || val(tr,'jr')==='1')
         && (!S.local || val(tr,'local')==='1')
         && (!S.ju || tr.classList.contains('ju'));
@@ -256,6 +276,9 @@ ${filas}
     });
     for (const tr of orden) tb.appendChild(tr);
   });
+  for (const b of document.querySelectorAll('.barra button[data-r]')) b.addEventListener('click', () => {
+    const r = b.dataset.r; if (RS.has(r)) RS.delete(r); else RS.add(r); b.classList.toggle('on', RS.has(r)); aplica();
+  });
   for (const b of document.querySelectorAll('.barra button[data-f]')) b.addEventListener('click', () => {
     S[b.dataset.f] = !S[b.dataset.f]; b.classList.toggle('on', S[b.dataset.f]); aplica();
   });
@@ -265,8 +288,8 @@ ${filas}
   g('limpiar').addEventListener('click', () => {
     for (const id of ['q','cmin','cmax','pmin','pmax','emin','emax','wmin','wmax']) g(id).value='';
     g('tor').value='';
-    for (const k in S) S[k]=false;
-    for (const b of document.querySelectorAll('.barra button[data-f]')) b.classList.remove('on');
+    for (const k in S) S[k]=false; RS.clear();
+    for (const b of document.querySelectorAll('.barra button[data-f],.barra button[data-r]')) b.classList.remove('on');
     aplica();
   });
   aplica();
