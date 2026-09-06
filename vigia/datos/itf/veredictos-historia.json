@@ -18324,7 +18324,43 @@
     ],
     "razon": "Δ0.10 de WTN a favor de Tobia Costanzo Baragiola Mordini (10.59 contra 10.69), en QF: la curva del grupo \"finales\" (n=258) da 51%. Ajustan: Tobia Costanzo Baragiola Mordini viene cediendo menos games (33% contra 37%) (+2 pts). Queda en 53%. El mercado la paga a 1.924: 48% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −8% si la tiene el mercado."
    }
+  ],
+  "2026-09-06": [
+   {
+    "crit": {
+     "cuota": 1.08,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.861,
+     "dW": 6.72,
+     "forma": 1,
+     "previo": null,
+     "grupo": "finales",
+     "edadFm": 25,
+     "edadRi": 21,
+     "dElo": 142
+    },
+    "jugada": null,
+    "fixtureId": "pn129054311635941209",
+    "inicio": "2026-09-06T20:30:00.000Z",
+    "torneo": "M15 Porto Velho",
+    "pais": "Brazil",
+    "etapa": "QF",
+    "p1": "Mateus Alves",
+    "p2": "Victor Pagotto",
+    "g1": 1.08,
+    "g2": 6.2,
+    "gana": "Mateus Alves",
+    "lado": 1,
+    "p": 0.861,
+    "pMercado": 0.852,
+    "soloWtn": 0.858,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ6.72 de WTN a favor de Mateus Alves (3.75 contra 10.47), en QF: la curva del grupo \"finales\" (n=258) da 86%. Ajustan: Mateus Alves viene cediendo menos games (33% contra 35%) (+0 pts). Queda en 86%. El mercado la paga a 1.08: 85% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −8% si la tiene el mercado."
+   }
   ]
  },
- "actualizado": "2026-09-04T05:10:28.773Z"
+ "actualizado": "2026-09-06T13:30:43.535Z"
 }

@@ -15784,7 +15784,7 @@
   },
   "pn129038861635494110": {
    "fixtureId": "pn129038861635494110",
-   "startTime": "2026-09-04T13:00:00.000Z",
+   "startTime": "2026-09-05T11:14:57.000Z",
    "statusId": null,
    "torneo": "Haren",
    "categoria": "ITF Women",
@@ -15793,7 +15793,7 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129039821635494114": {
    "fixtureId": "pn129039821635494114",
@@ -16304,7 +16304,7 @@
   },
   "pn129038841635494132": {
    "fixtureId": "pn129038841635494132",
-   "startTime": "2026-09-04T12:00:00.000Z",
+   "startTime": "2026-09-05T08:44:55.000Z",
    "statusId": null,
    "torneo": "Haren",
    "categoria": "ITF Men",
@@ -16313,11 +16313,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129038841635501566": {
    "fixtureId": "pn129038841635501566",
-   "startTime": "2026-09-04T12:00:00.000Z",
+   "startTime": "2026-09-05T08:48:06.000Z",
    "statusId": null,
    "torneo": "Haren",
    "categoria": "ITF Men",
@@ -16326,11 +16326,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129038841635501775": {
    "fixtureId": "pn129038841635501775",
-   "startTime": "2026-09-04T12:00:00.000Z",
+   "startTime": "2026-09-05T08:48:47.000Z",
    "statusId": null,
    "torneo": "Haren",
    "categoria": "ITF Men",
@@ -16339,7 +16339,7 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129034471635472529": {
    "fixtureId": "pn129034471635472529",
@@ -16421,7 +16421,7 @@
   },
   "pn129035291635501763": {
    "fixtureId": "pn129035291635501763",
-   "startTime": "2026-09-04T15:20:00.000Z",
+   "startTime": "2026-09-05T08:12:04.000Z",
    "statusId": null,
    "torneo": "Meerbusch",
    "categoria": "ITF Men",
@@ -16429,8 +16429,8 @@
    "p2": "Amar Tahirovic",
    "s1": null,
    "s2": null,
-   "hasOdds": false,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129036531635494121": {
    "fixtureId": "pn129036531635494121",
@@ -16616,7 +16616,7 @@
   },
   "pn129038841635494133": {
    "fixtureId": "pn129038841635494133",
-   "startTime": "2026-09-04T12:00:00.000Z",
+   "startTime": "2026-09-05T08:42:44.000Z",
    "statusId": null,
    "torneo": "Haren",
    "categoria": "ITF Men",
@@ -16625,7 +16625,7 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129043401635501785": {
    "fixtureId": "pn129043401635501785",
@@ -16642,7 +16642,7 @@
   },
   "pn129038861635501592": {
    "fixtureId": "pn129038861635501592",
-   "startTime": "2026-09-04T13:00:00.000Z",
+   "startTime": "2026-09-05T10:42:41.000Z",
    "statusId": null,
    "torneo": "Haren",
    "categoria": "ITF Women",
@@ -16651,11 +16651,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129038861635501593": {
    "fixtureId": "pn129038861635501593",
-   "startTime": "2026-09-04T13:00:00.000Z",
+   "startTime": "2026-09-05T10:53:06.000Z",
    "statusId": null,
    "torneo": "Haren",
    "categoria": "ITF Women",
@@ -16664,11 +16664,11 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129038861635501791": {
    "fixtureId": "pn129038861635501791",
-   "startTime": "2026-09-04T13:00:00.000Z",
+   "startTime": "2026-09-05T10:45:00.000Z",
    "statusId": null,
    "torneo": "Haren",
    "categoria": "ITF Women",
@@ -16677,7 +16677,7 @@
    "s1": null,
    "s2": null,
    "hasOdds": true,
-   "visto": "2026-09-04T05:06:43.252Z"
+   "visto": "2026-09-06T13:30:42.689Z"
   },
   "pn129036571635501597": {
    "fixtureId": "pn129036571635501597",
@@ -16704,7 +16704,462 @@
    "s2": null,
    "hasOdds": true,
    "visto": "2026-09-04T05:06:43.252Z"
+  },
+  "pn129054311635920634": {
+   "fixtureId": "pn129054311635920634",
+   "startTime": "2026-09-05T18:00:00.000Z",
+   "statusId": null,
+   "torneo": "Porto Velho",
+   "categoria": "ITF Men",
+   "p1": "Victor Hugo Remondy Pagotto",
+   "p2": "Joao Eduardo Schiessl",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.689Z"
+  },
+  "pn129054331635918933": {
+   "fixtureId": "pn129054331635918933",
+   "startTime": "2026-09-05T18:00:00.000Z",
+   "statusId": null,
+   "torneo": "Porto Velho",
+   "categoria": "ITF Women",
+   "p1": "Maayan Laron",
+   "p2": "Ana Candiotto",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.689Z"
+  },
+  "pn129054331635910266": {
+   "fixtureId": "pn129054331635910266",
+   "startTime": "2026-09-05T18:09:07.000Z",
+   "statusId": null,
+   "torneo": "Porto Velho",
+   "categoria": "ITF Women",
+   "p1": "Ana Sofia Sanchez",
+   "p2": "Julia Konishi Camargo Silva",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129054311635919043": {
+   "fixtureId": "pn129054311635919043",
+   "startTime": "2026-09-05T18:30:00.000Z",
+   "statusId": null,
+   "torneo": "Porto Velho",
+   "categoria": "ITF Men",
+   "p1": "Mateus Alves",
+   "p2": "Rafael Tosetto",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129041921635819450": {
+   "fixtureId": "pn129041921635819450",
+   "startTime": "2026-09-05T18:46:45.000Z",
+   "statusId": null,
+   "torneo": "Trelew",
+   "categoria": "ITF Men",
+   "p1": "Carlos Maria Zarate",
+   "p2": "Lorenzo Gagliardo",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129038871635812908": {
+   "fixtureId": "pn129038871635812908",
+   "startTime": "2026-09-06T01:12:26.000Z",
+   "statusId": null,
+   "torneo": "Yeongwol",
+   "categoria": "ITF Women",
+   "p1": "Naho Sato",
+   "p2": "Kamonwan Yodpetch",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129042321635842488": {
+   "fixtureId": "pn129042321635842488",
+   "startTime": "2026-09-06T02:44:24.000Z",
+   "statusId": null,
+   "torneo": "Bali",
+   "categoria": "ITF Men",
+   "p1": "Karan Singh",
+   "p2": "Isaac Becroft",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129049801635842449": {
+   "fixtureId": "pn129049801635842449",
+   "startTime": "2026-09-06T03:14:46.000Z",
+   "statusId": null,
+   "torneo": "Wuning",
+   "categoria": "ITF Men",
+   "p1": "Qian Sun",
+   "p2": "Yuta Tomida",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129042861635842443": {
+   "fixtureId": "pn129042861635842443",
+   "startTime": "2026-09-06T03:14:51.000Z",
+   "statusId": null,
+   "torneo": "Nonthaburi",
+   "categoria": "ITF Men",
+   "p1": "Moerani Bouzige",
+   "p2": "Arthur Weber",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129053031635812907": {
+   "fixtureId": "pn129053031635812907",
+   "startTime": "2026-09-06T03:16:08.000Z",
+   "statusId": null,
+   "torneo": "Tianjin",
+   "categoria": "ITF Women",
+   "p1": "Joanna Garland",
+   "p2": "Darya Astakhova",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129054301635812906": {
+   "fixtureId": "pn129054301635812906",
+   "startTime": "2026-09-06T03:17:27.000Z",
+   "statusId": null,
+   "torneo": "Urayasu",
+   "categoria": "ITF Men",
+   "p1": "Ryuki Matsuda",
+   "p2": "Naoki Nakagawa",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129054341635888214": {
+   "fixtureId": "pn129054341635888214",
+   "startTime": "2026-09-06T08:10:05.000Z",
+   "statusId": null,
+   "torneo": "Pecs",
+   "categoria": "ITF Women",
+   "p1": "Karolina Mrazikova",
+   "p2": "Enola Chiesa",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129039821635888219": {
+   "fixtureId": "pn129039821635888219",
+   "startTime": "2026-09-06T08:12:43.000Z",
+   "statusId": null,
+   "torneo": "Kursumlijska Banja",
+   "categoria": "ITF Women",
+   "p1": "Ksenia Zaytseva",
+   "p2": "Giorgia Pedone",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129054321635920693": {
+   "fixtureId": "pn129054321635920693",
+   "startTime": "2026-09-06T08:13:00.000Z",
+   "statusId": null,
+   "torneo": "Badalona",
+   "categoria": "ITF Women",
+   "p1": "Marianna Argyrokastriti",
+   "p2": "Ashley Lahey",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129033981635893228": {
+   "fixtureId": "pn129033981635893228",
+   "startTime": "2026-09-06T08:13:06.000Z",
+   "statusId": null,
+   "torneo": "Grodzisk Mazowiecki",
+   "categoria": "ITF Women",
+   "p1": "Zuzanna Bednarz",
+   "p2": "Kateryna Lazarenko",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129037901635918958": {
+   "fixtureId": "pn129037901635918958",
+   "startTime": "2026-09-06T08:13:15.000Z",
+   "statusId": null,
+   "torneo": "Brasov",
+   "categoria": "ITF Women",
+   "p1": "Alesia Breaz",
+   "p2": "Daria Lopatetska",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129043401635920596": {
+   "fixtureId": "pn129043401635920596",
+   "startTime": "2026-09-06T08:14:44.000Z",
+   "statusId": null,
+   "torneo": "Bologna",
+   "categoria": "ITF Men",
+   "p1": "Gabriele Bosio",
+   "p2": "Manuel Mazza",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129033691635893225": {
+   "fixtureId": "pn129033691635893225",
+   "startTime": "2026-09-06T08:41:18.000Z",
+   "statusId": null,
+   "torneo": "Monastir",
+   "categoria": "ITF Women",
+   "p1": "Carolyn Ansari",
+   "p2": "Elyse Tse",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129034891635859919": {
+   "fixtureId": "pn129034891635859919",
+   "startTime": "2026-09-06T08:44:57.000Z",
+   "statusId": null,
+   "torneo": "Madrid",
+   "categoria": "ITF Men",
+   "p1": "Ryan Nijboer",
+   "p2": "Martin Van Der Meerschen",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129034551635886112": {
+   "fixtureId": "pn129034551635886112",
+   "startTime": "2026-09-06T08:52:43.000Z",
+   "statusId": null,
+   "torneo": "Monastir",
+   "categoria": "ITF Men",
+   "p1": "Cesar Bouchelaghem",
+   "p2": "Aziz Dougaz",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129043431635870541": {
+   "fixtureId": "pn129043431635870541",
+   "startTime": "2026-09-06T09:00:00.000Z",
+   "statusId": null,
+   "torneo": "Hurghada",
+   "categoria": "ITF Men",
+   "p1": "Dev Javia",
+   "p2": "Chirag Duhan",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129043421635855473": {
+   "fixtureId": "pn129043421635855473",
+   "startTime": "2026-09-06T09:14:39.000Z",
+   "statusId": null,
+   "torneo": "Szczawno-zdroj",
+   "categoria": "ITF Men",
+   "p1": "Linus Lagerbohm",
+   "p2": "John Hallquist Lithen",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129040971635932655": {
+   "fixtureId": "pn129040971635932655",
+   "startTime": "2026-09-06T09:18:20.000Z",
+   "statusId": null,
+   "torneo": "Fiano Romano",
+   "categoria": "ITF Women",
+   "p1": "Federica Trevisan",
+   "p2": "Noemi Maines",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129038861635941068": {
+   "fixtureId": "pn129038861635941068",
+   "startTime": "2026-09-06T10:13:02.000Z",
+   "statusId": null,
+   "torneo": "Haren",
+   "categoria": "ITF Women",
+   "p1": "Charlotte Van Zonneveld",
+   "p2": "Mia Horvit",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129039781635909108": {
+   "fixtureId": "pn129039781635909108",
+   "startTime": "2026-09-06T10:19:40.000Z",
+   "statusId": null,
+   "torneo": "Kursumlijska Banja",
+   "categoria": "ITF Men",
+   "p1": "Branko Djuric",
+   "p2": "Dmitry Popko",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129038841635941165": {
+   "fixtureId": "pn129038841635941165",
+   "startTime": "2026-09-06T12:08:21.000Z",
+   "statusId": null,
+   "torneo": "Haren",
+   "categoria": "ITF Men",
+   "p1": "Deney Wassermann",
+   "p2": "Alexander Maarten Sander Jong",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129035291635941166": {
+   "fixtureId": "pn129035291635941166",
+   "startTime": "2026-09-06T12:13:35.000Z",
+   "statusId": null,
+   "torneo": "Meerbusch",
+   "categoria": "ITF Men",
+   "p1": "Adrian Oetzbach",
+   "p2": "Eero Vasa",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129034471635932679": {
+   "fixtureId": "pn129034471635932679",
+   "startTime": "2026-09-06T12:43:40.000Z",
+   "statusId": null,
+   "torneo": "Saint Palais Sur Mer",
+   "categoria": "ITF Women",
+   "p1": "Fiona Ferro",
+   "p2": "Clara Burel",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129036531635919039": {
+   "fixtureId": "pn129036531635919039",
+   "startTime": "2026-09-06T12:44:04.000Z",
+   "statusId": null,
+   "torneo": "Bagneres De Bigorre",
+   "categoria": "ITF Men",
+   "p1": "Robin Bertrand",
+   "p2": "Raphael Perot",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129040981635918959": {
+   "fixtureId": "pn129040981635918959",
+   "startTime": "2026-09-06T13:13:53.000Z",
+   "statusId": null,
+   "torneo": "Lujan",
+   "categoria": "ITF Women",
+   "p1": "Victoria Bosio",
+   "p2": "Maria Florencia Urrutia",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129038281635919056": {
+   "fixtureId": "pn129038281635919056",
+   "startTime": "2026-09-06T13:18:01.000Z",
+   "statusId": null,
+   "torneo": "Casablanca",
+   "categoria": "ITF Men",
+   "p1": "Max Houkes",
+   "p2": "Karim Bennani",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129036571635919020": {
+   "fixtureId": "pn129036571635919020",
+   "startTime": "2026-09-06T14:00:00.000Z",
+   "statusId": null,
+   "torneo": "Leiria",
+   "categoria": "ITF Women",
+   "p1": "Hannah Klugman",
+   "p2": "Linda Fruhvirtova",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129043481635920635": {
+   "fixtureId": "pn129043481635920635",
+   "startTime": "2026-09-06T14:00:00.000Z",
+   "statusId": null,
+   "torneo": "Hurghada",
+   "categoria": "ITF Women",
+   "p1": "Yasmin Ezzat",
+   "p2": "Yuliya Perapekhina",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129054331635932740": {
+   "fixtureId": "pn129054331635932740",
+   "startTime": "2026-09-06T19:00:00.000Z",
+   "statusId": null,
+   "torneo": "Porto Velho",
+   "categoria": "ITF Women",
+   "p1": "Ana Sofia Sanchez",
+   "p2": "Ana Candiotto",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
+  },
+  "pn129054311635941209": {
+   "fixtureId": "pn129054311635941209",
+   "startTime": "2026-09-06T20:30:00.000Z",
+   "statusId": null,
+   "torneo": "Porto Velho",
+   "categoria": "ITF Men",
+   "p1": "Mateus Alves",
+   "p2": "Victor Hugo Remondy Pagotto",
+   "s1": null,
+   "s2": null,
+   "hasOdds": true,
+   "visto": "2026-09-06T13:30:42.690Z"
   }
  },
- "actualizado": "2026-09-04T05:06:43.252Z"
+ "actualizado": "2026-09-06T13:30:42.690Z"
 }
