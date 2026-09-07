@@ -68,7 +68,7 @@ tr[hidden]{display:none}
 </style>
 <div class="env">
 <h1>Tabla ITF — lo apostable de ahora</h1>
-<p class="sub">2 jugadores · 1 torneos · armada 10:30 hora de Chile. Las horas de cada partido también van en hora de Chile.
+<p class="sub">36 jugadores · 3 torneos · armada 14:47 hora de Chile. Las horas de cada partido también van en hora de Chile.
   Solo partidos que <b>todavía no empiezan</b> y tienen cuota de los dos lados: lo que ya arrancó no se puede apostar y sale de la tabla.
   Clic en cualquier encabezado para ordenar; el nombre abre la búsqueda en Betano. La ★ y el borde verde marcan lo que pisa la casilla del manual.
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
@@ -80,7 +80,7 @@ tr[hidden]{display:none}
   <button id="b-todo" data-que="todo" class="sec2">Semana completa <small>una vez al día</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
-  <span class="mod">cuotas de betano (1 partidos) · modelo aprendido ·
+  <span class="mod">modelo aprendido ·
     3164 partidos · 2026-09-02</span>
   <div id="act-token" hidden>
     <p>Una sola vez: un token de GitHub que queda guardado solo en este navegador.
@@ -93,7 +93,7 @@ tr[hidden]{display:none}
 
 <div class="barra">
   <label>buscar</label><input type="text" id="q" placeholder="jugador o rival">
-  <label>torneo</label><select id="tor"><option value="">todos</option><option value="m15 porto velho">M15 Porto Velho</option></select>
+  <label>torneo</label><select id="tor"><option value="">todos</option><option value="m15 bali">M15 Bali</option><option value="m15 nonthaburi">M15 Nonthaburi</option><option value="m25 sapporo">M25 Sapporo</option></select>
   <label>cuota</label><input type="number" id="cmin" step="0.01" placeholder="min"><input type="number" id="cmax" step="0.01" placeholder="max">
   <label>% modelo</label><input type="number" id="pmin" placeholder="min"><input type="number" id="pmax" placeholder="max">
   <label>edad</label><input type="number" id="emin" placeholder="min"><input type="number" id="emax" placeholder="max">
@@ -112,44 +112,724 @@ tr[hidden]{display:none}
 <thead><tr><th data-k="jugador" data-tipo="txt">jugador <span class="fl"></span></th><th data-k="cuota" data-tipo="num">cuota <span class="fl"></span></th><th data-k="prob" data-tipo="num">% modelo <span class="fl"></span></th><th data-k="valor" data-tipo="num">valor <span class="fl"></span></th><th data-k="rival" data-tipo="txt">rival <span class="fl"></span></th><th data-k="torneo" data-tipo="txt">torneo <span class="fl"></span></th><th data-k="etapa" data-tipo="txt">ronda · hora CL <span class="fl"></span></th><th data-k="edad" data-tipo="num">edad <span class="fl"></span></th><th data-k="wtn" data-tipo="num">WTN <span class="fl"></span></th><th data-k="itf" data-tipo="num">ITF <span class="fl"></span></th><th data-k="atp" data-tipo="num">ATP <span class="fl"></span></th><th data-k="jr" data-tipo="bool">jr <span class="fl"></span></th><th data-k="local" data-tipo="bool">local <span class="fl"></span></th></tr></thead>
 <tbody>
 <tr
-  data-jugador="mateus alves" data-cuota="1.08" data-prob="0.861"
-  data-valor="0.93"
-  data-rival="victor pagotto" data-torneo="m15 porto velho"
-  data-etapa="QF" data-edad="25" data-wtn="3.75"
-  data-itf="" data-atp="447" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Mateus%20Alves" target="_blank" rel="noopener">Mateus Alves</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.08</td>
-  <td class="n"><span class="pb alta">86%</span></td>
-  <td class="n"><span class="val malo">0.93</span></td>
-  <td class="sec">Victor Pagotto<span class="mk"> (7)</span> <span class="cq">6.2</span></td>
-  <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
-  <td class="sec">QF<span class="cq"> 17:30</span></td>
-  <td class="n">25<i class="rv">21</i></td>
-  <td class="n">3.75<i class="rv">10.47</i></td>
-  <td class="n sec">—<i class="rv">352</i></td>
-  <td class="n sec">447<i class="rv">1146</i></td>
+  data-jugador="makoto ochi" data-cuota="2.1" data-prob="0.449"
+  data-valor="0.94"
+  data-rival="yuki mochizuki" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="30" data-wtn="6.39"
+  data-itf="40" data-atp="1152" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Makoto%20Ochi" target="_blank" rel="noopener">Makoto Ochi</a><span class="mk"></span></td>
+  <td class="n cuota">2.1</td>
+  <td class="n"><span class="pb ">45%</span></td>
+  <td class="n"><span class="val malo">0.94</span></td>
+  <td class="sec">Yuki Mochizuki<span class="mk"></span> <span class="cq">1.667</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">30<i class="rv">29</i></td>
+  <td class="n">6.39<i class="rv">5.94</i></td>
+  <td class="n sec">40<i class="rv">—</i></td>
+  <td class="n sec">1152<i class="rv">737</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="victor pagotto" data-cuota="6.2" data-prob="0.139"
-  data-valor="0.86"
-  data-rival="mateus alves" data-torneo="m15 porto velho"
-  data-etapa="QF" data-edad="21" data-wtn="10.47"
-  data-itf="352" data-atp="1146" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Victor%20Pagotto" target="_blank" rel="noopener">Victor Pagotto</a><span class="mk"> (7)</span></td>
-  <td class="n cuota">6.2</td>
-  <td class="n"><span class="pb ">14%</span></td>
-  <td class="n"><span class="val malo">0.86</span></td>
-  <td class="sec">Mateus Alves<span class="mk"> (1)</span> <span class="cq">1.08</span></td>
-  <td class="sec">M15 Porto Velho <span class="cq">BRA</span></td>
-  <td class="sec">QF<span class="cq"> 17:30</span></td>
-  <td class="n">21<i class="rv">25</i></td>
-  <td class="n">10.47<i class="rv">3.75</i></td>
-  <td class="n sec">352<i class="rv">—</i></td>
-  <td class="n sec">1146<i class="rv">447</i></td>
+  data-jugador="yuki mochizuki" data-cuota="1.667" data-prob="0.551"
+  data-valor="0.92"
+  data-rival="makoto ochi" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="29" data-wtn="5.94"
+  data-itf="" data-atp="737" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yuki%20Mochizuki" target="_blank" rel="noopener">Yuki Mochizuki</a><span class="mk"></span></td>
+  <td class="n cuota">1.667</td>
+  <td class="n"><span class="pb ">55%</span></td>
+  <td class="n"><span class="val malo">0.92</span></td>
+  <td class="sec">Makoto Ochi<span class="mk"></span> <span class="cq">2.1</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">29<i class="rv">30</i></td>
+  <td class="n">5.94<i class="rv">6.39</i></td>
+  <td class="n sec">—<i class="rv">40</i></td>
+  <td class="n sec">737<i class="rv">1152</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="sena okabe" data-cuota="7" data-prob="0.461"
+  data-valor="3.23"
+  data-rival="yuta kikuchi" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="17" data-wtn="10.29"
+  data-itf="2597" data-atp="" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Sena%20Okabe" target="_blank" rel="noopener">Sena Okabe</a><span class="mk"></span></td>
+  <td class="n cuota">7</td>
+  <td class="n"><span class="pb ">46%</span></td>
+  <td class="n"><span class="val malo">3.23</span></td>
+  <td class="sec">Yuta Kikuchi<span class="mk"></span> <span class="cq">1.083</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">17<i class="rv">27</i></td>
+  <td class="n">10.29<i class="rv">6.29</i></td>
+  <td class="n sec">2597<i class="rv">—</i></td>
+  <td class="n sec">—<i class="rv">686</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="yuta kikuchi" data-cuota="1.083" data-prob="0.539"
+  data-valor="0.58"
+  data-rival="sena okabe" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="27" data-wtn="6.29"
+  data-itf="" data-atp="686" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yuta%20Kikuchi" target="_blank" rel="noopener">Yuta Kikuchi</a><span class="mk"></span></td>
+  <td class="n cuota">1.083</td>
+  <td class="n"><span class="pb ">54%</span></td>
+  <td class="n"><span class="val malo">0.58</span></td>
+  <td class="sec">Sena Okabe<span class="mk"></span> <span class="cq">7</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">27<i class="rv">17</i></td>
+  <td class="n">6.29<i class="rv">10.29</i></td>
+  <td class="n sec">—<i class="rv">2597</i></td>
+  <td class="n sec">686<i class="rv">—</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="saki tange" data-cuota="1.25" data-prob="0.605"
+  data-valor="0.76"
+  data-rival="alejandro hayen" data-torneo="m25 sapporo"
+  data-etapa="Q1" data-edad="22" data-wtn="6.59"
+  data-itf="553" data-atp="1862" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Saki%20TANGE" target="_blank" rel="noopener">Saki TANGE</a><span class="mk"></span></td>
+  <td class="n cuota">1.25</td>
+  <td class="n"><span class="pb ">61%</span></td>
+  <td class="n"><span class="val malo">0.76</span></td>
+  <td class="sec">Alejandro Hayen<span class="mk"></span> <span class="cq">3.75</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">Q1<span class="cq"> 22:00</span></td>
+  <td class="n">22<i class="rv">28</i></td>
+  <td class="n">6.59<i class="rv">6.88</i></td>
+  <td class="n sec">553<i class="rv">1327</i></td>
+  <td class="n sec">1862<i class="rv">1095</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="alejandro hayen" data-cuota="3.75" data-prob="0.395"
+  data-valor="1.48"
+  data-rival="saki tange" data-torneo="m25 sapporo"
+  data-etapa="Q1" data-edad="28" data-wtn="6.88"
+  data-itf="1327" data-atp="1095" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Alejandro%20Hayen" target="_blank" rel="noopener">Alejandro Hayen</a><span class="mk"></span></td>
+  <td class="n cuota">3.75</td>
+  <td class="n"><span class="pb ">40%</span></td>
+  <td class="n"><span class="val malo">1.48</span></td>
+  <td class="sec">Saki TANGE<span class="mk"></span> <span class="cq">1.25</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">Q1<span class="cq"> 22:00</span></td>
+  <td class="n">28<i class="rv">22</i></td>
+  <td class="n">6.88<i class="rv">6.59</i></td>
+  <td class="n sec">1327<i class="rv">553</i></td>
+  <td class="n sec">1095<i class="rv">1862</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="yusuke takahashi" data-cuota="1.667" data-prob="0.576"
+  data-valor="0.96"
+  data-rival="hikaru shiraishi" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="29" data-wtn="5.65"
+  data-itf="" data-atp="679" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yusuke%20Takahashi" target="_blank" rel="noopener">Yusuke Takahashi</a><span class="mk"></span></td>
+  <td class="n cuota">1.667</td>
+  <td class="n"><span class="pb ">58%</span></td>
+  <td class="n"><span class="val malo">0.96</span></td>
+  <td class="sec">Hikaru Shiraishi<span class="mk"></span> <span class="cq">2.1</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">29<i class="rv">26</i></td>
+  <td class="n">5.65<i class="rv">6.01</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">679<i class="rv">511</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="hikaru shiraishi" data-cuota="2.1" data-prob="0.424"
+  data-valor="0.89"
+  data-rival="yusuke takahashi" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="26" data-wtn="6.01"
+  data-itf="" data-atp="511" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hikaru%20Shiraishi" target="_blank" rel="noopener">Hikaru Shiraishi</a><span class="mk"></span></td>
+  <td class="n cuota">2.1</td>
+  <td class="n"><span class="pb ">42%</span></td>
+  <td class="n"><span class="val malo">0.89</span></td>
+  <td class="sec">Yusuke Takahashi<span class="mk"></span> <span class="cq">1.667</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">26<i class="rv">29</i></td>
+  <td class="n">6.01<i class="rv">5.65</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">511<i class="rv">679</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="alexander chang" data-cuota="1.4" data-prob="0.541"
+  data-valor="0.76"
+  data-rival="reece falck" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="23" data-wtn="6.16"
+  data-itf="1762" data-atp="1161" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Alexander%20Chang" target="_blank" rel="noopener">Alexander Chang</a><span class="mk"></span></td>
+  <td class="n cuota">1.4</td>
+  <td class="n"><span class="pb ">54%</span></td>
+  <td class="n"><span class="val malo">0.76</span></td>
+  <td class="sec">Reece Falck<span class="mk"></span> <span class="cq">2.75</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">23<i class="rv">24</i></td>
+  <td class="n">6.16<i class="rv">6.52</i></td>
+  <td class="n sec">1762<i class="rv">17</i></td>
+  <td class="n sec">1161<i class="rv">1231</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="reece falck" data-cuota="2.75" data-prob="0.459"
+  data-valor="1.26"
+  data-rival="alexander chang" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="24" data-wtn="6.52"
+  data-itf="17" data-atp="1231" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Reece%20Falck" target="_blank" rel="noopener">Reece Falck</a><span class="mk"></span></td>
+  <td class="n cuota">2.75</td>
+  <td class="n"><span class="pb ">46%</span></td>
+  <td class="n"><span class="val malo">1.26</span></td>
+  <td class="sec">Alexander Chang<span class="mk"></span> <span class="cq">1.4</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">24<i class="rv">23</i></td>
+  <td class="n">6.52<i class="rv">6.16</i></td>
+  <td class="n sec">17<i class="rv">1762</i></td>
+  <td class="n sec">1231<i class="rv">1161</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="ashwin ryan sharma" data-cuota="6.1" data-prob="0.141"
+  data-valor="0.86"
+  data-rival="digvijay pratap singh" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="32" data-wtn="9.82"
+  data-itf="1704" data-atp="" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Ashwin%20Ryan%20Sharma" target="_blank" rel="noopener">Ashwin Ryan Sharma</a><span class="mk"> (16)</span></td>
+  <td class="n cuota">6.1</td>
+  <td class="n"><span class="pb ">14%</span></td>
+  <td class="n"><span class="val malo">0.86</span></td>
+  <td class="sec">Digvijay Pratap Singh<span class="mk"> (4)</span> <span class="cq">1.08</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">32<i class="rv">26</i></td>
+  <td class="n">9.82<i class="rv">5.84</i></td>
+  <td class="n sec">1704<i class="rv">1762</i></td>
+  <td class="n sec">—<i class="rv">534</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="digvijay pratap singh" data-cuota="1.08" data-prob="0.859"
+  data-valor="0.93"
+  data-rival="ashwin ryan sharma" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="26" data-wtn="5.84"
+  data-itf="1762" data-atp="534" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Digvijay%20Pratap%20Singh" target="_blank" rel="noopener">Digvijay Pratap Singh</a><span class="mk"> (4)</span></td>
+  <td class="n cuota">1.08</td>
+  <td class="n"><span class="pb alta">86%</span></td>
+  <td class="n"><span class="val malo">0.93</span></td>
+  <td class="sec">Ashwin Ryan Sharma<span class="mk"> (16)</span> <span class="cq">6.1</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">26<i class="rv">32</i></td>
+  <td class="n">5.84<i class="rv">9.82</i></td>
+  <td class="n sec">1762<i class="rv">1704</i></td>
+  <td class="n sec">534<i class="rv">—</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="raghav jaisinghani" data-cuota="10" data-prob="0.353"
+  data-valor="3.53"
+  data-rival="hayden jones" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="28" data-wtn="7.61"
+  data-itf="421" data-atp="1486" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Raghav%20Jaisinghani" target="_blank" rel="noopener">Raghav Jaisinghani</a><span class="mk"></span></td>
+  <td class="n cuota">10</td>
+  <td class="n"><span class="pb ">35%</span></td>
+  <td class="n"><span class="val malo">3.53</span></td>
+  <td class="sec">Hayden Jones<span class="mk"></span> <span class="cq">1.03</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">28<i class="rv">20</i></td>
+  <td class="n">7.61<i class="rv">6.28</i></td>
+  <td class="n sec">421<i class="rv">1078</i></td>
+  <td class="n sec">1486<i class="rv">1259</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="hayden jones" data-cuota="1.03" data-prob="0.647"
+  data-valor="0.67"
+  data-rival="raghav jaisinghani" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="20" data-wtn="6.28"
+  data-itf="1078" data-atp="1259" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hayden%20Jones" target="_blank" rel="noopener">Hayden Jones</a><span class="mk"></span></td>
+  <td class="n cuota">1.03</td>
+  <td class="n"><span class="pb ">65%</span></td>
+  <td class="n"><span class="val malo">0.67</span></td>
+  <td class="sec">Raghav Jaisinghani<span class="mk"></span> <span class="cq">10</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 22:00</span></td>
+  <td class="n">20<i class="rv">28</i></td>
+  <td class="n">6.28<i class="rv">7.61</i></td>
+  <td class="n sec">1078<i class="rv">421</i></td>
+  <td class="n sec">1259<i class="rv">1486</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="masamichi imamura" data-cuota="1.5" data-prob="0.602"
+  data-valor="0.90"
+  data-rival="yun seong chung" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="28" data-wtn="5.28"
+  data-itf="" data-atp="422" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Masamichi%20Imamura" target="_blank" rel="noopener">Masamichi Imamura</a><span class="mk"></span></td>
+  <td class="n cuota">1.5</td>
+  <td class="n"><span class="pb ">60%</span></td>
+  <td class="n"><span class="val malo">0.90</span></td>
+  <td class="sec">Yun Seong Chung<span class="mk"></span> <span class="cq">2.5</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">28<i class="rv">28</i></td>
+  <td class="n">5.28<i class="rv">5.53</i></td>
+  <td class="n sec">—<i class="rv">1416</i></td>
+  <td class="n sec">422<i class="rv">1097</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="yun seong chung" data-cuota="2.5" data-prob="0.398"
+  data-valor="1.00"
+  data-rival="masamichi imamura" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="28" data-wtn="5.53"
+  data-itf="1416" data-atp="1097" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Yun%20Seong%20Chung" target="_blank" rel="noopener">Yun Seong Chung</a><span class="mk"></span></td>
+  <td class="n cuota">2.5</td>
+  <td class="n"><span class="pb ">40%</span></td>
+  <td class="n"><span class="val malo">1.00</span></td>
+  <td class="sec">Masamichi Imamura<span class="mk"></span> <span class="cq">1.5</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">28<i class="rv">28</i></td>
+  <td class="n">5.53<i class="rv">5.28</i></td>
+  <td class="n sec">1416<i class="rv">—</i></td>
+  <td class="n sec">1097<i class="rv">422</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="kazushi idogaki" data-cuota="1.143" data-prob="0.769"
+  data-valor="0.88"
+  data-rival="seiya nakanishi" data-torneo="m25 sapporo"
+  data-etapa="Q1" data-edad="24" data-wtn="7.56"
+  data-itf="1327" data-atp="" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Kazushi%20Idogaki" target="_blank" rel="noopener">Kazushi Idogaki</a><span class="mk"></span></td>
+  <td class="n cuota">1.143</td>
+  <td class="n"><span class="pb media">77%</span></td>
+  <td class="n"><span class="val malo">0.88</span></td>
+  <td class="sec">Seiya Nakanishi<span class="mk"></span> <span class="cq">5</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">Q1<span class="cq"> 23:00</span></td>
+  <td class="n">24<i class="rv">30</i></td>
+  <td class="n">7.56<i class="rv">10.33</i></td>
+  <td class="n sec">1327<i class="rv">1174</i></td>
+  <td class="n sec">—<i class="rv">2011</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="seiya nakanishi" data-cuota="5" data-prob="0.231"
+  data-valor="1.16"
+  data-rival="kazushi idogaki" data-torneo="m25 sapporo"
+  data-etapa="Q1" data-edad="30" data-wtn="10.33"
+  data-itf="1174" data-atp="2011" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Seiya%20Nakanishi" target="_blank" rel="noopener">Seiya Nakanishi</a><span class="mk"></span></td>
+  <td class="n cuota">5</td>
+  <td class="n"><span class="pb ">23%</span></td>
+  <td class="n"><span class="val malo">1.16</span></td>
+  <td class="sec">Kazushi Idogaki<span class="mk"></span> <span class="cq">1.143</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">Q1<span class="cq"> 23:00</span></td>
+  <td class="n">30<i class="rv">24</i></td>
+  <td class="n">10.33<i class="rv">7.56</i></td>
+  <td class="n sec">1174<i class="rv">1327</i></td>
+  <td class="n sec">2011<i class="rv">—</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="sanhui shin" data-cuota="1.02" data-prob="0.882"
+  data-valor="0.90"
+  data-rival="kaede katayama" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="29" data-wtn="5.64"
+  data-itf="" data-atp="489" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Sanhui%20Shin" target="_blank" rel="noopener">Sanhui Shin</a><span class="mk"></span></td>
+  <td class="n cuota">1.02</td>
+  <td class="n"><span class="pb alta">88%</span></td>
+  <td class="n"><span class="val malo">0.90</span></td>
+  <td class="sec">Kaede Katayama<span class="mk"></span> <span class="cq">11</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">29<i class="rv">25</i></td>
+  <td class="n">5.64<i class="rv">10.72</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">489<i class="rv">—</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="kaede katayama" data-cuota="11" data-prob="0.118"
+  data-valor="1.30"
+  data-rival="sanhui shin" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="25" data-wtn="10.72"
+  data-itf="" data-atp="" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Kaede%20Katayama" target="_blank" rel="noopener">Kaede Katayama</a><span class="mk"></span></td>
+  <td class="n cuota">11</td>
+  <td class="n"><span class="pb ">12%</span></td>
+  <td class="n"><span class="val malo">1.30</span></td>
+  <td class="sec">Sanhui Shin<span class="mk"></span> <span class="cq">1.02</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">25<i class="rv">29</i></td>
+  <td class="n">10.72<i class="rv">5.64</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">—<i class="rv">489</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="riku takahata" data-cuota="3.4" data-prob="0.499"
+  data-valor="1.70"
+  data-rival="chase ferguson" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="25" data-wtn="6.66"
+  data-itf="179" data-atp="1432" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Riku%20Takahata" target="_blank" rel="noopener">Riku Takahata</a><span class="mk"></span></td>
+  <td class="n cuota">3.4</td>
+  <td class="n"><span class="pb ">50%</span></td>
+  <td class="n"><span class="val malo">1.70</span></td>
+  <td class="sec">Chase Ferguson<span class="mk"></span> <span class="cq">1.3</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">25<i class="rv">27</i></td>
+  <td class="n">6.66<i class="rv">5.99</i></td>
+  <td class="n sec">179<i class="rv">—</i></td>
+  <td class="n sec">1432<i class="rv">650</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="chase ferguson" data-cuota="1.3" data-prob="0.501"
+  data-valor="0.65"
+  data-rival="riku takahata" data-torneo="m25 sapporo"
+  data-etapa="R1" data-edad="27" data-wtn="5.99"
+  data-itf="" data-atp="650" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Chase%20Ferguson" target="_blank" rel="noopener">Chase Ferguson</a><span class="mk"></span></td>
+  <td class="n cuota">1.3</td>
+  <td class="n"><span class="pb ">50%</span></td>
+  <td class="n"><span class="val malo">0.65</span></td>
+  <td class="sec">Riku Takahata<span class="mk"></span> <span class="cq">3.4</span></td>
+  <td class="sec">M25 Sapporo <span class="cq">JPN</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">27<i class="rv">25</i></td>
+  <td class="n">5.99<i class="rv">6.66</i></td>
+  <td class="n sec">—<i class="rv">179</i></td>
+  <td class="n sec">650<i class="rv">1432</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="corban crowther" data-cuota="3" data-prob="0.41"
+  data-valor="1.23"
+  data-rival="pablo perez ramos" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="23" data-wtn="6.68"
+  data-itf="133" data-atp="1448" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Corban%20Crowther" target="_blank" rel="noopener">Corban Crowther</a><span class="mk"></span></td>
+  <td class="n cuota">3</td>
+  <td class="n"><span class="pb ">41%</span></td>
+  <td class="n"><span class="val malo">1.23</span></td>
+  <td class="sec">Pablo Perez Ramos<span class="mk"> (8)</span> <span class="cq">1.364</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">23<i class="rv">23</i></td>
+  <td class="n">6.68<i class="rv">5.88</i></td>
+  <td class="n sec">133<i class="rv">442</i></td>
+  <td class="n sec">1448<i class="rv">953</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="pablo perez ramos" data-cuota="1.364" data-prob="0.59"
+  data-valor="0.80"
+  data-rival="corban crowther" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="23" data-wtn="5.88"
+  data-itf="442" data-atp="953" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Pablo%20Perez%20Ramos" target="_blank" rel="noopener">Pablo Perez Ramos</a><span class="mk"> (8)</span></td>
+  <td class="n cuota">1.364</td>
+  <td class="n"><span class="pb ">59%</span></td>
+  <td class="n"><span class="val malo">0.80</span></td>
+  <td class="sec">Corban Crowther<span class="mk"></span> <span class="cq">3</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">23<i class="rv">23</i></td>
+  <td class="n">5.88<i class="rv">6.68</i></td>
+  <td class="n sec">442<i class="rv">133</i></td>
+  <td class="n sec">953<i class="rv">1448</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="stefan menichella" data-cuota="1.8" data-prob="0.507"
+  data-valor="0.91"
+  data-rival="arjun rathi" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="32" data-wtn="6.79"
+  data-itf="609" data-atp="2097" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Stefan%20Menichella" target="_blank" rel="noopener">Stefan Menichella</a><span class="mk"> (7)</span></td>
+  <td class="n cuota">1.8</td>
+  <td class="n"><span class="pb ">51%</span></td>
+  <td class="n"><span class="val malo">0.91</span></td>
+  <td class="sec">Arjun Rathi<span class="mk"></span> <span class="cq">1.909</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">32<i class="rv">19</i></td>
+  <td class="n">6.79<i class="rv">6.85</i></td>
+  <td class="n sec">609<i class="rv">451</i></td>
+  <td class="n sec">2097<i class="rv">1224</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="arjun rathi" data-cuota="1.909" data-prob="0.493"
+  data-valor="0.94"
+  data-rival="stefan menichella" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="19" data-wtn="6.85"
+  data-itf="451" data-atp="1224" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Arjun%20Rathi" target="_blank" rel="noopener">Arjun Rathi</a><span class="mk"></span></td>
+  <td class="n cuota">1.909</td>
+  <td class="n"><span class="pb ">49%</span></td>
+  <td class="n"><span class="val malo">0.94</span></td>
+  <td class="sec">Stefan Menichella<span class="mk"> (7)</span> <span class="cq">1.8</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">19<i class="rv">32</i></td>
+  <td class="n">6.85<i class="rv">6.79</i></td>
+  <td class="n sec">451<i class="rv">609</i></td>
+  <td class="n sec">1224<i class="rv">2097</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="leo borg" data-cuota="1.083" data-prob="0.29"
+  data-valor="0.31"
+  data-rival="jake dembo" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="23" data-wtn="5.82"
+  data-itf="" data-atp="547" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Leo%20Borg" target="_blank" rel="noopener">Leo Borg</a><span class="mk"> (3)</span></td>
+  <td class="n cuota">1.083</td>
+  <td class="n"><span class="pb ">29%</span></td>
+  <td class="n"><span class="val malo">0.31</span></td>
+  <td class="sec">Jake Dembo<span class="mk"> (JR)</span> <span class="cq">7</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">23<i class="rv">18</i></td>
+  <td class="n">5.82<i class="rv">7.5</i></td>
+  <td class="n sec">—<i class="rv">1416</i></td>
+  <td class="n sec">547<i class="rv">1484</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="jake dembo" data-cuota="7" data-prob="0.71"
+  data-valor="4.97"
+  data-rival="leo borg" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="18" data-wtn="7.5"
+  data-itf="1416" data-atp="1484" data-jr="1" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Jake%20Dembo" target="_blank" rel="noopener">Jake Dembo</a><span class="mk"> (JR)</span></td>
+  <td class="n cuota">7</td>
+  <td class="n"><span class="pb media">71%</span></td>
+  <td class="n"><span class="val justo">4.97</span></td>
+  <td class="sec">Leo Borg<span class="mk"> (3)</span> <span class="cq">1.083</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 23:00</span></td>
+  <td class="n">18<i class="rv">23</i></td>
+  <td class="n">7.5<i class="rv">5.82</i></td>
+  <td class="n sec">1416<i class="rv">—</i></td>
+  <td class="n sec">1484<i class="rv">547</i></td>
+  <td class="n">sí</td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="jordan hasson" data-cuota="1.286" data-prob="0.53"
+  data-valor="0.68"
+  data-rival="tomohiro masabayashi" data-torneo="m15 nonthaburi"
+  data-etapa="R1" data-edad="27" data-wtn="6.44"
+  data-itf="276" data-atp="1160" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Jordan%20Hasson" target="_blank" rel="noopener">Jordan Hasson</a><span class="mk"></span></td>
+  <td class="n cuota">1.286</td>
+  <td class="n"><span class="pb ">53%</span></td>
+  <td class="n"><span class="val malo">0.68</span></td>
+  <td class="sec">Tomohiro Masabayashi<span class="mk"></span> <span class="cq">3.5</span></td>
+  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
+  <td class="sec">R1<span class="cq"> 00:00</span></td>
+  <td class="n">27<i class="rv">28</i></td>
+  <td class="n">6.44<i class="rv">6.7</i></td>
+  <td class="n sec">276<i class="rv">538</i></td>
+  <td class="n sec">1160<i class="rv">1384</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="tomohiro masabayashi" data-cuota="3.5" data-prob="0.47"
+  data-valor="1.65"
+  data-rival="jordan hasson" data-torneo="m15 nonthaburi"
+  data-etapa="R1" data-edad="28" data-wtn="6.7"
+  data-itf="538" data-atp="1384" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Tomohiro%20Masabayashi" target="_blank" rel="noopener">Tomohiro Masabayashi</a><span class="mk"></span></td>
+  <td class="n cuota">3.5</td>
+  <td class="n"><span class="pb ">47%</span></td>
+  <td class="n"><span class="val malo">1.65</span></td>
+  <td class="sec">Jordan Hasson<span class="mk"></span> <span class="cq">1.286</span></td>
+  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
+  <td class="sec">R1<span class="cq"> 00:00</span></td>
+  <td class="n">28<i class="rv">27</i></td>
+  <td class="n">6.7<i class="rv">6.44</i></td>
+  <td class="n sec">538<i class="rv">276</i></td>
+  <td class="n sec">1384<i class="rv">1160</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="eric jr olivarez" data-cuota="3.25" data-prob="0.407"
+  data-valor="1.32"
+  data-rival="hugo hashimoto" data-torneo="m15 nonthaburi"
+  data-etapa="R1" data-edad="28" data-wtn="7.15"
+  data-itf="736" data-atp="2011" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Eric%20Jr%20Olivarez" target="_blank" rel="noopener">Eric Jr Olivarez</a><span class="mk"> (3)</span></td>
+  <td class="n cuota">3.25</td>
+  <td class="n"><span class="pb ">41%</span></td>
+  <td class="n"><span class="val malo">1.32</span></td>
+  <td class="sec">Hugo Hashimoto<span class="mk"></span> <span class="cq">1.333</span></td>
+  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
+  <td class="sec">R1<span class="cq"> 00:00</span></td>
+  <td class="n">28<i class="rv">23</i></td>
+  <td class="n">7.15<i class="rv">6.32</i></td>
+  <td class="n sec">736<i class="rv">198</i></td>
+  <td class="n sec">2011<i class="rv">1700</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="hugo hashimoto" data-cuota="1.333" data-prob="0.593"
+  data-valor="0.79"
+  data-rival="eric jr olivarez" data-torneo="m15 nonthaburi"
+  data-etapa="R1" data-edad="23" data-wtn="6.32"
+  data-itf="198" data-atp="1700" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hugo%20Hashimoto" target="_blank" rel="noopener">Hugo Hashimoto</a><span class="mk"></span></td>
+  <td class="n cuota">1.333</td>
+  <td class="n"><span class="pb ">59%</span></td>
+  <td class="n"><span class="val malo">0.79</span></td>
+  <td class="sec">Eric Jr Olivarez<span class="mk"> (3)</span> <span class="cq">3.25</span></td>
+  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
+  <td class="sec">R1<span class="cq"> 00:00</span></td>
+  <td class="n">23<i class="rv">28</i></td>
+  <td class="n">6.32<i class="rv">7.15</i></td>
+  <td class="n sec">198<i class="rv">736</i></td>
+  <td class="n sec">1700<i class="rv">2011</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="peter bertran" data-cuota="1.1" data-prob="0.597"
+  data-valor="0.66"
+  data-rival="tanakorn srirat" data-torneo="m15 nonthaburi"
+  data-etapa="R1" data-edad="30" data-wtn="6.18"
+  data-itf="" data-atp="869" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Peter%20Bertran" target="_blank" rel="noopener">Peter Bertran</a><span class="mk"> (4)</span></td>
+  <td class="n cuota">1.1</td>
+  <td class="n"><span class="pb ">60%</span></td>
+  <td class="n"><span class="val malo">0.66</span></td>
+  <td class="sec">Tanakorn Srirat<span class="mk"> (1)</span> <span class="cq">6.5</span></td>
+  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
+  <td class="sec">R1<span class="cq"> 00:00</span></td>
+  <td class="n">30<i class="rv">24</i></td>
+  <td class="n">6.18<i class="rv">7.7</i></td>
+  <td class="n sec">—<i class="rv">1170</i></td>
+  <td class="n sec">869<i class="rv">1760</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="tanakorn srirat" data-cuota="6.5" data-prob="0.403"
+  data-valor="2.62"
+  data-rival="peter bertran" data-torneo="m15 nonthaburi"
+  data-etapa="R1" data-edad="24" data-wtn="7.7"
+  data-itf="1170" data-atp="1760" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Tanakorn%20Srirat" target="_blank" rel="noopener">Tanakorn Srirat</a><span class="mk"> (1)</span></td>
+  <td class="n cuota">6.5</td>
+  <td class="n"><span class="pb ">40%</span></td>
+  <td class="n"><span class="val malo">2.62</span></td>
+  <td class="sec">Peter Bertran<span class="mk"> (4)</span> <span class="cq">1.1</span></td>
+  <td class="sec">M15 Nonthaburi <span class="cq">THA</span></td>
+  <td class="sec">R1<span class="cq"> 00:00</span></td>
+  <td class="n">24<i class="rv">30</i></td>
+  <td class="n">7.7<i class="rv">6.18</i></td>
+  <td class="n sec">1170<i class="rv">—</i></td>
+  <td class="n sec">1760<i class="rv">869</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="anton shepp" data-cuota="1.04" data-prob="0.662"
+  data-valor="0.69"
+  data-rival="hitesh chauhan" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="24" data-wtn="5.24"
+  data-itf="78" data-atp="498" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Anton%20Shepp" target="_blank" rel="noopener">Anton Shepp</a><span class="mk"> (1)</span></td>
+  <td class="n cuota">1.04</td>
+  <td class="n"><span class="pb ">66%</span></td>
+  <td class="n"><span class="val malo">0.69</span></td>
+  <td class="sec">Hitesh Chauhan<span class="mk"> (JR)</span> <span class="cq">9</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 01:15</span></td>
+  <td class="n">24<i class="rv">19</i></td>
+  <td class="n">5.24<i class="rv">6.72</i></td>
+  <td class="n sec">78<i class="rv">691</i></td>
+  <td class="n sec">498<i class="rv">1510</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="hitesh chauhan" data-cuota="9" data-prob="0.338"
+  data-valor="3.04"
+  data-rival="anton shepp" data-torneo="m15 bali"
+  data-etapa="R1" data-edad="19" data-wtn="6.72"
+  data-itf="691" data-atp="1510" data-jr="1" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Hitesh%20Chauhan" target="_blank" rel="noopener">Hitesh Chauhan</a><span class="mk"> (JR)</span></td>
+  <td class="n cuota">9</td>
+  <td class="n"><span class="pb ">34%</span></td>
+  <td class="n"><span class="val malo">3.04</span></td>
+  <td class="sec">Anton Shepp<span class="mk"> (1)</span> <span class="cq">1.04</span></td>
+  <td class="sec">M15 Bali <span class="cq">INA</span></td>
+  <td class="sec">R1<span class="cq"> 01:15</span></td>
+  <td class="n">19<i class="rv">24</i></td>
+  <td class="n">6.72<i class="rv">5.24</i></td>
+  <td class="n sec">691<i class="rv">78</i></td>
+  <td class="n sec">1510<i class="rv">498</i></td>
+  <td class="n">sí</td>
+  <td class="n"></td>
 </tr>
 </tbody></table></div>
 
