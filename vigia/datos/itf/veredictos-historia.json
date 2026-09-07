@@ -18374,7 +18374,7 @@
      "grupo": "buenas",
      "edadFm": 29,
      "edadRi": 30,
-     "dElo": 52
+     "dElo": 46
     },
     "jugada": null,
     "fixtureId": "pn129038811636031194",
@@ -18433,34 +18433,34 @@
      "cuota": 1.25,
      "ladoFm": 1,
      "acuerdo": true,
-     "pFm": 0.605,
+     "pFm": 0.606,
      "dW": 0.29,
      "forma": null,
      "previo": null,
-     "grupo": "Q1",
+     "grupo": "buenas",
      "edadFm": 22,
      "edadRi": 28,
-     "dElo": 62
+     "dElo": 70
     },
     "jugada": null,
     "fixtureId": "pn129038811636039362",
     "inicio": "2026-09-08T01:00:00.000Z",
     "torneo": "M25 Sapporo",
     "pais": "Japan",
-    "etapa": "Q1",
+    "etapa": "R1",
     "p1": "Saki TANGE",
     "p2": "Alejandro Hayen",
     "g1": 1.25,
     "g2": 3.75,
     "gana": "Saki TANGE",
     "lado": 1,
-    "p": 0.605,
+    "p": 0.606,
     "pMercado": 0.75,
-    "soloWtn": 0.531,
+    "soloWtn": 0.533,
     "señales": [
      "local"
     ],
-    "razon": "Δ0.29 de WTN a favor de Saki TANGE (6.59 contra 6.88), en Q1: la curva del grupo \"Q1\" (n=961) da 53%. Ajustan: Saki TANGE juega en su país (JPN): la localía vale ~0.5 pts de WTN (+7 pts). Queda en 60%. El mercado la paga a 1.25: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −6% si la tiene el mercado."
+    "razon": "Δ0.29 de WTN a favor de Saki TANGE (6.59 contra 6.88), en R1: la curva del grupo \"buenas\" (n=1400) da 53%. Ajustan: Saki TANGE juega en su país (JPN): la localía vale ~0.5 pts de WTN (+7 pts). Queda en 61%. El mercado la paga a 1.25: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −6% si la tiene el mercado."
    },
    {
     "crit": {
@@ -18631,32 +18631,34 @@
      "cuota": 1.143,
      "ladoFm": 1,
      "acuerdo": true,
-     "pFm": 0.769,
+     "pFm": 0.842,
      "dW": 2.77,
-     "forma": null,
+     "forma": 1,
      "previo": null,
-     "grupo": "Q1",
+     "grupo": "buenas",
      "edadFm": 24,
      "edadRi": 30,
-     "dElo": null
+     "dElo": 284
     },
     "jugada": null,
     "fixtureId": "pn129038811636031196",
     "inicio": "2026-09-08T02:00:00.000Z",
     "torneo": "M25 Sapporo",
     "pais": "Japan",
-    "etapa": "Q1",
+    "etapa": "R1",
     "p1": "Kazushi Idogaki",
     "p2": "Seiya Nakanishi",
     "g1": 1.143,
     "g2": 5,
     "gana": "Kazushi Idogaki",
     "lado": 1,
-    "p": 0.769,
+    "p": 0.842,
     "pMercado": 0.814,
-    "soloWtn": 0.769,
-    "señales": [],
-    "razon": "Δ2.77 de WTN a favor de Kazushi Idogaki (7.56 contra 10.33), en Q1: la curva del grupo \"Q1\" (n=961) da 77%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "soloWtn": 0.779,
+    "señales": [
+     "forma"
+    ],
+    "razon": "Δ2.77 de WTN a favor de Kazushi Idogaki (7.56 contra 10.33), en R1: la curva del grupo \"buenas\" (n=1400) da 78%. Ajustan: Kazushi Idogaki viene cediendo menos games (34% contra 54%) (+6 pts). Queda en 84%. El mercado la paga a 1.143: 81% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −7% si la tiene el mercado."
    },
    {
     "crit": {
@@ -18670,7 +18672,7 @@
      "grupo": "buenas",
      "edadFm": 29,
      "edadRi": 25,
-     "dElo": 593
+     "dElo": 507
     },
     "jugada": null,
     "fixtureId": "pn129038811636035105",
@@ -18704,7 +18706,7 @@
      "grupo": "buenas",
      "edadFm": 27,
      "edadRi": 25,
-     "dElo": 122
+     "dElo": 115
     },
     "jugada": null,
     "fixtureId": "pn129038811636035106",
@@ -18956,5 +18958,5 @@
    }
   ]
  },
- "actualizado": "2026-09-07T17:47:24.799Z"
+ "actualizado": "2026-09-07T17:53:37.773Z"
 }
