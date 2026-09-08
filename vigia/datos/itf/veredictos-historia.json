@@ -21533,6 +21533,208 @@
   "2026-09-08": [
    {
     "crit": {
+     "cuota": 1.044,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.66,
+     "dW": 1.46,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 29,
+     "edadRi": 27,
+     "dElo": 172
+    },
+    "jugada": null,
+    "fixtureId": "pn129042861636020947",
+    "inicio": "2026-09-08T04:30:00.000Z",
+    "torneo": "M15 Nonthaburi",
+    "pais": "Thailand",
+    "etapa": "R1",
+    "p1": "Sasikumar Mukund",
+    "p2": "Julien De Cuyper",
+    "g1": 1.044,
+    "g2": 12.518,
+    "gana": "Sasikumar Mukund",
+    "lado": 1,
+    "p": 0.66,
+    "pMercado": 0.923,
+    "soloWtn": 0.66,
+    "señales": [],
+    "razon": "Δ1.46 de WTN a favor de Sasikumar Mukund (5.84 contra 7.3), en R1: la curva del grupo \"buenas\" (n=1400) da 66%. El mercado la paga a 1.044: 92% una vez sacado su margen. A esa cuota, la apuesta rinde −31% si tenemos razón nosotros y −4% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.039,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.669,
+     "dW": 2.21,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 27,
+     "edadRi": 28,
+     "dElo": 304
+    },
+    "jugada": null,
+    "fixtureId": "pn129040991636054631",
+    "inicio": "2026-09-08T08:45:00.000Z",
+    "torneo": "M25 Pozzuoli",
+    "pais": "Italy",
+    "etapa": "R1",
+    "p1": "Melios Efstathiou",
+    "p2": "Federico Bove",
+    "g1": 1.039,
+    "g2": 12.147,
+    "gana": "Melios Efstathiou",
+    "lado": 1,
+    "p": 0.669,
+    "pMercado": 0.921,
+    "soloWtn": 0.732,
+    "señales": [
+     "local"
+    ],
+    "razon": "Δ2.21 de WTN a favor de Melios Efstathiou (5.83 contra 8.04), en R1: la curva del grupo \"buenas\" (n=1400) da 73%. Ajustan: Federico Bove juega en su país (ITA): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 67%. El mercado la paga a 1.039: 92% una vez sacado su margen. A esa cuota, la apuesta rinde −30% si tenemos razón nosotros y −4% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.65,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.214,
+     "dW": 0.79,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 24,
+     "edadRi": 18,
+     "dElo": 126
+    },
+    "jugada": null,
+    "fixtureId": "pn129034521636059047",
+    "inicio": "2026-09-08T09:00:00.000Z",
+    "torneo": "M25 Plaisir + H",
+    "pais": "France",
+    "etapa": "R1",
+    "p1": "Sven Corbinais",
+    "p2": "Damien Clerc",
+    "g1": 1.65,
+    "g2": 2.07,
+    "gana": "Sven Corbinais",
+    "lado": 1,
+    "p": 0.214,
+    "pMercado": 0.556,
+    "soloWtn": 0.589,
+    "señales": [
+     "sub18"
+    ],
+    "razon": "Δ0.79 de WTN a favor de Sven Corbinais (6.67 contra 7.46), en R1: la curva del grupo \"buenas\" (n=1400) da 59%. Ajustan: Damien Clerc tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−37 pts). Queda en 21%. El mercado la paga a 1.65: 56% una vez sacado su margen. A esa cuota, la apuesta rinde −65% si tenemos razón nosotros y −8% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.2,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.518,
+     "dW": 0.82,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 23,
+     "edadRi": 21,
+     "dElo": null
+    },
+    "jugada": null,
+    "fixtureId": "pn129034521636062230",
+    "inicio": "2026-09-08T09:00:00.000Z",
+    "torneo": "M25 Plaisir + H",
+    "pais": "France",
+    "etapa": "R1",
+    "p1": "Sebastian Dominko",
+    "p2": "Loann Massard",
+    "g1": 1.2,
+    "g2": 3.9,
+    "gana": "Sebastian Dominko",
+    "lado": 1,
+    "p": 0.518,
+    "pMercado": 0.765,
+    "soloWtn": 0.592,
+    "señales": [
+     "local"
+    ],
+    "razon": "Δ0.82 de WTN a favor de Sebastian Dominko (5.25 contra 6.07), en R1: la curva del grupo \"buenas\" (n=1400) da 59%. Ajustan: Loann Massard juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 52%. El mercado la paga a 1.2: 76% una vez sacado su margen. A esa cuota, la apuesta rinde −38% si tenemos razón nosotros y −8% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.6,
+     "ladoFm": 1,
+     "acuerdo": true,
+     "pFm": 0.556,
+     "dW": 0.18,
+     "forma": null,
+     "previo": 1,
+     "grupo": "buenas",
+     "edadFm": 29,
+     "edadRi": 27,
+     "dElo": -60
+    },
+    "jugada": null,
+    "fixtureId": "pn129034521636054667",
+    "inicio": "2026-09-08T10:00:00.000Z",
+    "torneo": "M25 Plaisir + H",
+    "pais": "France",
+    "etapa": "R1",
+    "p1": "Alex Knaff",
+    "p2": "Karl Friberg",
+    "g1": 1.6,
+    "g2": 2.15,
+    "gana": "Alex Knaff",
+    "lado": 1,
+    "p": 0.556,
+    "pMercado": 0.573,
+    "soloWtn": 0.52,
+    "señales": [
+     "previo"
+    ],
+    "razon": "Δ0.18 de WTN a favor de Alex Knaff (5.72 contra 5.9), en R1: la curva del grupo \"buenas\" (n=1400) da 52%. Ajustan: Alex Knaff llegó más lejos en su torneo anterior (+4 pts). Queda en 56%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −8% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.44,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.857,
+     "dW": 0.28,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 18,
+     "edadRi": 22,
+     "dElo": null
+    },
+    "jugada": null,
+    "fixtureId": "pn129034521636059046",
+    "inicio": "2026-09-08T10:00:00.000Z",
+    "torneo": "M25 Plaisir + H",
+    "pais": "France",
+    "etapa": "R1",
+    "p1": "Matt Ponchet",
+    "p2": "Mickael Kaouk",
+    "g1": 2.52,
+    "g2": 1.44,
+    "gana": "Mickael Kaouk",
+    "lado": 2,
+    "p": 0.857,
+    "pMercado": 0.636,
+    "soloWtn": 0.532,
+    "señales": [
+     "sub18"
+    ],
+    "razon": "Δ0.28 de WTN a favor de Mickael Kaouk (5.89 contra 6.17), en R1: la curva del grupo \"buenas\" (n=1400) da 53%. Ajustan: Mickael Kaouk tiene 18 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+32 pts). Queda en 86%. El mercado la paga a 1.44: 64% una vez sacado su margen. A esa cuota, la apuesta rinde +23% si tenemos razón nosotros y −8% si la tiene el mercado."
+   },
+   {
+    "crit": {
      "cuota": 1.08,
      "ladoFm": 1,
      "acuerdo": true,
@@ -21562,8 +21764,76 @@
     "soloWtn": 0.656,
     "señales": [],
     "razon": "Δ1.42 de WTN a favor de Clement Chidekh (4.4 contra 5.82), en R1: la curva del grupo \"buenas\" (n=1400) da 66%. El mercado la paga a 1.08: 85% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.3,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.614,
+     "dW": 0.36,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 25,
+     "edadRi": 28,
+     "dElo": null
+    },
+    "jugada": null,
+    "fixtureId": "pn129034521636059048",
+    "inicio": "2026-09-09T08:00:00.000Z",
+    "torneo": "M25 Plaisir + H",
+    "pais": "France",
+    "etapa": "R1",
+    "p1": "Nicolas Ifi",
+    "p2": "Adrien Gobat",
+    "g1": 3.4,
+    "g2": 1.3,
+    "gana": "Adrien Gobat",
+    "lado": 2,
+    "p": 0.614,
+    "pMercado": 0.723,
+    "soloWtn": 0.541,
+    "señales": [
+     "local"
+    ],
+    "razon": "Δ0.36 de WTN a favor de Adrien Gobat (5.69 contra 6.05), en R1: la curva del grupo \"buenas\" (n=1400) da 54%. Ajustan: Adrien Gobat juega en su país (FRA): la localía vale ~0.5 pts de WTN (+7 pts). Queda en 61%. El mercado la paga a 1.3: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −20% si tenemos razón nosotros y −6% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.222,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.484,
+     "dW": 0.52,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 23,
+     "edadRi": 27,
+     "dElo": null
+    },
+    "jugada": null,
+    "fixtureId": "pn129034521636059049",
+    "inicio": "2026-09-09T08:00:00.000Z",
+    "torneo": "M25 Plaisir + H",
+    "pais": "France",
+    "etapa": "R1",
+    "p1": "Alexandre Reco",
+    "p2": "Samir Banerjee",
+    "g1": 4,
+    "g2": 1.222,
+    "gana": "Samir Banerjee",
+    "lado": 2,
+    "p": 0.484,
+    "pMercado": 0.766,
+    "soloWtn": 0.559,
+    "señales": [
+     "local"
+    ],
+    "razon": "Δ0.52 de WTN a favor de Samir Banerjee (5.52 contra 6.04), en R1: la curva del grupo \"buenas\" (n=1400) da 56%. Ajustan: Alexandre Reco juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 48%. El mercado la paga a 1.222: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −41% si tenemos razón nosotros y −6% si la tiene el mercado."
    }
   ]
  },
- "actualizado": "2026-09-08T00:52:17.942Z"
+ "actualizado": "2026-09-08T03:25:17.326Z"
 }
