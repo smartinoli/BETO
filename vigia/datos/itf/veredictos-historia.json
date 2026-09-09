@@ -24489,7 +24489,14 @@
     "señales": [
      "forma"
     ],
-    "razon": "Δ1.33 de WTN a favor de Leo Borg (6.34 contra 7.67), en R1: la curva del grupo \"buenas\" (n=1400) da 65%. Ajustan: Leo Borg viene cediendo menos games (46% contra 59%) (+6 pts). Queda en 71%. El mercado la paga a 1.533: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −7% si la tiene el mercado."
+    "razon": "Δ1.33 de WTN a favor de Leo Borg (6.34 contra 7.67), en R1: la curva del grupo \"buenas\" (n=1400) da 65%. Ajustan: Leo Borg viene cediendo menos games (46% contra 59%) (+6 pts). Queda en 71%. El mercado la paga a 1.533: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +8% si tenemos razón nosotros y −7% si la tiene el mercado.",
+    "res": {
+     "ganador": "Leo Borg",
+     "marcador": "7-5 6-4",
+     "via": "cuadro"
+    },
+    "acerto": true,
+    "acertoMercado": true
    },
    {
     "crit": {
@@ -24559,7 +24566,8 @@
     ],
     "razon": "Δ1.53 de WTN a favor de Aidan Mchugh (5.5 contra 7.03), en R1: la curva del grupo \"buenas\" (n=1400) da 67%. Ajustan: Matteo Mesaglio juega en su país (ITA): la localía le suma ~0.5 pts de WTN (−7 pts). Queda en 60%. El mercado la paga a 1.111: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −34% si tenemos razón nosotros y −6% si la tiene el mercado."
    }
-  ]
+  ],
+  "2026-09-09": []
  },
- "actualizado": "2026-09-08T23:45:05.997Z"
+ "actualizado": "2026-09-09T00:02:35.008Z"
 }
