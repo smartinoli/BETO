@@ -1,30 +1,30 @@
 {
  "nota": "Constantes reajustadas por itf-aprender.mjs. Entran solo si le ganan a las anteriores en validación. Borrar este archivo devuelve el modelo a las de fábrica.",
- "generado": "2026-09-02T00:45:17.284Z",
- "partidos": 3164,
+ "generado": "2026-09-15T18:28:44.427Z",
+ "partidos": 4499,
  "nGrupo": {
-  "Q1": 961,
-  "buenas": 1400,
-  "medias": 545,
-  "finales": 258
+  "Q1": 1217,
+  "buenas": 2061,
+  "medias": 859,
+  "finales": 362
  },
- "loto": 0.4591,
- "acierto": 77.4,
+ "loto": 0.4778,
+ "acierto": 76.6,
  "anterior": {
   "de": "aprendido",
-  "loto": 0.4591,
-  "acierto": 77.4
+  "loto": 0.4801,
+  "acierto": 76.2
  },
  "constantes": {
   "pendiente": {
-   "Q1": 0.4347,
-   "buenas": 0.4544,
-   "medias": 0.3821,
-   "finales": 0.2673
+   "Q1": 0.4429,
+   "buenas": 0.4548,
+   "medias": 0.4039,
+   "finales": 0.3034
   },
-  "sub18": 1.6598,
-  "cedidos": 2.1163,
-  "previo": 0.1412,
-  "local": 0.2987
+  "sub18": 1.3346,
+  "cedidos": 1.9824,
+  "previo": 0.1755,
+  "local": 0.2227
  }
 }
