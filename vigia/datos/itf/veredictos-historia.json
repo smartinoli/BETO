@@ -28096,74 +28096,6 @@
    },
    {
     "crit": {
-     "cuota": 1.3,
-     "ladoFm": 2,
-     "acuerdo": true,
-     "pFm": 0.582,
-     "dW": 0.24,
-     "forma": null,
-     "previo": null,
-     "grupo": "buenas",
-     "edadFm": 20,
-     "edadRi": 21,
-     "dElo": 54
-    },
-    "jugada": null,
-    "fixtureId": "pn129034591636640774",
-    "inicio": "2026-09-16T10:00:00.000Z",
-    "torneo": "M15 Melilla",
-    "pais": "Spain",
-    "etapa": "R1",
-    "p1": "Leonardo Borrelli",
-    "p2": "Mario Arce Fernandez",
-    "g1": 3.1,
-    "g2": 1.3,
-    "gana": "Mario Arce Fernandez",
-    "lado": 2,
-    "p": 0.582,
-    "pMercado": 0.705,
-    "soloWtn": 0.527,
-    "señales": [
-     "local"
-    ],
-    "razon": "Δ0.24 de WTN a favor de Mario Arce Fernandez (6.49 contra 6.73), en R1: la curva del grupo \"buenas\" (n=2061) da 53%. Ajustan: Mario Arce Fernandez juega en su país (ESP): la localía vale ~0.5 pts de WTN (+5 pts). Queda en 58%. El mercado la paga a 1.3: 70% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −8% si la tiene el mercado."
-   },
-   {
-    "crit": {
-     "cuota": 1.53,
-     "ladoFm": 1,
-     "acuerdo": true,
-     "pFm": 0.486,
-     "dW": 0.37,
-     "forma": null,
-     "previo": null,
-     "grupo": "buenas",
-     "edadFm": 23,
-     "edadRi": 20,
-     "dElo": -106
-    },
-    "jugada": null,
-    "fixtureId": "pn129034481636636607",
-    "inicio": "2026-09-16T10:30:00.000Z",
-    "torneo": "M25 Sintra",
-    "pais": "Portugal",
-    "etapa": "R1",
-    "p1": "Lui Maxted",
-    "p2": "Goncalo Marques",
-    "g1": 1.53,
-    "g2": 2.3,
-    "gana": "Lui Maxted",
-    "lado": 1,
-    "p": 0.486,
-    "pMercado": 0.601,
-    "soloWtn": 0.542,
-    "señales": [
-     "local"
-    ],
-    "razon": "Δ0.37 de WTN a favor de Lui Maxted (5.39 contra 5.76), en R1: la curva del grupo \"buenas\" (n=2061) da 54%. Ajustan: Goncalo Marques juega en su país (POR): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 49%. El mercado la paga a 1.53: 60% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −8% si la tiene el mercado."
-   },
-   {
-    "crit": {
      "cuota": 1.32,
      "ladoFm": 1,
      "acuerdo": true,
@@ -28296,40 +28228,6 @@
    },
    {
     "crit": {
-     "cuota": 1.008,
-     "ladoFm": 1,
-     "acuerdo": true,
-     "pFm": 0.707,
-     "dW": 2.43,
-     "forma": null,
-     "previo": null,
-     "grupo": "buenas",
-     "edadFm": 21,
-     "edadRi": 27,
-     "dElo": 419
-    },
-    "jugada": null,
-    "fixtureId": "pn129034481636642342",
-    "inicio": "2026-09-16T12:00:00.000Z",
-    "torneo": "M25 Sintra",
-    "pais": "Portugal",
-    "etapa": "R1",
-    "p1": "Patrick Schoen",
-    "p2": "Guilherme Valdoleiros",
-    "g1": 1.008,
-    "g2": 15,
-    "gana": "Patrick Schoen",
-    "lado": 1,
-    "p": 0.707,
-    "pMercado": 0.937,
-    "soloWtn": 0.751,
-    "señales": [
-     "local"
-    ],
-    "razon": "Δ2.43 de WTN a favor de Patrick Schoen (4.56 contra 6.99), en R1: la curva del grupo \"buenas\" (n=2061) da 75%. Ajustan: Guilherme Valdoleiros juega en su país (POR): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 71%. El mercado la paga a 1.008: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −6% si la tiene el mercado."
-   },
-   {
-    "crit": {
      "cuota": 1.016,
      "ladoFm": 2,
      "acuerdo": true,
@@ -28412,7 +28310,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129037681636688772",
-    "inicio": "2026-09-16T12:15:00.000Z",
+    "inicio": "2026-09-16T12:25:00.000Z",
     "torneo": "M25 Santa Margherita di Pula",
     "pais": "Italy",
     "etapa": "R2",
@@ -28433,73 +28331,105 @@
    },
    {
     "crit": {
-     "cuota": 1.18,
-     "ladoFm": 2,
+     "cuota": 1.55,
+     "ladoFm": 1,
      "acuerdo": true,
-     "pFm": 0.587,
-     "dW": 1.33,
-     "forma": -1,
-     "previo": -1,
-     "grupo": "medias",
-     "edadFm": 29,
+     "pFm": 0.486,
+     "dW": 0.37,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 23,
      "edadRi": 20,
-     "dElo": 125
+     "dElo": -106
     },
     "jugada": null,
-    "fixtureId": "pn129037681636689329",
-    "inicio": "2026-09-16T12:16:00.000Z",
-    "torneo": "M25 Santa Margherita di Pula",
-    "pais": "Italy",
-    "etapa": "R2",
-    "p1": "Tobia Costanzo Baragiola Mordini",
-    "p2": "Alexander Weis",
-    "g1": 4.1,
-    "g2": 1.18,
-    "gana": "Alexander Weis",
-    "lado": 2,
-    "p": 0.587,
-    "pMercado": 0.777,
-    "soloWtn": 0.631,
+    "fixtureId": "pn129034481636636607",
+    "inicio": "2026-09-16T12:30:00.000Z",
+    "torneo": "M25 Sintra",
+    "pais": "Portugal",
+    "etapa": "R1",
+    "p1": "Lui Maxted",
+    "p2": "Goncalo Marques",
+    "g1": 1.55,
+    "g2": 2.27,
+    "gana": "Lui Maxted",
+    "lado": 1,
+    "p": 0.486,
+    "pMercado": 0.594,
+    "soloWtn": 0.542,
     "señales": [
-     "forma",
-     "previo"
+     "local"
     ],
-    "razon": "Δ1.33 de WTN a favor de Alexander Weis (5.06 contra 6.39), en R2: la curva del grupo \"medias\" (n=859) da 63%. Ajustan: Tobia Costanzo Baragiola Mordini llegó más lejos en su torneo anterior (−4 pts). Queda en 59%. El mercado la paga a 1.18: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −31% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.37 de WTN a favor de Lui Maxted (5.39 contra 5.76), en R1: la curva del grupo \"buenas\" (n=2061) da 54%. Ajustan: Goncalo Marques juega en su país (POR): la localía le suma ~0.5 pts de WTN (−6 pts). Queda en 49%. El mercado la paga a 1.55: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −8% si la tiene el mercado."
    },
    {
     "crit": {
-     "cuota": 1.23,
-     "ladoFm": 2,
+     "cuota": 1.008,
+     "ladoFm": 1,
      "acuerdo": true,
-     "pFm": 0.583,
-     "dW": 0.74,
-     "forma": 1,
+     "pFm": 0.707,
+     "dW": 2.43,
+     "forma": null,
      "previo": null,
-     "grupo": "medias",
-     "edadFm": 26,
-     "edadRi": 31,
-     "dElo": 50
+     "grupo": "buenas",
+     "edadFm": 21,
+     "edadRi": 27,
+     "dElo": 419
     },
     "jugada": null,
-    "fixtureId": "pn129037681636689328",
-    "inicio": "2026-09-16T12:38:00.000Z",
-    "torneo": "M25 Santa Margherita di Pula",
-    "pais": "Italy",
-    "etapa": "R2",
-    "p1": "Gabriele Maria Noce",
-    "p2": "Garrett Johns",
-    "g1": 3.6,
-    "g2": 1.23,
-    "gana": "Garrett Johns",
-    "lado": 2,
-    "p": 0.583,
-    "pMercado": 0.745,
-    "soloWtn": 0.574,
+    "fixtureId": "pn129034481636642342",
+    "inicio": "2026-09-16T13:00:00.000Z",
+    "torneo": "M25 Sintra",
+    "pais": "Portugal",
+    "etapa": "R1",
+    "p1": "Patrick Schoen",
+    "p2": "Guilherme Valdoleiros",
+    "g1": 1.008,
+    "g2": 15,
+    "gana": "Patrick Schoen",
+    "lado": 1,
+    "p": 0.707,
+    "pMercado": 0.937,
+    "soloWtn": 0.751,
     "señales": [
-     "forma",
      "local"
     ],
-    "razon": "Δ0.74 de WTN a favor de Garrett Johns (5.34 contra 6.08), en R2: la curva del grupo \"medias\" (n=859) da 57%. Ajustan: Garrett Johns viene cediendo menos games (37% contra 50%) (+6 pts); Gabriele Maria Noce juega en su país (ITA): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 58%. El mercado la paga a 1.23: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ2.43 de WTN a favor de Patrick Schoen (4.56 contra 6.99), en R1: la curva del grupo \"buenas\" (n=2061) da 75%. Ajustan: Guilherme Valdoleiros juega en su país (POR): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 71%. El mercado la paga a 1.008: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −6% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.29,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.582,
+     "dW": 0.24,
+     "forma": null,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 20,
+     "edadRi": 21,
+     "dElo": 54
+    },
+    "jugada": null,
+    "fixtureId": "pn129034591636640774",
+    "inicio": "2026-09-16T13:00:00.000Z",
+    "torneo": "M15 Melilla",
+    "pais": "Spain",
+    "etapa": "R1",
+    "p1": "Leonardo Borrelli",
+    "p2": "Mario Arce Fernandez",
+    "g1": 3.2,
+    "g2": 1.29,
+    "gana": "Mario Arce Fernandez",
+    "lado": 2,
+    "p": 0.582,
+    "pMercado": 0.713,
+    "soloWtn": 0.527,
+    "señales": [
+     "local"
+    ],
+    "razon": "Δ0.24 de WTN a favor de Mario Arce Fernandez (6.49 contra 6.73), en R1: la curva del grupo \"buenas\" (n=2061) da 53%. Ajustan: Mario Arce Fernandez juega en su país (ESP): la localía vale ~0.5 pts de WTN (+5 pts). Queda en 58%. El mercado la paga a 1.29: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −8% si la tiene el mercado."
    },
    {
     "crit": {
@@ -28569,6 +28499,76 @@
      "local"
     ],
     "razon": "Δ6.28 de WTN a favor de Ryan Dickerson (6.13 contra 12.41), en R1: la curva del grupo \"buenas\" (n=2061) da 95%. Ajustan: Lorenzo Sverzut Corsini tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−15 pts); Lorenzo Sverzut Corsini juega en su país (BRA): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 79%. El mercado la paga a 1.032: 90% una vez sacado su margen. A esa cuota, la apuesta rinde −19% si tenemos razón nosotros y −7% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.23,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.583,
+     "dW": 0.74,
+     "forma": 1,
+     "previo": null,
+     "grupo": "medias",
+     "edadFm": 26,
+     "edadRi": 31,
+     "dElo": 50
+    },
+    "jugada": null,
+    "fixtureId": "pn129037681636689328",
+    "inicio": "2026-09-16T13:04:00.000Z",
+    "torneo": "M25 Santa Margherita di Pula",
+    "pais": "Italy",
+    "etapa": "R2",
+    "p1": "Gabriele Maria Noce",
+    "p2": "Garrett Johns",
+    "g1": 3.6,
+    "g2": 1.23,
+    "gana": "Garrett Johns",
+    "lado": 2,
+    "p": 0.583,
+    "pMercado": 0.745,
+    "soloWtn": 0.574,
+    "señales": [
+     "forma",
+     "local"
+    ],
+    "razon": "Δ0.74 de WTN a favor de Garrett Johns (5.34 contra 6.08), en R2: la curva del grupo \"medias\" (n=859) da 57%. Ajustan: Garrett Johns viene cediendo menos games (37% contra 50%) (+6 pts); Gabriele Maria Noce juega en su país (ITA): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 58%. El mercado la paga a 1.23: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −8% si la tiene el mercado."
+   },
+   {
+    "crit": {
+     "cuota": 1.18,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.587,
+     "dW": 1.33,
+     "forma": -1,
+     "previo": -1,
+     "grupo": "medias",
+     "edadFm": 29,
+     "edadRi": 20,
+     "dElo": 125
+    },
+    "jugada": null,
+    "fixtureId": "pn129037681636689329",
+    "inicio": "2026-09-16T13:06:00.000Z",
+    "torneo": "M25 Santa Margherita di Pula",
+    "pais": "Italy",
+    "etapa": "R2",
+    "p1": "Tobia Costanzo Baragiola Mordini",
+    "p2": "Alexander Weis",
+    "g1": 4.1,
+    "g2": 1.18,
+    "gana": "Alexander Weis",
+    "lado": 2,
+    "p": 0.587,
+    "pMercado": 0.777,
+    "soloWtn": 0.631,
+    "señales": [
+     "forma",
+     "previo"
+    ],
+    "razon": "Δ1.33 de WTN a favor de Alexander Weis (5.06 contra 6.39), en R2: la curva del grupo \"medias\" (n=859) da 63%. Ajustan: Tobia Costanzo Baragiola Mordini llegó más lejos en su torneo anterior (−4 pts). Queda en 59%. El mercado la paga a 1.18: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −31% si tenemos razón nosotros y −8% si la tiene el mercado."
    },
    {
     "crit": {
@@ -28654,7 +28654,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129036801636636599",
-    "inicio": "2026-09-16T14:30:00.000Z",
+    "inicio": "2026-09-16T14:15:00.000Z",
     "torneo": "M25 Nevers",
     "pais": "France",
     "etapa": "R1",
@@ -28689,7 +28689,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129036801636640765",
-    "inicio": "2026-09-16T14:30:00.000Z",
+    "inicio": "2026-09-16T14:15:00.000Z",
     "torneo": "M25 Nevers",
     "pais": "France",
     "etapa": "R1",
@@ -28841,6 +28841,41 @@
    },
    {
     "crit": {
+     "cuota": 1.32,
+     "ladoFm": 2,
+     "acuerdo": true,
+     "pFm": 0.645,
+     "dW": 1.78,
+     "forma": 1,
+     "previo": null,
+     "grupo": "buenas",
+     "edadFm": 20,
+     "edadRi": 24,
+     "dElo": 119
+    },
+    "jugada": null,
+    "fixtureId": "pn129036801636636596",
+    "inicio": "2026-09-16T15:15:00.000Z",
+    "torneo": "M25 Nevers",
+    "pais": "France",
+    "etapa": "R1",
+    "p1": "Robin Eldin",
+    "p2": "Luke Hooper",
+    "g1": 3,
+    "g2": 1.32,
+    "gana": "Luke Hooper",
+    "lado": 2,
+    "p": 0.645,
+    "pMercado": 0.694,
+    "soloWtn": 0.692,
+    "señales": [
+     "forma",
+     "local"
+    ],
+    "razon": "Δ1.78 de WTN a favor de Luke Hooper (6.66 contra 8.44), en R1: la curva del grupo \"buenas\" (n=2061) da 69%. Ajustan: Robin Eldin juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 65%. El mercado la paga a 1.32: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado."
+   },
+   {
+    "crit": {
      "cuota": 1.05,
      "ladoFm": 1,
      "acuerdo": true,
@@ -28855,7 +28890,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129040721636709496",
-    "inicio": "2026-09-16T16:00:00.000Z",
+    "inicio": "2026-09-16T15:30:00.000Z",
     "torneo": "M15 Belém",
     "pais": "Brazil",
     "etapa": "R1",
@@ -28889,7 +28924,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129040721636713990",
-    "inicio": "2026-09-16T16:00:00.000Z",
+    "inicio": "2026-09-16T15:30:00.000Z",
     "torneo": "M15 Belém",
     "pais": "Brazil",
     "etapa": "R1",
@@ -28924,7 +28959,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129040721636716394",
-    "inicio": "2026-09-16T16:00:00.000Z",
+    "inicio": "2026-09-16T15:30:00.000Z",
     "torneo": "M15 Belém",
     "pais": "Brazil",
     "etapa": "R1",
@@ -28944,41 +28979,6 @@
    },
    {
     "crit": {
-     "cuota": 1.32,
-     "ladoFm": 2,
-     "acuerdo": true,
-     "pFm": 0.645,
-     "dW": 1.78,
-     "forma": 1,
-     "previo": null,
-     "grupo": "buenas",
-     "edadFm": 20,
-     "edadRi": 24,
-     "dElo": 119
-    },
-    "jugada": null,
-    "fixtureId": "pn129036801636636596",
-    "inicio": "2026-09-16T16:15:00.000Z",
-    "torneo": "M25 Nevers",
-    "pais": "France",
-    "etapa": "R1",
-    "p1": "Robin Eldin",
-    "p2": "Luke Hooper",
-    "g1": 3,
-    "g2": 1.32,
-    "gana": "Luke Hooper",
-    "lado": 2,
-    "p": 0.645,
-    "pMercado": 0.694,
-    "soloWtn": 0.692,
-    "señales": [
-     "forma",
-     "local"
-    ],
-    "razon": "Δ1.78 de WTN a favor de Luke Hooper (6.66 contra 8.44), en R1: la curva del grupo \"buenas\" (n=2061) da 69%. Ajustan: Robin Eldin juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 65%. El mercado la paga a 1.32: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado."
-   },
-   {
-    "crit": {
      "cuota": 1.02,
      "ladoFm": 1,
      "acuerdo": true,
@@ -28993,7 +28993,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129036801636636594",
-    "inicio": "2026-09-16T16:15:00.000Z",
+    "inicio": "2026-09-16T16:00:00.000Z",
     "torneo": "M25 Nevers",
     "pais": "France",
     "etapa": "R1",
@@ -29027,7 +29027,7 @@
     },
     "jugada": null,
     "fixtureId": "pn129040721636716396",
-    "inicio": "2026-09-16T17:30:00.000Z",
+    "inicio": "2026-09-16T16:30:00.000Z",
     "torneo": "M15 Belém",
     "pais": "Brazil",
     "etapa": "R1",
@@ -29145,7 +29145,7 @@
    },
    {
     "crit": {
-     "cuota": 1.16,
+     "cuota": 1.19,
      "ladoFm": 1,
      "acuerdo": true,
      "pFm": 0.534,
@@ -29165,17 +29165,17 @@
     "etapa": "R1",
     "p1": "Sasikumar Mukund",
     "p2": "Sheng Tang",
-    "g1": 1.16,
-    "g2": 4.45,
+    "g1": 1.19,
+    "g2": 4.05,
     "gana": "Sasikumar Mukund",
     "lado": 1,
     "p": 0.534,
-    "pMercado": 0.793,
+    "pMercado": 0.773,
     "soloWtn": 0.589,
     "señales": [
      "local"
     ],
-    "razon": "Δ0.79 de WTN a favor de Sasikumar Mukund (5.85 contra 6.64), en R1: la curva del grupo \"buenas\" (n=2061) da 59%. Ajustan: Sheng Tang juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 53%. El mercado la paga a 1.16: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −38% si tenemos razón nosotros y −8% si la tiene el mercado."
+    "razon": "Δ0.79 de WTN a favor de Sasikumar Mukund (5.85 contra 6.64), en R1: la curva del grupo \"buenas\" (n=2061) da 59%. Ajustan: Sheng Tang juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 53%. El mercado la paga a 1.19: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −36% si tenemos razón nosotros y −8% si la tiene el mercado."
    },
    {
     "crit": {
@@ -29445,5 +29445,5 @@
    }
   ]
  },
- "actualizado": "2026-09-16T12:04:30.059Z"
+ "actualizado": "2026-09-16T12:09:37.182Z"
 }

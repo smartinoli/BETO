@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-16T12:04:27.931Z",
+ "generado": "2026-09-16T12:09:34.797Z",
  "casa": "betano",
  "soloCasa": "betano",
  "parcial": false,
@@ -10,32 +10,76 @@
    "p2": "Sebastiano Cocola",
    "g1": 1.57,
    "g2": 2.2,
-   "visto": "2026-09-16T12:00Z",
+   "visto": "2026-09-16T12:04Z",
    "fuente": "betano",
    "fixtureId": "pn129037681636688772",
-   "inicio": "2026-09-16T12:15:00.000Z"
+   "inicio": "2026-09-16T12:25:00.000Z"
   },
   {
-   "torneo": "M25 Santa Margherita di Pula",
-   "p1": "Tobia Costanzo Baragiola Mordini",
-   "p2": "Alexander Weis",
-   "g1": 4.1,
-   "g2": 1.18,
-   "visto": "2026-09-16T12:00Z",
+   "torneo": "M25 Sintra",
+   "p1": "Lui Maxted",
+   "p2": "Goncalo Marques",
+   "g1": 1.55,
+   "g2": 2.27,
+   "visto": "2026-09-16T12:05Z",
    "fuente": "betano",
-   "fixtureId": "pn129037681636689329",
-   "inicio": "2026-09-16T12:16:00.000Z"
+   "fixtureId": "pn129034481636636607",
+   "inicio": "2026-09-16T12:30:00.000Z"
   },
   {
-   "torneo": "M25 Santa Margherita di Pula",
-   "p1": "Gabriele Maria Noce",
-   "p2": "Garrett Johns",
-   "g1": 3.6,
-   "g2": 1.23,
-   "visto": "2026-09-16T12:00Z",
+   "torneo": "M25 Sintra",
+   "p1": "Max Basing",
+   "p2": "Giorgio Tabacco",
+   "g1": 1.12,
+   "g2": 5.1,
+   "visto": "2026-09-16T12:05Z",
    "fuente": "betano",
-   "fixtureId": "pn129037681636689328",
-   "inicio": "2026-09-16T12:38:00.000Z"
+   "fixtureId": "pn129034481636636605",
+   "inicio": "2026-09-16T13:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Sintra",
+   "p1": "Benjamin Pietri",
+   "p2": "Francisco Rocha",
+   "g1": 2.07,
+   "g2": 1.65,
+   "visto": "2026-09-16T12:05Z",
+   "fuente": "betano",
+   "fixtureId": "pn129034481636636608",
+   "inicio": "2026-09-16T13:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Sintra",
+   "p1": "Tyler Stice",
+   "p2": "Adria Soriano Barrera",
+   "g1": 4.85,
+   "g2": 1.13,
+   "visto": "2026-09-16T12:05Z",
+   "fuente": "betano",
+   "fixtureId": "pn129034481636642341",
+   "inicio": "2026-09-16T13:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Sintra",
+   "p1": "Patrick Schoen",
+   "p2": "Guilherme Valdoleiros",
+   "g1": 1.008,
+   "g2": 15,
+   "visto": "2026-09-16T12:05Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034481636642342",
+   "inicio": "2026-09-16T13:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Melilla",
+   "p1": "Leonardo Borrelli",
+   "p2": "Mario Arce Fernandez",
+   "g1": 3.2,
+   "g2": 1.29,
+   "visto": "2026-09-16T12:05Z",
+   "fuente": "betano",
+   "fixtureId": "pn129034591636640774",
+   "inicio": "2026-09-16T13:00:00.000Z"
   },
   {
    "torneo": "M15 Belém",
@@ -43,7 +87,7 @@
    "p2": "Manuel Mouilleron Salvo",
    "g1": 1.98,
    "g2": 1.7,
-   "visto": "2026-09-16T12:00Z",
+   "visto": "2026-09-16T12:05Z",
    "fuente": "betano",
    "fixtureId": "pn129040721636716395",
    "inicio": "2026-09-16T13:00:00.000Z"
@@ -54,10 +98,32 @@
    "p2": "Ryan Dickerson",
    "g1": 9,
    "g2": 1.032,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:05Z",
    "fuente": "bet365",
    "fixtureId": "pn129040721636716397",
    "inicio": "2026-09-16T13:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Santa Margherita di Pula",
+   "p1": "Gabriele Maria Noce",
+   "p2": "Garrett Johns",
+   "g1": 3.6,
+   "g2": 1.23,
+   "visto": "2026-09-16T12:05Z",
+   "fuente": "betano",
+   "fixtureId": "pn129037681636689328",
+   "inicio": "2026-09-16T13:04:00.000Z"
+  },
+  {
+   "torneo": "M25 Santa Margherita di Pula",
+   "p1": "Tobia Costanzo Baragiola Mordini",
+   "p2": "Alexander Weis",
+   "g1": 4.1,
+   "g2": 1.18,
+   "visto": "2026-09-16T12:06Z",
+   "fuente": "betano",
+   "fixtureId": "pn129037681636689329",
+   "inicio": "2026-09-16T13:06:00.000Z"
   },
   {
    "torneo": "M25 Nevers",
@@ -65,7 +131,7 @@
    "p2": "Sean Hodkin",
    "g1": 1.33,
    "g2": 2.95,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:06Z",
    "fuente": "betano",
    "fixtureId": "pn129036801636689316",
    "inicio": "2026-09-16T13:15:00.000Z"
@@ -76,7 +142,7 @@
    "p2": "Esteban Talavera Cortes",
    "g1": 1.8,
    "g2": 1.87,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:06Z",
    "fuente": "betano",
    "fixtureId": "pn129034591636642344",
    "inicio": "2026-09-16T13:30:00.000Z"
@@ -87,10 +153,10 @@
    "p2": "Aidan Mchugh",
    "g1": 4.75,
    "g2": 1.14,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:06Z",
    "fuente": "betano",
    "fixtureId": "pn129036801636636599",
-   "inicio": "2026-09-16T14:30:00.000Z"
+   "inicio": "2026-09-16T14:15:00.000Z"
   },
   {
    "torneo": "M25 Nevers",
@@ -98,10 +164,10 @@
    "p2": "Hugo Car",
    "g1": 3.1,
    "g2": 1.31,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:06Z",
    "fuente": "betano",
    "fixtureId": "pn129036801636640765",
-   "inicio": "2026-09-16T14:30:00.000Z"
+   "inicio": "2026-09-16T14:15:00.000Z"
   },
   {
    "torneo": "M15 Belém",
@@ -109,7 +175,7 @@
    "p2": "Eric Martins",
    "g1": 1.15,
    "g2": 4.5,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:06Z",
    "fuente": "betano",
    "fixtureId": "pn129040721636713988",
    "inicio": "2026-09-16T14:30:00.000Z"
@@ -120,7 +186,7 @@
    "p2": "Kaue Noatto",
    "g1": 1.14,
    "g2": 4.65,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:06Z",
    "fuente": "betano",
    "fixtureId": "pn129040721636713989",
    "inicio": "2026-09-16T14:30:00.000Z"
@@ -131,7 +197,7 @@
    "p2": "Gabriel Tumasonis",
    "g1": 1.36,
    "g2": 2.8,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:06Z",
    "fuente": "betano",
    "fixtureId": "pn129040721636714001",
    "inicio": "2026-09-16T14:30:00.000Z"
@@ -142,43 +208,10 @@
    "p2": "Luka Ono",
    "g1": 1.02,
    "g2": 10.5,
-   "visto": "2026-09-16T12:01Z",
+   "visto": "2026-09-16T12:06Z",
    "fuente": "bet365",
    "fixtureId": "pn129040721636716393",
    "inicio": "2026-09-16T15:00:00.000Z"
-  },
-  {
-   "torneo": "M15 Belém",
-   "p1": "Daniel Antonio Nunez",
-   "p2": "Victor Bini",
-   "g1": 1.05,
-   "g2": 8.9,
-   "visto": "2026-09-16T12:02Z",
-   "fuente": "cloudbet",
-   "fixtureId": "pn129040721636709496",
-   "inicio": "2026-09-16T16:00:00.000Z"
-  },
-  {
-   "torneo": "M15 Belém",
-   "p1": "Juan Sebastian Osorio",
-   "p2": "Rafael Augusto Garcia Finetto",
-   "g1": 1.052,
-   "g2": 8,
-   "visto": "2026-09-16T12:02Z",
-   "fuente": "bet365",
-   "fixtureId": "pn129040721636713990",
-   "inicio": "2026-09-16T16:00:00.000Z"
-  },
-  {
-   "torneo": "M15 Belém",
-   "p1": "Ignacio Antonio Becerra Otarola",
-   "p2": "Joao Vitor Goncalves Ceolin",
-   "g1": 3.5,
-   "g2": 1.24,
-   "visto": "2026-09-16T12:02Z",
-   "fuente": "betano",
-   "fixtureId": "pn129040721636716394",
-   "inicio": "2026-09-16T16:00:00.000Z"
   },
   {
    "torneo": "M25 Nevers",
@@ -186,10 +219,43 @@
    "p2": "Luke Hooper",
    "g1": 3,
    "g2": 1.32,
-   "visto": "2026-09-16T12:02Z",
+   "visto": "2026-09-16T12:07Z",
    "fuente": "betano",
    "fixtureId": "pn129036801636636596",
-   "inicio": "2026-09-16T16:15:00.000Z"
+   "inicio": "2026-09-16T15:15:00.000Z"
+  },
+  {
+   "torneo": "M15 Belém",
+   "p1": "Daniel Antonio Nunez",
+   "p2": "Victor Bini",
+   "g1": 1.05,
+   "g2": 8.9,
+   "visto": "2026-09-16T12:07Z",
+   "fuente": "cloudbet",
+   "fixtureId": "pn129040721636709496",
+   "inicio": "2026-09-16T15:30:00.000Z"
+  },
+  {
+   "torneo": "M15 Belém",
+   "p1": "Juan Sebastian Osorio",
+   "p2": "Rafael Augusto Garcia Finetto",
+   "g1": 1.052,
+   "g2": 8,
+   "visto": "2026-09-16T12:07Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129040721636713990",
+   "inicio": "2026-09-16T15:30:00.000Z"
+  },
+  {
+   "torneo": "M15 Belém",
+   "p1": "Ignacio Antonio Becerra Otarola",
+   "p2": "Joao Vitor Goncalves Ceolin",
+   "g1": 3.5,
+   "g2": 1.24,
+   "visto": "2026-09-16T12:07Z",
+   "fuente": "betano",
+   "fixtureId": "pn129040721636716394",
+   "inicio": "2026-09-16T15:30:00.000Z"
   },
   {
    "torneo": "M25 Nevers",
@@ -197,10 +263,10 @@
    "p2": "Noah Boutleux",
    "g1": 1.02,
    "g2": 10.5,
-   "visto": "2026-09-16T12:02Z",
+   "visto": "2026-09-16T12:07Z",
    "fuente": "bet365",
    "fixtureId": "pn129036801636636594",
-   "inicio": "2026-09-16T16:15:00.000Z"
+   "inicio": "2026-09-16T16:00:00.000Z"
   },
   {
    "torneo": "M15 Belém",
@@ -208,10 +274,10 @@
    "p2": "Rafael Tosetto",
    "g1": 3.45,
    "g2": 1.25,
-   "visto": "2026-09-16T12:02Z",
+   "visto": "2026-09-16T12:07Z",
    "fuente": "betano",
    "fixtureId": "pn129040721636716396",
-   "inicio": "2026-09-16T17:30:00.000Z"
+   "inicio": "2026-09-16T16:30:00.000Z"
   },
   {
    "torneo": "M15 Belém",
@@ -219,7 +285,7 @@
    "p2": "Vitor Machado De Melo Cunha",
    "g1": 2.3,
    "g2": 1.52,
-   "visto": "2026-09-16T12:02Z",
+   "visto": "2026-09-16T12:07Z",
    "fuente": "betano",
    "fixtureId": "pn129040721636709497",
    "inicio": "2026-09-16T21:00:00.000Z"
@@ -230,7 +296,7 @@
    "p2": "Pedro Sakamoto",
    "g1": 6,
    "g2": 1.08,
-   "visto": "2026-09-16T12:02Z",
+   "visto": "2026-09-16T12:07Z",
    "fuente": "betano",
    "fixtureId": "pn129040721636716392",
    "inicio": "2026-09-16T21:00:00.000Z"
@@ -241,7 +307,7 @@
    "p2": "Chase Ferguson",
    "g1": 5.2,
    "g2": 1.12,
-   "visto": "2026-09-16T12:02Z",
+   "visto": "2026-09-16T12:07Z",
    "fuente": "betano",
    "fixtureId": "pn129041031636739005",
    "inicio": "2026-09-17T02:00:00.000Z"
@@ -250,9 +316,9 @@
    "torneo": "M25 Guiyang",
    "p1": "Mukund Sasikumar",
    "p2": "Sheng Tang",
-   "g1": 1.16,
-   "g2": 4.45,
-   "visto": "2026-09-16T12:03Z",
+   "g1": 1.19,
+   "g2": 4.05,
+   "visto": "2026-09-16T12:08Z",
    "fuente": "betano",
    "fixtureId": "pn129041031636739006",
    "inicio": "2026-09-17T02:00:00.000Z"
@@ -263,7 +329,7 @@
    "p2": "Maxim Shin",
    "g1": 1.13,
    "g2": 4.9,
-   "visto": "2026-09-16T12:03Z",
+   "visto": "2026-09-16T12:08Z",
    "fuente": "betano",
    "fixtureId": "pn129041031636768951",
    "inicio": "2026-09-17T02:00:00.000Z"
@@ -274,7 +340,7 @@
    "p2": "Robin Catry",
    "g1": 3.7,
    "g2": 1.22,
-   "visto": "2026-09-16T12:03Z",
+   "visto": "2026-09-16T12:08Z",
    "fuente": "betano",
    "fixtureId": "pn129041031636768952",
    "inicio": "2026-09-17T02:00:00.000Z"
@@ -285,7 +351,7 @@
    "p2": "Nino Ehrenschneider",
    "g1": 5.5,
    "g2": 1.1,
-   "visto": "2026-09-16T12:03Z",
+   "visto": "2026-09-16T12:08Z",
    "fuente": "betano",
    "fixtureId": "pn129041031636768954",
    "inicio": "2026-09-17T03:00:00.000Z"
@@ -296,7 +362,7 @@
    "p2": "Aleksa Oparnica",
    "g1": 1.052,
    "g2": 8,
-   "visto": "2026-09-16T12:03Z",
+   "visto": "2026-09-16T12:08Z",
    "fuente": "bet365",
    "fixtureId": "pn129036661636611986",
    "inicio": "2026-09-17T08:00:00.000Z"
@@ -307,7 +373,7 @@
    "p2": "Ryo Tabata",
    "g1": 1.25,
    "g2": 3.45,
-   "visto": "2026-09-16T12:03Z",
+   "visto": "2026-09-16T12:08Z",
    "fuente": "betano",
    "fixtureId": "pn129036661636618385",
    "inicio": "2026-09-17T08:00:00.000Z"
@@ -318,7 +384,7 @@
    "p2": "Kasra Rahmani",
    "g1": 7,
    "g2": 1.068,
-   "visto": "2026-09-16T12:04Z",
+   "visto": "2026-09-16T12:09Z",
    "fuente": "bet365",
    "fixtureId": "pn129034551636734348",
    "inicio": "2026-09-17T08:00:00.000Z"
@@ -329,7 +395,7 @@
    "p2": "Jacopo Bilardo",
    "g1": 2.62,
    "g2": 1.41,
-   "visto": "2026-09-16T12:04Z",
+   "visto": "2026-09-16T12:09Z",
    "fuente": "bet365",
    "fixtureId": "pn129034551636738941",
    "inicio": "2026-09-17T08:00:00.000Z"
@@ -340,7 +406,7 @@
    "p2": "Stefan Popovic",
    "g1": 1.97,
    "g2": 1.69,
-   "visto": "2026-09-16T12:04Z",
+   "visto": "2026-09-16T12:09Z",
    "fuente": "bet365",
    "fixtureId": "pn129036661636739036",
    "inicio": "2026-09-17T08:00:00.000Z"
@@ -351,7 +417,7 @@
    "p2": "Loann Massard",
    "g1": 2.62,
    "g2": 1.41,
-   "visto": "2026-09-16T12:04Z",
+   "visto": "2026-09-16T12:09Z",
    "fuente": "bet365",
    "fixtureId": "pn129036801636738935",
    "inicio": "2026-09-17T08:00:00.000Z"
@@ -362,7 +428,7 @@
    "p2": "Yannis Batsabaken",
    "g1": 1.016,
    "g2": 11,
-   "visto": "2026-09-16T12:04Z",
+   "visto": "2026-09-16T12:09Z",
    "fuente": "bet365",
    "fixtureId": "pn129036801636738936",
    "inicio": "2026-09-17T08:00:00.000Z"
