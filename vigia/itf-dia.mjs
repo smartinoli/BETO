@@ -31,7 +31,7 @@ const DIR = path.dirname(fileURLToPath(import.meta.url));
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i > 0 ? process.argv[i + 1] : d };
 /* Sin tope por cantidad: manda la ventana de horas (ver itf-cuotas). */
 const MAX = arg('max', null);
-const HORAS = arg('horas', '14');
+const HORAS = arg('horas', '36');   /* 36 h como el boton de Betano: la semana entera, no solo la manana siguiente (2026-09-22) */
 const KEY = process.env.ODDSPAPI_KEY;
 
 const paso = (nombre, archivo, args = []) => {

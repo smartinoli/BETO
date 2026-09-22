@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-22T15:49:42.997Z",
+ "generado": "2026-09-22T16:01:43.058Z",
  "casa": "bet365",
  "soloCasa": null,
  "parcial": false,
@@ -10,7 +10,7 @@
    "p2": "Kuan Shou Chen",
    "g1": 2.1,
    "g2": 1.63,
-   "visto": "2026-09-22T15:48Z",
+   "visto": "2026-09-22T15:55Z",
    "fuente": "bet365",
    "fixtureId": "pn129040691637178757",
    "inicio": "2026-09-23T02:00:00.000Z"
@@ -21,7 +21,7 @@
    "p2": "Nino Ehrenschneider",
    "g1": 2.1,
    "g2": 1.63,
-   "visto": "2026-09-22T15:48Z",
+   "visto": "2026-09-22T15:55Z",
    "fuente": "bet365",
    "fixtureId": "pn129040691637181725",
    "inicio": "2026-09-23T02:00:00.000Z"
@@ -32,7 +32,7 @@
    "p2": "Yun Seong Chung",
    "g1": 2.25,
    "g2": 1.54,
-   "visto": "2026-09-22T15:48Z",
+   "visto": "2026-09-22T15:55Z",
    "fuente": "bet365",
    "fixtureId": "pn129040691637181728",
    "inicio": "2026-09-23T03:30:00.000Z"
@@ -43,7 +43,7 @@
    "p2": "Aziz Dougaz",
    "g1": 13.854,
    "g2": 1.026,
-   "visto": "2026-09-22T15:49Z",
+   "visto": "2026-09-22T15:55Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129040691637185170",
    "inicio": "2026-09-23T03:30:00.000Z"
@@ -54,7 +54,7 @@
    "p2": "Nikolai Barsukov",
    "g1": 3.504,
    "g2": 1.248,
-   "visto": "2026-09-22T15:49Z",
+   "visto": "2026-09-22T15:55Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129040691637175568",
    "inicio": "2026-09-23T04:00:00.000Z"
@@ -65,7 +65,7 @@
    "p2": "Zijiang Yang",
    "g1": 1.01,
    "g2": 12,
-   "visto": "2026-09-22T15:49Z",
+   "visto": "2026-09-22T15:56Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129040691637178756",
    "inicio": "2026-09-23T04:00:00.000Z"
@@ -76,7 +76,7 @@
    "p2": "Haoran Hu",
    "g1": 1.012,
    "g2": 24.946,
-   "visto": "2026-09-22T15:49Z",
+   "visto": "2026-09-22T15:56Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129040691637181726",
    "inicio": "2026-09-23T04:00:00.000Z"
@@ -87,7 +87,7 @@
    "p2": "Yue Xia",
    "g1": 2.22,
    "g2": 1.57,
-   "visto": "2026-09-22T15:49Z",
+   "visto": "2026-09-22T15:56Z",
    "fuente": "betano",
    "fixtureId": "pn129040691637181727",
    "inicio": "2026-09-23T04:00:00.000Z"
@@ -98,7 +98,7 @@
    "p2": "Kazuki Nakajima",
    "g1": 1.47,
    "g2": 2.42,
-   "visto": "2026-09-22T15:49Z",
+   "visto": "2026-09-22T15:56Z",
    "fuente": "betano",
    "fixtureId": "pn129040691637183958",
    "inicio": "2026-09-23T05:00:00.000Z"
@@ -109,10 +109,208 @@
    "p2": "Nikolai Barsukov",
    "g1": 3.337,
    "g2": 1.27,
-   "visto": "2026-09-22T15:49Z",
+   "visto": "2026-09-22T15:56Z",
    "fuente": "cloudbet",
    "fixtureId": "pn129040691637185140",
    "inicio": "2026-09-23T05:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Baku",
+   "p1": "Arvid Nordquist",
+   "p2": "Pavel Savelov",
+   "g1": 1.025,
+   "g2": 10,
+   "visto": "2026-09-22T15:56Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129054911637183999",
+   "inicio": "2026-09-23T08:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Baku",
+   "p1": "Volodymyr Iakubenko",
+   "p2": "Marcus Walters",
+   "g1": 1.69,
+   "g2": 1.97,
+   "visto": "2026-09-22T15:56Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129054911637184000",
+   "inicio": "2026-09-23T08:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Baku",
+   "p1": "Rohan Mehra",
+   "p2": "Kaya Arinc",
+   "g1": 1.33,
+   "g2": 3,
+   "visto": "2026-09-22T15:56Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129054911637185182",
+   "inicio": "2026-09-23T08:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Baku",
+   "p1": "Louis Larue",
+   "p2": "James Connel",
+   "g1": 4.5,
+   "g2": 1.13,
+   "visto": "2026-09-22T15:57Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129054911637185183",
+   "inicio": "2026-09-23T08:00:00.000Z"
+  },
+  {
+   "torneo": "M15 Baku",
+   "p1": "Ilham Bakhshaliev",
+   "p2": "Aditya Vishal Balsekar",
+   "g1": 12,
+   "g2": 1.012,
+   "visto": "2026-09-22T15:57Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129054911637190746",
+   "inicio": "2026-09-23T08:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Georgii Kravchenko",
+   "p2": "Giorgio Tabacco",
+   "g1": 1.47,
+   "g2": 2.5,
+   "visto": "2026-09-22T15:57Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637184001",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Fausto Tabacco",
+   "p2": "Jack Anthrop",
+   "g1": 1.97,
+   "g2": 1.69,
+   "visto": "2026-09-22T15:57Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637184002",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Finn Murgett",
+   "p2": "Diogo Marques",
+   "g1": 1.27,
+   "g2": 3.4,
+   "visto": "2026-09-22T15:57Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637184003",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Adria Soriano Barrera",
+   "p2": "Michael Agwi",
+   "g1": 1.69,
+   "g2": 1.97,
+   "visto": "2026-09-22T15:58Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637185186",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Blu Baker",
+   "p2": "Lui Maxted",
+   "g1": 4,
+   "g2": 1.19,
+   "visto": "2026-09-22T15:58Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637185189",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Diogo Morais",
+   "p2": "Lucas Poullain",
+   "g1": 5.5,
+   "g2": 1.1,
+   "visto": "2026-09-22T15:58Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637190748",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Vasco Leote Prata",
+   "p2": "Tyler Stice",
+   "g1": 1.5,
+   "g2": 2.37,
+   "visto": "2026-09-22T15:58Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637190749",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Santa Margherita di Pula",
+   "p1": "Gabriele Pennaforti",
+   "p2": "Lorenzo Carboni",
+   "g1": 3.15,
+   "g2": 1.29,
+   "visto": "2026-09-22T15:58Z",
+   "fuente": "betano",
+   "fixtureId": "pn129037681637185205",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Santa Margherita di Pula",
+   "p1": "Eric Vanshelboim",
+   "p2": "Pietro Marino",
+   "g1": 1.28,
+   "g2": 3.25,
+   "visto": "2026-09-22T15:58Z",
+   "fuente": "betano",
+   "fixtureId": "pn129037681637193340",
+   "inicio": "2026-09-23T09:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Inaki Montes-De La Torre",
+   "p2": "Benjamin Thomas George",
+   "g1": 1.068,
+   "g2": 7,
+   "visto": "2026-09-22T16:01Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637185187",
+   "inicio": "2026-09-23T11:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Jake Fellows",
+   "p2": "Rodrigo Leal",
+   "g1": 1.5,
+   "g2": 2.37,
+   "visto": "2026-09-22T16:01Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637185188",
+   "inicio": "2026-09-23T11:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Francisco Rocha",
+   "p2": "Patrick Schoen",
+   "g1": 5.5,
+   "g2": 1.1,
+   "visto": "2026-09-22T16:01Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637185190",
+   "inicio": "2026-09-23T11:00:00.000Z"
+  },
+  {
+   "torneo": "M25 Setubal",
+   "p1": "Joao Silva",
+   "p2": "Philip Henning",
+   "g1": 8,
+   "g2": 1.052,
+   "visto": "2026-09-22T16:01Z",
+   "fuente": "bet365",
+   "fixtureId": "pn129034641637190750",
+   "inicio": "2026-09-23T11:00:00.000Z"
   }
  ]
 }
