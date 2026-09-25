@@ -68,7 +68,7 @@ tr[hidden]{display:none}
 </style>
 <div class="env">
 <h1>Tabla ITF — lo apostable de ahora</h1>
-<p class="sub">66 jugadores · 9 torneos · armada 22:49 hora de Chile. Las horas de cada partido también van en hora de Chile.
+<p class="sub">20 jugadores · 5 torneos · armada 17:44 hora de Chile. Las horas de cada partido también van en hora de Chile.
   Solo partidos que <b>todavía no empiezan</b> y tienen cuota de los dos lados: lo que ya arrancó no se puede apostar y sale de la tabla.
   Clic en cualquier encabezado para ordenar; el nombre abre la búsqueda en Betano. La ★ y el borde verde marcan lo que pisa la casilla del manual.
   <a href="./index.html" style="color:var(--accent)">Ver el análisis completo →</a></p>
@@ -80,7 +80,7 @@ tr[hidden]{display:none}
   <button id="b-todo" data-que="todo" class="sec2">Semana completa <small>una vez al día</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
-  <span class="mod">cuotas de betano (30 partidos) · 3 partidos con la cuota de otra casa · modelo aprendido ·
+  <span class="mod">cuotas de betano (8 partidos) · 2 partidos con la cuota de otra casa · modelo aprendido ·
     5120 partidos · 2026-09-22</span>
   <div id="act-token" hidden>
     <p>Una sola vez: un token de GitHub que queda guardado solo en este navegador.
@@ -93,7 +93,7 @@ tr[hidden]{display:none}
 
 <div class="barra">
   <label>buscar</label><input type="text" id="q" placeholder="jugador o rival">
-  <label>torneo</label><select id="tor"><option value="">todos</option><option value="m15 baku">M15 Baku</option><option value="m15 forbach">M15 Forbach</option><option value="m15 monastir">M15 Monastir</option><option value="m15 telavi">M15 Telavi</option><option value="m25 falun">M25 Falun</option><option value="m25 pardubice">M25 Pardubice</option><option value="m25 sabadell">M25 Sabadell</option><option value="m25 setubal">M25 Setubal</option><option value="m25 yinchuan">M25 Yinchuan</option></select>
+  <label>torneo</label><select id="tor"><option value="">todos</option><option value="m15 baku">M15 Baku</option><option value="m15 telavi">M15 Telavi</option><option value="m25 pardubice">M25 Pardubice</option><option value="m25 santa margherita di pula">M25 Santa Margherita di Pula</option><option value="m25 yinchuan">M25 Yinchuan</option></select>
   <label>cuota</label><input type="number" id="cmin" step="0.01" placeholder="min"><input type="number" id="cmax" step="0.01" placeholder="max">
   <label>% modelo</label><input type="number" id="pmin" placeholder="min"><input type="number" id="pmax" placeholder="max">
   <label>edad</label><input type="number" id="emin" placeholder="min"><input type="number" id="emax" placeholder="max">
@@ -112,1322 +112,402 @@ tr[hidden]{display:none}
 <thead><tr><th data-k="jugador" data-tipo="txt">jugador <span class="fl"></span></th><th data-k="cuota" data-tipo="num">cuota <span class="fl"></span></th><th data-k="prob" data-tipo="num">% modelo <span class="fl"></span></th><th data-k="valor" data-tipo="num">valor <span class="fl"></span></th><th data-k="rival" data-tipo="txt">rival <span class="fl"></span></th><th data-k="torneo" data-tipo="txt">torneo <span class="fl"></span></th><th data-k="etapa" data-tipo="txt">ronda · hora CL <span class="fl"></span></th><th data-k="edad" data-tipo="num">edad <span class="fl"></span></th><th data-k="wtn" data-tipo="num">WTN <span class="fl"></span></th><th data-k="itf" data-tipo="num">ITF <span class="fl"></span></th><th data-k="atp" data-tipo="num">ATP <span class="fl"></span></th><th data-k="jr" data-tipo="bool">jr <span class="fl"></span></th><th data-k="local" data-tipo="bool">local <span class="fl"></span></th></tr></thead>
 <tbody>
 <tr
-  data-jugador="alexander binda" data-cuota="1.28" data-prob="0.524"
-  data-valor="0.67"
-  data-rival="jesse flores" data-torneo="m25 yinchuan"
-  data-etapa="R2" data-edad="25" data-wtn="5.74"
+  data-jugador="kuan-shou chen" data-cuota="1.83" data-prob="0.665"
+  data-valor="1.22"
+  data-rival="alexander binda" data-torneo="m25 yinchuan"
+  data-etapa="R1" data-edad="18" data-wtn="6.83"
+  data-itf="" data-atp="2211" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Kuan-Shou%20Chen" target="_blank" rel="noopener">Kuan-Shou Chen</a><span class="mk"></span></td>
+  <td class="n cuota">1.83</td>
+  <td class="n"><span class="pb ">67%</span></td>
+  <td class="n"><span class="val malo">1.22</span></td>
+  <td class="sec">Alexander Binda<span class="mk"> (5)</span> <span class="cq">1.83</span></td>
+  <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
+  <td class="sec">R1<span class="cq"> 01:00</span></td>
+  <td class="n">18<i class="rv">25</i></td>
+  <td class="n">6.83<i class="rv">5.74</i></td>
+  <td class="n sec">—<i class="rv">1420</i></td>
+  <td class="n sec">2211<i class="rv">552</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="alexander binda" data-cuota="1.83" data-prob="0.335"
+  data-valor="0.61"
+  data-rival="kuan-shou chen" data-torneo="m25 yinchuan"
+  data-etapa="R1" data-edad="25" data-wtn="5.74"
   data-itf="1420" data-atp="552" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Alexander%20Binda" target="_blank" rel="noopener">Alexander Binda</a><span class="mk"> (5)</span></td>
-  <td class="n cuota">1.28</td>
-  <td class="n"><span class="pb ">52%</span></td>
-  <td class="n"><span class="val malo">0.67</span></td>
-  <td class="sec">Jesse Flores<span class="mk"></span> <span class="cq">3.25</span></td>
+  <td class="n cuota">1.83</td>
+  <td class="n"><span class="pb ">34%</span></td>
+  <td class="n"><span class="val malo">0.61</span></td>
+  <td class="sec">Kuan-Shou Chen<span class="mk"></span> <span class="cq">1.83</span></td>
   <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
-  <td class="sec">R2<span class="cq"> 23:00</span></td>
-  <td class="n">25<i class="rv">31</i></td>
-  <td class="n">5.74<i class="rv">5.97</i></td>
-  <td class="n sec">1420<i class="rv">1420</i></td>
-  <td class="n sec">552<i class="rv">857</i></td>
+  <td class="sec">R1<span class="cq"> 01:00</span></td>
+  <td class="n">25<i class="rv">18</i></td>
+  <td class="n">5.74<i class="rv">6.83</i></td>
+  <td class="n sec">1420<i class="rv">—</i></td>
+  <td class="n sec">552<i class="rv">2211</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="jesse flores" data-cuota="3.25" data-prob="0.476"
-  data-valor="1.55"
-  data-rival="alexander binda" data-torneo="m25 yinchuan"
-  data-etapa="R2" data-edad="31" data-wtn="5.97"
-  data-itf="1420" data-atp="857" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Jesse%20Flores" target="_blank" rel="noopener">Jesse Flores</a><span class="mk"></span></td>
-  <td class="n cuota">3.25</td>
-  <td class="n"><span class="pb ">48%</span></td>
-  <td class="n"><span class="val malo">1.55</span></td>
-  <td class="sec">Alexander Binda<span class="mk"> (5)</span> <span class="cq">1.28</span></td>
-  <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
-  <td class="sec">R2<span class="cq"> 23:00</span></td>
-  <td class="n">31<i class="rv">25</i></td>
-  <td class="n">5.97<i class="rv">5.74</i></td>
-  <td class="n sec">1420<i class="rv">1420</i></td>
-  <td class="n sec">857<i class="rv">552</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="sheng tang" data-cuota="8" data-prob="0.156"
-  data-valor="1.25"
-  data-rival="alibek kachmazov" data-torneo="m25 yinchuan"
-  data-etapa="R1" data-edad="26" data-wtn="6.63"
-  data-itf="741" data-atp="1906" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Sheng%20Tang" target="_blank" rel="noopener">Sheng Tang</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">8 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
-  <td class="n"><span class="pb ">16%</span></td>
-  <td class="n"><span class="val malo">1.25</span></td>
-  <td class="sec">Alibek Kachmazov<span class="mk"></span> <span class="cq">1.052</span></td>
-  <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
-  <td class="sec">R1<span class="cq"> 23:00</span></td>
-  <td class="n">26<i class="rv">24</i></td>
-  <td class="n">6.63<i class="rv">5.32</i></td>
-  <td class="n sec">741<i class="rv">—</i></td>
-  <td class="n sec">1906<i class="rv">822</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="alibek kachmazov" data-cuota="1.052" data-prob="0.844"
-  data-valor="0.89"
-  data-rival="sheng tang" data-torneo="m25 yinchuan"
-  data-etapa="R1" data-edad="24" data-wtn="5.32"
+  data-jugador="alibek kachmazov" data-cuota="1.21" data-prob="0.86"
+  data-valor="1.04"
+  data-rival="sasikumar mukund" data-torneo="m25 yinchuan"
+  data-etapa="R2" data-edad="24" data-wtn="5.32"
   data-itf="" data-atp="822" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Alibek%20Kachmazov" target="_blank" rel="noopener">Alibek Kachmazov</a><span class="mk"></span></td>
-  <td class="n cuota">1.052 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
-  <td class="n"><span class="pb alta">84%</span></td>
-  <td class="n"><span class="val malo">0.89</span></td>
-  <td class="sec">Sheng Tang<span class="mk"> (6)</span> <span class="cq">8</span></td>
+  <td class="n cuota">1.21</td>
+  <td class="n"><span class="pb alta">86%</span></td>
+  <td class="n"><span class="val justo">1.04</span></td>
+  <td class="sec">Sasikumar Mukund<span class="mk"></span> <span class="cq">3.85</span></td>
   <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
-  <td class="sec">R1<span class="cq"> 23:00</span></td>
-  <td class="n">24<i class="rv">26</i></td>
-  <td class="n">5.32<i class="rv">6.63</i></td>
-  <td class="n sec">—<i class="rv">741</i></td>
-  <td class="n sec">822<i class="rv">1906</i></td>
+  <td class="sec">R2<span class="cq"> 01:00</span></td>
+  <td class="n">24<i class="rv">29</i></td>
+  <td class="n">5.32<i class="rv">5.85</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">822<i class="rv">612</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="chan-yeong oh" data-cuota="2.27" data-prob="0.463"
-  data-valor="1.05"
-  data-rival="sasikumar mukund" data-torneo="m25 yinchuan"
-  data-etapa="R2" data-edad="28" data-wtn="6.21"
-  data-itf="705" data-atp="1006" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Chan-Yeong%20Oh" target="_blank" rel="noopener">Chan-Yeong Oh</a><span class="mk"></span></td>
-  <td class="n cuota">2.27</td>
-  <td class="n"><span class="pb ">46%</span></td>
-  <td class="n"><span class="val malo">1.05</span></td>
-  <td class="sec">Sasikumar Mukund<span class="mk"></span> <span class="cq">1.53</span></td>
-  <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
-  <td class="sec">R2<span class="cq"> 00:00</span></td>
-  <td class="n">28<i class="rv">29</i></td>
-  <td class="n">6.21<i class="rv">5.85</i></td>
-  <td class="n sec">705<i class="rv">—</i></td>
-  <td class="n sec">1006<i class="rv">612</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="sasikumar mukund" data-cuota="1.53" data-prob="0.537"
-  data-valor="0.82"
-  data-rival="chan-yeong oh" data-torneo="m25 yinchuan"
+  data-jugador="sasikumar mukund" data-cuota="3.85" data-prob="0.14"
+  data-valor="0.54"
+  data-rival="alibek kachmazov" data-torneo="m25 yinchuan"
   data-etapa="R2" data-edad="29" data-wtn="5.85"
   data-itf="" data-atp="612" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Sasikumar%20Mukund" target="_blank" rel="noopener">Sasikumar Mukund</a><span class="mk"></span></td>
-  <td class="n cuota">1.53</td>
-  <td class="n"><span class="pb ">54%</span></td>
-  <td class="n"><span class="val malo">0.82</span></td>
-  <td class="sec">Chan-Yeong Oh<span class="mk"></span> <span class="cq">2.27</span></td>
+  <td class="n cuota">3.85</td>
+  <td class="n"><span class="pb ">14%</span></td>
+  <td class="n"><span class="val malo">0.54</span></td>
+  <td class="sec">Alibek Kachmazov<span class="mk"></span> <span class="cq">1.21</span></td>
   <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
-  <td class="sec">R2<span class="cq"> 00:00</span></td>
-  <td class="n">29<i class="rv">28</i></td>
-  <td class="n">5.85<i class="rv">6.21</i></td>
-  <td class="n sec">—<i class="rv">705</i></td>
-  <td class="n sec">612<i class="rv">1006</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="kuan-shou chen" data-cuota="1.53" data-prob="0.714"
-  data-valor="1.09"
-  data-rival="filip peliwo" data-torneo="m25 yinchuan"
-  data-etapa="R2" data-edad="18" data-wtn="6.83"
-  data-itf="" data-atp="2211" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Kuan-Shou%20Chen" target="_blank" rel="noopener">Kuan-Shou Chen</a><span class="mk"></span></td>
-  <td class="n cuota">1.53</td>
-  <td class="n"><span class="pb media">71%</span></td>
-  <td class="n"><span class="val justo">1.09</span></td>
-  <td class="sec">Filip Peliwo<span class="mk"></span> <span class="cq">2.3</span></td>
-  <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
-  <td class="sec">R2<span class="cq"> 00:00</span></td>
-  <td class="n">18<i class="rv">32</i></td>
-  <td class="n">6.83<i class="rv">6.18</i></td>
+  <td class="sec">R2<span class="cq"> 01:00</span></td>
+  <td class="n">29<i class="rv">24</i></td>
+  <td class="n">5.85<i class="rv">5.32</i></td>
   <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">2211<i class="rv">560</i></td>
+  <td class="n sec">612<i class="rv">822</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="filip peliwo" data-cuota="2.3" data-prob="0.286"
-  data-valor="0.66"
-  data-rival="kuan-shou chen" data-torneo="m25 yinchuan"
-  data-etapa="R2" data-edad="32" data-wtn="6.18"
-  data-itf="" data-atp="560" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Filip%20Peliwo" target="_blank" rel="noopener">Filip Peliwo</a><span class="mk"></span></td>
-  <td class="n cuota">2.3</td>
-  <td class="n"><span class="pb ">29%</span></td>
-  <td class="n"><span class="val malo">0.66</span></td>
-  <td class="sec">Kuan-Shou Chen<span class="mk"></span> <span class="cq">1.53</span></td>
-  <td class="sec">M25 Yinchuan <span class="cq">CHN</span></td>
-  <td class="sec">R2<span class="cq"> 00:00</span></td>
-  <td class="n">32<i class="rv">18</i></td>
-  <td class="n">6.18<i class="rv">6.83</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">560<i class="rv">2211</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="dmitry dolzhenkov" data-cuota="4.65" data-prob="0.214"
-  data-valor="1.00"
-  data-rival="marc majdandzic" data-torneo="m15 baku"
-  data-etapa="R2" data-edad="22" data-wtn="7.51"
-  data-itf="640" data-atp="1860" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Dmitry%20Dolzhenkov" target="_blank" rel="noopener">Dmitry Dolzhenkov</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">4.65</td>
-  <td class="n"><span class="pb ">21%</span></td>
-  <td class="n"><span class="val malo">1.00</span></td>
-  <td class="sec">Marc Majdandzic<span class="mk"> (4)</span> <span class="cq">1.14</span></td>
-  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
-  <td class="sec">R2<span class="cq"> 03:00</span></td>
-  <td class="n">22<i class="rv">21</i></td>
-  <td class="n">7.51<i class="rv">6.02</i></td>
-  <td class="n sec">640<i class="rv">1252</i></td>
-  <td class="n sec">1860<i class="rv">692</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="marc majdandzic" data-cuota="1.14" data-prob="0.786"
-  data-valor="0.90"
-  data-rival="dmitry dolzhenkov" data-torneo="m15 baku"
-  data-etapa="R2" data-edad="21" data-wtn="6.02"
-  data-itf="1252" data-atp="692" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Marc%20Majdandzic" target="_blank" rel="noopener">Marc Majdandzic</a><span class="mk"> (4)</span></td>
-  <td class="n cuota">1.14</td>
-  <td class="n"><span class="pb media">79%</span></td>
-  <td class="n"><span class="val malo">0.90</span></td>
-  <td class="sec">Dmitry Dolzhenkov<span class="mk"> (6)</span> <span class="cq">4.65</span></td>
-  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
-  <td class="sec">R2<span class="cq"> 03:00</span></td>
-  <td class="n">21<i class="rv">22</i></td>
-  <td class="n">6.02<i class="rv">7.51</i></td>
-  <td class="n sec">1252<i class="rv">640</i></td>
-  <td class="n sec">692<i class="rv">1860</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="stijn paardekooper" data-cuota="1.3" data-prob="0.547"
-  data-valor="0.71"
-  data-rival="francesco ferrari" data-torneo="m15 telavi"
-  data-etapa="R1" data-edad="23" data-wtn="5.89"
-  data-itf="1532" data-atp="875" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Stijn%20Paardekooper" target="_blank" rel="noopener">Stijn Paardekooper</a><span class="mk"></span></td>
-  <td class="n cuota">1.3</td>
-  <td class="n"><span class="pb ">55%</span></td>
-  <td class="n"><span class="val malo">0.71</span></td>
-  <td class="sec">Francesco Ferrari<span class="mk"></span> <span class="cq">3.15</span></td>
-  <td class="sec">M15 Telavi <span class="cq">GEO</span></td>
-  <td class="sec">R1<span class="cq"> 04:00</span></td>
-  <td class="n">23<i class="rv">29</i></td>
-  <td class="n">5.89<i class="rv">6.3</i></td>
-  <td class="n sec">1532<i class="rv">132</i></td>
-  <td class="n sec">875<i class="rv">1097</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="francesco ferrari" data-cuota="3.15" data-prob="0.453"
-  data-valor="1.43"
-  data-rival="stijn paardekooper" data-torneo="m15 telavi"
-  data-etapa="R1" data-edad="29" data-wtn="6.3"
-  data-itf="132" data-atp="1097" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Francesco%20Ferrari" target="_blank" rel="noopener">Francesco Ferrari</a><span class="mk"></span></td>
-  <td class="n cuota">3.15</td>
-  <td class="n"><span class="pb ">45%</span></td>
-  <td class="n"><span class="val malo">1.43</span></td>
-  <td class="sec">Stijn Paardekooper<span class="mk"></span> <span class="cq">1.3</span></td>
-  <td class="sec">M15 Telavi <span class="cq">GEO</span></td>
-  <td class="sec">R1<span class="cq"> 04:00</span></td>
-  <td class="n">29<i class="rv">23</i></td>
-  <td class="n">6.3<i class="rv">5.89</i></td>
-  <td class="n sec">132<i class="rv">1532</i></td>
-  <td class="n sec">1097<i class="rv">875</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="edoardo cherie ligniere" data-cuota="2.37" data-prob="0.445"
-  data-valor="1.05"
-  data-rival="michele mecarelli" data-torneo="m15 telavi"
-  data-etapa="R1" data-edad="22" data-wtn="6.22"
-  data-itf="219" data-atp="1233" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Edoardo%20Cherie%20Ligniere" target="_blank" rel="noopener">Edoardo Cherie Ligniere</a><span class="mk"></span></td>
-  <td class="n cuota">2.37</td>
-  <td class="n"><span class="pb ">45%</span></td>
-  <td class="n"><span class="val malo">1.05</span></td>
-  <td class="sec">Michele Mecarelli<span class="mk"></span> <span class="cq">1.5</span></td>
-  <td class="sec">M15 Telavi <span class="cq">GEO</span></td>
-  <td class="sec">R1<span class="cq"> 04:00</span></td>
-  <td class="n">22<i class="rv">19</i></td>
-  <td class="n">6.22<i class="rv">5.74</i></td>
-  <td class="n sec">219<i class="rv">286</i></td>
-  <td class="n sec">1233<i class="rv">902</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="michele mecarelli" data-cuota="1.5" data-prob="0.555"
-  data-valor="0.83"
-  data-rival="edoardo cherie ligniere" data-torneo="m15 telavi"
-  data-etapa="R1" data-edad="19" data-wtn="5.74"
-  data-itf="286" data-atp="902" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Michele%20Mecarelli" target="_blank" rel="noopener">Michele Mecarelli</a><span class="mk"></span></td>
-  <td class="n cuota">1.5</td>
-  <td class="n"><span class="pb ">56%</span></td>
-  <td class="n"><span class="val malo">0.83</span></td>
-  <td class="sec">Edoardo Cherie Ligniere<span class="mk"></span> <span class="cq">2.37</span></td>
-  <td class="sec">M15 Telavi <span class="cq">GEO</span></td>
-  <td class="sec">R1<span class="cq"> 04:00</span></td>
-  <td class="n">19<i class="rv">22</i></td>
-  <td class="n">5.74<i class="rv">6.22</i></td>
-  <td class="n sec">286<i class="rv">219</i></td>
-  <td class="n sec">902<i class="rv">1233</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="arvid nordquist" data-cuota="3.15" data-prob="0.424"
-  data-valor="1.34"
-  data-rival="millen hurrion" data-torneo="m15 baku"
-  data-etapa="R2" data-edad="28" data-wtn="5.96"
-  data-itf="698" data-atp="806" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Arvid%20Nordquist" target="_blank" rel="noopener">Arvid Nordquist</a><span class="mk"> (7)</span></td>
-  <td class="n cuota">3.15</td>
-  <td class="n"><span class="pb ">42%</span></td>
-  <td class="n"><span class="val malo">1.34</span></td>
-  <td class="sec">Millen Hurrion<span class="mk"> (2)</span> <span class="cq">1.3</span></td>
-  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
-  <td class="sec">R2<span class="cq"> 04:30</span></td>
-  <td class="n">28<i class="rv">27</i></td>
-  <td class="n">5.96<i class="rv">5.23</i></td>
-  <td class="n sec">698<i class="rv">—</i></td>
-  <td class="n sec">806<i class="rv">608</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="millen hurrion" data-cuota="1.3" data-prob="0.576"
-  data-valor="0.75"
-  data-rival="arvid nordquist" data-torneo="m15 baku"
-  data-etapa="R2" data-edad="27" data-wtn="5.23"
-  data-itf="" data-atp="608" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Millen%20Hurrion" target="_blank" rel="noopener">Millen Hurrion</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.3</td>
-  <td class="n"><span class="pb ">58%</span></td>
-  <td class="n"><span class="val malo">0.75</span></td>
-  <td class="sec">Arvid Nordquist<span class="mk"> (7)</span> <span class="cq">3.15</span></td>
-  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
-  <td class="sec">R2<span class="cq"> 04:30</span></td>
-  <td class="n">27<i class="rv">28</i></td>
-  <td class="n">5.23<i class="rv">5.96</i></td>
-  <td class="n sec">—<i class="rv">698</i></td>
-  <td class="n sec">608<i class="rv">806</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="karol filar" data-cuota="1.55" data-prob="0.184"
-  data-valor="0.29"
-  data-rival="oscar brown" data-torneo="m15 baku"
-  data-etapa="R2" data-edad="28" data-wtn="5.99"
-  data-itf="" data-atp="580" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Karol%20Filar" target="_blank" rel="noopener">Karol Filar</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">1.55</td>
-  <td class="n"><span class="pb ">18%</span></td>
-  <td class="n"><span class="val malo">0.29</span></td>
-  <td class="sec">Oscar Brown<span class="mk"></span> <span class="cq">2.27</span></td>
-  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
-  <td class="sec">R2<span class="cq"> 04:30</span></td>
-  <td class="n">28<i class="rv">24</i></td>
-  <td class="n">5.99<i class="rv">6.29</i></td>
-  <td class="n sec">—<i class="rv">19</i></td>
-  <td class="n sec">580<i class="rv">1230</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="oscar brown" data-cuota="2.27" data-prob="0.816"
-  data-valor="1.85"
-  data-rival="karol filar" data-torneo="m15 baku"
-  data-etapa="R2" data-edad="24" data-wtn="6.29"
-  data-itf="19" data-atp="1230" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Oscar%20Brown" target="_blank" rel="noopener">Oscar Brown</a><span class="mk"></span></td>
-  <td class="n cuota">2.27</td>
-  <td class="n"><span class="pb alta">82%</span></td>
-  <td class="n"><span class="val bueno">1.85</span></td>
-  <td class="sec">Karol Filar<span class="mk"> (3)</span> <span class="cq">1.55</span></td>
-  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
-  <td class="sec">R2<span class="cq"> 04:30</span></td>
-  <td class="n">24<i class="rv">28</i></td>
-  <td class="n">6.29<i class="rv">5.99</i></td>
-  <td class="n sec">19<i class="rv">—</i></td>
-  <td class="n sec">1230<i class="rv">580</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="dominik recek" data-cuota="1.19" data-prob="0.376"
-  data-valor="0.45"
-  data-rival="jakub kusy" data-torneo="m25 pardubice"
-  data-etapa="R1" data-edad="31" data-wtn="5.63"
-  data-itf="226" data-atp="855" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=DOMINIK%20Recek" target="_blank" rel="noopener">DOMINIK Recek</a><span class="mk"></span></td>
-  <td class="n cuota">1.19</td>
-  <td class="n"><span class="pb ">38%</span></td>
-  <td class="n"><span class="val malo">0.45</span></td>
-  <td class="sec">Jakub Kusy<span class="mk"> (WC)</span> <span class="cq">4</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R1<span class="cq"> 05:21</span></td>
-  <td class="n">31<i class="rv">17</i></td>
-  <td class="n">5.63<i class="rv">7.11</i></td>
-  <td class="n sec">226<i class="rv">—</i></td>
-  <td class="n sec">855<i class="rv">—</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="jakub kusy" data-cuota="4" data-prob="0.624"
-  data-valor="2.50"
-  data-rival="dominik recek" data-torneo="m25 pardubice"
-  data-etapa="R1" data-edad="17" data-wtn="7.11"
-  data-itf="" data-atp="" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Jakub%20Kusy" target="_blank" rel="noopener">Jakub Kusy</a><span class="mk"> (WC)</span></td>
-  <td class="n cuota">4</td>
-  <td class="n"><span class="pb ">62%</span></td>
-  <td class="n"><span class="val malo">2.50</span></td>
-  <td class="sec">DOMINIK Recek<span class="mk"></span> <span class="cq">1.19</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R1<span class="cq"> 05:21</span></td>
-  <td class="n">17<i class="rv">31</i></td>
-  <td class="n">7.11<i class="rv">5.63</i></td>
-  <td class="n sec">—<i class="rv">226</i></td>
-  <td class="n sec">—<i class="rv">855</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="stepan baum" data-cuota="1.08" data-prob="0.468"
-  data-valor="0.51"
-  data-rival="jakub vrtilka" data-torneo="m25 pardubice"
+  data-jugador="stepan baum" data-cuota="2.85" data-prob="0.621"
+  data-valor="1.77"
+  data-rival="matyas cerny" data-torneo="m25 pardubice"
   data-etapa="R2" data-edad="23" data-wtn="6.16"
   data-itf="447" data-atp="1549" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Stepan%20Baum" target="_blank" rel="noopener">Stepan Baum</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.08</td>
-  <td class="n"><span class="pb ">47%</span></td>
-  <td class="n"><span class="val malo">0.51</span></td>
-  <td class="sec">Jakub Vrtilka<span class="mk"> (WC)</span> <span class="cq">6</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R2<span class="cq"> 05:27</span></td>
-  <td class="n">23<i class="rv">18</i></td>
-  <td class="n">6.16<i class="rv">7.83</i></td>
-  <td class="n sec">447<i class="rv">994</i></td>
-  <td class="n sec">1549<i class="rv">—</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="jakub vrtilka" data-cuota="6" data-prob="0.532"
-  data-valor="3.19"
-  data-rival="stepan baum" data-torneo="m25 pardubice"
-  data-etapa="R2" data-edad="18" data-wtn="7.83"
-  data-itf="994" data-atp="" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Jakub%20Vrtilka" target="_blank" rel="noopener">Jakub Vrtilka</a><span class="mk"> (WC)</span></td>
-  <td class="n cuota">6</td>
-  <td class="n"><span class="pb ">53%</span></td>
-  <td class="n"><span class="val malo">3.19</span></td>
-  <td class="sec">Stepan Baum<span class="mk"> (2)</span> <span class="cq">1.08</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R2<span class="cq"> 05:27</span></td>
-  <td class="n">18<i class="rv">23</i></td>
-  <td class="n">7.83<i class="rv">6.16</i></td>
-  <td class="n sec">994<i class="rv">447</i></td>
-  <td class="n sec">—<i class="rv">1549</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="paul colin" data-cuota="1.78" data-prob="0.631"
-  data-valor="1.12"
-  data-rival="daniel domingos" data-torneo="m15 monastir"
-  data-etapa="R1" data-edad="23" data-wtn="6.27"
-  data-itf="" data-atp="" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Paul%20Colin" target="_blank" rel="noopener">Paul Colin</a><span class="mk"></span></td>
-  <td class="n cuota">1.78</td>
-  <td class="n"><span class="pb ">63%</span></td>
-  <td class="n"><span class="val malo">1.12</span></td>
-  <td class="sec">Daniel Domingos<span class="mk"> (12)</span> <span class="cq">1.88</span></td>
-  <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
-  <td class="sec">R1<span class="cq"> 05:30</span></td>
-  <td class="n">23<i class="rv">19</i></td>
-  <td class="n">6.27<i class="rv">6.84</i></td>
-  <td class="n sec">—<i class="rv">534</i></td>
-  <td class="n sec">—<i class="rv">1695</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="daniel domingos" data-cuota="1.88" data-prob="0.369"
-  data-valor="0.69"
-  data-rival="paul colin" data-torneo="m15 monastir"
-  data-etapa="R1" data-edad="19" data-wtn="6.84"
-  data-itf="534" data-atp="1695" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Daniel%20Domingos" target="_blank" rel="noopener">Daniel Domingos</a><span class="mk"> (12)</span></td>
-  <td class="n cuota">1.88</td>
-  <td class="n"><span class="pb ">37%</span></td>
-  <td class="n"><span class="val malo">0.69</span></td>
-  <td class="sec">Paul Colin<span class="mk"></span> <span class="cq">1.78</span></td>
-  <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
-  <td class="sec">R1<span class="cq"> 05:30</span></td>
-  <td class="n">19<i class="rv">23</i></td>
-  <td class="n">6.84<i class="rv">6.27</i></td>
-  <td class="n sec">534<i class="rv">—</i></td>
-  <td class="n sec">1695<i class="rv">—</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="toby martin" data-cuota="2.12" data-prob="0.511"
-  data-valor="1.08"
-  data-rival="ewen lumsden" data-torneo="m15 monastir"
-  data-etapa="SF" data-edad="33" data-wtn="6.07"
-  data-itf="592" data-atp="1233" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Toby%20Martin" target="_blank" rel="noopener">Toby Martin</a><span class="mk"></span></td>
-  <td class="n cuota">2.12</td>
-  <td class="n"><span class="pb ">51%</span></td>
-  <td class="n"><span class="val malo">1.08</span></td>
-  <td class="sec">Ewen Lumsden<span class="mk"> (7)</span> <span class="cq">1.62</span></td>
-  <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
-  <td class="sec">SF<span class="cq"> 05:30</span></td>
-  <td class="n">33<i class="rv">26</i></td>
-  <td class="n">6.07<i class="rv">6.19</i></td>
-  <td class="n sec">592<i class="rv">1612</i></td>
-  <td class="n sec">1233<i class="rv">1485</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="ewen lumsden" data-cuota="1.62" data-prob="0.489"
-  data-valor="0.79"
-  data-rival="toby martin" data-torneo="m15 monastir"
-  data-etapa="SF" data-edad="26" data-wtn="6.19"
-  data-itf="1612" data-atp="1485" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Ewen%20Lumsden" target="_blank" rel="noopener">Ewen Lumsden</a><span class="mk"> (7)</span></td>
-  <td class="n cuota">1.62</td>
-  <td class="n"><span class="pb ">49%</span></td>
-  <td class="n"><span class="val malo">0.79</span></td>
-  <td class="sec">Toby Martin<span class="mk"></span> <span class="cq">2.12</span></td>
-  <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
-  <td class="sec">SF<span class="cq"> 05:30</span></td>
-  <td class="n">26<i class="rv">33</i></td>
-  <td class="n">6.19<i class="rv">6.07</i></td>
-  <td class="n sec">1612<i class="rv">592</i></td>
-  <td class="n sec">1485<i class="rv">1233</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="samuel vincent ruggeri" data-cuota="1.47" data-prob="0.515"
-  data-valor="0.76"
-  data-rival="andrea colombo" data-torneo="m15 monastir"
-  data-etapa="QF" data-edad="24" data-wtn="5.83"
-  data-itf="" data-atp="678" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Samuel%20Vincent%20Ruggeri" target="_blank" rel="noopener">Samuel Vincent Ruggeri</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">1.47</td>
-  <td class="n"><span class="pb ">52%</span></td>
-  <td class="n"><span class="val malo">0.76</span></td>
-  <td class="sec">Andrea Colombo<span class="mk"></span> <span class="cq">2.45</span></td>
-  <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
-  <td class="sec">QF<span class="cq"> 05:30</span></td>
-  <td class="n">24<i class="rv">24</i></td>
-  <td class="n">5.83<i class="rv">6</i></td>
-  <td class="n sec">—<i class="rv">36</i></td>
-  <td class="n sec">678<i class="rv">991</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="andrea colombo" data-cuota="2.45" data-prob="0.485"
-  data-valor="1.19"
-  data-rival="samuel vincent ruggeri" data-torneo="m15 monastir"
-  data-etapa="QF" data-edad="24" data-wtn="6"
-  data-itf="36" data-atp="991" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Andrea%20Colombo" target="_blank" rel="noopener">Andrea Colombo</a><span class="mk"></span></td>
-  <td class="n cuota">2.45</td>
-  <td class="n"><span class="pb ">49%</span></td>
-  <td class="n"><span class="val malo">1.19</span></td>
-  <td class="sec">Samuel Vincent Ruggeri<span class="mk"> (3)</span> <span class="cq">1.47</span></td>
-  <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
-  <td class="sec">QF<span class="cq"> 05:30</span></td>
-  <td class="n">24<i class="rv">24</i></td>
-  <td class="n">6<i class="rv">5.83</i></td>
-  <td class="n sec">36<i class="rv">—</i></td>
-  <td class="n sec">991<i class="rv">678</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="stefan seifert" data-cuota="2.35" data-prob="0.454"
-  data-valor="1.07"
-  data-rival="daniel de jonge" data-torneo="m15 forbach"
-  data-etapa="R1" data-edad="41" data-wtn="6.04"
-  data-itf="112" data-atp="1042" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Stefan%20Seifert" target="_blank" rel="noopener">Stefan Seifert</a><span class="mk"></span></td>
-  <td class="n cuota">2.35</td>
-  <td class="n"><span class="pb ">45%</span></td>
-  <td class="n"><span class="val malo">1.07</span></td>
-  <td class="sec">Daniel De Jonge<span class="mk"> (2)</span> <span class="cq">1.5</span></td>
-  <td class="sec">M15 Forbach <span class="cq">FRA</span></td>
-  <td class="sec">R1<span class="cq"> 06:00</span></td>
-  <td class="n">41<i class="rv">27</i></td>
-  <td class="n">6.04<i class="rv">5.64</i></td>
-  <td class="n sec">112<i class="rv">—</i></td>
-  <td class="n sec">1042<i class="rv">568</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="daniel de jonge" data-cuota="1.5" data-prob="0.546"
-  data-valor="0.82"
-  data-rival="stefan seifert" data-torneo="m15 forbach"
-  data-etapa="R1" data-edad="27" data-wtn="5.64"
-  data-itf="" data-atp="568" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Daniel%20De%20Jonge" target="_blank" rel="noopener">Daniel De Jonge</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.5</td>
-  <td class="n"><span class="pb ">55%</span></td>
-  <td class="n"><span class="val malo">0.82</span></td>
-  <td class="sec">Stefan Seifert<span class="mk"></span> <span class="cq">2.35</span></td>
-  <td class="sec">M15 Forbach <span class="cq">FRA</span></td>
-  <td class="sec">R1<span class="cq"> 06:00</span></td>
-  <td class="n">27<i class="rv">41</i></td>
-  <td class="n">5.64<i class="rv">6.04</i></td>
-  <td class="n sec">—<i class="rv">112</i></td>
-  <td class="n sec">568<i class="rv">1042</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="finn murgett" data-cuota="2.62" data-prob="0.514"
-  data-valor="1.35"
-  data-rival="michael agwi" data-torneo="m25 setubal"
-  data-etapa="R1" data-edad="25" data-wtn="5.77"
-  data-itf="563" data-atp="915" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Finn%20Murgett" target="_blank" rel="noopener">Finn Murgett</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">2.62</td>
-  <td class="n"><span class="pb ">51%</span></td>
-  <td class="n"><span class="val malo">1.35</span></td>
-  <td class="sec">Michael Agwi<span class="mk"></span> <span class="cq">1.42</span></td>
-  <td class="sec">M25 Setubal <span class="cq">POR</span></td>
-  <td class="sec">R1<span class="cq"> 06:30</span></td>
-  <td class="n">25<i class="rv">23</i></td>
-  <td class="n">5.77<i class="rv">5.89</i></td>
-  <td class="n sec">563<i class="rv">—</i></td>
-  <td class="n sec">915<i class="rv">778</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="michael agwi" data-cuota="1.42" data-prob="0.486"
-  data-valor="0.69"
-  data-rival="finn murgett" data-torneo="m25 setubal"
-  data-etapa="R1" data-edad="23" data-wtn="5.89"
-  data-itf="" data-atp="778" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Michael%20Agwi" target="_blank" rel="noopener">Michael Agwi</a><span class="mk"></span></td>
-  <td class="n cuota">1.42</td>
-  <td class="n"><span class="pb ">49%</span></td>
-  <td class="n"><span class="val malo">0.69</span></td>
-  <td class="sec">Finn Murgett<span class="mk"> (2)</span> <span class="cq">2.62</span></td>
-  <td class="sec">M25 Setubal <span class="cq">POR</span></td>
-  <td class="sec">R1<span class="cq"> 06:30</span></td>
-  <td class="n">23<i class="rv">25</i></td>
-  <td class="n">5.89<i class="rv">5.77</i></td>
-  <td class="n sec">—<i class="rv">563</i></td>
-  <td class="n sec">778<i class="rv">915</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="alec deckers" data-cuota="1.31" data-prob="0.387"
-  data-valor="0.51"
-  data-rival="diogo morais" data-torneo="m25 setubal"
-  data-etapa="R2" data-edad="26" data-wtn="5.69"
-  data-itf="1037" data-atp="542" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Alec%20Deckers" target="_blank" rel="noopener">Alec Deckers</a><span class="mk"> (8)</span></td>
-  <td class="n cuota">1.31</td>
-  <td class="n"><span class="pb ">39%</span></td>
-  <td class="n"><span class="val malo">0.51</span></td>
-  <td class="sec">Diogo Morais<span class="mk"> (9)</span> <span class="cq">3.05</span></td>
-  <td class="sec">M25 Setubal <span class="cq">POR</span></td>
-  <td class="sec">R2<span class="cq"> 06:30</span></td>
-  <td class="n">26<i class="rv">22</i></td>
-  <td class="n">5.69<i class="rv">6.24</i></td>
-  <td class="n sec">1037<i class="rv">606</i></td>
-  <td class="n sec">542<i class="rv">1838</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="diogo morais" data-cuota="3.05" data-prob="0.613"
-  data-valor="1.87"
-  data-rival="alec deckers" data-torneo="m25 setubal"
-  data-etapa="R2" data-edad="22" data-wtn="6.24"
-  data-itf="606" data-atp="1838" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Diogo%20Morais" target="_blank" rel="noopener">Diogo Morais</a><span class="mk"> (9)</span></td>
-  <td class="n cuota">3.05</td>
-  <td class="n"><span class="pb ">61%</span></td>
-  <td class="n"><span class="val malo">1.87</span></td>
-  <td class="sec">Alec Deckers<span class="mk"> (8)</span> <span class="cq">1.31</span></td>
-  <td class="sec">M25 Setubal <span class="cq">POR</span></td>
-  <td class="sec">R2<span class="cq"> 06:30</span></td>
-  <td class="n">22<i class="rv">26</i></td>
-  <td class="n">6.24<i class="rv">5.69</i></td>
-  <td class="n sec">606<i class="rv">1037</i></td>
-  <td class="n sec">1838<i class="rv">542</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="claus piening" data-cuota="9" data-prob="0.299"
-  data-valor="2.69"
-  data-rival="kalin ivanovski" data-torneo="m25 pardubice"
-  data-etapa="R1" data-edad="22" data-wtn="7.3"
-  data-itf="1135" data-atp="1923" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Claus%20Piening" target="_blank" rel="noopener">Claus Piening</a><span class="mk"> (10)</span></td>
-  <td class="n cuota">9 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
-  <td class="n"><span class="pb ">30%</span></td>
-  <td class="n"><span class="val malo">2.69</span></td>
-  <td class="sec">Kalin Ivanovski<span class="mk"></span> <span class="cq">1.032</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">22<i class="rv">22</i></td>
-  <td class="n">7.3<i class="rv">5.44</i></td>
-  <td class="n sec">1135<i class="rv">—</i></td>
-  <td class="n sec">1923<i class="rv">757</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="kalin ivanovski" data-cuota="1.032" data-prob="0.701"
-  data-valor="0.72"
-  data-rival="claus piening" data-torneo="m25 pardubice"
-  data-etapa="R1" data-edad="22" data-wtn="5.44"
-  data-itf="" data-atp="757" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Kalin%20Ivanovski" target="_blank" rel="noopener">Kalin Ivanovski</a><span class="mk"></span></td>
-  <td class="n cuota">1.032 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
-  <td class="n"><span class="pb media">70%</span></td>
-  <td class="n"><span class="val malo">0.72</span></td>
-  <td class="sec">Claus Piening<span class="mk"> (10)</span> <span class="cq">9</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">22<i class="rv">22</i></td>
-  <td class="n">5.44<i class="rv">7.3</i></td>
-  <td class="n sec">—<i class="rv">1135</i></td>
-  <td class="n sec">757<i class="rv">1923</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="jonas gundacker" data-cuota="3.65" data-prob="0.427"
-  data-valor="1.56"
-  data-rival="lukas pokorny" data-torneo="m25 pardubice"
-  data-etapa="R2" data-edad="24" data-wtn="6.35"
-  data-itf="90" data-atp="1072" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Jonas%20GUNDACKER" target="_blank" rel="noopener">Jonas GUNDACKER</a><span class="mk"></span></td>
-  <td class="n cuota">3.65</td>
-  <td class="n"><span class="pb ">43%</span></td>
-  <td class="n"><span class="val malo">1.56</span></td>
-  <td class="sec">Lukas Pokorny<span class="mk"></span> <span class="cq">1.22</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R2<span class="cq"> 07:00</span></td>
-  <td class="n">24<i class="rv">24</i></td>
-  <td class="n">6.35<i class="rv">5.65</i></td>
-  <td class="n sec">90<i class="rv">—</i></td>
-  <td class="n sec">1072<i class="rv">614</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="lukas pokorny" data-cuota="1.22" data-prob="0.573"
-  data-valor="0.70"
-  data-rival="jonas gundacker" data-torneo="m25 pardubice"
-  data-etapa="R2" data-edad="24" data-wtn="5.65"
-  data-itf="" data-atp="614" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Lukas%20Pokorny" target="_blank" rel="noopener">Lukas Pokorny</a><span class="mk"></span></td>
-  <td class="n cuota">1.22</td>
-  <td class="n"><span class="pb ">57%</span></td>
-  <td class="n"><span class="val malo">0.70</span></td>
-  <td class="sec">Jonas GUNDACKER<span class="mk"></span> <span class="cq">3.65</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R2<span class="cq"> 07:00</span></td>
-  <td class="n">24<i class="rv">24</i></td>
-  <td class="n">5.65<i class="rv">6.35</i></td>
-  <td class="n sec">—<i class="rv">90</i></td>
-  <td class="n sec">614<i class="rv">1072</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="jiri cizek" data-cuota="1.6" data-prob="0.516"
-  data-valor="0.83"
-  data-rival="petros tsitsipas" data-torneo="m25 pardubice"
-  data-etapa="R2" data-edad="21" data-wtn="6.36"
-  data-itf="37" data-atp="1227" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Jiri%20Cizek" target="_blank" rel="noopener">Jiri Cizek</a><span class="mk"></span></td>
-  <td class="n cuota">1.6</td>
-  <td class="n"><span class="pb ">52%</span></td>
-  <td class="n"><span class="val malo">0.83</span></td>
-  <td class="sec">Petros Tsitsipas<span class="mk"></span> <span class="cq">2.15</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R2<span class="cq"> 07:00</span></td>
-  <td class="n">21<i class="rv">26</i></td>
-  <td class="n">6.36<i class="rv">6.08</i></td>
-  <td class="n sec">37<i class="rv">—</i></td>
-  <td class="n sec">1227<i class="rv">980</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="petros tsitsipas" data-cuota="2.15" data-prob="0.484"
-  data-valor="1.04"
-  data-rival="jiri cizek" data-torneo="m25 pardubice"
-  data-etapa="R2" data-edad="26" data-wtn="6.08"
-  data-itf="" data-atp="980" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Petros%20Tsitsipas" target="_blank" rel="noopener">Petros Tsitsipas</a><span class="mk"></span></td>
-  <td class="n cuota">2.15</td>
-  <td class="n"><span class="pb ">48%</span></td>
-  <td class="n"><span class="val malo">1.04</span></td>
-  <td class="sec">Jiri Cizek<span class="mk"></span> <span class="cq">1.6</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R2<span class="cq"> 07:00</span></td>
-  <td class="n">26<i class="rv">21</i></td>
-  <td class="n">6.08<i class="rv">6.36</i></td>
-  <td class="n sec">—<i class="rv">37</i></td>
-  <td class="n sec">980<i class="rv">1227</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="liam branger" data-cuota="2.35" data-prob="0.341"
-  data-valor="0.80"
-  data-rival="etienne donnet" data-torneo="m15 monastir"
-  data-etapa="R1" data-edad="25" data-wtn="6.02"
-  data-itf="43" data-atp="1131" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Liam%20Branger" target="_blank" rel="noopener">Liam Branger</a><span class="mk"></span></td>
-  <td class="n cuota">2.35</td>
-  <td class="n"><span class="pb ">34%</span></td>
-  <td class="n"><span class="val malo">0.80</span></td>
-  <td class="sec">Etienne Donnet<span class="mk"> (5)</span> <span class="cq">1.5</span></td>
-  <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
-  <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">25<i class="rv">25</i></td>
-  <td class="n">6.02<i class="rv">4.58</i></td>
-  <td class="n sec">43<i class="rv">—</i></td>
-  <td class="n sec">1131<i class="rv">624</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="etienne donnet" data-cuota="1.5" data-prob="0.659"
-  data-valor="0.99"
-  data-rival="liam branger" data-torneo="m15 monastir"
-  data-etapa="R1" data-edad="25" data-wtn="4.58"
-  data-itf="" data-atp="624" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Etienne%20Donnet" target="_blank" rel="noopener">Etienne Donnet</a><span class="mk"> (5)</span></td>
-  <td class="n cuota">1.5</td>
-  <td class="n"><span class="pb ">66%</span></td>
-  <td class="n"><span class="val malo">0.99</span></td>
-  <td class="sec">Liam Branger<span class="mk"></span> <span class="cq">2.35</span></td>
-  <td class="sec">M15 Monastir <span class="cq">TUN</span></td>
-  <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">25<i class="rv">25</i></td>
-  <td class="n">4.58<i class="rv">6.02</i></td>
-  <td class="n sec">—<i class="rv">43</i></td>
-  <td class="n sec">624<i class="rv">1131</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="lorenzo giustino" data-cuota="1.62" data-prob="0.585"
-  data-valor="0.95"
-  data-rival="gerard campana lee" data-torneo="m25 sabadell"
-  data-etapa="R1" data-edad="35" data-wtn="4.45"
-  data-itf="" data-atp="201" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Lorenzo%20Giustino" target="_blank" rel="noopener">Lorenzo Giustino</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.62</td>
-  <td class="n"><span class="pb ">59%</span></td>
-  <td class="n"><span class="val malo">0.95</span></td>
-  <td class="sec">Gerard Campana Lee<span class="mk"> (6)</span> <span class="cq">2.12</span></td>
-  <td class="sec">M25 Sabadell <span class="cq">ESP</span></td>
-  <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">35<i class="rv">22</i></td>
-  <td class="n">4.45<i class="rv">5.2</i></td>
-  <td class="n sec">—<i class="rv">1420</i></td>
-  <td class="n sec">201<i class="rv">541</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="gerard campana lee" data-cuota="2.12" data-prob="0.415"
-  data-valor="0.88"
-  data-rival="lorenzo giustino" data-torneo="m25 sabadell"
-  data-etapa="R1" data-edad="22" data-wtn="5.2"
-  data-itf="1420" data-atp="541" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Gerard%20Campana%20Lee" target="_blank" rel="noopener">Gerard Campana Lee</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">2.12</td>
-  <td class="n"><span class="pb ">42%</span></td>
-  <td class="n"><span class="val malo">0.88</span></td>
-  <td class="sec">Lorenzo Giustino<span class="mk"> (1)</span> <span class="cq">1.62</span></td>
-  <td class="sec">M25 Sabadell <span class="cq">ESP</span></td>
-  <td class="sec">R1<span class="cq"> 07:00</span></td>
-  <td class="n">22<i class="rv">35</i></td>
-  <td class="n">5.2<i class="rv">4.45</i></td>
-  <td class="n sec">1420<i class="rv">—</i></td>
-  <td class="n sec">541<i class="rv">201</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="lilian marmousez" data-cuota="1.09" data-prob="0.676"
-  data-valor="0.74"
-  data-rival="luka talan lopatic" data-torneo="m25 sabadell"
-  data-etapa="R2" data-edad="24" data-wtn="4.41"
-  data-itf="" data-atp="512" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Lilian%20Marmousez" target="_blank" rel="noopener">Lilian Marmousez</a><span class="mk"> (7)</span></td>
-  <td class="n cuota">1.09</td>
-  <td class="n"><span class="pb ">68%</span></td>
-  <td class="n"><span class="val malo">0.74</span></td>
-  <td class="sec">Luka Talan Lopatic<span class="mk"></span> <span class="cq">5.8</span></td>
-  <td class="sec">M25 Sabadell <span class="cq">ESP</span></td>
-  <td class="sec">R2<span class="cq"> 07:30</span></td>
-  <td class="n">24<i class="rv">19</i></td>
-  <td class="n">4.41<i class="rv">6.17</i></td>
-  <td class="n sec">—<i class="rv">769</i></td>
-  <td class="n sec">512<i class="rv">1029</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="luka talan lopatic" data-cuota="5.8" data-prob="0.324"
-  data-valor="1.88"
-  data-rival="lilian marmousez" data-torneo="m25 sabadell"
-  data-etapa="R2" data-edad="19" data-wtn="6.17"
-  data-itf="769" data-atp="1029" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Luka%20Talan%20Lopatic" target="_blank" rel="noopener">Luka Talan Lopatic</a><span class="mk"></span></td>
-  <td class="n cuota">5.8</td>
-  <td class="n"><span class="pb ">32%</span></td>
-  <td class="n"><span class="val malo">1.88</span></td>
-  <td class="sec">Lilian Marmousez<span class="mk"> (7)</span> <span class="cq">1.09</span></td>
-  <td class="sec">M25 Sabadell <span class="cq">ESP</span></td>
-  <td class="sec">R2<span class="cq"> 07:30</span></td>
-  <td class="n">19<i class="rv">24</i></td>
-  <td class="n">6.17<i class="rv">4.41</i></td>
-  <td class="n sec">769<i class="rv">—</i></td>
-  <td class="n sec">1029<i class="rv">512</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="arthur nagel" data-cuota="1.14" data-prob="0.327"
-  data-valor="0.37"
-  data-rival="timeo trufelli" data-torneo="m15 forbach"
-  data-etapa="R1" data-edad="23" data-wtn="5.34"
-  data-itf="" data-atp="359" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Arthur%20Nagel" target="_blank" rel="noopener">Arthur Nagel</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.14</td>
-  <td class="n"><span class="pb ">33%</span></td>
-  <td class="n"><span class="val malo">0.37</span></td>
-  <td class="sec">Timeo Trufelli<span class="mk"></span> <span class="cq">4.75</span></td>
-  <td class="sec">M15 Forbach <span class="cq">FRA</span></td>
-  <td class="sec">R1<span class="cq"> 08:00</span></td>
-  <td class="n">23<i class="rv">18</i></td>
-  <td class="n">5.34<i class="rv">6.35</i></td>
-  <td class="n sec">—<i class="rv">23</i></td>
-  <td class="n sec">359<i class="rv">1244</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="timeo trufelli" data-cuota="4.75" data-prob="0.673"
-  data-valor="3.20"
-  data-rival="arthur nagel" data-torneo="m15 forbach"
-  data-etapa="R1" data-edad="18" data-wtn="6.35"
-  data-itf="23" data-atp="1244" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Timeo%20Trufelli" target="_blank" rel="noopener">Timeo Trufelli</a><span class="mk"></span></td>
-  <td class="n cuota">4.75</td>
-  <td class="n"><span class="pb ">67%</span></td>
-  <td class="n"><span class="val malo">3.20</span></td>
-  <td class="sec">Arthur Nagel<span class="mk"> (1)</span> <span class="cq">1.14</span></td>
-  <td class="sec">M15 Forbach <span class="cq">FRA</span></td>
-  <td class="sec">R1<span class="cq"> 08:00</span></td>
-  <td class="n">18<i class="rv">23</i></td>
-  <td class="n">6.35<i class="rv">5.34</i></td>
-  <td class="n sec">23<i class="rv">—</i></td>
-  <td class="n sec">1244<i class="rv">359</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="robin bertrand" data-cuota="2.55" data-prob="0.378"
-  data-valor="0.96"
-  data-rival="philip henning" data-torneo="m25 setubal"
-  data-etapa="R1" data-edad="23" data-wtn="5.55"
-  data-itf="" data-atp="409" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Robin%20Bertrand" target="_blank" rel="noopener">Robin Bertrand</a><span class="mk"> (5)</span></td>
-  <td class="n cuota">2.55</td>
-  <td class="n"><span class="pb ">38%</span></td>
-  <td class="n"><span class="val malo">0.96</span></td>
-  <td class="sec">Philip Henning<span class="mk"> (2)</span> <span class="cq">1.44</span></td>
-  <td class="sec">M25 Setubal <span class="cq">POR</span></td>
-  <td class="sec">R1<span class="cq"> 08:00</span></td>
-  <td class="n">23<i class="rv">26</i></td>
-  <td class="n">5.55<i class="rv">4.46</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">409<i class="rv">276</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="philip henning" data-cuota="1.44" data-prob="0.622"
-  data-valor="0.90"
-  data-rival="robin bertrand" data-torneo="m25 setubal"
-  data-etapa="R1" data-edad="26" data-wtn="4.46"
-  data-itf="" data-atp="276" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Philip%20Henning" target="_blank" rel="noopener">Philip Henning</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">1.44</td>
+  <td class="n cuota">2.85</td>
   <td class="n"><span class="pb ">62%</span></td>
-  <td class="n"><span class="val malo">0.90</span></td>
-  <td class="sec">Robin Bertrand<span class="mk"> (5)</span> <span class="cq">2.55</span></td>
-  <td class="sec">M25 Setubal <span class="cq">POR</span></td>
-  <td class="sec">R1<span class="cq"> 08:00</span></td>
-  <td class="n">26<i class="rv">23</i></td>
-  <td class="n">4.46<i class="rv">5.55</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">276<i class="rv">409</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="inaki montes-de la torre" data-cuota="1.35" data-prob="0.556"
-  data-valor="0.75"
-  data-rival="lui maxted" data-torneo="m25 setubal"
-  data-etapa="R1" data-edad="24" data-wtn="4.76"
-  data-itf="" data-atp="274" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Inaki%20Montes-De%20La%20Torre" target="_blank" rel="noopener">Inaki Montes-De La Torre</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">1.35</td>
-  <td class="n"><span class="pb ">56%</span></td>
-  <td class="n"><span class="val malo">0.75</span></td>
-  <td class="sec">Lui Maxted<span class="mk"> (6)</span> <span class="cq">2.87</span></td>
-  <td class="sec">M25 Setubal <span class="cq">POR</span></td>
-  <td class="sec">R1<span class="cq"> 08:00</span></td>
-  <td class="n">24<i class="rv">23</i></td>
-  <td class="n">4.76<i class="rv">5.25</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">274<i class="rv">360</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="lui maxted" data-cuota="2.87" data-prob="0.444"
-  data-valor="1.27"
-  data-rival="inaki montes-de la torre" data-torneo="m25 setubal"
-  data-etapa="R1" data-edad="23" data-wtn="5.25"
-  data-itf="" data-atp="360" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Lui%20Maxted" target="_blank" rel="noopener">Lui Maxted</a><span class="mk"> (6)</span></td>
-  <td class="n cuota">2.87</td>
-  <td class="n"><span class="pb ">44%</span></td>
-  <td class="n"><span class="val malo">1.27</span></td>
-  <td class="sec">Inaki Montes-De La Torre<span class="mk"> (1)</span> <span class="cq">1.35</span></td>
-  <td class="sec">M25 Setubal <span class="cq">POR</span></td>
-  <td class="sec">R1<span class="cq"> 08:00</span></td>
-  <td class="n">23<i class="rv">24</i></td>
-  <td class="n">5.25<i class="rv">4.76</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">360<i class="rv">274</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="sander jong" data-cuota="1.32" data-prob="0.557"
-  data-valor="0.74"
-  data-rival="ioannis xilas" data-torneo="m25 sabadell"
-  data-etapa="R1" data-edad="26" data-wtn="5.42"
-  data-itf="" data-atp="558" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Sander%20Jong" target="_blank" rel="noopener">Sander Jong</a><span class="mk"> (8, PR)</span></td>
-  <td class="n cuota">1.32</td>
-  <td class="n"><span class="pb ">56%</span></td>
-  <td class="n"><span class="val malo">0.74</span></td>
-  <td class="sec">Ioannis Xilas<span class="mk"> (2)</span> <span class="cq">3</span></td>
-  <td class="sec">M25 Sabadell <span class="cq">ESP</span></td>
-  <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">26<i class="rv">25</i></td>
-  <td class="n">5.42<i class="rv">5.23</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">558<i class="rv">425</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="ioannis xilas" data-cuota="3" data-prob="0.443"
-  data-valor="1.33"
-  data-rival="sander jong" data-torneo="m25 sabadell"
-  data-etapa="R1" data-edad="25" data-wtn="5.23"
-  data-itf="" data-atp="425" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Ioannis%20Xilas" target="_blank" rel="noopener">Ioannis Xilas</a><span class="mk"> (2)</span></td>
-  <td class="n cuota">3</td>
-  <td class="n"><span class="pb ">44%</span></td>
-  <td class="n"><span class="val malo">1.33</span></td>
-  <td class="sec">Sander Jong<span class="mk"> (8, PR)</span> <span class="cq">1.32</span></td>
-  <td class="sec">M25 Sabadell <span class="cq">ESP</span></td>
-  <td class="sec">R1<span class="cq"> 08:30</span></td>
-  <td class="n">25<i class="rv">26</i></td>
-  <td class="n">5.23<i class="rv">5.42</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">425<i class="rv">558</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="flynn thomas" data-cuota="1.45" data-prob="0.76"
-  data-valor="1.10"
-  data-rival="theo herrmann" data-torneo="m15 forbach"
-  data-etapa="R1" data-edad="18" data-wtn="6.12"
-  data-itf="" data-atp="1230" data-jr="1" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Flynn%20Thomas" target="_blank" rel="noopener">Flynn Thomas</a><span class="mk"> (JR)</span></td>
-  <td class="n cuota">1.45</td>
-  <td class="n"><span class="pb media">76%</span></td>
-  <td class="n"><span class="val justo">1.10</span></td>
-  <td class="sec">Theo Herrmann<span class="mk"></span> <span class="cq">2.52</span></td>
-  <td class="sec">M15 Forbach <span class="cq">FRA</span></td>
-  <td class="sec">R1<span class="cq"> 11:00</span></td>
-  <td class="n">18<i class="rv">21</i></td>
-  <td class="n">6.12<i class="rv">6.44</i></td>
-  <td class="n sec">—<i class="rv">313</i></td>
-  <td class="n sec">1230<i class="rv">1225</i></td>
-  <td class="n">sí</td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="theo herrmann" data-cuota="2.52" data-prob="0.24"
-  data-valor="0.60"
-  data-rival="flynn thomas" data-torneo="m15 forbach"
-  data-etapa="R1" data-edad="21" data-wtn="6.44"
-  data-itf="313" data-atp="1225" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Theo%20Herrmann" target="_blank" rel="noopener">Theo Herrmann</a><span class="mk"></span></td>
-  <td class="n cuota">2.52</td>
-  <td class="n"><span class="pb ">24%</span></td>
-  <td class="n"><span class="val malo">0.60</span></td>
-  <td class="sec">Flynn Thomas<span class="mk"> (JR)</span> <span class="cq">1.45</span></td>
-  <td class="sec">M15 Forbach <span class="cq">FRA</span></td>
-  <td class="sec">R1<span class="cq"> 11:00</span></td>
-  <td class="n">21<i class="rv">18</i></td>
-  <td class="n">6.44<i class="rv">6.12</i></td>
-  <td class="n sec">313<i class="rv">—</i></td>
-  <td class="n sec">1225<i class="rv">1230</i></td>
-  <td class="n"></td>
-  <td class="n">sí</td>
-</tr>
-<tr
-  data-jugador="ivan gakhov" data-cuota="1.65" data-prob="0.689"
-  data-valor="1.14"
-  data-rival="ignacio parisca" data-torneo="m25 sabadell"
-  data-etapa="R1" data-edad="30" data-wtn="5.44"
-  data-itf="" data-atp="476" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Ivan%20Gakhov" target="_blank" rel="noopener">Ivan Gakhov</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">1.65</td>
-  <td class="n"><span class="pb ">69%</span></td>
-  <td class="n"><span class="val malo">1.14</span></td>
-  <td class="sec">Ignacio Parisca<span class="mk"></span> <span class="cq">2.07</span></td>
-  <td class="sec">M25 Sabadell <span class="cq">ESP</span></td>
-  <td class="sec">R1<span class="cq"> 11:00</span></td>
-  <td class="n">30<i class="rv">21</i></td>
-  <td class="n">5.44<i class="rv">5.79</i></td>
-  <td class="n sec">—<i class="rv">707</i></td>
-  <td class="n sec">476<i class="rv">721</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="ignacio parisca" data-cuota="2.07" data-prob="0.311"
-  data-valor="0.64"
-  data-rival="ivan gakhov" data-torneo="m25 sabadell"
-  data-etapa="R1" data-edad="21" data-wtn="5.79"
-  data-itf="707" data-atp="721" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Ignacio%20Parisca" target="_blank" rel="noopener">Ignacio Parisca</a><span class="mk"></span></td>
-  <td class="n cuota">2.07</td>
-  <td class="n"><span class="pb ">31%</span></td>
-  <td class="n"><span class="val malo">0.64</span></td>
-  <td class="sec">Ivan Gakhov<span class="mk"> (3)</span> <span class="cq">1.65</span></td>
-  <td class="sec">M25 Sabadell <span class="cq">ESP</span></td>
-  <td class="sec">R1<span class="cq"> 11:00</span></td>
-  <td class="n">21<i class="rv">30</i></td>
-  <td class="n">5.79<i class="rv">5.44</i></td>
-  <td class="n sec">707<i class="rv">—</i></td>
-  <td class="n sec">721<i class="rv">476</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="david petrofsky" data-cuota="11" data-prob="0.271"
-  data-valor="2.98"
-  data-rival="matyas cerny" data-torneo="m25 pardubice"
-  data-etapa="R2" data-edad="19" data-wtn="7.7"
-  data-itf="1294" data-atp="" data-jr="0" data-local="1">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=David%20Petrofsky" target="_blank" rel="noopener">David Petrofsky</a><span class="mk"></span></td>
-  <td class="n cuota">11 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
-  <td class="n"><span class="pb ">27%</span></td>
-  <td class="n"><span class="val malo">2.98</span></td>
-  <td class="sec">Matyas Cerny<span class="mk"></span> <span class="cq">1.016</span></td>
+  <td class="n"><span class="val malo">1.77</span></td>
+  <td class="sec">Matyas Cerny<span class="mk"></span> <span class="cq">1.36</span></td>
   <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R2<span class="cq"> 11:16</span></td>
-  <td class="n">19<i class="rv">25</i></td>
-  <td class="n">7.7<i class="rv">5.54</i></td>
-  <td class="n sec">1294<i class="rv">—</i></td>
-  <td class="n sec">—<i class="rv">780</i></td>
+  <td class="sec">R2<span class="cq"> 04:30</span></td>
+  <td class="n">23<i class="rv">25</i></td>
+  <td class="n">6.16<i class="rv">5.54</i></td>
+  <td class="n sec">447<i class="rv">—</i></td>
+  <td class="n sec">1549<i class="rv">780</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="matyas cerny" data-cuota="1.016" data-prob="0.729"
-  data-valor="0.74"
-  data-rival="david petrofsky" data-torneo="m25 pardubice"
+  data-jugador="matyas cerny" data-cuota="1.36" data-prob="0.379"
+  data-valor="0.52"
+  data-rival="stepan baum" data-torneo="m25 pardubice"
   data-etapa="R2" data-edad="25" data-wtn="5.54"
   data-itf="" data-atp="780" data-jr="0" data-local="1">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Matyas%20Cerny" target="_blank" rel="noopener">Matyas Cerny</a><span class="mk"></span></td>
-  <td class="n cuota">1.016 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
-  <td class="n"><span class="pb media">73%</span></td>
-  <td class="n"><span class="val malo">0.74</span></td>
-  <td class="sec">David Petrofsky<span class="mk"></span> <span class="cq">11</span></td>
+  <td class="n cuota">1.36</td>
+  <td class="n"><span class="pb ">38%</span></td>
+  <td class="n"><span class="val malo">0.52</span></td>
+  <td class="sec">Stepan Baum<span class="mk"> (2)</span> <span class="cq">2.85</span></td>
   <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R2<span class="cq"> 11:16</span></td>
-  <td class="n">25<i class="rv">19</i></td>
-  <td class="n">5.54<i class="rv">7.7</i></td>
-  <td class="n sec">—<i class="rv">1294</i></td>
-  <td class="n sec">780<i class="rv">—</i></td>
+  <td class="sec">R2<span class="cq"> 04:30</span></td>
+  <td class="n">25<i class="rv">23</i></td>
+  <td class="n">5.54<i class="rv">6.16</i></td>
+  <td class="n sec">—<i class="rv">447</i></td>
+  <td class="n sec">780<i class="rv">1549</i></td>
   <td class="n"></td>
   <td class="n">sí</td>
 </tr>
 <tr
-  data-jugador="rudolf molleker" data-cuota="1.16" data-prob="0.693"
-  data-valor="0.80"
-  data-rival="heorhii shylov" data-torneo="m25 pardubice"
+  data-jugador="claus piening" data-cuota="3.65" data-prob="0.259"
+  data-valor="0.95"
+  data-rival="jiri cizek" data-torneo="m25 pardubice"
+  data-etapa="R2" data-edad="22" data-wtn="7.3"
+  data-itf="1135" data-atp="1923" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Claus%20Piening" target="_blank" rel="noopener">Claus Piening</a><span class="mk"> (10)</span></td>
+  <td class="n cuota">3.65</td>
+  <td class="n"><span class="pb ">26%</span></td>
+  <td class="n"><span class="val malo">0.95</span></td>
+  <td class="sec">Jiri Cizek<span class="mk"></span> <span class="cq">1.22</span></td>
+  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
+  <td class="sec">R2<span class="cq"> 04:30</span></td>
+  <td class="n">22<i class="rv">21</i></td>
+  <td class="n">7.3<i class="rv">6.36</i></td>
+  <td class="n sec">1135<i class="rv">37</i></td>
+  <td class="n sec">1923<i class="rv">1227</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="jiri cizek" data-cuota="1.22" data-prob="0.741"
+  data-valor="0.90"
+  data-rival="claus piening" data-torneo="m25 pardubice"
+  data-etapa="R2" data-edad="21" data-wtn="6.36"
+  data-itf="37" data-atp="1227" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Jiri%20Cizek" target="_blank" rel="noopener">Jiri Cizek</a><span class="mk"></span></td>
+  <td class="n cuota">1.22</td>
+  <td class="n"><span class="pb media">74%</span></td>
+  <td class="n"><span class="val malo">0.90</span></td>
+  <td class="sec">Claus Piening<span class="mk"> (10)</span> <span class="cq">3.65</span></td>
+  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
+  <td class="sec">R2<span class="cq"> 04:30</span></td>
+  <td class="n">21<i class="rv">22</i></td>
+  <td class="n">6.36<i class="rv">7.3</i></td>
+  <td class="n sec">37<i class="rv">1135</i></td>
+  <td class="n sec">1227<i class="rv">1923</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="dominik recek" data-cuota="2.07" data-prob="0.548"
+  data-valor="1.13"
+  data-rival="lukas pokorny" data-torneo="m25 pardubice"
+  data-etapa="Q1" data-edad="31" data-wtn="5.63"
+  data-itf="226" data-atp="855" data-jr="0" data-local="1">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=DOMINIK%20Recek" target="_blank" rel="noopener">DOMINIK Recek</a><span class="mk"></span></td>
+  <td class="n cuota">2.07</td>
+  <td class="n"><span class="pb ">55%</span></td>
+  <td class="n"><span class="val malo">1.13</span></td>
+  <td class="sec">Lukas Pokorny<span class="mk"></span> <span class="cq">1.65</span></td>
+  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
+  <td class="sec">Q1<span class="cq"> 04:30</span></td>
+  <td class="n">31<i class="rv">24</i></td>
+  <td class="n">5.63<i class="rv">5.65</i></td>
+  <td class="n sec">226<i class="rv">—</i></td>
+  <td class="n sec">855<i class="rv">614</i></td>
+  <td class="n"></td>
+  <td class="n">sí</td>
+</tr>
+<tr
+  data-jugador="lukas pokorny" data-cuota="1.65" data-prob="0.452"
+  data-valor="0.75"
+  data-rival="dominik recek" data-torneo="m25 pardubice"
+  data-etapa="Q1" data-edad="24" data-wtn="5.65"
+  data-itf="" data-atp="614" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Lukas%20Pokorny" target="_blank" rel="noopener">Lukas Pokorny</a><span class="mk"></span></td>
+  <td class="n cuota">1.65</td>
+  <td class="n"><span class="pb ">45%</span></td>
+  <td class="n"><span class="val malo">0.75</span></td>
+  <td class="sec">DOMINIK Recek<span class="mk"></span> <span class="cq">2.07</span></td>
+  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
+  <td class="sec">Q1<span class="cq"> 04:30</span></td>
+  <td class="n">24<i class="rv">31</i></td>
+  <td class="n">5.65<i class="rv">5.63</i></td>
+  <td class="n sec">—<i class="rv">226</i></td>
+  <td class="n sec">614<i class="rv">855</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="rudolf molleker" data-cuota="1.65" data-prob="0.533"
+  data-valor="0.88"
+  data-rival="sebastian dominko" data-torneo="m25 pardubice"
   data-etapa="R1" data-edad="26" data-wtn="4.89"
   data-itf="" data-atp="458" data-jr="0" data-local="0">
   <td class="nom"><a href="https://lat.betano.com/search/?query=Rudolf%20Molleker" target="_blank" rel="noopener">Rudolf Molleker</a><span class="mk"> (7)</span></td>
-  <td class="n cuota">1.16</td>
-  <td class="n"><span class="pb ">69%</span></td>
-  <td class="n"><span class="val malo">0.80</span></td>
-  <td class="sec">Heorhii Shylov<span class="mk"> (1)</span> <span class="cq">4.35</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R1<span class="cq"> 11:41</span></td>
-  <td class="n">26<i class="rv">19</i></td>
-  <td class="n">4.89<i class="rv">6.67</i></td>
-  <td class="n sec">—<i class="rv">832</i></td>
-  <td class="n sec">458<i class="rv">1462</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="heorhii shylov" data-cuota="4.35" data-prob="0.307"
-  data-valor="1.34"
-  data-rival="rudolf molleker" data-torneo="m25 pardubice"
-  data-etapa="R1" data-edad="19" data-wtn="6.67"
-  data-itf="832" data-atp="1462" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Heorhii%20Shylov" target="_blank" rel="noopener">Heorhii Shylov</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">4.35</td>
-  <td class="n"><span class="pb ">31%</span></td>
-  <td class="n"><span class="val malo">1.34</span></td>
-  <td class="sec">Rudolf Molleker<span class="mk"> (7)</span> <span class="cq">1.16</span></td>
-  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
-  <td class="sec">R1<span class="cq"> 11:41</span></td>
-  <td class="n">19<i class="rv">26</i></td>
-  <td class="n">6.67<i class="rv">4.89</i></td>
-  <td class="n sec">832<i class="rv">—</i></td>
-  <td class="n sec">1462<i class="rv">458</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="henry bernet" data-cuota="1.22" data-prob="0.759"
-  data-valor="0.93"
-  data-rival="andreja petrovic" data-torneo="m25 falun"
-  data-etapa="R2" data-edad="19" data-wtn="4.7"
-  data-itf="" data-atp="428" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Henry%20Bernet" target="_blank" rel="noopener">Henry Bernet</a><span class="mk"> (3)</span></td>
-  <td class="n cuota">1.22</td>
-  <td class="n"><span class="pb media">76%</span></td>
-  <td class="n"><span class="val malo">0.93</span></td>
-  <td class="sec">Andreja Petrovic<span class="mk"> (5)</span> <span class="cq">3.65</span></td>
-  <td class="sec">M25 Falun <span class="cq">SWE</span></td>
-  <td class="sec">R2<span class="cq"> 12:00</span></td>
-  <td class="n">19<i class="rv">26</i></td>
-  <td class="n">4.7<i class="rv">5.93</i></td>
-  <td class="n sec">—<i class="rv">224</i></td>
-  <td class="n sec">428<i class="rv">678</i></td>
-  <td class="n"></td>
-  <td class="n"></td>
-</tr>
-<tr
-  data-jugador="andreja petrovic" data-cuota="3.65" data-prob="0.241"
-  data-valor="0.88"
-  data-rival="henry bernet" data-torneo="m25 falun"
-  data-etapa="R2" data-edad="26" data-wtn="5.93"
-  data-itf="224" data-atp="678" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Andreja%20Petrovic" target="_blank" rel="noopener">Andreja Petrovic</a><span class="mk"> (5)</span></td>
-  <td class="n cuota">3.65</td>
-  <td class="n"><span class="pb ">24%</span></td>
+  <td class="n cuota">1.65</td>
+  <td class="n"><span class="pb ">53%</span></td>
   <td class="n"><span class="val malo">0.88</span></td>
-  <td class="sec">Henry Bernet<span class="mk"> (3)</span> <span class="cq">1.22</span></td>
-  <td class="sec">M25 Falun <span class="cq">SWE</span></td>
-  <td class="sec">R2<span class="cq"> 12:00</span></td>
-  <td class="n">26<i class="rv">19</i></td>
-  <td class="n">5.93<i class="rv">4.7</i></td>
-  <td class="n sec">224<i class="rv">—</i></td>
-  <td class="n sec">678<i class="rv">428</i></td>
+  <td class="sec">Sebastian Dominko<span class="mk"></span> <span class="cq">2.07</span></td>
+  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
+  <td class="sec">R1<span class="cq"> 04:30</span></td>
+  <td class="n">26<i class="rv">23</i></td>
+  <td class="n">4.89<i class="rv">5.18</i></td>
+  <td class="n sec">—<i class="rv">882</i></td>
+  <td class="n sec">458<i class="rv">966</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="eero vasa" data-cuota="4.05" data-prob="0.247"
-  data-valor="1.00"
-  data-rival="samir banerjee" data-torneo="m25 falun"
-  data-etapa="R2" data-edad="29" data-wtn="5.43"
-  data-itf="" data-atp="479" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Eero%20Vasa" target="_blank" rel="noopener">Eero Vasa</a><span class="mk"> (1)</span></td>
-  <td class="n cuota">4.05</td>
-  <td class="n"><span class="pb ">25%</span></td>
-  <td class="n"><span class="val malo">1.00</span></td>
-  <td class="sec">Samir Banerjee<span class="mk"> (4)</span> <span class="cq">1.19</span></td>
-  <td class="sec">M25 Falun <span class="cq">SWE</span></td>
-  <td class="sec">R2<span class="cq"> 12:00</span></td>
-  <td class="n">29<i class="rv">23</i></td>
-  <td class="n">5.43<i class="rv">5.52</i></td>
-  <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">479<i class="rv">534</i></td>
+  data-jugador="sebastian dominko" data-cuota="2.07" data-prob="0.467"
+  data-valor="0.97"
+  data-rival="rudolf molleker" data-torneo="m25 pardubice"
+  data-etapa="R1" data-edad="23" data-wtn="5.18"
+  data-itf="882" data-atp="966" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Sebastian%20Dominko" target="_blank" rel="noopener">Sebastian Dominko</a><span class="mk"></span></td>
+  <td class="n cuota">2.07</td>
+  <td class="n"><span class="pb ">47%</span></td>
+  <td class="n"><span class="val malo">0.97</span></td>
+  <td class="sec">Rudolf Molleker<span class="mk"> (7)</span> <span class="cq">1.65</span></td>
+  <td class="sec">M25 Pardubice <span class="cq">CZE</span></td>
+  <td class="sec">R1<span class="cq"> 04:30</span></td>
+  <td class="n">23<i class="rv">26</i></td>
+  <td class="n">5.18<i class="rv">4.89</i></td>
+  <td class="n sec">882<i class="rv">—</i></td>
+  <td class="n sec">966<i class="rv">458</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
 <tr
-  data-jugador="samir banerjee" data-cuota="1.19" data-prob="0.753"
-  data-valor="0.90"
-  data-rival="eero vasa" data-torneo="m25 falun"
-  data-etapa="R2" data-edad="23" data-wtn="5.52"
-  data-itf="" data-atp="534" data-jr="0" data-local="0">
-  <td class="nom"><a href="https://lat.betano.com/search/?query=Samir%20Banerjee" target="_blank" rel="noopener">Samir Banerjee</a><span class="mk"> (4)</span></td>
-  <td class="n cuota">1.19</td>
-  <td class="n"><span class="pb media">75%</span></td>
-  <td class="n"><span class="val malo">0.90</span></td>
-  <td class="sec">Eero Vasa<span class="mk"> (1)</span> <span class="cq">4.05</span></td>
-  <td class="sec">M25 Falun <span class="cq">SWE</span></td>
-  <td class="sec">R2<span class="cq"> 12:00</span></td>
-  <td class="n">23<i class="rv">29</i></td>
-  <td class="n">5.52<i class="rv">5.43</i></td>
+  data-jugador="francesco ferrari" data-cuota="5.8" data-prob="0.399"
+  data-valor="2.31"
+  data-rival="dmitry popko" data-torneo="m15 telavi"
+  data-etapa="R1" data-edad="29" data-wtn="6.3"
+  data-itf="132" data-atp="1097" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Francesco%20Ferrari" target="_blank" rel="noopener">Francesco Ferrari</a><span class="mk"></span></td>
+  <td class="n cuota">5.8</td>
+  <td class="n"><span class="pb ">40%</span></td>
+  <td class="n"><span class="val malo">2.31</span></td>
+  <td class="sec">Dmitry Popko<span class="mk"></span> <span class="cq">1.09</span></td>
+  <td class="sec">M15 Telavi <span class="cq">GEO</span></td>
+  <td class="sec">R1<span class="cq"> 05:00</span></td>
+  <td class="n">29<i class="rv">30</i></td>
+  <td class="n">6.3<i class="rv">5.41</i></td>
+  <td class="n sec">132<i class="rv">—</i></td>
+  <td class="n sec">1097<i class="rv">652</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="dmitry popko" data-cuota="1.09" data-prob="0.601"
+  data-valor="0.66"
+  data-rival="francesco ferrari" data-torneo="m15 telavi"
+  data-etapa="R1" data-edad="30" data-wtn="5.41"
+  data-itf="" data-atp="652" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Dmitry%20Popko" target="_blank" rel="noopener">Dmitry Popko</a><span class="mk"></span></td>
+  <td class="n cuota">1.09</td>
+  <td class="n"><span class="pb ">60%</span></td>
+  <td class="n"><span class="val malo">0.66</span></td>
+  <td class="sec">Francesco Ferrari<span class="mk"></span> <span class="cq">5.8</span></td>
+  <td class="sec">M15 Telavi <span class="cq">GEO</span></td>
+  <td class="sec">R1<span class="cq"> 05:00</span></td>
+  <td class="n">30<i class="rv">29</i></td>
+  <td class="n">5.41<i class="rv">6.3</i></td>
+  <td class="n sec">—<i class="rv">132</i></td>
+  <td class="n sec">652<i class="rv">1097</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="daniel michalski" data-cuota="1.63" data-prob="0.494"
+  data-valor="0.81"
+  data-rival="laurent lokoli" data-torneo="m25 santa margherita di pula"
+  data-etapa="R2" data-edad="26" data-wtn="4.65"
+  data-itf="" data-atp="302" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Daniel%20Michalski" target="_blank" rel="noopener">Daniel Michalski</a><span class="mk"> (1)</span></td>
+  <td class="n cuota">1.63 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
+  <td class="n"><span class="pb ">49%</span></td>
+  <td class="n"><span class="val malo">0.81</span></td>
+  <td class="sec">Laurent Lokoli<span class="mk"> (2)</span> <span class="cq">2.1</span></td>
+  <td class="sec">M25 Santa Margherita di Pula <span class="cq">ITA</span></td>
+  <td class="sec">R2<span class="cq"> 05:00</span></td>
+  <td class="n">26<i class="rv">32</i></td>
+  <td class="n">4.65<i class="rv">4.59</i></td>
   <td class="n sec">—<i class="rv">—</i></td>
-  <td class="n sec">534<i class="rv">479</i></td>
+  <td class="n sec">302<i class="rv">386</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="laurent lokoli" data-cuota="2.1" data-prob="0.506"
+  data-valor="1.06"
+  data-rival="daniel michalski" data-torneo="m25 santa margherita di pula"
+  data-etapa="R2" data-edad="32" data-wtn="4.59"
+  data-itf="" data-atp="386" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Laurent%20Lokoli" target="_blank" rel="noopener">Laurent Lokoli</a><span class="mk"> (2)</span></td>
+  <td class="n cuota">2.1 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
+  <td class="n"><span class="pb ">51%</span></td>
+  <td class="n"><span class="val malo">1.06</span></td>
+  <td class="sec">Daniel Michalski<span class="mk"> (1)</span> <span class="cq">1.63</span></td>
+  <td class="sec">M25 Santa Margherita di Pula <span class="cq">ITA</span></td>
+  <td class="sec">R2<span class="cq"> 05:00</span></td>
+  <td class="n">32<i class="rv">26</i></td>
+  <td class="n">4.59<i class="rv">4.65</i></td>
+  <td class="n sec">—<i class="rv">—</i></td>
+  <td class="n sec">386<i class="rv">302</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="dmitry dolzhenkov" data-cuota="7" data-prob="0.33"
+  data-valor="2.31"
+  data-rival="arvid nordquist" data-torneo="m15 baku"
+  data-etapa="R1" data-edad="22" data-wtn="7.51"
+  data-itf="640" data-atp="1860" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Dmitry%20Dolzhenkov" target="_blank" rel="noopener">Dmitry Dolzhenkov</a><span class="mk"> (6)</span></td>
+  <td class="n cuota">7 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
+  <td class="n"><span class="pb ">33%</span></td>
+  <td class="n"><span class="val malo">2.31</span></td>
+  <td class="sec">Arvid Nordquist<span class="mk"> (7)</span> <span class="cq">1.068</span></td>
+  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
+  <td class="sec">R1<span class="cq"> 05:00</span></td>
+  <td class="n">22<i class="rv">28</i></td>
+  <td class="n">7.51<i class="rv">5.96</i></td>
+  <td class="n sec">640<i class="rv">698</i></td>
+  <td class="n sec">1860<i class="rv">806</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="arvid nordquist" data-cuota="1.068" data-prob="0.67"
+  data-valor="0.72"
+  data-rival="dmitry dolzhenkov" data-torneo="m15 baku"
+  data-etapa="R1" data-edad="28" data-wtn="5.96"
+  data-itf="698" data-atp="806" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Arvid%20Nordquist" target="_blank" rel="noopener">Arvid Nordquist</a><span class="mk"> (7)</span></td>
+  <td class="n cuota">1.068 <small class="cs" title="betano no cotiza este partido en la API; cuota de bet365">bet365</small></td>
+  <td class="n"><span class="pb ">67%</span></td>
+  <td class="n"><span class="val malo">0.72</span></td>
+  <td class="sec">Dmitry Dolzhenkov<span class="mk"> (6)</span> <span class="cq">7</span></td>
+  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
+  <td class="sec">R1<span class="cq"> 05:00</span></td>
+  <td class="n">28<i class="rv">22</i></td>
+  <td class="n">5.96<i class="rv">7.51</i></td>
+  <td class="n sec">698<i class="rv">640</i></td>
+  <td class="n sec">806<i class="rv">1860</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="digvijay pratap singh" data-cuota="1.85" data-prob="0.467"
+  data-valor="0.86"
+  data-rival="oscar brown" data-torneo="m15 baku"
+  data-etapa="R2" data-edad="26" data-wtn="5.84"
+  data-itf="1765" data-atp="557" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Digvijay%20Pratap%20Singh" target="_blank" rel="noopener">Digvijay Pratap Singh</a><span class="mk"> (1)</span></td>
+  <td class="n cuota">1.85</td>
+  <td class="n"><span class="pb ">47%</span></td>
+  <td class="n"><span class="val malo">0.86</span></td>
+  <td class="sec">Oscar Brown<span class="mk"></span> <span class="cq">1.82</span></td>
+  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
+  <td class="sec">R2<span class="cq"> 05:00</span></td>
+  <td class="n">26<i class="rv">24</i></td>
+  <td class="n">5.84<i class="rv">6.29</i></td>
+  <td class="n sec">1765<i class="rv">19</i></td>
+  <td class="n sec">557<i class="rv">1230</i></td>
+  <td class="n"></td>
+  <td class="n"></td>
+</tr>
+<tr
+  data-jugador="oscar brown" data-cuota="1.82" data-prob="0.533"
+  data-valor="0.97"
+  data-rival="digvijay pratap singh" data-torneo="m15 baku"
+  data-etapa="R2" data-edad="24" data-wtn="6.29"
+  data-itf="19" data-atp="1230" data-jr="0" data-local="0">
+  <td class="nom"><a href="https://lat.betano.com/search/?query=Oscar%20Brown" target="_blank" rel="noopener">Oscar Brown</a><span class="mk"></span></td>
+  <td class="n cuota">1.82</td>
+  <td class="n"><span class="pb ">53%</span></td>
+  <td class="n"><span class="val malo">0.97</span></td>
+  <td class="sec">Digvijay Pratap Singh<span class="mk"> (1)</span> <span class="cq">1.85</span></td>
+  <td class="sec">M15 Baku <span class="cq">AZE</span></td>
+  <td class="sec">R2<span class="cq"> 05:00</span></td>
+  <td class="n">24<i class="rv">26</i></td>
+  <td class="n">6.29<i class="rv">5.84</i></td>
+  <td class="n sec">19<i class="rv">1765</i></td>
+  <td class="n sec">1230<i class="rv">557</i></td>
   <td class="n"></td>
   <td class="n"></td>
 </tr>
