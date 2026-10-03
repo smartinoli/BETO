@@ -44,8 +44,11 @@ h1{font-size:1.5rem;margin:0 0 4px}
 .chip.warn{background:var(--warn);color:#fff}
 .det{margin:6px 0 0;font-size:.9rem}
 details summary{cursor:pointer;color:var(--ac);font-size:.85rem;margin-top:6px}
-.legal{color:var(--mu);font-size:.8rem;margin-top:8px}
-.legal code{user-select:all}
+.campos{display:grid;grid-template-columns:max-content 1fr;gap:3px 14px;margin:10px 0 0;font-size:.85rem;border-top:1px solid var(--li);padding-top:10px}
+.campos dt{color:var(--mu)}
+.campos dd{margin:0}
+.campos code{user-select:all}
+@media (max-width:560px){.campos{grid-template-columns:1fr}.campos dd{margin-bottom:6px}}
 .vacio{color:var(--mu);text-align:center;padding:40px}
 .pasado .chip.fecha{color:var(--mu);font-weight:400}
 </style></head><body><div class="wrap">
@@ -57,8 +60,8 @@ details summary{cursor:pointer;color:var(--ac);font-size:.85rem;margin-top:6px}
  <button data-r="Los Ríos" aria-pressed="false">Los Ríos</button>
  <button data-r="Los Lagos" aria-pressed="false">Los Lagos</button>
  <select id="orden"><option value="fecha">Por fecha de remate</option><option value="precio">Menor mínimo</option><option value="precio-d">Mayor mínimo</option></select>
- <label><input type="checkbox" id="pasados"> incluir ya realizados</label>
- <label><input type="checkbox" id="susp"> incluir suspendidos</label>
+ <label><input type="checkbox" id="pasados" checked> incluir ya realizados</label>
+ <label><input type="checkbox" id="susp" checked> incluir suspendidos</label>
  <input type="search" id="q" placeholder="Buscar comuna, deudor, rol, texto…">
 </div>
 <div id="lista"></div>
@@ -86,7 +89,10 @@ function pintar(){
     ($("#susp").checked || !r.suspendido) &&
     (!q || JSON.stringify(r).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)));
   const o = $("#orden").value;
-  xs.sort((a,b) => o==="fecha" ? (a.fecha_remate||"").localeCompare(b.fecha_remate||"")
+  // por fecha: primero los próximos (más cercano arriba), luego los realizados (más reciente arriba)
+  const porFecha = (a,b) => { const fa=a.fecha_remate||"", fb=b.fecha_remate||"", pa=fa<HOY, pb=fb<HOY;
+    return pa!==pb ? (pa?1:-1) : pa ? fb.localeCompare(fa) : fa.localeCompare(fb); };
+  xs.sort((a,b) => o==="fecha" ? porFecha(a,b)
                  : o==="precio" ? (a.valor_minimo||0)-(b.valor_minimo||0) : (b.valor_minimo||0)-(a.valor_minimo||0));
   const total = xs.reduce((s,r)=>s+(r.valor_minimo||0),0);
   $("#stats").innerHTML = [
@@ -102,7 +108,7 @@ function card(r){
   const uf = (r.uf_en_detalle||[]).map(u => "UF " + u).join(" · ");
   const pasado = (r.fecha_remate||"") < HOY;
   const det = r.detalle || "";
-  const corto = det.length > 320 ? det.slice(0, 320) + "…" : det;
+  const fila = (k, v) => v ? `<dt>${k}</dt><dd>${esc(String(v))}</dd>` : "";
   return `<article class="card ${r.region_inmueble==="Los Ríos"?"rios":""} ${r.suspendido?"susp":""} ${pasado?"pasado":""}">
    <div class="top">
      <div class="lugar">${esc(r.comuna_inmueble || r.comuna || "¿?")} <small>· ${esc(r.region_inmueble)}</small></div>
@@ -113,11 +119,22 @@ function card(r){
      <span class="chip fecha">Remate ${fmtF(r.fecha_remate)}${pasado?" (realizado)":""}</span>
      <span class="chip">${esc(r.tipo_procedimiento)}</span>
      <span class="chip">Comisión ${r.comision ?? "–"}%</span>
-     <span class="chip">Se remata en: ${esc(r.direccion || r.comuna)}</span>
    </div>
-   <p class="det">${esc(corto)}</p>
-   ${det.length > 320 ? `<details><summary>Ver detalle completo</summary><p class="det">${esc(det)}</p></details>` : ""}
-   <div class="legal">Deudor: ${esc(r.deudor)} · Rol ${esc(r.rol_causa)} · ${esc(r.tribunal)} · Liquidador: ${esc(r.liquidador)} · Martillero: ${esc(r.entePublicador)} · Publicado ${fmtF(r.fecha_publicacion||r.fchPublicacion)} · Código <code>${esc(r.codigoValidacion)}</code> (<a href="https://www.boletinconcursal.cl/boletin/verificacion" target="_blank" rel="noopener">verificar</a>)</div>
+   ${r.aviso ? `<p class="det"><b>${esc(r.aviso)}</b></p>` : ""}
+   <p class="det">${esc(det)}</p>
+   <dl class="campos">
+     ${fila("Tipo de bienes", r.tipo_bienes)}
+     ${fila("Deudor", r.deudor)}${fila("RUT deudor", r.deudor_rut)}
+     ${fila("Rol causa", r.rol_causa)}${fila("Tribunal", r.tribunal)}
+     ${fila("Procedimiento", r.tipo_procedimiento)}${fila("N° procedimiento", r.procedimiento)}
+     ${fila("Liquidador", r.liquidador)}${fila("Martillero", r.entePublicador)}
+     ${fila("Lugar del remate", [r.direccion, r.comuna, r.region].filter(Boolean).join(", "))}
+     ${fila("Valor mínimo", r.valor_minimo != null ? clp(r.valor_minimo) : "")}${fila("Montos UF en detalle", uf)}
+     ${fila("Comisión", r.comision != null ? r.comision + "%" : "")}
+     ${fila("Publicado", fmtF(r.fecha_publicacion||r.fchPublicacion) + (r.publicado_en ? " · " + r.publicado_en : ""))}
+     ${fila("Ubicación detectada por", r.evidencia)}
+     <dt>Código</dt><dd><code>${esc(r.codigoValidacion)}</code> · <a href="https://www.boletinconcursal.cl/boletin/verificacion" target="_blank" rel="noopener">verificar en el Boletín</a></dd>
+   </dl>
   </article>`;
 }
 pintar();
@@ -134,7 +151,8 @@ def main():
     claves = ["region_inmueble", "comuna_inmueble", "comuna", "direccion", "fecha_remate", "suspendido",
               "valor_minimo", "uf_en_detalle", "comision", "tipo_procedimiento", "detalle", "deudor",
               "rol_causa", "tribunal", "liquidador", "entePublicador", "fecha_publicacion",
-              "fchPublicacion", "codigoValidacion"]
+              "fchPublicacion", "codigoValidacion", "deudor_rut", "procedimiento", "region",
+              "publicado_en", "tipo_bienes", "aviso", "evidencia"]
     datos = [{k: r.get(k) for k in claves} for r in datos]
     html = (PLANTILLA.replace("__TITULO__", a.titulo)
             .replace("__HOY__", date.today().isoformat())
