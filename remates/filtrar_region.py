@@ -38,27 +38,31 @@ def _patrones(region):
         re.compile(r"comuna\s+de\s+(%s)\b" % nombres),
         re.compile(r"conservador\s+de\s+bienes\s+ra[ií]ces\s+de\s+(%s)\b" % nombres),
         re.compile(r"\bcbr\s+(?:de\s+)?(%s)\b" % nombres),
+        re.compile(r"comunas\s+de\s+[^.]{0,150}?\b(%s)\b" % nombres),   # "comunas de A, B y X"
+        re.compile(r"(?:^|[/.:]\s*)(%s)\s*-" % nombres),                  # "/ Los Lagos-Calle 123"
+        re.compile(r"\ben\s+(%s)," % nombres),                            # "En Puerto Montt, existen..."
         re.compile(sin_tildes(REGIONES[region])),
     ]
 
 
 PATRONES = {r: _patrones(r) for r in COMUNAS}
+CANONICA = {sin_tildes(c): c for cs in COMUNAS.values() for c in cs}
 
 
 def region_inmueble(reg):
-    """Devuelve (region, evidencia) o (None, None)."""
+    """Devuelve (region, evidencia, comuna) o (None, None, None)."""
     detalle = sin_tildes(reg.get("detalle"))
     for region, pats in PATRONES.items():
         for p in pats:
             m = p.search(detalle)
             if m:
-                return region, m.group(0)
+                return region, m.group(0), (CANONICA[m.group(1)] if m.groups() else None)
     # sin pista en el detalle: usar la región/comuna donde se remata
     lugar = sin_tildes(f"{reg.get('region')} {reg.get('comuna')}")
     for region in COMUNAS:
         if sin_tildes(region) in lugar or any(sin_tildes(c) == sin_tildes(reg.get("comuna")) for c in COMUNAS[region]):
-            return region, f"lugar del remate: {reg.get('comuna')}"
-    return None, None
+            return region, f"lugar del remate: {reg.get('comuna')}", None
+    return None, None, None
 
 
 def main():
@@ -72,7 +76,7 @@ def main():
     for r in json.load(open(a.json)):
         if a.desde_remate and (r.get("fecha_remate") or "") < a.desde_remate:
             continue
-        region, evidencia = region_inmueble(r)
+        region, evidencia, comuna = region_inmueble(r)
         if not region:
             continue
         # el mismo remate se publica una vez por deudor/aviso: no duplicar
@@ -80,7 +84,8 @@ def main():
         if clave in vistos:
             continue
         vistos.add(clave)
-        res.append({**r, "region_inmueble": region, "evidencia": evidencia})
+        res.append({**r, "region_inmueble": region, "evidencia": evidencia,
+                    "comuna_inmueble": comuna})
 
     res.sort(key=lambda r: (r["region_inmueble"], r.get("fecha_remate") or ""))
     for r in res:
