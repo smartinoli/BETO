@@ -5,6 +5,8 @@ Uso: python3 html_listado.py filtrados.json listado.html [--titulo "..."]
 """
 import argparse
 import json
+
+from comunas import REGIONES
 from datetime import date
 
 PLANTILLA = r"""<!doctype html>
@@ -30,7 +32,7 @@ h1{font-size:1.5rem;margin:0 0 4px}
 .bar input[type=search]{flex:1;min-width:160px}
 .bar label{display:flex;gap:6px;align-items:center;color:var(--mu);font-size:.9rem}
 .card{background:var(--card);border:1px solid var(--li);border-left:4px solid var(--lagos);border-radius:10px;padding:14px 16px;margin-bottom:10px}
-.card.rios{border-left-color:var(--rios)}
+.card.nd{border-left-color:var(--li)}
 .card.susp{opacity:.6}
 .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .lugar{font-weight:650;font-size:1.05rem}
@@ -53,12 +55,11 @@ details summary{cursor:pointer;color:var(--ac);font-size:.85rem;margin-top:6px}
 .pasado .chip.fecha{color:var(--mu);font-weight:400}
 </style></head><body><div class="wrap">
 <h1>__TITULO__</h1>
-<p class="sub">Inmuebles en remate según el Boletín Concursal · generado __HOY__ · ubicación deducida del detalle de cada publicación</p>
+<p class="sub">Publicaciones de remates de inmuebles del Boletín Concursal · generado __HOY__ · la ubicación se deduce del texto de cada publicación ("No determinada" cuando el texto no la dice)</p>
 <div class="stats" id="stats"></div>
 <div class="bar">
- <button data-r="" aria-pressed="true">Todas</button>
- <button data-r="Los Ríos" aria-pressed="false">Los Ríos</button>
- <button data-r="Los Lagos" aria-pressed="false">Los Lagos</button>
+ <select id="region"></select>
+ <select id="comuna"></select>
  <select id="orden"><option value="fecha">Por fecha de remate</option><option value="precio">Menor mínimo</option><option value="precio-d">Mayor mínimo</option></select>
  <label><input type="checkbox" id="pasados" checked> incluir ya realizados</label>
  <label><input type="checkbox" id="susp" checked> incluir suspendidos</label>
@@ -73,18 +74,27 @@ const $ = s => document.querySelector(s);
 const clp = n => n ? "$" + n.toLocaleString("es-CL") : "sin mínimo";
 const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmtF = f => { if(!f) return "s/f"; const [d,h]=f.split(" "); const [a,m,dd]=d.split("-"); return `${dd}/${m}/${a}${h?" "+h:""}`; };
-let region = "";
-document.querySelectorAll(".bar button").forEach(b => b.onclick = () => {
-  region = b.dataset.r;
-  document.querySelectorAll(".bar button").forEach(x => x.setAttribute("aria-pressed", x === b));
-  pintar();
-});
-["orden","pasados","susp","q"].forEach(id => $("#"+id).addEventListener("input", pintar));
+const ORDEN_REG = __REGIONES__;
+const cuenta = k => DATOS.reduce((m,r) => { (k(r)||[]).forEach(v => m[v]=(m[v]||0)+1); return m; }, {});
+const porRegion = cuenta(r => r.regiones);
+$("#region").innerHTML = `<option value="">Todas las regiones (${DATOS.length})</option>` +
+  ORDEN_REG.filter(r => porRegion[r]).map(r => `<option value="${esc(r)}">${esc(r)} (${porRegion[r]})</option>`).join("");
+function llenarComunas(){
+  const reg = $("#region").value;
+  const xs = DATOS.filter(r => !reg || r.regiones.includes(reg));
+  const c = cuenta(r => r.comunas_mencionadas);
+  const nombres = [...new Set(xs.flatMap(r => r.comunas_mencionadas||[]))].sort((a,b)=>a.localeCompare(b,"es"));
+  $("#comuna").innerHTML = `<option value="">Todas las comunas</option>` + nombres.map(n => `<option>${esc(n)}</option>`).join("");
+}
+$("#region").addEventListener("input", () => { llenarComunas(); pintar(); });
+llenarComunas();
+["comuna","orden","pasados","susp","q"].forEach(id => $("#"+id).addEventListener("input", pintar));
 
 function pintar(){
   const q = $("#q").value.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
   let xs = DATOS.filter(r =>
-    (!region || r.region_inmueble === region) &&
+    (!$("#region").value || r.regiones.includes($("#region").value)) &&
+    (!$("#comuna").value || (r.comunas_mencionadas||[]).includes($("#comuna").value)) &&
     ($("#pasados").checked || (r.fecha_remate||"9") >= HOY) &&
     ($("#susp").checked || !r.suspendido) &&
     (!q || JSON.stringify(r).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)));
@@ -94,12 +104,12 @@ function pintar(){
     return pa!==pb ? (pa?1:-1) : pa ? fb.localeCompare(fa) : fa.localeCompare(fb); };
   xs.sort((a,b) => o==="fecha" ? porFecha(a,b)
                  : o==="precio" ? (a.valor_minimo||0)-(b.valor_minimo||0) : (b.valor_minimo||0)-(a.valor_minimo||0));
-  const total = xs.reduce((s,r)=>s+(r.valor_minimo||0),0);
+  const conMin = xs.filter(r => r.valor_minimo > 1).map(r => r.valor_minimo).sort((a,b)=>a-b);
   $("#stats").innerHTML = [
     [xs.length, "remates"],
-    [xs.filter(r=>r.region_inmueble==="Los Ríos").length, "Los Ríos"],
-    [xs.filter(r=>r.region_inmueble==="Los Lagos").length, "Los Lagos"],
-    [xs.length ? clp(Math.round(total/xs.length)) : "–", "mínimo promedio"],
+    [xs.filter(r => (r.fecha_remate||"") >= HOY && !r.suspendido).length, "por realizarse"],
+    [new Set(xs.map(r => r.region_inmueble)).size, "regiones"],
+    [conMin.length ? clp(conMin[Math.floor(conMin.length/2)]) : "–", "mínimo mediano"],
   ].map(([v,l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join("");
   $("#lista").innerHTML = xs.length ? xs.map(card).join("") : `<div class="vacio">Sin resultados con estos filtros.</div>`;
 }
@@ -109,9 +119,9 @@ function card(r){
   const pasado = (r.fecha_remate||"") < HOY;
   const det = r.detalle || "";
   const fila = (k, v) => v ? `<dt>${k}</dt><dd>${esc(String(v))}</dd>` : "";
-  return `<article class="card ${r.region_inmueble==="Los Ríos"?"rios":""} ${r.suspendido?"susp":""} ${pasado?"pasado":""}">
+  return `<article class="card ${r.region_inmueble==="No determinada"?"nd":""} ${r.suspendido?"susp":""} ${pasado?"pasado":""}">
    <div class="top">
-     <div class="lugar">${esc(r.comuna_inmueble || r.comuna || "¿?")} <small>· ${esc(r.region_inmueble)}</small></div>
+     <div class="lugar">${esc(r.comuna_inmueble || (r.region_inmueble==="No determinada" ? "Ubicación no determinada" : "Región " + r.region_inmueble))} <small>${r.comuna_inmueble ? "· " + esc(r.region_inmueble) : ""}</small></div>
      <div class="precio"><b>${clp(r.valor_minimo)}</b>${uf?`<div>${esc(uf)}</div>`:""}</div>
    </div>
    <div class="meta">
@@ -133,6 +143,7 @@ function card(r){
      ${fila("Comisión", r.comision != null ? r.comision + "%" : "")}
      ${fila("Publicado", fmtF(r.fecha_publicacion||r.fchPublicacion) + (r.publicado_en ? " · " + r.publicado_en : ""))}
      ${fila("Ubicación detectada por", r.evidencia)}
+     ${(r.comunas_mencionadas||[]).length > 1 ? fila("Comunas mencionadas", r.comunas_mencionadas.join(", ") + " (" + r.regiones.join(", ") + ")") : ""}
      <dt>Código</dt><dd><code>${esc(r.codigoValidacion)}</code> · <a href="https://www.boletinconcursal.cl/boletin/verificacion" target="_blank" rel="noopener">verificar en el Boletín</a></dd>
    </dl>
   </article>`;
@@ -145,17 +156,18 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("json")
     ap.add_argument("html")
-    ap.add_argument("--titulo", default="Remates de inmuebles · Los Ríos y Los Lagos")
+    ap.add_argument("--titulo", default="Remates de inmuebles · todas las regiones")
     a = ap.parse_args()
     datos = json.load(open(a.json))
     claves = ["region_inmueble", "comuna_inmueble", "comuna", "direccion", "fecha_remate", "suspendido",
               "valor_minimo", "uf_en_detalle", "comision", "tipo_procedimiento", "detalle", "deudor",
               "rol_causa", "tribunal", "liquidador", "entePublicador", "fecha_publicacion",
               "fchPublicacion", "codigoValidacion", "deudor_rut", "procedimiento", "region",
-              "publicado_en", "tipo_bienes", "aviso", "evidencia"]
+              "publicado_en", "tipo_bienes", "aviso", "evidencia", "regiones", "comunas_mencionadas"]
     datos = [{k: r.get(k) for k in claves} for r in datos]
     html = (PLANTILLA.replace("__TITULO__", a.titulo)
             .replace("__HOY__", date.today().isoformat())
+            .replace("__REGIONES__", json.dumps(list(REGIONES) + ["No determinada"], ensure_ascii=False))
             .replace("__DATOS__", json.dumps(datos, ensure_ascii=False).replace("</", "<\\/")))
     open(a.html, "w", encoding="utf-8").write(html)
     print(f"{len(datos)} remates -> {a.html}")

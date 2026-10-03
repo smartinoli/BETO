@@ -1,73 +1,76 @@
 #!/usr/bin/env python3
-"""Filtra remates (salida de remates.py) por región del INMUEBLE, no del lugar del remate.
+"""Asigna región y comuna del INMUEBLE a cada remate (salida de remates.py) y filtra.
 
 El campo "Región" del PDF es dónde se realiza el remate (a menudo Santiago/online);
 la ubicación del bien viene en el texto del detalle ("comuna de X", "Conservador de
-Bienes Raíces de X"). Se buscan ambas cosas.
+Bienes Raíces de X"). Si no se logra deducir, queda como "No determinada".
 
-Uso: python3 filtrar_region.py datos/remates.json [--desde-remate 2026-10-03]
+Uso: python3 filtrar_region.py datos/remates.json --out datos/filtrados.json
+     python3 filtrar_region.py datos/remates.json --region "Los Ríos" --region "Los Lagos"
 """
 import argparse
 import json
 import re
 import unicodedata
 
-COMUNAS = {
-    "Los Ríos": ["Valdivia", "Corral", "Lanco", "Los Lagos", "Máfil", "Mariquina", "Paillaco",
-                 "Panguipulli", "La Unión", "Futrono", "Lago Ranco", "Río Bueno",
-                 "Niebla", "Coñaripe", "Liquiñe"],
-    "Los Lagos": ["Puerto Montt", "Calbuco", "Cochamó", "Fresia", "Frutillar", "Los Muermos",
-                  "Llanquihue", "Maullín", "Puerto Varas", "Castro", "Ancud", "Chonchi",
-                  "Curaco de Vélez", "Dalcahue", "Puqueldón", "Queilén", "Quellón", "Quemchi",
-                  "Quinchao", "Osorno", "Puerto Octay", "Purranque", "Puyehue", "Río Negro",
-                  "San Juan de la Costa", "San Pablo", "Chaitén", "Futaleufú", "Hualaihué",
-                  "Palena", "Chiloé", "Achao", "Alerce", "Entre Lagos"],
-}
-REGIONES = {"Los Ríos": r"regi[oó]n de los r[ií]os", "Los Lagos": r"regi[oó]n de los lagos"}
+from comunas import NOMBRE_REGION, REGIONES
+
+SIN_REGION = "No determinada"
 
 
 def sin_tildes(s):
     return "".join(c for c in unicodedata.normalize("NFD", s or "") if unicodedata.category(c) != "Mn").lower()
 
 
-def _patrones(region):
-    # Nombres como "Castro", "Osorno" o "Palena" también son calles o apellidos:
-    # en el detalle solo cuentan tras "comuna de" o "Conservador de Bienes Raíces de".
-    nombres = "|".join(re.escape(sin_tildes(c)) for c in COMUNAS[region])
-    return [
-        re.compile(r"comuna\s+de\s+(%s)\b" % nombres),
-        re.compile(r"conservador\s+de\s+bienes\s+ra[ií]ces\s+de\s+(%s)\b" % nombres),
-        re.compile(r"\bcbr\s+(?:de\s+)?(%s)\b" % nombres),
-        re.compile(r"comunas\s+de\s+[^.]{0,150}?\b(%s)\b" % nombres),   # "comunas de A, B y X"
-        re.compile(r"(?:^|[/.:]\s*)(%s)\s*-" % nombres),                  # "/ Los Lagos-Calle 123"
-        re.compile(r"\ben\s+(%s)," % nombres),                            # "En Puerto Montt, existen..."
-        re.compile(sin_tildes(REGIONES[region])),
-    ]
+CANONICA, REGION_DE = {}, {}
+for _region, _comunas in REGIONES.items():
+    for _c in _comunas:
+        CANONICA[sin_tildes(_c)] = _c
+        REGION_DE[sin_tildes(_c)] = _region
+
+# nombres más largos primero: "san pedro de la paz" antes que "san pedro"
+_NOMBRES = "|".join(re.escape(n) for n in sorted(CANONICA, key=len, reverse=True))
+
+# En orden de confiabilidad. Nombres como "Castro" o "San Pablo" también son calles o
+# apellidos, por eso nunca se busca el nombre suelto.
+PATRONES = [
+    re.compile(r"comuna\s+(?:y\s+departamento\s+)?de\s+(%s)\b" % _NOMBRES),
+    re.compile(r"conser[vb]ador\s+de\s+bienes\s+raices\s+(?:de|del)\s+(%s)\b" % _NOMBRES),
+    re.compile(r"\bc\.?b\.?r\.?\s+(?:de\s+)?(%s)\b" % _NOMBRES),
+    re.compile(r"comunas\s+de\s+[^.]{0,150}?\b(%s)\b" % _NOMBRES),   # "comunas de A, B y X"
+    re.compile(r"(?:^|[/.:]\s*)(%s)\s*-" % _NOMBRES),                  # "/ Los Lagos-Calle 123"
+    re.compile(r"\b(?:ciudad|localidad)\s+de\s+(%s)\b" % _NOMBRES),
+    re.compile(r"\ben\s+(%s)," % _NOMBRES),                            # "En Puerto Montt, existen..."
+]
+PATRON_REGION = re.compile(r"region\s+(?:de\s+la\s+|del\s+|de\s+)?(%s)\b" % "|".join(
+    re.escape(a) for alias in NOMBRE_REGION.values() for a in alias))
+_REGION_ALIAS = {a: r for r, alias in NOMBRE_REGION.items() for a in alias}
 
 
-PATRONES = {r: _patrones(r) for r in COMUNAS}
-CANONICA = {sin_tildes(c): c for cs in COMUNAS.values() for c in cs}
-
-
-def region_inmueble(reg):
-    """Devuelve (region, evidencia, comuna) o (None, None, None)."""
+def ubicar(reg):
+    """Devuelve (region, comuna, evidencia, todas) donde `todas` son las comunas
+    mencionadas (un remate puede incluir propiedades en varias comunas)."""
     detalle = sin_tildes(reg.get("detalle"))
-    for region, pats in PATRONES.items():
-        for p in pats:
-            m = p.search(detalle)
-            if m:
-                return region, m.group(0), (CANONICA[m.group(1)] if m.groups() else None)
-    # sin pista en el detalle: usar la región/comuna donde se remata
-    lugar = sin_tildes(f"{reg.get('region')} {reg.get('comuna')}")
-    for region in COMUNAS:
-        if sin_tildes(region) in lugar or any(sin_tildes(c) == sin_tildes(reg.get("comuna")) for c in COMUNAS[region]):
-            return region, f"lugar del remate: {reg.get('comuna')}", None
-    return None, None, None
+    todas, principal = [], None
+    for p in PATRONES:
+        for m in p.finditer(detalle):
+            n = m.group(1)
+            if principal is None:
+                principal = (REGION_DE[n], CANONICA[n], m.group(0))
+            if CANONICA[n] not in todas:
+                todas.append(CANONICA[n])
+    if principal:
+        return (*principal, todas)
+    m = PATRON_REGION.search(detalle)
+    if m:
+        return _REGION_ALIAS[m.group(1)], None, m.group(0), []
+    return SIN_REGION, None, None, []
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("json")
+    ap.add_argument("--region", action="append", help="filtrar por región (repetible); default: todas")
     ap.add_argument("--desde-remate", help="solo remates con fecha >= YYYY-MM-DD")
     ap.add_argument("--out", help="guardar resultado en este JSON")
     a = ap.parse_args()
@@ -76,24 +79,27 @@ def main():
     for r in json.load(open(a.json)):
         if a.desde_remate and (r.get("fecha_remate") or "") < a.desde_remate:
             continue
-        region, evidencia, comuna = region_inmueble(r)
-        if not region:
+        region, comuna, evidencia, todas = ubicar(r)
+        regiones = list(dict.fromkeys([region] + [REGION_DE[sin_tildes(c)] for c in todas]))
+        if a.region and not set(regiones) & set(a.region):
             continue
         # el mismo remate se publica una vez por deudor/aviso: no duplicar
         clave = (r.get("rol_causa"), r.get("fecha_remate"), r.get("valor_minimo"))
         if clave in vistos:
             continue
         vistos.add(clave)
-        res.append({**r, "region_inmueble": region, "evidencia": evidencia,
-                    "comuna_inmueble": comuna})
+        res.append({**r, "region_inmueble": region, "comuna_inmueble": comuna, "evidencia": evidencia,
+                    "comunas_mencionadas": todas, "regiones": regiones})
 
-    res.sort(key=lambda r: (r["region_inmueble"], r.get("fecha_remate") or ""))
+    orden = list(REGIONES) + [SIN_REGION]
+    res.sort(key=lambda r: (orden.index(r["region_inmueble"]), r.get("fecha_remate") or ""))
+    conteo = {}
     for r in res:
-        uf = ", ".join(r.get("uf_en_detalle") or [])
-        print(f"[{r['region_inmueble']}] {r.get('fecha_remate')} {'SUSPENDIDO ' if r.get('suspendido') else ''}"
-              f"${r.get('valor_minimo') or 0:,}{' / UF ' + uf if uf else ''} — {r.get('deudor')} "
-              f"({r.get('rol_causa')}, {r.get('tribunal')})\n    {r['evidencia']} | {(r.get('detalle') or '')[:220]}")
-    print(f"\n{len(res)} remates")
+        conteo[r["region_inmueble"]] = conteo.get(r["region_inmueble"], 0) + 1
+    for reg in orden:
+        if reg in conteo:
+            print(f"{reg:20} {conteo[reg]}")
+    print(f"{'TOTAL':20} {len(res)}")
     if a.out:
         json.dump(res, open(a.out, "w"), ensure_ascii=False, indent=1)
 
