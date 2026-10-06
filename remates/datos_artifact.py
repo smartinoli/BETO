@@ -10,7 +10,7 @@ import sys
 from datetime import date
 
 from comunas import NOMBRE_REGION, REGIONES
-from filtrar_region import sin_tildes
+from filtrar_region import REGION_DE, sin_tildes
 
 # Campos que llegan a la página (sin RUT del deudor)
 CAMPOS = ["codigoValidacion", "fecha_remate", "fchPublicacion", "suspendido", "aviso", "valor_minimo",
@@ -22,13 +22,13 @@ _PATENTE = re.compile(r"(?:patente|ppu|inscripci[oó]n|placa)\s*(?:n[°º.]*\s*)
 _ANIO = re.compile(r"a[ñn]o\s*:?\s*((?:19|20)\d{2})\b", re.I)
 
 
-def region_lugar(texto):
-    """'Región de la Araucanía' -> 'Araucanía'."""
+def region_lugar(texto, comuna=None):
+    """'Región de la Araucanía' -> 'Araucanía'. Si el PDF no trae región, se deduce de la comuna."""
     t = sin_tildes(texto)
     for alias, region in _ALIAS_REGION:
         if alias in t:
             return region
-    return "No determinada"
+    return REGION_DE.get(sin_tildes(comuna), "No determinada")
 
 
 def vehiculos(detalle):
@@ -48,7 +48,7 @@ def compactar(r, clase):
         o["evidencia"] = r.get("evidencia")
     else:
         # en muebles la ubicación útil es dónde se remata/exhibe
-        reg = region_lugar(r.get("region"))
+        reg = region_lugar(r.get("region"), r.get("comuna"))
         com = (r.get("comuna") or "").title() or None
         o["region_x"], o["comuna_x"] = reg, com
         o["regiones"], o["comunas"] = [reg], [com] if com else []
