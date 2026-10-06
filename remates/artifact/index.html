@@ -1,0 +1,308 @@
+<title>Cartelera de Remates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: cartelera — una columna de fechas de remate (agenda) con filas expandibles; filtros pegados arriba */
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#18202b; --muted:#5d6775; --line:#dde1e7; --soft:#eceff3;
+  --accent:#2c4f86; --accent-ink:#ffffff; --accent-soft:#e3eaf5;
+  --warn:#a8322a; --warn-soft:#f8e4e1; --ok:#2f6b4f;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12161c; --surface:#1a2029; --ink:#e7eaef; --muted:#9aa4b2; --line:#2c3440; --soft:#222a35;
+  --accent:#8db0e6; --accent-ink:#0f1620; --accent-soft:#233149;
+  --warn:#ef9a8f; --warn-soft:#3a2321; --ok:#86c9a6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161c; --surface:#1a2029; --ink:#e7eaef; --muted:#9aa4b2; --line:#2c3440; --soft:#222a35;
+  --accent:#8db0e6; --accent-ink:#0f1620; --accent-soft:#233149;
+  --warn:#ef9a8f; --warn-soft:#3a2321; --ok:#86c9a6; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body)}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 64px}
+h1{font:700 2rem/1.1 var(--f-display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.lede{color:var(--muted);margin:6px 0 0;max-width:68ch}
+.lede b{color:var(--ink);font-weight:600}
+.tabs{display:flex;gap:6px;margin:22px 0 14px;flex-wrap:wrap}
+.tab{font:600 1rem var(--f-display);letter-spacing:.01em;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  border-radius:999px;padding:8px 16px;cursor:pointer;display:flex;gap:8px;align-items:baseline}
+.tab span{font:500 .8rem var(--f-mono);color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.tab[aria-selected="true"] span{color:var(--accent-ink);opacity:.8}
+.tab:focus-visible,.btn:focus-visible,select:focus-visible,input:focus-visible,.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--surface);padding:12px 14px;min-width:0}
+.stat b{display:block;font:600 1.45rem/1.15 var(--f-display);font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.8rem}
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:12px;margin-top:6px;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-bottom:1px solid var(--line)}
+.filters select,.filters input[type=search]{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 10px;min-width:0;max-width:100%}
+.filters input[type=search]{flex:1 1 200px}
+.chk{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:.85rem;white-space:nowrap}
+.count{color:var(--muted);font-size:.85rem;margin:12px 0 0}
+.day{margin-top:22px}
+.day h2{font:600 .78rem var(--f-display);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 8px;display:flex;gap:10px;align-items:baseline}
+.day h2 em{font-style:normal;color:var(--accent)}
+.day.past h2 em{color:var(--muted)}
+.list{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.row{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:14px;padding:12px 14px;border-top:1px solid var(--line);cursor:pointer;align-items:start}
+.row:first-child{border-top:0}
+.row:hover{background:var(--soft)}
+.hora{font:500 .85rem var(--f-mono);color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums}
+.que{min-width:0}
+.lugar{font:600 1.02rem var(--f-display);letter-spacing:.005em}
+.lugar small{font:400 .85rem var(--f-body);color:var(--muted)}
+.resumen{color:var(--muted);font-size:.88rem;margin-top:2px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.tag{font-size:.74rem;background:var(--soft);color:var(--muted);border-radius:4px;padding:1px 7px}
+.tag.mono{font-family:var(--f-mono);color:var(--ink);background:var(--accent-soft)}
+.tag.susp{background:var(--warn-soft);color:var(--warn);font-weight:600}
+.precio{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.precio b{font:600 1.05rem var(--f-display)}
+.precio div{color:var(--muted);font-size:.78rem}
+.row.is-susp .lugar,.row.is-susp .precio b{text-decoration:line-through;text-decoration-color:var(--warn)}
+.det{grid-column:2 / -1;cursor:auto;border-top:1px dashed var(--line);padding-top:10px;margin-top:2px}
+.det p{margin:0 0 10px;max-width:80ch;font-size:.92rem;white-space:pre-line}
+.det dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 16px;margin:0;font-size:.85rem}
+.det dt{color:var(--muted)}
+.det dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.det code{font-family:var(--f-mono);font-size:.82rem}
+.det a{color:var(--accent)}
+.btn{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:3px 9px;cursor:pointer}
+.more{display:flex;justify-content:center;margin-top:18px}
+.more .btn{font-size:.95rem;padding:9px 18px}
+.empty{color:var(--muted);text-align:center;padding:48px 16px}
+.foot{color:var(--muted);font-size:.8rem;margin-top:36px;max-width:80ch}
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .filters{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .filters select{width:100%}
+  .filters input[type=search]{grid-column:1 / -1}
+  .row{grid-template-columns:minmax(0,1fr) auto}
+  .hora{grid-column:1 / -1;padding:0}
+  .det{grid-column:1 / -1}
+  .det dl{grid-template-columns:minmax(0,1fr)}
+  .det dd{margin-bottom:6px}
+  h1{font-size:1.6rem}
+}
+@media (prefers-reduced-motion:no-preference){.row{transition:background .12s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Cartelera de Remates</h1>
+    <p class="lede" id="lede">Remates publicados en el Boletín Concursal. Cargando publicaciones…</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Tipo de bienes">
+    <button class="tab" role="tab" id="tab-inmuebles" data-clase="inmuebles" aria-selected="true">Inmuebles <span id="n-inmuebles">–</span></button>
+    <button class="tab" role="tab" id="tab-muebles" data-clase="muebles" aria-selected="false">Muebles y vehículos <span id="n-muebles">–</span></button>
+  </div>
+
+  <section class="stats" id="stats" aria-label="Resumen"></section>
+
+  <div class="filters">
+    <select id="f-region" aria-label="Región"></select>
+    <select id="f-comuna" aria-label="Comuna"></select>
+    <select id="f-tipo" aria-label="Tipo de bienes"></select>
+    <select id="f-orden" aria-label="Orden">
+      <option value="fecha">Por fecha de remate</option>
+      <option value="min-asc">Menor mínimo</option>
+      <option value="min-desc">Mayor mínimo</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="f-pasados"> ya realizados</label>
+    <label class="chk"><input type="checkbox" id="f-susp" checked> suspendidos</label>
+    <input type="search" id="f-q" placeholder="Buscar: comuna, patente, marca, rol, deudor…" aria-label="Buscar">
+  </div>
+  <p class="count" id="count"></p>
+  <main id="lista"><div class="empty">Cargando…</div></main>
+  <div class="more"><button class="btn" id="mas" hidden>Mostrar más</button></div>
+
+  <p class="foot">Fuente: publicaciones de remates del Boletín Concursal. En inmuebles, la región y la comuna se deducen del texto de cada publicación (“comuna de…”, “Conservador de Bienes Raíces de…”) y no del lugar del remate. En muebles se muestra dónde se realiza o exhibe el remate. Un mínimo de $0 o $1 significa que la publicación no fijó mínimo. Verificá cada publicación con su código en boletinconcursal.cl antes de participar.</p>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm = s => String(s ?? "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const clp = n => n > 1 ? "$" + n.toLocaleString("es-CL") : "sin mínimo";
+const pad = n => String(n).padStart(2, "0");
+const d0 = new Date(); const HOY = `${d0.getFullYear()}-${pad(d0.getMonth()+1)}-${pad(d0.getDate())}`;
+const EN7 = (() => { const d = new Date(d0); d.setDate(d.getDate()+7); return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; })();
+const fechaLarga = iso => { const [a,m,d] = iso.split("-").map(Number); return new Date(a, m-1, d).toLocaleDateString("es-CL", {weekday:"long", day:"numeric", month:"long", year:"numeric"}); };
+const fCorta = iso => iso ? iso.slice(0,10).split("-").reverse().join("/") : "";
+const PASO = 120;
+
+let DB = null, clase = "inmuebles", visibles = PASO, abiertos = new Set();
+try { const t = localStorage.getItem("cartelera-tab"); if (t === "muebles" || t === "inmuebles") clase = t; } catch (e) {}
+
+const TIPOS = ["Inmuebles","Vehiculos","Maquinas y Herramientas","Equipos Varios","Muebles y Equipos de Oficina","Muebles de Hogar","Otros","No especificado"];
+const NOMBRE_TIPO = {"Vehiculos":"Vehículos","Maquinas y Herramientas":"Máquinas y herramientas","Muebles y Equipos de Oficina":"Muebles y equipos de oficina","Muebles de Hogar":"Muebles de hogar","Equipos Varios":"Equipos varios"};
+const nt = t => NOMBRE_TIPO[t] || t;
+
+fetch("datos.json").then(r => r.json()).then(d => {
+  DB = d;
+  for (const r of DB.remates) r._q = norm([r.comuna_x, r.region_x, (r.comunas||[]).join(" "), r.detalle, r.rol_causa, r.tribunal, r.deudor, r.entePublicador, r.liquidador, (r.patentes||[]).join(" "), r.codigoValidacion].join(" "));
+  const n = c => DB.remates.filter(r => r.clase === c).length;
+  $("#n-inmuebles").textContent = n("inmuebles").toLocaleString("es-CL");
+  $("#n-muebles").textContent = n("muebles").toLocaleString("es-CL");
+  $("#lede").innerHTML = `Remates publicados en el Boletín Concursal desde agosto, actualizados al <b>${fCorta(DB.generado)}</b>. Tocá una fila para ver la publicación completa.`;
+  setClase(clase);
+}).catch(() => { $("#lista").innerHTML = `<div class="empty">No se pudieron cargar los datos. Recargá la página.</div>`; });
+
+document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => setClase(b.dataset.clase)));
+$("#f-region").addEventListener("input", () => { llenarComunas(); reset(); });
+["#f-comuna","#f-tipo","#f-orden","#f-pasados","#f-susp","#f-q"].forEach(s => $(s).addEventListener("input", reset));
+$("#mas").addEventListener("click", () => { visibles += PASO; pintar(); });
+$("#lista").addEventListener("click", e => {
+  const row = e.target.closest(".row"); if (!row || e.target.closest(".det")) return;
+  const id = row.dataset.id; abiertos.has(id) ? abiertos.delete(id) : abiertos.add(id); pintar();
+});
+$("#lista").addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("row")) { e.preventDefault(); e.target.click(); } });
+
+function deClase(){ return DB.remates.filter(r => r.clase === clase); }
+
+function setClase(c){
+  clase = c;
+  try { localStorage.setItem("cartelera-tab", c); } catch (e) {}
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.clase === c));
+  const xs = deClase();
+  const porReg = {}; xs.forEach(r => (r.regiones||[]).forEach(g => porReg[g] = (porReg[g]||0) + 1));
+  $("#f-region").innerHTML = `<option value="">Todas las regiones</option>` +
+    DB.regiones.filter(g => porReg[g]).map(g => `<option value="${esc(g)}">${esc(g)} (${porReg[g]})</option>`).join("");
+  const porTipo = {}; xs.forEach(r => (r.tipo_bienes||"No especificado").split(" | ").forEach(t => porTipo[t] = (porTipo[t]||0) + 1));
+  $("#f-tipo").innerHTML = `<option value="">Todo tipo de bienes</option>` +
+    TIPOS.filter(t => porTipo[t]).map(t => `<option value="${esc(t)}">${esc(nt(t))} (${porTipo[t]})</option>`).join("");
+  $("#f-tipo").hidden = clase === "inmuebles";
+  $("#f-tipo").value = "";
+  llenarComunas(); reset();
+}
+
+function llenarComunas(){
+  const g = $("#f-region").value;
+  const nombres = [...new Set(deClase().filter(r => !g || (r.regiones||[]).includes(g)).flatMap(r => r.comunas||[]))].sort((a,b) => a.localeCompare(b, "es"));
+  $("#f-comuna").innerHTML = `<option value="">Todas las comunas</option>` + nombres.map(n => `<option>${esc(n)}</option>`).join("");
+}
+
+function reset(){ visibles = PASO; pintar(); }
+
+function filtrados(){
+  const g = $("#f-region").value, c = $("#f-comuna").value, t = $("#f-tipo").value, q = norm($("#f-q").value.trim());
+  const pas = $("#f-pasados").checked, sus = $("#f-susp").checked;
+  return deClase().filter(r =>
+    (!g || (r.regiones||[]).includes(g)) && (!c || (r.comunas||[]).includes(c)) &&
+    (!t || (r.tipo_bienes||"No especificado").split(" | ").includes(t)) &&
+    (pas || (r.fecha_remate||"") >= HOY) && (sus || !r.suspendido) &&
+    (!q || q.split(/\s+/).every(w => r._q.includes(w))));
+}
+
+function pintar(){
+  if (!DB) return;
+  const xs = filtrados(), o = $("#f-orden").value;
+  if (o === "fecha") xs.sort((a,b) => {
+    const fa = a.fecha_remate||"", fb = b.fecha_remate||"", pa = fa < HOY, pb = fb < HOY;
+    return pa !== pb ? (pa ? 1 : -1) : pa ? fb.localeCompare(fa) : fa.localeCompare(fb);
+  });
+  else xs.sort((a,b) => o === "min-asc" ? (a.valor_minimo||0) - (b.valor_minimo||0) : (b.valor_minimo||0) - (a.valor_minimo||0));
+
+  const prox = xs.filter(r => (r.fecha_remate||"") >= HOY && !r.suspendido);
+  const semana = prox.filter(r => r.fecha_remate.slice(0,10) <= EN7);
+  const mins = xs.map(r => r.valor_minimo).filter(v => v > 1).sort((a,b) => a-b);
+  const tercera = clase === "muebles"
+    ? [xs.filter(r => (r.tipo_bienes||"").includes("Vehiculos")).length.toLocaleString("es-CL"), "con vehículos"]
+    : [new Set(xs.map(r => r.region_x).filter(g => g !== "No determinada")).size, "regiones"];
+  $("#stats").innerHTML = [
+    [prox.length.toLocaleString("es-CL"), "por realizarse"],
+    [semana.length.toLocaleString("es-CL"), "en los próximos 7 días"],
+    tercera,
+    [mins.length ? clp(mins[Math.floor(mins.length/2)]) : "–", "mínimo mediano"],
+  ].map(([v,l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join("");
+
+  $("#count").textContent = xs.length ? `${xs.length.toLocaleString("es-CL")} remates con estos filtros` : "";
+  if (!xs.length) { $("#lista").innerHTML = `<div class="empty">No hay remates con estos filtros. Probá con “ya realizados” o quitá la búsqueda.</div>`; $("#mas").hidden = true; return; }
+
+  const parte = xs.slice(0, visibles);
+  let html = "";
+  if (o === "fecha") {
+    let dia = null;
+    for (const r of parte) {
+      const f = (r.fecha_remate||"").slice(0,10);
+      if (f !== dia) {
+        if (dia !== null) html += `</div></section>`;
+        dia = f;
+        const n = xs.filter(x => (x.fecha_remate||"").slice(0,10) === f).length;
+        html += `<section class="day ${f < HOY ? "past" : ""}"><h2><em>${f ? esc(fechaLarga(f)) : "Sin fecha"}</em><span>${n} ${n === 1 ? "remate" : "remates"}${f < HOY ? " · realizado" : ""}</span></h2><div class="list">`;
+      }
+      html += fila(r, true);
+    }
+    html += `</div></section>`;
+  } else {
+    html = `<div class="list" style="margin-top:14px">${parte.map(r => fila(r, false)).join("")}</div>`;
+  }
+  $("#lista").innerHTML = html;
+  $("#mas").hidden = xs.length <= visibles;
+  $("#mas").textContent = `Mostrar más (${(xs.length - visibles).toLocaleString("es-CL")} restantes)`;
+}
+
+function resumen(r){
+  const d = (r.detalle || "").replace(/\s+/g, " ").trim();
+  return d.length > 220 ? d.slice(0, 220) + "…" : d;
+}
+
+function fila(r, porFecha){
+  const id = r.codigoValidacion, abierto = abiertos.has(id);
+  const hora = porFecha ? (r.fecha_remate||"").slice(11,16) : fCorta(r.fecha_remate);
+  const lugar = r.comuna_x || (r.region_x === "No determinada" ? "Ubicación no indicada" : "Región " + r.region_x);
+  const sub = r.comuna_x && r.region_x !== "No determinada" ? ` <small>· ${esc(r.region_x)}</small>` : "";
+  const tags = [];
+  if (r.suspendido) tags.push(`<span class="tag susp">Suspendido</span>`);
+  (r.patentes||[]).slice(0,3).forEach(p => tags.push(`<span class="tag mono">${esc(p)}</span>`));
+  if ((r.patentes||[]).length > 3) tags.push(`<span class="tag">+${r.patentes.length-3} patentes</span>`);
+  if (clase === "muebles" && r.tipo_bienes) r.tipo_bienes.split(" | ").forEach(t => tags.push(`<span class="tag">${esc(nt(t))}</span>`));
+  if ((r.regiones||[]).length > 1) tags.push(`<span class="tag">también en ${esc(r.regiones.slice(1).join(", "))}</span>`);
+  const uf = (r.uf_en_detalle||[]).slice(0,2).map(u => "UF " + u).join(" · ");
+  return `<div class="row ${r.suspendido ? "is-susp" : ""}" data-id="${esc(id)}" tabindex="0" aria-expanded="${abierto}">
+    <div class="hora">${esc(hora)}</div>
+    <div class="que"><div class="lugar">${esc(lugar)}${sub}</div><div class="resumen">${esc(resumen(r))}</div>${tags.length ? `<div class="tags">${tags.join("")}</div>` : ""}</div>
+    <div class="precio"><b>${clp(r.valor_minimo)}</b>${uf ? `<div>${esc(uf)}</div>` : ""}${r.comision != null ? `<div>comisión ${String(r.comision).replace(".", ",")}%</div>` : ""}</div>
+    ${abierto ? detalle(r) : ""}
+  </div>`;
+}
+
+function detalle(r){
+  const f = (k, v) => v ? `<dt>${k}</dt><dd>${esc(v)}</dd>` : "";
+  return `<div class="det">
+    ${r.aviso ? `<p><b>${esc(r.aviso)}</b></p>` : ""}
+    <p>${esc(r.detalle)}</p>
+    <dl>
+      ${f("Fecha del remate", fCorta(r.fecha_remate) + " " + (r.fecha_remate||"").slice(11,16))}
+      ${f("Se remata en", [r.direccion, r.comuna, r.region].filter(Boolean).join(", "))}
+      ${f("Tipo de bienes", (r.tipo_bienes||"").split(" | ").map(nt).join(", "))}
+      ${f("Valor mínimo", r.valor_minimo != null ? clp(r.valor_minimo) : "")}
+      ${f("Años mencionados", (r.anios||[]).join(", "))}
+      ${f("Rol de la causa", r.rol_causa)}
+      ${f("Tribunal", r.tribunal)}
+      ${f("Procedimiento", r.tipo_procedimiento)}
+      ${f("Deudor", r.deudor)}
+      ${f("Liquidador", r.liquidador)}
+      ${f("Martillero", r.entePublicador)}
+      ${f("Publicado", fCorta(r.fchPublicacion))}
+      ${(r.comunas||[]).length > 1 ? f("Comunas mencionadas", r.comunas.join(", ")) : ""}
+      <dt>Código</dt><dd><code>${esc(r.codigoValidacion)}</code> · <a href="https://www.boletinconcursal.cl/boletin/verificacion" target="_blank" rel="noopener">verificar en el Boletín</a> <button class="btn" type="button" data-copiar="${esc(r.codigoValidacion)}">Copiar</button></dd>
+    </dl>
+  </div>`;
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-copiar]"); if (!b) return;
+  const t = b.dataset.copiar;
+  navigator.clipboard?.writeText(t).then(() => { b.textContent = "Copiado"; }).catch(() => {
+    const sel = window.getSelection(), code = b.parentElement.querySelector("code");
+    if (code && sel) { const rg = document.createRange(); rg.selectNodeContents(code); sel.removeAllRanges(); sel.addRange(rg); }
+    b.textContent = "Seleccionado";
+  });
+});
+</script>
