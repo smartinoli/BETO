@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-06T23:30:59.181Z",
+ "generado": "2026-10-06T23:46:14.796Z",
  "fuente": "bet365",
  "partidos": [
   {
@@ -7,7 +7,7 @@
     "cuota": 1.02,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.724,
+    "pFm": 0.743,
     "dW": 2.5,
     "forma": null,
     "previo": null,
@@ -28,27 +28,27 @@
    "g2": 10.5,
    "gana": "Yanki Erel",
    "lado": 1,
-   "p": 0.724,
+   "p": 0.743,
    "pMercado": 0.911,
-   "soloWtn": 0.759,
+   "soloWtn": 0.768,
    "señales": [
     "local"
    ],
-   "razon": "Δ2.50 de WTN a favor de Yanki Erel (4.75 contra 7.25), en R1: la curva del grupo \"buenas\" (n=2320) da 76%. Ajustan: Boxiong Zhang juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 72%. El mercado la paga a 1.02: 91% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ2.50 de WTN a favor de Yanki Erel (4.75 contra 7.25), en R1: la curva del grupo \"buenas\" (n=2893) da 77%. Ajustan: Boxiong Zhang juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−2 pts). Queda en 74%. El mercado la paga a 1.02: 91% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.5,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.291,
+    "pFm": 0.372,
     "dW": 1.04,
-    "forma": null,
+    "forma": 1,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 18,
-    "dElo": 36
+    "dElo": 50
    },
    "jugada": null,
    "fixtureId": "pn129041981637802963",
@@ -62,28 +62,29 @@
    "g2": 1.5,
    "gana": "Jordan Chiu",
    "lado": 2,
-   "p": 0.291,
+   "p": 0.372,
    "pMercado": 0.612,
-   "soloWtn": 0.617,
+   "soloWtn": 0.622,
    "señales": [
     "sub18",
+    "forma",
     "local"
    ],
-   "razon": "Δ1.04 de WTN a favor de Jordan Chiu (7.11 contra 8.15), en R1: la curva del grupo \"buenas\" (n=2320) da 62%. Ajustan: Xin Zhou tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−28 pts); Xin Zhou juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 29%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −56% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.04 de WTN a favor de Jordan Chiu (7.11 contra 8.15), en R1: la curva del grupo \"buenas\" (n=2893) da 62%. Ajustan: Xin Zhou tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−24 pts); Jordan Chiu viene cediendo menos games (45% contra 51%) (+2 pts); Xin Zhou juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 37%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −44% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.22,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.582,
+    "pFm": 0.585,
     "dW": 0.72,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 29,
     "edadRi": 27,
-    "dElo": 108
+    "dElo": 101
    },
    "jugada": null,
    "fixtureId": "pn129041981637790857",
@@ -97,59 +98,60 @@
    "g2": 3.75,
    "gana": "Sasikumar Mukund",
    "lado": 1,
-   "p": 0.582,
+   "p": 0.585,
    "pMercado": 0.755,
-   "soloWtn": 0.582,
+   "soloWtn": 0.585,
    "señales": [],
-   "razon": "Δ0.72 de WTN a favor de Sasikumar Mukund (5.93 contra 6.65), en R1: la curva del grupo \"buenas\" (n=2320) da 58%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.72 de WTN a favor de Sasikumar Mukund (5.93 contra 6.65), en R1: la curva del grupo \"buenas\" (n=2893) da 59%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.37,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.496,
+    "pFm": 0.587,
     "dW": 0.37,
-    "forma": null,
+    "forma": 1,
     "previo": null,
-    "grupo": "Q1",
+    "grupo": "medias",
     "edadFm": 23,
     "edadRi": 20,
-    "dElo": 57
+    "dElo": 72
    },
    "jugada": null,
    "fixtureId": "pn129041981637795157",
    "inicio": "2026-10-07T05:00:00.000Z",
    "torneo": "M15 Luan",
    "pais": "China, P.R.",
-   "etapa": "Q1",
+   "etapa": "R2",
    "p1": "Xirui Han",
    "p2": "James Van Herzeele",
    "g1": 2.75,
    "g2": 1.37,
    "gana": "James Van Herzeele",
    "lado": 2,
-   "p": 0.496,
+   "p": 0.587,
    "pMercado": 0.667,
    "soloWtn": 0.541,
    "señales": [
+    "forma",
     "local"
    ],
-   "razon": "Δ0.37 de WTN a favor de James Van Herzeele (6.44 contra 6.81), en Q1: la curva del grupo \"Q1\" (n=1391) da 54%. Ajustan: Xirui Han juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 50%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −32% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.37 de WTN a favor de James Van Herzeele (6.44 contra 6.81), en R2: la curva del grupo \"medias\" (n=1229) da 54%. Ajustan: James Van Herzeele viene cediendo menos games (55% contra 75%) (+8 pts); Xirui Han juega en su país (CHN): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 59%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −20% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.11,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.675,
+    "pFm": 0.681,
     "dW": 1.59,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 29,
     "edadRi": 19,
-    "dElo": 122
+    "dElo": 121
    },
    "jugada": null,
    "fixtureId": "pn129038901637773814",
@@ -163,57 +165,59 @@
    "g2": 5,
    "gana": "Jake Delaney",
    "lado": 1,
-   "p": 0.675,
+   "p": 0.681,
    "pMercado": 0.818,
-   "soloWtn": 0.675,
+   "soloWtn": 0.681,
    "señales": [],
-   "razon": "Δ1.59 de WTN a favor de Jake Delaney (5.55 contra 7.14), en R1: la curva del grupo \"buenas\" (n=2320) da 67%. El mercado la paga a 1.11: 82% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ1.59 de WTN a favor de Jake Delaney (5.55 contra 7.14), en R1: la curva del grupo \"buenas\" (n=2893) da 68%. El mercado la paga a 1.11: 82% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.33,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.41,
+    "pFm": 0.461,
     "dW": -0.82,
-    "forma": null,
+    "forma": 1,
     "previo": null,
-    "grupo": "Q1",
+    "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 25,
-    "dElo": -164
+    "dElo": -132
    },
    "jugada": null,
    "fixtureId": "pn129038901637810042",
    "inicio": "2026-10-07T05:30:00.000Z",
    "torneo": "M25 Darwin",
    "pais": "Australia",
-   "etapa": "Q1",
+   "etapa": "R1",
    "p1": "Wihan Van Der Merwe",
    "p2": "Adrian Arcon",
    "g1": 1.33,
    "g2": 3,
    "gana": "Adrian Arcon",
    "lado": 2,
-   "p": 0.59,
+   "p": 0.539,
    "pMercado": 0.307,
-   "soloWtn": 0.59,
-   "señales": [],
-   "razon": "Δ0.82 de WTN a favor de Adrian Arcon (7.85 contra 8.67), en Q1: la curva del grupo \"Q1\" (n=1391) da 59%. El mercado la paga a 3: 31% una vez sacado su margen. A esa cuota, la apuesta rinde +77% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "soloWtn": 0.597,
+   "señales": [
+    "forma"
+   ],
+   "razon": "Δ0.82 de WTN a favor de Adrian Arcon (7.85 contra 8.67), en R1: la curva del grupo \"buenas\" (n=2893) da 60%. Ajustan: Wihan Van Der Merwe viene cediendo menos games (36% contra 51%): la forma contradice al nivel (−6 pts). Queda en 54%. El mercado la paga a 3: 31% una vez sacado su margen. A esa cuota, la apuesta rinde +62% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.068,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.687,
+    "pFm": 0.695,
     "dW": 1.72,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 23,
-    "dElo": 331
+    "dElo": 296
    },
    "jugada": null,
    "fixtureId": "pn129038901637821673",
@@ -227,25 +231,25 @@
    "g2": 1.068,
    "gana": "Tai Leonard Sach",
    "lado": 2,
-   "p": 0.687,
+   "p": 0.695,
    "pMercado": 0.868,
-   "soloWtn": 0.687,
+   "soloWtn": 0.695,
    "señales": [],
-   "razon": "Δ1.72 de WTN a favor de Tai Leonard Sach (5.94 contra 7.66), en R1: la curva del grupo \"buenas\" (n=2320) da 69%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ1.72 de WTN a favor de Tai Leonard Sach (5.94 contra 7.66), en R1: la curva del grupo \"buenas\" (n=2893) da 69%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.54,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.495,
+    "pFm": 0.753,
     "dW": 0.35,
     "forma": null,
-    "previo": null,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 24,
-    "dElo": -39
+    "dElo": 12
    },
    "jugada": null,
    "fixtureId": "pn129038901637779151",
@@ -259,27 +263,28 @@
    "g2": 2.25,
    "gana": "Herman Hoeyeraal",
    "lado": 1,
-   "p": 0.495,
+   "p": 0.753,
    "pMercado": 0.594,
-   "soloWtn": 0.54,
+   "soloWtn": 0.542,
    "señales": [
+    "previo",
     "local"
    ],
-   "razon": "Δ0.35 de WTN a favor de Herman Hoeyeraal (6.24 contra 6.59), en R1: la curva del grupo \"buenas\" (n=2320) da 54%. Ajustan: Chen Dong juega en su país (AUS): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 49%. El mercado la paga a 1.54: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.35 de WTN a favor de Herman Hoeyeraal (6.24 contra 6.59), en R1: la curva del grupo \"buenas\" (n=2893) da 54%. Ajustan: Herman Hoeyeraal llegó más lejos en su torneo anterior (+24 pts); Chen Dong juega en su país (AUS): la localía le suma ~0.5 pts de WTN (−2 pts). Queda en 75%. El mercado la paga a 1.54: 59% una vez sacado su margen. A esa cuota, la apuesta rinde +16% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.27,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.54,
+    "pFm": 0.605,
     "dW": 2.94,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 28,
     "edadRi": 17,
-    "dElo": null
+    "dElo": 190
    },
    "jugada": null,
    "fixtureId": "pn129038901637803020",
@@ -293,59 +298,59 @@
    "g2": 1.27,
    "gana": "Stefan Vujic",
    "lado": 2,
-   "p": 0.54,
+   "p": 0.605,
    "pMercado": 0.728,
-   "soloWtn": 0.794,
+   "soloWtn": 0.803,
    "señales": [
     "sub18"
    ],
-   "razon": "Δ2.94 de WTN a favor de Stefan Vujic (6.2 contra 9.14), en R1: la curva del grupo \"buenas\" (n=2320) da 79%. Ajustan: Nikolas Baker tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−25 pts). Queda en 54%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −31% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ2.94 de WTN a favor de Stefan Vujic (6.2 contra 9.14), en R1: la curva del grupo \"buenas\" (n=2893) da 80%. Ajustan: Nikolas Baker tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−20 pts). Queda en 61%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.27,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.631,
+    "pFm": 0.64,
     "dW": 1.2,
     "forma": null,
     "previo": null,
-    "grupo": "Q1",
+    "grupo": "buenas",
     "edadFm": 28,
     "edadRi": 28,
-    "dElo": null
+    "dElo": 120
    },
    "jugada": null,
    "fixtureId": "pn129038901637808540",
    "inicio": "2026-10-07T06:30:00.000Z",
    "torneo": "M25 Darwin",
    "pais": "Australia",
-   "etapa": "Q1",
+   "etapa": "R1",
    "p1": "Zaharije-Zak Talic",
    "p2": "Jesse Delaney",
    "g1": 3.4,
    "g2": 1.27,
    "gana": "Jesse Delaney",
    "lado": 2,
-   "p": 0.631,
+   "p": 0.64,
    "pMercado": 0.728,
-   "soloWtn": 0.631,
+   "soloWtn": 0.64,
    "señales": [],
-   "razon": "Δ1.20 de WTN a favor de Jesse Delaney (6.67 contra 7.87), en Q1: la curva del grupo \"Q1\" (n=1391) da 63%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −20% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.20 de WTN a favor de Jesse Delaney (6.67 contra 7.87), en R1: la curva del grupo \"buenas\" (n=2893) da 64%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −19% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
-    "cuota": 1.33,
+    "cuota": 1.27,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.605,
+    "pFm": 0.609,
     "dW": 0.93,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 29,
-    "dElo": 46
+    "dElo": -11
    },
    "jugada": null,
    "fixtureId": "pn129038901637809981",
@@ -355,29 +360,29 @@
    "etapa": "R1",
    "p1": "Joshua Charlton",
    "p2": "Arjun Mehrotra",
-   "g1": 1.33,
-   "g2": 3,
+   "g1": 1.27,
+   "g2": 3.4,
    "gana": "Joshua Charlton",
    "lado": 1,
-   "p": 0.605,
-   "pMercado": 0.693,
-   "soloWtn": 0.605,
+   "p": 0.609,
+   "pMercado": 0.728,
+   "soloWtn": 0.609,
    "señales": [],
-   "razon": "Δ0.93 de WTN a favor de Joshua Charlton (5.87 contra 6.8), en R1: la curva del grupo \"buenas\" (n=2320) da 60%. El mercado la paga a 1.33: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −20% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.93 de WTN a favor de Joshua Charlton (5.87 contra 6.8), en R1: la curva del grupo \"buenas\" (n=2893) da 61%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.65,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.86,
+    "pFm": 0.828,
     "dW": 0.97,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 18,
     "edadRi": 19,
-    "dElo": 182
+    "dElo": 151
    },
    "jugada": null,
    "fixtureId": "pn129034761637833174",
@@ -389,30 +394,30 @@
    "p2": "James McGloughlin",
    "g1": 1.65,
    "g2": 2.07,
-   "gana": "Odysseas Geladaris",
+   "gana": "Odysseas Geladaris JR",
    "lado": 1,
-   "p": 0.86,
+   "p": 0.828,
    "pMercado": 0.556,
-   "soloWtn": 0.609,
+   "soloWtn": 0.614,
    "señales": [
     "sub18",
     "local"
    ],
-   "razon": "Δ0.97 de WTN a favor de Odysseas Geladaris (7.52 contra 8.49), en R1: la curva del grupo \"buenas\" (n=2320) da 61%. Ajustan: Odysseas Geladaris tiene 18 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+21 pts); Odysseas Geladaris juega en su país (GRE): la localía vale ~0.5 pts de WTN (+2 pts). Queda en 86%. El mercado la paga a 1.65: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +42% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.97 de WTN a favor de Odysseas Geladaris (7.52 contra 8.49), en R1: la curva del grupo \"buenas\" (n=2893) da 61%. Ajustan: Odysseas Geladaris tiene 18 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+18 pts); Odysseas Geladaris juega en su país (GRE): la localía vale ~0.5 pts de WTN (+2 pts). Queda en 83%. El mercado la paga a 1.65: 56% una vez sacado su margen. A esa cuota, la apuesta rinde +37% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.72,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.506,
+    "pFm": 0.196,
     "dW": 0.05,
     "forma": null,
-    "previo": null,
+    "previo": -1,
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 27,
-    "dElo": -63
+    "dElo": -51
    },
    "jugada": null,
    "fixtureId": "pn129034761637835044",
@@ -426,25 +431,27 @@
    "g2": 1.72,
    "gana": "Finn Murgett",
    "lado": 2,
-   "p": 0.506,
+   "p": 0.196,
    "pMercado": 0.535,
    "soloWtn": 0.506,
-   "señales": [],
-   "razon": "Δ0.05 de WTN a favor de Finn Murgett (5.77 contra 5.82), en R1: la curva del grupo \"buenas\" (n=2320) da 51%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −13% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ0.05 de WTN a favor de Finn Murgett (5.77 contra 5.82), en R1: la curva del grupo \"buenas\" (n=2893) da 51%. Ajustan: Melios Efstathiou llegó más lejos en su torneo anterior (−31 pts). Queda en 20%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −66% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.28,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.571,
+    "pFm": 0.574,
     "dW": 0.62,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 21,
-    "dElo": 127
+    "dElo": 97
    },
    "jugada": null,
    "fixtureId": "pn129034761637835048",
@@ -458,18 +465,18 @@
    "g2": 3.25,
    "gana": "Amit Vales",
    "lado": 1,
-   "p": 0.571,
+   "p": 0.574,
    "pMercado": 0.717,
-   "soloWtn": 0.571,
+   "soloWtn": 0.574,
    "señales": [],
-   "razon": "Δ0.62 de WTN a favor de Amit Vales (5.71 contra 6.33), en R1: la curva del grupo \"buenas\" (n=2320) da 57%. El mercado la paga a 1.28: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.62 de WTN a favor de Amit Vales (5.71 contra 6.33), en R1: la curva del grupo \"buenas\" (n=2893) da 57%. El mercado la paga a 1.28: 72% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.09,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.675,
+    "pFm": 0.681,
     "dW": 1.59,
     "forma": null,
     "previo": null,
@@ -490,25 +497,25 @@
    "g2": 5.9,
    "gana": "Mathieu Scaglia",
    "lado": 1,
-   "p": 0.675,
+   "p": 0.681,
    "pMercado": 0.844,
-   "soloWtn": 0.675,
+   "soloWtn": 0.681,
    "señales": [],
-   "razon": "Δ1.59 de WTN a favor de Mathieu Scaglia (6.16 contra 7.75), en R1: la curva del grupo \"buenas\" (n=2320) da 67%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.59 de WTN a favor de Mathieu Scaglia (6.16 contra 7.75), en R1: la curva del grupo \"buenas\" (n=2893) da 68%. El mercado la paga a 1.09: 84% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.37,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.555,
+    "pFm": 0.739,
     "dW": 0.19,
     "forma": null,
     "previo": 1,
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 19,
-    "dElo": 22
+    "dElo": 39
    },
    "jugada": null,
    "fixtureId": "pn129037681637777536",
@@ -522,28 +529,28 @@
    "g2": 2.75,
    "gana": "Martin VAN DER MEERSCHEN",
    "lado": 1,
-   "p": 0.555,
+   "p": 0.739,
    "pMercado": 0.667,
-   "soloWtn": 0.522,
+   "soloWtn": 0.523,
    "señales": [
     "previo",
     "local"
    ],
-   "razon": "Δ0.19 de WTN a favor de Martin VAN DER MEERSCHEN (5.65 contra 5.84), en R1: la curva del grupo \"buenas\" (n=2320) da 52%. Ajustan: Martin VAN DER MEERSCHEN llegó más lejos en su torneo anterior (+8 pts); Gabriele Crivellaro juega en su país (ITA): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 56%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.19 de WTN a favor de Martin VAN DER MEERSCHEN (5.65 contra 5.84), en R1: la curva del grupo \"buenas\" (n=2893) da 52%. Ajustan: Martin VAN DER MEERSCHEN llegó más lejos en su torneo anterior (+25 pts); Gabriele Crivellaro juega en su país (ITA): la localía le suma ~0.5 pts de WTN (−2 pts). Queda en 74%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.69,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.288,
+    "pFm": 0.602,
     "dW": 0.11,
     "forma": null,
-    "previo": -1,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 29,
     "edadRi": 24,
-    "dElo": -29
+    "dElo": -24
    },
    "jugada": null,
    "fixtureId": "pn129037681637777537",
@@ -557,27 +564,27 @@
    "g2": 1.97,
    "gana": "Alexander Weis",
    "lado": 1,
-   "p": 0.288,
+   "p": 0.602,
    "pMercado": 0.538,
    "soloWtn": 0.513,
    "señales": [
     "previo"
    ],
-   "razon": "Δ0.11 de WTN a favor de Alexander Weis (5.21 contra 5.32), en R1: la curva del grupo \"buenas\" (n=2320) da 51%. Ajustan: Fausto Tabacco llegó más lejos en su torneo anterior (−22 pts). Queda en 29%. El mercado la paga a 1.69: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −51% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.11 de WTN a favor de Alexander Weis (5.21 contra 5.32), en R1: la curva del grupo \"buenas\" (n=2893) da 51%. Ajustan: Alexander Weis llegó más lejos en su torneo anterior (+9 pts). Queda en 60%. El mercado la paga a 1.69: 54% una vez sacado su margen. A esa cuota, la apuesta rinde +2% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.08,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.61,
+    "pFm": 0.628,
     "dW": 1.37,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 29,
-    "dElo": 278
+    "dElo": 311
    },
    "jugada": null,
    "fixtureId": "pn129037681637777538",
@@ -591,27 +598,27 @@
    "g2": 6.5,
    "gana": "Daniel Michalski",
    "lado": 1,
-   "p": 0.61,
+   "p": 0.628,
    "pMercado": 0.858,
-   "soloWtn": 0.652,
+   "soloWtn": 0.658,
    "señales": [
     "local"
    ],
-   "razon": "Δ1.37 de WTN a favor de Daniel Michalski (4.43 contra 5.8), en R1: la curva del grupo \"buenas\" (n=2320) da 65%. Ajustan: Lorenzo Bocchi juega en su país (ITA): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 61%. El mercado la paga a 1.08: 86% una vez sacado su margen. A esa cuota, la apuesta rinde −34% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ1.37 de WTN a favor de Daniel Michalski (4.43 contra 5.8), en R1: la curva del grupo \"buenas\" (n=2893) da 66%. Ajustan: Lorenzo Bocchi juega en su país (ITA): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 63%. El mercado la paga a 1.08: 86% una vez sacado su margen. A esa cuota, la apuesta rinde −32% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.13,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.625,
+    "pFm": 0.63,
     "dW": 1.11,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 29,
     "edadRi": 25,
-    "dElo": 141
+    "dElo": 138
    },
    "jugada": null,
    "fixtureId": "pn129037681637821637",
@@ -625,25 +632,25 @@
    "g2": 4.5,
    "gana": "Giovanni Oradini",
    "lado": 1,
-   "p": 0.625,
+   "p": 0.63,
    "pMercado": 0.799,
-   "soloWtn": 0.625,
+   "soloWtn": 0.63,
    "señales": [],
-   "razon": "Δ1.11 de WTN a favor de Giovanni Oradini (5.54 contra 6.65), en R1: la curva del grupo \"buenas\" (n=2320) da 62%. El mercado la paga a 1.13: 80% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −10% si la tiene el mercado."
+   "razon": "Δ1.11 de WTN a favor de Giovanni Oradini (5.54 contra 6.65), en R1: la curva del grupo \"buenas\" (n=2893) da 63%. El mercado la paga a 1.13: 80% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −10% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.6,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.53,
+    "pFm": 0.531,
     "dW": 0.26,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 19,
-    "dElo": 43
+    "dElo": 20
    },
    "jugada": null,
    "fixtureId": "pn129034761637833172",
@@ -657,25 +664,25 @@
    "g2": 2.15,
    "gana": "Jakub Filip",
    "lado": 1,
-   "p": 0.53,
+   "p": 0.531,
    "pMercado": 0.573,
-   "soloWtn": 0.53,
+   "soloWtn": 0.531,
    "señales": [],
-   "razon": "Δ0.26 de WTN a favor de Jakub Filip (5.92 contra 6.18), en R1: la curva del grupo \"buenas\" (n=2320) da 53%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.26 de WTN a favor de Jakub Filip (5.92 contra 6.18), en R1: la curva del grupo \"buenas\" (n=2893) da 53%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.6,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.641,
+    "pFm": 0.633,
     "dW": 0.87,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 27,
-    "dElo": null
+    "dElo": 51
    },
    "jugada": null,
    "fixtureId": "pn129034761637835464",
@@ -689,27 +696,27 @@
    "g2": 2.15,
    "gana": "Pavlos Tsitsipas",
    "lado": 1,
-   "p": 0.641,
+   "p": 0.633,
    "pMercado": 0.573,
-   "soloWtn": 0.598,
+   "soloWtn": 0.602,
    "señales": [
     "local"
    ],
-   "razon": "Δ0.87 de WTN a favor de Pavlos Tsitsipas (6.26 contra 7.13), en R1: la curva del grupo \"buenas\" (n=2320) da 60%. Ajustan: Pavlos Tsitsipas juega en su país (GRE): la localía vale ~0.5 pts de WTN (+4 pts). Queda en 64%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde +3% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.87 de WTN a favor de Pavlos Tsitsipas (6.26 contra 7.13), en R1: la curva del grupo \"buenas\" (n=2893) da 60%. Ajustan: Pavlos Tsitsipas juega en su país (GRE): la localía vale ~0.5 pts de WTN (+3 pts). Queda en 63%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde +1% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.18,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.598,
+    "pFm": 0.602,
     "dW": 0.87,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 28,
     "edadRi": 23,
-    "dElo": null
+    "dElo": 83
    },
    "jugada": null,
    "fixtureId": "pn129034761637835466",
@@ -723,25 +730,25 @@
    "g2": 1.18,
    "gana": "Marcus Walters",
    "lado": 2,
-   "p": 0.598,
+   "p": 0.602,
    "pMercado": 0.777,
-   "soloWtn": 0.598,
+   "soloWtn": 0.602,
    "señales": [],
-   "razon": "Δ0.87 de WTN a favor de Marcus Walters (6.22 contra 7.09), en R1: la curva del grupo \"buenas\" (n=2320) da 60%. El mercado la paga a 1.18: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.87 de WTN a favor de Marcus Walters (6.22 contra 7.09), en R1: la curva del grupo \"buenas\" (n=2893) da 60%. El mercado la paga a 1.18: 78% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.5,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.54,
+    "pFm": 0.542,
     "dW": 0.35,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 19,
-    "dElo": null
+    "dElo": -20
    },
    "jugada": null,
    "fixtureId": "pn129040931637777532",
@@ -755,25 +762,25 @@
    "g2": 2.37,
    "gana": "Noah Schachter",
    "lado": 1,
-   "p": 0.54,
+   "p": 0.542,
    "pMercado": 0.612,
-   "soloWtn": 0.54,
+   "soloWtn": 0.542,
    "señales": [],
-   "razon": "Δ0.35 de WTN a favor de Noah Schachter (6.44 contra 6.79), en R1: la curva del grupo \"buenas\" (n=2320) da 54%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −19% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.35 de WTN a favor de Noah Schachter (6.44 contra 6.79), en R1: la curva del grupo \"buenas\" (n=2893) da 54%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −19% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.068,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.906,
+    "pFm": 0.894,
     "dW": 4.95,
-    "forma": null,
+    "forma": -1,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 19,
-    "dElo": null
+    "dElo": 480
    },
    "jugada": null,
    "fixtureId": "pn129040931637777533",
@@ -787,25 +794,27 @@
    "g2": 1.068,
    "gana": "Yash Chaurasia",
    "lado": 2,
-   "p": 0.906,
+   "p": 0.894,
    "pMercado": 0.868,
-   "soloWtn": 0.906,
-   "señales": [],
-   "razon": "Δ4.95 de WTN a favor de Yash Chaurasia (7.5 contra 12.45), en R1: la curva del grupo \"buenas\" (n=2320) da 91%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "soloWtn": 0.914,
+   "señales": [
+    "forma"
+   ],
+   "razon": "Δ4.95 de WTN a favor de Yash Chaurasia (7.5 contra 12.45), en R1: la curva del grupo \"buenas\" (n=2893) da 91%. Ajustan: LUCAS GONCALVES FRANCA viene cediendo menos games (14% contra 29%): la forma contradice al nivel (−2 pts). Queda en 89%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −5% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.004,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.816,
+    "pFm": 0.966,
     "dW": 3.25,
     "forma": null,
-    "previo": null,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 31,
     "edadRi": 22,
-    "dElo": null
+    "dElo": 494
    },
    "jugada": null,
    "fixtureId": "pn129040931637777534",
@@ -819,59 +828,59 @@
    "g2": 17,
    "gana": "Calvin Hemery",
    "lado": 1,
-   "p": 0.816,
+   "p": 0.966,
    "pMercado": 0.944,
-   "soloWtn": 0.816,
-   "señales": [],
-   "razon": "Δ3.25 de WTN a favor de Calvin Hemery (4.91 contra 8.16), en R1: la curva del grupo \"buenas\" (n=2320) da 82%. El mercado la paga a 1.004: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −18% si tenemos razón nosotros y −5% si la tiene el mercado."
+   "soloWtn": 0.825,
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ3.25 de WTN a favor de Calvin Hemery (4.91 contra 8.16), en R1: la curva del grupo \"buenas\" (n=2893) da 83%. Ajustan: Calvin Hemery llegó más lejos en su torneo anterior (+14 pts). Queda en 97%. El mercado la paga a 1.004: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −5% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.3,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.475,
-    "dW": 0.42,
-    "forma": -1,
+    "pFm": 0.541,
+    "dW": 0.34,
+    "forma": null,
     "previo": null,
-    "grupo": "finales",
+    "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 23,
-    "dElo": 110
+    "dElo": 99
    },
    "jugada": null,
    "fixtureId": "pn129034551637808594",
    "inicio": "2026-10-07T08:30:00.000Z",
    "torneo": "M15 Monastir",
    "pais": "Tunisia",
-   "etapa": "QF",
+   "etapa": "R1",
    "p1": "Nazim Makhlouf",
    "p2": "Alexander Watanabe Eriksson",
    "g1": 1.3,
    "g2": 3.25,
    "gana": "Nazim Makhlouf",
    "lado": 1,
-   "p": 0.475,
+   "p": 0.541,
    "pMercado": 0.714,
-   "soloWtn": 0.538,
-   "señales": [
-    "forma"
-   ],
-   "razon": "Δ0.42 de WTN a favor de Nazim Makhlouf (6.61 contra 7.03), en QF: la curva del grupo \"finales\" (n=423) da 54%. Ajustan: Alexander Watanabe Eriksson viene cediendo menos games (37% contra 51%): la forma contradice al nivel (−6 pts). Queda en 47%. El mercado la paga a 1.3: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −38% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "soloWtn": 0.541,
+   "señales": [],
+   "razon": "Δ0.34 de WTN a favor de Nazim Makhlouf (6.66 contra 7), en R1: la curva del grupo \"buenas\" (n=2893) da 54%. El mercado la paga a 1.3: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −30% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.22,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.581,
+    "pFm": 0.599,
     "dW": 1.11,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 31,
     "edadRi": 22,
-    "dElo": 129
+    "dElo": 117
    },
    "jugada": null,
    "fixtureId": "pn129034661637808612",
@@ -885,27 +894,27 @@
    "g2": 1.22,
    "gana": "Jelle Sels",
    "lado": 2,
-   "p": 0.581,
+   "p": 0.599,
    "pMercado": 0.755,
-   "soloWtn": 0.625,
+   "soloWtn": 0.63,
    "señales": [
     "local"
    ],
-   "razon": "Δ1.11 de WTN a favor de Jelle Sels (5.69 contra 6.8), en R1: la curva del grupo \"buenas\" (n=2320) da 62%. Ajustan: Thomas Gerbaud juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 58%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.11 de WTN a favor de Jelle Sels (5.69 contra 6.8), en R1: la curva del grupo \"buenas\" (n=2893) da 63%. Ajustan: Thomas Gerbaud juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 60%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.17,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.632,
+    "pFm": 0.623,
     "dW": 0.78,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 26,
-    "dElo": 131
+    "dElo": 126
    },
    "jugada": null,
    "fixtureId": "pn129034661637808613",
@@ -919,27 +928,27 @@
    "g2": 4.33,
    "gana": "Loann Massard",
    "lado": 1,
-   "p": 0.632,
+   "p": 0.623,
    "pMercado": 0.787,
-   "soloWtn": 0.588,
+   "soloWtn": 0.592,
    "señales": [
     "local"
    ],
-   "razon": "Δ0.78 de WTN a favor de Loann Massard (6.07 contra 6.85), en R1: la curva del grupo \"buenas\" (n=2320) da 59%. Ajustan: Loann Massard juega en su país (FRA): la localía vale ~0.5 pts de WTN (+4 pts). Queda en 63%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −26% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.78 de WTN a favor de Loann Massard (6.07 contra 6.85), en R1: la curva del grupo \"buenas\" (n=2893) da 59%. Ajustan: Loann Massard juega en su país (FRA): la localía vale ~0.5 pts de WTN (+3 pts). Queda en 62%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.22,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.622,
+    "pFm": 0.879,
     "dW": 0.39,
     "forma": null,
     "previo": 1,
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 24,
-    "dElo": 95
+    "dElo": 189
    },
    "jugada": null,
    "fixtureId": "pn129034661637810051",
@@ -953,20 +962,20 @@
    "g2": 3.75,
    "gana": "Etienne Donnet",
    "lado": 1,
-   "p": 0.622,
+   "p": 0.879,
    "pMercado": 0.755,
-   "soloWtn": 0.545,
+   "soloWtn": 0.546,
    "señales": [
     "previo"
    ],
-   "razon": "Δ0.39 de WTN a favor de Etienne Donnet (6.17 contra 6.56), en R1: la curva del grupo \"buenas\" (n=2320) da 54%. Ajustan: Etienne Donnet llegó más lejos en su torneo anterior (+8 pts). Queda en 62%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.39 de WTN a favor de Etienne Donnet (6.17 contra 6.56), en R1: la curva del grupo \"buenas\" (n=2893) da 55%. Ajustan: Etienne Donnet llegó más lejos en su torneo anterior (+33 pts). Queda en 88%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde +7% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.69,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.511,
+    "pFm": 0.512,
     "dW": 0.1,
     "forma": null,
     "previo": null,
@@ -987,18 +996,18 @@
    "g2": 1.97,
    "gana": "Federico Iannaccone",
    "lado": 1,
-   "p": 0.511,
+   "p": 0.512,
    "pMercado": 0.538,
-   "soloWtn": 0.511,
+   "soloWtn": 0.512,
    "señales": [],
-   "razon": "Δ0.10 de WTN a favor de Federico Iannaccone (5.12 contra 5.22), en R1: la curva del grupo \"buenas\" (n=2320) da 51%. El mercado la paga a 1.69: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.10 de WTN a favor de Federico Iannaccone (5.12 contra 5.22), en R1: la curva del grupo \"buenas\" (n=2893) da 51%. El mercado la paga a 1.69: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −13% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.37,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.554,
+    "pFm": 0.556,
     "dW": 0.47,
     "forma": null,
     "previo": null,
@@ -1019,25 +1028,25 @@
    "g2": 1.37,
    "gana": "Gabriele Maria Noce",
    "lado": 2,
-   "p": 0.554,
+   "p": 0.556,
    "pMercado": 0.667,
-   "soloWtn": 0.554,
+   "soloWtn": 0.556,
    "señales": [],
-   "razon": "Δ0.47 de WTN a favor de Gabriele Maria Noce (6.09 contra 6.56), en R1: la curva del grupo \"buenas\" (n=2320) da 55%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.47 de WTN a favor de Gabriele Maria Noce (6.09 contra 6.56), en R1: la curva del grupo \"buenas\" (n=2893) da 56%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −24% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.17,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.622,
+    "pFm": 0.718,
     "dW": 1.48,
     "forma": null,
-    "previo": null,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 32,
     "edadRi": 22,
-    "dElo": 151
+    "dElo": 115
    },
    "jugada": null,
    "fixtureId": "pn129038901637777514",
@@ -1051,61 +1060,63 @@
    "g2": 1.17,
    "gana": "Colin Sinclair",
    "lado": 2,
-   "p": 0.622,
+   "p": 0.718,
    "pMercado": 0.787,
-   "soloWtn": 0.663,
+   "soloWtn": 0.67,
    "señales": [
+    "previo",
     "local"
    ],
-   "razon": "Δ1.48 de WTN a favor de Colin Sinclair (5.94 contra 7.42), en R1: la curva del grupo \"buenas\" (n=2320) da 66%. Ajustan: Lachlan Vickery juega en su país (AUS): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 62%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.48 de WTN a favor de Colin Sinclair (5.94 contra 7.42), en R1: la curva del grupo \"buenas\" (n=2893) da 67%. Ajustan: Colin Sinclair llegó más lejos en su torneo anterior (+8 pts); Lachlan Vickery juega en su país (AUS): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 72%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −16% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.33,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.563,
-    "dW": 0.98,
-    "forma": null,
+    "pFm": 0.639,
+    "dW": 1.07,
+    "forma": 1,
     "previo": null,
-    "grupo": "Q1",
+    "grupo": "buenas",
     "edadFm": 33,
     "edadRi": 20,
-    "dElo": null
+    "dElo": 128
    },
    "jugada": null,
    "fixtureId": "pn129038901637790947",
    "inicio": "2026-10-07T08:30:00.000Z",
    "torneo": "M25 Darwin",
    "pais": "Australia",
-   "etapa": "Q1",
+   "etapa": "R1",
    "p1": "Zane Stevens",
    "p2": "Shintaro Imai",
    "g1": 3,
    "g2": 1.33,
    "gana": "Shintaro Imai",
    "lado": 2,
-   "p": 0.563,
+   "p": 0.639,
    "pMercado": 0.693,
-   "soloWtn": 0.608,
+   "soloWtn": 0.625,
    "señales": [
+    "forma",
     "local"
    ],
-   "razon": "Δ0.98 de WTN a favor de Shintaro Imai (5.96 contra 6.94), en Q1: la curva del grupo \"Q1\" (n=1391) da 61%. Ajustan: Zane Stevens juega en su país (AUS): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 56%. El mercado la paga a 1.33: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.07 de WTN a favor de Shintaro Imai (5.86 contra 6.93), en R1: la curva del grupo \"buenas\" (n=2893) da 63%. Ajustan: Shintaro Imai viene cediendo menos games (55% contra 67%) (+4 pts); Zane Stevens juega en su país (AUS): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 64%. El mercado la paga a 1.33: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.091,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.65,
+    "pFm": 0.656,
     "dW": 1.35,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 25,
-    "dElo": 137
+    "dElo": 108
    },
    "jugada": null,
    "fixtureId": "pn129038901637803021",
@@ -1119,25 +1130,25 @@
    "g2": 6,
    "gana": "Moerani Bouzige",
    "lado": 1,
-   "p": 0.65,
+   "p": 0.656,
    "pMercado": 0.846,
-   "soloWtn": 0.65,
+   "soloWtn": 0.656,
    "señales": [],
-   "razon": "Δ1.35 de WTN a favor de Moerani Bouzige (5.94 contra 7.29), en R1: la curva del grupo \"buenas\" (n=2320) da 65%. El mercado la paga a 1.091: 85% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.35 de WTN a favor de Moerani Bouzige (5.94 contra 7.29), en R1: la curva del grupo \"buenas\" (n=2893) da 66%. El mercado la paga a 1.091: 85% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.068,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.829,
+    "pFm": 0.839,
     "dW": 3.45,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 28,
     "edadRi": 19,
-    "dElo": null
+    "dElo": 301
    },
    "jugada": null,
    "fixtureId": "pn129038901637808541",
@@ -1151,25 +1162,25 @@
    "g2": 1.068,
    "gana": "Sam Ryan Ziegann",
    "lado": 2,
-   "p": 0.829,
+   "p": 0.839,
    "pMercado": 0.868,
-   "soloWtn": 0.829,
+   "soloWtn": 0.839,
    "señales": [],
-   "razon": "Δ3.45 de WTN a favor de Sam Ryan Ziegann (6.38 contra 9.83), en R1: la curva del grupo \"buenas\" (n=2320) da 83%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ3.45 de WTN a favor de Sam Ryan Ziegann (6.38 contra 9.83), en R1: la curva del grupo \"buenas\" (n=2893) da 84%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.01,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.708,
+    "pFm": 0.881,
     "dW": 1.93,
     "forma": null,
-    "previo": null,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 24,
-    "dElo": 320
+    "dElo": 303
    },
    "jugada": null,
    "fixtureId": "pn129040931637773829",
@@ -1183,25 +1194,27 @@
    "g2": 13,
    "gana": "Max Houkes",
    "lado": 1,
-   "p": 0.708,
+   "p": 0.881,
    "pMercado": 0.928,
-   "soloWtn": 0.708,
-   "señales": [],
-   "razon": "Δ1.93 de WTN a favor de Max Houkes (4.33 contra 6.26), en R1: la curva del grupo \"buenas\" (n=2320) da 71%. El mercado la paga a 1.01: 93% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −6% si la tiene el mercado."
+   "soloWtn": 0.715,
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ1.93 de WTN a favor de Max Houkes (4.33 contra 6.26), en R1: la curva del grupo \"buenas\" (n=2893) da 72%. Ajustan: Max Houkes llegó más lejos en su torneo anterior (+17 pts). Queda en 88%. El mercado la paga a 1.01: 93% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −6% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.004,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.962,
+    "pFm": 0.966,
     "dW": 7.03,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 23,
-    "dElo": 724
+    "dElo": 667
    },
    "jugada": null,
    "fixtureId": "pn129040931637773830",
@@ -1215,25 +1228,25 @@
    "g2": 1.004,
    "gana": "Florent Bax",
    "lado": 2,
-   "p": 0.962,
+   "p": 0.966,
    "pMercado": 0.944,
-   "soloWtn": 0.962,
+   "soloWtn": 0.966,
    "señales": [],
-   "razon": "Δ7.03 de WTN a favor de Florent Bax (5.05 contra 12.08), en R1: la curva del grupo \"buenas\" (n=2320) da 96%. El mercado la paga a 1.004: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −5% si la tiene el mercado."
+   "razon": "Δ7.03 de WTN a favor de Florent Bax (5.05 contra 12.08), en R1: la curva del grupo \"buenas\" (n=2893) da 97%. El mercado la paga a 1.004: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −3% si tenemos razón nosotros y −5% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.004,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.835,
+    "pFm": 0.852,
     "dW": 3.94,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 19,
-    "dElo": 558
+    "dElo": 553
    },
    "jugada": null,
    "fixtureId": "pn129055211637779226",
@@ -1247,27 +1260,27 @@
    "g2": 17,
    "gana": "Iannis Miletich",
    "lado": 1,
-   "p": 0.835,
+   "p": 0.852,
    "pMercado": 0.944,
-   "soloWtn": 0.859,
+   "soloWtn": 0.868,
    "señales": [
     "local"
    ],
-   "razon": "Δ3.94 de WTN a favor de Iannis Miletich (6.11 contra 10.05), en R1: la curva del grupo \"buenas\" (n=2320) da 86%. Ajustan: Yoan Naydenov juega en su país (BUL): la localía le suma ~0.5 pts de WTN (−2 pts). Queda en 84%. El mercado la paga a 1.004: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −16% si tenemos razón nosotros y −5% si la tiene el mercado."
+   "razon": "Δ3.94 de WTN a favor de Iannis Miletich (6.11 contra 10.05), en R1: la curva del grupo \"buenas\" (n=2893) da 87%. Ajustan: Yoan Naydenov juega en su país (BUL): la localía le suma ~0.5 pts de WTN (−2 pts). Queda en 85%. El mercado la paga a 1.004: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −5% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.54,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.523,
+    "pFm": 0.272,
     "dW": 0.2,
     "forma": null,
-    "previo": null,
+    "previo": -1,
     "grupo": "buenas",
     "edadFm": 28,
     "edadRi": 29,
-    "dElo": null
+    "dElo": -10
    },
    "jugada": null,
    "fixtureId": "pn129055211637783830",
@@ -1281,25 +1294,27 @@
    "g2": 2.25,
    "gana": "Michel Hopp",
    "lado": 1,
-   "p": 0.523,
+   "p": 0.272,
    "pMercado": 0.594,
-   "soloWtn": 0.523,
-   "señales": [],
-   "razon": "Δ0.20 de WTN a favor de Michel Hopp (6.12 contra 6.32), en R1: la curva del grupo \"buenas\" (n=2320) da 52%. El mercado la paga a 1.54: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −19% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "soloWtn": 0.524,
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ0.20 de WTN a favor de Michel Hopp (6.12 contra 6.32), en R1: la curva del grupo \"buenas\" (n=2893) da 52%. Ajustan: Francesco Ferrari llegó más lejos en su torneo anterior (−25 pts). Queda en 27%. El mercado la paga a 1.54: 59% una vez sacado su margen. A esa cuota, la apuesta rinde −58% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.068,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.423,
+    "pFm": 0.469,
     "dW": 1.51,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 18,
-    "dElo": 219
+    "dElo": 210
    },
    "jugada": null,
    "fixtureId": "pn129055211637783831",
@@ -1313,28 +1328,28 @@
    "g2": 1.068,
    "gana": "George Lazarov",
    "lado": 2,
-   "p": 0.423,
+   "p": 0.469,
    "pMercado": 0.868,
-   "soloWtn": 0.666,
+   "soloWtn": 0.673,
    "señales": [
     "sub18",
     "local"
    ],
-   "razon": "Δ1.51 de WTN a favor de George Lazarov (5.7 contra 7.21), en R1: la curva del grupo \"buenas\" (n=2320) da 67%. Ajustan: Stefan Ilie Bogdan Petre tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−28 pts); George Lazarov juega en su país (BUL): la localía vale ~0.5 pts de WTN (+4 pts). Queda en 42%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −55% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ1.51 de WTN a favor de George Lazarov (5.7 contra 7.21), en R1: la curva del grupo \"buenas\" (n=2893) da 67%. Ajustan: Stefan Ilie Bogdan Petre tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−23 pts); George Lazarov juega en su país (BUL): la localía vale ~0.5 pts de WTN (+3 pts). Queda en 47%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −50% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.69,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.473,
+    "pFm": 0.175,
     "dW": -0.24,
     "forma": null,
-    "previo": null,
+    "previo": -1,
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 24,
-    "dElo": 33
+    "dElo": -78
    },
    "jugada": null,
    "fixtureId": "pn129055211637790849",
@@ -1348,25 +1363,27 @@
    "g2": 1.97,
    "gana": "Noah Lopez",
    "lado": 2,
-   "p": 0.527,
+   "p": 0.825,
    "pMercado": 0.462,
-   "soloWtn": 0.527,
-   "señales": [],
-   "razon": "Δ0.24 de WTN a favor de Noah Lopez (6.06 contra 6.3), en R1: la curva del grupo \"buenas\" (n=2320) da 53%. El mercado la paga a 1.97: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "soloWtn": 0.529,
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ0.24 de WTN a favor de Noah Lopez (6.06 contra 6.3), en R1: la curva del grupo \"buenas\" (n=2893) da 53%. Ajustan: Noah Lopez llegó más lejos en su torneo anterior (+30 pts). Queda en 83%. El mercado la paga a 1.97: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +63% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.69,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.764,
+    "pFm": 0.724,
     "dW": -0.03,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 18,
     "edadRi": 21,
-    "dElo": 23
+    "dElo": 53
    },
    "jugada": null,
    "fixtureId": "pn129055211637790850",
@@ -1380,27 +1397,27 @@
    "g2": 1.97,
    "gana": "Nicolas Garcia Longo",
    "lado": 2,
-   "p": 0.236,
+   "p": 0.276,
    "pMercado": 0.462,
-   "soloWtn": 0.503,
+   "soloWtn": 0.504,
    "señales": [
     "sub18"
    ],
-   "razon": "Δ0.03 de WTN a favor de Nicolas Garcia Longo (7.02 contra 7.05), en R1: la curva del grupo \"buenas\" (n=2320) da 50%. Ajustan: Cezar Stefan Bentzel tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−27 pts). Queda en 24%. El mercado la paga a 1.97: 46% una vez sacado su margen. A esa cuota, la apuesta rinde −53% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.03 de WTN a favor de Nicolas Garcia Longo (7.02 contra 7.05), en R1: la curva del grupo \"buenas\" (n=2893) da 50%. Ajustan: Cezar Stefan Bentzel tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−23 pts). Queda en 28%. El mercado la paga a 1.97: 46% una vez sacado su margen. A esa cuota, la apuesta rinde −46% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.052,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.621,
+    "pFm": 0.626,
     "dW": 1.08,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 19,
-    "dElo": 190
+    "dElo": 264
    },
    "jugada": null,
    "fixtureId": "pn129055211637795151",
@@ -1414,25 +1431,25 @@
    "g2": 8,
    "gana": "Sebastian Gima",
    "lado": 1,
-   "p": 0.621,
+   "p": 0.626,
    "pMercado": 0.884,
-   "soloWtn": 0.621,
+   "soloWtn": 0.626,
    "señales": [],
-   "razon": "Δ1.08 de WTN a favor de Sebastian Gima (5.98 contra 7.06), en R1: la curva del grupo \"buenas\" (n=2320) da 62%. El mercado la paga a 1.052: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −35% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ1.08 de WTN a favor de Sebastian Gima (5.98 contra 7.06), en R1: la curva del grupo \"buenas\" (n=2893) da 63%. El mercado la paga a 1.052: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −34% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.33,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.358,
+    "pFm": 0.428,
     "dW": 1.71,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 21,
     "edadRi": 17,
-    "dElo": 162
+    "dElo": 147
    },
    "jugada": null,
    "fixtureId": "pn129055211637795153",
@@ -1446,28 +1463,28 @@
    "g2": 3,
    "gana": "Mihai Alexandru Coman",
    "lado": 1,
-   "p": 0.358,
+   "p": 0.428,
    "pMercado": 0.693,
-   "soloWtn": 0.686,
+   "soloWtn": 0.694,
    "señales": [
     "sub18",
     "local"
    ],
-   "razon": "Δ1.71 de WTN a favor de Mihai Alexandru Coman (6.53 contra 8.24), en R1: la curva del grupo \"buenas\" (n=2320) da 69%. Ajustan: Aleksandar Tolev tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−29 pts); Aleksandar Tolev juega en su país (BUL): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 36%. El mercado la paga a 1.33: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −52% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.71 de WTN a favor de Mihai Alexandru Coman (6.53 contra 8.24), en R1: la curva del grupo \"buenas\" (n=2893) da 69%. Ajustan: Aleksandar Tolev tiene 17 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−24 pts); Aleksandar Tolev juega en su país (BUL): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 43%. El mercado la paga a 1.33: 69% una vez sacado su margen. A esa cuota, la apuesta rinde −43% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.13,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.545,
+    "pFm": 0.78,
     "dW": 0.39,
     "forma": null,
-    "previo": null,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 22,
-    "dElo": 111
+    "dElo": 115
    },
    "jugada": null,
    "fixtureId": "pn129055211637795154",
@@ -1481,25 +1498,27 @@
    "g2": 4.5,
    "gana": "John Sperle",
    "lado": 1,
-   "p": 0.545,
+   "p": 0.78,
    "pMercado": 0.799,
-   "soloWtn": 0.545,
-   "señales": [],
-   "razon": "Δ0.39 de WTN a favor de John Sperle (5.79 contra 6.18), en R1: la curva del grupo \"buenas\" (n=2320) da 54%. El mercado la paga a 1.13: 80% una vez sacado su margen. A esa cuota, la apuesta rinde −38% si tenemos razón nosotros y −10% si la tiene el mercado."
+   "soloWtn": 0.546,
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ0.39 de WTN a favor de John Sperle (5.79 contra 6.18), en R1: la curva del grupo \"buenas\" (n=2893) da 55%. Ajustan: John Sperle llegó más lejos en su torneo anterior (+23 pts). Queda en 78%. El mercado la paga a 1.13: 80% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −10% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.37,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.574,
+    "pFm": 0.577,
     "dW": 0.65,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 22,
-    "dElo": null
+    "dElo": 9
    },
    "jugada": null,
    "fixtureId": "pn129034551637821667",
@@ -1513,18 +1532,18 @@
    "g2": 2.75,
    "gana": "Yassine Smiej",
    "lado": 1,
-   "p": 0.574,
+   "p": 0.577,
    "pMercado": 0.667,
-   "soloWtn": 0.574,
+   "soloWtn": 0.577,
    "señales": [],
-   "razon": "Δ0.65 de WTN a favor de Yassine Smiej (6.54 contra 7.19), en R1: la curva del grupo \"buenas\" (n=2320) da 57%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −21% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.65 de WTN a favor de Yassine Smiej (6.54 contra 7.19), en R1: la curva del grupo \"buenas\" (n=2893) da 58%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −21% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.41,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.477,
+    "pFm": 0.491,
     "dW": 0.2,
     "forma": null,
     "previo": null,
@@ -1545,27 +1564,27 @@
    "g2": 2.62,
    "gana": "Roan Jones",
    "lado": 1,
-   "p": 0.477,
+   "p": 0.491,
    "pMercado": 0.65,
-   "soloWtn": 0.523,
+   "soloWtn": 0.524,
    "señales": [
     "local"
    ],
-   "razon": "Δ0.20 de WTN a favor de Roan Jones (5.92 contra 6.12), en R1: la curva del grupo \"buenas\" (n=2320) da 52%. Ajustan: Guillaume Dalmasso juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 48%. El mercado la paga a 1.41: 65% una vez sacado su margen. A esa cuota, la apuesta rinde −33% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.20 de WTN a favor de Roan Jones (5.92 contra 6.12), en R1: la curva del grupo \"buenas\" (n=2893) da 52%. Ajustan: Guillaume Dalmasso juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 49%. El mercado la paga a 1.41: 65% una vez sacado su margen. A esa cuota, la apuesta rinde −31% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.37,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.767,
+    "pFm": 0.725,
     "dW": 0.52,
     "forma": null,
     "previo": 1,
     "grupo": "buenas",
     "edadFm": 29,
     "edadRi": 27,
-    "dElo": 4
+    "dElo": -4
    },
    "jugada": null,
    "fixtureId": "pn129034661637808616",
@@ -1579,27 +1598,27 @@
    "g2": 2.75,
    "gana": "Oleg Prihodko",
    "lado": 1,
-   "p": 0.767,
+   "p": 0.725,
    "pMercado": 0.667,
-   "soloWtn": 0.559,
+   "soloWtn": 0.562,
    "señales": [
     "previo"
    ],
-   "razon": "Δ0.52 de WTN a favor de Oleg Prihodko (5.24 contra 5.76), en R1: la curva del grupo \"buenas\" (n=2320) da 56%. Ajustan: Oleg Prihodko llegó más lejos en su torneo anterior (+21 pts). Queda en 77%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde +5% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ0.52 de WTN a favor de Oleg Prihodko (5.24 contra 5.76), en R1: la curva del grupo \"buenas\" (n=2893) da 56%. Ajustan: Oleg Prihodko llegó más lejos en su torneo anterior (+16 pts). Queda en 72%. El mercado la paga a 1.37: 67% una vez sacado su margen. A esa cuota, la apuesta rinde −1% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.58,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.556,
+    "pFm": 0.558,
     "dW": 0.49,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 19,
     "edadRi": 24,
-    "dElo": 69
+    "dElo": 86
    },
    "jugada": null,
    "fixtureId": "pn129034661637810054",
@@ -1613,18 +1632,18 @@
    "g2": 1.58,
    "gana": "Noah Boutleux",
    "lado": 2,
-   "p": 0.556,
+   "p": 0.558,
    "pMercado": 0.582,
-   "soloWtn": 0.556,
+   "soloWtn": 0.558,
    "señales": [],
-   "razon": "Δ0.49 de WTN a favor de Noah Boutleux (7.84 contra 8.33), en R1: la curva del grupo \"buenas\" (n=2320) da 56%. El mercado la paga a 1.58: 58% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.49 de WTN a favor de Noah Boutleux (7.84 contra 8.33), en R1: la curva del grupo \"buenas\" (n=2893) da 56%. El mercado la paga a 1.58: 58% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.29,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.566,
+    "pFm": 0.569,
     "dW": 0.58,
     "forma": null,
     "previo": null,
@@ -1645,25 +1664,25 @@
    "g2": 1.29,
    "gana": "Alejandro Turriziani Alvarez",
    "lado": 2,
-   "p": 0.566,
+   "p": 0.569,
    "pMercado": 0.709,
-   "soloWtn": 0.566,
+   "soloWtn": 0.569,
    "señales": [],
-   "razon": "Δ0.58 de WTN a favor de Alejandro Turriziani Alvarez (6.26 contra 6.84), en R1: la curva del grupo \"buenas\" (n=2320) da 57%. El mercado la paga a 1.29: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.58 de WTN a favor de Alejandro Turriziani Alvarez (6.26 contra 6.84), en R1: la curva del grupo \"buenas\" (n=2893) da 57%. El mercado la paga a 1.29: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.44,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.467,
+    "pFm": 0.465,
     "dW": -0.29,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 19,
-    "dElo": -56
+    "dElo": -20
    },
    "jugada": null,
    "fixtureId": "pn129034761637835465",
@@ -1675,27 +1694,27 @@
    "p2": "Benjamin Gusic Wan",
    "g1": 1.44,
    "g2": 2.52,
-   "gana": "Benjamin Gusic Wan",
+   "gana": "Benjamin Gusic Wan JR",
    "lado": 2,
-   "p": 0.533,
+   "p": 0.535,
    "pMercado": 0.364,
-   "soloWtn": 0.533,
+   "soloWtn": 0.535,
    "señales": [],
-   "razon": "Δ0.29 de WTN a favor de Benjamin Gusic Wan (6.18 contra 6.47), en R1: la curva del grupo \"buenas\" (n=2320) da 53%. El mercado la paga a 2.52: 36% una vez sacado su margen. A esa cuota, la apuesta rinde +34% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.29 de WTN a favor de Benjamin Gusic Wan (6.18 contra 6.47), en R1: la curva del grupo \"buenas\" (n=2893) da 53%. El mercado la paga a 2.52: 36% una vez sacado su margen. A esa cuota, la apuesta rinde +35% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.53,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.557,
+    "pFm": 0.574,
     "dW": 0.9,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 23,
-    "dElo": 88
+    "dElo": 70
    },
    "jugada": null,
    "fixtureId": "pn129034761637847736",
@@ -1709,20 +1728,20 @@
    "g2": 1.53,
    "gana": "Leyton Rivera",
    "lado": 2,
-   "p": 0.557,
+   "p": 0.574,
    "pMercado": 0.601,
-   "soloWtn": 0.602,
+   "soloWtn": 0.606,
    "señales": [
     "local"
    ],
-   "razon": "Δ0.90 de WTN a favor de Leyton Rivera (6.36 contra 7.26), en R1: la curva del grupo \"buenas\" (n=2320) da 60%. Ajustan: Evangelos Kypriotis juega en su país (GRE): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 56%. El mercado la paga a 1.53: 60% una vez sacado su margen. A esa cuota, la apuesta rinde −15% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.90 de WTN a favor de Leyton Rivera (6.36 contra 7.26), en R1: la curva del grupo \"buenas\" (n=2893) da 61%. Ajustan: Evangelos Kypriotis juega en su país (GRE): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 57%. El mercado la paga a 1.53: 60% una vez sacado su margen. A esa cuota, la apuesta rinde −12% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.5,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.819,
+    "pFm": 0.844,
     "dW": 0.52,
     "forma": null,
     "previo": 1,
@@ -1743,13 +1762,13 @@
    "g2": 1.5,
    "gana": "Andrey Chepelev",
    "lado": 2,
-   "p": 0.819,
+   "p": 0.844,
    "pMercado": 0.612,
-   "soloWtn": 0.559,
+   "soloWtn": 0.562,
    "señales": [
     "previo"
    ],
-   "razon": "Δ0.52 de WTN a favor de Andrey Chepelev (5.33 contra 5.85), en R1: la curva del grupo \"buenas\" (n=2320) da 56%. Ajustan: Andrey Chepelev llegó más lejos en su torneo anterior (+26 pts). Queda en 82%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +23% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.52 de WTN a favor de Andrey Chepelev (5.33 contra 5.85), en R1: la curva del grupo \"buenas\" (n=2893) da 56%. Ajustan: Andrey Chepelev llegó más lejos en su torneo anterior (+28 pts). Queda en 84%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +27% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
@@ -1763,7 +1782,7 @@
     "grupo": "buenas",
     "edadFm": 23,
     "edadRi": 25,
-    "dElo": 46
+    "dElo": 57
    },
    "jugada": null,
    "fixtureId": "pn129037681637808573",
@@ -1779,15 +1798,15 @@
    "lado": 1,
    "p": 0.507,
    "pMercado": 0.5,
-   "soloWtn": 0.503,
+   "soloWtn": 0.504,
    "señales": [
     "forma"
    ],
-   "razon": "Δ0.03 de WTN a favor de Leonardo Primucci (6.28 contra 6.31), en R1: la curva del grupo \"buenas\" (n=2320) da 50%. El mercado la paga a 1.8: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −10% si la tiene el mercado."
+   "razon": "Δ0.03 de WTN a favor de Leonardo Primucci (6.28 contra 6.31), en R1: la curva del grupo \"buenas\" (n=2893) da 50%. El mercado la paga a 1.8: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −10% si la tiene el mercado."
   },
   {
    "crit": {
-    "cuota": 1.17,
+    "cuota": 1.25,
     "ladoFm": 1,
     "acuerdo": true,
     "pFm": 0.571,
@@ -1797,7 +1816,7 @@
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 24,
-    "dElo": 27
+    "dElo": 5
    },
    "jugada": null,
    "fixtureId": "pn129037681637821635",
@@ -1807,32 +1826,32 @@
    "etapa": "R1",
    "p1": "Gabriele Pennaforti",
    "p2": "Ruben Hartig",
-   "g1": 1.17,
-   "g2": 4.33,
+   "g1": 1.25,
+   "g2": 3.5,
    "gana": "Gabriele Pennaforti",
    "lado": 1,
    "p": 0.571,
-   "pMercado": 0.787,
-   "soloWtn": 0.588,
+   "pMercado": 0.737,
+   "soloWtn": 0.592,
    "señales": [
     "forma",
     "local"
    ],
-   "razon": "Δ0.78 de WTN a favor de Gabriele Pennaforti (6.13 contra 6.91), en R1: la curva del grupo \"buenas\" (n=2320) da 59%. Ajustan: Ruben Hartig viene cediendo menos games (25% contra 39%): la forma contradice al nivel (−6 pts); Gabriele Pennaforti juega en su país (ITA): la localía vale ~0.5 pts de WTN (+5 pts). Queda en 57%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −33% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.78 de WTN a favor de Gabriele Pennaforti (6.13 contra 6.91), en R1: la curva del grupo \"buenas\" (n=2893) da 59%. Ajustan: Ruben Hartig viene cediendo menos games (25% contra 39%): la forma contradice al nivel (−5 pts); Gabriele Pennaforti juega en su país (ITA): la localía vale ~0.5 pts de WTN (+3 pts). Queda en 57%. El mercado la paga a 1.25: 74% una vez sacado su margen. A esa cuota, la apuesta rinde −29% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.63,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.461,
+    "pFm": 0.636,
     "dW": -0.34,
     "forma": null,
-    "previo": null,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 22,
     "edadRi": 28,
-    "dElo": null
+    "dElo": 12
    },
    "jugada": null,
    "fixtureId": "pn129038901637773813",
@@ -1846,52 +1865,54 @@
    "g2": 2.1,
    "gana": "Scott Jones",
    "lado": 2,
-   "p": 0.539,
+   "p": 0.364,
    "pMercado": 0.437,
-   "soloWtn": 0.539,
-   "señales": [],
-   "razon": "Δ0.34 de WTN a favor de Scott Jones (6.17 contra 6.51), en R1: la curva del grupo \"buenas\" (n=2320) da 54%. El mercado la paga a 2.1: 44% una vez sacado su margen. A esa cuota, la apuesta rinde +13% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "soloWtn": 0.541,
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ0.34 de WTN a favor de Scott Jones (6.17 contra 6.51), en R1: la curva del grupo \"buenas\" (n=2893) da 54%. Ajustan: Derek Pham llegó más lejos en su torneo anterior (−18 pts). Queda en 36%. El mercado la paga a 2.1: 44% una vez sacado su margen. A esa cuota, la apuesta rinde −23% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.25,
     "ladoFm": 2,
     "acuerdo": false,
-    "pFm": 0.541,
+    "pFm": 0.528,
     "dW": -0.04,
     "forma": null,
     "previo": null,
-    "grupo": "Q1",
+    "grupo": "buenas",
     "edadFm": 20,
     "edadRi": 30,
-    "dElo": 73
+    "dElo": 112
    },
    "jugada": null,
    "fixtureId": "pn129038901637779152",
    "inicio": "2026-10-07T10:00:00.000Z",
    "torneo": "M25 Darwin",
    "pais": "Australia",
-   "etapa": "Q1",
+   "etapa": "R1",
    "p1": "Makoto Ochi",
    "p2": "Hayden Jones",
    "g1": 3.5,
    "g2": 1.25,
    "gana": "Makoto Ochi",
    "lado": 1,
-   "p": 0.459,
+   "p": 0.472,
    "pMercado": 0.263,
-   "soloWtn": 0.504,
+   "soloWtn": 0.505,
    "señales": [
     "local"
    ],
-   "razon": "Δ0.04 de WTN a favor de Makoto Ochi (6.16 contra 6.2), en Q1: la curva del grupo \"Q1\" (n=1391) da 50%. Ajustan: Hayden Jones juega en su país (AUS): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 46%. El mercado la paga a 3.5: 26% una vez sacado su margen. A esa cuota, la apuesta rinde +61% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.04 de WTN a favor de Makoto Ochi (6.16 contra 6.2), en R1: la curva del grupo \"buenas\" (n=2893) da 50%. Ajustan: Hayden Jones juega en su país (AUS): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 47%. El mercado la paga a 3.5: 26% una vez sacado su margen. A esa cuota, la apuesta rinde +65% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.13,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.54,
+    "pFm": 0.542,
     "dW": 0.35,
     "forma": null,
     "previo": null,
@@ -1912,18 +1933,18 @@
    "g2": 4.5,
    "gana": "Hugo Car",
    "lado": 1,
-   "p": 0.54,
+   "p": 0.542,
    "pMercado": 0.799,
-   "soloWtn": 0.54,
+   "soloWtn": 0.542,
    "señales": [],
-   "razon": "Δ0.35 de WTN a favor de Hugo Car (5.94 contra 6.29), en R1: la curva del grupo \"buenas\" (n=2320) da 54%. El mercado la paga a 1.13: 80% una vez sacado su margen. A esa cuota, la apuesta rinde −39% si tenemos razón nosotros y −10% si la tiene el mercado."
+   "razon": "Δ0.35 de WTN a favor de Hugo Car (5.94 contra 6.29), en R1: la curva del grupo \"buenas\" (n=2893) da 54%. El mercado la paga a 1.13: 80% una vez sacado su margen. A esa cuota, la apuesta rinde −39% si tenemos razón nosotros y −10% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.11,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.651,
+    "pFm": 0.657,
     "dW": 1.36,
     "forma": null,
     "previo": null,
@@ -1944,25 +1965,25 @@
    "g2": 5,
    "gana": "Karim Bennani",
    "lado": 1,
-   "p": 0.651,
+   "p": 0.657,
    "pMercado": 0.818,
-   "soloWtn": 0.651,
+   "soloWtn": 0.657,
    "señales": [],
-   "razon": "Δ1.36 de WTN a favor de Karim Bennani (4.94 contra 6.3), en R1: la curva del grupo \"buenas\" (n=2320) da 65%. El mercado la paga a 1.11: 82% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "razon": "Δ1.36 de WTN a favor de Karim Bennani (4.94 contra 6.3), en R1: la curva del grupo \"buenas\" (n=2893) da 66%. El mercado la paga a 1.11: 82% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.061,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.537,
+    "pFm": 0.553,
     "dW": 0.72,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 21,
-    "dElo": 166
+    "dElo": 155
    },
    "jugada": null,
    "fixtureId": "pn129044371637834979",
@@ -1976,27 +1997,27 @@
    "g2": 7.5,
    "gana": "Matisse Bobichon",
    "lado": 1,
-   "p": 0.537,
+   "p": 0.553,
    "pMercado": 0.876,
-   "soloWtn": 0.582,
+   "soloWtn": 0.585,
    "señales": [
     "local"
    ],
-   "razon": "Δ0.72 de WTN a favor de Matisse Bobichon (5.99 contra 6.71), en R1: la curva del grupo \"buenas\" (n=2320) da 58%. Ajustan: Carlos Giraldi juega en su país (ESP): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 54%. El mercado la paga a 1.061: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −43% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ0.72 de WTN a favor de Matisse Bobichon (5.99 contra 6.71), en R1: la curva del grupo \"buenas\" (n=2893) da 59%. Ajustan: Carlos Giraldi juega en su país (ESP): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 55%. El mercado la paga a 1.061: 88% una vez sacado su margen. A esa cuota, la apuesta rinde −41% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.068,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.791,
+    "pFm": 0.809,
     "dW": 3.3,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 21,
-    "dElo": 342
+    "dElo": 327
    },
    "jugada": null,
    "fixtureId": "pn129044371637835391",
@@ -2010,27 +2031,27 @@
    "g2": 7,
    "gana": "Andrea Bacaloni",
    "lado": 1,
-   "p": 0.791,
+   "p": 0.809,
    "pMercado": 0.868,
-   "soloWtn": 0.819,
+   "soloWtn": 0.829,
    "señales": [
     "local"
    ],
-   "razon": "Δ3.30 de WTN a favor de Andrea Bacaloni (6.46 contra 9.76), en R1: la curva del grupo \"buenas\" (n=2320) da 82%. Ajustan: Javier Munoz Fuster juega en su país (ESP): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 79%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −16% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ3.30 de WTN a favor de Andrea Bacaloni (6.46 contra 9.76), en R1: la curva del grupo \"buenas\" (n=2893) da 83%. Ajustan: Javier Munoz Fuster juega en su país (ESP): la localía le suma ~0.5 pts de WTN (−2 pts). Queda en 81%. El mercado la paga a 1.068: 87% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
-    "cuota": 1.17,
+    "cuota": 1.25,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.536,
+    "pFm": 0.838,
     "dW": 0.71,
     "forma": null,
-    "previo": null,
+    "previo": 1,
     "grupo": "buenas",
     "edadFm": 41,
     "edadRi": 19,
-    "dElo": 85
+    "dElo": 112
    },
    "jugada": null,
    "fixtureId": "pn129044371637835392",
@@ -2040,31 +2061,32 @@
    "etapa": "R1",
    "p1": "Stefan Seifert",
    "p2": "Xavi Palomar",
-   "g1": 1.17,
-   "g2": 4.33,
+   "g1": 1.25,
+   "g2": 3.5,
    "gana": "Stefan Seifert",
    "lado": 1,
-   "p": 0.536,
-   "pMercado": 0.787,
-   "soloWtn": 0.581,
+   "p": 0.838,
+   "pMercado": 0.737,
+   "soloWtn": 0.584,
    "señales": [
+    "previo",
     "local"
    ],
-   "razon": "Δ0.71 de WTN a favor de Stefan Seifert (6.04 contra 6.75), en R1: la curva del grupo \"buenas\" (n=2320) da 58%. Ajustan: Xavi Palomar juega en su país (ESP): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 54%. El mercado la paga a 1.17: 79% una vez sacado su margen. A esa cuota, la apuesta rinde −37% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.71 de WTN a favor de Stefan Seifert (6.04 contra 6.75), en R1: la curva del grupo \"buenas\" (n=2893) da 58%. Ajustan: Stefan Seifert llegó más lejos en su torneo anterior (+29 pts); Xavi Palomar juega en su país (ESP): la localía le suma ~0.5 pts de WTN (−2 pts). Queda en 84%. El mercado la paga a 1.25: 74% una vez sacado su margen. A esa cuota, la apuesta rinde +5% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.27,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.573,
+    "pFm": 0.576,
     "dW": 0.64,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 25,
     "edadRi": 27,
-    "dElo": 124
+    "dElo": 141
    },
    "jugada": null,
    "fixtureId": "pn129044371637835393",
@@ -2078,25 +2100,25 @@
    "g2": 3.4,
    "gana": "Oscar Weightman",
    "lado": 1,
-   "p": 0.573,
+   "p": 0.576,
    "pMercado": 0.728,
-   "soloWtn": 0.573,
+   "soloWtn": 0.576,
    "señales": [],
-   "razon": "Δ0.64 de WTN a favor de Oscar Weightman (5.63 contra 6.27), en R1: la curva del grupo \"buenas\" (n=2320) da 57%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.64 de WTN a favor de Oscar Weightman (5.63 contra 6.27), en R1: la curva del grupo \"buenas\" (n=2893) da 58%. El mercado la paga a 1.27: 73% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.8,
     "ladoFm": 1,
     "acuerdo": false,
-    "pFm": 0.677,
-    "dW": -0.97,
+    "pFm": 0.634,
+    "dW": -0.9,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 18,
     "edadRi": 27,
-    "dElo": null
+    "dElo": -31
    },
    "jugada": null,
    "fixtureId": "pn129034551637821668",
@@ -2110,27 +2132,27 @@
    "g2": 1.8,
    "gana": "Isaac Nortey",
    "lado": 2,
-   "p": 0.323,
+   "p": 0.366,
    "pMercado": 0.5,
-   "soloWtn": 0.609,
+   "soloWtn": 0.606,
    "señales": [
     "sub18"
    ],
-   "razon": "Δ0.97 de WTN a favor de Isaac Nortey (7.04 contra 8.01), en R1: la curva del grupo \"buenas\" (n=2320) da 61%. Ajustan: Bercel Sandor Takacs tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−29 pts). Queda en 32%. El mercado la paga a 1.8: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −42% si tenemos razón nosotros y −10% si la tiene el mercado."
+   "razon": "Δ0.90 de WTN a favor de Isaac Nortey (7.05 contra 7.95), en R1: la curva del grupo \"buenas\" (n=2893) da 61%. Ajustan: Bercel Sandor Takacs tiene 18 años, y contra un sub-19 la curva se equivoca ~14 puntos de más (−24 pts). Queda en 37%. El mercado la paga a 1.8: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −34% si tenemos razón nosotros y −10% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.72,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.549,
+    "pFm": 0.53,
     "dW": 0.43,
-    "forma": null,
+    "forma": -1,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 24,
     "edadRi": 27,
-    "dElo": 11
+    "dElo": 12
    },
    "jugada": null,
    "fixtureId": "pn129034761637835467",
@@ -2144,25 +2166,27 @@
    "g2": 1.72,
    "gana": "Jip Van Assendelft",
    "lado": 2,
-   "p": 0.549,
+   "p": 0.53,
    "pMercado": 0.535,
-   "soloWtn": 0.549,
-   "señales": [],
-   "razon": "Δ0.43 de WTN a favor de Jip Van Assendelft (6.75 contra 7.18), en R1: la curva del grupo \"buenas\" (n=2320) da 55%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "soloWtn": 0.551,
+   "señales": [
+    "forma"
+   ],
+   "razon": "Δ0.43 de WTN a favor de Jip Van Assendelft (6.75 contra 7.18), en R1: la curva del grupo \"buenas\" (n=2893) da 55%. Ajustan: Jose Dominguez Alonso viene cediendo menos games (27% contra 32%): la forma contradice al nivel (−2 pts). Queda en 53%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −9% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.72,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.543,
+    "pFm": 0.545,
     "dW": 0.38,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 23,
     "edadRi": 26,
-    "dElo": 8
+    "dElo": -15
    },
    "jugada": null,
    "fixtureId": "pn129034761637847737",
@@ -2176,25 +2200,25 @@
    "g2": 1.98,
    "gana": "Giulio Perego",
    "lado": 1,
-   "p": 0.543,
+   "p": 0.545,
    "pMercado": 0.535,
-   "soloWtn": 0.543,
+   "soloWtn": 0.545,
    "señales": [],
-   "razon": "Δ0.38 de WTN a favor de Giulio Perego (6.23 contra 6.61), en R1: la curva del grupo \"buenas\" (n=2320) da 54%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.38 de WTN a favor de Giulio Perego (6.23 contra 6.61), en R1: la curva del grupo \"buenas\" (n=2893) da 55%. El mercado la paga a 1.72: 54% una vez sacado su margen. A esa cuota, la apuesta rinde −6% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.8,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.534,
+    "pFm": 0.215,
     "dW": 0.3,
     "forma": null,
-    "previo": null,
+    "previo": -1,
     "grupo": "buenas",
     "edadFm": 19,
     "edadRi": 23,
-    "dElo": 16
+    "dElo": 19
    },
    "jugada": null,
    "fixtureId": "pn129037681637810014",
@@ -2208,25 +2232,27 @@
    "g2": 1.8,
    "gana": "Rares Teodor Pieleanu",
    "lado": 1,
-   "p": 0.534,
+   "p": 0.215,
    "pMercado": 0.5,
-   "soloWtn": 0.534,
-   "señales": [],
-   "razon": "Δ0.30 de WTN a favor de Rares Teodor Pieleanu (5.87 contra 6.17), en R1: la curva del grupo \"buenas\" (n=2320) da 53%. El mercado la paga a 1.8: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −4% si tenemos razón nosotros y −10% si la tiene el mercado."
+   "soloWtn": 0.536,
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ0.30 de WTN a favor de Rares Teodor Pieleanu (5.87 contra 6.17), en R1: la curva del grupo \"buenas\" (n=2893) da 54%. Ajustan: Alexander Chang llegó más lejos en su torneo anterior (−32 pts). Queda en 22%. El mercado la paga a 1.8: 50% una vez sacado su margen. A esa cuota, la apuesta rinde −61% si tenemos razón nosotros y −10% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.58,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.565,
-    "dW": 0.17,
+    "pFm": 0.543,
+    "dW": 0.09,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 25,
-    "dElo": null
+    "dElo": -13
    },
    "jugada": null,
    "fixtureId": "pn129034551637808580",
@@ -2240,59 +2266,61 @@
    "g2": 2.2,
    "gana": "Aziz Ouakaa",
    "lado": 1,
-   "p": 0.565,
+   "p": 0.543,
    "pMercado": 0.582,
-   "soloWtn": 0.519,
+   "soloWtn": 0.511,
    "señales": [
     "local"
    ],
-   "razon": "Δ0.17 de WTN a favor de Aziz Ouakaa (5.87 contra 6.04), en R1: la curva del grupo \"buenas\" (n=2320) da 52%. Ajustan: Aziz Ouakaa juega en su país (TUN): la localía vale ~0.5 pts de WTN (+5 pts). Queda en 56%. El mercado la paga a 1.58: 58% una vez sacado su margen. A esa cuota, la apuesta rinde −11% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.09 de WTN a favor de Aziz Ouakaa (5.93 contra 6.02), en R1: la curva del grupo \"buenas\" (n=2893) da 51%. Ajustan: Aziz Ouakaa juega en su país (TUN): la localía vale ~0.5 pts de WTN (+3 pts). Queda en 54%. El mercado la paga a 1.58: 58% una vez sacado su margen. A esa cuota, la apuesta rinde −14% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.69,
     "ladoFm": 2,
     "acuerdo": false,
-    "pFm": 0.471,
-    "dW": -0.28,
+    "pFm": 0.789,
+    "dW": -0.25,
     "forma": null,
-    "previo": null,
-    "grupo": "medias",
+    "previo": 1,
+    "grupo": "buenas",
     "edadFm": 30,
     "edadRi": 27,
-    "dElo": null
+    "dElo": 54
    },
    "jugada": null,
    "fixtureId": "pn129034551637810021",
    "inicio": "2026-10-07T11:00:00.000Z",
    "torneo": "M15 Monastir",
    "pais": "Tunisia",
-   "etapa": "R2",
+   "etapa": "R1",
    "p1": "Adan Freire Da Silva",
    "p2": "Kris van Wyk",
    "g1": 1.97,
    "g2": 1.69,
    "gana": "Adan Freire Da Silva",
    "lado": 1,
-   "p": 0.529,
+   "p": 0.211,
    "pMercado": 0.462,
-   "soloWtn": 0.529,
-   "señales": [],
-   "razon": "Δ0.28 de WTN a favor de Adan Freire Da Silva (6.29 contra 6.57), en R2: la curva del grupo \"medias\" (n=986) da 53%. El mercado la paga a 1.97: 46% una vez sacado su margen. A esa cuota, la apuesta rinde +4% si tenemos razón nosotros y −9% si la tiene el mercado."
+   "soloWtn": 0.53,
+   "señales": [
+    "previo"
+   ],
+   "razon": "Δ0.25 de WTN a favor de Adan Freire Da Silva (6.37 contra 6.62), en R1: la curva del grupo \"buenas\" (n=2893) da 53%. Ajustan: Kris van Wyk llegó más lejos en su torneo anterior (−32 pts). Queda en 21%. El mercado la paga a 1.97: 46% una vez sacado su margen. A esa cuota, la apuesta rinde −58% si tenemos razón nosotros y −9% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.5,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.532,
-    "dW": 0.28,
+    "pFm": 0.543,
+    "dW": 0.36,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 20,
     "edadRi": 27,
-    "dElo": null
+    "dElo": 60
    },
    "jugada": null,
    "fixtureId": "pn129034551637810022",
@@ -2306,50 +2334,50 @@
    "g2": 1.5,
    "gana": "Viktor Frydrych",
    "lado": 2,
-   "p": 0.532,
+   "p": 0.543,
    "pMercado": 0.612,
-   "soloWtn": 0.532,
+   "soloWtn": 0.543,
    "señales": [],
-   "razon": "Δ0.28 de WTN a favor de Viktor Frydrych (6.46 contra 6.74), en R1: la curva del grupo \"buenas\" (n=2320) da 53%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −20% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.36 de WTN a favor de Viktor Frydrych (6.46 contra 6.82), en R1: la curva del grupo \"buenas\" (n=2893) da 54%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde −19% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.008,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.862,
-    "dW": 5.11,
+    "pFm": 0.922,
+    "dW": 5.16,
     "forma": null,
     "previo": null,
-    "grupo": "finales",
+    "grupo": "buenas",
     "edadFm": 20,
     "edadRi": 21,
-    "dElo": null
+    "dElo": 656
    },
    "jugada": null,
    "fixtureId": "pn129034551637821641",
    "inicio": "2026-10-07T11:00:00.000Z",
    "torneo": "M15 Monastir",
    "pais": "Tunisia",
-   "etapa": "F",
+   "etapa": "R1",
    "p1": "Pablo De La Cierva Sanchez",
    "p2": "Kasra Rahmani",
    "g1": 15,
    "g2": 1.008,
    "gana": "Kasra Rahmani",
    "lado": 2,
-   "p": 0.862,
+   "p": 0.922,
    "pMercado": 0.937,
-   "soloWtn": 0.862,
+   "soloWtn": 0.922,
    "señales": [],
-   "razon": "Δ5.11 de WTN a favor de Kasra Rahmani (5.38 contra 10.49), en F: la curva del grupo \"finales\" (n=423) da 86%. El mercado la paga a 1.008: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −13% si tenemos razón nosotros y −6% si la tiene el mercado."
+   "razon": "Δ5.16 de WTN a favor de Kasra Rahmani (5.48 contra 10.64), en R1: la curva del grupo \"buenas\" (n=2893) da 92%. El mercado la paga a 1.008: 94% una vez sacado su margen. A esa cuota, la apuesta rinde −7% si tenemos razón nosotros y −6% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.04,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.717,
+    "pFm": 0.725,
     "dW": 2.03,
     "forma": null,
     "previo": null,
@@ -2370,18 +2398,18 @@
    "g2": 8.5,
    "gana": "Eliakim Coulibaly",
    "lado": 1,
-   "p": 0.717,
+   "p": 0.725,
    "pMercado": 0.891,
-   "soloWtn": 0.717,
+   "soloWtn": 0.725,
    "señales": [],
-   "razon": "Δ2.03 de WTN a favor de Eliakim Coulibaly (4.72 contra 6.75), en R1: la curva del grupo \"buenas\" (n=2320) da 72%. El mercado la paga a 1.04: 89% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "razon": "Δ2.03 de WTN a favor de Eliakim Coulibaly (4.72 contra 6.75), en R1: la curva del grupo \"buenas\" (n=2893) da 73%. El mercado la paga a 1.04: 89% una vez sacado su margen. A esa cuota, la apuesta rinde −25% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.5,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.775,
+    "pFm": 0.798,
     "dW": 0.62,
     "forma": null,
     "previo": 1,
@@ -2402,59 +2430,61 @@
    "g2": 2.37,
    "gana": "Anas Mazdrashki",
    "lado": 1,
-   "p": 0.775,
+   "p": 0.798,
    "pMercado": 0.612,
-   "soloWtn": 0.571,
+   "soloWtn": 0.574,
    "señales": [
     "previo"
    ],
-   "razon": "Δ0.62 de WTN a favor de Anas Mazdrashki (5.86 contra 6.48), en R1: la curva del grupo \"buenas\" (n=2320) da 57%. Ajustan: Anas Mazdrashki llegó más lejos en su torneo anterior (+20 pts). Queda en 78%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +16% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.62 de WTN a favor de Anas Mazdrashki (5.86 contra 6.48), en R1: la curva del grupo \"buenas\" (n=2893) da 57%. Ajustan: Anas Mazdrashki llegó más lejos en su torneo anterior (+22 pts). Queda en 80%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +20% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.3,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.561,
-    "dW": 0.68,
-    "forma": null,
+    "pFm": 0.708,
+    "dW": 0.67,
+    "forma": 1,
     "previo": null,
-    "grupo": "finales",
+    "grupo": "buenas",
     "edadFm": 22,
     "edadRi": 22,
-    "dElo": null
+    "dElo": 200
    },
    "jugada": null,
    "fixtureId": "pn129034551637821650",
    "inicio": "2026-10-07T11:00:00.000Z",
    "torneo": "M15 Monastir",
    "pais": "Tunisia",
-   "etapa": "QF",
+   "etapa": "R1",
    "p1": "LUCCA LIU",
    "p2": "Tuncay Duran",
    "g1": 3.25,
    "g2": 1.3,
    "gana": "Tuncay Duran",
    "lado": 2,
-   "p": 0.561,
+   "p": 0.708,
    "pMercado": 0.714,
-   "soloWtn": 0.561,
-   "señales": [],
-   "razon": "Δ0.68 de WTN a favor de Tuncay Duran (5.42 contra 6.1), en QF: la curva del grupo \"finales\" (n=423) da 56%. El mercado la paga a 1.3: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −27% si tenemos razón nosotros y −7% si la tiene el mercado."
+   "soloWtn": 0.579,
+   "señales": [
+    "forma"
+   ],
+   "razon": "Δ0.67 de WTN a favor de Tuncay Duran (5.43 contra 6.1), en R1: la curva del grupo \"buenas\" (n=2893) da 58%. Ajustan: Tuncay Duran viene cediendo menos games (34% contra 71%) (+13 pts). Queda en 71%. El mercado la paga a 1.3: 71% una vez sacado su margen. A esa cuota, la apuesta rinde −8% si tenemos razón nosotros y −7% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.22,
     "ladoFm": 2,
     "acuerdo": true,
-    "pFm": 0.512,
+    "pFm": 0.527,
     "dW": 0.5,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 26,
     "edadRi": 23,
-    "dElo": 149
+    "dElo": 139
    },
    "jugada": null,
    "fixtureId": "pn129034661637810052",
@@ -2468,27 +2498,27 @@
    "g2": 1.22,
    "gana": "Emile Hudd",
    "lado": 2,
-   "p": 0.512,
+   "p": 0.527,
    "pMercado": 0.755,
-   "soloWtn": 0.557,
+   "soloWtn": 0.559,
    "señales": [
     "local"
    ],
-   "razon": "Δ0.50 de WTN a favor de Emile Hudd (5.62 contra 6.12), en R1: la curva del grupo \"buenas\" (n=2320) da 56%. Ajustan: Maxence Rivet juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−5 pts). Queda en 51%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −38% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.50 de WTN a favor de Emile Hudd (5.62 contra 6.12), en R1: la curva del grupo \"buenas\" (n=2893) da 56%. Ajustan: Maxence Rivet juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 53%. El mercado la paga a 1.22: 75% una vez sacado su margen. A esa cuota, la apuesta rinde −36% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.1,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.593,
+    "pFm": 0.597,
     "dW": 0.82,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 19,
-    "dElo": 189
+    "dElo": 170
    },
    "jugada": null,
    "fixtureId": "pn129034661637810053",
@@ -2502,25 +2532,25 @@
    "g2": 5.5,
    "gana": "Alexandre Reco",
    "lado": 1,
-   "p": 0.593,
+   "p": 0.597,
    "pMercado": 0.833,
-   "soloWtn": 0.593,
+   "soloWtn": 0.597,
    "señales": [],
-   "razon": "Δ0.82 de WTN a favor de Alexandre Reco (5.96 contra 6.78), en R1: la curva del grupo \"buenas\" (n=2320) da 59%. El mercado la paga a 1.1: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −35% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.82 de WTN a favor de Alexandre Reco (5.96 contra 6.78), en R1: la curva del grupo \"buenas\" (n=2893) da 60%. El mercado la paga a 1.1: 83% una vez sacado su margen. A esa cuota, la apuesta rinde −34% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.19,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.584,
+    "pFm": 0.602,
     "dW": 1.14,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 27,
     "edadRi": 22,
-    "dElo": 102
+    "dElo": 70
    },
    "jugada": null,
    "fixtureId": "pn129034661637821688",
@@ -2534,27 +2564,27 @@
    "g2": 4,
    "gana": "Aleksandr Braynin",
    "lado": 1,
-   "p": 0.584,
+   "p": 0.602,
    "pMercado": 0.771,
-   "soloWtn": 0.628,
+   "soloWtn": 0.633,
    "señales": [
     "local"
    ],
-   "razon": "Δ1.14 de WTN a favor de Aleksandr Braynin (6.16 contra 7.3), en R1: la curva del grupo \"buenas\" (n=2320) da 63%. Ajustan: Hugo Cardinaud juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−4 pts). Queda en 58%. El mercado la paga a 1.19: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −30% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ1.14 de WTN a favor de Aleksandr Braynin (6.16 contra 7.3), en R1: la curva del grupo \"buenas\" (n=2893) da 63%. Ajustan: Hugo Cardinaud juega en su país (FRA): la localía le suma ~0.5 pts de WTN (−3 pts). Queda en 60%. El mercado la paga a 1.19: 77% una vez sacado su margen. A esa cuota, la apuesta rinde −28% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.5,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.805,
+    "pFm": 0.762,
     "dW": 0.11,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 18,
     "edadRi": 22,
-    "dElo": 81
+    "dElo": 58
    },
    "jugada": null,
    "fixtureId": "pn129034661637808615",
@@ -2568,28 +2598,28 @@
    "g2": 2.37,
    "gana": "Victor Barreira Bonzom",
    "lado": 1,
-   "p": 0.805,
+   "p": 0.762,
    "pMercado": 0.612,
    "soloWtn": 0.513,
    "señales": [
     "sub18",
     "local"
    ],
-   "razon": "Δ0.11 de WTN a favor de Victor Barreira Bonzom (8.32 contra 8.43), en R1: la curva del grupo \"buenas\" (n=2320) da 51%. Ajustan: Victor Barreira Bonzom tiene 18 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+25 pts); Victor Barreira Bonzom juega en su país (FRA): la localía vale ~0.5 pts de WTN (+3 pts). Queda en 81%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +21% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.11 de WTN a favor de Victor Barreira Bonzom (8.32 contra 8.43), en R1: la curva del grupo \"buenas\" (n=2893) da 51%. Ajustan: Victor Barreira Bonzom tiene 18 años: bajo los 19 el WTN va atrasado y el jugador rinde más (+22 pts); Victor Barreira Bonzom juega en su país (FRA): la localía vale ~0.5 pts de WTN (+2 pts). Queda en 76%. El mercado la paga a 1.5: 61% una vez sacado su margen. A esa cuota, la apuesta rinde +14% si tenemos razón nosotros y −8% si la tiene el mercado."
   },
   {
    "crit": {
     "cuota": 1.6,
     "ladoFm": 1,
     "acuerdo": true,
-    "pFm": 0.562,
+    "pFm": 0.564,
     "dW": 0.54,
     "forma": null,
     "previo": null,
     "grupo": "buenas",
     "edadFm": 23,
     "edadRi": 23,
-    "dElo": 72
+    "dElo": 77
    },
    "jugada": null,
    "fixtureId": "pn129037871637835040",
@@ -2603,11 +2633,11 @@
    "g2": 2.15,
    "gana": "Mateo Del Pino",
    "lado": 1,
-   "p": 0.562,
+   "p": 0.564,
    "pMercado": 0.573,
-   "soloWtn": 0.562,
+   "soloWtn": 0.564,
    "señales": [],
-   "razon": "Δ0.54 de WTN a favor de Mateo Del Pino (6.56 contra 7.1), en R1: la curva del grupo \"buenas\" (n=2320) da 56%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −8% si la tiene el mercado."
+   "razon": "Δ0.54 de WTN a favor de Mateo Del Pino (6.56 contra 7.1), en R1: la curva del grupo \"buenas\" (n=2893) da 56%. El mercado la paga a 1.6: 57% una vez sacado su margen. A esa cuota, la apuesta rinde −10% si tenemos razón nosotros y −8% si la tiene el mercado."
   }
  ]
 }
