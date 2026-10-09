@@ -3,3 +3,4 @@ __pycache__/
 listado_*.html
 causas_a_consultar.csv
 artifact/datos.json
+artifact/index.html

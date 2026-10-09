@@ -124,6 +124,7 @@ h1{font:700 2rem/1.1 var(--f-display);letter-spacing:-.01em;margin:0;text-wrap:b
   <p class="foot">Fuente: publicaciones de remates del Boletín Concursal. En inmuebles, la región y la comuna se deducen del texto de cada publicación (“comuna de…”, “Conservador de Bienes Raíces de…”) y no del lugar del remate. En muebles se muestra dónde se realiza o exhibe el remate. Un mínimo de $0 o $1 significa que la publicación no fijó mínimo. Verificá cada publicación con su código en boletinconcursal.cl antes de participar.</p>
 </div>
 
+<script type="application/json" id="datos">__DATOS__</script>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -143,7 +144,10 @@ const TIPOS = ["Inmuebles","Vehiculos","Maquinas y Herramientas","Equipos Varios
 const NOMBRE_TIPO = {"Vehiculos":"Vehículos","Maquinas y Herramientas":"Máquinas y herramientas","Muebles y Equipos de Oficina":"Muebles y equipos de oficina","Muebles de Hogar":"Muebles de hogar","Equipos Varios":"Equipos varios"};
 const nt = t => NOMBRE_TIPO[t] || t;
 
-fetch("datos.json").then(r => r.json()).then(d => {
+// Los datos van incrustados en la página (el visor de artifacts puede bloquear cargas aparte);
+// si no están, se intenta datos.json como respaldo.
+const incrustados = document.getElementById("datos");
+(incrustados ? Promise.resolve(JSON.parse(incrustados.textContent)) : fetch("datos.json").then(r => r.json())).then(d => {
   DB = d;
   for (const r of DB.remates) r._q = norm([r.comuna_x, r.region_x, (r.comunas||[]).join(" "), r.detalle, r.rol_causa, r.tribunal, r.deudor, r.entePublicador, r.liquidador, (r.patentes||[]).join(" "), r.codigoValidacion].join(" "));
   const n = c => DB.remates.filter(r => r.clase === c).length;

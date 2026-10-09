@@ -3,10 +3,14 @@
 solo JSON compacto para la página de remates.
 
 Uso: python3 datos_artifact.py inmuebles_filtrados.json muebles_remates.json salida.json
+
+Además genera artifact/index.html: la plantilla con los datos incrustados (fuera de git,
+porque trae nombres de deudores).
 """
 import json
 import re
 import sys
+from pathlib import Path
 from datetime import date
 
 from comunas import NOMBRE_REGION, REGIONES
@@ -73,7 +77,11 @@ def main():
         datos.append(compactar(r, "muebles"))
 
     out = {"generado": date.today().isoformat(), "regiones": list(REGIONES) + ["No determinada"], "remates": datos}
-    json.dump(out, open(salida, "w"), ensure_ascii=False, separators=(",", ":"))
+    texto = json.dumps(out, ensure_ascii=False, separators=(",", ":"))
+    Path(salida).write_text(texto, encoding="utf-8")
+    carpeta = Path(__file__).parent / "artifact"
+    plantilla = (carpeta / "plantilla.html").read_text(encoding="utf-8")
+    (carpeta / "index.html").write_text(plantilla.replace("__DATOS__", texto.replace("</", "<\\/")), encoding="utf-8")
     n = {c: sum(d["clase"] == c for d in datos) for c in ("inmuebles", "muebles")}
     print(f"{n} -> {salida}")
 
