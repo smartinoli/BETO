@@ -4,14 +4,15 @@ name: Tabla ITF
 #
 # Dos maneras de refrescarla:
 #   · BOTÓN — Actions → "Tabla ITF" → Run workflow: corre la rutina completa
-#     (marcadores de ayer, cuotas bet365 vigentes, veredictos y decantador),
+#     (cuotas de Betano vigentes, veredictos y decantador),
 #     guarda los datos en la rama y re-publica la página.
 #   · SOLA — cuando la rutina diaria commitea vigia/itf-informe.html, acá
-#     solo se re-publica la página, sin gastar requests de la API.
+#     solo se re-publica la página.
 #
 # La página queda en GitHub Pages: https://smartinoli.github.io/BETO/
-# Requisitos (una sola vez): el secret ODDSPAPI_KEY (ya existe, lo usa el
-# workflow Vigía) y Settings → Pages → Source: GitHub Actions.
+# Requisito (una sola vez): Settings → Pages → Source: GitHub Actions.
+# Las cuotas salen directo de Betano (itf-betano.mjs), sin key: OddsPapi
+# se sacó el 2026-10-11.
 
 on:
   workflow_dispatch:
@@ -19,13 +20,12 @@ on:
       que:
         description: 'Qué refrescar'
         type: choice
-        default: cuotas
-        # betano        = Betano primero, TODOS los torneos de la semana: lo pendiente en las próximas 36 h (el botón del día a día)
+        default: betano
+        # betano        = cuotas de Betano de todo lo pendiente en las próximas 36 h (el botón del día a día)
         # cuadros-ahora = refresca los cuadros de los torneos que juegan en esas 36 h (antes de pedir cuotas)
-        # cuotas        = mejor casa disponible (bet365 > betano > …), toda la ventana: para medir el mercado
         # todo          = calendario + listas + los 17 cuadros + rating (una vez al día)
         # modelo        = reajusta las constantes con los resultados acumulados
-        options: [betano, cuadros-ahora, cuotas, todo, modelo]
+        options: [betano, cuadros-ahora, todo, modelo]
   # Sin schedule a pedido de Sebastián (2026-08-27): todo manual, él actualiza
   # con los botones de la página (o desde esta pestaña de Actions).
   push:
@@ -115,16 +115,11 @@ jobs:
         run: node vigia/itf-aprender.mjs
 
       - name: La rutina del día
-        env:
-          ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
-        # con 'betano' la tanda se arma solo con sus precios; en el resto
-        # manda la prioridad de casas de siempre
         # cuadros-ahora no pide cuotas: rearma la pagina con lo que hay
         run: |
           case "${{ inputs.que }}" in
-            betano)        node vigia/itf-dia.mjs --casa betano --horas 36 ;;
             cuadros-ahora) node vigia/itf-informe.mjs --bet365 && node vigia/itf-tabla.mjs ;;
-            *)             node vigia/itf-dia.mjs ;;
+            *)             node vigia/itf-dia.mjs --horas 36 ;;
           esac
 
       - name: Guardar lo que cambió

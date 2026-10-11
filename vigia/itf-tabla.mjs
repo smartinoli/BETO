@@ -173,13 +173,12 @@ tr[hidden]{display:none}
 
 <div class="act">
   <button id="b-cuadros" data-que="cuadros-ahora" class="sec2">1 · Cuadros de ahora <small>2–4 min</small></button>
-  <button id="b-betano" data-que="betano">2 · Betano ahora <small>todos los torneos de la semana, 2–3 min</small></button>
-  <button id="b-cuotas" data-que="cuotas" class="sec2">Todas las casas <small>medir el mercado</small></button>
+  <button id="b-betano" data-que="betano">2 · Betano ahora <small>todos los torneos de la semana, 1–2 min</small></button>
   <button id="b-todo" data-que="todo" class="sec2">Semana completa <small>una vez al día</small></button>
   <button id="b-modelo" data-que="modelo" class="sec2">🧠 Que aprenda el modelo <small>5–10 min</small></button>
   <span id="act-estado"></span>
   <span class="mod">${CASA ? (() => { const n = J.filter(j => j.casa === CASA).length / 2, o = J.filter(j => j.casa && j.casa !== CASA).length / 2;
-    return (n ? `cuotas de ${esc(CASA)} (${n} partidos)` : `${esc(CASA)} no está en la API ahora`)
+    return (n ? `cuotas de ${esc(CASA)} (${n} partidos)` : `${esc(CASA)} no cotiza ITF ahora`)
       + (o ? ` · ${o} partidos con la cuota de otra casa` : '') + ' · ' })() : ''}modelo ${O.de === 'aprendido' ? 'aprendido' : 'de fábrica'} ·
     ${O.partidos} partidos · ${O.fecha ? String(O.fecha).slice(0, 10) : ''}</span>
   <div id="act-token" hidden>
@@ -226,7 +225,7 @@ ${filas}
   la ITF lo recalibró entre el 25 y el 28 de agosto, así que no se comparan números de torneos con listas de semanas distintas.
   <b>local</b> es que juega en su país, lo que vale ~0.5 puntos de WTN. Los rankings ITF y ATP van vacíos cuando el jugador no tiene.
   En edad, WTN, ITF y ATP el <span style="color:var(--ink3)">número chico de abajo</span> es el mismo dato del RIVAL, para comparar sin cambiar de fila.
-  El nombre abre el buscador de Betano: la API de cuotas no entrega la URL del partido, así que es búsqueda por nombre, no enlace directo.
+  El nombre abre el buscador de Betano (búsqueda por nombre, no enlace directo).
   El paréntesis junto al nombre es cómo entró: un número es su siembra, <b>Q</b> salió de la clasificación, <b>WC</b> invitación de la
   organización, <b>LL</b> lucky loser, <b>PR</b> ranking protegido, <b>Alt</b> alternate, <b>SE</b> exento. Sin paréntesis entró directo por ranking.</p>
 </div>
@@ -313,11 +312,10 @@ ${filas}
   var est=document.getElementById('act-estado'),
       caja=document.getElementById('act-token'), inp=document.getElementById('act-pat'),
       gu=document.getElementById('act-guardar');
-  var botones=['b-cuadros','b-betano','b-cuotas','b-todo','b-modelo'].map(function(i){return document.getElementById(i)}).filter(Boolean);
+  var botones=['b-cuadros','b-betano','b-todo','b-modelo'].map(function(i){return document.getElementById(i)}).filter(Boolean);
   if(!botones.length) return;
   var AVISO={ 'cuadros-ahora':'bajando los cuadros de todos los torneos que juegan en las próximas 36 h (3–5 min)…',
-              cuotas:'pidiendo las cuotas de hoy, partido por partido (la API no deja pedirlas juntas): 3 seg por partido, un martes cargado son ~8 min…',
-              betano:'pidiendo las cuotas de todos los partidos pendientes de la semana, partido por partido (3 seg cada uno)…',
+              betano:'leyendo las cuotas de Betano de todos los partidos pendientes (1–2 min)…',
               todo:'corriendo: cuadros ITF por navegador + cuotas (10–15 min)…',
               modelo:'corriendo: el modelo se reajusta con los resultados y se queda con lo mejor (5–10 min)…' };
   function traba(si){ botones.forEach(function(b){b.disabled=si}); }
@@ -329,10 +327,10 @@ ${filas}
     opts.headers={ 'Authorization':'Bearer '+tok, 'Accept':'application/vnd.github+json' };
     return fetch('https://api.github.com/repos/'+REPO+ruta,opts);
   }
-  var desde=0, pedido='cuotas';
+  var desde=0, pedido='betano';
   gu.onclick=function(){ var t=inp.value.trim(); if(!t)return; guarda(t); caja.hidden=true; inp.value=''; correr(pedido); };
   botones.forEach(function(b){ b.onclick=function(){
-    pedido=b.getAttribute('data-que')||'cuotas';
+    pedido=b.getAttribute('data-que')||'betano';
     if(!lee()){ caja.hidden=false; inp.focus(); return; }
     correr(pedido);
   }; });

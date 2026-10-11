@@ -17,11 +17,12 @@ acá se midió: no es opinión.
 - **Simple y rápido.** El botón de Betano tiene que ser: API → partidos →
   tabla. Sin pasos extra, sin límites artificiales de partidos.
 - **No mentir en los mensajes**: "no se pudo consultar" ≠ "nadie lo cotiza".
-- **Nunca commitear la key de OddsPapi** ni el PAT de GitHub. La key va solo
-  en el comando (`ODDSPAPI_KEY=... node ...`) o en el secret de Actions
-  `ODDSPAPI_KEY`. El PAT de la página vive solo en el localStorage del
-  navegador de Sebastián (`tabla-pat`). Betano no se scrapea nunca: solo se
-  enlaza su buscador (`lat.betano.com/search/?query=`).
+- **Nunca commitear el PAT de GitHub.** Vive solo en el localStorage del
+  navegador de Sebastián (`tabla-pat`).
+- **Las cuotas salen directo de Betano** (decidido por Sebastián el
+  2026-10-11; antes la regla era "Betano no se scrapea nunca"). OddsPapi
+  se sacó del sistema ITF ese día. El workflow de fútbol (`vigia.yml`)
+  todavía usa su secret `ODDSPAPI_KEY`: no tocarlo.
 - **Sin identificadores de modelo** en commits, PRs ni código. Trailer de
   commits: `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>` +
   `Claude-Session: <url de la sesión>`.
@@ -37,16 +38,16 @@ Todo en `vigia/`. Datos en `vigia/datos/itf/`.
 | Mapa de torneos | `datos/itf/torneos.json` | semanas → claves (`m-itf-xxx-2026-nnn`), nombres, fechas. |
 | Entry lists | `datos/itf/<clave>.aceptacion.json` | fichas: WTN, ATP, ITF, edad, JR, seed, entrada. |
 | Cuadros vivos | `datos/itf/vivo/<clave>.json` | rondas, partidos, sets, ganador, `bajado`. |
-| Índice de la API | `datos/itf/historico-indice.json` | fixtures de OddsPapi (`fixtureId`, `startTime`, `hasOdds`, `categoria` ITF Men/Women). `itf-historico.mjs` lo mantiene (ventana `dia(1)` a `dia(-7)`). |
-| Cuotas | `itf-cuotas-bet365.mjs` | UN request por partido a `historical-odds` (no hay bulk; `/odds` no filtra por casa). Pausa 3.2 s. `--casa betano` = Betano manda, con respaldo a otra casa marcado en la fila. `--horas N` (36 por defecto desde el 22-09). `--torneos a,b`. Caché por fixture en `datos/itf/historico/` (ignorado por git), válido si el partido ya arrancó o la copia tiene < 3 h y trae la casa pedida. Escribe `itf-cuotas-bet365.json` incremental (`parcial:true` hasta terminar). |
+| Cuotas | `itf-betano.mjs [--horas 36]` | lee el JSON interno de Betano Chile (`betanosports.com/api/sport/tenis/ligas/` → ligas `itf-hombres/<país>/<id>/` → partidos con mercado `HTOH` Ganador). Fetch simple, sin key ni navegador; un pedido por liga. Betano nombra las ligas por PAÍS y separa la quali ("Italia - Clasificación"). El torneo se asigna si el partido cae entre quali y final y los dos jugadores están en la entry list (prefiere cuadro/quali sobre alternos A y retirados W). Escribe `itf-cuotas-bet365.json` (nombre histórico, mismo formato; `fixtureId` = `betano-<id>`). |
+| Índice viejo | `datos/itf/historico-indice.json` | fixtures de OddsPapi hasta el 2026-10-11. Ya no se actualiza; el informe lo lee solo para veredictos viejos. |
 | Modelo | `itf-modelo.mjs` | logística simétrica sin constante: ΔWTN por grupo de ronda (Q1 / buenas=Q2,R1 / medias=Q3,R2 / finales=QF,SF,F) + escalón sub-19 + games cedidos + torneo anterior + localía. Constantes de fábrica + `datos/itf/modelo-aprendido.json` si existe (`MODELO_ORIGEN`). |
 | Aprendizaje | `itf-aprender.mjs` | rearma banco (`itf-banco.mjs` → `_auditoria.json`), refit (`itf-ajuste.mjs`), valida LOTO (dejando un torneo afuera) y escribe el aprendido SOLO si mejora el log-loss. `--probar` = simulacro. |
 | Rating Elo | `itf-rating.mjs` → `datos/itf/rating.json` | Elo propio desde los cuadros, con z-score por era del WTN (la ITF recalibró el WTN el 26-08: mediana 13.9 → 8.1; `CORTE_ESCALA`). Imprime la "evaluación honesta". Hoy es decorativo: no entra en la decisión. |
 | Informe/veredictos | `itf-informe.mjs --bet365` | cruza cuotas con fichas y cuadros, calcula prob del modelo, califica resultados (`datos/itf/veredictos-historia.json`), exporta `itf-tabla.json` y `itf-informe.html`. |
 | Tabla | `itf-tabla.mjs` → `itf-tabla.html` | la página de uso diario (ver abajo). |
-| Rutina del día | `itf-dia.mjs [--casa X] [--horas N] [--ahora N]` | índice → cuotas → informe → tabla. Timeout 35 min por paso. |
-| Torneos "de ahora" | `itf-ahora.mjs` | torneos ITF Men con partidos en las próximas N h, `ciudadCorta()`. |
-| Workflow | `.github/workflows/tabla.yml` | `workflow_dispatch` con input `que`: `betano` (itf-dia --casa betano --horas 36), `cuadros-ahora` (itf-cuadros --ahora 36 + informe + tabla), `cuotas` (itf-dia), `todo` (calendario + cosecha + oop + rating + itf-dia), `modelo` (itf-aprender). Commitea como `vigia-bot` ("tabla: corrida a pedido …") y publica `index.html` + `tabla.html` en Pages: https://smartinoli.github.io/BETO/ |
+| Rutina del día | `itf-dia.mjs [--horas N]` | Betano → informe → tabla. |
+| Torneos "de ahora" | `itf-ahora.mjs` | torneos ITF Men cuya semana (quali → final) cae en las próximas N h, según `torneos.json`. Lo usa `itf-cuadros --ahora`. |
+| Workflow | `.github/workflows/tabla.yml` | `workflow_dispatch` con input `que`: `betano` (itf-dia --horas 36), `cuadros-ahora` (itf-cuadros --ahora 36 + informe + tabla), `todo` (calendario + cosecha + oop + rating + itf-dia), `modelo` (itf-aprender). Commitea como `vigia-bot` ("tabla: corrida a pedido …") y publica `index.html` + `tabla.html` en Pages: https://smartinoli.github.io/BETO/ |
 
 Hay más scripts en `vigia/` (`vigia.mjs` y `vigia.yml` son el sistema viejo
 de fútbol AH; `vigia/README.md` habla de eso). No tocarlos.
@@ -59,13 +60,11 @@ local, hora de Chile. Solo partidos **que no han empezado y tienen cuota**
 de los dos lados. Marcas: `(3)` sembrado, `(Q)`, `(WC)`, `[JR]`. Todas las
 columnas ordenan y filtran; filtro de ronda Q/R1/R2/F. ★ = pisa la casilla
 del manual. Verde en valor solo si modelo ≥ 80 % y valor ≥ 1.08.
-Si la casa pedida (Betano) no está en la API para un partido, sale la
-cuota de otra casa con etiqueta chica (`cloudbet`, `bet365`) y el sello lo
-cuenta. El nombre abre el buscador de Betano.
+Todas las cuotas son de Betano. El nombre abre el buscador de Betano.
 
-Cinco botones que disparan `tabla.yml` por la API de GitHub con el PAT del
-navegador: **1·Cuadros de ahora**, **2·Betano ahora**, Todas las casas,
-Semana completa, Que aprenda el modelo.
+Cuatro botones que disparan `tabla.yml` por la API de GitHub con el PAT del
+navegador: **1·Cuadros de ahora**, **2·Betano ahora**, Semana completa,
+Que aprenda el modelo.
 
 ## Rutina semanal (lo que de verdad hay que hacer)
 
@@ -79,7 +78,7 @@ Semana completa, Que aprenda el modelo.
    `torneos.json` semana actual contra `bajado` de `datos/itf/vivo/*.json`.
    (Playwright local: `npm i --no-save playwright@1.54`; `node_modules` está
    en `.gitignore`.)
-3. **Cada día que se juega**: botón *Betano ahora* (2–4 min). Mirar solo ★ y
+3. **Cada día que se juega**: botón *Betano ahora* (1–2 min). Mirar solo ★ y
    verdes. Si no hay, no se apuesta.
 4. **Si pasan semanas sin apretar botones** se pierden las cuotas de esas
    semanas (no se capturan hacia atrás) y los cuadros cuestan tres pasadas.
@@ -133,6 +132,16 @@ de regla estricta), Sumizawa 1.22 (R1, 90 %), Deflandre 1.44 (R2, 91 %).
   más historia; probar contra cuotas antes.
 
 ## Cosas que ya pasaron y no hay que volver a aprender
+
+- Betano (2026-10-11): su JSON responde 403 al user-agent de Python y 200
+  a `node`, `curl` y `Mozilla/5.0`. La página de liga ITF Hombres redirige
+  a la portada de Tenis aunque haya partidos: no fiarse de lo que se ve,
+  el JSON sí los trae. `lat.betano.com` da error de certificado en el
+  navegador del panel; el sitio de Chile es `betanosports.com`.
+- ITF y el navegador del panel (2026-10-11): el WAF (Imperva) bloquea al
+  quinto request igual que con Playwright y muestra CAPTCHA. El navegador
+  no lo resuelve.
+- Lo de OddsPapi que sigue abajo es historia: ya no se usa en ITF.
 
 - OddsPapi: `tournamentName` es solo la ciudad; categoría "ITF Men"/"ITF
   Women" (filtrar). Los fixtures ITF se publican y despublican. El mercado
